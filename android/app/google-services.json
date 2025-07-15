@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "626975806754",
+    "project_id": "projectm20250220",
+    "storage_bucket": "projectm20250220.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626975806754:android:0a97d6fbb7d174b5bd417b",
+        "android_client_info": {
+          "package_name": "com.example.kundali"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATxafTzrNNI8dpzyBnOmqXx_7ZJpOs4h8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626975806754:android:9d52976ae46bc467bd417b",
+        "android_client_info": {
+          "package_name": "com.projectm.kundaliapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATxafTzrNNI8dpzyBnOmqXx_7ZJpOs4h8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

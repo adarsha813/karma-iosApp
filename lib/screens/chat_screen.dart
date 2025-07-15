@@ -17,6 +17,7 @@ import '../providers/profile_provider.dart';
 import '../models/message.dart' as chat_model;
 import 'package:permission_handler/permission_handler.dart';
 import '../providers/notification_provider.dart';
+import 'dailyHoroscope_Screen.dart';
 
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
@@ -42,14 +43,142 @@ class _ChatScreenState extends State<ChatScreen> {
       listen: false,
     );
     currentUserId = profileProvider.userId;
-    _initializeNotifications(); // ✅ Add this line
+    _initializeNotifications();
     _initializeSocket();
-    _fetchPreviousQuestionsAndAnswers();
 
-    // 🔁 Auto refresh every 5 seconds
-    _refreshTimer = Timer.periodic(Duration(seconds: 300000), (_) {
-      _fetchPreviousQuestionsAndAnswers();
+    // Wait for first fetch to complete before second
+    _fetchInitialData();
+
+    _refreshTimer = Timer.periodic(const Duration(seconds: 30000), (_) {
+      _fetchInitialData();
     });
+  }
+
+  Future<void> _fetchInitialData() async {
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
+    await profileProvider.loadUserId();
+    final String userId = profileProvider.userId ?? '';
+
+    if (userId.isEmpty) return;
+
+    final chatService = Provider.of<ChatService>(context, listen: false);
+    List<chat_model.Message> allMessages = [];
+
+    // --- FETCH QUESTIONS & ANSWERS ---
+    final questionsResponse = await http.get(
+      Uri.parse(
+        'https://chat-backend-rvk9.onrender.com/questions/previous/$userId',
+      ),
+    );
+
+    if (questionsResponse.statusCode == 200) {
+      final List<dynamic> data = json.decode(questionsResponse.body);
+
+      for (var item in data) {
+        final questionId = item['_id'] ?? item['id'];
+
+        allMessages.add(
+          chat_model.Message(
+            id: questionId,
+            text: item['text'],
+            isMe: true,
+            createdAt: DateTime.parse(item['createdAt']),
+          ),
+        );
+
+        if (item['answerTranslated'] != null) {
+          allMessages.add(
+            chat_model.Message(
+              id: questionId,
+              text: item['answerTranslated'],
+              isMe: false,
+              adminId: item['adminId'],
+              adminName: item['adminName'],
+              answeredAt: DateTime.parse(item['answeredAt']),
+              rating: item['rating'],
+              feedback: item['feedback'],
+            ),
+          );
+        }
+
+        if (item['isClarified'] == true &&
+            item['clarificationMessages'] != null) {
+          for (var clarification in item['clarificationMessages']) {
+            allMessages.add(
+              chat_model.Message(
+                id: questionId,
+                text: clarification['clarificationMessage'],
+                isMe: false,
+                isClarification: true,
+                adminId: clarification['adminId'],
+                adminName: clarification['adminName'],
+                clarificatedAt: DateTime.parse(clarification['clarificatedAt']),
+              ),
+            );
+          }
+        }
+
+        if (item['adviceTranslated'] != null && item['advisedAt'] != null) {
+          allMessages.add(
+            chat_model.Message(
+              id: questionId,
+              text: item['adviceTranslated'],
+              isMe: false,
+              adminId: item['adminId'],
+              adminName: item['adminName'],
+              answeredAt: DateTime.parse(item['advisedAt']),
+              isAdvice: true,
+            ),
+          );
+        }
+      }
+    }
+
+    // --- FETCH ADVICES ---
+    final advicesResponse = await http.get(
+      Uri.parse('https://chat-backend-rvk9.onrender.com/advices/$userId'),
+    );
+
+    if (advicesResponse.statusCode == 200) {
+      final List<dynamic> data = json.decode(advicesResponse.body);
+
+      for (var item in data) {
+        if (item['text'] != null && item['createdAt'] != null) {
+          allMessages.add(
+            chat_model.Message(
+              id: item['_id'],
+              text: item['text'],
+              isMe: false,
+              isAdvice: true,
+              adminId: item['adminId'] ?? '',
+              adminName: item['adminName'] ?? '',
+              answeredAt: DateTime.parse(item['createdAt']),
+            ),
+          );
+        }
+      }
+    }
+
+    // --- SORT MESSAGES ---
+    allMessages.sort((a, b) {
+      DateTime dateA =
+          a.createdAt ??
+          a.answeredAt ??
+          a.clarificatedAt ??
+          DateTime.fromMillisecondsSinceEpoch(0);
+      DateTime dateB =
+          b.createdAt ??
+          b.answeredAt ??
+          b.clarificatedAt ??
+          DateTime.fromMillisecondsSinceEpoch(0);
+      return dateA.compareTo(dateB); // ✅ ascending
+    });
+
+    // --- SET ONCE ---
+    chatService.setMessages(allMessages);
   }
 
   @override
@@ -76,6 +205,8 @@ class _ChatScreenState extends State<ChatScreen> {
 
     // 🔄 Fetch new messages
     await _fetchPreviousQuestionsAndAnswers();
+
+    await _fetchPreviousAdvices(); // 👈 Add this
 
     setState(() {}); // Optional - UI rebuild trigger
   }
@@ -226,15 +357,40 @@ class _ChatScreenState extends State<ChatScreen> {
         cleanedText,
       );
     });
+
+    socket.on('new_advice', (data) {
+      print('Received new_advice: ${data.toString()}');
+
+      final rawText = data['adviceTranslated'] as String? ?? '';
+      final cleanedText = _stripHtmlIfNeeded(rawText);
+
+      final message = chat_model.Message(
+        id: data['_id'] ?? data['id'] ?? data['questionId'],
+        text: data['adviceTranslated'],
+        isMe: false,
+        adminId: data['adminId'],
+        adminName: data['adminName'],
+        answeredAt: DateTime.parse(data['advisedAt']),
+        isAdvice: true, // ✅ NEW FLAG
+      );
+
+      _addMessage(message);
+
+      _showAnswerNotification(
+        "🧠 Advice from ${message.adminName ?? 'Councillor'}",
+        cleanedText,
+      );
+    });
   }
 
   void _addMessage(chat_model.Message message) {
     if (mounted) {
       Provider.of<ChatService>(context, listen: false).addMessage(message);
+      setState(() {}); // 🔁 Force rebuild if necessary (temporary fix)
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (_scrollController.hasClients) {
           _scrollController.animateTo(
-            0, // 👈 scroll to the "top" because list is reversed
+            0,
             duration: const Duration(milliseconds: 300),
             curve: Curves.easeOut,
           );
@@ -259,6 +415,85 @@ class _ChatScreenState extends State<ChatScreen> {
       'This is a test notification from your app!',
       notificationDetails,
     );
+  }
+
+  Future<void> _fetchPreviousAdvices() async {
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
+    await profileProvider.loadUserId();
+    final String userId = profileProvider.userId ?? '';
+
+    if (userId.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please set your User ID first')),
+      );
+      return;
+    }
+
+    const String baseUrl = 'https://chat-backend-rvk9.onrender.com';
+    final String url = '$baseUrl/advices/$userId';
+
+    try {
+      final response = await http.get(Uri.parse(url));
+
+      if (response.statusCode == 200) {
+        final List<dynamic> data = json.decode(response.body);
+
+        final chatService = Provider.of<ChatService>(context, listen: false);
+        List<chat_model.Message> loadedAdvices = [];
+
+        loadedAdvices.sort((a, b) {
+          final aDate = a.answeredAt ?? DateTime.fromMillisecondsSinceEpoch(0);
+          final bDate = b.answeredAt ?? DateTime.fromMillisecondsSinceEpoch(0);
+          return aDate.compareTo(bDate); // ✅ ascending
+        });
+
+        for (var item in data) {
+          if (item['text'] != null && item['createdAt'] != null) {
+            loadedAdvices.add(
+              chat_model.Message(
+                id: item['_id'],
+                text: item['text'],
+                isMe: false,
+                isAdvice: true,
+                adminId: item['adminId'] ?? '',
+                adminName: item['adminName'] ?? '',
+                answeredAt: DateTime.parse(item['createdAt']),
+              ),
+            );
+          }
+        }
+        print("Loaded advices to add: ${loadedAdvices.length}");
+        // Remove old advice messages before adding new advices
+        final nonAdviceMessages =
+            chatService.messages.where((m) => !m.isAdvice).toList();
+        final newMessages = [...nonAdviceMessages, ...loadedAdvices];
+        newMessages.sort((a, b) {
+          final aDate =
+              a.createdAt ??
+              a.answeredAt ??
+              a.clarificatedAt ??
+              DateTime.fromMillisecondsSinceEpoch(0);
+          final bDate =
+              b.createdAt ??
+              b.answeredAt ??
+              b.clarificatedAt ??
+              DateTime.fromMillisecondsSinceEpoch(0);
+          return aDate.compareTo(bDate);
+        });
+        chatService.setMessages(newMessages);
+
+        print(
+          "Total messages count after adding advices: ${chatService.messages.length}",
+        );
+      } else {
+        print('❌ Failed to fetch advices: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('❌ Error fetching advices: $e');
+    }
   }
 
   Future<void> _fetchPreviousQuestionsAndAnswers() async {
@@ -340,6 +575,20 @@ class _ChatScreenState extends State<ChatScreen> {
               );
             }
           }
+
+          if (item['adviceTranslated'] != null && item['advisedAt'] != null) {
+            loadedMessages.add(
+              chat_model.Message(
+                id: questionId,
+                text: item['adviceTranslated'],
+                isMe: false,
+                adminId: item['adminId'],
+                adminName: item['adminName'],
+                answeredAt: DateTime.parse(item['advisedAt']),
+                isAdvice: true, // ✅
+              ),
+            );
+          }
         }
 
         chatService.setMessages(loadedMessages);
@@ -357,7 +606,17 @@ class _ChatScreenState extends State<ChatScreen> {
     }
   }
 
+  DateTime? _lastNotificationTime;
+
   Future<void> _showAnswerNotification(String title, String body) async {
+    final now = DateTime.now();
+    if (_lastNotificationTime != null &&
+        now.difference(_lastNotificationTime!).inSeconds < 3) {
+      print("🛑 Skipping duplicate notification");
+      return;
+    }
+    _lastNotificationTime = now;
+
     final notificationProvider = Provider.of<NotificationProvider>(
       context,
       listen: false,
@@ -568,6 +827,11 @@ class _ChatScreenState extends State<ChatScreen> {
             Icons.person,
             "Profile",
             ProfileScreen(userId: userId ?? ''),
+          ),
+          _buildDrawerItem(
+            Icons.auto_awesome,
+            "Daily Horoscope",
+            DailyHoroscopeScreen(userId: userId), // ✅ pass userId here
           ),
           _buildDrawerItem(Icons.settings, "Settings", SettingsScreen()),
           _buildDrawerItem(Icons.logout, "Logout", LogoutScreen()),

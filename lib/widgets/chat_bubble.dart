@@ -32,8 +32,32 @@ class _ChatBubbleState extends State<ChatBubble> {
   Widget build(BuildContext context) {
     final message = widget.message;
 
+    // 🟣 Setup custom bubble color and label for advice
+    Color bubbleColor =
+        message.isMe
+            ? Colors.blueAccent
+            : message.isClarification
+            ? Colors.orangeAccent
+            : message.isAdvice
+            ? Colors.purple.shade100
+            : Colors.grey[300]!;
+
+    IconData? icon;
+    String? label;
+
+    if (message.isAdvice) {
+      icon = Icons.tips_and_updates;
+      label = "Advice";
+    }
+
     return Align(
-      alignment: message.isMe ? Alignment.centerRight : Alignment.centerLeft,
+      alignment:
+          message.isAdvice
+              ? Alignment.center
+              : message.isMe
+              ? Alignment.centerRight
+              : Alignment.centerLeft,
+
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
@@ -41,36 +65,59 @@ class _ChatBubbleState extends State<ChatBubble> {
           maxWidth: MediaQuery.of(context).size.width * 0.75,
         ),
         decoration: BoxDecoration(
-          color:
-              message.isMe
-                  ? Colors.blueAccent
-                  : (message.isClarification
-                      ? Colors.orangeAccent
-                      : Colors.grey[300]),
-          borderRadius: BorderRadius.only(
-            topLeft: const Radius.circular(16),
-            topRight: const Radius.circular(16),
-            bottomLeft:
-                message.isMe
-                    ? const Radius.circular(16)
-                    : const Radius.circular(0),
-            bottomRight:
-                message.isMe
-                    ? const Radius.circular(0)
-                    : const Radius.circular(16),
-          ),
+          color: bubbleColor,
+          borderRadius:
+              message.isAdvice
+                  ? BorderRadius.circular(20)
+                  : BorderRadius.only(
+                    topLeft: const Radius.circular(16),
+                    topRight: const Radius.circular(16),
+                    bottomLeft:
+                        message.isMe
+                            ? const Radius.circular(16)
+                            : const Radius.circular(0),
+                    bottomRight:
+                        message.isMe
+                            ? const Radius.circular(0)
+                            : const Radius.circular(16),
+                  ),
+
           boxShadow: [
             BoxShadow(
               color: Colors.black.withAlpha((0.1 * 255).round()),
-
               blurRadius: 4,
               spreadRadius: 1,
             ),
           ],
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment:
+              message.isAdvice
+                  ? CrossAxisAlignment.center
+                  : CrossAxisAlignment.start,
+
           children: [
+            // Show label and icon if message is advice
+            if (label != null && icon != null)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 6.0),
+                child: Row(
+                  children: [
+                    Icon(icon, size: 16, color: Colors.deepPurple),
+                    const SizedBox(width: 4),
+                    Text(
+                      label,
+                      style: const TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.deepPurple,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+            // Main message content (HTML supported)
             Html(
               data: message.text,
               style: {
@@ -90,6 +137,7 @@ class _ChatBubbleState extends State<ChatBubble> {
               },
             ),
 
+            // Admin name
             if (message.adminName != null || message.adminId != null)
               Padding(
                 padding: const EdgeInsets.only(top: 4.0),
@@ -102,6 +150,7 @@ class _ChatBubbleState extends State<ChatBubble> {
                 ),
               ),
 
+            // Created time
             if (message.createdAt != null)
               Padding(
                 padding: const EdgeInsets.only(top: 4.0),
@@ -114,6 +163,7 @@ class _ChatBubbleState extends State<ChatBubble> {
                 ),
               ),
 
+            // Answered time
             if (message.answeredAt != null)
               Padding(
                 padding: const EdgeInsets.only(top: 4.0),
@@ -126,6 +176,7 @@ class _ChatBubbleState extends State<ChatBubble> {
                 ),
               ),
 
+            // Clarified time
             if (message.clarificatedAt != null)
               Padding(
                 padding: const EdgeInsets.only(top: 4.0),
@@ -138,6 +189,7 @@ class _ChatBubbleState extends State<ChatBubble> {
                 ),
               ),
 
+            // Rating bubble
             if (!widget.message.isMe &&
                 widget.onRateAnswer != null &&
                 widget.message.answeredAt != null)
@@ -162,6 +214,7 @@ class _ChatBubbleState extends State<ChatBubble> {
                 },
               ),
 
+            // Loading indicator for temp messages
             if (message.id?.startsWith('temp_') == true)
               const Padding(
                 padding: EdgeInsets.only(top: 4.0),

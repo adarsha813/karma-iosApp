@@ -22,15 +22,13 @@ class ChatService with ChangeNotifier {
   }
 
   void updateMessageRating(String messageId, int rating, String? feedback) {
-    final index = _messages.indexWhere((m) => m.id == messageId);
-    if (index != -1) {
-      final oldMsg = _messages[index];
-      if (oldMsg.rating == rating && oldMsg.feedback == feedback) return;
-      print('✅ Updated message: ${_messages[index]}');
-      print('📊 Current messages:');
-      _messages[index].updateRating(rating, feedback);
+    final index = _messages.indexWhere((m) => m.id == messageId && !m.isMe);
+    if (index == -1) return;
 
-      notifyListeners();
-    }
+    final oldMsg = _messages[index];
+    final updatedMsg = oldMsg.copyWith(rating: rating, feedback: feedback);
+
+    _messages[index] = updatedMsg;
+    notifyListeners();
   }
 }

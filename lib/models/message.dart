@@ -10,6 +10,7 @@ class Message extends ChangeNotifier {
   final DateTime? createdAt;
   final DateTime? answeredAt;
   final DateTime? clarificatedAt;
+  final bool isAdvice;
 
   int? _rating;
   String? _feedback;
@@ -24,6 +25,8 @@ class Message extends ChangeNotifier {
     this.createdAt,
     this.answeredAt,
     this.clarificatedAt,
+    this.isAdvice = false,
+
     int? rating,
     String? feedback,
   }) : _rating = rating,
@@ -45,6 +48,7 @@ class Message extends ChangeNotifier {
     String? text,
     bool? isMe,
     bool? isClarification,
+    bool? isAdvice,
     String? adminId,
     String? adminName,
     DateTime? createdAt,
@@ -58,6 +62,7 @@ class Message extends ChangeNotifier {
       text: text ?? this.text,
       isMe: isMe ?? this.isMe,
       isClarification: isClarification ?? this.isClarification,
+      isAdvice: isAdvice ?? this.isAdvice,
       adminId: adminId ?? this.adminId,
       adminName: adminName ?? this.adminName,
       createdAt: createdAt ?? this.createdAt,
@@ -74,6 +79,7 @@ class Message extends ChangeNotifier {
       text: json['text'] ?? '',
       isMe: json['isMe'] ?? true,
       isClarification: json['isClarification'] ?? false,
+      isAdvice: json['isAdvice'] ?? false,
       adminId: json['adminId'],
       adminName: json['adminName'],
       createdAt:
@@ -99,6 +105,7 @@ class Message extends ChangeNotifier {
       'text': text,
       'isMe': isMe,
       'isClarification': isClarification,
+      'isAdvice': isAdvice,
       'adminId': adminId,
       'adminName': adminName,
       'createdAt': createdAt?.toIso8601String(),
