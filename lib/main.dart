@@ -1,27 +1,41 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'services/fcm_service.dart';
-import 'l10n/app_localizations.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
 import 'screens/chat_screen.dart';
+import 'screens/dailyHoroscope_screen.dart';
+import 'services/fcm_service.dart';
 import 'services/chat_service.dart';
+import 'services/HoroscopeService.dart';
 import 'providers/profile_provider.dart';
 import 'providers/LocaleProvider.dart';
 import 'providers/notification_provider.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'services/HoroscopeService.dart'; // import at the top
+import 'l10n/app_localizations.dart';
 
-// Background message handler
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  await Firebase.initializeApp();
-  print('📩 [Background] Message: ${message.messageId}');
+// -------------------------
+// PendingNotificationNavigation as ChangeNotifier
+class PendingNotificationNavigation extends ChangeNotifier {
+  String? _payload;
+
+  String? get payload => _payload;
+
+  set payload(String? value) {
+    if (_payload != value) {
+      _payload = value;
+      notifyListeners();
+    }
+  }
 }
 
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
+final pendingNavigation = PendingNotificationNavigation();
 
+// -------------------------
+// Notification channel for Android
 const AndroidNotificationChannel horoscopeChannel = AndroidNotificationChannel(
   'horoscope_channel',
   'Horoscope Notifications',
@@ -29,6 +43,17 @@ const AndroidNotificationChannel horoscopeChannel = AndroidNotificationChannel(
   importance: Importance.high,
 );
 
+// Local notifications plugin instance
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+// Background message handler for FCM
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  print('📩 [Background] Message received: ${message.messageId}');
+}
+
+// Create notification channel (for Android 8.0+)
 Future<void> setupHoroscopeChannel() async {
   final androidImplementation =
       flutterLocalNotificationsPlugin
@@ -41,62 +66,137 @@ Future<void> setupHoroscopeChannel() async {
   }
 }
 
-@pragma('vm:entry-point') // required if app is terminated
+// Background notification tap handler
+@pragma('vm:entry-point')
 void notificationTapBackground(NotificationResponse response) {
   final payload = response.payload;
   if (payload != null) {
     print('📱 (Background) Notification tapped: $payload');
-    // Handle logic here (e.g., save to local DB)
+    pendingNavigation.payload = payload;
   }
 }
 
-void main() async {
+// -------------------------
+// HomeRouter widget: navigates on notification payload
+class HomeRouter extends StatefulWidget {
+  const HomeRouter({Key? key}) : super(key: key);
+
+  @override
+  State<HomeRouter> createState() => _HomeRouterState();
+}
+
+class _HomeRouterState extends State<HomeRouter> {
+  bool _navigated = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Listen to payload changes and navigate if needed
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final notifier = Provider.of<PendingNotificationNavigation>(
+        context,
+        listen: false,
+      );
+      notifier.addListener(_handlePayload);
+    });
+  }
+
+  void _handlePayload() {
+    final payload = pendingNavigation.payload;
+
+    if (!_navigated && payload != null) {
+      try {
+        final data = jsonDecode(payload);
+
+        if (data['type'] == 'horoscope' && data['userId'] != null) {
+          _navigated = true;
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (_) => DailyHoroscopeScreen(userId: data['userId']),
+            ),
+          );
+          pendingNavigation.payload = null;
+        }
+      } catch (e) {
+        print('Error parsing notification payload: $e');
+        pendingNavigation.payload = null;
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    Provider.of<PendingNotificationNavigation>(
+      context,
+      listen: false,
+    ).removeListener(_handlePayload);
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // Default fallback screen
+    return const ChatScreen();
+  }
+}
+
+// -------------------------
+// Main function
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
-  await setupHoroscopeChannel(); // ✅ ADD THIS
+  await setupHoroscopeChannel();
+
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-  // Load ProfileProvider before app launch
   final profileProvider = ProfileProvider();
   await profileProvider.loadUserId();
 
-  // Get and send FCM token
   final fcmToken = await FirebaseMessaging.instance.getToken();
   print('🔑 FCM Token: $fcmToken');
-  await sendFcmTokenToBackend(profileProvider.userId, fcmToken);
 
-  // Request permissions
+  if (profileProvider.userId != null && fcmToken != null) {
+    await sendFcmTokenToBackend(profileProvider.userId!, fcmToken);
+  }
+
   await _requestNotificationPermission();
 
   HoroscopeService().initSocket(profileProvider.userId!);
 
-  // Initialize local notifications
+  // Initialize local notifications plugin
   const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
   const initSettings = InitializationSettings(android: androidSettings);
 
-  // Handle app launched via notification
+  // Handle app launch from notification
   final launchDetails =
       await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
   if (launchDetails?.didNotificationLaunchApp ?? false) {
     final payload = launchDetails!.notificationResponse?.payload;
     if (payload != null) {
+      pendingNavigation.payload = payload;
       print('🚀 App launched from notification with payload: $payload');
-      // TODO: Navigate using your navigator key or context
     }
   }
 
-  // Listen for notification taps
   await flutterLocalNotificationsPlugin.initialize(
     initSettings,
     onDidReceiveNotificationResponse: (NotificationResponse response) {
       final payload = response.payload;
       if (payload != null) {
         print('🔔 Notification tapped with payload: $payload');
-        // TODO: Handle navigation
+        pendingNavigation.payload = payload;
       }
     },
     onDidReceiveBackgroundNotificationResponse: notificationTapBackground,
   );
+
+  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+    final payload = jsonEncode(message.data);
+    print('📲 App opened from FCM tap with data: $payload');
+    pendingNavigation.payload = payload;
+  });
 
   runApp(
     MultiProvider(
@@ -105,26 +205,27 @@ void main() async {
         ChangeNotifierProvider(create: (_) => LocaleProvider()),
         ChangeNotifierProvider(create: (_) => NotificationProvider()),
         ChangeNotifierProvider<ProfileProvider>.value(value: profileProvider),
+        ChangeNotifierProvider<PendingNotificationNavigation>.value(
+          value: pendingNavigation,
+        ),
       ],
       child: const MyApp(),
     ),
   );
 }
 
+// Request notification permission (especially iOS)
 Future<void> _requestNotificationPermission() async {
-  FirebaseMessaging messaging = FirebaseMessaging.instance;
+  NotificationSettings settings = await FirebaseMessaging.instance
+      .requestPermission(alert: true, badge: true, sound: true);
 
-  NotificationSettings settings = await messaging.requestPermission(
-    alert: true,
-    badge: true,
-    sound: true,
-  );
-
-  print('🔐 Notification permission: ${settings.authorizationStatus}');
+  print('🔐 Notification permission status: ${settings.authorizationStatus}');
 }
 
+// -------------------------
+// Root app widget
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -135,44 +236,22 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
 
-    // FCM message received in foreground
+    // Listen to FCM messages while app is in foreground
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       final notification = message.notification;
       final android = notification?.android;
 
       if (notification != null && android != null) {
-        // ✅ Only show FCM notification if app is NOT in foreground
-        if (!WidgetsBinding.instance.lifecycleState.toString().contains(
-          'resumed',
-        )) {
-          flutterLocalNotificationsPlugin.show(
-            notification.hashCode,
-            notification.title,
-            notification.body,
-            const NotificationDetails(
-              android: AndroidNotificationDetails(
-                'default_channel',
-                'Default',
-                importance: Importance.max,
-                priority: Priority.high,
-              ),
-            ),
-          );
-        } else {
-          print(
-            '🔕 Skipped FCM notification in foreground to avoid duplication',
-          );
-        }
+        print('🔔 [Foreground] ${notification.title} - ${notification.body}');
+        // Handle in-app display or sound here if desired
       }
-
-      print('🔔 [Foreground] ${notification?.title} - ${notification?.body}');
     });
 
-    // FCM notification tap while app in background
+    // Also listen for taps on notifications while app in background
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      final data = message.data;
-      print('📲 App opened from FCM tap with data: $data');
-      // TODO: Navigate using context if needed
+      final payload = jsonEncode(message.data);
+      print('📲 App opened from FCM tap with data: $payload');
+      pendingNavigation.payload = payload;
     });
   }
 
@@ -197,7 +276,7 @@ class _MyAppState extends State<MyApp> {
       ],
       supportedLocales: AppLocalizations.supportedLocales,
       locale: localeProvider.locale,
-      home: const ChatScreen(),
+      home: const HomeRouter(),
     );
   }
 }

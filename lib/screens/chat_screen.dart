@@ -18,6 +18,10 @@ import '../models/message.dart' as chat_model;
 import 'package:permission_handler/permission_handler.dart';
 import '../providers/notification_provider.dart';
 import 'dailyHoroscope_Screen.dart';
+import '../utils/pending_notification_navigation.dart';
+import 'horoscope_detail_screen.dart';
+import 'package:badges/badges.dart' as badges;
+import 'notifications_screen.dart';
 
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
@@ -51,6 +55,25 @@ class _ChatScreenState extends State<ChatScreen> {
 
     _refreshTimer = Timer.periodic(const Duration(seconds: 30000), (_) {
       _fetchInitialData();
+    });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final payload = pendingNavigation.payload; // CORRECT
+      if (payload != null) {
+        final data = jsonDecode(payload);
+        if (data['type'] == 'horoscope') {
+          final id = data['id'];
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => HoroscopeDetailScreen(horoscopeId: id),
+            ),
+          );
+        }
+
+        // Clear after use
+        pendingNavigation.payload = null;
+      }
     });
   }
 
@@ -767,8 +790,23 @@ class _ChatScreenState extends State<ChatScreen> {
         title: const Text("Chat"),
         actions: [
           IconButton(
-            icon: const Icon(Icons.notifications),
-            onPressed: showDemoNotification,
+            icon: badges.Badge(
+              badgeContent: const Text(
+                '3',
+                style: TextStyle(color: Colors.white),
+              ),
+              child: const Icon(Icons.notifications),
+            ),
+            onPressed: () {
+              final userId =
+                  Provider.of<ProfileProvider>(context, listen: false).userId;
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => NotificationsScreen(userId: userId ?? ''),
+                ),
+              );
+            },
           ),
         ],
       ),

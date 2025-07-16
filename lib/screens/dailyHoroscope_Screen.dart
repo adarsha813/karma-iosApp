@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import '../utils/pending_notification_navigation.dart';
+import 'horoscope_detail_screen.dart';
 
 class DailyHoroscopeScreen extends StatefulWidget {
   final String? userId;
@@ -24,50 +26,56 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
   @override
   void initState() {
     super.initState();
-    _initializeNotifications(); // <--- add this
+    _initializeNotifications();
     _connectSocket();
     _fetchHoroscopes();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final payload = pendingNavigation.payload;
+      if (payload != null) {
+        _handleNotificationTap(payload);
+        pendingNavigation.payload = null;
+      }
+    });
   }
 
-  Future<void> _showSystemNotification(String title, String body) async {
-    const AndroidNotificationDetails androidPlatformChannelSpecifics =
-        AndroidNotificationDetails(
-          'horoscope_channel', // channel id
-          'Horoscope Notifications', // channel name
-          channelDescription: 'Notifications for new daily horoscopes',
-          importance: Importance.max,
-          priority: Priority.high,
-          ticker: 'ticker',
-        );
+  void _handleNotificationTap(String payload) {
+    final data = jsonDecode(payload);
+    if (data['type'] == 'horoscope') {
+      final id = data['id'];
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => HoroscopeDetailScreen(horoscopeId: id),
+        ),
+      );
+    }
+  }
 
-    const NotificationDetails platformChannelSpecifics = NotificationDetails(
-      android: androidPlatformChannelSpecifics,
+  void _showHoroscopeNotification(
+    String title,
+    String message, {
+    String? id,
+  }) async {
+    const androidDetails = AndroidNotificationDetails(
+      'horoscope_channel',
+      'Horoscope Notifications',
+      channelDescription: 'Notifications for new daily horoscopes',
+      importance: Importance.max,
+      priority: Priority.high,
     );
+
+    const notificationDetails = NotificationDetails(android: androidDetails);
 
     await flutterLocalNotificationsPlugin.show(
-      DateTime.now().millisecondsSinceEpoch.remainder(100000), // ✅ not 0
+      id.hashCode, // unique ID for the notification
       title,
-      body,
-      platformChannelSpecifics,
-    );
-  }
-
-  void _showHoroscopeNotification(String title, String message) {
-    if (!mounted) return;
-
-    showDialog(
-      context: context,
-      builder:
-          (_) => AlertDialog(
-            title: Text(title),
-            content: Text(message),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: const Text('OK'),
-              ),
-            ],
-          ),
+      message,
+      notificationDetails,
+      payload: jsonEncode({
+        'type': 'horoscope',
+        'id': id ?? '',
+        'source': 'socket',
+      }),
     );
   }
 
@@ -78,15 +86,23 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
     const InitializationSettings initializationSettings =
         InitializationSettings(android: initializationSettingsAndroid);
 
-    await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    await flutterLocalNotificationsPlugin.initialize(
+      initializationSettings,
+      onDidReceiveNotificationResponse: (NotificationResponse response) {
+        final payload = response.payload;
+        if (payload != null) {
+          _handleNotificationTap(payload);
+        }
+      },
+    );
   }
 
   void _connectSocket() {
     _socket = IO.io(
       'https://chat-backend-rvk9.onrender.com',
       IO.OptionBuilder()
-          .setTransports(['websocket']) // required
-          .setQuery({'userId': widget.userId ?? ''}) // ✅ important
+          .setTransports(['websocket'])
+          .setQuery({'userId': widget.userId ?? ''})
           .disableAutoConnect()
           .build(),
     );
@@ -98,7 +114,6 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
     _socket!.on('new_horoscope', (data) {
       final now = DateTime.now();
 
-      // 🔁 Debounce: ignore if last message was within 3 seconds
       if (_lastHoroscopeTime != null &&
           now.difference(_lastHoroscopeTime!).inSeconds < 3) {
         print("🛑 Skipping duplicate horoscope notification");
@@ -113,20 +128,14 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
       final title = horoscope['title'] ?? 'New Horoscope';
       final content = horoscope['text'] ?? '';
 
-      // 1. Show system notification
-      //_showSystemNotification("🔮 $title", content);
+      _showHoroscopeNotification("🔮 $title", content, id: horoscope['_id']);
 
-      // 2. Show custom popup
-      //_showHoroscopeNotification("🔮 $title", content);
-
-      // 3. Update the list
       setState(() {
         _horoscopes.insert(0, horoscope);
       });
     });
 
     _socket!.onDisconnect((_) => print('🔌 Disconnected from socket'));
-
     _socket!.connect();
   }
 
@@ -221,3 +230,5 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
     );
   }
 }
+
+// 👇 Move this outside the State class
