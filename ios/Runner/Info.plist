@@ -51,15 +51,25 @@
 	<string>We need access to your photo library to select a profile picture.</string>
 	<key>UIBackgroundModes</key>
 	<array>
-  	<string>fetch</string>
-  	<string>remote-notification</string>
+  		<string>fetch</string>
+  		<string>remote-notification</string>
 	</array>
+
+	<!-- ✅ Correct placement of Stripe and ATS keys -->
 	<key>NSAppTransportSecurity</key>
 	<dict>
-  <key>NSAllowsArbitraryLoads</key>
-  <true/>
-</dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
+	</dict>
 
+	<key>StripePublishableKey</key>
+	<string>pk_test_51RlNTwGaHP8m8qhhqIJz0i2rNalP9dbOt3GnAErdPSuSCZOErnr0NCVwbhCDFiJinKEF7JuEzq6hDzDHCylGa86100vhGegsKG</string>
 
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>stripe</string>
+	</array>
 </dict>
 </plist>

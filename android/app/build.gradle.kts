@@ -36,7 +36,8 @@ android {
     dependencies {
     // other dependencies...
         coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
-        implementation("com.google.firebase:firebase-messaging:24.0.0") // ✅ required
+        implementation("androidx.fragment:fragment:1.3.6")  // or newer
+
     }
 
     buildTypes {

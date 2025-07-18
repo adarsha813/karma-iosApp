@@ -16,6 +16,7 @@ import 'providers/profile_provider.dart';
 import 'providers/LocaleProvider.dart';
 import 'providers/notification_provider.dart';
 import 'l10n/app_localizations.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 // -------------------------
 // PendingNotificationNavigation as ChangeNotifier
@@ -146,6 +147,9 @@ class _HomeRouterState extends State<HomeRouter> {
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  Stripe.publishableKey =
+      'pk_test_51RlNTwGaHP8m8qhhqIJz0i2rNalP9dbOt3GnAErdPSuSCZOErnr0NCVwbhCDFiJinKEF7JuEzq6hDzDHCylGa86100vhGegsKG'; // Replace with your publishable key
+
   await Firebase.initializeApp();
   await setupHoroscopeChannel();
 
@@ -163,7 +167,11 @@ Future<void> main() async {
 
   await _requestNotificationPermission();
 
-  HoroscopeService().initSocket(profileProvider.userId!);
+  if (profileProvider.userId != null) {
+    HoroscopeService().initSocket(profileProvider.userId!);
+  } else {
+    print("⚠️ userId is null, skipping HoroscopeService.initSocket");
+  }
 
   // Initialize local notifications plugin
   const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');

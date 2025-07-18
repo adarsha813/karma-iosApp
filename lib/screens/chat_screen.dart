@@ -22,6 +22,7 @@ import '../utils/pending_notification_navigation.dart';
 import 'horoscope_detail_screen.dart';
 import 'package:badges/badges.dart' as badges;
 import 'notifications_screen.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
@@ -678,21 +679,61 @@ class _ChatScreenState extends State<ChatScreen> {
 
     if (text.isEmpty || userId.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please set your User ID and enter a message.'),
-        ),
+        const SnackBar(content: Text('Please enter a message and login.')),
       );
       return;
     }
 
-    final messageData = {
-      'userId': userId,
-      'text': text,
-      'createdAt': DateTime.now().toIso8601String(),
-    };
+    try {
+      // 1. Call backend to create PaymentIntent
+      final response = await http.post(
+        Uri.parse(
+          'https://chat-backend-rvk9.onrender.com/create-payment-intent',
+        ),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'userId': userId, 'amount': 5000}),
+      );
 
-    socket.emit('send_question', messageData);
-    _controller.clear();
+      final data = jsonDecode(response.body);
+      final clientSecret = data['clientSecret'];
+      if (clientSecret == null) throw Exception('Missing client secret');
+
+      // 2. Initialize Stripe Payment Sheet
+      await Stripe.instance.initPaymentSheet(
+        paymentSheetParameters: SetupPaymentSheetParameters(
+          paymentIntentClientSecret: clientSecret,
+          merchantDisplayName: 'ProjectM App',
+          style: ThemeMode.light,
+        ),
+      );
+
+      // 3. Present payment sheet
+      await Stripe.instance.presentPaymentSheet();
+
+      // 4. If success, emit question
+      socket.emit('send_question', {
+        'userId': userId,
+        'text': text,
+        'createdAt': DateTime.now().toIso8601String(),
+      });
+      _controller.clear();
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('✅ Payment successful. Question sent.')),
+      );
+    } catch (e) {
+      if (e is StripeException) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('❌ Payment canceled: ${e.error.localizedMessage}'),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('❌ Payment error: $e')));
+      }
+    }
   }
 
   Future<void> _rateAnswer(
