@@ -41,6 +41,8 @@ class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _textController = TextEditingController();
 
   String? userId;
+  bool _isSocketConnected = false;
+  Completer<void>? _socketConnectionCompleter;
 
   late IO.Socket socket;
   Timer? _refreshTimer;
@@ -94,17 +96,58 @@ class _ChatScreenState extends State<ChatScreen> {
     });
   }
 
-  void sendQuestionToSocket(String text, String userId, {bool paid = false}) {
-    // Replace this with your actual socket logic
-    print('Sending question to backend: $text, userId: $userId, paid: $paid');
+  Future<void> _sendQuestionViaHttp(
+    String text,
+    String userId, {
+    bool paid = false,
+  }) async {
+    try {
+      final response = await http.post(
+        Uri.parse('https://chat-backend-rvk9.onrender.com/questions'),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({'text': text, 'userId': userId, 'paid': paid}),
+      );
 
-    // Example call to your backend/socket logic
-    socket.emit('send_question', {
-      'text': text,
-      'userId': userId,
-      'paid': paid,
-      'createdAt': DateTime.now().toIso8601String(),
-    });
+      if (response.statusCode == 200) {
+        print('✅ Question sent via HTTP fallback');
+      } else {
+        print('❌ HTTP fallback failed: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('❌ HTTP fallback error: $e');
+    }
+  }
+
+  Future<void> sendQuestionToSocket(
+    String text,
+    String userId, {
+    bool paid = false,
+  }) async {
+    // Ensure socket is connected
+    if (!socket.connected) {
+      print('⚠️ Socket not connected - reinitializing...');
+      await _initializeSocket(); // Reinitialize socket
+      await Future.delayed(Duration(milliseconds: 500)); // Wait for connection
+    }
+
+    print('🔥 Current socket connected: ${socket.connected}');
+    print('🔥 Current socket ID: ${socket.id}');
+    print(
+      '🔥 Sending question to backend: $text, userId: $userId, paid: $paid',
+    );
+
+    if (socket.connected) {
+      socket.emit('send_question', {
+        'text': text,
+        'userId': userId,
+        'paid': paid,
+        'createdAt': DateTime.now().toIso8601String(),
+      });
+    } else {
+      print('❌ Failed to send question - socket still not connected');
+      // Fallback: Send via HTTP API if socket fails
+      await _sendQuestionViaHttp(text, userId, paid: paid);
+    }
   }
 
   Future<void> startStripePayment(String userId, String questionText) async {
@@ -285,20 +328,31 @@ class _ChatScreenState extends State<ChatScreen> {
 
     if (newUserId != null && newUserId != currentUserId) {
       currentUserId = newUserId;
+      // Update local storage
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('userId', newUserId);
+      });
       Future.microtask(() => _reinitializeForUserId(newUserId));
     }
   }
 
   Future<void> _reinitializeForUserId(String userId) async {
-    // Disconnect existing socket if any
-    socket.dispose();
+    if (socket.connected) {
+      socket.disconnect();
+      await Future.delayed(Duration(milliseconds: 500)); // Brief delay
+    }
 
-    // 🔁 Clear old messages FIRST
+    // Clear old messages
     Provider.of<ChatService>(context, listen: false).clearMessages();
+
+    this.userId = userId; // Add this line
+    // Disconnect existing socket if any
 
     // 🔌 Reconnect for new user
     await _initializeSocket();
 
+    await _fetchInitialData();
     // 🔄 Fetch new messages
     await _fetchPreviousQuestionsAndAnswers();
 
@@ -311,6 +365,57 @@ class _ChatScreenState extends State<ChatScreen> {
   // use currentUserId inside those methods.
 
   void _initializeNotifications() async {
+    if (_socketConnectionCompleter != null &&
+        !_socketConnectionCompleter!.isCompleted) {
+      _socketConnectionCompleter!.completeError('Reinitializing socket');
+    }
+    _socketConnectionCompleter = Completer<void>();
+    _isSocketConnected = false;
+
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
+    await profileProvider.loadUserId();
+    final userId = profileProvider.userId ?? '';
+
+    if (userId.isEmpty) {
+      print("❗ Missing userId for socket connection");
+      _socketConnectionCompleter!.completeError('No user ID');
+      return;
+    }
+    // Disconnect existing socket if connected
+    if (socket.connected) {
+      socket.disconnect();
+      await Future.delayed(Duration(milliseconds: 300));
+    }
+
+    String serverUrl =
+        isProduction()
+            ? "wss://chat-backend-rvk9.onrender.com"
+            : "ws://10.0.2.2:3000";
+
+    socket = IO.io(
+      serverUrl,
+      IO.OptionBuilder()
+          .setTransports(['websocket'])
+          .setQuery({'userId': userId})
+          .setReconnectionAttempts(5)
+          .setReconnectionDelay(2000)
+          .setTimeout(5000)
+          .build(),
+    );
+    socket.onConnect((_) {
+      print("✅✅✅ CONNECTED TO SOCKET WITH USER ID: $userId");
+      _isSocketConnected = true;
+      socket.emit('join_room', {'room': userId});
+      _socketConnectionCompleter?.complete();
+    });
+    socket.onDisconnect((_) {
+      print("❌❌❌ DISCONNECTED");
+      _isSocketConnected = false;
+    });
+
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
     const androidSettings = AndroidInitializationSettings(
@@ -339,6 +444,14 @@ class _ChatScreenState extends State<ChatScreen> {
           IOSFlutterLocalNotificationsPlugin
         >()
         ?.requestPermissions(alert: true, badge: true, sound: true);
+
+    Timer(Duration(seconds: 5), () {
+      if (!_isSocketConnected && !_socketConnectionCompleter!.isCompleted) {
+        _socketConnectionCompleter!.completeError('Connection timeout');
+      }
+    });
+
+    return _socketConnectionCompleter!.future;
   }
 
   Future<void> _initializeSocket() async {
@@ -394,7 +507,10 @@ class _ChatScreenState extends State<ChatScreen> {
     socket.onDisconnect((_) => print("❌ Disconnected from server"));
     socket.onConnectError((error) => print("⚠️ Connection Error: $error"));
     socket.onError((error) => print("⚠️ WebSocket Error: $error"));
-
+    socket.onReconnect((_) => print('🔁 Socket reconnected'));
+    socket.onReconnectAttempt((_) => print('🔄 Socket reconnect attempt'));
+    socket.onReconnectError((err) => print('⚠️ Socket reconnect error: $err'));
+    socket.onReconnectFailed((_) => print('❌ Socket reconnect failed'));
     socket.on('new_question', (data) {
       print('Received new_question: ${data.toString()}');
       _addMessage(
@@ -802,7 +918,15 @@ class _ChatScreenState extends State<ChatScreen> {
     if (text.isEmpty) return;
     print('🔥 userId before count check: "$userId"');
 
-    if (userId == null || userId!.isEmpty) {
+    // Always get current user ID from provider
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
+
+    final currentUserId = profileProvider.userId;
+
+    if (currentUserId == null || currentUserId.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('User ID not found. Please login or set your profile.'),
@@ -811,9 +935,11 @@ class _ChatScreenState extends State<ChatScreen> {
       return;
     }
     // Call your backend to get question count
+    print('🆔 Current user ID: $currentUserId');
+    print('🔢 Question count check for user: $currentUserId');
     final response = await http.get(
       Uri.parse(
-        'https://chat-backend-rvk9.onrender.com/api/user-question-count/$userId',
+        'https://chat-backend-rvk9.onrender.com/api/user-question-count/$currentUserId',
       ),
     );
 
@@ -824,7 +950,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     if (count < 2) {
       // 👇 Free questions allowed
-      sendQuestionToSocket(text, userId!);
+      await sendQuestionToSocket(text, currentUserId); // Add await
     } else {
       // 👇 Require payment
       showDialog(
@@ -844,7 +970,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   onPressed: () {
                     Navigator.pop(context);
                     startStripePayment(
-                      userId!,
+                      currentUserId,
                       text,
                     ); // 👈 Launch payment and send
                   },
@@ -939,6 +1065,9 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   void dispose() {
+    if (socket.connected) {
+      socket.disconnect();
+    }
     _refreshTimer?.cancel();
     socket.dispose();
     _scrollController.dispose();
