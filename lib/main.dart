@@ -50,6 +50,7 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 
 // Background message handler for FCM
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print('🔧 Initializing Firebase...');
   await Firebase.initializeApp();
   print('📩 [Background] Message received: ${message.messageId}');
 }
@@ -151,21 +152,30 @@ Future<void> main() async {
       'pk_test_51RlNTwGaHP8m8qhhqIJz0i2rNalP9dbOt3GnAErdPSuSCZOErnr0NCVwbhCDFiJinKEF7JuEzq6hDzDHCylGa86100vhGegsKG'; // Replace with your publishable key
 
   await Firebase.initializeApp();
+  print('🔔 Setting up notification channel...');
   await setupHoroscopeChannel();
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
+  print('📦 Loading profile...');
   final profileProvider = ProfileProvider();
   await profileProvider.loadUserId();
 
-  final fcmToken = await FirebaseMessaging.instance.getToken();
-  print('🔑 FCM Token: $fcmToken');
-
-  if (profileProvider.userId != null && fcmToken != null) {
-    await sendFcmTokenToBackend(profileProvider.userId!, fcmToken);
-  }
-
+  print('🔐 Requesting notification permission...');
   await _requestNotificationPermission();
+
+  String? fcmToken;
+  print('📬 Getting FCM token...');
+  try {
+    fcmToken = await FirebaseMessaging.instance.getToken();
+    print('🔑 FCM Token: $fcmToken');
+
+    if (profileProvider.userId != null && fcmToken != null) {
+      await sendFcmTokenToBackend(profileProvider.userId!, fcmToken);
+    }
+  } catch (e) {
+    print('❌ Error getting FCM token: $e');
+  }
 
   if (profileProvider.userId != null) {
     HoroscopeService().initSocket(profileProvider.userId!);

@@ -23,6 +23,7 @@ import 'horoscope_detail_screen.dart';
 import 'package:badges/badges.dart' as badges;
 import 'notifications_screen.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
@@ -36,13 +37,26 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
   final ScrollController _scrollController = ScrollController();
+  final TextEditingController messageController = TextEditingController();
+  final TextEditingController _textController = TextEditingController();
+
+  String? userId;
+
   late IO.Socket socket;
   Timer? _refreshTimer;
   String? currentUserId;
 
+  Future<void> loadUserId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    userId = prefs.getString('userId');
+    debugPrint("🔍 ProfileProvider.loadUserId() => $userId");
+    setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();
+    loadUserId(); // IMPORTANT: must be awaited or handled
     final profileProvider = Provider.of<ProfileProvider>(
       context,
       listen: false,
@@ -60,8 +74,10 @@ class _ChatScreenState extends State<ChatScreen> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final payload = pendingNavigation.payload; // CORRECT
+
       if (payload != null) {
         final data = jsonDecode(payload);
+
         if (data['type'] == 'horoscope') {
           final id = data['id'];
           Navigator.push(
@@ -76,6 +92,62 @@ class _ChatScreenState extends State<ChatScreen> {
         pendingNavigation.payload = null;
       }
     });
+  }
+
+  void sendQuestionToSocket(String text, String userId, {bool paid = false}) {
+    // Replace this with your actual socket logic
+    print('Sending question to backend: $text, userId: $userId, paid: $paid');
+
+    // Example call to your backend/socket logic
+    socket.emit('send_question', {
+      'text': text,
+      'userId': userId,
+      'paid': paid,
+      'createdAt': DateTime.now().toIso8601String(),
+    });
+  }
+
+  Future<void> startStripePayment(String userId, String questionText) async {
+    try {
+      final response = await http.post(
+        Uri.parse(
+          'https://chat-backend-rvk9.onrender.com/create-payment-intent',
+        ), // 🔁 replace with your actual backend URL
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({
+          'userId': userId,
+          'amount': 5000, // Amount in paisa (₹50)
+        }),
+      );
+
+      if (response.statusCode != 200) {
+        throw Exception('Failed to create PaymentIntent');
+      }
+
+      final paymentData = json.decode(response.body);
+      final clientSecret = paymentData['clientSecret'];
+
+      await Stripe.instance.initPaymentSheet(
+        paymentSheetParameters: SetupPaymentSheetParameters(
+          paymentIntentClientSecret: clientSecret,
+          merchantDisplayName: 'Kundali App',
+        ),
+      );
+
+      await Stripe.instance.presentPaymentSheet();
+
+      // ✅ After success, send the question
+      sendQuestionToSocket(questionText, userId, paid: true);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("✅ Payment successful. Question sent!")),
+      );
+    } catch (e) {
+      print('Payment failed: $e');
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("❌ Payment failed: $e")));
+    }
   }
 
   Future<void> _fetchInitialData() async {
@@ -669,71 +741,121 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  Future<void> sendMessage() async {
-    final profileProvider = Provider.of<ProfileProvider>(
-      context,
-      listen: false,
-    );
-    final String userId = profileProvider.userId ?? '';
-    final String text = _controller.text.trim();
-
-    if (text.isEmpty || userId.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please enter a message and login.')),
-      );
-      return;
-    }
-
+  Future<bool> confirmStripePayment(String clientSecret) async {
     try {
-      // 1. Call backend to create PaymentIntent
-      final response = await http.post(
-        Uri.parse(
-          'https://chat-backend-rvk9.onrender.com/create-payment-intent',
-        ),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'userId': userId, 'amount': 5000}),
-      );
-
-      final data = jsonDecode(response.body);
-      final clientSecret = data['clientSecret'];
-      if (clientSecret == null) throw Exception('Missing client secret');
-
-      // 2. Initialize Stripe Payment Sheet
       await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
           paymentIntentClientSecret: clientSecret,
-          merchantDisplayName: 'ProjectM App',
-          style: ThemeMode.light,
+          merchantDisplayName: 'Kundali',
         ),
       );
 
-      // 3. Present payment sheet
       await Stripe.instance.presentPaymentSheet();
 
-      // 4. If success, emit question
-      socket.emit('send_question', {
-        'userId': userId,
-        'text': text,
-        'createdAt': DateTime.now().toIso8601String(),
-      });
-      _controller.clear();
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('✅ Payment successful. Question sent.')),
-      );
+      return true; // ✅ Payment was successful
     } catch (e) {
-      if (e is StripeException) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('❌ Payment canceled: ${e.error.localizedMessage}'),
-          ),
-        );
-      } else {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text('❌ Payment error: $e')));
-      }
+      print("❌ Payment failed: $e");
+      return false; // ❌ Payment failed
     }
+  }
+
+  Future<int> getUserQuestionCount(String userId) async {
+    final url = Uri.parse(
+      'https://chat-backend-rvk9.onrender.com/api/user-question-count/$userId',
+    );
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      return data['count'] ?? 0;
+    } else {
+      print("❌ Failed to get question count: ${response.body}");
+      throw Exception('Failed to fetch question count');
+    }
+  }
+
+  Future<String> createPaymentIntent(String userId, int amount) async {
+    final url = Uri.parse(
+      'https://chat-backend-rvk9.onrender.com/create-payment-intent',
+    );
+
+    final response = await http.post(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({'userId': userId, 'amount': amount}),
+    );
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      return data['clientSecret'];
+    } else {
+      print('⚠️ Failed to fetch count: ${response.statusCode}');
+      print('⚠️ Response body: ${response.body}');
+      throw Exception(
+        'Failed to create payment intent. Status: ${response.statusCode}',
+      );
+    }
+  }
+
+  void handleSendMessage() async {
+    final text = _controller.text.trim();
+    if (text.isEmpty) return;
+    print('🔥 userId before count check: "$userId"');
+
+    if (userId == null || userId!.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('User ID not found. Please login or set your profile.'),
+        ),
+      );
+      return;
+    }
+    // Call your backend to get question count
+    final response = await http.get(
+      Uri.parse(
+        'https://chat-backend-rvk9.onrender.com/api/user-question-count/$userId',
+      ),
+    );
+
+    print("📦 Raw response: ${response.body}");
+
+    final data = json.decode(response.body);
+    final count = data['count'] ?? 0;
+
+    if (count < 2) {
+      // 👇 Free questions allowed
+      sendQuestionToSocket(text, userId!);
+    } else {
+      // 👇 Require payment
+      showDialog(
+        context: context,
+        builder:
+            (_) => AlertDialog(
+              title: Text("Payment Required"),
+              content: Text(
+                "You've used your 2 free questions. Pay ₹50 to continue.",
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: Text("Cancel"),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    startStripePayment(
+                      userId!,
+                      text,
+                    ); // 👈 Launch payment and send
+                  },
+                  child: Text("Pay Now"),
+                ),
+              ],
+            ),
+      );
+    }
+
+    _controller.clear();
   }
 
   Future<void> _rateAnswer(
@@ -820,7 +942,9 @@ class _ChatScreenState extends State<ChatScreen> {
     _refreshTimer?.cancel();
     socket.dispose();
     _scrollController.dispose();
+    _textController.dispose();
     _controller.dispose();
+    messageController.dispose();
     super.dispose();
   }
 
@@ -955,7 +1079,7 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           IconButton(
             icon: const Icon(Icons.send, color: Colors.blue),
-            onPressed: sendMessage,
+            onPressed: handleSendMessage,
           ),
         ],
       ),
