@@ -511,6 +511,7 @@ class _ChatScreenState extends State<ChatScreen> {
     socket.onReconnectAttempt((_) => print('🔄 Socket reconnect attempt'));
     socket.onReconnectError((err) => print('⚠️ Socket reconnect error: $err'));
     socket.onReconnectFailed((_) => print('❌ Socket reconnect failed'));
+
     socket.on('new_question', (data) {
       print('Received new_question: ${data.toString()}');
       _addMessage(
@@ -916,14 +917,11 @@ class _ChatScreenState extends State<ChatScreen> {
   void handleSendMessage() async {
     final text = _controller.text.trim();
     if (text.isEmpty) return;
-    print('🔥 userId before count check: "$userId"');
 
-    // Always get current user ID from provider
     final profileProvider = Provider.of<ProfileProvider>(
       context,
       listen: false,
     );
-
     final currentUserId = profileProvider.userId;
 
     if (currentUserId == null || currentUserId.isEmpty) {
@@ -934,54 +932,102 @@ class _ChatScreenState extends State<ChatScreen> {
       );
       return;
     }
-    // Call your backend to get question count
-    print('🆔 Current user ID: $currentUserId');
-    print('🔢 Question count check for user: $currentUserId');
-    final response = await http.get(
-      Uri.parse(
-        'https://chat-backend-rvk9.onrender.com/api/user-question-count/$currentUserId',
-      ),
-    );
 
-    print("📦 Raw response: ${response.body}");
-
-    final data = json.decode(response.body);
-    final count = data['count'] ?? 0;
-
-    if (count < 2) {
-      // 👇 Free questions allowed
-      await sendQuestionToSocket(text, currentUserId); // Add await
-    } else {
-      // 👇 Require payment
+    try {
+      // Show loading indicator
+      final overlay = Overlay.of(context).context;
       showDialog(
-        context: context,
-        builder:
-            (_) => AlertDialog(
-              title: Text("Payment Required"),
-              content: Text(
-                "You've used your 2 free questions. Pay ₹50 to continue.",
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: Text("Cancel"),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    startStripePayment(
-                      currentUserId,
-                      text,
-                    ); // 👈 Launch payment and send
-                  },
-                  child: Text("Pay Now"),
-                ),
-              ],
-            ),
+        context: overlay,
+        barrierDismissible: false,
+        builder: (_) => const Center(child: CircularProgressIndicator()),
       );
-    }
 
-    _controller.clear();
+      // 1. First check eligibility
+      final eligibilityResponse = await http.get(
+        Uri.parse(
+          'https://chat-backend-rvk9.onrender.com/api/check-question-eligibility/$currentUserId?t=${DateTime.now().millisecondsSinceEpoch}',
+        ),
+      );
+
+      if (eligibilityResponse.statusCode == 200) {
+        final eligibilityData = json.decode(eligibilityResponse.body);
+        final isFreeEligible = eligibilityData['isFreeEligible'] ?? false;
+        final remaining = eligibilityData['remainingFreeQuestions'] ?? 0;
+        if (isFreeEligible) {
+          Navigator.pop(overlay);
+          await sendQuestionToSocket(text, currentUserId);
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("$remaining free questions remaining")),
+          );
+          _controller.clear();
+          return;
+        }
+      }
+
+      // 2. If not eligible, check count
+      final countResponse = await http.get(
+        Uri.parse(
+          'https://chat-backend-rvk9.onrender.com/api/user-question-count/$currentUserId',
+        ),
+      );
+
+      Navigator.pop(overlay); // Remove loading
+
+      if (countResponse.statusCode == 200) {
+        final countData = json.decode(countResponse.body);
+        final count = countData['count'] ?? 0;
+        final freeQuota =
+            countData['freeQuota'] ?? 2; // Get from backend if available
+
+        if (count < freeQuota) {
+          await sendQuestionToSocket(text, currentUserId);
+        } else {
+          showPaymentDialog(context, currentUserId, text);
+        }
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              "Failed to check question count: ${countResponse.body}",
+            ),
+          ),
+        );
+      }
+    } catch (e) {
+      Navigator.pop(context); // Ensure loading is removed
+      print('Error sending question: $e');
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Error: ${e.toString()}")));
+    } finally {
+      _controller.clear();
+    }
+  }
+
+  void showPaymentDialog(BuildContext context, String userId, String text) {
+    showDialog(
+      context: context,
+      builder:
+          (_) => AlertDialog(
+            title: Text("Payment Required"),
+            content: Text(
+              "You've used your free questions. Pay ₹50 to continue.",
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text("Cancel"),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  startStripePayment(userId, text);
+                },
+                child: Text("Pay Now"),
+              ),
+            ],
+          ),
+    );
   }
 
   Future<void> _rateAnswer(
