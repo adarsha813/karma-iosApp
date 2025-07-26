@@ -232,6 +232,28 @@ Future<void> main() async {
   );
 }
 
+Future<void> ensureToken(ProfileProvider profileProvider) async {
+  await profileProvider.loadUserId();
+  await profileProvider.loadToken();
+  print('🛠️ Token from profileProvider: ${profileProvider.token}');
+
+  if (profileProvider.token == null && profileProvider.userId != null) {
+    // For dev only: generate fake token
+    final token = jwtSimulate(profileProvider.userId!);
+    await profileProvider.saveToken(token);
+    print('✅ Saved fake token: $token');
+  }
+}
+
+String jwtSimulate(String userId) {
+  // DO NOT USE IN PRODUCTION. This just matches backend's dev fallback.
+  // Simulate a JWT payload: { "userId": "xyz" }
+  final payload = base64Url.encode(
+    utf8.encode(json.encode({'userId': userId})),
+  );
+  return "dev.${payload}.sig"; // fake token
+}
+
 // Request notification permission (especially iOS)
 Future<void> _requestNotificationPermission() async {
   NotificationSettings settings = await FirebaseMessaging.instance

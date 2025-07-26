@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import 'package:http/http.dart' as http; // <--- Add this
 
 class ProfileProvider with ChangeNotifier {
   String? _userId;
@@ -99,6 +100,25 @@ class ProfileProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  String? _token;
+  String? get token => _token;
+
+  Future<void> loadToken() async {
+    print('➡️ Starting loadToken');
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    _token = prefs.getString('token');
+    print('🛠️ Loaded token in ProfileProvider: $_token'); // <-- print here
+    notifyListeners();
+    print('⬅️ Finished loadToken');
+  }
+
+  Future<void> saveToken(String token) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('token', token);
+    _token = token;
+    notifyListeners();
+  }
+
   Future<void> saveUserId(String newUserId) async {
     // Only proceed if the userId actually changes
     if (_userId == newUserId) return;
@@ -124,6 +144,32 @@ class ProfileProvider with ChangeNotifier {
     _versionHistory = [];
 
     notifyListeners();
+    await fetchAndSaveToken(newUserId);
+  }
+
+  // Add inside ProfileProvider
+  Future<void> fetchAndSaveToken(String userId) async {
+    final url = Uri.parse(
+      "https://chat-backend-rvk9.onrender.com/api/auth/generate-token",
+    ); // Change to production URL later
+
+    try {
+      final response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'userId': userId}),
+      );
+
+      if (response.statusCode == 200) {
+        final token = jsonDecode(response.body)['token'];
+        print('✅ Token from backend: $token');
+        await saveToken(token);
+      } else {
+        print('❌ Failed to get token: ${response.body}');
+      }
+    } catch (e) {
+      print('🔴 Error generating token: $e');
+    }
   }
 
   Future<void> saveFullProfile({

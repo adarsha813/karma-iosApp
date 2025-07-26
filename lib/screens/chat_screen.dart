@@ -24,6 +24,7 @@ import 'package:badges/badges.dart' as badges;
 import 'notifications_screen.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'question_store_screen.dart';
 
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
@@ -1210,6 +1211,12 @@ class _ChatScreenState extends State<ChatScreen> {
             Icons.auto_awesome,
             "Daily Horoscope",
             DailyHoroscopeScreen(userId: userId), // ✅ pass userId here
+          ),
+          // 👇 Add this block
+          _buildDrawerItem(
+            Icons.shopping_cart,
+            "Buy Questions",
+            const QuestionStoreScreen(),
           ),
           _buildDrawerItem(Icons.settings, "Settings", SettingsScreen()),
           _buildDrawerItem(Icons.logout, "Logout", LogoutScreen()),
