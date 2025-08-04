@@ -1,6 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+// Initialize the FlutterLocalNotificationsPlugin globally
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+// String extension to capitalize first letter
+extension StringExtension on String {
+  String capitalize() {
+    if (isEmpty) return this;
+    return '${this[0].toUpperCase()}${substring(1)}';
+  }
+}
 
 class NotificationsScreen extends StatefulWidget {
   final String userId;
@@ -15,12 +29,87 @@ class _NotificationsScreenState extends State<NotificationsScreen>
   late TabController _tabController;
   Map<String, List<String>> notificationsByCategory = {};
   bool isLoading = true;
+  late IO.Socket socket;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
+    _initializeNotifications();
     fetchNotifications();
+    setupSocket();
+  }
+
+  // Initialize flutter_local_notifications
+  Future<void> _initializeNotifications() async {
+    const AndroidInitializationSettings androidSettings =
+        AndroidInitializationSettings('@mipmap/ic_launcher');
+
+    const InitializationSettings initSettings = InitializationSettings(
+      android: androidSettings,
+    );
+
+    await flutterLocalNotificationsPlugin.initialize(initSettings);
+  }
+
+  void _showSystemNotification(String title, String body) {
+    const AndroidNotificationDetails androidDetails =
+        AndroidNotificationDetails(
+          'your_channel_id',
+          'Your Channel Name',
+          importance: Importance.high,
+          priority: Priority.high,
+          playSound: true,
+        );
+
+    const NotificationDetails platformDetails = NotificationDetails(
+      android: androidDetails,
+    );
+
+    flutterLocalNotificationsPlugin.show(
+      0, // Notification ID, change if you want multiple notifications
+      title,
+      body,
+      platformDetails,
+    );
+  }
+
+  void setupSocket() {
+    socket = IO.io('https://chat-backend-rvk9.onrender.com', <String, dynamic>{
+      'transports': ['websocket'],
+      'autoConnect': false,
+      'query': {
+        'userId': widget.userId, // <---- ADD THIS LINE
+      },
+    });
+
+    socket.connect();
+
+    socket.onConnect((_) {
+      print('Socket connected');
+      print('Socket connected with id: ${socket.id}');
+      print(
+        'Socket handshake query: ${socket.io.options == null ? 'null' : socket.io.options!['query']}',
+      );
+
+      socket.emit('joinRoom', widget.userId);
+    });
+
+    socket.on('newNotification', (data) {
+      print('Received newNotification: $data');
+
+      String category = data['category'] ?? 'general';
+      String message = data['message'] ?? '';
+
+      setState(() {
+        notificationsByCategory.putIfAbsent(category, () => []);
+        notificationsByCategory[category]!.insert(0, message);
+      });
+
+      _showSystemNotification("🔔 New ${category.capitalize()}", message);
+    });
+
+    socket.onDisconnect((_) => print('Socket disconnected'));
   }
 
   Future<void> fetchNotifications() async {
@@ -84,7 +173,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
           tabs: const [
             Tab(text: "All"),
             Tab(text: "Offers"),
-            Tab(text: "Advices"), // adjust tab names as needed
+            Tab(text: "Advices"),
           ],
         ),
       ),
@@ -94,7 +183,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
               : TabBarView(
                 controller: _tabController,
                 children: [
-                  _buildNotificationList(_getAllNotifications()), // All
+                  _buildNotificationList(_getAllNotifications()),
                   _buildNotificationList(
                     notificationsByCategory['offers'] ?? [],
                   ),
@@ -108,6 +197,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
 
   @override
   void dispose() {
+    socket.dispose();
     _tabController.dispose();
     super.dispose();
   }

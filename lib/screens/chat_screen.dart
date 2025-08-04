@@ -1187,22 +1187,38 @@ class _ChatScreenState extends State<ChatScreen> {
         title: const Text("Chat"),
         actions: [
           IconButton(
-            icon: badges.Badge(
-              badgeContent: const Text(
-                '3',
-                style: TextStyle(color: Colors.white),
-              ),
-              child: const Icon(Icons.notifications),
+            icon: Consumer<NotificationProvider>(
+              builder: (context, notificationProvider, _) {
+                final unreadCount = notificationProvider.unreadCount;
+                if (unreadCount == 0) {
+                  return const Icon(Icons.notifications);
+                } else {
+                  return badges.Badge(
+                    badgeContent: Text(
+                      unreadCount.toString(),
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    child: const Icon(Icons.notifications),
+                  );
+                }
+              },
             ),
             onPressed: () {
               final userId =
-                  Provider.of<ProfileProvider>(context, listen: false).userId;
+                  Provider.of<ProfileProvider>(context, listen: false).userId ??
+                  '';
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => NotificationsScreen(userId: userId ?? ''),
+                  builder: (_) => NotificationsScreen(userId: userId),
                 ),
-              );
+              ).then((_) {
+                // Clear unread count when returning from notifications screen
+                Provider.of<NotificationProvider>(
+                  context,
+                  listen: false,
+                ).clearUnreadCount();
+              });
             },
           ),
         ],
