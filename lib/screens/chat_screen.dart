@@ -59,28 +59,33 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
-    loadUserId(); // IMPORTANT: must be awaited or handled
+
+    loadUserId();
+
     final profileProvider = Provider.of<ProfileProvider>(
       context,
       listen: false,
     );
+
     currentUserId = profileProvider.userId;
+
     _initializeNotifications();
     _initializeSocket();
-
-    // Wait for first fetch to complete before second
     _fetchInitialData();
 
     _refreshTimer = Timer.periodic(const Duration(seconds: 30000), (_) {
       _fetchInitialData();
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final payload = pendingNavigation.payload; // CORRECT
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      // 🔧 Token load fix
+      if (profileProvider.userId != null && profileProvider.token == null) {
+        await profileProvider.loadToken();
+      }
 
+      final payload = pendingNavigation.payload;
       if (payload != null) {
         final data = jsonDecode(payload);
-
         if (data['type'] == 'horoscope') {
           final id = data['id'];
           Navigator.push(
@@ -90,8 +95,6 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           );
         }
-
-        // Clear after use
         pendingNavigation.payload = null;
       }
     });
@@ -972,8 +975,6 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
       );
 
-      Navigator.pop(overlay); // Remove loading
-
       if (countResponse.statusCode == 200) {
         final countData = json.decode(countResponse.body);
         final count = countData['count'] ?? 0;
@@ -981,21 +982,60 @@ class _ChatScreenState extends State<ChatScreen> {
             countData['freeQuota'] ?? 2; // Get from backend if available
 
         if (count < freeQuota) {
+          Navigator.pop(overlay);
           await sendQuestionToSocket(text, currentUserId);
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                "You have ${freeQuota - count - 1} free questions left.",
+              ),
+            ),
+          );
+          _controller.clear();
+          return;
+        }
+      }
+      // 3. Check paid balance
+      final balanceResponse = await http.get(
+        Uri.parse(
+          'https://chat-backend-rvk9.onrender.com/api/questionspayment/balance',
+        ),
+        headers: {
+          'Authorization':
+              'Bearer ${profileProvider.token}', // Make sure this token is set
+        },
+      );
+
+      Navigator.pop(overlay); // Remove loading
+
+      if (balanceResponse.statusCode == 200) {
+        final balanceData = json.decode(balanceResponse.body);
+        final remainingBalance = balanceData['remaining'] ?? 0;
+
+        if (remainingBalance > 0) {
+          await sendQuestionToSocket(text, currentUserId, paid: true);
+
+          // Ideally, backend should decrement count automatically
+          _controller.clear();
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("$remainingBalance paid questions remaining"),
+            ),
+          );
+          return;
         } else {
           showPaymentDialog(context, currentUserId, text);
+          return;
         }
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(
-              "Failed to check question count: ${countResponse.body}",
-            ),
+            content: Text("Failed to fetch balance: ${balanceResponse.body}"),
           ),
         );
       }
     } catch (e) {
-      Navigator.pop(context); // Ensure loading is removed
+      Navigator.pop(context);
       print('Error sending question: $e');
       ScaffoldMessenger.of(
         context,
