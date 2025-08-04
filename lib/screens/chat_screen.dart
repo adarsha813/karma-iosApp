@@ -126,6 +126,7 @@ class _ChatScreenState extends State<ChatScreen> {
     String text,
     String userId, {
     bool paid = false,
+    int? amount, // <-- Add this line
   }) async {
     // Ensure socket is connected
     if (!socket.connected) {
@@ -145,6 +146,7 @@ class _ChatScreenState extends State<ChatScreen> {
         'text': text,
         'userId': userId,
         'paid': paid,
+        if (amount != null) 'amount': amount, // send only if present
         'createdAt': DateTime.now().toIso8601String(),
       });
     } else {
@@ -156,44 +158,58 @@ class _ChatScreenState extends State<ChatScreen> {
 
   Future<void> startStripePayment(String userId, String questionText) async {
     try {
-      final response = await http.post(
-        Uri.parse(
-          'https://chat-backend-rvk9.onrender.com/create-payment-intent',
-        ), // 🔁 replace with your actual backend URL
-        headers: {'Content-Type': 'application/json'},
-        body: json.encode({
-          'userId': userId,
-          'amount': 5000, // Amount in paisa (₹50)
-        }),
+      final profileProvider = Provider.of<ProfileProvider>(
+        context,
+        listen: false,
       );
+      final token = profileProvider.token;
 
-      if (response.statusCode != 200) {
-        throw Exception('Failed to create PaymentIntent');
+      if (token == null) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text("Missing auth token")));
+        return;
       }
 
-      final paymentData = json.decode(response.body);
-      final clientSecret = paymentData['clientSecret'];
-
-      await Stripe.instance.initPaymentSheet(
-        paymentSheetParameters: SetupPaymentSheetParameters(
-          paymentIntentClientSecret: clientSecret,
-          merchantDisplayName: 'Kundali App',
+      // Call single-payment endpoint
+      final response = await http.post(
+        Uri.parse(
+          "https://chat-backend-rvk9.onrender.com/api/single-question-payment",
         ),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
       );
 
-      await Stripe.instance.presentPaymentSheet();
+      if (response.statusCode == 200) {
+        final jsonResponse = json.decode(response.body);
+        final clientSecret = jsonResponse['clientSecret'];
 
-      // ✅ After success, send the question
-      sendQuestionToSocket(questionText, userId, paid: true);
+        // Initialize and present payment sheet
+        await Stripe.instance.initPaymentSheet(
+          paymentSheetParameters: SetupPaymentSheetParameters(
+            paymentIntentClientSecret: clientSecret,
+            merchantDisplayName: 'Astro Chat App',
+          ),
+        );
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("✅ Payment successful. Question sent!")),
-      );
+        await Stripe.instance.presentPaymentSheet();
+
+        // Send question after successful payment
+        sendQuestionToSocket(questionText, userId, paid: true, amount: 5000);
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("✅ Payment successful! Question sent")),
+        );
+      } else {
+        throw Exception("Failed to create payment intent");
+      }
     } catch (e) {
       print('Payment failed: $e');
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text("❌ Payment failed: $e")));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("❌ Payment failed: ${e.toString()}")),
+      );
     }
   }
 
