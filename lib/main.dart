@@ -17,6 +17,8 @@ import 'providers/LocaleProvider.dart';
 import 'providers/notification_provider.dart';
 import 'l10n/app_localizations.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'services/notification_handler.dart';
+import 'services/socket_service.dart';
 
 // -------------------------
 // PendingNotificationNavigation as ChangeNotifier
@@ -161,8 +163,18 @@ Future<void> main() async {
   final profileProvider = ProfileProvider();
   await profileProvider.loadUserId();
 
+  // ✅ Initialize NotificationHandler here
+  await NotificationHandler.init();
+
   print('🔐 Requesting notification permission...');
   await _requestNotificationPermission();
+
+  // ✅ Initialize socket connection
+  if (profileProvider.userId != null) {
+    SocketService().initialize(profileProvider.userId!);
+  } else {
+    print("⚠️ userId is null, skipping SocketService.init");
+  }
 
   String? fcmToken;
   print('📬 Getting FCM token...');

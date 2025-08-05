@@ -23,7 +23,8 @@
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value="default_channel" />
+            android:value="payment_channel"
+            tools:node="replace" />
 
         <activity
             android:name="com.example.kundali.MainActivity"

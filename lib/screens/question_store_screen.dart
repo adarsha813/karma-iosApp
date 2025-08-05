@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import '../providers/profile_provider.dart';
 import 'dart:convert';
 import 'package:flutter_stripe/flutter_stripe.dart' hide Card;
+import '../services/socket_service.dart';
+import '../services/notification_handler.dart';
 
 class QuestionStoreScreen extends StatefulWidget {
   const QuestionStoreScreen({super.key});
@@ -119,11 +121,24 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
         context,
       ).showSnackBar(const SnackBar(content: Text('Payment successful!')));
 
+      // ✅ Show local notification
+      await NotificationHandler.showPaymentNotification(questions);
+
       // Reload the balance
-      _loadData();
+      await _loadData();
+
+      final userId = profileProvider.userId;
+      if (userId != null) {
+        SocketService().socket.emit('paymentComplete', {
+          'userId': userId,
+          'questions': questions,
+        });
+        print("✅ Emitted paymentComplete via socket");
+      }
     } catch (e) {
-      if (e is StripeException) {
-        print('Stripe error: ${e.error.localizedMessage}');
+      if (e is StripeException && e.error.code == FailureCode.Canceled) {
+        print('Payment cancelled by user.');
+        return;
       } else {
         print('Payment error: $e');
       }
@@ -135,7 +150,22 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
   }
 
   void _handlePurchase(int questions) {
-    startStripePayment(questions);
+    startStripePayment(questions).then((_) {
+      final profileProvider = Provider.of<ProfileProvider>(
+        context,
+        listen: false,
+      );
+      final userId = profileProvider.userId;
+
+      if (userId != null) {
+        SocketService().socket.emit('paymentComplete', {
+          'userId': userId,
+          'questions': questions,
+        });
+
+        print("✅ Emitted paymentComplete via socket");
+      }
+    });
   }
 
   @override
