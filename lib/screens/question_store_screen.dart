@@ -128,6 +128,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
       await _loadData();
 
       final userId = profileProvider.userId;
+
       if (userId != null) {
         SocketService().socket.emit('paymentComplete', {
           'userId': userId,
@@ -158,10 +159,12 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
       final userId = profileProvider.userId;
 
       if (userId != null) {
-        SocketService().socket.emit('paymentComplete', {
+        SocketService().socket.emit('newNotification', {
           'userId': userId,
           'questions': questions,
         });
+
+        NotificationHandler.showPaymentNotification(questions);
 
         print("✅ Emitted paymentComplete via socket");
       }

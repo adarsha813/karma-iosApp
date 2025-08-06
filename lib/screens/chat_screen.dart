@@ -35,7 +35,7 @@ class ChatScreen extends StatefulWidget {
   _ChatScreenState createState() => _ChatScreenState();
 }
 
-class _ChatScreenState extends State<ChatScreen> {
+class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   final TextEditingController _controller = TextEditingController();
   final ScrollController _scrollController = ScrollController();
   final TextEditingController messageController = TextEditingController();
@@ -59,6 +59,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
 
     loadUserId();
 
@@ -545,6 +546,11 @@ class _ChatScreenState extends State<ChatScreen> {
     });
 
     socket.on('new_answer', (data) {
+      final provider = Provider.of<NotificationProvider>(
+        context,
+        listen: false,
+      );
+      provider.incrementUnreadCount(); // Add this
       print('Received new_answer: ${data.toString()}');
 
       final rawText = data['answerTranslated'] as String? ?? '';
@@ -568,6 +574,11 @@ class _ChatScreenState extends State<ChatScreen> {
     });
 
     socket.on('new_clarification', (data) {
+      final provider = Provider.of<NotificationProvider>(
+        context,
+        listen: false,
+      );
+      provider.incrementUnreadCount(); // Add this
       print('Received new_clarification: ${data.toString()}');
 
       final rawText = data['answerTranslated'] as String? ?? '';
@@ -592,6 +603,11 @@ class _ChatScreenState extends State<ChatScreen> {
     });
 
     socket.on('new_advice', (data) {
+      final provider = Provider.of<NotificationProvider>(
+        context,
+        listen: false,
+      );
+      provider.incrementUnreadCount(); // Add this
       print('Received new_advice: ${data.toString()}');
 
       final rawText = data['adviceTranslated'] as String? ?? '';
@@ -1178,6 +1194,18 @@ class _ChatScreenState extends State<ChatScreen> {
     _controller.dispose();
     messageController.dispose();
     super.dispose();
+    WidgetsBinding.instance.removeObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      // Refresh unread count when app comes to foreground
+      Provider.of<NotificationProvider>(
+        context,
+        listen: false,
+      ).reloadUnreadCount();
+    }
   }
 
   @override
@@ -1188,32 +1216,38 @@ class _ChatScreenState extends State<ChatScreen> {
         actions: [
           IconButton(
             icon: Consumer<NotificationProvider>(
-              builder: (context, notificationProvider, _) {
-                final unreadCount = notificationProvider.unreadCount;
-                if (unreadCount == 0) {
-                  return const Icon(Icons.notifications);
-                } else {
+              builder: (context, provider, _) {
+                print("Badge rebuild with count: ${provider.unreadCount}");
+                if (provider.unreadCount > 0) {
                   return badges.Badge(
                     badgeContent: Text(
-                      unreadCount.toString(),
-                      style: const TextStyle(color: Colors.white),
+                      provider.unreadCount.toString(),
+                      style: const TextStyle(color: Colors.white, fontSize: 12),
                     ),
                     child: const Icon(Icons.notifications),
+                    badgeStyle: badges.BadgeStyle(badgeColor: Colors.red),
                   );
+                } else {
+                  return const Icon(Icons.notifications);
                 }
               },
             ),
             onPressed: () {
+              Provider.of<NotificationProvider>(
+                context,
+                listen: false,
+              ).clearUnreadCount();
+
               final userId =
                   Provider.of<ProfileProvider>(context, listen: false).userId ??
                   '';
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (_) => NotificationsScreen(userId: userId),
                 ),
               ).then((_) {
-                // Clear unread count when returning from notifications screen
                 Provider.of<NotificationProvider>(
                   context,
                   listen: false,

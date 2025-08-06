@@ -3,6 +3,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:provider/provider.dart';
+import '../providers/notification_provider.dart';
 
 // Initialize the FlutterLocalNotificationsPlugin globally
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -27,7 +29,7 @@ class NotificationsScreen extends StatefulWidget {
 class _NotificationsScreenState extends State<NotificationsScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  Map<String, List<String>> notificationsByCategory = {};
+  Map<String, List<Map<String, dynamic>>> notificationsByCategory = {};
   bool isLoading = true;
   late IO.Socket socket;
 
@@ -36,7 +38,16 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
     _initializeNotifications();
-    fetchNotifications();
+    fetchNotifications().then((_) {
+      _markAllAsRead();
+
+      // Clear badge count when screen opens
+      final provider = Provider.of<NotificationProvider>(
+        context,
+        listen: false,
+      );
+      provider.clearUnreadCount();
+    });
     setupSocket();
   }
 
@@ -53,6 +64,8 @@ class _NotificationsScreenState extends State<NotificationsScreen>
   }
 
   void _showSystemNotification(String title, String body) {
+    final provider = Provider.of<NotificationProvider>(context, listen: false);
+    provider.incrementUnreadCount(); // Add this
     const AndroidNotificationDetails androidDetails =
         AndroidNotificationDetails(
           'your_channel_id',
@@ -72,6 +85,20 @@ class _NotificationsScreenState extends State<NotificationsScreen>
       body,
       platformDetails,
     );
+  }
+
+  void _markAllAsRead() {
+    setState(() {
+      notificationsByCategory.forEach((key, list) {
+        for (var notif in list) {
+          notif['read'] = true;
+        }
+      });
+    });
+
+    // Also tell the NotificationProvider to clear count
+    final provider = Provider.of<NotificationProvider>(context, listen: false);
+    provider.setUnreadCount(0);
   }
 
   void setupSocket() {
@@ -96,17 +123,28 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     });
 
     socket.on('newNotification', (data) {
-      print('Received newNotification: $data');
-
+      final provider = Provider.of<NotificationProvider>(
+        context,
+        listen: false,
+      );
+      provider.incrementUnreadCount(); // Add this
       String category = data['category'] ?? 'general';
       String message = data['message'] ?? '';
 
       setState(() {
         notificationsByCategory.putIfAbsent(category, () => []);
-        notificationsByCategory[category]!.insert(0, message);
+        notificationsByCategory[category]!.insert(0, {
+          "message": message,
+          "read": false,
+        });
       });
 
       _showSystemNotification("🔔 New ${category.capitalize()}", message);
+
+      final count = _getUnreadCount();
+      print("Unread count from local state: $count");
+
+      // increment count globally
     });
 
     socket.onDisconnect((_) => print('Socket disconnected'));
@@ -123,15 +161,23 @@ class _NotificationsScreenState extends State<NotificationsScreen>
         final Map<String, dynamic> data = json.decode(response.body);
         print("Raw response: ${response.body}");
 
-        final Map<String, List<String>> cleanedData = {};
+        final Map<String, List<Map<String, dynamic>>> cleanedData = {};
         data.forEach((key, value) {
-          cleanedData[key] = List<String>.from(value);
+          cleanedData[key] = List<Map<String, dynamic>>.from(
+            value.map((msg) => {"message": msg, "read": false}),
+          );
         });
 
         setState(() {
           notificationsByCategory = cleanedData;
           isLoading = false;
         });
+        final count = _getUnreadCount();
+        final provider = Provider.of<NotificationProvider>(
+          context,
+          listen: false,
+        );
+        provider.setUnreadCount(count);
       } else {
         throw Exception('Failed to load notifications');
       }
@@ -143,21 +189,36 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     }
   }
 
-  List<String> _getAllNotifications() {
+  int _getUnreadCount() {
+    int count = 0;
+    notificationsByCategory.forEach((category, notifications) {
+      count += notifications.where((n) => !n['read']).length;
+    });
+    return count;
+  }
+
+  List<Map<String, dynamic>> _getAllNotifications() {
     return notificationsByCategory.values.expand((list) => list).toList();
   }
 
-  Widget _buildNotificationList(List<String> items) {
+  Widget _buildNotificationList(List<Map<String, dynamic>> items) {
     if (items.isEmpty) {
       return const Center(child: Text("No notifications"));
     }
     return ListView.builder(
       itemCount: items.length,
       itemBuilder: (context, index) {
-        final message = items[index];
+        final message = items[index]['message'];
+        final read = items[index]['read'] ?? false;
+
         return ListTile(
           leading: const Icon(Icons.notifications),
-          title: Text(message),
+          title: Text(
+            message,
+            style: TextStyle(
+              fontWeight: read ? FontWeight.normal : FontWeight.bold,
+            ),
+          ),
         );
       },
     );

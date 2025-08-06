@@ -1,5 +1,5 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
 class NotificationHandler {
   static final FlutterLocalNotificationsPlugin notificationsPlugin =
@@ -55,6 +55,30 @@ class NotificationHandler {
     );
   }
 
+  static Future<void> showBasicNotification({
+    required String title,
+    required String body,
+    String? payload,
+  }) async {
+    const androidDetails = AndroidNotificationDetails(
+      'default_channel',
+      'Default',
+      channelDescription: 'Default notifications',
+      importance: Importance.max,
+      priority: Priority.high,
+    );
+
+    const notificationDetails = NotificationDetails(android: androidDetails);
+
+    await notificationsPlugin.show(
+      0,
+      title,
+      body,
+      notificationDetails,
+      payload: payload,
+    );
+  }
+
   static String _capitalize(String s) =>
       s.isNotEmpty ? s[0].toUpperCase() + s.substring(1) : s;
 
@@ -74,6 +98,7 @@ class NotificationHandler {
       '🎉 Purchase Successful',
       'You have purchased $questions questions!',
       notificationDetails,
+      payload: json.encode({'type': 'payment', 'questions': questions}),
     );
   }
 }

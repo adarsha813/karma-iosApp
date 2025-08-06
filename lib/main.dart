@@ -19,6 +19,7 @@ import 'l10n/app_localizations.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'services/notification_handler.dart';
 import 'services/socket_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // -------------------------
 // PendingNotificationNavigation as ChangeNotifier
@@ -34,6 +35,8 @@ class PendingNotificationNavigation extends ChangeNotifier {
     }
   }
 }
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 final pendingNavigation = PendingNotificationNavigation();
 
@@ -97,12 +100,15 @@ class _HomeRouterState extends State<HomeRouter> {
     super.initState();
 
     // Listen to payload changes and navigate if needed
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final notifier = Provider.of<PendingNotificationNavigation>(
+      final profileProvider = Provider.of<ProfileProvider>(
         context,
         listen: false,
       );
-      notifier.addListener(_handlePayload);
+      if (profileProvider.userId != null) {
+        SocketService().initialize(profileProvider.userId!, context);
+      }
     });
   }
 
@@ -169,13 +175,6 @@ Future<void> main() async {
   print('🔐 Requesting notification permission...');
   await _requestNotificationPermission();
 
-  // ✅ Initialize socket connection
-  if (profileProvider.userId != null) {
-    SocketService().initialize(profileProvider.userId!);
-  } else {
-    print("⚠️ userId is null, skipping SocketService.init");
-  }
-
   String? fcmToken;
   print('📬 Getting FCM token...');
   try {
@@ -228,6 +227,44 @@ Future<void> main() async {
     pendingNavigation.payload = payload;
   });
 
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
+    print('🔔 [Foreground] Message received: ${message.messageId}');
+
+    final notificationProvider = Provider.of<NotificationProvider>(
+      navigatorKey.currentContext!,
+      listen: false,
+    );
+
+    notificationProvider.incrementUnreadCount();
+
+    await NotificationHandler.showBasicNotification(
+      title: message.notification?.title ?? 'New Notification',
+      body: message.notification?.body ?? 'You have a new message',
+      payload: jsonEncode(message.data),
+    );
+  });
+
+  // 📥 Handle background FCM messages
+  FirebaseMessaging.onBackgroundMessage((RemoteMessage message) async {
+    await Firebase.initializeApp();
+    print('📩 [Background] Message received: ${message.messageId}');
+
+    final context = navigatorKey.currentContext;
+    if (context != null) {
+      final notificationProvider = Provider.of<NotificationProvider>(
+        context,
+        listen: false,
+      );
+      notificationProvider.incrementUnreadCount();
+    }
+
+    final prefs = await SharedPreferences.getInstance();
+    final currentCount = prefs.getInt('unread_notification_count') ?? 0;
+    await prefs.setInt('unread_notification_count', currentCount + 1);
+
+    print('📩 Background notification handled');
+  });
+
   runApp(
     MultiProvider(
       providers: [
@@ -243,6 +280,15 @@ Future<void> main() async {
       child: const MyApp(),
     ),
   );
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    final context = navigatorKey.currentContext;
+    if (context != null && profileProvider.userId != null) {
+      SocketService().initialize(profileProvider.userId!, context);
+      print('✅ SocketService initialized');
+    } else {
+      print('⚠️ Cannot initialize SocketService - context or userId is null');
+    }
+  });
 }
 
 Future<void> ensureToken(ProfileProvider profileProvider) async {
@@ -321,6 +367,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Chat App',
       theme: ThemeData(primarySwatch: Colors.blue),
+      navigatorKey: navigatorKey, // Add this
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
