@@ -546,11 +546,6 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
     });
 
     socket.on('new_answer', (data) {
-      final provider = Provider.of<NotificationProvider>(
-        context,
-        listen: false,
-      );
-      provider.incrementUnreadCount(); // Add this
       print('Received new_answer: ${data.toString()}');
 
       final rawText = data['answerTranslated'] as String? ?? '';
@@ -574,11 +569,6 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
     });
 
     socket.on('new_clarification', (data) {
-      final provider = Provider.of<NotificationProvider>(
-        context,
-        listen: false,
-      );
-      provider.incrementUnreadCount(); // Add this
       print('Received new_clarification: ${data.toString()}');
 
       final rawText = data['answerTranslated'] as String? ?? '';
@@ -1187,6 +1177,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
     if (socket.connected) {
       socket.disconnect();
     }
+
     _refreshTimer?.cancel();
     socket.dispose();
     _scrollController.dispose();

@@ -9,7 +9,7 @@ class SocketService {
   late IO.Socket socket;
   String? userId;
   BuildContext? _context;
-
+  bool _listenersSet = false; // <-- Add this line
   factory SocketService() => _instance;
 
   SocketService._internal();
@@ -31,6 +31,8 @@ class SocketService {
   }
 
   void _setupEventListeners() {
+    if (_listenersSet) return; // <-- Prevent double binding
+    _listenersSet = true;
     socket.onConnect((_) {
       print('✅ Socket connected for user: $userId');
       socket.emit('joinRoom', userId);
@@ -64,5 +66,6 @@ class SocketService {
   void dispose() {
     socket.disconnect();
     socket.dispose();
+    _listenersSet = false;
   }
 }

@@ -79,5 +79,7 @@ class NotificationProvider extends ChangeNotifier {
     notifyListeners();
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt('unread_notification_count', 0);
+
+    FlutterAppBadger.removeBadge();
   }
 }

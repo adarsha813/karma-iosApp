@@ -38,16 +38,10 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
     _initializeNotifications();
-    fetchNotifications().then((_) {
+    fetchNotifications(skipUnreadCount: true).then((_) {
       _markAllAsRead();
-
-      // Clear badge count when screen opens
-      final provider = Provider.of<NotificationProvider>(
-        context,
-        listen: false,
-      );
-      provider.clearUnreadCount();
     });
+
     setupSocket();
   }
 
@@ -101,7 +95,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     socket.onDisconnect((_) => print('Socket disconnected'));
   }
 
-  Future<void> fetchNotifications() async {
+  Future<void> fetchNotifications({bool skipUnreadCount = false}) async {
     final url = Uri.parse(
       'https://chat-backend-rvk9.onrender.com/notifications/${widget.userId}',
     );
@@ -123,12 +117,15 @@ class _NotificationsScreenState extends State<NotificationsScreen>
           notificationsByCategory = cleanedData;
           isLoading = false;
         });
-        final count = _getUnreadCount();
-        final provider = Provider.of<NotificationProvider>(
-          context,
-          listen: false,
-        );
-        provider.setUnreadCount(count);
+
+        if (!skipUnreadCount) {
+          final count = _getUnreadCount();
+          final provider = Provider.of<NotificationProvider>(
+            context,
+            listen: false,
+          );
+          provider.setUnreadCount(count);
+        }
       } else {
         throw Exception('Failed to load notifications');
       }

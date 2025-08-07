@@ -80,14 +80,4 @@ class NotificationHandler {
 
   static String _capitalize(String s) =>
       s.isNotEmpty ? s[0].toUpperCase() + s.substring(1) : s;
-
-  static Future<void> showPaymentNotification(int questions) async {
-    const androidDetails = AndroidNotificationDetails(
-      'payment_channel',
-      'Payment Notifications',
-      channelDescription: 'Purchase confirmations',
-      importance: Importance.high,
-      priority: Priority.high,
-    );
-  }
 }
