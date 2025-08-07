@@ -63,30 +63,6 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     await flutterLocalNotificationsPlugin.initialize(initSettings);
   }
 
-  void _showSystemNotification(String title, String body) {
-    final provider = Provider.of<NotificationProvider>(context, listen: false);
-    provider.incrementUnreadCount(); // Add this
-    const AndroidNotificationDetails androidDetails =
-        AndroidNotificationDetails(
-          'your_channel_id',
-          'Your Channel Name',
-          importance: Importance.high,
-          priority: Priority.high,
-          playSound: true,
-        );
-
-    const NotificationDetails platformDetails = NotificationDetails(
-      android: androidDetails,
-    );
-
-    flutterLocalNotificationsPlugin.show(
-      0, // Notification ID, change if you want multiple notifications
-      title,
-      body,
-      platformDetails,
-    );
-  }
-
   void _markAllAsRead() {
     setState(() {
       notificationsByCategory.forEach((key, list) {
@@ -120,31 +96,6 @@ class _NotificationsScreenState extends State<NotificationsScreen>
       );
 
       socket.emit('joinRoom', widget.userId);
-    });
-
-    socket.on('newNotification', (data) {
-      final provider = Provider.of<NotificationProvider>(
-        context,
-        listen: false,
-      );
-      provider.incrementUnreadCount(); // Add this
-      String category = data['category'] ?? 'general';
-      String message = data['message'] ?? '';
-
-      setState(() {
-        notificationsByCategory.putIfAbsent(category, () => []);
-        notificationsByCategory[category]!.insert(0, {
-          "message": message,
-          "read": false,
-        });
-      });
-
-      _showSystemNotification("🔔 New ${category.capitalize()}", message);
-
-      final count = _getUnreadCount();
-      print("Unread count from local state: $count");
-
-      // increment count globally
     });
 
     socket.onDisconnect((_) => print('Socket disconnected'));

@@ -39,11 +39,13 @@ class NotificationProvider extends ChangeNotifier {
     print(
       '[Notification] Incrementing count from $_unreadCount to ${_unreadCount + 1}',
     );
+    if (_unreadCount < 0) _unreadCount = 0; // Prevent negative counts
     _unreadCount++;
     print('Unread count incremented: $_unreadCount');
     _dirty = true;
     print('Increment unread count: $_unreadCount'); // <-- Add this
     notifyListeners();
+    await _persistCount();
 
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt('unread_notification_count', _unreadCount);

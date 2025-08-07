@@ -5,7 +5,6 @@ import '../providers/profile_provider.dart';
 import 'dart:convert';
 import 'package:flutter_stripe/flutter_stripe.dart' hide Card;
 import '../services/socket_service.dart';
-import '../services/notification_handler.dart';
 
 class QuestionStoreScreen extends StatefulWidget {
   const QuestionStoreScreen({super.key});
@@ -122,7 +121,6 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
       ).showSnackBar(const SnackBar(content: Text('Payment successful!')));
 
       // ✅ Show local notification
-      await NotificationHandler.showPaymentNotification(questions);
 
       // Reload the balance
       await _loadData();
@@ -151,24 +149,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
   }
 
   void _handlePurchase(int questions) {
-    startStripePayment(questions).then((_) {
-      final profileProvider = Provider.of<ProfileProvider>(
-        context,
-        listen: false,
-      );
-      final userId = profileProvider.userId;
-
-      if (userId != null) {
-        SocketService().socket.emit('newNotification', {
-          'userId': userId,
-          'questions': questions,
-        });
-
-        NotificationHandler.showPaymentNotification(questions);
-
-        print("✅ Emitted paymentComplete via socket");
-      }
-    });
+    startStripePayment(questions);
   }
 
   @override

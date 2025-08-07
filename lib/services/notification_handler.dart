@@ -1,5 +1,4 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'dart:convert';
 
 class NotificationHandler {
   static final FlutterLocalNotificationsPlugin notificationsPlugin =
@@ -89,16 +88,6 @@ class NotificationHandler {
       channelDescription: 'Purchase confirmations',
       importance: Importance.high,
       priority: Priority.high,
-    );
-
-    const notificationDetails = NotificationDetails(android: androidDetails);
-
-    await notificationsPlugin.show(
-      0,
-      '🎉 Purchase Successful',
-      'You have purchased $questions questions!',
-      notificationDetails,
-      payload: json.encode({'type': 'payment', 'questions': questions}),
     );
   }
 }
