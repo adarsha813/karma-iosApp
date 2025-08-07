@@ -1,14 +1,24 @@
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_app_badger/flutter_app_badger.dart'; // << Add this line
+import '../models/notification_model.dart';
 
 class NotificationProvider extends ChangeNotifier {
   bool _notificationsEnabled = true;
-  int _unreadCount = 0; // Track unread count
-  bool _dirty = false; // Track if count needs persistence
-
+  int _unreadCount = 0;
+  bool _dirty = false;
   bool get notificationsEnabled => _notificationsEnabled;
   int get unreadCount => _unreadCount;
+
+  final List<NotificationModel> _notifications = [];
+  List<NotificationModel> get notifications =>
+      List.unmodifiable(_notifications);
+
+  bool _isNotificationScreenOpen = false;
+  bool get isNotificationScreenOpen {
+    print('👁️ isNotificationScreenOpen read: $_isNotificationScreenOpen');
+    return _isNotificationScreenOpen;
+  }
 
   NotificationProvider() {
     _loadFromPrefs();
@@ -18,6 +28,21 @@ class NotificationProvider extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     _notificationsEnabled = prefs.getBool('notifications_enabled') ?? true;
     _unreadCount = prefs.getInt('unread_notification_count') ?? 0;
+    notifyListeners();
+  }
+
+  void addNotification(NotificationModel notification) {
+    _notifications.insert(0, notification);
+    notifyListeners();
+  }
+
+  void setNotificationScreenOpen(bool isOpen) {
+    _isNotificationScreenOpen = isOpen;
+    print('🔄 setNotificationScreenOpen: $isOpen');
+
+    if (isOpen) {
+      clearUnreadCount();
+    }
     notifyListeners();
   }
 
@@ -36,27 +61,12 @@ class NotificationProvider extends ChangeNotifier {
   }
 
   Future<void> incrementUnreadCount() async {
-    print(
-      '[Notification] Incrementing count from $_unreadCount to ${_unreadCount + 1}',
-    );
-    if (_unreadCount < 0) _unreadCount = 0; // Prevent negative counts
+    if (_unreadCount < 0) _unreadCount = 0;
     _unreadCount++;
-    print('Unread count incremented: $_unreadCount');
-    _dirty = true;
-    print('Increment unread count: $_unreadCount'); // <-- Add this
     notifyListeners();
+    _dirty = true; // ✅ Mark dirty before persisting
     await _persistCount();
-
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt('unread_notification_count', _unreadCount);
-
-    if (_unreadCount > 0) {
-      FlutterAppBadger.updateBadgeCount(_unreadCount);
-    } else {
-      FlutterAppBadger.removeBadge();
-    }
-
-    await _persistCount();
+    _updateBadge();
   }
 
   Future<void> _persistCount() async {
@@ -74,12 +84,20 @@ class NotificationProvider extends ChangeNotifier {
   }
 
   Future<void> clearUnreadCount() async {
-    print('[Notification] Clearing count');
     _unreadCount = 0;
     notifyListeners();
+
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt('unread_notification_count', 0);
 
-    FlutterAppBadger.removeBadge();
+    _updateBadge();
+  }
+
+  Future<void> _updateBadge() async {
+    if (_unreadCount > 0) {
+      FlutterAppBadger.updateBadgeCount(_unreadCount);
+    } else {
+      FlutterAppBadger.removeBadge();
+    }
   }
 }

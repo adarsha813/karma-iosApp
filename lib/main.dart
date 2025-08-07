@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-
+import 'package:flutter_app_badger/flutter_app_badger.dart'; // << Add this line
 import 'screens/chat_screen.dart';
 import 'screens/dailyHoroscope_screen.dart';
 import 'services/fcm_service.dart';
@@ -54,10 +54,23 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 
 // Background message handler for FCM
+@pragma('vm:entry-point') // Important for background handlers!
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  print('🔧 Initializing Firebase...');
-  await Firebase.initializeApp();
   print('📩 [Background] Message received: ${message.messageId}');
+  await Firebase.initializeApp();
+
+  final prefs = await SharedPreferences.getInstance();
+  int count = prefs.getInt('unread_notification_count') ?? 0;
+  count++;
+  await prefs.setInt('unread_notification_count', count);
+
+  try {
+    FlutterAppBadger.updateBadgeCount(count);
+  } catch (e) {
+    print("⚠️ Failed to update badge in background: $e");
+  }
+
+  print('📩 Background badge and count updated');
 }
 
 // Create notification channel (for Android 8.0+)
@@ -92,7 +105,7 @@ class HomeRouter extends StatefulWidget {
   State<HomeRouter> createState() => _HomeRouterState();
 }
 
-class _HomeRouterState extends State<HomeRouter> {
+class _HomeRouterState extends State<HomeRouter> with WidgetsBindingObserver {
   bool _navigated = false;
 
   @override
@@ -142,6 +155,20 @@ class _HomeRouterState extends State<HomeRouter> {
       listen: false,
     ).removeListener(_handlePayload);
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      print('🔄 App resumed, checking socket...');
+
+      final currentUserId =
+          Provider.of<ProfileProvider>(context, listen: false).userId;
+
+      if (currentUserId != null && !SocketService().socket.connected) {
+        SocketService().initialize(currentUserId, context);
+      }
+    }
   }
 
   @override
@@ -242,27 +269,6 @@ Future<void> main() async {
       body: message.notification?.body ?? 'You have a new message',
       payload: jsonEncode(message.data),
     );
-  });
-
-  // 📥 Handle background FCM messages
-  FirebaseMessaging.onBackgroundMessage((RemoteMessage message) async {
-    await Firebase.initializeApp();
-    print('📩 [Background] Message received: ${message.messageId}');
-
-    final context = navigatorKey.currentContext;
-    if (context != null) {
-      final notificationProvider = Provider.of<NotificationProvider>(
-        context,
-        listen: false,
-      );
-      notificationProvider.incrementUnreadCount();
-    }
-
-    final prefs = await SharedPreferences.getInstance();
-    final currentCount = prefs.getInt('unread_notification_count') ?? 0;
-    await prefs.setInt('unread_notification_count', currentCount + 1);
-
-    print('📩 Background notification handled');
   });
 
   runApp(

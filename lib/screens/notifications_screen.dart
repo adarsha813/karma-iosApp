@@ -5,10 +5,13 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
 import '../providers/notification_provider.dart';
+import '../models/notification_model.dart';
+import '../services/notification_handler.dart';
 
 // Initialize the FlutterLocalNotificationsPlugin globally
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
+late NotificationProvider _notificationProvider;
 
 // String extension to capitalize first letter
 extension StringExtension on String {
@@ -37,12 +40,24 @@ class _NotificationsScreenState extends State<NotificationsScreen>
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
-    _initializeNotifications();
-    fetchNotifications(skipUnreadCount: true).then((_) {
-      _markAllAsRead();
+    _notificationProvider = Provider.of<NotificationProvider>(
+      context,
+      listen: false,
+    );
+    _notificationProvider.setNotificationScreenOpen(true);
+    print('📱 NotificationScreen setNotificationScreenOpen(true)');
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final provider = Provider.of<NotificationProvider>(
+        context,
+        listen: false,
+      );
+      provider.setNotificationScreenOpen(true);
+      provider.clearUnreadCount();
     });
 
-    setupSocket();
+    _initializeNotifications();
+    fetchNotifications();
+    //setupSocket();
   }
 
   // Initialize flutter_local_notifications
@@ -75,21 +90,31 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     socket = IO.io('https://chat-backend-rvk9.onrender.com', <String, dynamic>{
       'transports': ['websocket'],
       'autoConnect': false,
-      'query': {
-        'userId': widget.userId, // <---- ADD THIS LINE
-      },
+      'query': {'userId': widget.userId},
     });
 
     socket.connect();
 
     socket.onConnect((_) {
       print('Socket connected');
-      print('Socket connected with id: ${socket.id}');
-      print(
-        'Socket handshake query: ${socket.io.options == null ? 'null' : socket.io.options!['query']}',
-      );
-
       socket.emit('joinRoom', widget.userId);
+    });
+
+    socket.on('newNotification', (data) {
+      print('Socket notification received: $data');
+
+      final provider = Provider.of<NotificationProvider>(
+        context,
+        listen: false,
+      );
+      final notification = NotificationModel.fromJson(data);
+      provider.addNotification(notification);
+
+      if (!provider.isNotificationScreenOpen) {
+        provider.incrementUnreadCount();
+      }
+
+      NotificationHandler.showSystemNotification(data);
     });
 
     socket.onDisconnect((_) => print('Socket disconnected'));
@@ -206,8 +231,8 @@ class _NotificationsScreenState extends State<NotificationsScreen>
 
   @override
   void dispose() {
-    socket.dispose();
-    _tabController.dispose();
+    _notificationProvider.setNotificationScreenOpen(false);
+    print('📴 NotificationScreen setNotificationScreenOpen(false)');
     super.dispose();
   }
 }
