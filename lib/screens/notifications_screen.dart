@@ -31,17 +31,19 @@ class NotificationsScreen extends StatefulWidget {
 }
 
 class _NotificationsScreenState extends State<NotificationsScreen>
-    with SingleTickerProviderStateMixin {
-  late TabController _tabController;
+    with TickerProviderStateMixin {
+  TabController? _tabController;
   Map<String, List<Map<String, dynamic>>> notificationsByCategory = {};
   bool isLoading = true;
   late IO.Socket socket;
+  List<String> categories = [];
 
   @override
   void initState() {
     super.initState();
     print('🔹 NotificationsScreen initState');
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 1, vsync: this);
+
     _notificationProvider = Provider.of<NotificationProvider>(
       context,
       listen: false,
@@ -137,7 +139,18 @@ class _NotificationsScreenState extends State<NotificationsScreen>
         if (!mounted) return;
         setState(() {
           notificationsByCategory = cleanedData;
+          // Categories except "all"
+          categories = cleanedData.keys.where((key) => key != 'all').toList();
           isLoading = false;
+
+          // Reset the TabController because tabs changed
+          _tabController?.dispose();
+          _tabController = TabController(
+            length: categories.length + 1,
+            vsync: this,
+          );
+
+          _tabController?.index = 0;
         });
 
         if (!skipUnreadCount) {
@@ -153,6 +166,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
       }
     } catch (e) {
       print("Error: $e");
+      if (!mounted) return;
       setState(() {
         isLoading = false;
       });
@@ -213,7 +227,9 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     return ListView.builder(
       itemCount: items.length,
       itemBuilder: (context, index) {
-        final message = items[index]['message'];
+        final item = items[index];
+        print('ℹ️ Notification item at $index: $item');
+        final message = item['message'] ?? 'No message';
         final read = items[index]['read'] ?? false;
 
         return ListTile(
@@ -226,6 +242,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
           ),
           onTap: () async {
             // Update UI instantly
+            if (!mounted) return;
             setState(() {
               items[index]['read'] = true;
             });
@@ -249,15 +266,22 @@ class _NotificationsScreenState extends State<NotificationsScreen>
 
   @override
   Widget build(BuildContext context) {
+    if (_tabController == null) {
+      print('⚠️ _tabController is null in build!');
+      // Show loading or empty placeholder until tabController ready
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+    assert(_tabController != null);
+    print('ℹ️ _tabController length: ${_tabController!.length}');
+    print('ℹ️ categories count: ${categories.length}');
     return Scaffold(
       appBar: AppBar(
         title: const Text("Notifications"),
         bottom: TabBar(
-          controller: _tabController,
-          tabs: const [
-            Tab(text: "All"),
-            Tab(text: "Offers"),
-            Tab(text: "Advices"),
+          controller: _tabController!,
+          tabs: [
+            const Tab(text: "All"),
+            ...categories.map((cat) => Tab(text: cat.capitalize())).toList(),
           ],
         ),
       ),
@@ -265,15 +289,16 @@ class _NotificationsScreenState extends State<NotificationsScreen>
           isLoading
               ? const Center(child: CircularProgressIndicator())
               : TabBarView(
-                controller: _tabController,
+                controller: _tabController!,
                 children: [
                   _buildNotificationList(_getAllNotifications()),
-                  _buildNotificationList(
-                    notificationsByCategory['offers'] ?? [],
-                  ),
-                  _buildNotificationList(
-                    notificationsByCategory['advices'] ?? [],
-                  ),
+                  ...categories
+                      .map(
+                        (cat) => _buildNotificationList(
+                          notificationsByCategory[cat] ?? [],
+                        ),
+                      )
+                      .toList(),
                 ],
               ),
     );
@@ -285,9 +310,12 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     print('📴 NotificationScreen setNotificationScreenOpen(false)');
     print('🔸 NotificationsScreen dispose');
 
-    _markAllNotificationsAsRead();
+    // Fire and forget:
+    _markAllNotificationsAsRead().catchError((e) {
+      print('Error marking all notifications as read on dispose: $e');
+    });
 
-    _tabController.dispose();
+    _tabController?.dispose();
     super.dispose();
   }
 }
