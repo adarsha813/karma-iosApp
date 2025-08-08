@@ -29,6 +29,7 @@ class SocketService {
           .setTransports(['websocket'])
           .enableReconnection()
           .setReconnectionDelay(3000)
+          .setReconnectionAttempts(9999)
           .setQuery({'userId': userId})
           .build(),
     );
@@ -44,6 +45,22 @@ class SocketService {
     socket.onConnect((_) {
       print('✅ Socket connected for user: $userId');
       socket.emit('joinRoom', userId);
+    });
+    socket.onDisconnect((reason) {
+      print('❌ Socket disconnected: $reason');
+    });
+    socket.onReconnectAttempt((attempt) {
+      print('🔄 Reconnect attempt: $attempt');
+    });
+    socket.onReconnect((attempt) {
+      print('🔄 Socket reconnected after $attempt attempts');
+    });
+
+    socket.onReconnectError((error) {
+      print('⚠️ Reconnect error: $error');
+    });
+    socket.onReconnectFailed((_) {
+      print('❗ Reconnect failed');
     });
 
     socket.on('newNotification', (data) {

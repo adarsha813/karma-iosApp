@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../providers/notification_provider.dart';
 import '../models/notification_model.dart';
 import '../services/notification_handler.dart';
+import '../services/socket_service.dart'; // adjust the relative path as needed
 
 // Initialize the FlutterLocalNotificationsPlugin globally
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -39,6 +40,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
   @override
   void initState() {
     super.initState();
+    print('🔹 NotificationsScreen initState');
     _tabController = TabController(length: 3, vsync: this);
     _notificationProvider = Provider.of<NotificationProvider>(
       context,
@@ -47,6 +49,8 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     _notificationProvider.setNotificationScreenOpen(true);
     print('📱 NotificationScreen setNotificationScreenOpen(true)');
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+
       final provider = Provider.of<NotificationProvider>(
         context,
         listen: false,
@@ -57,6 +61,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
 
     _initializeNotifications();
     fetchNotifications();
+    SocketService().initialize(widget.userId, context);
     //setupSocket();
   }
 
@@ -70,20 +75,6 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     );
 
     await flutterLocalNotificationsPlugin.initialize(initSettings);
-  }
-
-  void _markAllAsRead() {
-    setState(() {
-      notificationsByCategory.forEach((key, list) {
-        for (var notif in list) {
-          notif['read'] = true;
-        }
-      });
-    });
-
-    // Also tell the NotificationProvider to clear count
-    final provider = Provider.of<NotificationProvider>(context, listen: false);
-    provider.setUnreadCount(0);
   }
 
   void setupSocket() {
@@ -133,11 +124,17 @@ class _NotificationsScreenState extends State<NotificationsScreen>
 
         final Map<String, List<Map<String, dynamic>>> cleanedData = {};
         data.forEach((key, value) {
-          cleanedData[key] = List<Map<String, dynamic>>.from(
-            value.map((msg) => {"message": msg, "read": false}),
+          cleanedData[key.toLowerCase()] = List<Map<String, dynamic>>.from(
+            value.map(
+              (msg) => {
+                "id": msg['_id'] is Map ? msg['_id']['\$oid'] : msg['_id'],
+                "message": msg['message'],
+                "read": msg['read'] ?? false,
+              },
+            ),
           );
         });
-
+        if (!mounted) return;
         setState(() {
           notificationsByCategory = cleanedData;
           isLoading = false;
@@ -159,6 +156,41 @@ class _NotificationsScreenState extends State<NotificationsScreen>
       setState(() {
         isLoading = false;
       });
+    }
+  }
+
+  Future<void> _markAllNotificationsAsRead() async {
+    try {
+      final response = await http.post(
+        Uri.parse(
+          'https://chat-backend-rvk9.onrender.com/notifications/mark-all-read',
+        ),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({"userId": widget.userId}),
+      );
+
+      if (response.statusCode == 200) {
+        // Update local UI state: mark all read true
+        if (!mounted) return;
+        setState(() {
+          notificationsByCategory.forEach((key, list) {
+            for (var notif in list) {
+              notif['read'] = true;
+            }
+          });
+        });
+
+        // Update unread count in provider
+        final provider = Provider.of<NotificationProvider>(
+          context,
+          listen: false,
+        );
+        provider.setUnreadCount(0);
+      } else {
+        print('Failed to mark all as read');
+      }
+    } catch (e) {
+      print('Error marking all notifications as read: $e');
     }
   }
 
@@ -192,6 +224,24 @@ class _NotificationsScreenState extends State<NotificationsScreen>
               fontWeight: read ? FontWeight.normal : FontWeight.bold,
             ),
           ),
+          onTap: () async {
+            // Update UI instantly
+            setState(() {
+              items[index]['read'] = true;
+            });
+
+            // Send request to mark as read
+            await http.post(
+              Uri.parse(
+                'https://chat-backend-rvk9.onrender.com/notifications/mark-read',
+              ),
+              headers: {'Content-Type': 'application/json'},
+              body: jsonEncode({
+                "notificationId": items[index]['id'],
+                "userId": widget.userId,
+              }),
+            );
+          },
         );
       },
     );
@@ -233,6 +283,11 @@ class _NotificationsScreenState extends State<NotificationsScreen>
   void dispose() {
     _notificationProvider.setNotificationScreenOpen(false);
     print('📴 NotificationScreen setNotificationScreenOpen(false)');
+    print('🔸 NotificationsScreen dispose');
+
+    _markAllNotificationsAsRead();
+
+    _tabController.dispose();
     super.dispose();
   }
 }
