@@ -48,6 +48,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   late IO.Socket socket;
   Timer? _refreshTimer;
   String? currentUserId;
+  bool _isReinitializing = false;
 
   Future<void> loadUserId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -108,15 +109,17 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   }) async {
     try {
       final response = await http.post(
-        Uri.parse('https://chat-backend-rvk9.onrender.com/questions'),
+        Uri.parse('https://chat-backend-rvk9.onrender.com/questions/create'),
         headers: {'Content-Type': 'application/json'},
         body: json.encode({'text': text, 'userId': userId, 'paid': paid}),
       );
 
       if (response.statusCode == 200) {
-        print('✅ Question sent via HTTP fallback');
+        print('✅ HTTP fallback succeeded: ${response.body}');
       } else {
-        print('❌ HTTP fallback failed: ${response.statusCode}');
+        print(
+          '❌ HTTP fallback failed: ${response.statusCode} - ${response.body}',
+        );
       }
     } catch (e) {
       print('❌ HTTP fallback error: $e');
@@ -133,7 +136,22 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
     if (!socket.connected) {
       print('⚠️ Socket not connected - reinitializing...');
       await _initializeSocket(); // Reinitialize socket
-      await Future.delayed(Duration(milliseconds: 500)); // Wait for connection
+      final completer = Completer<void>();
+      socket.once('connect', (_) {
+        completer.complete();
+      });
+      socket.connect();
+      await completer.future.timeout(
+        Duration(seconds: 5),
+        onTimeout: () {
+          print('⚠️ Socket connection timeout');
+        },
+      );
+    }
+    if (_isReinitializing) {
+      print('⚠️ Skipping send - socket reinitialization in progress');
+      await _sendQuestionViaHttp(text, userId, paid: paid);
+      return;
     }
 
     print('🔥 Current socket connected: ${socket.connected}');
@@ -358,9 +376,27 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
     }
   }
 
+  Future<void> _disposeSocket() async {
+    try {
+      socket.clearListeners();
+      if (socket.connected) {
+        final completer = Completer<void>();
+        socket.once('disconnect', (_) => completer.complete());
+        socket.disconnect();
+        await completer.future.timeout(Duration(seconds: 2));
+      }
+    } catch (e) {
+      print('⚠️ Error disposing socket: $e');
+    }
+  }
+
   Future<void> _reinitializeForUserId(String userId) async {
+    if (_isReinitializing) return;
+    _isReinitializing = true;
     if (socket.connected) {
+      socket.clearListeners(); // Clear all event listeners
       socket.disconnect();
+      await _disposeSocket(); // Properly dispose old socket
       await Future.delayed(Duration(milliseconds: 500)); // Brief delay
     }
 
@@ -380,6 +416,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
     await _fetchPreviousAdvices(); // 👈 Add this
 
     setState(() {}); // Optional - UI rebuild trigger
+    _isReinitializing = false;
   }
 
   // Update _initializeSocket and _fetchPreviousQuestionsAndAnswers to accept userId param or
@@ -514,6 +551,13 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
           .build(),
     );
 
+    _isSocketConnected = false;
+    if (_socketConnectionCompleter != null &&
+        !_socketConnectionCompleter!.isCompleted) {
+      _socketConnectionCompleter!.completeError('Reinitializing socket');
+    }
+    _socketConnectionCompleter = Completer<void>();
+
     socket.onConnect((_) {
       print("✅ Connected to $serverUrl");
       print("🔁 Emitting join_room with room: $userId");
@@ -532,6 +576,11 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
     socket.onReconnectAttempt((_) => print('🔄 Socket reconnect attempt'));
     socket.onReconnectError((err) => print('⚠️ Socket reconnect error: $err'));
     socket.onReconnectFailed((_) => print('❌ Socket reconnect failed'));
+
+    socket.off('new_question');
+    socket.off('new_answer');
+    socket.off('new_clarification');
+    socket.off('new_advice');
 
     socket.on('new_question', (data) {
       print('Received new_question: ${data.toString()}');
