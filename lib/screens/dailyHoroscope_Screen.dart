@@ -5,6 +5,8 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import '../utils/pending_notification_navigation.dart';
 import 'horoscope_detail_screen.dart';
+import 'package:provider/provider.dart';
+import '../providers/horoscope_provider.dart';
 
 class DailyHoroscopeScreen extends StatefulWidget {
   final String? userId;
@@ -26,6 +28,11 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
   @override
   void initState() {
     super.initState();
+    // 🧹 Clear unread badge when user visits
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<HoroscopeProvider>(context, listen: false).clear();
+    });
+
     _initializeNotifications();
     _connectSocket();
     _fetchHoroscopes();
@@ -127,6 +134,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
       final horoscope = Map<String, dynamic>.from(data);
       final title = horoscope['title'] ?? 'New Horoscope';
       final content = horoscope['text'] ?? '';
+
+      // 🔵 Increment unread badge
+      Provider.of<HoroscopeProvider>(context, listen: false).increment();
 
       _showHoroscopeNotification("🔮 $title", content, id: horoscope['_id']);
 

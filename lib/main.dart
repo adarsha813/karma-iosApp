@@ -20,6 +20,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'services/notification_handler.dart';
 import 'services/socket_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'providers/horoscope_provider.dart';
 
 // -------------------------
 // PendingNotificationNavigation as ChangeNotifier
@@ -35,6 +36,8 @@ class PendingNotificationNavigation extends ChangeNotifier {
     }
   }
 }
+
+bool _listenersAdded = false;
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -93,6 +96,56 @@ void notificationTapBackground(NotificationResponse response) {
   if (payload != null) {
     print('📱 (Background) Notification tapped: $payload');
     pendingNavigation.payload = payload;
+  }
+}
+
+class BadgeUpdater extends StatefulWidget {
+  const BadgeUpdater({Key? key}) : super(key: key);
+
+  @override
+  State<BadgeUpdater> createState() => _BadgeUpdaterState();
+}
+
+class _BadgeUpdaterState extends State<BadgeUpdater> {
+  late NotificationProvider notificationProvider;
+  late HoroscopeProvider horoscopeProvider;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    if (!_listenersAdded) {
+      notificationProvider = Provider.of<NotificationProvider>(context);
+      horoscopeProvider = Provider.of<HoroscopeProvider>(context);
+
+      notificationProvider.addListener(_updateBadge);
+      horoscopeProvider.addListener(_updateBadge);
+
+      _listenersAdded = true;
+      _updateBadge(); // initial badge set
+    }
+  }
+
+  void _updateBadge() {
+    final totalUnread =
+        notificationProvider.unreadCount + horoscopeProvider.unreadCount;
+    if (totalUnread > 0) {
+      FlutterAppBadger.updateBadgeCount(totalUnread);
+    } else {
+      FlutterAppBadger.removeBadge();
+    }
+  }
+
+  @override
+  void dispose() {
+    notificationProvider.removeListener(_updateBadge);
+    horoscopeProvider.removeListener(_updateBadge);
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox.shrink(); // no UI
   }
 }
 
@@ -257,12 +310,28 @@ Future<void> main() async {
   FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
     print('🔔 [Foreground] Message received: ${message.messageId}');
 
-    final notificationProvider = Provider.of<NotificationProvider>(
-      navigatorKey.currentContext!,
-      listen: false,
-    );
+    final data = message.data;
+    final type = data['type'] ?? 'general';
+    if (navigatorKey.currentContext == null) {
+      print("⚠️ No navigator context to update badge counts");
+      return;
+    }
 
-    notificationProvider.incrementUnreadCount();
+    if (type == 'horoscope') {
+      // Increment only HoroscopeProvider unread count
+      final horoscopeProvider = Provider.of<HoroscopeProvider>(
+        navigatorKey.currentContext!,
+        listen: false,
+      );
+      await horoscopeProvider.increment();
+    } else {
+      // Increment only NotificationProvider unread count
+      final notificationProvider = Provider.of<NotificationProvider>(
+        navigatorKey.currentContext!,
+        listen: false,
+      );
+      await notificationProvider.incrementUnreadCount();
+    }
 
     await NotificationHandler.showBasicNotification(
       title: message.notification?.title ?? 'New Notification',
@@ -278,6 +347,7 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (_) => LocaleProvider()),
         ChangeNotifierProvider(create: (_) => ProfileProvider()),
         ChangeNotifierProvider(create: (_) => NotificationProvider()),
+        ChangeNotifierProvider(create: (_) => HoroscopeProvider()),
         ChangeNotifierProvider<ProfileProvider>.value(value: profileProvider),
         ChangeNotifierProvider<PendingNotificationNavigation>.value(
           value: pendingNavigation,
@@ -373,7 +443,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Chat App',
       theme: ThemeData(primarySwatch: Colors.blue),
-      navigatorKey: navigatorKey, // Add this
+      navigatorKey: navigatorKey,
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -382,7 +452,7 @@ class _MyAppState extends State<MyApp> {
       ],
       supportedLocales: AppLocalizations.supportedLocales,
       locale: localeProvider.locale,
-      home: const HomeRouter(),
+      home: Stack(children: [const HomeRouter(), const BadgeUpdater()]),
     );
   }
 }

@@ -25,6 +25,7 @@ import 'notifications_screen.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'question_store_screen.dart';
+import '../providers/horoscope_provider.dart';
 
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
@@ -1253,6 +1254,36 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Chat"),
+
+        // Wrap leading icon with Consumer to listen to HoroscopeProvider
+        leading: Consumer<HoroscopeProvider>(
+          builder: (context, horoscopeProvider, _) {
+            final hasUnread = horoscopeProvider.unreadCount > 0;
+            return Stack(
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.menu),
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                ),
+                if (hasUnread)
+                  Positioned(
+                    right: 8,
+                    top: 8,
+                    child: Container(
+                      width: 10,
+                      height: 10,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  ),
+              ],
+            );
+          },
+        ),
         actions: [
           IconButton(
             icon: Consumer<NotificationProvider>(
@@ -1344,48 +1375,77 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   Widget _buildDrawer() {
     final userId = Provider.of<ProfileProvider>(context, listen: false).userId;
 
-    return Drawer(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildDrawerItem(
-            Icons.person,
-            "Profile",
-            ProfileScreen(userId: userId ?? ''),
+    return Consumer<HoroscopeProvider>(
+      builder: (context, horoscopeProvider, _) {
+        return Drawer(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildDrawerItem(
+                Icons.person,
+                "Profile",
+                ProfileScreen(userId: userId ?? ''),
+              ),
+              _buildDrawerItem(
+                Icons.auto_awesome,
+                "Daily Horoscope",
+                DailyHoroscopeScreen(userId: userId),
+                badge:
+                    horoscopeProvider.unreadCount > 0
+                        ? _buildBadge(horoscopeProvider.unreadCount)
+                        : null,
+              ),
+              _buildDrawerItem(
+                Icons.shopping_cart,
+                "Buy Questions",
+                const QuestionStoreScreen(),
+              ),
+              _buildDrawerItem(Icons.settings, "Settings", SettingsScreen()),
+              _buildDrawerItem(Icons.logout, "Logout", LogoutScreen()),
+              const Spacer(),
+              _buildDrawerItem(
+                Icons.settings_suggest,
+                "Profile Settings",
+                ProfileSettingsScreen(),
+              ),
+            ],
           ),
-          _buildDrawerItem(
-            Icons.auto_awesome,
-            "Daily Horoscope",
-            DailyHoroscopeScreen(userId: userId), // ✅ pass userId here
-          ),
-          // 👇 Add this block
-          _buildDrawerItem(
-            Icons.shopping_cart,
-            "Buy Questions",
-            const QuestionStoreScreen(),
-          ),
-          _buildDrawerItem(Icons.settings, "Settings", SettingsScreen()),
-          _buildDrawerItem(Icons.logout, "Logout", LogoutScreen()),
-          const Spacer(),
-          _buildDrawerItem(
-            Icons.settings_suggest,
-            "Profile Settings",
-            ProfileSettingsScreen(),
-          ),
-        ],
+        );
+      },
+    );
+  }
+
+  Widget _buildBadge(int count) {
+    return Container(
+      padding: const EdgeInsets.all(4),
+      decoration: const BoxDecoration(
+        color: Colors.red,
+        shape: BoxShape.circle,
+      ),
+      child: Text(
+        count.toString(),
+        style: const TextStyle(color: Colors.white, fontSize: 12),
       ),
     );
   }
 
-  Widget _buildDrawerItem(IconData icon, String title, Widget screen) {
+  Widget _buildDrawerItem(
+    IconData icon,
+    String title,
+    Widget screen, {
+    Widget? badge,
+  }) {
     return ListTile(
       leading: Icon(icon, color: Colors.blue),
-      title: Text(title),
-      onTap:
-          () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => screen),
-          ),
+      title: Row(
+        children: [
+          Text(title),
+          if (badge != null) ...[SizedBox(width: 6), badge],
+        ],
+      ),
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (_) => screen));
+      },
     );
   }
 
