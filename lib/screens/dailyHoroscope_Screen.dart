@@ -7,6 +7,7 @@ import '../utils/pending_notification_navigation.dart';
 import 'horoscope_detail_screen.dart';
 import 'package:provider/provider.dart';
 import '../providers/horoscope_provider.dart';
+import 'package:intl/intl.dart';
 
 class DailyHoroscopeScreen extends StatefulWidget {
   final String? userId;
@@ -132,6 +133,22 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
       print('📩 Received new_horoscope: $data');
 
       final horoscope = Map<String, dynamic>.from(data);
+
+      // Initialize likes, dislikes, and userReaction from reactions map if present
+      final reactions = Map<String, dynamic>.from(horoscope['reactions'] ?? {});
+      int likes = 0;
+      int dislikes = 0;
+      reactions.forEach((key, value) {
+        if (value == 'like')
+          likes++;
+        else if (value == 'dislike')
+          dislikes++;
+      });
+
+      horoscope['likes'] = likes;
+      horoscope['dislikes'] = dislikes;
+      horoscope['userReaction'] = reactions[widget.userId] ?? 'none';
+
       final title = horoscope['title'] ?? 'New Horoscope';
       final content = horoscope['text'] ?? '';
 
@@ -171,8 +188,48 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
       final res = await http.get(Uri.parse(url));
       if (res.statusCode == 200) {
         final List<dynamic> data = json.decode(res.body);
+
+        // Process each horoscope to initialize reaction counts and userReaction
+        final processedHoroscopes =
+            data.map<Map<String, dynamic>>((item) {
+              final Map<String, dynamic> horoscope = Map<String, dynamic>.from(
+                item,
+              );
+              final reactions = Map<String, dynamic>.from(
+                horoscope['reactions'] ?? {},
+              );
+
+              int likes = 0;
+              int dislikes = 0;
+
+              reactions.forEach((key, value) {
+                if (value == 'like')
+                  likes++;
+                else if (value == 'dislike')
+                  dislikes++;
+              });
+
+              horoscope['likes'] = likes;
+              horoscope['dislikes'] = dislikes;
+              horoscope['userReaction'] = reactions[widget.userId] ?? 'none';
+
+              return horoscope;
+            }).toList();
+
+        // Sort by createdAt descending (newest first)
+        processedHoroscopes.sort((a, b) {
+          final dateA =
+              a['createdAt'] != null
+                  ? DateTime.parse(a['createdAt'])
+                  : DateTime.fromMillisecondsSinceEpoch(0);
+          final dateB =
+              b['createdAt'] != null
+                  ? DateTime.parse(b['createdAt'])
+                  : DateTime.fromMillisecondsSinceEpoch(0);
+          return dateB.compareTo(dateA);
+        });
         setState(() {
-          _horoscopes = List<Map<String, dynamic>>.from(data);
+          _horoscopes = processedHoroscopes;
           _loading = false;
         });
       } else {
@@ -189,8 +246,137 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
     }
   }
 
+  Future<void> _toggleReaction(
+    String horoscopeId,
+    String reaction,
+    int index,
+  ) async {
+    final url =
+        'https://chat-backend-rvk9.onrender.com/horoscope/$horoscopeId/reaction';
+
+    try {
+      final res = await http.patch(
+        Uri.parse(url),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'userId': widget.userId, 'reaction': reaction}),
+      );
+
+      if (res.statusCode == 200) {
+        final data = jsonDecode(res.body);
+        final reactions = Map<String, dynamic>.from(data['reactions'] ?? {});
+        int likes = 0;
+        int dislikes = 0;
+
+        reactions.forEach((key, value) {
+          if (value == 'like')
+            likes++;
+          else if (value == 'dislike')
+            dislikes++;
+        });
+
+        setState(() {
+          _horoscopes[index]['reactions'] = reactions;
+          _horoscopes[index]['likes'] = likes;
+          _horoscopes[index]['dislikes'] = dislikes;
+          _horoscopes[index]['userReaction'] =
+              reactions[widget.userId] ?? 'none';
+        });
+      } else {
+        print('Failed to update reaction');
+      }
+    } catch (e) {
+      print('Error updating reaction: $e');
+    }
+  }
+
+  String getCategoryLabel(DateTime date) {
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    final yesterday = today.subtract(Duration(days: 1));
+    final startOfWeek = today.subtract(
+      Duration(days: today.weekday - 1),
+    ); // Monday start
+    final startOfLastMonth = DateTime(now.year, now.month - 1, 1);
+    final startOfThisMonth = DateTime(now.year, now.month, 1);
+
+    final dateOnly = DateTime(date.year, date.month, date.day);
+
+    if (dateOnly == today) return 'Today';
+    if (dateOnly == yesterday) return 'Yesterday';
+    if (dateOnly.isAfter(startOfWeek)) return 'This Week';
+    if (dateOnly.isAfter(startOfLastMonth) &&
+        dateOnly.isBefore(startOfThisMonth)) {
+      return 'Last Month';
+    }
+    if (date.year == now.year) {
+      // Show month name e.g. June 2025
+      return DateFormat('MMMM yyyy').format(date);
+    }
+    // Older than this year: just year
+    return DateFormat('yyyy').format(date);
+  }
+
+  List<dynamic> getGroupedHoroscopes() {
+    Map<String, List<Map<String, dynamic>>> grouped = {};
+    for (var h in _horoscopes) {
+      if (h['createdAt'] == null) continue;
+      final date = DateTime.parse(h['createdAt']);
+      final label = getCategoryLabel(date);
+      grouped.putIfAbsent(label, () => []);
+      grouped[label]!.add(h);
+    }
+
+    List<MapEntry<String, List<Map<String, dynamic>>>> entries =
+        grouped.entries.toList();
+
+    entries.sort((a, b) {
+      DateTime parseLabelToDate(String label) {
+        final now = DateTime.now();
+        switch (label) {
+          case 'Today':
+            return DateTime(now.year, now.month, now.day);
+          case 'Yesterday':
+            return DateTime(
+              now.year,
+              now.month,
+              now.day,
+            ).subtract(Duration(days: 1));
+          case 'This Week':
+            return DateTime(
+              now.year,
+              now.month,
+              now.day,
+            ).subtract(Duration(days: now.weekday - 1));
+          case 'Last Month':
+            return DateTime(now.year, now.month - 1, 1);
+          default:
+            try {
+              if (RegExp(r'^\d{4}$').hasMatch(label)) {
+                return DateTime(int.parse(label), 1, 1);
+              } else {
+                return DateFormat('MMMM yyyy').parse(label);
+              }
+            } catch (_) {
+              return DateTime(1900);
+            }
+        }
+      }
+
+      return parseLabelToDate(b.key).compareTo(parseLabelToDate(a.key));
+    });
+
+    final List<dynamic> result = [];
+    for (final entry in entries) {
+      result.add(entry.key);
+      result.addAll(entry.value);
+    }
+    return result;
+  }
+
   @override
   Widget build(BuildContext context) {
+    final groupedList = getGroupedHoroscopes();
+
     return Scaffold(
       appBar: AppBar(title: const Text("🌟 Daily Horoscope")),
       body:
@@ -201,44 +387,125 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
               : _horoscopes.isEmpty
               ? const Center(child: Text("No horoscope found."))
               : ListView.builder(
-                itemCount: _horoscopes.length,
+                itemCount: groupedList.length,
                 itemBuilder: (context, index) {
-                  final item = _horoscopes[index];
-                  return Card(
-                    margin: const EdgeInsets.all(12),
-                    child: Padding(
-                      padding: const EdgeInsets.all(12),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          if (item['title'] != null)
+                  final item = groupedList[index];
+                  if (item is String) {
+                    // Category header
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
+                      ),
+                      child: Text(
+                        item,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.black.withOpacity(0.5),
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    );
+                  } else if (item is Map<String, dynamic>) {
+                    final horoscope = item;
+                    return Card(
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            if (horoscope['title'] != null)
+                              Text(
+                                horoscope['title'],
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            if (horoscope['sign'] != null)
+                              Text("Sign: ${horoscope['sign']}"),
+                            const SizedBox(height: 8),
+                            Text(horoscope['text'] ?? ''),
+                            const SizedBox(height: 4),
                             Text(
-                              item['title'],
+                              "📅 ${horoscope['createdAt'] != null ? DateTime.parse(horoscope['createdAt']).toLocal().toString() : ''}",
                               style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                                fontSize: 12,
                               ),
                             ),
-                          if (item['sign'] != null)
-                            Text("Sign: ${item['sign']}"),
-                          const SizedBox(height: 8),
-                          Text(item['text'] ?? ''),
-                          const SizedBox(height: 4),
-                          Text(
-                            "📅 ${item['createdAt'] != null ? DateTime.parse(item['createdAt']).toLocal().toString() : ''}",
-                            style: const TextStyle(
-                              color: Colors.grey,
-                              fontSize: 12,
+                            const Divider(height: 20),
+                            Row(
+                              children: [
+                                IconButton(
+                                  icon: Icon(
+                                    horoscope['userReaction'] == 'like'
+                                        ? Icons.thumb_up_alt
+                                        : Icons.thumb_up_alt_outlined,
+                                  ),
+                                  color: Colors.green,
+                                  onPressed: () {
+                                    final currentReaction =
+                                        horoscope['userReaction'] ?? 'none';
+                                    final newReaction =
+                                        currentReaction == 'like'
+                                            ? 'none'
+                                            : 'like';
+                                    final indexInHoroscopes = _horoscopes
+                                        .indexWhere(
+                                          (h) => h['_id'] == horoscope['_id'],
+                                        );
+                                    if (indexInHoroscopes != -1) {
+                                      _toggleReaction(
+                                        horoscope['_id'],
+                                        newReaction,
+                                        indexInHoroscopes,
+                                      );
+                                    }
+                                  },
+                                ),
+                                const SizedBox(width: 16),
+                                IconButton(
+                                  icon: Icon(
+                                    horoscope['userReaction'] == 'dislike'
+                                        ? Icons.thumb_down_alt
+                                        : Icons.thumb_down_alt_outlined,
+                                  ),
+                                  color: Colors.red,
+                                  onPressed: () {
+                                    final currentReaction =
+                                        horoscope['userReaction'] ?? 'none';
+                                    final newReaction =
+                                        currentReaction == 'dislike'
+                                            ? 'none'
+                                            : 'dislike';
+                                    final indexInHoroscopes = _horoscopes
+                                        .indexWhere(
+                                          (h) => h['_id'] == horoscope['_id'],
+                                        );
+                                    if (indexInHoroscopes != -1) {
+                                      _toggleReaction(
+                                        horoscope['_id'],
+                                        newReaction,
+                                        indexInHoroscopes,
+                                      );
+                                    }
+                                  },
+                                ),
+                              ],
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  );
+                    );
+                  }
+                  return const SizedBox.shrink();
                 },
               ),
     );
   }
 }
-
-// 👇 Move this outside the State class
