@@ -286,6 +286,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
         if (item['isClarified'] == true &&
             item['clarificationMessages'] != null) {
           for (var clarification in item['clarificationMessages']) {
+            if (clarification['clarificationHide'] == true) continue;
             allMessages.add(
               chat_model.Message(
                 id: questionId,
@@ -848,21 +849,24 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
           }
 
           if (item['isClarified'] == true &&
-              item['clarificationMessages'] != null) {
+              item['clarificationMessages'] != null &&
+              (item['clarificationMessages'] as List).isNotEmpty) {
             for (var clarification in item['clarificationMessages']) {
-              loadedMessages.add(
-                chat_model.Message(
-                  id: questionId,
-                  text: clarification['clarificationMessage'],
-                  isMe: false,
-                  isClarification: true,
-                  adminId: clarification['adminId'],
-                  adminName: clarification['adminName'],
-                  clarificatedAt: DateTime.parse(
-                    clarification['clarificatedAt'],
+              if (clarification['clarificationMessage'] != null) {
+                loadedMessages.add(
+                  chat_model.Message(
+                    id: questionId,
+                    text: clarification['clarificationMessage'],
+                    isMe: false,
+                    isClarification: true,
+                    adminId: clarification['adminId'],
+                    adminName: clarification['adminName'],
+                    clarificatedAt: DateTime.parse(
+                      clarification['clarificatedAt'],
+                    ),
                   ),
-                ),
-              );
+                );
+              }
             }
           }
 
