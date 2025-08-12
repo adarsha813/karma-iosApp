@@ -107,11 +107,63 @@ class DataControlScreen extends StatelessWidget {
   }
 
   void _clearChatHistory(BuildContext context) {
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
+    final userId = profileProvider.userId;
+
+    if (userId == null || userId.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("User ID not found.")));
+      return;
+    }
+
     _showConfirmationDialog(
       context,
       "Clear Chat History",
-      "Are you sure you want to clear your chat history?",
-      () => _sendRequest(context, "chats/clear", "Chat history cleared."),
+      "Are you sure you want to hide all your chat history, clarifications, questions, and answers?",
+      () async {
+        try {
+          // Trigger all requests in parallel
+          await Future.wait([
+            _sendRequest(
+              context,
+              "advices/hide-all",
+              "All advice hidden successfully.",
+              method: 'PATCH',
+              body: {'userId': userId, 'hide': true},
+            ),
+            _sendRequest(
+              context,
+              "questions/user/$userId/hide-clarifications",
+              "All clarifications hidden successfully.",
+              method: 'PATCH',
+            ),
+            _sendRequest(
+              context,
+              "questions/user/$userId/hide-questions",
+              "All questions hidden successfully.",
+              method: 'PATCH',
+            ),
+            _sendRequest(
+              context,
+              "questions/user/$userId/hide-answers",
+              "All answers hidden successfully.",
+              method: 'PATCH',
+            ),
+          ]);
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Everything hidden successfully.")),
+          );
+        } catch (e) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text("Error: $e")));
+        }
+      },
     );
   }
 
