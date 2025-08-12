@@ -660,7 +660,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.circle,
-                  borderRadius: BorderRadius.circular(16),
                 ),
               ),
             ),

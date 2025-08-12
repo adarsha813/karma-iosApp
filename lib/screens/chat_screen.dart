@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'profile_screen.dart';
 import 'settings_screen.dart';
-import 'logout_screen.dart';
+import 'DataControlScreen.dart';
 import 'profile_settings_screen.dart';
 import '../services/chat_service.dart';
 import '../widgets/chat_bubble.dart';
@@ -1449,7 +1449,12 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                 const QuestionStoreScreen(),
               ),
               _buildDrawerItem(Icons.settings, "Settings", SettingsScreen()),
-              _buildDrawerItem(Icons.logout, "Logout", LogoutScreen()),
+              _buildDrawerItem(
+                Icons.security,
+                "Data Control",
+                DataControlScreen(),
+              ),
+
               const Spacer(),
               _buildDrawerItem(
                 Icons.settings_suggest,
