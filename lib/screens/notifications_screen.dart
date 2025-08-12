@@ -8,6 +8,7 @@ import '../providers/notification_provider.dart';
 import '../models/notification_model.dart';
 import '../services/notification_handler.dart';
 import '../services/socket_service.dart'; // adjust the relative path as needed
+import 'package:shimmer/shimmer.dart';
 
 // Initialize the FlutterLocalNotificationsPlugin globally
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -264,6 +265,41 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     );
   }
 
+  Widget _buildSkeletonLoader() {
+    return ListView.builder(
+      itemCount: 8, // Number of shimmer placeholders
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          child: Shimmer.fromColors(
+            baseColor: Colors.grey.shade300,
+            highlightColor: Colors.grey.shade100,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(width: 40, height: 40, color: Colors.white),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 14,
+                        color: Colors.white,
+                        margin: const EdgeInsets.only(bottom: 8),
+                      ),
+                      Container(height: 14, width: 150, color: Colors.white),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_tabController == null) {
@@ -287,7 +323,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
       ),
       body:
           isLoading
-              ? const Center(child: CircularProgressIndicator())
+              ? _buildSkeletonLoader()
               : TabBarView(
                 controller: _tabController!,
                 children: [

@@ -9,6 +9,7 @@ import '../providers/profile_provider.dart';
 import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import '../l10n/app_localizations.dart'; // Add localization import
+import 'package:shimmer/shimmer.dart';
 
 class ProfileSettingsScreen extends StatefulWidget {
   const ProfileSettingsScreen({super.key});
@@ -642,6 +643,96 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     ).showSnackBar(SnackBar(content: Text(message), backgroundColor: color));
   }
 
+  Widget _buildSkeletonLoader() {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Shimmer.fromColors(
+        baseColor: Colors.grey.shade300,
+        highlightColor: Colors.grey.shade100,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Circle Avatar placeholder
+            Center(
+              child: Container(
+                width: 120,
+                height: 120,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+
+            // UserId field placeholder
+            Container(
+              height: 50,
+              color: Colors.white,
+
+              margin: const EdgeInsets.only(bottom: 10),
+            ),
+
+            // Name field placeholder
+            Container(
+              height: 50,
+              color: Colors.white,
+              margin: const EdgeInsets.only(bottom: 10),
+            ),
+
+            // Country field placeholder
+            Container(
+              height: 60,
+              color: Colors.white,
+              margin: const EdgeInsets.only(bottom: 10),
+            ),
+
+            // City field placeholder
+            Container(
+              height: 60,
+              color: Colors.white,
+              margin: const EdgeInsets.only(bottom: 10),
+            ),
+
+            // Gender radios placeholder (two side-by-side boxes)
+            Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    height: 40,
+                    color: Colors.white,
+                    margin: const EdgeInsets.only(right: 8),
+                  ),
+                ),
+                Expanded(child: Container(height: 40, color: Colors.white)),
+              ],
+            ),
+
+            const SizedBox(height: 10),
+
+            // Birth Date tile placeholder
+            Container(
+              height: 60,
+              color: Colors.white,
+              margin: const EdgeInsets.only(bottom: 10),
+            ),
+
+            // Birth Time tile placeholder
+            Container(
+              height: 60,
+              color: Colors.white,
+              margin: const EdgeInsets.only(bottom: 20),
+            ),
+
+            // Save button placeholder
+            Container(height: 50, width: double.infinity, color: Colors.white),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildTextField(
     String label,
     IconData icon,
@@ -903,7 +994,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       ),
       body:
           _isLoading
-              ? const Center(child: CircularProgressIndicator())
+              ? _buildSkeletonLoader()
               : SingleChildScrollView(
                 padding: const EdgeInsets.all(16),
                 child: Column(

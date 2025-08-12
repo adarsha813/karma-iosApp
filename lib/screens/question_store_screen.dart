@@ -5,6 +5,7 @@ import '../providers/profile_provider.dart';
 import 'dart:convert';
 import 'package:flutter_stripe/flutter_stripe.dart' hide Card;
 import '../services/socket_service.dart';
+import 'package:shimmer/shimmer.dart';
 
 class QuestionStoreScreen extends StatefulWidget {
   const QuestionStoreScreen({super.key});
@@ -152,6 +153,56 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
     startStripePayment(questions);
   }
 
+  Widget _buildSkeletonLoader() {
+    return ListView.builder(
+      padding: const EdgeInsets.all(16),
+      itemCount: 5, // Number of shimmer cards to show
+      itemBuilder: (context, index) {
+        return Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          elevation: 5,
+          margin: const EdgeInsets.symmetric(vertical: 8),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Shimmer.fromColors(
+              baseColor: Colors.grey.shade300,
+              highlightColor: Colors.grey.shade100,
+              child: Row(
+                children: [
+                  Container(width: 30, height: 30, color: Colors.white),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: 14,
+                          color: Colors.white,
+                          margin: const EdgeInsets.only(bottom: 8),
+                        ),
+                        Container(height: 14, width: 80, color: Colors.white),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: 70,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -161,7 +212,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
       ),
       body:
           isLoading
-              ? const Center(child: CircularProgressIndicator())
+              ? _buildSkeletonLoader()
               : RefreshIndicator(
                 onRefresh: _loadData,
                 child: ListView(

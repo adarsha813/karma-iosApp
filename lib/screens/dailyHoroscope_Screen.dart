@@ -8,6 +8,7 @@ import 'horoscope_detail_screen.dart';
 import 'package:provider/provider.dart';
 import '../providers/horoscope_provider.dart';
 import 'package:intl/intl.dart';
+import 'package:shimmer/shimmer.dart';
 
 class DailyHoroscopeScreen extends StatefulWidget {
   final String? userId;
@@ -373,6 +374,40 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
     return result;
   }
 
+  Widget _buildSkeletonLoader() {
+    return ListView.builder(
+      itemCount: 5, // Number of placeholder cards to show
+      itemBuilder: (context, index) {
+        return Card(
+          margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Shimmer.fromColors(
+              baseColor: Colors.grey.shade300,
+              highlightColor: Colors.grey.shade100,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(height: 20, width: 150, color: Colors.white),
+                  const SizedBox(height: 8),
+                  Container(height: 14, width: 100, color: Colors.white),
+                  const SizedBox(height: 8),
+                  Container(
+                    height: 50,
+                    width: double.infinity,
+                    color: Colors.white,
+                  ),
+                  const SizedBox(height: 8),
+                  Container(height: 12, width: 120, color: Colors.white),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final groupedList = getGroupedHoroscopes();
@@ -381,7 +416,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
       appBar: AppBar(title: const Text("🌟 Daily Horoscope")),
       body:
           _loading
-              ? const Center(child: CircularProgressIndicator())
+              ? _buildSkeletonLoader()
               : _error != null
               ? Center(child: Text(_error!))
               : _horoscopes.isEmpty

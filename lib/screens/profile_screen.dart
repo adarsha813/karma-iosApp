@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:provider/provider.dart';
 import '../providers/profile_provider.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String? userId;
@@ -173,6 +174,80 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
+  Widget _buildSkeletonLoader() {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Shimmer.fromColors(
+        baseColor: Colors.grey.shade300,
+        highlightColor: Colors.grey.shade100,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 24,
+              width: 150,
+              color: Colors.white,
+            ), // Lagna title
+            const SizedBox(height: 8),
+            Container(
+              height: 20,
+              width: 100,
+              color: Colors.white,
+            ), // Lagna value
+            const SizedBox(height: 12),
+
+            Container(
+              height: 24,
+              width: 120,
+              color: Colors.white,
+            ), // Rashi title
+            const SizedBox(height: 8),
+            Container(
+              height: 20,
+              width: 100,
+              color: Colors.white,
+            ), // Rashi value
+            const SizedBox(height: 12),
+
+            Container(
+              height: 24,
+              width: 180,
+              color: Colors.white,
+            ), // Ascendant Degree title
+            const SizedBox(height: 8),
+            Container(
+              height: 20,
+              width: 120,
+              color: Colors.white,
+            ), // Ascendant value
+            const SizedBox(height: 20),
+
+            Container(
+              height: 28,
+              width: 100,
+              color: Colors.white,
+            ), // Houses title
+            const SizedBox(height: 12),
+
+            // Simulate 3 houses with card placeholders
+            ...List.generate(3, (index) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: Container(
+                  height: 100,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              );
+            }),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildErrorWidget() {
     return Center(
       child: Column(
@@ -205,7 +280,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(title: const Text('Astro Profile')),
       body:
           _isLoading
-              ? const Center(child: CircularProgressIndicator())
+              ? _buildSkeletonLoader()
               : _error != null
               ? _buildErrorWidget()
               : SingleChildScrollView(
