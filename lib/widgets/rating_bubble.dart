@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class RatingBubble extends StatefulWidget {
   final String questionId;
   final int? initialRating;
+  final bool isAdvice;
+
   final String? initialFeedback;
   final Future<void> Function(String questionId, int rating, String? feedback)
   onRatingSubmitted;
@@ -13,6 +15,7 @@ class RatingBubble extends StatefulWidget {
     required this.initialRating,
     required this.initialFeedback,
     required this.onRatingSubmitted,
+    required this.isAdvice,
   });
 
   @override
@@ -89,6 +92,12 @@ class RatingBubbleState extends State<RatingBubble> {
                 }).toList(),
           ),
           const SizedBox(height: 8),
+          // In build method
+          Text(
+            widget.isAdvice ? "Rate this advice:" : "Rate this answer:",
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+
           Text(
             _selectedRating != null
                 ? 'You rated this $_selectedRating star(s)'

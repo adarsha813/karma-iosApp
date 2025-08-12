@@ -310,6 +310,8 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
               adminName: item['adminName'],
               answeredAt: DateTime.parse(item['advisedAt']),
               isAdvice: true,
+              rating: item['rating'],
+              feedback: item['feedback'],
             ),
           );
         }
@@ -335,6 +337,8 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
               adminId: item['adminId'] ?? '',
               adminName: item['adminName'] ?? '',
               answeredAt: DateTime.parse(item['createdAt']),
+              rating: item['rating'],
+              feedback: item['feedback'],
             ),
           );
         }
@@ -643,11 +647,6 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
     });
 
     socket.on('new_advice', (data) {
-      final provider = Provider.of<NotificationProvider>(
-        context,
-        listen: false,
-      );
-      provider.incrementUnreadCount(); // Add this
       print('Received new_advice: ${data.toString()}');
 
       final rawText = data['adviceTranslated'] as String? ?? '';
@@ -750,6 +749,8 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                 adminId: item['adminId'] ?? '',
                 adminName: item['adminName'] ?? '',
                 answeredAt: DateTime.parse(item['createdAt']),
+                rating: item['rating'], // Add rating
+                feedback: item['feedback'], // Add feedback
               ),
             );
           }
@@ -874,7 +875,10 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                 adminId: item['adminId'],
                 adminName: item['adminName'],
                 answeredAt: DateTime.parse(item['advisedAt']),
-                isAdvice: true, // ✅
+                isAdvice: true,
+                rating: item['rating'],
+                feedback: item['feedback'],
+                // ✅
               ),
             );
           }
@@ -1212,6 +1216,49 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
     }
   }
 
+  Future<void> _rateAdvice(String id, int rating, String? feedback) async {
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
+    final userId = profileProvider.userId ?? '';
+
+    if (userId.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please set your User ID first')),
+      );
+      return;
+    }
+
+    final String apiUrl =
+        'https://chat-backend-rvk9.onrender.com/advices/$id/rate';
+
+    try {
+      final response = await http.post(
+        Uri.parse(apiUrl),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({
+          'rating': rating,
+          'userId': userId,
+          if (feedback != null && feedback.isNotEmpty) 'feedback': feedback,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        Provider.of<ChatService>(
+          context,
+          listen: false,
+        ).updateAdviceRating(id, rating, feedback);
+      } else {
+        throw Exception('Failed to submit rating');
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Failed to submit rating: $e')));
+    }
+  }
+
   bool isProduction() => true;
   String _stripHtmlIfNeeded(String htmlText) {
     final RegExp exp = RegExp(
@@ -1356,6 +1403,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                               ),
                               message: msg,
                               onRateAnswer: _rateAnswer,
+                              onRateAdvice: _rateAdvice, // ✅ Add this line
                             ),
                           );
                         },

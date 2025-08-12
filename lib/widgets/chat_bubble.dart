@@ -7,8 +7,14 @@ import 'package:provider/provider.dart';
 class ChatBubble extends StatefulWidget {
   final Message message;
   final Future<void> Function(String, int, String?)? onRateAnswer;
+  final Future<void> Function(String, int, String?)? onRateAdvice; // ✅ Added
 
-  const ChatBubble({super.key, required this.message, this.onRateAnswer});
+  const ChatBubble({
+    super.key,
+    required this.message,
+    this.onRateAnswer,
+    this.onRateAdvice,
+  });
 
   @override
   State<ChatBubble> createState() => _ChatBubbleState();
@@ -31,6 +37,10 @@ class _ChatBubbleState extends State<ChatBubble> {
   @override
   Widget build(BuildContext context) {
     final message = widget.message;
+
+    debugPrint(
+      "💬 ChatBubble: id=${message.id}, rating=${message.rating}, feedback=${message.feedback}",
+    );
 
     // 🟣 Setup custom bubble color and label for advice
     Color bubbleColor =
@@ -190,9 +200,10 @@ class _ChatBubbleState extends State<ChatBubble> {
               ),
 
             // Rating bubble
-            if (!widget.message.isMe &&
-                widget.onRateAnswer != null &&
-                widget.message.answeredAt != null)
+            if ((!widget.message.isMe &&
+                    widget.onRateAnswer != null &&
+                    widget.message.answeredAt != null) ||
+                widget.message.isAdvice)
               Consumer<Message>(
                 builder: (_, msg, __) {
                   return RatingBubble(
@@ -202,13 +213,14 @@ class _ChatBubbleState extends State<ChatBubble> {
                     questionId: msg.id ?? '',
                     initialRating: msg.rating,
                     initialFeedback: msg.feedback,
+                    isAdvice: msg.isAdvice, // ✅ Added this
                     onRatingSubmitted: (id, rating, feedback) async {
                       msg.updateRating(rating, feedback); // Local update
-                      await widget.onRateAnswer!(
-                        id,
-                        rating,
-                        feedback,
-                      ); // Backend update
+                      if (widget.message.isAdvice) {
+                        await widget.onRateAdvice!(id, rating, feedback);
+                      } else {
+                        await widget.onRateAnswer!(id, rating, feedback);
+                      }
                     },
                   );
                 },

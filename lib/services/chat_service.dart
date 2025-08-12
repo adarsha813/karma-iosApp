@@ -31,4 +31,15 @@ class ChatService with ChangeNotifier {
     _messages[index] = updatedMsg;
     notifyListeners();
   }
+
+  void updateAdviceRating(String adviceId, int rating, String? feedback) {
+    final index = _messages.indexWhere((m) => m.id == adviceId && m.isAdvice);
+    if (index == -1) return;
+
+    final oldMsg = _messages[index];
+    final updatedMsg = oldMsg.copyWith(rating: rating, feedback: feedback);
+
+    _messages[index] = updatedMsg;
+    notifyListeners();
+  }
 }
