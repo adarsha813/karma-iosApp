@@ -21,6 +21,7 @@ import 'services/notification_handler.dart';
 import 'services/socket_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'providers/horoscope_provider.dart';
+import 'screens/profile_settings_screen.dart';
 
 // -------------------------
 // PendingNotificationNavigation as ChangeNotifier
@@ -140,6 +141,7 @@ class _BadgeUpdaterState extends State<BadgeUpdater> {
   void dispose() {
     notificationProvider.removeListener(_updateBadge);
     horoscopeProvider.removeListener(_updateBadge);
+    _listenersAdded = false;
     super.dispose();
   }
 
@@ -165,6 +167,7 @@ class _HomeRouterState extends State<HomeRouter> with WidgetsBindingObserver {
   void initState() {
     super.initState();
 
+    pendingNavigation.addListener(_handlePayload);
     // Listen to payload changes and navigate if needed
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -187,11 +190,16 @@ class _HomeRouterState extends State<HomeRouter> with WidgetsBindingObserver {
 
         if (data['type'] == 'horoscope' && data['userId'] != null) {
           _navigated = true;
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (_) => DailyHoroscopeScreen(userId: data['userId']),
-            ),
-          );
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (_) => DailyHoroscopeScreen(userId: data['userId']),
+                ),
+              )
+              .then((_) {
+                _navigated = false; // reset when user comes back
+              });
+
           pendingNavigation.payload = null;
         }
       } catch (e) {
@@ -203,10 +211,8 @@ class _HomeRouterState extends State<HomeRouter> with WidgetsBindingObserver {
 
   @override
   void dispose() {
-    Provider.of<PendingNotificationNavigation>(
-      context,
-      listen: false,
-    ).removeListener(_handlePayload);
+    pendingNavigation.removeListener(_handlePayload);
+
     super.dispose();
   }
 
@@ -226,8 +232,15 @@ class _HomeRouterState extends State<HomeRouter> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    // Default fallback screen
-    return const ChatScreen();
+    final profileProvider = Provider.of<ProfileProvider>(context);
+
+    if (profileProvider.userId == null || profileProvider.userId!.isEmpty) {
+      // 👇 No user logged in → go to Profile Setting
+      return const ProfileSettingsScreen();
+    } else {
+      // 👇 User logged in → go to Chat
+      return const ChatScreen();
+    }
   }
 }
 
@@ -345,7 +358,6 @@ Future<void> main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => ChatService()),
         ChangeNotifierProvider(create: (_) => LocaleProvider()),
-        ChangeNotifierProvider(create: (_) => ProfileProvider()),
         ChangeNotifierProvider(create: (_) => NotificationProvider()),
         ChangeNotifierProvider(create: (_) => HoroscopeProvider()),
         ChangeNotifierProvider<ProfileProvider>.value(value: profileProvider),

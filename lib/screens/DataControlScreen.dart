@@ -307,7 +307,7 @@ class DataControlScreen extends StatelessWidget {
           );
 
           // 5️⃣ Navigate to login
-          Navigator.pushReplacementNamed(context, '/login');
+          Navigator.pushReplacementNamed(context, '/profile-settings');
         } catch (e) {
           ScaffoldMessenger.of(
             context,
