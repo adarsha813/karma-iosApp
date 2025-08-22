@@ -147,6 +147,27 @@ class ProfileProvider with ChangeNotifier {
     await fetchAndSaveToken(newUserId);
   }
 
+  Future<void> clearProfile() async {
+    _userId = null;
+    _name = null;
+    _city = null;
+    _country = null;
+    _gender = null;
+    _birthDate = null;
+    _birthTime = null;
+    _profileImageUrl = null;
+    _latitude = null;
+    _longitude = null;
+    _timezone = null;
+    _dst = null;
+    _state = null;
+    _versionHistory = [];
+
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.clear(); // or clear specific keys
+    notifyListeners();
+  }
+
   // Add inside ProfileProvider
   Future<void> fetchAndSaveToken(String userId) async {
     final url = Uri.parse(

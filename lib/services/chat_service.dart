@@ -3,11 +3,24 @@ import '../models/message.dart';
 
 class ChatService with ChangeNotifier {
   List<Message> _messages = [];
+  String? _currentUserId;
+
+  String? get currentUserId => _currentUserId;
+
+  void setCurrentUserId(String id) {
+    _currentUserId = id;
+    notifyListeners();
+  }
 
   List<Message> get messages => _messages;
 
   void addMessage(Message message) {
     _messages.add(message);
+    notifyListeners();
+  }
+
+  void removeMessageById(String id) {
+    _messages.removeWhere((msg) => msg.id == id);
     notifyListeners();
   }
 

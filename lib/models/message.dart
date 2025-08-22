@@ -11,12 +11,19 @@ class Message extends ChangeNotifier {
   final DateTime? answeredAt;
   final DateTime? clarificatedAt;
   final bool isAdvice;
+  final String? clarificationId; // Add this field
+
+  bool isQuestionHidden;
+  bool isAnswerHidden;
+  bool isClarificationHidden;
+  bool isAdviceHidden;
 
   int? _rating;
   String? _feedback;
 
   Message({
     this.id,
+    this.clarificationId, // Add this in constructor
     required this.text,
     this.isMe = true,
     this.isClarification = false,
@@ -26,7 +33,10 @@ class Message extends ChangeNotifier {
     this.answeredAt,
     this.clarificatedAt,
     this.isAdvice = false,
-
+    this.isQuestionHidden = false,
+    this.isAnswerHidden = false,
+    this.isClarificationHidden = false,
+    this.isAdviceHidden = false,
     int? rating,
     String? feedback,
   }) : _rating = rating,
@@ -43,6 +53,26 @@ class Message extends ChangeNotifier {
     }
   }
 
+  void hideQuestion() {
+    isQuestionHidden = true;
+    notifyListeners();
+  }
+
+  void hideAnswer() {
+    isAnswerHidden = true;
+    notifyListeners();
+  }
+
+  void hideClarification() {
+    isClarificationHidden = true;
+    notifyListeners();
+  }
+
+  void hideAdvice() {
+    isAdviceHidden = true;
+    notifyListeners();
+  }
+
   Message copyWith({
     String? id,
     String? text,
@@ -56,6 +86,10 @@ class Message extends ChangeNotifier {
     DateTime? clarificatedAt,
     int? rating,
     String? feedback,
+    bool? isQuestionHidden,
+    bool? isAnswerHidden,
+    bool? isClarificationHidden,
+    bool? isAdviceHidden,
   }) {
     return Message(
       id: id ?? this.id,
@@ -70,13 +104,19 @@ class Message extends ChangeNotifier {
       clarificatedAt: clarificatedAt ?? this.clarificatedAt,
       rating: rating ?? _rating,
       feedback: feedback ?? _feedback,
+      isQuestionHidden: isQuestionHidden ?? this.isQuestionHidden,
+      isAnswerHidden: isAnswerHidden ?? this.isAnswerHidden,
+      isClarificationHidden:
+          isClarificationHidden ?? this.isClarificationHidden,
+      isAdviceHidden: isAdviceHidden ?? this.isAdviceHidden,
     );
   }
 
   factory Message.fromJson(Map<String, dynamic> json) {
     return Message(
-      id: json['id'],
+      id: json['_id'],
       text: json['text'] ?? '',
+      clarificationId: json['clarificationId'], // Add this
       isMe: json['isMe'] ?? true,
       isClarification: json['isClarification'] ?? false,
       isAdvice: json['isAdvice'] ?? false,
@@ -96,6 +136,10 @@ class Message extends ChangeNotifier {
               : null,
       rating: json['rating'],
       feedback: json['feedback'],
+      isQuestionHidden: json['isQuestionHidden'] ?? false,
+      isAnswerHidden: json['isAnswerHidden'] ?? false,
+      isClarificationHidden: json['isClarificationHidden'] ?? false,
+      isAdviceHidden: json['isAdviceHidden'] ?? false,
     );
   }
 
@@ -113,42 +157,11 @@ class Message extends ChangeNotifier {
       'clarificatedAt': clarificatedAt?.toIso8601String(),
       'rating': _rating,
       'feedback': _feedback,
+      'isQuestionHidden': isQuestionHidden,
+      'isAnswerHidden': isAnswerHidden,
+      'isClarificationHidden': isClarificationHidden,
+      'isAdviceHidden': isAdviceHidden,
+      'clarificationId': clarificationId, // Add this
     };
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return other is Message &&
-        other.id == id &&
-        other.text == text &&
-        other.isMe == isMe &&
-        other.isClarification == isClarification &&
-        other.adminId == adminId &&
-        other.adminName == adminName &&
-        other.createdAt == createdAt &&
-        other.answeredAt == answeredAt &&
-        other.clarificatedAt == clarificatedAt &&
-        other.rating == _rating &&
-        other.feedback == _feedback;
-  }
-
-  @override
-  int get hashCode {
-    return id.hashCode ^
-        text.hashCode ^
-        isMe.hashCode ^
-        isClarification.hashCode ^
-        adminId.hashCode ^
-        adminName.hashCode ^
-        createdAt.hashCode ^
-        answeredAt.hashCode ^
-        clarificatedAt.hashCode ^
-        _rating.hashCode ^
-        _feedback.hashCode;
-  }
-
-  @override
-  String toString() {
-    return 'Message{id: $id, text: $text, rating: $_rating, feedback: $_feedback}';
   }
 }
