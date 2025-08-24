@@ -1196,24 +1196,36 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
                     if (_userIdController.text.isEmpty)
                       GestureDetector(
-                        onTap: () {
-                          Navigator.push(
+                        onTap: () async {
+                          // ✅ make this async
+                          final recoveredUserId = await Navigator.push<String>(
                             context,
                             MaterialPageRoute(
                               builder: (_) => const RecoveryScreen(),
                             ),
                           );
+
+                          if (recoveredUserId != null &&
+                              recoveredUserId.isNotEmpty) {
+                            setState(() {
+                              _userIdController.text =
+                                  recoveredUserId; // ✅ fill textfield
+                            });
+
+                            // Optional: call profile fetch if you already have a method
+                            await _loadProfileData();
+                          }
                         },
                         child: Text(
                           l10n.existingUserButton,
                           style: const TextStyle(
                             fontSize: 18,
-                            color: Colors.blue, // make it look like a link
-                            decoration:
-                                TextDecoration.underline, // optional underline
+                            color: Colors.blue,
+                            decoration: TextDecoration.underline,
                           ),
                         ),
                       ),
+
                     _buildTextField(
                       l10n.nameLabel, // Localized
                       Icons.person,

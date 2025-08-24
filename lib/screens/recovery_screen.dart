@@ -95,7 +95,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
           const SnackBar(content: Text("Account recovered successfully.")),
         );
 
-        Navigator.pushReplacementNamed(context, '/chat');
+        Navigator.pop(context, userId); // ✅ return the recovered ID back
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Recovery failed. Check your info.")),
