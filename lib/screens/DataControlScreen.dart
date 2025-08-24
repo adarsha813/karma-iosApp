@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../providers/profile_provider.dart';
 import '../services/chat_service.dart'; // adjust path if needed
+import '../screens/recovery_screen.dart'; // adjust path if needed
 import 'dart:io';
 import 'package:flutter/services.dart';
 
@@ -317,7 +318,7 @@ class DataControlScreen extends StatelessWidget {
     );
   }
 
-  void _recoverAccount(BuildContext context) {
+  /* void _recoverAccount(BuildContext context) {
     _showConfirmationDialog(
       context,
       "Recover Account",
@@ -325,7 +326,7 @@ class DataControlScreen extends StatelessWidget {
       () => _sendRequest(context, "users/recover", "Account recovery started."),
     );
   }
-
+*/
   void _logout(BuildContext context) {
     _showConfirmationDialog(
       context,
@@ -380,8 +381,13 @@ class DataControlScreen extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.restore),
             title: const Text("Recover Account"),
-            onTap: () => _recoverAccount(context),
+            onTap:
+                () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const RecoveryScreen()),
+                ),
           ),
+
           const Divider(),
           ListTile(
             leading: const Icon(Icons.logout),

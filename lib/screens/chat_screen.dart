@@ -61,6 +61,17 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
+    socket = IO.io(
+      'wss://chat-backend-rvk9.onrender.com',
+      IO.OptionBuilder()
+          .setTransports(['websocket']) // for Flutter
+          .disableAutoConnect() // optional, connect manually
+          .build(),
+    );
+
+    socket.connect();
+
+    _initializeNotifications(); // now safe
     WidgetsBinding.instance.addObserver(this);
 
     loadUserId();

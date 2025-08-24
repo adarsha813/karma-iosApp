@@ -288,6 +288,26 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     }
   }
 
+  Widget _buildInfoRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 100,
+            child: Text(
+              "$label:",
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+          const SizedBox(width: 8),
+          Expanded(child: Text(value.isEmpty ? "Not set" : value)),
+        ],
+      ),
+    );
+  }
+
   Future<void> _loadProfileData() async {
     if (_isLoading) return;
     setState(() => _isLoading = true);
@@ -458,12 +478,16 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     if (_isSaving) return;
     setState(() => _isSaving = true);
 
-    final String userId = _userIdController.text.trim();
-    if (userId.isEmpty) {
-      _showMessage(context, 'userIdRequired', Colors.red);
-      setState(() => _isSaving = false);
-      return;
+    String? base64Image;
+    if (_image != null) {
+      final bytes = await _image!.readAsBytes();
+      base64Image = base64Encode(bytes);
     }
+
+    final String? userId =
+        _userIdController.text.trim().isEmpty
+            ? null
+            : _userIdController.text.trim();
 
     // Ensure we have fresh location data
     if (_cityController.text.isNotEmpty && _countryController.text.isNotEmpty) {
@@ -484,7 +508,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
             : '';
 
     final body = {
-      'userId': userId,
+      if (userId != null) 'userId': userId,
       'name': _nameController.text.trim(),
       'city': _cityController.text.trim(),
       'country': _countryController.text.trim(),
@@ -496,9 +520,8 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       'timezone': _timezone,
       'dst': _dst ?? 0.0,
       'state': _state,
+      'profilePicture': base64Image,
     };
-
-    debugPrint('Saving profile with location data: $body');
 
     try {
       final uri = Uri.parse(
@@ -509,16 +532,116 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode(body),
       );
+
       if (response.statusCode == 200) {
-        _showMessage(context, 'profileSaved', Colors.green);
+        final responseData = jsonDecode(response.body);
 
-        // ✅ Save the userId persistently
-        await Provider.of<ProfileProvider>(
-          context,
-          listen: false,
-        ).saveUserId(userId);
+        // ✅ Auto-update userId from backend if provided
+        if (responseData['userId'] != null) {
+          final generatedId = responseData['userId'].toString();
+          setState(() {
+            _userIdController.text = generatedId;
+          });
 
-        // ✅ Now navigate to profile screen
+          _showMessage(context, 'profileSaved', Colors.green);
+
+          // Show recovery secret dialog **only once**
+          if (responseData['recoverySecret'] != null) {
+            debugPrint('Recovery secret exists, showing dialog');
+
+            // Show the dialog and wait for user to acknowledge it
+            await showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) {
+                return AlertDialog(
+                  title: const Text(
+                    "🔐 Account Recovery Details",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  content: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Please save this information securely. You'll need it to recover your account.",
+                          style: TextStyle(fontSize: 14),
+                        ),
+                        const SizedBox(height: 20),
+                        _buildInfoRow("Name", _nameController.text),
+                        _buildInfoRow("Date of Birth", birthDateStr),
+                        _buildInfoRow("Time of Birth", birthTimeStr),
+                        const SizedBox(height: 10),
+                        const Text(
+                          "Recovery Secret:",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(12),
+                          margin: const EdgeInsets.only(top: 5, bottom: 15),
+                          decoration: BoxDecoration(
+                            color: Colors.amber[50],
+                            border: Border.all(color: Colors.amber),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: SelectableText(
+                            responseData['recoverySecret'],
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          "⚠️ Important:",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.red,
+                          ),
+                        ),
+                        const SizedBox(height: 5),
+                        const Text(
+                          "• Take a screenshot of this information\n"
+                          "• Store it in a secure place\n"
+                          "• Do not share with anyone\n"
+                          "• This will only be shown once",
+                          style: TextStyle(fontSize: 13),
+                        ),
+                      ],
+                    ),
+                  ),
+                  actions: [
+                    ElevatedButton(
+                      onPressed: () {
+                        // Only after user acknowledges, save the user ID and navigate
+                        Provider.of<ProfileProvider>(
+                          context,
+                          listen: false,
+                        ).saveUserId(generatedId);
+                        Navigator.of(context).pop();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green,
+                        foregroundColor: Colors.white,
+                      ),
+                      child: const Text("I've Saved This Information"),
+                    ),
+                  ],
+                );
+              },
+            );
+          } else {
+            // If no recovery secret (existing user), just save the user ID
+            await Provider.of<ProfileProvider>(
+              context,
+              listen: false,
+            ).saveUserId(generatedId);
+          }
+        } else {
+          _showMessage(context, 'saveFailed', Colors.red);
+        }
       } else {
         _showMessage(context, 'saveFailed', Colors.red);
       }
@@ -859,15 +982,11 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   }
 
   Future<List<String>> _getCitySuggestions(String query) async {
-    if (_selectedCountry == null || query.length < 2) {
-      return [];
-    }
+    if (_selectedCountry == null || query.length < 2) return <String>[];
 
     try {
       final countryCode = _getCountryIsoCode(_selectedCountry!);
-      if (countryCode.isEmpty) {
-        return [];
-      }
+      if (countryCode.isEmpty) return <String>[];
 
       final response = await http
           .get(
@@ -882,23 +1001,32 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           .timeout(const Duration(seconds: 5));
 
       if (response.statusCode == 200) {
-        final data = jsonDecode(response.body) as List;
-        return data
-            .where((item) => item['address'] != null)
-            .map((item) => item['address']['name'] as String)
-            .toList();
+        final List<dynamic> data = jsonDecode(response.body) as List<dynamic>;
+
+        final List<String> citySuggestions =
+            data
+                .where((item) => item['address'] != null)
+                .map((item) {
+                  final name =
+                      item['address']['name'] ?? item['display_name'] ?? '';
+                  return name.toString();
+                })
+                .where((name) => name.isNotEmpty)
+                .toList();
+
+        return citySuggestions;
       } else {
         debugPrint(
           'LocationIQ API error: ${response.statusCode} - ${response.body}',
         );
-        return [];
+        return <String>[];
       }
     } on TimeoutException {
       debugPrint('LocationIQ API request timed out');
-      return [];
+      return <String>[];
     } catch (e) {
       debugPrint('Error fetching city suggestions: $e');
-      return [];
+      return <String>[];
     }
   }
 
