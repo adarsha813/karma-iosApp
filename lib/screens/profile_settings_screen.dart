@@ -10,6 +10,7 @@ import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import '../l10n/app_localizations.dart'; // Add localization import
 import 'package:shimmer/shimmer.dart';
+import 'recovery_screen.dart'; // Adjust the path if it's in another folder
 
 class ProfileSettingsScreen extends StatefulWidget {
   const ProfileSettingsScreen({super.key});
@@ -1147,6 +1148,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                           const SizedBox(height: 20),
                         ],
                       ),
+
                     GestureDetector(
                       onTap: _pickImage,
                       child: Stack(
@@ -1182,12 +1184,36 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                         ],
                       ),
                     ),
+
+                    // Show button only if userId is blank
+                    // Show as a clickable text if userId is empty
                     const SizedBox(height: 20),
                     _buildTextField(
                       l10n.userIdLabel, // Localized
                       Icons.person_outline,
                       _userIdController,
                     ),
+
+                    if (_userIdController.text.isEmpty)
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const RecoveryScreen(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          l10n.existingUserButton,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            color: Colors.blue, // make it look like a link
+                            decoration:
+                                TextDecoration.underline, // optional underline
+                          ),
+                        ),
+                      ),
                     _buildTextField(
                       l10n.nameLabel, // Localized
                       Icons.person,

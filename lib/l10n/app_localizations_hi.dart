@@ -9,22 +9,25 @@ class AppLocalizationsHi extends AppLocalizations {
   AppLocalizationsHi([String locale = 'hi']) : super(locale);
 
   @override
-  String get settingsTitle => 'सेटिंग्स';
+  String get settingsTitle => 'सेटिंग';
 
   @override
-  String get notificationSettings => 'अधिसूचना सेटिंग्स';
+  String get notificationSettings => 'अधिसूचना सेटिंग';
 
   @override
-  String get privacySettings => 'गोपनीयता सेटिंग्स';
+  String get privacySettings => 'गोपनीयता सेटिंग';
 
   @override
-  String get accountSettings => 'खाता सेटिंग्स';
+  String get accountSettings => 'खाता सेटिंग';
 
   @override
-  String get languageSettings => 'भाषा सेटिंग्स';
+  String get languageSettings => 'भाषा सेटिंग';
 
   @override
-  String get languageChanged => 'भाषा बदली गई';
+  String get languageChanged => 'भाषा बदली';
+
+  @override
+  String get existingUserButton => 'मैं एक मौजूदा उपयोगकर्ता हूँ';
 
   @override
   String get chooseCountryTitle => 'अपना देश चुनें';
@@ -102,17 +105,17 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String countryHistory(Object country) {
+  String countryHistory(Object country, Object pais) {
     return 'देश: $country';
   }
 
   @override
-  String genderHistory(Object gender) {
+  String genderHistory(Object gender, Object genero) {
     return 'Gender: $gender';
   }
 
   @override
-  String birthDateHistory(Object date) {
+  String birthDateHistory(Object date, Object fecha) {
     return 'जन्म तिथि: $date';
   }
 
@@ -122,7 +125,12 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String locationHistory(Object latitude, Object longitude) {
+  String locationHistory(
+    Object latitud,
+    Object latitude,
+    Object longitud,
+    Object longitude,
+  ) {
     return 'स्थान: $latitude, $longitude';
   }
 
@@ -132,7 +140,7 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String dstHistory(Object value) {
+  String dstHistory(Object valor, Object value) {
     return 'DST: $value';
   }
 

@@ -6,7 +6,7 @@
   "accountSettings": "Account Settings",
   "languageSettings": "Language Settings",
   "languageChanged": "Language changed",
-
+  "existingUserButton": "I am an existing user",
   "chooseCountryTitle": "Choose your country",
   "yesText": "Yes",
   "noText": "No",

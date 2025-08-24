@@ -27,6 +27,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get languageChanged => 'Language changed';
 
   @override
+  String get existingUserButton => 'I am an existing user';
+
+  @override
   String get chooseCountryTitle => 'Choose your country';
 
   @override
@@ -102,17 +105,17 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String countryHistory(Object country) {
+  String countryHistory(Object country, Object pais) {
     return 'Country: $country';
   }
 
   @override
-  String genderHistory(Object gender) {
+  String genderHistory(Object gender, Object genero) {
     return 'Gender: $gender';
   }
 
   @override
-  String birthDateHistory(Object date) {
+  String birthDateHistory(Object date, Object fecha) {
     return 'Birth Date: $date';
   }
 
@@ -122,7 +125,12 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String locationHistory(Object latitude, Object longitude) {
+  String locationHistory(
+    Object latitud,
+    Object latitude,
+    Object longitud,
+    Object longitude,
+  ) {
     return 'Location: $latitude, $longitude';
   }
 
@@ -132,7 +140,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String dstHistory(Object value) {
+  String dstHistory(Object valor, Object value) {
     return 'DST: $value';
   }
 

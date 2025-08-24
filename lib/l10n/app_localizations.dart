@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_en.dart';
+import 'app_localizations_es.dart';
 import 'app_localizations_hi.dart';
 
 // ignore_for_file: type=lint
@@ -95,6 +96,7 @@ abstract class AppLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
+    Locale('es'),
     Locale('hi'),
   ];
 
@@ -133,6 +135,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Language changed'**
   String get languageChanged;
+
+  /// No description provided for @existingUserButton.
+  ///
+  /// In en, this message translates to:
+  /// **'I am an existing user'**
+  String get existingUserButton;
 
   /// No description provided for @chooseCountryTitle.
   ///
@@ -276,19 +284,19 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Country: {country}'**
-  String countryHistory(Object country);
+  String countryHistory(Object country, Object pais);
 
   /// No description provided for @genderHistory.
   ///
   /// In en, this message translates to:
   /// **'Gender: {gender}'**
-  String genderHistory(Object gender);
+  String genderHistory(Object gender, Object genero);
 
   /// No description provided for @birthDateHistory.
   ///
   /// In en, this message translates to:
   /// **'Birth Date: {date}'**
-  String birthDateHistory(Object date);
+  String birthDateHistory(Object date, Object fecha);
 
   /// No description provided for @birthTimeHistory.
   ///
@@ -300,7 +308,12 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Location: {latitude}, {longitude}'**
-  String locationHistory(Object latitude, Object longitude);
+  String locationHistory(
+    Object latitud,
+    Object latitude,
+    Object longitud,
+    Object longitude,
+  );
 
   /// No description provided for @timezoneHistory.
   ///
@@ -312,7 +325,7 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'DST: {value}'**
-  String dstHistory(Object value);
+  String dstHistory(Object valor, Object value);
 
   /// No description provided for @stateHistory.
   ///
@@ -362,7 +375,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['en', 'hi'].contains(locale.languageCode);
+      <String>['en', 'es', 'hi'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -373,6 +386,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   switch (locale.languageCode) {
     case 'en':
       return AppLocalizationsEn();
+    case 'es':
+      return AppLocalizationsEs();
     case 'hi':
       return AppLocalizationsHi();
   }
