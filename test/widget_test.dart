@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kundali/main.dart';
+import 'package:kundali/screens/onboarding_screen.dart'; // ← add this
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp()); // Remove 'const' here
+  testWidgets('Smoke test for MyApp', (WidgetTester tester) async {
+    // Provide the required 'firstLaunch' argument
+    await tester.pumpWidget(MyApp(firstLaunch: true));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Now you can test widgets inside MyApp
+    expect(find.byType(OnboardingScreen), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    // Simulate finishing onboarding
+    await tester.tap(find.text('New User'));
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // After finishing, OnboardingScreen should disappear
+    expect(find.byType(OnboardingScreen), findsNothing);
   });
 }

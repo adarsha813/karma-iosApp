@@ -22,6 +22,8 @@ import 'services/socket_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'providers/horoscope_provider.dart';
 import 'screens/profile_settings_screen.dart';
+import 'services/first_launch_service.dart';
+import 'screens/onboarding_screen.dart';
 
 // -------------------------
 // PendingNotificationNavigation as ChangeNotifier
@@ -352,6 +354,7 @@ Future<void> main() async {
       payload: jsonEncode(message.data),
     );
   });
+  final firstLaunch = await isFirstLaunch();
 
   runApp(
     MultiProvider(
@@ -365,7 +368,7 @@ Future<void> main() async {
           value: pendingNavigation,
         ),
       ],
-      child: const MyApp(),
+      child: MyApp(firstLaunch: firstLaunch),
     ),
   );
   WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -412,16 +415,19 @@ Future<void> _requestNotificationPermission() async {
 // -------------------------
 // Root app widget
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+  final bool firstLaunch;
+  const MyApp({Key? key, required this.firstLaunch}) : super(key: key);
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
+  bool showOnboarding = false;
+
   @override
   void initState() {
     super.initState();
+    showOnboarding = widget.firstLaunch;
 
     // Listen to FCM messages while app is in foreground
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
@@ -442,9 +448,19 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void _finishOnboarding() {
+    setState(() {
+      showOnboarding = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final localeProvider = Provider.of<LocaleProvider>(context);
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
 
     if (localeProvider.isLoading) {
       return const MaterialApp(
@@ -464,7 +480,13 @@ class _MyAppState extends State<MyApp> {
       ],
       supportedLocales: AppLocalizations.supportedLocales,
       locale: localeProvider.locale,
-      home: Stack(children: [const HomeRouter(), const BadgeUpdater()]),
+      home:
+          showOnboarding
+              ? OnboardingScreen(
+                onFinish: _finishOnboarding,
+                profileProvider: profileProvider, // ✅ pass explicitly
+              )
+              : Stack(children: const [HomeRouter(), BadgeUpdater()]),
     );
   }
 }
