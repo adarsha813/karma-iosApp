@@ -362,6 +362,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Error:'**
   String get errorPrefix;
+
+  /// No description provided for @onboardingChooseLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Your Language'**
+  String get onboardingChooseLanguage;
+
+  /// No description provided for @onboardingChooseLanguageDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Select your preferred language to continue.'**
+  String get onboardingChooseLanguageDesc;
+
+  /// No description provided for @onboardingWhatIsAstrology.
+  ///
+  /// In en, this message translates to:
+  /// **'What is Astrology?'**
+  String get onboardingWhatIsAstrology;
+
+  /// No description provided for @onboardingWhatIsAstrologyDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Astrology is the study of celestial bodies...'**
+  String get onboardingWhatIsAstrologyDesc;
+
+  /// No description provided for @onboardingWhyUseApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Why use this app?'**
+  String get onboardingWhyUseApp;
+
+  /// No description provided for @onboardingWhyUseAppDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Get personalized horoscopes, daily predictions, and guidance to make informed decisions.'**
+  String get onboardingWhyUseAppDesc;
+
+  /// No description provided for @onboardingHowToUse.
+  ///
+  /// In en, this message translates to:
+  /// **'How to use this app?'**
+  String get onboardingHowToUse;
+
+  /// No description provided for @onboardingHowToUseDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Navigate easily, check daily horoscopes, and manage your profile for accurate predictions.'**
+  String get onboardingHowToUseDesc;
+
+  /// No description provided for @onboardingGetStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Started'**
+  String get onboardingGetStarted;
+
+  /// No description provided for @onboardingNewUser.
+  ///
+  /// In en, this message translates to:
+  /// **'New User'**
+  String get onboardingNewUser;
+
+  /// No description provided for @onboardingExistingUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Existing User'**
+  String get onboardingExistingUser;
+
+  /// No description provided for @onboardingBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get onboardingBack;
+
+  /// No description provided for @onboardingNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get onboardingNext;
 }
 
 class _AppLocalizationsDelegate

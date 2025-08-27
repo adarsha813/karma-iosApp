@@ -42,5 +42,18 @@
   "userIdRequired": "उपयोगकर्ता ID की आवश्यकता है",
   "profileSaved": "प्रोफ़ाइल सफलतापूर्वक बचाया",
   "saveFailed": "प्रोफ़ाइल को बचाने में विफल",
-  "errorPrefix": "त्रुटि:"
+  "errorPrefix": "त्रुटि:",
+   "onboardingChooseLanguage": "अपनी भाषा चुनें",
+  "onboardingChooseLanguageDesc": "जारी रखने के लिए अपनी पसंदीदा भाषा चुनें।",
+  "onboardingWhatIsAstrology": "ज्योतिष क्या है?",
+  "onboardingWhatIsAstrologyDesc": "ज्योतिष आकाशीय पिंडों का अध्ययन है...",
+  "onboardingWhyUseApp": "इस ऐप का उपयोग क्यों करें?",
+  "onboardingWhyUseAppDesc": "व्यक्तिगत राशिफल, दैनिक भविष्यवाणियाँ, और निर्णय लेने में मार्गदर्शन प्राप्त करें।",
+  "onboardingHowToUse": "इस ऐप का उपयोग कैसे करें?",
+  "onboardingHowToUseDesc": "आसानी से नेविगेट करें, दैनिक राशिफल देखें और सटीक भविष्यवाणियों के लिए प्रोफ़ाइल प्रबंधित करें।",
+  "onboardingGetStarted": "शुरू करें",
+  "onboardingNewUser": "नया उपयोगकर्ता",
+  "onboardingExistingUser": "मौजूदा उपयोगकर्ता",
+  "onboardingBack": "पीछे",
+  "onboardingNext": "अगला"
 }

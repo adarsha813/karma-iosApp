@@ -4,6 +4,9 @@ import 'package:provider/provider.dart';
 import '../providers/LocaleProvider.dart'; // Add this import
 // lib/providers/notification_provider.dart
 import '../providers/notification_provider.dart';
+import '../providers/profile_provider.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -104,17 +107,70 @@ class _LanguageRadioTile extends StatelessWidget {
     required this.l10n,
   });
 
+  Future<void> _updateLanguageOnBackend(
+    BuildContext context,
+    String langCode,
+  ) async {
+    try {
+      final profileProvider = Provider.of<ProfileProvider>(
+        context,
+        listen: false,
+      );
+      final userId = profileProvider.userId;
+      final token = profileProvider.token;
+
+      if (userId == null || token == null) {
+        debugPrint("⚠️ Cannot update language: userId or token missing");
+        return;
+      }
+
+      final url = Uri.parse(
+        'https://chat-backend-rvk9.onrender.com/api/profile/update-language',
+      );
+      final response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        body: json.encode({'userId': userId, 'language': langCode}),
+      );
+
+      if (response.statusCode == 200) {
+        debugPrint("✅ Language updated on backend successfully.");
+        // Optional: ensure ProfileProvider.language is synced
+        profileProvider.setLanguage(langCode);
+      } else {
+        debugPrint("❌ Failed to update language: ${response.body}");
+      }
+    } catch (e) {
+      debugPrint("🔴 Error updating language: $e");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final currentLocale = Localizations.localeOf(context);
+    final profileProvider = Provider.of<ProfileProvider>(context);
+    final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
 
-    return RadioListTile<Locale>(
+    return RadioListTile<String>(
       title: Text(language),
-      value: locale,
-      groupValue: currentLocale,
-      onChanged: (Locale? value) {
+      value: locale.languageCode,
+      groupValue: profileProvider.language ?? 'en',
+      onChanged: (String? value) async {
         if (value != null) {
-          Provider.of<LocaleProvider>(context, listen: false).setLocale(value);
+          // Update ProfileProvider state
+          await profileProvider.saveLanguage(value);
+
+          // Update Flutter locale
+          localeProvider.setLocale(Locale(value));
+
+          // Update backend if user is logged in
+          if (profileProvider.userId != null) {
+            await _updateLanguageOnBackend(context, value);
+          }
+
+          // Show confirmation
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text(l10n.languageChanged)));

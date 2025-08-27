@@ -238,7 +238,7 @@ class _HomeRouterState extends State<HomeRouter> with WidgetsBindingObserver {
 
     if (profileProvider.userId == null || profileProvider.userId!.isEmpty) {
       // 👇 No user logged in → go to Profile Setting
-      return const ProfileSettingsScreen();
+      return ProfileSettingsScreen();
     } else {
       // 👇 User logged in → go to Chat
       return const ChatScreen();
@@ -428,6 +428,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     showOnboarding = widget.firstLaunch;
+    // Listen for locale changes
 
     // Listen to FCM messages while app is in foreground
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
@@ -457,6 +458,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     final localeProvider = Provider.of<LocaleProvider>(context);
+
     final profileProvider = Provider.of<ProfileProvider>(
       context,
       listen: false,
@@ -479,14 +481,20 @@ class _MyAppState extends State<MyApp> {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      locale: localeProvider.locale,
+      locale: localeProvider.locale, // <-- use Provider directly
+      routes: {'/chat': (context) => const ChatScreen()},
       home:
           showOnboarding
               ? OnboardingScreen(
                 onFinish: _finishOnboarding,
-                profileProvider: profileProvider, // ✅ pass explicitly
+                profileProvider: profileProvider,
               )
-              : Stack(children: const [HomeRouter(), BadgeUpdater()]),
+              : Stack(
+                children: [
+                  HomeRouter(), // remove const to allow rebuild on locale change
+                  BadgeUpdater(),
+                ],
+              ),
     );
   }
 }

@@ -35,6 +35,57 @@ class ProfileProvider with ChangeNotifier {
   String? get state => _state;
   List<Map<String, dynamic>> get versionHistory => _versionHistory;
 
+  String? _language;
+  String? get language => _language;
+
+  Future<void> saveLanguage(String langCode) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('language', langCode);
+    _language = langCode;
+    notifyListeners();
+  }
+
+  // Add this inside ProfileProvider class
+  void setLanguage(String langCode) {
+    _language = langCode;
+    notifyListeners();
+  }
+
+  // Optional: sync language to backend
+  Future<void> updateLanguageBackend(String langCode) async {
+    if (_userId == null || _token == null) return;
+
+    final url = Uri.parse(
+      'https://chat-backend-rvk9.onrender.com/api/profile/update-language',
+    );
+    try {
+      final response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $_token',
+        },
+        body: jsonEncode({'userId': _userId, 'language': langCode}),
+      );
+
+      if (response.statusCode == 200) {
+        _language = langCode;
+        notifyListeners();
+        print("✅ Language updated on backend");
+      } else {
+        print("❌ Failed to update language: ${response.body}");
+      }
+    } catch (e) {
+      print("🔴 Error updating language: $e");
+    }
+  }
+
+  Future<void> loadLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    _language = prefs.getString('language') ?? 'en'; // default to English
+    notifyListeners();
+  }
+
   Future<void> loadUserId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     _userId = prefs.getString('userId');
@@ -207,9 +258,14 @@ class ProfileProvider with ChangeNotifier {
     double? timezone,
     double? dst,
     String? state,
+    String? language, // <-- add this
     Map<String, dynamic>? previousVersion,
   }) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (language != null) {
+      await prefs.setString('language', language);
+      _language = language;
+    }
 
     // Create a version snapshot before updating
     if (previousVersion == null && _userId != null) {
@@ -287,5 +343,26 @@ class ProfileProvider with ChangeNotifier {
   void clearVersionHistory() {
     _versionHistory = [];
     notifyListeners();
+  }
+
+  Future<void> syncLanguageToBackend(String userId, String language) async {
+    try {
+      final url = Uri.parse(
+        'https://chat-backend-rvk9.onrender.com/api/profile/update-language',
+      );
+      final response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'userId': userId, 'language': language}),
+      );
+
+      if (response.statusCode == 200) {
+        debugPrint("✅ Language synced to backend successfully");
+      } else {
+        debugPrint("❌ Failed to sync language to backend");
+      }
+    } catch (e) {
+      debugPrint("🔴 Error syncing language to backend: $e");
+    }
   }
 }

@@ -6,11 +6,13 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import '../providers/profile_provider.dart';
+import '../providers/LocaleProvider.dart';
 import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import '../l10n/app_localizations.dart'; // Add localization import
 import 'package:shimmer/shimmer.dart';
 import 'recovery_screen.dart'; // Adjust the path if it's in another folder
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileSettingsScreen extends StatefulWidget {
   const ProfileSettingsScreen({super.key});
@@ -253,6 +255,17 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   void initState() {
     super.initState();
     _loadSavedProfileData();
+
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
+    profileProvider.loadLanguage().then((_) {
+      if (profileProvider.language != null &&
+          _userIdController.text.isNotEmpty) {
+        _updateLanguageOnBackend(profileProvider.language!);
+      }
+    });
     _userIdController.addListener(_onUserIdChanged);
   }
 
@@ -309,6 +322,11 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     );
   }
 
+  Future<void> saveLanguageLocally(String langCode) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('app_language', langCode);
+  }
+
   Future<void> _loadProfileData() async {
     if (_isLoading) return;
     setState(() => _isLoading = true);
@@ -326,6 +344,8 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body)['profile'];
+
+        final String? languageFromBackend = data['language'];
         DateTime? parsedDate;
         TimeOfDay? parsedTime;
 
@@ -362,6 +382,15 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           context,
           listen: false,
         );
+        if (languageFromBackend != null &&
+            languageFromBackend != profileProvider.language &&
+            _userIdController.text.isNotEmpty) {
+          await profileProvider.saveLanguage(languageFromBackend);
+          Provider.of<LocaleProvider>(
+            context,
+            listen: false,
+          ).setLocale(Locale(languageFromBackend));
+        }
 
         await profileProvider.saveUserId(
           userId,
@@ -382,7 +411,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           _dst = data['dst']?.toDouble();
           _state = data['state'];
         });
-
+        final savedLang = profileProvider.language ?? 'en';
         await profileProvider.saveFullProfile(
           userId: userId,
           name: _nameController.text,
@@ -397,6 +426,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           timezone: _timezone,
           dst: _dst,
           state: _state,
+          language: savedLang, // ✅ pass saved language explicitly
         );
       } else {
         await _loadLocalProfileData();
@@ -409,12 +439,39 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     }
   }
 
+  Future<void> _updateLanguageOnBackend(String langCode) async {
+    final userId = _userIdController.text.trim();
+    if (userId.isEmpty) return;
+
+    final body = {'userId': userId, 'language': langCode};
+
+    try {
+      final uri = Uri.parse(
+        'https://chat-backend-rvk9.onrender.com/api/profile/update-language',
+      );
+      final response = await http.post(
+        uri,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode(body),
+      );
+
+      if (response.statusCode == 200) {
+        debugPrint('Language updated on backend successfully.');
+      } else {
+        debugPrint('Failed to update language: ${response.statusCode}');
+      }
+    } catch (e) {
+      debugPrint('Error updating language: $e');
+    }
+  }
+
   Future<void> _loadSavedProfileData() async {
     final profileProvider = Provider.of<ProfileProvider>(
       context,
       listen: false,
     );
     await profileProvider.loadUserId();
+    await profileProvider.loadLanguage(); // Load local language first
 
     setState(() {
       _userIdController.text = profileProvider.userId ?? '';
@@ -498,6 +555,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       );
     }
 
+    final savedLang =
+        Provider.of<ProfileProvider>(context, listen: false).language;
+
     final birthDateStr =
         _selectedDate != null
             ? "${_selectedDate!.year}-${_selectedDate!.month.toString().padLeft(2, '0')}-${_selectedDate!.day.toString().padLeft(2, '0')}"
@@ -522,6 +582,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       'dst': _dst ?? 0.0,
       'state': _state,
       'profilePicture': base64Image,
+      if (savedLang != null) 'language': savedLang, // ✅ attach language
     };
 
     try {
@@ -622,6 +683,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                           listen: false,
                         ).saveUserId(generatedId);
                         Navigator.of(context).pop();
+                        Navigator.pushReplacementNamed(context, '/chat');
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
@@ -639,6 +701,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
               context,
               listen: false,
             ).saveUserId(generatedId);
+            if (mounted) {
+              Navigator.pushReplacementNamed(context, '/chat');
+            }
           }
         } else {
           _showMessage(context, 'saveFailed', Colors.red);
@@ -1103,6 +1168,10 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final localeProvider = Provider.of<LocaleProvider>(
+      context,
+    ); // listen: true by default
+    final locale = localeProvider.locale;
     final profileProvider = Provider.of<ProfileProvider>(context);
     final l10n = AppLocalizations.of(context)!; // Get localization instance
 

@@ -42,5 +42,19 @@
   "userIdRequired": "Se requiere ID de usuario",
   "profileSaved": "Perfil guardado con exito",
   "saveFailed": "Failed to save profile",
-  "errorPrefix": "Error:"
+  "errorPrefix": "Error:",
+   "onboardingChooseLanguage": "Elige tu idioma",
+  "onboardingChooseLanguageDesc": "Selecciona tu idioma preferido para continuar.",
+  "onboardingWhatIsAstrology": "¿Qué es la astrología?",
+  "onboardingWhatIsAstrologyDesc": "La astrología es el estudio de los cuerpos celestes...",
+  "onboardingWhyUseApp": "¿Por qué usar esta aplicación?",
+  "onboardingWhyUseAppDesc": "Obtén horóscopos personalizados, predicciones diarias y orientación para tomar decisiones informadas.",
+  "onboardingHowToUse": "Cómo usar esta aplicación?",
+  "onboardingHowToUseDesc": "Navega fácilmente, consulta los horóscopos diarios y administra tu perfil para predicciones precisas.",
+  "onboardingGetStarted": "Comenzar",
+  "onboardingNewUser": "Nuevo usuario",
+  "onboardingExistingUser": "Usuario existente",
+  "onboardingBack": "Atrás",
+  "onboardingNext": "Siguiente"
+  
 }

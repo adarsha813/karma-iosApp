@@ -165,4 +165,47 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get errorPrefix => 'त्रुटि:';
+
+  @override
+  String get onboardingChooseLanguage => 'अपनी भाषा चुनें';
+
+  @override
+  String get onboardingChooseLanguageDesc =>
+      'जारी रखने के लिए अपनी पसंदीदा भाषा चुनें।';
+
+  @override
+  String get onboardingWhatIsAstrology => 'ज्योतिष क्या है?';
+
+  @override
+  String get onboardingWhatIsAstrologyDesc =>
+      'ज्योतिष आकाशीय पिंडों का अध्ययन है...';
+
+  @override
+  String get onboardingWhyUseApp => 'इस ऐप का उपयोग क्यों करें?';
+
+  @override
+  String get onboardingWhyUseAppDesc =>
+      'व्यक्तिगत राशिफल, दैनिक भविष्यवाणियाँ, और निर्णय लेने में मार्गदर्शन प्राप्त करें।';
+
+  @override
+  String get onboardingHowToUse => 'इस ऐप का उपयोग कैसे करें?';
+
+  @override
+  String get onboardingHowToUseDesc =>
+      'आसानी से नेविगेट करें, दैनिक राशिफल देखें और सटीक भविष्यवाणियों के लिए प्रोफ़ाइल प्रबंधित करें।';
+
+  @override
+  String get onboardingGetStarted => 'शुरू करें';
+
+  @override
+  String get onboardingNewUser => 'नया उपयोगकर्ता';
+
+  @override
+  String get onboardingExistingUser => 'मौजूदा उपयोगकर्ता';
+
+  @override
+  String get onboardingBack => 'पीछे';
+
+  @override
+  String get onboardingNext => 'अगला';
 }

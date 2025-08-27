@@ -165,4 +165,47 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get errorPrefix => 'Error:';
+
+  @override
+  String get onboardingChooseLanguage => 'Elige tu idioma';
+
+  @override
+  String get onboardingChooseLanguageDesc =>
+      'Selecciona tu idioma preferido para continuar.';
+
+  @override
+  String get onboardingWhatIsAstrology => '¿Qué es la astrología?';
+
+  @override
+  String get onboardingWhatIsAstrologyDesc =>
+      'La astrología es el estudio de los cuerpos celestes...';
+
+  @override
+  String get onboardingWhyUseApp => '¿Por qué usar esta aplicación?';
+
+  @override
+  String get onboardingWhyUseAppDesc =>
+      'Obtén horóscopos personalizados, predicciones diarias y orientación para tomar decisiones informadas.';
+
+  @override
+  String get onboardingHowToUse => 'Cómo usar esta aplicación?';
+
+  @override
+  String get onboardingHowToUseDesc =>
+      'Navega fácilmente, consulta los horóscopos diarios y administra tu perfil para predicciones precisas.';
+
+  @override
+  String get onboardingGetStarted => 'Comenzar';
+
+  @override
+  String get onboardingNewUser => 'Nuevo usuario';
+
+  @override
+  String get onboardingExistingUser => 'Usuario existente';
+
+  @override
+  String get onboardingBack => 'Atrás';
+
+  @override
+  String get onboardingNext => 'Siguiente';
 }
