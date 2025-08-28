@@ -36,7 +36,10 @@ class ChatScreen extends StatefulWidget {
   _ChatScreenState createState() => _ChatScreenState();
 }
 
-class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
+class _ChatScreenState extends State<ChatScreen>
+    with WidgetsBindingObserver, TickerProviderStateMixin {
+  late final AnimationController _animationController;
+
   final TextEditingController _controller = TextEditingController();
   final ScrollController _scrollController = ScrollController();
   final TextEditingController messageController = TextEditingController();
@@ -61,6 +64,12 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 400),
+    );
+
+    _animationController.forward();
     socket = IO.io(
       'wss://chat-backend-rvk9.onrender.com',
       IO.OptionBuilder()
@@ -690,7 +699,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (_scrollController.hasClients) {
           _scrollController.animateTo(
-            0,
+            _scrollController.position.maxScrollExtent,
             duration: const Duration(milliseconds: 300),
             curve: Curves.easeOut,
           );
@@ -1296,6 +1305,8 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
     _textController.dispose();
     _controller.dispose();
     messageController.dispose();
+    _animationController.dispose();
+
     super.dispose();
     WidgetsBinding.instance.removeObserver(this);
   }
@@ -1397,31 +1408,23 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
           Expanded(
             child: Consumer<ChatService>(
               builder: (context, chatService, _) {
-                return ListView.builder(
-                  controller: _scrollController,
-                  reverse: true, // ✅ Makes the list start from bottom
-                  itemCount: chatService.messages.length,
-                  itemBuilder: (context, index) {
-                    final message =
-                        chatService.messages[chatService.messages.length -
-                            1 -
-                            index];
-                    return ChangeNotifierProvider.value(
-                      value: message,
-                      child: Consumer<chat_model.Message>(
-                        builder: (context, msg, _) {
-                          return AnimatedSwitcher(
-                            duration: const Duration(milliseconds: 300),
-                            child: ChatBubble(
-                              key: ValueKey(
-                                '${msg.id}_${msg.rating}_${msg.feedback}',
-                              ),
-                              message: msg,
-                              onRateAnswer: _rateAnswer,
-                              onRateAdvice: _rateAdvice, // ✅ Add this line
-                            ),
-                          );
-                        },
+                return AnimatedList(
+                  key: chatService.listKey,
+                  reverse: false,
+                  initialItemCount: chatService.messages.length,
+                  itemBuilder: (context, index, animation) {
+                    final message = chatService.messages[index];
+                    return SizeTransition(
+                      sizeFactor: animation,
+                      axisAlignment: 0.0,
+                      child: ChatBubble(
+                        key: ValueKey(
+                          '${message.id}_${message.rating}_${message.feedback}',
+                        ),
+                        message: message,
+                        onRateAnswer: _rateAnswer,
+                        onRateAdvice: _rateAdvice,
+                        chatService: chatService, // <-- Pass it here
                       ),
                     );
                   },
@@ -1429,6 +1432,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
               },
             ),
           ),
+
           _buildMessageInput(),
         ],
       ),

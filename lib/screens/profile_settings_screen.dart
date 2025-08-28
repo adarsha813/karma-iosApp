@@ -1172,6 +1172,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       context,
     ); // listen: true by default
     final locale = localeProvider.locale;
+    print("Current locale: ${locale.languageCode}");
     final profileProvider = Provider.of<ProfileProvider>(context);
     final l10n = AppLocalizations.of(context)!; // Get localization instance
 

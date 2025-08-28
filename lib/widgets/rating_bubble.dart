@@ -14,6 +14,7 @@ class RatingBubble extends StatefulWidget {
     required this.questionId,
     required this.initialRating,
     required this.initialFeedback,
+
     required this.onRatingSubmitted,
     required this.isAdvice,
   });
@@ -22,8 +23,11 @@ class RatingBubble extends StatefulWidget {
   RatingBubbleState createState() => RatingBubbleState();
 }
 
-class RatingBubbleState extends State<RatingBubble> {
+class RatingBubbleState extends State<RatingBubble>
+    with TickerProviderStateMixin {
   late int? _selectedRating;
+  late AnimationController _controller;
+  late Animation<double> _scaleAnimation;
   late String? _feedback;
   final TextEditingController _feedbackController = TextEditingController();
   bool _isSubmitting = false;
@@ -32,6 +36,16 @@ class RatingBubbleState extends State<RatingBubble> {
   @override
   void initState() {
     super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this, // no need for widget.vsync
+    );
+
+    _scaleAnimation = Tween<double>(
+      begin: 1.0,
+      end: 1.3,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
+
     _selectedRating = widget.initialRating;
     _feedback = widget.initialFeedback;
     _hasSubmittedFeedback =
@@ -70,9 +84,9 @@ class RatingBubbleState extends State<RatingBubble> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Rate this answer:',
-            style: TextStyle(fontWeight: FontWeight.bold),
+          Text(
+            widget.isAdvice ? "Rate this advice:" : "Rate this answer:",
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
           Row(
@@ -80,24 +94,24 @@ class RatingBubbleState extends State<RatingBubble> {
                 [1, 2, 3].map((star) {
                   return GestureDetector(
                     onTap: () => _handleStarTap(star),
-                    child: Icon(
-                      Icons.star,
-                      size: 32,
-                      color:
-                          _selectedRating != null && star <= _selectedRating!
-                              ? Colors.amber
-                              : Colors.grey,
+                    child: ScaleTransition(
+                      scale:
+                          _selectedRating == star
+                              ? _scaleAnimation
+                              : const AlwaysStoppedAnimation(1.0),
+                      child: Icon(
+                        Icons.star,
+                        size: 32,
+                        color:
+                            _selectedRating != null && star <= _selectedRating!
+                                ? Colors.amber
+                                : Colors.grey,
+                      ),
                     ),
                   );
                 }).toList(),
           ),
           const SizedBox(height: 8),
-          // In build method
-          Text(
-            widget.isAdvice ? "Rate this advice:" : "Rate this answer:",
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-
           Text(
             _selectedRating != null
                 ? 'You rated this $_selectedRating star(s)'
@@ -156,6 +170,9 @@ class RatingBubbleState extends State<RatingBubble> {
       }
     });
 
+    // 🔥 animate the star
+    _controller.forward(from: 0);
+
     if (star != 1 || _hasSubmittedFeedback) {
       widget.onRatingSubmitted(
         widget.questionId,
@@ -186,6 +203,7 @@ class RatingBubbleState extends State<RatingBubble> {
 
   @override
   void dispose() {
+    _controller.dispose();
     _feedbackController.dispose();
     super.dispose();
   }

@@ -12,12 +12,14 @@ class ChatBubble extends StatefulWidget {
   final Message message;
   final Future<void> Function(String, int, String?)? onRateAnswer;
   final Future<void> Function(String, int, String?)? onRateAdvice; // ✅ Added
+  final ChatService chatService; // <--- Add this
 
   const ChatBubble({
     super.key,
     required this.message,
     this.onRateAnswer,
     this.onRateAdvice,
+    required this.chatService, // <--- Add this
   });
 
   @override
@@ -143,7 +145,46 @@ Future<void> _hideItem(
   }
 }
 
-class _ChatBubbleState extends State<ChatBubble> {
+class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
+  late final AnimationController _animationController;
+  late final Animation<double> _scaleAnimation;
+  late final Animation<Offset> _slideAnimation;
+  late final Animation<double> _fadeAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 400),
+    );
+
+    // Scale animation
+    _scaleAnimation = Tween<double>(begin: 0.8, end: 1.0).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeOutBack),
+    );
+
+    // Slide animation: right for own messages, left for others
+    _slideAnimation = Tween<Offset>(
+      begin: widget.message.isMe ? Offset.zero : const Offset(-1.0, 0.0),
+      end: Offset.zero,
+    ).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeOutBack),
+    );
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeIn),
+    );
+
+    _animationController.forward();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
   @override
   void didUpdateWidget(covariant ChatBubble oldWidget) {
     super.didUpdateWidget(oldWidget);
@@ -182,187 +223,203 @@ class _ChatBubbleState extends State<ChatBubble> {
       icon = Icons.tips_and_updates;
       label = "Advice";
     }
-
+    Widget animatedBubble =
+        widget.message.isMe || message.isAdvice
+            ? ScaleTransition(
+              scale: _scaleAnimation,
+              child: FadeTransition(
+                opacity: _fadeAnimation,
+                child: _buildBubble(bubbleColor, label, icon),
+              ),
+            )
+            : SlideTransition(
+              position: _slideAnimation,
+              child: FadeTransition(
+                opacity: _fadeAnimation,
+                child: _buildBubble(bubbleColor, label, icon),
+              ),
+            );
     return Align(
       alignment:
-          message.isAdvice
-              ? Alignment.center
-              : message.isMe
+          message.isMe
               ? Alignment.centerRight
+              : message.isAdvice
+              ? Alignment.center
               : Alignment.centerLeft,
       child: GestureDetector(
         onLongPress: () => _showHideOptions(context, message),
-        child: Container(
-          margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
-          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
-          constraints: BoxConstraints(
-            maxWidth: MediaQuery.of(context).size.width * 0.75,
-          ),
-          decoration: BoxDecoration(
-            color: bubbleColor,
-            borderRadius:
-                message.isAdvice
-                    ? BorderRadius.circular(20)
-                    : BorderRadius.only(
-                      topLeft: const Radius.circular(16),
-                      topRight: const Radius.circular(16),
-                      bottomLeft:
-                          message.isMe
-                              ? const Radius.circular(16)
-                              : const Radius.circular(0),
-                      bottomRight:
-                          message.isMe
-                              ? const Radius.circular(0)
-                              : const Radius.circular(16),
-                    ),
+        child: animatedBubble,
+      ),
+    );
+  }
 
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withAlpha((0.1 * 255).round()),
-                blurRadius: 4,
-                spreadRadius: 1,
+  Widget _buildBubble(Color bubbleColor, String? label, IconData? icon) {
+    final message = widget.message;
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+      constraints: BoxConstraints(
+        maxWidth: MediaQuery.of(context).size.width * 0.75,
+      ),
+      decoration: BoxDecoration(
+        color: bubbleColor,
+        borderRadius:
+            message.isAdvice
+                ? BorderRadius.circular(20)
+                : BorderRadius.only(
+                  topLeft: const Radius.circular(16),
+                  topRight: const Radius.circular(16),
+                  bottomLeft:
+                      message.isMe
+                          ? const Radius.circular(16)
+                          : const Radius.circular(0),
+                  bottomRight:
+                      message.isMe
+                          ? const Radius.circular(0)
+                          : const Radius.circular(16),
+                ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withAlpha((0.1 * 255).round()),
+            blurRadius: 4,
+            spreadRadius: 1,
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment:
+            message.isAdvice
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
+        children: [
+          if (label != null && icon != null)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 6.0),
+              child: Row(
+                children: [
+                  Icon(icon, size: 16, color: Colors.deepPurple),
+                  const SizedBox(width: 4),
+                  Text(
+                    label,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.deepPurple,
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-          child: Column(
-            crossAxisAlignment:
-                message.isAdvice
-                    ? CrossAxisAlignment.center
-                    : CrossAxisAlignment.start,
-
-            children: [
-              // Show label and icon if message is advice
-              if (label != null && icon != null)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 6.0),
-                  child: Row(
-                    children: [
-                      Icon(icon, size: 16, color: Colors.deepPurple),
-                      const SizedBox(width: 4),
-                      Text(
-                        label,
-                        style: const TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.deepPurple,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-              // Main message content (HTML supported)
-              Html(
-                data: message.text,
-                style: {
-                  "body": Style(
-                    margin: Margins.zero,
-                    padding: HtmlPaddings.zero,
-                    color: message.isMe ? Colors.white : Colors.black,
-                    fontSize: FontSize(16),
-                  ),
-                  "p": Style(margin: Margins.zero, padding: HtmlPaddings.zero),
-                  "ul": Style(
-                    margin: Margins.only(left: 16),
-                    padding: HtmlPaddings.zero,
-                    color: message.isMe ? Colors.white : Colors.black,
-                  ),
-                  "li": Style(margin: Margins.symmetric(vertical: 4)),
-                },
+            ),
+          Html(
+            data: message.text,
+            style: {
+              "body": Style(
+                margin: Margins.zero,
+                padding: HtmlPaddings.zero,
+                color: message.isMe ? Colors.white : Colors.black,
+                fontSize: FontSize(16),
               ),
-
-              // Admin name
-              if (message.adminName != null || message.adminId != null)
-                Padding(
-                  padding: const EdgeInsets.only(top: 4.0),
-                  child: Text(
-                    'Admin: ${message.adminName} (${message.adminId})',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: message.isMe ? Colors.white70 : Colors.black54,
-                    ),
-                  ),
-                ),
-
-              // Created time
-              if (message.createdAt != null)
-                Padding(
-                  padding: const EdgeInsets.only(top: 4.0),
-                  child: Text(
-                    'Asked at: ${_formatDateTime(message.createdAt!)}',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: message.isMe ? Colors.white70 : Colors.black54,
-                    ),
-                  ),
-                ),
-
-              // Answered time
-              if (message.answeredAt != null)
-                Padding(
-                  padding: const EdgeInsets.only(top: 4.0),
-                  child: Text(
-                    'Answered at: ${_formatDateTime(message.answeredAt!)}',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: message.isMe ? Colors.white70 : Colors.black54,
-                    ),
-                  ),
-                ),
-
-              // Clarified time
-              if (message.clarificatedAt != null)
-                Padding(
-                  padding: const EdgeInsets.only(top: 4.0),
-                  child: Text(
-                    'Clarified at: ${_formatDateTime(message.clarificatedAt!)}',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: message.isMe ? Colors.white70 : Colors.black54,
-                    ),
-                  ),
-                ),
-
-              // Rating bubble
-              if ((!widget.message.isMe &&
-                      widget.onRateAnswer != null &&
-                      widget.message.answeredAt != null) ||
-                  widget.message.isAdvice)
-                Consumer<Message>(
-                  builder: (_, msg, __) {
-                    return RatingBubble(
-                      key: ValueKey(
-                        'rating_${msg.id}_${msg.rating}_${msg.feedback}',
-                      ),
-                      questionId: msg.id ?? '',
-                      initialRating: msg.rating,
-                      initialFeedback: msg.feedback,
-                      isAdvice: msg.isAdvice, // ✅ Added this
-                      onRatingSubmitted: (id, rating, feedback) async {
-                        msg.updateRating(rating, feedback); // Local update
-                        if (widget.message.isAdvice) {
-                          await widget.onRateAdvice!(id, rating, feedback);
-                        } else {
-                          await widget.onRateAnswer!(id, rating, feedback);
-                        }
-                      },
-                    );
-                  },
-                ),
-
-              // Loading indicator for temp messages
-              if (message.id?.startsWith('temp_') == true)
-                const Padding(
-                  padding: EdgeInsets.only(top: 4.0),
-                  child: SizedBox(
-                    width: 12,
-                    height: 12,
-                    child: CircularProgressIndicator(strokeWidth: 2),
-                  ),
-                ),
-            ],
+              "p": Style(margin: Margins.zero, padding: HtmlPaddings.zero),
+              "ul": Style(
+                margin: Margins.only(left: 16),
+                padding: HtmlPaddings.zero,
+                color: message.isMe ? Colors.white : Colors.black,
+              ),
+              "li": Style(margin: Margins.symmetric(vertical: 4)),
+            },
           ),
-        ),
+
+          // Admin name
+          if (message.adminName != null || message.adminId != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 4.0),
+              child: Text(
+                'Admin: ${message.adminName} (${message.adminId})',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: message.isMe ? Colors.white70 : Colors.black54,
+                ),
+              ),
+            ),
+
+          // Created time
+          if (message.createdAt != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 4.0),
+              child: Text(
+                'Asked at: ${_formatDateTime(message.createdAt!)}',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: message.isMe ? Colors.white70 : Colors.black54,
+                ),
+              ),
+            ),
+
+          // Answered time
+          if (message.answeredAt != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 4.0),
+              child: Text(
+                'Answered at: ${_formatDateTime(message.answeredAt!)}',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: message.isMe ? Colors.white70 : Colors.black54,
+                ),
+              ),
+            ),
+
+          // Clarified time
+          if (message.clarificatedAt != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 4.0),
+              child: Text(
+                'Clarified at: ${_formatDateTime(message.clarificatedAt!)}',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: message.isMe ? Colors.white70 : Colors.black54,
+                ),
+              ),
+            ),
+
+          // Rating bubble
+          if ((!widget.message.isMe &&
+                  widget.onRateAnswer != null &&
+                  widget.message.answeredAt != null) ||
+              widget.message.isAdvice)
+            RatingBubble(
+              key: ValueKey(
+                'rating_${widget.message.id}_${widget.message.rating}_${widget.message.feedback}',
+              ),
+              questionId: widget.message.id ?? '',
+              initialRating: widget.message.rating,
+              initialFeedback: widget.message.feedback,
+              isAdvice: widget.message.isAdvice,
+              onRatingSubmitted: (id, rating, feedback) async {
+                setState(() {
+                  widget.message.updateRating(
+                    rating,
+                    feedback,
+                  ); // update locally
+                });
+                if (widget.message.isAdvice) {
+                  await widget.onRateAdvice!(id, rating, feedback);
+                } else {
+                  await widget.onRateAnswer!(id, rating, feedback);
+                }
+              },
+            ),
+
+          // Loading indicator for temp messages
+          if (message.id?.startsWith('temp_') == true)
+            const Padding(
+              padding: EdgeInsets.only(top: 4.0),
+              child: SizedBox(
+                width: 12,
+                height: 12,
+                child: CircularProgressIndicator(strokeWidth: 2),
+              ),
+            ),
+        ],
       ),
     );
   }
