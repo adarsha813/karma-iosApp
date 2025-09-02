@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kundali/main.dart';
 import 'package:kundali/screens/onboarding_screen.dart'; // ← add this

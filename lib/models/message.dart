@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 
 class Message extends ChangeNotifier {
   final String? id;
+  final String? mongoId; // <-- NEW: real MongoDB ObjectId
   final String text;
   final bool isMe;
   final bool isClarification;
@@ -23,6 +24,7 @@ class Message extends ChangeNotifier {
 
   Message({
     this.id,
+    this.mongoId, // <-- Add in constructor
     this.clarificationId, // Add this in constructor
     required this.text,
     this.isMe = true,
@@ -115,6 +117,7 @@ class Message extends ChangeNotifier {
   factory Message.fromJson(Map<String, dynamic> json) {
     return Message(
       id: json['_id'],
+      mongoId: json['_id'], // <-- NEW: MongoDB _id
       text: json['text'] ?? '',
       clarificationId: json['clarificationId'], // Add this
       isMe: json['isMe'] ?? true,
@@ -146,6 +149,7 @@ class Message extends ChangeNotifier {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'mongoId': mongoId, // <-- include Mongo _id
       'text': text,
       'isMe': isMe,
       'isClarification': isClarification,

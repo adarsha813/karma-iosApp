@@ -26,130 +26,172 @@ class ChatBubble extends StatefulWidget {
   State<ChatBubble> createState() => _ChatBubbleState();
 }
 
-void _showHideOptions(BuildContext context, Message message) {
-  showModalBottomSheet(
-    context: context,
-    builder: (_) {
-      return SafeArea(
-        child: Wrap(
-          children: [
-            if (message.isMe) // Question bubble
-              ListTile(
-                leading: const Icon(Icons.delete),
-                title: const Text("Delete Question"),
-                onTap: () {
-                  _hideItem(
-                    context,
-                    '/questions/${message.id}/hide-question',
-                    message.id,
-                  );
-                },
-              ),
-
-            if (!message.isMe &&
-                !message.isAdvice &&
-                !message.isClarification) // Answer bubble
-              ListTile(
-                leading: const Icon(Icons.delete),
-                title: const Text("Delete Answer"),
-                onTap: () {
-                  _hideItem(
-                    context,
-                    '/questions/${message.id}/hide-answer',
-                    message.id,
-                  );
-                },
-              ),
-
-            if (message.isAdvice) // Advice bubble
-              ListTile(
-                leading: const Icon(Icons.delete),
-                title: const Text("Delete Advice"),
-                onTap: () {
-                  _hideItem(context, '/advices/${message.id}/hide', message.id);
-                },
-              ),
-
-            if (message.isClarification) // Clarification bubble
-              ListTile(
-                leading: const Icon(Icons.delete),
-                title: const Text("Hide Clarification"),
-                onTap: () {
-                  _hideItem(
-                    context,
-                    '/questions/${message.id}/clarification/${message.clarificationId}/hide',
-                    message.id,
-                  );
-                },
-              ),
-          ],
-        ),
-      );
-    },
-  );
-}
-
-Future<void> _hideItem(
-  BuildContext context,
-  String endpoint,
-  String? messageId,
-) async {
-  if (messageId == null || messageId.isEmpty) {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text("Message ID not found.")));
-    return;
-  }
-
-  final profileProvider = Provider.of<ProfileProvider>(context, listen: false);
-  final userId = profileProvider.userId;
-
-  if (userId == null || userId.isEmpty) {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text("User ID not found.")));
-    return;
-  }
-
-  final baseUrl = 'https://your-api-url.com'; // change to your actual API URL
-  final url = Uri.parse('$baseUrl$endpoint');
-
-  try {
-    final response = await http.patch(
-      url,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${profileProvider.token}', // if you have auth
-      },
-      body: jsonEncode({'userId': userId, 'hide': true}),
-    );
-
-    if (response.statusCode == 200) {
-      Provider.of<ChatService>(
-        context,
-        listen: false,
-      ).removeMessageById(messageId);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Message hidden successfully.")),
-      );
-      Navigator.pop(context); // close bottom sheet
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Failed to hide message: ${response.body}")),
-      );
-    }
-  } catch (e) {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text("Error: $e")));
-  }
-}
-
 class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   late final AnimationController _animationController;
   late final Animation<double> _scaleAnimation;
   late final Animation<Offset> _slideAnimation;
   late final Animation<double> _fadeAnimation;
+
+  void _showHideOptions(BuildContext context, Message message) {
+    print("🛠️ _showHideOptions called for message id=${message.id}");
+
+    showModalBottomSheet(
+      context: context,
+      builder: (_) {
+        return SafeArea(
+          child: Wrap(
+            children: [
+              if (message.isMe) // Question bubble
+                ListTile(
+                  leading: const Icon(Icons.delete),
+                  title: const Text("Delete Question"),
+                  onTap: () {
+                    debugPrint("🗑️ Hiding Question with id=${message.id}");
+                    _hideItem(
+                      context,
+                      '/questions/${message.id}/hide-question',
+                      message.id,
+                    );
+                  },
+                ),
+
+              if (!message.isMe &&
+                  !message.isAdvice &&
+                  !message.isClarification) // Answer bubble
+                ListTile(
+                  leading: const Icon(Icons.delete),
+                  title: const Text("Delete Answer"),
+                  onTap: () {
+                    debugPrint("🗑️ Hiding Answer with id=${message.id}");
+                    _hideItem(
+                      context,
+                      '/questions/${message.id}/hide-answer',
+                      message.id,
+                    );
+                  },
+                ),
+
+              if (message.isAdvice) // Advice bubble
+                ListTile(
+                  leading: const Icon(Icons.delete),
+                  title: const Text("Delete Advice"),
+                  onTap: () {
+                    debugPrint("🗑️ Hiding Advice with mongoId=${message.id}");
+                    _hideItem(
+                      context,
+                      '/advices/${message.id}/hide', // use real ObjectId
+                      message.id,
+                      isAdvice: true,
+                    );
+                  },
+                ),
+
+              if (message.isClarification) // Clarification bubble
+                ListTile(
+                  leading: const Icon(Icons.delete),
+                  title: const Text("Hide Clarification"),
+                  onTap: () {
+                    debugPrint(
+                      "🗑️ Hiding Clarification with id=${message.id}, clarificationId=${message.clarificationId}",
+                    );
+                    _hideItem(
+                      context,
+                      '/questions/${message.id}/clarification/${message.clarificationId}/hide',
+                      message.id,
+                    );
+                  },
+                ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _hideItem(
+    BuildContext context,
+    String endpoint,
+    String? messageId, {
+    bool isAdvice = false,
+  }) async {
+    debugPrint(
+      "🚀 _hideItem called for endpoint=$endpoint, messageId=$messageId, isAdvice=$isAdvice  🚀 _hideItem called for messageId=$messageId, endpoint=$endpoint",
+    );
+
+    if (messageId == null || messageId.isEmpty) {
+      debugPrint("❌ Message ID not found");
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Message ID not found.")));
+      return;
+    }
+
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
+    final userId = profileProvider.userId;
+    final token = profileProvider.token;
+
+    debugPrint("👤 userId=$userId, token=${token != null ? 'found' : 'null'}");
+
+    if (userId == null || userId.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("User ID not found.")));
+      return;
+    }
+
+    if (token == null || token.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Token not found.")));
+      return;
+    }
+
+    final baseUrl = 'https://chat-backend-rvk9.onrender.com';
+    final url = Uri.parse('$baseUrl$endpoint');
+
+    try {
+      final http.Request request;
+      if (isAdvice) {
+        request = http.Request('PATCH', url);
+        request.headers['Content-Type'] = 'application/json';
+        request.headers['Authorization'] = 'Bearer $token';
+        request.body = jsonEncode({'userId': userId, 'hide': true});
+        debugPrint("📤 PATCH body for advice: ${request.body}");
+      } else {
+        request = http.Request('PATCH', url);
+        request.headers['Authorization'] = 'Bearer $token';
+      }
+
+      final response = await http.Response.fromStream(await request.send());
+
+      debugPrint(
+        "📥 Response statusCode=${response.statusCode}, body=${response.body}",
+      );
+
+      if (response.statusCode == 200) {
+        Provider.of<ChatService>(
+          context,
+          listen: false,
+        ).removeMessageById(messageId);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Message hidden successfully.")),
+        );
+        Navigator.pop(context); // close bottom sheet
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Failed to hide message: ${response.body}")),
+        );
+      }
+    } catch (e) {
+      debugPrint("⚠️ Error hiding message: $e");
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Error: $e")));
+    }
+  }
 
   @override
   void initState() {
@@ -247,8 +289,13 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
               ? Alignment.center
               : Alignment.centerLeft,
       child: GestureDetector(
+        behavior: HitTestBehavior.translucent,
         onLongPress: () => _showHideOptions(context, message),
-        child: animatedBubble,
+        child: Listener(
+          behavior: HitTestBehavior.translucent,
+          onPointerDown: (_) {}, // pass events through
+          child: animatedBubble,
+        ),
       ),
     );
   }

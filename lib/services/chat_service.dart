@@ -51,7 +51,7 @@ class ChatService with ChangeNotifier {
   }
 
   void setMessages(List<Message> newMessages) {
-    // Clear current messages without animation
+    _messages = List.from(newMessages);
     _messages.clear();
     notifyListeners();
 
