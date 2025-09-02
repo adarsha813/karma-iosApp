@@ -22,6 +22,7 @@ import '../utils/pending_notification_navigation.dart';
 import 'horoscope_detail_screen.dart';
 import 'package:badges/badges.dart' as badges;
 import 'notifications_screen.dart';
+import 'how_to_ask_screen.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'question_store_screen.dart';
@@ -44,6 +45,7 @@ class _ChatScreenState extends State<ChatScreen>
   final ScrollController _scrollController = ScrollController();
   final TextEditingController messageController = TextEditingController();
   final TextEditingController _textController = TextEditingController();
+  final FocusNode _focusNode = FocusNode();
 
   String? userId;
   bool _isSocketConnected = false;
@@ -1357,7 +1359,34 @@ class _ChatScreenState extends State<ChatScreen>
             );
           },
         ),
+
         actions: [
+          IconButton(
+            icon: const Icon(Icons.lightbulb_outline),
+            onPressed: () async {
+              final selectedQuestion = await Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const HowToAskScreen()),
+              );
+
+              if (selectedQuestion != null && selectedQuestion is String) {
+                setState(() {
+                  _controller.text = selectedQuestion; // Auto-fill
+                });
+
+                // 🔹 Open the keyboard automatically
+                Future.delayed(const Duration(milliseconds: 100), () {
+                  FocusScope.of(context).requestFocus(_focusNode);
+                  _controller.selection = TextSelection.fromPosition(
+                    TextPosition(
+                      offset: _controller.text.length,
+                    ), // cursor at end
+                  );
+                });
+              }
+            },
+          ),
+
           IconButton(
             icon: Consumer<NotificationProvider>(
               builder: (context, provider, _) {
@@ -1529,6 +1558,7 @@ class _ChatScreenState extends State<ChatScreen>
           Expanded(
             child: TextField(
               controller: _controller,
+              focusNode: _focusNode,
               decoration: InputDecoration(
                 hintText: "Type your question...",
                 border: OutlineInputBorder(
