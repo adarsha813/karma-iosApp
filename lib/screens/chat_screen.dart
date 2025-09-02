@@ -27,6 +27,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'question_store_screen.dart';
 import '../providers/horoscope_provider.dart';
+import 'astroDictionary_Screen.dart';
 
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
@@ -1495,6 +1496,11 @@ class _ChatScreenState extends State<ChatScreen>
                 Icons.shopping_cart,
                 "Buy Questions",
                 const QuestionStoreScreen(),
+              ),
+              _buildDrawerItem(
+                Icons.menu_book, // 📚 Dictionary icon
+                "Astro Dictionary",
+                AstroDictionaryScreen(), // <-- new screen
               ),
               _buildDrawerItem(Icons.settings, "Settings", SettingsScreen()),
               _buildDrawerItem(

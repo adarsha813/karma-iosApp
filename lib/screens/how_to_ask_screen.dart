@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HowToAskScreen extends StatefulWidget {
   const HowToAskScreen({Key? key}) : super(key: key);
@@ -10,12 +11,44 @@ class HowToAskScreen extends StatefulWidget {
 }
 
 class _HowToAskScreenState extends State<HowToAskScreen> {
-  late Future<List<Question>> questionsFuture;
+  List<Question>? _cachedQuestions; // cached data
+  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    questionsFuture = fetchQuestions();
+    _loadQuestions();
+  }
+
+  /// Load from cache first, then update from backend
+  Future<void> _loadQuestions() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    // Load cached questions if available
+    final cachedData = prefs.getString('howToAskCache');
+    if (cachedData != null) {
+      List data = json.decode(cachedData);
+      setState(() {
+        _cachedQuestions = data.map((e) => Question.fromJson(e)).toList();
+        _isLoading = false;
+      });
+    }
+
+    // Always fetch fresh data in background
+    try {
+      final freshQuestions = await fetchQuestions();
+      setState(() {
+        _cachedQuestions = freshQuestions;
+        _isLoading = false;
+      });
+      // Save to cache
+      prefs.setString('howToAskCache', json.encode(freshQuestions));
+    } catch (e) {
+      if (_cachedQuestions == null) {
+        // show error only if no cache
+        setState(() => _isLoading = false);
+      }
+    }
   }
 
   Future<List<Question>> fetchQuestions() async {
@@ -35,71 +68,69 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("How To Ask"), elevation: 0),
-      body: FutureBuilder<List<Question>>(
-        future: questionsFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('No questions available'));
-          }
+      body:
+          _isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : _cachedQuestions == null || _cachedQuestions!.isEmpty
+              ? const Center(child: Text('No questions available'))
+              : _buildQuestionsList(_cachedQuestions!),
+    );
+  }
 
-          final questions = snapshot.data!;
-          // Group by category
-          final Map<String, List<Question>> categorized = {};
-          for (var q in questions) {
-            categorized.putIfAbsent(q.category, () => []).add(q);
-          }
+  Widget _buildQuestionsList(List<Question> questions) {
+    // Group by category
+    final Map<String, List<Question>> categorized = {};
+    for (var q in questions) {
+      categorized.putIfAbsent(q.category, () => []).add(q);
+    }
 
-          return ListView(
-            padding: const EdgeInsets.all(8),
-            children:
-                categorized.entries.map((entry) {
-                  return Card(
-                    margin: const EdgeInsets.symmetric(vertical: 6),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+    return RefreshIndicator(
+      onRefresh: _loadQuestions,
+      child: ListView(
+        padding: const EdgeInsets.all(8),
+        children:
+            categorized.entries.map((entry) {
+              return Card(
+                margin: const EdgeInsets.symmetric(vertical: 6),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                elevation: 2,
+                child: ExpansionTile(
+                  leading: const Icon(
+                    Icons.lightbulb_outline,
+                    color: Colors.blue,
+                  ),
+                  title: Text(
+                    entry.key,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
                     ),
-                    elevation: 2,
-                    child: ExpansionTile(
-                      leading: const Icon(
-                        Icons.lightbulb_outline,
-                        color: Colors.blue,
-                      ),
-                      title: Text(
-                        entry.key,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      children:
-                          entry.value.map((q) {
-                            return ListTile(
-                              title: Text(
-                                q.question,
-                                style: const TextStyle(fontSize: 15),
-                              ),
-                              onTap: () {
-                                // Send question back to ChatScreen
-                                Navigator.pop(context, q.question);
-                              },
-                              leading: const Icon(
-                                Icons.question_answer,
-                                color: Colors.grey,
-                              ),
-                              contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 20,
-                              ),
-                            );
-                          }).toList(),
-                    ),
-                  );
-                }).toList(),
-          );
-        },
+                  ),
+                  children:
+                      entry.value.map((q) {
+                        return ListTile(
+                          title: Text(
+                            q.question,
+                            style: const TextStyle(fontSize: 15),
+                          ),
+                          onTap: () {
+                            // Send question back to ChatScreen
+                            Navigator.pop(context, q.question);
+                          },
+                          leading: const Icon(
+                            Icons.question_answer,
+                            color: Colors.grey,
+                          ),
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                          ),
+                        );
+                      }).toList(),
+                ),
+              );
+            }).toList(),
       ),
     );
   }
@@ -118,5 +149,9 @@ class Question {
       category: json['category'],
       question: json['question'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {"_id": id, "category": category, "question": question};
   }
 }

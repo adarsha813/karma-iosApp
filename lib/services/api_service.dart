@@ -10,7 +10,8 @@ Future<void> hideItem(
   String itemId,
 ) async {
   final profileProvider = Provider.of<ProfileProvider>(context, listen: false);
-  final baseUrl = 'https://your-api-url.com'; // change to your actual API URL
+  final baseUrl =
+      'https://chat-backend-rvk9.onrender.com'; // change to your actual API URL
 
   final url = Uri.parse('$baseUrl$endpoint/$itemId/hide');
 

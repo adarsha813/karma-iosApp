@@ -9,9 +9,14 @@ import 'package:provider/provider.dart';
 import '../providers/horoscope_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
+import '../models/astro_term.dart';
+import '../services/astro_api_service.dart';
+import '../screens/astroDictionary_Screen.dart';
+import '../utils/dictionary_highlighter.dart';
 
 class DailyHoroscopeScreen extends StatefulWidget {
   final String? userId;
+
   const DailyHoroscopeScreen({Key? key, this.userId}) : super(key: key);
 
   @override
@@ -22,6 +27,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
   bool _loading = true;
   String? _error;
   DateTime? _lastHoroscopeTime;
+  Map<String, AstroTerm> _dictionaryMap = {};
   List<Map<String, dynamic>> _horoscopes = [];
   IO.Socket? _socket;
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -30,6 +36,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
   @override
   void initState() {
     super.initState();
+    _loadDictionaryTerms(); // ✅ Load dictionary
     // 🧹 Clear unread badge when user visits
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<HoroscopeProvider>(context, listen: false).clear();
@@ -46,6 +53,19 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
         pendingNavigation.payload = null;
       }
     });
+  }
+
+  Future<void> _loadDictionaryTerms() async {
+    try {
+      final terms = await ApiService.fetchTerms(); // Fetch from your backend
+      setState(() {
+        _dictionaryMap = {
+          for (var term in terms) term.term.toLowerCase(): term,
+        };
+      });
+    } catch (e) {
+      print("Failed to load dictionary: $e");
+    }
   }
 
   void _handleNotificationTap(String payload) {
@@ -464,7 +484,14 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                             if (horoscope['sign'] != null)
                               Text("Sign: ${horoscope['sign']}"),
                             const SizedBox(height: 8),
-                            Text(horoscope['text'] ?? ''),
+                            RichText(
+                              text: DictionaryHighlighter.highlightText(
+                                context,
+                                horoscope['text'] ?? '',
+                                _dictionaryMap, // dynamically loaded from API
+                              ),
+                            ),
+
                             const SizedBox(height: 4),
                             Text(
                               "📅 ${horoscope['createdAt'] != null ? DateTime.parse(horoscope['createdAt']).toLocal().toString() : ''}",
