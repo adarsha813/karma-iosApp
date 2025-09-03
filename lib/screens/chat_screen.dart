@@ -29,6 +29,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'question_store_screen.dart';
 import '../providers/horoscope_provider.dart';
 import 'astroDictionary_Screen.dart';
+import 'package:kundali/widgets/bouncing_dots.dart';
 
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
@@ -52,6 +53,7 @@ class _ChatScreenState extends State<ChatScreen>
   String? userId;
   bool _isSocketConnected = false;
   Completer<void>? _socketConnectionCompleter;
+  bool _isSending = false;
 
   late IO.Socket socket;
   Timer? _refreshTimer;
@@ -1049,12 +1051,10 @@ class _ChatScreenState extends State<ChatScreen>
 
     try {
       // Show loading indicator
-      final overlay = Overlay.of(context).context;
-      showDialog(
-        context: overlay,
-        barrierDismissible: false,
-        builder: (_) => const Center(child: CircularProgressIndicator()),
-      );
+
+      setState(() {
+        _isSending = true;
+      });
 
       // 1. First check eligibility
       final eligibilityResponse = await http.get(
@@ -1068,8 +1068,12 @@ class _ChatScreenState extends State<ChatScreen>
         final isFreeEligible = eligibilityData['isFreeEligible'] ?? false;
         final remaining = eligibilityData['remainingFreeQuestions'] ?? 0;
         if (isFreeEligible) {
-          Navigator.pop(overlay);
           await sendQuestionToSocket(text, currentUserId);
+
+          setState(() {
+            _isSending = false; // ✅ stop loader
+          });
+
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text("$remaining free questions remaining")),
           );
@@ -1092,8 +1096,10 @@ class _ChatScreenState extends State<ChatScreen>
             countData['freeQuota'] ?? 2; // Get from backend if available
 
         if (count < freeQuota) {
-          Navigator.pop(overlay);
           await sendQuestionToSocket(text, currentUserId);
+          setState(() {
+            _isSending = false; // ✅ stop loader
+          });
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
@@ -1116,7 +1122,9 @@ class _ChatScreenState extends State<ChatScreen>
         },
       );
 
-      Navigator.pop(overlay); // Remove loading
+      setState(() {
+        _isSending = false; // ✅ stop loader
+      });
 
       if (balanceResponse.statusCode == 200) {
         final balanceData = json.decode(balanceResponse.body);
@@ -1440,40 +1448,45 @@ class _ChatScreenState extends State<ChatScreen>
       ),
 
       drawer: _buildDrawer(),
-      body: Column(
+      body: Stack(
         children: [
-          Expanded(
-            child: Consumer2<ChatService, DictionaryProvider>(
-              builder: (context, chatService, dictProvider, _) {
-                final dictionaryMap = dictProvider.dictionaryMap;
+          Column(
+            children: [
+              Expanded(
+                child: Consumer2<ChatService, DictionaryProvider>(
+                  builder: (context, chatService, dictProvider, _) {
+                    final dictionaryMap = dictProvider.dictionaryMap;
 
-                return AnimatedList(
-                  key: chatService.listKey,
-                  reverse: true,
-                  initialItemCount: chatService.messages.length,
-                  itemBuilder: (context, index, animation) {
-                    final message = chatService.messages[index];
-                    return SizeTransition(
-                      sizeFactor: animation,
-                      axisAlignment: 0.0,
-                      child: ChatBubble(
-                        key: ValueKey(
-                          '${message.id}_${message.rating}_${message.feedback}',
-                        ),
-                        message: message,
-                        onRateAnswer: _rateAnswer,
-                        onRateAdvice: _rateAdvice,
-                        chatService: chatService,
-                        dictionaryMap: dictionaryMap, // ✅ works
-                      ),
+                    return AnimatedList(
+                      key: chatService.listKey,
+                      reverse: true,
+                      initialItemCount: chatService.messages.length,
+                      itemBuilder: (context, index, animation) {
+                        final message = chatService.messages[index];
+                        return SizeTransition(
+                          sizeFactor: animation,
+                          axisAlignment: 0.0,
+                          child: ChatBubble(
+                            key: ValueKey(
+                              '${message.id}_${message.rating}_${message.feedback}',
+                            ),
+                            message: message,
+                            onRateAnswer: _rateAnswer,
+                            onRateAdvice: _rateAdvice,
+                            chatService: chatService,
+                            dictionaryMap: dictionaryMap,
+                          ),
+                        );
+                      },
                     );
                   },
-                );
-              },
-            ),
+                ),
+              ),
+              _buildMessageInput(),
+            ],
           ),
 
-          _buildMessageInput(),
+          // ✅ Small bottom-left loader instead of fullscreen dialo
         ],
       ),
     );
@@ -1590,10 +1603,30 @@ class _ChatScreenState extends State<ChatScreen>
             ),
           ),
           const SizedBox(width: 8),
-          IconButton(
-            icon: const Icon(Icons.send, color: Colors.blue),
-            onPressed: handleSendMessage,
-          ),
+          // ✅ Show BouncingDots animation while sending
+          _isSending
+              ? Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 8,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 4,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: const BouncingDots(color: Colors.black, size: 8),
+              )
+              : IconButton(
+                icon: const Icon(Icons.send, color: Colors.blue),
+                onPressed: handleSendMessage,
+              ),
         ],
       ),
     );

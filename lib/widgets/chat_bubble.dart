@@ -39,71 +39,108 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   void _showHideOptions(BuildContext context, Message message) {
     print("🛠️ _showHideOptions called for message id=${message.id}");
 
-    showModalBottomSheet(
+    showDialog(
       context: context,
       builder: (_) {
-        return SafeArea(
-          child: Wrap(
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          contentPadding: const EdgeInsets.all(12),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+
             children: [
-              if (message.isMe) // Question bubble
-                ListTile(
-                  leading: const Icon(Icons.delete),
-                  title: const Text("Delete Question"),
+              if (message.isMe)
+                InkWell(
                   onTap: () {
-                    debugPrint("🗑️ Hiding Question with id=${message.id}");
+                    Navigator.pop(context);
                     _hideItem(
                       context,
                       '/questions/${message.id}/hide-question',
                       message.id,
                     );
                   },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      Icon(Icons.delete, color: Colors.red, size: 18),
+                      SizedBox(width: 6),
+                      Text(
+                        "Delete Question",
+                        style: TextStyle(color: Colors.red, fontSize: 14),
+                      ),
+                    ],
+                  ),
                 ),
-
               if (!message.isMe &&
                   !message.isAdvice &&
-                  !message.isClarification) // Answer bubble
-                ListTile(
-                  leading: const Icon(Icons.delete),
-                  title: const Text("Delete Answer"),
+                  !message.isClarification)
+                InkWell(
                   onTap: () {
-                    debugPrint("🗑️ Hiding Answer with id=${message.id}");
+                    Navigator.pop(context);
                     _hideItem(
                       context,
                       '/questions/${message.id}/hide-answer',
                       message.id,
                     );
                   },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      Icon(Icons.delete, color: Colors.red, size: 18),
+                      SizedBox(width: 6),
+                      Text(
+                        "Delete Answer",
+                        style: TextStyle(color: Colors.red, fontSize: 14),
+                      ),
+                    ],
+                  ),
                 ),
-
-              if (message.isAdvice) // Advice bubble
-                ListTile(
-                  leading: const Icon(Icons.delete),
-                  title: const Text("Delete Advice"),
+              if (message.isAdvice)
+                InkWell(
                   onTap: () {
-                    debugPrint("🗑️ Hiding Advice with mongoId=${message.id}");
+                    Navigator.pop(context);
                     _hideItem(
                       context,
-                      '/advices/${message.id}/hide', // use real ObjectId
+                      '/advices/${message.id}/hide',
                       message.id,
                       isAdvice: true,
                     );
                   },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      Icon(Icons.delete, color: Colors.red, size: 18),
+                      SizedBox(width: 6),
+                      Text(
+                        "Delete Advice",
+                        style: TextStyle(color: Colors.red, fontSize: 14),
+                      ),
+                    ],
+                  ),
                 ),
-
-              if (message.isClarification) // Clarification bubble
-                ListTile(
-                  leading: const Icon(Icons.delete),
-                  title: const Text("Hide Clarification"),
+              if (message.isClarification)
+                InkWell(
                   onTap: () {
-                    debugPrint(
-                      "🗑️ Hiding Clarification with id=${message.id}, clarificationId=${message.clarificationId}",
-                    );
+                    Navigator.pop(context);
                     _hideItem(
                       context,
                       '/questions/${message.id}/clarification/${message.clarificationId}/hide',
                       message.id,
                     );
                   },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      Icon(Icons.delete, color: Colors.red, size: 18),
+                      SizedBox(width: 6),
+                      Text(
+                        "Hide Clarification",
+                        style: TextStyle(color: Colors.red, fontSize: 14),
+                      ),
+                    ],
+                  ),
                 ),
             ],
           ),
