@@ -74,8 +74,8 @@ class RatingBubbleState extends State<RatingBubble>
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 8),
-      padding: const EdgeInsets.all(12),
+      margin: const EdgeInsets.only(top: 1),
+      padding: const EdgeInsets.all(2),
       decoration: BoxDecoration(
         color: Colors.grey[100],
         borderRadius: BorderRadius.circular(12),
@@ -84,12 +84,14 @@ class RatingBubbleState extends State<RatingBubble>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          /* Text(
             widget.isAdvice ? "Rate this advice:" : "Rate this answer:",
             style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 8),
+          ),*/
+          const SizedBox(height: 2),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+
             children:
                 [1, 2, 3].map((star) {
                   return GestureDetector(
@@ -112,12 +114,12 @@ class RatingBubbleState extends State<RatingBubble>
                 }).toList(),
           ),
           const SizedBox(height: 8),
-          Text(
+          /* Text(
             _selectedRating != null
                 ? 'You rated this $_selectedRating star(s)'
                 : 'Not rated yet',
             style: TextStyle(color: Colors.grey[600], fontSize: 12),
-          ),
+          ),*/
           if (_selectedRating == 1 && !_hasSubmittedFeedback) ...[
             const SizedBox(height: 12),
             const Text(

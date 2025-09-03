@@ -255,11 +255,11 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     // 🟣 Setup custom bubble color and label for advice
     Color bubbleColor =
         message.isMe
-            ? Colors.blueAccent
+            ? const Color.fromARGB(255, 106, 145, 211)
             : message.isClarification
-            ? Colors.orangeAccent
+            ? const Color.fromARGB(255, 227, 196, 156)
             : message.isAdvice
-            ? Colors.purple.shade100
+            ? const Color.fromARGB(255, 182, 206, 178)
             : Colors.grey[300]!;
 
     IconData? icon;
