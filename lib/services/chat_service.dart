@@ -20,6 +20,7 @@ class ChatService with ChangeNotifier {
       _messages.length - 1,
       duration: const Duration(milliseconds: 300),
     );
+    _messages.insert(0, message);
     notifyListeners();
   }
 
@@ -51,23 +52,33 @@ class ChatService with ChangeNotifier {
   }
 
   void setMessages(List<Message> newMessages) {
-    _messages = List.from(newMessages);
-    _messages.clear();
-    notifyListeners();
+    // First clear existing messages with animation
+    clearMessages();
 
-    // Add historical messages one by one without animation
+    // Add new messages without animation
     for (var i = 0; i < newMessages.length; i++) {
       _messages.add(newMessages[i]);
       listKey.currentState?.insertItem(
         i,
-        duration: const Duration(
-          milliseconds: 0,
-        ), // no animation for old messages
+        duration: Duration.zero, // No animation for initial load
       );
     }
+    _messages = messages.reversed.toList();
+    notifyListeners();
   }
 
   void clearMessages() {
+    final int length = _messages.length;
+    for (var i = length - 1; i >= 0; i--) {
+      listKey.currentState?.removeItem(
+        i,
+        (context, animation) => SizeTransition(
+          sizeFactor: animation,
+          child: Container(), // Empty container during removal
+        ),
+        duration: const Duration(milliseconds: 300),
+      );
+    }
     _messages.clear();
     notifyListeners();
   }

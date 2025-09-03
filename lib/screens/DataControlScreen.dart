@@ -180,15 +180,14 @@ class DataControlScreen extends StatelessWidget {
         final userId = profileProvider.userId;
 
         if (userId == null || userId.isEmpty) return;
-
-        // 1️⃣ Clear UI instantly
-        chatService.clearMessages();
-
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(const SnackBar(content: Text("Chat cleared locally.")));
-
         try {
+          // 1️⃣ Clear UI instantly
+          chatService.clearMessages();
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Chat cleared locally.")),
+          );
+
           // 2️⃣ Send API requests in background
           await Future.wait([
             _sendRequest(

@@ -8,12 +8,16 @@ class DictionaryHighlighter {
     BuildContext context,
     String text,
     Map<String, AstroTerm> dictionary,
+    TextStyle? baseStyle, // 👈 nullable
   ) {
     final spans = <TextSpan>[];
     final lowerText = text.toLowerCase();
     int start = 0;
 
-    // Sort dictionary terms by length descending for multi-word matches
+    // ✅ Use baseStyle from HTML, fallback to DefaultTextStyle
+    final effectiveStyle = baseStyle ?? DefaultTextStyle.of(context).style;
+
+    // Sort dictionary terms by length (multi-word terms first)
     final sortedEntries =
         dictionary.entries.toList()
           ..sort((a, b) => b.key.length.compareTo(a.key.length));
@@ -25,12 +29,14 @@ class DictionaryHighlighter {
         final word = entry.key.toLowerCase();
         final index = lowerText.indexOf(word, start);
 
-        // Ensure match is exactly at current position
         if (index == start) {
           spans.add(
             TextSpan(
               text: text.substring(index, index + word.length),
-              style: const TextStyle(decoration: TextDecoration.underline),
+              style: effectiveStyle.copyWith(
+                decoration: TextDecoration.underline,
+                color: Colors.blue, // highlight color
+              ),
               recognizer:
                   TapGestureRecognizer()
                     ..onTap = () {
@@ -51,14 +57,11 @@ class DictionaryHighlighter {
       }
 
       if (!matched) {
-        spans.add(TextSpan(text: text[start]));
+        spans.add(TextSpan(text: text[start], style: effectiveStyle));
         start++;
       }
     }
 
-    return TextSpan(
-      children: spans,
-      style: const TextStyle(color: Colors.black),
-    );
+    return TextSpan(children: spans, style: effectiveStyle);
   }
 }

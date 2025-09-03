@@ -487,7 +487,11 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                               text: DictionaryHighlighter.highlightText(
                                 context,
                                 horoscope['text'] ?? '',
-                                _dictionaryMap, // dynamically loaded from API
+                                _dictionaryMap,
+                                const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                ), // ✅ fix// dynamically loaded from API
                               ),
                             ),
 

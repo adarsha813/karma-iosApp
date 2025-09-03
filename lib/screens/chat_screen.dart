@@ -68,6 +68,12 @@ class _ChatScreenState extends State<ChatScreen>
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_scrollController.hasClients) {
+        _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+      }
+    });
+
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 400),
@@ -1443,7 +1449,7 @@ class _ChatScreenState extends State<ChatScreen>
 
                 return AnimatedList(
                   key: chatService.listKey,
-                  reverse: false,
+                  reverse: true,
                   initialItemCount: chatService.messages.length,
                   itemBuilder: (context, index, animation) {
                     final message = chatService.messages[index];
@@ -1561,8 +1567,11 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   Widget _buildMessageInput() {
-    return Padding(
+    return Container(
       padding: const EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        color: Theme.of(context).scaffoldBackgroundColor,
+      ),
       child: Row(
         children: [
           Expanded(
@@ -1574,9 +1583,13 @@ class _ChatScreenState extends State<ChatScreen>
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
               ),
+              minLines: 1,
+              maxLines: 3,
             ),
           ),
+          const SizedBox(width: 8),
           IconButton(
             icon: const Icon(Icons.send, color: Colors.blue),
             onPressed: handleSendMessage,

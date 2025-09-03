@@ -247,6 +247,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                 context,
                 message,
                 dictionaryMap,
+                const TextStyle(fontSize: 14, color: Colors.black), // ✅ fix
               ),
             ),
           ),

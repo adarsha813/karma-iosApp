@@ -380,25 +380,41 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
             },
             extensions: [
               TagExtension(
-                tagsToExtend: {
-                  "p",
-                  "span",
-                  "body",
-                  "li",
-                }, // ✅ apply to all text tags
+                tagsToExtend: {"p", "span", "body", "li", "strong", "em"},
                 builder: (extensionContext) {
-                  final rawText = extensionContext.innerHtml;
+                  final rawText = extensionContext.element?.text ?? "";
 
                   if (rawText.trim().isEmpty) {
                     return const SizedBox.shrink();
                   }
+                  if (rawText.trim().isEmpty) {
+                    return const SizedBox.shrink();
+                  }
+
+                  // ✅ Base style coming from flutter_html
+                  TextStyle baseStyle =
+                      extensionContext.styledElement?.style
+                          .generateTextStyle() ??
+                      DefaultTextStyle.of(context).style;
+
+                  // ✅ Apply extra styles if <strong> or <em>
+                  final isStrong =
+                      extensionContext.element?.localName == "strong";
+                  final isEm = extensionContext.element?.localName == "em";
+
+                  if (isStrong) {
+                    baseStyle = baseStyle.copyWith(fontWeight: FontWeight.bold);
+                  }
+                  if (isEm) {
+                    baseStyle = baseStyle.copyWith(fontStyle: FontStyle.italic);
+                  }
 
                   return RichText(
                     text: DictionaryHighlighter.highlightText(
-                      extensionContext.buildContext ??
-                          context, // ✅ fallback to widget's context
+                      extensionContext.buildContext ?? context,
                       rawText,
                       widget.dictionaryMap,
+                      baseStyle, // pass parent style
                     ),
                   );
                 },
