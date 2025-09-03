@@ -7,12 +7,15 @@ import 'package:http/http.dart' as http;
 import '../services/chat_service.dart'; // adjust path if needed
 import 'dart:convert';
 import 'package:kundali/providers/profile_provider.dart';
+import '../models/astro_term.dart';
+import '../utils/dictionary_highlighter.dart';
 
 class ChatBubble extends StatefulWidget {
   final Message message;
   final Future<void> Function(String, int, String?)? onRateAnswer;
   final Future<void> Function(String, int, String?)? onRateAdvice; // ✅ Added
   final ChatService chatService; // <--- Add this
+  final Map<String, AstroTerm> dictionaryMap;
 
   const ChatBubble({
     super.key,
@@ -20,6 +23,7 @@ class ChatBubble extends StatefulWidget {
     this.onRateAnswer,
     this.onRateAdvice,
     required this.chatService, // <--- Add this
+    required this.dictionaryMap, // ✅ pass from parent
   });
 
   @override
@@ -374,6 +378,32 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
               ),
               "li": Style(margin: Margins.symmetric(vertical: 4)),
             },
+            extensions: [
+              TagExtension(
+                tagsToExtend: {
+                  "p",
+                  "span",
+                  "body",
+                  "li",
+                }, // ✅ apply to all text tags
+                builder: (extensionContext) {
+                  final rawText = extensionContext.innerHtml;
+
+                  if (rawText.trim().isEmpty) {
+                    return const SizedBox.shrink();
+                  }
+
+                  return RichText(
+                    text: DictionaryHighlighter.highlightText(
+                      extensionContext.buildContext ??
+                          context, // ✅ fallback to widget's context
+                      rawText,
+                      widget.dictionaryMap,
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
 
           // Admin name

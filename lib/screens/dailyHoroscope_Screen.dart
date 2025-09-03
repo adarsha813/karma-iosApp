@@ -11,7 +11,6 @@ import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
 import '../models/astro_term.dart';
 import '../services/astro_api_service.dart';
-import '../screens/astroDictionary_Screen.dart';
 import '../utils/dictionary_highlighter.dart';
 
 class DailyHoroscopeScreen extends StatefulWidget {

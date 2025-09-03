@@ -17,6 +17,7 @@ import '../providers/profile_provider.dart';
 import '../models/message.dart' as chat_model;
 import 'package:permission_handler/permission_handler.dart';
 import '../providers/notification_provider.dart';
+import '../providers/dictionary_provider.dart';
 import 'dailyHoroscope_Screen.dart';
 import '../utils/pending_notification_navigation.dart';
 import 'horoscope_detail_screen.dart';
@@ -1436,8 +1437,10 @@ class _ChatScreenState extends State<ChatScreen>
       body: Column(
         children: [
           Expanded(
-            child: Consumer<ChatService>(
-              builder: (context, chatService, _) {
+            child: Consumer2<ChatService, DictionaryProvider>(
+              builder: (context, chatService, dictProvider, _) {
+                final dictionaryMap = dictProvider.dictionaryMap;
+
                 return AnimatedList(
                   key: chatService.listKey,
                   reverse: false,
@@ -1454,7 +1457,8 @@ class _ChatScreenState extends State<ChatScreen>
                         message: message,
                         onRateAnswer: _rateAnswer,
                         onRateAdvice: _rateAdvice,
-                        chatService: chatService, // <-- Pass it here
+                        chatService: chatService,
+                        dictionaryMap: dictionaryMap, // ✅ works
                       ),
                     );
                   },

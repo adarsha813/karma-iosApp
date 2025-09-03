@@ -5,10 +5,12 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
 import '../providers/notification_provider.dart';
+import '../providers/dictionary_provider.dart';
 import '../models/notification_model.dart';
 import '../services/notification_handler.dart';
 import '../services/socket_service.dart'; // adjust the relative path as needed
 import 'package:shimmer/shimmer.dart';
+import '../utils/dictionary_highlighter.dart';
 
 // Initialize the FlutterLocalNotificationsPlugin globally
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -222,6 +224,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
   }
 
   Widget _buildNotificationList(List<Map<String, dynamic>> items) {
+    final dictionaryMap = context.watch<DictionaryProvider>().dictionaryMap;
     if (items.isEmpty) {
       return const Center(child: Text("No notifications"));
     }
@@ -235,12 +238,19 @@ class _NotificationsScreenState extends State<NotificationsScreen>
 
         return ListTile(
           leading: const Icon(Icons.notifications),
-          title: Text(
-            message,
+          title: DefaultTextStyle(
             style: TextStyle(
               fontWeight: read ? FontWeight.normal : FontWeight.bold,
             ),
+            child: RichText(
+              text: DictionaryHighlighter.highlightText(
+                context,
+                message,
+                dictionaryMap,
+              ),
+            ),
           ),
+
           onTap: () async {
             // Update UI instantly
             if (!mounted) return;

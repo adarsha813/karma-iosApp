@@ -24,6 +24,7 @@ import 'providers/horoscope_provider.dart';
 import 'screens/profile_settings_screen.dart';
 import 'services/first_launch_service.dart';
 import 'screens/onboarding_screen.dart';
+import 'providers/dictionary_provider.dart';
 
 // -------------------------
 // PendingNotificationNavigation as ChangeNotifier
@@ -361,6 +362,9 @@ Future<void> main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => ChatService()),
         ChangeNotifierProvider(create: (_) => LocaleProvider()),
+        ChangeNotifierProvider(
+          create: (_) => DictionaryProvider()..loadDictionary(),
+        ),
         ChangeNotifierProvider(create: (_) => NotificationProvider()),
         ChangeNotifierProvider(create: (_) => HoroscopeProvider()),
         ChangeNotifierProvider<ProfileProvider>.value(value: profileProvider),

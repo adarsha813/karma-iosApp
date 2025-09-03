@@ -30,10 +30,7 @@ class DictionaryHighlighter {
           spans.add(
             TextSpan(
               text: text.substring(index, index + word.length),
-              style: const TextStyle(
-                decoration: TextDecoration.underline,
-                color: Colors.blue,
-              ),
+              style: const TextStyle(decoration: TextDecoration.underline),
               recognizer:
                   TapGestureRecognizer()
                     ..onTap = () {
