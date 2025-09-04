@@ -220,7 +220,6 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Message hidden successfully.")),
         );
-        Navigator.pop(context); // close bottom sheet
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Failed to hide message: ${response.body}")),
