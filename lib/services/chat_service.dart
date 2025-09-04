@@ -15,12 +15,11 @@ class ChatService with ChangeNotifier {
 
   List<Message> get messages => _messages;
   void addMessage(Message message) {
-    _messages.add(message); // add at end
+    _messages.insert(0, message); // insert at start
     listKey.currentState?.insertItem(
-      _messages.length - 1,
+      0, // always 0 because reverse: true
       duration: const Duration(milliseconds: 300),
     );
-    _messages.insert(0, message);
     notifyListeners();
   }
 
