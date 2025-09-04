@@ -243,17 +243,21 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     );
 
     // Scale animation
-    _scaleAnimation = Tween<double>(begin: 0.8, end: 1.0).animate(
+    _scaleAnimation = Tween<double>(begin: 0.99, end: 1.0).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeOutBack),
     );
 
     // Slide animation: right for own messages, left for others
     _slideAnimation = Tween<Offset>(
-      begin: widget.message.isMe ? Offset.zero : const Offset(-1.0, 0.0),
+      begin:
+          widget.message.isMe
+              ? const Offset(0.05, 0.0)
+              : const Offset(-0.05, 0.0),
       end: Offset.zero,
     ).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeOutBack),
     );
+
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeIn),
     );
@@ -305,22 +309,28 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       icon = Icons.tips_and_updates;
       label = "Advice";
     }
-    Widget animatedBubble =
-        widget.message.isMe || message.isAdvice
-            ? ScaleTransition(
-              scale: _scaleAnimation,
-              child: FadeTransition(
-                opacity: _fadeAnimation,
-                child: _buildBubble(bubbleColor, label, icon),
-              ),
-            )
-            : SlideTransition(
-              position: _slideAnimation,
-              child: FadeTransition(
-                opacity: _fadeAnimation,
-                child: _buildBubble(bubbleColor, label, icon),
-              ),
-            );
+    Widget animatedBubble = SlideTransition(
+      position: _slideAnimation,
+      child: ScaleTransition(
+        scale: _scaleAnimation,
+        child: _buildBubble(bubbleColor, label, icon),
+      ),
+    );
+    widget.message.isMe || message.isAdvice
+        ? ScaleTransition(
+          scale: _scaleAnimation,
+          child: FadeTransition(
+            opacity: _fadeAnimation,
+            child: _buildBubble(bubbleColor, label, icon),
+          ),
+        )
+        : SlideTransition(
+          position: _slideAnimation,
+          child: FadeTransition(
+            opacity: _fadeAnimation,
+            child: _buildBubble(bubbleColor, label, icon),
+          ),
+        );
     return Align(
       alignment:
           message.isMe
