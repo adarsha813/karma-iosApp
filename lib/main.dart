@@ -58,10 +58,12 @@ const AndroidNotificationChannel horoscopeChannel = AndroidNotificationChannel(
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 
-// Background message handler for FCM
-@pragma('vm:entry-point') // Important for background handlers!
+@pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print('📩 [Background] Message received: ${message.messageId}');
+  print('📩 Message data: ${message.data}');
+
+  // Initialize Firebase in background isolate
   await Firebase.initializeApp();
 
   final prefs = await SharedPreferences.getInstance();
@@ -69,9 +71,17 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
   if (!notificationsEnabled) {
     print('🔕 Notifications disabled - skipping background notification');
-    return; // Exit if notifications are disabled
+    return;
   }
 
+  // Extract data from message
+  final data = message.data;
+  final type = data['type'] ?? 'general'; // Add type field to your FCM messages
+  final title = data['title'] ?? 'New Notification';
+  final body = data['body'] ?? 'You have a new message';
+  final payload = jsonEncode(data);
+
+  // Update badge count
   int count = prefs.getInt('unread_notification_count') ?? 0;
   count++;
   await prefs.setInt('unread_notification_count', count);
@@ -82,31 +92,70 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     print("⚠️ Failed to update badge in background: $e");
   }
 
-  print('📩 Background badge and count updated');
-
-  // Show notification only if enabled
+  // Initialize local notifications
   const AndroidInitializationSettings androidSettings =
       AndroidInitializationSettings('@mipmap/ic_launcher');
   const InitializationSettings initSettings = InitializationSettings(
     android: androidSettings,
   );
 
+  final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
   await flutterLocalNotificationsPlugin.initialize(initSettings);
+
+  // Create appropriate notification channel based on type
+  String channelId = 'general_channel';
+  String channelName = 'General Notifications';
+
+  if (type == 'answer') {
+    channelId = 'answer_channel';
+    channelName = 'Answer Notifications';
+  } else if (type == 'clarification') {
+    channelId = 'clarification_channel';
+    channelName = 'Clarification Notifications';
+  } else if (type == 'horoscope') {
+    channelId = 'horoscope_channel';
+    channelName = 'Horoscope Notifications';
+  }
+
+  // Ensure channel exists
+  final androidPlugin =
+      flutterLocalNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin
+          >();
+
+  if (androidPlugin != null) {
+    await androidPlugin.createNotificationChannel(
+      AndroidNotificationChannel(
+        channelId,
+        channelName,
+        description: 'Notifications for $channelName',
+        importance: Importance.high,
+      ),
+    );
+  }
+
+  // Show notification
+  final androidDetails = AndroidNotificationDetails(
+    channelId,
+    channelName,
+    channelDescription: 'Notifications for $channelName',
+    importance: Importance.high,
+    priority: Priority.high,
+    ticker: 'ticker',
+  );
+
+  final notificationDetails = NotificationDetails(android: androidDetails);
 
   await flutterLocalNotificationsPlugin.show(
     DateTime.now().millisecondsSinceEpoch % 100000,
-    message.data['title'] ?? 'New Notification',
-    message.data['body'] ?? 'You have a new message',
-    const NotificationDetails(
-      android: AndroidNotificationDetails(
-        'horoscope_channel',
-        'Horoscope Notifications',
-        channelDescription: 'Notifications for new daily horoscopes',
-        importance: Importance.high,
-      ),
-    ),
-    payload: jsonEncode(message.data),
+    title,
+    body,
+    notificationDetails,
+    payload: payload,
   );
+
+  print('📩 Background notification displayed for type: $type');
 }
 
 // Create notification channel (for Android 8.0+)
@@ -360,9 +409,33 @@ Future<void> main() async {
 
     final data = message.data;
     final type = data['type'] ?? 'general';
+
     if (navigatorKey.currentContext == null) {
       print("⚠️ No navigator context to update badge counts");
       return;
+    }
+    if (type == 'answer' || type == 'clarification') {
+      // Show notification using NotificationHandler
+      await NotificationHandler.showBasicNotification(
+        title: data['title'] ?? 'New Notification',
+        body: data['body'] ?? 'You have a new message',
+        payload: jsonEncode(message.data),
+        context: navigatorKey.currentContext!,
+      );
+
+      // Update appropriate provider
+      final notificationProvider = Provider.of<NotificationProvider>(
+        navigatorKey.currentContext!,
+        listen: false,
+      );
+      await notificationProvider.incrementUnreadCount();
+    } else if (type == 'horoscope') {
+      // Handle horoscope notifications
+      final horoscopeProvider = Provider.of<HoroscopeProvider>(
+        navigatorKey.currentContext!,
+        listen: false,
+      );
+      await horoscopeProvider.increment();
     }
 
     if (type == 'horoscope') {
