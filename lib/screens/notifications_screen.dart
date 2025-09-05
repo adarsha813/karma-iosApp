@@ -8,16 +8,16 @@ import '../providers/notification_provider.dart';
 import '../providers/dictionary_provider.dart';
 import '../models/notification_model.dart';
 import '../services/notification_handler.dart';
-import '../services/socket_service.dart'; // adjust the relative path as needed
+import '../services/socket_service.dart';
 import 'package:shimmer/shimmer.dart';
 import '../utils/dictionary_highlighter.dart';
 
 // Initialize the FlutterLocalNotificationsPlugin globally
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
+
 late NotificationProvider _notificationProvider;
 
-// String extension to capitalize first letter
 extension StringExtension on String {
   String capitalize() {
     if (isEmpty) return this;
@@ -40,31 +40,27 @@ class _NotificationsScreenState extends State<NotificationsScreen>
   bool isLoading = true;
   late IO.Socket socket;
   List<String> categories = [];
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
     print('🔹 NotificationsScreen initState');
+
     _tabController = TabController(length: 1, vsync: this);
     _tabController!.addListener(() {
-      setState(() {}); // simple, works for taps and swipes
+      setState(() {});
     });
 
-    _notificationProvider = Provider.of<NotificationProvider>(
-      context,
-      listen: false,
-    );
-    _notificationProvider.setNotificationScreenOpen(true);
-    print('📱 NotificationScreen setNotificationScreenOpen(true)');
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-
       final provider = Provider.of<NotificationProvider>(
         context,
         listen: false,
       );
       provider.setNotificationScreenOpen(true);
       provider.clearUnreadCount();
+      _notificationProvider = provider;
     });
 
     _initializeNotifications();
@@ -73,7 +69,6 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     setupSocket();
   }
 
-  // Initialize flutter_local_notifications
   Future<void> _initializeNotifications() async {
     const AndroidInitializationSettings androidSettings =
         AndroidInitializationSettings('@mipmap/ic_launcher');
@@ -102,12 +97,17 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     socket.on('newNotification', (data) {
       print('📩 New notification: $data');
 
-      final notification = NotificationModel.fromJson(data);
+      final normalizedData = {
+        "id": data["_id"]?.toString() ?? "",
+        "message": data["message"] ?? "",
+        "read": data["read"] ?? false,
+        "category": (data["category"] ?? "general").toString().toLowerCase(),
+        "createdAt": data["createdAt"] ?? DateTime.now().toIso8601String(),
+      };
 
-      // Determine category
-      final category = (data['category'] ?? 'general').toString().toLowerCase();
+      final notification = NotificationModel.fromJson(normalizedData);
+      final category = normalizedData['category'];
 
-      // 1️⃣ Update local UI state
       setState(() {
         // Add category if missing
         if (!notificationsByCategory.containsKey(category)) {
@@ -117,12 +117,14 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                   .where((key) => key != 'all')
                   .toList();
 
-          // Reset TabController if categories changed
+          final previousIndex = _tabController?.index ?? 0;
           _tabController?.dispose();
           _tabController = TabController(
             length: categories.length + 1,
             vsync: this,
           );
+          _tabController!.addListener(() => setState(() {}));
+          _tabController!.index = previousIndex.clamp(0, categories.length);
         }
 
         // Add new notification at the top
@@ -130,15 +132,24 @@ class _NotificationsScreenState extends State<NotificationsScreen>
           "id": notification.id,
           "message": notification.message,
           "read": false,
+          "createdAt": normalizedData['createdAt'],
         });
+
+        // Scroll to top for visibility
+        if (_scrollController.hasClients) {
+          _scrollController.animateTo(
+            0,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeOut,
+          );
+        }
       });
 
-      // 2️⃣ Update unread count in provider
       _notificationProvider.setUnreadCount(
         _notificationProvider.unreadCount + 1,
       );
 
-      // 3️⃣ Optional: show system notification
+      // Show system notification
       NotificationHandler.showSystemNotification(data);
     });
 
@@ -164,34 +175,30 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                 "id": msg['_id'] is Map ? msg['_id']['\$oid'] : msg['_id'],
                 "message": msg['message'],
                 "read": msg['read'] ?? false,
+                "createdAt":
+                    msg['createdAt'] ?? DateTime.now().toIso8601String(),
               },
             ),
           );
         });
+
         if (!mounted) return;
         setState(() {
           notificationsByCategory = cleanedData;
-          // Categories except "all"
           categories = cleanedData.keys.where((key) => key != 'all').toList();
           isLoading = false;
 
-          // Reset the TabController because tabs changed
           _tabController?.dispose();
           _tabController = TabController(
             length: categories.length + 1,
             vsync: this,
           );
-
-          _tabController?.index = 0;
+          _tabController!.index = 0;
         });
 
         if (!skipUnreadCount) {
           final count = _getUnreadCount();
-          final provider = Provider.of<NotificationProvider>(
-            context,
-            listen: false,
-          );
-          provider.setUnreadCount(count);
+          _notificationProvider.setUnreadCount(count);
         }
       } else {
         throw Exception('Failed to load notifications');
@@ -216,7 +223,6 @@ class _NotificationsScreenState extends State<NotificationsScreen>
       );
 
       if (response.statusCode == 200) {
-        // Update local UI state: mark all read true
         if (!mounted) return;
         setState(() {
           notificationsByCategory.forEach((key, list) {
@@ -225,13 +231,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
             }
           });
         });
-
-        // Update unread count in provider
-        final provider = Provider.of<NotificationProvider>(
-          context,
-          listen: false,
-        );
-        provider.setUnreadCount(0);
+        _notificationProvider.setUnreadCount(0);
       } else {
         print('Failed to mark all as read');
       }
@@ -249,7 +249,13 @@ class _NotificationsScreenState extends State<NotificationsScreen>
   }
 
   List<Map<String, dynamic>> _getAllNotifications() {
-    return notificationsByCategory.values.expand((list) => list).toList();
+    final all = notificationsByCategory.values.expand((list) => list).toList();
+    all.sort(
+      (a, b) => DateTime.parse(
+        b["createdAt"],
+      ).compareTo(DateTime.parse(a["createdAt"])),
+    );
+    return all;
   }
 
   Widget _buildNotificationList(List<Map<String, dynamic>> items) {
@@ -258,10 +264,10 @@ class _NotificationsScreenState extends State<NotificationsScreen>
       return const Center(child: Text("No notifications"));
     }
     return ListView.builder(
+      controller: _scrollController,
       itemCount: items.length,
       itemBuilder: (context, index) {
         final item = items[index];
-        print('ℹ️ Notification item at $index: $item');
         final message = item['message'] ?? 'No message';
         final read = items[index]['read'] ?? false;
 
@@ -275,19 +281,14 @@ class _NotificationsScreenState extends State<NotificationsScreen>
               TextStyle(
                 fontSize: 14,
                 color: Colors.black,
-                fontWeight:
-                    read ? FontWeight.normal : FontWeight.bold, // 👈 set here
+                fontWeight: read ? FontWeight.normal : FontWeight.bold,
               ),
             ),
           ),
           onTap: () async {
-            // Update UI instantly
             if (!mounted) return;
-            setState(() {
-              items[index]['read'] = true;
-            });
+            setState(() => items[index]['read'] = true);
 
-            // Send request to mark as read
             await http.post(
               Uri.parse(
                 'https://chat-backend-rvk9.onrender.com/notifications/mark-read',
@@ -304,7 +305,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     );
   }
 
-  Widget _buildSkeletonLoader({int itemCount = 8}) {
+  Widget _buildSkeletonLoader({int itemCount = 10}) {
     return ListView.separated(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       itemCount: itemCount,
@@ -316,7 +317,6 @@ class _NotificationsScreenState extends State<NotificationsScreen>
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Icon placeholder
               Container(
                 width: 40,
                 height: 40,
@@ -326,8 +326,6 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                 ),
               ),
               const SizedBox(width: 12),
-
-              // Text placeholders
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -351,13 +349,9 @@ class _NotificationsScreenState extends State<NotificationsScreen>
   @override
   Widget build(BuildContext context) {
     if (_tabController == null) {
-      print('⚠️ _tabController is null in build!');
-      // Show loading or empty placeholder until tabController ready
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
-    assert(_tabController != null);
-    print('ℹ️ _tabController length: ${_tabController!.length}');
-    print('ℹ️ categories count: ${categories.length}');
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Notifications"),
@@ -388,15 +382,12 @@ class _NotificationsScreenState extends State<NotificationsScreen>
 
   @override
   void dispose() {
+    socket.disconnect();
+    socket.dispose();
     _notificationProvider.setNotificationScreenOpen(false);
-    print('📴 NotificationScreen setNotificationScreenOpen(false)');
-    print('🔸 NotificationsScreen dispose');
-
-    // Fire and forget:
-    _markAllNotificationsAsRead().catchError((e) {
-      print('Error marking all notifications as read on dispose: $e');
-    });
-
+    _markAllNotificationsAsRead().catchError(
+      (e) => print('Error marking all as read: $e'),
+    );
     _tabController?.dispose();
     super.dispose();
   }
@@ -419,7 +410,6 @@ class CategoryTabs extends StatelessWidget {
       builder: (context, _) {
         return Row(
           children: [
-            // "All" tab
             GestureDetector(
               onTap: () => tabController.animateTo(0),
               child: Container(
@@ -445,9 +435,7 @@ class CategoryTabs extends StatelessWidget {
                 ),
               ),
             ),
-
-            // Other tabs
-            Expanded(
+            Flexible(
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -455,7 +443,6 @@ class CategoryTabs extends StatelessWidget {
                     final tabIndex = index + 1;
                     final selected = tabController.index == tabIndex;
                     final cat = categories[index];
-
                     return GestureDetector(
                       onTap: () => tabController.animateTo(tabIndex),
                       child: Container(
