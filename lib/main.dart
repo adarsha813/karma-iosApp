@@ -433,7 +433,13 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     showOnboarding = widget.firstLaunch;
     // Listen for locale changes
-
+    Future.microtask(() async {
+      final prefs = await SharedPreferences.getInstance();
+      final done = prefs.getBool('onboarding_done') ?? false;
+      if (done && showOnboarding) {
+        setState(() => showOnboarding = false);
+      }
+    });
     // Listen to FCM messages while app is in foreground
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       final notification = message.notification;

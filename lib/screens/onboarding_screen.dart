@@ -89,7 +89,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  int get _pagesLength => 4;
+  int get _pagesLength =>
+      _buildLocalizedPages(AppLocalizations.of(context)!).length + 1;
 
   List<Map<String, String>> _buildLocalizedPages(AppLocalizations l10n) {
     return [
@@ -146,7 +147,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Lottie.asset(page['animation']!, height: 250),
+                              Lottie.asset(
+                                page['animation']!,
+                                height: 250,
+                                fit: BoxFit.contain,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return const Icon(
+                                    Icons.broken_image,
+                                    size: 100,
+                                    color: Colors.red,
+                                  );
+                                },
+                              ),
                               const SizedBox(height: 20),
                               Text(
                                 page['title']!,
@@ -290,7 +302,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         else
                           const SizedBox(width: 60),
                         Row(
-                          children: List.generate(_pagesLength + 1, (index) {
+                          children: List.generate(_pagesLength, (index) {
                             return Container(
                               margin: const EdgeInsets.symmetric(horizontal: 4),
                               width: _currentPage == index ? 12 : 8,
@@ -305,13 +317,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             );
                           }),
                         ),
-                        if (_currentPage < _pagesLength)
+
+                        if (_currentPage < _pagesLength - 1)
                           TextButton(
                             onPressed: _nextPage,
                             child: Text(l10n.onboardingNext),
                           )
                         else
-                          const SizedBox(width: 60),
+                          const SizedBox(
+                            width: 60,
+                          ), // leave blank in the last page
                       ],
                     ),
                   ),
