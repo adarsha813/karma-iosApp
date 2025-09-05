@@ -46,6 +46,9 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     super.initState();
     print('🔹 NotificationsScreen initState');
     _tabController = TabController(length: 1, vsync: this);
+    _tabController!.addListener(() {
+      setState(() {}); // simple, works for taps and swipes
+    });
 
     _notificationProvider = Provider.of<NotificationProvider>(
       context,
@@ -105,10 +108,6 @@ class _NotificationsScreenState extends State<NotificationsScreen>
       );
       final notification = NotificationModel.fromJson(data);
       provider.addNotification(notification);
-
-      if (!provider.isNotificationScreenOpen) {
-        provider.incrementUnreadCount();
-      }
 
       NotificationHandler.showSystemNotification(data);
     });
@@ -276,35 +275,44 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     );
   }
 
-  Widget _buildSkeletonLoader() {
-    return ListView.builder(
-      itemCount: 8, // Number of shimmer placeholders
+  Widget _buildSkeletonLoader({int itemCount = 8}) {
+    return ListView.separated(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      itemCount: itemCount,
+      separatorBuilder: (_, __) => const SizedBox(height: 8),
       itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          child: Shimmer.fromColors(
-            baseColor: Colors.grey.shade300,
-            highlightColor: Colors.grey.shade100,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(width: 40, height: 40, color: Colors.white),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 14,
-                        color: Colors.white,
-                        margin: const EdgeInsets.only(bottom: 8),
-                      ),
-                      Container(height: 14, width: 150, color: Colors.white),
-                    ],
-                  ),
+        return Shimmer.fromColors(
+          baseColor: Colors.grey.shade300,
+          highlightColor: Colors.grey.shade100,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Icon placeholder
+              Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(width: 12),
+
+              // Text placeholders
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 14,
+                      color: Colors.white,
+                      margin: const EdgeInsets.only(bottom: 8),
+                    ),
+                    Container(height: 14, width: 150, color: Colors.white),
+                  ],
+                ),
+              ),
+            ],
           ),
         );
       },
@@ -324,12 +332,12 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     return Scaffold(
       appBar: AppBar(
         title: const Text("Notifications"),
-        bottom: TabBar(
-          controller: _tabController!,
-          tabs: [
-            const Tab(text: "All"),
-            ...categories.map((cat) => Tab(text: cat.capitalize())).toList(),
-          ],
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(48),
+          child: CategoryTabs(
+            tabController: _tabController!,
+            categories: categories,
+          ),
         ),
       ),
       body:
@@ -339,13 +347,11 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                 controller: _tabController!,
                 children: [
                   _buildNotificationList(_getAllNotifications()),
-                  ...categories
-                      .map(
-                        (cat) => _buildNotificationList(
-                          notificationsByCategory[cat] ?? [],
-                        ),
-                      )
-                      .toList(),
+                  ...categories.map(
+                    (cat) => _buildNotificationList(
+                      notificationsByCategory[cat] ?? [],
+                    ),
+                  ),
                 ],
               ),
     );
@@ -364,5 +370,94 @@ class _NotificationsScreenState extends State<NotificationsScreen>
 
     _tabController?.dispose();
     super.dispose();
+  }
+}
+
+class CategoryTabs extends StatelessWidget {
+  final TabController tabController;
+  final List<String> categories;
+
+  const CategoryTabs({
+    super.key,
+    required this.tabController,
+    required this.categories,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: tabController,
+      builder: (context, _) {
+        return Row(
+          children: [
+            // "All" tab
+            GestureDetector(
+              onTap: () => tabController.animateTo(0),
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 8,
+                ),
+                margin: const EdgeInsets.only(left: 8),
+                decoration: BoxDecoration(
+                  color:
+                      tabController.index == 0
+                          ? Colors.deepPurple
+                          : Colors.deepPurpleAccent.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Text(
+                  "All",
+                  style: TextStyle(
+                    color:
+                        tabController.index == 0 ? Colors.white : Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+
+            // Other tabs
+            Expanded(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: List.generate(categories.length, (index) {
+                    final tabIndex = index + 1;
+                    final selected = tabController.index == tabIndex;
+                    final cat = categories[index];
+
+                    return GestureDetector(
+                      onTap: () => tabController.animateTo(tabIndex),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 8,
+                        ),
+                        margin: const EdgeInsets.symmetric(horizontal: 4),
+                        decoration: BoxDecoration(
+                          color:
+                              selected
+                                  ? Colors.deepPurple
+                                  : Colors.deepPurpleAccent.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Text(
+                          cat.capitalize(),
+                          style: TextStyle(
+                            color: selected ? Colors.white : Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

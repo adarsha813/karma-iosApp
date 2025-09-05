@@ -87,14 +87,6 @@ class SocketService {
         notification,
       ); // Update notification list
 
-      if (!notificationProvider.isNotificationScreenOpen) {
-        notificationProvider
-            .incrementUnreadCount(); // Increment badge only if user NOT viewing
-        print('📡 NotificationProvider unreadCount incremented');
-      } else {
-        print('🚫 Screen is open, count not incremented');
-      }
-
       // Show system notification via your handler if needed
       // NotificationHandler.showSystemNotification(data);
     });
