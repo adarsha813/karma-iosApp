@@ -91,16 +91,25 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   } catch (e) {
     print("⚠️ Failed to update badge in background: $e");
   }
+  // Increment specific counters
   if (type == 'horoscope') {
     int horoCount = prefs.getInt('unread_horoscope_count') ?? 0;
     horoCount++;
     await prefs.setInt('unread_horoscope_count', horoCount);
     print('📈 Horoscope unread count updated: $horoCount');
+  } else if (type == 'notification') {
+    // ✅ Only notifications page
+    bool isScreenOpen = prefs.getBool('notification_screen_open') ?? false;
+    if (!isScreenOpen) {
+      int notifCount = prefs.getInt('unread_notifications_page_count') ?? 0;
+      notifCount++;
+      await prefs.setInt('unread_notifications_page_count', notifCount);
+      print('📈 Notifications page unread count updated: $notifCount');
+    } else {
+      print('ℹ️ Notifications screen open, skipping unread increment');
+    }
   } else {
-    int generalCount = prefs.getInt('unread_general_count') ?? 0;
-    generalCount++;
-    await prefs.setInt('unread_general_count', generalCount);
-    print('📈 General notification count updated: $generalCount');
+    print('ℹ️ Other types ignored for unread counts');
   }
   // Initialize local notifications
   const AndroidInitializationSettings androidSettings =
@@ -434,19 +443,29 @@ Future<void> main() async {
       context: navigatorKey.currentContext!,
     );
 
-    // Update unread counters
+    // Update unread counters selectively
     if (type == 'horoscope') {
       final horoscopeProvider = Provider.of<HoroscopeProvider>(
         navigatorKey.currentContext!,
         listen: false,
       );
       await horoscopeProvider.increment();
-    } else {
+      print('📈 Horoscope unread incremented');
+    } else if (type == 'notification') {
+      // ✅ Only notifications page
       final notificationProvider = Provider.of<NotificationProvider>(
         navigatorKey.currentContext!,
         listen: false,
       );
-      await notificationProvider.incrementUnreadCount();
+
+      if (!notificationProvider.isNotificationScreenOpen) {
+        await notificationProvider.incrementUnreadCount();
+        print('📈 Notifications page unread incremented');
+      } else {
+        print('ℹ️ Notifications screen open, skipping unread increment');
+      }
+    } else {
+      print('ℹ️ Ignoring other message types for unread count');
     }
   });
 
