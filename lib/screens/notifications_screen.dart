@@ -70,7 +70,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     _initializeNotifications();
     fetchNotifications();
     SocketService().initialize(widget.userId, context);
-    //setupSocket();
+    setupSocket();
   }
 
   // Initialize flutter_local_notifications
@@ -100,15 +100,45 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     });
 
     socket.on('newNotification', (data) {
-      print('Socket notification received: $data');
+      print('📩 New notification: $data');
 
-      final provider = Provider.of<NotificationProvider>(
-        context,
-        listen: false,
-      );
       final notification = NotificationModel.fromJson(data);
-      provider.addNotification(notification);
 
+      // Determine category
+      final category = (data['category'] ?? 'general').toString().toLowerCase();
+
+      // 1️⃣ Update local UI state
+      setState(() {
+        // Add category if missing
+        if (!notificationsByCategory.containsKey(category)) {
+          notificationsByCategory[category] = [];
+          categories =
+              notificationsByCategory.keys
+                  .where((key) => key != 'all')
+                  .toList();
+
+          // Reset TabController if categories changed
+          _tabController?.dispose();
+          _tabController = TabController(
+            length: categories.length + 1,
+            vsync: this,
+          );
+        }
+
+        // Add new notification at the top
+        notificationsByCategory[category]?.insert(0, {
+          "id": notification.id,
+          "message": notification.message,
+          "read": false,
+        });
+      });
+
+      // 2️⃣ Update unread count in provider
+      _notificationProvider.setUnreadCount(
+        _notificationProvider.unreadCount + 1,
+      );
+
+      // 3️⃣ Optional: show system notification
       NotificationHandler.showSystemNotification(data);
     });
 
@@ -237,20 +267,19 @@ class _NotificationsScreenState extends State<NotificationsScreen>
 
         return ListTile(
           leading: const Icon(Icons.notifications),
-          title: DefaultTextStyle(
-            style: TextStyle(
-              fontWeight: read ? FontWeight.normal : FontWeight.bold,
-            ),
-            child: RichText(
-              text: DictionaryHighlighter.highlightText(
-                context,
-                message,
-                dictionaryMap,
-                const TextStyle(fontSize: 14, color: Colors.black), // ✅ fix
+          title: RichText(
+            text: DictionaryHighlighter.highlightText(
+              context,
+              message,
+              dictionaryMap,
+              TextStyle(
+                fontSize: 14,
+                color: Colors.black,
+                fontWeight:
+                    read ? FontWeight.normal : FontWeight.bold, // 👈 set here
               ),
             ),
           ),
-
           onTap: () async {
             // Update UI instantly
             if (!mounted) return;

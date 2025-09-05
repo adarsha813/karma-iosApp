@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import '../models/astro_term.dart';
 import '../services/astro_api_service.dart';
 import 'astro_term_detail_screen.dart';
@@ -54,76 +55,168 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
     });
   }
 
+  Widget _buildSkeletonLoader() {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final searchBarHeight = 60.0; // approx height including padding
+    final rowHeight = 36.0; // same as your ListTile
+    final remainingHeight = screenHeight - searchBarHeight - kToolbarHeight;
+    final itemCount = (remainingHeight / rowHeight).ceil();
+
+    return ListView.separated(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      itemCount: itemCount,
+      separatorBuilder: (_, __) => const Divider(height: 0.5),
+      itemBuilder: (context, index) {
+        if (index == 0) {
+          // First row as search bar
+          return Shimmer.fromColors(
+            baseColor: Colors.grey.shade300,
+            highlightColor: Colors.grey.shade100,
+            child: Container(
+              height: 50,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+          );
+        } else {
+          // Term : Meaning rows
+          return Shimmer.fromColors(
+            baseColor: Colors.grey.shade300,
+            highlightColor: Colors.grey.shade100,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2),
+              child: SizedBox(
+                height: rowHeight,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    // Term placeholder
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.25,
+                      height: 18,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    // Colon placeholder
+                    Container(width: 8, height: 18, color: Colors.white),
+                    const SizedBox(width: 4),
+                    // Meaning placeholder
+                    Expanded(
+                      child: Container(
+                        height: 16,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        }
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Astro Dictionary")),
       body:
           _loading
-              ? const Center(child: CircularProgressIndicator())
+              ? _buildSkeletonLoader()
               : Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 6,
+                    ),
                     child: TextField(
                       controller: _searchController,
                       decoration: InputDecoration(
                         hintText: "Search terms...",
-                        prefixIcon: const Icon(Icons.search),
+                        prefixIcon: const Icon(
+                          Icons.search,
+                          color: Colors.grey,
+                        ),
+                        filled: true,
+                        fillColor: Colors.grey.shade100,
+                        contentPadding: const EdgeInsets.symmetric(
+                          vertical: 12,
+                          horizontal: 16,
+                        ),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(16),
+                          borderSide: BorderSide.none,
                         ),
                       ),
                     ),
                   ),
+
                   Expanded(
                     child:
                         _filteredTerms.isEmpty
                             ? const Center(child: Text("No terms found"))
-                            : ListView.builder(
+                            : ListView.separated(
                               itemCount: _filteredTerms.length,
+                              separatorBuilder:
+                                  (_, __) => const Divider(height: 0.5),
                               itemBuilder: (context, index) {
                                 final term = _filteredTerms[index];
-                                return Card(
-                                  margin: const EdgeInsets.symmetric(
-                                    horizontal: 10,
-                                    vertical: 5,
+                                return ListTile(
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 12,
+                                    vertical: 0.4, // minimal top/bottom padding
                                   ),
-                                  child: ListTile(
-                                    title: Text(
-                                      term.term,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    subtitle: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        if ((term.meaning).isNotEmpty)
-                                          Text(term.meaning),
-                                        if ((term.meaningNepali ?? '')
-                                            .isNotEmpty)
-                                          Text(
-                                            term.meaningNepali ?? '',
-                                            style: const TextStyle(
-                                              color: Colors.grey,
-                                            ),
+                                  title: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Flexible(
+                                        flex: 2,
+                                        child: Text(
+                                          term.term,
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
                                           ),
-                                      ],
-                                    ),
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder:
-                                              (_) => AstroTermDetailScreen(
-                                                term: term,
-                                              ),
                                         ),
-                                      );
-                                    },
+                                      ),
+                                      const SizedBox(width: 6),
+                                      const Text(
+                                        ": ",
+                                      ), // minimal gap between term & meaning
+                                      Flexible(
+                                        flex: 5,
+                                        child: Text(
+                                          term.meaning,
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ],
                                   ),
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder:
+                                            (_) => AstroTermDetailScreen(
+                                              term: term,
+                                            ),
+                                      ),
+                                    );
+                                  },
                                 );
                               },
                             ),
