@@ -2,7 +2,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import '../providers/notification_provider.dart';
-import 'notification_handler.dart';
+// import 'notification_handler.dart';
 import '../models/notification_model.dart';
 import '../main.dart'; // or wherever you define navigatorKey
 
@@ -96,7 +96,7 @@ class SocketService {
       }
 
       // Show system notification via your handler if needed
-      NotificationHandler.showSystemNotification(data);
+      // NotificationHandler.showSystemNotification(data);
     });
   }
 

@@ -91,7 +91,17 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   } catch (e) {
     print("⚠️ Failed to update badge in background: $e");
   }
-
+  if (type == 'horoscope') {
+    int horoCount = prefs.getInt('unread_horoscope_count') ?? 0;
+    horoCount++;
+    await prefs.setInt('unread_horoscope_count', horoCount);
+    print('📈 Horoscope unread count updated: $horoCount');
+  } else {
+    int generalCount = prefs.getInt('unread_general_count') ?? 0;
+    generalCount++;
+    await prefs.setInt('unread_general_count', generalCount);
+    print('📈 General notification count updated: $generalCount');
+  }
   // Initialize local notifications
   const AndroidInitializationSettings androidSettings =
       AndroidInitializationSettings('@mipmap/ic_launcher');
@@ -116,7 +126,6 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     channelId = 'horoscope_channel';
     channelName = 'Horoscope Notifications';
   }
-
   // Ensure channel exists
   final androidPlugin =
       flutterLocalNotificationsPlugin
@@ -409,58 +418,38 @@ Future<void> main() async {
 
     final data = message.data;
     final type = data['type'] ?? 'general';
+    final title = data['title'] ?? 'New Notification';
+    final body = data['body'] ?? 'You have a new message';
 
     if (navigatorKey.currentContext == null) {
       print("⚠️ No navigator context to update badge counts");
       return;
     }
-    if (type == 'answer' || type == 'clarification') {
-      // Show notification using NotificationHandler
-      await NotificationHandler.showBasicNotification(
-        title: data['title'] ?? 'New Notification',
-        body: data['body'] ?? 'You have a new message',
-        payload: jsonEncode(message.data),
-        context: navigatorKey.currentContext!,
-      );
 
-      // Update appropriate provider
-      final notificationProvider = Provider.of<NotificationProvider>(
-        navigatorKey.currentContext!,
-        listen: false,
-      );
-      await notificationProvider.incrementUnreadCount();
-    } else if (type == 'horoscope') {
-      // Handle horoscope notifications
-      final horoscopeProvider = Provider.of<HoroscopeProvider>(
-        navigatorKey.currentContext!,
-        listen: false,
-      );
-      await horoscopeProvider.increment();
-    }
+    // Show local notification using NotificationHandler
+    await NotificationHandler.showBasicNotification(
+      title: title,
+      body: body,
+      payload: jsonEncode(data),
+      context: navigatorKey.currentContext!,
+    );
 
+    // Update unread counters
     if (type == 'horoscope') {
-      // Increment only HoroscopeProvider unread count
       final horoscopeProvider = Provider.of<HoroscopeProvider>(
         navigatorKey.currentContext!,
         listen: false,
       );
       await horoscopeProvider.increment();
     } else {
-      // Increment only NotificationProvider unread count
       final notificationProvider = Provider.of<NotificationProvider>(
         navigatorKey.currentContext!,
         listen: false,
       );
       await notificationProvider.incrementUnreadCount();
     }
-
-    await NotificationHandler.showBasicNotification(
-      title: message.notification?.title ?? 'New Notification',
-      body: message.notification?.body ?? 'You have a new message',
-      payload: jsonEncode(message.data),
-      context: navigatorKey.currentContext!, // ✅ pass context here
-    );
   });
+
   final firstLaunch = await isFirstLaunch();
 
   runApp(

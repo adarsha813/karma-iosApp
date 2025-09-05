@@ -635,8 +635,8 @@ class _ChatScreenState extends State<ChatScreen>
     socket.on('new_answer', (data) {
       print('Received new_answer: ${data.toString()}');
 
-      final rawText = data['answerTranslated'] as String? ?? '';
-      final cleanedText = _stripHtmlIfNeeded(rawText);
+      // final rawText = data['answerTranslated'] as String? ?? '';
+      // final cleanedText = _stripHtmlIfNeeded(rawText);
 
       final message = chat_model.Message(
         id: data['questionId'],
@@ -649,17 +649,17 @@ class _ChatScreenState extends State<ChatScreen>
 
       _addMessage(message);
 
-      _showAnswerNotification(
+      /*_showAnswerNotification(
         "💬 Answer from ${message.adminName ?? 'Councillor'}",
         cleanedText,
-      );
+      );*/
     });
 
     socket.on('new_clarification', (data) {
       print('Received new_clarification: ${data.toString()}');
 
-      final rawText = data['answerTranslated'] as String? ?? '';
-      final cleanedText = _stripHtmlIfNeeded(rawText);
+      // final rawText = data['answerTranslated'] as String? ?? '';
+      //final cleanedText = _stripHtmlIfNeeded(rawText);
 
       final message = chat_model.Message(
         id: data['questionId'],
@@ -673,17 +673,17 @@ class _ChatScreenState extends State<ChatScreen>
 
       _addMessage(message);
 
-      _showAnswerNotification(
+      /*_showAnswerNotification(
         "🔍 Clarification from ${message.adminName ?? 'Councillor'}",
         cleanedText,
-      );
+      );*/
     });
 
     socket.on('new_advice', (data) {
       print('Received new_advice: ${data.toString()}');
 
-      final rawText = data['adviceTranslated'] as String? ?? '';
-      final cleanedText = _stripHtmlIfNeeded(rawText);
+      // final rawText = data['adviceTranslated'] as String? ?? '';
+      // final cleanedText = _stripHtmlIfNeeded(rawText);
 
       final message = chat_model.Message(
         id: data['_id'] ?? data['id'] ?? data['questionId'],
@@ -697,10 +697,10 @@ class _ChatScreenState extends State<ChatScreen>
 
       _addMessage(message);
 
-      _showAnswerNotification(
+      /*_showAnswerNotification(
         "🧠 Advice from ${message.adminName ?? 'Councillor'}",
         cleanedText,
-      );
+      ); */
     });
   }
 
@@ -935,6 +935,7 @@ class _ChatScreenState extends State<ChatScreen>
     }
   }
 
+  /*
   DateTime? _lastNotificationTime;
 
   Future<void> _showAnswerNotification(String title, String body) async {
@@ -973,7 +974,7 @@ class _ChatScreenState extends State<ChatScreen>
       notificationDetails,
     );
   }
-
+*/
   Future<bool> confirmStripePayment(String clientSecret) async {
     try {
       await Stripe.instance.initPaymentSheet(
@@ -1302,14 +1303,14 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   bool isProduction() => true;
-  String _stripHtmlIfNeeded(String htmlText) {
+  /* String _stripHtmlIfNeeded(String htmlText) {
     final RegExp exp = RegExp(
       r'<[^>]*>',
       multiLine: true,
       caseSensitive: false,
     );
     return htmlText.replaceAll(exp, '');
-  }
+  } */
 
   @override
   void dispose() {

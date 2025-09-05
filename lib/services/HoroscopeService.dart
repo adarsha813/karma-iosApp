@@ -1,4 +1,3 @@
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class HoroscopeService {
@@ -7,8 +6,6 @@ class HoroscopeService {
   HoroscopeService._internal();
 
   IO.Socket? _socket;
-  final FlutterLocalNotificationsPlugin _notificationsPlugin =
-      FlutterLocalNotificationsPlugin();
 
   DateTime? _lastMessageTime;
 
@@ -44,25 +41,6 @@ class HoroscopeService {
         return;
       }
       _lastMessageTime = now;
-
-      print('🔮 Received horoscope: $data');
-      final title = data['title'] ?? 'New Horoscope';
-      final content = data['text'] ?? '';
-
-      await _notificationsPlugin.show(
-        DateTime.now().millisecondsSinceEpoch % 100000,
-        "🔮 $title",
-        content,
-        const NotificationDetails(
-          android: AndroidNotificationDetails(
-            'horoscope_channel',
-            'Horoscope Notifications',
-            channelDescription: 'Notifications for new daily horoscopes',
-            importance: Importance.high,
-            priority: Priority.high,
-          ),
-        ),
-      );
     });
 
     _socket!.onDisconnect((_) => print('🔌 Horoscope socket disconnected'));
