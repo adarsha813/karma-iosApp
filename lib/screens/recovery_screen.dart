@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import '../providers/profile_provider.dart';
+import 'profile_settings_screen.dart';
 
 class RecoveryScreen extends StatefulWidget {
   const RecoveryScreen({Key? key}) : super(key: key);
@@ -117,6 +118,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextField(
               controller: _nameController,
@@ -157,6 +159,29 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
                   onPressed: _recoverAccount,
                   child: const Text("Recover Account"),
                 ),
+            const SizedBox(height: 20),
+
+            // 👇 New "I am a new user" link
+            Center(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const ProfileSettingsScreen(),
+                    ),
+                  );
+                },
+                child: const Text(
+                  "I am a new user",
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    color: Colors.blue,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

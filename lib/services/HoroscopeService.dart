@@ -12,6 +12,9 @@ class HoroscopeService {
 
   DateTime? _lastMessageTime;
 
+  // ✅ Add this
+  bool notificationsEnabled = true;
+
   void initSocket(String userId) {
     if (_socket != null) return;
 
@@ -29,6 +32,11 @@ class HoroscopeService {
     });
 
     _socket!.on('new_horoscope', (data) async {
+      if (!notificationsEnabled) {
+        print('🚫 Notifications disabled, skipping.');
+        return; // ✅ Skip showing notifications
+      }
+
       final now = DateTime.now();
       if (_lastMessageTime != null &&
           now.difference(_lastMessageTime!).inSeconds < 3) {
@@ -64,5 +72,11 @@ class HoroscopeService {
   void dispose() {
     _socket?.disconnect();
     _socket = null;
+  }
+
+  // ✅ Optional helper to update setting dynamically
+  void setNotificationsEnabled(bool enabled) {
+    notificationsEnabled = enabled;
+    print('🔔 HoroscopeService notificationsEnabled: $enabled');
   }
 }

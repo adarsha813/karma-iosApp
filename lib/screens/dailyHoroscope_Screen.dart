@@ -12,6 +12,7 @@ import 'package:shimmer/shimmer.dart';
 import '../models/astro_term.dart';
 import '../services/astro_api_service.dart';
 import '../utils/dictionary_highlighter.dart';
+import '../providers/notification_provider.dart';
 
 class DailyHoroscopeScreen extends StatefulWidget {
   final String? userId;
@@ -84,6 +85,14 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
     String message, {
     String? id,
   }) async {
+    final notificationProvider = Provider.of<NotificationProvider>(
+      context,
+      listen: false,
+    );
+
+    // ✅ Don't show if notifications are disabled
+    if (!notificationProvider.notificationsEnabled) return;
+
     const androidDetails = AndroidNotificationDetails(
       'horoscope_channel',
       'Horoscope Notifications',

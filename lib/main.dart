@@ -41,8 +41,6 @@ class PendingNotificationNavigation extends ChangeNotifier {
   }
 }
 
-bool _listenersAdded = false;
-
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 final pendingNavigation = PendingNotificationNavigation();
@@ -67,6 +65,13 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
 
   final prefs = await SharedPreferences.getInstance();
+  final notificationsEnabled = prefs.getBool('notifications_enabled') ?? true;
+
+  if (!notificationsEnabled) {
+    print('🔕 Notifications disabled - skipping background notification');
+    return; // Exit if notifications are disabled
+  }
+
   int count = prefs.getInt('unread_notification_count') ?? 0;
   count++;
   await prefs.setInt('unread_notification_count', count);
@@ -78,6 +83,30 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   }
 
   print('📩 Background badge and count updated');
+
+  // Show notification only if enabled
+  const AndroidInitializationSettings androidSettings =
+      AndroidInitializationSettings('@mipmap/ic_launcher');
+  const InitializationSettings initSettings = InitializationSettings(
+    android: androidSettings,
+  );
+
+  await flutterLocalNotificationsPlugin.initialize(initSettings);
+
+  await flutterLocalNotificationsPlugin.show(
+    DateTime.now().millisecondsSinceEpoch % 100000,
+    message.data['title'] ?? 'New Notification',
+    message.data['body'] ?? 'You have a new message',
+    const NotificationDetails(
+      android: AndroidNotificationDetails(
+        'horoscope_channel',
+        'Horoscope Notifications',
+        channelDescription: 'Notifications for new daily horoscopes',
+        importance: Importance.high,
+      ),
+    ),
+    payload: jsonEncode(message.data),
+  );
 }
 
 // Create notification channel (for Android 8.0+)
@@ -113,7 +142,7 @@ class BadgeUpdater extends StatefulWidget {
 class _BadgeUpdaterState extends State<BadgeUpdater> {
   late NotificationProvider notificationProvider;
   late HoroscopeProvider horoscopeProvider;
-
+  bool _listenersAdded = false;
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -144,6 +173,7 @@ class _BadgeUpdaterState extends State<BadgeUpdater> {
   void dispose() {
     notificationProvider.removeListener(_updateBadge);
     horoscopeProvider.removeListener(_updateBadge);
+
     _listenersAdded = false;
     super.dispose();
   }
@@ -169,6 +199,7 @@ class _HomeRouterState extends State<HomeRouter> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this); // 👈 add this
 
     pendingNavigation.addListener(_handlePayload);
     // Listen to payload changes and navigate if needed
@@ -215,6 +246,7 @@ class _HomeRouterState extends State<HomeRouter> with WidgetsBindingObserver {
   @override
   void dispose() {
     pendingNavigation.removeListener(_handlePayload);
+    WidgetsBinding.instance.removeObserver(this); // 👈 add this
 
     super.dispose();
   }
@@ -353,6 +385,7 @@ Future<void> main() async {
       title: message.notification?.title ?? 'New Notification',
       body: message.notification?.body ?? 'You have a new message',
       payload: jsonEncode(message.data),
+      context: navigatorKey.currentContext!, // ✅ pass context here
     );
   });
   final firstLaunch = await isFirstLaunch();
@@ -431,6 +464,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+
     showOnboarding = widget.firstLaunch;
     // Listen for locale changes
     Future.microtask(() async {
@@ -440,14 +474,21 @@ class _MyAppState extends State<MyApp> {
         setState(() => showOnboarding = false);
       }
     });
-    // Listen to FCM messages while app is in foreground
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
       final notification = message.notification;
       final android = notification?.android;
 
       if (notification != null && android != null) {
         print('🔔 [Foreground] ${notification.title} - ${notification.body}');
-        // Handle in-app display or sound here if desired
+
+        if (navigatorKey.currentContext != null) {
+          await NotificationHandler.showBasicNotification(
+            title: notification.title ?? 'New Notification',
+            body: notification.body ?? 'You have a new message',
+            payload: jsonEncode(message.data),
+            context: navigatorKey.currentContext!, // pass context
+          );
+        }
       }
     });
 

@@ -7,6 +7,7 @@ import '../providers/notification_provider.dart';
 import '../providers/profile_provider.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../services/HoroscopeService.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -28,6 +29,9 @@ class SettingsScreen extends StatelessWidget {
                   value: notificationProvider.notificationsEnabled,
                   onChanged: (bool value) {
                     notificationProvider.setNotificationsEnabled(value);
+                    HoroscopeService().setNotificationsEnabled(
+                      value,
+                    ); // if using service
 
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
