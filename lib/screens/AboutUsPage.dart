@@ -144,7 +144,7 @@ class AboutUsPage extends StatelessWidget {
                                 (_) => const PolicyPage(
                                   title: "Terms & Conditions",
                                   url:
-                                      "https://chat-backend-rvk9.onrender.com/api/terms-and-conditions",
+                                      "https://chat-backend-rvk9.onrender.com/api/policies/terms-and-conditions",
                                 ),
                           ),
                         );
@@ -168,7 +168,7 @@ class AboutUsPage extends StatelessWidget {
                                 (_) => const PolicyPage(
                                   title: "Privacy Policy",
                                   url:
-                                      "https://chat-backend-rvk9.onrender.com/api/privacy-policy",
+                                      "https://chat-backend-rvk9.onrender.com/api/policies/privacy-policy",
                                 ),
                           ),
                         );
