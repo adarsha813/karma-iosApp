@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kundali/screens/policy_page.dart';
 
 class AboutUsPage extends StatelessWidget {
   const AboutUsPage({super.key});
@@ -132,55 +131,6 @@ class AboutUsPage extends StatelessWidget {
                     const Text(
                       "Website: www.yourcompany.com",
                       style: TextStyle(fontSize: 16, color: Colors.black87),
-                    ),
-                    const SizedBox(height: 16),
-                    // Terms & Privacy Links
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder:
-                                (_) => const PolicyPage(
-                                  title: "Terms & Conditions",
-                                  url:
-                                      "https://chat-backend-rvk9.onrender.com/api/policies/terms-and-conditions",
-                                ),
-                          ),
-                        );
-                      },
-                      child: const Text(
-                        "Terms & Conditions",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.blue,
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder:
-                                (_) => const PolicyPage(
-                                  title: "Privacy Policy",
-                                  url:
-                                      "https://chat-backend-rvk9.onrender.com/api/policies/privacy-policy",
-                                ),
-                          ),
-                        );
-                      },
-                      child: const Text(
-                        "Privacy Policy",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.blue,
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
                     ),
                   ],
                 ),

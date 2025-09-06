@@ -9,7 +9,6 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'profile_screen.dart';
 import 'settings_screen.dart';
-import 'DataControlScreen.dart';
 import 'profile_settings_screen.dart';
 import '../services/chat_service.dart';
 import '../widgets/chat_bubble.dart';
@@ -58,6 +57,7 @@ class _ChatScreenState extends State<ChatScreen>
   bool _isSocketConnected = false;
   Completer<void>? _socketConnectionCompleter;
   bool _isSending = false;
+  bool _showScrollToBottomButton = false;
 
   late IO.Socket socket;
   Timer? _refreshTimer;
@@ -77,7 +77,11 @@ class _ChatScreenState extends State<ChatScreen>
     _handleDeepLink();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (_scrollController.hasClients) {
-        _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+        _scrollController.animateTo(
+          0,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeOut,
+        );
       }
     });
 
@@ -136,6 +140,21 @@ class _ChatScreenState extends State<ChatScreen>
           );
         }
         pendingNavigation.payload = null;
+      }
+    });
+
+    _scrollController.addListener(() {
+      if (_scrollController.hasClients) {
+        if (_scrollController.offset > 100) {
+          // some threshold
+          if (!_showScrollToBottomButton) {
+            setState(() => _showScrollToBottomButton = true);
+          }
+        } else {
+          if (_showScrollToBottomButton) {
+            setState(() => _showScrollToBottomButton = false);
+          }
+        }
       }
     });
   }
@@ -720,14 +739,18 @@ class _ChatScreenState extends State<ChatScreen>
 
   void _addMessage(chat_model.Message message) {
     if (mounted) {
-      Provider.of<ChatService>(context, listen: false).addMessage(message);
-      setState(() {}); // 🔁 Force rebuild if necessary (temporary fix)
-      WidgetsBinding.instance.addPostFrameCallback((_) {
+      final chatService = Provider.of<ChatService>(context, listen: false);
+      chatService.addMessage(message);
+      setState(() {});
+
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
         if (_scrollController.hasClients) {
+          // Wait until the frame renders new message size
+          await Future.delayed(const Duration(milliseconds: 400));
           _scrollController.animateTo(
-            _scrollController.position.maxScrollExtent,
+            0,
             duration: const Duration(milliseconds: 300),
-            curve: Curves.easeOut,
+            curve: Curves.easeOutCubic,
           );
         }
       });
@@ -1093,6 +1116,12 @@ class _ChatScreenState extends State<ChatScreen>
             SnackBar(content: Text("$remaining free questions remaining")),
           );
           _controller.clear();
+
+          // ✅ Scroll to bottom instantly
+          if (_scrollController.hasClients) {
+            _scrollController.jumpTo(0);
+          }
+
           return;
         }
       }
@@ -1475,6 +1504,7 @@ class _ChatScreenState extends State<ChatScreen>
                     return AnimatedList(
                       key: chatService.listKey,
                       reverse: true,
+                      controller: _scrollController, // ✅ Attach controller here
                       initialItemCount: chatService.messages.length,
                       itemBuilder: (context, index, animation) {
                         final message = chatService.messages[index];
@@ -1500,7 +1530,30 @@ class _ChatScreenState extends State<ChatScreen>
               _buildMessageInput(),
             ],
           ),
-
+          if (_showScrollToBottomButton)
+            Positioned(
+              bottom: 80,
+              right: 16,
+              child: Material(
+                color: Colors.transparent, // No background
+                shape: const CircleBorder(), // Optional circular shape
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.arrow_downward,
+                    color: Colors.blue,
+                  ), // Arrow color
+                  onPressed: () {
+                    if (_scrollController.hasClients) {
+                      _scrollController.animateTo(
+                        0, // scroll to bottom for reverse: true
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeOutCubic,
+                      );
+                    }
+                  },
+                ),
+              ),
+            ),
           // ✅ Small bottom-left loader instead of fullscreen dialo
         ],
       ),
@@ -1513,57 +1566,67 @@ class _ChatScreenState extends State<ChatScreen>
     return Consumer<HoroscopeProvider>(
       builder: (context, horoscopeProvider, _) {
         return Drawer(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildDrawerItem(
-                Icons.person,
-                "Profile",
-                ProfileScreen(userId: userId ?? ''),
-              ),
-              _buildDrawerItem(
-                Icons.auto_awesome,
-                "Daily Horoscope",
-                DailyHoroscopeScreen(userId: userId),
-                badge:
-                    horoscopeProvider.unreadCount > 0
-                        ? _buildBadge(horoscopeProvider.unreadCount)
-                        : null,
-              ),
-              _buildDrawerItem(
-                Icons.shopping_cart,
-                "Buy Questions",
-                const QuestionStoreScreen(),
-              ),
-              _buildDrawerItem(
-                Icons.menu_book, // 📚 Dictionary icon
-                "Astro Dictionary",
-                AstroDictionaryScreen(), // <-- new screen
-              ),
-              _buildDrawerItem(Icons.settings, "Settings", SettingsScreen()),
-              _buildDrawerItem(
-                Icons.security,
-                "Data Control",
-                DataControlScreen(),
-              ),
-              _buildDrawerItem(
-                Icons.support_agent, // 🎧 Support icon
-                "Customer Support",
-                const CustomerSupportPage(),
-              ),
-              _buildDrawerItem(
-                Icons.info_outline,
-                "About Us",
-                const AboutUsPage(),
-              ),
+          child: SafeArea(
+            child: Column(
+              children: [
+                // 🔹 Scrollable section
+                Expanded(
+                  child: ListView(
+                    padding: EdgeInsets.zero,
+                    children: [
+                      _buildDrawerItem(
+                        Icons.person,
+                        "Astro Profile",
+                        ProfileScreen(userId: userId ?? ''),
+                      ),
+                      _buildDrawerItem(
+                        Icons.auto_awesome,
+                        "Daily Horoscope",
+                        DailyHoroscopeScreen(userId: userId),
+                        badge:
+                            horoscopeProvider.unreadCount > 0
+                                ? _buildBadge(horoscopeProvider.unreadCount)
+                                : null,
+                      ),
+                      _buildDrawerItem(
+                        Icons.shopping_cart,
+                        "Buy Questions",
+                        const QuestionStoreScreen(),
+                      ),
+                      _buildDrawerItem(
+                        Icons.menu_book,
+                        "Astro Dictionary",
+                        AstroDictionaryScreen(),
+                      ),
+                      _buildDrawerItem(
+                        Icons.settings,
+                        "Settings",
+                        SettingsScreen(),
+                      ),
 
-              const Spacer(),
-              _buildDrawerItem(
-                Icons.settings_suggest,
-                "Profile Settings",
-                ProfileSettingsScreen(),
-              ),
-            ],
+                      _buildDrawerItem(
+                        Icons.support_agent,
+                        "Customer Support",
+                        const CustomerSupportPage(),
+                      ),
+                      _buildDrawerItem(
+                        Icons.info_outline,
+                        "About",
+                        const AboutUsPage(),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const Divider(), // separates footer from main items
+                // 🔹 Stuck-at-bottom section
+                _buildDrawerItem(
+                  Icons.settings_suggest,
+                  "Profile Settings",
+                  ProfileSettingsScreen(),
+                ),
+              ],
+            ),
           ),
         );
       },
