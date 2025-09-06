@@ -34,7 +34,9 @@ import 'package:kundali/widgets/bouncing_dots.dart';
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
+  final String? chatId; // make nullable
+  final String? initialMessageId; // Add this parameter
+  const ChatScreen({super.key, required this.chatId, this.initialMessageId});
 
   @override
   _ChatScreenState createState() => _ChatScreenState();
@@ -70,6 +72,7 @@ class _ChatScreenState extends State<ChatScreen>
   @override
   void initState() {
     super.initState();
+    _handleDeepLink();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (_scrollController.hasClients) {
         _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
@@ -133,6 +136,15 @@ class _ChatScreenState extends State<ChatScreen>
         pendingNavigation.payload = null;
       }
     });
+  }
+
+  void _handleDeepLink() {
+    if (widget.initialMessageId != null) {
+      // Scroll to or highlight the specific message
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        // Implement message highlighting logic here
+      });
+    }
   }
 
   Future<void> _sendQuestionViaHttp(

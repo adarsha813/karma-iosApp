@@ -25,6 +25,7 @@ import 'screens/profile_settings_screen.dart';
 import 'services/first_launch_service.dart';
 import 'screens/onboarding_screen.dart';
 import 'providers/dictionary_provider.dart';
+import 'screens/notifications_screen.dart';
 
 // -------------------------
 // PendingNotificationNavigation as ChangeNotifier
@@ -41,11 +42,10 @@ class PendingNotificationNavigation extends ChangeNotifier {
   }
 }
 
-final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-
 final pendingNavigation = PendingNotificationNavigation();
-
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 // -------------------------
+
 // Notification channel for Android
 const AndroidNotificationChannel horoscopeChannel = AndroidNotificationChannel(
   'horoscope_channel',
@@ -74,12 +74,23 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     return;
   }
 
+  // Ensure payload contains all necessary data
+
   // Extract data from message
   final data = message.data;
   final type = data['type'] ?? 'general'; // Add type field to your FCM messages
   final title = data['title'] ?? 'New Notification';
   final body = data['body'] ?? 'You have a new message';
-  final payload = jsonEncode(data);
+
+  final payloadData = {
+    'type': data['type'],
+    'title': data['title'],
+    'body': data['body'],
+    'id': data['id'],
+    'userId': data['userId'],
+    'questionId': data['questionId'],
+  };
+  final payload = jsonEncode(payloadData);
 
   // Update badge count
   int count = prefs.getInt('unread_notification_count') ?? 0;
@@ -135,6 +146,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     channelId = 'horoscope_channel';
     channelName = 'Horoscope Notifications';
   }
+
   // Ensure channel exists
   final androidPlugin =
       flutterLocalNotificationsPlugin
@@ -251,6 +263,15 @@ class _BadgeUpdaterState extends State<BadgeUpdater> {
   }
 }
 
+typedef PageBuilder = Widget Function(Map<String, dynamic> data);
+final Map<String, PageBuilder> notificationRoutes = {
+  'advice': (data) => ChatScreen(chatId: data['chatId']),
+  'answer': (data) => ChatScreen(chatId: data['chatId']),
+  'clarification': (data) => ChatScreen(chatId: data['chatId']),
+  'horoscope': (data) => DailyHoroscopeScreen(userId: data['userId']),
+  'notification': (data) => NotificationsScreen(userId: data['userId'] ?? ''),
+};
+
 // -------------------------
 // HomeRouter widget: navigates on notification payload
 class HomeRouter extends StatefulWidget {
@@ -282,29 +303,43 @@ class _HomeRouterState extends State<HomeRouter> with WidgetsBindingObserver {
     });
   }
 
+  /// Handles navigation when notification payload is set
+  // In main.dart - _HomeRouterState
   void _handlePayload() {
     final payload = pendingNavigation.payload;
-
     if (!_navigated && payload != null) {
       try {
         final data = jsonDecode(payload);
+        final type = data['type'];
 
-        if (data['type'] == 'horoscope' && data['userId'] != null) {
-          _navigated = true;
-          Navigator.of(context)
-              .push(
-                MaterialPageRoute(
-                  builder: (_) => DailyHoroscopeScreen(userId: data['userId']),
-                ),
-              )
-              .then((_) {
-                _navigated = false; // reset when user comes back
-              });
+        Widget targetScreen;
 
-          pendingNavigation.payload = null;
+        switch (type) {
+          case 'horoscope':
+            targetScreen = DailyHoroscopeScreen(userId: data['userId']);
+            break;
+          case 'notification':
+            targetScreen = NotificationsScreen(userId: data['userId'] ?? '');
+            break;
+          case 'advice':
+          case 'answer':
+          case 'clarification':
+            targetScreen = ChatScreen(chatId: null);
+            break;
+          default:
+            print('⚠️ No route defined for type: $type');
+            pendingNavigation.payload = null;
+            return;
         }
+
+        _navigated = true;
+        navigatorKey.currentState
+            ?.push(MaterialPageRoute(builder: (_) => targetScreen))
+            .then((_) => _navigated = false);
+
+        pendingNavigation.payload = null;
       } catch (e) {
-        print('Error parsing notification payload: $e');
+        print('❌ Error parsing payload: $e');
         pendingNavigation.payload = null;
       }
     }
@@ -341,7 +376,9 @@ class _HomeRouterState extends State<HomeRouter> with WidgetsBindingObserver {
       return ProfileSettingsScreen();
     } else {
       // 👇 User logged in → go to Chat
-      return const ChatScreen();
+      return ChatScreen(
+        chatId: null, // explicitly pass null
+      );
     }
   }
 }
@@ -394,12 +431,23 @@ Future<void> main() async {
   const initSettings = InitializationSettings(android: androidSettings);
 
   // Handle app launch from notification
+  // Handle app launch from notification
   final launchDetails =
       await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
   if (launchDetails?.didNotificationLaunchApp ?? false) {
     final payload = launchDetails!.notificationResponse?.payload;
     if (payload != null) {
       pendingNavigation.payload = payload;
+      // Make sure HomeRouter handles it after first frame
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (navigatorKey.currentState?.context != null) {
+          // find HomeRouter's state and call _handlePayload
+          final homeRouterState =
+              navigatorKey.currentState!.context
+                  .findAncestorStateOfType<_HomeRouterState>();
+          homeRouterState?._handlePayload();
+        }
+      });
       print('🚀 App launched from notification with payload: $payload');
     }
   }
@@ -489,6 +537,7 @@ Future<void> main() async {
       child: MyApp(firstLaunch: firstLaunch),
     ),
   );
+
   WidgetsBinding.instance.addPostFrameCallback((_) {
     final context = navigatorKey.currentContext;
     if (context != null && profileProvider.userId != null) {
@@ -572,13 +621,6 @@ class _MyAppState extends State<MyApp> {
         }
       }
     });
-
-    // Also listen for taps on notifications while app in background
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      final payload = jsonEncode(message.data);
-      print('📲 App opened from FCM tap with data: $payload');
-      pendingNavigation.payload = payload;
-    });
   }
 
   void _finishOnboarding() {
@@ -614,7 +656,11 @@ class _MyAppState extends State<MyApp> {
       ],
       supportedLocales: AppLocalizations.supportedLocales,
       locale: localeProvider.locale, // <-- use Provider directly
-      routes: {'/chat': (context) => const ChatScreen()},
+      routes: {
+        '/chat':
+            (context) => const ChatScreen(chatId: null), // pass null explicitly
+      },
+
       home:
           showOnboarding
               ? OnboardingScreen(
