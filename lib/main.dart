@@ -163,7 +163,6 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     android: androidSettings,
   );
 
-  final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
   await flutterLocalNotificationsPlugin.initialize(initSettings);
 
   // Create appropriate notification channel based on type
@@ -450,6 +449,49 @@ class _HomeRouterState extends State<HomeRouter> with WidgetsBindingObserver {
 
 String? _initialNotificationPayload;
 
+Future<void> setupNotificationChannels() async {
+  final androidPlugin =
+      flutterLocalNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin
+          >();
+
+  if (androidPlugin != null) {
+    await androidPlugin.createNotificationChannel(
+      AndroidNotificationChannel(
+        'general_channel',
+        'General Notifications',
+        description: 'General notifications',
+        importance: Importance.high,
+      ),
+    );
+    await androidPlugin.createNotificationChannel(
+      AndroidNotificationChannel(
+        'horoscope_channel',
+        'Horoscope Notifications',
+        description: 'Daily Horoscope',
+        importance: Importance.high,
+      ),
+    );
+    await androidPlugin.createNotificationChannel(
+      AndroidNotificationChannel(
+        'answer_channel',
+        'Answer Notifications',
+        description: 'Chat answer notifications',
+        importance: Importance.high,
+      ),
+    );
+    await androidPlugin.createNotificationChannel(
+      AndroidNotificationChannel(
+        'clarification_channel',
+        'Clarification Notifications',
+        description: 'Clarification messages',
+        importance: Importance.high,
+      ),
+    );
+  }
+}
+
 // -------------------------
 // Main function
 Future<void> main() async {
@@ -460,6 +502,7 @@ Future<void> main() async {
 
   await Firebase.initializeApp();
   print('🔔 Setting up notification channel...');
+  await setupNotificationChannels(); // <-- add this line
   await setupHoroscopeChannel();
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
@@ -511,7 +554,6 @@ Future<void> main() async {
       print('🚀 App launched from notification with payload: $payload');
     }
   }
-
   await flutterLocalNotificationsPlugin.initialize(
     initSettings,
     onDidReceiveNotificationResponse: (NotificationResponse response) {
