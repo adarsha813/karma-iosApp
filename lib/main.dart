@@ -89,6 +89,13 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     'id': data['id'],
     'userId': data['userId'],
     'questionId': data['questionId'],
+    // Add chatId if needed for other types
+    if (data['type'] == 'answer' ||
+        data['type'] == 'clarification' ||
+        data['type'] == 'advice')
+      'chatId':
+          data['chatId'] ??
+          data['questionId'], // Use questionId as fallback for chatId
   };
   final payload = jsonEncode(payloadData);
 
@@ -289,6 +296,11 @@ class _HomeRouterState extends State<HomeRouter> with WidgetsBindingObserver {
     super.initState();
     WidgetsBinding.instance.addObserver(this); // 👈 add this
 
+    // Handle any pending payload immediately
+    if (pendingNavigation.payload != null) {
+      _handlePayload();
+    }
+
     pendingNavigation.addListener(_handlePayload);
     // Listen to payload changes and navigate if needed
 
@@ -324,7 +336,14 @@ class _HomeRouterState extends State<HomeRouter> with WidgetsBindingObserver {
           case 'advice':
           case 'answer':
           case 'clarification':
-            targetScreen = ChatScreen(chatId: null);
+            // For these types, we need a chatId
+            if (data['chatId'] != null) {
+              targetScreen = ChatScreen(chatId: data['chatId']);
+            } else {
+              print('⚠️ No chatId provided for type: $type');
+              pendingNavigation.payload = null;
+              return;
+            }
             break;
           default:
             print('⚠️ No route defined for type: $type');
@@ -371,6 +390,13 @@ class _HomeRouterState extends State<HomeRouter> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     final profileProvider = Provider.of<ProfileProvider>(context);
 
+    // Handle navigation immediately if we have a pending payload
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (pendingNavigation.payload != null && !_navigated) {
+        _handlePayload();
+      }
+    });
+
     if (profileProvider.userId == null || profileProvider.userId!.isEmpty) {
       // 👇 No user logged in → go to Profile Setting
       return ProfileSettingsScreen();
@@ -382,6 +408,8 @@ class _HomeRouterState extends State<HomeRouter> with WidgetsBindingObserver {
     }
   }
 }
+
+String? _initialNotificationPayload;
 
 // -------------------------
 // Main function
@@ -437,17 +465,9 @@ Future<void> main() async {
   if (launchDetails?.didNotificationLaunchApp ?? false) {
     final payload = launchDetails!.notificationResponse?.payload;
     if (payload != null) {
-      pendingNavigation.payload = payload;
+      _initialNotificationPayload = payload;
       // Make sure HomeRouter handles it after first frame
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (navigatorKey.currentState?.context != null) {
-          // find HomeRouter's state and call _handlePayload
-          final homeRouterState =
-              navigatorKey.currentState!.context
-                  .findAncestorStateOfType<_HomeRouterState>();
-          homeRouterState?._handlePayload();
-        }
-      });
+
       print('🚀 App launched from notification with payload: $payload');
     }
   }
@@ -583,6 +603,7 @@ Future<void> _requestNotificationPermission() async {
 // Root app widget
 class MyApp extends StatefulWidget {
   final bool firstLaunch;
+
   const MyApp({Key? key, required this.firstLaunch}) : super(key: key);
   @override
   State<MyApp> createState() => _MyAppState();
@@ -597,13 +618,25 @@ class _MyAppState extends State<MyApp> {
 
     showOnboarding = widget.firstLaunch;
     // Listen for locale changes
+    // Listen for locale changes
     Future.microtask(() async {
       final prefs = await SharedPreferences.getInstance();
       final done = prefs.getBool('onboarding_done') ?? false;
       if (done && showOnboarding) {
         setState(() => showOnboarding = false);
       }
+
+      // Mark app as initialized and handle initial notification
+
+      // Handle initial notification after app is built
+      if (_initialNotificationPayload != null) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          pendingNavigation.payload = _initialNotificationPayload;
+          _initialNotificationPayload = null;
+        });
+      }
     });
+
     FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
       final notification = message.notification;
       final android = notification?.android;
