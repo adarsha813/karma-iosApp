@@ -210,25 +210,31 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
         title: const Text("Buy Questions"),
         backgroundColor: Colors.deepPurpleAccent,
       ),
-      body:
-          isLoading
-              ? _buildSkeletonLoader()
-              : RefreshIndicator(
-                onRefresh: _loadData,
-                child: ListView(
-                  padding: const EdgeInsets.all(16),
-                  children: [
-                    _buildBalanceCard(),
-                    const SizedBox(height: 20),
-                    Text(
-                      "Available Offers",
-                      style: Theme.of(context).textTheme.titleLarge,
+      body: SafeArea(
+        child:
+            isLoading
+                ? _buildSkeletonLoader()
+                : RefreshIndicator(
+                  onRefresh: _loadData,
+                  child: ListView(
+                    padding: EdgeInsets.only(
+                      left: 16,
+                      right: 16,
+                      bottom: MediaQuery.of(context).viewInsets.bottom + 16,
                     ),
-                    const SizedBox(height: 10),
-                    ...offers.map(_buildOfferCard).toList(),
-                  ],
+                    children: [
+                      _buildBalanceCard(),
+                      const SizedBox(height: 20),
+                      Text(
+                        "Available Offers",
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      const SizedBox(height: 10),
+                      ...offers.map(_buildOfferCard).toList(),
+                    ],
+                  ),
                 ),
-              ),
+      ),
     );
   }
 

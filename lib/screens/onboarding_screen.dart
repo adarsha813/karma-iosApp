@@ -125,214 +125,222 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           key: ValueKey(
             localeProvider.locale.languageCode,
           ), // Force rebuild on locale change
-          body: Consumer2<ProfileProvider, LocaleProvider>(
-            builder: (context, profileProvider, localeProvider, _) {
-              final l10n = AppLocalizations.of(context)!;
-              final pages = _buildLocalizedPages(l10n);
+          body: SafeArea(
+            // ✅ Wrap in SafeArea
+            child: Consumer2<ProfileProvider, LocaleProvider>(
+              builder: (context, profileProvider, localeProvider, _) {
+                final l10n = AppLocalizations.of(context)!;
+                final pages = _buildLocalizedPages(l10n);
 
-              return Stack(
-                children: [
-                  PageView.builder(
-                    key: ValueKey(localeProvider.locale.languageCode),
-                    controller: _controller,
-                    itemCount: pages.length + 1,
-                    onPageChanged:
-                        (index) => setState(() => _currentPage = index),
-                    itemBuilder: (context, index) {
-                      // Onboarding pages
-                      if (index < pages.length) {
-                        final page = pages[index];
-                        return Padding(
-                          padding: const EdgeInsets.all(24.0),
+                return Stack(
+                  children: [
+                    PageView.builder(
+                      key: ValueKey(localeProvider.locale.languageCode),
+                      controller: _controller,
+                      itemCount: pages.length + 1,
+                      onPageChanged:
+                          (index) => setState(() => _currentPage = index),
+                      itemBuilder: (context, index) {
+                        // Onboarding pages
+                        if (index < pages.length) {
+                          final page = pages[index];
+                          return Padding(
+                            padding: const EdgeInsets.all(24.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Lottie.asset(
+                                  page['animation']!,
+                                  height: 250,
+                                  fit: BoxFit.contain,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return const Icon(
+                                      Icons.broken_image,
+                                      size: 100,
+                                      color: Colors.red,
+                                    );
+                                  },
+                                ),
+                                const SizedBox(height: 20),
+                                Text(
+                                  page['title']!,
+                                  style: const TextStyle(
+                                    fontSize: 28,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                const SizedBox(height: 12),
+                                Text(
+                                  page['desc']!,
+                                  style: const TextStyle(fontSize: 18),
+                                  textAlign: TextAlign.center,
+                                ),
+                                if (index == 0) ...[
+                                  const SizedBox(height: 20),
+                                  // Language selection
+                                  Column(
+                                    children: [
+                                      RadioListTile<String>(
+                                        title: const Text("English"),
+                                        value: "en",
+                                        groupValue: profileProvider.language,
+                                        onChanged: (value) async {
+                                          if (value != null) {
+                                            await profileProvider.saveLanguage(
+                                              value,
+                                            );
+                                            localeProvider.setLocale(
+                                              Locale(value),
+                                            );
+                                            if (profileProvider.userId !=
+                                                null) {
+                                              await profileProvider
+                                                  .syncLanguageToBackend(
+                                                    profileProvider.userId!,
+                                                    value,
+                                                  );
+                                            }
+                                          }
+                                        },
+                                      ),
+                                      RadioListTile<String>(
+                                        title: const Text("Español"),
+                                        value: "es",
+                                        groupValue: profileProvider.language,
+                                        onChanged: (value) async {
+                                          if (value != null) {
+                                            await profileProvider.saveLanguage(
+                                              value,
+                                            );
+                                            localeProvider.setLocale(
+                                              Locale(value),
+                                            );
+                                            if (profileProvider.userId !=
+                                                null) {
+                                              await profileProvider
+                                                  .syncLanguageToBackend(
+                                                    profileProvider.userId!,
+                                                    value,
+                                                  );
+                                            }
+                                          }
+                                        },
+                                      ),
+                                      RadioListTile<String>(
+                                        title: const Text("हिन्दी"),
+                                        value: "hi",
+                                        groupValue: profileProvider.language,
+                                        onChanged: (value) async {
+                                          if (value != null) {
+                                            await profileProvider.saveLanguage(
+                                              value,
+                                            );
+                                            localeProvider.setLocale(
+                                              Locale(value),
+                                            );
+                                            if (profileProvider.userId !=
+                                                null) {
+                                              await profileProvider
+                                                  .syncLanguageToBackend(
+                                                    profileProvider.userId!,
+                                                    value,
+                                                  );
+                                            }
+                                          }
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ],
+                            ),
+                          );
+                        }
+
+                        // Final "Get Started" page
+                        return Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Lottie.asset(
-                                page['animation']!,
-                                height: 250,
-                                fit: BoxFit.contain,
-                                errorBuilder: (context, error, stackTrace) {
-                                  return const Icon(
-                                    Icons.broken_image,
-                                    size: 100,
-                                    color: Colors.red,
-                                  );
-                                },
-                              ),
-                              const SizedBox(height: 20),
                               Text(
-                                page['title']!,
+                                l10n.onboardingGetStarted,
                                 style: const TextStyle(
                                   fontSize: 28,
                                   fontWeight: FontWeight.bold,
                                 ),
-                                textAlign: TextAlign.center,
+                              ),
+                              const SizedBox(height: 24),
+                              ElevatedButton(
+                                onPressed: _goToNewUser,
+                                child: Text(l10n.onboardingNewUser),
+                                style: ElevatedButton.styleFrom(
+                                  minimumSize: const Size(200, 50),
+                                ),
                               ),
                               const SizedBox(height: 12),
-                              Text(
-                                page['desc']!,
-                                style: const TextStyle(fontSize: 18),
-                                textAlign: TextAlign.center,
-                              ),
-                              if (index == 0) ...[
-                                const SizedBox(height: 20),
-                                // Language selection
-                                Column(
-                                  children: [
-                                    RadioListTile<String>(
-                                      title: const Text("English"),
-                                      value: "en",
-                                      groupValue: profileProvider.language,
-                                      onChanged: (value) async {
-                                        if (value != null) {
-                                          await profileProvider.saveLanguage(
-                                            value,
-                                          );
-                                          localeProvider.setLocale(
-                                            Locale(value),
-                                          );
-                                          if (profileProvider.userId != null) {
-                                            await profileProvider
-                                                .syncLanguageToBackend(
-                                                  profileProvider.userId!,
-                                                  value,
-                                                );
-                                          }
-                                        }
-                                      },
-                                    ),
-                                    RadioListTile<String>(
-                                      title: const Text("Español"),
-                                      value: "es",
-                                      groupValue: profileProvider.language,
-                                      onChanged: (value) async {
-                                        if (value != null) {
-                                          await profileProvider.saveLanguage(
-                                            value,
-                                          );
-                                          localeProvider.setLocale(
-                                            Locale(value),
-                                          );
-                                          if (profileProvider.userId != null) {
-                                            await profileProvider
-                                                .syncLanguageToBackend(
-                                                  profileProvider.userId!,
-                                                  value,
-                                                );
-                                          }
-                                        }
-                                      },
-                                    ),
-                                    RadioListTile<String>(
-                                      title: const Text("हिन्दी"),
-                                      value: "hi",
-                                      groupValue: profileProvider.language,
-                                      onChanged: (value) async {
-                                        if (value != null) {
-                                          await profileProvider.saveLanguage(
-                                            value,
-                                          );
-                                          localeProvider.setLocale(
-                                            Locale(value),
-                                          );
-                                          if (profileProvider.userId != null) {
-                                            await profileProvider
-                                                .syncLanguageToBackend(
-                                                  profileProvider.userId!,
-                                                  value,
-                                                );
-                                          }
-                                        }
-                                      },
-                                    ),
-                                  ],
+                              OutlinedButton(
+                                onPressed: _goToExistingUser,
+                                child: Text(l10n.onboardingExistingUser),
+                                style: OutlinedButton.styleFrom(
+                                  minimumSize: const Size(200, 50),
                                 ),
-                              ],
+                              ),
                             ],
                           ),
                         );
-                      }
-
-                      // Final "Get Started" page
-                      return Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              l10n.onboardingGetStarted,
-                              style: const TextStyle(
-                                fontSize: 28,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 24),
-                            ElevatedButton(
-                              onPressed: _goToNewUser,
-                              child: Text(l10n.onboardingNewUser),
-                              style: ElevatedButton.styleFrom(
-                                minimumSize: const Size(200, 50),
-                              ),
-                            ),
-                            const SizedBox(height: 12),
-                            OutlinedButton(
-                              onPressed: _goToExistingUser,
-                              child: Text(l10n.onboardingExistingUser),
-                              style: OutlinedButton.styleFrom(
-                                minimumSize: const Size(200, 50),
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                  // Bottom navigation indicators
-                  Positioned(
-                    bottom: 20,
-                    left: 24,
-                    right: 24,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        if (_currentPage > 0 && _currentPage < _pagesLength)
-                          TextButton(
-                            onPressed: _previousPage,
-                            child: Text(l10n.onboardingBack),
-                          )
-                        else
-                          const SizedBox(width: 60),
-                        Row(
-                          children: List.generate(_pagesLength, (index) {
-                            return Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 4),
-                              width: _currentPage == index ? 12 : 8,
-                              height: _currentPage == index ? 12 : 8,
-                              decoration: BoxDecoration(
-                                color:
-                                    _currentPage == index
-                                        ? Colors.blue
-                                        : Colors.grey,
-                                shape: BoxShape.circle,
-                              ),
-                            );
-                          }),
-                        ),
-
-                        if (_currentPage < _pagesLength - 1)
-                          TextButton(
-                            onPressed: _nextPage,
-                            child: Text(l10n.onboardingNext),
-                          )
-                        else
-                          const SizedBox(
-                            width: 60,
-                          ), // leave blank in the last page
-                      ],
+                      },
                     ),
-                  ),
-                ],
-              );
-            },
+                    // Bottom navigation indicators
+                    Positioned(
+                      bottom: 20,
+                      left: 24,
+                      right: 24,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          if (_currentPage > 0 && _currentPage < _pagesLength)
+                            TextButton(
+                              onPressed: _previousPage,
+                              child: Text(l10n.onboardingBack),
+                            )
+                          else
+                            const SizedBox(width: 60),
+                          Row(
+                            children: List.generate(_pagesLength, (index) {
+                              return Container(
+                                margin: const EdgeInsets.symmetric(
+                                  horizontal: 4,
+                                ),
+                                width: _currentPage == index ? 12 : 8,
+                                height: _currentPage == index ? 12 : 8,
+                                decoration: BoxDecoration(
+                                  color:
+                                      _currentPage == index
+                                          ? Colors.blue
+                                          : Colors.grey,
+                                  shape: BoxShape.circle,
+                                ),
+                              );
+                            }),
+                          ),
+
+                          if (_currentPage < _pagesLength - 1)
+                            TextButton(
+                              onPressed: _nextPage,
+                              child: Text(l10n.onboardingNext),
+                            )
+                          else
+                            const SizedBox(
+                              width: 60,
+                            ), // leave blank in the last page
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
           ),
         );
       },

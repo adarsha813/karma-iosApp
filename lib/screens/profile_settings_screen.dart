@@ -1088,6 +1088,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     final l10n = AppLocalizations.of(context)!; // Get localization instance
 
     return Scaffold(
+      resizeToAvoidBottomInset: true, // prevent keyboard overlap
       appBar: AppBar(
         title: Text(l10n.appBarTitle), // Localized title
         actions: [
@@ -1101,170 +1102,182 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            if (_showHistory)
-              Column(
-                children: [
-                  Text(
-                    l10n.versionHistoryTitle, // Localized
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 10),
-                  ...profileProvider.versionHistory.reversed.map(
-                    (version) =>
-                        _buildVersionHistoryItem(version, l10n), // Pass l10n
-                  ),
-                  const Divider(),
-                  const SizedBox(height: 20),
-                ],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.only(
+            left: 16,
+            right: 16,
+            bottom: MediaQuery.of(context).viewInsets.bottom + 16,
+          ),
+
+          child: Column(
+            children: [
+              if (_showHistory)
+                Column(
+                  children: [
+                    Text(
+                      l10n.versionHistoryTitle, // Localized
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    ...profileProvider.versionHistory.reversed.map(
+                      (version) =>
+                          _buildVersionHistoryItem(version, l10n), // Pass l10n
+                    ),
+                    const Divider(),
+                    const SizedBox(height: 20),
+                  ],
+                ),
+
+              GestureDetector(
+                onTap: _pickImage,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 60,
+                      backgroundImage:
+                          _image != null
+                              ? FileImage(_image!)
+                              : (_profileImageUrl != null
+                                  ? NetworkImage(_profileImageUrl!)
+                                  : null),
+                      backgroundColor: Colors.grey[300],
+                      child:
+                          (_image == null && _profileImageUrl == null)
+                              ? const Icon(
+                                Icons.camera_alt,
+                                size: 40,
+                                color: Colors.white,
+                              )
+                              : null,
+                    ),
+                    if (_isLoading)
+                      AvatarOrbitLoader(size: 120, color: Colors.blue),
+
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: CircleAvatar(
+                        radius: 18,
+                        backgroundColor: Colors.blue,
+                        child: const Icon(
+                          Icons.edit,
+                          color: Colors.white,
+                          size: 18,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
 
-            GestureDetector(
-              onTap: _pickImage,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: 60,
-                    backgroundImage:
-                        _image != null
-                            ? FileImage(_image!)
-                            : (_profileImageUrl != null
-                                ? NetworkImage(_profileImageUrl!)
-                                : null),
-                    backgroundColor: Colors.grey[300],
-                    child:
-                        (_image == null && _profileImageUrl == null)
-                            ? const Icon(
-                              Icons.camera_alt,
-                              size: 40,
-                              color: Colors.white,
-                            )
-                            : null,
-                  ),
-                  if (_isLoading)
-                    AvatarOrbitLoader(size: 120, color: Colors.blue),
+              // Show button only if userId is blank
+              // Show as a clickable text if userId is empty
+              const SizedBox(height: 20),
+              _buildTextField(
+                l10n.userIdLabel, // Localized
+                Icons.person_outline,
+                _userIdController,
+              ),
 
-                  Positioned(
-                    bottom: 0,
-                    right: 0,
-                    child: CircleAvatar(
-                      radius: 18,
-                      backgroundColor: Colors.blue,
-                      child: const Icon(
-                        Icons.edit,
-                        color: Colors.white,
-                        size: 18,
-                      ),
+              if (_userIdController.text.isEmpty)
+                GestureDetector(
+                  onTap: () async {
+                    // ✅ make this async
+                    final recoveredUserId = await Navigator.push<String>(
+                      context,
+                      MaterialPageRoute(builder: (_) => const RecoveryScreen()),
+                    );
+
+                    if (recoveredUserId != null && recoveredUserId.isNotEmpty) {
+                      setState(() {
+                        _userIdController.text =
+                            recoveredUserId; // ✅ fill textfield
+                      });
+
+                      // Optional: call profile fetch if you already have a method
+                      await _loadProfileData();
+                    }
+                  },
+                  child: Text(
+                    l10n.existingUserButton,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+
+              _buildTextField(
+                l10n.nameLabel, // Localized
+                Icons.person,
+                _nameController,
+              ),
+              _buildCountryField(l10n), // Pass l10n
+              _buildCityField(l10n), // Pass l10n
+              Row(
+                children: [
+                  Expanded(
+                    child: RadioListTile(
+                      value: 'male',
+                      groupValue: _gender,
+                      onChanged:
+                          (val) => setState(() => _gender = val as String),
+                      title: Text(l10n.maleLabel), // Localized
+                    ),
+                  ),
+                  Expanded(
+                    child: RadioListTile(
+                      value: 'female',
+                      groupValue: _gender,
+                      onChanged:
+                          (val) => setState(() => _gender = val as String),
+                      title: Text(l10n.femaleLabel), // Localized
                     ),
                   ),
                 ],
               ),
-            ),
-
-            // Show button only if userId is blank
-            // Show as a clickable text if userId is empty
-            const SizedBox(height: 20),
-            _buildTextField(
-              l10n.userIdLabel, // Localized
-              Icons.person_outline,
-              _userIdController,
-            ),
-
-            if (_userIdController.text.isEmpty)
-              GestureDetector(
-                onTap: () async {
-                  // ✅ make this async
-                  final recoveredUserId = await Navigator.push<String>(
-                    context,
-                    MaterialPageRoute(builder: (_) => const RecoveryScreen()),
-                  );
-
-                  if (recoveredUserId != null && recoveredUserId.isNotEmpty) {
-                    setState(() {
-                      _userIdController.text =
-                          recoveredUserId; // ✅ fill textfield
-                    });
-
-                    // Optional: call profile fetch if you already have a method
-                    await _loadProfileData();
-                  }
-                },
-                child: Text(
-                  l10n.existingUserButton,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
+              _buildDateTile(
+                l10n.birthDateLabel, // Localized
+                _selectedDate != null
+                    ? "${_selectedDate!.year}-${_selectedDate!.month.toString().padLeft(2, '0')}-${_selectedDate!.day.toString().padLeft(2, '0')}"
+                    : l10n.birthDatePlaceholder, // Localized
+                () => _pickDate(context),
+                Icons.calendar_today,
+              ),
+              _buildDateTile(
+                l10n.birthTimeLabel, // Localized
+                _selectedTime != null
+                    ? "${_selectedTime!.hour.toString().padLeft(2, '0')}:${_selectedTime!.minute.toString().padLeft(2, '0')}"
+                    : l10n.birthTimePlaceholder, // Localized
+                () => _pickTime(context),
+                Icons.access_time,
+              ),
+              const SizedBox(height: 20),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: _isSaving ? null : () => _saveProfile(context),
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    backgroundColor: Colors.blue,
                   ),
+                  child:
+                      _isSaving
+                          ? const CircularProgressIndicator(color: Colors.white)
+                          : Text(
+                            l10n.saveProfileButton, // Localized
+                            style: TextStyle(fontSize: 16),
+                          ),
                 ),
               ),
-
-            _buildTextField(
-              l10n.nameLabel, // Localized
-              Icons.person,
-              _nameController,
-            ),
-            _buildCountryField(l10n), // Pass l10n
-            _buildCityField(l10n), // Pass l10n
-            Row(
-              children: [
-                Expanded(
-                  child: RadioListTile(
-                    value: 'male',
-                    groupValue: _gender,
-                    onChanged: (val) => setState(() => _gender = val as String),
-                    title: Text(l10n.maleLabel), // Localized
-                  ),
-                ),
-                Expanded(
-                  child: RadioListTile(
-                    value: 'female',
-                    groupValue: _gender,
-                    onChanged: (val) => setState(() => _gender = val as String),
-                    title: Text(l10n.femaleLabel), // Localized
-                  ),
-                ),
-              ],
-            ),
-            _buildDateTile(
-              l10n.birthDateLabel, // Localized
-              _selectedDate != null
-                  ? "${_selectedDate!.year}-${_selectedDate!.month.toString().padLeft(2, '0')}-${_selectedDate!.day.toString().padLeft(2, '0')}"
-                  : l10n.birthDatePlaceholder, // Localized
-              () => _pickDate(context),
-              Icons.calendar_today,
-            ),
-            _buildDateTile(
-              l10n.birthTimeLabel, // Localized
-              _selectedTime != null
-                  ? "${_selectedTime!.hour.toString().padLeft(2, '0')}:${_selectedTime!.minute.toString().padLeft(2, '0')}"
-                  : l10n.birthTimePlaceholder, // Localized
-              () => _pickTime(context),
-              Icons.access_time,
-            ),
-            const SizedBox(height: 20),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: _isSaving ? null : () => _saveProfile(context),
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  backgroundColor: Colors.blue,
-                ),
-                child:
-                    _isSaving
-                        ? const CircularProgressIndicator(color: Colors.white)
-                        : Text(
-                          l10n.saveProfileButton, // Localized
-                          style: TextStyle(fontSize: 16),
-                        ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

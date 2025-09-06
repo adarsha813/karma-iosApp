@@ -278,43 +278,46 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Astro Profile')),
-      body:
-          _isLoading
-              ? _buildSkeletonLoader()
-              : _error != null
-              ? _buildErrorWidget()
-              : SingleChildScrollView(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Lagna: ${astroData?['lagna'] ?? 'Unknown'}",
-                      style: const TextStyle(fontSize: 20),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      "Rashi: ${astroData?['rashi'] ?? 'Unknown'}",
-                      style: const TextStyle(fontSize: 18),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      "Ascendant Degree: ${astroData?['ascendant_degree'] ?? 'Unknown'}°",
-                      style: const TextStyle(fontSize: 18),
-                    ),
-                    const Divider(height: 30),
-                    const Text(
-                      "Houses:",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+      body: SafeArea(
+        // ✅ Wrap in SafeArea
+        child:
+            _isLoading
+                ? _buildSkeletonLoader()
+                : _error != null
+                ? _buildErrorWidget()
+                : SingleChildScrollView(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Lagna: ${astroData?['lagna'] ?? 'Unknown'}",
+                        style: const TextStyle(fontSize: 20),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    _buildHouseTable(astroData?['houses'] ?? []),
-                  ],
+                      const SizedBox(height: 4),
+                      Text(
+                        "Rashi: ${astroData?['rashi'] ?? 'Unknown'}",
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        "Ascendant Degree: ${astroData?['ascendant_degree'] ?? 'Unknown'}°",
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                      const Divider(height: 30),
+                      const Text(
+                        "Houses:",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      _buildHouseTable(astroData?['houses'] ?? []),
+                    ],
+                  ),
                 ),
-              ),
+      ),
     );
   }
 }

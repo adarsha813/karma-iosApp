@@ -363,20 +363,23 @@ class _NotificationsScreenState extends State<NotificationsScreen>
           ),
         ),
       ),
-      body:
-          isLoading
-              ? _buildSkeletonLoader()
-              : TabBarView(
-                controller: _tabController!,
-                children: [
-                  _buildNotificationList(_getAllNotifications()),
-                  ...categories.map(
-                    (cat) => _buildNotificationList(
-                      notificationsByCategory[cat] ?? [],
+      body: SafeArea(
+        // ✅ Wrap body in SafeArea
+        child:
+            isLoading
+                ? _buildSkeletonLoader()
+                : TabBarView(
+                  controller: _tabController!,
+                  children: [
+                    _buildNotificationList(_getAllNotifications()),
+                    ...categories.map(
+                      (cat) => _buildNotificationList(
+                        notificationsByCategory[cat] ?? [],
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
+      ),
     );
   }
 

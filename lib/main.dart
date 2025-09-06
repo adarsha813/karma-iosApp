@@ -58,6 +58,32 @@ const AndroidNotificationChannel horoscopeChannel = AndroidNotificationChannel(
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 
+Future<void> initNotifications() async {
+  const AndroidInitializationSettings androidSettings =
+      AndroidInitializationSettings('@mipmap/ic_launcher');
+
+  const DarwinInitializationSettings iosSettings = DarwinInitializationSettings(
+    requestSoundPermission: true,
+    requestBadgePermission: true,
+    requestAlertPermission: true,
+  );
+
+  final InitializationSettings initSettings = InitializationSettings(
+    android: androidSettings,
+    iOS: iosSettings,
+  );
+
+  await flutterLocalNotificationsPlugin.initialize(
+    initSettings,
+    onDidReceiveNotificationResponse: (NotificationResponse response) {
+      if (response.payload != null) {
+        pendingNavigation.payload = response.payload;
+      }
+    },
+    onDidReceiveBackgroundNotificationResponse: notificationTapBackground,
+  );
+}
+
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print('📩 [Background] Message received: ${message.messageId}');
@@ -109,6 +135,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   } catch (e) {
     print("⚠️ Failed to update badge in background: $e");
   }
+
   // Increment specific counters
   if (type == 'horoscope') {
     int horoCount = prefs.getInt('unread_horoscope_count') ?? 0;
@@ -172,17 +199,23 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     );
   }
 
-  // Show notification
+  // Local notification
   final androidDetails = AndroidNotificationDetails(
-    channelId,
-    channelName,
-    channelDescription: 'Notifications for $channelName',
+    type + "_channel",
+    "${type[0].toUpperCase()}${type.substring(1)} Notifications",
     importance: Importance.high,
     priority: Priority.high,
-    ticker: 'ticker',
   );
 
-  final notificationDetails = NotificationDetails(android: androidDetails);
+  final iosDetails = DarwinNotificationDetails(
+    presentAlert: true,
+    presentBadge: true,
+    presentSound: true,
+  );
+  final notificationDetails = NotificationDetails(
+    android: androidDetails,
+    iOS: iosDetails,
+  );
 
   await flutterLocalNotificationsPlugin.show(
     DateTime.now().millisecondsSinceEpoch % 100000,
@@ -193,6 +226,12 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   );
 
   print('📩 Background notification displayed for type: $type');
+}
+
+Future<void> requestIosPermissions() async {
+  NotificationSettings settings = await FirebaseMessaging.instance
+      .requestPermission(alert: true, badge: true, sound: true);
+  print('📌 iOS Notification permission: ${settings.authorizationStatus}');
 }
 
 // Create notification channel (for Android 8.0+)
@@ -424,7 +463,8 @@ Future<void> main() async {
   await setupHoroscopeChannel();
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
+  await initNotifications();
+  await requestIosPermissions();
   print('📦 Loading profile...');
   final profileProvider = ProfileProvider();
   await profileProvider.loadUserId();

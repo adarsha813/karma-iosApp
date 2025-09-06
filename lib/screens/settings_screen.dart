@@ -12,6 +12,7 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import '../services/chat_service.dart';
 import 'package:kundali/screens/policy_page.dart';
+import 'package:kundali/screens/profile_settings_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -410,7 +411,10 @@ void _logout(BuildContext context) {
       if (Platform.isAndroid) {
         SystemNavigator.pop();
       } else if (Platform.isIOS) {
-        exit(0);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => ProfileSettingsScreen()),
+        );
       }
     },
   );
