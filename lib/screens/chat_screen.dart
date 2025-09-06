@@ -30,6 +30,8 @@ import 'question_store_screen.dart';
 import '../providers/horoscope_provider.dart';
 import 'astroDictionary_Screen.dart';
 import 'package:kundali/widgets/bouncing_dots.dart';
+import 'package:kundali/screens/CustomerSupportPage.dart';
+import 'package:kundali/screens/AboutUsPage.dart';
 
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
@@ -1543,6 +1545,16 @@ class _ChatScreenState extends State<ChatScreen>
                 Icons.security,
                 "Data Control",
                 DataControlScreen(),
+              ),
+              _buildDrawerItem(
+                Icons.support_agent, // 🎧 Support icon
+                "Customer Support",
+                const CustomerSupportPage(),
+              ),
+              _buildDrawerItem(
+                Icons.info_outline,
+                "About Us",
+                const AboutUsPage(),
               ),
 
               const Spacer(),
