@@ -11,9 +11,8 @@ project 'Runner', {
   'Release' => :release,
 }
 
-# Point to the Flutter SDK in your repo or use `flutter sdk-path`
-flutter_root = File.expand_path('..', Dir.pwd) + '/flutter'
-require File.expand_path(File.join(flutter_root, 'packages', 'flutter_tools', 'bin', 'podhelper'))
+# ✅ This automatically uses the Flutter SDK from CI (Codemagic sets FLUTTER_ROOT)
+require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper'), ENV['FLUTTER_ROOT'])
 
 target 'Runner' do
   flutter_application_path = File.expand_path('..', __dir__)
