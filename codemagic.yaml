@@ -1,0 +1,30 @@
+workflows:
+  ios_build:
+    name: Build iOS
+    max_build_duration: 60
+    environment:
+      vars:
+        FLUTTER_CHANNEL: stable
+        FLUTTER_VERSION: latest
+      cocoapods_cache: true
+    scripts:
+      - name: Install Flutter dependencies
+        script: |
+          flutter clean
+          flutter pub get
+      - name: Clean Pods and Install
+        script: |
+          echo "Cleaning old Pods and Podfile.lock..."
+          rm -rf ios/Pods
+          rm -f ios/Podfile.lock
+          echo "Updating CocoaPods repo..."
+          pod repo update
+          echo "Installing iOS pods..."
+          cd ios
+          pod install
+          cd ..
+      - name: Build iOS IPA
+        script: |
+          flutter build ios --release
+    artifacts:
+      - build/ios/ipa/*.ipa
