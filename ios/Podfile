@@ -11,9 +11,10 @@ project 'Runner', {
   'Release' => :release,
 }
 
-# ✅ Correct way: load podhelper.rb from Flutter SDK
+# ✅ Load podhelper.rb from Flutter SDK instead of .ios folder
+require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper'), ENV['FLUTTER_ROOT'])
+
 flutter_application_path = File.expand_path('..', __dir__)
-eval(File.read(File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')), binding)
 
 target 'Runner' do
   install_all_flutter_pods(flutter_application_path)
