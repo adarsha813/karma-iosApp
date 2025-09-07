@@ -1,6 +1,6 @@
 platform :ios, '13.0'
 
-use_frameworks! :linkage => :static
+use_frameworks!
 use_modular_headers!
 
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
@@ -13,5 +13,5 @@ project 'Runner', {
 
 target 'Runner' do
   flutter_application_path = File.expand_path('..')
-  eval(File.read(File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')), binding)
+  eval(File.read(File.join(flutter_application_path, 'Flutter', 'podhelper.rb')), binding)
 end
