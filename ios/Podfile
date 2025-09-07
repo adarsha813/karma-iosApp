@@ -11,10 +11,10 @@ project 'Runner', {
   'Release' => :release,
 }
 
-# ✅ This automatically uses the Flutter SDK from CI (Codemagic sets FLUTTER_ROOT)
-require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper'), ENV['FLUTTER_ROOT'])
+# ✅ Correct way: load podhelper.rb from Flutter SDK
+flutter_application_path = File.expand_path('..', __dir__)
+eval(File.read(File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')), binding)
 
 target 'Runner' do
-  flutter_application_path = File.expand_path('..', __dir__)
   install_all_flutter_pods(flutter_application_path)
 end
