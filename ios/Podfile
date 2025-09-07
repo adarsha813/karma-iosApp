@@ -11,7 +11,9 @@ project 'Runner', {
   'Release' => :release,
 }
 
+require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper'), ENV['FLUTTER_ROOT'])
+
 target 'Runner' do
-  flutter_application_path = File.expand_path('..')
-  eval(File.read(File.join(flutter_application_path, 'Flutter', 'podhelper.rb')), binding)
+  flutter_application_path = File.expand_path('..', __dir__)
+  install_all_flutter_pods(flutter_application_path)
 end

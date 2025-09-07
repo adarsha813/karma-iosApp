@@ -7,24 +7,28 @@ workflows:
         FLUTTER_CHANNEL: stable
         FLUTTER_VERSION: latest
       cocoapods_cache: true
+
     scripts:
       - name: Install Flutter dependencies
         script: |
           flutter clean
           flutter pub get
-      - name: Clean Pods and Install
+          flutter precache --ios   # Ensures iOS tools exist
+
+      - name: Ensure Flutter iOS plugins
         script: |
-          echo "Cleaning old Pods and Podfile.lock..."
-          rm -rf ios/Pods
-          rm -f ios/Podfile.lock
-          echo "Updating CocoaPods repo..."
-          pod repo update
-          echo "Installing iOS pods..."
+          flutter pub get
+          flutter pub run build_runner build --delete-conflicting-outputs || true
+
+      - name: Install iOS Pods
+        script: |
           cd ios
-          pod install
+          pod install --repo-update
           cd ..
+
       - name: Build iOS IPA
         script: |
-          flutter build ios --release
+          flutter build ios --release --no-codesign
+
     artifacts:
       - build/ios/ipa/*.ipa
