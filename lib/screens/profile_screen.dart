@@ -110,67 +110,281 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  Widget _buildHouseTable(List<dynamic> houses) {
-    // Zodiac signs in order
+  // Calculate house information based on ascendant degree
+  List<Map<String, dynamic>> _calculateHouseInfo() {
+    if (astroData == null) return [];
+
     const List<String> zodiacSigns = [
-      "Aries",
-      "Taurus",
-      "Gemini",
-      "Cancer",
-      "Leo",
-      "Virgo",
-      "Libra",
-      "Scorpio",
-      "Sagittarius",
-      "Capricorn",
-      "Aquarius",
-      "Pisces",
+      'Aries',
+      'Taurus',
+      'Gemini',
+      'Cancer',
+      'Leo',
+      'Virgo',
+      'Libra',
+      'Scorpio',
+      'Sagittarius',
+      'Capricorn',
+      'Aquarius',
+      'Pisces',
     ];
 
-    // Get lagna sign from astroData, default to 'Aries' if missing
+    const List<String> nakshatras = [
+      'Ashwini',
+      'Bharani',
+      'Krittika',
+      'Rohini',
+      'Mrigashira',
+      'Ardra',
+      'Punarvasu',
+      'Pushya',
+      'Ashlesha',
+      'Magha',
+      'Purva Phalguni',
+      'Uttara Phalguni',
+      'Hasta',
+      'Chitra',
+      'Swati',
+      'Vishakha',
+      'Anuradha',
+      'Jyeshtha',
+      'Mula',
+      'Purva Ashadha',
+      'Uttara Ashadha',
+      'Shravana',
+      'Dhanishta',
+      'Shatabhisha',
+      'Purva Bhadrapada',
+      'Uttara Bhadrapada',
+      'Revati',
+    ];
+
     final String lagna = astroData?['lagna'] ?? 'Aries';
-    final int lagnaIndex = zodiacSigns.indexOf(lagna);
-    if (lagnaIndex == -1) {
-      // fallback if lagna not found in list
-      return Text("Invalid Lagna sign: $lagna");
+    final int ascendantSignIndex = zodiacSigns.indexOf(lagna);
+    if (ascendantSignIndex == -1) return [];
+
+    final double ascendantDegree =
+        (astroData?['ascendant_degree'] ?? 0).toDouble();
+    final List<dynamic> housesData = astroData?['houses'] ?? [];
+
+    final List<Map<String, dynamic>> houses = [];
+
+    for (int i = 0; i < 12; i++) {
+      final int houseNumber = i + 1;
+      final int signIndex = (ascendantSignIndex + i) % 12;
+      final String sign = zodiacSigns[signIndex];
+
+      final Map<String, dynamic> houseData =
+          i < housesData.length
+              ? Map<String, dynamic>.from(housesData[i])
+              : {'planets': []};
+
+      final double houseDegree = (ascendantDegree + (i * 30)) % 360;
+      final int nakshatraIndex = (houseDegree / (360 / 27)).floor();
+      final String nakshatra = nakshatras[nakshatraIndex % 27];
+
+      houses.add({
+        'house': houseNumber,
+        'sign': sign,
+        'degree': houseDegree,
+        'nakshatra': nakshatra,
+        'planets': houseData['planets'] ?? [],
+      });
     }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children:
-          houses.asMap().entries.map((entry) {
-            final index = entry.key;
-            final house = entry.value;
-            final planets = house['planets'] as List<dynamic>;
+    return houses;
+  }
 
-            // Calculate sign for this house
-            final houseSign = zodiacSigns[(lagnaIndex + index) % 12];
+  // North Indian Chart Renderer
+  Widget _buildNorthIndianChart() {
+    final List<Map<String, dynamic>> calculatedHouses = _calculateHouseInfo();
+    final Map<int, Map<String, dynamic>> houses = {};
 
-            return Card(
-              margin: const EdgeInsets.symmetric(vertical: 6),
-              child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "House ${index + 1} — $houseSign",
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 6),
-                    if (planets.isEmpty)
-                      const Text("No planets in this house")
-                    else
-                      ...planets.map((planet) {
-                        return Text(
-                          "${planet['name']} at ${planet['degree']}° (${planet['nakshatra']})",
-                        );
-                      }).toList(),
-                  ],
+    for (final house in calculatedHouses) {
+      houses[house['house'] as int] = house;
+    }
+
+    Widget _buildHouse(int number, String x, String y) {
+      final house =
+          houses[number] ??
+          {'planets': [], 'sign': '', 'nakshatra': '', 'degree': 0.0};
+      final String sign = house['sign'] ?? '';
+      final String nakshatra = house['nakshatra'] ?? '';
+      final double degree = (house['degree'] ?? 0.0).toDouble();
+      final List<dynamic> planets = house['planets'] ?? [];
+
+      final Map<String, int> zodiacNumbers = {
+        'Aries': 1,
+        'Taurus': 2,
+        'Gemini': 3,
+        'Cancer': 4,
+        'Leo': 5,
+        'Virgo': 6,
+        'Libra': 7,
+        'Scorpio': 8,
+        'Sagittarius': 9,
+        'Capricorn': 10,
+        'Aquarius': 11,
+        'Pisces': 12,
+      };
+
+      final String zodiacNum =
+          sign.isNotEmpty ? (zodiacNumbers[sign] ?? '-').toString() : '-';
+
+      return Positioned(
+        left: _parsePosition(x) - 25, // Shift 8 pixels to the left
+        top: _parsePosition(y) - 25,
+        child: Container(
+          width: MediaQuery.of(context).size.width * 0.2,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                '$zodiacNum ($sign)',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: number == 1 ? Colors.red : Colors.grey[800],
+                  fontSize: 12,
                 ),
+                textAlign: TextAlign.center,
               ),
-            );
-          }).toList(),
+              const SizedBox(height: 2),
+              Text(
+                '$nakshatra ${degree.toStringAsFixed(2)}°',
+                style: TextStyle(color: Colors.blue[700], fontSize: 10),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 2),
+              if (planets.isNotEmpty)
+                ...planets.map<Widget>((planet) {
+                  final planetName = planet['name'] ?? '';
+                  final planetDegree = (planet['degree'] ?? 0).toDouble();
+                  final planetNakshatra = planet['nakshatra'] ?? '';
+
+                  return Column(
+                    children: [
+                      const SizedBox(height: 2),
+                      Text(
+                        planetName,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.green[700],
+                          fontSize: 10,
+                        ),
+                      ),
+                      Text(
+                        '${planetDegree.toStringAsFixed(2)}° ($planetNakshatra)',
+                        style: TextStyle(color: Colors.green[700], fontSize: 8),
+                      ),
+                    ],
+                  );
+                }).toList()
+              else
+                Text(
+                  '-',
+                  style: TextStyle(color: Colors.green[700], fontSize: 10),
+                ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    final Map<int, Map<String, String>> positions = {
+      2: {'x': '25%', 'y': '10%'},
+      12: {'x': '75%', 'y': '10%'},
+      3: {'x': '10%', 'y': '25%'},
+      1: {'x': '40%', 'y': '25%'},
+      11: {'x': '90%', 'y': '25%'},
+      4: {'x': '25%', 'y': '50%'},
+      10: {'x': '75%', 'y': '50%'},
+      5: {'x': '10%', 'y': '75%'},
+      7: {'x': '50%', 'y': '75%'},
+      9: {'x': '90%', 'y': '75%'},
+      6: {'x': '25%', 'y': '90%'},
+      8: {'x': '75%', 'y': '90%'},
+    };
+
+    return Container(
+      width: double.infinity,
+      height: MediaQuery.of(context).size.width * 0.9,
+      child: Stack(
+        children: [
+          // SVG-like background
+          CustomPaint(painter: _NorthIndianChartPainter(), size: Size.infinite),
+          ...positions.entries.map((entry) {
+            return _buildHouse(entry.key, entry.value['x']!, entry.value['y']!);
+          }),
+        ],
+      ),
+    );
+  }
+
+  double _parsePosition(String position) {
+    final percentage = double.parse(position.replaceAll('%', ''));
+    return (percentage / 100) * MediaQuery.of(context).size.width * 0.9;
+  }
+
+  // Dasha Table Widget
+  Widget _buildDashaTable(List<dynamic> dashas, {bool isYogini = false}) {
+    final List<DataColumn> columns =
+        isYogini
+            ? const [
+              DataColumn(label: Text('Yogini')),
+              DataColumn(label: Text('Lord')),
+              DataColumn(label: Text('Start')),
+              DataColumn(label: Text('End')),
+            ]
+            : const [
+              DataColumn(label: Text('Lord')),
+              DataColumn(label: Text('Start Date')),
+              DataColumn(label: Text('End Date')),
+            ];
+
+    final List<DataRow> rows =
+        dashas.isNotEmpty
+            ? dashas.map<DataRow>((dasha) {
+              final List<DataCell> cells =
+                  isYogini
+                      ? [
+                        DataCell(Text(dasha['yogini']?.toString() ?? '-')),
+                        DataCell(Text(dasha['lord']?.toString() ?? '-')),
+                        DataCell(Text(dasha['start_date']?.toString() ?? '-')),
+                        DataCell(Text(dasha['end_date']?.toString() ?? '-')),
+                      ]
+                      : [
+                        DataCell(
+                          Text(
+                            (dasha['mahadasha_lord'] ?? dasha['lord'] ?? '-')
+                                .toString(),
+                          ),
+                        ),
+                        DataCell(Text(dasha['start_date']?.toString() ?? '-')),
+                        DataCell(Text(dasha['end_date']?.toString() ?? '-')),
+                      ];
+              return DataRow(cells: cells);
+            }).toList()
+            : [
+              DataRow(
+                cells: [
+                  DataCell(
+                    Text('No data', style: const TextStyle(color: Colors.grey)),
+                  ),
+                  ...List.generate(
+                    isYogini ? 3 : 2,
+                    (index) => const DataCell(Text('')),
+                  ),
+                ],
+              ),
+            ];
+
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: DataTable(
+        headingRowColor: MaterialStateProperty.all(Colors.grey[100]),
+        columns: columns,
+        rows: rows,
+      ),
     );
   }
 
@@ -183,65 +397,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Chart skeleton
             Container(
-              height: 24,
-              width: 150,
-              color: Colors.white,
-            ), // Lagna title
-            const SizedBox(height: 8),
-            Container(
-              height: 20,
-              width: 100,
-              color: Colors.white,
-            ), // Lagna value
-            const SizedBox(height: 12),
-
-            Container(
-              height: 24,
-              width: 120,
-              color: Colors.white,
-            ), // Rashi title
-            const SizedBox(height: 8),
-            Container(
-              height: 20,
-              width: 100,
-              color: Colors.white,
-            ), // Rashi value
-            const SizedBox(height: 12),
-
-            Container(
-              height: 24,
-              width: 180,
-              color: Colors.white,
-            ), // Ascendant Degree title
-            const SizedBox(height: 8),
-            Container(
-              height: 20,
-              width: 120,
-              color: Colors.white,
-            ), // Ascendant value
+              height: 300,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
             const SizedBox(height: 20),
-
-            Container(
-              height: 28,
-              width: 100,
-              color: Colors.white,
-            ), // Houses title
-            const SizedBox(height: 12),
-
-            // Simulate 3 houses with card placeholders
-            ...List.generate(3, (index) {
-              return Padding(
+            // Table skeletons
+            ...List.generate(
+              3,
+              (index) => Padding(
                 padding: const EdgeInsets.only(bottom: 12),
                 child: Container(
-                  height: 100,
+                  height: 60,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-              );
-            }),
+              ),
+            ),
           ],
         ),
       ),
@@ -277,9 +456,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Astro Profile')),
+      appBar: AppBar(
+        title: const Text('🪐 Kundali Generator (True North Indian Layout)'),
+        backgroundColor: Colors.blue[700],
+        foregroundColor: Colors.white,
+      ),
       body: SafeArea(
-        // ✅ Wrap in SafeArea
         child:
             _isLoading
                 ? _buildSkeletonLoader()
@@ -290,34 +472,132 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      // Basic Info
                       Text(
-                        "Lagna: ${astroData?['lagna'] ?? 'Unknown'}",
-                        style: const TextStyle(fontSize: 20),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        "Rashi: ${astroData?['rashi'] ?? 'Unknown'}",
-                        style: const TextStyle(fontSize: 18),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        "Ascendant Degree: ${astroData?['ascendant_degree'] ?? 'Unknown'}°",
-                        style: const TextStyle(fontSize: 18),
-                      ),
-                      const Divider(height: 30),
-                      const Text(
-                        "Houses:",
+                        "🕉 Natal Chart",
                         style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.grey[800],
                         ),
                       ),
-                      const SizedBox(height: 10),
-                      _buildHouseTable(astroData?['houses'] ?? []),
+                      const SizedBox(height: 8),
+                      RichText(
+                        text: TextSpan(
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: Colors.black87,
+                          ),
+                          children: [
+                            const TextSpan(
+                              text: "Lagna: ",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            TextSpan(
+                              text: "${astroData?['lagna'] ?? 'Unknown'} | ",
+                            ),
+                            const TextSpan(
+                              text: "Rashi: ",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            TextSpan(
+                              text: "${astroData?['rashi'] ?? 'Unknown'} | ",
+                            ),
+                            const TextSpan(
+                              text: "Asc Degree: ",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            TextSpan(
+                              text:
+                                  "${(astroData?['ascendant_degree'] ?? 0).toStringAsFixed(2)}°",
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+
+                      // North Indian Chart
+                      _buildNorthIndianChart(),
+
+                      // Vimshottari Dasha
+                      const SizedBox(height: 32),
+                      Text(
+                        "📅 Vimshottari Dasha",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.grey[800],
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      _buildDashaTable(astroData?['vimshottari_dasha'] ?? []),
+
+                      // Yogini Dasha
+                      const SizedBox(height: 32),
+                      Text(
+                        "🌙 Yogini Dasha",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.grey[800],
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      _buildDashaTable(
+                        astroData?['yogini_dasha'] ?? [],
+                        isYogini: true,
+                      ),
                     ],
                   ),
                 ),
       ),
     );
   }
+}
+
+// Custom painter for the North Indian chart background
+class _NorthIndianChartPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint =
+        Paint()
+          ..color = Colors.black
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1.5;
+
+    final center = Offset(size.width / 2, size.height / 2);
+
+    // Outer rectangle
+    canvas.drawRect(
+      Rect.fromLTWH(2, 2, size.width - 4, size.height - 4),
+      paint,
+    );
+
+    // Diagonal lines
+    final lines = [
+      // Top to right
+      [Offset(center.dx, 2), Offset(size.width - 2, center.dy)],
+      // Top to left
+      [Offset(center.dx, 2), Offset(2, center.dy)],
+      // Left to bottom
+      [Offset(2, center.dy), Offset(center.dx, size.height - 2)],
+      // Right to bottom
+      [Offset(size.width - 2, center.dy), Offset(center.dx, size.height - 2)],
+      // Center to bottom-right
+      [Offset(center.dx, center.dy), Offset(size.width - 2, size.height - 2)],
+      // Center to bottom-left
+      [Offset(center.dx, center.dy), Offset(2, size.height - 2)],
+      // Top-right to center
+      [Offset(size.width - 2, 2), Offset(center.dx, center.dy)],
+      // Top-left to center
+      [Offset(2, 2), Offset(center.dx, center.dy)],
+    ];
+
+    for (final line in lines) {
+      canvas.drawLine(line[0], line[1], paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
