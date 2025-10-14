@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http; // <--- Add this
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class ProfileProvider with ChangeNotifier {
   String? _userId;
@@ -37,6 +38,7 @@ class ProfileProvider with ChangeNotifier {
 
   String? _language;
   String? get language => _language;
+  final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
 
   Future<void> saveLanguage(String langCode) async {
     final prefs = await SharedPreferences.getInstance();
@@ -83,12 +85,6 @@ class ProfileProvider with ChangeNotifier {
   Future<void> loadLanguage() async {
     final prefs = await SharedPreferences.getInstance();
     _language = prefs.getString('language') ?? 'en'; // default to English
-    notifyListeners();
-  }
-
-  Future<void> loadUserId() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    _userId = prefs.getString('userId');
     notifyListeners();
   }
 
@@ -155,28 +151,23 @@ class ProfileProvider with ChangeNotifier {
   String? get token => _token;
 
   Future<void> loadToken() async {
-    print('➡️ Starting loadToken');
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    _token = prefs.getString('token');
-    print('🛠️ Loaded token in ProfileProvider: $_token'); // <-- print here
+    print('➡️ Starting secure loadToken');
+    _token = await _secureStorage.read(key: 'token');
+    print('🛠️ Loaded token from secure storage: $_token');
     notifyListeners();
     print('⬅️ Finished loadToken');
   }
 
   Future<void> saveToken(String token) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('token', token);
+    await _secureStorage.write(key: 'token', value: token);
     _token = token;
     notifyListeners();
   }
 
   Future<void> saveUserId(String newUserId) async {
-    // Only proceed if the userId actually changes
     if (_userId == newUserId) return;
 
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('userId', newUserId);
-
+    await _secureStorage.write(key: 'userId', value: newUserId);
     _userId = newUserId;
 
     // Clear old profile data when ID changes
@@ -198,8 +189,14 @@ class ProfileProvider with ChangeNotifier {
     await fetchAndSaveToken(newUserId);
   }
 
+  Future<void> loadUserId() async {
+    _userId = await _secureStorage.read(key: 'userId');
+    notifyListeners();
+  }
+
   Future<void> clearProfile() async {
     _userId = null;
+    _token = null;
     _name = null;
     _city = null;
     _country = null;
@@ -215,7 +212,11 @@ class ProfileProvider with ChangeNotifier {
     _versionHistory = [];
 
     final prefs = await SharedPreferences.getInstance();
-    await prefs.clear(); // or clear specific keys
+    await prefs.clear();
+
+    await _secureStorage.delete(key: 'userId');
+    await _secureStorage.delete(key: 'token');
+
     notifyListeners();
   }
 
@@ -223,7 +224,7 @@ class ProfileProvider with ChangeNotifier {
   Future<void> fetchAndSaveToken(String userId) async {
     final url = Uri.parse(
       "https://chat-backend-rvk9.onrender.com/api/auth/generate-token",
-    ); // Change to production URL later
+    );
 
     try {
       final response = await http.post(
@@ -235,7 +236,7 @@ class ProfileProvider with ChangeNotifier {
       if (response.statusCode == 200) {
         final token = jsonDecode(response.body)['token'];
         print('✅ Token from backend: $token');
-        await saveToken(token);
+        await saveToken(token); // now uses secure storage
       } else {
         print('❌ Failed to get token: ${response.body}');
       }

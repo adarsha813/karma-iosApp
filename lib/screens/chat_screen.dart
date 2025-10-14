@@ -24,7 +24,6 @@ import 'package:badges/badges.dart' as badges;
 import 'notifications_screen.dart';
 import 'how_to_ask_screen.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'question_store_screen.dart';
 import '../providers/horoscope_provider.dart';
 import 'astroDictionary_Screen.dart';
@@ -64,69 +63,47 @@ class _ChatScreenState extends State<ChatScreen>
   String? currentUserId;
   bool _isReinitializing = false;
 
-  Future<void> loadUserId() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    userId = prefs.getString('userId');
-    debugPrint("🔍 ProfileProvider.loadUserId() => $userId");
-    setState(() {});
-  }
-
   @override
   void initState() {
     super.initState();
     _handleDeepLink();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (_scrollController.hasClients) {
-        _scrollController.animateTo(
-          0,
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeOut,
-        );
-      }
-    });
 
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 400),
     );
-
     _animationController.forward();
+
     socket = IO.io(
       'wss://chat-backend-rvk9.onrender.com',
       IO.OptionBuilder()
-          .setTransports(['websocket']) // for Flutter
-          .disableAutoConnect() // optional, connect manually
+          .setTransports(['websocket'])
+          .disableAutoConnect()
           .build(),
     );
-
     socket.connect();
-
-    _initializeNotifications(); // now safe
-    WidgetsBinding.instance.addObserver(this);
-
-    loadUserId();
-
-    final profileProvider = Provider.of<ProfileProvider>(
-      context,
-      listen: false,
-    );
-
-    currentUserId = profileProvider.userId;
 
     _initializeNotifications();
     _initializeSocket();
-    _fetchInitialData();
+    WidgetsBinding.instance.addObserver(this);
 
-    _refreshTimer = Timer.periodic(const Duration(seconds: 30000), (_) {
-      _fetchInitialData();
-    });
-
+    // Async initialization
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      // 🔧 Token load fix
-      if (profileProvider.userId != null && profileProvider.token == null) {
+      final profileProvider = Provider.of<ProfileProvider>(
+        context,
+        listen: false,
+      );
+
+      // Load userId securely
+      await profileProvider.loadUserId();
+      currentUserId = profileProvider.userId;
+
+      // Load token if missing
+      if (profileProvider.token == null) {
         await profileProvider.loadToken();
       }
 
+      // Handle deep link payload
       final payload = pendingNavigation.payload;
       if (payload != null) {
         final data = jsonDecode(payload);
@@ -141,12 +118,24 @@ class _ChatScreenState extends State<ChatScreen>
         }
         pendingNavigation.payload = null;
       }
+
+      setState(() {}); // refresh UI if needed
+    });
+
+    // Scroll to top initially
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_scrollController.hasClients) {
+        _scrollController.animateTo(
+          0,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeOut,
+        );
+      }
     });
 
     _scrollController.addListener(() {
       if (_scrollController.hasClients) {
         if (_scrollController.offset > 100) {
-          // some threshold
           if (!_showScrollToBottomButton) {
             setState(() => _showScrollToBottomButton = true);
           }
@@ -156,6 +145,11 @@ class _ChatScreenState extends State<ChatScreen>
           }
         }
       }
+    });
+
+    _fetchInitialData();
+    _refreshTimer = Timer.periodic(const Duration(seconds: 30000), (_) {
+      _fetchInitialData();
     });
   }
 
@@ -439,10 +433,7 @@ class _ChatScreenState extends State<ChatScreen>
     if (newUserId != null && newUserId != currentUserId) {
       currentUserId = newUserId;
       // Update local storage
-      WidgetsBinding.instance.addPostFrameCallback((_) async {
-        final prefs = await SharedPreferences.getInstance();
-        await prefs.setString('userId', newUserId);
-      });
+
       Future.microtask(() => _reinitializeForUserId(newUserId));
     }
   }
