@@ -286,6 +286,14 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      profileProvider.loadLanguage();
+    });
+
     return Scaffold(
       appBar: AppBar(title: Text(l10n.settingsTitle)),
       body: Padding(
