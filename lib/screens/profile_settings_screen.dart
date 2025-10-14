@@ -15,6 +15,7 @@ import 'recovery_screen.dart'; // Adjust the path if it's in another folder
 import 'package:shared_preferences/shared_preferences.dart';
 import 'chat_screen.dart'; // Add this line
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart'; // Add this import for DateFormat
 
 class ProfileSettingsScreen extends StatefulWidget {
   const ProfileSettingsScreen({super.key});
@@ -1031,6 +1032,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   }
 
   // Update _buildCityField to accept l10n parameter
+
   Widget _buildCityField(AppLocalizations l10n) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
@@ -1160,54 +1162,304 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     );
   }
 
-  // Update _buildVersionHistoryItem to accept l10n parameter
+  // Add this method to your _ProfileSettingsScreenState class
   Widget _buildVersionHistoryItem(
     Map<String, dynamic> version,
     AppLocalizations l10n,
   ) {
+    final updatedAt = DateTime.parse(version['updatedAt']).toLocal();
+    final dateFormat = DateFormat('MMM dd, yyyy - HH:mm');
+
     return Card(
-      margin: const EdgeInsets.symmetric(vertical: 4),
+      margin: const EdgeInsets.symmetric(vertical: 6),
+      elevation: 2,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              '${l10n.versionFromText} ${DateTime.parse(version['updatedAt']).toLocal()}',
-              style: const TextStyle(fontWeight: FontWeight.bold),
+            // Header with timestamp
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  l10n.versionFromText(
+                    dateFormat.format(updatedAt),
+                  ), // Fixed: use the function
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    color: Colors.blue,
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.blue.shade50,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Text(
+                    'v${version['version'] ?? '1'}',
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 4),
-            Text('${l10n.nameHistory}: ${version['name'] ?? l10n.notSetText}'),
-            Text('${l10n.cityHistory}: ${version['city'] ?? l10n.notSetText}'),
-            Text(
-              '${l10n.countryHistory}: ${version['country'] ?? l10n.notSetText}',
+
+            const SizedBox(height: 12),
+
+            // Profile data in a clean grid layout
+            Wrap(
+              spacing: 16,
+              runSpacing: 8,
+              children: [
+                if (version['name'] != null &&
+                    version['name'].toString().isNotEmpty)
+                  _buildHistoryItemChip(
+                    icon: Icons.person,
+                    label: 'Name', // Use simple string instead of l10n function
+                    value: version['name'].toString(),
+                  ),
+
+                if (version['city'] != null &&
+                    version['city'].toString().isNotEmpty)
+                  _buildHistoryItemChip(
+                    icon: Icons.location_city,
+                    label: 'City',
+                    value: version['city'].toString(),
+                  ),
+
+                if (version['country'] != null &&
+                    version['country'].toString().isNotEmpty)
+                  _buildHistoryItemChip(
+                    icon: Icons.flag,
+                    label: 'Country',
+                    value: version['country'].toString(),
+                  ),
+
+                if (version['gender'] != null &&
+                    version['gender'].toString().isNotEmpty)
+                  _buildHistoryItemChip(
+                    icon:
+                        version['gender'] == 'male' ? Icons.male : Icons.female,
+                    label: 'Gender',
+                    value:
+                        version['gender'] == 'male'
+                            ? l10n.maleLabel
+                            : l10n.femaleLabel,
+                  ),
+
+                if (version['birthDate'] != null)
+                  _buildHistoryItemChip(
+                    icon: Icons.calendar_today,
+                    label: 'Birth Date',
+                    value: DateFormat(
+                      'MMM dd, yyyy',
+                    ).format(DateTime.parse(version['birthDate'])),
+                  ),
+
+                if (version['birthTime'] != null)
+                  _buildHistoryItemChip(
+                    icon: Icons.access_time,
+                    label: 'Birth Time',
+                    value: version['birthTime'].toString(),
+                  ),
+
+                if (version['latitude'] != null && version['longitude'] != null)
+                  _buildHistoryItemChip(
+                    icon: Icons.gps_fixed,
+                    label: 'Coordinates',
+                    value:
+                        '${version['latitude'].toStringAsFixed(4)}, ${version['longitude'].toStringAsFixed(4)}',
+                  ),
+
+                if (version['timezone'] != null)
+                  _buildHistoryItemChip(
+                    icon: Icons.time_to_leave,
+                    label: 'Timezone',
+                    value:
+                        'GMT${version['timezone'] >= 0 ? '+' : ''}${version['timezone']}',
+                  ),
+
+                if (version['dst'] != null)
+                  _buildHistoryItemChip(
+                    icon: Icons.light_mode,
+                    label: 'DST',
+                    value: version['dst'] == 1.0 ? l10n.yesText : l10n.noText,
+                    color: version['dst'] == 1.0 ? Colors.green : Colors.grey,
+                  ),
+
+                if (version['state'] != null &&
+                    version['state'].toString().isNotEmpty)
+                  _buildHistoryItemChip(
+                    icon: Icons.map,
+                    label: 'State',
+                    value: version['state'].toString(),
+                  ),
+              ],
             ),
-            Text(
-              '${l10n.genderHistory}: ${version['gender'] ?? l10n.notSetText}',
-            ),
-            if (version['birthDate'] != null)
-              Text(
-                '${l10n.birthDateHistory}: ${DateTime.parse(version['birthDate']).toLocal()}',
+
+            // Empty state if no data
+            if (_isVersionEmpty(version))
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                child: Center(
+                  child: Text(
+                    'No data available', // Use simple string
+                    style: const TextStyle(
+                      color: Colors.grey,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ),
               ),
-            if (version['birthTime'] != null)
-              Text('${l10n.birthTimeHistory}: ${version['birthTime']}'),
-            if (version['latitude'] != null && version['longitude'] != null)
-              Text(
-                '${l10n.locationHistory}: ${version['latitude']}, ${version['longitude']}',
-              ),
-            if (version['timezone'] != null)
-              Text(
-                '${l10n.timezoneHistory}: ${version['timezone'] >= 0 ? '+' : ''}${version['timezone']}',
-              ),
-            if (version['dst'] != null)
-              Text(
-                '${l10n.dstHistory}: ${version['dst'] == 1.0 ? l10n.yesText : l10n.noText}',
-              ),
-            if (version['state'] != null)
-              Text('${l10n.stateHistory}: ${version['state']}'),
           ],
         ),
       ),
+    );
+  }
+
+  // Helper method to build individual history items as chips
+  Widget _buildHistoryItemChip({
+    required IconData icon,
+    required String label,
+    required String value,
+    Color color = Colors.blue,
+  }) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      decoration: BoxDecoration(
+        color: color.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: color.withOpacity(0.3)),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 14, color: color),
+          const SizedBox(width: 4),
+          Text(
+            '$label: ',
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+              color: Colors.grey[700],
+            ),
+          ),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+              color: color,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Helper method to check if version has no data
+  bool _isVersionEmpty(Map<String, dynamic> version) {
+    final fields = [
+      'name',
+      'city',
+      'country',
+      'gender',
+      'birthDate',
+      'birthTime',
+    ];
+    return fields.every(
+      (field) => version[field] == null || version[field].toString().isEmpty,
+    );
+  }
+
+  // Update the history section in your build method:
+  Widget _buildHistorySection(
+    AppLocalizations l10n,
+    ProfileProvider profileProvider,
+  ) {
+    return Column(
+      children: [
+        // Header
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Colors.blue.shade50,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Row(
+            children: [
+              const Icon(Icons.history, color: Colors.blue, size: 24),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      l10n.versionHistoryTitle,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      '${profileProvider.versionHistory.length} versions found', // Use simple string
+                      style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                    ),
+                  ],
+                ),
+              ),
+              IconButton(
+                icon: const Icon(Icons.close, color: Colors.grey),
+                onPressed: () {
+                  setState(() => _showHistory = false);
+                },
+              ),
+            ],
+          ),
+        ),
+
+        const SizedBox(height: 16),
+
+        // Version list
+        if (profileProvider.versionHistory.isEmpty)
+          Container(
+            padding: const EdgeInsets.all(32),
+            child: Column(
+              children: [
+                Icon(
+                  Icons.history_toggle_off,
+                  size: 64,
+                  color: Colors.grey[300],
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  'No history available', // Use simple string
+                  style: TextStyle(fontSize: 16, color: Colors.grey[500]),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          )
+        else
+          ...profileProvider.versionHistory.reversed.map(
+            (version) => _buildVersionHistoryItem(version, l10n),
+          ),
+
+        const Divider(height: 40),
+      ],
     );
   }
 
@@ -1247,25 +1499,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
           child: Column(
             children: [
-              if (_showHistory)
-                Column(
-                  children: [
-                    Text(
-                      l10n.versionHistoryTitle, // Localized
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    ...profileProvider.versionHistory.reversed.map(
-                      (version) =>
-                          _buildVersionHistoryItem(version, l10n), // Pass l10n
-                    ),
-                    const Divider(),
-                    const SizedBox(height: 20),
-                  ],
-                ),
+              if (_showHistory) _buildHistorySection(l10n, profileProvider),
 
               GestureDetector(
                 onTap: _pickImage,
