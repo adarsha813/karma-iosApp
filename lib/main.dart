@@ -26,6 +26,7 @@ import 'services/first_launch_service.dart';
 import 'screens/onboarding_screen.dart';
 import 'providers/dictionary_provider.dart';
 import 'screens/notifications_screen.dart';
+import 'services/device_time_service.dart';
 
 // -------------------------
 // PendingNotificationNavigation as ChangeNotifier
@@ -620,6 +621,12 @@ Future<void> main() async {
   });
 
   final firstLaunch = await isFirstLaunch();
+  if (profileProvider.userId != null) {
+    final deviceTimeService = DeviceTimeService(profileProvider.userId!);
+    deviceTimeService.start(interval: Duration(seconds: 60));
+  } else {
+    print("⚠️ Skipping DeviceTimeService, userId is null");
+  }
 
   runApp(
     MultiProvider(

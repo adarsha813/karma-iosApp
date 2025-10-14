@@ -309,13 +309,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       icon = Icons.tips_and_updates;
       label = "Advice";
     }
-    Widget animatedBubble = SlideTransition(
-      position: _slideAnimation,
-      child: ScaleTransition(
-        scale: _scaleAnimation,
-        child: _buildBubble(bubbleColor, label, icon),
-      ),
-    );
+    Widget animatedBubble = _buildBubble(bubbleColor, label, icon);
+
     widget.message.isMe || message.isAdvice
         ? ScaleTransition(
           scale: _scaleAnimation,

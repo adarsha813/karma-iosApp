@@ -12,7 +12,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get settingsTitle => 'Ajustes';
 
   @override
-  String get notificationSettings => 'Ajustes de notificacion';
+  String get notificationSettings => 'Ajustes de notificación';
 
   @override
   String get privacySettings => 'Configuración de privacidad';
@@ -69,30 +69,30 @@ class AppLocalizationsEs extends AppLocalizations {
   String get birthDatePlaceholder => 'Seleccionar fecha de nacimiento';
 
   @override
-  String get birthTimeLabel => 'Tiempo de nacimiento';
+  String get birthTimeLabel => 'Hora de nacimiento';
 
   @override
-  String get birthTimePlaceholder => 'Seleccione el tiempo de nacimiento';
+  String get birthTimePlaceholder => 'Seleccione la hora de nacimiento';
 
   @override
   String get saveProfileButton => 'Guardar perfil';
 
   @override
-  String get noCitiesFound => 'No hay ciudades encontradas';
+  String get noCitiesFound => 'No se encontraron ciudades';
 
   @override
   String cityPlaceholder(Object country) {
-    return 'Entra en la ciudad';
+    return 'Ingrese la ciudad';
   }
 
   @override
-  String get countryFirstPlaceholder => 'Seleccionar país primero';
+  String get countryFirstPlaceholder => 'Seleccione el país primero';
 
   @override
-  String get versionHistoryTitle => 'Versión Historia';
+  String get versionHistoryTitle => 'Historial de versiones';
 
   @override
-  String get notSetText => 'No está listo';
+  String get notSetText => 'No configurado';
 
   @override
   String nameHistory(Object name) {
@@ -101,37 +101,32 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String cityHistory(Object city) {
-    return 'Ciudad:';
+    return 'Ciudad: $city';
   }
 
   @override
-  String countryHistory(Object country, Object pais) {
-    return 'País: $pais';
+  String countryHistory(Object country) {
+    return 'País: $country';
   }
 
   @override
-  String genderHistory(Object gender, Object genero) {
-    return 'Género: $genero';
+  String genderHistory(Object gender) {
+    return 'Género: $gender';
   }
 
   @override
-  String birthDateHistory(Object date, Object fecha) {
-    return 'Fecha de nacimiento: $fecha';
+  String birthDateHistory(Object date) {
+    return 'Fecha de nacimiento: $date';
   }
 
   @override
   String birthTimeHistory(Object time) {
-    return 'Hora de nacimiento:';
+    return 'Hora de nacimiento: $time';
   }
 
   @override
-  String locationHistory(
-    Object latitud,
-    Object latitude,
-    Object longitud,
-    Object longitude,
-  ) {
-    return 'Ubicación: $latitud, $longitud';
+  String locationHistory(Object latitude, Object longitude) {
+    return 'Ubicación: $latitude, $longitude';
   }
 
   @override
@@ -140,13 +135,13 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String dstHistory(Object valor, Object value) {
-    return 'DST: $valor';
+  String dstHistory(Object value) {
+    return 'DST: $value';
   }
 
   @override
   String stateHistory(Object state) {
-    return 'Estado:';
+    return 'Estado: $state';
   }
 
   @override
@@ -158,23 +153,23 @@ class AppLocalizationsEs extends AppLocalizations {
   String get userIdRequired => 'Se requiere ID de usuario';
 
   @override
-  String get profileSaved => 'Perfil guardado con exito';
+  String get profileSaved => 'Perfil guardado con éxito';
 
   @override
-  String get saveFailed => 'Failed to save profile';
+  String get saveFailed => 'No se pudo guardar el perfil';
 
   @override
   String get errorPrefix => 'Error:';
 
   @override
-  String get onboardingChooseLanguage => 'Elige tu idioma';
+  String get onboardingChooseLanguage => 'Elija su idioma';
 
   @override
   String get onboardingChooseLanguageDesc =>
-      'Selecciona tu idioma preferido para continuar.';
+      'Seleccione su idioma preferido para continuar.';
 
   @override
-  String get onboardingWhatIsAstrology => '¿Qué es la astrología?';
+  String get onboardingWhatIsAstrology => '¿Qué es la Astrología?';
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
@@ -185,17 +180,17 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Obtén horóscopos personalizados, predicciones diarias y orientación para tomar decisiones informadas.';
+      'Obtenga horóscopos personalizados, predicciones diarias y orientación para tomar decisiones informadas.';
 
   @override
-  String get onboardingHowToUse => 'Cómo usar esta aplicación?';
+  String get onboardingHowToUse => '¿Cómo utilizar esta aplicación?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Navega fácilmente, consulta los horóscopos diarios y administra tu perfil para predicciones precisas.';
+      'Navegue fácilmente, consulte los horóscopos diarios y gestione su perfil para predicciones precisas.';
 
   @override
-  String get onboardingGetStarted => 'Comenzar';
+  String get onboardingGetStarted => 'Empezar';
 
   @override
   String get onboardingNewUser => 'Nuevo usuario';

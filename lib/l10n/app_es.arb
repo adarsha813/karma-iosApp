@@ -1,7 +1,7 @@
 {
-"@@locale": "es",
+  "@@locale": "es",
   "settingsTitle": "Ajustes",
-  "notificationSettings": "Ajustes de notificacion",
+  "notificationSettings": "Ajustes de notificación",
   "privacySettings": "Configuración de privacidad",
   "accountSettings": "Ajustes de la cuenta",
   "languageSettings": "Ajustes del idioma",
@@ -20,41 +20,109 @@
   "femaleLabel": "Mujer",
   "birthDateLabel": "Fecha de nacimiento",
   "birthDatePlaceholder": "Seleccionar fecha de nacimiento",
-  "birthTimeLabel": "Tiempo de nacimiento",
-  "birthTimePlaceholder": "Seleccione el tiempo de nacimiento",
+  "birthTimeLabel": "Hora de nacimiento",
+  "birthTimePlaceholder": "Seleccione la hora de nacimiento",
   "saveProfileButton": "Guardar perfil",
-  "noCitiesFound": "No hay ciudades encontradas",
-  "cityPlaceholder": "Entra en la ciudad",
-  "countryFirstPlaceholder": "Seleccionar país primero",
-  "versionHistoryTitle": "Versión Historia",
-  "notSetText": "No está listo",
+  "noCitiesFound": "No se encontraron ciudades",
+  "cityPlaceholder": "Ingrese la ciudad",
+  "countryFirstPlaceholder": "Seleccione el país primero",
+  "versionHistoryTitle": "Historial de versiones",
+  "notSetText": "No configurado",
+
   "nameHistory": "Nombre: {name}",
-  "cityHistory": "Ciudad:",
-  "countryHistory": "País: {pais}",
-  "genderHistory": "Género: {genero}",
-  "birthDateHistory": "Fecha de nacimiento: {fecha}",
-  "birthTimeHistory": "Hora de nacimiento:",
-  "locationHistory": "Ubicación: {latitud}, {longitud}",
+  "@nameHistory": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+
+  "cityHistory": "Ciudad: {city}",
+  "@cityHistory": {
+    "placeholders": {
+      "city": {}
+    }
+  },
+
+  "countryHistory": "País: {country}",
+  "@countryHistory": {
+    "placeholders": {
+      "country": {}
+    }
+  },
+
+  "genderHistory": "Género: {gender}",
+  "@genderHistory": {
+    "placeholders": {
+      "gender": {}
+    }
+  },
+
+  "birthDateHistory": "Fecha de nacimiento: {date}",
+  "@birthDateHistory": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+
+  "birthTimeHistory": "Hora de nacimiento: {time}",
+  "@birthTimeHistory": {
+    "placeholders": {
+      "time": {}
+    }
+  },
+
+  "locationHistory": "Ubicación: {latitude}, {longitude}",
+  "@locationHistory": {
+    "placeholders": {
+      "latitude": {},
+      "longitude": {}
+    }
+  },
+
   "timezoneHistory": "Zona horaria: GMT{offset}",
-  "dstHistory": "DST: {valor}",
-  "stateHistory": "Estado:",
+  "@timezoneHistory": {
+    "placeholders": {
+      "offset": {}
+    }
+  },
+
+  "dstHistory": "DST: {value}",
+  "@dstHistory": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+
+  "stateHistory": "Estado: {state}",
+  "@stateHistory": {
+    "placeholders": {
+      "state": {}
+    }
+  },
+
   "versionFromText": "Versión de {date}",
+  "@versionFromText": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+
   "userIdRequired": "Se requiere ID de usuario",
-  "profileSaved": "Perfil guardado con exito",
-  "saveFailed": "Failed to save profile",
+  "profileSaved": "Perfil guardado con éxito",
+  "saveFailed": "No se pudo guardar el perfil",
   "errorPrefix": "Error:",
-   "onboardingChooseLanguage": "Elige tu idioma",
-  "onboardingChooseLanguageDesc": "Selecciona tu idioma preferido para continuar.",
-  "onboardingWhatIsAstrology": "¿Qué es la astrología?",
+
+  "onboardingChooseLanguage": "Elija su idioma",
+  "onboardingChooseLanguageDesc": "Seleccione su idioma preferido para continuar.",
+  "onboardingWhatIsAstrology": "¿Qué es la Astrología?",
   "onboardingWhatIsAstrologyDesc": "La astrología es el estudio de los cuerpos celestes...",
   "onboardingWhyUseApp": "¿Por qué usar esta aplicación?",
-  "onboardingWhyUseAppDesc": "Obtén horóscopos personalizados, predicciones diarias y orientación para tomar decisiones informadas.",
-  "onboardingHowToUse": "Cómo usar esta aplicación?",
-  "onboardingHowToUseDesc": "Navega fácilmente, consulta los horóscopos diarios y administra tu perfil para predicciones precisas.",
-  "onboardingGetStarted": "Comenzar",
+  "onboardingWhyUseAppDesc": "Obtenga horóscopos personalizados, predicciones diarias y orientación para tomar decisiones informadas.",
+  "onboardingHowToUse": "¿Cómo utilizar esta aplicación?",
+  "onboardingHowToUseDesc": "Navegue fácilmente, consulte los horóscopos diarios y gestione su perfil para predicciones precisas.",
+  "onboardingGetStarted": "Empezar",
   "onboardingNewUser": "Nuevo usuario",
   "onboardingExistingUser": "Usuario existente",
   "onboardingBack": "Atrás",
   "onboardingNext": "Siguiente"
-  
 }

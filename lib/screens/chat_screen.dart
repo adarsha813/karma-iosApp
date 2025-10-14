@@ -1497,30 +1497,27 @@ class _ChatScreenState extends State<ChatScreen>
           Column(
             children: [
               Expanded(
-                child: Consumer2<ChatService, DictionaryProvider>(
+                child: // In ChatScreen - replace the Consumer2 builder
+                    Consumer2<ChatService, DictionaryProvider>(
                   builder: (context, chatService, dictProvider, _) {
                     final dictionaryMap = dictProvider.dictionaryMap;
 
-                    return AnimatedList(
-                      key: chatService.listKey,
+                    return ListView.builder(
                       reverse: true,
-                      controller: _scrollController, // ✅ Attach controller here
-                      initialItemCount: chatService.messages.length,
-                      itemBuilder: (context, index, animation) {
+                      controller: _scrollController,
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: chatService.messages.length,
+                      itemBuilder: (context, index) {
                         final message = chatService.messages[index];
-                        return SizeTransition(
-                          sizeFactor: animation,
-                          axisAlignment: 0.0,
-                          child: ChatBubble(
-                            key: ValueKey(
-                              '${message.id}_${message.rating}_${message.feedback}',
-                            ),
-                            message: message,
-                            onRateAnswer: _rateAnswer,
-                            onRateAdvice: _rateAdvice,
-                            chatService: chatService,
-                            dictionaryMap: dictionaryMap,
+                        return ChatBubble(
+                          key: ValueKey(
+                            '${message.id}_${message.rating}_${message.feedback}',
                           ),
+                          message: message,
+                          onRateAnswer: _rateAnswer,
+                          onRateAdvice: _rateAdvice,
+                          chatService: chatService,
+                          dictionaryMap: dictionaryMap,
                         );
                       },
                     );

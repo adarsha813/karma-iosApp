@@ -13,6 +13,8 @@ import '../l10n/app_localizations.dart'; // Add localization import
 import '../widgets/Avaterloder.dart';
 import 'recovery_screen.dart'; // Adjust the path if it's in another folder
 import 'package:shared_preferences/shared_preferences.dart';
+import 'chat_screen.dart'; // Add this line
+import 'package:flutter/cupertino.dart';
 
 class ProfileSettingsScreen extends StatefulWidget {
   const ProfileSettingsScreen({super.key});
@@ -683,7 +685,14 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                           listen: false,
                         ).saveUserId(generatedId);
                         Navigator.of(context).pop();
-                        Navigator.pushReplacementNamed(context, '/chat');
+                        // Replace with:
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ChatScreen(chatId: null),
+                          ),
+                          (route) => false, // This removes all previous routes
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
@@ -702,7 +711,14 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
               listen: false,
             ).saveUserId(generatedId);
             if (mounted) {
-              Navigator.pushReplacementNamed(context, '/chat');
+              // Replace with:
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChatScreen(chatId: null),
+                ),
+                (route) => false, // This removes all previous routes
+              );
             }
           }
         } else {
@@ -719,29 +735,137 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   }
 
   Future<void> _pickDate(BuildContext context) async {
-    final picked = await showDatePicker(
+    DateTime tempDate = _selectedDate ?? DateTime(2000, 1, 1);
+
+    await showDialog(
       context: context,
-      initialDate: _selectedDate ?? DateTime.now(),
-      firstDate: DateTime(1900),
-      lastDate: DateTime(2100),
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Container(
+            height: 350,
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                const Text(
+                  "Select Date of Birth",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const Divider(height: 20),
+                Expanded(
+                  child: CupertinoDatePicker(
+                    mode: CupertinoDatePickerMode.date,
+                    initialDateTime: _selectedDate ?? DateTime(2000, 1, 1),
+                    minimumDate: DateTime(1900),
+                    maximumDate: DateTime.now(),
+                    onDateTimeChanged: (DateTime newDate) {
+                      tempDate = newDate;
+                    },
+                  ),
+                ),
+                const Divider(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text(
+                        "Cancel",
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      onPressed: () {
+                        setState(() => _selectedDate = tempDate);
+                        Navigator.pop(context);
+                      },
+                      child: const Text("Done"),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
-    if (picked != null) {
-      setState(() {
-        _selectedDate = picked;
-      });
-    }
   }
 
   Future<void> _pickTime(BuildContext context) async {
-    final picked = await showTimePicker(
+    TimeOfDay tempTime = _selectedTime ?? TimeOfDay.now();
+
+    await showDialog(
       context: context,
-      initialTime: _selectedTime ?? TimeOfDay.now(),
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Container(
+            height: 300,
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                const Text(
+                  "Select Birth Time",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const Divider(height: 20),
+                Expanded(
+                  child: CupertinoTimerPicker(
+                    mode: CupertinoTimerPickerMode.hm,
+                    initialTimerDuration: Duration(
+                      hours: _selectedTime?.hour ?? 0,
+                      minutes: _selectedTime?.minute ?? 0,
+                    ),
+                    onTimerDurationChanged: (Duration newDuration) {
+                      tempTime = TimeOfDay(
+                        hour: newDuration.inHours,
+                        minute: newDuration.inMinutes % 60,
+                      );
+                    },
+                  ),
+                ),
+                const Divider(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text(
+                        "Cancel",
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      onPressed: () {
+                        setState(() => _selectedTime = tempTime);
+                        Navigator.pop(context);
+                      },
+                      child: const Text("Done"),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
-    if (picked != null) {
-      setState(() {
-        _selectedTime = picked;
-      });
-    }
   }
 
   Future<void> _fetchLocationDetails(String city, String country) async {
@@ -1178,11 +1302,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
               // Show button only if userId is blank
               // Show as a clickable text if userId is empty
               const SizedBox(height: 20),
-              _buildTextField(
-                l10n.userIdLabel, // Localized
-                Icons.person_outline,
-                _userIdController,
-              ),
 
               if (_userIdController.text.isEmpty)
                 GestureDetector(
@@ -1243,21 +1362,22 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                 ],
               ),
               _buildDateTile(
-                l10n.birthDateLabel, // Localized
+                "Date of Birth",
                 _selectedDate != null
-                    ? "${_selectedDate!.year}-${_selectedDate!.month.toString().padLeft(2, '0')}-${_selectedDate!.day.toString().padLeft(2, '0')}"
-                    : l10n.birthDatePlaceholder, // Localized
+                    ? "${_selectedDate!.day}-${_selectedDate!.month}-${_selectedDate!.year}"
+                    : "Select your birth date",
                 () => _pickDate(context),
                 Icons.calendar_today,
               ),
               _buildDateTile(
-                l10n.birthTimeLabel, // Localized
+                "Time of Birth",
                 _selectedTime != null
                     ? "${_selectedTime!.hour.toString().padLeft(2, '0')}:${_selectedTime!.minute.toString().padLeft(2, '0')}"
-                    : l10n.birthTimePlaceholder, // Localized
+                    : "Select your birth time",
                 () => _pickTime(context),
                 Icons.access_time,
               ),
+
               const SizedBox(height: 20),
               SizedBox(
                 width: double.infinity,

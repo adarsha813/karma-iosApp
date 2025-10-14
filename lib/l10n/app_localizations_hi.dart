@@ -105,17 +105,17 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String countryHistory(Object country, Object pais) {
+  String countryHistory(Object country) {
     return 'देश: $country';
   }
 
   @override
-  String genderHistory(Object gender, Object genero) {
+  String genderHistory(Object gender) {
     return 'Gender: $gender';
   }
 
   @override
-  String birthDateHistory(Object date, Object fecha) {
+  String birthDateHistory(Object date) {
     return 'जन्म तिथि: $date';
   }
 
@@ -125,12 +125,7 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String locationHistory(
-    Object latitud,
-    Object latitude,
-    Object longitud,
-    Object longitude,
-  ) {
+  String locationHistory(Object latitude, Object longitude) {
     return 'स्थान: $latitude, $longitude';
   }
 
@@ -140,7 +135,7 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String dstHistory(Object valor, Object value) {
+  String dstHistory(Object value) {
     return 'DST: $value';
   }
 
@@ -171,31 +166,31 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get onboardingChooseLanguageDesc =>
-      'जारी रखने के लिए अपनी पसंदीदा भाषा चुनें।';
+      'अपनी पसंदीदा भाषा को जारी रखने के लिए चुनें।.';
 
   @override
   String get onboardingWhatIsAstrology => 'ज्योतिष क्या है?';
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'ज्योतिष आकाशीय पिंडों का अध्ययन है...';
+      'ज्योतिष, खगोलीय शरीर का अध्ययन है।.';
 
   @override
-  String get onboardingWhyUseApp => 'इस ऐप का उपयोग क्यों करें?';
+  String get onboardingWhyUseApp => 'इस एप्लिकेशन का उपयोग क्यों करें?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'व्यक्तिगत राशिफल, दैनिक भविष्यवाणियाँ, और निर्णय लेने में मार्गदर्शन प्राप्त करें।';
+      'व्यक्तिगत कुंडली, दैनिक भविष्यवाणियों और सूचित निर्णय लेने के लिए मार्गदर्शन प्राप्त करें।.';
 
   @override
-  String get onboardingHowToUse => 'इस ऐप का उपयोग कैसे करें?';
+  String get onboardingHowToUse => 'इस एप्लिकेशन का उपयोग कैसे करें?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'आसानी से नेविगेट करें, दैनिक राशिफल देखें और सटीक भविष्यवाणियों के लिए प्रोफ़ाइल प्रबंधित करें।';
+      'आसानी से नेविगेट करें, दैनिक कुंडली की जांच करें और सटीक भविष्यवाणियों के लिए अपनी प्रोफ़ाइल का प्रबंधन करें।.';
 
   @override
-  String get onboardingGetStarted => 'शुरू करें';
+  String get onboardingGetStarted => 'शुरू करना';
 
   @override
   String get onboardingNewUser => 'नया उपयोगकर्ता';
@@ -204,7 +199,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get onboardingExistingUser => 'मौजूदा उपयोगकर्ता';
 
   @override
-  String get onboardingBack => 'पीछे';
+  String get onboardingBack => 'वापस';
 
   @override
   String get onboardingNext => 'अगला';

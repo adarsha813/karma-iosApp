@@ -105,17 +105,17 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String countryHistory(Object country, Object pais) {
+  String countryHistory(Object country) {
     return 'Country: $country';
   }
 
   @override
-  String genderHistory(Object gender, Object genero) {
+  String genderHistory(Object gender) {
     return 'Gender: $gender';
   }
 
   @override
-  String birthDateHistory(Object date, Object fecha) {
+  String birthDateHistory(Object date) {
     return 'Birth Date: $date';
   }
 
@@ -125,12 +125,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String locationHistory(
-    Object latitud,
-    Object latitude,
-    Object longitud,
-    Object longitude,
-  ) {
+  String locationHistory(Object latitude, Object longitude) {
     return 'Location: $latitude, $longitude';
   }
 
@@ -140,7 +135,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String dstHistory(Object valor, Object value) {
+  String dstHistory(Object value) {
     return 'DST: $value';
   }
 

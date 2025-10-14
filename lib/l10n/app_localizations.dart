@@ -284,19 +284,19 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Country: {country}'**
-  String countryHistory(Object country, Object pais);
+  String countryHistory(Object country);
 
   /// No description provided for @genderHistory.
   ///
   /// In en, this message translates to:
   /// **'Gender: {gender}'**
-  String genderHistory(Object gender, Object genero);
+  String genderHistory(Object gender);
 
   /// No description provided for @birthDateHistory.
   ///
   /// In en, this message translates to:
   /// **'Birth Date: {date}'**
-  String birthDateHistory(Object date, Object fecha);
+  String birthDateHistory(Object date);
 
   /// No description provided for @birthTimeHistory.
   ///
@@ -308,12 +308,7 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Location: {latitude}, {longitude}'**
-  String locationHistory(
-    Object latitud,
-    Object latitude,
-    Object longitud,
-    Object longitude,
-  );
+  String locationHistory(Object latitude, Object longitude);
 
   /// No description provided for @timezoneHistory.
   ///
@@ -325,7 +320,7 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'DST: {value}'**
-  String dstHistory(Object valor, Object value);
+  String dstHistory(Object value);
 
   /// No description provided for @stateHistory.
   ///
