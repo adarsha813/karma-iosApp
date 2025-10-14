@@ -384,6 +384,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           context,
           listen: false,
         );
+
         if (languageFromBackend != null &&
             languageFromBackend != profileProvider.language &&
             _userIdController.text.isNotEmpty) {
@@ -394,25 +395,26 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           ).setLocale(Locale(languageFromBackend));
         }
 
-        await profileProvider.saveUserId(
-          userId,
-        ); // ✅ force update in local storage
+        await profileProvider.saveUserId(userId);
 
+        // CRITICAL: Set country data before other fields
+        final country = data['country'] ?? '';
         setState(() {
+          _selectedCountry = country;
+          _countryController.text = country;
           _nameController.text = data['name'] ?? '';
           _cityController.text = data['city'] ?? '';
-          _countryController.text = data['country'] ?? '';
           _gender = data['gender'] ?? '';
           _profileImageUrl = data['profilePicture'];
           _selectedDate = parsedDate;
           _selectedTime = parsedTime;
-          _selectedCountry = data['country'];
           _latitude = data['latitude']?.toDouble();
           _longitude = data['longitude']?.toDouble();
           _timezone = data['timezone']?.toDouble();
           _dst = data['dst']?.toDouble();
           _state = data['state'];
         });
+
         final savedLang = profileProvider.language ?? 'en';
         await profileProvider.saveFullProfile(
           userId: userId,
@@ -428,7 +430,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           timezone: _timezone,
           dst: _dst,
           state: _state,
-          language: savedLang, // ✅ pass saved language explicitly
+          language: savedLang,
         );
       } else {
         await _loadLocalProfileData();
@@ -474,10 +476,12 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     );
     await profileProvider.loadUserId();
     await profileProvider.loadLanguage(); // Load local language first
+    await profileProvider.loadProfileData(); // Load any saved profile data
 
     setState(() {
       _userIdController.text = profileProvider.userId ?? '';
-      _selectedCountry = profileProvider.country;
+      _countryController.text = profileProvider.country ?? '';
+      _selectedCountry = profileProvider.country ?? ''; // ✅ important
     });
 
     if (_userIdController.text.isNotEmpty) {
@@ -975,6 +979,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   }
 
   Widget _buildCountryField(AppLocalizations l10n) {
+    final initialCode =
+        _selectedCountry != null ? _getCountryIsoCode(_selectedCountry!) : '';
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Column(
@@ -983,37 +990,40 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           Padding(
             padding: const EdgeInsets.only(bottom: 4),
             child: Text(
-              l10n.birthCountryLabel, // Localized
+              l10n.birthCountryLabel,
               style: TextStyle(color: Colors.grey[600], fontSize: 12),
             ),
           ),
-          CountryListPick(
-            appBar: AppBar(
-              backgroundColor: Colors.blue,
-              title: Text(l10n.chooseCountryTitle), // Localized
+          KeyedSubtree(
+            key: ValueKey(_selectedCountry),
+            child: CountryListPick(
+              appBar: AppBar(
+                backgroundColor: Colors.blue,
+                title: Text(l10n.chooseCountryTitle),
+              ),
+              theme: CountryTheme(
+                isShowFlag: true,
+                isShowTitle: true,
+                isShowCode: false,
+                isDownIcon: true,
+                showEnglishName: true,
+              ),
+              initialSelection: initialCode,
+              onChanged: (CountryCode? code) {
+                if (code != null) {
+                  setState(() {
+                    _countryController.text = code.name!;
+                    _selectedCountry = code.name!;
+                    _cityController.clear();
+                    _latitude = null;
+                    _longitude = null;
+                    _timezone = null;
+                    _dst = null;
+                    _state = null;
+                  });
+                }
+              },
             ),
-            theme: CountryTheme(
-              isShowFlag: true,
-              isShowTitle: true,
-              isShowCode: false,
-              isDownIcon: true,
-              showEnglishName: true,
-            ),
-            initialSelection: _countryController.text,
-            onChanged: (CountryCode? code) {
-              if (code != null) {
-                setState(() {
-                  _countryController.text = code.name!;
-                  _selectedCountry = code.name!;
-                  _cityController.clear();
-                  _latitude = null;
-                  _longitude = null;
-                  _timezone = null;
-                  _dst = null;
-                  _state = null;
-                });
-              }
-            },
           ),
         ],
       ),
@@ -1203,13 +1213,14 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final localeProvider = Provider.of<LocaleProvider>(
-      context,
-    ); // listen: true by default
+    final localeProvider = Provider.of<LocaleProvider>(context);
     final locale = localeProvider.locale;
     print("Current locale: ${locale.languageCode}");
     final profileProvider = Provider.of<ProfileProvider>(context);
     final l10n = AppLocalizations.of(context)!; // Get localization instance
+    debugPrint('Current selected country: $_selectedCountry');
+    debugPrint('Country controller text: ${_countryController.text}');
+    debugPrint('Profile provider country: ${profileProvider.country}');
 
     return Scaffold(
       resizeToAvoidBottomInset: true, // prevent keyboard overlap
