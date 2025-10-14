@@ -55,5 +55,74 @@
   "onboardingNewUser": "New User",
   "onboardingExistingUser": "Existing User",
   "onboardingBack": "Back",
-  "onboardingNext": "Next"
+  "onboardingNext": "Next",
+  "userIdNotFound": "User ID not found.",
+  "clearNotificationsTitle": "Clear Notifications",
+  "clearNotificationsMessage": "Are you sure you want to clear all notifications?",
+  "clearNotificationsSuccess": "All notifications cleared successfully.",
+  "clearHoroscopeTitle": "Clear Horoscope",
+  "clearHoroscopeMessage": "Are you sure you want to clear your horoscope data?",
+  "clearHoroscopeSuccess": "Horoscope cleared successfully.",
+  "clearChatTitle": "Clear Chat History",
+  "clearChatMessage": "Are you sure you want to delete all your chat history?",
+  "clearChatLocal": "Chat cleared locally.",
+  "deleteAccountTitle": "Delete Account",
+  "deleteAccountMessage": "Are you sure you want to delete your account? This will also clear all your chat history and notifications.",
+  "deleteAccountSuccess": "Your account and all data have been removed.",
+  "deleteAccountError": "Error deleting account",
+  "logoutTitle": "Logout",
+  "logoutMessage": "Are you sure you want to logout?",
+  "termsPrivacyTitle": "Terms & Privacy",
+  "privacyPolicyTitle": "Privacy Policy",
+  "termsConditionsTitle": "Terms & Conditions",
+  "dataControlTitle": "Data Control",
+  "cancelButton": "Cancel",
+  "confirmButton": "Confirm",
+  "clearQuestionsSuccess": "All questions deleted successfully.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Lord",
+  "startLabel": "Start",
+  "recoverAccount": "Recover Account",
+  "endLabel": "End",
+  "startDateLabel": "Start Date",
+  "endDateLabel": "End Date",
+  "notAvailable": "Not available",
+  "noData": "No data",
+  "unknownError": "Unknown error",
+  "retryButton": "Retry",
+  "kundaliGeneratorTitle": "Kundali Generator",
+  "natalChartTitle": "Natal Chart",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Ascendant Degree",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Unknown",
+   
+  "clearHoroscope": "Clear Horoscope",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  
+  "clearNotifications": "Clear Notifications",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  
+  "clearChatHistory": "Clear Chat History",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  
+  "logout": "Logout",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  
+  "deleteAccount": "Delete Account",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  }
+,
+  "recoverAccount": "Recover Account"
 }

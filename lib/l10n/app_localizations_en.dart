@@ -203,4 +203,151 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onboardingNext => 'Next';
+
+  @override
+  String get userIdNotFound => 'User ID not found.';
+
+  @override
+  String get clearNotificationsTitle => 'Clear Notifications';
+
+  @override
+  String get clearNotificationsMessage =>
+      'Are you sure you want to clear all notifications?';
+
+  @override
+  String get clearNotificationsSuccess =>
+      'All notifications cleared successfully.';
+
+  @override
+  String get clearHoroscopeTitle => 'Clear Horoscope';
+
+  @override
+  String get clearHoroscopeMessage =>
+      'Are you sure you want to clear your horoscope data?';
+
+  @override
+  String get clearHoroscopeSuccess => 'Horoscope cleared successfully.';
+
+  @override
+  String get clearChatTitle => 'Clear Chat History';
+
+  @override
+  String get clearChatMessage =>
+      'Are you sure you want to delete all your chat history?';
+
+  @override
+  String get clearChatLocal => 'Chat cleared locally.';
+
+  @override
+  String get deleteAccountTitle => 'Delete Account';
+
+  @override
+  String get deleteAccountMessage =>
+      'Are you sure you want to delete your account? This will also clear all your chat history and notifications.';
+
+  @override
+  String get deleteAccountSuccess =>
+      'Your account and all data have been removed.';
+
+  @override
+  String get deleteAccountError => 'Error deleting account';
+
+  @override
+  String get logoutTitle => 'Logout';
+
+  @override
+  String get logoutMessage => 'Are you sure you want to logout?';
+
+  @override
+  String get termsPrivacyTitle => 'Terms & Privacy';
+
+  @override
+  String get privacyPolicyTitle => 'Privacy Policy';
+
+  @override
+  String get termsConditionsTitle => 'Terms & Conditions';
+
+  @override
+  String get dataControlTitle => 'Data Control';
+
+  @override
+  String get cancelButton => 'Cancel';
+
+  @override
+  String get confirmButton => 'Confirm';
+
+  @override
+  String get clearQuestionsSuccess => 'All questions deleted successfully.';
+
+  @override
+  String get yoginiLabel => 'Yogini';
+
+  @override
+  String get lordLabel => 'Lord';
+
+  @override
+  String get startLabel => 'Start';
+
+  @override
+  String get recoverAccount => 'Recover Account';
+
+  @override
+  String get endLabel => 'End';
+
+  @override
+  String get startDateLabel => 'Start Date';
+
+  @override
+  String get endDateLabel => 'End Date';
+
+  @override
+  String get notAvailable => 'Not available';
+
+  @override
+  String get noData => 'No data';
+
+  @override
+  String get unknownError => 'Unknown error';
+
+  @override
+  String get retryButton => 'Retry';
+
+  @override
+  String get kundaliGeneratorTitle => 'Kundali Generator';
+
+  @override
+  String get natalChartTitle => 'Natal Chart';
+
+  @override
+  String get lagnaLabel => 'Lagna';
+
+  @override
+  String get rashiLabel => 'Rashi';
+
+  @override
+  String get ascDegreeLabel => 'Ascendant Degree';
+
+  @override
+  String get vimshottariDashaTitle => 'Vimshottari Dasha';
+
+  @override
+  String get yoginiDashaTitle => 'Yogini Dasha';
+
+  @override
+  String get unknown => 'Unknown';
+
+  @override
+  String get clearHoroscope => 'Clear Horoscope';
+
+  @override
+  String get clearNotifications => 'Clear Notifications';
+
+  @override
+  String get clearChatHistory => 'Clear Chat History';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get deleteAccount => 'Delete Account';
 }

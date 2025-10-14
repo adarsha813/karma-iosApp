@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-import '../providers/LocaleProvider.dart'; // Add this import
+import '../providers/LocaleProvider.dart';
 import 'package:kundali/screens/recovery_screen.dart';
 import '../providers/notification_provider.dart';
 import '../providers/profile_provider.dart';
@@ -61,8 +61,12 @@ class SettingsScreen extends StatelessWidget {
     BuildContext context,
     String title,
     String message,
-    VoidCallback onConfirm,
-  ) {
+    VoidCallback onConfirm, {
+    String? confirmText,
+    String? cancelText,
+  }) {
+    final l10n = AppLocalizations.of(context)!;
+
     showDialog(
       context: context,
       builder:
@@ -72,14 +76,14 @@ class SettingsScreen extends StatelessWidget {
             actions: [
               TextButton(
                 onPressed: () => Navigator.of(ctx).pop(),
-                child: const Text('Cancel'),
+                child: Text(cancelText ?? l10n.cancelButton),
               ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(ctx).pop();
                   onConfirm();
                 },
-                child: const Text('Confirm'),
+                child: Text(confirmText ?? l10n.confirmButton),
               ),
             ],
           ),
@@ -87,6 +91,7 @@ class SettingsScreen extends StatelessWidget {
   }
 
   void _clearNotifications(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final profileProvider = Provider.of<ProfileProvider>(
       context,
       listen: false,
@@ -96,25 +101,28 @@ class SettingsScreen extends StatelessWidget {
     if (userId == null || userId.isEmpty) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(const SnackBar(content: Text("User ID not found.")));
+      ).showSnackBar(SnackBar(content: Text(l10n.userIdNotFound)));
       return;
     }
 
     _showConfirmationDialog(
       context,
-      "Clear Notifications",
-      "Are you sure you want to clear all notifications?",
+      l10n.clearNotificationsTitle,
+      l10n.clearNotificationsMessage,
       () => _sendRequest(
         context,
         "notifications/hide-all",
-        "All notifications cleared successfully.",
+        l10n.clearNotificationsSuccess,
         method: 'PATCH',
         body: {'userId': userId},
       ),
+      confirmText: l10n.confirmButton,
+      cancelText: l10n.cancelButton,
     );
   }
 
   void _clearHoroscope(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final profileProvider = Provider.of<ProfileProvider>(
       context,
       listen: false,
@@ -124,25 +132,28 @@ class SettingsScreen extends StatelessWidget {
     if (userId == null || userId.isEmpty) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(const SnackBar(content: Text("User ID not found.")));
+      ).showSnackBar(SnackBar(content: Text(l10n.userIdNotFound)));
       return;
     }
 
     _showConfirmationDialog(
       context,
-      "Clear Horoscope",
-      "Are you sure you want to clear your horoscope data?",
+      l10n.clearHoroscopeTitle,
+      l10n.clearHoroscopeMessage,
       () => _sendRequest(
         context,
         "horoscope/hide-all",
-        "Horoscope cleared successfully.",
+        l10n.clearHoroscopeSuccess,
         method: 'PATCH',
         body: {'userId': userId},
       ),
+      confirmText: l10n.confirmButton,
+      cancelText: l10n.cancelButton,
     );
   }
 
   void _clearChatHistory(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final profileProvider = Provider.of<ProfileProvider>(
       context,
       listen: false,
@@ -153,26 +164,26 @@ class SettingsScreen extends StatelessWidget {
     if (userId == null || userId.isEmpty) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(const SnackBar(content: Text("User ID not found.")));
+      ).showSnackBar(SnackBar(content: Text(l10n.userIdNotFound)));
       return;
     }
 
     _showConfirmationDialog(
       context,
-      "Clear Chat History",
-      "Are you sure you want to delete all your chat history?",
+      l10n.clearChatTitle,
+      l10n.clearChatMessage,
       () async {
         chatService.clearMessages();
 
         ScaffoldMessenger.of(
           context,
-        ).showSnackBar(const SnackBar(content: Text("Chat cleared locally.")));
+        ).showSnackBar(SnackBar(content: Text(l10n.clearChatLocal)));
 
         await Future.wait([
           _sendRequest(
             context,
             "advices/hide-all",
-            "All advice deleted successfully.",
+            l10n.clearQuestionsSuccess,
             method: 'PATCH',
             body: {'userId': userId, 'hide': true},
           ),
@@ -185,7 +196,7 @@ class SettingsScreen extends StatelessWidget {
           _sendRequest(
             context,
             "questions/user/$userId/hide-questions",
-            "All questions deleted successfully.",
+            l10n.clearQuestionsSuccess,
             method: 'PATCH',
           ),
           _sendRequest(
@@ -196,6 +207,78 @@ class SettingsScreen extends StatelessWidget {
           ),
         ]);
       },
+      confirmText: l10n.confirmButton,
+      cancelText: l10n.cancelButton,
+    );
+  }
+
+  void _deleteAccount(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
+    _showConfirmationDialog(
+      context,
+      l10n.deleteAccountTitle,
+      l10n.deleteAccountMessage,
+      () async {
+        final profileProvider = Provider.of<ProfileProvider>(
+          context,
+          listen: false,
+        );
+        final userId = profileProvider.userId;
+
+        if (userId == null || userId.isEmpty) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(l10n.userIdNotFound)));
+          return;
+        }
+
+        try {
+          // clear profile locally
+          await profileProvider.clearProfile();
+
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(l10n.deleteAccountSuccess)));
+
+          // navigate back or to login
+          Navigator.pushReplacementNamed(context, '/profile-settings');
+        } catch (e) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("${l10n.deleteAccountError}: $e")),
+          );
+        }
+      },
+      confirmText: l10n.confirmButton,
+      cancelText: l10n.cancelButton,
+    );
+  }
+
+  void _logout(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
+    _showConfirmationDialog(
+      context,
+      l10n.logoutTitle,
+      l10n.logoutMessage,
+      () async {
+        final profileProvider = Provider.of<ProfileProvider>(
+          context,
+          listen: false,
+        );
+        await profileProvider.clearProfile();
+
+        if (Platform.isAndroid) {
+          SystemNavigator.pop();
+        } else if (Platform.isIOS) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (_) => ProfileSettingsScreen()),
+          );
+        }
+      },
+      confirmText: l10n.confirmButton,
+      cancelText: l10n.cancelButton,
     );
   }
 
@@ -216,9 +299,7 @@ class SettingsScreen extends StatelessWidget {
                   value: notificationProvider.notificationsEnabled,
                   onChanged: (bool value) {
                     notificationProvider.setNotificationsEnabled(value);
-                    HoroscopeService().setNotificationsEnabled(
-                      value,
-                    ); // if using service
+                    HoroscopeService().setNotificationsEnabled(value);
 
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
@@ -233,12 +314,13 @@ class SettingsScreen extends StatelessWidget {
                 );
               },
             ),
+
             ExpansionTile(
-              title: const Text("Terms & Privacy"),
+              title: Text(l10n.termsPrivacyTitle),
               children: [
                 ListTile(
                   leading: const Icon(Icons.privacy_tip),
-                  title: const Text("Privacy Policy"),
+                  title: Text(l10n.privacyPolicyTitle),
                   onTap: () {
                     Navigator.push(
                       context,
@@ -255,7 +337,7 @@ class SettingsScreen extends StatelessWidget {
                 ),
                 ListTile(
                   leading: const Icon(Icons.article),
-                  title: const Text("Terms & Conditions"),
+                  title: Text(l10n.termsConditionsTitle),
                   onTap: () {
                     Navigator.push(
                       context,
@@ -272,43 +354,43 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ],
             ),
-
             ExpansionTile(
-              title: const Text("Data Control"),
+              title: Text(l10n.dataControlTitle),
               children: [
                 ListTile(
                   leading: const Icon(Icons.clear_all),
-                  title: const Text("Clear Horoscope"),
+                  title: Text(l10n.clearHoroscope),
                   onTap: () => _clearHoroscope(context),
                 ),
                 ListTile(
                   leading: const Icon(Icons.notifications_off),
-                  title: const Text("Clear Notifications"),
+                  title: Text(l10n.clearNotifications),
                   onTap: () => _clearNotifications(context),
                 ),
                 ListTile(
                   leading: const Icon(Icons.chat_bubble_outline),
-                  title: const Text("Clear Chat History"),
+                  title: Text(l10n.clearChatHistory),
                   onTap: () => _clearChatHistory(context),
                 ),
               ],
             ),
+
             ExpansionTile(
               title: Text(l10n.accountSettings),
               children: [
                 ListTile(
                   leading: const Icon(Icons.logout, color: Colors.orange),
-                  title: const Text("Logout"),
+                  title: Text(l10n.logout),
                   onTap: () => _logout(context),
                 ),
                 ListTile(
                   leading: const Icon(Icons.delete_forever, color: Colors.red),
-                  title: const Text("Delete Account"),
+                  title: Text(l10n.deleteAccount),
                   onTap: () => _deleteAccount(context),
                 ),
                 ListTile(
                   leading: const Icon(Icons.restore, color: Colors.green),
-                  title: const Text("Recover Account"),
+                  title: Text(l10n.recoverAccount),
                   onTap: () {
                     Navigator.push(
                       context,
@@ -318,106 +400,12 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ],
             ),
-
             _LanguageSettingsTile(l10n: l10n),
           ],
         ),
       ),
     );
   }
-}
-
-void _showConfirmationDialog(
-  BuildContext context,
-  String title,
-  String message,
-  VoidCallback onConfirm,
-) {
-  showDialog(
-    context: context,
-    builder:
-        (ctx) => AlertDialog(
-          title: Text(title),
-          content: Text(message),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(ctx).pop(),
-              child: const Text('Cancel'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(ctx).pop();
-                onConfirm();
-              },
-              child: const Text('Confirm'),
-            ),
-          ],
-        ),
-  );
-}
-
-void _deleteAccount(BuildContext context) {
-  _showConfirmationDialog(
-    context,
-    "Delete Account",
-    "Are you sure you want to delete your account? This will also clear all your chat history and notifications.",
-    () async {
-      final profileProvider = Provider.of<ProfileProvider>(
-        context,
-        listen: false,
-      );
-      final userId = profileProvider.userId;
-
-      if (userId == null || userId.isEmpty) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(const SnackBar(content: Text("User ID not found.")));
-        return;
-      }
-
-      try {
-        // clear profile locally
-        await profileProvider.clearProfile();
-
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("Your account and all data have been removed."),
-          ),
-        );
-
-        // navigate back or to login
-        Navigator.pushReplacementNamed(context, '/profile-settings');
-      } catch (e) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text("Error deleting account: $e")));
-      }
-    },
-  );
-}
-
-void _logout(BuildContext context) {
-  _showConfirmationDialog(
-    context,
-    "Logout",
-    "Are you sure you want to logout?",
-    () async {
-      final profileProvider = Provider.of<ProfileProvider>(
-        context,
-        listen: false,
-      );
-      await profileProvider.clearProfile();
-
-      if (Platform.isAndroid) {
-        SystemNavigator.pop();
-      } else if (Platform.isIOS) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (_) => ProfileSettingsScreen()),
-        );
-      }
-    },
-  );
 }
 
 class _LanguageSettingsTile extends StatelessWidget {

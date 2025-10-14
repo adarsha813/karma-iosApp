@@ -435,6 +435,288 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Next'**
   String get onboardingNext;
+
+  /// No description provided for @userIdNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'User ID not found.'**
+  String get userIdNotFound;
+
+  /// No description provided for @clearNotificationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear Notifications'**
+  String get clearNotificationsTitle;
+
+  /// No description provided for @clearNotificationsMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to clear all notifications?'**
+  String get clearNotificationsMessage;
+
+  /// No description provided for @clearNotificationsSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'All notifications cleared successfully.'**
+  String get clearNotificationsSuccess;
+
+  /// No description provided for @clearHoroscopeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear Horoscope'**
+  String get clearHoroscopeTitle;
+
+  /// No description provided for @clearHoroscopeMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to clear your horoscope data?'**
+  String get clearHoroscopeMessage;
+
+  /// No description provided for @clearHoroscopeSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Horoscope cleared successfully.'**
+  String get clearHoroscopeSuccess;
+
+  /// No description provided for @clearChatTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear Chat History'**
+  String get clearChatTitle;
+
+  /// No description provided for @clearChatMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete all your chat history?'**
+  String get clearChatMessage;
+
+  /// No description provided for @clearChatLocal.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat cleared locally.'**
+  String get clearChatLocal;
+
+  /// No description provided for @deleteAccountTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account'**
+  String get deleteAccountTitle;
+
+  /// No description provided for @deleteAccountMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete your account? This will also clear all your chat history and notifications.'**
+  String get deleteAccountMessage;
+
+  /// No description provided for @deleteAccountSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account and all data have been removed.'**
+  String get deleteAccountSuccess;
+
+  /// No description provided for @deleteAccountError.
+  ///
+  /// In en, this message translates to:
+  /// **'Error deleting account'**
+  String get deleteAccountError;
+
+  /// No description provided for @logoutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logoutTitle;
+
+  /// No description provided for @logoutMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to logout?'**
+  String get logoutMessage;
+
+  /// No description provided for @termsPrivacyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms & Privacy'**
+  String get termsPrivacyTitle;
+
+  /// No description provided for @privacyPolicyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacyPolicyTitle;
+
+  /// No description provided for @termsConditionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms & Conditions'**
+  String get termsConditionsTitle;
+
+  /// No description provided for @dataControlTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Data Control'**
+  String get dataControlTitle;
+
+  /// No description provided for @cancelButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancelButton;
+
+  /// No description provided for @confirmButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirmButton;
+
+  /// No description provided for @clearQuestionsSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'All questions deleted successfully.'**
+  String get clearQuestionsSuccess;
+
+  /// No description provided for @yoginiLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Yogini'**
+  String get yoginiLabel;
+
+  /// No description provided for @lordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Lord'**
+  String get lordLabel;
+
+  /// No description provided for @startLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get startLabel;
+
+  /// No description provided for @recoverAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Recover Account'**
+  String get recoverAccount;
+
+  /// No description provided for @endLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'End'**
+  String get endLabel;
+
+  /// No description provided for @startDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Date'**
+  String get startDateLabel;
+
+  /// No description provided for @endDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'End Date'**
+  String get endDateLabel;
+
+  /// No description provided for @notAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Not available'**
+  String get notAvailable;
+
+  /// No description provided for @noData.
+  ///
+  /// In en, this message translates to:
+  /// **'No data'**
+  String get noData;
+
+  /// No description provided for @unknownError.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown error'**
+  String get unknownError;
+
+  /// No description provided for @retryButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get retryButton;
+
+  /// No description provided for @kundaliGeneratorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Kundali Generator'**
+  String get kundaliGeneratorTitle;
+
+  /// No description provided for @natalChartTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Natal Chart'**
+  String get natalChartTitle;
+
+  /// No description provided for @lagnaLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Lagna'**
+  String get lagnaLabel;
+
+  /// No description provided for @rashiLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Rashi'**
+  String get rashiLabel;
+
+  /// No description provided for @ascDegreeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Ascendant Degree'**
+  String get ascDegreeLabel;
+
+  /// No description provided for @vimshottariDashaTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vimshottari Dasha'**
+  String get vimshottariDashaTitle;
+
+  /// No description provided for @yoginiDashaTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Yogini Dasha'**
+  String get yoginiDashaTitle;
+
+  /// No description provided for @unknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown'**
+  String get unknown;
+
+  /// Title for clear horoscope option
+  ///
+  /// In en, this message translates to:
+  /// **'Clear Horoscope'**
+  String get clearHoroscope;
+
+  /// Title for clear notifications option
+  ///
+  /// In en, this message translates to:
+  /// **'Clear Notifications'**
+  String get clearNotifications;
+
+  /// Title for clear chat history option
+  ///
+  /// In en, this message translates to:
+  /// **'Clear Chat History'**
+  String get clearChatHistory;
+
+  /// Title for logout option
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+
+  /// Title for delete account option
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account'**
+  String get deleteAccount;
 }
 
 class _AppLocalizationsDelegate

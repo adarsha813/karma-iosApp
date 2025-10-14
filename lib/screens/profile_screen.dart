@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:provider/provider.dart';
 import '../providers/profile_provider.dart';
 import 'package:shimmer/shimmer.dart';
+import '../l10n/app_localizations.dart'; // Add localization import
 
 class ProfileScreen extends StatefulWidget {
   final String? userId;
@@ -327,18 +328,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   // Dasha Table Widget
   Widget _buildDashaTable(List<dynamic> dashas, {bool isYogini = false}) {
+    final l10n = AppLocalizations.of(context)!;
+
     final List<DataColumn> columns =
         isYogini
-            ? const [
-              DataColumn(label: Text('Yogini')),
-              DataColumn(label: Text('Lord')),
-              DataColumn(label: Text('Start')),
-              DataColumn(label: Text('End')),
+            ? [
+              DataColumn(label: Text(l10n.yoginiLabel)),
+              DataColumn(label: Text(l10n.lordLabel)),
+              DataColumn(label: Text(l10n.startLabel)),
+              DataColumn(label: Text(l10n.endLabel)),
             ]
-            : const [
-              DataColumn(label: Text('Lord')),
-              DataColumn(label: Text('Start Date')),
-              DataColumn(label: Text('End Date')),
+            : [
+              DataColumn(label: Text(l10n.lordLabel)),
+              DataColumn(label: Text(l10n.startDateLabel)),
+              DataColumn(label: Text(l10n.endDateLabel)),
             ];
 
     final List<DataRow> rows =
@@ -347,20 +350,46 @@ class _ProfileScreenState extends State<ProfileScreen> {
               final List<DataCell> cells =
                   isYogini
                       ? [
-                        DataCell(Text(dasha['yogini']?.toString() ?? '-')),
-                        DataCell(Text(dasha['lord']?.toString() ?? '-')),
-                        DataCell(Text(dasha['start_date']?.toString() ?? '-')),
-                        DataCell(Text(dasha['end_date']?.toString() ?? '-')),
+                        DataCell(
+                          Text(
+                            dasha['yogini']?.toString() ?? l10n.notAvailable,
+                          ),
+                        ),
+                        DataCell(
+                          Text(dasha['lord']?.toString() ?? l10n.notAvailable),
+                        ),
+                        DataCell(
+                          Text(
+                            dasha['start_date']?.toString() ??
+                                l10n.notAvailable,
+                          ),
+                        ),
+                        DataCell(
+                          Text(
+                            dasha['end_date']?.toString() ?? l10n.notAvailable,
+                          ),
+                        ),
                       ]
                       : [
                         DataCell(
                           Text(
-                            (dasha['mahadasha_lord'] ?? dasha['lord'] ?? '-')
+                            (dasha['mahadasha_lord'] ??
+                                    dasha['lord'] ??
+                                    l10n.notAvailable)
                                 .toString(),
                           ),
                         ),
-                        DataCell(Text(dasha['start_date']?.toString() ?? '-')),
-                        DataCell(Text(dasha['end_date']?.toString() ?? '-')),
+                        DataCell(
+                          Text(
+                            dasha['start_date']?.toString() ??
+                                l10n.notAvailable,
+                          ),
+                        ),
+                        DataCell(
+                          Text(
+                            dasha['end_date']?.toString() ?? l10n.notAvailable,
+                          ),
+                        ),
                       ];
               return DataRow(cells: cells);
             }).toList()
@@ -368,7 +397,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               DataRow(
                 cells: [
                   DataCell(
-                    Text('No data', style: const TextStyle(color: Colors.grey)),
+                    Text(
+                      l10n.noData,
+                      style: const TextStyle(color: Colors.grey),
+                    ),
                   ),
                   ...List.generate(
                     isYogini ? 3 : 2,
@@ -428,12 +460,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _buildErrorWidget() {
+    final l10n = AppLocalizations.of(context)!;
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            _error ?? 'Unknown error',
+            _error ?? l10n.unknownError,
             style: const TextStyle(color: Colors.red),
             textAlign: TextAlign.center,
           ),
@@ -446,7 +480,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 setState(() => _retrying = true);
                 _fetchAstroProfile();
               },
-              child: const Text('Retry'),
+              child: Text(l10n.retryButton),
             ),
         ],
       ),
@@ -455,9 +489,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('🪐 Kundali Generator (True North Indian Layout)'),
+        title: Text(l10n.kundaliGeneratorTitle),
         backgroundColor: Colors.blue[700],
         foregroundColor: Colors.white,
       ),
@@ -474,7 +510,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     children: [
                       // Basic Info
                       Text(
-                        "🕉 Natal Chart",
+                        l10n.natalChartTitle,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
@@ -489,23 +525,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             color: Colors.black87,
                           ),
                           children: [
-                            const TextSpan(
-                              text: "Lagna: ",
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                            TextSpan(
+                              text: "${l10n.lagnaLabel}: ",
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                             TextSpan(
-                              text: "${astroData?['lagna'] ?? 'Unknown'} | ",
-                            ),
-                            const TextSpan(
-                              text: "Rashi: ",
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              text: "${astroData?['lagna'] ?? l10n.unknown} | ",
                             ),
                             TextSpan(
-                              text: "${astroData?['rashi'] ?? 'Unknown'} | ",
+                              text: "${l10n.rashiLabel}: ",
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                            const TextSpan(
-                              text: "Asc Degree: ",
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                            TextSpan(
+                              text: "${astroData?['rashi'] ?? l10n.unknown} | ",
+                            ),
+                            TextSpan(
+                              text: "${l10n.ascDegreeLabel}: ",
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                             TextSpan(
                               text:
@@ -522,7 +564,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       // Vimshottari Dasha
                       const SizedBox(height: 32),
                       Text(
-                        "📅 Vimshottari Dasha",
+                        l10n.vimshottariDashaTitle,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
@@ -535,7 +577,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       // Yogini Dasha
                       const SizedBox(height: 32),
                       Text(
-                        "🌙 Yogini Dasha",
+                        l10n.yoginiDashaTitle,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,

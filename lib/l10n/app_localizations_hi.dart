@@ -203,4 +203,150 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get onboardingNext => 'अगला';
+
+  @override
+  String get userIdNotFound => 'उपयोगकर्ता ID नहीं मिली।';
+
+  @override
+  String get clearNotificationsTitle => 'सूचनाएँ साफ़ करें';
+
+  @override
+  String get clearNotificationsMessage =>
+      'क्या आप सभी सूचनाएँ साफ़ करना चाहते हैं?';
+
+  @override
+  String get clearNotificationsSuccess =>
+      'सभी सूचनाएँ सफलतापूर्वक साफ़ की गईं।';
+
+  @override
+  String get clearHoroscopeTitle => 'कुंडली साफ़ करें';
+
+  @override
+  String get clearHoroscopeMessage =>
+      'क्या आप अपनी कुंडली डेटा को साफ़ करना चाहते हैं?';
+
+  @override
+  String get clearHoroscopeSuccess => 'कुंडली सफलतापूर्वक साफ़ की गई।';
+
+  @override
+  String get clearChatTitle => 'चैट इतिहास साफ़ करें';
+
+  @override
+  String get clearChatMessage =>
+      'क्या आप अपना पूरा चैट इतिहास हटाना चाहते हैं?';
+
+  @override
+  String get clearChatLocal => 'चैट स्थानीय रूप से साफ़ की गई।';
+
+  @override
+  String get deleteAccountTitle => 'खाता हटाएँ';
+
+  @override
+  String get deleteAccountMessage =>
+      'क्या आप वाकई अपना खाता हटाना चाहते हैं? इससे आपका चैट इतिहास और सूचनाएँ भी हट जाएँगी।';
+
+  @override
+  String get deleteAccountSuccess => 'आपका खाता और सभी डेटा हटा दिए गए हैं।';
+
+  @override
+  String get deleteAccountError => 'खाता हटाने में त्रुटि';
+
+  @override
+  String get logoutTitle => 'लॉगआउट';
+
+  @override
+  String get logoutMessage => 'क्या आप वाकई लॉगआउट करना चाहते हैं?';
+
+  @override
+  String get termsPrivacyTitle => 'नियम और गोपनीयता';
+
+  @override
+  String get privacyPolicyTitle => 'गोपनीयता नीति';
+
+  @override
+  String get termsConditionsTitle => 'नियम और शर्तें';
+
+  @override
+  String get dataControlTitle => 'डेटा नियंत्रण';
+
+  @override
+  String get cancelButton => 'रद्द करें';
+
+  @override
+  String get confirmButton => 'पुष्टि करें';
+
+  @override
+  String get clearQuestionsSuccess => 'सभी प्रश्न सफलतापूर्वक हटाए गए।';
+
+  @override
+  String get yoginiLabel => 'योगिनी';
+
+  @override
+  String get lordLabel => 'स्वामी';
+
+  @override
+  String get startLabel => 'प्रारंभ';
+
+  @override
+  String get recoverAccount => 'खाता पुनर्प्राप्त करें';
+
+  @override
+  String get endLabel => 'समाप्ति';
+
+  @override
+  String get startDateLabel => 'प्रारंभ तिथि';
+
+  @override
+  String get endDateLabel => 'समाप्ति तिथि';
+
+  @override
+  String get notAvailable => 'उपलब्ध नहीं';
+
+  @override
+  String get noData => 'कोई डेटा नहीं';
+
+  @override
+  String get unknownError => 'अज्ञात त्रुटि';
+
+  @override
+  String get retryButton => 'पुनः प्रयास करें';
+
+  @override
+  String get kundaliGeneratorTitle => 'कुंडली जनरेटर';
+
+  @override
+  String get natalChartTitle => 'जन्म कुंडली';
+
+  @override
+  String get lagnaLabel => 'लग्न';
+
+  @override
+  String get rashiLabel => 'राशि';
+
+  @override
+  String get ascDegreeLabel => 'लग्न डिग्री';
+
+  @override
+  String get vimshottariDashaTitle => 'विम्शोत्तरी दशा';
+
+  @override
+  String get yoginiDashaTitle => 'योगिनी दशा';
+
+  @override
+  String get unknown => 'अज्ञात';
+
+  @override
+  String get clearHoroscope => 'कुंडली साफ करें';
+
+  @override
+  String get clearNotifications => 'सूचनाएं साफ करें';
+
+  @override
+  String get clearChatHistory => 'चैट इतिहास साफ करें';
+
+  @override
+  String get logout => 'लॉगआउट';
+
+  @override
+  String get deleteAccount => 'खाता हटाएं';
 }
