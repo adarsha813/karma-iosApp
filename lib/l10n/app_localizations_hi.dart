@@ -205,7 +205,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get onboardingNext => 'अगला';
 
   @override
-  String get userIdNotFound => 'उपयोगकर्ता ID नहीं मिली।';
+  String get userIdNotFound =>
+      'उपयोगकर्ता ID नहीं मिली। कृपया लॉगिन करें या अपनी प्रोफ़ाइल सेट करें।';
 
   @override
   String get clearNotificationsTitle => 'सूचनाएँ साफ़ करें';
@@ -349,4 +350,334 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get deleteAccount => 'खाता हटाएं';
+
+  @override
+  String get allFieldsRequired => 'सभी फ़ील्ड आवश्यक हैं।';
+
+  @override
+  String get accountRecoveredSuccess =>
+      'खाता सफलतापूर्वक पुनर्प्राप्त कर लिया गया।';
+
+  @override
+  String get recoveryFailed => 'पुनर्प्राप्ति विफल। अपनी जानकारी जांचें।';
+
+  @override
+  String get recoverySecretLabel => 'पुनर्प्राप्ति सीक्रेट';
+
+  @override
+  String get aboutUsTitle => 'हमारे बारे में';
+
+  @override
+  String get aboutOurCompany => 'हमारी कंपनी के बारे में';
+
+  @override
+  String get aboutCompanyDescription =>
+      'हम अपने उपयोगकर्ताओं को सर्वश्रेष्ठ ज्योतिष अनुभव प्रदान करने के लिए प्रतिबद्ध हैं।';
+
+  @override
+  String get ourMission => 'हमारा मिशन';
+
+  @override
+  String get missionDescription =>
+      'उपयोगकर्ताओं को उनके जीवन में सूचित निर्णय लेने में मदद करने के लिए सटीक और व्यक्तिगत ज्योतिष अंतर्दृष्टि प्रदान करना।';
+
+  @override
+  String get ourVision => 'हमारी दृष्टि';
+
+  @override
+  String get visionDescription =>
+      'प्रौद्योगिकी और प्राचीन ज्ञान को मिलाकर सबसे भरोसेमंद ज्योतिष प्लेटफॉर्म बनना।';
+
+  @override
+  String get ourValues => 'हमारे मूल्य';
+
+  @override
+  String get valuesDescription =>
+      'ईमानदारी, सटीकता, उपयोगकर्ता-केंद्रित डिजाइन, और निरंतर नवाचार।';
+
+  @override
+  String get contactUs => 'हमसे संपर्क करें';
+
+  @override
+  String get contactEmail => 'ईमेल: support@yourcompany.com';
+
+  @override
+  String get contactWebsite => 'वेबसाइट: www.yourcompany.com';
+
+  @override
+  String get customerSupport => 'ग्राहक सहायता';
+
+  @override
+  String get supportHeroTitle => 'हम आपकी मदद के लिए यहां हैं';
+
+  @override
+  String get supportHeroDescription =>
+      'नीचे दिया गया फॉर्म भरें और हमारी सहायता टीम आपसे जल्द से जल्द संपर्क करेगी।';
+
+  @override
+  String get yourName => 'आपका नाम';
+
+  @override
+  String get yourEmail => 'आपका ईमेल';
+
+  @override
+  String get message => 'संदेश';
+
+  @override
+  String get enterEmail => 'अपना ईमेल दर्ज करें';
+
+  @override
+  String get enterValidEmail => 'एक वैध ईमेल पता दर्ज करें';
+
+  @override
+  String enterField(Object fieldName) {
+    return '$fieldName दर्ज करें';
+  }
+
+  @override
+  String get send => 'भेजें';
+
+  @override
+  String get sending => 'भेज रहे हैं...';
+
+  @override
+  String get emailSentSuccess => '✅ ईमेल सफलतापूर्वक भेजा गया!';
+
+  @override
+  String get emailSendFailed => '❌ ईमेल भेजने में विफल';
+
+  @override
+  String get astroDictionaryTitle => 'ज्योतिष शब्दकोश';
+
+  @override
+  String get searchTermsHint => 'शब्द खोजें...';
+
+  @override
+  String get noTermsFound => 'कोई शब्द नहीं मिला';
+
+  @override
+  String get buyQuestionsTitle => 'प्रश्न खरीदें';
+
+  @override
+  String get userNotAuthenticated => 'उपयोगकर्ता प्रमाणित नहीं है';
+
+  @override
+  String get loadStoreDataFailed => 'स्टोर डेटा लोड करने में विफल';
+
+  @override
+  String get missingAuthToken => 'ऑथ टोकन गुम है';
+
+  @override
+  String get merchantDisplayName => 'एस्ट्रो चैट ऐप';
+
+  @override
+  String get paymentSuccessful => '✅ भुगतान सफल! प्रश्न भेजा गया';
+
+  @override
+  String paymentFailed(Object error) {
+    return '❌ भुगतान विफल: $error';
+  }
+
+  @override
+  String get yourBalance => 'आपका बैलेंस';
+
+  @override
+  String questionsBalance(Object count) {
+    return '$count प्रश्न';
+  }
+
+  @override
+  String get availableOffers => 'उपलब्ध ऑफ़र';
+
+  @override
+  String questionsCount(Object count) {
+    return '$count प्रश्न';
+  }
+
+  @override
+  String get buyButton => 'खरीदें';
+
+  @override
+  String get dailyHoroscopeTitle => '🌟 दैनिक राशिफल';
+
+  @override
+  String get userIdMissing => 'उपयोगकर्ता ID गुम है';
+
+  @override
+  String get fetchHoroscopesFailed => 'राशिफल लाने में विफल';
+
+  @override
+  String get noHoroscopeFound => 'कोई राशिफल नहीं मिला।';
+
+  @override
+  String get signLabel => 'राशि';
+
+  @override
+  String get todayLabel => 'आज';
+
+  @override
+  String get yesterdayLabel => 'कल';
+
+  @override
+  String get thisWeekLabel => 'इस सप्ताह';
+
+  @override
+  String get lastMonthLabel => 'पिछला महीना';
+
+  @override
+  String get chatTitle => 'चैट';
+
+  @override
+  String get typeYourQuestionHint => 'अपना प्रश्न टाइप करें...';
+
+  @override
+  String get paymentRequired => 'भुगतान आवश्यक';
+
+  @override
+  String get paymentRequiredMessage =>
+      'आपने अपने मुफ्त प्रश्नों का उपयोग कर लिया है। जारी रखने के लिए ₹50 का भुगतान करें।';
+
+  @override
+  String get payNowButton => 'अभी भुगतान करें';
+
+  @override
+  String freeQuestionsRemaining(Object count) {
+    return '$count मुफ्त प्रश्न शेष';
+  }
+
+  @override
+  String paidQuestionsRemaining(Object count) {
+    return '$count भुगतान किए गए प्रश्न शेष';
+  }
+
+  @override
+  String get thankYouFeedback => 'आपके फीडबैक के लिए धन्यवाद!';
+
+  @override
+  String get ratingSubmitted => 'रेटिंग सबमिट की गई!';
+
+  @override
+  String get setUserIdFirst => 'कृपया पहले अपना उपयोगकर्ता ID सेट करें';
+
+  @override
+  String get failedToFetchPrevious => 'पिछले प्रश्न और उत्तर लाने में विफल';
+
+  @override
+  String errorOccurred(Object error) {
+    return 'त्रुटि: $error';
+  }
+
+  @override
+  String get drawerAstroProfile => 'ज्योतिष प्रोफ़ाइल';
+
+  @override
+  String get drawerDailyHoroscope => 'दैनिक राशिफल';
+
+  @override
+  String get drawerBuyQuestions => 'प्रश्न खरीदें';
+
+  @override
+  String get drawerAstroDictionary => 'ज्योतिष शब्दकोश';
+
+  @override
+  String get drawerSettings => 'सेटिंग';
+
+  @override
+  String get drawerCustomerSupport => 'ग्राहक सहायता';
+
+  @override
+  String get drawerAbout => 'हमारे बारे में';
+
+  @override
+  String get drawerProfileSettings => 'प्रोफ़ाइल सेटिंग';
+
+  @override
+  String get demoNotificationTitle => '🔔 डेमो सूचना';
+
+  @override
+  String get demoNotificationBody => 'यह आपके ऐप से एक परीक्षण सूचना है!';
+
+  @override
+  String get notificationsTitle => 'सूचनाएं';
+
+  @override
+  String get noNotifications => 'कोई सूचना नहीं';
+
+  @override
+  String get allTab => 'सभी';
+
+  @override
+  String get markAllAsRead => 'सभी को पढ़ा हुआ चिह्नित करें';
+
+  @override
+  String get notificationMarkedRead => 'सूचना को पढ़ा हुआ चिह्नित किया गया';
+
+  @override
+  String get failedToLoadNotifications => 'सूचनाएं लोड करने में विफल';
+
+  @override
+  String get failedToMarkRead => 'पढ़ा हुआ चिह्नित करने में विफल';
+
+  @override
+  String get failedToMarkAllRead => 'सभी को पढ़ा हुआ चिह्नित करने में विफल';
+
+  @override
+  String get socketConnected => 'सॉकेट कनेक्टेड';
+
+  @override
+  String get socketDisconnected => 'सॉकेट डिस्कनेक्टेड';
+
+  @override
+  String get newNotificationReceived => 'नई सूचना प्राप्त हुई';
+
+  @override
+  String get generalCategory => 'सामान्य';
+
+  @override
+  String get horoscopeCategory => 'राशिफल';
+
+  @override
+  String get chatCategory => 'चैट';
+
+  @override
+  String get systemCategory => 'सिस्टम';
+
+  @override
+  String get updateCategory => 'अपडेट्स';
+
+  @override
+  String get howToAskTitle => 'कैसे पूछें';
+
+  @override
+  String get noQuestionsAvailable => 'कोई प्रश्न उपलब्ध नहीं';
+
+  @override
+  String get failedToLoadQuestions => 'प्रश्न लोड करने में विफल';
+
+  @override
+  String get pullToRefresh => 'रिफ्रेश करने के लिए खींचें';
+
+  @override
+  String get careerCategory => 'करियर';
+
+  @override
+  String get loveCategory => 'प्यार और रिश्ते';
+
+  @override
+  String get healthCategory => 'स्वास्थ्य';
+
+  @override
+  String get financeCategory => 'वित्त';
+
+  @override
+  String get familyCategory => 'परिवार';
+
+  @override
+  String get educationCategory => 'शिक्षा';
+
+  @override
+  String get travelCategory => 'यात्रा';
+
+  @override
+  String get spiritualCategory => 'आध्यात्मिक';
 }

@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'package:flutter_stripe/flutter_stripe.dart' hide Card;
 import '../services/socket_service.dart';
 import 'package:shimmer/shimmer.dart';
+import '../l10n/app_localizations.dart'; // Add this import
 
 class QuestionStoreScreen extends StatefulWidget {
   const QuestionStoreScreen({super.key});
@@ -28,6 +29,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
   }
 
   Future<void> _loadData() async {
+    final l10n = AppLocalizations.of(context)!;
     final profileProvider = Provider.of<ProfileProvider>(
       context,
       listen: false,
@@ -40,7 +42,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
     if (token == null || userId == null) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(const SnackBar(content: Text("User not authenticated")));
+      ).showSnackBar(SnackBar(content: Text(l10n.userNotAuthenticated)));
       return;
     }
 
@@ -69,15 +71,16 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
       }
     } catch (e) {
       print("Error loading store data: $e");
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Failed to load store data")),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(l10n.loadStoreDataFailed)));
     }
 
     setState(() => isLoading = false);
   }
 
   Future<void> startStripePayment(int questions) async {
+    final l10n = AppLocalizations.of(context)!;
     final profileProvider = Provider.of<ProfileProvider>(
       context,
       listen: false,
@@ -87,7 +90,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
     if (token == null) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(const SnackBar(content: Text("Missing auth token")));
+      ).showSnackBar(SnackBar(content: Text(l10n.missingAuthToken)));
       return;
     }
 
@@ -108,7 +111,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
       await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
           paymentIntentClientSecret: clientSecret,
-          merchantDisplayName: 'Astro Chat App',
+          merchantDisplayName: l10n.merchantDisplayName,
           // style: ThemeMode.dark, // Optional
         ),
       );
@@ -119,7 +122,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
       // 3. Success message
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(const SnackBar(content: Text('Payment successful!')));
+      ).showSnackBar(SnackBar(content: Text(l10n.paymentSuccessful)));
 
       // ✅ Show local notification
 
@@ -144,7 +147,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
       }
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Payment failed: ${e.toString()}')),
+        SnackBar(content: Text('${l10n.paymentFailed}: ${e.toString()}')),
       );
     }
   }
@@ -205,9 +208,11 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Buy Questions"),
+        title: Text(l10n.buyQuestionsTitle),
         backgroundColor: Colors.deepPurpleAccent,
       ),
       body: SafeArea(
@@ -223,14 +228,16 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
                       bottom: MediaQuery.of(context).viewInsets.bottom + 16,
                     ),
                     children: [
-                      _buildBalanceCard(),
+                      _buildBalanceCard(l10n),
                       const SizedBox(height: 20),
                       Text(
-                        "Available Offers",
+                        l10n.availableOffers,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       const SizedBox(height: 10),
-                      ...offers.map(_buildOfferCard).toList(),
+                      ...offers
+                          .map((offer) => _buildOfferCard(offer, l10n))
+                          .toList(),
                     ],
                   ),
                 ),
@@ -238,7 +245,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
     );
   }
 
-  Widget _buildBalanceCard() {
+  Widget _buildBalanceCard(AppLocalizations l10n) {
     return Card(
       color: Colors.deepPurple.shade50,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -252,12 +259,15 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  "Your Balance",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                Text(
+                  l10n.yourBalance,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
                 Text(
-                  "$questionBalance Questions",
+                  l10n.questionsBalance(questionBalance),
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -272,7 +282,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
     );
   }
 
-  Widget _buildOfferCard(Map<String, dynamic> offer) {
+  Widget _buildOfferCard(Map<String, dynamic> offer, AppLocalizations l10n) {
     int questions = offer['questions'];
     double price = (offer['price'] as num).toDouble();
 
@@ -291,7 +301,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
           size: 30,
         ),
         title: Text(
-          "$questions Question${questions > 1 ? 's' : ''}",
+          l10n.questionsCount(questions),
           style: const TextStyle(fontWeight: FontWeight.w600),
         ),
         subtitle: Text("\$$price"),
@@ -303,7 +313,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
               borderRadius: BorderRadius.circular(12),
             ),
           ),
-          child: const Text("Buy"),
+          child: Text(l10n.buyButton),
         ),
       ),
     );

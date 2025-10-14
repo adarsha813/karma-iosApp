@@ -13,6 +13,7 @@ import '../models/astro_term.dart';
 import '../services/astro_api_service.dart';
 import '../utils/dictionary_highlighter.dart';
 import '../providers/notification_provider.dart';
+import '../l10n/app_localizations.dart'; // Add this import
 
 class DailyHoroscopeScreen extends StatefulWidget {
   final String? userId;
@@ -319,6 +320,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
   }
 
   String getCategoryLabel(DateTime date) {
+    final l10n = AppLocalizations.of(context)!;
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
     final yesterday = today.subtract(Duration(days: 1));
@@ -330,12 +332,12 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
 
     final dateOnly = DateTime(date.year, date.month, date.day);
 
-    if (dateOnly == today) return 'Today';
-    if (dateOnly == yesterday) return 'Yesterday';
-    if (dateOnly.isAfter(startOfWeek)) return 'This Week';
+    if (dateOnly == today) return l10n.todayLabel;
+    if (dateOnly == yesterday) return l10n.yesterdayLabel;
+    if (dateOnly.isAfter(startOfWeek)) return l10n.thisWeekLabel;
     if (dateOnly.isAfter(startOfLastMonth) &&
         dateOnly.isBefore(startOfThisMonth)) {
-      return 'Last Month';
+      return l10n.lastMonthLabel;
     }
     if (date.year == now.year) {
       // Show month name e.g. June 2025
@@ -438,17 +440,18 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final groupedList = getGroupedHoroscopes();
 
     return Scaffold(
-      appBar: AppBar(title: const Text("🌟 Daily Horoscope")),
+      appBar: AppBar(title: Text(l10n.dailyHoroscopeTitle)),
       body:
           _loading
               ? _buildSkeletonLoader()
               : _error != null
               ? Center(child: Text(_error!))
               : _horoscopes.isEmpty
-              ? const Center(child: Text("No horoscope found."))
+              ? Center(child: Text(l10n.noHoroscopeFound))
               : ListView.builder(
                 itemCount: groupedList.length,
                 itemBuilder: (context, index) {
@@ -490,7 +493,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen> {
                                 ),
                               ),
                             if (horoscope['sign'] != null)
-                              Text("Sign: ${horoscope['sign']}"),
+                              Text("${l10n.signLabel}: ${horoscope['sign']}"),
                             const SizedBox(height: 8),
                             RichText(
                               text: DictionaryHighlighter.highlightText(

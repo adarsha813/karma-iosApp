@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import '../l10n/app_localizations.dart'; // Add this import
 
 class HowToAskScreen extends StatefulWidget {
   const HowToAskScreen({Key? key}) : super(key: key);
@@ -64,24 +65,54 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
     }
   }
 
+  String _getLocalizedCategory(String category, AppLocalizations l10n) {
+    switch (category.toLowerCase()) {
+      case 'career':
+        return l10n.careerCategory;
+      case 'love':
+      case 'love & relationships':
+      case 'relationships':
+        return l10n.loveCategory;
+      case 'health':
+        return l10n.healthCategory;
+      case 'finance':
+        return l10n.financeCategory;
+      case 'family':
+        return l10n.familyCategory;
+      case 'education':
+        return l10n.educationCategory;
+      case 'travel':
+        return l10n.travelCategory;
+      case 'spiritual':
+        return l10n.spiritualCategory;
+      case 'general':
+        return l10n.generalCategory;
+      default:
+        return category;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: const Text("How To Ask"), elevation: 0),
+      appBar: AppBar(title: Text(l10n.howToAskTitle), elevation: 0),
       body:
           _isLoading
               ? const Center(child: CircularProgressIndicator())
               : _cachedQuestions == null || _cachedQuestions!.isEmpty
-              ? const Center(child: Text('No questions available'))
-              : _buildQuestionsList(_cachedQuestions!),
+              ? Center(child: Text(l10n.noQuestionsAvailable))
+              : _buildQuestionsList(_cachedQuestions!, l10n),
     );
   }
 
-  Widget _buildQuestionsList(List<Question> questions) {
+  Widget _buildQuestionsList(List<Question> questions, AppLocalizations l10n) {
     // Group by category
     final Map<String, List<Question>> categorized = {};
     for (var q in questions) {
-      categorized.putIfAbsent(q.category, () => []).add(q);
+      final localizedCategory = _getLocalizedCategory(q.category, l10n);
+      categorized.putIfAbsent(localizedCategory, () => []).add(q);
     }
 
     return RefreshIndicator(

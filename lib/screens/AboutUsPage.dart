@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart'; // Add this import
 
 class AboutUsPage extends StatelessWidget {
   const AboutUsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: const Text("About Us"),
+        title: Text(l10n.aboutUsTitle),
         centerTitle: true,
         backgroundColor: Colors.blue[700],
       ),
@@ -25,22 +28,22 @@ class AboutUsPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Column(
-                children: const [
-                  Icon(Icons.info_outline, size: 60, color: Colors.white),
-                  SizedBox(height: 16),
+                children: [
+                  const Icon(Icons.info_outline, size: 60, color: Colors.white),
+                  const SizedBox(height: 16),
                   Text(
-                    "About Our Company",
-                    style: TextStyle(
+                    l10n.aboutOurCompany,
+                    style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
-                    "We are committed to delivering the best astrology experience to our users.",
+                    l10n.aboutCompanyDescription,
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16, color: Colors.white70),
+                    style: const TextStyle(fontSize: 16, color: Colors.white70),
                   ),
                 ],
               ),
@@ -58,44 +61,53 @@ class AboutUsPage extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: const [
+                  children: [
                     Text(
-                      "Our Mission",
-                      style: TextStyle(
+                      l10n.ourMission,
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
-                      "To provide accurate and personalized astrology insights to help users make informed decisions in their lives.",
-                      style: TextStyle(fontSize: 16, color: Colors.black87),
+                      l10n.missionDescription,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: Colors.black87,
+                      ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Text(
-                      "Our Vision",
-                      style: TextStyle(
+                      l10n.ourVision,
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
-                      "To become the most trusted astrology platform, combining technology and ancient wisdom.",
-                      style: TextStyle(fontSize: 16, color: Colors.black87),
+                      l10n.visionDescription,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: Colors.black87,
+                      ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Text(
-                      "Our Values",
-                      style: TextStyle(
+                      l10n.ourValues,
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
-                      "Integrity, Accuracy, User-Centric Design, and Continuous Innovation.",
-                      style: TextStyle(fontSize: 16, color: Colors.black87),
+                      l10n.valuesDescription,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: Colors.black87,
+                      ),
                     ),
                   ],
                 ),
@@ -115,22 +127,28 @@ class AboutUsPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const Text(
-                      "Contact Us",
-                      style: TextStyle(
+                    Text(
+                      l10n.contactUs,
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const SizedBox(height: 8),
-                    const Text(
-                      "Email: support@yourcompany.com",
-                      style: TextStyle(fontSize: 16, color: Colors.black87),
+                    Text(
+                      l10n.contactEmail,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: Colors.black87,
+                      ),
                     ),
                     const SizedBox(height: 4),
-                    const Text(
-                      "Website: www.yourcompany.com",
-                      style: TextStyle(fontSize: 16, color: Colors.black87),
+                    Text(
+                      l10n.contactWebsite,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: Colors.black87,
+                      ),
                     ),
                   ],
                 ),

@@ -124,5 +124,320 @@
     "description": "Title for delete account option"
   }
 ,
-  "recoverAccount": "Recover Account"
+  "recoverAccount": "Recover Account",
+   "allFieldsRequired": "All fields are required.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  
+  "accountRecoveredSuccess": "Account recovered successfully.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  
+  "recoveryFailed": "Recovery failed. Check your information.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  
+  "recoverySecretLabel": "Recovery Secret",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+    "aboutUsTitle": "About Us",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  
+  "aboutOurCompany": "About Our Company",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  
+  "aboutCompanyDescription": "We are committed to delivering the best astrology experience to our users.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  
+  "ourMission": "Our Mission",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  
+  "missionDescription": "To provide accurate and personalized astrology insights to help users make informed decisions in their lives.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  
+  "ourVision": "Our Vision",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  
+  "visionDescription": "To become the most trusted astrology platform, combining technology and ancient wisdom.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  
+  "ourValues": "Our Values",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  
+  "valuesDescription": "Integrity, Accuracy, User-Centric Design, and Continuous Innovation.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  
+  "contactUs": "Contact Us",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  
+  "contactEmail": "Email: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  
+  "contactWebsite": "Website: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+   "customerSupport": "Customer Support",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  
+  "supportHeroTitle": "We're Here to Help",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  
+  "supportHeroDescription": "Fill out the form below and our support team will get back to you as soon as possible.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  
+  "yourName": "Your Name",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  
+  "yourEmail": "Your Email",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  
+  "message": "Message",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  
+  "enterEmail": "Enter your email",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  
+  "enterValidEmail": "Enter a valid email address",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  
+  "enterField": "Enter {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  
+  "send": "Send",
+  "@send": {
+    "description": "Send button text"
+  },
+  
+  "sending": "Sending...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  
+  "emailSentSuccess": "✅ Email sent successfully!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  
+  "emailSendFailed": "❌ Failed to send email",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+    
+  "astroDictionaryTitle": "Astro Dictionary",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  
+  "searchTermsHint": "Search terms...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  
+  "noTermsFound": "No terms found",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+   "buyQuestionsTitle": "Buy Questions",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  
+  "userNotAuthenticated": "User not authenticated",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  
+  "loadStoreDataFailed": "Failed to load store data",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  
+  "missingAuthToken": "Missing auth token",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  
+  "merchantDisplayName": "Astro Chat App",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  
+  "paymentSuccessful": "Payment successful!",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  
+  "paymentFailed": "Payment failed",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  
+  "yourBalance": "Your Balance",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  
+  "questionsBalance": "{count} Questions",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  
+  "availableOffers": "Available Offers",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  
+  "questionsCount": "{count} Question",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  
+  "buyButton": "Buy",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+    "dailyHoroscopeTitle": "🌟 Daily Horoscope",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  
+  "userIdMissing": "User ID is missing",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  
+  "fetchHoroscopesFailed": "Failed to fetch horoscopes",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  
+  "noHoroscopeFound": "No horoscope found.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  
+  "signLabel": "Sign",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  
+  "todayLabel": "Today",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  
+  "yesterdayLabel": "Yesterday",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  
+  "thisWeekLabel": "This Week",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  
+  "lastMonthLabel": "Last Month",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Chat",
+  "typeYourQuestionHint": "Type your question...",
+  "paymentRequired": "Payment Required",
+  "paymentRequiredMessage": "You've used your free questions. Pay ₹50 to continue.",
+  "cancelButton": "Cancel",
+  "payNowButton": "Pay Now",
+  "freeQuestionsRemaining": "{count} free questions remaining",
+  "paidQuestionsRemaining": "{count} paid questions remaining",
+  "thankYouFeedback": "Thank you for your feedback!",
+  "ratingSubmitted": "Rating submitted!",
+  "userIdNotFound": "User ID not found. Please login or set your profile.",
+  "setUserIdFirst": "Please set your User ID first",
+  "failedToFetchPrevious": "Failed to fetch previous questions and answers",
+  "errorOccurred": "Error: {error}",
+  "paymentSuccessful": "✅ Payment successful! Question sent",
+  "paymentFailed": "❌ Payment failed: {error}",
+  "drawerAstroProfile": "Astro Profile",
+  "drawerDailyHoroscope": "Daily Horoscope",
+  "drawerBuyQuestions": "Buy Questions",
+  "drawerAstroDictionary": "Astro Dictionary",
+  "drawerSettings": "Settings",
+  "drawerCustomerSupport": "Customer Support",
+  "drawerAbout": "About",
+  "drawerProfileSettings": "Profile Settings",
+  "demoNotificationTitle": "🔔 Demo Notification",
+  "demoNotificationBody": "This is a test notification from your app!",
+   "notificationsTitle": "Notifications",
+  "noNotifications": "No notifications",
+  "allTab": "All",
+  "markAllAsRead": "Mark all as read",
+  "notificationMarkedRead": "Notification marked as read",
+  "failedToLoadNotifications": "Failed to load notifications",
+  "failedToMarkRead": "Failed to mark as read",
+  "failedToMarkAllRead": "Failed to mark all as read",
+  "socketConnected": "Socket connected",
+  "socketDisconnected": "Socket disconnected",
+  "newNotificationReceived": "New notification received",
+  "generalCategory": "General",
+  "horoscopeCategory": "Horoscope",
+  "chatCategory": "Chat",
+  "systemCategory": "System",
+  "updateCategory": "Updates",
+   "howToAskTitle": "How To Ask",
+  "noQuestionsAvailable": "No questions available",
+  "failedToLoadQuestions": "Failed to load questions",
+  "pullToRefresh": "Pull to refresh",
+  "careerCategory": "Career",
+  "loveCategory": "Love & Relationships",
+  "healthCategory": "Health",
+  "financeCategory": "Finance",
+  "familyCategory": "Family",
+  "educationCategory": "Education",
+  "travelCategory": "Travel",
+  "spiritualCategory": "Spiritual",
+  "generalCategory": "General"
 }

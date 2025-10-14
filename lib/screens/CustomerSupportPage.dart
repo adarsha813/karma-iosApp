@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/email_service.dart';
+import '../l10n/app_localizations.dart'; // Add this import
 
 class CustomerSupportPage extends StatefulWidget {
   const CustomerSupportPage({super.key});
@@ -16,6 +17,8 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
   bool _isSending = false;
 
   Future<void> _sendEmail() async {
+    final l10n = AppLocalizations.of(context)!;
+
     if (_formKey.currentState!.validate()) {
       setState(() => _isSending = true);
 
@@ -32,23 +35,25 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
       setState(() => _isSending = false);
 
       if (success) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("✅ Email sent successfully!")),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(l10n.emailSentSuccess)));
         _nameController.clear();
         _emailController.clear();
         _messageController.clear();
       } else {
         ScaffoldMessenger.of(
           context,
-        ).showSnackBar(const SnackBar(content: Text("❌ Failed to send email")));
+        ).showSnackBar(SnackBar(content: Text(l10n.emailSendFailed)));
       }
     }
   }
 
   String? _validateEmail(String? value) {
+    final l10n = AppLocalizations.of(context)!;
+
     if (value == null || value.trim().isEmpty) {
-      return "Enter your email";
+      return l10n.enterEmail;
     }
 
     final emailRegex = RegExp(
@@ -56,18 +61,29 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
     );
 
     if (!emailRegex.hasMatch(value.trim())) {
-      return "Enter a valid email address";
+      return l10n.enterValidEmail;
     }
 
     return null;
   }
 
+  String? _validateRequired(String? value, String fieldName) {
+    final l10n = AppLocalizations.of(context)!;
+
+    if (value == null || value.trim().isEmpty) {
+      return l10n.enterField(fieldName);
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: const Text("Customer Support"),
+        title: Text(l10n.customerSupport),
         centerTitle: true,
         backgroundColor: Colors.blue[700],
       ),
@@ -84,22 +100,26 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Column(
-                children: const [
-                  Icon(Icons.support_agent, size: 60, color: Colors.white),
-                  SizedBox(height: 16),
+                children: [
+                  const Icon(
+                    Icons.support_agent,
+                    size: 60,
+                    color: Colors.white,
+                  ),
+                  const SizedBox(height: 16),
                   Text(
-                    "We’re Here to Help",
-                    style: TextStyle(
+                    l10n.supportHeroTitle,
+                    style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
-                    "Fill out the form below and our support team will get back to you as soon as possible.",
+                    l10n.supportHeroDescription,
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16, color: Colors.white70),
+                    style: const TextStyle(fontSize: 16, color: Colors.white70),
                   ),
                 ],
               ),
@@ -123,26 +143,23 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                       // Name
                       TextFormField(
                         controller: _nameController,
-                        decoration: const InputDecoration(
-                          labelText: "Your Name",
-                          prefixIcon: Icon(Icons.person),
-                          border: OutlineInputBorder(),
+                        decoration: InputDecoration(
+                          labelText: l10n.yourName,
+                          prefixIcon: const Icon(Icons.person),
+                          border: const OutlineInputBorder(),
                         ),
                         validator:
-                            (value) =>
-                                value == null || value.trim().isEmpty
-                                    ? "Enter your name"
-                                    : null,
+                            (value) => _validateRequired(value, l10n.nameLabel),
                       ),
                       const SizedBox(height: 16),
 
                       // Email
                       TextFormField(
                         controller: _emailController,
-                        decoration: const InputDecoration(
-                          labelText: "Your Email",
-                          prefixIcon: Icon(Icons.email),
-                          border: OutlineInputBorder(),
+                        decoration: InputDecoration(
+                          labelText: l10n.yourEmail,
+                          prefixIcon: const Icon(Icons.email),
+                          border: const OutlineInputBorder(),
                         ),
                         validator: _validateEmail,
                       ),
@@ -152,16 +169,13 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                       TextFormField(
                         controller: _messageController,
                         maxLines: 5,
-                        decoration: const InputDecoration(
-                          labelText: "Message",
-                          prefixIcon: Icon(Icons.message),
-                          border: OutlineInputBorder(),
+                        decoration: InputDecoration(
+                          labelText: l10n.message,
+                          prefixIcon: const Icon(Icons.message),
+                          border: const OutlineInputBorder(),
                         ),
                         validator:
-                            (value) =>
-                                value == null || value.trim().isEmpty
-                                    ? "Enter your message"
-                                    : null,
+                            (value) => _validateRequired(value, l10n.message),
                       ),
                       const SizedBox(height: 24),
 
@@ -179,7 +193,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                                   ),
                                 )
                                 : const Icon(Icons.send),
-                        label: Text(_isSending ? "Sending..." : "Send"),
+                        label: Text(_isSending ? l10n.sending : l10n.send),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue[700],
                           padding: const EdgeInsets.symmetric(vertical: 16),

@@ -439,7 +439,7 @@ abstract class AppLocalizations {
   /// No description provided for @userIdNotFound.
   ///
   /// In en, this message translates to:
-  /// **'User ID not found.'**
+  /// **'User ID not found. Please login or set your profile.'**
   String get userIdNotFound;
 
   /// No description provided for @clearNotificationsTitle.
@@ -717,6 +717,624 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Delete Account'**
   String get deleteAccount;
+
+  /// Error message when fields are empty
+  ///
+  /// In en, this message translates to:
+  /// **'All fields are required.'**
+  String get allFieldsRequired;
+
+  /// Success message for account recovery
+  ///
+  /// In en, this message translates to:
+  /// **'Account recovered successfully.'**
+  String get accountRecoveredSuccess;
+
+  /// Error message for failed recovery
+  ///
+  /// In en, this message translates to:
+  /// **'Recovery failed. Check your information.'**
+  String get recoveryFailed;
+
+  /// Label for recovery secret input field
+  ///
+  /// In en, this message translates to:
+  /// **'Recovery Secret'**
+  String get recoverySecretLabel;
+
+  /// Title for About Us page
+  ///
+  /// In en, this message translates to:
+  /// **'About Us'**
+  String get aboutUsTitle;
+
+  /// Header title for company information
+  ///
+  /// In en, this message translates to:
+  /// **'About Our Company'**
+  String get aboutOurCompany;
+
+  /// Description of company commitment
+  ///
+  /// In en, this message translates to:
+  /// **'We are committed to delivering the best astrology experience to our users.'**
+  String get aboutCompanyDescription;
+
+  /// Title for mission section
+  ///
+  /// In en, this message translates to:
+  /// **'Our Mission'**
+  String get ourMission;
+
+  /// Description of company mission
+  ///
+  /// In en, this message translates to:
+  /// **'To provide accurate and personalized astrology insights to help users make informed decisions in their lives.'**
+  String get missionDescription;
+
+  /// Title for vision section
+  ///
+  /// In en, this message translates to:
+  /// **'Our Vision'**
+  String get ourVision;
+
+  /// Description of company vision
+  ///
+  /// In en, this message translates to:
+  /// **'To become the most trusted astrology platform, combining technology and ancient wisdom.'**
+  String get visionDescription;
+
+  /// Title for values section
+  ///
+  /// In en, this message translates to:
+  /// **'Our Values'**
+  String get ourValues;
+
+  /// Description of company values
+  ///
+  /// In en, this message translates to:
+  /// **'Integrity, Accuracy, User-Centric Design, and Continuous Innovation.'**
+  String get valuesDescription;
+
+  /// Title for contact section
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Us'**
+  String get contactUs;
+
+  /// Contact email address
+  ///
+  /// In en, this message translates to:
+  /// **'Email: support@yourcompany.com'**
+  String get contactEmail;
+
+  /// Contact website URL
+  ///
+  /// In en, this message translates to:
+  /// **'Website: www.yourcompany.com'**
+  String get contactWebsite;
+
+  /// Title for customer support page
+  ///
+  /// In en, this message translates to:
+  /// **'Customer Support'**
+  String get customerSupport;
+
+  /// Hero section title for support page
+  ///
+  /// In en, this message translates to:
+  /// **'We\'re Here to Help'**
+  String get supportHeroTitle;
+
+  /// Hero section description for support page
+  ///
+  /// In en, this message translates to:
+  /// **'Fill out the form below and our support team will get back to you as soon as possible.'**
+  String get supportHeroDescription;
+
+  /// Label for name input field
+  ///
+  /// In en, this message translates to:
+  /// **'Your Name'**
+  String get yourName;
+
+  /// Label for email input field
+  ///
+  /// In en, this message translates to:
+  /// **'Your Email'**
+  String get yourEmail;
+
+  /// Label for message input field
+  ///
+  /// In en, this message translates to:
+  /// **'Message'**
+  String get message;
+
+  /// Validation error for empty email
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email'**
+  String get enterEmail;
+
+  /// Validation error for invalid email format
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid email address'**
+  String get enterValidEmail;
+
+  /// Validation error for required fields
+  ///
+  /// In en, this message translates to:
+  /// **'Enter {fieldName}'**
+  String enterField(Object fieldName);
+
+  /// Send button text
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get send;
+
+  /// Send button text when sending
+  ///
+  /// In en, this message translates to:
+  /// **'Sending...'**
+  String get sending;
+
+  /// Success message after sending email
+  ///
+  /// In en, this message translates to:
+  /// **'✅ Email sent successfully!'**
+  String get emailSentSuccess;
+
+  /// Error message when email fails to send
+  ///
+  /// In en, this message translates to:
+  /// **'❌ Failed to send email'**
+  String get emailSendFailed;
+
+  /// Title for astrology dictionary screen
+  ///
+  /// In en, this message translates to:
+  /// **'Astro Dictionary'**
+  String get astroDictionaryTitle;
+
+  /// Hint text for search field in dictionary
+  ///
+  /// In en, this message translates to:
+  /// **'Search terms...'**
+  String get searchTermsHint;
+
+  /// Message when no search results are found
+  ///
+  /// In en, this message translates to:
+  /// **'No terms found'**
+  String get noTermsFound;
+
+  /// Title for question store screen
+  ///
+  /// In en, this message translates to:
+  /// **'Buy Questions'**
+  String get buyQuestionsTitle;
+
+  /// Error message when user is not logged in
+  ///
+  /// In en, this message translates to:
+  /// **'User not authenticated'**
+  String get userNotAuthenticated;
+
+  /// Error message when store data fails to load
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load store data'**
+  String get loadStoreDataFailed;
+
+  /// Error message when authentication token is missing
+  ///
+  /// In en, this message translates to:
+  /// **'Missing auth token'**
+  String get missingAuthToken;
+
+  /// Merchant name for payment processing
+  ///
+  /// In en, this message translates to:
+  /// **'Astro Chat App'**
+  String get merchantDisplayName;
+
+  /// Success message after payment
+  ///
+  /// In en, this message translates to:
+  /// **'✅ Payment successful! Question sent'**
+  String get paymentSuccessful;
+
+  /// Error message when payment fails
+  ///
+  /// In en, this message translates to:
+  /// **'❌ Payment failed: {error}'**
+  String paymentFailed(Object error);
+
+  /// Label for user's question balance
+  ///
+  /// In en, this message translates to:
+  /// **'Your Balance'**
+  String get yourBalance;
+
+  /// Display user's question balance with count
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Questions'**
+  String questionsBalance(Object count);
+
+  /// Title for available offers section
+  ///
+  /// In en, this message translates to:
+  /// **'Available Offers'**
+  String get availableOffers;
+
+  /// Display question count with proper pluralization
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Question'**
+  String questionsCount(Object count);
+
+  /// Buy button text
+  ///
+  /// In en, this message translates to:
+  /// **'Buy'**
+  String get buyButton;
+
+  /// Title for daily horoscope screen
+  ///
+  /// In en, this message translates to:
+  /// **'🌟 Daily Horoscope'**
+  String get dailyHoroscopeTitle;
+
+  /// Error message when user ID is not available
+  ///
+  /// In en, this message translates to:
+  /// **'User ID is missing'**
+  String get userIdMissing;
+
+  /// Error message when horoscope fetch fails
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to fetch horoscopes'**
+  String get fetchHoroscopesFailed;
+
+  /// Message when no horoscopes are available
+  ///
+  /// In en, this message translates to:
+  /// **'No horoscope found.'**
+  String get noHoroscopeFound;
+
+  /// Label for zodiac sign
+  ///
+  /// In en, this message translates to:
+  /// **'Sign'**
+  String get signLabel;
+
+  /// Label for today's horoscopes
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get todayLabel;
+
+  /// Label for yesterday's horoscopes
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday'**
+  String get yesterdayLabel;
+
+  /// Label for this week's horoscopes
+  ///
+  /// In en, this message translates to:
+  /// **'This Week'**
+  String get thisWeekLabel;
+
+  /// Label for last month's horoscopes
+  ///
+  /// In en, this message translates to:
+  /// **'Last Month'**
+  String get lastMonthLabel;
+
+  /// No description provided for @chatTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat'**
+  String get chatTitle;
+
+  /// No description provided for @typeYourQuestionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Type your question...'**
+  String get typeYourQuestionHint;
+
+  /// No description provided for @paymentRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Required'**
+  String get paymentRequired;
+
+  /// No description provided for @paymentRequiredMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve used your free questions. Pay ₹50 to continue.'**
+  String get paymentRequiredMessage;
+
+  /// No description provided for @payNowButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay Now'**
+  String get payNowButton;
+
+  /// No description provided for @freeQuestionsRemaining.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} free questions remaining'**
+  String freeQuestionsRemaining(Object count);
+
+  /// No description provided for @paidQuestionsRemaining.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} paid questions remaining'**
+  String paidQuestionsRemaining(Object count);
+
+  /// No description provided for @thankYouFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Thank you for your feedback!'**
+  String get thankYouFeedback;
+
+  /// No description provided for @ratingSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Rating submitted!'**
+  String get ratingSubmitted;
+
+  /// No description provided for @setUserIdFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Please set your User ID first'**
+  String get setUserIdFirst;
+
+  /// No description provided for @failedToFetchPrevious.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to fetch previous questions and answers'**
+  String get failedToFetchPrevious;
+
+  /// No description provided for @errorOccurred.
+  ///
+  /// In en, this message translates to:
+  /// **'Error: {error}'**
+  String errorOccurred(Object error);
+
+  /// No description provided for @drawerAstroProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Astro Profile'**
+  String get drawerAstroProfile;
+
+  /// No description provided for @drawerDailyHoroscope.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Horoscope'**
+  String get drawerDailyHoroscope;
+
+  /// No description provided for @drawerBuyQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'Buy Questions'**
+  String get drawerBuyQuestions;
+
+  /// No description provided for @drawerAstroDictionary.
+  ///
+  /// In en, this message translates to:
+  /// **'Astro Dictionary'**
+  String get drawerAstroDictionary;
+
+  /// No description provided for @drawerSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get drawerSettings;
+
+  /// No description provided for @drawerCustomerSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer Support'**
+  String get drawerCustomerSupport;
+
+  /// No description provided for @drawerAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get drawerAbout;
+
+  /// No description provided for @drawerProfileSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile Settings'**
+  String get drawerProfileSettings;
+
+  /// No description provided for @demoNotificationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'🔔 Demo Notification'**
+  String get demoNotificationTitle;
+
+  /// No description provided for @demoNotificationBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This is a test notification from your app!'**
+  String get demoNotificationBody;
+
+  /// No description provided for @notificationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationsTitle;
+
+  /// No description provided for @noNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'No notifications'**
+  String get noNotifications;
+
+  /// No description provided for @allTab.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get allTab;
+
+  /// No description provided for @markAllAsRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark all as read'**
+  String get markAllAsRead;
+
+  /// No description provided for @notificationMarkedRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification marked as read'**
+  String get notificationMarkedRead;
+
+  /// No description provided for @failedToLoadNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load notifications'**
+  String get failedToLoadNotifications;
+
+  /// No description provided for @failedToMarkRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to mark as read'**
+  String get failedToMarkRead;
+
+  /// No description provided for @failedToMarkAllRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to mark all as read'**
+  String get failedToMarkAllRead;
+
+  /// No description provided for @socketConnected.
+  ///
+  /// In en, this message translates to:
+  /// **'Socket connected'**
+  String get socketConnected;
+
+  /// No description provided for @socketDisconnected.
+  ///
+  /// In en, this message translates to:
+  /// **'Socket disconnected'**
+  String get socketDisconnected;
+
+  /// No description provided for @newNotificationReceived.
+  ///
+  /// In en, this message translates to:
+  /// **'New notification received'**
+  String get newNotificationReceived;
+
+  /// No description provided for @generalCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'General'**
+  String get generalCategory;
+
+  /// No description provided for @horoscopeCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Horoscope'**
+  String get horoscopeCategory;
+
+  /// No description provided for @chatCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat'**
+  String get chatCategory;
+
+  /// No description provided for @systemCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get systemCategory;
+
+  /// No description provided for @updateCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Updates'**
+  String get updateCategory;
+
+  /// No description provided for @howToAskTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How To Ask'**
+  String get howToAskTitle;
+
+  /// No description provided for @noQuestionsAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No questions available'**
+  String get noQuestionsAvailable;
+
+  /// No description provided for @failedToLoadQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load questions'**
+  String get failedToLoadQuestions;
+
+  /// No description provided for @pullToRefresh.
+  ///
+  /// In en, this message translates to:
+  /// **'Pull to refresh'**
+  String get pullToRefresh;
+
+  /// No description provided for @careerCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Career'**
+  String get careerCategory;
+
+  /// No description provided for @loveCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Love & Relationships'**
+  String get loveCategory;
+
+  /// No description provided for @healthCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Health'**
+  String get healthCategory;
+
+  /// No description provided for @financeCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Finance'**
+  String get financeCategory;
+
+  /// No description provided for @familyCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Family'**
+  String get familyCategory;
+
+  /// No description provided for @educationCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Education'**
+  String get educationCategory;
+
+  /// No description provided for @travelCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Travel'**
+  String get travelCategory;
+
+  /// No description provided for @spiritualCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Spiritual'**
+  String get spiritualCategory;
 }
 
 class _AppLocalizationsDelegate

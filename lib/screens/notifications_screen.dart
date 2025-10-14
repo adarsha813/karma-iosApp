@@ -11,6 +11,7 @@ import '../services/notification_handler.dart';
 import '../services/socket_service.dart';
 import 'package:shimmer/shimmer.dart';
 import '../utils/dictionary_highlighter.dart';
+import '../l10n/app_localizations.dart'; // Add this import
 
 // Initialize the FlutterLocalNotificationsPlugin globally
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -259,10 +260,13 @@ class _NotificationsScreenState extends State<NotificationsScreen>
   }
 
   Widget _buildNotificationList(List<Map<String, dynamic>> items) {
+    final l10n = AppLocalizations.of(context)!;
     final dictionaryMap = context.watch<DictionaryProvider>().dictionaryMap;
+
     if (items.isEmpty) {
-      return const Center(child: Text("No notifications"));
+      return Center(child: Text(l10n.noNotifications));
     }
+
     return ListView.builder(
       controller: _scrollController,
       itemCount: items.length,
@@ -348,23 +352,32 @@ class _NotificationsScreenState extends State<NotificationsScreen>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     if (_tabController == null) {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Notifications"),
+        title: Text(l10n.notificationsTitle),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.mark_email_read),
+            onPressed: _markAllNotificationsAsRead,
+            tooltip: l10n.markAllAsRead,
+          ),
+        ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(48),
           child: CategoryTabs(
             tabController: _tabController!,
             categories: categories,
+            l10n: l10n,
           ),
         ),
       ),
       body: SafeArea(
-        // ✅ Wrap body in SafeArea
         child:
             isLoading
                 ? _buildSkeletonLoader()
@@ -399,12 +412,31 @@ class _NotificationsScreenState extends State<NotificationsScreen>
 class CategoryTabs extends StatelessWidget {
   final TabController tabController;
   final List<String> categories;
+  final AppLocalizations l10n;
 
   const CategoryTabs({
     super.key,
     required this.tabController,
     required this.categories,
+    required this.l10n,
   });
+
+  String _getCategoryDisplayName(String category) {
+    switch (category.toLowerCase()) {
+      case 'general':
+        return l10n.generalCategory;
+      case 'horoscope':
+        return l10n.horoscopeCategory;
+      case 'chat':
+        return l10n.chatCategory;
+      case 'system':
+        return l10n.systemCategory;
+      case 'updates':
+        return l10n.updateCategory;
+      default:
+        return category.capitalize();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -429,7 +461,7 @@ class CategoryTabs extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Text(
-                  "All",
+                  l10n.allTab,
                   style: TextStyle(
                     color:
                         tabController.index == 0 ? Colors.white : Colors.black,
@@ -462,7 +494,7 @@ class CategoryTabs extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Text(
-                          cat.capitalize(),
+                          _getCategoryDisplayName(cat),
                           style: TextStyle(
                             color: selected ? Colors.white : Colors.black,
                             fontWeight: FontWeight.bold,

@@ -205,7 +205,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboardingNext => 'Next';
 
   @override
-  String get userIdNotFound => 'User ID not found.';
+  String get userIdNotFound =>
+      'User ID not found. Please login or set your profile.';
 
   @override
   String get clearNotificationsTitle => 'Clear Notifications';
@@ -350,4 +351,335 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get deleteAccount => 'Delete Account';
+
+  @override
+  String get allFieldsRequired => 'All fields are required.';
+
+  @override
+  String get accountRecoveredSuccess => 'Account recovered successfully.';
+
+  @override
+  String get recoveryFailed => 'Recovery failed. Check your information.';
+
+  @override
+  String get recoverySecretLabel => 'Recovery Secret';
+
+  @override
+  String get aboutUsTitle => 'About Us';
+
+  @override
+  String get aboutOurCompany => 'About Our Company';
+
+  @override
+  String get aboutCompanyDescription =>
+      'We are committed to delivering the best astrology experience to our users.';
+
+  @override
+  String get ourMission => 'Our Mission';
+
+  @override
+  String get missionDescription =>
+      'To provide accurate and personalized astrology insights to help users make informed decisions in their lives.';
+
+  @override
+  String get ourVision => 'Our Vision';
+
+  @override
+  String get visionDescription =>
+      'To become the most trusted astrology platform, combining technology and ancient wisdom.';
+
+  @override
+  String get ourValues => 'Our Values';
+
+  @override
+  String get valuesDescription =>
+      'Integrity, Accuracy, User-Centric Design, and Continuous Innovation.';
+
+  @override
+  String get contactUs => 'Contact Us';
+
+  @override
+  String get contactEmail => 'Email: support@yourcompany.com';
+
+  @override
+  String get contactWebsite => 'Website: www.yourcompany.com';
+
+  @override
+  String get customerSupport => 'Customer Support';
+
+  @override
+  String get supportHeroTitle => 'We\'re Here to Help';
+
+  @override
+  String get supportHeroDescription =>
+      'Fill out the form below and our support team will get back to you as soon as possible.';
+
+  @override
+  String get yourName => 'Your Name';
+
+  @override
+  String get yourEmail => 'Your Email';
+
+  @override
+  String get message => 'Message';
+
+  @override
+  String get enterEmail => 'Enter your email';
+
+  @override
+  String get enterValidEmail => 'Enter a valid email address';
+
+  @override
+  String enterField(Object fieldName) {
+    return 'Enter $fieldName';
+  }
+
+  @override
+  String get send => 'Send';
+
+  @override
+  String get sending => 'Sending...';
+
+  @override
+  String get emailSentSuccess => '✅ Email sent successfully!';
+
+  @override
+  String get emailSendFailed => '❌ Failed to send email';
+
+  @override
+  String get astroDictionaryTitle => 'Astro Dictionary';
+
+  @override
+  String get searchTermsHint => 'Search terms...';
+
+  @override
+  String get noTermsFound => 'No terms found';
+
+  @override
+  String get buyQuestionsTitle => 'Buy Questions';
+
+  @override
+  String get userNotAuthenticated => 'User not authenticated';
+
+  @override
+  String get loadStoreDataFailed => 'Failed to load store data';
+
+  @override
+  String get missingAuthToken => 'Missing auth token';
+
+  @override
+  String get merchantDisplayName => 'Astro Chat App';
+
+  @override
+  String get paymentSuccessful => '✅ Payment successful! Question sent';
+
+  @override
+  String paymentFailed(Object error) {
+    return '❌ Payment failed: $error';
+  }
+
+  @override
+  String get yourBalance => 'Your Balance';
+
+  @override
+  String questionsBalance(Object count) {
+    return '$count Questions';
+  }
+
+  @override
+  String get availableOffers => 'Available Offers';
+
+  @override
+  String questionsCount(Object count) {
+    return '$count Question';
+  }
+
+  @override
+  String get buyButton => 'Buy';
+
+  @override
+  String get dailyHoroscopeTitle => '🌟 Daily Horoscope';
+
+  @override
+  String get userIdMissing => 'User ID is missing';
+
+  @override
+  String get fetchHoroscopesFailed => 'Failed to fetch horoscopes';
+
+  @override
+  String get noHoroscopeFound => 'No horoscope found.';
+
+  @override
+  String get signLabel => 'Sign';
+
+  @override
+  String get todayLabel => 'Today';
+
+  @override
+  String get yesterdayLabel => 'Yesterday';
+
+  @override
+  String get thisWeekLabel => 'This Week';
+
+  @override
+  String get lastMonthLabel => 'Last Month';
+
+  @override
+  String get chatTitle => 'Chat';
+
+  @override
+  String get typeYourQuestionHint => 'Type your question...';
+
+  @override
+  String get paymentRequired => 'Payment Required';
+
+  @override
+  String get paymentRequiredMessage =>
+      'You\'ve used your free questions. Pay ₹50 to continue.';
+
+  @override
+  String get payNowButton => 'Pay Now';
+
+  @override
+  String freeQuestionsRemaining(Object count) {
+    return '$count free questions remaining';
+  }
+
+  @override
+  String paidQuestionsRemaining(Object count) {
+    return '$count paid questions remaining';
+  }
+
+  @override
+  String get thankYouFeedback => 'Thank you for your feedback!';
+
+  @override
+  String get ratingSubmitted => 'Rating submitted!';
+
+  @override
+  String get setUserIdFirst => 'Please set your User ID first';
+
+  @override
+  String get failedToFetchPrevious =>
+      'Failed to fetch previous questions and answers';
+
+  @override
+  String errorOccurred(Object error) {
+    return 'Error: $error';
+  }
+
+  @override
+  String get drawerAstroProfile => 'Astro Profile';
+
+  @override
+  String get drawerDailyHoroscope => 'Daily Horoscope';
+
+  @override
+  String get drawerBuyQuestions => 'Buy Questions';
+
+  @override
+  String get drawerAstroDictionary => 'Astro Dictionary';
+
+  @override
+  String get drawerSettings => 'Settings';
+
+  @override
+  String get drawerCustomerSupport => 'Customer Support';
+
+  @override
+  String get drawerAbout => 'About';
+
+  @override
+  String get drawerProfileSettings => 'Profile Settings';
+
+  @override
+  String get demoNotificationTitle => '🔔 Demo Notification';
+
+  @override
+  String get demoNotificationBody =>
+      'This is a test notification from your app!';
+
+  @override
+  String get notificationsTitle => 'Notifications';
+
+  @override
+  String get noNotifications => 'No notifications';
+
+  @override
+  String get allTab => 'All';
+
+  @override
+  String get markAllAsRead => 'Mark all as read';
+
+  @override
+  String get notificationMarkedRead => 'Notification marked as read';
+
+  @override
+  String get failedToLoadNotifications => 'Failed to load notifications';
+
+  @override
+  String get failedToMarkRead => 'Failed to mark as read';
+
+  @override
+  String get failedToMarkAllRead => 'Failed to mark all as read';
+
+  @override
+  String get socketConnected => 'Socket connected';
+
+  @override
+  String get socketDisconnected => 'Socket disconnected';
+
+  @override
+  String get newNotificationReceived => 'New notification received';
+
+  @override
+  String get generalCategory => 'General';
+
+  @override
+  String get horoscopeCategory => 'Horoscope';
+
+  @override
+  String get chatCategory => 'Chat';
+
+  @override
+  String get systemCategory => 'System';
+
+  @override
+  String get updateCategory => 'Updates';
+
+  @override
+  String get howToAskTitle => 'How To Ask';
+
+  @override
+  String get noQuestionsAvailable => 'No questions available';
+
+  @override
+  String get failedToLoadQuestions => 'Failed to load questions';
+
+  @override
+  String get pullToRefresh => 'Pull to refresh';
+
+  @override
+  String get careerCategory => 'Career';
+
+  @override
+  String get loveCategory => 'Love & Relationships';
+
+  @override
+  String get healthCategory => 'Health';
+
+  @override
+  String get financeCategory => 'Finance';
+
+  @override
+  String get familyCategory => 'Family';
+
+  @override
+  String get educationCategory => 'Education';
+
+  @override
+  String get travelCategory => 'Travel';
+
+  @override
+  String get spiritualCategory => 'Spiritual';
 }

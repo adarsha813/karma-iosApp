@@ -3,6 +3,7 @@ import 'package:shimmer/shimmer.dart';
 import '../models/astro_term.dart';
 import '../services/astro_api_service.dart';
 import 'astro_term_detail_screen.dart';
+import '../l10n/app_localizations.dart'; // Add this import
 
 class AstroDictionaryScreen extends StatefulWidget {
   const AstroDictionaryScreen({Key? key}) : super(key: key);
@@ -127,8 +128,10 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: const Text("Astro Dictionary")),
+      appBar: AppBar(title: Text(l10n.astroDictionaryTitle)),
       body:
           _loading
               ? _buildSkeletonLoader()
@@ -142,7 +145,7 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
                     child: TextField(
                       controller: _searchController,
                       decoration: InputDecoration(
-                        hintText: "Search terms...",
+                        hintText: l10n.searchTermsHint,
                         prefixIcon: const Icon(
                           Icons.search,
                           color: Colors.grey,
@@ -160,11 +163,10 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
                       ),
                     ),
                   ),
-
                   Expanded(
                     child:
                         _filteredTerms.isEmpty
-                            ? const Center(child: Text("No terms found"))
+                            ? Center(child: Text(l10n.noTermsFound))
                             : ListView.separated(
                               itemCount: _filteredTerms.length,
                               separatorBuilder:

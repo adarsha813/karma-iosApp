@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import '../providers/profile_provider.dart';
 import 'profile_settings_screen.dart';
+import '../l10n/app_localizations.dart'; // Add this import
 
 class RecoveryScreen extends StatefulWidget {
   const RecoveryScreen({Key? key}) : super(key: key);
@@ -45,6 +46,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
   }
 
   Future<void> _recoverAccount() async {
+    final l10n = AppLocalizations.of(context)!;
     final name = _nameController.text.trim();
     final secret = _secretController.text.trim();
 
@@ -53,7 +55,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
         _selectedTime == null) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(const SnackBar(content: Text("All fields are required.")));
+      ).showSnackBar(SnackBar(content: Text(l10n.allFieldsRequired)));
       return;
     }
 
@@ -92,20 +94,20 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
         await profileProvider.saveUserId(userId);
         await profileProvider.saveToken(token);
 
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Account recovered successfully.")),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(l10n.accountRecoveredSuccess)));
 
         Navigator.pop(context, userId); // ✅ return the recovered ID back
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Recovery failed. Check your info.")),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(l10n.recoveryFailed)));
       }
     } catch (e) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text("Error: $e")));
+      ).showSnackBar(SnackBar(content: Text("${l10n.errorPrefix} $e")));
     } finally {
       setState(() => _isLoading = false);
     }
@@ -113,8 +115,10 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: const Text("Recover Account")),
+      appBar: AppBar(title: Text(l10n.recoverAccount)),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -122,15 +126,15 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
           children: [
             TextField(
               controller: _nameController,
-              decoration: const InputDecoration(labelText: "Name"),
+              decoration: InputDecoration(labelText: l10n.nameLabel),
             ),
             const SizedBox(height: 10),
             // DOB picker
             ListTile(
               title: Text(
                 _selectedDob == null
-                    ? "Select Date of Birth"
-                    : "DOB: ${_selectedDob!.day}-${_selectedDob!.month}-${_selectedDob!.year}",
+                    ? l10n.birthDatePlaceholder
+                    : "${l10n.birthDateLabel}: ${_selectedDob!.day}-${_selectedDob!.month}-${_selectedDob!.year}",
               ),
               trailing: const Icon(Icons.calendar_today),
               onTap: _pickDate,
@@ -140,8 +144,8 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
             ListTile(
               title: Text(
                 _selectedTime == null
-                    ? "Select Time of Birth"
-                    : "Time: ${_selectedTime!.format(context)}",
+                    ? l10n.birthTimePlaceholder
+                    : "${l10n.birthTimeLabel}: ${_selectedTime!.format(context)}",
               ),
               trailing: const Icon(Icons.access_time),
               onTap: _pickTime,
@@ -149,7 +153,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
             const SizedBox(height: 10),
             TextField(
               controller: _secretController,
-              decoration: const InputDecoration(labelText: "Recovery Secret"),
+              decoration: InputDecoration(labelText: l10n.recoverySecretLabel),
               obscureText: true,
             ),
             const SizedBox(height: 20),
@@ -157,7 +161,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
                 ? const CircularProgressIndicator()
                 : ElevatedButton(
                   onPressed: _recoverAccount,
-                  child: const Text("Recover Account"),
+                  child: Text(l10n.recoverAccount),
                 ),
             const SizedBox(height: 20),
 
@@ -172,9 +176,9 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
                     ),
                   );
                 },
-                child: const Text(
-                  "I am a new user",
-                  style: TextStyle(
+                child: Text(
+                  l10n.onboardingNewUser,
+                  style: const TextStyle(
                     decoration: TextDecoration.underline,
                     color: Colors.blue,
                     fontSize: 16,

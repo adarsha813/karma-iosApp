@@ -30,6 +30,7 @@ import 'astroDictionary_Screen.dart';
 import 'package:kundali/widgets/bouncing_dots.dart';
 import 'package:kundali/screens/CustomerSupportPage.dart';
 import 'package:kundali/screens/AboutUsPage.dart';
+import '../l10n/app_localizations.dart';
 
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
@@ -1199,25 +1200,25 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   void showPaymentDialog(BuildContext context, String userId, String text) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder:
           (_) => AlertDialog(
-            title: Text("Payment Required"),
-            content: Text(
-              "You've used your free questions. Pay ₹50 to continue.",
-            ),
+            title: Text(l10n.paymentRequired),
+            content: Text(l10n.paymentRequiredMessage),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text("Cancel"),
+                child: Text(l10n.cancelButton),
               ),
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
+
                   startStripePayment(userId, text);
                 },
-                child: Text("Pay Now"),
+                child: Text(l10n.payNowButton),
               ),
             ],
           ),
@@ -1377,10 +1378,10 @@ class _ChatScreenState extends State<ChatScreen>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Chat"),
-
+        title: Text(l10n.chatTitle), // Updated
         // Wrap leading icon with Consumer to listen to HoroscopeProvider
         leading: Consumer<HoroscopeProvider>(
           builder: (context, horoscopeProvider, _) {
@@ -1550,6 +1551,7 @@ class _ChatScreenState extends State<ChatScreen>
 
   Widget _buildDrawer() {
     final userId = Provider.of<ProfileProvider>(context, listen: false).userId;
+    final l10n = AppLocalizations.of(context)!;
 
     return Consumer<HoroscopeProvider>(
       builder: (context, horoscopeProvider, _) {
@@ -1557,19 +1559,18 @@ class _ChatScreenState extends State<ChatScreen>
           child: SafeArea(
             child: Column(
               children: [
-                // 🔹 Scrollable section
                 Expanded(
                   child: ListView(
                     padding: EdgeInsets.zero,
                     children: [
                       _buildDrawerItem(
                         Icons.person,
-                        "Astro Profile",
+                        l10n.drawerAstroProfile,
                         ProfileScreen(userId: userId ?? ''),
                       ),
                       _buildDrawerItem(
                         Icons.auto_awesome,
-                        "Daily Horoscope",
+                        l10n.drawerDailyHoroscope,
                         DailyHoroscopeScreen(userId: userId),
                         badge:
                             horoscopeProvider.unreadCount > 0
@@ -1578,39 +1579,36 @@ class _ChatScreenState extends State<ChatScreen>
                       ),
                       _buildDrawerItem(
                         Icons.shopping_cart,
-                        "Buy Questions",
+                        l10n.drawerBuyQuestions,
                         const QuestionStoreScreen(),
                       ),
                       _buildDrawerItem(
                         Icons.menu_book,
-                        "Astro Dictionary",
+                        l10n.drawerAstroDictionary,
                         AstroDictionaryScreen(),
                       ),
                       _buildDrawerItem(
                         Icons.settings,
-                        "Settings",
+                        l10n.drawerSettings,
                         SettingsScreen(),
                       ),
-
                       _buildDrawerItem(
                         Icons.support_agent,
-                        "Customer Support",
+                        l10n.drawerCustomerSupport,
                         const CustomerSupportPage(),
                       ),
                       _buildDrawerItem(
                         Icons.info_outline,
-                        "About",
+                        l10n.drawerAbout,
                         const AboutUsPage(),
                       ),
                     ],
                   ),
                 ),
-
-                const Divider(), // separates footer from main items
-                // 🔹 Stuck-at-bottom section
+                const Divider(),
                 _buildDrawerItem(
                   Icons.settings_suggest,
-                  "Profile Settings",
+                  l10n.drawerProfileSettings,
                   ProfileSettingsScreen(),
                 ),
               ],
@@ -1656,6 +1654,7 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   Widget _buildMessageInput() {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
@@ -1668,7 +1667,7 @@ class _ChatScreenState extends State<ChatScreen>
               controller: _controller,
               focusNode: _focusNode,
               decoration: InputDecoration(
-                hintText: "Type your question...",
+                hintText: l10n.typeYourQuestionHint, // Updated
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
