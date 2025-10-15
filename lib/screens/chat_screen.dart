@@ -68,43 +68,60 @@ class _ChatScreenState extends State<ChatScreen>
   void initState() {
     super.initState();
     _handleDeepLink();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_scrollController.hasClients) {
+        _scrollController.animateTo(
+          0,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeOut,
+        );
+      }
+    });
 
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 400),
     );
-    _animationController.forward();
 
+    _animationController.forward();
     socket = IO.io(
       'wss://chat-backend-rvk9.onrender.com',
       IO.OptionBuilder()
-          .setTransports(['websocket'])
-          .disableAutoConnect()
+          .setTransports(['websocket']) // for Flutter
+          .disableAutoConnect() // optional, connect manually
           .build(),
     );
+
     socket.connect();
+
+    _initializeNotifications(); // now safe
+    WidgetsBinding.instance.addObserver(this);
+
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
+    // Load token if missing
+    if (profileProvider.token == null) {
+      profileProvider.loadToken();
+    }
+
+    currentUserId = profileProvider.userId;
 
     _initializeNotifications();
     _initializeSocket();
-    WidgetsBinding.instance.addObserver(this);
+    _fetchInitialData();
 
-    // Async initialization
+    _refreshTimer = Timer.periodic(const Duration(seconds: 30000), (_) {
+      _fetchInitialData();
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      final profileProvider = Provider.of<ProfileProvider>(
-        context,
-        listen: false,
-      );
-
-      // Load userId securely
-      await profileProvider.loadUserId();
-      currentUserId = profileProvider.userId;
-
-      // Load token if missing
-      if (profileProvider.token == null) {
+      // 🔧 Token load fix
+      if (profileProvider.userId != null && profileProvider.token == null) {
         await profileProvider.loadToken();
       }
 
-      // Handle deep link payload
       final payload = pendingNavigation.payload;
       if (payload != null) {
         final data = jsonDecode(payload);
@@ -119,24 +136,12 @@ class _ChatScreenState extends State<ChatScreen>
         }
         pendingNavigation.payload = null;
       }
-
-      setState(() {}); // refresh UI if needed
-    });
-
-    // Scroll to top initially
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (_scrollController.hasClients) {
-        _scrollController.animateTo(
-          0,
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeOut,
-        );
-      }
     });
 
     _scrollController.addListener(() {
       if (_scrollController.hasClients) {
         if (_scrollController.offset > 100) {
+          // some threshold
           if (!_showScrollToBottomButton) {
             setState(() => _showScrollToBottomButton = true);
           }
@@ -146,11 +151,6 @@ class _ChatScreenState extends State<ChatScreen>
           }
         }
       }
-    });
-
-    _fetchInitialData();
-    _refreshTimer = Timer.periodic(const Duration(seconds: 30000), (_) {
-      _fetchInitialData();
     });
   }
 
