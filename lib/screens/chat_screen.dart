@@ -52,12 +52,11 @@ class _ChatScreenState extends State<ChatScreen>
   final TextEditingController messageController = TextEditingController();
   final TextEditingController _textController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
-
+  final ValueNotifier<bool> _showButtonNotifier = ValueNotifier<bool>(false);
   String? userId;
   bool _isSocketConnected = false;
   Completer<void>? _socketConnectionCompleter;
   bool _isSending = false;
-  bool _showScrollToBottomButton = false;
 
   late IO.Socket socket;
   Timer? _refreshTimer;
@@ -140,15 +139,9 @@ class _ChatScreenState extends State<ChatScreen>
 
     _scrollController.addListener(() {
       if (_scrollController.hasClients) {
-        if (_scrollController.offset > 100) {
-          // some threshold
-          if (!_showScrollToBottomButton) {
-            setState(() => _showScrollToBottomButton = true);
-          }
-        } else {
-          if (_showScrollToBottomButton) {
-            setState(() => _showScrollToBottomButton = false);
-          }
+        final shouldShow = _scrollController.offset > 100;
+        if (shouldShow != _showButtonNotifier.value) {
+          _showButtonNotifier.value = shouldShow;
         }
       }
     });
@@ -160,6 +153,16 @@ class _ChatScreenState extends State<ChatScreen>
       WidgetsBinding.instance.addPostFrameCallback((_) {
         // Implement message highlighting logic here
       });
+    }
+  }
+
+  void _scrollToBottom() {
+    if (_scrollController.hasClients) {
+      _scrollController.animateTo(
+        0, // scroll to bottom for reverse: true
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOutCubic,
+      );
     }
   }
 
@@ -1519,31 +1522,41 @@ class _ChatScreenState extends State<ChatScreen>
               _buildMessageInput(),
             ],
           ),
-          if (_showScrollToBottomButton)
-            Positioned(
-              bottom: 80,
-              right: 16,
-              child: Material(
-                color: Colors.transparent, // No background
-                shape: const CircleBorder(), // Optional circular shape
-                child: IconButton(
-                  icon: const Icon(
-                    Icons.arrow_downward,
-                    color: Colors.blue,
-                  ), // Arrow color
-                  onPressed: () {
-                    if (_scrollController.hasClients) {
-                      _scrollController.animateTo(
-                        0, // scroll to bottom for reverse: true
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeOutCubic,
-                      );
-                    }
+          ValueListenableBuilder<bool>(
+            valueListenable: _showButtonNotifier,
+            builder: (context, showButton, child) {
+              return Positioned(
+                bottom: 80,
+                right: 16,
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 400),
+                  switchInCurve: Curves.elasticOut,
+                  switchOutCurve: Curves.easeInBack,
+                  transitionBuilder: (
+                    Widget child,
+                    Animation<double> animation,
+                  ) {
+                    return ScaleTransition(
+                      scale: animation,
+                      child: FadeTransition(opacity: animation, child: child),
+                    );
                   },
+                  child:
+                      showButton
+                          ? GestureDetector(
+                            key: const ValueKey('scroll-button'),
+                            onTap: _scrollToBottom,
+                            child: const Icon(
+                              Icons.arrow_downward,
+                              color: Colors.blue,
+                              size: 28,
+                            ),
+                          )
+                          : const SizedBox.shrink(),
                 ),
-              ),
-            ),
-          // ✅ Small bottom-left loader instead of fullscreen dialo
+              );
+            },
+          ),
         ],
       ),
     );
