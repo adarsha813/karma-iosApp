@@ -401,16 +401,16 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         await profileProvider.saveUserId(
           userId,
         ); // ✅ force update in local storage
-
+        final country = data['country'] ?? '';
         setState(() {
+          _selectedCountry = country;
+          _countryController.text = country;
           _nameController.text = data['name'] ?? '';
           _cityController.text = data['city'] ?? '';
-          _countryController.text = data['country'] ?? '';
           _gender = data['gender'] ?? '';
           _profileImageUrl = data['profilePicture'];
           _selectedDate = parsedDate;
           _selectedTime = parsedTime;
-          _selectedCountry = data['country'];
           _latitude = data['latitude']?.toDouble();
           _longitude = data['longitude']?.toDouble();
           _timezone = data['timezone']?.toDouble();
@@ -481,7 +481,8 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
     setState(() {
       _userIdController.text = profileProvider.userId ?? '';
-      _selectedCountry = profileProvider.country;
+      _countryController.text = profileProvider.country ?? '';
+      _selectedCountry = profileProvider.country ?? ''; // ✅ important
     });
 
     if (_userIdController.text.isNotEmpty) {
@@ -972,6 +973,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   }
 
   Widget _buildCountryField(AppLocalizations l10n) {
+    final initialCode =
+        _selectedCountry != null ? _getCountryIsoCode(_selectedCountry!) : '';
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Column(
@@ -980,37 +984,40 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           Padding(
             padding: const EdgeInsets.only(bottom: 4),
             child: Text(
-              l10n.birthCountryLabel, // Localized
+              l10n.birthCountryLabel,
               style: TextStyle(color: Colors.grey[600], fontSize: 12),
             ),
           ),
-          CountryListPick(
-            appBar: AppBar(
-              backgroundColor: Colors.blue,
-              title: Text(l10n.chooseCountryTitle), // Localized
+          KeyedSubtree(
+            key: ValueKey(_selectedCountry),
+            child: CountryListPick(
+              appBar: AppBar(
+                backgroundColor: Colors.blue,
+                title: Text(l10n.chooseCountryTitle),
+              ),
+              theme: CountryTheme(
+                isShowFlag: true,
+                isShowTitle: true,
+                isShowCode: false,
+                isDownIcon: true,
+                showEnglishName: true,
+              ),
+              initialSelection: initialCode,
+              onChanged: (CountryCode? code) {
+                if (code != null) {
+                  setState(() {
+                    _countryController.text = code.name!;
+                    _selectedCountry = code.name!;
+                    _cityController.clear();
+                    _latitude = null;
+                    _longitude = null;
+                    _timezone = null;
+                    _dst = null;
+                    _state = null;
+                  });
+                }
+              },
             ),
-            theme: CountryTheme(
-              isShowFlag: true,
-              isShowTitle: true,
-              isShowCode: false,
-              isDownIcon: true,
-              showEnglishName: true,
-            ),
-            initialSelection: _countryController.text,
-            onChanged: (CountryCode? code) {
-              if (code != null) {
-                setState(() {
-                  _countryController.text = code.name!;
-                  _selectedCountry = code.name!;
-                  _cityController.clear();
-                  _latitude = null;
-                  _longitude = null;
-                  _timezone = null;
-                  _dst = null;
-                  _state = null;
-                });
-              }
-            },
           ),
         ],
       ),
