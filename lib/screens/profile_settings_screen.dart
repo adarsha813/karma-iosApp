@@ -385,6 +385,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           context,
           listen: false,
         );
+
+        await profileProvider.fetchVersionHistoryFromBackend(userId);
+
         if (languageFromBackend != null &&
             languageFromBackend != profileProvider.language &&
             _userIdController.text.isNotEmpty) {

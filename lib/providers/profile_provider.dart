@@ -82,6 +82,98 @@ class ProfileProvider with ChangeNotifier {
     }
   }
 
+  Future<void> fetchVersionHistoryFromBackend(String userId) async {
+    try {
+      final uri = Uri.parse(
+        'https://chat-backend-rvk9.onrender.com/api/profile/get-profile?userId=$userId',
+      );
+      final response = await http.get(uri);
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        final profileData = data['profile'];
+
+        if (profileData != null && profileData['versions'] != null) {
+          // Convert backend versions to our format
+          _versionHistory = List<Map<String, dynamic>>.from(
+            profileData['versions'].map((version) {
+              return {
+                'name': version['name'],
+                'city': version['city'],
+                'country': version['country'],
+                'gender': version['gender'],
+                'birthDate':
+                    version['birthDate'] != null
+                        ? _parseBackendDate(version['birthDate'])
+                        : null,
+                'birthTime': version['birthTime'],
+                'profileImageUrl': version['profilePicture'],
+                'latitude': version['latitude']?.toDouble(),
+                'longitude': version['longitude']?.toDouble(),
+                'timezone': version['timezone']?.toDouble(),
+                'dst': version['dst']?.toDouble(),
+                'state': version['state'],
+                'updatedAt':
+                    version['updatedAt'] != null
+                        ? _parseBackendDate(version['updatedAt'])
+                        : DateTime.now().toString(),
+                'version': version['_id'] != null ? 'db' : 'local',
+              };
+            }).toList(),
+          );
+
+          // Save to local storage for offline access
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setString('versionHistory', json.encode(_versionHistory));
+
+          debugPrint(
+            '✅ Loaded ${_versionHistory.length} versions from backend',
+          );
+        }
+      } else {
+        debugPrint('❌ Failed to fetch version history: ${response.statusCode}');
+        // Fallback to local storage
+        await _loadVersionHistoryFromLocal();
+      }
+    } catch (e) {
+      debugPrint('🔴 Error fetching version history: $e');
+      // Fallback to local storage
+      await _loadVersionHistoryFromLocal();
+    }
+    notifyListeners();
+  }
+
+  Future<void> _loadVersionHistoryFromLocal() async {
+    final prefs = await SharedPreferences.getInstance();
+    final historyJson = prefs.getString('versionHistory');
+    if (historyJson != null) {
+      try {
+        _versionHistory = List<Map<String, dynamic>>.from(
+          json.decode(historyJson),
+        );
+      } catch (e) {
+        debugPrint('Error parsing local version history: $e');
+      }
+    }
+  }
+
+  String _parseBackendDate(dynamic backendDate) {
+    try {
+      if (backendDate is Map && backendDate['\$date'] != null) {
+        final dateMap = backendDate['\$date'];
+        if (dateMap['\$numberLong'] != null) {
+          final timestamp = int.parse(dateMap['\$numberLong'].toString());
+          return DateTime.fromMillisecondsSinceEpoch(timestamp).toString();
+        }
+      } else if (backendDate is String) {
+        return backendDate;
+      }
+    } catch (e) {
+      debugPrint('Error parsing backend date: $e');
+    }
+    return DateTime.now().toString();
+  }
+
   Future<void> loadLanguage() async {
     final prefs = await SharedPreferences.getInstance();
     _language = prefs.getString('language') ?? 'en'; // default to English
@@ -102,15 +194,23 @@ class ProfileProvider with ChangeNotifier {
     _dst = prefs.getDouble('dst');
     _state = prefs.getString('state');
 
-    // Load version history if available
-    final historyJson = prefs.getString('versionHistory');
-    if (historyJson != null) {
-      try {
-        _versionHistory = List<Map<String, dynamic>>.from(
-          json.decode(historyJson),
-        );
-      } catch (e) {
-        debugPrint('Error parsing version history: $e');
+    // Clear local version history first
+    _versionHistory = [];
+
+    // Load version history from backend if userId exists
+    if (_userId != null && _userId!.isNotEmpty) {
+      await fetchVersionHistoryFromBackend(_userId!);
+    } else {
+      // Fallback to local storage only if no userId
+      final historyJson = prefs.getString('versionHistory');
+      if (historyJson != null) {
+        try {
+          _versionHistory = List<Map<String, dynamic>>.from(
+            json.decode(historyJson),
+          );
+        } catch (e) {
+          debugPrint('Error parsing version history: $e');
+        }
       }
     }
 
@@ -259,17 +359,19 @@ class ProfileProvider with ChangeNotifier {
     double? timezone,
     double? dst,
     String? state,
-    String? language, // <-- add this
+    String? language,
     Map<String, dynamic>? previousVersion,
+    bool createVersion = false, // Add this parameter
   }) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+
     if (language != null) {
       await prefs.setString('language', language);
       _language = language;
     }
 
-    // Create a version snapshot before updating
-    if (previousVersion == null && _userId != null) {
+    // Only create version if explicitly requested
+    if (createVersion && _userId != null) {
       final versionSnapshot = {
         'name': _name,
         'city': _city,
@@ -284,15 +386,12 @@ class ProfileProvider with ChangeNotifier {
         'dst': _dst,
         'state': _state,
         'updatedAt': DateTime.now().toString(),
+        'version': 'local', // Mark as local version
       };
 
       _versionHistory.add(versionSnapshot);
 
-      // Keep only last 5 versions
-      if (_versionHistory.length > 5) {
-        _versionHistory.removeAt(0);
-      }
-
+      // Don't limit locally - rely on backend to manage versions
       await prefs.setString('versionHistory', json.encode(_versionHistory));
     }
 
