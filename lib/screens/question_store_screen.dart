@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
-import '../providers/profile_provider.dart';
-import 'dart:convert';
 import 'package:flutter_stripe/flutter_stripe.dart' hide Card;
-import '../services/socket_service.dart';
 import 'package:shimmer/shimmer.dart';
-import '../l10n/app_localizations.dart'; // Add this import
+import '../providers/profile_provider.dart';
+import '../services/payment_service.dart';
+import '../services/socket_service.dart';
+import '../services/secure_storage_service.dart';
+import '../utils/error_handler.dart';
+import '../l10n/app_localizations.dart';
+import '../config/environment.dart';
 
 class QuestionStoreScreen extends StatefulWidget {
   const QuestionStoreScreen({super.key});
@@ -19,13 +21,24 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
   int questionBalance = 0;
   List<Map<String, dynamic>> offers = [];
   bool isLoading = true;
+  bool isProcessingPayment = false;
 
-  final String baseUrl = "https://chat-backend-rvk9.onrender.com";
+  final PaymentService _paymentService = PaymentService();
+  final SecureStorageService _secureStorage = SecureStorageService();
 
   @override
   void initState() {
     super.initState();
+    _initializePayment();
     Future.delayed(Duration.zero, _loadData);
+  }
+
+  Future<void> _initializePayment() async {
+    try {
+      await _paymentService.initializeStripe();
+    } catch (e) {
+      _showErrorSnackBar(ErrorHandler.getUserFriendlyMessage(e as Exception));
+    }
   }
 
   Future<void> _loadData() async {
@@ -34,132 +47,163 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
       context,
       listen: false,
     );
-    await profileProvider.loadToken(); // Make sure token is loaded
 
-    final token = profileProvider.token;
-    final userId = profileProvider.userId;
+    // Use secure storage as backup
+    final token = profileProvider.token ?? await _secureStorage.getToken();
+    final userId = profileProvider.userId ?? await _secureStorage.getUserId();
 
     if (token == null || userId == null) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(l10n.userNotAuthenticated)));
+      _showErrorSnackBar(l10n.userNotAuthenticated);
       return;
     }
 
     setState(() => isLoading = true);
 
     try {
-      final balanceRes = await http.get(
-        Uri.parse("$baseUrl/api/questionspayment/balance"),
-        headers: {"Authorization": "Bearer $token"},
-      );
+      final results = await Future.wait([
+        _paymentService.getQuestionBalance(token),
+        _paymentService.getOffers(),
+      ]);
 
-      final offersRes = await http.get(
-        Uri.parse("$baseUrl/api/questionspayment/offers"),
-      );
+      final balance = results[0] as int;
+      final offersList = results[1] as List<Map<String, dynamic>>;
 
-      if (balanceRes.statusCode == 200 && offersRes.statusCode == 200) {
-        final balanceJson = json.decode(balanceRes.body);
-        final offersJson = json.decode(offersRes.body);
-
-        setState(() {
-          questionBalance = balanceJson['remaining'] ?? 0;
-          offers = List<Map<String, dynamic>>.from(offersJson);
-        });
-      } else {
-        throw Exception("Failed to load");
-      }
-    } catch (e) {
-      print("Error loading store data: $e");
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(l10n.loadStoreDataFailed)));
+      setState(() {
+        questionBalance = balance;
+        offers = offersList;
+      });
+    } on Exception catch (e) {
+      _showErrorSnackBar(ErrorHandler.getUserFriendlyMessage(e));
     }
 
     setState(() => isLoading = false);
   }
 
-  Future<void> startStripePayment(int questions) async {
+  Future<void> _startStripePayment(int questions) async {
+    if (isProcessingPayment) return;
+
     final l10n = AppLocalizations.of(context)!;
     final profileProvider = Provider.of<ProfileProvider>(
       context,
       listen: false,
     );
-    final token = profileProvider.token;
+
+    final token = profileProvider.token ?? await _secureStorage.getToken();
 
     if (token == null) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(l10n.missingAuthToken)));
+      _showErrorSnackBar(l10n.missingAuthToken);
       return;
     }
 
+    setState(() => isProcessingPayment = true);
+
     try {
-      final response = await http.post(
-        Uri.parse("$baseUrl/api/questionspayment/create-payment-intent"),
-        headers: {
-          'Authorization': 'Bearer $token',
-          'Content-Type': 'application/json',
-        },
-        body: json.encode({'questions': questions}),
+      final clientSecret = await _paymentService.createPaymentIntent(
+        token: token,
+        questions: questions,
       );
 
-      final jsonResponse = json.decode(response.body);
-      final clientSecret = jsonResponse['clientSecret'];
-
-      // 1. Initialize the payment sheet
+      // Initialize payment sheet
       await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
           paymentIntentClientSecret: clientSecret,
           merchantDisplayName: l10n.merchantDisplayName,
-          // style: ThemeMode.dark, // Optional
+
+          applePay:
+              Environment.isProduction
+                  ? const PaymentSheetApplePay(merchantCountryCode: 'US')
+                  : null,
+          googlePay:
+              Environment.isProduction
+                  ? const PaymentSheetGooglePay(
+                    merchantCountryCode: 'US',
+                    currencyCode: 'USD',
+                    testEnv: true,
+                  )
+                  : null,
+          style:
+              Theme.of(context).brightness == Brightness.dark
+                  ? ThemeMode.dark
+                  : ThemeMode.light,
+          appearance: const PaymentSheetAppearance(
+            colors: PaymentSheetAppearanceColors(
+              primary: Colors.deepPurple,
+              background: Colors.white,
+              componentBackground: Colors.white,
+              componentBorder: Colors.grey,
+              componentDivider: Colors.grey,
+              primaryText: Colors.black,
+              secondaryText: Colors.grey,
+              componentText: Colors.black,
+              icon: Colors.deepPurple,
+            ),
+          ),
         ),
       );
 
-      // 2. Present the sheet
+      // Present payment sheet
       await Stripe.instance.presentPaymentSheet();
 
-      // 3. Success message
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(l10n.paymentSuccessful)));
+      // Payment successful
+      _showSuccessSnackBar(l10n.paymentSuccessful);
 
-      // ✅ Show local notification
-
-      // Reload the balance
+      // Reload balance
       await _loadData();
 
-      final userId = profileProvider.userId;
-
+      // Notify server via socket
+      final userId = profileProvider.userId ?? await _secureStorage.getUserId();
       if (userId != null) {
         SocketService().socket.emit('paymentComplete', {
           'userId': userId,
           'questions': questions,
+          'timestamp': DateTime.now().toIso8601String(),
         });
-        print("✅ Emitted paymentComplete via socket");
-      }
-    } catch (e) {
-      if (e is StripeException && e.error.code == FailureCode.Canceled) {
-        print('Payment cancelled by user.');
-        return;
-      } else {
-        print('Payment error: $e');
       }
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('${l10n.paymentFailed}: ${e.toString()}')),
-      );
+      // Log successful payment (for analytics)
+      _logPaymentSuccess(questions, userId);
+    } on StripeException catch (e) {
+      if (e.error.code == FailureCode.Canceled) {
+        // User cancelled payment - no need to show error
+        return;
+      }
+      _showErrorSnackBar('${l10n.paymentFailed}: ${e.error.localizedMessage}');
+    } on Exception catch (e) {
+      _showErrorSnackBar(ErrorHandler.getUserFriendlyMessage(e));
+    } finally {
+      setState(() => isProcessingPayment = false);
     }
   }
 
-  void _handlePurchase(int questions) {
-    startStripePayment(questions);
+  void _logPaymentSuccess(int questions, String? userId) {
+    // Implement your analytics/logging here
+    print('Payment successful: $questions questions for user $userId');
+  }
+
+  void _showErrorSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: Colors.red,
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
+  }
+
+  void _showSuccessSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: Colors.green,
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
   }
 
   Widget _buildSkeletonLoader() {
     return ListView.builder(
       padding: const EdgeInsets.all(16),
-      itemCount: 5, // Number of shimmer cards to show
+      itemCount: 5,
       itemBuilder: (context, index) {
         return Card(
           shape: RoundedRectangleBorder(
@@ -214,6 +258,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
       appBar: AppBar(
         title: Text(l10n.buyQuestionsTitle),
         backgroundColor: Colors.deepPurpleAccent,
+        elevation: 0,
       ),
       body: SafeArea(
         child:
@@ -232,7 +277,9 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
                       const SizedBox(height: 20),
                       Text(
                         l10n.availableOffers,
-                        style: Theme.of(context).textTheme.titleLarge,
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                       const SizedBox(height: 10),
                       ...offers
@@ -254,27 +301,29 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
         padding: const EdgeInsets.all(16.0),
         child: Row(
           children: [
-            const Icon(Icons.stars, color: Colors.deepPurple, size: 36),
+            Icon(Icons.stars, color: Colors.deepPurple, size: 36),
             const SizedBox(width: 12),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  l10n.yourBalance,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    l10n.yourBalance,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                ),
-                Text(
-                  l10n.questionsBalance(questionBalance),
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.deepPurple,
+                  Text(
+                    l10n.questionsBalance(questionBalance),
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.deepPurple,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
@@ -304,18 +353,38 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
           l10n.questionsCount(questions),
           style: const TextStyle(fontWeight: FontWeight.w600),
         ),
-        subtitle: Text("\$$price"),
-        trailing: ElevatedButton(
-          onPressed: () => _handlePurchase(questions),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.deepPurple,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-          ),
-          child: Text(l10n.buyButton),
+        subtitle: Text(
+          "\$${price.toStringAsFixed(2)}",
+          style: const TextStyle(fontSize: 16),
         ),
+        trailing:
+            isProcessingPayment
+                ? const CircularProgressIndicator()
+                : ElevatedButton(
+                  onPressed: () => _startStripePayment(questions),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.deepPurple,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
+                  ),
+                  child: Text(
+                    l10n.buyButton,
+                    style: const TextStyle(fontWeight: FontWeight.w600),
+                  ),
+                ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // Clean up any resources if needed
+    super.dispose();
   }
 }
