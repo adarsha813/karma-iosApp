@@ -25,7 +25,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
   int questionBalance = 0;
   List<Map<String, dynamic>> offers = [];
   bool isLoading = true;
-  bool isProcessingPayment = false;
+  int? _processingOfferId; // Track which offer is being processed
 
   final PaymentService _paymentService = PaymentService();
   final SecureStorageService _secureStorage = SecureStorageService();
@@ -50,10 +50,17 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
 
   Future<bool> _authenticateWithBiometrics(String reason) async {
     try {
+      final canAuthenticate = await LocalAuthService().isBiometricAvailable();
+      if (!canAuthenticate) {
+        // Fallback to PIN/pattern or require re-authentication
+        _logPaymentEvent('biometric_unavailable', {});
+        return true; // Or implement alternative auth
+      }
+
       return await LocalAuthService().authenticate(reason);
     } catch (e) {
       _logPaymentEvent('biometric_failed', {'error': e.toString()});
-      return false; // Fail secure - require authentication
+      return false; // Fail secure
     }
   }
 
@@ -129,7 +136,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
     }
 
     // 3. Check if already processing
-    if (isProcessingPayment) return;
+    if (_processingOfferId != null) return; // ← Changed this lin
 
     final l10n = AppLocalizations.of(context)!;
     final profileProvider = Provider.of<ProfileProvider>(
@@ -148,7 +155,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
     final offer = offers.firstWhere((o) => o['questions'] == questions);
     final price = (offer['price'] as num).toDouble();
 
-    if (price >= 50.0) {
+    if (price >= 15.0) {
       final bool authenticated = await _authenticateWithBiometrics(
         'Confirm payment of \$${price.toStringAsFixed(2)}',
       );
@@ -162,7 +169,9 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
     AnalyticsService().logPaymentInitiated(questions, price);
 
     _lastPaymentAttempt = DateTime.now();
-    setState(() => isProcessingPayment = true);
+    setState(() {
+      _processingOfferId = questions;
+    });
 
     try {
       final clientSecret = await _paymentService.createPaymentIntent(
@@ -260,7 +269,9 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
       AnalyticsService().logPaymentFailed(e.toString(), questions, price);
       _showErrorSnackBar(ErrorHandler.getUserFriendlyMessage(e));
     } finally {
-      setState(() => isProcessingPayment = false);
+      setState(() {
+        _processingOfferId = null;
+      });
     }
   }
 
@@ -281,15 +292,19 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
         token: token,
         body: {
           'paymentIntentId': paymentIntentId,
-          'expectedQuestions': expectedQuestions, // Add this for extra security
+          'expectedQuestions': expectedQuestions,
         },
       );
 
       if (response.statusCode == 200) {
         final jsonResponse = json.decode(response.body);
         return jsonResponse['verified'] == true;
+      } else {
+        // Log the actual error from backend
+        final errorBody = json.decode(response.body);
+        print('Payment verification failed: ${errorBody['error']}');
+        return false;
       }
-      return false;
     } catch (e) {
       print('Payment verification error: $e');
       return false;
@@ -466,6 +481,8 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
     int questions = offer['questions'];
     double price = (offer['price'] as num).toDouble();
 
+    bool isThisOfferProcessing = _processingOfferId == questions;
+
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 5,
@@ -489,7 +506,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
           style: const TextStyle(fontSize: 16),
         ),
         trailing:
-            isProcessingPayment
+            isThisOfferProcessing // ← Use the specific check
                 ? const CircularProgressIndicator()
                 : ElevatedButton(
                   onPressed: () => _startStripePayment(questions),
