@@ -60,7 +60,7 @@ dependencies:
   intl: ^0.20.2
   connectivity_plus: ^5.0.1
   logger: ^2.6.2
-  
+  local_auth: ^2.3.0
 
  
   

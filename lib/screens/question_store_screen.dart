@@ -6,9 +6,13 @@ import '../providers/profile_provider.dart';
 import '../services/payment_service.dart';
 import '../services/socket_service.dart';
 import '../services/secure_storage_service.dart';
+import '../services/local_auth_service.dart';
+import '../services/analytics_service.dart';
+import '../services/http_service.dart';
 import '../utils/error_handler.dart';
 import '../l10n/app_localizations.dart';
 import '../config/environment.dart';
+import 'dart:convert';
 
 class QuestionStoreScreen extends StatefulWidget {
   const QuestionStoreScreen({super.key});
@@ -25,6 +29,9 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
 
   final PaymentService _paymentService = PaymentService();
   final SecureStorageService _secureStorage = SecureStorageService();
+  DateTime? _lastPaymentAttempt;
+  int _retryCount = 0;
+  final int _maxRetries = 3;
 
   @override
   void initState() {
@@ -38,6 +45,15 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
       await _paymentService.initializeStripe();
     } catch (e) {
       _showErrorSnackBar(ErrorHandler.getUserFriendlyMessage(e as Exception));
+    }
+  }
+
+  Future<bool> _authenticateWithBiometrics(String reason) async {
+    try {
+      return await LocalAuthService().authenticate(reason);
+    } catch (e) {
+      _logPaymentEvent('biometric_failed', {'error': e.toString()});
+      return false; // Fail secure - require authentication
     }
   }
 
@@ -72,14 +88,47 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
         questionBalance = balance;
         offers = offersList;
       });
-    } on Exception catch (e) {
-      _showErrorSnackBar(ErrorHandler.getUserFriendlyMessage(e));
-    }
 
-    setState(() => isLoading = false);
+      _retryCount = 0; // Reset retry count on success
+    } on Exception catch (e) {
+      _logPaymentEvent('load_data_failed', {
+        'error': e.toString(),
+        'retry_count': _retryCount,
+      });
+
+      // Implement retry logic with exponential backoff
+      if (_retryCount < _maxRetries) {
+        _retryCount++;
+        final delay = Duration(seconds: 2 * _retryCount); // 2, 4, 6 seconds
+
+        await Future.delayed(delay);
+        return _loadData(); // Retry
+      }
+
+      _showErrorSnackBar(ErrorHandler.getUserFriendlyMessage(e));
+    } finally {
+      setState(() => isLoading = false);
+    }
   }
 
   Future<void> _startStripePayment(int questions) async {
+    // 1. Input validation
+    if (questions <= 0 || questions > 1000) {
+      _showErrorSnackBar(
+        'Invalid question quantity. Please select a valid offer.',
+      );
+      return;
+    }
+
+    // 2. Rate limiting
+    if (_lastPaymentAttempt != null &&
+        DateTime.now().difference(_lastPaymentAttempt!) <
+            const Duration(seconds: 10)) {
+      _showErrorSnackBar('Please wait a moment before making another payment.');
+      return;
+    }
+
+    // 3. Check if already processing
     if (isProcessingPayment) return;
 
     final l10n = AppLocalizations.of(context)!;
@@ -95,6 +144,24 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
       return;
     }
 
+    // 4. Biometric auth for high-value purchases
+    final offer = offers.firstWhere((o) => o['questions'] == questions);
+    final price = (offer['price'] as num).toDouble();
+
+    if (price >= 50.0) {
+      final bool authenticated = await _authenticateWithBiometrics(
+        'Confirm payment of \$${price.toStringAsFixed(2)}',
+      );
+      if (!authenticated) {
+        _showErrorSnackBar('Authentication required for this purchase.');
+        return;
+      }
+    }
+
+    // Log payment initiation
+    AnalyticsService().logPaymentInitiated(questions, price);
+
+    _lastPaymentAttempt = DateTime.now();
     setState(() => isProcessingPayment = true);
 
     try {
@@ -103,12 +170,14 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
         questions: questions,
       );
 
+      // Extract payment intent ID for verification
+      final paymentIntentId = _extractPaymentIntentId(clientSecret);
+
       // Initialize payment sheet
       await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
           paymentIntentClientSecret: clientSecret,
           merchantDisplayName: l10n.merchantDisplayName,
-
           applePay:
               Environment.isProduction
                   ? const PaymentSheetApplePay(merchantCountryCode: 'US')
@@ -144,7 +213,20 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
       // Present payment sheet
       await Stripe.instance.presentPaymentSheet();
 
-      // Payment successful
+      // ✅ CRITICAL: Verify payment with backend - FIXED LINE
+      final isVerified = await _verifyPayment(
+        paymentIntentId,
+        token,
+        questions,
+      );
+
+      if (!isVerified) {
+        throw Exception('Payment verification failed');
+      }
+
+      // Log successful payment
+      AnalyticsService().logPaymentSuccess(paymentIntentId, questions, price);
+
       _showSuccessSnackBar(l10n.paymentSuccessful);
 
       // Reload balance
@@ -156,28 +238,77 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
         SocketService().socket.emit('paymentComplete', {
           'userId': userId,
           'questions': questions,
+          'paymentIntentId': paymentIntentId,
           'timestamp': DateTime.now().toIso8601String(),
         });
       }
 
-      // Log successful payment (for analytics)
-      _logPaymentSuccess(questions, userId);
+      // Log successful payment
+      _logPaymentSuccess(questions, userId, paymentIntentId);
     } on StripeException catch (e) {
       if (e.error.code == FailureCode.Canceled) {
-        // User cancelled payment - no need to show error
+        AnalyticsService().logPaymentCancelled(questions, price);
         return;
       }
+      AnalyticsService().logPaymentFailed(
+        e.error.localizedMessage ?? 'Unknown error',
+        questions,
+        price,
+      );
       _showErrorSnackBar('${l10n.paymentFailed}: ${e.error.localizedMessage}');
     } on Exception catch (e) {
+      AnalyticsService().logPaymentFailed(e.toString(), questions, price);
       _showErrorSnackBar(ErrorHandler.getUserFriendlyMessage(e));
     } finally {
       setState(() => isProcessingPayment = false);
     }
   }
 
-  void _logPaymentSuccess(int questions, String? userId) {
-    // Implement your analytics/logging here
-    print('Payment successful: $questions questions for user $userId');
+  // Helper method to extract payment intent ID
+  String _extractPaymentIntentId(String clientSecret) {
+    // clientSecret format: "pi_xxx_secret_yyy"
+    return clientSecret.split('_secret_').first;
+  }
+
+  Future<bool> _verifyPayment(
+    String paymentIntentId,
+    String token,
+    int expectedQuestions,
+  ) async {
+    try {
+      final response = await HttpService.post(
+        '${Environment.baseUrl}/api/questionspayment/verify-payment',
+        token: token,
+        body: {
+          'paymentIntentId': paymentIntentId,
+          'expectedQuestions': expectedQuestions, // Add this for extra security
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final jsonResponse = json.decode(response.body);
+        return jsonResponse['verified'] == true;
+      }
+      return false;
+    } catch (e) {
+      print('Payment verification error: $e');
+      return false;
+    }
+  }
+
+  void _logPaymentEvent(String event, Map<String, dynamic> params) {
+    // For now, just print - you can integrate with your analytics service
+    print('Payment Event: $event - $params');
+  }
+
+  void _logPaymentSuccess(
+    int questions,
+    String? userId,
+    String paymentIntentId,
+  ) {
+    print(
+      'Payment successful: $questions questions for user $userId, Payment ID: $paymentIntentId',
+    );
   }
 
   void _showErrorSnackBar(String message) {
