@@ -385,7 +385,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           context,
           listen: false,
         );
-
         if (languageFromBackend != null &&
             languageFromBackend != profileProvider.language &&
             _userIdController.text.isNotEmpty) {
@@ -396,26 +395,25 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           ).setLocale(Locale(languageFromBackend));
         }
 
-        await profileProvider.saveUserId(userId);
+        await profileProvider.saveUserId(
+          userId,
+        ); // ✅ force update in local storage
 
-        // CRITICAL: Set country data before other fields
-        final country = data['country'] ?? '';
         setState(() {
-          _selectedCountry = country;
-          _countryController.text = country;
           _nameController.text = data['name'] ?? '';
           _cityController.text = data['city'] ?? '';
+          _countryController.text = data['country'] ?? '';
           _gender = data['gender'] ?? '';
           _profileImageUrl = data['profilePicture'];
           _selectedDate = parsedDate;
           _selectedTime = parsedTime;
+          _selectedCountry = data['country'];
           _latitude = data['latitude']?.toDouble();
           _longitude = data['longitude']?.toDouble();
           _timezone = data['timezone']?.toDouble();
           _dst = data['dst']?.toDouble();
           _state = data['state'];
         });
-
         final savedLang = profileProvider.language ?? 'en';
         await profileProvider.saveFullProfile(
           userId: userId,
@@ -431,7 +429,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           timezone: _timezone,
           dst: _dst,
           state: _state,
-          language: savedLang,
+          language: savedLang, // ✅ pass saved language explicitly
         );
       } else {
         await _loadLocalProfileData();
@@ -477,12 +475,10 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     );
     await profileProvider.loadUserId();
     await profileProvider.loadLanguage(); // Load local language first
-    await profileProvider.loadProfileData(); // Load any saved profile data
 
     setState(() {
       _userIdController.text = profileProvider.userId ?? '';
-      _countryController.text = profileProvider.country ?? '';
-      _selectedCountry = profileProvider.country ?? ''; // ✅ important
+      _selectedCountry = profileProvider.country;
     });
 
     if (_userIdController.text.isNotEmpty) {
@@ -690,14 +686,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                           listen: false,
                         ).saveUserId(generatedId);
                         Navigator.of(context).pop();
-                        // Replace with:
-                        Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ChatScreen(chatId: null),
-                          ),
-                          (route) => false, // This removes all previous routes
-                        );
+                        Navigator.pushReplacementNamed(context, '/chat');
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
@@ -980,9 +969,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   }
 
   Widget _buildCountryField(AppLocalizations l10n) {
-    final initialCode =
-        _selectedCountry != null ? _getCountryIsoCode(_selectedCountry!) : '';
-
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Column(
@@ -991,40 +977,37 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           Padding(
             padding: const EdgeInsets.only(bottom: 4),
             child: Text(
-              l10n.birthCountryLabel,
+              l10n.birthCountryLabel, // Localized
               style: TextStyle(color: Colors.grey[600], fontSize: 12),
             ),
           ),
-          KeyedSubtree(
-            key: ValueKey(_selectedCountry),
-            child: CountryListPick(
-              appBar: AppBar(
-                backgroundColor: Colors.blue,
-                title: Text(l10n.chooseCountryTitle),
-              ),
-              theme: CountryTheme(
-                isShowFlag: true,
-                isShowTitle: true,
-                isShowCode: false,
-                isDownIcon: true,
-                showEnglishName: true,
-              ),
-              initialSelection: initialCode,
-              onChanged: (CountryCode? code) {
-                if (code != null) {
-                  setState(() {
-                    _countryController.text = code.name!;
-                    _selectedCountry = code.name!;
-                    _cityController.clear();
-                    _latitude = null;
-                    _longitude = null;
-                    _timezone = null;
-                    _dst = null;
-                    _state = null;
-                  });
-                }
-              },
+          CountryListPick(
+            appBar: AppBar(
+              backgroundColor: Colors.blue,
+              title: Text(l10n.chooseCountryTitle), // Localized
             ),
+            theme: CountryTheme(
+              isShowFlag: true,
+              isShowTitle: true,
+              isShowCode: false,
+              isDownIcon: true,
+              showEnglishName: true,
+            ),
+            initialSelection: _countryController.text,
+            onChanged: (CountryCode? code) {
+              if (code != null) {
+                setState(() {
+                  _countryController.text = code.name!;
+                  _selectedCountry = code.name!;
+                  _cityController.clear();
+                  _latitude = null;
+                  _longitude = null;
+                  _timezone = null;
+                  _dst = null;
+                  _state = null;
+                });
+              }
+            },
           ),
         ],
       ),
@@ -1032,7 +1015,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   }
 
   // Update _buildCityField to accept l10n parameter
-
   Widget _buildCityField(AppLocalizations l10n) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
@@ -1465,14 +1447,13 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final localeProvider = Provider.of<LocaleProvider>(context);
+    final localeProvider = Provider.of<LocaleProvider>(
+      context,
+    ); // listen: true by default
     final locale = localeProvider.locale;
     print("Current locale: ${locale.languageCode}");
     final profileProvider = Provider.of<ProfileProvider>(context);
     final l10n = AppLocalizations.of(context)!; // Get localization instance
-    debugPrint('Current selected country: $_selectedCountry');
-    debugPrint('Country controller text: ${_countryController.text}');
-    debugPrint('Profile provider country: ${profileProvider.country}');
 
     return Scaffold(
       resizeToAvoidBottomInset: true, // prevent keyboard overlap
@@ -1547,6 +1528,11 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
               // Show button only if userId is blank
               // Show as a clickable text if userId is empty
               const SizedBox(height: 20),
+              _buildTextField(
+                l10n.userIdLabel, // Localized
+                Icons.person_outline,
+                _userIdController,
+              ),
 
               if (_userIdController.text.isEmpty)
                 GestureDetector(
@@ -1607,22 +1593,21 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                 ],
               ),
               _buildDateTile(
-                "Date of Birth",
+                l10n.birthDateLabel, // Localized
                 _selectedDate != null
-                    ? "${_selectedDate!.day}-${_selectedDate!.month}-${_selectedDate!.year}"
-                    : "Select your birth date",
+                    ? "${_selectedDate!.year}-${_selectedDate!.month.toString().padLeft(2, '0')}-${_selectedDate!.day.toString().padLeft(2, '0')}"
+                    : l10n.birthDatePlaceholder, // Localized
                 () => _pickDate(context),
                 Icons.calendar_today,
               ),
               _buildDateTile(
-                "Time of Birth",
+                l10n.birthTimeLabel, // Localized
                 _selectedTime != null
                     ? "${_selectedTime!.hour.toString().padLeft(2, '0')}:${_selectedTime!.minute.toString().padLeft(2, '0')}"
-                    : "Select your birth time",
+                    : l10n.birthTimePlaceholder, // Localized
                 () => _pickTime(context),
                 Icons.access_time,
               ),
-
               const SizedBox(height: 20),
               SizedBox(
                 width: double.infinity,

@@ -31,6 +31,7 @@ import 'package:kundali/widgets/bouncing_dots.dart';
 import 'package:kundali/screens/CustomerSupportPage.dart';
 import 'package:kundali/screens/AboutUsPage.dart';
 import '../l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
@@ -62,6 +63,13 @@ class _ChatScreenState extends State<ChatScreen>
   Timer? _refreshTimer;
   String? currentUserId;
   bool _isReinitializing = false;
+
+  Future<void> loadUserId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    userId = prefs.getString('userId');
+    debugPrint("🔍 ProfileProvider.loadUserId() => $userId");
+    setState(() {});
+  }
 
   @override
   void initState() {
