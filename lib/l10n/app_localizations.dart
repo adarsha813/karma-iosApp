@@ -145,7 +145,7 @@ abstract class AppLocalizations {
   /// No description provided for @chooseCountryTitle.
   ///
   /// In en, this message translates to:
-  /// **'Choose your country'**
+  /// **'Choose Country'**
   String get chooseCountryTitle;
 
   /// No description provided for @yesText.
@@ -739,7 +739,7 @@ abstract class AppLocalizations {
   /// Label for recovery secret input field
   ///
   /// In en, this message translates to:
-  /// **'Recovery Secret'**
+  /// **'Recovery Secret:'**
   String get recoverySecretLabel;
 
   /// Title for About Us page
@@ -1347,6 +1347,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Image uploaded successfully'**
   String get imageUploaded;
+
+  /// No description provided for @savedInformationConfirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'ve Saved This Information'**
+  String get savedInformationConfirmation;
+
+  /// No description provided for @noHistoryAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No history available'**
+  String get noHistoryAvailable;
+
+  /// No description provided for @securityNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Your data is securely encrypted and stored'**
+  String get securityNotice;
+
+  /// No description provided for @accountRecoveryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'🔐 Account Recovery Details'**
+  String get accountRecoveryTitle;
+
+  /// No description provided for @recoveryInstructions.
+  ///
+  /// In en, this message translates to:
+  /// **'Please save this information securely. You\'ll need it to recover your account.'**
+  String get recoveryInstructions;
+
+  /// No description provided for @importantNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'⚠️ Important:'**
+  String get importantNotice;
+
+  /// No description provided for @recoveryTips.
+  ///
+  /// In en, this message translates to:
+  /// **'• Take a screenshot of this information\n• Store it in a secure place\n• Do not share with anyone\n• This will only be shown once'**
+  String get recoveryTips;
 }
 
 class _AppLocalizationsDelegate

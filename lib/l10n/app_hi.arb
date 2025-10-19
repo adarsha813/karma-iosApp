@@ -212,5 +212,16 @@
   "educationCategory": "शिक्षा",
   "travelCategory": "यात्रा",
   "spiritualCategory": "आध्यात्मिक",
-  "generalCategory": "सामान्य"
+  "generalCategory": "सामान्य",
+  "savedInformationConfirmation": "मैंने यह जानकारी सहेज ली है",
+  "versionHistoryTitle": "संस्करण इतिहास",
+  "noHistoryAvailable": "कोई इतिहास उपलब्ध नहीं है",
+  "noCitiesFound": "कोई शहर नहीं मिला",
+  "chooseCountryTitle": "देश चुनें",
+  "securityNotice": "आपका डेटा सुरक्षित रूप से एन्क्रिप्ट और संग्रहीत किया गया है",
+  "accountRecoveryTitle": "🔐 खाता पुनर्प्राप्ति विवरण",
+  "recoveryInstructions": "कृपया इस जानकारी को सुरक्षित रूप से सहेजें। आपको अपने खाते को पुनर्प्राप्त करने के लिए इसकी आवश्यकता होगी।",
+  "recoverySecretLabel": "पुनर्प्राप्ति गुप्त:",
+  "importantNotice": "⚠️ महत्वपूर्ण:",
+  "recoveryTips": "• इस जानकारी का स्क्रीनशॉट लें\n• इसे सुरक्षित स्थान पर सहेजें\n• किसी के साथ साझा न करें\n• यह केवल एक बार दिखाया जाएगा"
 }

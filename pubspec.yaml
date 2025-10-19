@@ -63,6 +63,7 @@ dependencies:
   local_auth: ^2.3.0
   crypto: ^3.0.3
   basic_utils: ^5.6.0  # add this line
+  uuid: ^4.3.3
 
  
   

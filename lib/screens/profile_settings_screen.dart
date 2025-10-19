@@ -9,14 +9,34 @@ import '../providers/profile_provider.dart';
 import '../providers/LocaleProvider.dart';
 import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-import '../l10n/app_localizations.dart'; // Add localization import
+import '../l10n/app_localizations.dart';
 import '../widgets/Avaterloder.dart';
-import 'recovery_screen.dart'; // Adjust the path if it's in another folder
+import 'recovery_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'chat_screen.dart'; // Add this line
+import 'chat_screen.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:intl/intl.dart'; // Add this import for DateFormat
-import 'package:kundali/config/environment.dart'; // adjust import path
+import 'package:intl/intl.dart';
+import 'package:kundali/config/environment.dart';
+import 'package:kundali/services/profile_service.dart';
+
+class _SaveProfileResult {
+  final bool success;
+  final String? message;
+  final Map<String, dynamic>? data;
+
+  _SaveProfileResult({required this.success, this.message, this.data});
+}
+
+class _ValidationResult {
+  final bool isValid;
+  final String? errorMessage;
+
+  _ValidationResult({required this.isValid, this.errorMessage});
+
+  factory _ValidationResult.valid() => _ValidationResult(isValid: true);
+  factory _ValidationResult.invalid(String error) =>
+      _ValidationResult(isValid: false, errorMessage: error);
+}
 
 class ProfileSettingsScreen extends StatefulWidget {
   const ProfileSettingsScreen({super.key});
@@ -50,6 +70,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final _debounceTimer = Duration(seconds: 1);
   Timer? _validationTimer;
+  Timer? _citySearchDebounce;
 
   // Input sanitization
   String _sanitizeInput(String input) {
@@ -99,26 +120,16 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   void dispose() {
     _validationTimer?.cancel();
     _reloadTimer?.cancel();
-    _nameController.dispose();
-    _cityController.dispose();
-    _countryController.dispose();
-    _userIdController.dispose();
-    _cleanupResources();
-    super.dispose();
-  }
+    _validationTimer = null;
+    _reloadTimer = null;
+    _citySearchDebounce?.cancel();
 
-  void _cleanupResources() {
-    if (_userIdController.text.trim().isNotEmpty) {
-      final profileProvider = Provider.of<ProfileProvider>(
-        context,
-        listen: false,
-      );
-      profileProvider.saveUserId(_userIdController.text.trim());
-    }
     _nameController.dispose();
     _cityController.dispose();
     _countryController.dispose();
     _userIdController.dispose();
+
+    super.dispose();
   }
 
   void _onUserIdChanged() {
@@ -141,59 +152,149 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     try {
       final picked = await ImagePicker().pickImage(
         source: ImageSource.gallery,
-        maxWidth: 1024,
-        maxHeight: 1024,
-        imageQuality: 80,
+        maxWidth: 800,
+        maxHeight: 800,
+        imageQuality: 70,
       );
 
       if (picked != null) {
         final file = File(picked.path);
         final stat = await file.stat();
 
-        if (stat.size > 5 * 1024 * 1024) {
-          _showMessage('Image size must be less than 5MB', color: Colors.red);
+        if (stat.size > 2 * 1024 * 1024) {
+          _showErrorSnackbar('Image size must be less than 2MB');
           return;
         }
 
-        setState(() {
-          _image = file;
-        });
-
-        _showMessage('imageUploaded', color: Colors.green);
+        // Compress image further if needed
+        final compressedImage = await _compressImage(file);
+        setState(() => _image = compressedImage);
       }
     } catch (e) {
-      _showMessage('Failed to pick image', color: Colors.red);
+      _showErrorSnackbar('Failed to pick image');
     }
   }
 
+  // Image compression method
+  Future<File> _compressImage(File imageFile) async {
+    // For now, return the original file
+    // In production, you can integrate with flutter_image_compress package
+    return imageFile;
+  }
+
+  Future<_ValidationResult> _validateProfileBeforeSave() async {
+    if (!_formKey.currentState!.validate()) {
+      return _ValidationResult.invalid('Form validation failed');
+    }
+
+    if (_nameController.text.trim().isEmpty) {
+      return _ValidationResult.invalid('Name is required');
+    }
+
+    if (_selectedDate == null) {
+      return _ValidationResult.invalid('Birth date is required');
+    }
+
+    if (_selectedTime == null) {
+      return _ValidationResult.invalid('Birth time is required');
+    }
+
+    if (_gender == null || _gender!.isEmpty) {
+      return _ValidationResult.invalid('Gender is required');
+    }
+
+    return _ValidationResult.valid();
+  }
+
+  void _showValidationError(_ValidationResult result) {
+    _showErrorSnackbar(result.errorMessage ?? 'Validation failed');
+  }
+
+  void _handleSaveError(String? message) {
+    _showErrorSnackbar(message ?? 'Failed to save profile');
+    _logError('ProfileSaveError', message);
+  }
+
+  void _handleSaveException(dynamic error, StackTrace stack) {
+    _showErrorSnackbar('An unexpected error occurred');
+    _logError('ProfileSaveException', '$error\n$stack');
+  }
+
+  void _logError(String type, String? message) {
+    debugPrint('[$type]: $message');
+    // Integrate with your logging service here
+    // FirebaseCrashlytics.instance.recordError(message, StackTrace.current);
+  }
+
   // Secure profile saving with validation
+  // Modify _saveProfile to use both validation methods for extra security
   Future<void> _saveProfile(BuildContext context) async {
-    if (_isSaving || !_formKey.currentState!.validate()) return;
+    if (_isSaving) return;
+
+    // Use both validation methods for maximum security
+    if (!_validateRequiredFields()) {
+      return;
+    }
+
+    final validationResult = await _validateProfileBeforeSave();
+    if (!validationResult.isValid) {
+      _showValidationError(validationResult);
+      return;
+    }
 
     setState(() => _isSaving = true);
 
     try {
-      // Validate required fields
-      if (!_validateRequiredFields()) {
-        setState(() => _isSaving = false);
-        return;
-      }
-
+      // Try using ProfileService first, fallback to direct backend call
       final profileData = await _prepareProfileData();
-      final saveResult = await _sendProfileToBackend(profileData);
 
-      if (saveResult['success']) {
-        await _handleSuccessfulSave(saveResult, context);
-      } else {
-        _showErrorSnackbar(saveResult['message'] ?? 'Save failed');
+      _SaveProfileResult saveResult;
+      try {
+        saveResult = await _executeProfileSave();
+      } catch (e) {
+        // Fallback to direct backend call
+        debugPrint('ProfileService failed, using direct backend call: $e');
+        final directResult = await _sendProfileToBackend(profileData);
+        saveResult = _SaveProfileResult(
+          success: directResult['success'],
+          message: directResult['message'],
+          data: directResult['data'],
+        );
       }
-    } catch (e) {
-      _showErrorSnackbar('An error occurred while saving');
-      debugPrint('Save profile error: $e');
+
+      if (saveResult.success) {
+        // Use the preferred method
+        await _handleSuccessfulSave({
+          'success': true,
+          'data': saveResult.data,
+        }, context);
+      } else {
+        _handleSaveError(saveResult.message);
+      }
+    } catch (e, stack) {
+      _handleSaveException(e, stack);
     } finally {
       if (mounted) {
         setState(() => _isSaving = false);
       }
+    }
+  }
+
+  Future<_SaveProfileResult> _executeProfileSave() async {
+    try {
+      final profileData = await _prepareProfileData();
+      final result = await ProfileService.saveProfile(profileData);
+
+      if (result['success'] == true) {
+        return _SaveProfileResult(success: true, data: result['data']);
+      } else {
+        return _SaveProfileResult(
+          success: false,
+          message: result['error'] ?? 'Save failed',
+        );
+      }
+    } catch (e) {
+      return _SaveProfileResult(success: false, message: 'Network error: $e');
     }
   }
 
@@ -264,8 +365,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       'state': _state,
       'profilePicture': base64Image,
       if (savedLang != null) 'language': savedLang,
-      'timestamp':
-          DateTime.now().toIso8601String(), // Add timestamp for security
+      'timestamp': DateTime.now().toIso8601String(),
     };
   }
 
@@ -305,7 +405,15 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     return '${DateTime.now().millisecondsSinceEpoch}_${_nameController.text.hashCode}';
   }
 
-  // Use it in _handleSuccessfulSave
+  void _onCityChanged(String query) {
+    _citySearchDebounce?.cancel();
+    _citySearchDebounce = Timer(const Duration(milliseconds: 500), () {
+      if (mounted && query.length >= 2) {
+        // Trigger search
+      }
+    });
+  }
+
   Future<void> _handleSuccessfulSave(
     Map<String, dynamic> result,
     BuildContext context,
@@ -321,7 +429,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         listen: false,
       ).saveUserId(generatedId);
 
-      // Show success message
       _showSuccessSnackbar('Profile saved successfully!');
 
       if (responseData['recoverySecret'] != null) {
@@ -451,7 +558,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     );
   }
 
-  // Keep your existing UI methods but add validation
   Widget _buildTextField(
     String label,
     IconData icon,
@@ -731,7 +837,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   }
 
   String _getCountryIsoCode(String countryName) {
-    // This is a simplified mapping - you might want to use a complete package
     final countryCodes = {
       'Afghanistan': 'AF',
       'Albania': 'AL',
@@ -1026,9 +1131,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           ).setLocale(Locale(languageFromBackend));
         }
 
-        await profileProvider.saveUserId(
-          userId,
-        ); // ✅ force update in local storage
+        await profileProvider.saveUserId(userId);
         final country = data['country'] ?? '';
         setState(() {
           _selectedCountry = country;
@@ -1060,7 +1163,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           timezone: _timezone,
           dst: _dst,
           state: _state,
-          language: savedLang, // ✅ pass saved language explicitly
+          language: savedLang,
         );
       } else {
         await _loadLocalProfileData();
@@ -1110,12 +1213,12 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       listen: false,
     );
     await profileProvider.loadUserId();
-    await profileProvider.loadLanguage(); // Load local language first
+    await profileProvider.loadLanguage();
 
     setState(() {
       _userIdController.text = profileProvider.userId ?? '';
       _countryController.text = profileProvider.country ?? '';
-      _selectedCountry = profileProvider.country ?? ''; // ✅ important
+      _selectedCountry = profileProvider.country ?? '';
     });
 
     if (_userIdController.text.isNotEmpty) {
@@ -1301,7 +1404,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     if (city.isEmpty || country.isEmpty) return;
 
     try {
-      // 1. First get coordinates from LocationIQ
       final encodedQuery = Uri.encodeComponent('$city,$country');
       final locationUrl = Uri.parse(
         '${Environment.locationIqBaseUrl}/search'
@@ -1326,7 +1428,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
           debugPrint('Location found: $lat,$lon, state: $state');
 
-          // 2. Get timezone info
           final timezoneUrl = Uri.parse(
             '${Environment.timezoneDbBaseUrl}'
             '?key=${Environment.timezoneDbApiKey}'
@@ -1364,7 +1465,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     }
   }
 
-  // Enhanced _showMessage with better parameter handling
   void _showMessage(String messageKey, {Color color = Colors.blue}) {
     if (!mounted) return;
 
@@ -1388,7 +1488,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         message = l10n.imageUploaded;
         break;
       default:
-        message = messageKey; // Fallback to direct message
+        message = messageKey;
     }
 
     ScaffoldMessenger.of(context).showSnackBar(
@@ -1452,7 +1552,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     );
   }
 
-  // Update _buildCityField to accept l10n parameter
   Widget _buildCityField(AppLocalizations l10n) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
@@ -1462,7 +1561,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           Padding(
             padding: const EdgeInsets.only(bottom: 4),
             child: Text(
-              l10n.birthCityLabel, // Localized
+              l10n.birthCityLabel,
               style: TextStyle(color: Colors.grey[600], fontSize: 12),
             ),
           ),
@@ -1470,18 +1569,18 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
             textFieldConfiguration: TextFieldConfiguration(
               controller: _cityController,
               decoration: InputDecoration(
-                labelText: l10n.birthCityLabel, // Localized
+                labelText: l10n.birthCityLabel,
                 prefixIcon: Icon(Icons.location_city, color: Colors.blue),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
                 hintText:
                     _selectedCountry == null
-                        ? l10n
-                            .countryFirstPlaceholder // Localized
+                        ? l10n.countryFirstPlaceholder
                         : l10n.cityPlaceholder(_selectedCountry!),
               ),
               enabled: _selectedCountry != null,
+              onChanged: _onCityChanged, // Add this line
             ),
             suggestionsCallback: (pattern) async {
               try {
@@ -1503,7 +1602,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  l10n.noCitiesFound, // Localized
+                  l10n.noCitiesFound,
                   style: TextStyle(color: Colors.grey),
                 ),
               );
@@ -1583,7 +1682,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     );
   }
 
-  // Add this method to your _ProfileSettingsScreenState class
   Widget _buildVersionHistoryItem(
     Map<String, dynamic> version,
     AppLocalizations l10n,
@@ -1600,14 +1698,11 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Header with timestamp
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  l10n.versionFromText(
-                    dateFormat.format(updatedAt),
-                  ), // Fixed: use the function
+                  l10n.versionFromText(dateFormat.format(updatedAt)),
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
@@ -1634,10 +1729,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                 ),
               ],
             ),
-
             const SizedBox(height: 12),
-
-            // Profile data in a clean grid layout
             Wrap(
               spacing: 16,
               runSpacing: 8,
@@ -1646,10 +1738,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                     version['name'].toString().isNotEmpty)
                   _buildHistoryItemChip(
                     icon: Icons.person,
-                    label: 'Name', // Use simple string instead of l10n function
+                    label: 'Name',
                     value: version['name'].toString(),
                   ),
-
                 if (version['city'] != null &&
                     version['city'].toString().isNotEmpty)
                   _buildHistoryItemChip(
@@ -1657,7 +1748,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                     label: 'City',
                     value: version['city'].toString(),
                   ),
-
                 if (version['country'] != null &&
                     version['country'].toString().isNotEmpty)
                   _buildHistoryItemChip(
@@ -1665,7 +1755,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                     label: 'Country',
                     value: version['country'].toString(),
                   ),
-
                 if (version['gender'] != null &&
                     version['gender'].toString().isNotEmpty)
                   _buildHistoryItemChip(
@@ -1677,7 +1766,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                             ? l10n.maleLabel
                             : l10n.femaleLabel,
                   ),
-
                 if (version['birthDate'] != null)
                   _buildHistoryItemChip(
                     icon: Icons.calendar_today,
@@ -1686,14 +1774,12 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                       'MMM dd, yyyy',
                     ).format(DateTime.parse(version['birthDate'])),
                   ),
-
                 if (version['birthTime'] != null)
                   _buildHistoryItemChip(
                     icon: Icons.access_time,
                     label: 'Birth Time',
                     value: version['birthTime'].toString(),
                   ),
-
                 if (version['latitude'] != null && version['longitude'] != null)
                   _buildHistoryItemChip(
                     icon: Icons.gps_fixed,
@@ -1701,7 +1787,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                     value:
                         '${version['latitude'].toStringAsFixed(4)}, ${version['longitude'].toStringAsFixed(4)}',
                   ),
-
                 if (version['timezone'] != null)
                   _buildHistoryItemChip(
                     icon: Icons.time_to_leave,
@@ -1709,7 +1794,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                     value:
                         'GMT${version['timezone'] >= 0 ? '+' : ''}${version['timezone']}',
                   ),
-
                 if (version['dst'] != null)
                   _buildHistoryItemChip(
                     icon: Icons.light_mode,
@@ -1717,7 +1801,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                     value: version['dst'] == 1.0 ? l10n.yesText : l10n.noText,
                     color: version['dst'] == 1.0 ? Colors.green : Colors.grey,
                   ),
-
                 if (version['state'] != null &&
                     version['state'].toString().isNotEmpty)
                   _buildHistoryItemChip(
@@ -1727,14 +1810,12 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                   ),
               ],
             ),
-
-            // Empty state if no data
             if (_isVersionEmpty(version))
               Container(
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: Center(
                   child: Text(
-                    'No data available', // Use simple string
+                    'No data available',
                     style: const TextStyle(
                       color: Colors.grey,
                       fontStyle: FontStyle.italic,
@@ -1748,7 +1829,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     );
   }
 
-  // Helper method to build individual history items as chips
   Widget _buildHistoryItemChip({
     required IconData icon,
     required String label,
@@ -1788,7 +1868,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     );
   }
 
-  // Helper method to check if version has no data
   bool _isVersionEmpty(Map<String, dynamic> version) {
     final fields = [
       'name',
@@ -1803,14 +1882,12 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     );
   }
 
-  // Update the history section in your build method:
   Widget _buildHistorySection(
     AppLocalizations l10n,
     ProfileProvider profileProvider,
   ) {
     return Column(
       children: [
-        // Header
         Container(
           width: double.infinity,
           padding: const EdgeInsets.all(16),
@@ -1836,7 +1913,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '${profileProvider.versionHistory.length} versions found', // Use simple string
+                      '${profileProvider.versionHistory.length} versions found',
                       style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                     ),
                   ],
@@ -1851,10 +1928,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
             ],
           ),
         ),
-
         const SizedBox(height: 16),
-
-        // Version list
         if (profileProvider.versionHistory.isEmpty)
           Container(
             padding: const EdgeInsets.all(32),
@@ -1867,7 +1941,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'No history available', // Use simple string
+                  'No history available',
                   style: TextStyle(fontSize: 16, color: Colors.grey[500]),
                   textAlign: TextAlign.center,
                 ),
@@ -1878,7 +1952,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           ...profileProvider.versionHistory.reversed.map(
             (version) => _buildVersionHistoryItem(version, l10n),
           ),
-
         const Divider(height: 40),
       ],
     );

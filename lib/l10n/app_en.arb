@@ -441,5 +441,16 @@
   "spiritualCategory": "Spiritual",
   "generalCategory": "General",
   "profileLoaded": "Profile loaded successfully",
-  "imageUploaded": "Image uploaded successfully"
+  "imageUploaded": "Image uploaded successfully",
+  "savedInformationConfirmation": "I've Saved This Information",
+  "versionHistoryTitle": "Version History",
+  "noHistoryAvailable": "No history available",
+  "noCitiesFound": "No cities found",
+  "chooseCountryTitle": "Choose Country",
+  "securityNotice": "Your data is securely encrypted and stored",
+  "accountRecoveryTitle": "🔐 Account Recovery Details",
+  "recoveryInstructions": "Please save this information securely. You'll need it to recover your account.",
+  "recoverySecretLabel": "Recovery Secret:",
+  "importantNotice": "⚠️ Important:",
+  "recoveryTips": "• Take a screenshot of this information\n• Store it in a secure place\n• Do not share with anyone\n• This will only be shown once"
 }

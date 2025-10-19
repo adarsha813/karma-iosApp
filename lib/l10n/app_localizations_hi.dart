@@ -30,7 +30,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get existingUserButton => 'मैं एक मौजूदा उपयोगकर्ता हूँ';
 
   @override
-  String get chooseCountryTitle => 'अपना देश चुनें';
+  String get chooseCountryTitle => 'देश चुनें';
 
   @override
   String get yesText => 'हाँ';
@@ -362,7 +362,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get recoveryFailed => 'पुनर्प्राप्ति विफल। अपनी जानकारी जांचें।';
 
   @override
-  String get recoverySecretLabel => 'पुनर्प्राप्ति सीक्रेट';
+  String get recoverySecretLabel => 'पुनर्प्राप्ति गुप्त:';
 
   @override
   String get aboutUsTitle => 'हमारे बारे में';
@@ -686,4 +686,28 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get imageUploaded => 'तस्बिर सफलतापूर्वक अपलोड भयो';
+
+  @override
+  String get savedInformationConfirmation => 'मैंने यह जानकारी सहेज ली है';
+
+  @override
+  String get noHistoryAvailable => 'कोई इतिहास उपलब्ध नहीं है';
+
+  @override
+  String get securityNotice =>
+      'आपका डेटा सुरक्षित रूप से एन्क्रिप्ट और संग्रहीत किया गया है';
+
+  @override
+  String get accountRecoveryTitle => '🔐 खाता पुनर्प्राप्ति विवरण';
+
+  @override
+  String get recoveryInstructions =>
+      'कृपया इस जानकारी को सुरक्षित रूप से सहेजें। आपको अपने खाते को पुनर्प्राप्त करने के लिए इसकी आवश्यकता होगी।';
+
+  @override
+  String get importantNotice => '⚠️ महत्वपूर्ण:';
+
+  @override
+  String get recoveryTips =>
+      '• इस जानकारी का स्क्रीनशॉट लें\n• इसे सुरक्षित स्थान पर सहेजें\n• किसी के साथ साझा न करें\n• यह केवल एक बार दिखाया जाएगा';
 }

@@ -283,6 +283,17 @@
   "spiritualCategory": "Espiritual",
   "generalCategory": "General",
   "profileLoaded": "Profile loaded successfully",
-  "imageUploaded": "Image uploaded successfully"
+  "imageUploaded": "Image uploaded successfully",
+   "savedInformationConfirmation": "He guardado esta información",
+  "versionHistoryTitle": "Historial de versiones",
+  "noHistoryAvailable": "No hay historial disponible",
+  "noCitiesFound": "No se encontraron ciudades",
+  "chooseCountryTitle": "Elegir país",
+  "securityNotice": "Tus datos están cifrados y almacenados de forma segura",
+  "accountRecoveryTitle": "🔐 Detalles de recuperación de cuenta",
+  "recoveryInstructions": "Guarda esta información de forma segura. La necesitarás para recuperar tu cuenta.",
+  "recoverySecretLabel": "Secreto de recuperación:",
+  "importantNotice": "⚠️ Importante:",
+  "recoveryTips": "• Toma una captura de pantalla de esta información\n• Guárdala en un lugar seguro\n• No la compartas con nadie\n• Solo se mostrará una vez"
   
 }

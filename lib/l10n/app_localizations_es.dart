@@ -30,7 +30,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get existingUserButton => 'Soy un usuario existente';
 
   @override
-  String get chooseCountryTitle => 'Elige tu país';
+  String get chooseCountryTitle => 'Elegir país';
 
   @override
   String get yesText => 'Sí';
@@ -363,7 +363,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get recoveryFailed => 'Recuperación fallida. Verifica tu información.';
 
   @override
-  String get recoverySecretLabel => 'Secreto de Recuperación';
+  String get recoverySecretLabel => 'Secreto de recuperación:';
 
   @override
   String get aboutUsTitle => 'Acerca de Nosotros';
@@ -690,4 +690,28 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get imageUploaded => 'Image uploaded successfully';
+
+  @override
+  String get savedInformationConfirmation => 'He guardado esta información';
+
+  @override
+  String get noHistoryAvailable => 'No hay historial disponible';
+
+  @override
+  String get securityNotice =>
+      'Tus datos están cifrados y almacenados de forma segura';
+
+  @override
+  String get accountRecoveryTitle => '🔐 Detalles de recuperación de cuenta';
+
+  @override
+  String get recoveryInstructions =>
+      'Guarda esta información de forma segura. La necesitarás para recuperar tu cuenta.';
+
+  @override
+  String get importantNotice => '⚠️ Importante:';
+
+  @override
+  String get recoveryTips =>
+      '• Toma una captura de pantalla de esta información\n• Guárdala en un lugar seguro\n• No la compartas con nadie\n• Solo se mostrará una vez';
 }
