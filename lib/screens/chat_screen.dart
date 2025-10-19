@@ -52,6 +52,312 @@ bool verifyCertificate(X509Certificate cert, List<String> allowedFingerprints) {
   return allowedFingerprints.contains(fingerprint);
 }
 
+// ==================== PAYMENT SECURITY CLASSES ====================
+
+class PaymentException implements Exception {
+  final String message;
+  final String code;
+  final DateTime timestamp;
+
+  PaymentException(this.message, this.code) : timestamp = DateTime.now();
+
+  @override
+  String toString() => 'PaymentException[$code]: $message';
+}
+
+class PaymentResult {
+  final bool success;
+  final String paymentIntentId;
+  final double amount;
+  final String currency;
+
+  PaymentResult({
+    required this.success,
+    required this.paymentIntentId,
+    required this.amount,
+    this.currency = 'usd',
+  });
+}
+
+class PaymentAnalytics {
+  static void trackPaymentEvent({
+    required String event,
+    required String userId,
+    required String status,
+    String? errorCode,
+    String? paymentIntentId,
+    double? amount,
+  }) {
+    AppLogger.security(
+      'Payment event: $event - $status',
+      userId: userId,
+      feature: 'payment_analytics',
+    );
+
+    AnalyticsService.trackPaymentFlow(event, status == 'success');
+  }
+}
+
+class PaymentSecurity {
+  static String generateIdempotencyKey(String userId) {
+    final timestamp = DateTime.now().millisecondsSinceEpoch;
+    final random = math.Random().nextInt(100000);
+    return '${userId}_${timestamp}_${random}';
+  }
+}
+
+class SecurePaymentService {
+  static const Duration _paymentTimeout = Duration(seconds: 60);
+  static const int _maxRetries = 2;
+
+  static Future<PaymentResult> processQuestionPayment({
+    required String userId,
+    required String questionText,
+    required BuildContext context,
+  }) async {
+    // Validate session first
+    if (!SessionManager.isSessionValid(userId)) {
+      throw PaymentException('Session expired', 'SESSION_EXPIRED');
+    }
+
+    // Rate limiting for payments
+    if (RateLimiter.isRateLimited(userId, isPayment: true)) {
+      throw PaymentException('Too many payment attempts', 'RATE_LIMITED');
+    }
+
+    // Biometric authentication for all payments
+    final biometricResult = await BiometricAuthService.authenticate(
+      reason: 'Confirm payment for your question',
+    );
+
+    if (!biometricResult) {
+      throw PaymentException('Authentication required', 'BIOMETRIC_FAILED');
+    }
+
+    return await _executePaymentWithRetry(
+      userId: userId,
+      questionText: questionText,
+    );
+  }
+
+  static Future<PaymentResult> _executePaymentWithRetry({
+    required String userId,
+    required String questionText,
+  }) async {
+    for (int attempt = 0; attempt < _maxRetries; attempt++) {
+      try {
+        return await _executePayment(
+          userId: userId,
+          questionText: questionText,
+        );
+      } catch (e) {
+        if (attempt == _maxRetries - 1) rethrow;
+        await Future.delayed(Duration(seconds: 1 * (attempt + 1)));
+      }
+    }
+    throw PaymentException('Payment failed after retries', 'RETRY_EXHAUSTED');
+  }
+
+  static Future<PaymentResult> _executePayment({
+    required String userId,
+    required String questionText,
+  }) async {
+    final idempotencyKey = PaymentSecurity.generateIdempotencyKey(userId);
+    final token = await SecureStorage.getAuthToken();
+    print("🔑 Auth Token: $token");
+
+    if (token == null) {
+      throw PaymentException('Authentication token not found', 'NO_TOKEN');
+    }
+
+    final response = await SecureApiClient.post(
+      url: "${ChatConstants.baseUrl}/api/secure-question-payment",
+      body: {
+        'userId': userId,
+        'questionText': questionText,
+        'idempotencyKey': idempotencyKey,
+        'platform': Platform.operatingSystem,
+        'appVersion': EnvironmentConfig.appVersion,
+        'timestamp': DateTime.now().toIso8601String(),
+      },
+      token: token,
+      additionalHeaders: {
+        'Idempotency-Key': idempotencyKey,
+        'X-Client-Version': EnvironmentConfig.appVersion,
+        'X-Device-Id': await _getDeviceId(),
+      },
+    ).timeout(_paymentTimeout);
+
+    if (response.statusCode == 200) {
+      return _handlePaymentSuccess(response.body, userId, questionText);
+    } else {
+      throw PaymentException(
+        'Payment processing failed: HTTP ${response.statusCode}',
+        'HTTP_${response.statusCode}',
+      );
+    }
+  }
+
+  static Future<String> _getDeviceId() async {
+    // Use a combination of device info that's relatively stable
+    final deviceInfo = {
+      'platform': Platform.operatingSystem,
+      'version': Platform.operatingSystemVersion,
+      'localized': Platform.localeName,
+    };
+    return sha256.convert(utf8.encode(json.encode(deviceInfo))).toString();
+  }
+
+  static PaymentResult _handlePaymentSuccess(
+    String responseBody,
+    String userId,
+    String questionText,
+  ) {
+    try {
+      final data = json.decode(responseBody);
+      final clientSecret = data['clientSecret'] as String?;
+
+      if (clientSecret == null) {
+        throw PaymentException('Invalid payment response', 'INVALID_RESPONSE');
+      }
+
+      // Extract payment intent ID from client secret
+      // client_secret format: pi_XXX_secret_YYY
+      final parts = clientSecret.split('_');
+      final paymentIntentId = parts.length > 1 ? 'pi_${parts[1]}' : 'unknown';
+
+      AppLogger.info(
+        'Payment intent created: $paymentIntentId',
+        feature: 'payment_processing',
+      );
+
+      return PaymentResult(
+        success: true,
+        paymentIntentId: paymentIntentId,
+        amount: 50.00, // Default amount - server should determine this
+        currency: 'usd',
+      );
+    } catch (e) {
+      throw PaymentException(
+        'Failed to process payment response: $e',
+        'RESPONSE_PARSING_ERROR',
+      );
+    }
+  }
+}
+
+class PaymentVerificationService {
+  static Future<bool> verifyPaymentCompletion(
+    String paymentIntentId,
+    String userId,
+  ) async {
+    try {
+      final token = await SecureStorage.getAuthToken();
+      print("🔑 Auth Token: $token");
+      if (token == null) {
+        AppLogger.error('No auth token for payment verification', null);
+        return false;
+      }
+
+      final response = await SecureApiClient.post(
+        url: '${ChatConstants.baseUrl}/api/verify-payment',
+        body: {
+          'paymentIntentId': paymentIntentId,
+          'userId': userId,
+          'verificationToken': await _generateVerificationToken(),
+        },
+        token: token,
+      );
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        final status = data['status'];
+        final verified = data['verified'];
+
+        // Log verification result
+        AppLogger.security(
+          'Payment verification result: $status',
+          userId: userId,
+          feature: 'payment_verification',
+        );
+
+        return verified == true && status == 'succeeded';
+      }
+      return false;
+    } catch (e) {
+      AppLogger.error('Payment verification failed', e);
+      return false;
+    }
+  }
+
+  static Future<String> _generateVerificationToken() async {
+    final deviceId = await _getDeviceId();
+    final timestamp = DateTime.now().millisecondsSinceEpoch;
+    final data = '$deviceId$timestamp${EnvironmentConfig.appVersion}';
+    return sha256.convert(utf8.encode(data)).toString();
+  }
+
+  static Future<String> _getDeviceId() async {
+    final deviceInfo = {
+      'platform': Platform.operatingSystem,
+      'version': Platform.operatingSystemVersion,
+      'localized': Platform.localeName,
+    };
+    return sha256.convert(utf8.encode(json.encode(deviceInfo))).toString();
+  }
+}
+
+class SecureStripeConfig {
+  static Future<void> initialize() async {
+    try {
+      // Fetch publishable key from server (never hardcode)
+      final publishableKey = await _fetchPublishableKeyFromServer();
+
+      Stripe.publishableKey = publishableKey;
+
+      // Configure Stripe with enhanced security
+      await Stripe.instance.applySettings();
+
+      AppLogger.info(
+        'Stripe configured successfully',
+        feature: 'stripe_config',
+      );
+    } catch (e) {
+      AppLogger.error(
+        'Stripe configuration failed',
+        e,
+        feature: 'stripe_config',
+      );
+      rethrow;
+    }
+  }
+
+  static Future<String> _fetchPublishableKeyFromServer() async {
+    try {
+      final response = await SecureApiClient.get(
+        url: '${ChatConstants.baseUrl}/api/stripe-config',
+      );
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        final publishableKey = data['publishableKey'] as String?;
+
+        if (publishableKey == null || publishableKey.isEmpty) {
+          throw Exception('Invalid publishable key from server');
+        }
+
+        return publishableKey;
+      }
+      throw Exception(
+        'Failed to fetch Stripe configuration: HTTP ${response.statusCode}',
+      );
+    } catch (e) {
+      AppLogger.error('Failed to fetch Stripe publishable key', e);
+      rethrow;
+    }
+  }
+}
+
 // Add business metrics tracking
 class AnalyticsService {
   static void trackMessageSent(bool success, String? error) {
@@ -571,13 +877,11 @@ class BiometricAuthService {
 
   static Future<bool> get isAvailable async {
     try {
-      return await _auth.canCheckBiometrics;
+      final canAuthenticate = await _auth.canCheckBiometrics;
+      final isDeviceSupported = await _auth.isDeviceSupported();
+      return canAuthenticate && isDeviceSupported;
     } catch (e) {
-      AppLogger.error(
-        'Error checking biometric availability',
-        e,
-        feature: 'biometric_auth',
-      );
+      AppLogger.error('Error checking biometric availability', e);
       return false;
     }
   }
@@ -585,18 +889,16 @@ class BiometricAuthService {
   static Future<bool> authenticate({required String reason}) async {
     try {
       final canAuthenticate = await isAvailable;
+
       if (!canAuthenticate) {
-        AppLogger.info(
-          'Biometric authentication not available',
-          feature: 'biometric_auth',
-        );
-        return true; // Allow continuation if biometrics not available
+        AppLogger.info('Biometric not available, allowing continuation');
+        return true; // Allow if biometrics not available
       }
 
       final result = await _auth.authenticate(
         localizedReason: reason,
         options: const AuthenticationOptions(
-          biometricOnly: true,
+          biometricOnly: true, // Only biometrics, no device PIN
           useErrorDialogs: true,
           stickyAuth: true,
         ),
@@ -606,6 +908,7 @@ class BiometricAuthService {
         'Biometric authentication result: $result',
         feature: 'biometric_auth',
       );
+
       return result;
     } catch (e, stackTrace) {
       AppLogger.error(
@@ -2035,6 +2338,7 @@ class _ChatScreenState extends State<ChatScreen>
     bool paid = false,
     int? amount,
     bool isClarificationFree = false, // ✅ ADD THIS
+    String? paymentIntentId, // ✅ ADD THIS PARAMETER
   }) async {
     // Rate limiting for payments
     if (paid && RateLimiter.isRateLimited(userId, isPayment: true)) {
@@ -2108,6 +2412,7 @@ class _ChatScreenState extends State<ChatScreen>
           'paid': paid,
           'isClarificationFree':
               isClarificationFree, // ✅ TELL SERVER THIS IS FREE BY CLARIFICATION
+          'paymentIntentId': paymentIntentId, // ✅ ADD THIS
           'createdAt': DateTime.now().toIso8601String(),
         };
 
@@ -2181,27 +2486,7 @@ class _ChatScreenState extends State<ChatScreen>
     }
   }
 
-  // Enhanced payment handling with biometric authentication
   Future<void> startStripePayment(String userId, String questionText) async {
-    // Rate limiting for payments
-    if (RateLimiter.isRateLimited(userId, isPayment: true)) {
-      _showErrorSnackbar('Too many payment attempts. Please wait.');
-      return;
-    }
-
-    // Session validation
-    if (!SessionManager.isSessionValid(userId)) {
-      _showErrorSnackbar('Session expired. Please restart the app.');
-      return;
-    }
-
-    // Input validation
-    final validation = InputValidator.validateMessage(questionText);
-    if (!validation.isValid) {
-      _showErrorSnackbar(validation.message);
-      return;
-    }
-    // ✅ DISABLE INPUT DURING PAYMENT FLOW
     if (mounted) {
       setState(() {
         _isInputEnabled = false;
@@ -2209,105 +2494,270 @@ class _ChatScreenState extends State<ChatScreen>
     }
 
     try {
+      // ✅ 1. Initialize Stripe first
+      await SecureStripeConfig.initialize();
+
       final profileProvider = Provider.of<ProfileProvider>(
         context,
         listen: false,
       );
       final token = await SecureStorage.getAuthToken() ?? profileProvider.token;
+      print("🔑 Auth Token: $token");
 
       if (token == null) {
-        _showErrorSnackbar("Authentication required. Please restart the app.");
+        _showErrorSnackbar("Authentication required.");
         return;
       }
 
-      // Biometric authentication for payments over threshold
-      if (5000 >= ChatConstants.biometricAuthAmountThreshold) {
-        final authenticated = await BiometricAuthService.authenticate(
-          reason: 'Authenticate to complete your payment',
+      // ✅ 2. BIOMETRIC AUTHENTICATION (optional - you can remove if causing issues)
+      final biometricAvailable = await BiometricAuthService.isAvailable;
+      if (biometricAvailable) {
+        final biometricResult = await BiometricAuthService.authenticate(
+          reason: 'Confirm payment for your astrology question',
         );
-        if (!authenticated) {
+        if (!biometricResult) {
           _showErrorSnackbar('Authentication required for payment.');
           return;
         }
       }
 
-      // Create payment intent
+      // ✅ 3. GET PAYMENT INTENT FROM SERVER
+      AppLogger.info('Creating payment intent...', feature: 'payment_flow');
+
       final response = await SecureApiClient.post(
-        url: "${ChatConstants.baseUrl}/api/single-question-payment",
-        body: {},
+        url: "${ChatConstants.baseUrl}/api/secure-question-payment",
+        body: {
+          'userId': userId,
+          'questionText': questionText,
+          'platform': Platform.operatingSystem,
+          'appVersion': EnvironmentConfig.appVersion,
+          'timestamp': DateTime.now().toIso8601String(),
+          'idempotencyKey': PaymentSecurity.generateIdempotencyKey(userId),
+        },
         token: token,
       );
 
       if (response.statusCode == 200) {
         final jsonResponse = json.decode(response.body);
         final clientSecret = jsonResponse['clientSecret'];
+        final serverAmount = jsonResponse['amount'];
+        final currency = jsonResponse['currency'];
+        final paymentIntentId = jsonResponse['paymentIntentId'];
 
-        // Configure Stripe
+        if (clientSecret == null || clientSecret.isEmpty) {
+          throw PaymentException(
+            'Invalid payment response from server',
+            'INVALID_CLIENT_SECRET',
+          );
+        }
+
+        // Show payment amount
+        final amountInDollars = (serverAmount / 100).toStringAsFixed(2);
+        _showInfoSnackbar("Payment amount: $amountInDollars $currency");
+
+        // ✅ 4. CONFIGURE STRIPE PAYMENT SHEET
         await Stripe.instance.initPaymentSheet(
           paymentSheetParameters: SetupPaymentSheetParameters(
             paymentIntentClientSecret: clientSecret,
             merchantDisplayName: 'Astro Chat App',
             customerId: userId,
-            customerEphemeralKeySecret: null,
             style: ThemeMode.light,
-            appearance: const PaymentSheetAppearance(
-              colors: PaymentSheetAppearanceColors(
-                primary: Colors.blue,
-                componentBorder: Colors.grey,
-              ),
-            ),
+            // Add these for better UX
+            customFlow: false,
+            allowsDelayedPaymentMethods: false,
           ),
         );
 
-        // Present payment sheet
+        // ✅ 5. PRESENT PAYMENT SHEET
+        AppLogger.info('Presenting payment sheet...', feature: 'payment_flow');
         await Stripe.instance.presentPaymentSheet();
 
-        // Send question after successful payment
-        await sendQuestionToSocket(
-          validation.message,
-          userId,
-          paid: true,
-          amount: 5000,
+        // ✅ 6. VERIFY PAYMENT COMPLETION SERVER-SIDE
+        AppLogger.info(
+          'Payment sheet completed, verifying...',
+          feature: 'payment_flow',
         );
-        // ✅ Clear input after successful payment and question send
-        if (mounted) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            _controller.clear();
-          });
+
+        final paymentVerified = await _verifyPaymentServerSide(
+          paymentIntentId,
+          userId,
+        );
+
+        if (!paymentVerified) {
+          throw PaymentException(
+            'Payment not confirmed by server',
+            'PAYMENT_NOT_VERIFIED',
+          );
         }
 
-        _showSuccessSnackbar("✅ Payment successful! Question sent");
+        // ✅ 7. PROCESS THE PAID QUESTION
+        final questionResponse = await SecureApiClient.post(
+          url: "${ChatConstants.baseUrl}/api/process-paid-question",
+          body: {
+            'userId': userId,
+            'questionText': questionText,
+            'paymentIntentId': paymentIntentId,
+          },
+          token: token,
+        );
 
-        // Clear input
-        _controller.clear();
+        if (questionResponse.statusCode == 200) {
+          final questionData = json.decode(questionResponse.body);
+          AppLogger.info(
+            'Paid question created via API: ${questionData['questionId']}',
+            feature: 'payment_flow',
+          );
 
-        // Update session
-        SessionManager.updateSession(userId);
+          // ✅ 8. CLEAR INPUT AFTER SUCCESS
+          if (mounted) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              _controller.clear();
+            });
+          }
 
-        AppLogger.info('Payment completed successfully', feature: 'payment');
+          _showSuccessSnackbar("✅ Payment successful! Question sent");
+
+          // ✅ 9. UPDATE SESSION
+          SessionManager.updateSession(userId);
+
+          AppLogger.info(
+            'Payment completed successfully - Question created via API',
+            feature: 'payment_flow',
+          );
+        } else {
+          throw PaymentException(
+            'Failed to create paid question: HTTP ${questionResponse.statusCode}',
+            'QUESTION_CREATION_FAILED',
+          );
+        }
       } else {
-        throw Exception(
-          "Failed to create payment intent: ${response.statusCode}",
+        final errorBody = json.decode(response.body);
+        throw PaymentException(
+          errorBody['error'] ??
+              'Failed to create payment intent: HTTP ${response.statusCode}',
+          'PAYMENT_INTENT_CREATION_FAILED',
         );
       }
     } catch (e) {
-      AppLogger.error('Payment failed', e, feature: 'payment');
-
-      String errorMessage = "Payment failed";
-      if (e is StripeException) {
-        errorMessage = "Payment cancelled or failed";
-      } else if (e is TimeoutException) {
-        errorMessage = "Payment timeout. Please try again.";
-      }
-
-      _showErrorSnackbar("❌ $errorMessage");
+      _handlePaymentError(e);
     } finally {
-      // ✅ RE-ENABLE INPUT AFTER PAYMENT FLOW COMPLETES
       if (mounted) {
         setState(() {
           _isInputEnabled = true;
         });
       }
+    }
+  }
+
+  Future<bool> _verifyPaymentServerSide(
+    String paymentIntentId,
+    String userId,
+  ) async {
+    try {
+      final profileProvider = Provider.of<ProfileProvider>(
+        context,
+        listen: false,
+      );
+      final token = profileProvider.token ?? await SecureStorage.getAuthToken();
+
+      if (token == null) return false;
+
+      final response = await SecureApiClient.post(
+        url: '${ChatConstants.baseUrl}/api/verify-payment',
+        body: {'paymentIntentId': paymentIntentId, 'userId': userId},
+        token: token,
+      );
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        return data['verified'] == true;
+      } else {
+        AppLogger.error(
+          'Payment verification failed with status: ${response.statusCode}',
+          null,
+          feature: 'payment_flow',
+        );
+
+        return false;
+      }
+    } catch (e) {
+      AppLogger.error('Payment verification failed', e);
+      return false;
+    }
+  }
+
+  // ✅ CORRECTED ERROR HANDLING METHOD
+  void _handlePaymentError(dynamic error) {
+    AppLogger.error('Payment failed', error, feature: 'payment_flow');
+
+    String errorMessage = "Payment failed";
+
+    if (error is StripeException) {
+      final stripeError = error.error;
+
+      // More specific Stripe error handling
+      switch (stripeError.code) {
+        case FailureCode.Failed:
+          errorMessage = "Payment failed. Please try another payment method.";
+          break;
+        case FailureCode.Canceled:
+          errorMessage = "Payment was cancelled.";
+          return; // Don't show error for cancellations
+        case FailureCode.Unknown:
+          errorMessage = "An unknown error occurred.";
+          break;
+        default:
+          errorMessage =
+              "Payment error: ${stripeError.message ?? 'Please try again'}";
+      }
+    } else if (error is TimeoutException) {
+      errorMessage = "Payment timeout. Please try again.";
+    } else if (error is PaymentException) {
+      errorMessage = error.message;
+    } else if (error is SocketException) {
+      errorMessage = "Network error. Please check your connection.";
+    } else if (error is HttpException) {
+      errorMessage = "Server error. Please try again later.";
+    }
+
+    // Only show error if it's not a user cancellation
+    if (!errorMessage.contains('cancelled') &&
+        !errorMessage.contains('canceled')) {
+      _showErrorSnackbar("❌ $errorMessage");
+    }
+
+    // Log the specific error for debugging
+    AppLogger.error('Payment Error Details', error, feature: 'payment_flow');
+  }
+
+  // ✅ HELPER METHOD FOR INFO SNACKBARS
+  void _showInfoSnackbar(String message) {
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(message),
+          backgroundColor: Colors.blue,
+          duration: const Duration(seconds: 3),
+        ),
+      );
+    }
+  }
+
+  Future<void> debugPayment(String paymentIntentId) async {
+    try {
+      final token = await SecureStorage.getAuthToken();
+      print("🔑 Auth Token: $token");
+      final response = await SecureApiClient.get(
+        url: '${ChatConstants.baseUrl}/api/debug-payment/$paymentIntentId',
+        token: token,
+      );
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        AppLogger.info('Payment Debug Info: $data', feature: 'payment_debug');
+      }
+    } catch (e) {
+      AppLogger.error('Debug payment failed', e, feature: 'payment_debug');
     }
   }
 
