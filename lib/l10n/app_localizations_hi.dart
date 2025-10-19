@@ -680,4 +680,10 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get spiritualCategory => 'आध्यात्मिक';
+
+  @override
+  String get profileLoaded => 'प्रोफाइल सफलतापूर्वक लोड भयो';
+
+  @override
+  String get imageUploaded => 'तस्बिर सफलतापूर्वक अपलोड भयो';
 }

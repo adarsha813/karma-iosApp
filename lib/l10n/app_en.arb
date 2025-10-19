@@ -439,5 +439,7 @@
   "educationCategory": "Education",
   "travelCategory": "Travel",
   "spiritualCategory": "Spiritual",
-  "generalCategory": "General"
+  "generalCategory": "General",
+  "profileLoaded": "Profile loaded successfully",
+  "imageUploaded": "Image uploaded successfully"
 }

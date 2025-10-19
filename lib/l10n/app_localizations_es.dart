@@ -684,4 +684,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get spiritualCategory => 'Espiritual';
+
+  @override
+  String get profileLoaded => 'Profile loaded successfully';
+
+  @override
+  String get imageUploaded => 'Image uploaded successfully';
 }

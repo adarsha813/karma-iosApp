@@ -1335,6 +1335,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Spiritual'**
   String get spiritualCategory;
+
+  /// No description provided for @profileLoaded.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile loaded successfully'**
+  String get profileLoaded;
+
+  /// No description provided for @imageUploaded.
+  ///
+  /// In en, this message translates to:
+  /// **'Image uploaded successfully'**
+  String get imageUploaded;
 }
 
 class _AppLocalizationsDelegate

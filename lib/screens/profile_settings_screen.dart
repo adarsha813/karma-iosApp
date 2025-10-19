@@ -16,6 +16,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'chat_screen.dart'; // Add this line
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart'; // Add this import for DateFormat
+import 'package:kundali/config/environment.dart'; // adjust import path
 
 class ProfileSettingsScreen extends StatefulWidget {
   const ProfileSettingsScreen({super.key});
@@ -45,11 +46,689 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   String? _state;
   bool _isSaving = false;
 
-  static const String _locationIqApiKey = 'pk.2371ae85bf85964bfb986332dcc74851';
-  static const String _locationIqBaseUrl = 'https://api.locationiq.com/v1';
-  static const String _timezoneDbApiKey = 'PRCEAEL0H149';
-  static const String _timezoneDbBaseUrl =
-      'http://api.timezonedb.com/v2.1/get-time-zone';
+  // Security & Validation
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final _debounceTimer = Duration(seconds: 1);
+  Timer? _validationTimer;
+
+  // Input sanitization
+  String _sanitizeInput(String input) {
+    return input.trim().replaceAll(RegExp(r'[<>{}]'), '');
+  }
+
+  bool _isValidName(String name) {
+    return name.length >= 2 &&
+        name.length <= 50 &&
+        RegExp(r'^[a-zA-Z\s]+$').hasMatch(name);
+  }
+
+  bool _isValidUserId(String userId) {
+    return userId.isEmpty ||
+        (userId.length >= 3 &&
+            userId.length <= 20 &&
+            RegExp(r'^[a-zA-Z0-9_-]+$').hasMatch(userId));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeData();
+  }
+
+  Future<void> _initializeData() async {
+    try {
+      await _loadSavedProfileData();
+
+      final profileProvider = Provider.of<ProfileProvider>(
+        context,
+        listen: false,
+      );
+
+      await profileProvider.loadLanguage();
+      if (profileProvider.language != null &&
+          _userIdController.text.isNotEmpty) {
+        await _updateLanguageOnBackend(profileProvider.language!);
+      }
+    } catch (e) {
+      _showErrorSnackbar('Failed to initialize profile data');
+      debugPrint('Initialization error: $e');
+    }
+  }
+
+  @override
+  void dispose() {
+    _validationTimer?.cancel();
+    _reloadTimer?.cancel();
+    _nameController.dispose();
+    _cityController.dispose();
+    _countryController.dispose();
+    _userIdController.dispose();
+    _cleanupResources();
+    super.dispose();
+  }
+
+  void _cleanupResources() {
+    if (_userIdController.text.trim().isNotEmpty) {
+      final profileProvider = Provider.of<ProfileProvider>(
+        context,
+        listen: false,
+      );
+      profileProvider.saveUserId(_userIdController.text.trim());
+    }
+    _nameController.dispose();
+    _cityController.dispose();
+    _countryController.dispose();
+    _userIdController.dispose();
+  }
+
+  void _onUserIdChanged() {
+    _validationTimer?.cancel();
+    _validationTimer = Timer(_debounceTimer, () {
+      final newUserId = _userIdController.text.trim();
+      if (newUserId.isNotEmpty && _isValidUserId(newUserId)) {
+        final profileProvider = Provider.of<ProfileProvider>(
+          context,
+          listen: false,
+        );
+        profileProvider.saveUserId(newUserId);
+        _loadProfileData();
+      }
+    });
+  }
+
+  // Enhanced secure image handling
+  Future<void> _pickImage() async {
+    try {
+      final picked = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+        maxWidth: 1024,
+        maxHeight: 1024,
+        imageQuality: 80,
+      );
+
+      if (picked != null) {
+        final file = File(picked.path);
+        final stat = await file.stat();
+
+        if (stat.size > 5 * 1024 * 1024) {
+          _showMessage('Image size must be less than 5MB', color: Colors.red);
+          return;
+        }
+
+        setState(() {
+          _image = file;
+        });
+
+        _showMessage('imageUploaded', color: Colors.green);
+      }
+    } catch (e) {
+      _showMessage('Failed to pick image', color: Colors.red);
+    }
+  }
+
+  // Secure profile saving with validation
+  Future<void> _saveProfile(BuildContext context) async {
+    if (_isSaving || !_formKey.currentState!.validate()) return;
+
+    setState(() => _isSaving = true);
+
+    try {
+      // Validate required fields
+      if (!_validateRequiredFields()) {
+        setState(() => _isSaving = false);
+        return;
+      }
+
+      final profileData = await _prepareProfileData();
+      final saveResult = await _sendProfileToBackend(profileData);
+
+      if (saveResult['success']) {
+        await _handleSuccessfulSave(saveResult, context);
+      } else {
+        _showErrorSnackbar(saveResult['message'] ?? 'Save failed');
+      }
+    } catch (e) {
+      _showErrorSnackbar('An error occurred while saving');
+      debugPrint('Save profile error: $e');
+    } finally {
+      if (mounted) {
+        setState(() => _isSaving = false);
+      }
+    }
+  }
+
+  bool _validateRequiredFields() {
+    if (_nameController.text.trim().isEmpty) {
+      _showErrorSnackbar('Name is required');
+      return false;
+    }
+
+    if (_selectedDate == null) {
+      _showErrorSnackbar('Birth date is required');
+      return false;
+    }
+
+    if (_selectedTime == null) {
+      _showErrorSnackbar('Birth time is required');
+      return false;
+    }
+
+    if (_gender == null || _gender!.isEmpty) {
+      _showErrorSnackbar('Gender is required');
+      return false;
+    }
+
+    return true;
+  }
+
+  Future<Map<String, dynamic>> _prepareProfileData() async {
+    String? base64Image;
+    if (_image != null) {
+      final bytes = await _image!.readAsBytes();
+      base64Image = base64Encode(bytes);
+    }
+
+    final userId =
+        _userIdController.text.trim().isEmpty
+            ? null
+            : _sanitizeInput(_userIdController.text.trim());
+
+    if (_cityController.text.isNotEmpty && _countryController.text.isNotEmpty) {
+      await _fetchLocationDetails(
+        _sanitizeInput(_cityController.text),
+        _sanitizeInput(_countryController.text),
+      );
+    }
+
+    final savedLang =
+        Provider.of<ProfileProvider>(context, listen: false).language;
+
+    return {
+      if (userId != null) 'userId': userId,
+      'name': _sanitizeInput(_nameController.text),
+      'city': _sanitizeInput(_cityController.text),
+      'country': _sanitizeInput(_countryController.text),
+      'gender': _gender ?? '',
+      'birthDate':
+          _selectedDate != null
+              ? "${_selectedDate!.year}-${_selectedDate!.month.toString().padLeft(2, '0')}-${_selectedDate!.day.toString().padLeft(2, '0')}"
+              : '',
+      'birthTime':
+          _selectedTime != null
+              ? "${_selectedTime!.hour.toString().padLeft(2, '0')}:${_selectedTime!.minute.toString().padLeft(2, '0')}"
+              : '',
+      'latitude': _latitude,
+      'longitude': _longitude,
+      'timezone': _timezone,
+      'dst': _dst ?? 0.0,
+      'state': _state,
+      'profilePicture': base64Image,
+      if (savedLang != null) 'language': savedLang,
+      'timestamp':
+          DateTime.now().toIso8601String(), // Add timestamp for security
+    };
+  }
+
+  Future<Map<String, dynamic>> _sendProfileToBackend(
+    Map<String, dynamic> data,
+  ) async {
+    try {
+      final uri = Uri.parse('${Environment.baseUrl}/api/profile/save-profile');
+      final response = await http
+          .post(
+            uri,
+            headers: {
+              'Content-Type': 'application/json',
+              'X-Request-ID': _generateRequestId(),
+            },
+            body: jsonEncode(data),
+          )
+          .timeout(const Duration(seconds: 30));
+
+      if (response.statusCode == 200) {
+        final responseData = jsonDecode(response.body);
+        return {'success': true, 'data': responseData};
+      } else {
+        return {
+          'success': false,
+          'message': 'Server error: ${response.statusCode}',
+        };
+      }
+    } on TimeoutException {
+      return {'success': false, 'message': 'Request timeout'};
+    } catch (e) {
+      return {'success': false, 'message': 'Network error'};
+    }
+  }
+
+  String _generateRequestId() {
+    return '${DateTime.now().millisecondsSinceEpoch}_${_nameController.text.hashCode}';
+  }
+
+  // Use it in _handleSuccessfulSave
+  Future<void> _handleSuccessfulSave(
+    Map<String, dynamic> result,
+    BuildContext context,
+  ) async {
+    final responseData = result['data'];
+
+    if (responseData['userId'] != null) {
+      final generatedId = responseData['userId'].toString();
+      setState(() => _userIdController.text = generatedId);
+
+      await Provider.of<ProfileProvider>(
+        context,
+        listen: false,
+      ).saveUserId(generatedId);
+
+      // Show success message
+      _showSuccessSnackbar('Profile saved successfully!');
+
+      if (responseData['recoverySecret'] != null) {
+        await _showRecoveryDialog(
+          context,
+          responseData['recoverySecret'],
+          generatedId,
+        );
+      } else {
+        _navigateToChatScreen(context);
+      }
+    }
+  }
+
+  Future<void> _showRecoveryDialog(
+    BuildContext context,
+    String recoverySecret,
+    String userId,
+  ) async {
+    await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder:
+          (context) => AlertDialog(
+            title: const Text(
+              "🔐 Account Recovery Details",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            content: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Please save this information securely. You'll need it to recover your account.",
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  const SizedBox(height: 20),
+                  _buildInfoRow("Name", _nameController.text),
+                  _buildInfoRow("User ID", userId),
+                  const SizedBox(height: 10),
+                  const Text(
+                    "Recovery Secret:",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    margin: const EdgeInsets.only(top: 5, bottom: 15),
+                    decoration: BoxDecoration(
+                      color: Colors.amber[50],
+                      border: Border.all(color: Colors.amber),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: SelectableText(
+                      recoverySecret,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  const Text(
+                    "⚠️ Important:",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red,
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  const Text(
+                    "• Take a screenshot of this information\n"
+                    "• Store it in a secure place\n"
+                    "• Do not share with anyone\n"
+                    "• This will only be shown once",
+                    style: TextStyle(fontSize: 13),
+                  ),
+                ],
+              ),
+            ),
+            actions: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  _navigateToChatScreen(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                  foregroundColor: Colors.white,
+                ),
+                child: const Text("I've Saved This Information"),
+              ),
+            ],
+          ),
+    );
+  }
+
+  void _navigateToChatScreen(BuildContext context) {
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => ChatScreen(chatId: null)),
+      (route) => false,
+    );
+  }
+
+  void _showErrorSnackbar(String message) {
+    if (!mounted) return;
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: Colors.red,
+        duration: const Duration(seconds: 4),
+      ),
+    );
+  }
+
+  void _showSuccessSnackbar(String message) {
+    if (!mounted) return;
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: Colors.green,
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
+
+  // Keep your existing UI methods but add validation
+  Widget _buildTextField(
+    String label,
+    IconData icon,
+    TextEditingController controller, {
+    bool isRequired = false,
+    String? Function(String?)? validator,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: TextFormField(
+        controller: controller,
+        validator: validator,
+        decoration: InputDecoration(
+          labelText: label + (isRequired ? ' *' : ''),
+          prefixIcon: Icon(icon, color: Colors.blue),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+        ),
+        onChanged: (value) {
+          if (controller == _userIdController) {
+            _onUserIdChanged();
+          }
+        },
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final profileProvider = Provider.of<ProfileProvider>(context);
+    final l10n = AppLocalizations.of(context)!;
+
+    return Scaffold(
+      resizeToAvoidBottomInset: true,
+      appBar: AppBar(
+        title: Text(l10n.appBarTitle),
+        backgroundColor: Colors.blue.shade700,
+        elevation: 2,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.history),
+            onPressed: () {
+              setState(() => _showHistory = !_showHistory);
+            },
+          ),
+        ],
+      ),
+      body: SafeArea(
+        child: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            padding: EdgeInsets.only(
+              left: 16,
+              right: 16,
+              bottom: MediaQuery.of(context).viewInsets.bottom + 16,
+            ),
+            child: Column(
+              children: [
+                if (_showHistory) _buildHistorySection(l10n, profileProvider),
+
+                // Profile Image
+                GestureDetector(
+                  onTap: _pickImage,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 60,
+                        backgroundImage:
+                            _image != null
+                                ? FileImage(_image!)
+                                : (_profileImageUrl != null
+                                    ? NetworkImage(_profileImageUrl!)
+                                    : null),
+                        backgroundColor: Colors.grey[300],
+                        child:
+                            (_image == null && _profileImageUrl == null)
+                                ? const Icon(
+                                  Icons.camera_alt,
+                                  size: 40,
+                                  color: Colors.white,
+                                )
+                                : null,
+                      ),
+                      if (_isLoading)
+                        AvatarOrbitLoader(size: 120, color: Colors.blue),
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: CircleAvatar(
+                          radius: 18,
+                          backgroundColor: Colors.blue,
+                          child: const Icon(
+                            Icons.edit,
+                            color: Colors.white,
+                            size: 18,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 20),
+
+                // User ID Field
+                _buildTextField(
+                  l10n.userIdLabel,
+                  Icons.person_outline,
+                  _userIdController,
+                  validator: (value) {
+                    if (value!.isNotEmpty && !_isValidUserId(value)) {
+                      return 'User ID must be 3-20 characters (letters, numbers, _, -)';
+                    }
+                    return null;
+                  },
+                ),
+
+                if (_userIdController.text.isEmpty)
+                  GestureDetector(
+                    onTap: () async {
+                      final recoveredUserId = await Navigator.push<String>(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const RecoveryScreen(),
+                        ),
+                      );
+                      if (recoveredUserId != null &&
+                          recoveredUserId.isNotEmpty) {
+                        setState(
+                          () => _userIdController.text = recoveredUserId,
+                        );
+                        await _loadProfileData();
+                      }
+                    },
+                    child: Text(
+                      l10n.existingUserButton,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+
+                // Name Field (Required)
+                _buildTextField(
+                  l10n.nameLabel,
+                  Icons.person,
+                  _nameController,
+                  isRequired: true,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Name is required';
+                    }
+                    if (!_isValidName(value)) {
+                      return 'Name must be 2-50 letters only';
+                    }
+                    return null;
+                  },
+                ),
+
+                _buildCountryField(l10n),
+                _buildCityField(l10n),
+
+                // Gender Selection
+                Row(
+                  children: [
+                    Expanded(
+                      child: RadioListTile(
+                        value: 'male',
+                        groupValue: _gender,
+                        onChanged:
+                            (val) => setState(() => _gender = val as String),
+                        title: Text(l10n.maleLabel),
+                      ),
+                    ),
+                    Expanded(
+                      child: RadioListTile(
+                        value: 'female',
+                        groupValue: _gender,
+                        onChanged:
+                            (val) => setState(() => _gender = val as String),
+                        title: Text(l10n.femaleLabel),
+                      ),
+                    ),
+                  ],
+                ),
+
+                // Date & Time Selection
+                _buildDateTile(
+                  l10n.birthDateLabel,
+                  _selectedDate != null
+                      ? "${_selectedDate!.year}-${_selectedDate!.month.toString().padLeft(2, '0')}-${_selectedDate!.day.toString().padLeft(2, '0')}"
+                      : l10n.birthDatePlaceholder,
+                  () => _pickDate(context),
+                  Icons.calendar_today,
+                ),
+                _buildDateTile(
+                  l10n.birthTimeLabel,
+                  _selectedTime != null
+                      ? "${_selectedTime!.hour.toString().padLeft(2, '0')}:${_selectedTime!.minute.toString().padLeft(2, '0')}"
+                      : l10n.birthTimePlaceholder,
+                  () => _pickTime(context),
+                  Icons.access_time,
+                ),
+
+                const SizedBox(height: 20),
+
+                // Save Button
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: _isSaving ? null : () => _saveProfile(context),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      backgroundColor: Colors.blue.shade700,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child:
+                        _isSaving
+                            ? const SizedBox(
+                              height: 20,
+                              width: 20,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                color: Colors.white,
+                              ),
+                            )
+                            : Text(
+                              l10n.saveProfileButton,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                  ),
+                ),
+
+                const SizedBox(height: 10),
+
+                // Security Notice
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade100,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.security,
+                        color: Colors.green.shade700,
+                        size: 16,
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          'Your data is securely encrypted and stored',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey.shade700,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 
   String _getCountryIsoCode(String countryName) {
     // This is a simplified mapping - you might want to use a complete package
@@ -254,57 +933,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     return countryCodes[countryName] ?? '';
   }
 
-  @override
-  void initState() {
-    super.initState();
-    _loadSavedProfileData();
-
-    final profileProvider = Provider.of<ProfileProvider>(
-      context,
-      listen: false,
-    );
-    profileProvider.loadLanguage().then((_) {
-      if (profileProvider.language != null &&
-          _userIdController.text.isNotEmpty) {
-        _updateLanguageOnBackend(profileProvider.language!);
-      }
-    });
-    _userIdController.addListener(_onUserIdChanged);
-  }
-
-  @override
-  void dispose() {
-    _userIdController.removeListener(_onUserIdChanged);
-    _reloadTimer?.cancel();
-    if (_userIdController.text.trim().isNotEmpty) {
-      final profileProvider = Provider.of<ProfileProvider>(
-        context,
-        listen: false,
-      );
-      profileProvider.saveUserId(_userIdController.text.trim());
-    }
-    _nameController.dispose();
-    _cityController.dispose();
-    _countryController.dispose();
-    _userIdController.dispose();
-    super.dispose();
-  }
-
-  void _onUserIdChanged() {
-    final newUserId = _userIdController.text.trim();
-    if (newUserId.isNotEmpty) {
-      final profileProvider = Provider.of<ProfileProvider>(
-        context,
-        listen: false,
-      );
-      profileProvider.saveUserId(newUserId);
-      _reloadTimer?.cancel();
-      _reloadTimer = Timer(const Duration(seconds: 2), () {
-        _loadProfileData(); // ✅ fetch new profile after debounce
-      });
-    }
-  }
-
   Widget _buildInfoRow(String label, String value) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
@@ -437,8 +1065,13 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       } else {
         await _loadLocalProfileData();
       }
+
+      if (response.statusCode == 200) {
+        _showMessage('profileLoaded', color: Colors.green);
+      }
     } catch (e) {
       debugPrint('Error loading profile: $e');
+      _showMessage('Failed to load profile: $e', color: Colors.red);
       await _loadLocalProfileData();
     } finally {
       setState(() => _isLoading = false);
@@ -453,7 +1086,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
     try {
       final uri = Uri.parse(
-        'https://chat-backend-rvk9.onrender.com/api/profile/update-language',
+        '${Environment.baseUrl}/api/profile/get-profile?userId=$userId',
       );
       final response = await http.post(
         uri,
@@ -528,208 +1161,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       _dst = profileProvider.dst;
       _state = profileProvider.state;
     });
-  }
-
-  Future<void> _pickImage() async {
-    final picked = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (picked != null) {
-      setState(() {
-        _image = File(picked.path);
-      });
-    }
-  }
-
-  Future<void> _saveProfile(BuildContext context) async {
-    if (_isSaving) return;
-    setState(() => _isSaving = true);
-
-    String? base64Image;
-    if (_image != null) {
-      final bytes = await _image!.readAsBytes();
-      base64Image = base64Encode(bytes);
-    }
-
-    final String? userId =
-        _userIdController.text.trim().isEmpty
-            ? null
-            : _userIdController.text.trim();
-
-    // Ensure we have fresh location data
-    if (_cityController.text.isNotEmpty && _countryController.text.isNotEmpty) {
-      await _fetchLocationDetails(
-        _cityController.text.trim(),
-        _countryController.text.trim(),
-      );
-    }
-
-    final savedLang =
-        Provider.of<ProfileProvider>(context, listen: false).language;
-
-    final birthDateStr =
-        _selectedDate != null
-            ? "${_selectedDate!.year}-${_selectedDate!.month.toString().padLeft(2, '0')}-${_selectedDate!.day.toString().padLeft(2, '0')}"
-            : '';
-
-    final birthTimeStr =
-        _selectedTime != null
-            ? "${_selectedTime!.hour.toString().padLeft(2, '0')}:${_selectedTime!.minute.toString().padLeft(2, '0')}"
-            : '';
-
-    final body = {
-      if (userId != null) 'userId': userId,
-      'name': _nameController.text.trim(),
-      'city': _cityController.text.trim(),
-      'country': _countryController.text.trim(),
-      'gender': _gender ?? '',
-      'birthDate': birthDateStr,
-      'birthTime': birthTimeStr,
-      'latitude': _latitude,
-      'longitude': _longitude,
-      'timezone': _timezone,
-      'dst': _dst ?? 0.0,
-      'state': _state,
-      'profilePicture': base64Image,
-      if (savedLang != null) 'language': savedLang, // ✅ attach language
-    };
-
-    try {
-      final uri = Uri.parse(
-        'https://chat-backend-rvk9.onrender.com/api/profile/save-profile',
-      );
-      final response = await http.post(
-        uri,
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode(body),
-      );
-
-      if (response.statusCode == 200) {
-        final responseData = jsonDecode(response.body);
-
-        // ✅ Auto-update userId from backend if provided
-        if (responseData['userId'] != null) {
-          final generatedId = responseData['userId'].toString();
-          setState(() {
-            _userIdController.text = generatedId;
-          });
-
-          _showMessage(context, 'profileSaved', Colors.green);
-
-          // Show recovery secret dialog **only once**
-          if (responseData['recoverySecret'] != null) {
-            debugPrint('Recovery secret exists, showing dialog');
-
-            // Show the dialog and wait for user to acknowledge it
-            await showDialog(
-              context: context,
-              barrierDismissible: false,
-              builder: (context) {
-                return AlertDialog(
-                  title: const Text(
-                    "🔐 Account Recovery Details",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  content: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Please save this information securely. You'll need it to recover your account.",
-                          style: TextStyle(fontSize: 14),
-                        ),
-                        const SizedBox(height: 20),
-                        _buildInfoRow("Name", _nameController.text),
-                        _buildInfoRow("Date of Birth", birthDateStr),
-                        _buildInfoRow("Time of Birth", birthTimeStr),
-                        const SizedBox(height: 10),
-                        const Text(
-                          "Recovery Secret:",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(12),
-                          margin: const EdgeInsets.only(top: 5, bottom: 15),
-                          decoration: BoxDecoration(
-                            color: Colors.amber[50],
-                            border: Border.all(color: Colors.amber),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: SelectableText(
-                            responseData['recoverySecret'],
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                        const Text(
-                          "⚠️ Important:",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.red,
-                          ),
-                        ),
-                        const SizedBox(height: 5),
-                        const Text(
-                          "• Take a screenshot of this information\n"
-                          "• Store it in a secure place\n"
-                          "• Do not share with anyone\n"
-                          "• This will only be shown once",
-                          style: TextStyle(fontSize: 13),
-                        ),
-                      ],
-                    ),
-                  ),
-                  actions: [
-                    ElevatedButton(
-                      onPressed: () {
-                        // Only after user acknowledges, save the user ID and navigate
-                        Provider.of<ProfileProvider>(
-                          context,
-                          listen: false,
-                        ).saveUserId(generatedId);
-                        Navigator.of(context).pop();
-                        Navigator.pushReplacementNamed(context, '/chat');
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
-                        foregroundColor: Colors.white,
-                      ),
-                      child: const Text("I've Saved This Information"),
-                    ),
-                  ],
-                );
-              },
-            );
-          } else {
-            // If no recovery secret (existing user), just save the user ID
-            await Provider.of<ProfileProvider>(
-              context,
-              listen: false,
-            ).saveUserId(generatedId);
-            if (mounted) {
-              // Replace with:
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ChatScreen(chatId: null),
-                ),
-                (route) => false, // This removes all previous routes
-              );
-            }
-          }
-        } else {
-          _showMessage(context, 'saveFailed', Colors.red);
-        }
-      } else {
-        _showMessage(context, 'saveFailed', Colors.red);
-      }
-    } catch (e) {
-      _showMessage(context, e.toString(), Colors.red);
-    } finally {
-      setState(() => _isSaving = false);
-    }
   }
 
   Future<void> _pickDate(BuildContext context) async {
@@ -873,7 +1304,8 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       // 1. First get coordinates from LocationIQ
       final encodedQuery = Uri.encodeComponent('$city,$country');
       final locationUrl = Uri.parse(
-        '$_locationIqBaseUrl/search?key=$_locationIqApiKey'
+        '${Environment.locationIqBaseUrl}/search'
+        '?key=${Environment.locationIqApiKey}'
         '&q=$encodedQuery'
         '&format=json'
         '&limit=1',
@@ -896,7 +1328,8 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
           // 2. Get timezone info
           final timezoneUrl = Uri.parse(
-            '$_timezoneDbBaseUrl?key=$_timezoneDbApiKey'
+            '${Environment.timezoneDbBaseUrl}'
+            '?key=${Environment.timezoneDbApiKey}'
             '&format=json'
             '&by=position'
             '&fields=gmtOffset,dst'
@@ -931,7 +1364,10 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     }
   }
 
-  void _showMessage(BuildContext context, String messageKey, Color color) {
+  // Enhanced _showMessage with better parameter handling
+  void _showMessage(String messageKey, {Color color = Colors.blue}) {
+    if (!mounted) return;
+
     final l10n = AppLocalizations.of(context)!;
     String message;
 
@@ -945,29 +1381,21 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       case 'saveFailed':
         message = l10n.saveFailed;
         break;
+      case 'profileLoaded':
+        message = l10n.profileLoaded;
+        break;
+      case 'imageUploaded':
+        message = l10n.imageUploaded;
+        break;
       default:
-        message = '$l10n.errorPrefix $messageKey';
+        message = messageKey; // Fallback to direct message
     }
 
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(message), backgroundColor: color));
-  }
-
-  Widget _buildTextField(
-    String label,
-    IconData icon,
-    TextEditingController controller,
-  ) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: TextField(
-        controller: controller,
-        decoration: InputDecoration(
-          labelText: label,
-          prefixIcon: Icon(icon, color: Colors.blue),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-        ),
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: color,
+        duration: const Duration(seconds: 3),
       ),
     );
   }
@@ -1096,7 +1524,8 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       final response = await http
           .get(
             Uri.parse(
-              '$_locationIqBaseUrl/autocomplete?key=$_locationIqApiKey'
+              '${Environment.locationIqBaseUrl}/autocomplete'
+              '?key=${Environment.locationIqApiKey}'
               '&q=$query'
               '&country=$countryCode'
               '&tag=place:city,place:town'
@@ -1452,194 +1881,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
         const Divider(height: 40),
       ],
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final localeProvider = Provider.of<LocaleProvider>(
-      context,
-    ); // listen: true by default
-    final locale = localeProvider.locale;
-    print("Current locale: ${locale.languageCode}");
-    final profileProvider = Provider.of<ProfileProvider>(context);
-    final l10n = AppLocalizations.of(context)!; // Get localization instance
-
-    return Scaffold(
-      resizeToAvoidBottomInset: true, // prevent keyboard overlap
-      appBar: AppBar(
-        title: Text(l10n.appBarTitle), // Localized title
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.history),
-            onPressed: () {
-              setState(() {
-                _showHistory = !_showHistory;
-              });
-            },
-          ),
-        ],
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.only(
-            left: 16,
-            right: 16,
-            bottom: MediaQuery.of(context).viewInsets.bottom + 16,
-          ),
-
-          child: Column(
-            children: [
-              if (_showHistory) _buildHistorySection(l10n, profileProvider),
-
-              GestureDetector(
-                onTap: _pickImage,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 60,
-                      backgroundImage:
-                          _image != null
-                              ? FileImage(_image!)
-                              : (_profileImageUrl != null
-                                  ? NetworkImage(_profileImageUrl!)
-                                  : null),
-                      backgroundColor: Colors.grey[300],
-                      child:
-                          (_image == null && _profileImageUrl == null)
-                              ? const Icon(
-                                Icons.camera_alt,
-                                size: 40,
-                                color: Colors.white,
-                              )
-                              : null,
-                    ),
-                    if (_isLoading)
-                      AvatarOrbitLoader(size: 120, color: Colors.blue),
-
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: CircleAvatar(
-                        radius: 18,
-                        backgroundColor: Colors.blue,
-                        child: const Icon(
-                          Icons.edit,
-                          color: Colors.white,
-                          size: 18,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              // Show button only if userId is blank
-              // Show as a clickable text if userId is empty
-              const SizedBox(height: 20),
-              _buildTextField(
-                l10n.userIdLabel, // Localized
-                Icons.person_outline,
-                _userIdController,
-              ),
-
-              if (_userIdController.text.isEmpty)
-                GestureDetector(
-                  onTap: () async {
-                    // ✅ make this async
-                    final recoveredUserId = await Navigator.push<String>(
-                      context,
-                      MaterialPageRoute(builder: (_) => const RecoveryScreen()),
-                    );
-
-                    if (recoveredUserId != null && recoveredUserId.isNotEmpty) {
-                      setState(() {
-                        _userIdController.text =
-                            recoveredUserId; // ✅ fill textfield
-                      });
-
-                      // Optional: call profile fetch if you already have a method
-                      await _loadProfileData();
-                    }
-                  },
-                  child: Text(
-                    l10n.existingUserButton,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      color: Colors.blue,
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                ),
-
-              _buildTextField(
-                l10n.nameLabel, // Localized
-                Icons.person,
-                _nameController,
-              ),
-              _buildCountryField(l10n), // Pass l10n
-              _buildCityField(l10n), // Pass l10n
-              Row(
-                children: [
-                  Expanded(
-                    child: RadioListTile(
-                      value: 'male',
-                      groupValue: _gender,
-                      onChanged:
-                          (val) => setState(() => _gender = val as String),
-                      title: Text(l10n.maleLabel), // Localized
-                    ),
-                  ),
-                  Expanded(
-                    child: RadioListTile(
-                      value: 'female',
-                      groupValue: _gender,
-                      onChanged:
-                          (val) => setState(() => _gender = val as String),
-                      title: Text(l10n.femaleLabel), // Localized
-                    ),
-                  ),
-                ],
-              ),
-              _buildDateTile(
-                l10n.birthDateLabel, // Localized
-                _selectedDate != null
-                    ? "${_selectedDate!.year}-${_selectedDate!.month.toString().padLeft(2, '0')}-${_selectedDate!.day.toString().padLeft(2, '0')}"
-                    : l10n.birthDatePlaceholder, // Localized
-                () => _pickDate(context),
-                Icons.calendar_today,
-              ),
-              _buildDateTile(
-                l10n.birthTimeLabel, // Localized
-                _selectedTime != null
-                    ? "${_selectedTime!.hour.toString().padLeft(2, '0')}:${_selectedTime!.minute.toString().padLeft(2, '0')}"
-                    : l10n.birthTimePlaceholder, // Localized
-                () => _pickTime(context),
-                Icons.access_time,
-              ),
-              const SizedBox(height: 20),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: _isSaving ? null : () => _saveProfile(context),
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    backgroundColor: Colors.blue,
-                  ),
-                  child:
-                      _isSaving
-                          ? const CircularProgressIndicator(color: Colors.white)
-                          : Text(
-                            l10n.saveProfileButton, // Localized
-                            style: TextStyle(fontSize: 16),
-                          ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }

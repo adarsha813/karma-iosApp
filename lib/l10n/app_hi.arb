@@ -57,6 +57,8 @@
   "onboardingBack": "वापस",
   "onboardingNext": "अगला",
   "userIdNotFound": "उपयोगकर्ता ID नहीं मिली।",
+   "profileLoaded": "प्रोफाइल सफलतापूर्वक लोड भयो",
+  "imageUploaded": "तस्बिर सफलतापूर्वक अपलोड भयो",
   "clearNotificationsTitle": "सूचनाएँ साफ़ करें",
   "clearNotificationsMessage": "क्या आप सभी सूचनाएँ साफ़ करना चाहते हैं?",
   "clearNotificationsSuccess": "सभी सूचनाएँ सफलतापूर्वक साफ़ की गईं।",

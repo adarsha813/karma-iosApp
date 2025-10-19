@@ -32,4 +32,34 @@ class Environment {
     'IS_PRODUCTION',
     defaultValue: false,
   );
+
+  // ✅ Location IQ
+  static const String locationIqApiKey = String.fromEnvironment(
+    'LOCATIONIQ_API_KEY',
+    defaultValue: 'pk.2371ae85bf85964bfb986332dcc74851',
+  );
+
+  static const String locationIqBaseUrl = String.fromEnvironment(
+    'LOCATIONIQ_BASE_URL',
+    defaultValue: 'https://api.locationiq.com/v1',
+  );
+
+  // ✅ Timezone DB
+  static const String timezoneDbApiKey = String.fromEnvironment(
+    'TIMEZONE_DB_API_KEY',
+    defaultValue: 'PRCEAEL0H149',
+  );
+
+  static const String timezoneDbBaseUrl = String.fromEnvironment(
+    'TIMEZONE_DB_BASE_URL',
+    defaultValue: 'http://api.timezonedb.com/v2.1/get-time-zone',
+  );
+
+  static Map<String, String> get securityHeaders {
+    return {
+      'Content-Type': 'application/json',
+      'X-Client-Version': '1.0.0',
+      'X-Platform': 'flutter',
+    };
+  }
 }

@@ -281,6 +281,8 @@
   "educationCategory": "Educación",
   "travelCategory": "Viajes",
   "spiritualCategory": "Espiritual",
-  "generalCategory": "General"
+  "generalCategory": "General",
+  "profileLoaded": "Profile loaded successfully",
+  "imageUploaded": "Image uploaded successfully"
   
 }
