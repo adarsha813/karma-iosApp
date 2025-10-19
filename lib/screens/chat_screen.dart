@@ -14,6 +14,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:crypto/crypto.dart'; // Add this package to pubspec.yaml
 import 'dart:math' as math; // Add this line
+import '../config/environment.dart';
 
 // Import your app files
 import 'profile_screen.dart';
@@ -177,13 +178,13 @@ class SecurePaymentService {
         'questionText': questionText,
         'idempotencyKey': idempotencyKey,
         'platform': Platform.operatingSystem,
-        'appVersion': EnvironmentConfig.appVersion,
+        'appVersion': Environment.appVersion,
         'timestamp': DateTime.now().toIso8601String(),
       },
       token: token,
       additionalHeaders: {
         'Idempotency-Key': idempotencyKey,
-        'X-Client-Version': EnvironmentConfig.appVersion,
+        'X-Client-Version': Environment.appVersion,
         'X-Device-Id': await _getDeviceId(),
       },
     ).timeout(_paymentTimeout);
@@ -293,7 +294,7 @@ class PaymentVerificationService {
   static Future<String> _generateVerificationToken() async {
     final deviceId = await _getDeviceId();
     final timestamp = DateTime.now().millisecondsSinceEpoch;
-    final data = '$deviceId$timestamp${EnvironmentConfig.appVersion}';
+    final data = '$deviceId$timestamp${Environment.appVersion}';
     return sha256.convert(utf8.encode(data)).toString();
   }
 
@@ -464,30 +465,10 @@ class AstroTerm {
 }
 // ==================== SECURITY CONFIGURATION ====================
 
-/// 1. Environment-based configuration (No hardcoded secrets)
-class EnvironmentConfig {
-  static const String baseUrl = String.fromEnvironment(
-    'BASE_URL',
-    defaultValue: 'https://chat-backend-rvk9.onrender.com',
-  );
-  static const String socketUrl = String.fromEnvironment(
-    'SOCKET_URL',
-    defaultValue: 'wss://chat-backend-rvk9.onrender.com',
-  );
-  static const int freeQuota = int.fromEnvironment(
-    'FREE_QUOTA',
-    defaultValue: 2,
-  );
-  static const String appVersion = String.fromEnvironment(
-    'APP_VERSION',
-    defaultValue: '1.0.0',
-  );
-}
-
 class ChatConstants {
-  static String get baseUrl => EnvironmentConfig.baseUrl;
-  static String get socketUrl => EnvironmentConfig.socketUrl;
-  static int get freeQuota => EnvironmentConfig.freeQuota;
+  static String get baseUrl => Environment.baseUrl;
+  static String get socketUrl => Environment.socketUrl;
+  static int get freeQuota => Environment.freeQuota;
   static const Duration socketTimeout = Duration(seconds: 5);
   static const Duration reconnectDelay = Duration(milliseconds: 2000);
   static const int maxReconnectionAttempts = 5;
@@ -1053,8 +1034,8 @@ class _ChatScreenState extends State<ChatScreen>
           .setTimeout(ChatConstants.socketTimeout.inMilliseconds)
           // Security headers
           .setExtraHeaders({
-            'User-Agent': 'AstroChatApp/${EnvironmentConfig.appVersion}',
-            'X-App-Version': EnvironmentConfig.appVersion,
+            'User-Agent': 'AstroChatApp/${Environment.appVersion}',
+            'X-App-Version': Environment.appVersion,
             'X-Platform': Platform.operatingSystem,
           })
           .build(),
@@ -2530,7 +2511,7 @@ class _ChatScreenState extends State<ChatScreen>
           'userId': userId,
           'questionText': questionText,
           'platform': Platform.operatingSystem,
-          'appVersion': EnvironmentConfig.appVersion,
+          'appVersion': Environment.appVersion,
           'timestamp': DateTime.now().toIso8601String(),
           'idempotencyKey': PaymentSecurity.generateIdempotencyKey(userId),
         },
