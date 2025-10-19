@@ -13,6 +13,11 @@ class ChatService with ChangeNotifier {
     notifyListeners();
   }
 
+  void removeMessage(String messageId) {
+    _messages.removeWhere((message) => message.id == messageId);
+    notifyListeners();
+  }
+
   List<Message> get messages => _messages;
   void addMessage(Message message) {
     _messages.insert(0, message); // insert at start

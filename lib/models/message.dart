@@ -14,6 +14,7 @@ class Message extends ChangeNotifier {
   final bool isAdvice;
   final String? clarificationId; // Add this field
   final bool isSending; // 👈 NEW FLAG
+  final bool isTemporary;
 
   bool isQuestionHidden;
   bool isAnswerHidden;
@@ -41,6 +42,7 @@ class Message extends ChangeNotifier {
     this.isClarificationHidden = false,
     this.isAdviceHidden = false,
     this.isSending = false,
+    this.isTemporary = false, // Add this
     int? rating,
     String? feedback,
   }) : _rating = rating,

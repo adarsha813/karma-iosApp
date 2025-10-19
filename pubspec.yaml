@@ -61,6 +61,8 @@ dependencies:
   connectivity_plus: ^5.0.1
   logger: ^2.6.2
   local_auth: ^2.3.0
+  crypto: ^3.0.3
+  basic_utils: ^5.6.0  # add this line
 
  
   

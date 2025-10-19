@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">chat-backend-rvk9.onrender.com</domain>
+        <pin-set expiration="2024-12-31">
+            <pin digest="SHA-256">YbyJ1Eh0uiylRob7aoiVhoYLgn7Jjs1HniXUDtpcVXA=</pin>
+        </pin-set>
+    </domain-config>
+</network-security-config>
