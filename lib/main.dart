@@ -44,16 +44,145 @@ import 'l10n/app_localizations.dart';
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  await Firebase.initializeApp(options: await FirebaseConfig.getOptions());
-  print('Background message received: ${message.messageId}');
+  print('📩 [Background] Message received: ${message.messageId}');
+  print('📩 Message data: ${message.data}');
 
-  // Show local notification
-  await SecureNotificationManager.showNotification(
-    title: message.notification?.title ?? 'Title',
-    body: message.notification?.body ?? 'Body',
-    payload: jsonEncode(message.data),
-    channelId: AppConstants.generalChannel,
+  // Initialize Firebase in background isolate
+  await Firebase.initializeApp();
+
+  final prefs = await SharedPreferences.getInstance();
+  final notificationsEnabled = prefs.getBool('notifications_enabled') ?? true;
+
+  if (!notificationsEnabled) {
+    print('🔕 Notifications disabled - skipping background notification');
+    return;
+  }
+
+  // Ensure payload contains all necessary data
+
+  // Extract data from message
+  final data = message.data;
+  final type = data['type'] ?? 'general'; // Add type field to your FCM messages
+  final title = data['title'] ?? 'New Notification';
+  final body = data['body'] ?? 'You have a new message';
+
+  final payloadData = {
+    'type': data['type'],
+    'title': data['title'],
+    'body': data['body'],
+    'id': data['id'],
+    'userId': data['userId'],
+    'questionId': data['questionId'],
+    // Add chatId if needed for other types
+    if (data['type'] == 'answer' ||
+        data['type'] == 'clarification' ||
+        data['type'] == 'advice')
+      'chatId':
+          data['chatId'] ??
+          data['questionId'], // Use questionId as fallback for chatId
+  };
+  final payload = jsonEncode(payloadData);
+
+  // Update badge count
+  int count = prefs.getInt('unread_notification_count') ?? 0;
+  count++;
+  await prefs.setInt('unread_notification_count', count);
+
+  try {
+    FlutterAppBadger.updateBadgeCount(count);
+  } catch (e) {
+    print("⚠️ Failed to update badge in background: $e");
+  }
+
+  // Increment specific counters
+  if (type == 'horoscope') {
+    int horoCount = prefs.getInt('unread_horoscope_count') ?? 0;
+    horoCount++;
+    await prefs.setInt('unread_horoscope_count', horoCount);
+    print('📈 Horoscope unread count updated: $horoCount');
+  } else if (type == 'notification') {
+    // ✅ Only notifications page
+    bool isScreenOpen = prefs.getBool('notification_screen_open') ?? false;
+    if (!isScreenOpen) {
+      int notifCount = prefs.getInt('unread_notifications_page_count') ?? 0;
+      notifCount++;
+      await prefs.setInt('unread_notifications_page_count', notifCount);
+      print('📈 Notifications page unread count updated: $notifCount');
+    } else {
+      print('ℹ️ Notifications screen open, skipping unread increment');
+    }
+  } else {
+    print('ℹ️ Other types ignored for unread counts');
+  }
+  // Initialize local notifications
+  const AndroidInitializationSettings androidSettings =
+      AndroidInitializationSettings('@mipmap/ic_launcher');
+  const InitializationSettings initSettings = InitializationSettings(
+    android: androidSettings,
   );
+
+  await flutterLocalNotificationsPlugin.initialize(initSettings);
+
+  // Create appropriate notification channel based on type
+  String channelId = 'general_channel';
+  String channelName = 'General Notifications';
+
+  if (type == 'answer') {
+    channelId = 'answer_channel';
+    channelName = 'Answer Notifications';
+  } else if (type == 'clarification') {
+    channelId = 'clarification_channel';
+    channelName = 'Clarification Notifications';
+  } else if (type == 'horoscope') {
+    channelId = 'horoscope_channel';
+    channelName = 'Horoscope Notifications';
+  }
+
+  // Ensure channel exists
+  final androidPlugin =
+      flutterLocalNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin
+          >();
+
+  if (androidPlugin != null) {
+    await androidPlugin.createNotificationChannel(
+      AndroidNotificationChannel(
+        channelId,
+        channelName,
+        description: 'Notifications for $channelName',
+        importance: Importance.high,
+      ),
+    );
+  }
+
+  // Local notification
+  final androidDetails = AndroidNotificationDetails(
+    type + "_channel",
+    "${type[0].toUpperCase()}${type.substring(1)} Notifications",
+    importance: Importance.high,
+    priority: Priority.high,
+  );
+
+  final iosDetails = DarwinNotificationDetails(
+    presentAlert: true,
+    presentBadge: true,
+    presentSound: true,
+  );
+  final notificationDetails = NotificationDetails(
+    android: androidDetails,
+    iOS: iosDetails,
+  );
+
+  await flutterLocalNotificationsPlugin.show(
+    DateTime.now().millisecondsSinceEpoch % 100000,
+    title,
+    body,
+    notificationDetails,
+    payload: payload,
+  );
+
+  print('📩 Background notification displayed for type: $type');
 }
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
