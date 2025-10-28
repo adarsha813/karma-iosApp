@@ -1360,6 +1360,36 @@ abstract class AppLocalizations {
   /// **'No history available'**
   String get noHistoryAvailable;
 
+  /// No description provided for @missingUserIdError.
+  ///
+  /// In en, this message translates to:
+  /// **'User ID is required'**
+  String get missingUserIdError;
+
+  /// No description provided for @networkError.
+  ///
+  /// In en, this message translates to:
+  /// **'Network error occurred'**
+  String get networkError;
+
+  /// No description provided for @timeoutError.
+  ///
+  /// In en, this message translates to:
+  /// **'Request timed out'**
+  String get timeoutError;
+
+  /// No description provided for @genericError.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get genericError;
+
+  /// No description provided for @reactionUpdateError.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to update reaction'**
+  String get reactionUpdateError;
+
   /// No description provided for @securityNotice.
   ///
   /// In en, this message translates to:

@@ -698,6 +698,21 @@ class AppLocalizationsEs extends AppLocalizations {
   String get noHistoryAvailable => 'No hay historial disponible';
 
   @override
+  String get missingUserIdError => 'Se requiere el ID de usuario';
+
+  @override
+  String get networkError => 'Se produjo un error de red';
+
+  @override
+  String get timeoutError => 'La solicitud ha superado el tiempo de espera';
+
+  @override
+  String get genericError => 'Algo salió mal';
+
+  @override
+  String get reactionUpdateError => 'No se pudo actualizar la reacción';
+
+  @override
   String get securityNotice =>
       'Tus datos están cifrados y almacenados de forma segura';
 

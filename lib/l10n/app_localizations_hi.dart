@@ -694,6 +694,21 @@ class AppLocalizationsHi extends AppLocalizations {
   String get noHistoryAvailable => 'कोई इतिहास उपलब्ध नहीं है';
 
   @override
+  String get missingUserIdError => 'उपयोगकर्ता आईडी आवश्यक है';
+
+  @override
+  String get networkError => 'नेटवर्क त्रुटि हुई';
+
+  @override
+  String get timeoutError => 'अनुरोध का समय समाप्त हो गया';
+
+  @override
+  String get genericError => 'कुछ गलत हो गया';
+
+  @override
+  String get reactionUpdateError => 'प्रतिक्रिया अपडेट करने में विफल';
+
+  @override
   String get securityNotice =>
       'आपका डेटा सुरक्षित रूप से एन्क्रिप्ट और संग्रहीत किया गया है';
 

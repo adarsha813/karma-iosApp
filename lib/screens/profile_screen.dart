@@ -1,10 +1,25 @@
+import 'dart:convert';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'package:provider/provider.dart';
 import '../providers/profile_provider.dart';
 import 'package:shimmer/shimmer.dart';
-import '../l10n/app_localizations.dart'; // Add localization import
+import '../l10n/app_localizations.dart';
+import '../config/environment.dart';
+import 'package:logger/logger.dart';
+
+// Custom logger instance
+final _logger = Logger(
+  printer: PrettyPrinter(
+    methodCount: 0,
+    errorMethodCount: 5,
+    lineLength: 50,
+    colors: true,
+    printEmojis: true,
+    printTime: true,
+  ),
+);
 
 class ProfileScreen extends StatefulWidget {
   final String? userId;
@@ -15,45 +30,143 @@ class ProfileScreen extends StatefulWidget {
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ProfileScreenState extends State<ProfileScreen>
+    with WidgetsBindingObserver {
   Map<String, dynamic>? astroData;
   bool _isLoading = true;
   String? _error;
   bool _retrying = false;
 
+  // Network configuration
+  static const int _maxRetries = 3;
+  static const Duration _apiTimeout = Duration(seconds: 15);
+  Completer<void>? _initialLoadCompleter;
+
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    _logger.i('Initializing ProfileScreen for user: ${widget.userId}');
+    _initialLoadCompleter = Completer<void>();
+
     _initializeData();
   }
 
+  // Analytics and error reporting
+  void _logAnalyticsEvent(String event, {Map<String, dynamic>? params}) {
+    if (Environment.isProduction) {
+      _logger.i('📊 Analytics: $event - ${params ?? {}}');
+      // Integrate with your analytics service here
+      // FirebaseAnalytics.instance.logEvent(name: event, parameters: params);
+    }
+  }
+
+  void _reportError(dynamic error, StackTrace stackTrace, {String? context}) {
+    _logger.e('🚨 Error in $context', error: error, stackTrace: stackTrace);
+
+    if (Environment.isProduction) {
+      // Integrate with your crash reporting service here
+      // Sentry.captureException(error, stackTrace: stackTrace);
+    }
+  }
+
+  String _getLocalizedError(String errorKey) {
+    final l10n = AppLocalizations.of(context);
+    switch (errorKey) {
+      case 'missing_user_id':
+        return l10n?.missingUserIdError ?? 'User ID is required';
+      case 'network_error':
+        return l10n?.networkError ?? 'Network error occurred';
+      case 'timeout_error':
+        return l10n?.timeoutError ?? 'Request timed out';
+      case 'initialization_error':
+        return l10n?.genericError ?? 'Failed to initialize application';
+      case 'profile_fetch_error':
+        return l10n?.genericError ?? 'Failed to load profile';
+      default:
+        return l10n?.genericError ?? 'Something went wrong';
+    }
+  }
+
   Future<void> _initializeData() async {
-    final profileProvider = Provider.of<ProfileProvider>(
-      context,
-      listen: false,
-    );
+    _logAnalyticsEvent('profile_screen_loaded');
 
     try {
-      await profileProvider.loadUserId();
-      print("🔑 Loaded userId: ${profileProvider.userId}");
+      final profileProvider = Provider.of<ProfileProvider>(
+        context,
+        listen: false,
+      );
 
-      if (mounted) {
-        final userId = widget.userId ?? profileProvider.userId;
-        if (userId != null && userId.isNotEmpty) {
-          await _fetchAstroProfile(userId);
-        } else {
+      await profileProvider.loadUserId();
+      _logger.d("🔑 Loaded userId: ${profileProvider.userId}");
+
+      if (!mounted) return;
+
+      final userId = widget.userId ?? profileProvider.userId;
+      if (userId != null && userId.isNotEmpty) {
+        await _fetchAstroProfileWithRetry(userId);
+      } else {
+        _reportError(
+          'User ID is null',
+          StackTrace.current,
+          context: 'profile_initialization',
+        );
+        if (mounted) {
           setState(() {
-            _error = 'User ID is still null after loading.';
+            _error = _getLocalizedError('missing_user_id');
             _isLoading = false;
           });
         }
       }
-    } catch (e) {
+
+      _initialLoadCompleter?.complete();
+    } catch (e, stackTrace) {
+      _reportError(e, stackTrace, context: 'profile_initialization');
       if (mounted) {
         setState(() {
-          _error = 'Initialization error: $e';
+          _error = _getLocalizedError('initialization_error');
           _isLoading = false;
         });
+      }
+      _initialLoadCompleter?.completeError(e);
+    }
+  }
+
+  Future<void> _fetchAstroProfileWithRetry([String? userId]) async {
+    _logger.d('Fetching astro profile with retry logic');
+    _logAnalyticsEvent('fetch_astro_profile_attempt');
+
+    for (int attempt = 1; attempt <= _maxRetries; attempt++) {
+      try {
+        await _fetchAstroProfile(userId);
+        _logger.i('Successfully fetched astro profile on attempt $attempt');
+        _logAnalyticsEvent(
+          'fetch_astro_profile_success',
+          params: {'attempt': attempt, 'has_data': astroData != null},
+        );
+        return;
+      } catch (e, stackTrace) {
+        _logger.w(
+          'Attempt $attempt failed to fetch astro profile',
+          error: e,
+          stackTrace: stackTrace,
+        );
+        _logAnalyticsEvent(
+          'fetch_astro_profile_retry',
+          params: {'attempt': attempt, 'error': e.toString()},
+        );
+
+        if (attempt == _maxRetries) {
+          _logger.e('All $attempt attempts failed to fetch astro profile');
+          _logAnalyticsEvent(
+            'fetch_astro_profile_failed',
+            params: {'attempts': attempt, 'error': e.toString()},
+          );
+          rethrow;
+        }
+
+        // Exponential backoff
+        await Future.delayed(Duration(seconds: attempt * 2));
       }
     }
   }
@@ -67,53 +180,116 @@ class _ProfileScreenState extends State<ProfileScreen> {
       _retrying = false;
     });
 
-    if (userId == null || userId.isEmpty) {
+    final actualUserId = userId ?? widget.userId;
+    if (actualUserId == null || actualUserId.isEmpty) {
+      _logger.w('Cannot fetch astro profile - missing user ID');
       if (mounted) {
         setState(() {
-          _error = 'No user ID available';
+          _error = _getLocalizedError('missing_user_id');
           _isLoading = false;
         });
       }
       return;
     }
 
+    // Validate user ID format
+    if (!_isValidUserId(actualUserId)) {
+      _logger.w('Invalid user ID format: $actualUserId');
+      if (mounted) {
+        setState(() {
+          _error = _getLocalizedError('missing_user_id');
+          _isLoading = false;
+        });
+      }
+      return;
+    }
+
+    final url = '${Environment.baseUrl}/api/kundali/generate/$actualUserId';
+    _logger.d('Fetching astro profile from: $url');
+
     try {
-      final response = await http.get(
-        Uri.parse(
-          'https://chat-backend-rvk9.onrender.com/api/kundali/generate/$userId',
-        ),
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-      );
+      final response = await http
+          .get(Uri.parse(url), headers: Environment.securityHeaders)
+          .timeout(_apiTimeout);
 
       if (!mounted) return;
 
       if (response.statusCode == 200) {
+        final responseBody = utf8.decode(response.bodyBytes);
+        final decodedData = json.decode(responseBody);
+
+        // Validate response structure
+        if (decodedData is! Map<String, dynamic>) {
+          throw FormatException('Invalid response format from API');
+        }
+
         setState(() {
-          astroData = json.decode(response.body);
+          astroData = decodedData;
           _isLoading = false;
         });
+
+        _logAnalyticsEvent(
+          'astro_profile_loaded',
+          params: {
+            'has_lagna': astroData?['lagna'] != null,
+            'has_rashi': astroData?['rashi'] != null,
+            'houses_count': (astroData?['houses'] as List?)?.length ?? 0,
+            'vimshottari_count':
+                (astroData?['vimshottari_dasha'] as List?)?.length ?? 0,
+            'yogini_count': (astroData?['yogini_dasha'] as List?)?.length ?? 0,
+          },
+        );
       } else {
+        _logger.w('HTTP ${response.statusCode} - Failed to load astro profile');
+        if (mounted) {
+          setState(() {
+            _error = _getLocalizedError('profile_fetch_error');
+            _isLoading = false;
+          });
+        }
+      }
+    } on TimeoutException {
+      _logger.e('Request timeout fetching astro profile');
+      if (mounted) {
         setState(() {
-          _error = 'Failed to load profile: ${response.statusCode}';
+          _error = _getLocalizedError('timeout_error');
           _isLoading = false;
         });
       }
-    } catch (e) {
+    } on FormatException catch (e) {
+      _logger.e('Format exception parsing astro profile: $e');
       if (mounted) {
         setState(() {
-          _error = 'Error fetching profile: $e';
+          _error = _getLocalizedError('profile_fetch_error');
+          _isLoading = false;
+        });
+      }
+    } catch (e, stackTrace) {
+      _reportError(e, stackTrace, context: 'fetch_astro_profile');
+      if (mounted) {
+        setState(() {
+          _error = _getLocalizedError('profile_fetch_error');
           _isLoading = false;
         });
       }
     }
   }
 
+  bool _isValidUserId(String userId) {
+    // Basic validation - adjust based on your user ID format
+    return userId.isNotEmpty &&
+        userId.length >= 1 &&
+        userId.length <= 100 &&
+        !userId.contains(' ') &&
+        RegExp(r'^[a-zA-Z0-9\-_]+$').hasMatch(userId);
+  }
+
   // Calculate house information based on ascendant degree
   List<Map<String, dynamic>> _calculateHouseInfo() {
-    if (astroData == null) return [];
+    if (astroData == null) {
+      _logger.d('No astro data available for house calculation');
+      return [];
+    }
 
     const List<String> zodiacSigns = [
       'Aries',
@@ -160,9 +336,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
       'Revati',
     ];
 
-    final String lagna = astroData?['lagna'] ?? 'Aries';
+    final String lagna = astroData?['lagna']?.toString() ?? 'Aries';
     final int ascendantSignIndex = zodiacSigns.indexOf(lagna);
-    if (ascendantSignIndex == -1) return [];
+    if (ascendantSignIndex == -1) {
+      _logger.w('Invalid lagna sign: $lagna');
+      return [];
+    }
 
     final double ascendantDegree =
         (astroData?['ascendant_degree'] ?? 0).toDouble();
@@ -176,23 +355,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
       final String sign = zodiacSigns[signIndex];
 
       final Map<String, dynamic> houseData =
-          i < housesData.length
-              ? Map<String, dynamic>.from(housesData[i])
+          i < housesData.length && housesData[i] is Map
+              ? Map<String, dynamic>.from(housesData[i] as Map)
               : {'planets': []};
 
       final double houseDegree = (ascendantDegree + (i * 30)) % 360;
       final int nakshatraIndex = (houseDegree / (360 / 27)).floor();
       final String nakshatra = nakshatras[nakshatraIndex % 27];
 
+      // Validate planets data
+      final List<dynamic> planets =
+          houseData['planets'] is List ? houseData['planets'] as List : [];
+
+      final List<Map<String, dynamic>> validatedPlanets =
+          planets.map((planet) {
+            if (planet is Map) {
+              return {
+                'name': planet['name']?.toString() ?? 'Unknown',
+                'degree': (planet['degree'] ?? 0).toDouble(),
+                'nakshatra': planet['nakshatra']?.toString() ?? 'Unknown',
+              };
+            }
+            return {'name': 'Unknown', 'degree': 0.0, 'nakshatra': 'Unknown'};
+          }).toList();
+
       houses.add({
         'house': houseNumber,
         'sign': sign,
         'degree': houseDegree,
         'nakshatra': nakshatra,
-        'planets': houseData['planets'] ?? [],
+        'planets': validatedPlanets,
       });
     }
 
+    _logger.d('Calculated ${houses.length} houses');
     return houses;
   }
 
@@ -202,17 +398,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final Map<int, Map<String, dynamic>> houses = {};
 
     for (final house in calculatedHouses) {
-      houses[house['house'] as int] = house;
+      final houseNumber = house['house'] as int;
+      if (houseNumber >= 1 && houseNumber <= 12) {
+        houses[houseNumber] = house;
+      }
     }
 
     Widget _buildHouse(int number, String x, String y) {
       final house =
           houses[number] ??
-          {'planets': [], 'sign': '', 'nakshatra': '', 'degree': 0.0};
-      final String sign = house['sign'] ?? '';
-      final String nakshatra = house['nakshatra'] ?? '';
+          {
+            'planets': [],
+            'sign': 'Unknown',
+            'nakshatra': 'Unknown',
+            'degree': 0.0,
+          };
+
+      final String sign = house['sign']?.toString() ?? 'Unknown';
+      final String nakshatra = house['nakshatra']?.toString() ?? 'Unknown';
       final double degree = (house['degree'] ?? 0.0).toDouble();
-      final List<dynamic> planets = house['planets'] ?? [];
+      final List<dynamic> planets =
+          house['planets'] is List ? house['planets'] : [];
 
       final Map<String, int> zodiacNumbers = {
         'Aries': 1,
@@ -229,17 +435,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
         'Pisces': 12,
       };
 
-      final String zodiacNum =
-          sign.isNotEmpty ? (zodiacNumbers[sign] ?? '-').toString() : '-';
+      final String zodiacNum = zodiacNumbers[sign]?.toString() ?? '-';
+
+      final position = _parsePosition(x, y);
+      if (position == null) {
+        return const SizedBox.shrink();
+      }
 
       return Positioned(
-        left: _parsePosition(x) - 25, // Shift 8 pixels to the left
-        top: _parsePosition(y) - 25,
+        left: position.dx - 25,
+        top: position.dy - 25,
         child: Container(
           width: MediaQuery.of(context).size.width * 0.2,
+          constraints: BoxConstraints(maxWidth: 120, minWidth: 80),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              // Zodiac number and sign
               Text(
                 '$zodiacNum ($sign)',
                 style: TextStyle(
@@ -248,21 +460,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   fontSize: 12,
                 ),
                 textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
               const SizedBox(height: 2),
+
+              // Nakshatra and degree
               Text(
                 '$nakshatra ${degree.toStringAsFixed(2)}°',
                 style: TextStyle(color: Colors.blue[700], fontSize: 10),
                 textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
               const SizedBox(height: 2),
+
+              // Planets
               if (planets.isNotEmpty)
                 ...planets.map<Widget>((planet) {
-                  final planetName = planet['name'] ?? '';
+                  final planetName = planet['name']?.toString() ?? 'Unknown';
                   final planetDegree = (planet['degree'] ?? 0).toDouble();
-                  final planetNakshatra = planet['nakshatra'] ?? '';
+                  final planetNakshatra =
+                      planet['nakshatra']?.toString() ?? 'Unknown';
 
                   return Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       const SizedBox(height: 2),
                       Text(
@@ -272,10 +494,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           color: Colors.green[700],
                           fontSize: 10,
                         ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       Text(
                         '${planetDegree.toStringAsFixed(2)}° ($planetNakshatra)',
                         style: TextStyle(color: Colors.green[700], fontSize: 8),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.center,
                       ),
                     ],
                   );
@@ -309,6 +536,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Container(
       width: double.infinity,
       height: MediaQuery.of(context).size.width * 0.9,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey.shade300),
+        borderRadius: BorderRadius.circular(8),
+      ),
       child: Stack(
         children: [
           // SVG-like background
@@ -321,52 +552,119 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  double _parsePosition(String position) {
-    final percentage = double.parse(position.replaceAll('%', ''));
-    return (percentage / 100) * MediaQuery.of(context).size.width * 0.9;
+  Offset? _parsePosition(String x, String y) {
+    try {
+      final xPercentage = double.parse(x.replaceAll('%', ''));
+      final yPercentage = double.parse(y.replaceAll('%', ''));
+
+      final containerWidth = MediaQuery.of(context).size.width * 0.9;
+      final containerHeight = MediaQuery.of(context).size.width * 0.9;
+
+      return Offset(
+        (xPercentage / 100) * containerWidth,
+        (yPercentage / 100) * containerHeight,
+      );
+    } catch (e) {
+      _logger.e('Error parsing position: x=$x, y=$y', error: e);
+      return null;
+    }
   }
 
   // Dasha Table Widget
   Widget _buildDashaTable(List<dynamic> dashas, {bool isYogini = false}) {
     final l10n = AppLocalizations.of(context)!;
 
+    // Validate and sanitize dashas data
+    final List<Map<String, dynamic>> validatedDashas =
+        dashas
+            .where((dasha) => dasha is Map)
+            .map<Map<String, dynamic>>(
+              (dasha) => Map<String, dynamic>.from(dasha),
+            )
+            .toList();
+
     final List<DataColumn> columns =
         isYogini
             ? [
-              DataColumn(label: Text(l10n.yoginiLabel)),
-              DataColumn(label: Text(l10n.lordLabel)),
-              DataColumn(label: Text(l10n.startLabel)),
-              DataColumn(label: Text(l10n.endLabel)),
+              DataColumn(
+                label: Text(
+                  l10n.yoginiLabel,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  l10n.lordLabel,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  l10n.startLabel,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  l10n.endLabel,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
             ]
             : [
-              DataColumn(label: Text(l10n.lordLabel)),
-              DataColumn(label: Text(l10n.startDateLabel)),
-              DataColumn(label: Text(l10n.endDateLabel)),
+              DataColumn(
+                label: Text(
+                  l10n.lordLabel,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  l10n.startDateLabel,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  l10n.endDateLabel,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
             ];
 
     final List<DataRow> rows =
-        dashas.isNotEmpty
-            ? dashas.map<DataRow>((dasha) {
+        validatedDashas.isNotEmpty
+            ? validatedDashas.map<DataRow>((dasha) {
               final List<DataCell> cells =
                   isYogini
                       ? [
                         DataCell(
                           Text(
                             dasha['yogini']?.toString() ?? l10n.notAvailable,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                         DataCell(
-                          Text(dasha['lord']?.toString() ?? l10n.notAvailable),
+                          Text(
+                            dasha['lord']?.toString() ?? l10n.notAvailable,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                         DataCell(
                           Text(
                             dasha['start_date']?.toString() ??
                                 l10n.notAvailable,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                         DataCell(
                           Text(
                             dasha['end_date']?.toString() ?? l10n.notAvailable,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                       ]
@@ -377,17 +675,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     dasha['lord'] ??
                                     l10n.notAvailable)
                                 .toString(),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                         DataCell(
                           Text(
                             dasha['start_date']?.toString() ??
                                 l10n.notAvailable,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                         DataCell(
                           Text(
                             dasha['end_date']?.toString() ?? l10n.notAvailable,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                       ];
@@ -410,14 +714,63 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ];
 
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: DataTable(
-        headingRowColor: MaterialStateProperty.all(Colors.grey[100]),
-        columns: columns,
-        rows: rows,
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey.shade300),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: DataTable(
+          headingRowColor: MaterialStateProperty.all(Colors.grey[100]),
+          dataRowColor: MaterialStateProperty.resolveWith<Color?>((
+            Set<MaterialState> states,
+          ) {
+            if (states.contains(MaterialState.selected)) {
+              return Theme.of(context).colorScheme.primary.withOpacity(0.08);
+            }
+            // Even rows have a slight background color
+            return Colors.transparent;
+          }),
+          columns: columns,
+          rows: rows,
+        ),
       ),
     );
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    switch (state) {
+      case AppLifecycleState.resumed:
+        _logger.d('Profile screen resumed');
+        _logAnalyticsEvent('profile_screen_resumed');
+        break;
+      case AppLifecycleState.paused:
+        _logger.d('Profile screen paused');
+        _logAnalyticsEvent('profile_screen_paused');
+        break;
+      case AppLifecycleState.inactive:
+      case AppLifecycleState.detached:
+      case AppLifecycleState.hidden:
+        break;
+    }
+  }
+
+  @override
+  void dispose() {
+    _logger.d('Disposing ProfileScreen');
+    WidgetsBinding.instance.removeObserver(this);
+
+    // Cancel initial load if still in progress
+    if (_initialLoadCompleter != null && !_initialLoadCompleter!.isCompleted) {
+      _initialLoadCompleter?.completeError('Screen disposed');
+    }
+
+    _logAnalyticsEvent('profile_screen_disposed');
+
+    super.dispose();
   }
 
   Widget _buildSkeletonLoader() {
@@ -429,6 +782,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Basic info skeleton
+            Container(
+              height: 20,
+              width: 200,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(4),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Container(
+              height: 16,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(4),
+              ),
+            ),
+            const SizedBox(height: 20),
+
             // Chart skeleton
             Container(
               height: 300,
@@ -438,18 +811,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 32),
+
             // Table skeletons
             ...List.generate(
-              3,
+              2,
               (index) => Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: Container(
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
+                padding: const EdgeInsets.only(bottom: 32),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 20,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Container(
+                      height: 120,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -463,26 +852,39 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final l10n = AppLocalizations.of(context)!;
 
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            _error ?? l10n.unknownError,
-            style: const TextStyle(color: Colors.red),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 20),
-          if (_retrying)
-            const CircularProgressIndicator()
-          else
-            ElevatedButton(
-              onPressed: () {
-                setState(() => _retrying = true);
-                _fetchAstroProfile();
-              },
-              child: Text(l10n.retryButton),
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.error_outline, size: 64, color: Colors.red.shade300),
+            const SizedBox(height: 16),
+            Text(
+              _error ?? _getLocalizedError('generic_error'),
+              style: const TextStyle(fontSize: 16, color: Colors.black87),
+              textAlign: TextAlign.center,
             ),
-        ],
+            const SizedBox(height: 24),
+            if (_retrying)
+              const CircularProgressIndicator()
+            else
+              ElevatedButton.icon(
+                onPressed: () {
+                  _logAnalyticsEvent('profile_retry_attempt');
+                  setState(() => _retrying = true);
+                  _fetchAstroProfileWithRetry();
+                },
+                icon: const Icon(Icons.refresh),
+                label: Text(l10n.retryButton),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 12,
+                  ),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -496,6 +898,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: Text(l10n.kundaliGeneratorTitle),
         backgroundColor: Colors.blue[700],
         foregroundColor: Colors.white,
+        elevation: 0,
       ),
       body: SafeArea(
         child:
@@ -513,52 +916,75 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         l10n.natalChartTitle,
                         style: TextStyle(
                           fontSize: 18,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w600,
                           color: Colors.grey[800],
                         ),
                       ),
-                      const SizedBox(height: 8),
-                      RichText(
-                        text: TextSpan(
-                          style: const TextStyle(
-                            fontSize: 14,
-                            color: Colors.black87,
+                      const SizedBox(height: 12),
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[50],
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.grey.shade200),
+                        ),
+                        child: RichText(
+                          text: TextSpan(
+                            style: const TextStyle(
+                              fontSize: 14,
+                              color: Colors.black87,
+                              height: 1.5,
+                            ),
+                            children: [
+                              TextSpan(
+                                text: "${l10n.lagnaLabel}: ",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.blue[700],
+                                ),
+                              ),
+                              TextSpan(
+                                text:
+                                    "${astroData?['lagna'] ?? l10n.unknown}\n",
+                              ),
+                              TextSpan(
+                                text: "${l10n.rashiLabel}: ",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.blue[700],
+                                ),
+                              ),
+                              TextSpan(
+                                text:
+                                    "${astroData?['rashi'] ?? l10n.unknown}\n",
+                              ),
+                              TextSpan(
+                                text: "${l10n.ascDegreeLabel}: ",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.blue[700],
+                                ),
+                              ),
+                              TextSpan(
+                                text:
+                                    "${(astroData?['ascendant_degree'] ?? 0).toStringAsFixed(2)}°",
+                              ),
+                            ],
                           ),
-                          children: [
-                            TextSpan(
-                              text: "${l10n.lagnaLabel}: ",
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            TextSpan(
-                              text: "${astroData?['lagna'] ?? l10n.unknown} | ",
-                            ),
-                            TextSpan(
-                              text: "${l10n.rashiLabel}: ",
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            TextSpan(
-                              text: "${astroData?['rashi'] ?? l10n.unknown} | ",
-                            ),
-                            TextSpan(
-                              text: "${l10n.ascDegreeLabel}: ",
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            TextSpan(
-                              text:
-                                  "${(astroData?['ascendant_degree'] ?? 0).toStringAsFixed(2)}°",
-                            ),
-                          ],
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 24),
 
                       // North Indian Chart
+                      Text(
+                        l10n.natalChartTitle,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.grey[800],
+                        ),
+                      ),
+                      const SizedBox(height: 12),
                       _buildNorthIndianChart(),
 
                       // Vimshottari Dasha
@@ -567,7 +993,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         l10n.vimshottariDashaTitle,
                         style: TextStyle(
                           fontSize: 18,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w600,
                           color: Colors.grey[800],
                         ),
                       ),
@@ -580,7 +1006,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         l10n.yoginiDashaTitle,
                         style: TextStyle(
                           fontSize: 18,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w600,
                           color: Colors.grey[800],
                         ),
                       ),

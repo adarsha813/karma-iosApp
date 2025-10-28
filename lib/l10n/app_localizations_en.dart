@@ -696,6 +696,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noHistoryAvailable => 'No history available';
 
   @override
+  String get missingUserIdError => 'User ID is required';
+
+  @override
+  String get networkError => 'Network error occurred';
+
+  @override
+  String get timeoutError => 'Request timed out';
+
+  @override
+  String get genericError => 'Something went wrong';
+
+  @override
+  String get reactionUpdateError => 'Failed to update reaction';
+
+  @override
   String get securityNotice => 'Your data is securely encrypted and stored';
 
   @override

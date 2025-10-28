@@ -13,14 +13,14 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:logger/logger.dart';
+import 'package:logger/logger.dart' as log;
+import 'screens/dailyHoroscope_screen.dart' hide Logger;
 
 // Config
 import 'config/firebase_config.dart';
 
 // Screens
 import 'screens/chat_screen.dart';
-import 'screens/dailyHoroscope_screen.dart';
 import 'screens/onboarding_screen.dart';
 import 'screens/notifications_screen.dart';
 
@@ -216,8 +216,8 @@ class AppConstants {
 }
 
 class ProductionLogger {
-  static final Logger _logger = Logger(
-    printer: PrettyPrinter(
+  static final log.Logger _logger = log.Logger(
+    printer: log.PrettyPrinter(
       methodCount: 0,
       errorMethodCount: 8,
       lineLength: 120,
