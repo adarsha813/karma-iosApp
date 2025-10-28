@@ -748,6 +748,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get loading => 'Cargando...';
 
   @override
+  String get selectLanguage => 'Seleccionar idioma';
+
+  @override
+  String get onboardingGetStartedDesc => 'Comienza eligiendo tu idioma';
+
+  @override
   String get accountRecoveryTitle => '🔐 Detalles de recuperación de cuenta';
 
   @override

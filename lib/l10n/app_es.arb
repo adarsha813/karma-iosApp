@@ -302,6 +302,8 @@
   "allTab": "Todo",
   "generalCategory": "General",
   "horoscopeCategory": "Horóscopo",
+    "selectLanguage": "Seleccionar idioma",
+  "onboardingGetStartedDesc": "Comienza eligiendo tu idioma",
   "chatCategory": "Chat",
   "systemCategory": "Sistema",
   "updateCategory": "Actualizaciones",

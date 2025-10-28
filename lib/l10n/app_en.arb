@@ -469,6 +469,8 @@
   "markAllAsRead": "Mark all as read",
   "allTab": "All",
   "generalCategory": "General",
+  "selectLanguage": "Select Language",
+  "onboardingGetStartedDesc": "Get started by choosing your language",
   "horoscopeCategory": "Horoscope",
   "chatCategory": "Chat",
   "systemCategory": "System",

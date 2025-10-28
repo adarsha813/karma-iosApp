@@ -745,6 +745,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loading => 'Loading...';
 
   @override
+  String get selectLanguage => 'Select Language';
+
+  @override
+  String get onboardingGetStartedDesc =>
+      'Get started by choosing your language';
+
+  @override
   String get accountRecoveryTitle => '🔐 Account Recovery Details';
 
   @override

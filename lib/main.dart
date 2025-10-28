@@ -14,7 +14,7 @@ import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:logger/logger.dart' as log;
-import 'screens/dailyHoroscope_screen.dart' hide Logger;
+import 'screens/dailyHoroscope_screen.dart';
 
 // Config
 import 'config/firebase_config.dart';

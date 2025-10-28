@@ -1456,6 +1456,18 @@ abstract class AppLocalizations {
   /// **'Loading...'**
   String get loading;
 
+  /// No description provided for @selectLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Language'**
+  String get selectLanguage;
+
+  /// No description provided for @onboardingGetStartedDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Get started by choosing your language'**
+  String get onboardingGetStartedDesc;
+
   /// No description provided for @accountRecoveryTitle.
   ///
   /// In en, this message translates to:

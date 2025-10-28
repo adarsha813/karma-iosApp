@@ -744,6 +744,12 @@ class AppLocalizationsHi extends AppLocalizations {
   String get loading => 'लोड हो रहा है...';
 
   @override
+  String get selectLanguage => 'भाषा चुनें';
+
+  @override
+  String get onboardingGetStartedDesc => 'अपनी भाषा चुनकर शुरू करें';
+
+  @override
   String get accountRecoveryTitle => '🔐 खाता पुनर्प्राप्ति विवरण';
 
   @override

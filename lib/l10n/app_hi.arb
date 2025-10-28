@@ -237,6 +237,8 @@
   "markAllAsRead": "सभी को पढ़ा हुआ दिखाएं",
   "allTab": "सभी",
   "generalCategory": "सामान्य",
+   "selectLanguage": "भाषा चुनें",
+  "onboardingGetStartedDesc": "अपनी भाषा चुनकर शुरू करें",
   "horoscopeCategory": "राशिफल",
   "chatCategory": "चैट",
   "systemCategory": "सिस्टम",

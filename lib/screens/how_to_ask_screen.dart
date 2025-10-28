@@ -1,8 +1,24 @@
 import 'dart:convert';
+import 'dart:async';
+import 'package:shimmer/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import '../l10n/app_localizations.dart'; // Add this import
+import '../l10n/app_localizations.dart';
+import '../config/environment.dart';
+import 'package:logger/logger.dart';
+
+// Custom logger instance
+final _logger = Logger(
+  printer: PrettyPrinter(
+    methodCount: 0,
+    errorMethodCount: 5,
+    lineLength: 50,
+    colors: true,
+    printEmojis: true,
+    printTime: true,
+  ),
+);
 
 class HowToAskScreen extends StatefulWidget {
   const HowToAskScreen({Key? key}) : super(key: key);
@@ -12,61 +28,239 @@ class HowToAskScreen extends StatefulWidget {
 }
 
 class _HowToAskScreenState extends State<HowToAskScreen> {
-  List<Question>? _cachedQuestions; // cached data
+  List<Question>? _cachedQuestions;
   bool _isLoading = true;
+  String? _error;
+  bool _retrying = false;
+
+  // Network configuration
+  static const int _maxRetries = 3;
+  static const Duration _apiTimeout = Duration(seconds: 15);
+  static const Duration _cacheDuration = Duration(
+    hours: 24,
+  ); // Cache for 24 hours
+  Completer<void>? _initialLoadCompleter;
 
   @override
   void initState() {
     super.initState();
-    _loadQuestions();
+    _logger.i('🔹 Initializing HowToAskScreen');
+    _initialLoadCompleter = Completer<void>();
+
+    _loadQuestionsWithRetry();
   }
 
-  /// Load from cache first, then update from backend
-  Future<void> _loadQuestions() async {
-    final prefs = await SharedPreferences.getInstance();
-
-    // Load cached questions if available
-    final cachedData = prefs.getString('howToAskCache');
-    if (cachedData != null) {
-      List data = json.decode(cachedData);
-      setState(() {
-        _cachedQuestions = data.map((e) => Question.fromJson(e)).toList();
-        _isLoading = false;
-      });
+  // Analytics and error reporting
+  void _logAnalyticsEvent(String event, {Map<String, dynamic>? params}) {
+    if (Environment.isProduction) {
+      _logger.i('📊 Analytics: $event - ${params ?? {}}');
+      // FirebaseAnalytics.instance.logEvent(name: event, parameters: params);
     }
+  }
 
-    // Always fetch fresh data in background
-    try {
-      final freshQuestions = await fetchQuestions();
-      setState(() {
-        _cachedQuestions = freshQuestions;
-        _isLoading = false;
-      });
-      // Save to cache
-      prefs.setString('howToAskCache', json.encode(freshQuestions));
-    } catch (e) {
-      if (_cachedQuestions == null) {
-        // show error only if no cache
-        setState(() => _isLoading = false);
+  void _reportError(dynamic error, StackTrace stackTrace, {String? context}) {
+    _logger.e('🚨 Error in $context', error: error, stackTrace: stackTrace);
+
+    if (Environment.isProduction) {
+      // Sentry.captureException(error, stackTrace: stackTrace);
+    }
+  }
+
+  String _getLocalizedError(String errorKey, BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    switch (errorKey) {
+      case 'network_error':
+        return l10n?.networkError ?? 'Network error occurred';
+      case 'timeout_error':
+        return l10n?.timeoutError ?? 'Request timed out';
+      case 'load_questions_error':
+        return l10n?.genericError ?? 'Failed to load questions';
+      default:
+        return l10n?.genericError ?? 'Something went wrong';
+    }
+  }
+
+  Future<void> _loadQuestionsWithRetry() async {
+    _logger.d('Loading questions with retry logic');
+
+    for (int attempt = 1; attempt <= _maxRetries; attempt++) {
+      try {
+        await _loadQuestions();
+        _logger.i('✅ Successfully loaded questions on attempt $attempt');
+        _logAnalyticsEvent(
+          'questions_loaded_success',
+          params: {
+            'attempt': attempt,
+            'questions_count': _cachedQuestions?.length ?? 0,
+          },
+        );
+        return;
+      } catch (e, stackTrace) {
+        _logger.w(
+          '❌ Attempt $attempt failed to load questions',
+          error: e,
+          stackTrace: stackTrace,
+        );
+
+        if (attempt == _maxRetries) {
+          _logger.e('💥 All $attempt attempts failed to load questions');
+          rethrow;
+        }
+
+        await Future.delayed(Duration(seconds: attempt * 2));
       }
     }
   }
 
-  Future<List<Question>> fetchQuestions() async {
-    final response = await http.get(
-      Uri.parse('https://chat-backend-rvk9.onrender.com/api/howtoask'),
-    );
+  /// Load from cache first, then update from backend
+  Future<void> _loadQuestions() async {
+    if (!mounted) return;
 
-    if (response.statusCode == 200) {
-      List data = json.decode(response.body);
-      return data.map((e) => Question.fromJson(e)).toList();
-    } else {
-      throw Exception('Failed to load questions');
+    setState(() {
+      _isLoading = true;
+      _error = null;
+      _retrying = false;
+    });
+
+    try {
+      final prefs = await SharedPreferences.getInstance();
+
+      // Load cached questions if available and not expired
+      final cachedData = prefs.getString('howToAskCache');
+      final cacheTimestamp = prefs.getInt('howToAskCacheTimestamp');
+      final now = DateTime.now().millisecondsSinceEpoch;
+
+      if (cachedData != null &&
+          cacheTimestamp != null &&
+          (now - cacheTimestamp) < _cacheDuration.inMilliseconds) {
+        try {
+          final List<dynamic> data = json.decode(cachedData);
+          final cachedQuestions =
+              data.map((e) => Question.fromJson(e)).toList();
+
+          if (mounted) {
+            setState(() {
+              _cachedQuestions = cachedQuestions;
+              _isLoading = false;
+            });
+          }
+
+          _logger.d('📚 Loaded ${cachedQuestions.length} questions from cache');
+          _logAnalyticsEvent(
+            'cache_loaded',
+            params: {'questions_count': cachedQuestions.length},
+          );
+        } catch (e, stackTrace) {
+          _reportError(e, stackTrace, context: 'parse_cached_questions');
+          _logger.w('⚠️ Failed to parse cached questions, clearing cache');
+          await prefs.remove('howToAskCache');
+          await prefs.remove('howToAskCacheTimestamp');
+        }
+      }
+
+      // Always fetch fresh data in background
+      final freshQuestions = await _fetchQuestions();
+
+      if (mounted) {
+        setState(() {
+          _cachedQuestions = freshQuestions;
+          _isLoading = false;
+        });
+      }
+
+      // Save to cache with timestamp
+      await prefs.setString('howToAskCache', json.encode(freshQuestions));
+      await prefs.setInt(
+        'howToAskCacheTimestamp',
+        DateTime.now().millisecondsSinceEpoch,
+      );
+
+      _logger.i('💾 Saved ${freshQuestions.length} questions to cache');
+      _logAnalyticsEvent(
+        'questions_fetched_fresh',
+        params: {'questions_count': freshQuestions.length},
+      );
+
+      _initialLoadCompleter?.complete();
+    } catch (e, stackTrace) {
+      _reportError(e, stackTrace, context: 'load_questions');
+
+      if (_cachedQuestions == null) {
+        // Show error only if no cache available
+        if (mounted) {
+          setState(() {
+            _error = _getLocalizedError('load_questions_error', context);
+            _isLoading = false;
+          });
+        }
+      } else {
+        // If we have cached data, just log the error but don't show it to user
+        if (mounted) {
+          setState(() => _isLoading = false);
+        }
+        _logger.w('⚠️ Failed to fetch fresh questions, but using cached data');
+      }
+      _initialLoadCompleter?.completeError(e);
+    }
+  }
+
+  Future<List<Question>> _fetchQuestions() async {
+    final url = Uri.parse('${Environment.baseUrl}/api/howtoask');
+    _logger.d('Fetching questions from: $url');
+
+    try {
+      final response = await http
+          .get(url, headers: Environment.securityHeaders)
+          .timeout(_apiTimeout);
+
+      if (response.statusCode == 200) {
+        final responseBody = utf8.decode(response.bodyBytes);
+        final List<dynamic> data = json.decode(responseBody);
+
+        // Validate and sanitize response data
+        final questions =
+            data
+                .map((item) {
+                  if (item is Map<String, dynamic>) {
+                    return Question.fromJson(item);
+                  }
+                  throw const FormatException('Invalid question data format');
+                })
+                .where((question) {
+                  // Filter out invalid questions
+                  final isValid =
+                      question.id.isNotEmpty &&
+                      question.category.isNotEmpty &&
+                      question.question.isNotEmpty;
+                  if (!isValid) {
+                    _logger.w('⚠️ Invalid question skipped: ${question.id}');
+                  }
+                  return isValid;
+                })
+                .toList();
+
+        _logger.i('✅ Successfully fetched ${questions.length} questions');
+        return questions;
+      } else {
+        _logger.w('❌ HTTP ${response.statusCode} - Failed to load questions');
+        throw Exception('Failed to load questions: ${response.statusCode}');
+      }
+    } on TimeoutException {
+      _logger.e('⏰ Timeout fetching questions');
+      throw TimeoutException('Question fetch operation timed out');
+    } on FormatException catch (e) {
+      _logger.e('📄 Response format error: $e');
+      throw FormatException('Invalid response format from server');
+    } catch (e) {
+      _logger.e('🔴 Error fetching questions: $e');
+      rethrow;
     }
   }
 
   String _getLocalizedCategory(String category, AppLocalizations l10n) {
-    switch (category.toLowerCase()) {
+    final lowerCategory = category.toLowerCase();
+
+    switch (lowerCategory) {
       case 'career':
         return l10n.careerCategory;
       case 'love':
@@ -88,22 +282,122 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
       case 'general':
         return l10n.generalCategory;
       default:
-        return category;
+        return category.isNotEmpty ? category : 'Uncategorized';
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildSkeletonLoader() {
+    return ListView.builder(
+      padding: const EdgeInsets.all(16),
+      itemCount: 8,
+      itemBuilder: (context, index) {
+        return Card(
+          margin: const EdgeInsets.symmetric(vertical: 8),
+          child: Shimmer.fromColors(
+            baseColor: Colors.grey.shade300,
+            highlightColor: Colors.grey.shade100,
+            child: const ListTile(
+              leading: CircleAvatar(backgroundColor: Colors.white),
+              title: SizedBox(
+                height: 16,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(4)),
+                  ),
+                ),
+              ),
+              subtitle: SizedBox(
+                height: 12,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(4)),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildErrorWidget() {
     final l10n = AppLocalizations.of(context)!;
 
-    return Scaffold(
-      appBar: AppBar(title: Text(l10n.howToAskTitle), elevation: 0),
-      body:
-          _isLoading
-              ? const Center(child: CircularProgressIndicator())
-              : _cachedQuestions == null || _cachedQuestions!.isEmpty
-              ? Center(child: Text(l10n.noQuestionsAvailable))
-              : _buildQuestionsList(_cachedQuestions!, l10n),
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.error_outline, size: 64, color: Colors.red.shade300),
+            const SizedBox(height: 16),
+            Text(
+              _error ?? _getLocalizedError('load_questions_error', context),
+              style: const TextStyle(fontSize: 16),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 24),
+            ElevatedButton.icon(
+              onPressed:
+                  _retrying
+                      ? null
+                      : () {
+                        _logAnalyticsEvent('retry_questions_load');
+                        setState(() => _retrying = true);
+                        _loadQuestionsWithRetry().whenComplete(() {
+                          if (mounted) {
+                            setState(() => _retrying = false);
+                          }
+                        });
+                      },
+              icon:
+                  _retrying
+                      ? const SizedBox(
+                        height: 16,
+                        width: 16,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                      : const Icon(Icons.refresh),
+              label: Text(_retrying ? 'Loading...' : l10n.retryButton),
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 12,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildEmptyState(AppLocalizations l10n) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.help_outline, size: 64, color: Colors.grey.shade400),
+          const SizedBox(height: 16),
+          Text(
+            l10n.noQuestionsAvailable,
+            style: const TextStyle(fontSize: 16, color: Colors.grey),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 16),
+          ElevatedButton.icon(
+            onPressed: () {
+              _logAnalyticsEvent('refresh_empty_state');
+              _loadQuestionsWithRetry();
+            },
+            icon: const Icon(Icons.refresh),
+            label: Text(l10n.retryButton),
+          ),
+        ],
+      ),
     );
   }
 
@@ -115,12 +409,18 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
       categorized.putIfAbsent(localizedCategory, () => []).add(q);
     }
 
+    // Sort categories alphabetically
+    final sortedCategories =
+        categorized.entries.toList()..sort((a, b) => a.key.compareTo(b.key));
+
     return RefreshIndicator(
-      onRefresh: _loadQuestions,
+      onRefresh: _loadQuestionsWithRetry,
+      color: Theme.of(context).primaryColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       child: ListView(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(12),
         children:
-            categorized.entries.map((entry) {
+            sortedCategories.map((entry) {
               return Card(
                 margin: const EdgeInsets.symmetric(vertical: 6),
                 shape: RoundedRectangleBorder(
@@ -128,41 +428,110 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
                 ),
                 elevation: 2,
                 child: ExpansionTile(
-                  leading: const Icon(
-                    Icons.lightbulb_outline,
-                    color: Colors.blue,
+                  leading: Icon(
+                    _getCategoryIcon(entry.key),
+                    color: Theme.of(context).primaryColor,
                   ),
                   title: Text(
                     entry.key,
                     style: const TextStyle(
-                      fontSize: 18,
+                      fontSize: 16,
                       fontWeight: FontWeight.w600,
                     ),
+                  ),
+                  subtitle: Text(
+                    '${entry.value.length} ${entry.value.length == 1 ? 'question' : 'questions'}',
+                    style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
                   ),
                   children:
                       entry.value.map((q) {
                         return ListTile(
                           title: Text(
                             q.question,
-                            style: const TextStyle(fontSize: 15),
+                            style: const TextStyle(fontSize: 14),
                           ),
                           onTap: () {
-                            // Send question back to ChatScreen
+                            _logAnalyticsEvent(
+                              'question_selected',
+                              params: {
+                                'category': entry.key,
+                                'question_length': q.question.length,
+                              },
+                            );
                             Navigator.pop(context, q.question);
                           },
-                          leading: const Icon(
+                          leading: Icon(
                             Icons.question_answer,
-                            color: Colors.grey,
+                            color: Colors.grey.shade600,
+                            size: 20,
                           ),
                           contentPadding: const EdgeInsets.symmetric(
                             horizontal: 20,
                           ),
+                          visualDensity: VisualDensity.compact,
                         );
                       }).toList(),
                 ),
               );
             }).toList(),
       ),
+    );
+  }
+
+  IconData _getCategoryIcon(String category) {
+    switch (category.toLowerCase()) {
+      case 'career':
+        return Icons.work;
+      case 'love & relationships':
+      case 'love':
+        return Icons.favorite;
+      case 'health':
+        return Icons.health_and_safety;
+      case 'finance':
+        return Icons.attach_money;
+      case 'family':
+        return Icons.family_restroom;
+      case 'education':
+        return Icons.school;
+      case 'travel':
+        return Icons.flight;
+      case 'spiritual':
+        return Icons.self_improvement;
+      default:
+        return Icons.lightbulb_outline;
+    }
+  }
+
+  @override
+  void dispose() {
+    _logger.d('Disposing HowToAskScreen');
+    _initialLoadCompleter?.completeError('Screen disposed');
+    _logAnalyticsEvent(
+      'how_to_ask_screen_closed',
+      params: {'questions_loaded': _cachedQuestions?.length ?? 0},
+    );
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(l10n.howToAskTitle),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        elevation: 0,
+      ),
+      body:
+          _isLoading
+              ? _buildSkeletonLoader()
+              : _error != null &&
+                  (_cachedQuestions == null || _cachedQuestions!.isEmpty)
+              ? _buildErrorWidget()
+              : _cachedQuestions == null || _cachedQuestions!.isEmpty
+              ? _buildEmptyState(l10n)
+              : _buildQuestionsList(_cachedQuestions!, l10n),
     );
   }
 }
@@ -176,13 +545,25 @@ class Question {
 
   factory Question.fromJson(Map<String, dynamic> json) {
     return Question(
-      id: json['_id'],
-      category: json['category'],
-      question: json['question'],
+      id: json['_id']?.toString() ?? '',
+      category: json['category']?.toString() ?? '',
+      question: json['question']?.toString() ?? '',
     );
   }
 
   Map<String, dynamic> toJson() {
     return {"_id": id, "category": category, "question": question};
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Question &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          category == other.category &&
+          question == other.question;
+
+  @override
+  int get hashCode => Object.hash(id, category, question);
 }
