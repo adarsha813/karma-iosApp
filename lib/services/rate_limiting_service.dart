@@ -48,4 +48,34 @@ class RateLimitingService {
 
     return SecurityConfig.maxMessagesPerMinute - userTimestamps.length;
   }
+
+  // ----------------------------------------
+  // Action Rate Limiting
+  // ----------------------------------------
+  final Map<String, DateTime> _actionCooldowns = {};
+
+  bool isActionAllowed(String actionKey, Duration cooldown) {
+    final now = DateTime.now();
+
+    if (_actionCooldowns.containsKey(actionKey)) {
+      final lastAction = _actionCooldowns[actionKey]!;
+      if (now.difference(lastAction) < cooldown) {
+        return false;
+      }
+    }
+
+    _actionCooldowns[actionKey] = now;
+    return true;
+  }
+
+  Duration? getRemainingCooldown(String actionKey, Duration cooldown) {
+    final now = DateTime.now();
+
+    if (!_actionCooldowns.containsKey(actionKey)) return null;
+
+    final lastAction = _actionCooldowns[actionKey]!;
+    final remaining = cooldown - now.difference(lastAction);
+
+    return remaining.isNegative ? null : remaining;
+  }
 }

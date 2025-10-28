@@ -19,17 +19,20 @@ class ErrorReportingService {
     dynamic error,
     StackTrace? stackTrace, {
     String? context,
+    Map<String, dynamic>? extra,
   }) {
     _logger.e('Error: $error', error: error, stackTrace: stackTrace);
 
-    // Report to your error reporting service
-    if (!kDebugMode) {
-      // await Sentry.captureException(error, stackTrace: stackTrace);
+    if (context != null) {
+      _logger.w('Context: $context');
     }
 
-    // You can also add custom context
-    if (context != null) {
-      _logger.w('Error context: $context');
+    if (extra != null) {
+      _logger.w('Extra info: $extra');
+    }
+
+    if (!kDebugMode) {
+      // TODO: send to Sentry/Crashlytics
     }
   }
 
@@ -43,6 +46,10 @@ class ErrorReportingService {
     if (!kDebugMode) {
       // await Sentry.captureException(details.exception, stackTrace: details.stack);
     }
+  }
+
+  static Future<void> reportError(dynamic error, StackTrace? stackTrace) async {
+    recordError(error, stackTrace);
   }
 
   static void logMessage(String message, {LogLevel level = LogLevel.info}) {

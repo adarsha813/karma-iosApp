@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import '../config/security_config.dart';
+import '../services/error_reporting_service.dart';
+import '../services/rate_limiting_service.dart';
 
 class RatingBubble extends StatefulWidget {
   final String questionId;
   final int? initialRating;
   final bool isAdvice;
-
   final String? initialFeedback;
   final Future<void> Function(String questionId, int rating, String? feedback)
   onRatingSubmitted;
@@ -14,7 +16,6 @@ class RatingBubble extends StatefulWidget {
     required this.questionId,
     required this.initialRating,
     required this.initialFeedback,
-
     required this.onRatingSubmitted,
     required this.isAdvice,
   });
@@ -33,23 +34,36 @@ class RatingBubbleState extends State<RatingBubble>
   bool _isSubmitting = false;
   bool _hasSubmittedFeedback = false;
 
+  // 🔒 Security & Rate Limiting
+  final RateLimitingService _rateLimiter = RateLimitingService();
+  static const Duration _ratingCooldown = Duration(seconds: 1);
+  final FocusNode _feedbackFocusNode = FocusNode();
+
   @override
   void initState() {
     super.initState();
+    _initializeAnimations();
+    _initializeState();
+  }
+
+  void _initializeAnimations() {
     _controller = AnimationController(
       duration: const Duration(milliseconds: 300),
-      vsync: this, // no need for widget.vsync
+      vsync: this,
     );
 
     _scaleAnimation = Tween<double>(
       begin: 1.0,
       end: 1.3,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
+  }
 
+  void _initializeState() {
     _selectedRating = widget.initialRating;
     _feedback = widget.initialFeedback;
     _hasSubmittedFeedback =
         widget.initialFeedback != null && widget.initialFeedback!.isNotEmpty;
+
     if (_feedback != null) {
       _feedbackController.text = _feedback!;
     }
@@ -58,8 +72,15 @@ class RatingBubbleState extends State<RatingBubble>
   @override
   void didUpdateWidget(covariant RatingBubble oldWidget) {
     super.didUpdateWidget(oldWidget);
+
     if (widget.initialRating != oldWidget.initialRating ||
         widget.initialFeedback != oldWidget.initialFeedback) {
+      _updateStateFromWidget();
+    }
+  }
+
+  void _updateStateFromWidget() {
+    if (mounted) {
       setState(() {
         _selectedRating = widget.initialRating;
         _feedback = widget.initialFeedback;
@@ -84,129 +105,280 @@ class RatingBubbleState extends State<RatingBubble>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          /* Text(
-            widget.isAdvice ? "Rate this advice:" : "Rate this answer:",
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),*/
-          const SizedBox(height: 2),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-
-            children:
-                [1, 2, 3].map((star) {
-                  return GestureDetector(
-                    onTap: () => _handleStarTap(star),
-                    child: ScaleTransition(
-                      scale:
-                          _selectedRating == star
-                              ? _scaleAnimation
-                              : const AlwaysStoppedAnimation(1.0),
-                      child: Icon(
-                        Icons.star,
-                        size: 32,
-                        color:
-                            _selectedRating != null && star <= _selectedRating!
-                                ? Colors.amber
-                                : Colors.grey,
-                      ),
-                    ),
-                  );
-                }).toList(),
-          ),
-          const SizedBox(height: 8),
-          /* Text(
-            _selectedRating != null
-                ? 'You rated this $_selectedRating star(s)'
-                : 'Not rated yet',
-            style: TextStyle(color: Colors.grey[600], fontSize: 12),
-          ),*/
-          if (_selectedRating == 1 && !_hasSubmittedFeedback) ...[
-            const SizedBox(height: 12),
-            const Text(
-              "We're sorry you didn't like this answer. Please tell us how we can improve:",
-              style: TextStyle(fontSize: 12),
-            ),
-            const SizedBox(height: 8),
-            TextField(
-              controller: _feedbackController,
-              maxLines: 3,
-              decoration: InputDecoration(
-                hintText: 'Your feedback...',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-              onChanged: (value) => _feedback = value,
-            ),
-            const SizedBox(height: 8),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-                foregroundColor: Colors.white,
-              ),
-              onPressed: _isSubmitting ? null : _submitFeedback,
-              child:
-                  _isSubmitting
-                      ? const SizedBox(
-                        width: 16,
-                        height: 16,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: Colors.white,
-                        ),
-                      )
-                      : const Text('Submit Feedback'),
-            ),
-          ],
+          _buildStarRatingRow(),
+          if (_shouldShowFeedbackSection()) ..._buildFeedbackSection(),
         ],
       ),
     );
   }
 
-  void _handleStarTap(int star) {
-    setState(() {
-      _selectedRating = star;
-      if (star != 1) {
-        _feedback = null;
-        _feedbackController.clear();
-      }
-    });
+  Widget _buildStarRatingRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [1, 2, 3].map((star) => _buildStar(star)).toList(),
+    );
+  }
 
-    // 🔥 animate the star
-    _controller.forward(from: 0);
+  Widget _buildStar(int star) {
+    return GestureDetector(
+      onTap: () => _handleStarTap(star),
+      child: ScaleTransition(
+        scale:
+            _selectedRating == star
+                ? _scaleAnimation
+                : const AlwaysStoppedAnimation(1.0),
+        child: Icon(Icons.star, size: 32, color: _getStarColor(star)),
+      ),
+    );
+  }
+
+  Color _getStarColor(int star) {
+    if (_selectedRating != null && star <= _selectedRating!) {
+      return Colors.amber;
+    }
+    return Colors.grey;
+  }
+
+  bool _shouldShowFeedbackSection() {
+    return _selectedRating == 1 && !_hasSubmittedFeedback;
+  }
+
+  List<Widget> _buildFeedbackSection() {
+    return [
+      const SizedBox(height: 12),
+      _buildFeedbackPrompt(),
+      const SizedBox(height: 8),
+      _buildFeedbackTextField(),
+      const SizedBox(height: 8),
+      _buildSubmitButton(),
+    ];
+  }
+
+  Widget _buildFeedbackPrompt() {
+    return const Text(
+      "We're sorry you didn't like this answer. Please tell us how we can improve:",
+      style: TextStyle(fontSize: 12),
+    );
+  }
+
+  Widget _buildFeedbackTextField() {
+    return TextField(
+      controller: _feedbackController,
+      focusNode: _feedbackFocusNode,
+      maxLines: 3,
+      maxLength: SecurityConfig.maxFeedbackLength,
+      decoration: InputDecoration(
+        hintText: 'Your feedback...',
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+        counterText: '',
+      ),
+      onChanged: _onFeedbackChanged,
+      textInputAction: TextInputAction.done,
+      onSubmitted: (_) => _submitFeedback(),
+    );
+  }
+
+  Widget _buildSubmitButton() {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
+        minimumSize: const Size(double.infinity, 44),
+      ),
+      onPressed: _isSubmitting ? null : _submitFeedback,
+      child:
+          _isSubmitting
+              ? _buildLoadingIndicator()
+              : const Text('Submit Feedback'),
+    );
+  }
+
+  Widget _buildLoadingIndicator() {
+    return const SizedBox(
+      width: 16,
+      height: 16,
+      child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+    );
+  }
+
+  void _onFeedbackChanged(String value) {
+    _feedback = value.trim();
+  }
+
+  void _handleStarTap(int star) {
+    // 🔒 Rate limiting
+    if (!_rateLimiter.isActionAllowed('starRating', _ratingCooldown)) {
+      _showSnackBar('Please wait before rating again');
+      return;
+    }
+
+    if (!_validateRatingInput(star)) {
+      _logSecurityEvent('InvalidRatingAttempt', {'star': star});
+      return;
+    }
+
+    _updateRatingState(star);
+    _triggerStarAnimation();
 
     if (star != 1 || _hasSubmittedFeedback) {
-      widget.onRatingSubmitted(
+      _submitRating(star);
+    }
+  }
+
+  bool _validateRatingInput(int star) {
+    return star >= 1 && star <= 3;
+  }
+
+  void _updateRatingState(int star) {
+    if (mounted) {
+      setState(() {
+        _selectedRating = star;
+        if (star != 1) {
+          _feedback = null;
+          _feedbackController.clear();
+          _hasSubmittedFeedback = false;
+        }
+      });
+    }
+  }
+
+  void _triggerStarAnimation() {
+    _controller.forward(from: 0);
+  }
+
+  Future<void> _submitRating(int star) async {
+    try {
+      await widget.onRatingSubmitted(
         widget.questionId,
         star,
         _hasSubmittedFeedback ? _feedback : null,
       );
+
+      _logSecurityEvent('RatingSubmitted', {
+        'questionId': widget.questionId,
+        'rating': star,
+        'isAdvice': widget.isAdvice,
+      });
+    } catch (error, stackTrace) {
+      await _handleRatingError(error, stackTrace, star);
     }
   }
 
   Future<void> _submitFeedback() async {
-    if (_feedback?.trim().isEmpty ?? true) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please enter your feedback')),
-      );
+    // 🔒 Rate limiting
+    if (!_rateLimiter.isActionAllowed('feedbackSubmit', _ratingCooldown)) {
+      _showSnackBar('Please wait before submitting feedback');
       return;
     }
 
-    setState(() => _isSubmitting = true);
-    await widget.onRatingSubmitted(widget.questionId, 1, _feedback);
+    if (!_validateFeedback()) {
+      _showSnackBar('Please enter your feedback');
+      return;
+    }
+
+    await _performFeedbackSubmission();
+  }
+
+  bool _validateFeedback() {
+    final feedback = _feedback?.trim() ?? '';
+    return feedback.isNotEmpty &&
+        feedback.length <= SecurityConfig.maxFeedbackLength;
+  }
+
+  Future<void> _performFeedbackSubmission() async {
+    if (mounted) {
+      setState(() => _isSubmitting = true);
+    }
+
+    _feedbackFocusNode.unfocus(); // Hide keyboard
+
+    try {
+      await widget.onRatingSubmitted(widget.questionId, 1, _feedback);
+
+      if (mounted) {
+        setState(() {
+          _isSubmitting = false;
+          _hasSubmittedFeedback = true;
+        });
+      }
+
+      _logSecurityEvent('FeedbackSubmitted', {
+        'questionId': widget.questionId,
+        'feedbackLength': _feedback?.length ?? 0,
+        'isAdvice': widget.isAdvice,
+      });
+
+      _showSnackBar('Thank you for your feedback!');
+    } catch (error, stackTrace) {
+      await _handleFeedbackError(error, stackTrace);
+    } finally {
+      if (mounted && _isSubmitting) {
+        setState(() => _isSubmitting = false);
+      }
+    }
+  }
+
+  Future<void> _handleRatingError(
+    dynamic error,
+    StackTrace stackTrace,
+    int star,
+  ) async {
+    _logSecurityEvent('RatingSubmissionFailed', {
+      'questionId': widget.questionId,
+      'rating': star,
+      'error': error.toString(),
+    });
+
+    await ErrorReportingService.reportError(error, stackTrace);
 
     if (mounted) {
+      // Revert rating on error
       setState(() {
-        _isSubmitting = false;
-        _hasSubmittedFeedback = true;
+        _selectedRating = widget.initialRating;
       });
+      _showSnackBar('Failed to submit rating. Please try again.');
     }
+  }
+
+  Future<void> _handleFeedbackError(
+    dynamic error,
+    StackTrace stackTrace,
+  ) async {
+    _logSecurityEvent('FeedbackSubmissionFailed', {
+      'questionId': widget.questionId,
+      'error': error.toString(),
+    });
+
+    await ErrorReportingService.reportError(error, stackTrace);
+
+    if (mounted) {
+      _showSnackBar('Failed to submit feedback. Please try again.');
+    }
+  }
+
+  void _showSnackBar(String message) {
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(message),
+          duration: const Duration(seconds: 3),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    }
+  }
+
+  void _logSecurityEvent(String event, Map<String, dynamic> params) {
+    debugPrint('🔒 Rating Security Event: $event - $params');
+    // In production, send to analytics/security monitoring
+    // AnalyticsService.logEvent(event, parameters: params);
   }
 
   @override
   void dispose() {
     _controller.dispose();
     _feedbackController.dispose();
+    _feedbackFocusNode.dispose();
     super.dispose();
   }
 }
