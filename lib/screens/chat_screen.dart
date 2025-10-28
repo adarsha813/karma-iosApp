@@ -821,7 +821,11 @@ class SecureApiClient {
           const Duration(seconds: 15),
         );
         final bodyString = await httpResponse.transform(utf8.decoder).join();
-        response = http.Response(bodyString, httpResponse.statusCode);
+        response = http.Response(
+          bodyString,
+          httpResponse.statusCode,
+          headers: {'content-type': 'application/json; charset=utf-8'},
+        );
       } else if (method == 'POST') {
         final request = await client.postUrl(uri);
         headers.forEach((key, value) => request.headers.set(key, value));
@@ -830,7 +834,11 @@ class SecureApiClient {
           const Duration(seconds: 15),
         );
         final bodyString = await httpResponse.transform(utf8.decoder).join();
-        response = http.Response(bodyString, httpResponse.statusCode);
+        response = http.Response(
+          bodyString,
+          httpResponse.statusCode,
+          headers: {'content-type': 'application/json; charset=utf-8'},
+        );
       } else {
         throw Exception('Unsupported HTTP method: $method');
       }
@@ -989,6 +997,11 @@ class _ChatScreenState extends State<ChatScreen>
       );
       // Report to crash analytics
     };
+    _refreshTimer = Timer.periodic(const Duration(seconds: 60), (_) {
+      if (mounted && !_isReinitializing) {
+        _fetchInitialData();
+      }
+    });
 
     PlatformDispatcher.instance.onError = (error, stack) {
       AppLogger.error('Platform error', error, stackTrace: stack);
@@ -1533,11 +1546,8 @@ class _ChatScreenState extends State<ChatScreen>
 
       final chatService = Provider.of<ChatService>(context, listen: false);
 
-      // Fetch questions, answers, and advices in parallel for better performance
-      await Future.wait([
-        _fetchQuestionsAndAnswers(currentUserId, chatService),
-        _fetchAdvices(currentUserId, chatService),
-      ]);
+      // Use a single method to fetch all data to avoid race conditions
+      await _fetchAllMessages(currentUserId, chatService);
 
       AppLogger.info(
         'Initial data fetched successfully',
@@ -1553,14 +1563,67 @@ class _ChatScreenState extends State<ChatScreen>
     }
   }
 
-  Future<void> _fetchQuestionsAndAnswers(
-    String userId,
-    ChatService chatService,
-  ) async {
+  Future<void> _fetchAllMessages(String userId, ChatService chatService) async {
+    try {
+      // Fetch both questions and advices in a controlled manner
+      final questionsFuture = _fetchQuestions(userId);
+      final advicesFuture = _fetchAdvices(userId);
+
+      // Wait for both to complete
+      final results = await Future.wait([
+        questionsFuture,
+        advicesFuture,
+      ], eagerError: false);
+
+      final List<chat_model.Message> allMessages = [];
+
+      // Add questions and answers
+      if (results[0] != null) {
+        allMessages.addAll(results[0]!);
+      }
+
+      // Add advices
+      if (results[1] != null) {
+        allMessages.addAll(results[1]!);
+      }
+
+      // Sort all messages chronologically
+      allMessages.sort((a, b) {
+        final dateA = _getMessageDateTime(a);
+        final dateB = _getMessageDateTime(b);
+        return dateA.compareTo(dateB);
+      });
+
+      // Update chat service once with all messages
+      chatService.setMessages(allMessages);
+
+      AppLogger.info(
+        'Fetched ${allMessages.length} total messages (${results[0]?.length ?? 0} questions, ${results[1]?.length ?? 0} advices)',
+        feature: 'data_fetching',
+      );
+    } catch (e, stackTrace) {
+      AppLogger.error(
+        'Error fetching all messages',
+        e,
+        feature: 'data_fetching',
+        stackTrace: stackTrace,
+      );
+      rethrow;
+    }
+  }
+
+  DateTime _getMessageDateTime(chat_model.Message message) {
+    return message.createdAt ??
+        message.answeredAt ??
+        message.clarificatedAt ??
+        DateTime.fromMillisecondsSinceEpoch(0);
+  }
+
+  Future<List<chat_model.Message>?> _fetchQuestions(String userId) async {
     try {
       final response = await SecureApiClient.get(
         url: '${ChatConstants.baseUrl}/questions/previous/$userId',
-      );
+      ).timeout(const Duration(seconds: 10));
 
       if (response.statusCode == 200) {
         final List<dynamic> data = json.decode(response.body);
@@ -1570,26 +1633,11 @@ class _ChatScreenState extends State<ChatScreen>
           _processQuestionItem(item, messages);
         }
 
-        // Sort messages chronologically
-        messages.sort((a, b) {
-          final dateA =
-              a.createdAt ??
-              a.answeredAt ??
-              a.clarificatedAt ??
-              DateTime.fromMillisecondsSinceEpoch(0);
-          final dateB =
-              b.createdAt ??
-              b.answeredAt ??
-              b.clarificatedAt ??
-              DateTime.fromMillisecondsSinceEpoch(0);
-          return dateA.compareTo(dateB);
-        });
-
-        chatService.setMessages(messages);
         AppLogger.info(
           'Fetched ${messages.length} questions and answers',
           feature: 'data_fetching',
         );
+        return messages;
       } else {
         AppLogger.error(
           'Failed to fetch questions',
@@ -1599,12 +1647,64 @@ class _ChatScreenState extends State<ChatScreen>
       }
     } catch (e, stackTrace) {
       AppLogger.error(
-        'Error fetching questions and answers',
+        'Error fetching questions',
         e,
         feature: 'data_fetching',
         stackTrace: stackTrace,
       );
     }
+    return null;
+  }
+
+  Future<List<chat_model.Message>?> _fetchAdvices(String userId) async {
+    try {
+      final response = await SecureApiClient.get(
+        url: '${ChatConstants.baseUrl}/advices/$userId',
+      ).timeout(const Duration(seconds: 10));
+
+      if (response.statusCode == 200) {
+        final List<dynamic> data = json.decode(response.body);
+        final List<chat_model.Message> advices = [];
+
+        for (var item in data) {
+          if (item['text'] != null && item['createdAt'] != null) {
+            advices.add(
+              chat_model.Message(
+                id: item['_id'],
+                text: item['text'],
+                isMe: false,
+                isAdvice: true,
+                adminId: item['adminId'] ?? '',
+                adminName: item['adminName'] ?? '',
+                answeredAt: DateTime.parse(item['createdAt']),
+                rating: item['rating'],
+                feedback: item['feedback'],
+              ),
+            );
+          }
+        }
+
+        AppLogger.info(
+          'Fetched ${advices.length} advices',
+          feature: 'data_fetching',
+        );
+        return advices;
+      } else {
+        AppLogger.error(
+          'Failed to fetch advices',
+          Exception('HTTP ${response.statusCode}: ${response.body}'),
+          feature: 'data_fetching',
+        );
+      }
+    } catch (e, stackTrace) {
+      AppLogger.error(
+        'Error fetching advices',
+        e,
+        feature: 'data_fetching',
+        stackTrace: stackTrace,
+      );
+    }
+    return null;
   }
 
   void _processQuestionItem(
@@ -1671,75 +1771,6 @@ class _ChatScreenState extends State<ChatScreen>
           rating: item['rating'],
           feedback: item['feedback'],
         ),
-      );
-    }
-  }
-
-  Future<void> _fetchAdvices(String userId, ChatService chatService) async {
-    try {
-      final response = await SecureApiClient.get(
-        url: '${ChatConstants.baseUrl}/advices/$userId',
-      );
-
-      if (response.statusCode == 200) {
-        final List<dynamic> data = json.decode(response.body);
-        final List<chat_model.Message> advices = [];
-
-        for (var item in data) {
-          if (item['text'] != null && item['createdAt'] != null) {
-            advices.add(
-              chat_model.Message(
-                id: item['_id'],
-                text: item['text'],
-                isMe: false,
-                isAdvice: true,
-                adminId: item['adminId'] ?? '',
-                adminName: item['adminName'] ?? '',
-                answeredAt: DateTime.parse(item['createdAt']),
-                rating: item['rating'],
-                feedback: item['feedback'],
-              ),
-            );
-          }
-        }
-
-        // Merge with existing messages
-        final existingMessages =
-            chatService.messages.where((m) => !m.isAdvice).toList();
-        final allMessages = [...existingMessages, ...advices];
-
-        allMessages.sort((a, b) {
-          final dateA =
-              a.createdAt ??
-              a.answeredAt ??
-              a.clarificatedAt ??
-              DateTime.fromMillisecondsSinceEpoch(0);
-          final dateB =
-              b.createdAt ??
-              b.answeredAt ??
-              b.clarificatedAt ??
-              DateTime.fromMillisecondsSinceEpoch(0);
-          return dateA.compareTo(dateB);
-        });
-
-        chatService.setMessages(allMessages);
-        AppLogger.info(
-          'Fetched ${advices.length} advices',
-          feature: 'data_fetching',
-        );
-      } else {
-        AppLogger.error(
-          'Failed to fetch advices',
-          Exception('HTTP ${response.statusCode}: ${response.body}'),
-          feature: 'data_fetching',
-        );
-      }
-    } catch (e, stackTrace) {
-      AppLogger.error(
-        'Error fetching advices',
-        e,
-        feature: 'data_fetching',
-        stackTrace: stackTrace,
       );
     }
   }
@@ -2928,6 +2959,8 @@ class _ChatScreenState extends State<ChatScreen>
 
   @override
   void dispose() {
+    _refreshTimer?.cancel();
+    _refreshTimer = null;
     _cleanupOldMessages();
     AppLogger.info('ChatScreen disposed', feature: 'chat_screen');
 
