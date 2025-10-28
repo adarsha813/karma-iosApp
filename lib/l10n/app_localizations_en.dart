@@ -711,6 +711,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reactionUpdateError => 'Failed to update reaction';
 
   @override
+  String get processingLabel => 'Processing...';
+
+  @override
+  String get clearChatSuccess => 'Chat cleared successfully';
+
+  @override
+  String get notificationsEnabled => 'Notifications enabled';
+
+  @override
+  String get notificationsDisabled => 'Notifications disabled';
+
+  @override
   String get securityNotice => 'Your data is securely encrypted and stored';
 
   @override

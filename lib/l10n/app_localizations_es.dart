@@ -713,6 +713,18 @@ class AppLocalizationsEs extends AppLocalizations {
   String get reactionUpdateError => 'No se pudo actualizar la reacción';
 
   @override
+  String get processingLabel => 'Procesando...';
+
+  @override
+  String get clearChatSuccess => 'Chat borrado con éxito';
+
+  @override
+  String get notificationsEnabled => 'Notificaciones activadas';
+
+  @override
+  String get notificationsDisabled => 'Notificaciones desactivadas';
+
+  @override
   String get securityNotice =>
       'Tus datos están cifrados y almacenados de forma segura';
 

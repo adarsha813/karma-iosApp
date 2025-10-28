@@ -1390,6 +1390,30 @@ abstract class AppLocalizations {
   /// **'Failed to update reaction'**
   String get reactionUpdateError;
 
+  /// No description provided for @processingLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Processing...'**
+  String get processingLabel;
+
+  /// No description provided for @clearChatSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat cleared successfully'**
+  String get clearChatSuccess;
+
+  /// No description provided for @notificationsEnabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications enabled'**
+  String get notificationsEnabled;
+
+  /// No description provided for @notificationsDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications disabled'**
+  String get notificationsDisabled;
+
   /// No description provided for @securityNotice.
   ///
   /// In en, this message translates to:

@@ -709,6 +709,18 @@ class AppLocalizationsHi extends AppLocalizations {
   String get reactionUpdateError => 'प्रतिक्रिया अपडेट करने में विफल';
 
   @override
+  String get processingLabel => 'प्रसंस्करण हो रहा है...';
+
+  @override
+  String get clearChatSuccess => 'चैट सफलतापूर्वक साफ़ किया गया';
+
+  @override
+  String get notificationsEnabled => 'सूचनाएं सक्षम हैं';
+
+  @override
+  String get notificationsDisabled => 'सूचनाएं अक्षम हैं';
+
+  @override
   String get securityNotice =>
       'आपका डेटा सुरक्षित रूप से एन्क्रिप्ट और संग्रहीत किया गया है';
 

@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -6,17 +8,65 @@ import 'package:kundali/screens/recovery_screen.dart';
 import '../providers/notification_provider.dart';
 import '../providers/profile_provider.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 import '../services/HoroscopeService.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
 import '../services/chat_service.dart';
 import 'package:kundali/screens/policy_page.dart';
 import 'package:kundali/screens/profile_settings_screen.dart';
+import '../config/environment.dart';
+import 'package:logger/logger.dart';
+
+// Custom logger instance
+final _logger = Logger(
+  printer: PrettyPrinter(
+    methodCount: 0,
+    errorMethodCount: 5,
+    lineLength: 50,
+    colors: true,
+    printEmojis: true,
+    printTime: true,
+  ),
+);
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
-  static const String baseUrl = "https://chat-backend-rvk9.onrender.com";
+
+  // Analytics and error reporting
+  void _logAnalyticsEvent(String event, {Map<String, dynamic>? params}) {
+    if (Environment.isProduction) {
+      _logger.i('📊 Analytics: $event - ${params ?? {}}');
+      // Integrate with your analytics service here
+      // FirebaseAnalytics.instance.logEvent(name: event, parameters: params);
+    }
+  }
+
+  void _reportError(dynamic error, StackTrace stackTrace, {String? context}) {
+    _logger.e('🚨 Error in $context', error: error, stackTrace: stackTrace);
+
+    if (Environment.isProduction) {
+      // Integrate with your crash reporting service here
+      // Sentry.captureException(error, stackTrace: stackTrace);
+    }
+  }
+
+  String _getLocalizedError(String errorKey, BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    switch (errorKey) {
+      case 'missing_user_id':
+        return l10n?.missingUserIdError ?? 'User ID is required';
+      case 'network_error':
+        return l10n?.networkError ?? 'Network error occurred';
+      case 'timeout_error':
+        return l10n?.timeoutError ?? 'Request timed out';
+      case 'delete_account_error':
+        return l10n?.deleteAccountError ?? 'Failed to delete account';
+      case 'logout_error':
+        return l10n?.genericError ?? 'Failed to logout';
+      default:
+        return l10n?.genericError ?? 'Something went wrong';
+    }
+  }
 
   Future<void> _sendRequest(
     BuildContext context,
@@ -24,36 +74,119 @@ class SettingsScreen extends StatelessWidget {
     String successMessage, {
     String method = 'DELETE',
     Map<String, dynamic>? body,
+    bool showSuccess = true,
   }) async {
+    _logger.d('Sending $method request to: $endpoint');
+    _logAnalyticsEvent(
+      'api_request_sent',
+      params: {
+        'endpoint': endpoint,
+        'method': method,
+        'has_body': body != null,
+      },
+    );
+
     try {
       http.Response response;
-      final uri = Uri.parse("$baseUrl/$endpoint");
+      final uri = Uri.parse("${Environment.baseUrl}/$endpoint");
 
-      if (method == 'DELETE') {
-        response = await http.delete(uri);
-      } else if (method == 'PATCH') {
-        response = await http.patch(
-          uri,
-          headers: {'Content-Type': 'application/json'},
-          body: body != null ? jsonEncode(body) : null,
-        );
-      } else {
-        throw Exception('Unsupported HTTP method: $method');
+      final headers = {
+        ...Environment.securityHeaders,
+        if (method != 'GET') 'Content-Type': 'application/json',
+      };
+
+      switch (method) {
+        case 'DELETE':
+          response = await http.delete(uri, headers: headers);
+          break;
+        case 'PATCH':
+          response = await http.patch(
+            uri,
+            headers: headers,
+            body: body != null ? jsonEncode(body) : null,
+          );
+          break;
+        case 'POST':
+          response = await http.post(
+            uri,
+            headers: headers,
+            body: body != null ? jsonEncode(body) : null,
+          );
+          break;
+        default:
+          throw Exception('Unsupported HTTP method: $method');
       }
 
       if (response.statusCode == 200) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text(successMessage)));
+        _logger.i('✅ $method request successful: $endpoint');
+        _logAnalyticsEvent(
+          'api_request_success',
+          params: {'endpoint': endpoint, 'method': method},
+        );
+
+        if (showSuccess && context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(successMessage),
+              backgroundColor: Colors.green,
+              duration: const Duration(seconds: 3),
+            ),
+          );
+        }
       } else {
+        _logger.w('❌ HTTP ${response.statusCode} - Failed: $endpoint');
+        _logAnalyticsEvent(
+          'api_request_failed',
+          params: {
+            'endpoint': endpoint,
+            'method': method,
+            'status_code': response.statusCode,
+          },
+        );
+
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                "${_getLocalizedError('network_error', context)}: ${response.statusCode}",
+              ),
+              backgroundColor: Colors.orange,
+              duration: const Duration(seconds: 4),
+            ),
+          );
+        }
+      }
+    } on TimeoutException {
+      _logger.e('⏰ Request timeout: $endpoint');
+      _logAnalyticsEvent('api_request_timeout', params: {'endpoint': endpoint});
+
+      if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Failed: ${response.statusCode}")),
+          SnackBar(
+            content: Text(_getLocalizedError('timeout_error', context)),
+            backgroundColor: Colors.orange,
+            duration: const Duration(seconds: 4),
+          ),
         );
       }
-    } catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text("Error: $e")));
+    } catch (e, stackTrace) {
+      _reportError(e, stackTrace, context: 'send_request_$endpoint');
+      _logAnalyticsEvent(
+        'api_request_error',
+        params: {'endpoint': endpoint, 'error': e.toString()},
+      );
+
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              "${_getLocalizedError('network_error', context)}: ${e.toString()}",
+            ),
+            backgroundColor: Colors.red,
+            duration: const Duration(seconds: 4),
+          ),
+        );
+      }
     }
   }
 
@@ -61,9 +194,10 @@ class SettingsScreen extends StatelessWidget {
     BuildContext context,
     String title,
     String message,
-    VoidCallback onConfirm, {
+    Future<void> Function() onConfirm, {
     String? confirmText,
     String? cancelText,
+    bool isDestructive = false,
   }) {
     final l10n = AppLocalizations.of(context)!;
 
@@ -75,14 +209,68 @@ class SettingsScreen extends StatelessWidget {
             content: Text(message),
             actions: [
               TextButton(
-                onPressed: () => Navigator.of(ctx).pop(),
+                onPressed: () {
+                  _logAnalyticsEvent(
+                    'confirmation_dialog_cancelled',
+                    params: {'title': title},
+                  );
+                  Navigator.of(ctx).pop();
+                },
                 child: Text(cancelText ?? l10n.cancelButton),
               ),
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
+                  _logAnalyticsEvent(
+                    'confirmation_dialog_confirmed',
+                    params: {'title': title, 'is_destructive': isDestructive},
+                  );
                   Navigator.of(ctx).pop();
-                  onConfirm();
+
+                  // Show loading indicator for async operations
+                  final completer = Completer<void>();
+                  if (context.mounted) {
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder:
+                          (context) => WillPopScope(
+                            onWillPop: () async => false,
+                            child: AlertDialog(
+                              content: Row(
+                                children: [
+                                  const CircularProgressIndicator(),
+                                  const SizedBox(width: 16),
+                                  Text(l10n.processingLabel),
+                                ],
+                              ),
+                            ),
+                          ),
+                    );
+
+                    // Wait for operation to complete
+                    completer.future.then((_) {
+                      if (context.mounted) {
+                        Navigator.of(context, rootNavigator: true).pop();
+                      }
+                    });
+                  }
+
+                  try {
+                    await onConfirm();
+                    completer.complete();
+                  } catch (e, stackTrace) {
+                    completer.completeError(e);
+                    _reportError(
+                      e,
+                      stackTrace,
+                      context: 'confirmation_action_$title',
+                    );
+                  }
                 },
+                style:
+                    isDestructive
+                        ? ElevatedButton.styleFrom(backgroundColor: Colors.red)
+                        : null,
                 child: Text(confirmText ?? l10n.confirmButton),
               ),
             ],
@@ -99,9 +287,13 @@ class SettingsScreen extends StatelessWidget {
     final userId = profileProvider.userId;
 
     if (userId == null || userId.isEmpty) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(l10n.userIdNotFound)));
+      _logger.w('Cannot clear notifications - missing user ID');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(l10n.userIdNotFound),
+          backgroundColor: Colors.orange,
+        ),
+      );
       return;
     }
 
@@ -130,9 +322,13 @@ class SettingsScreen extends StatelessWidget {
     final userId = profileProvider.userId;
 
     if (userId == null || userId.isEmpty) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(l10n.userIdNotFound)));
+      _logger.w('Cannot clear horoscope - missing user ID');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(l10n.userIdNotFound),
+          backgroundColor: Colors.orange,
+        ),
+      );
       return;
     }
 
@@ -152,7 +348,7 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 
-  void _clearChatHistory(BuildContext context) {
+  Future<void> _clearChatHistory(BuildContext context) async {
     final l10n = AppLocalizations.of(context)!;
     final profileProvider = Provider.of<ProfileProvider>(
       context,
@@ -162,9 +358,13 @@ class SettingsScreen extends StatelessWidget {
     final userId = profileProvider.userId;
 
     if (userId == null || userId.isEmpty) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(l10n.userIdNotFound)));
+      _logger.w('Cannot clear chat history - missing user ID');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(l10n.userIdNotFound),
+          backgroundColor: Colors.orange,
+        ),
+      );
       return;
     }
 
@@ -173,39 +373,68 @@ class SettingsScreen extends StatelessWidget {
       l10n.clearChatTitle,
       l10n.clearChatMessage,
       () async {
+        // Clear local chat messages first
         chatService.clearMessages();
+        _logAnalyticsEvent('chat_history_cleared_local');
 
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text(l10n.clearChatLocal)));
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(l10n.clearChatLocal),
+              backgroundColor: Colors.green,
+            ),
+          );
+        }
 
-        await Future.wait([
+        // Clear all related data on backend
+        final requests = [
           _sendRequest(
             context,
             "advices/hide-all",
             l10n.clearQuestionsSuccess,
             method: 'PATCH',
             body: {'userId': userId, 'hide': true},
+            showSuccess: false,
           ),
           _sendRequest(
             context,
             "questions/user/$userId/hide-clarifications",
-            "All clarifications deleted successfully.",
+            "Clarifications cleared",
             method: 'PATCH',
+            showSuccess: false,
           ),
           _sendRequest(
             context,
             "questions/user/$userId/hide-questions",
             l10n.clearQuestionsSuccess,
             method: 'PATCH',
+            showSuccess: false,
           ),
           _sendRequest(
             context,
             "questions/user/$userId/hide-answers",
-            "All answers deleted successfully.",
+            "Answers cleared",
             method: 'PATCH',
+            showSuccess: false,
           ),
-        ]);
+        ];
+
+        try {
+          await Future.wait(requests);
+          _logAnalyticsEvent('chat_history_cleared_backend');
+
+          if (context.mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(l10n.clearChatSuccess),
+                backgroundColor: Colors.green,
+                duration: const Duration(seconds: 3),
+              ),
+            );
+          }
+        } catch (e, stackTrace) {
+          _reportError(e, stackTrace, context: 'clear_chat_history');
+        }
       },
       confirmText: l10n.confirmButton,
       cancelText: l10n.cancelButton,
@@ -227,30 +456,55 @@ class SettingsScreen extends StatelessWidget {
         final userId = profileProvider.userId;
 
         if (userId == null || userId.isEmpty) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(l10n.userIdNotFound)));
+          _logger.w('Cannot delete account - missing user ID');
+          if (context.mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(l10n.userIdNotFound),
+                backgroundColor: Colors.orange,
+              ),
+            );
+          }
           return;
         }
 
         try {
-          // clear profile locally
+          // Clear profile locally first
           await profileProvider.clearProfile();
+          _logAnalyticsEvent('account_deleted_local');
 
-          ScaffoldMessenger.of(
+          // Delete account from backend
+          await _sendRequest(
             context,
-          ).showSnackBar(SnackBar(content: Text(l10n.deleteAccountSuccess)));
-
-          // navigate back or to login
-          Navigator.pushReplacementNamed(context, '/profile-settings');
-        } catch (e) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("${l10n.deleteAccountError}: $e")),
+            "auth/delete-account",
+            l10n.deleteAccountSuccess,
+            method: 'DELETE',
+            body: {'userId': userId},
           );
+
+          _logAnalyticsEvent('account_deleted_backend');
+
+          // Navigate to profile settings
+          if (context.mounted) {
+            Navigator.pushReplacementNamed(context, '/profile-settings');
+          }
+        } catch (e, stackTrace) {
+          _reportError(e, stackTrace, context: 'delete_account');
+          if (context.mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  "${_getLocalizedError('delete_account_error', context)}: ${e.toString()}",
+                ),
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
         }
       },
       confirmText: l10n.confirmButton,
       cancelText: l10n.cancelButton,
+      isDestructive: true,
     );
   }
 
@@ -266,15 +520,38 @@ class SettingsScreen extends StatelessWidget {
           context,
           listen: false,
         );
-        await profileProvider.clearProfile();
 
-        if (Platform.isAndroid) {
-          SystemNavigator.pop();
-        } else if (Platform.isIOS) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (_) => ProfileSettingsScreen()),
-          );
+        try {
+          await profileProvider.clearProfile();
+          _logAnalyticsEvent('user_logged_out');
+
+          if (context.mounted) {
+            if (Platform.isAndroid) {
+              SystemNavigator.pop();
+            } else if (Platform.isIOS) {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const ProfileSettingsScreen(),
+                ),
+              );
+            } else {
+              // Fallback for other platforms
+              Navigator.pushReplacementNamed(context, '/profile-settings');
+            }
+          }
+        } catch (e, stackTrace) {
+          _reportError(e, stackTrace, context: 'logout');
+          if (context.mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  "${_getLocalizedError('logout_error', context)}: ${e.toString()}",
+                ),
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
         }
       },
       confirmText: l10n.confirmButton,
@@ -286,132 +563,310 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
-    final profileProvider = Provider.of<ProfileProvider>(
-      context,
-      listen: false,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(l10n.settingsTitle),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        elevation: 0,
+      ),
+      body: _SettingsContent(
+        l10n: l10n,
+        onClearHoroscope: () => _clearHoroscope(context),
+        onClearNotifications: () => _clearNotifications(context),
+        onClearChatHistory: () => _clearChatHistory(context),
+        onLogout: () => _logout(context),
+        onDeleteAccount: () => _deleteAccount(context),
+      ),
     );
+  }
+}
+
+class _SettingsContent extends StatefulWidget {
+  final AppLocalizations l10n;
+  final VoidCallback onClearHoroscope;
+  final VoidCallback onClearNotifications;
+  final VoidCallback onClearChatHistory;
+  final VoidCallback onLogout;
+  final VoidCallback onDeleteAccount;
+
+  const _SettingsContent({
+    required this.l10n,
+    required this.onClearHoroscope,
+    required this.onClearNotifications,
+    required this.onClearChatHistory,
+    required this.onLogout,
+    required this.onDeleteAccount,
+  });
+
+  @override
+  State<_SettingsContent> createState() => _SettingsContentState();
+}
+
+class _SettingsContentState extends State<_SettingsContent> {
+  @override
+  void initState() {
+    super.initState();
+    _initializeSettings();
+  }
+
+  void _initializeSettings() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      final profileProvider = Provider.of<ProfileProvider>(
+        context,
+        listen: false,
+      );
       profileProvider.loadLanguage();
     });
+  }
 
-    return Scaffold(
-      appBar: AppBar(title: Text(l10n.settingsTitle)),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ListView(
-          children: [
-            Consumer<NotificationProvider>(
-              builder: (context, notificationProvider, child) {
-                return SwitchListTile(
-                  title: Text(l10n.notificationSettings),
-                  value: notificationProvider.notificationsEnabled,
-                  onChanged: (bool value) {
-                    notificationProvider.setNotificationsEnabled(value);
-                    HoroscopeService().setNotificationsEnabled(value);
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: ListView(
+        children: [
+          // Notification Settings
+          _NotificationSettingsTile(l10n: widget.l10n),
+          const SizedBox(height: 8),
 
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          value
-                              ? 'Notifications Enabled'
-                              : 'Notifications Disabled',
-                        ),
-                      ),
-                    );
-                  },
+          // Terms & Privacy
+          _ExpansionSection(
+            title: widget.l10n.termsPrivacyTitle,
+            icon: Icons.security,
+            children: [
+              _PolicyListTile(
+                title: widget.l10n.privacyPolicyTitle,
+                icon: Icons.privacy_tip,
+                policyType: "privacy-policy",
+                l10n: widget.l10n,
+              ),
+              _PolicyListTile(
+                title: widget.l10n.termsConditionsTitle,
+                icon: Icons.article,
+                policyType: "terms-and-conditions",
+                l10n: widget.l10n,
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+
+          // Data Control
+          _ExpansionSection(
+            title: widget.l10n.dataControlTitle,
+            icon: Icons.data_usage,
+            children: [
+              _ActionListTile(
+                title: widget.l10n.clearHoroscope,
+                icon: Icons.clear_all,
+                onTap: widget.onClearHoroscope,
+                color: Colors.orange,
+              ),
+              _ActionListTile(
+                title: widget.l10n.clearNotifications,
+                icon: Icons.notifications_off,
+                onTap: widget.onClearNotifications,
+                color: Colors.blue,
+              ),
+              _ActionListTile(
+                title: widget.l10n.clearChatHistory,
+                icon: Icons.chat_bubble_outline,
+                onTap: widget.onClearChatHistory,
+                color: Colors.purple,
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+
+          // Account Settings
+          _ExpansionSection(
+            title: widget.l10n.accountSettings,
+            icon: Icons.account_circle,
+            children: [
+              _ActionListTile(
+                title: widget.l10n.logout,
+                icon: Icons.logout,
+                onTap: widget.onLogout,
+                color: Colors.orange,
+              ),
+              _ActionListTile(
+                title: widget.l10n.deleteAccount,
+                icon: Icons.delete_forever,
+                onTap: widget.onDeleteAccount,
+                color: Colors.red,
+                isDestructive: true,
+              ),
+              _ActionListTile(
+                title: widget.l10n.recoverAccount,
+                icon: Icons.restore,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const RecoveryScreen()),
+                  );
+                },
+                color: Colors.green,
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+
+          // Language Settings
+          _LanguageSettingsTile(l10n: widget.l10n),
+        ],
+      ),
+    );
+  }
+}
+
+class _NotificationSettingsTile extends StatelessWidget {
+  final AppLocalizations l10n;
+
+  const _NotificationSettingsTile({required this.l10n});
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<NotificationProvider>(
+      builder: (context, notificationProvider, child) {
+        return Card(
+          elevation: 2,
+          child: SwitchListTile(
+            title: Text(
+              l10n.notificationSettings,
+              style: const TextStyle(fontWeight: FontWeight.w500),
+            ),
+            subtitle: Text(
+              notificationProvider.notificationsEnabled
+                  ? l10n.notificationsEnabled
+                  : l10n.notificationsDisabled,
+            ),
+            value: notificationProvider.notificationsEnabled,
+            onChanged: (bool value) {
+              notificationProvider.setNotificationsEnabled(value);
+              HoroscopeService().setNotificationsEnabled(value);
+
+              final logger = Logger();
+              logger.i('🔔 Notifications ${value ? 'enabled' : 'disabled'}');
+
+              // Analytics
+              if (Environment.isProduction) {
+                logger.i(
+                  '📊 Analytics: notifications_toggled - enabled: $value',
                 );
-              },
-            ),
+              }
 
-            ExpansionTile(
-              title: Text(l10n.termsPrivacyTitle),
-              children: [
-                ListTile(
-                  leading: const Icon(Icons.privacy_tip),
-                  title: Text(l10n.privacyPolicyTitle),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder:
-                            (_) => const PolicyPage(
-                              title: "Privacy Policy",
-                              url:
-                                  "https://chat-backend-rvk9.onrender.com/api/policies/privacy-policy",
-                            ),
-                      ),
-                    );
-                  },
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    value
+                        ? l10n.notificationsEnabled
+                        : l10n.notificationsDisabled,
+                  ),
+                  backgroundColor: value ? Colors.green : Colors.orange,
+                  duration: const Duration(seconds: 2),
                 ),
-                ListTile(
-                  leading: const Icon(Icons.article),
-                  title: Text(l10n.termsConditionsTitle),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder:
-                            (_) => const PolicyPage(
-                              title: "Terms & Conditions",
-                              url:
-                                  "https://chat-backend-rvk9.onrender.com/api/policies/terms-and-conditions",
-                            ),
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
-            ExpansionTile(
-              title: Text(l10n.dataControlTitle),
-              children: [
-                ListTile(
-                  leading: const Icon(Icons.clear_all),
-                  title: Text(l10n.clearHoroscope),
-                  onTap: () => _clearHoroscope(context),
-                ),
-                ListTile(
-                  leading: const Icon(Icons.notifications_off),
-                  title: Text(l10n.clearNotifications),
-                  onTap: () => _clearNotifications(context),
-                ),
-                ListTile(
-                  leading: const Icon(Icons.chat_bubble_outline),
-                  title: Text(l10n.clearChatHistory),
-                  onTap: () => _clearChatHistory(context),
-                ),
-              ],
-            ),
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+}
 
-            ExpansionTile(
-              title: Text(l10n.accountSettings),
-              children: [
-                ListTile(
-                  leading: const Icon(Icons.logout, color: Colors.orange),
-                  title: Text(l10n.logout),
-                  onTap: () => _logout(context),
+class _ExpansionSection extends StatelessWidget {
+  final String title;
+  final IconData icon;
+  final List<Widget> children;
+
+  const _ExpansionSection({
+    required this.title,
+    required this.icon,
+    required this.children,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 2,
+      child: ExpansionTile(
+        leading: Icon(icon, color: Theme.of(context).primaryColor),
+        title: Text(title, style: const TextStyle(fontWeight: FontWeight.w500)),
+        children: children,
+      ),
+    );
+  }
+}
+
+class _PolicyListTile extends StatelessWidget {
+  final String title;
+  final IconData icon;
+  final String policyType;
+  final AppLocalizations l10n;
+
+  const _PolicyListTile({
+    required this.title,
+    required this.icon,
+    required this.policyType,
+    required this.l10n,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(icon, color: Colors.blue),
+      title: Text(title),
+      trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+      onTap: () {
+        final logger = Logger();
+        logger.i('📄 Opening policy: $policyType');
+
+        if (Environment.isProduction) {
+          logger.i('📊 Analytics: policy_opened - type: $policyType');
+        }
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder:
+                (_) => PolicyPage(
+                  title: title,
+                  url: "${Environment.baseUrl}/api/policies/$policyType",
                 ),
-                ListTile(
-                  leading: const Icon(Icons.delete_forever, color: Colors.red),
-                  title: Text(l10n.deleteAccount),
-                  onTap: () => _deleteAccount(context),
-                ),
-                ListTile(
-                  leading: const Icon(Icons.restore, color: Colors.green),
-                  title: Text(l10n.recoverAccount),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => const RecoveryScreen()),
-                    );
-                  },
-                ),
-              ],
-            ),
-            _LanguageSettingsTile(l10n: l10n),
-          ],
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _ActionListTile extends StatelessWidget {
+  final String title;
+  final IconData icon;
+  final VoidCallback onTap;
+  final Color color;
+  final bool isDestructive;
+
+  const _ActionListTile({
+    required this.title,
+    required this.icon,
+    required this.onTap,
+    required this.color,
+    this.isDestructive = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(icon, color: color),
+      title: Text(
+        title,
+        style: TextStyle(
+          color: isDestructive ? Colors.red : null,
+          fontWeight: isDestructive ? FontWeight.w600 : null,
         ),
       ),
+      trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+      onTap: onTap,
     );
   }
 }
@@ -423,25 +878,32 @@ class _LanguageSettingsTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ExpansionTile(
-      title: Text(l10n.languageSettings),
-      children: [
-        _LanguageRadioTile(
-          language: "English",
-          locale: const Locale('en'),
-          l10n: l10n,
+    return Card(
+      elevation: 2,
+      child: ExpansionTile(
+        leading: Icon(Icons.language, color: Theme.of(context).primaryColor),
+        title: Text(
+          l10n.languageSettings,
+          style: const TextStyle(fontWeight: FontWeight.w500),
         ),
-        _LanguageRadioTile(
-          language: "Español",
-          locale: const Locale('es'),
-          l10n: l10n,
-        ),
-        _LanguageRadioTile(
-          language: "हिन्दी",
-          locale: const Locale('hi'),
-          l10n: l10n,
-        ),
-      ],
+        children: [
+          _LanguageRadioTile(
+            language: "English",
+            locale: const Locale('en'),
+            l10n: l10n,
+          ),
+          _LanguageRadioTile(
+            language: "Español",
+            locale: const Locale('es'),
+            l10n: l10n,
+          ),
+          _LanguageRadioTile(
+            language: "हिन्दी",
+            locale: const Locale('hi'),
+            l10n: l10n,
+          ),
+        ],
+      ),
     );
   }
 }
@@ -461,6 +923,8 @@ class _LanguageRadioTile extends StatelessWidget {
     BuildContext context,
     String langCode,
   ) async {
+    final logger = Logger();
+
     try {
       final profileProvider = Provider.of<ProfileProvider>(
         context,
@@ -470,31 +934,46 @@ class _LanguageRadioTile extends StatelessWidget {
       final token = profileProvider.token;
 
       if (userId == null || token == null) {
-        debugPrint("⚠️ Cannot update language: userId or token missing");
+        logger.w("⚠️ Cannot update language: userId or token missing");
         return;
       }
 
       final url = Uri.parse(
-        'https://chat-backend-rvk9.onrender.com/api/profile/update-language',
-      );
-      final response = await http.post(
-        url,
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer $token',
-        },
-        body: json.encode({'userId': userId, 'language': langCode}),
+        '${Environment.baseUrl}/api/profile/update-language',
       );
 
+      final response = await http
+          .post(
+            url,
+            headers: {
+              ...Environment.securityHeaders,
+              'Authorization': 'Bearer $token',
+            },
+            body: json.encode({'userId': userId, 'language': langCode}),
+          )
+          .timeout(const Duration(seconds: 10));
+
       if (response.statusCode == 200) {
-        debugPrint("✅ Language updated on backend successfully.");
-        // Optional: ensure ProfileProvider.language is synced
+        logger.i("✅ Language updated on backend successfully.");
         profileProvider.setLanguage(langCode);
+
+        if (Environment.isProduction) {
+          logger.i('📊 Analytics: language_changed - lang: $langCode');
+        }
       } else {
-        debugPrint("❌ Failed to update language: ${response.body}");
+        logger.w(
+          "❌ Failed to update language: ${response.statusCode} - ${response.body}",
+        );
       }
+    } on TimeoutException {
+      logger.e("⏰ Language update timeout");
     } catch (e) {
-      debugPrint("🔴 Error updating language: $e");
+      final errorLogger = Logger();
+      errorLogger.e("🔴 Error updating language: $e");
+
+      if (Environment.isProduction) {
+        errorLogger.e('📊 Analytics: language_update_error - error: $e');
+      }
     }
   }
 
@@ -509,21 +988,44 @@ class _LanguageRadioTile extends StatelessWidget {
       groupValue: profileProvider.language ?? 'en',
       onChanged: (String? value) async {
         if (value != null) {
-          // Update ProfileProvider state
-          await profileProvider.saveLanguage(value);
+          final logger = Logger();
+          logger.i('🌐 Changing language to: $value');
 
-          // Update Flutter locale
-          localeProvider.setLocale(Locale(value));
+          try {
+            // Update ProfileProvider state
+            await profileProvider.saveLanguage(value);
 
-          // Update backend if user is logged in
-          if (profileProvider.userId != null) {
-            await _updateLanguageOnBackend(context, value);
+            // Update Flutter locale
+            localeProvider.setLocale(Locale(value));
+
+            // Update backend if user is logged in
+            if (profileProvider.userId != null) {
+              await _updateLanguageOnBackend(context, value);
+            }
+
+            // Show confirmation
+            if (context.mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(l10n.languageChanged),
+                  backgroundColor: Colors.green,
+                  duration: const Duration(seconds: 2),
+                ),
+              );
+            }
+          } catch (e) {
+            final errorLogger = Logger();
+            errorLogger.e('🔴 Error changing language: $e');
+
+            if (context.mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text("${l10n.genericError}: ${e.toString()}"),
+                  backgroundColor: Colors.red,
+                ),
+              );
+            }
           }
-
-          // Show confirmation
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(l10n.languageChanged)));
         }
       },
     );
