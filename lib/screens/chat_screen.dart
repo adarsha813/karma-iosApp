@@ -2377,7 +2377,7 @@ class _ChatScreenState extends State<ChatScreen>
               if (!completer.isCompleted) {
                 completer.complete();
               }
-              chatService.removeMessage(questionId);
+              chatService.removeMessageById(questionId);
             }
           } catch (e) {
             AppLogger.error('Error processing new_question acknowledgment', e);

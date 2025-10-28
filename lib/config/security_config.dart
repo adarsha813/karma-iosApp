@@ -59,4 +59,8 @@ class SecurityConfig {
   // ✅ ADDED: Cooldown periods
 
   static const Duration feedbackCooldown = Duration(seconds: 2);
+  static const int maxMessagesPerBatch = 500;
+  static const int maxMessageOperationsPerMinute = 60;
+
+  // ✅ ADDED: Validation patterns
 }
