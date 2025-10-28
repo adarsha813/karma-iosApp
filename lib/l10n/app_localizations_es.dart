@@ -608,7 +608,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get noNotifications => 'No hay notificaciones';
 
   @override
-  String get allTab => 'Todos';
+  String get allTab => 'Todo';
 
   @override
   String get markAllAsRead => 'Marcar todo como leído';
@@ -713,6 +713,22 @@ class AppLocalizationsEs extends AppLocalizations {
   String get reactionUpdateError => 'No se pudo actualizar la reacción';
 
   @override
+  String get noSearchResults => 'No se encontraron resultados';
+
+  @override
+  String get clearSearch => 'Borrar búsqueda';
+
+  @override
+  String get resultsFound => 'Resultados encontrados';
+
+  @override
+  String get recoverySecretHint => 'Ingrese su pista secreta';
+
+  @override
+  String get recoverAccountDescription =>
+      'Siga estos pasos para recuperar su cuenta';
+
+  @override
   String get processingLabel => 'Procesando...';
 
   @override
@@ -727,6 +743,9 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get securityNotice =>
       'Tus datos están cifrados y almacenados de forma segura';
+
+  @override
+  String get loading => 'Cargando...';
 
   @override
   String get accountRecoveryTitle => '🔐 Detalles de recuperación de cuenta';

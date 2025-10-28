@@ -711,6 +711,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reactionUpdateError => 'Failed to update reaction';
 
   @override
+  String get noSearchResults => 'No search results found';
+
+  @override
+  String get clearSearch => 'Clear search';
+
+  @override
+  String get resultsFound => 'Results found';
+
+  @override
+  String get recoverySecretHint => 'Enter your secret hint';
+
+  @override
+  String get recoverAccountDescription =>
+      'Follow these steps to recover your account';
+
+  @override
   String get processingLabel => 'Processing...';
 
   @override
@@ -724,6 +740,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get securityNotice => 'Your data is securely encrypted and stored';
+
+  @override
+  String get loading => 'Loading...';
 
   @override
   String get accountRecoveryTitle => '🔐 Account Recovery Details';

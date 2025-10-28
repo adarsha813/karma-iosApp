@@ -598,16 +598,16 @@ class AppLocalizationsHi extends AppLocalizations {
   String get demoNotificationBody => 'यह आपके ऐप से एक परीक्षण सूचना है!';
 
   @override
-  String get notificationsTitle => 'सूचनाएं';
+  String get notificationsTitle => 'नोटिफिकेशन';
 
   @override
-  String get noNotifications => 'कोई सूचना नहीं';
+  String get noNotifications => 'कोई नोटिफिकेशन नहीं';
 
   @override
   String get allTab => 'सभी';
 
   @override
-  String get markAllAsRead => 'सभी को पढ़ा हुआ चिह्नित करें';
+  String get markAllAsRead => 'सभी को पढ़ा हुआ दिखाएं';
 
   @override
   String get notificationMarkedRead => 'सूचना को पढ़ा हुआ चिह्नित किया गया';
@@ -643,7 +643,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get systemCategory => 'सिस्टम';
 
   @override
-  String get updateCategory => 'अपडेट्स';
+  String get updateCategory => 'अपडेट';
 
   @override
   String get howToAskTitle => 'कैसे पूछें';
@@ -709,6 +709,22 @@ class AppLocalizationsHi extends AppLocalizations {
   String get reactionUpdateError => 'प्रतिक्रिया अपडेट करने में विफल';
 
   @override
+  String get noSearchResults => 'कोई परिणाम नहीं मिला';
+
+  @override
+  String get clearSearch => 'खोज साफ़ करें';
+
+  @override
+  String get resultsFound => 'परिणाम मिले';
+
+  @override
+  String get recoverySecretHint => 'अपना गुप्त संकेत दर्ज करें';
+
+  @override
+  String get recoverAccountDescription =>
+      'अपने खाते को पुनर्प्राप्त करने के लिए इन चरणों का पालन करें';
+
+  @override
   String get processingLabel => 'प्रसंस्करण हो रहा है...';
 
   @override
@@ -723,6 +739,9 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get securityNotice =>
       'आपका डेटा सुरक्षित रूप से एन्क्रिप्ट और संग्रहीत किया गया है';
+
+  @override
+  String get loading => 'लोड हो रहा है...';
 
   @override
   String get accountRecoveryTitle => '🔐 खाता पुनर्प्राप्ति विवरण';

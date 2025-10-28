@@ -1390,6 +1390,36 @@ abstract class AppLocalizations {
   /// **'Failed to update reaction'**
   String get reactionUpdateError;
 
+  /// No description provided for @noSearchResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No search results found'**
+  String get noSearchResults;
+
+  /// No description provided for @clearSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear search'**
+  String get clearSearch;
+
+  /// No description provided for @resultsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Results found'**
+  String get resultsFound;
+
+  /// No description provided for @recoverySecretHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your secret hint'**
+  String get recoverySecretHint;
+
+  /// No description provided for @recoverAccountDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Follow these steps to recover your account'**
+  String get recoverAccountDescription;
+
   /// No description provided for @processingLabel.
   ///
   /// In en, this message translates to:
@@ -1419,6 +1449,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your data is securely encrypted and stored'**
   String get securityNotice;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading...'**
+  String get loading;
 
   /// No description provided for @accountRecoveryTitle.
   ///
