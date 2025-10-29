@@ -120,6 +120,7 @@ class Message extends ChangeNotifier {
   }
 
   factory Message.fromJson(Map<String, dynamic> json) {
+    print('📥 Raw JSON for message: $json'); // <- make sure this prints
     String? parsedMongoId;
 
     final rawId = json["_id"];
@@ -129,11 +130,37 @@ class Message extends ChangeNotifier {
       parsedMongoId = rawId.toString();
     }
 
+    // ----- Clarification ID extraction -----
+    String? clarificationId;
+
+    // Case 1: Direct field on parent
+    if (json["clarificationId"] != null) {
+      clarificationId = json["clarificationId"].toString();
+    }
+    // Case 2: From first element in clarificationMessages array
+    else if (json["clarificationMessages"] is List &&
+        (json["clarificationMessages"] as List).isNotEmpty) {
+      final firstClar = (json["clarificationMessages"] as List).first;
+      if (firstClar["clarificationId"] != null) {
+        clarificationId = firstClar["clarificationId"].toString();
+      }
+    }
+    // Case 3: Fallback: if message itself is clarification
+    else if (json["isClarification"] == true && rawId != null) {
+      clarificationId = parsedMongoId;
+    }
+    debugPrint(
+      '✅ Message ID: ${json["id"]} | Clarification ID: $clarificationId',
+    );
+
+    debugPrint('✅ clarificationId extracted: $clarificationId');
+    // ---------------------------------------
+
     return Message(
       id: json["id"],
       mongoId: parsedMongoId,
       text: json["text"] ?? "",
-      clarificationId: json["clarificationId"],
+      clarificationId: clarificationId,
       isMe: json["isMe"] ?? true,
       isClarification: json["isClarification"] ?? false,
       isAdvice: json["isAdvice"] ?? false,
@@ -151,8 +178,6 @@ class Message extends ChangeNotifier {
       isAnswerHidden: json["isAnswerHidden"] ?? false,
       isClarificationHidden: json["isClarificationHidden"] ?? false,
       isAdviceHidden: json["isAdviceHidden"] ?? false,
-
-      /// Never trust backend for client runtime flags
       isSending: false,
       isTemporary: false,
     );

@@ -1758,6 +1758,7 @@ class _ChatScreenState extends State<ChatScreen>
             adminId: clarification['adminId'],
             adminName: clarification['adminName'],
             clarificatedAt: DateTime.parse(clarification['clarificatedAt']),
+            clarificationId: clarification['clarificationId'], // ✅ add this
           ),
         );
       }

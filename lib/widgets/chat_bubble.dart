@@ -3,7 +3,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
+import 'dart:math'; // <-- needed for min()
 import '../models/message.dart';
 import '../models/astro_term.dart';
 import '../services/chat_service.dart';
@@ -46,6 +46,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   final RateLimitingService _rateLimiter = RateLimitingService();
   static const Duration _hideActionCooldown = Duration(seconds: 2);
 
+  bool _isHiding = false;
+
   @override
   void initState() {
     super.initState();
@@ -79,21 +81,31 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     _animationController.forward();
   }
 
+  void _logSecurityEvent(String message, [Map<String, dynamic>? data]) {
+    debugPrint('Security event: $message, data: ${data ?? {}}');
+  }
+
   void _showHideOptions(BuildContext context, Message message) {
-    // Rate limiting for hide options
-    if (_rateLimiter.isActionAllowed('hideItem', _hideActionCooldown)) {
+    // Debug the rate limiting
+    _rateLimiter.debugActionState('hideItem', _hideActionCooldown);
+
+    final isAllowed = _rateLimiter.isActionAllowed(
+      'hideItem',
+      _hideActionCooldown,
+    );
+    debugPrint('🎯 Hide action allowed: $isAllowed');
+
+    if (!isAllowed) {
+      debugPrint('⏰ Rate limited - showing wait message');
       _showSnackBar(context, 'Please wait before performing another action');
       return;
     }
 
     _logSecurityEvent('HideOptionsShown', {'messageId': message.id});
-
     showDialog(
       context: context,
       barrierDismissible: true,
-      builder: (context) {
-        return _buildHideOptionsDialog(context, message);
-      },
+      builder: (context) => _buildHideOptionsDialog(context, message),
     );
   }
 
@@ -166,7 +178,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       );
     }
 
-    if (message.isClarification) {
+    if (message.isClarification && message.clarificationId != null) {
       items.add(
         _buildHideOptionItem(
           context,
@@ -180,6 +192,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
           ),
         ),
       );
+    } else if (message.isClarification) {
+      debugPrint('⚠️ Cannot hide clarification: clarificationId is null');
     }
 
     return items;
@@ -214,11 +228,16 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     String? messageId, {
     bool isAdvice = false,
   }) async {
-    // Rate limiting
-    if (_rateLimiter.isActionAllowed('hideItem', _hideActionCooldown)) {
-      _showSnackBar(context, 'Please wait before hiding another message');
-      return;
+    _debugChatServiceState(); // ← here
+    // Set hiding state immediately
+    if (mounted) {
+      setState(() {
+        _isHiding = true;
+      });
     }
+    debugPrint(
+      '🎯 _hideItem called - endpoint: $endpoint, messageId: $messageId',
+    );
 
     Navigator.pop(context); // Close dialog
 
@@ -239,14 +258,59 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       return;
     }
 
+    // ✅ IMMEDIATE UI UPDATE - Remove message from local list FIRST
+    _removeMessageInstantly(messageId!);
+
+    // ✅ Then call backend async
     await _performHideRequest(
       context,
       endpoint,
-      messageId!,
+      messageId,
       userId!,
       token!,
       isAdvice,
     );
+
+    Future.delayed(Duration(seconds: 2), () {
+      if (mounted) {
+        setState(() {
+          _isHiding = false;
+        });
+      }
+    });
+  }
+
+  void _debugChatServiceState() {
+    final chatService = Provider.of<SecureChatService>(context, listen: false);
+    debugPrint('📊 ChatService state:');
+    debugPrint('   Total messages: ${chatService.messages.length}');
+    debugPrint(
+      '   Messages: ${chatService.messages.map((m) => '${m.id}: ${m.text.substring(0, min(20, m.text.length))}').toList()}',
+    );
+  }
+
+  void _removeMessageInstantly(String messageId) {
+    try {
+      debugPrint('🚀 Removing message instantly from UI: $messageId');
+
+      final chatService = Provider.of<SecureChatService>(
+        context,
+        listen: false,
+      );
+
+      // Remove from service immediately
+      chatService.removeMessageById(messageId);
+
+      // Show immediate feedback
+      _showSnackBar(context, 'Message hidden');
+
+      _debugChatServiceState(); // ← here to see the state after removal
+
+      debugPrint('✅ Message removed instantly from UI: $messageId');
+    } catch (e, stackTrace) {
+      debugPrint('❌ Error removing message from UI: $e');
+      ErrorReportingService.recordError(e, stackTrace);
+    }
   }
 
   bool _validateHideParameters(String? messageId) {
@@ -272,19 +336,37 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     bool isAdvice,
   ) async {
     try {
+      debugPrint('🌐 Sending hide request to backend: $endpoint');
+
       final secureClient = SecureHttpClient();
       final url = Uri.parse('${Environment.baseUrl}$endpoint');
       final response = await secureClient.sendAuthenticatedRequest(
         url: url,
-        method: isAdvice ? 'PATCH' : 'PATCH',
+        method: 'PATCH',
         token: token,
+        headers: {'Content-Type': 'application/json'},
         body: isAdvice ? jsonEncode({'userId': userId, 'hide': true}) : null,
         timeout: const Duration(seconds: 10),
       );
 
-      await _handleHideResponse(context, response, messageId);
+      // Process response in next frame to ensure UI stability
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _handleHideResponse(context, response, messageId);
+      });
     } catch (error, stackTrace) {
-      await _handleHideError(context, error, stackTrace, messageId);
+      debugPrint('❌ Hide request failed: $error');
+      if (mounted) {
+        await _handleHideError(context, error, stackTrace, messageId);
+      }
+
+      // Show error but don't add the message back (better UX)
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) {
+          _showSnackBar(context, 'Hidden locally (sync failed)');
+        }
+      });
+
+      ErrorReportingService.recordError(error, stackTrace);
     }
   }
 
@@ -295,14 +377,12 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   ) async {
     if (response.statusCode == 200) {
       _logSecurityEvent('MessageHidden', {'messageId': messageId});
+      debugPrint('✅ Message successfully hidden on server: $messageId');
 
-      // Update UI
+      // No need to update UI again - it was already removed instantly
+      // Just show success confirmation
       if (mounted) {
-        Provider.of<SecureChatService>(
-          context,
-          listen: false,
-        ).removeMessageById(messageId);
-        _showSnackBar(context, 'Message hidden successfully');
+        _showSnackBar(context, '✓ Hidden successfully');
       }
     } else {
       _logSecurityEvent('HideMessageFailed', {
@@ -310,11 +390,12 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
         'statusCode': response.statusCode,
       });
 
+      debugPrint('❌ Server hide failed: ${response.statusCode}');
+
+      // Optionally: You could add the message back if server hide failed
+      // But usually better UX to keep it hidden locally
       if (mounted) {
-        _showSnackBar(
-          context,
-          'Failed to hide message: ${response.statusCode}',
-        );
+        _showSnackBar(context, 'Hidden locally (server sync failed)');
       }
     }
   }
@@ -333,28 +414,26 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     // Report error
     ErrorReportingService.recordError(error, stackTrace);
 
+    // Only show snackbar if widget is still mounted
     if (mounted) {
       _showSnackBar(context, 'Network error. Please try again.');
     }
   }
 
-  void _logSecurityEvent(String event, Map<String, dynamic> params) {
-    // Log security-related events
-    debugPrint('🔒 Security Event: $event - $params');
-
-    // In production, send to your analytics/security monitoring
-    // AnalyticsService.logEvent(event, parameters: params);
-  }
-
   void _showSnackBar(BuildContext context, String message) {
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(message),
-          duration: const Duration(seconds: 3),
-          behavior: SnackBarBehavior.floating,
-        ),
-      );
+    // Double-check if we can safely show the snackbar
+    try {
+      if (mounted && ScaffoldMessenger.of(context).mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(message),
+            duration: const Duration(seconds: 3),
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
+      }
+    } catch (e) {
+      debugPrint('Error showing snackbar: $e');
     }
   }
 
@@ -476,6 +555,9 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   }
 
   Widget _buildBubble(BubbleConfig config) {
+    if (_isHiding) {
+      return _buildHidingState();
+    }
     final message = widget.message;
 
     return Container(
@@ -522,6 +604,29 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
           if (_shouldShowRatingBubble()) _buildRatingBubble(),
 
           if (message.id?.startsWith('temp_') == true) _buildLoadingIndicator(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildHidingState() {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+      decoration: BoxDecoration(
+        color: Colors.grey[300],
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(
+            width: 12,
+            height: 12,
+            child: CircularProgressIndicator(strokeWidth: 2),
+          ),
+          SizedBox(width: 8),
+          Text('Hiding...', style: TextStyle(color: Colors.grey)),
         ],
       ),
     );

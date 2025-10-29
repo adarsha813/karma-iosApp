@@ -68,15 +68,16 @@ class SecureHttpClient {
   Future<http.Response> sendAuthenticatedRequest({
     required Uri url,
     required String method,
-    String? body, // <-- now body is String
+    String? body,
     String? token,
-
+    Map<String, String>? headers, // <-- add this
     Duration? timeout,
   }) async {
     final request = http.Request(method, url);
 
     if (token != null) request.headers['Authorization'] = 'Bearer $token';
     if (body != null) request.body = body;
+    if (headers != null) request.headers.addAll(headers); // <-- merge headers
 
     final streamedResponse = await _client
         .send(request)

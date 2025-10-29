@@ -1,5 +1,6 @@
 import 'dart:collection';
-import '../config/security_config.dart'; // Add this import
+import '../config/security_config.dart';
+import 'package:flutter/foundation.dart'; // for debugPrint
 
 class RateLimitingService {
   static final RateLimitingService _instance = RateLimitingService._internal();
@@ -50,20 +51,25 @@ class RateLimitingService {
   }
 
   // ----------------------------------------
-  // Action Rate Limiting
+  // Action Rate Limiting - FIXED VERSION
   // ----------------------------------------
   final Map<String, DateTime> _actionCooldowns = {};
 
   bool isActionAllowed(String actionKey, Duration cooldown) {
     final now = DateTime.now();
 
+    // Check if action exists and is within cooldown
     if (_actionCooldowns.containsKey(actionKey)) {
       final lastAction = _actionCooldowns[actionKey]!;
-      if (now.difference(lastAction) < cooldown) {
+      final timeSinceLastAction = now.difference(lastAction);
+
+      if (timeSinceLastAction < cooldown) {
+        // Action is still in cooldown period - BLOCK IT
         return false;
       }
     }
 
+    // Action is allowed - update the timestamp
     _actionCooldowns[actionKey] = now;
     return true;
   }
@@ -74,8 +80,40 @@ class RateLimitingService {
     if (!_actionCooldowns.containsKey(actionKey)) return null;
 
     final lastAction = _actionCooldowns[actionKey]!;
-    final remaining = cooldown - now.difference(lastAction);
+    final timeSinceLastAction = now.difference(lastAction);
 
-    return remaining.isNegative ? null : remaining;
+    if (timeSinceLastAction >= cooldown) {
+      // Cooldown has expired
+      return null;
+    }
+
+    return cooldown - timeSinceLastAction;
+  }
+
+  // Add a method to manually reset cooldown (useful for testing)
+  void resetActionCooldown(String actionKey) {
+    _actionCooldowns.remove(actionKey);
+  }
+
+  // Debug method to check current state
+  void debugActionState(String actionKey, Duration cooldown) {
+    final now = DateTime.now();
+    final lastAction = _actionCooldowns[actionKey];
+
+    if (lastAction == null) {
+      debugPrint('🔍 $actionKey: No previous action recorded');
+      return;
+    }
+
+    final timeSinceLastAction = now.difference(lastAction);
+    final isAllowed = timeSinceLastAction >= cooldown;
+
+    debugPrint(
+      '🔍 $actionKey: '
+      'Last action: $lastAction, '
+      'Time since: $timeSinceLastAction, '
+      'Cooldown: $cooldown, '
+      'Allowed: $isAllowed',
+    );
   }
 }

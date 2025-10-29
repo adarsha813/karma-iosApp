@@ -355,33 +355,48 @@ class SecureChatService with ChangeNotifier {
   // Keep all your existing methods but they'll now benefit from the security foundation
 
   /// Remove message by client or mongo ID
+  /// Remove message by client or mongo ID - ENHANCED VERSION
   void removeMessageById(String id) {
+    debugPrint('🔄 SecureChatService.removeMessageById called for: $id');
+
     final index = _messages.indexWhere((m) => m.id == id || m.mongoId == id);
-    if (index == -1) return;
+    if (index == -1) {
+      debugPrint('❌ Message not found for removal: $id');
+      return;
+    }
 
     final removedMsg = _messages.removeAt(index);
+    debugPrint('✅ Removed message: ${removedMsg.text}');
 
-    listKey.currentState?.removeItem(
-      index,
-      (context, animation) => SizeTransition(
-        sizeFactor: animation,
-        axisAlignment: 0,
-        child: Container(
-          margin: const EdgeInsets.symmetric(vertical: 4),
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: Colors.grey.shade300,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Text(
-            removedMsg.text,
-            style: const TextStyle(color: Colors.black),
+    // Use try-catch for the animated list removal
+    try {
+      listKey.currentState?.removeItem(
+        index,
+        (context, animation) => SizeTransition(
+          sizeFactor: animation,
+          axisAlignment: 0,
+          child: Container(
+            margin: const EdgeInsets.symmetric(vertical: 4),
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade300,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Text(
+              removedMsg.text,
+              style: const TextStyle(color: Colors.black),
+            ),
           ),
         ),
-      ),
-      duration: const Duration(milliseconds: 300),
-    );
+        duration: const Duration(milliseconds: 300),
+      );
+    } catch (e) {
+      debugPrint('❌ Error in animated list removal: $e');
+      // Still notify listeners even if animation fails
+    }
+
     notifyListeners();
+    debugPrint('📢 Notified listeners after message removal');
   }
 
   /// Replace current messages with a new list
