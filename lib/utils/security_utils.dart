@@ -50,4 +50,18 @@ class SecurityUtils {
 
     return hasUpperCase && hasLowerCase && hasDigits && hasSpecialChars;
   }
+
+  static bool isValidUserId(String userId) {
+    final sanitized = sanitizeInput(userId);
+
+    // If sanitization changes the input, it had invalid characters
+    if (sanitized != userId) return false;
+
+    // Disallow suspicious inputs
+    if (containsSuspiciousPatterns(userId)) return false;
+
+    // Must be alphanumeric + _ or - , 3–20 characters
+    final regex = RegExp(r'^[a-zA-Z0-9_-]{3,20}$');
+    return regex.hasMatch(userId);
+  }
 }

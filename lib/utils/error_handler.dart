@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart' hide Card;
 
 class ApiException implements Exception {
   final String message;
   final int? statusCode;
-
   ApiException(this.message, [this.statusCode]);
 
   @override
@@ -14,7 +14,6 @@ class ApiException implements Exception {
 class PaymentException implements Exception {
   final String message;
   final String? code;
-
   PaymentException(this.message, [this.code]);
 
   @override
@@ -23,6 +22,31 @@ class PaymentException implements Exception {
 }
 
 class ErrorHandler {
+  static void recordError(
+    Object error, {
+    StackTrace? stackTrace,
+    String? context,
+  }) {
+    debugPrint('❌ Error in $context: $error');
+    if (stackTrace != null) debugPrint('Stack: $stackTrace');
+  }
+
+  static void showErrorSnackbar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message), behavior: SnackBarBehavior.floating),
+    );
+  }
+
+  static void showSuccessSnackbar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Colors.green,
+      ),
+    );
+  }
+
   static Exception handlePaymentError(dynamic error) {
     if (error is ApiException) {
       return error;

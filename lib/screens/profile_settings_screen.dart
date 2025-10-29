@@ -3,6 +3,7 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
+import 'package:crypto/crypto.dart'; // for sha256
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import '../providers/profile_provider.dart';
@@ -11,32 +12,18 @@ import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import '../l10n/app_localizations.dart';
 import '../widgets/Avaterloder.dart';
-import 'recovery_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'chat_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:kundali/config/environment.dart';
 import 'package:kundali/services/profile_service.dart';
-
-class _SaveProfileResult {
-  final bool success;
-  final String? message;
-  final Map<String, dynamic>? data;
-
-  _SaveProfileResult({required this.success, this.message, this.data});
-}
-
-class _ValidationResult {
-  final bool isValid;
-  final String? errorMessage;
-
-  _ValidationResult({required this.isValid, this.errorMessage});
-
-  factory _ValidationResult.valid() => _ValidationResult(isValid: true);
-  factory _ValidationResult.invalid(String error) =>
-      _ValidationResult(isValid: false, errorMessage: error);
-}
+import '../utils/security_utils.dart';
+import '../utils/error_handler.dart';
+import 'dart:math'; // for Random()
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:kundali/services/fcm_service.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class ProfileSettingsScreen extends StatefulWidget {
   const ProfileSettingsScreen({super.key});
@@ -65,55 +52,34 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   double? _dst;
   String? _state;
   bool _isSaving = false;
+  DateTime? _lastSaveAttempt;
+  static const _minSaveInterval = Duration(seconds: 2);
+  bool _canSave() {
+    final now = DateTime.now();
+    if (_lastSaveAttempt != null) {
+      final difference = now.difference(_lastSaveAttempt!);
+      if (difference < _minSaveInterval) {
+        ErrorHandler.showErrorSnackbar(
+          context,
+          'Please wait before saving again',
+        );
+        return false;
+      }
+    }
+    _lastSaveAttempt = now;
+    return true;
+  }
 
   // Security & Validation
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final _debounceTimer = Duration(seconds: 1);
+  final _debounceTimer = const Duration(milliseconds: 800);
   Timer? _validationTimer;
   Timer? _citySearchDebounce;
-
-  // Input sanitization
-  String _sanitizeInput(String input) {
-    return input.trim().replaceAll(RegExp(r'[<>{}]'), '');
-  }
-
-  bool _isValidName(String name) {
-    return name.length >= 2 &&
-        name.length <= 50 &&
-        RegExp(r'^[a-zA-Z\s]+$').hasMatch(name);
-  }
-
-  bool _isValidUserId(String userId) {
-    return userId.isEmpty ||
-        (userId.length >= 3 &&
-            userId.length <= 20 &&
-            RegExp(r'^[a-zA-Z0-9_-]+$').hasMatch(userId));
-  }
 
   @override
   void initState() {
     super.initState();
     _initializeData();
-  }
-
-  Future<void> _initializeData() async {
-    try {
-      await _loadSavedProfileData();
-
-      final profileProvider = Provider.of<ProfileProvider>(
-        context,
-        listen: false,
-      );
-
-      await profileProvider.loadLanguage();
-      if (profileProvider.language != null &&
-          _userIdController.text.isNotEmpty) {
-        await _updateLanguageOnBackend(profileProvider.language!);
-      }
-    } catch (e) {
-      _showErrorSnackbar('Failed to initialize profile data');
-      debugPrint('Initialization error: $e');
-    }
   }
 
   @override
@@ -132,11 +98,44 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     super.dispose();
   }
 
+  Future<void> _initializeData() async {
+    try {
+      await _loadSavedProfileData();
+
+      final profileProvider = Provider.of<ProfileProvider>(
+        context,
+        listen: false,
+      );
+
+      await profileProvider.loadLanguage();
+      if (profileProvider.language != null &&
+          _userIdController.text.isNotEmpty) {
+        await _updateLanguageOnBackend(profileProvider.language!);
+      }
+    } catch (e, stack) {
+      ErrorHandler.recordError(
+        e,
+        stackTrace: stack,
+        context: 'ProfileInitialization',
+      );
+
+      if (mounted) {
+        ErrorHandler.showErrorSnackbar(
+          context,
+          'Failed to initialize profile data',
+        );
+      }
+    }
+  }
+
   void _onUserIdChanged() {
     _validationTimer?.cancel();
     _validationTimer = Timer(_debounceTimer, () {
+      // Add mounted check
+      if (!mounted) return;
+
       final newUserId = _userIdController.text.trim();
-      if (newUserId.isNotEmpty && _isValidUserId(newUserId)) {
+      if (newUserId.isNotEmpty && SecurityUtils.isValidUserId(newUserId)) {
         final profileProvider = Provider.of<ProfileProvider>(
           context,
           listen: false,
@@ -147,7 +146,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     });
   }
 
-  // Enhanced secure image handling
   Future<void> _pickImage() async {
     try {
       final picked = await ImagePicker().pickImage(
@@ -155,124 +153,191 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         maxWidth: 800,
         maxHeight: 800,
         imageQuality: 70,
+        requestFullMetadata: false,
       );
 
       if (picked != null) {
         final file = File(picked.path);
         final stat = await file.stat();
 
+        // Validate file size
         if (stat.size > 2 * 1024 * 1024) {
-          _showErrorSnackbar('Image size must be less than 2MB');
+          ErrorHandler.showErrorSnackbar(
+            context,
+            'Image size must be less than 2MB',
+          );
           return;
         }
 
-        // Compress image further if needed
+        // Validate file extension
+        if (!SecurityUtils.isValidFileType(picked.path, [
+          'jpg',
+          'jpeg',
+          'png',
+          'gif',
+        ])) {
+          ErrorHandler.showErrorSnackbar(
+            context,
+            'Invalid image format. Please use JPG, PNG, or GIF',
+          );
+          return;
+        }
+
+        // Validate image type by signature
+        final bytes = await file.readAsBytes();
+        if (bytes.length < 4 ||
+            !(_isJpeg(bytes) || _isPng(bytes) || _isGif(bytes))) {
+          ErrorHandler.showErrorSnackbar(
+            context,
+            'Invalid image file. Please use a valid image',
+          );
+          return;
+        }
+
         final compressedImage = await _compressImage(file);
-        setState(() => _image = compressedImage);
+        if (mounted) {
+          setState(() => _image = compressedImage);
+        }
       }
-    } catch (e) {
-      _showErrorSnackbar('Failed to pick image');
+    } catch (e, stack) {
+      ErrorHandler.recordError(e, stackTrace: stack, context: 'ImagePicker');
+      if (mounted) {
+        ErrorHandler.showErrorSnackbar(context, 'Failed to pick image');
+      }
     }
   }
 
-  // Image compression method
+  bool _isJpeg(List<int> bytes) => bytes[0] == 0xFF && bytes[1] == 0xD8;
+  bool _isPng(List<int> bytes) =>
+      bytes[0] == 0x89 &&
+      bytes[1] == 0x50 &&
+      bytes[2] == 0x4E &&
+      bytes[3] == 0x47;
+  bool _isGif(List<int> bytes) =>
+      bytes[0] == 0x47 && bytes[1] == 0x49 && bytes[2] == 0x46;
+
   Future<File> _compressImage(File imageFile) async {
-    // For now, return the original file
-    // In production, you can integrate with flutter_image_compress package
-    return imageFile;
+    try {
+      // For production, integrate flutter_image_compress
+      // For now, validate and return original with size check
+      final stat = await imageFile.stat();
+      if (stat.size > 2 * 1024 * 1024) {
+        throw ImageException('Image too large after compression');
+      }
+      return imageFile;
+    } catch (e, stack) {
+      ErrorHandler.recordError(
+        e,
+        stackTrace: stack,
+        context: 'ImageCompression',
+      );
+
+      return imageFile;
+    }
   }
 
-  Future<_ValidationResult> _validateProfileBeforeSave() async {
+  Future<ValidationResult> _validateProfileBeforeSave() async {
     if (!_formKey.currentState!.validate()) {
-      return _ValidationResult.invalid('Form validation failed');
+      return ValidationResult.invalid('Please fix the validation errors');
     }
 
-    if (_nameController.text.trim().isEmpty) {
-      return _ValidationResult.invalid('Name is required');
+    final name = _nameController.text.trim();
+    if (name.isEmpty) {
+      return ValidationResult.invalid('Name is required');
+    }
+
+    if (SecurityUtils.containsSuspiciousPatterns(name)) {
+      return ValidationResult.invalid(
+        'Invalid name: contains suspicious characters',
+      );
     }
 
     if (_selectedDate == null) {
-      return _ValidationResult.invalid('Birth date is required');
+      return ValidationResult.invalid('Birth date is required');
+    }
+
+    if (_selectedDate!.isAfter(DateTime.now())) {
+      return ValidationResult.invalid('Birth date cannot be in the future');
     }
 
     if (_selectedTime == null) {
-      return _ValidationResult.invalid('Birth time is required');
+      return ValidationResult.invalid('Birth time is required');
     }
 
     if (_gender == null || _gender!.isEmpty) {
-      return _ValidationResult.invalid('Gender is required');
+      return ValidationResult.invalid('Gender is required');
     }
 
-    return _ValidationResult.valid();
+    final city = _cityController.text.trim();
+    if (city.isEmpty) {
+      return ValidationResult.invalid('City is required');
+    }
+
+    if (SecurityUtils.containsSuspiciousPatterns(city)) {
+      return ValidationResult.invalid(
+        'Invalid city: contains suspicious characters',
+      );
+    }
+
+    if (_countryController.text.trim().isEmpty) {
+      return ValidationResult.invalid('Country is required');
+    }
+
+    return ValidationResult.valid();
   }
 
-  void _showValidationError(_ValidationResult result) {
-    _showErrorSnackbar(result.errorMessage ?? 'Validation failed');
-  }
-
-  void _handleSaveError(String? message) {
-    _showErrorSnackbar(message ?? 'Failed to save profile');
-    _logError('ProfileSaveError', message);
-  }
-
-  void _handleSaveException(dynamic error, StackTrace stack) {
-    _showErrorSnackbar('An unexpected error occurred');
-    _logError('ProfileSaveException', '$error\n$stack');
-  }
-
-  void _logError(String type, String? message) {
-    debugPrint('[$type]: $message');
-    // Integrate with your logging service here
-    // FirebaseCrashlytics.instance.recordError(message, StackTrace.current);
-  }
-
-  // Secure profile saving with validation
-  // Modify _saveProfile to use both validation methods for extra security
   Future<void> _saveProfile(BuildContext context) async {
+    // Rate limiting
+    if (!_canSave()) return;
     if (_isSaving) return;
 
-    // Use both validation methods for maximum security
-    if (!_validateRequiredFields()) {
-      return;
-    }
+    // Validation
+    if (!_validateRequiredFields()) return;
 
     final validationResult = await _validateProfileBeforeSave();
     if (!validationResult.isValid) {
-      _showValidationError(validationResult);
+      ErrorHandler.showErrorSnackbar(context, validationResult.errorMessage!);
       return;
     }
 
+    if (!mounted) return;
     setState(() => _isSaving = true);
 
     try {
-      // Try using ProfileService first, fallback to direct backend call
       final profileData = await _prepareProfileData();
 
-      _SaveProfileResult saveResult;
-      try {
-        saveResult = await _executeProfileSave();
-      } catch (e) {
-        // Fallback to direct backend call
-        debugPrint('ProfileService failed, using direct backend call: $e');
-        final directResult = await _sendProfileToBackend(profileData);
-        saveResult = _SaveProfileResult(
-          success: directResult['success'],
-          message: directResult['message'],
-          data: directResult['data'],
-        );
-      }
+      // Add timeout to prevent hanging
+      final saveResult = await _executeProfileSave(profileData).timeout(
+        const Duration(seconds: 30),
+        onTimeout: () {
+          return SaveProfileResult(success: false, message: 'Request timeout');
+        },
+      );
 
       if (saveResult.success) {
-        // Use the preferred method
-        await _handleSuccessfulSave({
-          'success': true,
-          'data': saveResult.data,
-        }, context);
+        // Secure userId extraction
+        String? userId = await _extractUserIdSecurely(saveResult.data);
+
+        // Send FCM token (non-blocking, don't fail profile save if this fails)
+        if (userId != null && userId.isNotEmpty) {
+          _sendFcmTokenSafely(userId);
+        }
+
+        await _handleSuccessfulSave(saveResult.data, context);
       } else {
-        _handleSaveError(saveResult.message);
+        ErrorHandler.showErrorSnackbar(
+          context,
+          saveResult.message ?? 'Failed to save profile',
+        );
       }
     } catch (e, stack) {
-      _handleSaveException(e, stack);
+      ErrorHandler.recordError(e, stackTrace: stack, context: 'ProfileSave');
+      ErrorHandler.showErrorSnackbar(
+        context,
+        ErrorHandler.getUserFriendlyMessage(
+          e is Exception ? e : Exception('Unexpected error: $e'),
+        ),
+      );
     } finally {
       if (mounted) {
         setState(() => _isSaving = false);
@@ -280,42 +345,132 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     }
   }
 
-  Future<_SaveProfileResult> _executeProfileSave() async {
+  // Secure userId extraction
+  Future<String?> _extractUserIdSecurely(Map<String, dynamic>? saveData) async {
+    String? userId;
+
+    // 1. From save result
+    if (saveData != null) {
+      final responseData = saveData['data'] ?? saveData;
+      userId = responseData['userId']?.toString();
+
+      // Sanitize
+      if (userId != null) {
+        userId = SecurityUtils.sanitizeInput(userId);
+        if (!SecurityUtils.isValidUserId(userId)) {
+          userId = null; // Reset if invalid
+        }
+      }
+    }
+
+    // 2. From controller (sanitized)
+    if (userId == null || userId.isEmpty) {
+      userId = SecurityUtils.sanitizeInput(_userIdController.text.trim());
+      if (!SecurityUtils.isValidUserId(userId)) {
+        userId = null;
+      }
+    }
+
+    // 3. From profile provider
+    if (userId == null || userId.isEmpty) {
+      final profileProvider = Provider.of<ProfileProvider>(
+        context,
+        listen: false,
+      );
+      userId = profileProvider.userId;
+      if (userId != null) {
+        userId = SecurityUtils.sanitizeInput(userId);
+        if (!SecurityUtils.isValidUserId(userId)) {
+          userId = null;
+        }
+      }
+    }
+
+    return userId;
+  }
+
+  // Safe FCM token sending (non-blocking)
+  Future<void> _sendFcmTokenSafely(String userId) async {
     try {
-      final profileData = await _prepareProfileData();
+      final token = await FirebaseMessaging.instance.getToken();
+      if (token != null && token.isNotEmpty && _isValidFcmToken(token)) {
+        await sendFcmTokenToBackend(
+          userId,
+          token,
+        ).timeout(const Duration(seconds: 10));
+      }
+    } catch (e) {
+      // Log but don't throw - FCM failure shouldn't block profile save
+      debugPrint('⚠️ FCM token send failed (non-critical): $e');
+      ErrorHandler.recordError(e, context: 'FCMNonCritical');
+    }
+  }
+
+  bool _isValidFcmToken(String token) {
+    // Basic FCM token validation
+    return token.length > 50 && token.contains(':') && !token.contains(' ');
+  }
+
+  Future<SaveProfileResult> _executeProfileSave(
+    Map<String, dynamic> profileData,
+  ) async {
+    try {
       final result = await ProfileService.saveProfile(profileData);
 
       if (result['success'] == true) {
-        return _SaveProfileResult(success: true, data: result['data']);
+        return SaveProfileResult(
+          success: true,
+          data: result['data'] ?? result, // Handle both response structures
+        );
       } else {
-        return _SaveProfileResult(
+        return SaveProfileResult(
           success: false,
           message: result['error'] ?? 'Save failed',
         );
       }
-    } catch (e) {
-      return _SaveProfileResult(success: false, message: 'Network error: $e');
+    } catch (e, stack) {
+      ErrorHandler.recordError(
+        e,
+        stackTrace: stack,
+        context: 'ProfileServiceFallback',
+      );
+
+      try {
+        final directResult = await _sendProfileToBackend(profileData);
+        return SaveProfileResult(
+          success: directResult['success'],
+          message: directResult['message'],
+          data: directResult['data'],
+        );
+      } catch (fallbackError, stack) {
+        ErrorHandler.recordError(
+          fallbackError,
+          stackTrace: stack,
+          context: 'DirectProfileSave',
+        );
+        return SaveProfileResult(success: false, message: 'Network error');
+      }
     }
   }
 
   bool _validateRequiredFields() {
     if (_nameController.text.trim().isEmpty) {
-      _showErrorSnackbar('Name is required');
+      ErrorHandler.showErrorSnackbar(context, 'Name is required');
       return false;
     }
 
     if (_selectedDate == null) {
-      _showErrorSnackbar('Birth date is required');
+      ErrorHandler.showErrorSnackbar(context, 'Birth date is required');
       return false;
     }
 
     if (_selectedTime == null) {
-      _showErrorSnackbar('Birth time is required');
+      ErrorHandler.showErrorSnackbar(context, 'Birth time is required');
       return false;
     }
 
     if (_gender == null || _gender!.isEmpty) {
-      _showErrorSnackbar('Gender is required');
+      ErrorHandler.showErrorSnackbar(context, 'Gender is required');
       return false;
     }
 
@@ -325,30 +480,44 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   Future<Map<String, dynamic>> _prepareProfileData() async {
     String? base64Image;
     if (_image != null) {
-      final bytes = await _image!.readAsBytes();
-      base64Image = base64Encode(bytes);
+      try {
+        final bytes = await _image!.readAsBytes();
+        if (bytes.length > 2 * 1024 * 1024) {
+          throw ImageException('Image too large for upload');
+        }
+        base64Image = base64Encode(bytes);
+        base64.decode(base64Image); // Validate base64
+      } catch (e, stack) {
+        ErrorHandler.recordError(
+          e,
+          stackTrace: stack,
+          context: 'ImageEncoding',
+        );
+        throw ImageException('Failed to process image');
+      }
     }
 
-    final userId =
-        _userIdController.text.trim().isEmpty
-            ? null
-            : _sanitizeInput(_userIdController.text.trim());
+    // Generate or retrieve user ID internally
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
+    String? userId = await _getOrCreateUserId();
 
     if (_cityController.text.isNotEmpty && _countryController.text.isNotEmpty) {
       await _fetchLocationDetails(
-        _sanitizeInput(_cityController.text),
-        _sanitizeInput(_countryController.text),
+        SecurityUtils.sanitizeInput(_cityController.text),
+        SecurityUtils.sanitizeInput(_countryController.text),
       );
     }
 
-    final savedLang =
-        Provider.of<ProfileProvider>(context, listen: false).language;
+    final savedLang = profileProvider.language;
 
     return {
-      if (userId != null) 'userId': userId,
-      'name': _sanitizeInput(_nameController.text),
-      'city': _sanitizeInput(_cityController.text),
-      'country': _sanitizeInput(_countryController.text),
+      'userId': userId, // Always include userId internally
+      'name': SecurityUtils.sanitizeInput(_nameController.text),
+      'city': SecurityUtils.sanitizeInput(_cityController.text),
+      'country': SecurityUtils.sanitizeInput(_countryController.text),
       'gender': _gender ?? '',
       'birthDate':
           _selectedDate != null
@@ -366,7 +535,71 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       'profilePicture': base64Image,
       if (savedLang != null) 'language': savedLang,
       'timestamp': DateTime.now().toIso8601String(),
+      'clientVersion': Environment.appVersion,
     };
+  }
+
+  // Internal user ID management
+  Future<String> _getOrCreateUserId() async {
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
+
+    // Try to load existing user ID
+    await profileProvider.loadUserId();
+    String? existingUserId = profileProvider.userId;
+
+    if (existingUserId != null && existingUserId.isNotEmpty) {
+      return existingUserId;
+    }
+
+    // Generate new user ID based on device + profile data
+    final newUserId = await _generateSecureUserId();
+    await profileProvider.saveUserId(newUserId);
+    return newUserId;
+  }
+
+  // Secure user ID generation
+  Future<String> _generateSecureUserId() async {
+    // Combine multiple factors to create a unique, non-predictable ID
+    final random = Random.secure();
+    final timestamp = DateTime.now().millisecondsSinceEpoch;
+    final nameHash =
+        _nameController.text.isNotEmpty
+            ? _nameController.text.hashCode.abs()
+            : random.nextInt(999999);
+
+    // Get device-specific identifier (you may need device_info_plus package)
+    final deviceId = await _getDeviceIdentifier();
+
+    // Create a hash of multiple factors
+    final combinedString =
+        '$timestamp$nameHash$deviceId${random.nextInt(999999)}';
+    final bytes = utf8.encode(combinedString);
+    final digest = sha256.convert(bytes);
+
+    // Take first 12 characters of hash for reasonable length
+    return digest.toString().substring(0, 12);
+  }
+
+  // Get device identifier (install device_info_plus package)
+  Future<String> _getDeviceIdentifier() async {
+    try {
+      final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+
+      if (Platform.isAndroid) {
+        final androidInfo = await deviceInfo.androidInfo;
+        return androidInfo.id; // ANDROID_ID
+      } else if (Platform.isIOS) {
+        final iosInfo = await deviceInfo.iosInfo;
+        return iosInfo.identifierForVendor ?? 'ios_device';
+      }
+
+      return 'unknown_device';
+    } catch (e) {
+      return 'error_device_${DateTime.now().millisecondsSinceEpoch}';
+    }
   }
 
   Future<Map<String, dynamic>> _sendProfileToBackend(
@@ -379,15 +612,39 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
             uri,
             headers: {
               'Content-Type': 'application/json',
-              'X-Request-ID': _generateRequestId(),
+              'X-Request-ID': _generateSecureRequestId(),
+              ...Environment.securityHeaders,
             },
             body: jsonEncode(data),
           )
           .timeout(const Duration(seconds: 30));
 
       if (response.statusCode == 200) {
-        final responseData = jsonDecode(response.body);
-        return {'success': true, 'data': responseData};
+        final responseData = jsonDecode(utf8.decode(response.bodyBytes));
+
+        // Handle different response structures
+        if (responseData is Map) {
+          // Ensure type is Map<String, dynamic>
+          final Map<String, dynamic> typedResponse = Map<String, dynamic>.from(
+            responseData,
+          );
+
+          if (typedResponse.containsKey('success')) {
+            return typedResponse;
+          } else {
+            return {'success': true, 'data': typedResponse};
+          }
+        } else {
+          return {
+            'success': true,
+            'data': {'message': 'Profile saved'},
+          };
+        }
+      } else if (response.statusCode >= 400 && response.statusCode < 500) {
+        return {
+          'success': false,
+          'message': 'Client error: ${response.statusCode}',
+        };
       } else {
         return {
           'success': false,
@@ -396,49 +653,79 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       }
     } on TimeoutException {
       return {'success': false, 'message': 'Request timeout'};
-    } catch (e) {
+    } on http.ClientException {
+      return {'success': false, 'message': 'Network connection failed'};
+    } catch (e, stack) {
+      ErrorHandler.recordError(
+        e,
+        stackTrace: stack,
+        context: 'SendProfileToBackend',
+      );
       return {'success': false, 'message': 'Network error'};
     }
   }
 
-  String _generateRequestId() {
-    return '${DateTime.now().millisecondsSinceEpoch}_${_nameController.text.hashCode}';
+  String _generateSecureRequestId() {
+    final random = Random.secure();
+    final timestamp = DateTime.now().millisecondsSinceEpoch;
+    final randomValue = random.nextInt(999999);
+    return '${timestamp}_${randomValue}';
   }
 
   void _onCityChanged(String query) {
     _citySearchDebounce?.cancel();
     _citySearchDebounce = Timer(const Duration(milliseconds: 500), () {
       if (mounted && query.length >= 2) {
-        // Trigger search
+        setState(() {});
       }
     });
   }
 
   Future<void> _handleSuccessfulSave(
-    Map<String, dynamic> result,
+    Map<String, dynamic>? result,
     BuildContext context,
   ) async {
-    final responseData = result['data'];
+    if (result == null) {
+      ErrorHandler.showErrorSnackbar(context, 'Save failed: No response data');
+      return;
+    }
 
-    if (responseData['userId'] != null) {
-      final generatedId = responseData['userId'].toString();
-      setState(() => _userIdController.text = generatedId);
+    final responseData =
+        result['data'] ?? result; // Try both possible response structures
+
+    // Check if we have a userId in the response
+    final String? userId =
+        responseData['userId']?.toString() ??
+        (_userIdController.text.trim().isNotEmpty
+            ? _userIdController.text.trim()
+            : null);
+
+    if (userId != null && userId.isNotEmpty) {
+      if (mounted) {
+        setState(() => _userIdController.text = userId);
+      }
 
       await Provider.of<ProfileProvider>(
         context,
         listen: false,
-      ).saveUserId(generatedId);
+      ).saveUserId(userId);
 
-      _showSuccessSnackbar('Profile saved successfully!');
+      ErrorHandler.showSuccessSnackbar(context, 'Profile saved successfully!');
 
-      if (responseData['recoverySecret'] != null) {
-        await _showRecoveryDialog(
-          context,
-          responseData['recoverySecret'],
-          generatedId,
-        );
+      // Handle recovery secret if present
+      final recoverySecret = responseData['recoverySecret']?.toString();
+      if (recoverySecret != null && recoverySecret.isNotEmpty) {
+        await _showRecoveryDialog(context, recoverySecret, userId);
       } else {
         _navigateToChatScreen(context);
+      }
+    } else {
+      // If no userId in response, still show success but don't navigate
+      ErrorHandler.showSuccessSnackbar(context, 'Profile saved successfully!');
+
+      // Optionally, you can reload the profile to get the generated userId
+      if (_userIdController.text.isNotEmpty) {
+        await _loadProfileData();
       }
     }
   }
@@ -531,30 +818,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       context,
       MaterialPageRoute(builder: (context) => ChatScreen(chatId: null)),
       (route) => false,
-    );
-  }
-
-  void _showErrorSnackbar(String message) {
-    if (!mounted) return;
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        backgroundColor: Colors.red,
-        duration: const Duration(seconds: 4),
-      ),
-    );
-  }
-
-  void _showSuccessSnackbar(String message) {
-    if (!mounted) return;
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        backgroundColor: Colors.green,
-        duration: const Duration(seconds: 2),
-      ),
     );
   }
 
@@ -661,16 +924,18 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                 ),
 
                 const SizedBox(height: 20),
-
+                /*
                 // User ID Field
                 _buildTextField(
                   l10n.userIdLabel,
                   Icons.person_outline,
                   _userIdController,
                   validator: (value) {
-                    if (value!.isNotEmpty && !_isValidUserId(value)) {
+                    if (value!.isNotEmpty &&
+                        !SecurityUtils.isValidUserId(value)) {
                       return 'User ID must be 3-20 characters (letters, numbers, _, -)';
                     }
+
                     return null;
                   },
                 ),
@@ -685,7 +950,8 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                         ),
                       );
                       if (recoveredUserId != null &&
-                          recoveredUserId.isNotEmpty) {
+                          recoveredUserId.isNotEmpty &&
+                          mounted) {
                         setState(
                           () => _userIdController.text = recoveredUserId,
                         );
@@ -701,7 +967,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                       ),
                     ),
                   ),
-
+*/
                 // Name Field (Required)
                 _buildTextField(
                   l10n.nameLabel,
@@ -712,8 +978,12 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                     if (value == null || value.isEmpty) {
                       return 'Name is required';
                     }
-                    if (!_isValidName(value)) {
-                      return 'Name must be 2-50 letters only';
+                    if (SecurityUtils.containsSuspiciousPatterns(value)) {
+                      return 'Invalid characters detected in name';
+                    }
+
+                    if (value.length < 2 || value.length > 50) {
+                      return 'Name must be 2-50 characters';
                     }
                     return null;
                   },
@@ -1065,21 +1335,25 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
   Future<void> _loadProfileData() async {
     if (_isLoading) return;
+    if (!mounted) return;
     setState(() => _isLoading = true);
     final userId = _userIdController.text.trim();
     if (userId.isEmpty) {
-      setState(() => _isLoading = false);
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
       return;
     }
 
     try {
       final uri = Uri.parse(
-        'https://chat-backend-rvk9.onrender.com/api/profile/get-profile?userId=$userId',
+        '${Environment.baseUrl}/api/profile/get-profile?userId=$userId',
       );
-      final response = await http.get(uri);
+      final response = await http.get(uri).timeout(const Duration(seconds: 30));
 
       if (response.statusCode == 200) {
-        final data = jsonDecode(response.body)['profile'];
+        final responseData = jsonDecode(utf8.decode(response.bodyBytes));
+        final data = responseData['profile'];
 
         final String? languageFromBackend = data['language'];
         DateTime? parsedDate;
@@ -1096,8 +1370,12 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
             } else if (data['birthDate'] is String) {
               parsedDate = DateTime.parse(data['birthDate']);
             }
-          } catch (e) {
-            debugPrint('Error parsing birth date: $e');
+          } catch (e, stack) {
+            ErrorHandler.recordError(
+              e,
+              stackTrace: stack,
+              context: 'ParseBirthDate',
+            );
           }
         }
 
@@ -1110,15 +1388,19 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                 minute: int.parse(timeParts[1]),
               );
             }
-          } catch (e) {
-            debugPrint('Error parsing time: $e');
+          } catch (e, stack) {
+            ErrorHandler.recordError(
+              e,
+              stackTrace: stack,
+              context: 'ParseBirthTime',
+            );
           }
         }
+
         final profileProvider = Provider.of<ProfileProvider>(
           context,
           listen: false,
         );
-
         await profileProvider.fetchVersionHistoryFromBackend(userId);
 
         if (languageFromBackend != null &&
@@ -1133,21 +1415,24 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
         await profileProvider.saveUserId(userId);
         final country = data['country'] ?? '';
-        setState(() {
-          _selectedCountry = country;
-          _countryController.text = country;
-          _nameController.text = data['name'] ?? '';
-          _cityController.text = data['city'] ?? '';
-          _gender = data['gender'] ?? '';
-          _profileImageUrl = data['profilePicture'];
-          _selectedDate = parsedDate;
-          _selectedTime = parsedTime;
-          _latitude = data['latitude']?.toDouble();
-          _longitude = data['longitude']?.toDouble();
-          _timezone = data['timezone']?.toDouble();
-          _dst = data['dst']?.toDouble();
-          _state = data['state'];
-        });
+        if (mounted) {
+          setState(() {
+            _selectedCountry = country;
+            _countryController.text = country;
+            _nameController.text = data['name'] ?? '';
+            _cityController.text = data['city'] ?? '';
+            _gender = data['gender'] ?? '';
+            _profileImageUrl = data['profilePicture'];
+            _selectedDate = parsedDate;
+            _selectedTime = parsedTime;
+            _latitude = _safeDouble(data['latitude']);
+            _longitude = _safeDouble(data['longitude']);
+            _timezone = _safeDouble(data['timezone']);
+            _dst = _safeDouble(data['dst']);
+            _state = data['state'];
+          });
+        }
+
         final savedLang = profileProvider.language ?? 'en';
         await profileProvider.saveFullProfile(
           userId: userId,
@@ -1165,19 +1450,54 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           state: _state,
           language: savedLang,
         );
+
+        ErrorHandler.showSuccessSnackbar(
+          context,
+          'Profile loaded successfully',
+        );
       } else {
         await _loadLocalProfileData();
+        if (response.statusCode == 404) {
+          ErrorHandler.showErrorSnackbar(
+            context,
+            'Profile not found. Please check your User ID.',
+          );
+        } else {
+          ErrorHandler.showErrorSnackbar(
+            context,
+            'Failed to load profile from server',
+          );
+        }
       }
-
-      if (response.statusCode == 200) {
-        _showMessage('profileLoaded', color: Colors.green);
-      }
-    } catch (e) {
-      debugPrint('Error loading profile: $e');
-      _showMessage('Failed to load profile: $e', color: Colors.red);
+    } on TimeoutException {
       await _loadLocalProfileData();
+      ErrorHandler.showErrorSnackbar(
+        context,
+        'Request timeout. Using local data.',
+      );
+    } on http.ClientException {
+      await _loadLocalProfileData();
+      ErrorHandler.showErrorSnackbar(
+        context,
+        'Network error. Using local data.',
+      );
+    } catch (e, stack) {
+      ErrorHandler.recordError(e, stackTrace: stack, context: 'LoadProfile');
+      await _loadLocalProfileData();
+      ErrorHandler.showErrorSnackbar(context, 'Failed to load profile');
     } finally {
-      setState(() => _isLoading = false);
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    }
+  }
+
+  double? _safeDouble(dynamic value) {
+    if (value == null) return null;
+    try {
+      return double.tryParse(value.toString());
+    } catch (e) {
+      return null;
     }
   }
 
@@ -1189,20 +1509,26 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
     try {
       final uri = Uri.parse(
-        '${Environment.baseUrl}/api/profile/get-profile?userId=$userId',
+        '${Environment.baseUrl}/api/profile/update-language',
       );
-      final response = await http.post(
-        uri,
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode(body),
-      );
+      final response = await http
+          .post(
+            uri,
+            headers: {
+              'Content-Type': 'application/json',
+              ...Environment.securityHeaders,
+            },
+            body: jsonEncode(body),
+          )
+          .timeout(const Duration(seconds: 10));
 
       if (response.statusCode == 200) {
         debugPrint('Language updated on backend successfully.');
       } else {
         debugPrint('Failed to update language: ${response.statusCode}');
       }
-    } catch (e) {
+    } catch (e, stack) {
+      ErrorHandler.recordError(e, stackTrace: stack, context: 'UpdateLanguage');
       debugPrint('Error updating language: $e');
     }
   }
@@ -1215,16 +1541,28 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     await profileProvider.loadUserId();
     await profileProvider.loadLanguage();
 
-    setState(() {
-      _userIdController.text = profileProvider.userId ?? '';
-      _countryController.text = profileProvider.country ?? '';
-      _selectedCountry = profileProvider.country ?? '';
-    });
+    if (mounted) {
+      setState(() {
+        _userIdController.text = profileProvider.userId ?? '';
+        _countryController.text = profileProvider.country ?? '';
+        _selectedCountry = profileProvider.country ?? '';
+      });
+    }
 
     if (_userIdController.text.isNotEmpty) {
       await _loadProfileData();
     } else {
-      await profileProvider.loadProfileData();
+      await _loadLocalProfileData();
+    }
+  }
+
+  Future<void> _loadLocalProfileData() async {
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
+    await profileProvider.loadProfileData();
+    if (mounted) {
       setState(() {
         _nameController.text = profileProvider.name ?? '';
         _cityController.text = profileProvider.city ?? '';
@@ -1241,29 +1579,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         _state = profileProvider.state;
       });
     }
-  }
-
-  Future<void> _loadLocalProfileData() async {
-    final profileProvider = Provider.of<ProfileProvider>(
-      context,
-      listen: false,
-    );
-    await profileProvider.loadProfileData();
-    setState(() {
-      _nameController.text = profileProvider.name ?? '';
-      _cityController.text = profileProvider.city ?? '';
-      _countryController.text = profileProvider.country ?? '';
-      _gender = profileProvider.gender ?? '';
-      _profileImageUrl = profileProvider.profileImageUrl;
-      _selectedDate = profileProvider.birthDate;
-      _selectedTime = profileProvider.birthTime;
-      _selectedCountry = profileProvider.country;
-      _latitude = profileProvider.latitude;
-      _longitude = profileProvider.longitude;
-      _timezone = profileProvider.timezone;
-      _dst = profileProvider.dst;
-      _state = profileProvider.state;
-    });
   }
 
   Future<void> _pickDate(BuildContext context) async {
@@ -1316,7 +1631,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                         ),
                       ),
                       onPressed: () {
-                        setState(() => _selectedDate = tempDate);
+                        if (mounted) {
+                          setState(() => _selectedDate = tempDate);
+                        }
                         Navigator.pop(context);
                       },
                       child: const Text("Done"),
@@ -1385,7 +1702,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                         ),
                       ),
                       onPressed: () {
-                        setState(() => _selectedTime = tempTime);
+                        if (mounted) {
+                          setState(() => _selectedTime = tempTime);
+                        }
                         Navigator.pop(context);
                       },
                       child: const Text("Done"),
@@ -1406,18 +1725,17 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     try {
       final encodedQuery = Uri.encodeComponent('$city,$country');
       final locationUrl = Uri.parse(
-        '${Environment.locationIqBaseUrl}/search'
-        '?key=${Environment.locationIqApiKey}'
-        '&q=$encodedQuery'
-        '&format=json'
-        '&limit=1',
+        '${Environment.locationIqBaseUrl}/search?key=${Environment.locationIqApiKey}&q=$encodedQuery&format=json&limit=1',
       );
 
-      debugPrint('Fetching location from: ${locationUrl.toString()}');
-      final locationResponse = await http.get(locationUrl);
+      final locationResponse = await http
+          .get(locationUrl)
+          .timeout(const Duration(seconds: 10));
 
       if (locationResponse.statusCode == 200) {
-        final locationData = jsonDecode(locationResponse.body);
+        final locationData = jsonDecode(
+          utf8.decode(locationResponse.bodyBytes),
+        );
         if (locationData is List && locationData.isNotEmpty) {
           final firstResult = locationData[0];
           final lat =
@@ -1426,78 +1744,51 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
               double.tryParse(firstResult['lon']?.toString() ?? '') ?? 0.0;
           final state = firstResult['address']?['state']?.toString() ?? '';
 
-          debugPrint('Location found: $lat,$lon, state: $state');
-
           final timezoneUrl = Uri.parse(
-            '${Environment.timezoneDbBaseUrl}'
-            '?key=${Environment.timezoneDbApiKey}'
-            '&format=json'
-            '&by=position'
-            '&fields=gmtOffset,dst'
-            '&lat=$lat'
-            '&lng=$lon',
+            '${Environment.timezoneDbBaseUrl}?key=${Environment.timezoneDbApiKey}&format=json&by=position&fields=gmtOffset,dst&lat=$lat&lng=$lon',
           );
 
-          final timezoneResponse = await http.get(timezoneUrl);
+          final timezoneResponse = await http
+              .get(timezoneUrl)
+              .timeout(const Duration(seconds: 10));
           if (timezoneResponse.statusCode == 200) {
-            final timezoneData = jsonDecode(timezoneResponse.body);
+            final timezoneData = jsonDecode(
+              utf8.decode(timezoneResponse.bodyBytes),
+            );
             if (timezoneData['status'] == 'OK') {
-              setState(() {
-                _latitude = lat;
-                _longitude = lon;
-                _state = state;
-                _timezone = timezoneData['gmtOffset']?.toDouble();
-                final dstValue = timezoneData['dst'];
-                _dst = (dstValue == '1' || dstValue == 1) ? 1.0 : 0.0;
-              });
-              debugPrint('Timezone data: $_timezone, DST: $_dst');
+              if (mounted) {
+                setState(() {
+                  _latitude = lat;
+                  _longitude = lon;
+                  _state = state;
+                  _timezone = timezoneData['gmtOffset']?.toDouble();
+                  final dstValue = timezoneData['dst'];
+                  _dst = (dstValue == '1' || dstValue == 1) ? 1.0 : 0.0;
+                });
+              }
               return;
             }
           }
         }
       }
-      debugPrint('Location fetch failed: ${locationResponse.statusCode}');
+    } on TimeoutException {
+      ErrorHandler.showErrorSnackbar(context, 'Location service timeout');
+    } on http.ClientException {
+      ErrorHandler.showErrorSnackbar(
+        context,
+        'Network error fetching location',
+      );
     } catch (e, stack) {
-      debugPrint('Location fetch error: $e');
-      debugPrint('Stack trace: $stack');
+      ErrorHandler.recordError(e, stackTrace: stack, context: 'FetchLocation');
+      ErrorHandler.showErrorSnackbar(
+        context,
+        'Failed to fetch location details',
+      );
     } finally {
-      setState(() => _isLoading = false);
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
     }
-  }
-
-  void _showMessage(String messageKey, {Color color = Colors.blue}) {
-    if (!mounted) return;
-
-    final l10n = AppLocalizations.of(context)!;
-    String message;
-
-    switch (messageKey) {
-      case 'userIdRequired':
-        message = l10n.userIdRequired;
-        break;
-      case 'profileSaved':
-        message = l10n.profileSaved;
-        break;
-      case 'saveFailed':
-        message = l10n.saveFailed;
-        break;
-      case 'profileLoaded':
-        message = l10n.profileLoaded;
-        break;
-      case 'imageUploaded':
-        message = l10n.imageUploaded;
-        break;
-      default:
-        message = messageKey;
-    }
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        backgroundColor: color,
-        duration: const Duration(seconds: 3),
-      ),
-    );
   }
 
   Widget _buildCountryField(AppLocalizations l10n) {
@@ -1532,7 +1823,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
               ),
               initialSelection: initialCode,
               onChanged: (CountryCode? code) {
-                if (code != null) {
+                if (code != null && mounted) {
                   setState(() {
                     _countryController.text = code.name!;
                     _selectedCountry = code.name!;
@@ -1580,14 +1871,18 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                         : l10n.cityPlaceholder(_selectedCountry!),
               ),
               enabled: _selectedCountry != null,
-              onChanged: _onCityChanged, // Add this line
+              onChanged: _onCityChanged,
             ),
             suggestionsCallback: (pattern) async {
               try {
                 if (_selectedCountry == null || pattern.length < 2) return [];
                 return await _getCitySuggestions(pattern);
-              } catch (e) {
-                debugPrint('City suggestion error: $e');
+              } catch (e, stack) {
+                ErrorHandler.recordError(
+                  e,
+                  stackTrace: stack,
+                  context: 'CitySuggestions',
+                );
                 return [];
               }
             },
@@ -1623,18 +1918,14 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       final response = await http
           .get(
             Uri.parse(
-              '${Environment.locationIqBaseUrl}/autocomplete'
-              '?key=${Environment.locationIqApiKey}'
-              '&q=$query'
-              '&country=$countryCode'
-              '&tag=place:city,place:town'
-              '&limit=5',
+              '${Environment.locationIqBaseUrl}/autocomplete?key=${Environment.locationIqApiKey}&q=$query&country=$countryCode&tag=place:city,place:town&limit=5',
             ),
           )
           .timeout(const Duration(seconds: 5));
 
       if (response.statusCode == 200) {
-        final List<dynamic> data = jsonDecode(response.body) as List<dynamic>;
+        final List<dynamic> data =
+            jsonDecode(utf8.decode(response.bodyBytes)) as List<dynamic>;
 
         final List<String> citySuggestions =
             data
@@ -1649,16 +1940,16 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
         return citySuggestions;
       } else {
-        debugPrint(
-          'LocationIQ API error: ${response.statusCode} - ${response.body}',
-        );
         return <String>[];
       }
     } on TimeoutException {
-      debugPrint('LocationIQ API request timed out');
       return <String>[];
-    } catch (e) {
-      debugPrint('Error fetching city suggestions: $e');
+    } catch (e, stack) {
+      ErrorHandler.recordError(
+        e,
+        stackTrace: stack,
+        context: 'GetCitySuggestions',
+      );
       return <String>[];
     }
   }
@@ -1956,4 +2247,31 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       ],
     );
   }
+}
+
+class SaveProfileResult {
+  final bool success;
+  final String? message;
+  final Map<String, dynamic>? data; // Allow null data
+
+  SaveProfileResult({required this.success, this.message, this.data});
+}
+
+class ValidationResult {
+  final bool isValid;
+  final String? errorMessage;
+
+  const ValidationResult({required this.isValid, this.errorMessage});
+
+  factory ValidationResult.valid() => const ValidationResult(isValid: true);
+  factory ValidationResult.invalid(String error) =>
+      ValidationResult(isValid: false, errorMessage: error);
+}
+
+class ImageException implements Exception {
+  final String message;
+  ImageException(this.message);
+
+  @override
+  String toString() => 'ImageException: $message';
 }
