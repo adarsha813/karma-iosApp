@@ -112,30 +112,80 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   Widget _buildHideOptionsDialog(BuildContext context, Message message) {
     return AlertDialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      contentPadding: const EdgeInsets.all(16),
+      contentPadding: const EdgeInsets.all(20),
       content: Column(
         mainAxisSize: MainAxisSize.min,
-        children: _buildHideOptionItems(context, message),
+        children: _buildProfessionalHideOptionItems(context, message),
       ),
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: const Text('Cancel', style: TextStyle(color: Colors.grey)),
+          style: TextButton.styleFrom(foregroundColor: Colors.grey[600]),
+          child: const Text(
+            'Cancel',
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+          ),
         ),
       ],
     );
   }
 
-  List<Widget> _buildHideOptionItems(BuildContext context, Message message) {
+  List<Widget> _buildProfessionalHideOptionItems(
+    BuildContext context,
+    Message message,
+  ) {
     final items = <Widget>[];
+
+    Widget buildProfessionalOptionItem(
+      IconData icon,
+      String text,
+      Color color,
+      VoidCallback onTap,
+    ) {
+      return Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(12),
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: Colors.grey[50],
+            ),
+            child: Row(
+              children: [
+                Container(
+                  width: 36,
+                  height: 36,
+                  decoration: BoxDecoration(
+                    color: color.withOpacity(0.1),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(icon, color: color, size: 18),
+                ),
+                const SizedBox(width: 12),
+                Text(
+                  text,
+                  style: TextStyle(
+                    color: color,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
 
     if (message.isMe) {
       items.add(
-        _buildHideOptionItem(
-          context,
-          Icons.delete,
+        buildProfessionalOptionItem(
+          Icons.delete_outline,
           'Delete Question',
-          Colors.red,
+          const Color(0xFFDC2626),
           () => _hideItem(
             context,
             '/questions/${message.id}/hide-question',
@@ -147,11 +197,10 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
 
     if (!message.isMe && !message.isAdvice && !message.isClarification) {
       items.add(
-        _buildHideOptionItem(
-          context,
-          Icons.delete,
+        buildProfessionalOptionItem(
+          Icons.delete_outline,
           'Delete Answer',
-          Colors.red,
+          const Color(0xFFDC2626),
           () => _hideItem(
             context,
             '/questions/${message.id}/hide-answer',
@@ -163,11 +212,10 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
 
     if (message.isAdvice) {
       items.add(
-        _buildHideOptionItem(
-          context,
-          Icons.delete,
+        buildProfessionalOptionItem(
+          Icons.tips_and_updates_outlined,
           'Delete Advice',
-          Colors.red,
+          const Color(0xFFD97706),
           () => _hideItem(
             context,
             '/advices/${message.id}/hide',
@@ -180,11 +228,10 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
 
     if (message.isClarification && message.clarificationId != null) {
       items.add(
-        _buildHideOptionItem(
-          context,
-          Icons.delete,
-          'Hide Clarification',
-          Colors.red,
+        buildProfessionalOptionItem(
+          Icons.help_outline,
+          'Delete Clarification',
+          const Color(0xFF2563EB),
           () => _hideItem(
             context,
             '/questions/${message.id}/clarification/${message.clarificationId}/hide',
@@ -192,34 +239,14 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
           ),
         ),
       );
-    } else if (message.isClarification) {
-      debugPrint('⚠️ Cannot hide clarification: clarificationId is null');
+    }
+
+    // Add spacing between items
+    for (int i = 0; i < items.length - 1; i++) {
+      items.insert(i + 1, const SizedBox(height: 8));
     }
 
     return items;
-  }
-
-  Widget _buildHideOptionItem(
-    BuildContext context,
-    IconData icon,
-    String text,
-    Color color,
-    VoidCallback onTap,
-  ) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, color: color, size: 18),
-            const SizedBox(width: 8),
-            Text(text, style: TextStyle(color: color, fontSize: 14)),
-          ],
-        ),
-      ),
-    );
   }
 
   Future<void> _hideItem(
@@ -302,7 +329,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       chatService.removeMessageById(messageId);
 
       // Show immediate feedback
-      _showSnackBar(context, 'Message hidden');
+      _showSnackBar(context, 'Message Deleted');
 
       _debugChatServiceState(); // ← here to see the state after removal
 
@@ -362,7 +389,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       // Show error but don't add the message back (better UX)
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) {
-          _showSnackBar(context, 'Hidden locally (sync failed)');
+          _showSnackBar(context, 'Deleted locally (sync failed)');
         }
       });
 
@@ -377,12 +404,12 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   ) async {
     if (response.statusCode == 200) {
       _logSecurityEvent('MessageHidden', {'messageId': messageId});
-      debugPrint('✅ Message successfully hidden on server: $messageId');
+      debugPrint('✅ Message successfully Deleted on server: $messageId');
 
       // No need to update UI again - it was already removed instantly
       // Just show success confirmation
       if (mounted) {
-        _showSnackBar(context, '✓ Hidden successfully');
+        _showSnackBar(context, '✓ Deleted successfully');
       }
     } else {
       _logSecurityEvent('HideMessageFailed', {
@@ -390,12 +417,12 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
         'statusCode': response.statusCode,
       });
 
-      debugPrint('❌ Server hide failed: ${response.statusCode}');
+      debugPrint('❌ Server Delete failed: ${response.statusCode}');
 
       // Optionally: You could add the message back if server hide failed
       // But usually better UX to keep it hidden locally
       if (mounted) {
-        _showSnackBar(context, 'Hidden locally (server sync failed)');
+        _showSnackBar(context, 'Delete locally (server sync failed)');
       }
     }
   }
