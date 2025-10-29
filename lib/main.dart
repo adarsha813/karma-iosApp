@@ -1400,6 +1400,10 @@ Future<void> main() async {
 
   final profileProvider = ProfileProvider();
   await profileProvider.loadUserId();
+  await profileProvider.initialize(); // loads token, language, etc.
+
+  final token = profileProvider.token ?? ''; // get token safely
+  final chatService = SecureChatService(token); // pass token to chat service
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
@@ -1423,10 +1427,6 @@ Future<void> main() async {
 
     await SecureAppInitializer.initialize();
 
-    // Initialize profile provider
-    final profileProvider = ProfileProvider();
-    await profileProvider.initialize();
-
     final firstLaunch = await isFirstLaunch();
 
     // Start device time service
@@ -1438,14 +1438,14 @@ Future<void> main() async {
     runApp(
       MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_) => ChatService()),
+          ChangeNotifierProvider<ProfileProvider>.value(value: profileProvider),
+          ChangeNotifierProvider<SecureChatService>.value(value: chatService),
           ChangeNotifierProvider(create: (_) => LocaleProvider()),
           ChangeNotifierProvider(
             create: (_) => DictionaryProvider()..loadDictionary(),
           ),
           ChangeNotifierProvider(create: (_) => NotificationProvider()),
           ChangeNotifierProvider(create: (_) => HoroscopeProvider()),
-          ChangeNotifierProvider<ProfileProvider>.value(value: profileProvider),
           ChangeNotifierProvider<SecureNotificationNavigation>.value(
             value: secureNotificationNavigation,
           ),

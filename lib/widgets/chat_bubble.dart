@@ -20,7 +20,7 @@ class ChatBubble extends StatefulWidget {
   final Message message;
   final Future<void> Function(String, int, String?)? onRateAnswer;
   final Future<void> Function(String, int, String?)? onRateAdvice;
-  final ChatService chatService;
+  final SecureChatService chatService;
   final Map<String, AstroTerm> dictionaryMap;
 
   const ChatBubble({
@@ -298,7 +298,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
 
       // Update UI
       if (mounted) {
-        Provider.of<ChatService>(
+        Provider.of<SecureChatService>(
           context,
           listen: false,
         ).removeMessageById(messageId);

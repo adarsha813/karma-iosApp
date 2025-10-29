@@ -1,20 +1,25 @@
 import 'package:flutter/foundation.dart';
 
 class Message extends ChangeNotifier {
-  final String? id;
-  final String? mongoId; // <-- NEW: real MongoDB ObjectId
+  final String? id; // Local/client id (optional)
+  final String? mongoId; // MongoDB ObjectId as String
   final String text;
+
   final bool isMe;
   final bool isClarification;
   final String? adminId;
   final String? adminName;
+
   final DateTime? createdAt;
   final DateTime? answeredAt;
   final DateTime? clarificatedAt;
+  bool hasFailed;
+
   final bool isAdvice;
-  final String? clarificationId; // Add this field
-  final bool isSending; // 👈 NEW FLAG
-  final bool isTemporary;
+  final String? clarificationId;
+
+  bool isSending; // Client-only state
+  bool isTemporary; // Client-only state
 
   bool isQuestionHidden;
   bool isAnswerHidden;
@@ -26,8 +31,7 @@ class Message extends ChangeNotifier {
 
   Message({
     this.id,
-    this.mongoId, // <-- Add in constructor
-    this.clarificationId, // Add this in constructor
+    this.mongoId,
     required this.text,
     this.isMe = true,
     this.isClarification = false,
@@ -37,12 +41,14 @@ class Message extends ChangeNotifier {
     this.answeredAt,
     this.clarificatedAt,
     this.isAdvice = false,
+    this.clarificationId,
+    this.isSending = false,
+    this.isTemporary = false,
+    this.hasFailed = false,
     this.isQuestionHidden = false,
     this.isAnswerHidden = false,
     this.isClarificationHidden = false,
     this.isAdviceHidden = false,
-    this.isSending = false,
-    this.isTemporary = false, // Add this
     int? rating,
     String? feedback,
   }) : _rating = rating,
@@ -51,6 +57,7 @@ class Message extends ChangeNotifier {
   int? get rating => _rating;
   String? get feedback => _feedback;
 
+  /// Updates feedback but only triggers UI refresh if changed
   void updateRating(int newRating, String? newFeedback) {
     if (_rating != newRating || _feedback != newFeedback) {
       _rating = newRating;
@@ -59,28 +66,122 @@ class Message extends ChangeNotifier {
     }
   }
 
+  /// Hide methods are UI-specific
   void hideQuestion() {
-    isQuestionHidden = true;
-    notifyListeners();
+    if (!isQuestionHidden) {
+      isQuestionHidden = true;
+      notifyListeners();
+    }
   }
 
   void hideAnswer() {
-    isAnswerHidden = true;
-    notifyListeners();
+    if (!isAnswerHidden) {
+      isAnswerHidden = true;
+      notifyListeners();
+    }
   }
 
   void hideClarification() {
-    isClarificationHidden = true;
-    notifyListeners();
+    if (!isClarificationHidden) {
+      isClarificationHidden = true;
+      notifyListeners();
+    }
   }
 
   void hideAdvice() {
-    isAdviceHidden = true;
-    notifyListeners();
+    if (!isAdviceHidden) {
+      isAdviceHidden = true;
+      notifyListeners();
+    }
   }
 
+  /// MongoDB compatible date parsing
+  static DateTime? _parseDate(dynamic value) {
+    if (value == null) return null;
+
+    if (value is String) return DateTime.tryParse(value);
+
+    if (value is Map && value.containsKey("\$date")) {
+      final dateValue = value["\$date"];
+
+      if (dateValue is String) {
+        return DateTime.tryParse(dateValue);
+      }
+
+      if (dateValue is Map && dateValue.containsKey("\$numberLong")) {
+        final millis = int.tryParse(dateValue["\$numberLong"].toString());
+        if (millis != null) {
+          return DateTime.fromMillisecondsSinceEpoch(millis);
+        }
+      }
+    }
+
+    return null;
+  }
+
+  factory Message.fromJson(Map<String, dynamic> json) {
+    String? parsedMongoId;
+
+    final rawId = json["_id"];
+    if (rawId is Map && rawId.containsKey("\$oid")) {
+      parsedMongoId = rawId["\$oid"];
+    } else if (rawId != null) {
+      parsedMongoId = rawId.toString();
+    }
+
+    return Message(
+      id: json["id"],
+      mongoId: parsedMongoId,
+      text: json["text"] ?? "",
+      clarificationId: json["clarificationId"],
+      isMe: json["isMe"] ?? true,
+      isClarification: json["isClarification"] ?? false,
+      isAdvice: json["isAdvice"] ?? false,
+      adminId: json["adminId"],
+      adminName: json["adminName"],
+      createdAt: _parseDate(json["createdAt"]),
+      answeredAt: _parseDate(json["answeredAt"]),
+      clarificatedAt: _parseDate(json["clarificatedAt"]),
+      rating:
+          json["rating"] is String
+              ? int.tryParse(json["rating"])
+              : json["rating"],
+      feedback: json["feedback"],
+      isQuestionHidden: json["isQuestionHidden"] ?? false,
+      isAnswerHidden: json["isAnswerHidden"] ?? false,
+      isClarificationHidden: json["isClarificationHidden"] ?? false,
+      isAdviceHidden: json["isAdviceHidden"] ?? false,
+
+      /// Never trust backend for client runtime flags
+      isSending: false,
+      isTemporary: false,
+    );
+  }
+
+  /// Client-only flags & hidden fields are excluded
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "mongoId": mongoId,
+      "text": text,
+      "isMe": isMe,
+      "isClarification": isClarification,
+      "isAdvice": isAdvice,
+      "adminId": adminId,
+      "adminName": adminName,
+      "createdAt": createdAt?.toIso8601String(),
+      "answeredAt": answeredAt?.toIso8601String(),
+      "clarificatedAt": clarificatedAt?.toIso8601String(),
+      "clarificationId": clarificationId,
+      "rating": _rating,
+      "feedback": _feedback,
+    };
+  }
+
+  /// Full state-safe cloning
   Message copyWith({
     String? id,
+    String? mongoId,
     String? text,
     bool? isMe,
     bool? isClarification,
@@ -90,17 +191,23 @@ class Message extends ChangeNotifier {
     DateTime? createdAt,
     DateTime? answeredAt,
     DateTime? clarificatedAt,
-    int? rating,
-    String? feedback,
+    String? clarificationId,
+    bool? isSending,
+    bool? isTemporary,
+    bool? hasFailed,
     bool? isQuestionHidden,
     bool? isAnswerHidden,
     bool? isClarificationHidden,
     bool? isAdviceHidden,
+    int? rating,
+    String? feedback,
   }) {
     return Message(
       id: id ?? this.id,
+      mongoId: mongoId ?? this.mongoId,
       text: text ?? this.text,
       isMe: isMe ?? this.isMe,
+      hasFailed: hasFailed ?? this.hasFailed,
       isClarification: isClarification ?? this.isClarification,
       isAdvice: isAdvice ?? this.isAdvice,
       adminId: adminId ?? this.adminId,
@@ -108,68 +215,16 @@ class Message extends ChangeNotifier {
       createdAt: createdAt ?? this.createdAt,
       answeredAt: answeredAt ?? this.answeredAt,
       clarificatedAt: clarificatedAt ?? this.clarificatedAt,
-      rating: rating ?? _rating,
-      feedback: feedback ?? _feedback,
+      clarificationId: clarificationId ?? this.clarificationId,
+      isSending: isSending ?? this.isSending,
+      isTemporary: isTemporary ?? this.isTemporary,
       isQuestionHidden: isQuestionHidden ?? this.isQuestionHidden,
       isAnswerHidden: isAnswerHidden ?? this.isAnswerHidden,
       isClarificationHidden:
           isClarificationHidden ?? this.isClarificationHidden,
       isAdviceHidden: isAdviceHidden ?? this.isAdviceHidden,
+      rating: rating ?? _rating,
+      feedback: feedback ?? _feedback,
     );
-  }
-
-  factory Message.fromJson(Map<String, dynamic> json) {
-    return Message(
-      id: json['_id'],
-      mongoId: json['_id'], // <-- NEW: MongoDB _id
-      text: json['text'] ?? '',
-      clarificationId: json['clarificationId'], // Add this
-      isMe: json['isMe'] ?? true,
-      isClarification: json['isClarification'] ?? false,
-      isAdvice: json['isAdvice'] ?? false,
-      adminId: json['adminId'],
-      adminName: json['adminName'],
-      createdAt:
-          json['createdAt'] != null
-              ? DateTime.tryParse(json['createdAt'])
-              : null,
-      answeredAt:
-          json['answeredAt'] != null
-              ? DateTime.tryParse(json['answeredAt'])
-              : null,
-      clarificatedAt:
-          json['clarificatedAt'] != null
-              ? DateTime.tryParse(json['clarificatedAt'])
-              : null,
-      rating: json['rating'],
-      feedback: json['feedback'],
-      isQuestionHidden: json['isQuestionHidden'] ?? false,
-      isAnswerHidden: json['isAnswerHidden'] ?? false,
-      isClarificationHidden: json['isClarificationHidden'] ?? false,
-      isAdviceHidden: json['isAdviceHidden'] ?? false,
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'mongoId': mongoId, // <-- include Mongo _id
-      'text': text,
-      'isMe': isMe,
-      'isClarification': isClarification,
-      'isAdvice': isAdvice,
-      'adminId': adminId,
-      'adminName': adminName,
-      'createdAt': createdAt?.toIso8601String(),
-      'answeredAt': answeredAt?.toIso8601String(),
-      'clarificatedAt': clarificatedAt?.toIso8601String(),
-      'rating': _rating,
-      'feedback': _feedback,
-      'isQuestionHidden': isQuestionHidden,
-      'isAnswerHidden': isAnswerHidden,
-      'isClarificationHidden': isClarificationHidden,
-      'isAdviceHidden': isAdviceHidden,
-      'clarificationId': clarificationId, // Add this
-    };
   }
 }

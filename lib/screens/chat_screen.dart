@@ -1544,7 +1544,10 @@ class _ChatScreenState extends State<ChatScreen>
         return;
       }
 
-      final chatService = Provider.of<ChatService>(context, listen: false);
+      final chatService = Provider.of<SecureChatService>(
+        context,
+        listen: false,
+      );
 
       // Use a single method to fetch all data to avoid race conditions
       await _fetchAllMessages(currentUserId, chatService);
@@ -1563,7 +1566,10 @@ class _ChatScreenState extends State<ChatScreen>
     }
   }
 
-  Future<void> _fetchAllMessages(String userId, ChatService chatService) async {
+  Future<void> _fetchAllMessages(
+    String userId,
+    SecureChatService chatService,
+  ) async {
     try {
       // Fetch both questions and advices in a controlled manner
       final questionsFuture = _fetchQuestions(userId);
@@ -1801,7 +1807,7 @@ class _ChatScreenState extends State<ChatScreen>
       await _disposeSocket();
 
       // Clear old messages
-      Provider.of<ChatService>(context, listen: false).clearMessages();
+      Provider.of<SecureChatService>(context, listen: false).clearMessages();
 
       // Update userId in secure storage
       userId = newUserId;
@@ -1891,7 +1897,7 @@ class _ChatScreenState extends State<ChatScreen>
   void _addMessage(chat_model.Message message) {
     if (!mounted) return;
 
-    final chatService = Provider.of<ChatService>(context, listen: false);
+    final chatService = Provider.of<SecureChatService>(context, listen: false);
     chatService.addMessage(message);
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -2389,7 +2395,10 @@ class _ChatScreenState extends State<ChatScreen>
           isTemporary: true,
         );
 
-        final chatService = Provider.of<ChatService>(context, listen: false);
+        final chatService = Provider.of<SecureChatService>(
+          context,
+          listen: false,
+        );
         chatService.addMessage(tempMessage);
         _scrollToBottom();
 
@@ -2845,7 +2854,7 @@ class _ChatScreenState extends State<ChatScreen>
       );
 
       if (response.statusCode == 200) {
-        Provider.of<ChatService>(
+        Provider.of<SecureChatService>(
           context,
           listen: false,
         ).updateMessageRating(questionId, rating, feedback);
@@ -2908,7 +2917,7 @@ class _ChatScreenState extends State<ChatScreen>
       );
 
       if (response.statusCode == 200) {
-        Provider.of<ChatService>(
+        Provider.of<SecureChatService>(
           context,
           listen: false,
         ).updateAdviceRating(id, rating, feedback);
@@ -3127,7 +3136,7 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   void _cleanupOldMessages() {
-    final chatService = Provider.of<ChatService>(context, listen: false);
+    final chatService = Provider.of<SecureChatService>(context, listen: false);
     final messages = chatService.messages;
 
     // Keep only last 100 messages in memory
@@ -3247,7 +3256,7 @@ class _ChatScreenState extends State<ChatScreen>
         Column(
           children: [
             Expanded(
-              child: Consumer2<ChatService, DictionaryProvider>(
+              child: Consumer2<SecureChatService, DictionaryProvider>(
                 builder: (context, chatService, dictProvider, _) {
                   final dictionaryMap = dictProvider.dictionaryMap;
 
@@ -3290,7 +3299,7 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   Widget _buildMessageList(
-    ChatService chatService,
+    SecureChatService chatService,
     Map<String, dynamic> dictionaryMap,
   ) {
     return ListView.builder(

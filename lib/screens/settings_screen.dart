@@ -354,7 +354,7 @@ class SettingsScreen extends StatelessWidget {
       context,
       listen: false,
     );
-    final chatService = Provider.of<ChatService>(context, listen: false);
+    final chatService = Provider.of<SecureChatService>(context, listen: false);
     final userId = profileProvider.userId;
 
     if (userId == null || userId.isEmpty) {
