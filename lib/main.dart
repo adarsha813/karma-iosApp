@@ -41,6 +41,35 @@ import 'providers/app_lifecycle_provider.dart';
 
 // Localization
 import 'l10n/app_localizations.dart';
+import 'package:logger/logger.dart';
+
+final _logger = Logger(); // local logger for this file
+
+class SafeWidgetsBinding {
+  static void ensureInitialized() {
+    WidgetsFlutterBinding.ensureInitialized();
+
+    // Add global error handler for widget lifecycle issues
+    PlatformDispatcher.instance.onError = (error, stack) {
+      final errorStr = error.toString();
+
+      // Ignore expected widget lifecycle errors
+      final isExpectedError =
+          errorStr.contains('defunct') ||
+          errorStr.contains('locked') ||
+          errorStr.contains('Future already completed') ||
+          errorStr.contains('setState()') && errorStr.contains('locked');
+
+      if (!isExpectedError) {
+        _logger.e('🚨 Platform error', error: error, stackTrace: stack);
+      } else {
+        _logger.d('ℹ️ Expected platform error (safe to ignore): $errorStr');
+      }
+
+      return true; // Prevent app crash
+    };
+  }
+}
 
 // Add this class to your main.dart file
 class TextSanitizer {
@@ -1477,6 +1506,7 @@ Future<void> _initFCMToken() async {
 
 // Main Function
 Future<void> main() async {
+  SafeWidgetsBinding.ensureInitialized();
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp();

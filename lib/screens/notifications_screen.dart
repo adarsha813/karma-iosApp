@@ -7,7 +7,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
 import '../providers/notification_provider.dart';
 import '../providers/dictionary_provider.dart';
-import '../services/notification_handler.dart';
+
 import 'package:shimmer/shimmer.dart';
 import '../utils/dictionary_highlighter.dart';
 import '../l10n/app_localizations.dart';
@@ -55,6 +55,9 @@ class _NotificationsScreenState extends State<NotificationsScreen>
   bool _isLoading = true;
   String? _error;
   bool _retrying = false;
+  Completer<void>? _markAllReadCompleter;
+  bool _isDisposed = false;
+
   late IO.Socket _socket;
   List<String> _categories = [];
   final ScrollController _scrollController = ScrollController();
@@ -461,10 +464,32 @@ class _NotificationsScreenState extends State<NotificationsScreen>
             }
 
             // Update unread count
+            // ✅ FIXED: Only increment unread count if notification screen is NOT open
             if (!read) {
-              final newCount = _notificationProvider.unreadCount + 1;
-              _notificationProvider.setUnreadCount(newCount);
-              _logger.d('📈 Updated unread count: $newCount');
+              final provider = Provider.of<NotificationProvider>(
+                context,
+                listen: false,
+              );
+
+              // Check if notification screen is currently open
+              if (!provider.isNotificationScreenOpen) {
+                final newCount = provider.unreadCount + 1;
+                provider.setUnreadCount(newCount);
+                _logger.d('📈 Updated unread count: $newCount (screen closed)');
+              } else {
+                _logger.d(
+                  'ℹ️ Notification screen open - skipping unread count increment',
+                );
+
+                // Optional: Still mark as unread in local state for visual feedback
+                // but don't update the badge count
+                if (mounted) {
+                  setState(() {
+                    // Ensure the notification shows as unread visually
+                    // but don't trigger badge update
+                  });
+                }
+              }
             }
           } else {
             _logger.d('ℹ️ Socket notification already exists, updating');
@@ -478,15 +503,6 @@ class _NotificationsScreenState extends State<NotificationsScreen>
               "translations": translations,
             };
           }
-        });
-      }
-
-      // Show system notification for unread notifications
-      if (!read) {
-        NotificationHandler.showSystemNotification({
-          "category": category,
-          "message": message,
-          "_id": id,
         });
       }
 
@@ -922,33 +938,172 @@ class _NotificationsScreenState extends State<NotificationsScreen>
 
   @override
   void dispose() {
-    _logger.d('Disposing NotificationsScreen');
+    _isDisposed = true;
 
-    _socket.disconnect();
-    _socket.destroy();
-    _notificationProvider.setNotificationScreenOpen(false);
+    _logger.d('🛑 Starting NotificationsScreen dispose process');
 
-    // Mark all as read on dispose (non-blocking)
-    _markAllNotificationsAsRead().catchError((e) {
-      _logger.w('Non-critical error marking all as read on dispose: $e');
-    });
+    // ✅ SAFE: Cancel any pending operations first
+    _cancelPendingOperations();
 
-    _tabController?.dispose();
-    _scrollController.dispose();
-    _initialLoadCompleter?.completeError('Screen disposed');
+    // ✅ SAFE: Socket cleanup (non-blocking)
+    _safeSocketCleanup();
 
-    _logAnalyticsEvent(
-      'notifications_screen_closed',
-      params: {
-        'categories_count': _categories.length,
-        'total_notifications': notificationsByCategory.values.fold(
-          0,
-          (sum, list) => sum + list.length,
-        ),
-      },
-    );
+    // ✅ SAFE: Mark notifications as read with disposal protection
+    _safeMarkAllNotificationsAsReadOnDispose();
+
+    // ✅ SAFE: Update provider state without causing rebuilds
+    _safeUpdateNotificationScreenState();
+
+    // ✅ SAFE: Dispose controllers
+    _safeDisposeControllers();
+
+    _logAnalyticsEvent('notifications_screen_disposed');
 
     super.dispose();
+
+    _logger.d('✅ NotificationsScreen dispose completed safely');
+  }
+
+  void _cancelPendingOperations() {
+    _logger.d('🔄 Canceling pending operations');
+
+    // Safely complete any pending completers
+    if (_markAllReadCompleter != null && !_markAllReadCompleter!.isCompleted) {
+      _markAllReadCompleter!.complete();
+      _logger.d('✅ Mark all read completer completed');
+    }
+    _markAllReadCompleter = null;
+
+    if (_initialLoadCompleter != null && !_initialLoadCompleter!.isCompleted) {
+      _initialLoadCompleter!.completeError('Screen disposed');
+      _logger.d('✅ Initial load completer completed with error');
+    }
+    _initialLoadCompleter = null;
+  }
+
+  void _safeSocketCleanup() {
+    try {
+      _logger.d('🔌 Starting socket cleanup');
+
+      if (_socket.connected) {
+        _socket.disconnect();
+        _logger.d('✅ Socket disconnected');
+      }
+
+      _socket.destroy();
+      _logger.d('✅ Socket destroyed');
+    } catch (e) {
+      _logger.w('⚠️ Non-critical error during socket cleanup: $e');
+      // Don't rethrow - socket cleanup failures are non-critical
+    }
+  }
+
+  void _safeMarkAllNotificationsAsReadOnDispose() {
+    if (_isDisposed) return;
+
+    _logger.d('📖 Marking all notifications as read on dispose');
+
+    try {
+      // Use microtask to avoid setState during dispose
+      Future.microtask(() async {
+        try {
+          // Check if we have any unread notifications
+          final hasUnread = notificationsByCategory.values.any(
+            (list) => list.any((n) => n['read'] == false),
+          );
+
+          if (hasUnread && mounted) {
+            _logger.d('🔄 Marking ${_getUnreadCount()} unread notifications');
+            await _markAllNotificationsAsReadSilent();
+          } else {
+            _logger.d('ℹ️ No unread notifications to mark');
+          }
+        } catch (e) {
+          _logger.w('⚠️ Non-critical error in mark all read on dispose: $e');
+        }
+      });
+    } catch (e) {
+      _logger.w('⚠️ Error scheduling mark all read: $e');
+    }
+  }
+
+  void _safeUpdateNotificationScreenState() {
+    _logger.d('🔄 Updating notification screen state to closed');
+
+    try {
+      // Use post-frame callback to avoid widget tree conflicts
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        try {
+          if (!_isDisposed) {
+            _notificationProvider.setNotificationScreenOpen(false);
+            _logger.d('✅ Notification screen state updated to closed');
+          }
+        } catch (e) {
+          // Expected to fail sometimes during dispose - this is OK
+          _logger.d('ℹ️ Expected error during notification state update: $e');
+        }
+      });
+    } catch (e) {
+      _logger.w('⚠️ Error scheduling screen state update: $e');
+    }
+  }
+
+  void _safeDisposeControllers() {
+    _logger.d('🔄 Disposing controllers');
+
+    try {
+      _tabController?.removeListener(() {});
+      _tabController?.dispose();
+      _logger.d('✅ Tab controller disposed');
+    } catch (e) {
+      _logger.w('⚠️ Error disposing tab controller: $e');
+    }
+
+    try {
+      _scrollController.dispose();
+      _logger.d('✅ Scroll controller disposed');
+    } catch (e) {
+      _logger.w('⚠️ Error disposing scroll controller: $e');
+    }
+  }
+
+  // ✅ NEW: Silent version without setState
+  Future<void> _markAllNotificationsAsReadSilent() async {
+    _logger.d('🔇 Silent mark all notifications as read');
+
+    try {
+      final response = await http
+          .post(
+            Uri.parse('${Environment.baseUrl}/notifications/mark-all-read'),
+            headers: Environment.securityHeaders,
+            body: jsonEncode({"userId": widget.userId}),
+          )
+          .timeout(_apiTimeout);
+
+      if (response.statusCode == 200) {
+        _logger.d('✅ All notifications marked as read silently');
+
+        // Update provider without UI updates
+        _notificationProvider.setUnreadCount(0);
+
+        _logAnalyticsEvent('mark_all_read_success_silent');
+      } else {
+        _logger.w(
+          '❌ HTTP ${response.statusCode} - Silent mark all read failed',
+        );
+        _logAnalyticsEvent('mark_all_read_failed_silent');
+      }
+    } on TimeoutException {
+      _logger.e('⏰ Timeout in silent mark all read');
+      _logAnalyticsEvent('mark_all_read_timeout_silent');
+    } catch (e) {
+      _logger.w('⚠️ Non-critical error in silent mark all read: $e');
+      _logAnalyticsEvent(
+        'mark_all_read_error_silent',
+        params: {'error': e.toString()},
+      );
+      // Don't rethrow - this is a non-critical operation during dispose
+    }
   }
 }
 

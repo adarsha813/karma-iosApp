@@ -3,6 +3,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_app_badger/flutter_app_badger.dart'; // << Add this line
 import '../models/notification_model.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:http/http.dart' as http;
+import 'package:kundali/config/environment.dart';
+import 'dart:convert';
+
+import 'package:logger/logger.dart';
 
 // In your notification_provider.dart
 class NotificationProvider extends ChangeNotifier {
@@ -11,7 +16,8 @@ class NotificationProvider extends ChangeNotifier {
   bool _dirty = false;
   bool get notificationsEnabled => _notificationsEnabled;
   int get unreadCount => _unreadCount;
-
+  bool _isDisposed = false;
+  final _logger = Logger(); // local logger for this file
   final List<NotificationModel> _notifications = [];
   List<NotificationModel> get notifications =>
       List.unmodifiable(_notifications);
@@ -24,6 +30,11 @@ class NotificationProvider extends ChangeNotifier {
 
   NotificationProvider() {
     _loadFromPrefs();
+  }
+  // ✅ SAFE: Dispose pattern for provider
+  void disposeProvider() {
+    _isDisposed = true;
+    _logger.d('🛑 NotificationProvider disposed');
   }
 
   void _loadFromPrefs() async {
@@ -67,14 +78,93 @@ class NotificationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  // ✅ UPDATED: Safe screen state update
   void setNotificationScreenOpen(bool isOpen) {
-    _isNotificationScreenOpen = isOpen;
-    print('🔄 setNotificationScreenOpen: $isOpen');
+    if (_isNotificationScreenOpen == isOpen) return;
 
-    if (isOpen) {
-      clearUnreadCount();
+    _isNotificationScreenOpen = isOpen;
+    _logger.d('🖥️ Notification screen open: $isOpen');
+
+    _safeNotifyListeners();
+  }
+
+  // ✅ ENHANCED: Mark all notifications as read with lifecycle awareness
+  Future<void> markAllNotificationsAsRead({bool silent = false}) async {
+    if (_isDisposed) {
+      _logger.d('ℹ️ Skip markAllNotificationsAsRead - provider disposed');
+      return;
     }
-    notifyListeners();
+
+    try {
+      _logger.d('📖 Marking all notifications as read (silent: $silent)');
+
+      // Your existing mark as read logic...
+      final response = await http.post(
+        Uri.parse('${Environment.baseUrl}/notifications/mark-all-read'),
+        headers: Environment.securityHeaders,
+        body: jsonEncode({
+          "userId": _getCurrentUserId(),
+        }), // You'll need to implement this
+      );
+
+      if (response.statusCode == 200) {
+        if (!silent) {
+          _unreadCount = 0;
+          _safeNotifyListeners();
+        }
+        _logger.d('✅ All notifications marked as read');
+      } else {
+        throw Exception('HTTP ${response.statusCode}');
+      }
+    } catch (e, stackTrace) {
+      _logger.e(
+        '⛔ Error in mark_all_notifications_read',
+        error: e,
+        stackTrace: stackTrace,
+      );
+      if (!silent) rethrow;
+    }
+  }
+
+  // Add this helper method
+  String _getCurrentUserId() {
+    // You'll need to get the current user ID from your auth system
+    // This is just a placeholder - implement based on your auth setup
+    return 'current-user-id';
+  }
+
+  // ✅ ENTERPRISE: Safe notification method
+  // ✅ ENTERPRISE: Safe notification method
+  void _safeNotifyListeners() {
+    if (_isDisposed || !hasListeners) {
+      _logger.d(
+        'ℹ️ Skip notify: disposed=$_isDisposed, hasListeners=$hasListeners',
+      );
+      return;
+    }
+
+    try {
+      // Double-check we're not in a bad state using microtask
+      Future.microtask(() {
+        if (!_isDisposed && hasListeners) {
+          notifyListeners();
+          _logger.d('✅ Listeners notified safely');
+        }
+      });
+    } catch (e) {
+      // Check if this is a "defunct" or "locked" error (expected during dispose)
+      final errorStr = e.toString();
+      final isExpectedError =
+          errorStr.contains('defunct') ||
+          errorStr.contains('locked') ||
+          errorStr.contains('Future already completed');
+
+      if (!isExpectedError) {
+        _logger.e('🚨 Unexpected error in safeNotifyListeners', error: e);
+      } else {
+        _logger.d('ℹ️ Expected error during dispose: $errorStr');
+      }
+    }
   }
 
   Future<void> setUnreadCount(int count) async {

@@ -15,6 +15,7 @@ import 'package:local_auth/local_auth.dart';
 import 'package:crypto/crypto.dart'; // Add this package to pubspec.yaml
 import 'dart:math' as math; // Add this line
 import '../config/environment.dart';
+import 'package:logger/logger.dart';
 
 // Import your app files
 import 'profile_screen.dart';
@@ -969,6 +970,7 @@ class _ChatScreenState extends State<ChatScreen>
   final ScrollController _scrollController = ScrollController();
   final FocusNode _focusNode = FocusNode();
   final ValueNotifier<bool> _showButtonNotifier = ValueNotifier<bool>(false);
+  final _logger = Logger(); // local logger for this file
 
   // State variables
   String? userId;
@@ -1059,13 +1061,19 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   void _setupSocketEventHandlers() {
+    // ✅ FIX: Always create a new completer and reset connection state
     _socketConnectionCompleter = Completer<void>();
     _isSocketConnected = false;
 
     socket.onConnect((_) {
       AppLogger.info('Socket connected: ${socket.id}', feature: 'socket');
       _isSocketConnected = true;
-      _socketConnectionCompleter?.complete();
+
+      // ✅ FIX: Safe completer completion
+      if (_socketConnectionCompleter != null &&
+          !_socketConnectionCompleter!.isCompleted) {
+        _safeCompleteCompleter(_socketConnectionCompleter);
+      }
 
       // Join user room if userId is available
       if (userId != null && userId!.isNotEmpty) {
@@ -1080,12 +1088,20 @@ class _ChatScreenState extends State<ChatScreen>
     socket.onDisconnect((_) {
       AppLogger.info('Socket disconnected', feature: 'socket');
       _isSocketConnected = false;
+
+      // ✅ FIX: Reset completer on disconnect for reconnection
+      _socketConnectionCompleter = Completer<void>();
     });
 
     socket.onConnectError((error) {
       AppLogger.error('Socket connection error', error, feature: 'socket');
       _isSocketConnected = false;
-      _socketConnectionCompleter?.completeError(error);
+
+      // ✅ FIX: Safe error completion
+      if (_socketConnectionCompleter != null &&
+          !_socketConnectionCompleter!.isCompleted) {
+        _safeCompleteCompleterWithError(_socketConnectionCompleter, error);
+      }
     });
 
     socket.onError((error) {
@@ -1094,6 +1110,22 @@ class _ChatScreenState extends State<ChatScreen>
 
     // Message event handlers
     _setupMessageHandlers();
+  }
+
+  // Add this helper method to _ChatScreenState class
+  void _safeCompleteCompleter(Completer<void>? completer, [dynamic value]) {
+    if (completer != null && !completer.isCompleted) {
+      completer.complete(value);
+    }
+  }
+
+  void _safeCompleteCompleterWithError(
+    Completer<void>? completer,
+    dynamic error,
+  ) {
+    if (completer != null && !completer.isCompleted) {
+      completer.completeError(error);
+    }
   }
 
   void _setupMessageHandlers() {
@@ -1795,7 +1827,13 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   Future<void> _reinitializeForUserId(String newUserId) async {
-    if (_isReinitializing) return;
+    if (_isReinitializing || _isConnectionInProgress()) {
+      AppLogger.info(
+        'Reinitialization or connection already in progress, skipping...',
+        feature: 'user_management',
+      );
+      return;
+    }
 
     _isReinitializing = true;
     AppLogger.info(
@@ -1804,6 +1842,17 @@ class _ChatScreenState extends State<ChatScreen>
     );
 
     try {
+      if (_isConnectionInProgress()) {
+        AppLogger.info(
+          'Waiting for current connection to complete before reinitialization...',
+          feature: 'user_management',
+        );
+        await _waitForConnection(timeout: Duration(seconds: 5));
+      }
+
+      // ✅ FIX: Reset completer before disposal
+      _socketConnectionCompleter = Completer<void>();
+
       // Clear existing socket connection
       await _disposeSocket();
 
@@ -1840,6 +1889,9 @@ class _ChatScreenState extends State<ChatScreen>
 
   Future<void> _disposeSocket() async {
     try {
+      // ✅ FIX: Reset completer before disposal
+      _socketConnectionCompleter = Completer<void>();
+
       socket.clearListeners();
       if (socket.connected) {
         final completer = Completer<void>();
@@ -1870,6 +1922,13 @@ class _ChatScreenState extends State<ChatScreen>
       AppLogger.info('Missing userId for socket connection', feature: 'socket');
       return;
     }
+    if (_isConnectionInProgress()) {
+      AppLogger.info(
+        'Socket connection already in progress, skipping...',
+        feature: 'socket',
+      );
+      return;
+    }
 
     // Validate session
     if (!SessionManager.isSessionValid(currentUserId)) {
@@ -1892,6 +1951,43 @@ class _ChatScreenState extends State<ChatScreen>
       AppLogger.info('Socket initialization completed', feature: 'socket');
     } catch (e) {
       AppLogger.error('Socket connection timeout', e, feature: 'socket');
+    }
+  }
+
+  // Add these methods to _ChatScreenState class
+  void _resetConnectionState() {
+    _isSocketConnected = false;
+    _socketConnectionCompleter = Completer<void>();
+  }
+
+  bool _isConnectionInProgress() {
+    return _socketConnectionCompleter != null &&
+        !_socketConnectionCompleter!.isCompleted;
+  }
+
+  Future<bool> _waitForConnection({
+    Duration timeout = const Duration(seconds: 10),
+  }) async {
+    if (_isSocketConnected) return true;
+    // ✅ Check if connection is already in progress
+    if (!_isConnectionInProgress()) {
+      AppLogger.warning(
+        'No connection in progress, starting new one',
+        feature: 'socket',
+      );
+      _initializeSocketWithSecurity();
+    }
+
+    if (_socketConnectionCompleter == null) {
+      _resetConnectionState();
+    }
+
+    try {
+      await _socketConnectionCompleter!.future.timeout(timeout);
+      return true;
+    } catch (e) {
+      AppLogger.error('Connection timeout or error', e, feature: 'socket');
+      return false;
     }
   }
 
@@ -2364,13 +2460,27 @@ class _ChatScreenState extends State<ChatScreen>
       throw Exception('Too many payment requests. Please wait.');
     }
 
-    // Ensure socket is connected
-    if (!socket.connected) {
+    // Ensure socket is connected with better handling
+    if (!socket.connected || !_isSocketConnected) {
       AppLogger.info(
         'Socket not connected - attempting reconnect...',
         feature: 'socket',
       );
-      await _initializeSocket();
+
+      final connected = await _waitForConnection();
+      if (!connected) {
+        AppLogger.info(
+          'Socket reconnection failed - using HTTP fallback',
+          feature: 'socket',
+        );
+        await _sendQuestionViaHttp(
+          text,
+          userId,
+          paid: paid,
+          isClarificationFree: isClarificationFree,
+        );
+        return;
+      }
     }
 
     if (socket.connected) {
@@ -2505,6 +2615,18 @@ class _ChatScreenState extends State<ChatScreen>
         stackTrace: stackTrace,
       );
       rethrow;
+    }
+  }
+
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    } else {
+      AppLogger.warning(
+        'setState called after dispose',
+        feature: 'chat_screen',
+      );
     }
   }
 
@@ -3115,24 +3237,43 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   void _openNotificationsScreen() {
-    AppLogger.info('Opening NotificationsScreen', feature: 'navigation');
+    _logger.d('🚀 Opening NotificationsScreen');
 
-    Provider.of<NotificationProvider>(
-      context,
-      listen: false,
-    ).clearUnreadCount();
+    // ✅ SAFE: Update provider state before navigation
+    try {
+      final provider = Provider.of<NotificationProvider>(
+        context,
+        listen: false,
+      );
+      provider.setNotificationScreenOpen(true);
+      provider.clearUnreadCount();
+    } catch (e) {
+      _logger.w('⚠️ Error setting notification screen open: $e');
+    }
 
     final userId =
         Provider.of<ProfileProvider>(context, listen: false).userId ?? '';
 
+    // ✅ SAFE: Navigate with error boundary
     Navigator.push(
       context,
       MaterialPageRoute(builder: (_) => NotificationsScreen(userId: userId)),
     ).then((_) {
-      Provider.of<NotificationProvider>(
-        context,
-        listen: false,
-      ).clearUnreadCount();
+      _logger.d('🔙 NotificationsScreen closed, performing cleanup');
+
+      // ✅ SAFE: Use post-frame callback for cleanup
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        try {
+          final provider = Provider.of<NotificationProvider>(
+            context,
+            listen: false,
+          );
+          provider.setNotificationScreenOpen(false);
+          _logger.d('✅ Cleanup completed after navigation');
+        } catch (e) {
+          _logger.d('ℹ️ Expected cleanup error after navigation: $e');
+        }
+      });
     });
   }
 
