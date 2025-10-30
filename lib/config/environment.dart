@@ -62,4 +62,25 @@ class Environment {
       'X-Platform': 'flutter',
     };
   }
+
+  // EmailJS Configuration
+  static const String emailJsServiceId = String.fromEnvironment(
+    'EMAILJS_SERVICE_ID',
+    defaultValue: "service_2vhpf9d",
+  );
+
+  static const String emailJsTemplateId = String.fromEnvironment(
+    'EMAILJS_TEMPLATE_ID',
+    defaultValue: "template_ipikvr9",
+  );
+
+  static const String emailJsPublicKey = String.fromEnvironment(
+    'EMAILJS_PUBLIC_KEY',
+    defaultValue: "YlsX0perbEKZWwWhP",
+  );
+
+  static const String emailJsAccessToken = String.fromEnvironment(
+    'EMAILJS_ACCESS_TOKEN',
+    defaultValue: "",
+  );
 }

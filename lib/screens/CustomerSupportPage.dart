@@ -106,24 +106,20 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
   Future<void> _sendEmail() async {
     final l10n = AppLocalizations.of(context)!;
 
-    // Security: Validate form before proceeding
     if (!_formKey.currentState!.validate()) {
       _logAnalyticsEvent('form_validation_failed');
       return;
     }
 
-    // Security: Rate limiting and anti-spam checks
     if (!_canSubmit()) {
       _showRateLimitDialog(l10n);
       return;
     }
 
-    // Security: Input sanitization
     final name = SecurityUtils.sanitizeInput(_nameController.text.trim());
     final email = SecurityUtils.sanitizeInput(_emailController.text.trim());
     final message = SecurityUtils.sanitizeInput(_messageController.text.trim());
 
-    // Additional validation
     if (!ValidationUtils.isValidEmail(email)) {
       ScaffoldMessenger.of(
         context,
@@ -153,7 +149,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
         },
       );
 
-      final success = await EmailService.sendEmail(
+      final result = await EmailService.sendEmail(
         name: name,
         email: email,
         message: message,
@@ -170,9 +166,8 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
         _submissionAttempts++;
       });
 
-      if (success) {
+      if (result.success) {
         _logAnalyticsEvent('email_sent_successfully');
-
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(l10n.emailSentSuccess),
@@ -181,15 +176,12 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
             duration: const Duration(seconds: 4),
           ),
         );
-
-        // Clear form after successful submission
         _resetForm();
       } else {
         _logAnalyticsEvent('email_send_failed');
-
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(l10n.emailSendFailed),
+            content: Text(result.error ?? l10n.emailSendFailed),
             backgroundColor: Colors.red,
             behavior: SnackBarBehavior.floating,
             duration: const Duration(seconds: 4),
@@ -198,9 +190,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
       }
     } on TimeoutException catch (e, stackTrace) {
       _logError('Email sending timeout', stackTrace, context: 'sendEmail');
-
       setState(() => _isSending = false);
-
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Request timeout. Please try again.'),
@@ -209,9 +199,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
       );
     } catch (e, stackTrace) {
       _logError('Email sending failed: $e', stackTrace, context: 'sendEmail');
-
       setState(() => _isSending = false);
-
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('An unexpected error occurred. Please try again.'),

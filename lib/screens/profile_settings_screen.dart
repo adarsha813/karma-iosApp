@@ -24,6 +24,7 @@ import 'dart:math'; // for Random()
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:kundali/services/fcm_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:logger/logger.dart';
 
 class ProfileSettingsScreen extends StatefulWidget {
   const ProfileSettingsScreen({super.key});
@@ -53,6 +54,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   String? _state;
   bool _isSaving = false;
   DateTime? _lastSaveAttempt;
+
   static const _minSaveInterval = Duration(seconds: 2);
   bool _canSave() {
     final now = DateTime.now();
@@ -73,6 +75,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   // Security & Validation
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final _debounceTimer = const Duration(milliseconds: 800);
+  final _logger = Logger(); // local logger for this file
   Timer? _validationTimer;
   Timer? _citySearchDebounce;
 
@@ -390,26 +393,33 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   }
 
   // Safe FCM token sending (non-blocking)
+  // Safe FCM token sending (non-blocking) - UPDATED VERSION
   Future<void> _sendFcmTokenSafely(String userId) async {
     try {
       final token = await FirebaseMessaging.instance.getToken();
-      if (token != null && token.isNotEmpty && _isValidFcmToken(token)) {
-        await sendFcmTokenToBackend(
-          userId,
-          token,
-        ).timeout(const Duration(seconds: 10));
+      if (token != null && token.isNotEmpty) {
+        // Use the new service with retry mechanism
+        final result = await FCMTokenService.registerWithRetry(
+          userId: userId,
+          token: token,
+          maxRetries: 2,
+        );
+
+        if (result.success) {
+          _logger.i('📡 FCM token successfully sent to backend');
+        } else {
+          _logger.w('⚠️ FCM token send failed: ${result.error}');
+          // Don't throw - FCM failure shouldn't block profile save
+        }
       }
-    } catch (e) {
+    } catch (e, stack) {
       // Log but don't throw - FCM failure shouldn't block profile save
-      debugPrint('⚠️ FCM token send failed (non-critical): $e');
-      ErrorHandler.recordError(e, context: 'FCMNonCritical');
+      _logger.e('⚠️ FCM token send failed (non-critical): $e');
+      ErrorHandler.recordError(e, stackTrace: stack, context: 'FCMNonCritical');
     }
   }
 
-  bool _isValidFcmToken(String token) {
-    // Basic FCM token validation
-    return token.length > 50 && token.contains(':') && !token.contains(' ');
-  }
+  // Remove the old _isValidFcmToken method since it's now in FCMTokenService
 
   Future<SaveProfileResult> _executeProfileSave(
     Map<String, dynamic> profileData,
