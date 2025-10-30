@@ -111,6 +111,7 @@ class NotificationProvider extends ChangeNotifier {
         if (!silent) {
           _unreadCount = 0;
           _safeNotifyListeners();
+          await _updateBadge();
         }
         _logger.d('✅ All notifications marked as read');
       } else {

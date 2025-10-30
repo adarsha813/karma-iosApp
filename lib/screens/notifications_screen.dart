@@ -811,9 +811,21 @@ class _NotificationsScreenState extends State<NotificationsScreen>
             onTap: () async {
               if (!read && notificationId.isNotEmpty) {
                 _logger.d('👆 Marking notification as read: $notificationId');
+
                 if (mounted) {
                   setState(() => items[index]['read'] = true);
                 }
+
+                // Update provider unread count immediately
+                final provider = Provider.of<NotificationProvider>(
+                  context,
+                  listen: false,
+                );
+                final newUnread = provider.unreadCount - 1;
+                provider.setUnreadCount(
+                  newUnread.clamp(0, double.infinity).toInt(),
+                );
+
                 await _markNotificationAsRead(notificationId);
               }
             },
