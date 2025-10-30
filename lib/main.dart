@@ -15,6 +15,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:logger/logger.dart' as log;
 import 'screens/dailyHoroscope_screen.dart';
+import 'package:kundali/config/environment.dart';
 
 // Config
 import 'config/firebase_config.dart';
@@ -166,8 +167,20 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
   // Update badge count
   int count = prefs.getInt('unread_notification_count') ?? 0;
-  count++;
-  await prefs.setInt('unread_notification_count', count);
+
+  // Only increment badge for specific types
+  if (type == 'notification') {
+    count++;
+    await prefs.setInt('unread_notification_count', count);
+
+    try {
+      FlutterAppBadger.updateBadgeCount(count);
+    } catch (e) {
+      print("⚠️ Failed to update badge in background: $e");
+    }
+  } else {
+    print('ℹ️ Badge not incremented for chat type: $type');
+  }
 
   try {
     FlutterAppBadger.updateBadgeCount(count);
@@ -685,7 +698,20 @@ Future<void> _secureFirebaseMessagingBackgroundHandler(
     final payload = NotificationPayload.fromJson(sanitizedData).toJsonString();
 
     // Update badge count securely
-    await _updateBadgeCount(type, prefs);
+    final allowedBadgeTypes = ['notification'];
+    if (allowedBadgeTypes.contains(type)) {
+      int currentCount = prefs.getInt('unread_notification_count') ?? 0;
+      currentCount++;
+      await prefs.setInt('unread_notification_count', currentCount);
+
+      if (Platform.isIOS) {
+        await FlutterAppBadger.updateBadgeCount(currentCount);
+      }
+
+      ProductionLogger.info('✅ Badge count updated: $currentCount');
+    } else {
+      ProductionLogger.info('🔕 Skipping badge update for type: $type');
+    }
 
     // Show local notification
     await _showLocalNotification(
@@ -769,22 +795,6 @@ Future<void> _showLocalNotification({
     platformChannelSpecifics,
     payload: payload,
   );
-}
-
-Future<void> _updateBadgeCount(String type, SharedPreferences prefs) async {
-  try {
-    final currentCount = prefs.getInt('unread_notification_count') ?? 0;
-    final newCount = currentCount + 1;
-    await prefs.setInt('unread_notification_count', newCount);
-
-    if (Platform.isIOS) {
-      await FlutterAppBadger.updateBadgeCount(newCount);
-    }
-
-    ProductionLogger.info('Badge count updated: $newCount');
-  } catch (e) {
-    ProductionLogger.error('Failed to update badge count', e);
-  }
 }
 
 class SecureAppInitializer {
@@ -1433,17 +1443,21 @@ Future<bool> isFirstLaunch() async {
 }
 
 Future<void> sendFcmTokenToBackend(String userId, String fcmToken) async {
-  // Replace with your actual backend API call
   try {
     final response = await http.post(
-      Uri.parse('https://your-backend.com/api/fcm-token'),
+      Uri.parse(
+        '${Environment.baseUrl}/api/register-fcm-token',
+      ), // use Environment.baseUrl
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'userId': userId, 'token': fcmToken}),
     );
+
     if (response.statusCode == 200) {
-      print('✅ FCM token sent to backend successfully');
+      print('✅ FCM token sent successfully');
     } else {
-      print('⚠️ Failed to send FCM token: ${response.body}');
+      print(
+        '⚠️ Failed to send FCM token: ${response.statusCode}, ${response.body}',
+      );
     }
   } catch (e) {
     print('❌ Error sending FCM token: $e');
