@@ -42,6 +42,53 @@ import 'providers/app_lifecycle_provider.dart';
 // Localization
 import 'l10n/app_localizations.dart';
 
+// Add this class to your main.dart file
+class TextSanitizer {
+  static String stripHtmlTags(String htmlText) {
+    if (htmlText.isEmpty) return htmlText;
+
+    try {
+      // Remove HTML tags using regex
+      final withoutHtml = htmlText.replaceAll(RegExp(r'<[^>]*>'), '');
+
+      // Decode HTML entities
+      return _decodeHtmlEntities(withoutHtml);
+    } catch (e) {
+      ProductionLogger.error('Error stripping HTML tags', e);
+      return htmlText; // Return original if error occurs
+    }
+  }
+
+  static String _decodeHtmlEntities(String text) {
+    return text
+        .replaceAll('&amp;', '&')
+        .replaceAll('&lt;', '<')
+        .replaceAll('&gt;', '>')
+        .replaceAll('&quot;', '"')
+        .replaceAll('&#39;', "'")
+        .replaceAll('&nbsp;', ' ')
+        .replaceAll('&copy;', '©')
+        .replaceAll('&reg;', '®');
+  }
+
+  static String sanitizeForNotification(String text) {
+    if (text.isEmpty) return text;
+
+    // Strip HTML first
+    final cleanText = stripHtmlTags(text);
+
+    // Trim and limit length for notifications
+    final trimmed = cleanText.trim();
+
+    // Limit length for notification display
+    if (trimmed.length > 100) {
+      return '${trimmed.substring(0, 100)}...';
+    }
+
+    return trimmed;
+  }
+}
+
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print('📩 [Background] Message received: ${message.messageId}');
@@ -63,13 +110,18 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // Extract data from message
   final data = message.data;
   final type = data['type'] ?? 'general'; // Add type field to your FCM messages
-  final title = data['title'] ?? 'New Notification';
-  final body = data['body'] ?? 'You have a new message';
+
+  // ✅ SANITIZE THE TITLE AND BODY
+  final rawTitle = data['title'] ?? 'New Notification';
+  final rawBody = data['body'] ?? 'You have a new message';
+
+  final sanitizedTitle = TextSanitizer.sanitizeForNotification(rawTitle);
+  final sanitizedBody = TextSanitizer.sanitizeForNotification(rawBody);
 
   final payloadData = {
     'type': data['type'],
-    'title': data['title'],
-    'body': data['body'],
+    'title': sanitizedTitle, // ✅ Use sanitized title
+    'body': sanitizedBody, // ✅ Use sanitized body
     'id': data['id'],
     'userId': data['userId'],
     'questionId': data['questionId'],
@@ -176,13 +228,15 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
   await flutterLocalNotificationsPlugin.show(
     DateTime.now().millisecondsSinceEpoch % 100000,
-    title,
-    body,
+    sanitizedTitle,
+    sanitizedBody,
     notificationDetails,
     payload: payload,
   );
 
   print('📩 Background notification displayed for type: $type');
+  print('📩 Sanitized title: $sanitizedTitle');
+  print('📩 Sanitized body: $sanitizedBody');
 }
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -580,8 +634,13 @@ Future<void> _secureFirebaseMessagingBackgroundHandler(
 
     final data = message.data;
     final type = data['type'] ?? 'general';
-    final title = data['title'] ?? 'New Notification';
-    final body = data['body'] ?? 'You have a new message';
+
+    // ✅ SANITIZE THE TITLE AND BODY
+    final rawTitle = data['title'] ?? 'New Notification';
+    final rawBody = data['body'] ?? 'You have a new message';
+
+    final sanitizedTitle = TextSanitizer.sanitizeForNotification(rawTitle);
+    final sanitizedBody = TextSanitizer.sanitizeForNotification(rawBody);
 
     // Validate required fields based on type
     if (!_validateNotificationData(type, data)) {
@@ -589,15 +648,20 @@ Future<void> _secureFirebaseMessagingBackgroundHandler(
       return;
     }
 
-    final payload = NotificationPayload.fromJson(data).toJsonString();
+    // Create sanitized payload
+    final sanitizedData = Map<String, dynamic>.from(data);
+    sanitizedData['title'] = sanitizedTitle;
+    sanitizedData['body'] = sanitizedBody;
+
+    final payload = NotificationPayload.fromJson(sanitizedData).toJsonString();
 
     // Update badge count securely
     await _updateBadgeCount(type, prefs);
 
     // Show local notification
     await _showLocalNotification(
-      title: title,
-      body: body,
+      title: sanitizedTitle,
+      body: sanitizedBody,
       payload: payload,
       channelId: _getChannelId(type),
     );
@@ -605,6 +669,8 @@ Future<void> _secureFirebaseMessagingBackgroundHandler(
     ProductionLogger.info(
       'Background notification processed successfully for type: $type',
     );
+    ProductionLogger.info('Sanitized title: $sanitizedTitle');
+    ProductionLogger.info('Sanitized body: $sanitizedBody');
   } catch (e, stackTrace) {
     ProductionLogger.fatal(
       'Error in background message handler',
@@ -812,8 +878,13 @@ class SecureAppInitializer {
     try {
       final data = message.data;
       final type = data['type'] ?? 'general';
-      final title = data['title'] ?? 'New Notification';
-      final body = data['body'] ?? 'You have a new message';
+
+      // ✅ SANITIZE THE TITLE AND BODY
+      final rawTitle = data['title'] ?? 'New Notification';
+      final rawBody = data['body'] ?? 'You have a new message';
+
+      final sanitizedTitle = TextSanitizer.sanitizeForNotification(rawTitle);
+      final sanitizedBody = TextSanitizer.sanitizeForNotification(rawBody);
 
       if (!_validateNotificationData(type, data)) {
         ProductionLogger.warning(
@@ -822,11 +893,17 @@ class SecureAppInitializer {
         return;
       }
 
-      final payload = NotificationPayload.fromJson(data).toJsonString();
+      // Create sanitized payload
+      final sanitizedData = Map<String, dynamic>.from(data);
+      sanitizedData['title'] = sanitizedTitle;
+      sanitizedData['body'] = sanitizedBody;
+
+      final payload =
+          NotificationPayload.fromJson(sanitizedData).toJsonString();
 
       await _showLocalNotification(
-        title: title,
-        body: body,
+        title: sanitizedTitle,
+        body: sanitizedBody,
         payload: payload,
         channelId: _getChannelId(type),
       );
