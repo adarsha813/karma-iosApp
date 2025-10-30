@@ -83,4 +83,19 @@ class Environment {
     'EMAILJS_ACCESS_TOKEN',
     defaultValue: "",
   );
+
+  static const int socketReconnectionDelay = int.fromEnvironment(
+    'SOCKET_RECONNECTION_DELAY',
+    defaultValue: 3000,
+  );
+
+  static const int socketReconnectionAttempts = int.fromEnvironment(
+    'SOCKET_RECONNECTION_ATTEMPTS',
+    defaultValue: 9999,
+  );
+
+  static const int socketConnectionTimeout = int.fromEnvironment(
+    'SOCKET_CONNECTION_TIMEOUT',
+    defaultValue: 20000,
+  );
 }
