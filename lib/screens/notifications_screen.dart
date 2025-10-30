@@ -7,7 +7,6 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
 import '../providers/notification_provider.dart';
 import '../providers/dictionary_provider.dart';
-import '../models/notification_model.dart';
 import '../services/notification_handler.dart';
 import 'package:shimmer/shimmer.dart';
 import '../utils/dictionary_highlighter.dart';
@@ -225,42 +224,38 @@ class _NotificationsScreenState extends State<NotificationsScreen>
         final responseBody = utf8.decode(response.bodyBytes);
         final Map<String, dynamic> data = json.decode(responseBody);
 
-        _logger.d('📩 Raw notifications response received');
+        _logger.d('📩 Raw notifications response: ${data.keys}');
 
         final Map<String, List<Map<String, dynamic>>> cleanedData = {};
 
-        data.forEach((key, value) {
+        data.forEach((category, value) {
           if (value is List) {
             final validNotifications =
                 value.where((msg) {
-                  final id =
-                      msg['_id'] is Map
-                          ? msg['_id']['\$oid']?.toString() ??
-                              msg['_id'].toString()
-                          : msg['_id']?.toString();
-
-                  return id != null && id.isNotEmpty;
+                  final id = msg['_id']?.toString() ?? '';
+                  return id.isNotEmpty;
                 }).toList();
 
-            cleanedData[key.toLowerCase()] = List<Map<String, dynamic>>.from(
+            _logger.d(
+              '📊 Category "$category" has ${validNotifications.length} notifications',
+            );
+
+            cleanedData[category
+                .toLowerCase()] = List<Map<String, dynamic>>.from(
               validNotifications.map((msg) {
-                final id =
-                    msg['_id'] is Map
-                        ? msg['_id']['\$oid']?.toString() ??
-                            msg['_id'].toString()
-                        : msg['_id']?.toString() ?? '';
-
-                final message = msg['message']?.toString() ?? 'No message';
-                final read = msg['read'] == true;
-                final createdAt =
-                    msg['createdAt']?.toString() ??
-                    DateTime.now().toIso8601String();
-
+                // ✅ FIXED: Use the exact structure from backend
                 return {
-                  "id": id,
-                  "message": message,
-                  "read": read,
-                  "createdAt": createdAt,
+                  "id": msg['_id']?.toString() ?? '',
+                  "message": msg['message']?.toString() ?? 'No message',
+                  "read": msg['read'] == true,
+                  "createdAt":
+                      msg['createdAt']?.toString() ??
+                      DateTime.now().toIso8601String(),
+                  "category": category.toLowerCase(), // ✅ ADD CATEGORY
+                  "translations": msg['translations'], // ✅ ADD TRANSLATIONS
+                  "originalMessage":
+                      msg['originalMessage']
+                          ?.toString(), // ✅ ADD ORIGINAL MESSAGE
                 };
               }),
             );
@@ -274,11 +269,17 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                 cleanedData.keys.where((key) => key != 'all').toList();
             _isLoading = false;
 
+            _logger.d(
+              '📈 Loaded ${cleanedData.length} categories with total ${_getAllNotifications().length} notifications',
+            );
+
+            // Recreate tab controller with new categories
             _tabController?.dispose();
             _tabController = TabController(
-              length: _categories.length + 1,
+              length: _categories.length + 1, // +1 for "All" tab
               vsync: this,
             );
+            _tabController!.addListener(() => setState(() {}));
             _tabController!.index = 0;
           });
         }
@@ -286,6 +287,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
         if (!skipUnreadCount) {
           final count = _getUnreadCount();
           _notificationProvider.setUnreadCount(count);
+          _logger.d('🔔 Unread count: $count');
         }
 
         _logAnalyticsEvent(
@@ -300,7 +302,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
         );
       } else {
         _logger.w(
-          '❌ HTTP ${response.statusCode} - Failed to load notifications',
+          '❌ HTTP ${response.statusCode} - Failed to load notifications: ${response.body}',
         );
         if (mounted) {
           setState(() {
@@ -375,7 +377,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
   }
 
   void _handleNewNotification(dynamic data) {
-    _logger.d('📩 Received new notification via socket');
+    _logger.d('📩 Received new notification via socket: $data');
     _logAnalyticsEvent('new_notification_received');
 
     try {
@@ -384,30 +386,31 @@ class _NotificationsScreenState extends State<NotificationsScreen>
         return;
       }
 
+      // ✅ FIXED: Match backend socket structure exactly
       final id = data["_id"]?.toString() ?? "";
       final message = data["message"]?.toString() ?? "";
       final category = (data["category"] ?? "general").toString().toLowerCase();
+      final read = data["read"] == true;
+      final createdAt =
+          data["createdAt"]?.toString() ?? DateTime.now().toIso8601String();
+      final translations =
+          data["translations"] is Map
+              ? Map<String, dynamic>.from(data["translations"])
+              : null;
 
-      // Validate required fields with null safety
-      if (id.isEmpty || message.isEmpty) {
-        _logger.w('Invalid notification - missing required fields');
+      // Validate required fields
+      if (id.isEmpty) {
+        _logger.w('Invalid notification - missing ID');
         return;
       }
 
-      final normalizedData = {
-        "id": id,
-        "message": message,
-        "read": data["read"] == true,
-        "category": category,
-        "createdAt":
-            data["createdAt"]?.toString() ?? DateTime.now().toIso8601String(),
-      };
-
-      final notification = NotificationModel.fromJson(normalizedData);
+      _logger.d(
+        '📝 Processing socket notification: category=$category, message=$message',
+      );
 
       if (mounted) {
         setState(() {
-          // Add category if missing
+          // ✅ FIXED: Ensure category exists
           if (!notificationsByCategory.containsKey(category)) {
             notificationsByCategory[category] = [];
             _categories =
@@ -415,6 +418,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                     .where((key) => key != 'all')
                     .toList();
 
+            // Update tab controller
             final previousIndex = _tabController?.index ?? 0;
             _tabController?.dispose();
             _tabController = TabController(
@@ -423,43 +427,80 @@ class _NotificationsScreenState extends State<NotificationsScreen>
             );
             _tabController!.addListener(() => setState(() {}));
             _tabController!.index = previousIndex.clamp(0, _categories.length);
+
+            _logger.d('➕ Added new category: $category');
           }
 
-          // Add new notification at the top
-          notificationsByCategory[category]?.insert(0, {
-            "id": notification.id,
-            "message": notification.message,
-            "read": false,
-            "createdAt": normalizedData['createdAt'],
-          });
+          // ✅ FIXED: Check for duplicates
+          final existingIndex =
+              notificationsByCategory[category]?.indexWhere(
+                (n) => n["id"] == id,
+              ) ??
+              -1;
 
-          // Scroll to top for visibility
-          if (_scrollController.hasClients) {
-            _scrollController.animateTo(
-              0,
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeOut,
-            );
+          if (existingIndex == -1) {
+            // Add new notification at the top with complete data
+            notificationsByCategory[category]?.insert(0, {
+              "id": id,
+              "message": message,
+              "read": read,
+              "createdAt": createdAt,
+              "category": category,
+              "translations": translations,
+            });
+
+            _logger.d('✅ Added socket notification to category: $category');
+
+            // Scroll to top
+            if (_scrollController.hasClients) {
+              _scrollController.animateTo(
+                0,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeOut,
+              );
+            }
+
+            // Update unread count
+            if (!read) {
+              final newCount = _notificationProvider.unreadCount + 1;
+              _notificationProvider.setUnreadCount(newCount);
+              _logger.d('📈 Updated unread count: $newCount');
+            }
+          } else {
+            _logger.d('ℹ️ Socket notification already exists, updating');
+            // Update existing notification
+            notificationsByCategory[category]?[existingIndex] = {
+              "id": id,
+              "message": message,
+              "read": read,
+              "createdAt": createdAt,
+              "category": category,
+              "translations": translations,
+            };
           }
         });
       }
 
-      _notificationProvider.setUnreadCount(
-        _notificationProvider.unreadCount + 1,
-      );
-
-      // Show system notification
-      NotificationHandler.showSystemNotification(data);
+      // Show system notification for unread notifications
+      if (!read) {
+        NotificationHandler.showSystemNotification({
+          "category": category,
+          "message": message,
+          "_id": id,
+        });
+      }
 
       _logAnalyticsEvent(
-        'notification_processed',
+        'socket_notification_processed',
         params: {
           'category': category,
-          'has_message': notification.message.isNotEmpty,
+          'has_message': message.isNotEmpty,
+          'is_read': read,
         },
       );
     } catch (e, stackTrace) {
-      _reportError(e, stackTrace, context: 'handle_new_notification');
+      _reportError(e, stackTrace, context: 'handle_socket_notification');
+      _logger.e('❌ Error handling socket notification: $e');
     }
   }
 
@@ -661,6 +702,8 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     final l10n = AppLocalizations.of(context)!;
     final dictionaryMap = context.watch<DictionaryProvider>().dictionaryMap;
 
+    _logger.d('🔄 Building notification list with ${items.length} items');
+
     if (items.isEmpty) {
       return Center(
         child: Column(
@@ -689,26 +732,57 @@ class _NotificationsScreenState extends State<NotificationsScreen>
         final message = item['message'] ?? 'No message';
         final read = item['read'] ?? false;
         final notificationId = item['id'] ?? '';
+        final category = item['category'] ?? 'unknown'; // ✅ Now used
+        final createdAt = item['createdAt'] ?? '';
 
         return Card(
           margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
           elevation: 1,
           child: ListTile(
             leading: Icon(
-              Icons.notifications,
+              _getCategoryIcon(category), // ✅ Use category for different icons
               color: read ? Colors.grey : Theme.of(context).primaryColor,
             ),
-            title: RichText(
-              text: DictionaryHighlighter.highlightText(
-                context,
-                message,
-                dictionaryMap,
-                TextStyle(
-                  fontSize: 14,
-                  color: read ? Colors.grey.shade600 : Colors.black87,
-                  fontWeight: read ? FontWeight.normal : FontWeight.w500,
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // ✅ Add category badge
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 2,
+                  ),
+                  decoration: BoxDecoration(
+                    color: _getCategoryColor(category).withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Text(
+                    category.toUpperCase(),
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: _getCategoryColor(category),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-              ),
+                const SizedBox(height: 4),
+                RichText(
+                  text: DictionaryHighlighter.highlightText(
+                    context,
+                    message,
+                    dictionaryMap,
+                    TextStyle(
+                      fontSize: 14,
+                      color: read ? Colors.grey.shade600 : Colors.black87,
+                      fontWeight: read ? FontWeight.normal : FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            subtitle: Text(
+              _formatDate(createdAt),
+              style: TextStyle(fontSize: 12, color: Colors.grey.shade500),
             ),
             trailing:
                 read
@@ -720,6 +794,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                     ),
             onTap: () async {
               if (!read && notificationId.isNotEmpty) {
+                _logger.d('👆 Marking notification as read: $notificationId');
                 if (mounted) {
                   setState(() => items[index]['read'] = true);
                 }
@@ -730,6 +805,58 @@ class _NotificationsScreenState extends State<NotificationsScreen>
         );
       },
     );
+  }
+
+  // ✅ Helper methods for category styling
+  IconData _getCategoryIcon(String category) {
+    switch (category.toLowerCase()) {
+      case 'horoscope':
+        return Icons.auto_awesome;
+      case 'chat':
+        return Icons.chat;
+      case 'system':
+        return Icons.settings;
+      case 'updates':
+        return Icons.update;
+      case 'offer':
+        return Icons.local_offer;
+      default:
+        return Icons.notifications;
+    }
+  }
+
+  Color _getCategoryColor(String category) {
+    switch (category.toLowerCase()) {
+      case 'horoscope':
+        return Colors.purple;
+      case 'chat':
+        return Colors.blue;
+      case 'system':
+        return Colors.orange;
+      case 'updates':
+        return Colors.green;
+      case 'offer':
+        return Colors.red;
+      default:
+        return Colors.grey;
+    }
+  }
+
+  String _formatDate(String dateString) {
+    try {
+      final date = DateTime.parse(dateString);
+      final now = DateTime.now();
+      final difference = now.difference(date);
+
+      if (difference.inMinutes < 1) return 'Just now';
+      if (difference.inMinutes < 60) return '${difference.inMinutes}m ago';
+      if (difference.inHours < 24) return '${difference.inHours}h ago';
+      if (difference.inDays < 7) return '${difference.inDays}d ago';
+
+      return '${date.day}/${date.month}/${date.year}';
+    } catch (e) {
+      return 'Unknown date';
+    }
   }
 
   @override
