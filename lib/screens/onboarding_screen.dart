@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../providers/profile_provider.dart';
 import '../providers/LocaleProvider.dart';
 import '../l10n/app_localizations.dart';
@@ -10,6 +9,8 @@ import 'profile_settings_screen.dart';
 import 'recovery_screen.dart';
 import '../config/environment.dart';
 import 'package:logger/logger.dart';
+import '../services/first_launch_service.dart';
+import '../services/production_logger.dart';
 
 // Custom logger instance
 final _logger = Logger(
@@ -42,6 +43,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   int _currentPage = 0;
   bool _isNavigating = false;
   Completer<void>? _onboardingCompleter;
+  late final DateTime _onboardingStartTime;
 
   // Analytics and error reporting
   void _logAnalyticsEvent(String event, {Map<String, dynamic>? params}) {
@@ -62,31 +64,42 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   void initState() {
     super.initState();
+    _onboardingStartTime = DateTime.now(); // Track onboarding start time
     _logger.i('🔹 Initializing OnboardingScreen');
     _onboardingCompleter = Completer<void>();
     _logAnalyticsEvent('onboarding_started');
   }
 
+  void _logOnboardingPerformance() {
+    final duration = DateTime.now().difference(_onboardingStartTime);
+    _logAnalyticsEvent(
+      'onboarding_performance',
+      params: {
+        'total_duration_seconds': duration.inSeconds,
+        'pages_viewed': _currentPage + 1,
+        'completed': _currentPage == _pagesLength - 1,
+      },
+    );
+  }
+
   Future<void> _completeOnboarding() async {
-    _logger.d('Completing onboarding process');
-
     try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setBool('onboarding_done', true);
-      await prefs.setInt(
-        'onboarding_completed_at',
-        DateTime.now().millisecondsSinceEpoch,
-      );
+      // Use the production first launch service
+      final launchStats = await FirstLaunchService.getLaunchStatistics();
 
-      _logger.i('✅ Onboarding marked as completed');
       _logAnalyticsEvent(
         'onboarding_completed',
-        params: {'total_pages_viewed': _currentPage + 1},
+        params: {
+          'total_pages_viewed': _currentPage + 1,
+          'app_version': launchStats.currentVersion,
+          'first_launch_version': launchStats.firstLaunchVersion,
+        },
       );
+
+      ProductionLogger.i('✅ Onboarding completed successfully');
+      _onboardingCompleter?.complete();
     } catch (e, stackTrace) {
-      _reportError(e, stackTrace, context: 'complete_onboarding');
-      // Non-critical error - continue anyway
-      _logger.w('⚠️ Failed to save onboarding completion, but continuing');
+      ProductionLogger.e('Failed to complete onboarding', e, stackTrace);
     }
   }
 
@@ -154,6 +167,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       }
 
       await _completeOnboarding();
+      widget.onFinish();
+
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder:
+                (_) => ProfileSettingsScreen(
+                  key: ValueKey(
+                    'profile_settings_${DateTime.now().millisecondsSinceEpoch}',
+                  ),
+                ),
+          ),
+        );
+      }
+      await _completeOnboarding().timeout(
+        const Duration(seconds: 5),
+        onTimeout: () {
+          ProductionLogger.warning('Onboarding completion timeout');
+        },
+      );
+
       widget.onFinish();
 
       if (mounted) {
@@ -333,6 +368,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     try {
       await profileProvider.saveLanguage(value);
       localeProvider.setLocale(Locale(value));
+      // Add validation
+      if (value.length <= 10 && ['en', 'es', 'hi'].contains(value)) {
+        _logAnalyticsEvent('language_changed', params: {'language': value});
+      } else {
+        ProductionLogger.warning('Invalid language code: $value');
+      }
 
       if (profileProvider.userId != null && profileProvider.token != null) {
         await profileProvider.syncLanguageToBackend(
@@ -574,13 +615,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   void dispose() {
+    ProductionLogger.i('Disposing OnboardingScreen');
+
     _logger.d('Disposing OnboardingScreen');
     _controller.dispose();
-    _onboardingCompleter?.completeError('Screen disposed');
+    _logOnboardingPerformance(); // Log final metrics
     _logAnalyticsEvent(
       'onboarding_screen_closed',
       params: {'last_page': _currentPage, 'total_pages': _pagesLength},
     );
+    // Cancel any pending operations
+    _isNavigating = false;
     super.dispose();
   }
 }

@@ -16,6 +16,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:logger/logger.dart' as log;
 import 'screens/dailyHoroscope_screen.dart';
 import 'package:kundali/config/environment.dart';
+import 'services/first_launch_service.dart'; // Add this import
 
 // Config
 import 'config/firebase_config.dart';
@@ -1288,9 +1289,9 @@ class _SecureHomeRouterState extends State<SecureHomeRouter>
 
 // Main App Widget
 class SecureApp extends StatefulWidget {
-  final bool isFirstLaunch;
+  final FirstLaunchResult launchResult;
 
-  const SecureApp({Key? key, required this.isFirstLaunch}) : super(key: key);
+  const SecureApp({Key? key, required this.launchResult}) : super(key: key);
 
   @override
   State<SecureApp> createState() => _SecureAppState();
@@ -1302,9 +1303,25 @@ class _SecureAppState extends State<SecureApp> {
   @override
   void initState() {
     super.initState();
-    _showOnboarding = widget.isFirstLaunch;
+    _showOnboarding = widget.launchResult.isFirstLaunch;
     _checkOnboardingStatus();
     _setupForegroundMessageHandler();
+    _logLaunchAnalytics();
+  }
+
+  void _logLaunchAnalytics() {
+    // Log launch analytics
+    if (widget.launchResult.isFirstLaunch) {
+      ProductionLogger.info('📊 Analytics: First app launch');
+    } else if (widget.launchResult.isFirstLaunchForVersion) {
+      ProductionLogger.info(
+        '📊 Analytics: First launch for version ${widget.launchResult.appVersion}',
+      );
+    }
+
+    ProductionLogger.info(
+      '📊 Analytics: Total launches: ${widget.launchResult.launchCount}',
+    );
   }
 
   Future<void> _checkOnboardingStatus() async {
@@ -1314,11 +1331,29 @@ class _SecureAppState extends State<SecureApp> {
 
       if (mounted) {
         setState(() {
-          _showOnboarding = widget.isFirstLaunch && !onboardingDone;
+          _showOnboarding =
+              widget.launchResult.isFirstLaunch && !onboardingDone;
         });
       }
     } catch (e) {
       ProductionLogger.error('Failed to check onboarding status', e);
+    }
+  }
+
+  void _finishOnboarding() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('onboarding_done', true);
+
+      if (mounted) {
+        setState(() {
+          _showOnboarding = false;
+        });
+      }
+
+      ProductionLogger.info('✅ Onboarding completed');
+    } catch (e) {
+      ProductionLogger.error('Failed to save onboarding status', e);
     }
   }
 
@@ -1328,19 +1363,24 @@ class _SecureAppState extends State<SecureApp> {
     });
   }
 
-  void _finishOnboarding() {
-    setState(() {
-      _showOnboarding = false;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final localeProvider = Provider.of<LocaleProvider>(context);
 
     if (localeProvider.isLoading) {
       return const MaterialApp(
-        home: Scaffold(body: Center(child: CircularProgressIndicator())),
+        home: Scaffold(
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircularProgressIndicator(),
+                SizedBox(height: 16),
+                Text('Loading...'),
+              ],
+            ),
+          ),
+        ),
       );
     }
 
@@ -1348,11 +1388,10 @@ class _SecureAppState extends State<SecureApp> {
       title: AppConstants.appName,
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        brightness: Brightness.light, // explicitly light
+        brightness: Brightness.light,
       ),
-      darkTheme: ThemeData.dark(), // still defined if needed
-      themeMode: ThemeMode.light, // force light mode
-
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.light,
       navigatorKey: navigatorKey,
       localizationsDelegates: const [
         AppLocalizations.delegate,
@@ -1523,6 +1562,31 @@ Future<void> main() async {
   SafeWidgetsBinding.ensureInitialized();
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Get first launch result BEFORE using it
+  final launchResult = await FirstLaunchService.checkFirstLaunch();
+
+  // Add error handling for the entire app
+  FlutterError.onError = (details) {
+    ProductionLogger.fatal(
+      'Flutter error caught',
+      details.exception,
+      details.stack,
+    );
+  };
+  PlatformDispatcher.instance.onError = (error, stack) {
+    ProductionLogger.fatal('Platform error caught', error, stack);
+    return true;
+  };
+
+  ProductionLogger.info('''
+📱 Launch Details:
+- First Launch: ${launchResult.isFirstLaunch}
+- First Launch for Version: ${launchResult.isFirstLaunchForVersion}
+- Launch Count: ${launchResult.launchCount}
+- App Version: ${launchResult.appVersion}
+- First Launch Version: ${launchResult.firstLaunchVersion}
+''');
+
   await Firebase.initializeApp();
 
   await _initNotifications(); // Background + foreground
@@ -1559,12 +1623,23 @@ Future<void> main() async {
     await SecureAppInitializer.initialize();
 
     final firstLaunch = await isFirstLaunch();
-
+    if (firstLaunch) {
+      ProductionLogger.info('🎉 This is the first launch!');
+    }
     // Start device time service
     final deviceTimeService = DeviceTimeService(
       profileProvider.userId ?? 'default_user',
     );
     deviceTimeService.start(interval: const Duration(minutes: 1));
+
+    final launchStats = await FirstLaunchService.getLaunchStatistics();
+    ProductionLogger.info('''
+📊 Launch Statistics:
+- Total Launches: ${launchStats.totalLaunches}
+- Days Since First Launch: ${launchStats.daysSinceFirstLaunch}
+- First Launch Version: ${launchStats.firstLaunchVersion}
+- Current Version: ${launchStats.currentVersion}
+''');
 
     runApp(
       MultiProvider(
@@ -1582,7 +1657,9 @@ Future<void> main() async {
           ),
           ChangeNotifierProvider(create: (_) => AppLifecycleProvider()),
         ],
-        child: SecureApp(isFirstLaunch: firstLaunch),
+        child: SecureApp(
+          launchResult: launchResult,
+        ), // Updated to use LaunchResult
       ),
     );
 
@@ -1597,36 +1674,98 @@ Future<void> main() async {
     });
 
     ProductionLogger.info('Application started successfully');
+
+    // Log first launch events for analytics
+    if (launchResult.isFirstLaunch) {
+      ProductionLogger.info(
+        '🎉 First app launch detected - showing onboarding',
+      );
+      // You can trigger first-time user setup here
+    } else if (launchResult.isFirstLaunchForVersion) {
+      ProductionLogger.info(
+        '🔄 First launch for version ${launchResult.appVersion}',
+      );
+      // You can show "What's New" dialog here
+    }
   } catch (e, stackTrace) {
     ProductionLogger.fatal('Application startup failed', e, stackTrace);
 
     // Show error UI
+    // Show user-friendly error UI
     runApp(
       MaterialApp(
         home: Scaffold(
+          backgroundColor: Colors.white,
           body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(Icons.error_outline, size: 64, color: Colors.red),
-                const SizedBox(height: 16),
-                const Text(
-                  'App Failed to Start',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'Please restart the app',
-                  style: TextStyle(color: Colors.grey[600]),
-                ),
-                const SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () {
-                    exit(0);
-                  },
-                  child: const Text('Exit App'),
-                ),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.error_outline_rounded,
+                    size: 80,
+                    color: Colors.red,
+                  ),
+                  const SizedBox(height: 24),
+                  const Text(
+                    'Unable to Start App',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    'There was a problem starting the application. '
+                    'Please try restarting the app.',
+                    style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'If the problem continues, please contact support.',
+                    style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 32),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          exit(0);
+                        },
+                        icon: const Icon(Icons.exit_to_app),
+                        label: const Text('Exit App'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.red,
+                          foregroundColor: Colors.white,
+                        ),
+                      ),
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          // Try to restart the app
+                          runApp(
+                            const MaterialApp(
+                              home: Scaffold(
+                                body: Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                              ),
+                            ),
+                          );
+                          main(); // Recursive call - use with caution
+                        },
+                        icon: const Icon(Icons.refresh),
+                        label: const Text('Retry'),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
