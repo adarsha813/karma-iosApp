@@ -244,36 +244,8 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
     }
 
     try {
-      const androidDetails = AndroidNotificationDetails(
-        'horoscope_channel',
-        'Horoscope Notifications',
-        channelDescription: 'Notifications for new daily horoscopes',
-        importance: Importance.max,
-        priority: Priority.high,
-        enableVibration: true,
-        playSound: true,
-        timeoutAfter: 30000, // 30 seconds timeout
-      );
-
-      const notificationDetails = NotificationDetails(android: androidDetails);
-
       final notificationId =
           id?.hashCode ?? DateTime.now().millisecondsSinceEpoch;
-
-      await flutterLocalNotificationsPlugin.show(
-        notificationId,
-        "🔮 $title",
-        message.length > 100
-            ? '${message.substring(0, 100)}...'
-            : message, // Truncate long messages
-        notificationDetails,
-        payload: jsonEncode({
-          'type': 'horoscope',
-          'id': id ?? '',
-          'source': 'socket',
-          'timestamp': DateTime.now().toIso8601String(),
-        }),
-      );
 
       _logger.i('Notification shown successfully - ID: $notificationId');
       _logAnalyticsEvent(
@@ -305,15 +277,6 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
           final payload = response.payload;
           if (payload != null && payload.isNotEmpty) {
             _handleNotificationTap(payload);
-          }
-        },
-        onDidReceiveBackgroundNotificationResponse: (
-          NotificationResponse response,
-        ) {
-          // Handle background notification response if needed
-          final payload = response.payload;
-          if (payload != null && payload.isNotEmpty) {
-            _logger.d('Background notification tapped: $payload');
           }
         },
       );
@@ -421,39 +384,8 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
         return;
       }
 
-      // Process reactions
-      final reactions = Map<String, dynamic>.from(horoscope['reactions'] ?? {});
-      int likes = 0;
-      int dislikes = 0;
-
-      reactions.forEach((key, value) {
-        if (value == 'like')
-          likes++;
-        else if (value == 'dislike')
-          dislikes++;
-      });
-
-      horoscope['likes'] = likes;
-      horoscope['dislikes'] = dislikes;
-      horoscope['userReaction'] = reactions[widget.userId] ?? 'none';
-
-      final title = horoscope['title']?.toString() ?? 'New Horoscope';
-      final content = horoscope['text']?.toString() ?? '';
-
-      // Increment unread badge
-      Provider.of<HoroscopeProvider>(context, listen: false).increment();
-
-      // Show notification
-      _showHoroscopeNotification(
-        title,
-        content,
-        id: horoscope['_id']?.toString(),
-      );
-
-      // Update UI
-      setState(() {
-        _horoscopes.insert(0, horoscope);
-      });
+      // ✅ Process and display the horoscope
+      _processAndDisplayHoroscope(horoscope);
 
       _logger.i('Successfully processed new horoscope: ${horoscope['_id']}');
       _logAnalyticsEvent(
@@ -461,11 +393,86 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
         params: {
           'horoscope_id': horoscope['_id'],
           'has_title': horoscope['title'] != null,
-          'content_length': content.length,
         },
       );
     } catch (e, stackTrace) {
       _reportError(e, stackTrace, context: 'handle_new_horoscope');
+    }
+  }
+
+  void _processAndDisplayHoroscope(Map<String, dynamic> horoscope) {
+    // ✅ Store context safely
+
+    if (!mounted) {
+      _logger.w('Widget disposed, skipping horoscope processing');
+      return;
+    }
+
+    // ✅ Handle both field names for text content
+    final content =
+        horoscope['text']?.toString() ??
+        horoscope['horoscopeTranslated']?.toString() ??
+        '';
+
+    // ✅ Ensure createdAt field exists
+    final createdAt =
+        horoscope['createdAt']?.toString() ?? DateTime.now().toIso8601String();
+
+    // ✅ Create complete horoscope with all required fields
+    final completeHoroscope = {
+      '_id': horoscope['_id'],
+      'title': horoscope['title']?.toString() ?? 'New Horoscope',
+      'text': content,
+      'sign': horoscope['sign'],
+      'type': horoscope['type'],
+      'adminId': horoscope['adminId'],
+      'adminName': horoscope['adminName'],
+      'reactions': Map<String, dynamic>.from(horoscope['reactions'] ?? {}),
+      'createdAt': createdAt,
+    };
+
+    // ✅ Calculate reactions (only once)
+    final reactions = Map<String, dynamic>.from(
+      completeHoroscope['reactions'] ?? {},
+    );
+    int likes = 0;
+    int dislikes = 0;
+
+    reactions.forEach((key, value) {
+      if (value == 'like')
+        likes++;
+      else if (value == 'dislike')
+        dislikes++;
+    });
+
+    completeHoroscope['likes'] = likes;
+    completeHoroscope['dislikes'] = dislikes;
+    completeHoroscope['userReaction'] = reactions[widget.userId] ?? 'none';
+
+    final title = completeHoroscope['title']?.toString() ?? 'New Horoscope';
+    final displayContent = completeHoroscope['text']?.toString() ?? '';
+
+    // ✅ Increment unread badge with safe context access
+    try {} catch (e) {
+      _logger.w('Failed to increment badge: $e');
+    }
+
+    // ✅ Show notification (only once)
+    _showHoroscopeNotification(
+      title,
+      displayContent,
+      id: completeHoroscope['_id']?.toString(),
+    );
+
+    // ✅ Safe UI update with mounted check
+    if (mounted) {
+      setState(() {
+        _horoscopes.insert(0, completeHoroscope);
+      });
+    } else {
+      _logger.w(
+        'Widget not mounted, skipping UI update for horoscope: ${completeHoroscope['_id']}',
+      );
     }
   }
 
