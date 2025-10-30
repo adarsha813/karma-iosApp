@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart'; // For BuildContext
-import 'package:provider/provider.dart'; // For Provider
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import '../providers/notification_provider.dart'; // Import your NotificationProvider
+import '../providers/notification_provider.dart';
 
 class NotificationHandler {
   static final FlutterLocalNotificationsPlugin notificationsPlugin =
@@ -34,6 +34,42 @@ class NotificationHandler {
     await androidPlugin?.createNotificationChannel(paymentChannel);
   }
 
+  // ✅ UPDATED: Check both app toggle AND system permissions
+  static Future<bool> _areNotificationsEnabled(BuildContext context) async {
+    try {
+      // 1. Check app-level toggle
+      final notificationProvider = Provider.of<NotificationProvider>(
+        context,
+        listen: false,
+      );
+
+      if (!notificationProvider.notificationsEnabled) {
+        print("🔕 App notifications disabled via toggle");
+        return false;
+      }
+
+      // 2. Check system-level permissions
+      final androidPlugin =
+          notificationsPlugin
+              .resolvePlatformSpecificImplementation<
+                AndroidFlutterLocalNotificationsPlugin
+              >();
+
+      final systemEnabled =
+          await androidPlugin?.areNotificationsEnabled() ?? true;
+
+      if (!systemEnabled) {
+        print("🔕 System notifications disabled");
+        return false;
+      }
+
+      return true;
+    } catch (e) {
+      print("⚠️ Error checking notification permissions: $e");
+      return true; // Default to enabled if there's an error
+    }
+  }
+
   static void showSystemNotification(dynamic data) {
     final category = data['category']?.toString() ?? 'general';
     final message = data['message']?.toString() ?? 'No message provided';
@@ -61,35 +97,14 @@ class NotificationHandler {
     required String body,
     String? payload,
     required BuildContext context,
-    bool force = false, // ✅ optional: force showing even if toggle off
+    bool force = false, // Only for critical notifications
   }) async {
-    // 1️⃣ Check in-app toggle
-    final notificationProvider = Provider.of<NotificationProvider>(
-      context,
-      listen: false,
-    );
-
-    // Skip showing in notification bar if toggle is off
-    if (!notificationProvider.notificationsEnabled && !force) {
-      print("🔕 Notifications disabled → skipping system notification");
+    // ✅ STRICT CHECK: Don't show if disabled (unless forced for critical alerts)
+    if (!force && !await _areNotificationsEnabled(context)) {
+      print("🔕 Notifications disabled - skipping ALL system notifications");
       return;
     }
 
-    // 2️⃣ Check system-level settings
-    final androidPlugin =
-        notificationsPlugin
-            .resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin
-            >();
-
-    final areEnabled = await androidPlugin?.areNotificationsEnabled() ?? true;
-
-    if (!areEnabled) {
-      print("🔕 System notifications disabled → skipping notification");
-      return;
-    }
-
-    // 3️⃣ Show notification only if both are enabled
     const androidDetails = AndroidNotificationDetails(
       'default_channel',
       'Default',
@@ -109,7 +124,18 @@ class NotificationHandler {
     );
   }
 
-  // ✅ Add missing helper
+  // ✅ NEW: Method to completely disable ALL notifications
+  static Future<void> disableAllNotifications() async {
+    try {
+      // Clear all pending notifications
+      await notificationsPlugin.cancelAll();
+
+      print("🔕 All notifications disabled and cleared");
+    } catch (e) {
+      print("⚠️ Error disabling notifications: $e");
+    }
+  }
+
   static String _capitalize(String s) =>
       s.isNotEmpty ? s[0].toUpperCase() + s.substring(1) : s;
 }

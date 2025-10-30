@@ -2,7 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_app_badger/flutter_app_badger.dart'; // << Add this line
 import '../models/notification_model.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+// In your notification_provider.dart
 class NotificationProvider extends ChangeNotifier {
   bool _notificationsEnabled = true;
   int _unreadCount = 0;
@@ -31,6 +33,35 @@ class NotificationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  // ✅ UPDATED: Properly disable notifications
+  void setNotificationsEnabled(bool value) async {
+    _notificationsEnabled = value;
+    notifyListeners();
+
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('notifications_enabled', value);
+
+    // ✅ CRITICAL: Clear all notifications when disabled
+    if (!value) {
+      await _clearAllSystemNotifications();
+    }
+
+    print("🔔 Notifications ${value ? 'enabled' : 'disabled'}");
+  }
+
+  // ✅ NEW: Clear all system notifications
+  Future<void> _clearAllSystemNotifications() async {
+    try {
+      final notificationsPlugin = FlutterLocalNotificationsPlugin();
+      await notificationsPlugin.cancelAll();
+      print("🗑️ Cleared all system notifications");
+    } catch (e) {
+      print("⚠️ Error clearing system notifications: $e");
+    }
+  }
+
+  // ... rest of your existing methods ...
+
   void addNotification(NotificationModel notification) {
     _notifications.insert(0, notification);
     notifyListeners();
@@ -44,13 +75,6 @@ class NotificationProvider extends ChangeNotifier {
       clearUnreadCount();
     }
     notifyListeners();
-  }
-
-  void setNotificationsEnabled(bool value) async {
-    _notificationsEnabled = value;
-    notifyListeners();
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('notifications_enabled', value);
   }
 
   Future<void> setUnreadCount(int count) async {

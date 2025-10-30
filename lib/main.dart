@@ -876,6 +876,16 @@ class SecureAppInitializer {
       '💬 Foreground message received: ${message.messageId}',
     );
     try {
+      final prefs = await SharedPreferences.getInstance();
+      final notificationsEnabled =
+          prefs.getBool('notifications_enabled') ?? true;
+
+      if (!notificationsEnabled) {
+        ProductionLogger.info(
+          '🔕 Notifications disabled - skipping foreground notification',
+        );
+        return;
+      }
       final data = message.data;
       final type = data['type'] ?? 'general';
 
