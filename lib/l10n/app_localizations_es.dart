@@ -722,7 +722,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get resultsFound => 'Resultados encontrados';
 
   @override
-  String get recoverySecretHint => 'Ingrese su pista secreta';
+  String get recoverySecretHint =>
+      'No se puede copiar y pegar, escríbalo manualmente';
 
   @override
   String get recoverAccountDescription =>

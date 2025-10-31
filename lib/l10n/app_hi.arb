@@ -228,7 +228,7 @@
    "noSearchResults": "कोई परिणाम नहीं मिला",
   "clearSearch": "खोज साफ़ करें",
   "resultsFound": "परिणाम मिले",
-  "recoverySecretHint": "अपना गुप्त संकेत दर्ज करें",
+ "recoverySecretHint": "कॉपी-पेस्ट काम नहीं करेगा, कृपया मैन्युअली टाइप करें",
 "recoverAccountDescription": "अपने खाते को पुनर्प्राप्त करने के लिए इन चरणों का पालन करें",
  "loading": "लोड हो रहा है...",
   "retryButton": "पुनः प्रयास करें",

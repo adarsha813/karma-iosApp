@@ -548,8 +548,14 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       bubbleColor = const Color.fromARGB(255, 227, 196, 156);
     } else if (message.isAdvice) {
       bubbleColor = const Color.fromARGB(255, 182, 206, 178);
-      icon = Icons.tips_and_updates;
-      label = "Advice";
+      // ✅ Use title or type from backend, no hardcoded icon
+      if (message.title != null && message.title!.isNotEmpty) {
+        label = message.title;
+      } else if (message.type != null && message.type!.isNotEmpty) {
+        label = message.type;
+      }
+
+      icon = Icons.tips_and_updates_outlined; // optional
     } else {
       bubbleColor = Colors.grey[300]!;
     }
@@ -615,14 +621,21 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
           if (message.adminName != null || message.adminId != null)
             _buildAdminInfo(),
 
+          // Advice: show Created at
           if (message.createdAt != null)
-            _buildTimestamp('Asked at: ${_formatDateTime(message.createdAt!)}'),
+            _buildTimestamp(
+              '${message.isAdvice ? 'Created' : 'Asked'} at: ${_formatDateTime(message.createdAt!)}',
+            ),
 
-          if (message.answeredAt != null)
+          // Regular answers: show Answered at
+          if (!message.isAdvice && message.answeredAt != null)
             _buildTimestamp(
               'Answered at: ${_formatDateTime(message.answeredAt!)}',
             ),
 
+          // Always show when question was asked
+
+          // Clarifications
           if (message.clarificatedAt != null)
             _buildTimestamp(
               'Clarified at: ${_formatDateTime(message.clarificatedAt!)}',
@@ -772,10 +785,25 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   Widget _buildAdminInfo() {
     final message = widget.message;
 
+    // If both are null, return empty
+    if ((message.adminName == null || message.adminName!.isEmpty) &&
+        (message.adminId == null || message.adminId!.isEmpty)) {
+      return const SizedBox.shrink();
+    }
+
+    // Build the admin text dynamically
+    String adminText = 'Councillor: ';
+    if (message.adminName != null && message.adminName!.isNotEmpty) {
+      adminText += message.adminName!;
+    }
+    if (message.adminId != null && message.adminId!.isNotEmpty) {
+      adminText += ' (${message.adminId})';
+    }
+
     return Padding(
       padding: const EdgeInsets.only(top: 4.0),
       child: Text(
-        'Admin: ${message.adminName} (${message.adminId})',
+        adminText,
         style: TextStyle(
           fontSize: 12,
           color: message.isMe ? Colors.white70 : Colors.black54,

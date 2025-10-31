@@ -766,7 +766,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                   ),
                   const SizedBox(height: 20),
                   _buildInfoRow("Name", _nameController.text),
-                  _buildInfoRow("User ID", userId),
                   const SizedBox(height: 10),
                   const Text(
                     "Recovery Secret:",
@@ -798,6 +797,8 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                   const SizedBox(height: 5),
                   const Text(
                     "• Take a screenshot of this information\n"
+                    "• Always use your actual date and time of birth\n"
+                    "• Remember your date and time of birth always\n"
                     "• Store it in a secure place\n"
                     "• Do not share with anyone\n"
                     "• This will only be shown once",
@@ -1859,13 +1860,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 4),
-            child: Text(
-              l10n.birthCityLabel,
-              style: TextStyle(color: Colors.grey[600], fontSize: 12),
-            ),
-          ),
+          Padding(padding: const EdgeInsets.only(bottom: 4)),
           TypeAheadField<String>(
             textFieldConfiguration: TextFieldConfiguration(
               controller: _cityController,

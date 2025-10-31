@@ -720,7 +720,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resultsFound => 'Results found';
 
   @override
-  String get recoverySecretHint => 'Enter your secret hint';
+  String get recoverySecretHint => 'Copy-paste may not work, type manually';
 
   @override
   String get recoverAccountDescription =>

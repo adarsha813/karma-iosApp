@@ -1345,6 +1345,8 @@ class _ChatScreenState extends State<ChatScreen>
       adminName: data['adminName'],
       answeredAt: DateTime.parse(data['advisedAt']),
       isAdvice: true,
+      type: data['type'],
+      title: data['title'],
     );
 
     _addMessage(message);
@@ -1714,9 +1716,14 @@ class _ChatScreenState extends State<ChatScreen>
                 isAdvice: true,
                 adminId: item['adminId'] ?? '',
                 adminName: item['adminName'] ?? '',
-                answeredAt: DateTime.parse(item['createdAt']),
+                createdAt: chat_model.Message.parseDate(
+                  item['createdAt'] ?? item['scheduledFor'],
+                ),
+
                 rating: item['rating'],
                 feedback: item['feedback'],
+                type: item['type'],
+                title: item['title'],
               ),
             );
           }
@@ -1809,6 +1816,8 @@ class _ChatScreenState extends State<ChatScreen>
           isAdvice: true,
           rating: item['rating'],
           feedback: item['feedback'],
+          type: item['type'],
+          title: item['title'],
         ),
       );
     }
@@ -3160,11 +3169,6 @@ class _ChatScreenState extends State<ChatScreen>
         },
       ),
       actions: [
-        Icon(
-          _isSocketConnected ? Icons.circle : Icons.circle_outlined,
-          color: _isSocketConnected ? Colors.green : Colors.red,
-          size: 12,
-        ),
         IconButton(
           icon: const Icon(Icons.lightbulb_outline),
           onPressed: _openHowToAskScreen,

@@ -17,7 +17,8 @@ class Message extends ChangeNotifier {
 
   final bool isAdvice;
   final String? clarificationId;
-
+  final String? type; // <-- new
+  final String? title; // <-- new
   bool isSending; // Client-only state
   bool isTemporary; // Client-only state
 
@@ -42,6 +43,8 @@ class Message extends ChangeNotifier {
     this.clarificatedAt,
     this.isAdvice = false,
     this.clarificationId,
+    this.type, // <-- new
+    this.title, // <-- new
     this.isSending = false,
     this.isTemporary = false,
     this.hasFailed = false,
@@ -96,7 +99,7 @@ class Message extends ChangeNotifier {
   }
 
   /// MongoDB compatible date parsing
-  static DateTime? _parseDate(dynamic value) {
+  static DateTime? parseDate(dynamic value) {
     if (value == null) return null;
 
     if (value is String) return DateTime.tryParse(value);
@@ -104,12 +107,29 @@ class Message extends ChangeNotifier {
     if (value is Map && value.containsKey("\$date")) {
       final dateValue = value["\$date"];
 
+      // If dateValue is a string timestamp
       if (dateValue is String) {
+        final millis = int.tryParse(dateValue);
+        if (millis != null) return DateTime.fromMillisecondsSinceEpoch(millis);
         return DateTime.tryParse(dateValue);
       }
 
+      // If dateValue is an int
+      if (dateValue is int) {
+        return DateTime.fromMillisecondsSinceEpoch(dateValue);
+      }
+
+      // If dateValue is a map with $numberLong
       if (dateValue is Map && dateValue.containsKey("\$numberLong")) {
-        final millis = int.tryParse(dateValue["\$numberLong"].toString());
+        final numberLong = dateValue["\$numberLong"];
+        int? millis;
+
+        if (numberLong is String) {
+          millis = int.tryParse(numberLong);
+        } else if (numberLong is int) {
+          millis = numberLong;
+        }
+
         if (millis != null) {
           return DateTime.fromMillisecondsSinceEpoch(millis);
         }
@@ -166,9 +186,10 @@ class Message extends ChangeNotifier {
       isAdvice: json["isAdvice"] ?? false,
       adminId: json["adminId"],
       adminName: json["adminName"],
-      createdAt: _parseDate(json["createdAt"]),
-      answeredAt: _parseDate(json["answeredAt"]),
-      clarificatedAt: _parseDate(json["clarificatedAt"]),
+      createdAt: Message.parseDate(json["createdAt"] ?? json["scheduledFor"]),
+      answeredAt: Message.parseDate(json["answeredAt"]),
+      clarificatedAt: Message.parseDate(json["clarificatedAt"]),
+
       rating:
           json["rating"] is String
               ? int.tryParse(json["rating"])
@@ -178,6 +199,8 @@ class Message extends ChangeNotifier {
       isAnswerHidden: json["isAnswerHidden"] ?? false,
       isClarificationHidden: json["isClarificationHidden"] ?? false,
       isAdviceHidden: json["isAdviceHidden"] ?? false,
+      type: json["type"], // <-- map from backend
+      title: json["title"], // <-- map from backend
       isSending: false,
       isTemporary: false,
     );
@@ -200,6 +223,8 @@ class Message extends ChangeNotifier {
       "clarificationId": clarificationId,
       "rating": _rating,
       "feedback": _feedback,
+      "type": type, // <-- include in JSON
+      "title": title, // <-- include in JSON
     };
   }
 

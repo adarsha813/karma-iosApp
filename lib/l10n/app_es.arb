@@ -292,7 +292,7 @@
     "noSearchResults": "No se encontraron resultados",
   "clearSearch": "Borrar búsqueda",
   "resultsFound": "Resultados encontrados",
-  "recoverySecretHint": "Ingrese su pista secreta",
+"recoverySecretHint": "No se puede copiar y pegar, escríbalo manualmente",
 "recoverAccountDescription": "Siga estos pasos para recuperar su cuenta",
  "loading": "Cargando...",
   "retryButton": "Reintentar",

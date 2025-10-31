@@ -1411,7 +1411,7 @@ abstract class AppLocalizations {
   /// No description provided for @recoverySecretHint.
   ///
   /// In en, this message translates to:
-  /// **'Enter your secret hint'**
+  /// **'Copy-paste may not work, type manually'**
   String get recoverySecretHint;
 
   /// No description provided for @recoverAccountDescription.

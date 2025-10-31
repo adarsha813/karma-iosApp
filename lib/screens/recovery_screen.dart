@@ -8,6 +8,7 @@ import 'profile_settings_screen.dart';
 import '../l10n/app_localizations.dart';
 import '../config/environment.dart';
 import 'package:logger/logger.dart';
+import 'package:flutter/cupertino.dart';
 
 // Custom logger instance
 final _logger = Logger(
@@ -83,47 +84,137 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
   }
 
   Future<void> _pickDate() async {
-    _logAnalyticsEvent('date_picker_opened');
+    DateTime tempDate = _selectedDob ?? DateTime(2000, 1, 1);
 
-    final now = DateTime.now();
-    final picked = await showDatePicker(
+    await showDialog(
       context: context,
-      initialDate: DateTime(now.year - 20),
-      firstDate: DateTime(1900),
-      lastDate: now,
-      helpText: AppLocalizations.of(context)!.birthDateLabel,
-      cancelText: AppLocalizations.of(context)!.cancelButton,
-      confirmText: AppLocalizations.of(context)!.confirmButton,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Container(
+            height: 350,
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                const Text(
+                  "Select Date of Birth",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const Divider(height: 20),
+                Expanded(
+                  child: CupertinoDatePicker(
+                    mode: CupertinoDatePickerMode.date,
+                    initialDateTime: _selectedDob ?? DateTime(2000, 1, 1),
+                    minimumDate: DateTime(1900),
+                    maximumDate: DateTime.now(),
+                    onDateTimeChanged: (DateTime newDate) {
+                      tempDate = newDate;
+                    },
+                  ),
+                ),
+                const Divider(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text(
+                        "Cancel",
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      onPressed: () {
+                        setState(() => _selectedDob = tempDate);
+                        Navigator.pop(context);
+                      },
+                      child: const Text("Done"),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
-
-    if (picked != null) {
-      _logAnalyticsEvent('date_selected', params: {'date': picked.toString()});
-      setState(() => _selectedDob = picked);
-    } else {
-      _logAnalyticsEvent('date_selection_cancelled');
-    }
   }
 
   Future<void> _pickTime() async {
-    _logAnalyticsEvent('time_picker_opened');
+    TimeOfDay tempTime = _selectedTime ?? TimeOfDay.now();
 
-    final picked = await showTimePicker(
+    await showDialog(
       context: context,
-      initialTime: const TimeOfDay(hour: 12, minute: 0),
-      helpText: AppLocalizations.of(context)!.birthTimeLabel,
-      cancelText: AppLocalizations.of(context)!.cancelButton,
-      confirmText: AppLocalizations.of(context)!.confirmButton,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Container(
+            height: 300,
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                const Text(
+                  "Select Birth Time",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const Divider(height: 20),
+                Expanded(
+                  child: CupertinoTimerPicker(
+                    mode: CupertinoTimerPickerMode.hm,
+                    initialTimerDuration: Duration(
+                      hours: _selectedTime?.hour ?? 0,
+                      minutes: _selectedTime?.minute ?? 0,
+                    ),
+                    onTimerDurationChanged: (Duration newDuration) {
+                      tempTime = TimeOfDay(
+                        hour: newDuration.inHours,
+                        minute: newDuration.inMinutes % 60,
+                      );
+                    },
+                  ),
+                ),
+                const Divider(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text(
+                        "Cancel",
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      onPressed: () {
+                        setState(() => _selectedTime = tempTime);
+                        Navigator.pop(context);
+                      },
+                      child: const Text("Done"),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
-
-    if (picked != null) {
-      _logAnalyticsEvent(
-        'time_selected',
-        params: {'hour': picked.hour, 'minute': picked.minute},
-      );
-      setState(() => _selectedTime = picked);
-    } else {
-      _logAnalyticsEvent('time_selection_cancelled');
-    }
   }
 
   bool _validateInputs() {
@@ -201,7 +292,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
 
     final timeStr =
         "${_selectedTime!.hour.toString().padLeft(2, '0')}:"
-        "${_selectedTime!.minute.toString().padLeft(2, '0')}:00";
+        "${_selectedTime!.minute.toString().padLeft(2, '0')}";
 
     try {
       final response = await http

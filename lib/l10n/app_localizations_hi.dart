@@ -718,7 +718,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get resultsFound => 'परिणाम मिले';
 
   @override
-  String get recoverySecretHint => 'अपना गुप्त संकेत दर्ज करें';
+  String get recoverySecretHint =>
+      'कॉपी-पेस्ट काम नहीं करेगा, कृपया मैन्युअली टाइप करें';
 
   @override
   String get recoverAccountDescription =>

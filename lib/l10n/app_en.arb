@@ -453,7 +453,7 @@
 "noSearchResults": "No search results found",
   "clearSearch": "Clear search",
   "resultsFound": "Results found",
-  "recoverySecretHint": "Enter your secret hint",
+  "recoverySecretHint": "Copy-paste may not work, type manually",
 "recoverAccountDescription": "Follow these steps to recover your account",
   "processingLabel": "Processing...",
   "clearChatSuccess": "Chat cleared successfully",
