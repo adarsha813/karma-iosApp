@@ -540,7 +540,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   BubbleConfig _getBubbleConfig(Message message) {
     Color bubbleColor;
     IconData? icon;
-    String? label;
+    String? type;
+    String? title;
 
     if (message.isMe) {
       bubbleColor = const Color.fromARGB(255, 106, 145, 211);
@@ -548,19 +549,19 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       bubbleColor = const Color.fromARGB(255, 227, 196, 156);
     } else if (message.isAdvice) {
       bubbleColor = const Color.fromARGB(255, 182, 206, 178);
-      // ✅ Use title or type from backend, no hardcoded icon
-      if (message.title != null && message.title!.isNotEmpty) {
-        label = message.title;
-      } else if (message.type != null && message.type!.isNotEmpty) {
-        label = message.type;
-      }
+      icon = Icons.tips_and_updates_outlined;
 
-      icon = Icons.tips_and_updates_outlined; // optional
+      type = message.type; // top line
+      title = message.title; // bottom line
     } else {
       bubbleColor = Colors.grey[300]!;
     }
-
-    return BubbleConfig(color: bubbleColor, icon: icon, label: label);
+    return BubbleConfig(
+      color: bubbleColor,
+      icon: icon,
+      type: type,
+      title: title,
+    );
   }
 
   Alignment _getMessageAlignment(Message message) {
@@ -613,7 +614,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       child: Column(
         crossAxisAlignment: _getCrossAxisAlignment(message),
         children: [
-          if (config.label != null && config.icon != null)
+          if ((config.type != null || config.title != null) &&
+              config.icon != null)
             _buildMessageLabel(config),
 
           _buildMessageContent(),
@@ -696,19 +698,42 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   Widget _buildMessageLabel(BubbleConfig config) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 6.0),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(config.icon, size: 16, color: Colors.deepPurple),
-          const SizedBox(width: 4),
-          Text(
-            config.label!,
-            style: const TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.bold,
-              color: Colors.deepPurple,
+          if (config.type != null && config.icon != null)
+            Center(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(config.icon, size: 16, color: Colors.deepPurple),
+                  const SizedBox(width: 4),
+                  Text(
+                    config.type!,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.deepPurple,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
+          if (config.title != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 2),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  config.title!,
+                  style: TextStyle(
+                    fontSize: 12.5,
+                    fontWeight: FontWeight.w500,
+                    color: const Color.fromARGB(255, 96, 65, 148),
+                  ),
+                ),
+              ),
+            ),
         ],
       ),
     );
@@ -884,7 +909,9 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
 class BubbleConfig {
   final Color color;
   final IconData? icon;
-  final String? label;
 
-  BubbleConfig({required this.color, this.icon, this.label});
+  final String? type; // top line
+  final String? title; // bottom line
+
+  BubbleConfig({required this.color, this.icon, this.type, this.title});
 }
