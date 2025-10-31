@@ -662,7 +662,8 @@ class InputValidator {
     // Remove potentially dangerous characters/scripts
     // Allow only letters, numbers, basic punctuation, and whitespace
     final allowedPattern = RegExp(
-      r'[a-zA-Z0-9\s\.,!?@#$%^&*()_+\-=\[\]{}|;:",./<>?`~]',
+      r'[\p{L}\p{N}\p{P}\p{Z}\p{S}]',
+      unicode: true, // ✅ Essential for supporting various languages and symbols
     );
     final sanitized =
         text.split('').where((char) => allowedPattern.hasMatch(char)).join();

@@ -14,7 +14,7 @@ class SecurityConfig {
   static const int maxRatingRequestsPerMinute = 10; // ✅ ADDED
 
   // Validation - Enhanced constraints
-  static const int maxMessageLength = 1000;
+  static const int maxMessageLength = 5000;
   static const int minMessageLength = 1;
   static const int maxIdLength = 100; // ✅ ADDED
   static const int maxFeedbackLength = 500; // ✅ ADDED
