@@ -18,6 +18,7 @@ import '../config/security_config.dart';
 import 'rating_bubble.dart';
 import '../screens/AstrologerDetailPage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import '../services/astrologerdataService.dart';
 
 class ChatBubble extends StatefulWidget {
   final Message message;
@@ -25,7 +26,7 @@ class ChatBubble extends StatefulWidget {
   final Future<void> Function(String, int, String?)? onRateAdvice;
   final SecureChatService chatService;
   final Map<String, AstroTerm> dictionaryMap;
-
+  final AstroDetail? cachedAstrologer; // ✅ ADD THIS
   const ChatBubble({
     super.key,
     required this.message,
@@ -33,6 +34,7 @@ class ChatBubble extends StatefulWidget {
     this.onRateAdvice,
     required this.chatService,
     required this.dictionaryMap,
+    this.cachedAstrologer, // ✅ ADD THIS
   });
 
   @override
@@ -54,6 +56,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+
     _initializeAnimations();
 
     Timer.periodic(Duration(minutes: 30), (_) => _cleanupExpiredCache());
@@ -812,6 +815,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     );
   }
 
+  // Update the _buildAdminInfo method
+  // ✅ SIMPLIFY _buildAdminInfo - No FutureBuilder!
   Widget _buildAdminInfo() {
     final message = widget.message;
 
@@ -821,51 +826,36 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       return const SizedBox.shrink();
     }
 
-    return FutureBuilder<Map<String, dynamic>?>(
-      future: _fetchAstrologerIfNeeded(message),
-      builder: (context, snapshot) {
-        final bool isLoading =
-            snapshot.connectionState == ConnectionState.waiting;
-        final bool hasError = snapshot.hasError;
-        final bool hasData = snapshot.data != null;
+    // Use cached data if available
+    final astroData = widget.cachedAstrologer;
+    final bool hasCachedData = astroData != null;
 
-        final String adminImage = _getAdminImage(snapshot.data, message);
-        final String adminName = message.adminName ?? 'Astrologer';
+    final String adminImage =
+        astroData?.image ??
+        message.adminImage ??
+        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80';
 
-        return Padding(
-          padding: const EdgeInsets.only(top: 8.0),
-          child: _buildAdminCard(
-            context: context,
-            message: message,
-            adminImage: adminImage,
-            adminName: adminName,
-            isLoading: isLoading,
-            hasError: hasError,
-            hasData: hasData,
-            onTap: () => _navigateToAstrologerDetail(context, message),
-          ),
-        );
-      },
+    final String adminName =
+        astroData?.name ?? message.adminName ?? 'Astrologer';
+
+    return _buildAdminCard(
+      adminImage: adminImage,
+      adminName: adminName,
+      isLoading: false, // ✅ No loading state since we preload
+      hasError: false,
+      hasData: hasCachedData || message.adminImage != null,
     );
   }
 
-  String _getAdminImage(Map<String, dynamic>? data, Message message) {
-    // Priority: 1. Fetched data, 2. Message adminImage, 3. Fallback
-    return data?['image']?.toString() ??
-        message.adminImage ??
-        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80';
-  }
-
+  // Updated _buildAdminCard method
   Widget _buildAdminCard({
-    required BuildContext context,
-    required Message message,
     required String adminImage,
     required String adminName,
     required bool isLoading,
     required bool hasError,
     required bool hasData,
-    required VoidCallback onTap,
   }) {
+    final message = widget.message;
     final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final Color textColor =
         message.isMe
@@ -881,7 +871,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: onTap,
+        onTap: () => _navigateToAstrologerDetail(context, widget.message),
         borderRadius: BorderRadius.circular(12),
         splashColor: Colors.blue.withOpacity(0.1),
         highlightColor: Colors.blue.withOpacity(0.05),
@@ -902,27 +892,21 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Avatar with loading states
               _buildAdminAvatar(
                 adminImage: adminImage,
                 isLoading: isLoading,
                 hasError: hasError,
                 adminName: adminName,
               ),
-
               const SizedBox(width: 10),
-
-              // Admin info
               _buildAdminInfoText(
                 adminName: adminName,
                 textColor: textColor,
                 isLoading: isLoading,
               ),
-
-              // Chevron icon for navigation hint
               if (!isLoading &&
-                  message.adminId != null &&
-                  message.adminId!.isNotEmpty)
+                  widget.message.adminId != null &&
+                  widget.message.adminId!.isNotEmpty)
                 Padding(
                   padding: const EdgeInsets.only(left: 4),
                   child: Icon(
@@ -938,6 +922,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     );
   }
 
+  // Keep your existing _buildAdminAvatar method
   Widget _buildAdminAvatar({
     required String adminImage,
     required bool isLoading,
@@ -1026,6 +1011,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     );
   }
 
+  // Keep your existing _buildAdminInfoText method
   Widget _buildAdminInfoText({
     required String adminName,
     required Color textColor,
@@ -1102,87 +1088,10 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     // HapticFeedback.lightImpact();
   }
 
-  Future<Map<String, dynamic>?> _fetchAstrologerIfNeeded(
-    Message message,
-  ) async {
-    // Early returns for optimization
-    if (message.adminImage != null && message.adminImage!.isNotEmpty) {
-      return {'image': message.adminImage};
-    }
-
-    if (message.adminId == null || message.adminId!.isEmpty) return null;
-
-    // Memory cache check with TTL (Time To Live)
-    final cachedData = _getCachedAstrologerData(message.adminId!);
-    if (cachedData != null) return cachedData;
-
-    try {
-      final url = Uri.parse(
-        '${Environment.baseUrl}/api/councillor/${message.adminId}',
-      );
-
-      final response = await http
-          .get(
-            url,
-            headers: {
-              ...Environment.securityHeaders,
-              'Accept': 'application/json',
-              'Cache-Control': 'max-age=300', // 5 minutes cache
-            },
-          )
-          .timeout(const Duration(seconds: 10));
-
-      if (response.statusCode == 200) {
-        final data = json.decode(utf8.decode(response.bodyBytes));
-
-        if (data['success'] == true && data['data'] != null) {
-          final astrologerData = data['data'] as Map<String, dynamic>;
-
-          // Cache the result with timestamp
-          _cacheAstrologerData(message.adminId!, astrologerData);
-
-          return astrologerData;
-        }
-      } else if (response.statusCode >= 500) {
-        // Log server errors but don't crash
-        debugPrint(
-          '🚨 Server error fetching astrologer: ${response.statusCode}',
-        );
-      }
-    } on http.ClientException catch (e) {
-      debugPrint('🌐 Network error fetching astrologer: $e');
-    } on TimeoutException catch (e) {
-      debugPrint('⏰ Timeout fetching astrologer: $e');
-    } catch (e, stackTrace) {
-      debugPrint('⚠️ Unexpected error fetching astrologer: $e');
-      print('Stack trace: $stackTrace');
-      // Report to your error tracking service
-      // ErrorReportingService.recordError(e, stackTrace);
-    }
-
-    return null;
-  }
-
   // Enhanced caching with TTL
   final Map<String, MapEntry<Map<String, dynamic>, DateTime>> _astrologerCache =
       {};
-  Duration _cacheTTL = Duration(minutes: 30); // Cache for 30 minutes
-
-  Map<String, dynamic>? _getCachedAstrologerData(String adminId) {
-    final entry = _astrologerCache[adminId];
-    if (entry != null) {
-      if (DateTime.now().difference(entry.value) < _cacheTTL) {
-        return entry.key; // Return cached data if not expired
-      } else {
-        _astrologerCache.remove(adminId); // Remove expired cache
-      }
-    }
-    return null;
-  }
-
-  void _cacheAstrologerData(String adminId, Map<String, dynamic> data) {
-    _astrologerCache[adminId] = MapEntry(data, DateTime.now());
-  }
+  final Duration _cacheTTL = const Duration(minutes: 30);
 
   // Cache cleanup method (call periodically if needed)
   void _cleanupExpiredCache() {

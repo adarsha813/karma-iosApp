@@ -4,6 +4,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import '../config/security_config.dart';
 import 'secure_storage_service.dart';
 import 'error_reporting_service.dart'; // ✅ ADDED
+import 'package:flutter/foundation.dart';
 
 class SecureHttpClient {
   final SecureStorageService _secureStorage = SecureStorageService();
@@ -20,6 +21,7 @@ class SecureHttpClient {
     Map<String, String>? headers,
     bool requireAuth = true,
     int retryCount = 0, // ✅ ADDED: Retry mechanism
+    String? token, // ✅ ADD: Accept token parameter
   }) async {
     return _makeRequest(
       'GET',
@@ -27,6 +29,7 @@ class SecureHttpClient {
       headers: headers,
       requireAuth: requireAuth,
       retryCount: retryCount,
+      token: token, // ✅ PASS token through
     );
   }
 
@@ -36,6 +39,7 @@ class SecureHttpClient {
     Object? body,
     bool requireAuth = true,
     int retryCount = 0, // ✅ ADDED: Retry mechanism
+    String? token, // ✅ ADD: Accept token parameter
   }) async {
     return _makeRequest(
       'POST',
@@ -44,6 +48,7 @@ class SecureHttpClient {
       body: body,
       requireAuth: requireAuth,
       retryCount: retryCount,
+      token: token, // ✅ PASS token through
     );
   }
 
@@ -54,6 +59,7 @@ class SecureHttpClient {
     Object? body,
     bool requireAuth = true,
     int retryCount = 0,
+    String? token, // ✅ ADD this
   }) async {
     return _makeRequest(
       'PATCH',
@@ -62,6 +68,7 @@ class SecureHttpClient {
       body: body,
       requireAuth: requireAuth,
       retryCount: retryCount,
+      token: token, // ✅ PASS this
     );
   }
 
@@ -93,6 +100,7 @@ class SecureHttpClient {
     Object? body,
     bool requireAuth = true,
     int retryCount = 0,
+    String? token, // ✅ ADD: token parameter
   }) async {
     try {
       // Validate URL
@@ -102,7 +110,11 @@ class SecureHttpClient {
       await _checkConnectivity();
 
       // Prepare headers with security enhancements
-      final requestHeaders = await _prepareHeaders(headers, requireAuth);
+      final requestHeaders = await _prepareHeaders(
+        headers,
+        requireAuth: requireAuth,
+        token: token,
+      );
 
       // Validate request body
       _validateBody(body);
@@ -166,29 +178,43 @@ class SecureHttpClient {
 
   // ✅ ADDED: Enhanced header preparation
   Future<Map<String, String>> _prepareHeaders(
-    Map<String, String>? customHeaders,
-    bool requireAuth,
-  ) async {
+    Map<String, String>? customHeaders, {
+    required bool requireAuth,
+    String? token, // ✅ ADD: token parameter
+  }) async {
     final headers = Map<String, String>.from(SecurityConfig.secureHeaders);
 
-    // Add authentication token if required
     if (requireAuth) {
-      final token = await _secureStorage.getToken();
-      if (token == null || token.isEmpty) {
+      // ✅ ADD DEBUGGING
+      debugPrint(
+        '🔄 _prepareHeaders: requireAuth=$requireAuth, externalToken=${token != null ? "✅ Present" : "❌ NULL"}',
+      );
+
+      // ✅ FIX: Use passed token first, fallback to secure storage
+      String? authToken = token;
+
+      if (authToken == null || authToken.isEmpty) {
+        authToken = await _secureStorage.getToken();
+        debugPrint(
+          '🔄 Secure storage token: ${authToken != null ? "✅ Present" : "❌ NULL"}',
+        );
+      }
+
+      if (authToken == null || authToken.isEmpty) {
+        debugPrint('❌ FINAL: No token available anywhere');
         throw Exception('Authentication token not available');
       }
 
-      // Validate token format (basic sanity check)
-      if (token.length < 10) {
+      if (authToken.length < 10) {
         throw Exception('Invalid token format');
       }
-
-      headers['Authorization'] = 'Bearer $token';
+      debugPrint('✅ FINAL: Using token of length ${authToken.length}');
+      headers['Authorization'] = 'Bearer $authToken';
+    } else {
+      debugPrint('🔄 _prepareHeaders: Authentication not required');
     }
 
-    // Add custom headers with validation
     if (customHeaders != null) {
-      // Prevent header injection attacks
       for (final header in customHeaders.entries) {
         if (!_isValidHeader(header.key) || !_isValidHeaderValue(header.value)) {
           throw ArgumentError('Invalid header: ${header.key}');

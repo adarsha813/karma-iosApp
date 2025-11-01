@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'dart:math';
 
 class ProfileProvider with ChangeNotifier {
   String? _userId;
@@ -507,5 +508,15 @@ class ProfileProvider with ChangeNotifier {
     );
 
     debugPrint('✅ Default profile created: $defaultUserId');
+  }
+
+  void debugTokenState() {
+    debugPrint('''
+🔄 ProfileProvider Token Debug:
+   - User ID: $_userId
+   - Token: ${_token != null ? "✅ Present (length: ${_token!.length})" : "❌ NULL"}
+   - Is Initialized: $_isInitialized
+   - Token Preview: ${_token != null ? _token!.substring(0, min(20, _token!.length)) + "..." : "N/A"}
+''');
   }
 }

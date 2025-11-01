@@ -40,6 +40,7 @@ import 'package:kundali/screens/CustomerSupportPage.dart';
 import 'package:kundali/screens/AboutUsPage.dart';
 import '../l10n/app_localizations.dart';
 import '../models/astro_term.dart' as models;
+import '../services/astrologerdataService.dart';
 
 bool verifyCertificate(X509Certificate cert, List<String> allowedFingerprints) {
   // Get DER bytes directly from the certificate
@@ -974,6 +975,9 @@ class _ChatScreenState extends State<ChatScreen>
   final FocusNode _focusNode = FocusNode();
   final ValueNotifier<bool> _showButtonNotifier = ValueNotifier<bool>(false);
   final _logger = Logger(); // local logger for this file
+  final AstrologerService _astrologerService = AstrologerService();
+  final Map<String, AstroDetail?> _astrologerCache = {};
+  bool _isPreloading = false;
 
   // State variables
   String? userId;
@@ -1014,6 +1018,124 @@ class _ChatScreenState extends State<ChatScreen>
     };
     AppLogger.info('ChatScreen initialized', feature: 'chat_screen');
     _initializeChat();
+    _preloadAllAstrologers(); // ✅ ADD THIS
+  }
+
+  // ✅ ADD THIS METHOD - Preload all astrologer data
+  Future<void> _preloadAllAstrologers() async {
+    if (_isPreloading) return;
+    _isPreloading = true;
+
+    try {
+      // Extract unique admin IDs from all messages
+      final uniqueAdminIds = <String>{};
+
+      // Get messages from chat service
+      final chatService = Provider.of<SecureChatService>(
+        context,
+        listen: false,
+      );
+
+      for (final message in chatService.messages) {
+        if (message.adminId != null &&
+            message.adminId!.isNotEmpty &&
+            (message.adminImage == null || message.adminImage!.isEmpty)) {
+          uniqueAdminIds.add(message.adminId!);
+        }
+      }
+
+      debugPrint(
+        '🔍 Preloading ${uniqueAdminIds.length} astrologers: $uniqueAdminIds',
+      );
+
+      // Preload all astrologers in background
+      final futures = <Future>[];
+      for (final adminId in uniqueAdminIds) {
+        futures.add(
+          _astrologerService.getAstrologer(adminId).then((astroDetail) {
+            _astrologerCache[adminId] = astroDetail;
+            debugPrint(
+              '✅ Preloaded astrologer: $adminId → ${astroDetail?.name}',
+            );
+          }),
+        );
+      }
+
+      await Future.wait(futures);
+
+      debugPrint(
+        '🎯 Preloading completed. Cache size: ${_astrologerCache.length}',
+      );
+
+      // Trigger rebuild to show cached data
+      if (mounted) {
+        setState(() {});
+        _checkPerformance(); // ✅ Check performance
+      }
+    } catch (e, stackTrace) {
+      debugPrint('❌ Error preloading astrologers: $e');
+      debugPrint('Stack trace: $stackTrace');
+    } finally {
+      _isPreloading = false;
+    }
+  }
+
+  // ✅ ADD THIS METHOD - Get cached astrologer data
+  AstroDetail? _getCachedAstrologer(String? adminId) {
+    if (adminId == null) return null;
+    return _astrologerCache[adminId];
+  }
+
+  // ✅ UPDATE _fetchAllMessages to trigger preloading
+  Future<void> _fetchAllMessages(
+    String userId,
+    SecureChatService chatService,
+  ) async {
+    try {
+      final questionsFuture = _fetchQuestions(userId);
+      final advicesFuture = _fetchAdvices(userId);
+
+      final results = await Future.wait([
+        questionsFuture,
+        advicesFuture,
+      ], eagerError: false);
+
+      final List<chat_model.Message> allMessages = [];
+
+      if (results[0] != null) {
+        allMessages.addAll(results[0]!);
+      }
+
+      if (results[1] != null) {
+        allMessages.addAll(results[1]!);
+      }
+
+      allMessages.sort((a, b) {
+        final dateA = _getMessageDateTime(a);
+        final dateB = _getMessageDateTime(b);
+        return dateA.compareTo(dateB);
+      });
+
+      chatService.setMessages(allMessages);
+
+      // ✅ TRIGGER PRELOADING AFTER MESSAGES ARE LOADED
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _preloadAllAstrologers();
+      });
+
+      AppLogger.info(
+        'Fetched ${allMessages.length} total messages',
+        feature: 'data_fetching',
+      );
+    } catch (e, stackTrace) {
+      AppLogger.error(
+        'Error fetching all messages',
+        e,
+        feature: 'data_fetching',
+        stackTrace: stackTrace,
+      );
+      rethrow;
+    }
   }
 
   void _initializeChat() {
@@ -1113,6 +1235,29 @@ class _ChatScreenState extends State<ChatScreen>
 
     // Message event handlers
     _setupMessageHandlers();
+  }
+
+  void _checkPerformance() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final stopwatch = Stopwatch()..start();
+
+      // Force a rebuild to test performance
+      setState(() {});
+
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        stopwatch.stop();
+        debugPrint(
+          '⚡ ChatScreen rebuild time: ${stopwatch.elapsedMilliseconds}ms',
+        );
+
+        if (stopwatch.elapsedMilliseconds > 16) {
+          // 60fps = 16ms per frame
+          debugPrint('⚠️ Performance warning: Slow rebuild detected');
+        } else {
+          debugPrint('✅ Excellent performance: Buttery smooth scrolling');
+        }
+      });
+    });
   }
 
   // Add this helper method to _ChatScreenState class
@@ -1600,58 +1745,6 @@ class _ChatScreenState extends State<ChatScreen>
         feature: 'data_fetching',
         stackTrace: stackTrace,
       );
-    }
-  }
-
-  Future<void> _fetchAllMessages(
-    String userId,
-    SecureChatService chatService,
-  ) async {
-    try {
-      // Fetch both questions and advices in a controlled manner
-      final questionsFuture = _fetchQuestions(userId);
-      final advicesFuture = _fetchAdvices(userId);
-
-      // Wait for both to complete
-      final results = await Future.wait([
-        questionsFuture,
-        advicesFuture,
-      ], eagerError: false);
-
-      final List<chat_model.Message> allMessages = [];
-
-      // Add questions and answers
-      if (results[0] != null) {
-        allMessages.addAll(results[0]!);
-      }
-
-      // Add advices
-      if (results[1] != null) {
-        allMessages.addAll(results[1]!);
-      }
-
-      // Sort all messages chronologically
-      allMessages.sort((a, b) {
-        final dateA = _getMessageDateTime(a);
-        final dateB = _getMessageDateTime(b);
-        return dateA.compareTo(dateB);
-      });
-
-      // Update chat service once with all messages
-      chatService.setMessages(allMessages);
-
-      AppLogger.info(
-        'Fetched ${allMessages.length} total messages (${results[0]?.length ?? 0} questions, ${results[1]?.length ?? 0} advices)',
-        feature: 'data_fetching',
-      );
-    } catch (e, stackTrace) {
-      AppLogger.error(
-        'Error fetching all messages',
-        e,
-        feature: 'data_fetching',
-        stackTrace: stackTrace,
-      );
-      rethrow;
     }
   }
 
@@ -3465,6 +3558,9 @@ class _ChatScreenState extends State<ChatScreen>
           onRateAdvice: _rateAdvice,
           chatService: chatService,
           dictionaryMap: _convertToAstroTermMap(dictionaryMap),
+          cachedAstrologer: _getCachedAstrologer(
+            message.adminId,
+          ), // ✅ PASS CACHED DATA
         );
       },
     );
