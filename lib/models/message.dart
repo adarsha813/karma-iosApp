@@ -9,6 +9,7 @@ class Message extends ChangeNotifier {
   final bool isClarification;
   final String? adminId;
   final String? adminName;
+  final String? adminImage; // <-- add this
 
   final DateTime? createdAt;
   final DateTime? answeredAt;
@@ -52,6 +53,7 @@ class Message extends ChangeNotifier {
     this.isAnswerHidden = false,
     this.isClarificationHidden = false,
     this.isAdviceHidden = false,
+    this.adminImage,
     int? rating,
     String? feedback,
   }) : _rating = rating,
@@ -169,6 +171,9 @@ class Message extends ChangeNotifier {
     else if (json["isClarification"] == true && rawId != null) {
       clarificationId = parsedMongoId;
     }
+    final adminId = json["adminId"] ?? json["councillorId"];
+    final adminName = json["adminName"] ?? json["councillorName"];
+
     debugPrint(
       '✅ Message ID: ${json["id"]} | Clarification ID: $clarificationId',
     );
@@ -184,11 +189,12 @@ class Message extends ChangeNotifier {
       isMe: json["isMe"] ?? true,
       isClarification: json["isClarification"] ?? false,
       isAdvice: json["isAdvice"] ?? false,
-      adminId: json["adminId"],
-      adminName: json["adminName"],
+      adminId: adminId,
+      adminName: adminName,
       createdAt: Message.parseDate(json["createdAt"] ?? json["scheduledFor"]),
       answeredAt: Message.parseDate(json["answeredAt"]),
       clarificatedAt: Message.parseDate(json["clarificatedAt"]),
+      adminImage: json['image'] ?? json['adminImage'],
 
       rating:
           json["rating"] is String

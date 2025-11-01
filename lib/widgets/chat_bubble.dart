@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +16,8 @@ import '../utils/dictionary_highlighter.dart';
 import '../config/environment.dart';
 import '../config/security_config.dart';
 import 'rating_bubble.dart';
+import '../screens/AstrologerDetailPage.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ChatBubble extends StatefulWidget {
   final Message message;
@@ -52,6 +55,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _initializeAnimations();
+
+    Timer.periodic(Duration(minutes: 30), (_) => _cleanupExpiredCache());
   }
 
   void _initializeAnimations() {
@@ -810,30 +815,380 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   Widget _buildAdminInfo() {
     final message = widget.message;
 
-    // If both are null, return empty
+    // Early return if no admin data
     if ((message.adminName == null || message.adminName!.isEmpty) &&
         (message.adminId == null || message.adminId!.isEmpty)) {
       return const SizedBox.shrink();
     }
 
-    // Build the admin text dynamically
-    String adminText = 'Councillor: ';
-    if (message.adminName != null && message.adminName!.isNotEmpty) {
-      adminText += message.adminName!;
-    }
-    if (message.adminId != null && message.adminId!.isNotEmpty) {
-      adminText += ' (${message.adminId})';
-    }
+    return FutureBuilder<Map<String, dynamic>?>(
+      future: _fetchAstrologerIfNeeded(message),
+      builder: (context, snapshot) {
+        final bool isLoading =
+            snapshot.connectionState == ConnectionState.waiting;
+        final bool hasError = snapshot.hasError;
+        final bool hasData = snapshot.data != null;
 
-    return Padding(
-      padding: const EdgeInsets.only(top: 4.0),
-      child: Text(
-        adminText,
-        style: TextStyle(
-          fontSize: 12,
-          color: message.isMe ? Colors.white70 : Colors.black54,
+        final String adminImage = _getAdminImage(snapshot.data, message);
+        final String adminName = message.adminName ?? 'Astrologer';
+
+        return Padding(
+          padding: const EdgeInsets.only(top: 8.0),
+          child: _buildAdminCard(
+            context: context,
+            message: message,
+            adminImage: adminImage,
+            adminName: adminName,
+            isLoading: isLoading,
+            hasError: hasError,
+            hasData: hasData,
+            onTap: () => _navigateToAstrologerDetail(context, message),
+          ),
+        );
+      },
+    );
+  }
+
+  String _getAdminImage(Map<String, dynamic>? data, Message message) {
+    // Priority: 1. Fetched data, 2. Message adminImage, 3. Fallback
+    return data?['image']?.toString() ??
+        message.adminImage ??
+        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80';
+  }
+
+  Widget _buildAdminCard({
+    required BuildContext context,
+    required Message message,
+    required String adminImage,
+    required String adminName,
+    required bool isLoading,
+    required bool hasError,
+    required bool hasData,
+    required VoidCallback onTap,
+  }) {
+    final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final Color textColor =
+        message.isMe
+            ? Colors.white70
+            : isDarkMode
+            ? Colors.white70
+            : Colors.black54;
+    final Color backgroundColor =
+        message.isMe
+            ? Colors.white.withOpacity(0.15)
+            : Colors.grey.withOpacity(0.1);
+
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(12),
+        splashColor: Colors.blue.withOpacity(0.1),
+        highlightColor: Colors.blue.withOpacity(0.05),
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color:
+                  message.isMe
+                      ? Colors.white.withOpacity(0.2)
+                      : Colors.grey.withOpacity(0.3),
+              width: 1,
+            ),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // Avatar with loading states
+              _buildAdminAvatar(
+                adminImage: adminImage,
+                isLoading: isLoading,
+                hasError: hasError,
+                adminName: adminName,
+              ),
+
+              const SizedBox(width: 10),
+
+              // Admin info
+              _buildAdminInfoText(
+                adminName: adminName,
+                textColor: textColor,
+                isLoading: isLoading,
+              ),
+
+              // Chevron icon for navigation hint
+              if (!isLoading &&
+                  message.adminId != null &&
+                  message.adminId!.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(left: 4),
+                  child: Icon(
+                    Icons.chevron_right_rounded,
+                    size: 16,
+                    color: textColor.withOpacity(0.6),
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
+    );
+  }
+
+  Widget _buildAdminAvatar({
+    required String adminImage,
+    required bool isLoading,
+    required bool hasError,
+    required String adminName,
+  }) {
+    if (isLoading) {
+      return Container(
+        width: 28,
+        height: 28,
+        decoration: BoxDecoration(
+          color: Colors.grey.shade300,
+          shape: BoxShape.circle,
+        ),
+        child: const Center(
+          child: SizedBox(
+            width: 12,
+            height: 12,
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.grey),
+            ),
+          ),
+        ),
+      );
+    }
+
+    if (hasError) {
+      return Container(
+        width: 28,
+        height: 28,
+        decoration: const BoxDecoration(
+          color: Colors.grey,
+          shape: BoxShape.circle,
+        ),
+        child: const Icon(
+          Icons.person_outline_rounded,
+          size: 16,
+          color: Colors.white,
+        ),
+      );
+    }
+
+    return Container(
+      width: 28,
+      height: 28,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(color: Colors.white.withOpacity(0.3), width: 1.5),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: ClipOval(
+        child: CachedNetworkImage(
+          imageUrl: adminImage,
+          fit: BoxFit.cover,
+          placeholder:
+              (context, url) => Container(
+                color: Colors.grey.shade200,
+                child: const Center(
+                  child: SizedBox(
+                    width: 12,
+                    height: 12,
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  ),
+                ),
+              ),
+          errorWidget:
+              (context, url, error) => Container(
+                color: Colors.grey.shade300,
+                child: Icon(
+                  Icons.person_rounded,
+                  size: 16,
+                  color: Colors.grey.shade600,
+                ),
+              ),
+          fadeInDuration: const Duration(milliseconds: 300),
+          fadeOutDuration: const Duration(milliseconds: 300),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAdminInfoText({
+    required String adminName,
+    required Color textColor,
+    required bool isLoading,
+  }) {
+    return Flexible(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const SizedBox(height: 1),
+          AnimatedSwitcher(
+            duration: const Duration(milliseconds: 200),
+            child:
+                isLoading
+                    ? Container(
+                      width: 80,
+                      height: 9,
+                      decoration: BoxDecoration(
+                        color: textColor.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    )
+                    : Text(
+                      adminName,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: textColor,
+                        decorationThickness: 1.2,
+                      ),
+                    ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _navigateToAstrologerDetail(BuildContext context, Message message) {
+    if (message.adminId == null || message.adminId!.isEmpty) return;
+
+    // Haptic feedback for better UX
+    _triggerHapticFeedback();
+
+    Navigator.of(context).push(
+      PageRouteBuilder(
+        pageBuilder:
+            (context, animation, secondaryAnimation) =>
+                AstrologerDetailPage(astrologerId: message.adminId!),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          const begin = Offset(0.0, 1.0);
+          const end = Offset.zero;
+          const curve = Curves.easeInOutQuart;
+
+          var tween = Tween(
+            begin: begin,
+            end: end,
+          ).chain(CurveTween(curve: curve));
+
+          return SlideTransition(
+            position: animation.drive(tween),
+            child: child,
+          );
+        },
+        transitionDuration: const Duration(milliseconds: 400),
+      ),
+    );
+  }
+
+  void _triggerHapticFeedback() {
+    // For haptic feedback (requires haptic_feedback package)
+    // HapticFeedback.lightImpact();
+  }
+
+  Future<Map<String, dynamic>?> _fetchAstrologerIfNeeded(
+    Message message,
+  ) async {
+    // Early returns for optimization
+    if (message.adminImage != null && message.adminImage!.isNotEmpty) {
+      return {'image': message.adminImage};
+    }
+
+    if (message.adminId == null || message.adminId!.isEmpty) return null;
+
+    // Memory cache check with TTL (Time To Live)
+    final cachedData = _getCachedAstrologerData(message.adminId!);
+    if (cachedData != null) return cachedData;
+
+    try {
+      final url = Uri.parse(
+        '${Environment.baseUrl}/api/councillor/${message.adminId}',
+      );
+
+      final response = await http
+          .get(
+            url,
+            headers: {
+              ...Environment.securityHeaders,
+              'Accept': 'application/json',
+              'Cache-Control': 'max-age=300', // 5 minutes cache
+            },
+          )
+          .timeout(const Duration(seconds: 10));
+
+      if (response.statusCode == 200) {
+        final data = json.decode(utf8.decode(response.bodyBytes));
+
+        if (data['success'] == true && data['data'] != null) {
+          final astrologerData = data['data'] as Map<String, dynamic>;
+
+          // Cache the result with timestamp
+          _cacheAstrologerData(message.adminId!, astrologerData);
+
+          return astrologerData;
+        }
+      } else if (response.statusCode >= 500) {
+        // Log server errors but don't crash
+        debugPrint(
+          '🚨 Server error fetching astrologer: ${response.statusCode}',
+        );
+      }
+    } on http.ClientException catch (e) {
+      debugPrint('🌐 Network error fetching astrologer: $e');
+    } on TimeoutException catch (e) {
+      debugPrint('⏰ Timeout fetching astrologer: $e');
+    } catch (e, stackTrace) {
+      debugPrint('⚠️ Unexpected error fetching astrologer: $e');
+      print('Stack trace: $stackTrace');
+      // Report to your error tracking service
+      // ErrorReportingService.recordError(e, stackTrace);
+    }
+
+    return null;
+  }
+
+  // Enhanced caching with TTL
+  final Map<String, MapEntry<Map<String, dynamic>, DateTime>> _astrologerCache =
+      {};
+  Duration _cacheTTL = Duration(minutes: 30); // Cache for 30 minutes
+
+  Map<String, dynamic>? _getCachedAstrologerData(String adminId) {
+    final entry = _astrologerCache[adminId];
+    if (entry != null) {
+      if (DateTime.now().difference(entry.value) < _cacheTTL) {
+        return entry.key; // Return cached data if not expired
+      } else {
+        _astrologerCache.remove(adminId); // Remove expired cache
+      }
+    }
+    return null;
+  }
+
+  void _cacheAstrologerData(String adminId, Map<String, dynamic> data) {
+    _astrologerCache[adminId] = MapEntry(data, DateTime.now());
+  }
+
+  // Cache cleanup method (call periodically if needed)
+  void _cleanupExpiredCache() {
+    final now = DateTime.now();
+    _astrologerCache.removeWhere(
+      (key, value) => now.difference(value.value) > _cacheTTL,
     );
   }
 

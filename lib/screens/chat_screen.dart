@@ -659,17 +659,19 @@ class InputValidator {
   }
 
   static String _sanitizeText(String text) {
-    // Remove potentially dangerous characters/scripts
-    // Allow only letters, numbers, basic punctuation, and whitespace
-    final allowedPattern = RegExp(
-      r'[\p{L}\p{N}\p{P}\p{Z}\p{S}]',
-      unicode: true, // ✅ Essential for supporting various languages and symbols
-    );
-    final sanitized =
-        text.split('').where((char) => allowedPattern.hasMatch(char)).join();
+    // Remove forbidden characters: ^ * > < | \ ` ~ # _ ;
+    text = text.replaceAll(RegExp(r'[\^*><|\\`~#_;]'), '');
 
-    // Trim excessive whitespace
-    return sanitized.replaceAll(RegExp(r'\s+'), ' ').trim();
+    // Replace multiple consecutive newlines with a single newline
+    text = text.replaceAll(RegExp(r'\n{2,}'), '\n');
+
+    // Optionally: replace multiple spaces/tabs with single space
+    text = text.replaceAll(RegExp(r'[ \t]+'), ' ');
+
+    // Trim leading/trailing whitespace on each line
+    text = text.trim();
+
+    return text;
   }
 
   static bool _hasExcessiveRepetition(String text) {
@@ -1315,8 +1317,8 @@ class _ChatScreenState extends State<ChatScreen>
       id: data['questionId'],
       text: data['answerTranslated'],
       isMe: false,
-      adminId: data['adminId'],
-      adminName: data['adminName'],
+      adminId: data['councillorId'],
+      adminName: data['councillorName'],
       answeredAt: DateTime.parse(data['answeredAt']),
     );
 
@@ -1329,8 +1331,8 @@ class _ChatScreenState extends State<ChatScreen>
       text: data['clarificationMessage'],
       isMe: false,
       isClarification: true,
-      adminId: data['adminId'],
-      adminName: data['adminName'],
+      adminId: data['councillorId'],
+      adminName: data['councillorName'],
       clarificatedAt: DateTime.parse(data['clarificatedAt']),
     );
 
@@ -1776,8 +1778,8 @@ class _ChatScreenState extends State<ChatScreen>
           id: questionId,
           text: item['answerTranslated'],
           isMe: false,
-          adminId: item['adminId'],
-          adminName: item['adminName'],
+          adminId: item['councillorId'],
+          adminName: item['councillorName'],
           answeredAt: DateTime.parse(item['answeredAt']),
           rating: item['rating'],
           feedback: item['feedback'],
@@ -1795,8 +1797,8 @@ class _ChatScreenState extends State<ChatScreen>
             text: clarification['clarificationMessage'],
             isMe: false,
             isClarification: true,
-            adminId: clarification['adminId'],
-            adminName: clarification['adminName'],
+            adminId: clarification['councillorId'],
+            adminName: clarification['councillorName'],
             clarificatedAt: DateTime.parse(clarification['clarificatedAt']),
             clarificationId: clarification['clarificationId'], // ✅ add this
           ),
