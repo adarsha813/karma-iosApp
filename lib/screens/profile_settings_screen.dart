@@ -700,13 +700,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     }
 
     final responseData = result['data'] ?? result;
-
-    // Check if we have a userId in the response
-    final String? userId =
-        responseData['userId']?.toString() ??
-        (_userIdController.text.trim().isNotEmpty
-            ? _userIdController.text.trim()
-            : null);
+    final String? userId = responseData['userId']?.toString();
 
     if (userId != null && userId.isNotEmpty) {
       if (mounted) {
@@ -718,135 +712,158 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         listen: false,
       ).saveUserId(userId);
 
-      // Handle recovery secret if present - FIXED LOGIC
-      final recoverySecret = responseData['recoverySecret']?.toString();
-      if (recoverySecret != null && recoverySecret.isNotEmpty) {
-        // Show recovery dialog and wait for user confirmation
-        await _showRecoveryDialog(context, recoverySecret, userId);
-      } else {
-        // No recovery secret, navigate directly to chat
-        _navigateToChatScreen(context);
-      }
-    } else {
-      // If no userId in response, still show success
+      // Show success message
       ErrorHandler.showSuccessSnackbar(context, 'Profile saved successfully!');
 
-      // Optionally reload profile to get generated userId
+      // Check for recovery secret
+      final recoverySecret = responseData['recoverySecret']?.toString();
+
+      if (recoverySecret != null && recoverySecret.isNotEmpty) {
+        // Show recovery info in a BottomSheet that doesn't block navigation
+        _showRecoveryBottomSheet(context, recoverySecret);
+      }
+
+      // Always navigate to chat screen regardless of recovery secret
+      _navigateToChatScreen(context);
+    } else {
+      ErrorHandler.showSuccessSnackbar(context, 'Profile saved successfully!');
       if (_userIdController.text.isNotEmpty) {
         await _loadProfileData();
       }
-
-      // Add this line after getting responseData for debugging
-      _debugResponseData(responseData);
     }
   }
 
-  void _debugResponseData(Map<String, dynamic> responseData) {
-    _logger.d('🔍 Debug response data:');
-    _logger.d(' - userId: ${responseData['userId']}');
-    _logger.d(' - recoverySecret: ${responseData['recoverySecret']}');
-    _logger.d(
-      ' - recoverySecret type: ${responseData['recoverySecret']?.runtimeType}',
-    );
-    _logger.d(
-      ' - recoverySecret is empty: ${responseData['recoverySecret']?.toString().isEmpty}',
-    );
-    _logger.d(' - All keys: ${responseData.keys.toList()}');
-  }
-
-  Future<void> _showRecoveryDialog(
-    BuildContext context,
-    String recoverySecret,
-    String userId,
-  ) async {
-    bool shouldNavigate =
-        await showDialog<bool>(
-          context: context,
-          barrierDismissible: false,
-          builder:
-              (context) => AlertDialog(
-                title: const Text(
-                  "🔐 Account Recovery Details",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+  void _showRecoveryBottomSheet(BuildContext context, String recoverySecret) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder:
+            (context) => Container(
+              height: MediaQuery.of(context).size.height * 0.8,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
                 ),
-                content: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Please save this information securely. You'll need it to recover your account.",
-                        style: TextStyle(fontSize: 14),
-                      ),
-                      const SizedBox(height: 20),
-                      _buildInfoRow("Name", _nameController.text),
-                      const SizedBox(height: 10),
-                      const Text(
-                        "Recovery Secret:",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(12),
-                        margin: const EdgeInsets.only(top: 5, bottom: 15),
-                        decoration: BoxDecoration(
-                          color: Colors.amber[50],
-                          border: Border.all(color: Colors.amber),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: SelectableText(
-                          recoverySecret,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                      const Text(
-                        "⚠️ Important:",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.red,
-                        ),
-                      ),
-                      const SizedBox(height: 5),
-                      const Text(
-                        "• Take a screenshot of this information\n"
-                        "• Always use your actual date and time of birth\n"
-                        "• Remember your date and time of birth always\n"
-                        "• Store it in a secure place\n"
-                        "• Do not share with anyone\n"
-                        "• This will only be shown once",
-                        style: TextStyle(fontSize: 13),
-                      ),
-                    ],
-                  ),
-                ),
-                actions: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop(false); // Don't navigate
-                    },
-                    child: const Text("Cancel"),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pop(true); // Navigate to chat
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                      foregroundColor: Colors.white,
-                    ),
-                    child: const Text("I've Saved This Information"),
-                  ),
-                ],
               ),
-        ) ??
-        false; // Default to false if null
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    Container(
+                      width: 40,
+                      height: 4,
+                      margin: const EdgeInsets.only(bottom: 20),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                    ),
+                    const Text(
+                      "🔐 Save Your Recovery Details",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 16),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            const Text(
+                              "This information is crucial for account recovery. Please save it securely.",
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(height: 20),
+                            _buildRecoveryCard(
+                              "Recovery Secret",
+                              recoverySecret,
+                            ),
+                            const SizedBox(height: 16),
+                            _buildInfoRow("Name", _nameController.text),
+                            _buildInfoRow(
+                              "Birth Date",
+                              _selectedDate != null
+                                  ? DateFormat(
+                                    'MMM dd, yyyy',
+                                  ).format(_selectedDate!)
+                                  : 'Not set',
+                            ),
+                            _buildInfoRow(
+                              "Birth Time",
+                              _selectedTime != null
+                                  ? "${_selectedTime!.hour.toString().padLeft(2, '0')}:${_selectedTime!.minute.toString().padLeft(2, '0')}"
+                                  : 'Not set',
+                            ),
+                            const SizedBox(height: 20),
+                            const Text(
+                              "💡 Tip: Take a screenshot or write this down in a secure place",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontStyle: FontStyle.italic,
+                                color: Colors.blue,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () => Navigator.pop(context),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.green,
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                        ),
+                        child: const Text("I Understand - Continue to App"),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+      );
+    });
+  }
 
-    if (shouldNavigate && mounted) {
-      _navigateToChatScreen(context);
-    }
+  Widget _buildRecoveryCard(String title, String value) {
+    return Card(
+      color: Colors.amber[50],
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+            const SizedBox(height: 8),
+            SelectableText(
+              value,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.red,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   void _navigateToChatScreen(BuildContext context) {
