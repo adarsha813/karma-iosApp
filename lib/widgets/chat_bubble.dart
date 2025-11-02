@@ -659,6 +659,84 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     );
   }
 
+  // Enhanced version with better error handling
+  Widget _buildProfessionalGreeting(Message message) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Professional salutation with error boundary
+          _buildCustomerGreeting(),
+          const SizedBox(height: 4),
+
+          // Subtle separator
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCustomerGreeting() {
+    try {
+      final profileProvider = Provider.of<ProfileProvider>(
+        context,
+        listen: false,
+      );
+      final customerName = _getCustomerName(profileProvider);
+
+      return Text('Dear $customerName,', style: const TextStyle(fontSize: 14));
+    } catch (e) {
+      debugPrint('Error building customer greeting: $e');
+      // Fallback greeting
+      return const Text(
+        'Dear Valued Customer,',
+        style: TextStyle(fontSize: 14),
+      );
+    }
+  }
+
+  String _getCustomerName(ProfileProvider profileProvider) {
+    // Check if profile provider is initialized and has data
+    if (!profileProvider.isInitialized) {
+      return 'Valued Customer';
+    }
+
+    final userName = profileProvider.name;
+
+    // Validate the name
+    if (userName == null || userName.isEmpty) {
+      return 'Valued Customer';
+    }
+
+    // Check if it's the default name
+    if (userName == 'User' || userName.toLowerCase().contains('user')) {
+      return 'Valued Customer';
+    }
+
+    // Check name length and content
+    if (userName.length < 2 || userName.length > 50) {
+      return 'Valued Customer';
+    }
+
+    // Skip regex validation for now to fix the syntax error
+    return _capitalizeName(userName);
+  }
+
+  // Add the missing _capitalizeName method
+  String _capitalizeName(String name) {
+    if (name.isEmpty) return name;
+
+    // Split by spaces and capitalize each word
+    final words = name.split(' ');
+    final capitalizedWords = words.map((word) {
+      if (word.isEmpty) return word;
+      return word[0].toUpperCase() + word.substring(1).toLowerCase();
+    });
+
+    return capitalizedWords.join(' ');
+  }
+
   Widget _buildHidingState() {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
@@ -704,6 +782,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   }
 
   Widget _buildMessageLabel(BubbleConfig config) {
+    final message = widget.message;
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 6.0),
       child: Column(
@@ -727,6 +807,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
                 ],
               ),
             ),
+
           if (config.title != null)
             Padding(
               padding: const EdgeInsets.only(top: 2),
@@ -742,6 +823,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
                 ),
               ),
             ),
+          if (message.isAdvice) _buildProfessionalGreeting(message),
         ],
       ),
     );
