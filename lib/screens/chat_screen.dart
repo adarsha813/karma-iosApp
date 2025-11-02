@@ -16,6 +16,7 @@ import 'package:crypto/crypto.dart'; // Add this package to pubspec.yaml
 import 'dart:math' as math; // Add this line
 import '../config/environment.dart';
 import 'package:logger/logger.dart';
+import 'dart:math';
 
 // Import your app files
 import 'profile_screen.dart';
@@ -1016,10 +1017,45 @@ class _ChatScreenState extends State<ChatScreen>
       AppLogger.error('Platform error', error, stackTrace: stack);
       return true;
     };
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _debugMessageStructure();
+    });
     AppLogger.info('ChatScreen initialized', feature: 'chat_screen');
     _initializeChat();
     _preloadAllAstrologers(); // ✅ ADD THIS
   }
+
+  // ✅ ADD THIS: Debug method to understand message structure
+  void _debugMessageStructure() {
+    final chatService = Provider.of<SecureChatService>(context, listen: false);
+    final messages = chatService.messages;
+
+    debugPrint('📋 MESSAGE STRUCTURE ANALYSIS:');
+    debugPrint('Total messages: ${messages.length}');
+
+    for (int i = 0; i < messages.length; i++) {
+      final message = messages[i];
+      debugPrint(
+        '[$i] ID: ${message.id} | Type: ${message.isMe ? "QUESTION" : "ANSWER"} | Text: ${message.text.substring(0, min(30, message.text.length))}...',
+      );
+    }
+
+    // Analyze question-answer pairs
+    debugPrint('🔍 QUESTION-ANSWER PAIRS:');
+    for (int i = 0; i < messages.length - 1; i++) {
+      if (messages[i].isMe && !messages[i + 1].isMe) {
+        debugPrint(
+          '  Q: ${messages[i].text.substring(0, min(30, messages[i].text.length))}...',
+        );
+        debugPrint(
+          '  A: ${messages[i + 1].text.substring(0, min(30, messages[i + 1].text.length))}...',
+        );
+        debugPrint('  ---');
+      }
+    }
+  }
+
+  // ✅ ADD THIS: Enhanced debug method to understand the relationship mapping
 
   // ✅ ADD THIS METHOD - Preload all astrologer data
   Future<void> _preloadAllAstrologers() async {
@@ -3555,10 +3591,63 @@ class _ChatScreenState extends State<ChatScreen>
     );
   }
 
+  // ✅ UPDATED: Better precompute method with detailed logging
+  Map<String, String> _precomputeQuestionAnswerRelations() {
+    final chatService = Provider.of<SecureChatService>(context, listen: false);
+    final messages = chatService.messages;
+    final relationships = <String, String>{};
+
+    debugPrint('🔄 PRECOMPUTING QUESTION-ANSWER RELATIONSHIPS...');
+
+    // Create a map of question IDs to question texts
+    final questionMap = <String, String>{};
+    for (final message in messages) {
+      if (message.isMe && message.id != null && message.id!.isNotEmpty) {
+        questionMap[message.id!] = message.text;
+        debugPrint(
+          '✅ MAPPED Question: ${message.id} -> "${message.text.substring(0, min(20, message.text.length))}..."',
+        );
+      }
+    }
+
+    debugPrint('📊 Questions mapped: ${questionMap.length}');
+
+    // Link answers to their questions
+    int relationshipsFound = 0;
+    for (final message in messages) {
+      if (!message.isMe && !message.isAdvice && !message.isClarification) {
+        if (message.id != null && message.id!.isNotEmpty) {
+          final questionText = questionMap[message.id!];
+          if (questionText != null && questionText.isNotEmpty) {
+            relationships[message.id!] = questionText;
+            relationshipsFound++;
+            debugPrint(
+              '🎯 RELATIONSHIP FOUND: Answer ${message.id} -> Question: "${questionText.substring(0, min(20, questionText.length))}..."',
+            );
+          } else {
+            debugPrint('❌ NO QUESTION FOUND for answer: ${message.id}');
+            debugPrint('   Available questions: ${questionMap.keys}');
+          }
+        } else {
+          debugPrint('⚠️ Answer has null/empty ID: $message');
+        }
+      }
+    }
+
+    debugPrint(
+      '📈 Precomputed $relationshipsFound question-answer relationships',
+    );
+    debugPrint('📋 Final relationships: $relationships');
+
+    return relationships;
+  }
+
   Widget _buildMessageList(
     SecureChatService chatService,
     Map<String, dynamic> dictionaryMap,
   ) {
+    final questionAnswerRelations = _precomputeQuestionAnswerRelations();
+
     return ListView.builder(
       reverse: true,
       controller: _scrollController,
@@ -3566,6 +3655,11 @@ class _ChatScreenState extends State<ChatScreen>
       itemCount: chatService.messages.length,
       itemBuilder: (context, index) {
         final message = chatService.messages[index];
+        // ✅ GET RELATED QUESTION FROM PRECOMPUTED MAP
+        String? relatedQuestionText;
+        if (!message.isMe && !message.isAdvice && !message.isClarification) {
+          relatedQuestionText = questionAnswerRelations[message.id ?? ''];
+        }
         return ChatBubble(
           key: ValueKey('${message.id}_${message.rating}_${message.feedback}'),
           message: message,
@@ -3573,9 +3667,8 @@ class _ChatScreenState extends State<ChatScreen>
           onRateAdvice: _rateAdvice,
           chatService: chatService,
           dictionaryMap: _convertToAstroTermMap(dictionaryMap),
-          cachedAstrologer: _getCachedAstrologer(
-            message.adminId,
-          ), // ✅ PASS CACHED DATA
+          cachedAstrologer: _getCachedAstrologer(message.adminId),
+          relatedQuestionText: relatedQuestionText,
         );
       },
     );

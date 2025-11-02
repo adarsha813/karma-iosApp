@@ -27,6 +27,8 @@ class ChatBubble extends StatefulWidget {
   final SecureChatService chatService;
   final Map<String, AstroTerm> dictionaryMap;
   final AstroDetail? cachedAstrologer; // ✅ ADD THIS
+  final String?
+  relatedQuestionText; // ✅ ADD THIS - The question text to show above answer
   const ChatBubble({
     super.key,
     required this.message,
@@ -35,6 +37,7 @@ class ChatBubble extends StatefulWidget {
     required this.chatService,
     required this.dictionaryMap,
     this.cachedAstrologer, // ✅ ADD THIS
+    this.relatedQuestionText, // ✅ ADD THIS
   });
 
   @override
@@ -608,55 +611,149 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       constraints: BoxConstraints(
         maxWidth: MediaQuery.of(context).size.width * 0.75,
       ),
-      decoration: BoxDecoration(
-        color: config.color,
-        borderRadius: _getBorderRadius(message),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withAlpha(25),
-            blurRadius: 4,
-            spreadRadius: 1,
-          ),
-        ],
-      ),
       child: Column(
         crossAxisAlignment: _getCrossAxisAlignment(message),
         children: [
-          if ((config.type != null || config.title != null) &&
-              config.icon != null)
-            _buildMessageLabel(config),
+          // ✅ ADDED: Show related question above answer bubble
+          if (_shouldShowRelatedQuestion()) _buildRelatedQuestionPreview(),
 
-          _buildMessageContent(),
-
-          if (message.adminName != null || message.adminId != null)
-            _buildAdminInfo(),
-
-          // Advice: show Created at
-          if (message.createdAt != null)
-            _buildTimestamp(
-              '${message.isAdvice ? 'Created' : 'Asked'} at: ${_formatDateTime(message.createdAt!)}',
+          Container(
+            padding: const EdgeInsets.symmetric(
+              vertical: 10.0,
+              horizontal: 16.0,
             ),
-
-          // Regular answers: show Answered at
-          if (!message.isAdvice && message.answeredAt != null)
-            _buildTimestamp(
-              'Answered at: ${_formatDateTime(message.answeredAt!)}',
+            decoration: BoxDecoration(
+              color: config.color,
+              borderRadius: _getBorderRadius(message),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withAlpha(25),
+                  blurRadius: 4,
+                  spreadRadius: 1,
+                ),
+              ],
             ),
+            child: Column(
+              crossAxisAlignment: _getCrossAxisAlignment(message),
+              children: [
+                if ((config.type != null || config.title != null) &&
+                    config.icon != null)
+                  _buildMessageLabel(config),
 
-          // Always show when question was asked
+                _buildMessageContent(),
 
-          // Clarifications
-          if (message.clarificatedAt != null)
-            _buildTimestamp(
-              'Clarified at: ${_formatDateTime(message.clarificatedAt!)}',
+                if (message.adminName != null || message.adminId != null)
+                  _buildAdminInfo(),
+
+                // Advice: show Created at
+                if (message.createdAt != null)
+                  _buildTimestamp(
+                    '${message.isAdvice ? 'Created' : 'Asked'} at: ${_formatDateTime(message.createdAt!)}',
+                  ),
+
+                // Regular answers: show Answered at
+                if (!message.isAdvice && message.answeredAt != null)
+                  _buildTimestamp(
+                    'Answered at: ${_formatDateTime(message.answeredAt!)}',
+                  ),
+
+                // Always show when question was asked
+
+                // Clarifications
+                if (message.clarificatedAt != null)
+                  _buildTimestamp(
+                    'Clarified at: ${_formatDateTime(message.clarificatedAt!)}',
+                  ),
+
+                if (_shouldShowRatingBubble()) _buildRatingBubble(),
+
+                if (message.id?.startsWith('temp_') == true)
+                  _buildLoadingIndicator(),
+              ],
             ),
-
-          if (_shouldShowRatingBubble()) _buildRatingBubble(),
-
-          if (message.id?.startsWith('temp_') == true) _buildLoadingIndicator(),
+          ),
         ],
       ),
     );
+  }
+
+  // In _shouldShowRelatedQuestion method, add debug prints:
+  bool _shouldShowRelatedQuestion() {
+    final shouldShow =
+        !widget.message.isMe &&
+        !widget.message.isAdvice &&
+        !widget.message.isClarification &&
+        widget.relatedQuestionText != null &&
+        widget.relatedQuestionText!.isNotEmpty;
+
+    debugPrint('🔍 Related Question Debug:');
+    debugPrint('   - Message ID: ${widget.message.id}');
+    debugPrint('   - isMe: ${widget.message.isMe}');
+    debugPrint('   - isAdvice: ${widget.message.isAdvice}');
+    debugPrint('   - isClarification: ${widget.message.isClarification}');
+    debugPrint(
+      '   - Related text provided: ${widget.relatedQuestionText != null}',
+    );
+    debugPrint(
+      '   - Related text length: ${widget.relatedQuestionText?.length ?? 0}',
+    );
+    debugPrint('   - Should show: $shouldShow');
+
+    return shouldShow;
+  }
+
+  // ✅ ADDED: Build the related question preview
+  Widget _buildRelatedQuestionPreview() {
+    final questionText = widget.relatedQuestionText!;
+    final maxLength = 60;
+
+    String displayText;
+    if (questionText.length > maxLength) {
+      displayText = '${questionText.substring(0, maxLength)}...';
+    } else {
+      displayText = questionText;
+    }
+
+    displayText = _stripHtmlTags(displayText);
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.only(bottom: 6.0, left: 8.0, right: 8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(
+            Icons.reply, // Replaced with reply arrow icon
+            size: 14,
+            color: Colors.grey[600],
+          ),
+          const SizedBox(width: 6),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            decoration: BoxDecoration(
+              color: Colors.grey[100],
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Text(
+              displayText,
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.grey[700],
+                fontStyle: FontStyle.italic,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // ✅ ADDED: Helper to strip HTML tags
+  String _stripHtmlTags(String htmlText) {
+    final regex = RegExp(r'<[^>]*>');
+    return htmlText.replaceAll(regex, '');
   }
 
   // Enhanced version with better error handling
