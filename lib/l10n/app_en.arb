@@ -38,7 +38,7 @@
   "timezoneHistory": "Timezone: GMT{offset}",
   "dstHistory": "DST: {value}",
   "stateHistory": "State: {state}",
-  "versionFromText": "Version from {date}",
+  "versionFromText": "Updated on {date}",
   "userIdRequired": "User ID is required",
   "profileSaved": "Profile saved successfully",
   "saveFailed": "Failed to save profile",

@@ -331,7 +331,7 @@ abstract class AppLocalizations {
   /// No description provided for @versionFromText.
   ///
   /// In en, this message translates to:
-  /// **'Version from {date}'**
+  /// **'Updated on {date}'**
   String versionFromText(Object date);
 
   /// No description provided for @userIdRequired.

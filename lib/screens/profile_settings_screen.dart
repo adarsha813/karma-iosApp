@@ -7,7 +7,6 @@ import 'package:crypto/crypto.dart'; // for sha256
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import '../providers/profile_provider.dart';
-import '../providers/LocaleProvider.dart';
 import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import '../l10n/app_localizations.dart';
@@ -1408,7 +1407,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         final responseData = jsonDecode(utf8.decode(response.bodyBytes));
         final data = responseData['profile'];
 
-        final String? languageFromBackend = data['language'];
         DateTime? parsedDate;
         TimeOfDay? parsedTime;
 
@@ -1457,15 +1455,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         _logger.d(
           '📚 Version history count: ${profileProvider.versionHistory.length}',
         );
-        if (languageFromBackend != null &&
-            languageFromBackend != profileProvider.language &&
-            _userIdController.text.isNotEmpty) {
-          await profileProvider.saveLanguage(languageFromBackend);
-          Provider.of<LocaleProvider>(
-            context,
-            listen: false,
-          ).setLocale(Locale(languageFromBackend));
-        }
 
         await profileProvider.saveUserId(userId);
         final country = data['country'] ?? '';
@@ -2023,167 +2012,13 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                     color: Colors.blue.shade50,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Text(
-                    'v${version['version'] ?? '1'}',
-                    style: const TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue,
-                    ),
-                  ),
                 ),
               ],
             ),
-            const SizedBox(height: 12),
-            Wrap(
-              spacing: 16,
-              runSpacing: 8,
-              children: [
-                if (version['name'] != null &&
-                    version['name'].toString().isNotEmpty)
-                  _buildHistoryItemChip(
-                    icon: Icons.person,
-                    label: 'Name',
-                    value: version['name'].toString(),
-                  ),
-                if (version['city'] != null &&
-                    version['city'].toString().isNotEmpty)
-                  _buildHistoryItemChip(
-                    icon: Icons.location_city,
-                    label: 'City',
-                    value: version['city'].toString(),
-                  ),
-                if (version['country'] != null &&
-                    version['country'].toString().isNotEmpty)
-                  _buildHistoryItemChip(
-                    icon: Icons.flag,
-                    label: 'Country',
-                    value: version['country'].toString(),
-                  ),
-                if (version['gender'] != null &&
-                    version['gender'].toString().isNotEmpty)
-                  _buildHistoryItemChip(
-                    icon:
-                        version['gender'] == 'male' ? Icons.male : Icons.female,
-                    label: 'Gender',
-                    value:
-                        version['gender'] == 'male'
-                            ? l10n.maleLabel
-                            : l10n.femaleLabel,
-                  ),
-                if (version['birthDate'] != null)
-                  _buildHistoryItemChip(
-                    icon: Icons.calendar_today,
-                    label: 'Birth Date',
-                    value: DateFormat(
-                      'MMM dd, yyyy',
-                    ).format(DateTime.parse(version['birthDate'])),
-                  ),
-                if (version['birthTime'] != null)
-                  _buildHistoryItemChip(
-                    icon: Icons.access_time,
-                    label: 'Birth Time',
-                    value: version['birthTime'].toString(),
-                  ),
-                if (version['latitude'] != null && version['longitude'] != null)
-                  _buildHistoryItemChip(
-                    icon: Icons.gps_fixed,
-                    label: 'Coordinates',
-                    value:
-                        '${version['latitude'].toStringAsFixed(4)}, ${version['longitude'].toStringAsFixed(4)}',
-                  ),
-                if (version['timezone'] != null)
-                  _buildHistoryItemChip(
-                    icon: Icons.time_to_leave,
-                    label: 'Timezone',
-                    value:
-                        'GMT${version['timezone'] >= 0 ? '+' : ''}${version['timezone']}',
-                  ),
-                if (version['dst'] != null)
-                  _buildHistoryItemChip(
-                    icon: Icons.light_mode,
-                    label: 'DST',
-                    value: version['dst'] == 1.0 ? l10n.yesText : l10n.noText,
-                    color: version['dst'] == 1.0 ? Colors.green : Colors.grey,
-                  ),
-                if (version['state'] != null &&
-                    version['state'].toString().isNotEmpty)
-                  _buildHistoryItemChip(
-                    icon: Icons.map,
-                    label: 'State',
-                    value: version['state'].toString(),
-                  ),
-              ],
-            ),
-            if (_isVersionEmpty(version))
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                child: Center(
-                  child: Text(
-                    'No data available',
-                    style: const TextStyle(
-                      color: Colors.grey,
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                ),
-              ),
+            // Removed all the field chips - now only shows date and version
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildHistoryItemChip({
-    required IconData icon,
-    required String label,
-    required String value,
-    Color color = Colors.blue,
-  }) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: color.withOpacity(0.3)),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 14, color: color),
-          const SizedBox(width: 4),
-          Text(
-            '$label: ',
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-              color: Colors.grey[700],
-            ),
-          ),
-          Text(
-            value,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
-              color: color,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  bool _isVersionEmpty(Map<String, dynamic> version) {
-    final fields = [
-      'name',
-      'city',
-      'country',
-      'gender',
-      'birthDate',
-      'birthTime',
-    ];
-    return fields.every(
-      (field) => version[field] == null || version[field].toString().isEmpty,
     );
   }
 

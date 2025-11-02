@@ -146,7 +146,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String versionFromText(Object date) {
-    return 'Version from $date';
+    return 'Updated on $date';
   }
 
   @override
