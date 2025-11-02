@@ -44,6 +44,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   bool _isNavigating = false;
   Completer<void>? _onboardingCompleter;
   late final DateTime _onboardingStartTime;
+  int? _cachedPagesLength;
+  AppLocalizations? _cachedL10n;
 
   // Analytics and error reporting
   void _logAnalyticsEvent(String event, {Map<String, dynamic>? params}) {
@@ -70,6 +72,24 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     _logAnalyticsEvent('onboarding_started');
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // ✅ SAFE: Cache localization and pages length when dependencies are available
+    _cachedL10n = AppLocalizations.of(context);
+    _cachedPagesLength = _calculatePagesLength();
+  }
+
+  // ✅ ADD THIS: Safe method to calculate pages length
+  int _calculatePagesLength() {
+    if (_cachedL10n != null) {
+      return _buildLocalizedPages(_cachedL10n!).length + 1;
+    }
+    return 4; // Fallback to default number of pages
+  }
+
+  int get _pagesLength => _cachedPagesLength ?? _calculatePagesLength();
+
   void _logOnboardingPerformance() {
     final duration = DateTime.now().difference(_onboardingStartTime);
     _logAnalyticsEvent(
@@ -77,7 +97,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       params: {
         'total_duration_seconds': duration.inSeconds,
         'pages_viewed': _currentPage + 1,
-        'completed': _currentPage == _pagesLength - 1,
+        'completed':
+            _currentPage == (_cachedPagesLength ?? 4) - 1, // ✅ Use cached value
       },
     );
   }
@@ -212,9 +233,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           }
         });
   }
-
-  int get _pagesLength =>
-      _buildLocalizedPages(AppLocalizations.of(context)!).length + 1;
 
   List<Map<String, String>> _buildLocalizedPages(AppLocalizations l10n) {
     return [
@@ -586,7 +604,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     _logOnboardingPerformance(); // Log final metrics
     _logAnalyticsEvent(
       'onboarding_screen_closed',
-      params: {'last_page': _currentPage, 'total_pages': _pagesLength},
+      params: {
+        'last_page': _currentPage,
+        'total_pages': _cachedPagesLength ?? _pagesLength, // Use cached value
+      },
     );
     // Cancel any pending operations
     _isNavigating = false;

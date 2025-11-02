@@ -77,6 +77,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   final _logger = Logger(); // local logger for this file
   Timer? _validationTimer;
   Timer? _citySearchDebounce;
+  bool _disposed = false;
 
   @override
   void initState() {
@@ -86,6 +87,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
   @override
   void dispose() {
+    _disposed = true;
     _validationTimer?.cancel();
     _reloadTimer?.cancel();
     _validationTimer = null;
@@ -100,9 +102,16 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     super.dispose();
   }
 
+  void _safeSetState(VoidCallback fn) {
+    if (!_disposed && mounted) {
+      setState(fn);
+    }
+  }
+
   Future<void> _initializeData() async {
     try {
       await _loadSavedProfileData();
+      if (!mounted || _disposed) return;
 
       final profileProvider = Provider.of<ProfileProvider>(
         context,
@@ -114,17 +123,19 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         _logger.d('🌐 Language initialized: ${profileProvider.language}');
       }
     } catch (e, stack) {
-      ErrorHandler.recordError(
-        e,
-        stackTrace: stack,
-        context: 'ProfileInitialization',
-      );
-
-      if (mounted) {
-        ErrorHandler.showErrorSnackbar(
-          context,
-          'Failed to initialize profile data',
+      if (!_disposed) {
+        ErrorHandler.recordError(
+          e,
+          stackTrace: stack,
+          context: 'ProfileInitialization',
         );
+
+        if (mounted) {
+          ErrorHandler.showErrorSnackbar(
+            context,
+            'Failed to initialize profile data',
+          );
+        }
       }
     }
   }
@@ -137,6 +148,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
       final newUserId = _userIdController.text.trim();
       if (newUserId.isNotEmpty && SecurityUtils.isValidUserId(newUserId)) {
+        if (!mounted || _disposed) return;
         final profileProvider = Provider.of<ProfileProvider>(
           context,
           listen: false,
@@ -291,6 +303,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     // Rate limiting
     if (!_canSave()) return;
     if (_isSaving) return;
+    if (!mounted || _disposed) return;
 
     // Validation
     if (!_validateRequiredFields()) return;
@@ -302,7 +315,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     }
 
     if (!mounted) return;
-    setState(() => _isSaving = true);
+    _safeSetState(() => _isSaving = true);
 
     try {
       final profileData = await _prepareProfileData();
@@ -341,7 +354,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       );
     } finally {
       if (mounted) {
-        setState(() => _isSaving = false);
+        _safeSetState(() => _isSaving = false);
       }
     }
   }
@@ -1387,12 +1400,14 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
   Future<void> _loadProfileData() async {
     if (_isLoading) return;
-    if (!mounted) return;
-    setState(() => _isLoading = true);
+    if (!mounted || _disposed) return; // ✅ Add disposed check
+
+    _safeSetState(() => _isLoading = true);
     final userId = _userIdController.text.trim();
+
     if (userId.isEmpty) {
-      if (mounted) {
-        setState(() => _isLoading = false);
+      if (mounted && !_disposed) {
+        _safeSetState(() => _isLoading = false);
       }
       return;
     }
@@ -1402,6 +1417,8 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         '${Environment.baseUrl}/api/profile/get-profile?userId=$userId',
       );
       final response = await http.get(uri).timeout(const Duration(seconds: 30));
+
+      if (!mounted || _disposed) return;
 
       if (response.statusCode == 200) {
         final responseData = jsonDecode(utf8.decode(response.bodyBytes));
@@ -1447,7 +1464,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
             );
           }
         }
-
+        if (!mounted || _disposed) return;
         final profileProvider = Provider.of<ProfileProvider>(
           context,
           listen: false,
@@ -1459,7 +1476,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         await profileProvider.saveUserId(userId);
         final country = data['country'] ?? '';
         if (mounted) {
-          setState(() {
+          _safeSetState(() {
             _selectedCountry = country;
             _countryController.text = country;
             _nameController.text = data['name'] ?? '';
@@ -1530,7 +1547,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       ErrorHandler.showErrorSnackbar(context, 'Failed to load profile');
     } finally {
       if (mounted) {
-        setState(() => _isLoading = false);
+        _safeSetState(() => _isLoading = false);
       }
     }
   }
@@ -1545,13 +1562,15 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   }
 
   Future<void> _loadSavedProfileData() async {
+    if (_disposed) return;
+    if (!mounted || _disposed) return;
     final profileProvider = Provider.of<ProfileProvider>(
       context,
       listen: false,
     );
 
     if (mounted) {
-      setState(() {
+      _safeSetState(() {
         _userIdController.text = profileProvider.userId ?? '';
         _countryController.text = profileProvider.country ?? '';
         _selectedCountry = profileProvider.country ?? '';
@@ -1566,6 +1585,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   }
 
   Future<void> _loadLocalProfileData() async {
+    if (_disposed) return;
+
+    if (!mounted || _disposed) return;
     final profileProvider = Provider.of<ProfileProvider>(
       context,
       listen: false,

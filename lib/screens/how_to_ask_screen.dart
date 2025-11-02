@@ -505,7 +505,10 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
   @override
   void dispose() {
     _logger.d('Disposing HowToAskScreen');
-    _initialLoadCompleter?.completeError('Screen disposed');
+    // ✅ SAFE: Only complete if not already completed
+    if (_initialLoadCompleter != null && !_initialLoadCompleter!.isCompleted) {
+      _initialLoadCompleter!.completeError('Screen disposed');
+    }
     _logAnalyticsEvent(
       'how_to_ask_screen_closed',
       params: {'questions_loaded': _cachedQuestions?.length ?? 0},

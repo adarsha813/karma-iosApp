@@ -171,7 +171,11 @@ class _PolicyPageState extends State<PolicyPage> {
           },
         );
 
-        _policyLoadCompleter?.complete();
+        // ✅ FIX: Safe completer completion
+        if (_policyLoadCompleter != null &&
+            !_policyLoadCompleter!.isCompleted) {
+          _policyLoadCompleter!.complete();
+        }
       } else if (response.statusCode == 404) {
         _setErrorState('Policy not found');
         _logAnalyticsEvent(
@@ -457,7 +461,10 @@ class _PolicyPageState extends State<PolicyPage> {
   @override
   void dispose() {
     _logger.d('Disposing PolicyPage: ${widget.title}');
-    _policyLoadCompleter?.completeError('Screen disposed');
+    // ✅ FIX: Only complete if not already completed
+    if (_policyLoadCompleter != null && !_policyLoadCompleter!.isCompleted) {
+      _policyLoadCompleter!.completeError('Screen disposed');
+    }
     _logAnalyticsEvent(
       'policy_page_closed',
       params: {
