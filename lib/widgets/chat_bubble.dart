@@ -819,6 +819,10 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   // ✅ SIMPLIFY _buildAdminInfo - No FutureBuilder!
   Widget _buildAdminInfo() {
     final message = widget.message;
+    debugPrint('🔍 Admin Info Debug:');
+    debugPrint('   - adminId: ${message.adminId}');
+    debugPrint('   - adminName: ${message.adminName}');
+    debugPrint('   - cachedAstrologer: ${widget.cachedAstrologer?.name}');
 
     // Early return if no admin data
     if ((message.adminName == null || message.adminName!.isEmpty) &&
@@ -828,22 +832,32 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
 
     // Use cached data if available
     final astroData = widget.cachedAstrologer;
-    final bool hasCachedData = astroData != null;
-
+    // ✅ SMART FIX: Use cached data only if it has a real, non-generic name
+    final bool hasValidCachedData =
+        astroData != null &&
+        astroData.name.isNotEmpty &&
+        astroData.name != 'Councillor' &&
+        astroData.name != 'Astrologer';
     final String adminImage =
         astroData?.image ??
         message.adminImage ??
         'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80';
 
     final String adminName =
-        astroData?.name ?? message.adminName ?? 'Astrologer';
+        hasValidCachedData
+            ? astroData.name
+            : (message.adminName?.isNotEmpty == true
+                ? message.adminName!
+                : 'Councillor');
+
+    debugPrint('🎯 Final admin name: $adminName');
 
     return _buildAdminCard(
       adminImage: adminImage,
       adminName: adminName,
       isLoading: false, // ✅ No loading state since we preload
       hasError: false,
-      hasData: hasCachedData || message.adminImage != null,
+      hasData: hasValidCachedData || message.adminImage != null,
     );
   }
 

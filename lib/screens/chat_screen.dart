@@ -1041,6 +1041,10 @@ class _ChatScreenState extends State<ChatScreen>
             message.adminId!.isNotEmpty &&
             (message.adminImage == null || message.adminImage!.isEmpty)) {
           uniqueAdminIds.add(message.adminId!);
+
+          debugPrint(
+            '🔍 Message expects admin: ${message.adminId} -> ${message.adminName}',
+          );
         }
       }
 
@@ -1052,12 +1056,24 @@ class _ChatScreenState extends State<ChatScreen>
       final futures = <Future>[];
       for (final adminId in uniqueAdminIds) {
         futures.add(
-          _astrologerService.getAstrologer(adminId).then((astroDetail) {
-            _astrologerCache[adminId] = astroDetail;
-            debugPrint(
-              '✅ Preloaded astrologer: $adminId → ${astroDetail?.name}',
-            );
-          }),
+          _astrologerService
+              .getAstrologer(adminId)
+              .then((astroDetail) {
+                debugPrint('📥 Raw astrologer response for $adminId:');
+                debugPrint('   - Success: ${astroDetail != null}');
+                debugPrint('   - Name: ${astroDetail?.name}');
+                debugPrint('   - Image: ${astroDetail?.image}');
+                debugPrint('   - ID: ${astroDetail?.id}');
+
+                _astrologerCache[adminId] = astroDetail;
+                debugPrint(
+                  '✅ Cached astrologer: $adminId → ${astroDetail?.name ?? "NULL"}',
+                );
+              })
+              .catchError((error) {
+                debugPrint('❌ Error loading astrologer $adminId: $error');
+                _astrologerCache[adminId] = null;
+              }),
         );
       }
 
@@ -1066,6 +1082,10 @@ class _ChatScreenState extends State<ChatScreen>
       debugPrint(
         '🎯 Preloading completed. Cache size: ${_astrologerCache.length}',
       );
+      debugPrint('📋 Cache contents:');
+      _astrologerCache.forEach((id, astro) {
+        debugPrint('   - $id: ${astro?.name ?? "NULL"}');
+      });
 
       // Trigger rebuild to show cached data
       if (mounted) {
