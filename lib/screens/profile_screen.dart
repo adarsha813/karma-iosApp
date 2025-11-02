@@ -97,7 +97,6 @@ class _ProfileScreenState extends State<ProfileScreen>
         listen: false,
       );
 
-      await profileProvider.loadUserId();
       _logger.d("🔑 Loaded userId: ${profileProvider.userId}");
 
       if (!mounted) return;

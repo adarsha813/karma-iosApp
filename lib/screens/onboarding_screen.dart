@@ -148,17 +148,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       );
 
       // Ensure language is set (default to English if not set)
-      final selectedLanguage = profileProvider.language ?? 'en';
+      final selectedLanguage = profileProvider.language;
       await profileProvider.saveLanguage(selectedLanguage);
       localeProvider.setLocale(Locale(selectedLanguage));
 
       // Sync language to backend if user exists
       if (profileProvider.userId != null && profileProvider.token != null) {
         try {
-          await profileProvider.syncLanguageToBackend(
-            profileProvider.userId!,
-            selectedLanguage,
-          );
+          _logger.i('✅ Language set to: $selectedLanguage');
           _logger.i('✅ Language synced to backend for existing user');
         } catch (e, stackTrace) {
           _reportError(e, stackTrace, context: 'sync_language_new_user');
@@ -300,7 +297,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               RadioListTile<String>(
                 title: const Text("English"),
                 value: "en",
-                groupValue: profileProvider.language ?? 'en',
+                groupValue: profileProvider.language,
                 onChanged: (value) async {
                   if (value != null && !_isNavigating) {
                     _logAnalyticsEvent(
@@ -319,7 +316,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               RadioListTile<String>(
                 title: const Text("Español"),
                 value: "es",
-                groupValue: profileProvider.language ?? 'en',
+                groupValue: profileProvider.language,
                 onChanged: (value) async {
                   if (value != null && !_isNavigating) {
                     _logAnalyticsEvent(
@@ -338,7 +335,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               RadioListTile<String>(
                 title: const Text("हिन्दी"),
                 value: "hi",
-                groupValue: profileProvider.language ?? 'en',
+                groupValue: profileProvider.language,
                 onChanged: (value) async {
                   if (value != null && !_isNavigating) {
                     _logAnalyticsEvent(
@@ -376,10 +373,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       }
 
       if (profileProvider.userId != null && profileProvider.token != null) {
-        await profileProvider.syncLanguageToBackend(
-          profileProvider.userId!,
-          value,
-        );
+        // ✅ Backend sync is automatically handled by ProfileProvider.saveLanguage()
+        // No need for separate call
+        _logger.i('🌐 Language updated to: $value (backend sync automatic)');
       }
 
       _logger.i('✅ Language updated to: $value');

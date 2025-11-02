@@ -110,10 +110,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         listen: false,
       );
 
-      await profileProvider.loadLanguage();
-      if (profileProvider.language != null &&
-          _userIdController.text.isNotEmpty) {
-        await _updateLanguageOnBackend(profileProvider.language!);
+      if (_userIdController.text.isNotEmpty) {
+        // Backend sync happens automatically in secured ProfileProvider
+        _logger.d('🌐 Language initialized: ${profileProvider.language}');
       }
     } catch (e, stack) {
       ErrorHandler.recordError(
@@ -543,7 +542,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       'dst': _dst ?? 0.0,
       'state': _state,
       'profilePicture': base64Image,
-      if (savedLang != null) 'language': savedLang,
+      'language': savedLang,
       'timestamp': DateTime.now().toIso8601String(),
       'clientVersion': Environment.appVersion,
     };
@@ -557,7 +556,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     );
 
     // Try to load existing user ID
-    await profileProvider.loadUserId();
+
     String? existingUserId = profileProvider.userId;
 
     if (existingUserId != null && existingUserId.isNotEmpty) {
@@ -1412,8 +1411,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           context,
           listen: false,
         );
-        await profileProvider.fetchVersionHistoryFromBackend(userId);
-
+        _logger.d(
+          '📚 Version history count: ${profileProvider.versionHistory.length}',
+        );
         if (languageFromBackend != null &&
             languageFromBackend != profileProvider.language &&
             _userIdController.text.isNotEmpty) {
@@ -1444,7 +1444,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           });
         }
 
-        final savedLang = profileProvider.language ?? 'en';
+        final savedLang = profileProvider.language;
         await profileProvider.saveFullProfile(
           userId: userId,
           name: _nameController.text,
@@ -1512,45 +1512,11 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     }
   }
 
-  Future<void> _updateLanguageOnBackend(String langCode) async {
-    final userId = _userIdController.text.trim();
-    if (userId.isEmpty) return;
-
-    final body = {'userId': userId, 'language': langCode};
-
-    try {
-      final uri = Uri.parse(
-        '${Environment.baseUrl}/api/profile/update-language',
-      );
-      final response = await http
-          .post(
-            uri,
-            headers: {
-              'Content-Type': 'application/json',
-              ...Environment.securityHeaders,
-            },
-            body: jsonEncode(body),
-          )
-          .timeout(const Duration(seconds: 10));
-
-      if (response.statusCode == 200) {
-        debugPrint('Language updated on backend successfully.');
-      } else {
-        debugPrint('Failed to update language: ${response.statusCode}');
-      }
-    } catch (e, stack) {
-      ErrorHandler.recordError(e, stackTrace: stack, context: 'UpdateLanguage');
-      debugPrint('Error updating language: $e');
-    }
-  }
-
   Future<void> _loadSavedProfileData() async {
     final profileProvider = Provider.of<ProfileProvider>(
       context,
       listen: false,
     );
-    await profileProvider.loadUserId();
-    await profileProvider.loadLanguage();
 
     if (mounted) {
       setState(() {
@@ -1572,7 +1538,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       context,
       listen: false,
     );
-    await profileProvider.loadProfileData();
+
     if (mounted) {
       setState(() {
         _nameController.text = profileProvider.name ?? '';

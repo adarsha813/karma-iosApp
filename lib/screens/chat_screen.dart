@@ -1536,25 +1536,18 @@ class _ChatScreenState extends State<ChatScreen>
 
   Future<void> loadUserId() async {
     try {
-      // Try secure storage first
-      userId = await SecureStorage.getUserId();
+      // ✅ ProfileProvider is already initialized in main.dart
+      // User ID is automatically available
+      final profileProvider = Provider.of<ProfileProvider>(
+        context,
+        listen: false,
+      );
 
-      // Fallback to provider
-      if (userId == null) {
-        final profileProvider = Provider.of<ProfileProvider>(
-          context,
-          listen: false,
-        );
-        await profileProvider.loadUserId();
-        userId = profileProvider.userId;
-
-        // Store in secure storage for future
-        if (userId != null) {
-          await SecureStorage.storeUserId(userId!);
-        }
-      }
+      userId = profileProvider.userId;
 
       if (userId != null) {
+        // Store in secure storage for future
+        await SecureStorage.storeUserId(userId!);
         SessionManager.updateSession(userId!);
         AppLogger.info('Loaded userId: $userId', feature: 'user_management');
       } else {
@@ -1604,7 +1597,10 @@ class _ChatScreenState extends State<ChatScreen>
 
         // Ensure token is loaded
         if (profileProvider.userId != null && profileProvider.token == null) {
-          await profileProvider.loadToken();
+          AppLogger.info(
+            'Token not available for user ${profileProvider.userId}',
+            feature: 'navigation',
+          );
         }
 
         // Handle pending notification navigation
@@ -1704,7 +1700,6 @@ class _ChatScreenState extends State<ChatScreen>
         context,
         listen: false,
       );
-      await profileProvider.loadUserId();
       final String currentUserId = profileProvider.userId ?? '';
 
       if (currentUserId.isEmpty) {
@@ -2020,7 +2015,7 @@ class _ChatScreenState extends State<ChatScreen>
       context,
       listen: false,
     );
-    await profileProvider.loadUserId();
+
     final currentUserId = profileProvider.userId ?? '';
 
     if (currentUserId.isEmpty) {

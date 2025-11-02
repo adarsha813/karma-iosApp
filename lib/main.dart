@@ -1542,7 +1542,7 @@ Future<void> _requestPermissions() async {
 
 Future<void> _initFCMToken() async {
   final profileProvider = ProfileProvider();
-  await profileProvider.loadUserId();
+  await profileProvider.initialize();
 
   try {
     final fcmToken = await FirebaseMessaging.instance.getToken();
@@ -1594,7 +1594,6 @@ Future<void> main() async {
   await _initFCMToken(); // Send token to backend
 
   final profileProvider = ProfileProvider();
-  await profileProvider.loadUserId();
   await profileProvider.initialize(); // loads token, language, etc.
 
   final token = profileProvider.token ?? ''; // get token safely

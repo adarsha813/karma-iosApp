@@ -615,7 +615,7 @@ class _SettingsContentState extends State<_SettingsContent> {
         context,
         listen: false,
       );
-      profileProvider.loadLanguage();
+      _logger.d('🌐 Language initialized: ${profileProvider.language}');
     });
   }
 
@@ -955,7 +955,8 @@ class _LanguageRadioTile extends StatelessWidget {
 
       if (response.statusCode == 200) {
         logger.i("✅ Language updated on backend successfully.");
-        profileProvider.setLanguage(langCode);
+        // ✅ Use the new method - language is already saved locally via saveLanguage()
+        // The backend sync happens automatically in the secured ProfileProvider
 
         if (Environment.isProduction) {
           logger.i('📊 Analytics: language_changed - lang: $langCode');
@@ -981,11 +982,15 @@ class _LanguageRadioTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final profileProvider = Provider.of<ProfileProvider>(context);
     final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
+    final currentLanguage =
+        profileProvider.language.isNotEmpty
+            ? profileProvider.language
+            : localeProvider.locale.languageCode;
 
     return RadioListTile<String>(
       title: Text(language),
       value: locale.languageCode,
-      groupValue: profileProvider.language ?? 'en',
+      groupValue: currentLanguage, // ✅ FIX: Use the reliable current language
       onChanged: (String? value) async {
         if (value != null) {
           final logger = Logger();
@@ -998,9 +1003,15 @@ class _LanguageRadioTile extends StatelessWidget {
             // Update Flutter locale
             localeProvider.setLocale(Locale(value));
 
-            // Update backend if user is logged in
-            if (profileProvider.userId != null) {
-              await _updateLanguageOnBackend(context, value);
+            if (context.mounted) {
+              // This will trigger a rebuild of the entire settings screen
+              Provider.of<ProfileProvider>(
+                context,
+                listen: false,
+              ).refreshProfile();
+            }
+            if (Environment.isProduction) {
+              logger.i('📊 Analytics: language_changed - lang: $value');
             }
 
             // Show confirmation
@@ -1016,6 +1027,14 @@ class _LanguageRadioTile extends StatelessWidget {
           } catch (e) {
             final errorLogger = Logger();
             errorLogger.e('🔴 Error changing language: $e');
+
+            if (Environment.isProduction) {
+              errorLogger.e('📊 Analytics: language_change_error - error: $e');
+            }
+            // Update backend if user is logged in
+            if (profileProvider.userId != null) {
+              await _updateLanguageOnBackend(context, value);
+            }
 
             if (context.mounted) {
               ScaffoldMessenger.of(context).showSnackBar(
