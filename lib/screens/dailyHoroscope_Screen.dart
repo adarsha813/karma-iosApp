@@ -83,7 +83,13 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
       // Initialize components in sequence
       await _initializeNotifications();
       await _loadDictionaryTerms();
-      _connectSocket();
+
+      // ✅ FIX: Connect socket AFTER ensuring we have user data
+      if (widget.userId != null && widget.userId!.isNotEmpty) {
+        _connectSocket();
+      } else {
+        _logger.w('Skipping socket connection - no user ID');
+      }
       await _fetchHoroscopesWithRetry();
 
       _initialLoadCompleter?.complete();
@@ -106,7 +112,10 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
         _error = _getLocalizedError('initialization_error');
         _loading = false;
       });
-      _initialLoadCompleter?.completeError(e);
+      if (_initialLoadCompleter != null &&
+          !_initialLoadCompleter!.isCompleted) {
+        _initialLoadCompleter?.completeError(e);
+      }
     }
   }
 
@@ -297,13 +306,18 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
         return;
       }
 
+      // ✅ FIX: Dispose existing socket before creating new one
+      if (_socket != null) {
+        _disposeSocket();
+      }
+
       _socket = IO.io(
         Environment.socketUrl,
         IO.OptionBuilder()
             .setTransports(['websocket'])
             .setQuery({'userId': widget.userId})
             .disableAutoConnect()
-            .setTimeout(_socketTimeout.inMilliseconds) // Duration -> int
+            .setTimeout(_socketTimeout.inMilliseconds)
             .enableReconnection()
             .setReconnectionAttempts(5)
             .setReconnectionDelay(1000)
@@ -311,47 +325,88 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
             .build(),
       );
 
-      _socket!.onConnect((_) {
-        _logger.i('✅ Connected to socket with userId: ${widget.userId}');
-        _logAnalyticsEvent('socket_connected');
-      });
-
-      _socket!.onDisconnect((_) {
-        _logger.w('🔌 Disconnected from socket');
-        _logAnalyticsEvent('socket_disconnected');
-      });
-
-      _socket!.onConnectError((data) {
-        _logger.e('❌ Socket connection error: $data');
-        _logAnalyticsEvent(
-          'socket_connection_error',
-          params: {'error': data.toString()},
-        );
-      });
-
-      _socket!.onError((data) {
-        _logger.e('❌ Socket error: $data');
-        _logAnalyticsEvent('socket_error', params: {'error': data.toString()});
-      });
-
-      _socket!.onReconnect((_) {
-        _logger.i('🔄 Socket reconnected');
-        _logAnalyticsEvent('socket_reconnected');
-      });
-
-      _socket!.onReconnectAttempt((_) {
-        _logger.i('🔄 Socket attempting to reconnect');
-      });
-
-      _socket!.on('new_horoscope', (data) {
-        _handleNewHoroscope(data);
-      });
+      // ✅ FIX: Use proper event binding with error handling
+      _setupSocketEvents();
 
       _socket!.connect();
       _logAnalyticsEvent('socket_connection_attempt');
     } catch (e, stackTrace) {
       _reportError(e, stackTrace, context: 'connect_socket');
     }
+  }
+
+  // ✅ ADD THIS: Separate method for socket event setup
+  void _setupSocketEvents() {
+    if (_socket == null) return;
+
+    _socket!.onConnect((_) {
+      _logger.i('✅ Connected to socket with userId: ${widget.userId}');
+      _logAnalyticsEvent('socket_connected');
+    });
+
+    _socket!.onDisconnect((_) {
+      _logger.w('🔌 Disconnected from socket');
+      _logAnalyticsEvent('socket_disconnected');
+    });
+
+    _socket!.onConnectError((data) {
+      _logger.e('❌ Socket connection error: $data');
+      _logAnalyticsEvent(
+        'socket_connection_error',
+        params: {'error': data.toString()},
+      );
+    });
+
+    _socket!.onError((data) {
+      _logger.e('❌ Socket error: $data');
+      _logAnalyticsEvent('socket_error', params: {'error': data.toString()});
+    });
+
+    _socket!.onReconnect((_) {
+      _logger.i('🔄 Socket reconnected');
+      _logAnalyticsEvent('socket_reconnected');
+    });
+
+    _socket!.onReconnectAttempt((attempt) {
+      _logger.i('🔄 Socket attempting to reconnect (attempt $attempt)');
+    });
+
+    _socket!.onReconnectError((data) {
+      _logger.e('❌ Socket reconnection error: $data');
+    });
+
+    _socket!.onReconnectFailed((_) {
+      _logger.e('❌ Socket reconnection failed');
+    });
+
+    // Main horoscope event
+    _socket!.on('new_horoscope', (data) {
+      _handleNewHoroscope(data);
+    });
+    _socket!.connect();
+    _logAnalyticsEvent('socket_connection_attempt');
+
+    // ✅ ADD: Start auto-reconnect monitoring
+    _setupAutoReconnect();
+  }
+
+  // ✅ ADD THIS: Socket health monitoring
+  void _checkSocketHealth() {
+    if (_socket == null) {
+      _logger.w('Socket is null - attempting to reconnect');
+      _connectSocket();
+      return;
+    }
+
+    if (!_socket!.connected) {
+      _logger.w('Socket is disconnected - attempting to reconnect');
+      _connectSocket();
+      return;
+    }
+
+    _logger.d(
+      'Socket health: Connected=${_socket!.connected}, ID=${_socket!.id}',
+    );
   }
 
   void _handleNewHoroscope(dynamic data) {
@@ -398,6 +453,22 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
     } catch (e, stackTrace) {
       _reportError(e, stackTrace, context: 'handle_new_horoscope');
     }
+  }
+
+  // ✅ ADD THIS: Automatic socket reconnection
+  void _setupAutoReconnect() {
+    // Check socket health every 30 seconds
+    Timer.periodic(const Duration(seconds: 30), (timer) {
+      if (!mounted) {
+        timer.cancel();
+        return;
+      }
+
+      if (_socket == null || !_socket!.connected) {
+        _logger.w('Socket health check failed - reconnecting');
+        _connectSocket();
+      }
+    });
   }
 
   void _processAndDisplayHoroscope(Map<String, dynamic> horoscope) {
@@ -486,6 +557,10 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
           'app_resumed',
           params: {'horoscope_count': _horoscopes.length},
         );
+        // ✅ FIX: Reconnect socket when app comes to foreground
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          _checkSocketHealth();
+        });
         break;
       case AppLifecycleState.paused:
         _logger.d('App paused');
@@ -504,9 +579,11 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
     WidgetsBinding.instance.removeObserver(this);
 
     // Cancel initial load if still in progress
+    // ✅ FIX: Safe completer completion
     if (_initialLoadCompleter != null && !_initialLoadCompleter!.isCompleted) {
-      _initialLoadCompleter?.completeError('Screen disposed');
+      _initialLoadCompleter?.complete();
     }
+    _disposeSocket();
 
     // Dispose socket subscriptions
     for (final subscription in _socketSubscriptions) {
@@ -525,6 +602,39 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
     );
 
     super.dispose();
+  }
+
+  void _disposeSocket() {
+    if (_socket == null) return;
+
+    try {
+      _logger.d('Disposing socket connection');
+
+      // Remove all event listeners first
+      _socket?.off('new_horoscope');
+      _socket?.off('connect');
+      _socket?.off('disconnect');
+      _socket?.off('connect_error');
+      _socket?.off('error');
+      _socket?.off('reconnect');
+      _socket?.off('reconnect_attempt');
+
+      // Disconnect if connected
+      if (_socket!.connected) {
+        _socket?.disconnect();
+        _logger.d('Socket disconnected');
+      }
+
+      // Close the socket connection
+      _socket?.close();
+      _socket?.destroy();
+      _socket = null;
+
+      _logger.i('Socket disposed successfully');
+    } catch (e, stackTrace) {
+      _reportError(e, stackTrace, context: 'dispose_socket');
+      _logger.w('Error disposing socket: $e');
+    }
   }
 
   Future<void> _fetchHoroscopesWithRetry() async {
