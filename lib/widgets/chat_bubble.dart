@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -19,6 +18,7 @@ import 'rating_bubble.dart';
 import '../screens/AstrologerDetailPage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../services/astrologerdataService.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 class ChatBubble extends StatefulWidget {
   final Message message;
@@ -749,70 +749,130 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
 
   Widget _buildMessageContent() {
     final message = widget.message;
+    return _buildHtmlWithDictionaryHighlighting(message);
+  }
 
-    return Html(
-      data: message.text,
-      style: _getHtmlStyles(message),
-      extensions: [
-        TagExtension(
-          tagsToExtend: {"p", "span", "body", "li", "strong", "em"},
-          builder: (extensionContext) {
-            return _buildRichText(extensionContext);
-          },
+  Widget _buildHtmlWithDictionaryHighlighting(Message message) {
+    try {
+      // Parse HTML and apply dictionary highlighting
+      final textSpans = _parseHtmlWithDictionary(message.text, message.isMe);
+
+      return RichText(text: TextSpan(children: textSpans));
+    } catch (e) {
+      debugPrint('❌ HTML parsing error: $e');
+      // Fallback: Show HTML without dictionary highlighting
+      return HtmlWidget(
+        message.text,
+        textStyle: TextStyle(
+          color: message.isMe ? Colors.white : Colors.black,
+          fontSize: 14,
         ),
-      ],
-    );
+      );
+    }
   }
 
-  Map<String, Style> _getHtmlStyles(Message message) {
-    final textColor = message.isMe ? Colors.white : Colors.black;
+  List<TextSpan> _parseHtmlWithDictionary(String html, bool isMe) {
+    final List<TextSpan> spans = [];
 
-    return {
-      "body": Style(
-        margin: Margins.zero,
-        padding: HtmlPaddings.zero,
-        color: textColor,
-        fontSize: FontSize(16),
-      ),
-      "p": Style(margin: Margins.zero, padding: HtmlPaddings.zero),
-      "ul": Style(
-        margin: Margins.only(left: 16),
-        padding: HtmlPaddings.zero,
-        color: textColor,
-      ),
-      "li": Style(margin: Margins.symmetric(vertical: 4)),
-    };
+    // Use a simple HTML parser that only handles colors, bold, and paragraphs
+    final regex = RegExp(r'(<[^>]+>|[^<]+)');
+    final matches = regex.allMatches(html);
+
+    TextStyle currentStyle = TextStyle(
+      color: isMe ? Colors.white : Colors.black,
+      fontSize: 14,
+    );
+
+    for (final match in matches) {
+      final content = match.group(0)!;
+
+      if (content.startsWith('<') && content.endsWith('>')) {
+        // HTML tag - update current style
+        currentStyle = _updateStyleFromTag(currentStyle, content, isMe);
+      } else if (content.trim().isNotEmpty) {
+        // Text content - apply dictionary highlighting with current style
+        final textSpan = DictionaryHighlighter.highlightText(
+          context,
+          content,
+          widget.dictionaryMap,
+          currentStyle,
+        );
+
+        spans.add(textSpan);
+      }
+
+      // Add line break after paragraphs
+      if (content == '</p>') {
+        spans.add(TextSpan(text: '\n\n'));
+      }
+    }
+
+    return spans;
   }
 
-  Widget _buildRichText(extensionContext) {
-    final rawText = extensionContext.element?.text ?? "";
+  TextStyle _updateStyleFromTag(TextStyle currentStyle, String tag, bool isMe) {
+    TextStyle newStyle = currentStyle;
 
-    if (rawText.trim().isEmpty) {
-      return const SizedBox.shrink();
+    // Handle bold (ONLY this formatting)
+    if (tag.startsWith('<strong') || tag.startsWith('<b')) {
+      newStyle = newStyle.copyWith(fontWeight: FontWeight.bold);
     }
 
-    TextStyle baseStyle =
-        extensionContext.styledElement?.style.generateTextStyle() ??
-        DefaultTextStyle.of(context).style;
-
-    final isStrong = extensionContext.element?.localName == "strong";
-    final isEm = extensionContext.element?.localName == "em";
-
-    if (isStrong) {
-      baseStyle = baseStyle.copyWith(fontWeight: FontWeight.bold);
-    }
-    if (isEm) {
-      baseStyle = baseStyle.copyWith(fontStyle: FontStyle.italic);
+    // Handle closing bold tags
+    if (tag == '</strong>' || tag == '</b>') {
+      newStyle = newStyle.copyWith(fontWeight: FontWeight.normal);
     }
 
-    return RichText(
-      text: DictionaryHighlighter.highlightText(
-        extensionContext.buildContext ?? context,
-        rawText,
-        widget.dictionaryMap,
-        baseStyle,
-      ),
-    );
+    // Handle span with color styles (ONLY colors)
+    if (tag.startsWith('<span')) {
+      final styleMatch = RegExp(r'style="([^"]*)"').firstMatch(tag);
+      if (styleMatch != null) {
+        newStyle = _applyColorStylesOnly(newStyle, styleMatch.group(1)!, isMe);
+      }
+    }
+
+    // Handle closing span - reset to base color
+    if (tag == '</span>') {
+      newStyle = newStyle.copyWith(color: isMe ? Colors.white : Colors.black);
+    }
+
+    // Reset to base style for paragraph breaks
+    if (tag == '<p>') {
+      newStyle = TextStyle(
+        color: isMe ? Colors.white : Colors.black,
+        fontSize: 14,
+      );
+    }
+
+    return newStyle;
+  }
+
+  TextStyle _applyColorStylesOnly(
+    TextStyle baseStyle,
+    String style,
+    bool isMe,
+  ) {
+    TextStyle result = baseStyle;
+
+    // ONLY parse colors - ignore everything else
+    final rgbMatch = RegExp(
+      r'color:\s*rgb\((\d+),\s*(\d+),\s*(\d+)\)',
+    ).firstMatch(style);
+    if (rgbMatch != null) {
+      final r = int.parse(rgbMatch.group(1)!);
+      final g = int.parse(rgbMatch.group(2)!);
+      final b = int.parse(rgbMatch.group(3)!);
+      result = result.copyWith(color: Color.fromRGBO(r, g, b, 1));
+    }
+
+    // Parse hex colors
+    final hexMatch = RegExp(r'color:\s*#([0-9a-fA-F]{6})').firstMatch(style);
+    if (hexMatch != null) {
+      final hexColor = hexMatch.group(1)!;
+      result = result.copyWith(color: Color(int.parse('0xFF$hexColor')));
+    }
+
+    return result;
   }
 
   // Update the _buildAdminInfo method
@@ -841,7 +901,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     final String adminImage =
         astroData?.image ??
         message.adminImage ??
-        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80';
+        'https://cdn-icons-png.flaticon.com/512/4139/4139981.png'; // generic male avatar
 
     final String adminName =
         hasValidCachedData
