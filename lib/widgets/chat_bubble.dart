@@ -747,9 +747,11 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     );
   }
 
+  // In your _buildBubble method, wrap the message content:
   Widget _buildMessageContent() {
     final message = widget.message;
-    return _buildHtmlWithDictionaryHighlighting(message);
+
+    return Container(child: _buildHtmlWithDictionaryHighlighting(message));
   }
 
   Widget _buildHtmlWithDictionaryHighlighting(Message message) {
@@ -854,7 +856,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   ) {
     TextStyle result = baseStyle;
 
-    // ONLY parse colors - ignore everything else
+    // Parse colors (existing code)
     final rgbMatch = RegExp(
       r'color:\s*rgb\((\d+),\s*(\d+),\s*(\d+)\)',
     ).firstMatch(style);
@@ -865,7 +867,6 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       result = result.copyWith(color: Color.fromRGBO(r, g, b, 1));
     }
 
-    // Parse hex colors
     final hexMatch = RegExp(r'color:\s*#([0-9a-fA-F]{6})').firstMatch(style);
     if (hexMatch != null) {
       final hexColor = hexMatch.group(1)!;
