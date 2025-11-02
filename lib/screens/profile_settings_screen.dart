@@ -699,8 +699,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       return;
     }
 
-    final responseData =
-        result['data'] ?? result; // Try both possible response structures
+    final responseData = result['data'] ?? result;
 
     // Check if we have a userId in the response
     final String? userId =
@@ -719,24 +718,40 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         listen: false,
       ).saveUserId(userId);
 
-      ErrorHandler.showSuccessSnackbar(context, 'Profile saved successfully!');
-
-      // Handle recovery secret if present
+      // Handle recovery secret if present - FIXED LOGIC
       final recoverySecret = responseData['recoverySecret']?.toString();
       if (recoverySecret != null && recoverySecret.isNotEmpty) {
+        // Show recovery dialog and wait for user confirmation
         await _showRecoveryDialog(context, recoverySecret, userId);
       } else {
+        // No recovery secret, navigate directly to chat
         _navigateToChatScreen(context);
       }
     } else {
-      // If no userId in response, still show success but don't navigate
+      // If no userId in response, still show success
       ErrorHandler.showSuccessSnackbar(context, 'Profile saved successfully!');
 
-      // Optionally, you can reload the profile to get the generated userId
+      // Optionally reload profile to get generated userId
       if (_userIdController.text.isNotEmpty) {
         await _loadProfileData();
       }
+
+      // Add this line after getting responseData for debugging
+      _debugResponseData(responseData);
     }
+  }
+
+  void _debugResponseData(Map<String, dynamic> responseData) {
+    _logger.d('🔍 Debug response data:');
+    _logger.d(' - userId: ${responseData['userId']}');
+    _logger.d(' - recoverySecret: ${responseData['recoverySecret']}');
+    _logger.d(
+      ' - recoverySecret type: ${responseData['recoverySecret']?.runtimeType}',
+    );
+    _logger.d(
+      ' - recoverySecret is empty: ${responseData['recoverySecret']?.toString().isEmpty}',
+    );
+    _logger.d(' - All keys: ${responseData.keys.toList()}');
   }
 
   Future<void> _showRecoveryDialog(
@@ -744,83 +759,94 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     String recoverySecret,
     String userId,
   ) async {
-    await showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder:
-          (context) => AlertDialog(
-            title: const Text(
-              "🔐 Account Recovery Details",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            content: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Please save this information securely. You'll need it to recover your account.",
-                    style: TextStyle(fontSize: 14),
-                  ),
-                  const SizedBox(height: 20),
-                  _buildInfoRow("Name", _nameController.text),
-                  const SizedBox(height: 10),
-                  const Text(
-                    "Recovery Secret:",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(12),
-                    margin: const EdgeInsets.only(top: 5, bottom: 15),
-                    decoration: BoxDecoration(
-                      color: Colors.amber[50],
-                      border: Border.all(color: Colors.amber),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: SelectableText(
-                      recoverySecret,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
+    bool shouldNavigate =
+        await showDialog<bool>(
+          context: context,
+          barrierDismissible: false,
+          builder:
+              (context) => AlertDialog(
+                title: const Text(
+                  "🔐 Account Recovery Details",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                content: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Please save this information securely. You'll need it to recover your account.",
+                        style: TextStyle(fontSize: 14),
                       ),
-                    ),
+                      const SizedBox(height: 20),
+                      _buildInfoRow("Name", _nameController.text),
+                      const SizedBox(height: 10),
+                      const Text(
+                        "Recovery Secret:",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        margin: const EdgeInsets.only(top: 5, bottom: 15),
+                        decoration: BoxDecoration(
+                          color: Colors.amber[50],
+                          border: Border.all(color: Colors.amber),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: SelectableText(
+                          recoverySecret,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                      const Text(
+                        "⚠️ Important:",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red,
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      const Text(
+                        "• Take a screenshot of this information\n"
+                        "• Always use your actual date and time of birth\n"
+                        "• Remember your date and time of birth always\n"
+                        "• Store it in a secure place\n"
+                        "• Do not share with anyone\n"
+                        "• This will only be shown once",
+                        style: TextStyle(fontSize: 13),
+                      ),
+                    ],
                   ),
-                  const Text(
-                    "⚠️ Important:",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.red,
-                    ),
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop(false); // Don't navigate
+                    },
+                    child: const Text("Cancel"),
                   ),
-                  const SizedBox(height: 5),
-                  const Text(
-                    "• Take a screenshot of this information\n"
-                    "• Always use your actual date and time of birth\n"
-                    "• Remember your date and time of birth always\n"
-                    "• Store it in a secure place\n"
-                    "• Do not share with anyone\n"
-                    "• This will only be shown once",
-                    style: TextStyle(fontSize: 13),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop(true); // Navigate to chat
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      foregroundColor: Colors.white,
+                    ),
+                    child: const Text("I've Saved This Information"),
                   ),
                 ],
               ),
-            ),
-            actions: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  _navigateToChatScreen(context);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  foregroundColor: Colors.white,
-                ),
-                child: const Text("I've Saved This Information"),
-              ),
-            ],
-          ),
-    );
+        ) ??
+        false; // Default to false if null
+
+    if (shouldNavigate && mounted) {
+      _navigateToChatScreen(context);
+    }
   }
 
   void _navigateToChatScreen(BuildContext context) {

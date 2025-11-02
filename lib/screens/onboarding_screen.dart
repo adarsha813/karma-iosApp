@@ -147,48 +147,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         listen: false,
       );
 
-      // Ensure language is set (default to English if not set)
+      // Ensure language is set
       final selectedLanguage = profileProvider.language;
       await profileProvider.saveLanguage(selectedLanguage);
       localeProvider.setLocale(Locale(selectedLanguage));
-
-      // Sync language to backend if user exists
-      if (profileProvider.userId != null && profileProvider.token != null) {
-        try {
-          _logger.i('✅ Language set to: $selectedLanguage');
-          _logger.i('✅ Language synced to backend for existing user');
-        } catch (e, stackTrace) {
-          _reportError(e, stackTrace, context: 'sync_language_new_user');
-          // Non-critical error - continue
-        }
-      }
 
       await _completeOnboarding();
       widget.onFinish();
 
       if (mounted) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder:
-                (_) => ProfileSettingsScreen(
-                  key: ValueKey(
-                    'profile_settings_${DateTime.now().millisecondsSinceEpoch}',
-                  ),
-                ),
-          ),
-        );
-      }
-      await _completeOnboarding().timeout(
-        const Duration(seconds: 5),
-        onTimeout: () {
-          ProductionLogger.warning('Onboarding completion timeout');
-        },
-      );
-
-      widget.onFinish();
-
-      if (mounted) {
+        // REMOVE THE DUPLICATE NAVIGATION - only keep this one
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
