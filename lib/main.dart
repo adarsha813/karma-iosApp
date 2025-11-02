@@ -647,10 +647,17 @@ class SecureNotificationManager {
 class StripeService {
   static Future<void> initialize() async {
     try {
+      // For flutter_stripe package (official)
+      Stripe.publishableKey = Environment.stripePublishableKey;
+
+      // For Apple Pay/Google Pay configuration
       await Stripe.instance.applySettings();
-      ProductionLogger.info('Stripe initialized successfully');
-    } catch (e, stackTrace) {
-      ProductionLogger.error('Failed to initialize Stripe', e, stackTrace);
+
+      ProductionLogger.info('✅ Stripe initialized successfully');
+    } catch (e) {
+      ProductionLogger.warning(
+        '⚠️ Stripe initialization failed - payments disabled: $e',
+      );
     }
   }
 }
@@ -825,7 +832,12 @@ class SecureAppInitializer {
       await _setupFCM();
 
       // Initialize Stripe
-      await StripeService.initialize();
+      await StripeService.initialize().catchError((e, stack) {
+        ProductionLogger.warning(
+          '⚠️ Stripe initialization failed (non-critical): $e',
+        );
+        // Continue app startup - Stripe is optional for core functionality
+      });
 
       ProductionLogger.info(
         '✅ Secure app initialization completed successfully',
