@@ -16,6 +16,11 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:usesCleartextTraffic="false">
 
+        <!-- ADD THIS LINE TO DISABLE IMPELLER -->
+        <meta-data
+            android:name="io.flutter.embedding.android.EnableImpeller"
+            android:value="false" />
+
         <service
             android:name="com.google.firebase.messaging.FirebaseMessagingService"
             android:exported="true"
