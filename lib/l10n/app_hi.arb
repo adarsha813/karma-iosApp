@@ -250,5 +250,37 @@
   "recoveryInstructions": "कृपया इस जानकारी को सुरक्षित रूप से सहेजें। आपको अपने खाते को पुनर्प्राप्त करने के लिए इसकी आवश्यकता होगी।",
   "recoverySecretLabel": "पुनर्प्राप्ति गुप्त:",
   "importantNotice": "⚠️ महत्वपूर्ण:",
+   "astrologerProfileTitle": "ज्योतिषी प्रोफाइल",
+  "personalAstrologer": "निजी ज्योतिषी",
+  "makePersonalAstrologer": "निजी ज्योतिषी बनाएं",
+  "favoriteDescription": "आपके प्रश्नों को इस ज्योतिषी को प्राथमिकता दी जाएगी। यदि उपलब्ध नहीं हैं, तो कोई अन्य योग्य ज्योतिषी आपकी सहायता करेगा।",
+  "educationQualifications": "शिक्षा और योग्यताएं",
+  "aboutSection": "परिचय",
+  "shareProfile": "प्रोफाइल साझा करें",
+  "loadingAstrologer": "ज्योतिषी का विवरण लोड हो रहा है...",
+  "failedToLoadAstrologer": "ज्योतिषी का विवरण लोड करने में विफल",
+  "retryButton": "पुनः प्रयास करें",
+  "authenticationRequired": "प्रमाणीकरण आवश्यक है। कृपया लॉगिन करें।",
+  "networkError": "नेटवर्क त्रुटि। कृपया पुनः प्रयास करें।",
+  "securityCheckFailed": "सुरक्षा जांच विफल: {error}",
+  "addedToFavorites": "🎯 {name} अब आपके निजी ज्योतिषी हैं",
+  "removedFromFavorites": "✅ {name} को पसंदीदा से हटा दिया गया",
+  "toggleFavoriteError": "पसंदीदा स्थिति अपडेट करने में विफल",
+  "shareMessage": "{name}\n🎓 शिक्षा: {education}\n📜 योग्यता: {qualification}\n⏳ अनुभव: {experience}",
+    "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "प्रदान नहीं किया गया",
+  "reviews": "({count} समीक्षाएं)",
+  "specialties": "विशेषज्ञताएं",
+  "experience": "अनुभव",
+  "qualification": "योग्यता",
+  "education": "शिक्षा",
   "recoveryTips": "• इस जानकारी का स्क्रीनशॉट लें\n• इसे सुरक्षित स्थान पर सहेजें\n• किसी के साथ साझा न करें\n• यह केवल एक बार दिखाया जाएगा"
 }

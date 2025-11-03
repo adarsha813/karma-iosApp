@@ -321,6 +321,38 @@
   "recoveryInstructions": "Guarda esta información de forma segura. La necesitarás para recuperar tu cuenta.",
   "recoverySecretLabel": "Secreto de recuperación:",
   "importantNotice": "⚠️ Importante:",
+  "astrologerProfileTitle": "Perfil del Astrólogo",
+  "personalAstrologer": "Astrólogo Personal",
+  "makePersonalAstrologer": "Hacer Astrólogo Personal",
+  "favoriteDescription": "Tus preguntas serán priorizadas para este astrólogo. Si no está disponible, otro astrólogo calificado te asistirá.",
+  "educationQualifications": "Educación y Calificaciones",
+  "aboutSection": "Acerca de",
+  "shareProfile": "Compartir Perfil",
+  "loadingAstrologer": "Cargando detalles del astrólogo...",
+  "failedToLoadAstrologer": "Error al cargar los detalles del astrólogo",
+  "retryButton": "Reintentar",
+  "authenticationRequired": "Autenticación requerida. Por favor inicia sesión.",
+  "networkError": "Error de red. Por favor intenta de nuevo.",
+  "securityCheckFailed": "Falló la verificación de seguridad: {error}",
+  "addedToFavorites": "🎯 {name} ahora es tu Astrólogo Personal",
+  "removedFromFavorites": "✅ {name} eliminado de favoritos",
+  "toggleFavoriteError": "Error al actualizar el estado de favorito",
+  "shareMessage": "{name}\n🎓 Educación: {education}\n📜 Calificación: {qualification}\n⏳ Experiencia: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "No proporcionado",
+  "reviews": "({count} reseñas)",
+  "specialties": "Especialidades",
+  "experience": "Experiencia",
+  "qualification": "Calificación",
+  "education": "Educación",
   "recoveryTips": "• Toma una captura de pantalla de esta información\n• Guárdala en un lugar seguro\n• No la compartas con nadie\n• Solo se mostrará una vez"
   
 }

@@ -4,14 +4,23 @@ class AppLogger {
   static final Logger _logger = Logger();
 
   static void info(String message, {String? feature}) {
-    _logger.i('[$feature] $message');
+    _logger.i('[${feature ?? 'General'}] $message');
   }
 
   static void warning(String message, {String? feature}) {
-    _logger.w('[$feature] $message');
+    _logger.w('[${feature ?? 'General'}] $message');
   }
 
-  static void error(String message, {String? feature}) {
-    _logger.e('[$feature] $message');
+  static void error(
+    String message, {
+    String? feature,
+    dynamic error,
+    StackTrace? stackTrace,
+  }) {
+    _logger.e(
+      '[${feature ?? 'General'}] $message',
+      error: error,
+      stackTrace: stackTrace,
+    );
   }
 }

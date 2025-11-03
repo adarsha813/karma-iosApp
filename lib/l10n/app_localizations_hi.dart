@@ -697,7 +697,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get missingUserIdError => 'उपयोगकर्ता आईडी आवश्यक है';
 
   @override
-  String get networkError => 'नेटवर्क त्रुटि हुई';
+  String get networkError => 'नेटवर्क त्रुटि। कृपया पुनः प्रयास करें।';
 
   @override
   String get timeoutError => 'अनुरोध का समय समाप्त हो गया';
@@ -759,6 +759,86 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get importantNotice => '⚠️ महत्वपूर्ण:';
+
+  @override
+  String get astrologerProfileTitle => 'ज्योतिषी प्रोफाइल';
+
+  @override
+  String get personalAstrologer => 'निजी ज्योतिषी';
+
+  @override
+  String get makePersonalAstrologer => 'निजी ज्योतिषी बनाएं';
+
+  @override
+  String get favoriteDescription =>
+      'आपके प्रश्नों को इस ज्योतिषी को प्राथमिकता दी जाएगी। यदि उपलब्ध नहीं हैं, तो कोई अन्य योग्य ज्योतिषी आपकी सहायता करेगा।';
+
+  @override
+  String get educationQualifications => 'शिक्षा और योग्यताएं';
+
+  @override
+  String get aboutSection => 'परिचय';
+
+  @override
+  String get shareProfile => 'प्रोफाइल साझा करें';
+
+  @override
+  String get loadingAstrologer => 'ज्योतिषी का विवरण लोड हो रहा है...';
+
+  @override
+  String get failedToLoadAstrologer => 'ज्योतिषी का विवरण लोड करने में विफल';
+
+  @override
+  String get authenticationRequired =>
+      'प्रमाणीकरण आवश्यक है। कृपया लॉगिन करें।';
+
+  @override
+  String securityCheckFailed(Object error) {
+    return 'सुरक्षा जांच विफल: $error';
+  }
+
+  @override
+  String addedToFavorites(Object name) {
+    return '🎯 $name अब आपके निजी ज्योतिषी हैं';
+  }
+
+  @override
+  String removedFromFavorites(Object name) {
+    return '✅ $name को पसंदीदा से हटा दिया गया';
+  }
+
+  @override
+  String get toggleFavoriteError => 'पसंदीदा स्थिति अपडेट करने में विफल';
+
+  @override
+  String shareMessage(
+    Object name,
+    Object education,
+    Object qualification,
+    Object experience,
+  ) {
+    return '$name\n🎓 शिक्षा: $education\n📜 योग्यता: $qualification\n⏳ अनुभव: $experience';
+  }
+
+  @override
+  String get notProvided => 'प्रदान नहीं किया गया';
+
+  @override
+  String reviews(Object count) {
+    return '($count समीक्षाएं)';
+  }
+
+  @override
+  String get specialties => 'विशेषज्ञताएं';
+
+  @override
+  String get experience => 'अनुभव';
+
+  @override
+  String get qualification => 'योग्यता';
+
+  @override
+  String get education => 'शिक्षा';
 
   @override
   String get recoveryTips =>

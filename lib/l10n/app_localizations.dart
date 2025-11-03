@@ -1369,7 +1369,7 @@ abstract class AppLocalizations {
   /// No description provided for @networkError.
   ///
   /// In en, this message translates to:
-  /// **'Network error occurred'**
+  /// **'Network error. Please try again.'**
   String get networkError;
 
   /// No description provided for @timeoutError.
@@ -1485,6 +1485,137 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'⚠️ Important:'**
   String get importantNotice;
+
+  /// No description provided for @astrologerProfileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Astrologer Profile'**
+  String get astrologerProfileTitle;
+
+  /// No description provided for @personalAstrologer.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Astrologer'**
+  String get personalAstrologer;
+
+  /// No description provided for @makePersonalAstrologer.
+  ///
+  /// In en, this message translates to:
+  /// **'Make Personal Astrologer'**
+  String get makePersonalAstrologer;
+
+  /// No description provided for @favoriteDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Your questions will be prioritized to this astrologer. If unavailable, another qualified astrologer will assist you.'**
+  String get favoriteDescription;
+
+  /// No description provided for @educationQualifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Education & Qualifications'**
+  String get educationQualifications;
+
+  /// No description provided for @aboutSection.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get aboutSection;
+
+  /// No description provided for @shareProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Share Profile'**
+  String get shareProfile;
+
+  /// No description provided for @loadingAstrologer.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading astrologer details...'**
+  String get loadingAstrologer;
+
+  /// No description provided for @failedToLoadAstrologer.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load astrologer details'**
+  String get failedToLoadAstrologer;
+
+  /// No description provided for @authenticationRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Authentication required. Please log in.'**
+  String get authenticationRequired;
+
+  /// No description provided for @securityCheckFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Security check failed: {error}'**
+  String securityCheckFailed(Object error);
+
+  /// No description provided for @addedToFavorites.
+  ///
+  /// In en, this message translates to:
+  /// **'🎯 {name} is now your Personal Astrologer'**
+  String addedToFavorites(Object name);
+
+  /// No description provided for @removedFromFavorites.
+  ///
+  /// In en, this message translates to:
+  /// **'✅ Removed {name} from favorites'**
+  String removedFromFavorites(Object name);
+
+  /// No description provided for @toggleFavoriteError.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to update favorite status'**
+  String get toggleFavoriteError;
+
+  /// Message text when sharing astrologer profile
+  ///
+  /// In en, this message translates to:
+  /// **'{name}\n🎓 Education: {education}\n📜 Qualification: {qualification}\n⏳ Experience: {experience}'**
+  String shareMessage(
+    Object name,
+    Object education,
+    Object qualification,
+    Object experience,
+  );
+
+  /// No description provided for @notProvided.
+  ///
+  /// In en, this message translates to:
+  /// **'Not provided'**
+  String get notProvided;
+
+  /// No description provided for @reviews.
+  ///
+  /// In en, this message translates to:
+  /// **'({count} reviews)'**
+  String reviews(Object count);
+
+  /// No description provided for @specialties.
+  ///
+  /// In en, this message translates to:
+  /// **'Specialties'**
+  String get specialties;
+
+  /// No description provided for @experience.
+  ///
+  /// In en, this message translates to:
+  /// **'Experience'**
+  String get experience;
+
+  /// No description provided for @qualification.
+  ///
+  /// In en, this message translates to:
+  /// **'Qualification'**
+  String get qualification;
+
+  /// No description provided for @education.
+  ///
+  /// In en, this message translates to:
+  /// **'Education'**
+  String get education;
 
   /// No description provided for @recoveryTips.
   ///

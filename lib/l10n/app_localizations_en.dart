@@ -699,7 +699,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get missingUserIdError => 'User ID is required';
 
   @override
-  String get networkError => 'Network error occurred';
+  String get networkError => 'Network error. Please try again.';
 
   @override
   String get timeoutError => 'Request timed out';
@@ -760,6 +760,86 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get importantNotice => '⚠️ Important:';
+
+  @override
+  String get astrologerProfileTitle => 'Astrologer Profile';
+
+  @override
+  String get personalAstrologer => 'Personal Astrologer';
+
+  @override
+  String get makePersonalAstrologer => 'Make Personal Astrologer';
+
+  @override
+  String get favoriteDescription =>
+      'Your questions will be prioritized to this astrologer. If unavailable, another qualified astrologer will assist you.';
+
+  @override
+  String get educationQualifications => 'Education & Qualifications';
+
+  @override
+  String get aboutSection => 'About';
+
+  @override
+  String get shareProfile => 'Share Profile';
+
+  @override
+  String get loadingAstrologer => 'Loading astrologer details...';
+
+  @override
+  String get failedToLoadAstrologer => 'Failed to load astrologer details';
+
+  @override
+  String get authenticationRequired =>
+      'Authentication required. Please log in.';
+
+  @override
+  String securityCheckFailed(Object error) {
+    return 'Security check failed: $error';
+  }
+
+  @override
+  String addedToFavorites(Object name) {
+    return '🎯 $name is now your Personal Astrologer';
+  }
+
+  @override
+  String removedFromFavorites(Object name) {
+    return '✅ Removed $name from favorites';
+  }
+
+  @override
+  String get toggleFavoriteError => 'Failed to update favorite status';
+
+  @override
+  String shareMessage(
+    Object name,
+    Object education,
+    Object qualification,
+    Object experience,
+  ) {
+    return '$name\n🎓 Education: $education\n📜 Qualification: $qualification\n⏳ Experience: $experience';
+  }
+
+  @override
+  String get notProvided => 'Not provided';
+
+  @override
+  String reviews(Object count) {
+    return '($count reviews)';
+  }
+
+  @override
+  String get specialties => 'Specialties';
+
+  @override
+  String get experience => 'Experience';
+
+  @override
+  String get qualification => 'Qualification';
+
+  @override
+  String get education => 'Education';
 
   @override
   String get recoveryTips =>

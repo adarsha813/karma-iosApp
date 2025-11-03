@@ -8,6 +8,7 @@ import '../services/secure_astrologer_service.dart';
 import '../utils/enterprise_animations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:share_plus/share_plus.dart';
+import '../l10n/app_localizations.dart'; // Add this import
 
 class AstrologerDetailPage extends StatefulWidget {
   final String astrologerId;
@@ -167,10 +168,10 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
 ''');
 
     if (userId == null || userId.isEmpty) {
-      _showSecuritySnackbar('Authentication required. Please log in.');
+      final l10n = AppLocalizations.of(context)!;
+      _showSecuritySnackbar(l10n.authenticationRequired);
       return;
     }
-
     setState(() => _actionInProgress = true);
     _logSecurityEvent('FAVORITE_TOGGLE_ATTEMPT', {
       'userId': userId,
@@ -190,12 +191,20 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
 
       if (success && mounted) {
         setState(() => _isFavorite = newFavoriteState);
+        final l10n = AppLocalizations.of(context)!;
+        final astrologerName = _astrologerData?.fullName ?? '';
 
         _showEnterpriseSnackbar(
           message:
               newFavoriteState
-                  ? '🎯 ${_astrologerData?.fullName} is now your Personal Astrologer'
-                  : '✅ Removed ${_astrologerData?.fullName} from favorites',
+                  ? l10n.addedToFavorites.toString().replaceFirst(
+                    '{name}',
+                    astrologerName,
+                  )
+                  : l10n.removedFromFavorites.toString().replaceFirst(
+                    '{name}',
+                    astrologerName,
+                  ),
           type: newFavoriteState ? SnackbarType.success : SnackbarType.info,
         );
 
@@ -205,7 +214,8 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
           'newState': newFavoriteState,
         });
       } else {
-        throw AstrologerException('Toggle operation failed', 'TOGGLE_FAILED');
+        final l10n = AppLocalizations.of(context)!;
+        throw AstrologerException(l10n.toggleFavoriteError, 'TOGGLE_FAILED');
       }
     } on AstrologerException catch (e) {
       _showSecuritySnackbar('Security check failed: ${e.message}');
@@ -292,6 +302,7 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
   }
 
   Widget _buildAppBar() {
+    final l10n = AppLocalizations.of(context)!;
     return PreferredSize(
       preferredSize: const Size.fromHeight(80), // Adjust height if needed
       child: Container(
@@ -324,7 +335,7 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
                 // Title
                 Expanded(
                   child: Text(
-                    'Astrologer Profile',
+                    l10n.astrologerProfileTitle, // Updated
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -359,12 +370,13 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
   }
 
   Widget _buildContentByState() {
+    final l10n = AppLocalizations.of(context)!;
     switch (_loadState) {
       case LoadState.loading:
         return const AstrologerDetailShimmer();
       case LoadState.error:
         return EnterpriseErrorWidget(
-          message: 'Failed to load astrologer details',
+          message: l10n.failedToLoadAstrologer, // Updated
           onRetry: _loadAstrologerData,
         );
       case LoadState.success:
@@ -515,6 +527,7 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
   }
 
   Widget _buildFavoriteSection() {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
@@ -556,8 +569,8 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
                       ),
               label: Text(
                 _isFavorite
-                    ? 'Personal Astrologer'
-                    : 'Make Personal Astrologer',
+                    ? l10n.personalAstrologer
+                    : l10n.makePersonalAstrologer, // Updated
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 16,
@@ -591,8 +604,7 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
           ),
           const SizedBox(height: 12),
           Text(
-            "Your questions will be prioritized to this astrologer. "
-            "If unavailable, another qualified astrologer will assist you.",
+            l10n.favoriteDescription, // Updated
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: Colors.grey[600],
               height: 1.4,
@@ -605,13 +617,14 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
   }
 
   Widget _buildDetailsSections() {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Education & Qualifications
         _buildDetailSection(
           icon: Icons.school_rounded,
-          title: 'Education & Qualifications',
+          title: l10n.educationQualifications, // Updated
           content: [
             if (_astrologerData?.education != null)
               '🎓 ${_astrologerData!.education!}',
@@ -627,7 +640,7 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
         if (_astrologerData?.bio != null && _astrologerData!.bio!.isNotEmpty)
           _buildDetailSection(
             icon: Icons.description_rounded,
-            title: 'About',
+            title: l10n.aboutSection, // Updated
             content: _astrologerData!.bio!,
           ),
       ],
@@ -685,19 +698,21 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
   void _shareProfile() {
     if (_astrologerData == null) return;
 
+    final l10n = AppLocalizations.of(context)!;
+
     final name = _astrologerData!.fullName;
-    final education = _astrologerData!.education ?? 'Not provided';
-    final qualification = _astrologerData!.qualification ?? 'Not provided';
-    final experience = _astrologerData!.experience ?? 'Not provided';
+    final education = _astrologerData!.education ?? l10n.notProvided;
+    final qualification = _astrologerData!.qualification ?? l10n.notProvided;
+    final experience = _astrologerData!.experience ?? l10n.notProvided;
 
-    final message = '''
- $name
-🎓 Education: $education
-📜 Qualification: $qualification
-⏳ Experience: $experience
-''';
+    final message = l10n.shareMessage(
+      name,
+      education,
+      qualification,
+      experience,
+    );
 
-    Share.share(message, subject: '$name - Astrologer Details');
+    Share.share(message, subject: '$name - ${l10n.astrologerProfileTitle}');
 
     _logSecurityEvent('SHARE_ATTEMPT', {
       'astrologerName': name,
@@ -842,6 +857,7 @@ class EnterpriseErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(32.0),
@@ -865,7 +881,7 @@ class EnterpriseErrorWidget extends StatelessWidget {
             ElevatedButton.icon(
               onPressed: onRetry,
               icon: const Icon(Icons.refresh_rounded),
-              label: const Text('Try Again'),
+              label: Text(l10n.retryButton), // Updated
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 24,

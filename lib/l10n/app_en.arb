@@ -479,5 +479,37 @@
   "recoveryInstructions": "Please save this information securely. You'll need it to recover your account.",
   "recoverySecretLabel": "Recovery Secret:",
   "importantNotice": "⚠️ Important:",
+  "astrologerProfileTitle": "Astrologer Profile",
+  "personalAstrologer": "Personal Astrologer",
+  "makePersonalAstrologer": "Make Personal Astrologer",
+  "favoriteDescription": "Your questions will be prioritized to this astrologer. If unavailable, another qualified astrologer will assist you.",
+  "educationQualifications": "Education & Qualifications",
+  "aboutSection": "About",
+  "shareProfile": "Share Profile",
+  "loadingAstrologer": "Loading astrologer details...",
+  "failedToLoadAstrologer": "Failed to load astrologer details",
+  "retryButton": "Retry",
+  "authenticationRequired": "Authentication required. Please log in.",
+  "networkError": "Network error. Please try again.",
+  "securityCheckFailed": "Security check failed: {error}",
+  "addedToFavorites": "🎯 {name} is now your Personal Astrologer",
+  "removedFromFavorites": "✅ Removed {name} from favorites",
+  "toggleFavoriteError": "Failed to update favorite status",
+  "shareMessage": "{name}\n🎓 Education: {education}\n📜 Qualification: {qualification}\n⏳ Experience: {experience}",
+  "@shareMessage": {
+  "description": "Message text when sharing astrologer profile",
+  "placeholders": {
+    "name": {},
+    "education": {},
+    "qualification": {},
+    "experience": {}
+    }
+  },
+  "notProvided": "Not provided",
+  "reviews": "({count} reviews)",
+  "specialties": "Specialties",
+  "experience": "Experience",
+  "qualification": "Qualification",
+  "education": "Education",
   "recoveryTips": "• Take a screenshot of this information\n• Store it in a secure place\n• Do not share with anyone\n• This will only be shown once"
 }

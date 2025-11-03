@@ -701,7 +701,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get missingUserIdError => 'Se requiere el ID de usuario';
 
   @override
-  String get networkError => 'Se produjo un error de red';
+  String get networkError => 'Error de red. Por favor intenta de nuevo.';
 
   @override
   String get timeoutError => 'La solicitud ha superado el tiempo de espera';
@@ -763,6 +763,87 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get importantNotice => '⚠️ Importante:';
+
+  @override
+  String get astrologerProfileTitle => 'Perfil del Astrólogo';
+
+  @override
+  String get personalAstrologer => 'Astrólogo Personal';
+
+  @override
+  String get makePersonalAstrologer => 'Hacer Astrólogo Personal';
+
+  @override
+  String get favoriteDescription =>
+      'Tus preguntas serán priorizadas para este astrólogo. Si no está disponible, otro astrólogo calificado te asistirá.';
+
+  @override
+  String get educationQualifications => 'Educación y Calificaciones';
+
+  @override
+  String get aboutSection => 'Acerca de';
+
+  @override
+  String get shareProfile => 'Compartir Perfil';
+
+  @override
+  String get loadingAstrologer => 'Cargando detalles del astrólogo...';
+
+  @override
+  String get failedToLoadAstrologer =>
+      'Error al cargar los detalles del astrólogo';
+
+  @override
+  String get authenticationRequired =>
+      'Autenticación requerida. Por favor inicia sesión.';
+
+  @override
+  String securityCheckFailed(Object error) {
+    return 'Falló la verificación de seguridad: $error';
+  }
+
+  @override
+  String addedToFavorites(Object name) {
+    return '🎯 $name ahora es tu Astrólogo Personal';
+  }
+
+  @override
+  String removedFromFavorites(Object name) {
+    return '✅ $name eliminado de favoritos';
+  }
+
+  @override
+  String get toggleFavoriteError => 'Error al actualizar el estado de favorito';
+
+  @override
+  String shareMessage(
+    Object name,
+    Object education,
+    Object qualification,
+    Object experience,
+  ) {
+    return '$name\n🎓 Educación: $education\n📜 Calificación: $qualification\n⏳ Experiencia: $experience';
+  }
+
+  @override
+  String get notProvided => 'No proporcionado';
+
+  @override
+  String reviews(Object count) {
+    return '($count reseñas)';
+  }
+
+  @override
+  String get specialties => 'Especialidades';
+
+  @override
+  String get experience => 'Experiencia';
+
+  @override
+  String get qualification => 'Calificación';
+
+  @override
+  String get education => 'Educación';
 
   @override
   String get recoveryTips =>
