@@ -56,6 +56,52 @@ bool verifyCertificate(X509Certificate cert, List<String> allowedFingerprints) {
   return allowedFingerprints.contains(fingerprint);
 }
 
+class SafeChatScreen extends StatefulWidget {
+  final String? chatId;
+
+  const SafeChatScreen({super.key, this.chatId});
+
+  @override
+  State<SafeChatScreen> createState() => _SafeChatScreenState();
+}
+
+class _SafeChatScreenState extends State<SafeChatScreen> {
+  bool _isError = false;
+  String? _errorMessage;
+
+  @override
+  Widget build(BuildContext context) {
+    if (_isError) {
+      return Scaffold(
+        appBar: AppBar(title: const Text('Chat')),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.error_outline, size: 64, color: Colors.red),
+              const SizedBox(height: 16),
+              Text(
+                _errorMessage ?? 'Failed to load chat',
+                style: const TextStyle(fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: const Text('Go Back'),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    return ChatScreen(
+      chatId: widget.chatId,
+      key: ValueKey('chat_${widget.chatId}'),
+    );
+  }
+}
 // ==================== PAYMENT SECURITY CLASSES ====================
 
 class PaymentException implements Exception {
@@ -990,12 +1036,16 @@ class _ChatScreenState extends State<ChatScreen>
   Timer? _refreshTimer;
   bool _isInputEnabled = true;
 
+  bool _disposed = false;
+  Completer<void>? _initialDataCompleter;
+
   // Socket instance
   late IO.Socket socket;
 
   @override
   void initState() {
     super.initState();
+    _disposed = false;
 
     WidgetsFlutterBinding.ensureInitialized();
     FlutterError.onError = (details) {
@@ -1247,6 +1297,12 @@ class _ChatScreenState extends State<ChatScreen>
     _isSocketConnected = false;
 
     socket.onConnect((_) {
+      // ✅ SAFETY CHECK
+      if (!_isSafe) {
+        socket.disconnect();
+        return;
+      }
+
       AppLogger.info('Socket connected: ${socket.id}', feature: 'socket');
       _isSocketConnected = true;
 
@@ -1263,6 +1319,28 @@ class _ChatScreenState extends State<ChatScreen>
           'Joined socket room for user: $userId',
           feature: 'socket',
         );
+      }
+    });
+    // Add similar safety checks to all socket event handlers
+    socket.on('new_question', (data) {
+      if (!_isSafe) return;
+
+      try {
+        _validateSocketMessage(data);
+        AppLogger.info(
+          'Received new_question event',
+          feature: 'socket_messages',
+        );
+        _handleNewQuestion(data);
+      } catch (e, stackTrace) {
+        if (_isSafe) {
+          AppLogger.error(
+            'Invalid socket message rejected: $e',
+            e,
+            feature: 'socket_validation',
+            stackTrace: stackTrace,
+          );
+        }
       }
     });
 
@@ -1568,18 +1646,29 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   Future<void> _loadInitialData() async {
+    if (!_isSafe) return;
     try {
       await loadUserId();
+      if (!_isSafe) return;
       await _initializeNotifications();
+      if (!_isSafe) return;
       await _fetchInitialData();
 
       // Set up periodic refresh
-      _refreshTimer = Timer.periodic(const Duration(seconds: 30), (_) {
-        _fetchInitialData();
+      _refreshTimer = Timer.periodic(const Duration(seconds: 30), (timer) {
+        // ✅ CHECK BOTH mounted AND _disposed
+        if (mounted && !_disposed && !_isReinitializing) {
+          _fetchInitialData();
+        } else {
+          // ✅ CANCEL TIMER IF NOT SAFE
+          timer.cancel();
+        }
       });
 
       // Handle any pending navigation
-      _handlePendingNavigation();
+      if (_isSafe) {
+        _handlePendingNavigation();
+      }
     } catch (e, stackTrace) {
       AppLogger.error(
         'Error loading initial data',
@@ -1645,6 +1734,13 @@ class _ChatScreenState extends State<ChatScreen>
 
   void _handlePendingNavigation() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      if (!_isSafe) {
+        AppLogger.info(
+          'Skipping pending navigation - widget disposed',
+          feature: 'navigation',
+        );
+        return;
+      }
       try {
         final profileProvider = Provider.of<ProfileProvider>(
           context,
@@ -1665,7 +1761,7 @@ class _ChatScreenState extends State<ChatScreen>
           final data = jsonDecode(payload);
           if (data['type'] == 'horoscope') {
             final id = data['id'];
-            if (mounted) {
+            if (_isSafe) {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -1677,12 +1773,14 @@ class _ChatScreenState extends State<ChatScreen>
           pendingNavigation.payload = null;
         }
       } catch (e, stackTrace) {
-        AppLogger.error(
-          'Error handling pending navigation',
-          e,
-          feature: 'navigation',
-          stackTrace: stackTrace,
-        );
+        if (_isSafe) {
+          AppLogger.error(
+            'Error handling pending navigation',
+            e,
+            feature: 'navigation',
+            stackTrace: stackTrace,
+          );
+        }
       }
     });
   }
@@ -1751,6 +1849,14 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   Future<void> _fetchInitialData() async {
+    // ✅ SAFETY CHECK: Return immediately if disposed
+    if (!_isSafe) {
+      AppLogger.info(
+        'Skipping _fetchInitialData - widget disposed',
+        feature: 'data_fetching',
+      );
+      return;
+    }
     try {
       final profileProvider = Provider.of<ProfileProvider>(
         context,
@@ -1773,7 +1879,9 @@ class _ChatScreenState extends State<ChatScreen>
           userId: currentUserId,
           feature: 'session_validation',
         );
-        _showErrorSnackbar('Session expired. Please restart the app.');
+        if (_isSafe) {
+          _showErrorSnackbar('Session expired. Please restart the app.');
+        }
         return;
       }
 
@@ -1781,21 +1889,37 @@ class _ChatScreenState extends State<ChatScreen>
         context,
         listen: false,
       );
+      // ✅ SAFETY CHECK: Use completer to track operation
+      _initialDataCompleter = Completer<void>();
 
       // Use a single method to fetch all data to avoid race conditions
       await _fetchAllMessages(currentUserId, chatService);
+      // ✅ SAFETY CHECK: Only complete if still safe
+      if (_isSafe &&
+          _initialDataCompleter != null &&
+          !_initialDataCompleter!.isCompleted) {
+        _initialDataCompleter!.complete();
+      }
 
       AppLogger.info(
         'Initial data fetched successfully',
         feature: 'data_fetching',
       );
     } catch (e, stackTrace) {
-      AppLogger.error(
-        'Error fetching initial data',
-        e,
-        feature: 'data_fetching',
-        stackTrace: stackTrace,
-      );
+      if (_isSafe) {
+        AppLogger.error(
+          'Error fetching initial data',
+          e,
+          feature: 'data_fetching',
+          stackTrace: stackTrace,
+        );
+      }
+
+      // ✅ SAFETY CHECK: Complete with error if still pending
+      if (_initialDataCompleter != null &&
+          !_initialDataCompleter!.isCompleted) {
+        _initialDataCompleter!.completeError(e);
+      }
     }
   }
 
@@ -3247,12 +3371,19 @@ class _ChatScreenState extends State<ChatScreen>
 
   @override
   void dispose() {
-    _refreshTimer?.cancel();
-    _refreshTimer = null;
-    // _cleanupOldMessages();
-    AppLogger.info('ChatScreen disposed', feature: 'chat_screen');
+    _disposed = true;
+    // ✅ PROPERLY CANCEL TIMERS
+    if (_refreshTimer != null) {
+      _refreshTimer!.cancel();
+      _refreshTimer = null;
+    }
 
-    _refreshTimer?.cancel();
+    // Complete any pending completers
+    if (_initialDataCompleter != null && !_initialDataCompleter!.isCompleted) {
+      _initialDataCompleter!.completeError('Widget disposed');
+    }
+
+    _cleanupSocket();
     _scrollController.removeListener(_handleScroll);
     _scrollController.dispose();
     _controller.dispose();
@@ -3272,6 +3403,29 @@ class _ChatScreenState extends State<ChatScreen>
 
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
+    AppLogger.info('ChatScreen disposed safely', feature: 'chat_screen');
+  }
+
+  bool get _isSafe => mounted && !_disposed;
+
+  void _cleanupSocket() {
+    try {
+      socket.off('new_question');
+      socket.off('new_answer');
+      socket.off('new_clarification');
+      socket.off('new_advice');
+      socket.off('payment_required');
+      socket.off('connect');
+      socket.off('disconnect');
+      socket.off('connect_error');
+      socket.off('error');
+
+      if (socket.connected) {
+        socket.disconnect();
+      }
+    } catch (e) {
+      AppLogger.error('Error cleaning up socket', e, feature: 'socket_cleanup');
+    }
   }
 
   @override
@@ -3428,6 +3582,7 @@ class _ChatScreenState extends State<ChatScreen>
     });
   }
 
+  /*
   void _cleanupOldMessages() {
     final chatService = Provider.of<SecureChatService>(context, listen: false);
     final messages = chatService.messages;
@@ -3438,7 +3593,7 @@ class _ChatScreenState extends State<ChatScreen>
       chatService.setMessages(recentMessages);
     }
   }
-
+*/
   Widget _buildDrawer(AppLocalizations l10n) {
     final userId = Provider.of<ProfileProvider>(context, listen: false).userId;
 

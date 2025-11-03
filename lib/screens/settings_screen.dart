@@ -500,12 +500,16 @@ class SettingsScreen extends StatelessWidget {
           _logAnalyticsEvent('account_deleted_local');
 
           // Delete account from backend
+          // Mark account as removed (PATCH request)
           await _sendRequest(
             context,
-            "auth/delete-account",
+            "api/profile/remove-profile",
             l10n.deleteAccountSuccess,
-            method: 'DELETE',
-            body: {'userId': userId},
+            method: 'PATCH',
+            body: {
+              'userId': userId,
+              'removed': true, // required by backend
+            },
           );
 
           _logAnalyticsEvent('account_deleted_backend');

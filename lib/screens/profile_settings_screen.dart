@@ -567,7 +567,8 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       listen: false,
     );
 
-    // Try to load existing user ID
+    // ✅ Ensure provider is initialized first
+    await profileProvider.ensureInitialized();
 
     String? existingUserId = profileProvider.userId;
 
@@ -577,7 +578,22 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
     // Generate new user ID based on device + profile data
     final newUserId = await _generateSecureUserId();
-    await profileProvider.saveUserId(newUserId);
+    for (int attempt = 1; attempt <= 2; attempt++) {
+      try {
+        await profileProvider.saveUserId(newUserId);
+        return newUserId; // success, exit
+      } catch (e) {
+        _logger.w('Attempt $attempt to save user ID failed: $e');
+        if (attempt == 2) {
+          // On second failure, fallback to temporary ID
+          final tempId = 'temp_${DateTime.now().millisecondsSinceEpoch}';
+          _logger.e('Both attempts failed. Using temporary user ID: $tempId');
+          return tempId;
+        }
+        // Optionally wait a tiny bit before retrying
+        await Future.delayed(const Duration(milliseconds: 100));
+      }
+    }
     return newUserId;
   }
 

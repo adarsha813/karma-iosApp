@@ -370,8 +370,32 @@ class ProfileProvider with ChangeNotifier {
     }
   }
 
+  Completer<void>? _initializationCompleter;
+
+  /// Ensure provider is initialized before any operations
+  Future<void> ensureInitialized() async {
+    if (_isInitialized) return;
+
+    if (_initializationCompleter != null) {
+      // Initialization already in progress, wait for it
+      return _initializationCompleter!.future;
+    }
+
+    _initializationCompleter = Completer<void>();
+
+    try {
+      await initialize();
+      _initializationCompleter!.complete();
+    } catch (e) {
+      _initializationCompleter!.completeError(e);
+      _initializationCompleter = null;
+      rethrow;
+    }
+  }
+
   /// Save or update user ID
   Future<void> saveUserId(String newUserId) async {
+    await ensureInitialized();
     if (_currentProfile?.userId == newUserId) return;
 
     try {

@@ -1340,15 +1340,32 @@ class _SecureAppState extends State<SecureApp> {
     try {
       final prefs = await SharedPreferences.getInstance();
       final onboardingDone = prefs.getBool('onboarding_done') ?? false;
+      final profileProvider = Provider.of<ProfileProvider>(
+        context,
+        listen: false,
+      );
+      final hasExistingProfile =
+          profileProvider.userId != null &&
+          profileProvider.userId!.isNotEmpty &&
+          !profileProvider.userId!.startsWith('temp_') &&
+          !profileProvider.userId!.startsWith('default_');
 
       if (mounted) {
         setState(() {
+          // Only show onboarding if it's first launch AND not done AND no existing profile
           _showOnboarding =
-              widget.launchResult.isFirstLaunch && !onboardingDone;
+              widget.launchResult.isFirstLaunch &&
+              !onboardingDone &&
+              !hasExistingProfile;
         });
       }
     } catch (e) {
       ProductionLogger.error('Failed to check onboarding status', e);
+      if (mounted) {
+        setState(() {
+          _showOnboarding = false; // Don't show onboarding on error
+        });
+      }
     }
   }
 
