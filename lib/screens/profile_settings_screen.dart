@@ -928,6 +928,36 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     );
   }
 
+  Widget _buildAvatarContent() {
+    if (_image != null) {
+      return ClipOval(
+        child: Image.file(_image!, fit: BoxFit.cover, width: 120, height: 120),
+      );
+    } else if (_profileImageUrl != null && _profileImageUrl!.isNotEmpty) {
+      if (_profileImageUrl!.startsWith('http')) {
+        return ClipOval(
+          child: Image.network(
+            _profileImageUrl!,
+            fit: BoxFit.cover,
+            width: 120,
+            height: 120,
+            errorBuilder: (context, error, stackTrace) {
+              return const Icon(
+                Icons.camera_alt,
+                size: 40,
+                color: Colors.white,
+              );
+            },
+          ),
+        );
+      } else {
+        return const Icon(Icons.camera_alt, size: 40, color: Colors.white);
+      }
+    } else {
+      return const Icon(Icons.camera_alt, size: 40, color: Colors.white);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final profileProvider = Provider.of<ProfileProvider>(context);
@@ -969,21 +999,8 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                     children: [
                       CircleAvatar(
                         radius: 60,
-                        backgroundImage:
-                            _image != null
-                                ? FileImage(_image!)
-                                : (_profileImageUrl != null
-                                    ? NetworkImage(_profileImageUrl!)
-                                    : null),
                         backgroundColor: Colors.grey[300],
-                        child:
-                            (_image == null && _profileImageUrl == null)
-                                ? const Icon(
-                                  Icons.camera_alt,
-                                  size: 40,
-                                  color: Colors.white,
-                                )
-                                : null,
+                        child: _buildAvatarContent(),
                       ),
                       if (_isLoading)
                         AvatarOrbitLoader(size: 120, color: Colors.blue),
