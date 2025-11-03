@@ -3249,7 +3249,7 @@ class _ChatScreenState extends State<ChatScreen>
   void dispose() {
     _refreshTimer?.cancel();
     _refreshTimer = null;
-    _cleanupOldMessages();
+    // _cleanupOldMessages();
     AppLogger.info('ChatScreen disposed', feature: 'chat_screen');
 
     _refreshTimer?.cancel();

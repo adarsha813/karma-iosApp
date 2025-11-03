@@ -9,13 +9,39 @@ import '../providers/notification_provider.dart';
 import '../providers/profile_provider.dart';
 import 'package:http/http.dart' as http;
 import '../services/HoroscopeService.dart';
-import 'dart:io';
-import 'package:flutter/services.dart';
 import '../services/chat_service.dart';
 import 'package:kundali/screens/policy_page.dart';
 import 'package:kundali/screens/profile_settings_screen.dart';
 import '../config/environment.dart';
 import 'package:logger/logger.dart';
+
+class SafeNavigation {
+  static Future<void> navigateToProfileSettings(BuildContext context) async {
+    try {
+      // Small delay to ensure previous navigation completes
+      await Future.delayed(const Duration(milliseconds: 100));
+
+      if (context.mounted) {
+        await Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (_) => const ProfileSettingsScreen()),
+          (route) => false,
+        );
+      }
+    } catch (e) {
+      // Fallback navigation
+      if (context.mounted) {
+        Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (_) => const ProfileSettingsScreen()),
+          (route) => route.isFirst,
+        );
+      }
+    }
+  }
+
+  static bool canPop(BuildContext context) {
+    return Navigator.of(context).canPop();
+  }
+}
 
 // Custom logger instance
 final _logger = Logger(
@@ -484,9 +510,9 @@ class SettingsScreen extends StatelessWidget {
 
           _logAnalyticsEvent('account_deleted_backend');
 
-          // Navigate to profile settings
+          // ✅ FIXED: Safe navigation using Navigator.of with root navigator
           if (context.mounted) {
-            Navigator.pushReplacementNamed(context, '/profile-settings');
+            await SafeNavigation.navigateToProfileSettings(context);
           }
         } catch (e, stackTrace) {
           _reportError(e, stackTrace, context: 'delete_account');
@@ -525,20 +551,12 @@ class SettingsScreen extends StatelessWidget {
           await profileProvider.clearProfile();
           _logAnalyticsEvent('user_logged_out');
 
+          // ✅ FIXED: Safe navigation for logout
           if (context.mounted) {
-            if (Platform.isAndroid) {
-              SystemNavigator.pop();
-            } else if (Platform.isIOS) {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => const ProfileSettingsScreen(),
-                ),
-              );
-            } else {
-              // Fallback for other platforms
-              Navigator.pushReplacementNamed(context, '/profile-settings');
-            }
+            Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (_) => const ProfileSettingsScreen()),
+              (route) => false,
+            );
           }
         } catch (e, stackTrace) {
           _reportError(e, stackTrace, context: 'logout');
