@@ -1,0 +1,439 @@
+{
+  "@@locale": "ml",
+  "settingsTitle": "ക്രമീകരണങ്ങൾ",
+  "notificationSettings": "അറിയിപ്പ് ക്രമീകരണങ്ങൾ",
+  "privacySettings": "സ്വകാര്യതാ ക്രമീകരണങ്ങൾ",
+  "accountSettings": "അക്കൗണ്ട് ക്രമീകരണങ്ങൾ",
+  "languageSettings": "ഭാഷാ ക്രമീകരണങ്ങൾ",
+  "languageChanged": "ഭാഷ മാറി",
+  "existingUserButton": "ഞാൻ നിലവിലുള്ള ഒരു ഉപയോക്താവാണ്.",
+  "chooseCountryTitle": "രാജ്യം തിരഞ്ഞെടുക്കുക",
+  "yesText": "അതെ",
+  "noText": "ഇല്ല",
+  "appBarTitle": "പ്രൊഫൈൽ ക്രമീകരണങ്ങൾ",
+  "userIdLabel": "ഉപയോക്തൃ ഐഡി *",
+  "nameLabel": "പേര്",
+  "birthCountryLabel": "ജന്മനാട്",
+  "birthCityLabel": "ജനന നഗരം",
+  "countrySelectionTitle": "നിങ്ങളുടെ രാജ്യം തിരഞ്ഞെടുക്കുക",
+  "maleLabel": "ആൺ",
+  "femaleLabel": "സ്ത്രീ",
+  "birthDateLabel": "ജനനത്തീയതി",
+  "birthDatePlaceholder": "ജനനത്തീയതി തിരഞ്ഞെടുക്കുക",
+  "birthTimeLabel": "ജനന സമയം",
+  "birthTimePlaceholder": "ജനന സമയം തിരഞ്ഞെടുക്കുക",
+  "saveProfileButton": "പ്രൊഫൈൽ സംരക്ഷിക്കുക",
+  "noCitiesFound": "നഗരങ്ങളൊന്നും കണ്ടെത്തിയില്ല",
+  "cityPlaceholder": "{country} എന്നതിൽ നഗരം നൽകുക",
+  "countryFirstPlaceholder": "ആദ്യം രാജ്യം തിരഞ്ഞെടുക്കുക",
+  "versionHistoryTitle": "പതിപ്പ് ചരിത്രം",
+  "notSetText": "സജ്ജീകരിച്ചിട്ടില്ല",
+  "nameHistory": "പേര്: {name}",
+  "cityHistory": "നഗരം: {city}",
+  "countryHistory": "രാജ്യം: {country}",
+  "genderHistory": "ലിംഗഭേദം: {gender}",
+  "birthDateHistory": "ജനനത്തീയതി: {date}",
+  "birthTimeHistory": "ജനന സമയം: {time}",
+  "locationHistory": "സ്ഥാനം: {latitude}, {longitude}",
+  "timezoneHistory": "സമയമേഖല: GMT{offset}",
+  "dstHistory": "ഡിഎസ്ടി: {value}",
+  "stateHistory": "സ്റ്റേറ്റ്: {state}",
+  "versionFromText": "{date}-ന് അപ്‌ഡേറ്റ് ചെയ്‌തു.",
+  "userIdRequired": "ഉപയോക്തൃ ഐഡി ആവശ്യമാണ്",
+  "profileSaved": "പ്രൊഫൈൽ വിജയകരമായി സംരക്ഷിച്ചു",
+  "saveFailed": "പ്രൊഫൈൽ സംരക്ഷിക്കുന്നതിൽ പരാജയപ്പെട്ടു",
+  "errorPrefix": "പിശക്:",
+  "onboardingChooseLanguage": "നിങ്ങളുടെ ഭാഷ തിരഞ്ഞെടുക്കുക",
+  "onboardingChooseLanguageDesc": "തുടരാൻ നിങ്ങൾക്ക് ഇഷ്ടപ്പെട്ട ഭാഷ തിരഞ്ഞെടുക്കുക.",
+  "onboardingWhatIsAstrology": "ജ്യോതിഷം എന്താണ്?",
+  "onboardingWhatIsAstrologyDesc": "ജ്യോതിഷം ആകാശഗോളങ്ങളെക്കുറിച്ചുള്ള പഠനമാണ്...",
+  "onboardingWhyUseApp": "എന്തുകൊണ്ടാണ് ഈ ആപ്പ് ഉപയോഗിക്കുന്നത്?",
+  "onboardingWhyUseAppDesc": "വ്യക്തിഗതമാക്കിയ ജാതകങ്ങൾ, ദൈനംദിന പ്രവചനങ്ങൾ, അറിവുള്ള തീരുമാനങ്ങൾ എടുക്കുന്നതിനുള്ള മാർഗ്ഗനിർദ്ദേശങ്ങൾ എന്നിവ നേടുക.",
+  "onboardingHowToUse": "ഈ ആപ്പ് എങ്ങനെ ഉപയോഗിക്കാം?",
+  "onboardingHowToUseDesc": "എളുപ്പത്തിൽ നാവിഗേറ്റ് ചെയ്യുക, ദിവസേനയുള്ള ജാതകം പരിശോധിക്കുക, കൃത്യമായ പ്രവചനങ്ങൾക്കായി നിങ്ങളുടെ പ്രൊഫൈൽ കൈകാര്യം ചെയ്യുക.",
+  "onboardingGetStarted": "ആരംഭിക്കുക",
+  "onboardingNewUser": "പുതിയ ഉപയോക്താവ്",
+  "onboardingExistingUser": "നിലവിലുള്ള ഉപയോക്താവ്",
+  "onboardingBack": "തിരികെ",
+  "onboardingNext": "അടുത്തത്",
+  "userIdNotFound": "ഉപയോക്തൃ ഐഡി കണ്ടെത്തിയില്ല. ദയവായി ലോഗിൻ ചെയ്യുക അല്ലെങ്കിൽ നിങ്ങളുടെ പ്രൊഫൈൽ സജ്ജമാക്കുക.",
+  "clearNotificationsTitle": "അറിയിപ്പുകൾ മായ്‌ക്കുക",
+  "clearNotificationsMessage": "എല്ലാ അറിയിപ്പുകളും മായ്ക്കണമെന്ന് നിങ്ങൾക്ക് ഉറപ്പാണോ?",
+  "clearNotificationsSuccess": "എല്ലാ അറിയിപ്പുകളും വിജയകരമായി മായ്ച്ചു.",
+  "clearHoroscopeTitle": "വ്യക്തമായ ജാതകം",
+  "clearHoroscopeMessage": "നിങ്ങളുടെ ജാതക ഡാറ്റ മായ്ക്കണമെന്ന് ഉറപ്പാണോ?",
+  "clearHoroscopeSuccess": "ജാതകം വിജയകരമായി മായ്ച്ചു.",
+  "clearChatTitle": "ചാറ്റ് ചരിത്രം മായ്ക്കുക",
+  "clearChatMessage": "നിങ്ങളുടെ എല്ലാ ചാറ്റ് ചരിത്രവും ഇല്ലാതാക്കണമെന്ന് ഉറപ്പാണോ?",
+  "clearChatLocal": "ചാറ്റ് ലോക്കലായി മായ്ച്ചു.",
+  "deleteAccountTitle": "അക്കൗണ്ട് ഇല്ലാതാക്കുക",
+  "deleteAccountMessage": "നിങ്ങളുടെ അക്കൗണ്ട് ഇല്ലാതാക്കണമെന്ന് ഉറപ്പാണോ? ഇത് നിങ്ങളുടെ എല്ലാ ചാറ്റ് ചരിത്രവും അറിയിപ്പുകളും മായ്ക്കും.",
+  "deleteAccountSuccess": "നിങ്ങളുടെ അക്കൗണ്ടും എല്ലാ ഡാറ്റയും നീക്കം ചെയ്‌തു.",
+  "deleteAccountError": "അക്കൗണ്ട് ഇല്ലാതാക്കുന്നതിൽ പിശക്",
+  "logoutTitle": "ലോഗ്ഔട്ട് ചെയ്യുക",
+  "logoutMessage": "നിങ്ങൾക്ക് ലോഗ് ഔട്ട് ചെയ്യണമെന്ന് ഉറപ്പാണോ?",
+  "termsPrivacyTitle": "നിബന്ധനകളും സ്വകാര്യതയും",
+  "privacyPolicyTitle": "സ്വകാര്യതാ നയം",
+  "termsConditionsTitle": "നിബന്ധനകളും വ്യവസ്ഥകളും",
+  "dataControlTitle": "ഡാറ്റ നിയന്ത്രണം",
+  "cancelButton": "റദ്ദാക്കുക",
+  "confirmButton": "സ്ഥിരീകരിക്കുക",
+  "clearQuestionsSuccess": "എല്ലാ ചോദ്യങ്ങളും വിജയകരമായി ഇല്ലാതാക്കി.",
+  "yoginiLabel": "യോഗിനി",
+  "lordLabel": "യജമാനൻ",
+  "startLabel": "ആരംഭിക്കുക",
+  "recoverAccount": "അക്കൗണ്ട് വീണ്ടെടുക്കുക",
+  "endLabel": "അവസാനിക്കുന്നു",
+  "startDateLabel": "ആരംഭിക്കുന്ന തീയതി",
+  "endDateLabel": "അവസാന തീയതി",
+  "notAvailable": "ലഭ്യമല്ല",
+  "noData": "ഡാറ്റ ഇല്ല",
+  "unknownError": "അജ്ഞാത പിശക്",
+  "retryButton": "വീണ്ടും ശ്രമിക്കുക",
+  "kundaliGeneratorTitle": "കുണ്ഡലി ജനറേറ്റർ",
+  "natalChartTitle": "ജനന ചാർട്ട്",
+  "lagnaLabel": "ലഗ്നം",
+  "rashiLabel": "റാഷി",
+  "ascDegreeLabel": "അസെൻഡന്റ് ഡിഗ്രി",
+  "vimshottariDashaTitle": "വിംഷോത്തരി ദശ",
+  "yoginiDashaTitle": "യോഗിനി ദശ",
+  "unknown": "അജ്ഞാതം",
+  "clearHoroscope": "വ്യക്തമായ ജാതകം",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "അറിയിപ്പുകൾ മായ്‌ക്കുക",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "ചാറ്റ് ചരിത്രം മായ്ക്കുക",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "ലോഗ്ഔട്ട് ചെയ്യുക",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "അക്കൗണ്ട് ഇല്ലാതാക്കുക",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "എല്ലാ ഫീൽഡുകളും പൂരിപ്പിക്കേണ്ടതുണ്ട്.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "അക്കൗണ്ട് വിജയകരമായി വീണ്ടെടുത്തു.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "വീണ്ടെടുക്കൽ പരാജയപ്പെട്ടു. നിങ്ങളുടെ വിവരങ്ങൾ പരിശോധിക്കുക.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "വീണ്ടെടുക്കൽ രഹസ്യം:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "ഞങ്ങളേക്കുറിച്ച്",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "ഞങ്ങളുടെ കമ്പനിയെക്കുറിച്ച്",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "ഞങ്ങളുടെ ഉപയോക്താക്കൾക്ക് ഏറ്റവും മികച്ച ജ്യോതിഷ അനുഭവം നൽകുന്നതിൽ ഞങ്ങൾ പ്രതിജ്ഞാബദ്ധരാണ്.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "ഞങ്ങളുടെ ദൗത്യം",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "ഉപയോക്താക്കൾക്ക് അവരുടെ ജീവിതത്തിൽ അറിവുള്ള തീരുമാനങ്ങൾ എടുക്കാൻ സഹായിക്കുന്നതിന് കൃത്യവും വ്യക്തിപരവുമായ ജ്യോതിഷ ഉൾക്കാഴ്ചകൾ നൽകുന്നതിന്.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "ഞങ്ങളുടെ ദർശനം",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "സാങ്കേതികവിദ്യയും പുരാതന ജ്ഞാനവും സംയോജിപ്പിച്ച് ഏറ്റവും വിശ്വസനീയമായ ജ്യോതിഷ വേദിയായി മാറുക.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "ഞങ്ങളുടെ മൂല്യങ്ങൾ",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "സമഗ്രത, കൃത്യത, ഉപയോക്തൃ കേന്ദ്രീകൃത രൂപകൽപ്പന, തുടർച്ചയായ നവീകരണം.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "ഞങ്ങളെ സമീപിക്കുക",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "ഇമെയിൽ: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "വെബ്സൈറ്റ്: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "ഉപഭോക്തൃ പിന്തുണ",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "സഹായിക്കാൻ ഞങ്ങൾ ഇവിടെയുണ്ട്",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "താഴെയുള്ള ഫോം പൂരിപ്പിക്കുക, ഞങ്ങളുടെ പിന്തുണാ ടീം എത്രയും വേഗം നിങ്ങളെ ബന്ധപ്പെടുന്നതായിരിക്കും.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "നിങ്ങളുടെ പേര്",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "നിങ്ങളുടെ ഇമെയിൽ",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "സന്ദേശം",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "നിങ്ങളുടെ ഇമെയിൽ നൽകുക",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "സാധുവായ ഒരു ഇമെയിൽ വിലാസം നൽകുക",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "{fieldName} നൽകുക",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "അയയ്‌ക്കുക",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "അയയ്ക്കുന്നു...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ ഇമെയിൽ വിജയകരമായി അയച്ചു!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ ഇമെയിൽ അയയ്ക്കുന്നതിൽ പരാജയപ്പെട്ടു",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "ആസ്ട്രോ നിഘണ്ടു",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "തിരയൽ പദങ്ങൾ...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "പദങ്ങളൊന്നും കണ്ടെത്തിയില്ല.",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "ചോദ്യങ്ങൾ വാങ്ങുക",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "ഉപയോക്താവിനെ ആധികാരികമാക്കിയിട്ടില്ല.",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "സ്റ്റോർ ഡാറ്റ ലോഡ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "ഓത്ത് ടോക്കൺ കാണുന്നില്ല",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "ആസ്ട്രോ ചാറ്റ് ആപ്പ്",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ പേയ്‌മെന്റ് വിജയകരം! ചോദ്യം അയച്ചു.",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ പേയ്‌മെന്റ് പരാജയപ്പെട്ടു: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "നിങ്ങളുടെ ബാലൻസ്",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} ചോദ്യങ്ങൾ",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "ലഭ്യമായ ഓഫറുകൾ",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} ചോദ്യം",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "വാങ്ങുക",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 ദൈനംദിന ജാതകം",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "ഉപയോക്തൃ ഐഡി കാണുന്നില്ല.",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "ജാതകം കണ്ടെത്തുന്നതിൽ പരാജയപ്പെട്ടു",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "ജാതകം കണ്ടെത്തിയില്ല.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "അടയാളം",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "ഇന്ന്",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "ഇന്നലെ",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "ഈ ആഴ്ച",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "കഴിഞ്ഞ മാസം",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "ചാറ്റ്",
+  "typeYourQuestionHint": "നിങ്ങളുടെ ചോദ്യം ടൈപ്പ് ചെയ്യുക...",
+  "paymentRequired": "പേയ്‌മെന്റ് ആവശ്യമാണ്",
+  "paymentRequiredMessage": "നിങ്ങളുടെ സൗജന്യ ചോദ്യങ്ങൾ നിങ്ങൾ ഉപയോഗിച്ചു കഴിഞ്ഞു. തുടരാൻ ₹50 അടയ്ക്കുക.",
+  "payNowButton": "ഇപ്പോൾ പണമടയ്‌ക്കുക",
+  "freeQuestionsRemaining": "{count} ബാക്കി സൗജന്യ ചോദ്യങ്ങൾ",
+  "paidQuestionsRemaining": "{count} ബാക്കിയുളള പണമടച്ചുള്ള ചോദ്യങ്ങൾ",
+  "thankYouFeedback": "നിങ്ങളുടെ ഫീഡ്‌ബാക്കിന് നന്ദി!",
+  "ratingSubmitted": "റേറ്റിംഗ് സമർപ്പിച്ചു!",
+  "setUserIdFirst": "ആദ്യം നിങ്ങളുടെ ഉപയോക്തൃ ഐഡി സജ്ജമാക്കുക.",
+  "failedToFetchPrevious": "മുൻ ചോദ്യങ്ങളും ഉത്തരങ്ങളും ലഭ്യമാക്കുന്നതിൽ പരാജയപ്പെട്ടു.",
+  "errorOccurred": "പിശക്: {error}",
+  "drawerAstroProfile": "ആസ്ട്രോ പ്രൊഫൈൽ",
+  "drawerDailyHoroscope": "ദൈനംദിന ജാതകം",
+  "drawerBuyQuestions": "ചോദ്യങ്ങൾ വാങ്ങുക",
+  "drawerAstroDictionary": "ആസ്ട്രോ നിഘണ്ടു",
+  "drawerSettings": "ക്രമീകരണങ്ങൾ",
+  "drawerCustomerSupport": "ഉപഭോക്തൃ പിന്തുണ",
+  "drawerAbout": "കുറിച്ച്",
+  "drawerProfileSettings": "പ്രൊഫൈൽ ക്രമീകരണങ്ങൾ",
+  "demoNotificationTitle": "🔔 ഡെമോ അറിയിപ്പ്",
+  "demoNotificationBody": "ഇത് നിങ്ങളുടെ ആപ്പിൽ നിന്നുള്ള ഒരു പരീക്ഷണ അറിയിപ്പാണ്!",
+  "notificationsTitle": "അറിയിപ്പുകൾ",
+  "noNotifications": "അറിയിപ്പുകളൊന്നുമില്ല",
+  "allTab": "എല്ലാം",
+  "markAllAsRead": "എല്ലാം വായിച്ചതായി അടയാളപ്പെടുത്തുക",
+  "notificationMarkedRead": "അറിയിപ്പ് വായിച്ചതായി അടയാളപ്പെടുത്തി",
+  "failedToLoadNotifications": "അറിയിപ്പുകൾ ലോഡ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു",
+  "failedToMarkRead": "വായിച്ചതായി അടയാളപ്പെടുത്താനായില്ല",
+  "failedToMarkAllRead": "എല്ലാം വായിച്ചതായി അടയാളപ്പെടുത്താനായില്ല",
+  "socketConnected": "സോക്കറ്റ് ബന്ധിപ്പിച്ചു",
+  "socketDisconnected": "സോക്കറ്റ് വിച്ഛേദിച്ചു",
+  "newNotificationReceived": "പുതിയ അറിയിപ്പ് ലഭിച്ചു",
+  "generalCategory": "ജനറൽ",
+  "horoscopeCategory": "ജാതകം",
+  "chatCategory": "ചാറ്റ്",
+  "systemCategory": "സിസ്റ്റം",
+  "updateCategory": "അപ്‌ഡേറ്റുകൾ",
+  "howToAskTitle": "എങ്ങനെ ചോദിക്കാം",
+  "noQuestionsAvailable": "ചോദ്യങ്ങളൊന്നും ലഭ്യമല്ല.",
+  "failedToLoadQuestions": "ചോദ്യങ്ങൾ ലോഡ് ചെയ്യാനായില്ല",
+  "pullToRefresh": "പുതുക്കാൻ വലിക്കുക",
+  "careerCategory": "കരിയർ",
+  "loveCategory": "പ്രണയവും ബന്ധങ്ങളും",
+  "healthCategory": "ആരോഗ്യം",
+  "financeCategory": "സാമ്പത്തിക",
+  "familyCategory": "കുടുംബം",
+  "educationCategory": "വിദ്യാഭ്യാസം",
+  "travelCategory": "യാത്ര",
+  "spiritualCategory": "ആത്മീയം",
+  "profileLoaded": "പ്രൊഫൈൽ വിജയകരമായി ലോഡ് ചെയ്തു",
+  "imageUploaded": "ചിത്രം വിജയകരമായി അപ്‌ലോഡ് ചെയ്തു",
+  "savedInformationConfirmation": "ഞാൻ ഈ വിവരങ്ങൾ സേവ് ചെയ്തിട്ടുണ്ട്.",
+  "noHistoryAvailable": "ചരിത്രമൊന്നും ലഭ്യമല്ല.",
+  "missingUserIdError": "ഉപയോക്തൃ ഐഡി ആവശ്യമാണ്",
+  "networkError": "നെറ്റ്‌വർക്ക് പിശക്. വീണ്ടും ശ്രമിക്കുക.",
+  "timeoutError": "അഭ്യർത്ഥന കാലഹരണപ്പെട്ടു",
+  "genericError": "എന്തോ കുഴപ്പം സംഭവിച്ചു.",
+  "reactionUpdateError": "പ്രതികരണം അപ്ഡേറ്റ് ചെയ്യാനായില്ല",
+  "noSearchResults": "തിരയൽ ഫലങ്ങളൊന്നും കണ്ടെത്തിയില്ല.",
+  "clearSearch": "തിരയൽ മായ്ക്കുക",
+  "resultsFound": "ഫലങ്ങൾ കണ്ടെത്തി",
+  "recoverySecretHint": "കോപ്പി-പേസ്റ്റ് പ്രവർത്തിച്ചേക്കില്ല, സ്വമേധയാ ടൈപ്പ് ചെയ്യുക.",
+  "recoverAccountDescription": "നിങ്ങളുടെ അക്കൗണ്ട് വീണ്ടെടുക്കാൻ ഈ ഘട്ടങ്ങൾ പാലിക്കുക.",
+  "processingLabel": "പ്രോസസ്സ് ചെയ്യുന്നു...",
+  "clearChatSuccess": "ചാറ്റ് വിജയകരമായി മായ്ച്ചു",
+  "notificationsEnabled": "അറിയിപ്പുകൾ പ്രവർത്തനക്ഷമമാക്കി",
+  "notificationsDisabled": "അറിയിപ്പുകൾ പ്രവർത്തനരഹിതമാക്കി",
+  "securityNotice": "നിങ്ങളുടെ ഡാറ്റ സുരക്ഷിതമായി എൻക്രിപ്റ്റ് ചെയ്ത് സൂക്ഷിച്ചിരിക്കുന്നു.",
+  "loading": "ലോഡ് ചെയ്യുന്നു...",
+  "selectLanguage": "ഭാഷ തിരഞ്ഞെടുക്കുക",
+  "onboardingGetStartedDesc": "നിങ്ങളുടെ ഭാഷ തിരഞ്ഞെടുത്തുകൊണ്ട് ആരംഭിക്കുക",
+  "accountRecoveryTitle": "🔐 അക്കൗണ്ട് വീണ്ടെടുക്കൽ വിശദാംശങ്ങൾ",
+  "recoveryInstructions": "ഈ വിവരങ്ങൾ സുരക്ഷിതമായി സംരക്ഷിക്കുക. നിങ്ങളുടെ അക്കൗണ്ട് വീണ്ടെടുക്കാൻ ഇത് ആവശ്യമായി വരും.",
+  "importantNotice": "⚠️ പ്രധാനം:",
+  "astrologerProfileTitle": "ജ്യോതിഷി പ്രൊഫൈൽ",
+  "personalAstrologer": "വ്യക്തിഗത ജ്യോതിഷി",
+  "makePersonalAstrologer": "ഒരു വ്യക്തിഗത ജ്യോതിഷിയെ സൃഷ്ടിക്കുക",
+  "favoriteDescription": "നിങ്ങളുടെ ചോദ്യങ്ങൾക്ക് മുൻഗണന നൽകുന്നത് ഈ ജ്യോതിഷിയായിരിക്കും. ലഭ്യമല്ലെങ്കിൽ, യോഗ്യതയുള്ള മറ്റൊരു ജ്യോതിഷി നിങ്ങളെ സഹായിക്കും.",
+  "educationQualifications": "വിദ്യാഭ്യാസവും യോഗ്യതയും",
+  "aboutSection": "കുറിച്ച്",
+  "shareProfile": "പ്രൊഫൈൽ പങ്കിടുക",
+  "loadingAstrologer": "ജ്യോത്സ്യ വിശദാംശങ്ങൾ ലോഡ് ചെയ്യുന്നു...",
+  "failedToLoadAstrologer": "ജ്യോതിഷികളുടെ വിശദാംശങ്ങൾ ലോഡ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു.",
+  "authenticationRequired": "ആധികാരികത ആവശ്യമാണ്. ദയവായി ലോഗിൻ ചെയ്യുക.",
+  "securityCheckFailed": "സുരക്ഷാ പരിശോധന പരാജയപ്പെട്ടു: {error}",
+  "addedToFavorites": "🎯 {name} ഇപ്പോൾ നിങ്ങളുടെ സ്വകാര്യ ജ്യോതിഷിയാണ്",
+  "removedFromFavorites": "✅ പ്രിയപ്പെട്ടവയിൽ നിന്ന് {name} നീക്കം ചെയ്‌തു.",
+  "toggleFavoriteError": "പ്രിയപ്പെട്ട സ്റ്റാറ്റസ് അപ്ഡേറ്റ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു",
+  "shareMessage": "{name}\n🎓 വിദ്യാഭ്യാസം: {education}\n📜 യോഗ്യത: {qualification}\n⏳ പരിചയം: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "നൽകിയിട്ടില്ല",
+  "reviews": "({count} അവലോകനങ്ങൾ)",
+  "specialties": "പ്രത്യേകതകൾ",
+  "experience": "അനുഭവം",
+  "qualification": "യോഗ്യത",
+  "education": "വിദ്യാഭ്യാസം",
+  "recoveryTips": "• ഈ വിവരങ്ങളുടെ സ്ക്രീൻഷോട്ട് എടുക്കുക\n• സുരക്ഷിതമായ സ്ഥലത്ത് സൂക്ഷിക്കുക\n• ആരുമായും പങ്കിടരുത്\n• ഇത് ഒരിക്കൽ മാത്രമേ കാണിക്കൂ"
+}

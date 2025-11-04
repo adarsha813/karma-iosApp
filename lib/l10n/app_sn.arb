@@ -1,0 +1,439 @@
+{
+  "@@locale": "sn",
+  "settingsTitle": "Settings",
+  "notificationSettings": "Notification Settings",
+  "privacySettings": "Zvakavanzika Settings",
+  "accountSettings": "Account Settings",
+  "languageSettings": "Mutauro Settings",
+  "languageChanged": "Mutauro wakachinja",
+  "existingUserButton": "Ndiri mushandisi aripo",
+  "chooseCountryTitle": "Sarudza Nyika",
+  "yesText": "Ehe",
+  "noText": "Aihwa",
+  "appBarTitle": "Profile Settings",
+  "userIdLabel": "User ID *",
+  "nameLabel": "Zita",
+  "birthCountryLabel": "Nyika Yekuzvarwa",
+  "birthCityLabel": "Birth City",
+  "countrySelectionTitle": "Sarudza nyika yako",
+  "maleLabel": "Murume",
+  "femaleLabel": "Mukadzi",
+  "birthDateLabel": "Birth Date",
+  "birthDatePlaceholder": "Sarudza Zuva Rekuzvarwa",
+  "birthTimeLabel": "Nguva Yekuzvarwa",
+  "birthTimePlaceholder": "Sarudza Nguva Yekuzvarwa",
+  "saveProfileButton": "Sevha Profile",
+  "noCitiesFound": "Hapana maguta awanikwa",
+  "cityPlaceholder": "Pinda muguta mu {country}",
+  "countryFirstPlaceholder": "Sarudza nyika kutanga",
+  "versionHistoryTitle": "Version History",
+  "notSetText": "Not set",
+  "nameHistory": "Zita: {name}",
+  "cityHistory": "Guta: {city}",
+  "countryHistory": "Nyika: {country}",
+  "genderHistory": "Gender: {gender}",
+  "birthDateHistory": "Zuva rekuzvarwa: {date}",
+  "birthTimeHistory": "Nguva yekuzvarwa: {time}",
+  "locationHistory": "Nzvimbo: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Nyika: {state}",
+  "versionFromText": "Yakagadziridzwa pa {date}",
+  "userIdRequired": "Mushandisi ID inodiwa",
+  "profileSaved": "Profile yakachengetedzwa zvakanaka",
+  "saveFailed": "Tatadza kuchengetedza chimiro",
+  "errorPrefix": "Error:",
+  "onboardingChooseLanguage": "Sarudza Mutauro Wako",
+  "onboardingChooseLanguageDesc": "Sarudza mutauro waunoda kuti uenderere mberi.",
+  "onboardingWhatIsAstrology": "Chii chinonzi Astrology?",
+  "onboardingWhatIsAstrologyDesc": "Astrology chidzidzo chemiviri yemudenga...",
+  "onboardingWhyUseApp": "Sei kushandisa iyi app?",
+  "onboardingWhyUseAppDesc": "Tora yakasarudzika horoscopes, kufanotaura kwemazuva ese, uye nhungamiro yekuita sarudzo dzine ruzivo.",
+  "onboardingHowToUse": "Nzira yekushandisa sei iyi app?",
+  "onboardingHowToUseDesc": "Famba zviri nyore, tarisa horoscopes zuva nezuva, uye tonga chimiro chako kuti uwane fungidziro chaiyo.",
+  "onboardingGetStarted": "Tanga",
+  "onboardingNewUser": "Mushandisi Mutsva",
+  "onboardingExistingUser": "Mushandisi Aripo",
+  "onboardingBack": "Back",
+  "onboardingNext": "Next",
+  "userIdNotFound": "ID yemushandisi haina kuwanikwa. Ndokumbira upinde kana kuseta profil yako.",
+  "clearNotificationsTitle": "Clear Notifications",
+  "clearNotificationsMessage": "Une chokwadi chekuti unoda kudzima zviziviso zvese?",
+  "clearNotificationsSuccess": "Zvese zviziviso zvabviswa zvinobudirira.",
+  "clearHoroscopeTitle": "Clear Horoscope",
+  "clearHoroscopeMessage": "Une chokwadi chekuti unoda kudzima data rako rehoroscope?",
+  "clearHoroscopeSuccess": "Horoscope yapedzwa zvinobudirira.",
+  "clearChatTitle": "Bvisa Chat History",
+  "clearChatMessage": "Une chokwadi chekuti unoda kudzima nhoroondo yako yese yekutaura?",
+  "clearChatLocal": "Nhaurirano yadzimwa munharaunda.",
+  "deleteAccountTitle": "Delete Account",
+  "deleteAccountMessage": "Une chokwadi chekuti unoda kudzima account yako? Izvi zvichabvisawo nhoroondo yako yese yekutaura uye zviziviso.",
+  "deleteAccountSuccess": "Akaunti yako nedata rese zvabviswa.",
+  "deleteAccountError": "Pakanganisika pakudzima account",
+  "logoutTitle": "Logout",
+  "logoutMessage": "Une chokwadi chekuti unoda kubuda?",
+  "termsPrivacyTitle": "Terms & Privacy",
+  "privacyPolicyTitle": "Privacy Policy",
+  "termsConditionsTitle": "Terms & Conditions",
+  "dataControlTitle": "Data Control",
+  "cancelButton": "Cancel",
+  "confirmButton": "Confirm",
+  "clearQuestionsSuccess": "Mibvunzo yese yadzimwa zvakanaka.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Ishe",
+  "startLabel": "Tanga",
+  "recoverAccount": "Dzorera Akaunti",
+  "endLabel": "End",
+  "startDateLabel": "Zuva Rokutanga",
+  "endDateLabel": "End Date",
+  "notAvailable": "Not available",
+  "noData": "Hapana data",
+  "unknownError": "Kukanganisa kusingazivikanwe",
+  "retryButton": "Edza zvakare",
+  "kundaliGeneratorTitle": "Kundali Generator",
+  "natalChartTitle": "Natal Chart",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Ascendant Degree",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Unknown",
+  "clearHoroscope": "Clear Horoscope",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Clear Notifications",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Bvisa Chat History",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Logout",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Delete Account",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Minda yese inodiwa.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Akaunti yawanazve zvakanaka.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Kupora kwakundikana. Tarisa ruzivo rwako.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Recovery Secret:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Nezvedu",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Nezve Kambani Yedu",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Isu takazvipira kuendesa yakanakisa ruzivo rwenyeredzi kune vashandisi vedu.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Basa Redu",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Kupa kwakaringana uye yakasarudzika nyeredzi ruzivo rwekubatsira vashandisi kuita sarudzo dzine ruzivo muhupenyu hwavo.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Muono Wedu",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Kuti ive iyo yakavimbika kwazvo nyeredzi chikuva, kubatanidza tekinoroji uye huchenjeri hwekare.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Tsika dzedu",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Kuvimbika, Kururama, Mushandisi-Yepakati Dhizaini, uye Inoenderera Innovation.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Taura nesu",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Email: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Webhusaiti: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Mutengi Tsigiro",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Tiripo Kukubatsira",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Zadza fomu riri pazasi uye timu yedu yekutsigira ichadzoka kwauri nekukurumidza sezvinobvira.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Zita renyu",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Email yako",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Mharidzo",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Isa email yako",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Isa kero yeemail inoshanda",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Pinda {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Send",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Kutumira...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Email yakatumirwa zvinobudirira!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Tatadza kutumira email",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro Dictionary",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Matemu ekutsvaga...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Hapana mazwi awanikwa",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Tenga Mibvunzo",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Mushandisi haana chokwadi",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Tatadza kurodha data remuchitoro",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Chipo chechiratidzo chisipo",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat App",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Kubhadhara kwakabudirira! Mubvunzo wakatumirwa",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Kubhadhara kwatadza: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Yako Balance",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Mibvunzo",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Available Offers",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Mubvunzo",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Buy",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Zuva Nezuva Horoscope",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "ID yemushandisi haipo",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Tatadza kutora mahoroscope",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Hapana horoscope yawanikwa.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Sign",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Nhasi",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Nezuro",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Svondo rino",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Mwedzi Wapera",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Chat",
+  "typeYourQuestionHint": "Nyora mubvunzo wako...",
+  "paymentRequired": "Kubhadhara Kunodiwa",
+  "paymentRequiredMessage": "Washandisa mibvunzo yako yemahara. Bhadhara ₹50 kuti uenderere mberi.",
+  "payNowButton": "Pay Now",
+  "freeQuestionsRemaining": "{count} mibvunzo yemahara yasara",
+  "paidQuestionsRemaining": "{count} mibvunzo yakabhadharwa yasara",
+  "thankYouFeedback": "Ndatenda nemhinduro yako!",
+  "ratingSubmitted": "Rating yatumirwa!",
+  "setUserIdFirst": "Ndokumbira uise ID yako yeMushandisi kutanga",
+  "failedToFetchPrevious": "Tatadza kutora mibvunzo nemhinduro dzapfuura",
+  "errorOccurred": "Error: {error}",
+  "drawerAstroProfile": "Astro Profile",
+  "drawerDailyHoroscope": "Daily Horoscope",
+  "drawerBuyQuestions": "Tenga Mibvunzo",
+  "drawerAstroDictionary": "Astro Dictionary",
+  "drawerSettings": "Settings",
+  "drawerCustomerSupport": "Mutengi Tsigiro",
+  "drawerAbout": "About",
+  "drawerProfileSettings": "Profile Settings",
+  "demoNotificationTitle": "🔔 Demo Notification",
+  "demoNotificationBody": "Ichi chiziviso chekuyedza kubva kuapp yako!",
+  "notificationsTitle": "Notifications",
+  "noNotifications": "Hapana zviziviso",
+  "allTab": "Zvose",
+  "markAllAsRead": "Maka zvese sekuverengwa",
+  "notificationMarkedRead": "Chiziviso chakanyorwa sechaverengwa",
+  "failedToLoadNotifications": "Tatadza kuisa zviziviso",
+  "failedToMarkRead": "Watadza kumaka sekuverengwa",
+  "failedToMarkAllRead": "Tatadza kumaka ese seaverengwa",
+  "socketConnected": "Socket yakabatana",
+  "socketDisconnected": "Socket yakabviswa",
+  "newNotificationReceived": "Chiziviso chitsva chagamuchirwa",
+  "generalCategory": "General",
+  "horoscopeCategory": "Horoscope",
+  "chatCategory": "Chat",
+  "systemCategory": "System",
+  "updateCategory": "Updates",
+  "howToAskTitle": "Mabvunza Sei",
+  "noQuestionsAvailable": "Hapana mibvunzo iripo",
+  "failedToLoadQuestions": "Yatadza kuburitsa mibvunzo",
+  "pullToRefresh": "Dhonza kuti uvandudze",
+  "careerCategory": "Basa",
+  "loveCategory": "Rudo & Hukama",
+  "healthCategory": "Utano",
+  "financeCategory": "Finance",
+  "familyCategory": "Mhuri",
+  "educationCategory": "Dzidzo",
+  "travelCategory": "Travel",
+  "spiritualCategory": "Zvemweya",
+  "profileLoaded": "Profile yakabudirira",
+  "imageUploaded": "Mufananidzo wakwikwidzwa zvakanaka",
+  "savedInformationConfirmation": "Ndachengeta Ruzivo urwu",
+  "noHistoryAvailable": "Hapana nhoroondo iripo",
+  "missingUserIdError": "Mushandisi ID inodiwa",
+  "networkError": "Network kukanganisa. Ndapota edza zvakare.",
+  "timeoutError": "Chikumbiro chapera",
+  "genericError": "Pane chakaipa",
+  "reactionUpdateError": "Tatadza kugadzirisa maitiro",
+  "noSearchResults": "Hapana mibairo yekutsvaga yawanikwa",
+  "clearSearch": "Bvisa kutsvaga",
+  "resultsFound": "Mhinduro dzawanikwa",
+  "recoverySecretHint": "Copy-paste inogona kusashanda, nyora nemaoko",
+  "recoverAccountDescription": "Tevedza nhanho idzi kuti udzore account yako",
+  "processingLabel": "Kugadzira...",
+  "clearChatSuccess": "Chat yadzimwa",
+  "notificationsEnabled": "Zviziviso zvagoneswa",
+  "notificationsDisabled": "Zviziviso zvadzimwa",
+  "securityNotice": "Yako data yakavharidzirwa zvakachengeteka uye kuchengetwa",
+  "loading": "Loading...",
+  "selectLanguage": "Sarudza Mutauro",
+  "onboardingGetStartedDesc": "Tanga nekusarudza mutauro wako",
+  "accountRecoveryTitle": "🔐 Nhoroondo Yekudzoreredza Akaundi",
+  "recoveryInstructions": "Ndapota chengetedza ruzivo urwu zvakachengeteka. Unochida kuti utore account yako.",
+  "importantNotice": "⚠️ Zvakakosha:",
+  "astrologerProfileTitle": "Nhoroondo Yevazivi venyeredzi",
+  "personalAstrologer": "Muzivi Wenyeredzi Pachako",
+  "makePersonalAstrologer": "Ita Muzivi Wenyeredzi Pachako",
+  "favoriteDescription": "Mibvunzo yako inozokosheswa kumuzivi wenyeredzi uyu. Kana usingawanikwe, mumwe muongorori wenyeredzi achakubatsira.",
+  "educationQualifications": "Dzidzo & Zvakakodzera",
+  "aboutSection": "About",
+  "shareProfile": "Share Profile",
+  "loadingAstrologer": "Kurodha ruzivo rwevazivi venyeredzi...",
+  "failedToLoadAstrologer": "Tatadza kuburitsa ruzivo rwevazivi venyeredzi",
+  "authenticationRequired": "Kusimbisa kunodiwa. Ndapota pinda.",
+  "securityCheckFailed": "Chengetedzo yechengetedzo yakundikana: {error}",
+  "addedToFavorites": "🎯 {name} is now your Personal Astrologer",
+  "removedFromFavorites": "✅ Yakabviswa {name} kubva kune vanofarira",
+  "toggleFavoriteError": "Tatadza kugadzirisa favourite status",
+  "shareMessage": "{name}\n🎓 Dzidzo: {education}\n📜 Kukodzera: {qualification}\n⏳ Zvakaitika: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Haana kupihwa",
+  "reviews": "({count} wongororo)",
+  "specialties": "Specialties",
+  "experience": "Zvakaitika",
+  "qualification": "Qualification",
+  "education": "Dzidzo",
+  "recoveryTips": "• Tora skrini yeruzivo urwu\n• Zvichengete munzvimbo yakachengeteka\n• Usagovana nemunhu\n• Izvi zvicharatidzwa kamwe chete"
+}

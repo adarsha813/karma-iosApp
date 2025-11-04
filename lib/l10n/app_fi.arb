@@ -1,0 +1,439 @@
+{
+  "@@locale": "fi",
+  "settingsTitle": "Asetukset",
+  "notificationSettings": "Ilmoitusasetukset",
+  "privacySettings": "Tietosuoja-asetukset",
+  "accountSettings": "Tilin asetukset",
+  "languageSettings": "Kieliasetukset",
+  "languageChanged": "Kieli muuttui",
+  "existingUserButton": "Olen olemassa oleva käyttäjä",
+  "chooseCountryTitle": "Valitse maa",
+  "yesText": "Kyllä",
+  "noText": "Ei",
+  "appBarTitle": "Profiiliasetukset",
+  "userIdLabel": "Käyttäjätunnus *",
+  "nameLabel": "Nimi",
+  "birthCountryLabel": "Syntymämaa",
+  "birthCityLabel": "Syntymäkaupunki",
+  "countrySelectionTitle": "Valitse maasi",
+  "maleLabel": "Uros",
+  "femaleLabel": "Naaras",
+  "birthDateLabel": "Syntymäaika",
+  "birthDatePlaceholder": "Valitse syntymäaika",
+  "birthTimeLabel": "Syntymäaika",
+  "birthTimePlaceholder": "Valitse syntymäaika",
+  "saveProfileButton": "Tallenna profiili",
+  "noCitiesFound": "Ei löytynyt kaupunkeja",
+  "cityPlaceholder": "Syötä kaupunki maassa {country}",
+  "countryFirstPlaceholder": "Valitse ensin maa",
+  "versionHistoryTitle": "Versiohistoria",
+  "notSetText": "Ei asetettu",
+  "nameHistory": "Nimi: {name}",
+  "cityHistory": "Kaupunki: {city}",
+  "countryHistory": "Maa: {country}",
+  "genderHistory": "Sukupuoli: {gender}",
+  "birthDateHistory": "Syntymäaika: {date}",
+  "birthTimeHistory": "Syntymäaika: {time}",
+  "locationHistory": "Sijainti: {latitude}, {longitude}",
+  "timezoneHistory": "Aikavyöhyke: GMT{offset}",
+  "dstHistory": "Kesäaika: {value}",
+  "stateHistory": "Osavaltio: {state}",
+  "versionFromText": "Päivitetty {date}",
+  "userIdRequired": "Käyttäjätunnus vaaditaan",
+  "profileSaved": "Profiili tallennettu onnistuneesti",
+  "saveFailed": "Profiilin tallennus epäonnistui",
+  "errorPrefix": "Virhe:",
+  "onboardingChooseLanguage": "Valitse kieli",
+  "onboardingChooseLanguageDesc": "Valitse haluamasi kieli jatkaaksesi.",
+  "onboardingWhatIsAstrology": "Mitä on astrologia?",
+  "onboardingWhatIsAstrologyDesc": "Astrologia on taivaankappaleiden tutkimusta...",
+  "onboardingWhyUseApp": "Miksi käyttää tätä sovellusta?",
+  "onboardingWhyUseAppDesc": "Hanki henkilökohtaisia horoskooppeja, päivittäisiä ennusteita ja ohjeita tietoon perustuvien päätösten tekemiseen.",
+  "onboardingHowToUse": "Kuinka tätä sovellusta käytetään?",
+  "onboardingHowToUseDesc": "Navigoi helposti, tarkista päivittäiset horoskoopit ja hallinnoi profiiliasi saadaksesi tarkkoja ennusteita.",
+  "onboardingGetStarted": "Aloita",
+  "onboardingNewUser": "Uusi käyttäjä",
+  "onboardingExistingUser": "Nykyinen käyttäjä",
+  "onboardingBack": "Takaisin",
+  "onboardingNext": "Seuraava",
+  "userIdNotFound": "Käyttäjätunnusta ei löytynyt. Kirjaudu sisään tai luo profiilisi.",
+  "clearNotificationsTitle": "Tyhjennä ilmoitukset",
+  "clearNotificationsMessage": "Haluatko varmasti tyhjentää kaikki ilmoitukset?",
+  "clearNotificationsSuccess": "Kaikki ilmoitukset poistettu onnistuneesti.",
+  "clearHoroscopeTitle": "Selkeä horoskooppi",
+  "clearHoroscopeMessage": "Oletko varma, että haluat tyhjentää horoskooppitietosi?",
+  "clearHoroscopeSuccess": "Horoskooppi tyhjennetty onnistuneesti.",
+  "clearChatTitle": "Tyhjennä keskusteluhistoria",
+  "clearChatMessage": "Oletko varma, että haluat poistaa koko keskusteluhistoriasi?",
+  "clearChatLocal": "Keskustelu tyhjennetty paikallisesti.",
+  "deleteAccountTitle": "Poista tili",
+  "deleteAccountMessage": "Haluatko varmasti poistaa tilisi? Tämä tyhjentää myös kaiken keskusteluhistoriasi ja ilmoituksesi.",
+  "deleteAccountSuccess": "Tilisi ja kaikki tiedot on poistettu.",
+  "deleteAccountError": "Virhe tilin poistamisessa",
+  "logoutTitle": "Kirjaudu ulos",
+  "logoutMessage": "Haluatko varmasti kirjautua ulos?",
+  "termsPrivacyTitle": "Käyttöehdot ja tietosuoja",
+  "privacyPolicyTitle": "Tietosuojakäytäntö",
+  "termsConditionsTitle": "Käyttöehdot",
+  "dataControlTitle": "Tietojen hallinta",
+  "cancelButton": "Peruuttaa",
+  "confirmButton": "Vahvistaa",
+  "clearQuestionsSuccess": "Kaikki kysymykset poistettu onnistuneesti.",
+  "yoginiLabel": "Jogini",
+  "lordLabel": "Herra",
+  "startLabel": "Aloita",
+  "recoverAccount": "Palauta tili",
+  "endLabel": "Loppu",
+  "startDateLabel": "Aloituspäivämäärä",
+  "endDateLabel": "Päättymispäivä",
+  "notAvailable": "Ei saatavilla",
+  "noData": "Ei tietoja",
+  "unknownError": "Tuntematon virhe",
+  "retryButton": "Yritä uudelleen",
+  "kundaliGeneratorTitle": "Kundali-generaattori",
+  "natalChartTitle": "Syntymäkartta",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Raši",
+  "ascDegreeLabel": "Nouseva tutkinto",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Tuntematon",
+  "clearHoroscope": "Selkeä horoskooppi",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Tyhjennä ilmoitukset",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Tyhjennä keskusteluhistoria",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Kirjaudu ulos",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Poista tili",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Kaikki kentät ovat pakollisia.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Tili palautettu onnistuneesti.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Palautus epäonnistui. Tarkista tietosi.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Palautumisen salaisuus:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Tietoa meistä",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Tietoa yrityksestämme",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Olemme sitoutuneet tarjoamaan käyttäjillemme parhaan mahdollisen astrologiakokemuksen.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Missiomme",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Tarjota tarkkoja ja yksilöllisiä astrologisia näkemyksiä, jotka auttavat käyttäjiä tekemään tietoon perustuvia päätöksiä elämässään.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Visiomme",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Tulla luotetuimmaksi astrologia-alustaksi, joka yhdistää teknologian ja muinaisen viisauden.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Arvomme",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Rehellisyys, tarkkuus, käyttäjäkeskeinen suunnittelu ja jatkuva innovaatio.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Ota yhteyttä",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Sähköposti: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Verkkosivusto: www.omayritys.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Asiakastuki",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Olemme täällä auttaaksemme",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Täytä alla oleva lomake, niin tukitiimimme ottaa sinuun yhteyttä mahdollisimman pian.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Sinun nimesi",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Sähköpostiosoitteesi",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Viesti",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Anna sähköpostiosoitteesi",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Anna kelvollinen sähköpostiosoite",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Syötä {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Lähetä",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Lähetetään...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Sähköposti lähetetty onnistuneesti!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Sähköpostin lähettäminen epäonnistui",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro-sanakirja",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Hakutermit...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Ei termejä",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Osta kysymykset",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Käyttäjää ei ole todennettu",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Kauppatietojen lataus epäonnistui",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Puuttuva todennustunnus",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro-chat-sovellus",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Maksu onnistui! Kysymys lähetetty",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Maksu epäonnistui: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Saldosi",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Kysymykset",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Saatavilla olevat tarjoukset",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Kysymys",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Ostaa",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Päivän horoskooppi",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Käyttäjätunnus puuttuu",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Horoskooppien hakeminen epäonnistui",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Horoskooppia ei löytynyt.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Merkki",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Tänään",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Eilen",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Tällä viikolla",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Viime kuukausi",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Chat",
+  "typeYourQuestionHint": "Kirjoita kysymyksesi...",
+  "paymentRequired": "Maksu vaaditaan",
+  "paymentRequiredMessage": "Olet käyttänyt ilmaiset kysymyksesi. Maksa 50 ₹ jatkaaksesi.",
+  "payNowButton": "Maksa nyt",
+  "freeQuestionsRemaining": "{count} ilmaista kysymystä jäljellä",
+  "paidQuestionsRemaining": "{count} maksettua kysymystä jäljellä",
+  "thankYouFeedback": "Kiitos palautteestasi!",
+  "ratingSubmitted": "Arvosana lähetetty!",
+  "setUserIdFirst": "Aseta ensin käyttäjätunnuksesi",
+  "failedToFetchPrevious": "Aiempien kysymysten ja vastausten hakeminen epäonnistui",
+  "errorOccurred": "Virhe: {error}",
+  "drawerAstroProfile": "Astro-profiili",
+  "drawerDailyHoroscope": "Päivän horoskooppi",
+  "drawerBuyQuestions": "Osta kysymykset",
+  "drawerAstroDictionary": "Astro-sanakirja",
+  "drawerSettings": "Asetukset",
+  "drawerCustomerSupport": "Asiakastuki",
+  "drawerAbout": "Noin",
+  "drawerProfileSettings": "Profiiliasetukset",
+  "demoNotificationTitle": "🔔 Demoilmoitus",
+  "demoNotificationBody": "Tämä on testi-ilmoitus sovelluksestasi!",
+  "notificationsTitle": "Ilmoitukset",
+  "noNotifications": "Ei ilmoituksia",
+  "allTab": "Kaikki",
+  "markAllAsRead": "Merkitse kaikki luetuiksi",
+  "notificationMarkedRead": "Ilmoitus merkitty luetuksi",
+  "failedToLoadNotifications": "Ilmoitusten lataaminen epäonnistui",
+  "failedToMarkRead": "Luetuksi merkitseminen epäonnistui",
+  "failedToMarkAllRead": "Kaikkien merkitseminen luetuiksi epäonnistui",
+  "socketConnected": "Pistorasia kytketty",
+  "socketDisconnected": "Pistorasia irti",
+  "newNotificationReceived": "Uusi ilmoitus vastaanotettu",
+  "generalCategory": "Yleistä",
+  "horoscopeCategory": "Horoskooppi",
+  "chatCategory": "Chat",
+  "systemCategory": "Järjestelmä",
+  "updateCategory": "Päivitykset",
+  "howToAskTitle": "Kuinka kysyä",
+  "noQuestionsAvailable": "Ei kysymyksiä saatavilla",
+  "failedToLoadQuestions": "Kysymysten lataaminen epäonnistui",
+  "pullToRefresh": "Vedä päivittääksesi",
+  "careerCategory": "Ura",
+  "loveCategory": "Rakkaus ja ihmissuhteet",
+  "healthCategory": "Terveys",
+  "financeCategory": "Rahoitus",
+  "familyCategory": "Perhe",
+  "educationCategory": "Koulutus",
+  "travelCategory": "Matkustaa",
+  "spiritualCategory": "Hengellinen",
+  "profileLoaded": "Profiili ladattu onnistuneesti",
+  "imageUploaded": "Kuva ladattu onnistuneesti",
+  "savedInformationConfirmation": "Olen tallentanut nämä tiedot",
+  "noHistoryAvailable": "Ei historiaa saatavilla",
+  "missingUserIdError": "Käyttäjätunnus vaaditaan",
+  "networkError": "Verkkovirhe. Yritä uudelleen.",
+  "timeoutError": "Pyyntö aikakatkaistiin",
+  "genericError": "Jokin meni pieleen",
+  "reactionUpdateError": "Reaktion päivittäminen epäonnistui",
+  "noSearchResults": "Ei hakutuloksia",
+  "clearSearch": "Tyhjennä haku",
+  "resultsFound": "Tulokset löytyivät",
+  "recoverySecretHint": "Kopioi-liitä ei välttämättä toimi, kirjoita manuaalisesti",
+  "recoverAccountDescription": "Palauta tilisi noudattamalla näitä ohjeita",
+  "processingLabel": "Käsitellään...",
+  "clearChatSuccess": "Keskustelu onnistui",
+  "notificationsEnabled": "Ilmoitukset käytössä",
+  "notificationsDisabled": "Ilmoitukset poistettu käytöstä",
+  "securityNotice": "Tietosi salataan ja tallennetaan turvallisesti",
+  "loading": "Ladataan...",
+  "selectLanguage": "Valitse kieli",
+  "onboardingGetStartedDesc": "Aloita valitsemalla kielesi",
+  "accountRecoveryTitle": "🔐 Tilin palautustiedot",
+  "recoveryInstructions": "Säilytä nämä tiedot turvallisesti. Tarvitset niitä tilisi palauttamiseen.",
+  "importantNotice": "⚠️ Tärkeää:",
+  "astrologerProfileTitle": "Astrologin profiili",
+  "personalAstrologer": "Henkilökohtainen astrologi",
+  "makePersonalAstrologer": "Tee henkilökohtainen astrologi",
+  "favoriteDescription": "Kysymyksesi ohjataan tälle astrologille. Jos hän ei ole tavoitettavissa, toinen pätevä astrologi auttaa sinua.",
+  "educationQualifications": "Koulutus ja pätevyydet",
+  "aboutSection": "Noin",
+  "shareProfile": "Jaa profiili",
+  "loadingAstrologer": "Astrologin tietoja ladataan...",
+  "failedToLoadAstrologer": "Astrologin tietojen lataaminen epäonnistui",
+  "authenticationRequired": "Todennus vaaditaan. Kirjaudu sisään.",
+  "securityCheckFailed": "Turvatarkistus epäonnistui: {error}",
+  "addedToFavorites": "🎯 {name} on nyt henkilökohtainen astrologisi",
+  "removedFromFavorites": "✅ Poistettu {name} suosikeista",
+  "toggleFavoriteError": "Suosikki-tilan päivittäminen epäonnistui",
+  "shareMessage": "{name}\n🎓 Koulutus: {education}\n📜 Pätevyys: {qualification}\n⏳ Kokemus: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Ei annettu",
+  "reviews": "({count} arvostelua)",
+  "specialties": "Erikoisuudet",
+  "experience": "Kokea",
+  "qualification": "pätevyys",
+  "education": "Koulutus",
+  "recoveryTips": "• Ota kuvakaappaus näistä tiedoista\n• Säilytä niitä turvallisessa paikassa\n• Älä jaa niitä kenenkään kanssa\n• Nämä näytetään vain kerran"
+}

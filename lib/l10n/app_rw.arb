@@ -1,0 +1,439 @@
+{
+  "@@locale": "rw",
+  "settingsTitle": "Igenamiterere",
+  "notificationSettings": "Igenamiterere",
+  "privacySettings": "Igenamiterere ryibanga",
+  "accountSettings": "Igenamiterere rya Konti",
+  "languageSettings": "Igenamiterere ry'ururimi",
+  "languageChanged": "Ururimi rwarahindutse",
+  "existingUserButton": "Ndi umukoresha uriho",
+  "chooseCountryTitle": "Hitamo Igihugu",
+  "yesText": "Yego",
+  "noText": "Oya",
+  "appBarTitle": "Igenamiterere ry'umwirondoro",
+  "userIdLabel": "ID ID *",
+  "nameLabel": "Izina",
+  "birthCountryLabel": "Igihugu cy'amavuko",
+  "birthCityLabel": "Umujyi wavukiye",
+  "countrySelectionTitle": "Hitamo igihugu cyawe",
+  "maleLabel": "Umugabo",
+  "femaleLabel": "Umugore",
+  "birthDateLabel": "Itariki y'amavuko",
+  "birthDatePlaceholder": "Hitamo Itariki Yavutse",
+  "birthTimeLabel": "Igihe cyo kuvuka",
+  "birthTimePlaceholder": "Hitamo Igihe cyo kuvuka",
+  "saveProfileButton": "Bika Umwirondoro",
+  "noCitiesFound": "Nta mijyi yabonetse",
+  "cityPlaceholder": "Enter city in {country}",
+  "countryFirstPlaceholder": "Hitamo igihugu mbere",
+  "versionHistoryTitle": "Amateka ya verisiyo",
+  "notSetText": "Ntabwo yashyizweho",
+  "nameHistory": "Name: {name}",
+  "cityHistory": "City: {city}",
+  "countryHistory": "Country: {country}",
+  "genderHistory": "Gender: {gender}",
+  "birthDateHistory": "Birth Date: {date}",
+  "birthTimeHistory": "Birth Time: {time}",
+  "locationHistory": "Location: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "State: {state}",
+  "versionFromText": "Updated on {date}",
+  "userIdRequired": "ID ID irakenewe",
+  "profileSaved": "Umwirondoro wabitswe neza",
+  "saveFailed": "Kunanirwa kubika umwirondoro",
+  "errorPrefix": "Ikosa:",
+  "onboardingChooseLanguage": "Hitamo Ururimi rwawe",
+  "onboardingChooseLanguageDesc": "Hitamo ururimi ukunda kugirango ukomeze.",
+  "onboardingWhatIsAstrology": "Kuraguza inyenyeri ni iki?",
+  "onboardingWhatIsAstrologyDesc": "Kuraguza inyenyeri nubushakashatsi bwimibiri yo mwijuru ...",
+  "onboardingWhyUseApp": "Kuki ukoresha iyi porogaramu?",
+  "onboardingWhyUseAppDesc": "Shaka horoscopes yihariye, guhanura burimunsi, nubuyobozi bwo gufata ibyemezo byuzuye.",
+  "onboardingHowToUse": "Nigute ushobora gukoresha iyi porogaramu?",
+  "onboardingHowToUseDesc": "Kuyobora byoroshye, genzura horoscopes ya buri munsi, kandi ucunge umwirondoro wawe kugirango uhanure neza.",
+  "onboardingGetStarted": "Tangira",
+  "onboardingNewUser": "Umukoresha mushya",
+  "onboardingExistingUser": "Umukoresha uriho",
+  "onboardingBack": "Inyuma",
+  "onboardingNext": "Ibikurikira",
+  "userIdNotFound": "Indangamuntu y'abakoresha ntabwo yabonetse. Nyamuneka injira cyangwa ushireho umwirondoro wawe.",
+  "clearNotificationsTitle": "Kumenyesha neza",
+  "clearNotificationsMessage": "Uzi neza ko ushaka gukuraho amatangazo yose?",
+  "clearNotificationsSuccess": "Amatangazo yose yasibwe neza.",
+  "clearHoroscopeTitle": "Horoscope",
+  "clearHoroscopeMessage": "Uzi neza ko ushaka gukuraho amakuru ya horoscope?",
+  "clearHoroscopeSuccess": "Horoscope yahanaguwe neza.",
+  "clearChatTitle": "Sobanura Amateka y'Ibiganiro",
+  "clearChatMessage": "Uzi neza ko ushaka gusiba amateka yawe yose yo kuganira?",
+  "clearChatLocal": "Ikiganiro cyakuweho.",
+  "deleteAccountTitle": "Siba Konti",
+  "deleteAccountMessage": "Uzi neza ko ushaka gusiba konte yawe? Ibi kandi bizahanagura amateka yawe yose yo kuganira no kumenyeshwa.",
+  "deleteAccountSuccess": "Konti yawe hamwe namakuru yose yakuweho.",
+  "deleteAccountError": "Ikosa ryo gusiba konti",
+  "logoutTitle": "Kwinjira",
+  "logoutMessage": "Uzi neza ko ushaka gusohoka?",
+  "termsPrivacyTitle": "Amabwiriza & Ibanga",
+  "privacyPolicyTitle": "Politiki Yibanga",
+  "termsConditionsTitle": "Amabwiriza",
+  "dataControlTitle": "Kugenzura amakuru",
+  "cancelButton": "Kureka",
+  "confirmButton": "Emeza",
+  "clearQuestionsSuccess": "Ibibazo byose byasibwe neza.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Mwami",
+  "startLabel": "Tangira",
+  "recoverAccount": "Kugarura Konti",
+  "endLabel": "Iherezo",
+  "startDateLabel": "Itariki yo gutangiriraho",
+  "endDateLabel": "Itariki yo kurangiriraho",
+  "notAvailable": "Ntiboneka",
+  "noData": "Nta makuru",
+  "unknownError": "Ikosa ritazwi",
+  "retryButton": "Ongera ugerageze",
+  "kundaliGeneratorTitle": "Kundali Generator",
+  "natalChartTitle": "Imbonerahamwe ya Natal",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Impamyabumenyi",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Ntazwi",
+  "clearHoroscope": "Horoscope",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Kumenyesha neza",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Sobanura Amateka y'Ibiganiro",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Kwinjira",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Siba Konti",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Imirima yose irakenewe.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Konti yagaruwe neza.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Gusubirana byarananiranye. Reba amakuru yawe.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Ibanga ryo Kugarura:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Ibyerekeye Twebwe",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Ibyerekeye Isosiyete Yacu",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Twiyemeje kugeza uburambe bwiza bw'inyenyeri kubakoresha.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Inshingano zacu",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Gutanga inyenyeri nyazo zo kuraguza inyenyeri zifasha abakoresha gufata ibyemezo mubuzima bwabo.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Icyerekezo cyacu",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Kugirango ube urubuga rwizewe rwinyenyeri, ruhuza ikoranabuhanga nubwenge bwa kera.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Indangagaciro",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Ubunyangamugayo, Ukuri, Umukoresha-Hagati Igishushanyo, hamwe no guhanga udushya.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Twandikire",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Imeri: inkunga@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Urubuga: www.urubuga rwawe",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Inkunga y'abakiriya",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Turi hano kugirango dufashe",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Uzuza iyi fomu hepfo hanyuma itsinda ryacu ridutera inkunga rizakugarukira vuba bishoboka.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Izina ryawe",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Imeri yawe",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Ubutumwa",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Injira imeri yawe",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Injiza imeri yemewe",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Enter {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Ohereza",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Kohereza ...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "Mail Imeri yoherejwe neza!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "Kunanirwa kohereza imeri",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Inkoranyamagambo",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Amagambo yo gushakisha ...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Nta magambo yabonetse",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Gura Ibibazo",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Umukoresha ntabwo yemewe",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Kunanirwa gupakira amakuru yububiko",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Kubura auth token",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Ikiganiro cya Astro",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "Kwishura neza! Ikibazo cyoherejwe",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Payment failed: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Impirimbanyi yawe",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Questions",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Impano Ziboneka",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Question",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Gura",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "Hor Horoscope ya buri munsi",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Indangamuntu y'abakoresha irabuze",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Kunanirwa kuzana horoscopes",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Nta horoscope yabonetse.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Shyira umukono",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Uyu munsi",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Ejo",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Muri iki cyumweru",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Ukwezi gushize",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Kuganira",
+  "typeYourQuestionHint": "Andika ikibazo cyawe ...",
+  "paymentRequired": "Birasabwa Kwishura",
+  "paymentRequiredMessage": "Wakoresheje ibibazo byubusa. Kwishura ₹ 50 kugirango ukomeze.",
+  "payNowButton": "Iyishyure nonaha",
+  "freeQuestionsRemaining": "{count} free questions remaining",
+  "paidQuestionsRemaining": "{count} paid questions remaining",
+  "thankYouFeedback": "Urakoze kubitekerezo byawe!",
+  "ratingSubmitted": "Urutonde rwatanzwe!",
+  "setUserIdFirst": "Nyamuneka shyira indangamuntu yawe mbere",
+  "failedToFetchPrevious": "Kunanirwa kuzana ibibazo nibisubizo byabanje",
+  "errorOccurred": "Error: {error}",
+  "drawerAstroProfile": "Umwirondoro wa Astro",
+  "drawerDailyHoroscope": "Horoscope ya buri munsi",
+  "drawerBuyQuestions": "Gura Ibibazo",
+  "drawerAstroDictionary": "Inkoranyamagambo",
+  "drawerSettings": "Igenamiterere",
+  "drawerCustomerSupport": "Inkunga y'abakiriya",
+  "drawerAbout": "Ibyerekeye",
+  "drawerProfileSettings": "Igenamiterere ry'umwirondoro",
+  "demoNotificationTitle": "Not Kumenyesha Demo",
+  "demoNotificationBody": "Ubu ni integuza yikizamini muri porogaramu yawe!",
+  "notificationsTitle": "Kumenyesha",
+  "noNotifications": "Nta menyesha",
+  "allTab": "Byose",
+  "markAllAsRead": "Shyira akamenyetso nkuko wasomwe",
+  "notificationMarkedRead": "Imenyekanisha ryashyizweho nkuko ryasomwe",
+  "failedToLoadNotifications": "Kunanirwa kwimenyesha",
+  "failedToMarkRead": "Kunanirwa gushira akamenyetso nkuko byasomwe",
+  "failedToMarkAllRead": "Kunanirwa gushiraho ibimenyetso byose nkuko byasomwe",
+  "socketConnected": "Sock ihujwe",
+  "socketDisconnected": "Sock yaciwe",
+  "newNotificationReceived": "Imenyekanisha rishya ryakiriwe",
+  "generalCategory": "Jenerali",
+  "horoscopeCategory": "Horoscope",
+  "chatCategory": "Kuganira",
+  "systemCategory": "Sisitemu",
+  "updateCategory": "Ibishya",
+  "howToAskTitle": "Uburyo bwo Kubaza",
+  "noQuestionsAvailable": "Nta kibazo gihari",
+  "failedToLoadQuestions": "Kunanirwa gupakira ibibazo",
+  "pullToRefresh": "Kurura kugarura ubuyanja",
+  "careerCategory": "Umwuga",
+  "loveCategory": "Urukundo & Isano",
+  "healthCategory": "Ubuzima",
+  "financeCategory": "Imari",
+  "familyCategory": "Umuryango",
+  "educationCategory": "Uburezi",
+  "travelCategory": "Urugendo",
+  "spiritualCategory": "Umwuka",
+  "profileLoaded": "Umwirondoro wuzuye neza",
+  "imageUploaded": "Ishusho yoherejwe neza",
+  "savedInformationConfirmation": "Nabitse aya makuru",
+  "noHistoryAvailable": "Nta mateka aboneka",
+  "missingUserIdError": "ID ID irakenewe",
+  "networkError": "Ikosa ry'urusobe. Nyamuneka gerageza.",
+  "timeoutError": "Gusaba igihe cyateganijwe",
+  "genericError": "Ikintu kitagenze neza",
+  "reactionUpdateError": "Kunanirwa kuvugurura reaction",
+  "noSearchResults": "Nta bisubizo by'ishakisha byabonetse",
+  "clearSearch": "Gushakisha neza",
+  "resultsFound": "Ibisubizo byabonetse",
+  "recoverySecretHint": "Gukoporora-paste ntishobora gukora, andika intoki",
+  "recoverAccountDescription": "Kurikiza izi ntambwe kugirango ugarure konte yawe",
+  "processingLabel": "Gutunganya ...",
+  "clearChatSuccess": "Ikiganiro cyatsinzwe neza",
+  "notificationsEnabled": "Kumenyesha birashoboka",
+  "notificationsDisabled": "Amatangazo yarahagaritswe",
+  "securityNotice": "Amakuru yawe arahishe neza kandi arabitswe",
+  "loading": "Kuremera ...",
+  "selectLanguage": "Hitamo Ururimi",
+  "onboardingGetStartedDesc": "Tangira uhitamo ururimi rwawe",
+  "accountRecoveryTitle": "🔐 Ibisobanuro birambuye kuri konti",
+  "recoveryInstructions": "Nyamuneka uzigame aya makuru neza. Uzakenera kugarura konte yawe.",
+  "importantNotice": "Ingenzi:",
+  "astrologerProfileTitle": "Umwirondoro w'inyenyeri",
+  "personalAstrologer": "Kuraguza inyenyeri",
+  "makePersonalAstrologer": "Kora inyenyeri kugiti cyawe",
+  "favoriteDescription": "Ibibazo byawe bizashyirwa imbere kuriyi nyenyeri. Niba bidashoboka, undi munyenyeri wujuje ibyangombwa azagufasha.",
+  "educationQualifications": "Uburezi & Impamyabumenyi",
+  "aboutSection": "Ibyerekeye",
+  "shareProfile": "Sangira Umwirondoro",
+  "loadingAstrologer": "Gupakira inyenyeri zirambuye ...",
+  "failedToLoadAstrologer": "Kunanirwa gupakira inyenyeri zirambuye",
+  "authenticationRequired": "Kwemeza birakenewe. Nyamuneka injira.",
+  "securityCheckFailed": "Security check failed: {error}",
+  "addedToFavorites": "🎯 {name} is now your Personal Astrologer",
+  "removedFromFavorites": "✅ Removed {name} from favorites",
+  "toggleFavoriteError": "Kunanirwa kuvugurura imiterere ukunda",
+  "shareMessage": "{name}\n🎓 Education: {education}\n📜 Qualification: {qualification}\n⏳ Experience: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Ntabwo yatanzwe",
+  "reviews": "({count} reviews)",
+  "specialties": "Umwihariko",
+  "experience": "Uburambe",
+  "qualification": "Impamyabumenyi",
+  "education": "Uburezi",
+  "recoveryTips": "• Fata amashusho yaya makuru\n• Ubike ahantu hizewe\n• Ntugasangire n'umuntu uwo ari we wese\n• Ibi bizerekanwa rimwe gusa"
+}

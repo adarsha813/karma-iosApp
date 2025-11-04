@@ -1,0 +1,439 @@
+{
+  "@@locale": "sv",
+  "settingsTitle": "Inställningar",
+  "notificationSettings": "Aviseringsinställningar",
+  "privacySettings": "Sekretessinställningar",
+  "accountSettings": "Kontoinställningar",
+  "languageSettings": "Språkinställningar",
+  "languageChanged": "Språket har ändrats",
+  "existingUserButton": "Jag är en befintlig användare",
+  "chooseCountryTitle": "Välj land",
+  "yesText": "Ja",
+  "noText": "Inga",
+  "appBarTitle": "Profilinställningar",
+  "userIdLabel": "Användar-ID *",
+  "nameLabel": "Namn",
+  "birthCountryLabel": "Födelseland",
+  "birthCityLabel": "Födelsestad",
+  "countrySelectionTitle": "Välj ditt land",
+  "maleLabel": "Manlig",
+  "femaleLabel": "Kvinnlig",
+  "birthDateLabel": "Födelsedatum",
+  "birthDatePlaceholder": "Välj födelsedatum",
+  "birthTimeLabel": "Födelsetid",
+  "birthTimePlaceholder": "Välj födelsetid",
+  "saveProfileButton": "Spara profil",
+  "noCitiesFound": "Inga städer hittades",
+  "cityPlaceholder": "Ange stad i {country}",
+  "countryFirstPlaceholder": "Välj land först",
+  "versionHistoryTitle": "Versionshistorik",
+  "notSetText": "Inte inställd",
+  "nameHistory": "Namn: {name}",
+  "cityHistory": "Stad: {city}",
+  "countryHistory": "Land: {country}",
+  "genderHistory": "Kön: {gender}",
+  "birthDateHistory": "Födelsedatum: {date}",
+  "birthTimeHistory": "Födelsetid: {time}",
+  "locationHistory": "Plats: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT{offset}",
+  "dstHistory": "Sommartid: {value}",
+  "stateHistory": "Tillstånd: {state}",
+  "versionFromText": "Uppdaterad {date}",
+  "userIdRequired": "Användar-ID krävs",
+  "profileSaved": "Profilen har sparats",
+  "saveFailed": "Kunde inte spara profilen",
+  "errorPrefix": "Fel:",
+  "onboardingChooseLanguage": "Välj ditt språk",
+  "onboardingChooseLanguageDesc": "Välj ditt önskade språk för att fortsätta.",
+  "onboardingWhatIsAstrology": "Vad är astrologi?",
+  "onboardingWhatIsAstrologyDesc": "Astrologi är läran om himlakroppar...",
+  "onboardingWhyUseApp": "Varför använda den här appen?",
+  "onboardingWhyUseAppDesc": "Få personliga horoskop, dagliga förutsägelser och vägledning för att fatta välgrundade beslut.",
+  "onboardingHowToUse": "Hur använder man den här appen?",
+  "onboardingHowToUseDesc": "Navigera enkelt, kolla dagliga horoskop och hantera din profil för korrekta förutsägelser.",
+  "onboardingGetStarted": "Kom igång",
+  "onboardingNewUser": "Ny användare",
+  "onboardingExistingUser": "Befintlig användare",
+  "onboardingBack": "Tillbaka",
+  "onboardingNext": "Nästa",
+  "userIdNotFound": "Användar-ID hittades inte. Vänligen logga in eller skapa din profil.",
+  "clearNotificationsTitle": "Rensa aviseringar",
+  "clearNotificationsMessage": "Är du säker på att du vill rensa alla aviseringar?",
+  "clearNotificationsSuccess": "Alla aviseringar har raderats.",
+  "clearHoroscopeTitle": "Tydligt horoskop",
+  "clearHoroscopeMessage": "Är du säker på att du vill rensa dina horoskopdata?",
+  "clearHoroscopeSuccess": "Horoskopet har rensats.",
+  "clearChatTitle": "Rensa chatthistorik",
+  "clearChatMessage": "Är du säker på att du vill radera all din chatthistorik?",
+  "clearChatLocal": "Chatten har rensats lokalt.",
+  "deleteAccountTitle": "Ta bort konto",
+  "deleteAccountMessage": "Är du säker på att du vill radera ditt konto? Detta kommer även att rensa all din chatthistorik och alla aviseringar.",
+  "deleteAccountSuccess": "Ditt konto och all data har tagits bort.",
+  "deleteAccountError": "Fel vid borttagning av konto",
+  "logoutTitle": "Utloggning",
+  "logoutMessage": "Är du säker på att du vill logga ut?",
+  "termsPrivacyTitle": "Villkor och sekretess",
+  "privacyPolicyTitle": "Integritetspolicy",
+  "termsConditionsTitle": "Villkor",
+  "dataControlTitle": "Datakontroll",
+  "cancelButton": "Avboka",
+  "confirmButton": "Bekräfta",
+  "clearQuestionsSuccess": "Alla frågor har raderats.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Lord",
+  "startLabel": "Start",
+  "recoverAccount": "Återställ konto",
+  "endLabel": "Avsluta",
+  "startDateLabel": "Startdatum",
+  "endDateLabel": "Slutdatum",
+  "notAvailable": "Inte tillgänglig",
+  "noData": "Inga uppgifter",
+  "unknownError": "Okänt fel",
+  "retryButton": "Försöka igen",
+  "kundaliGeneratorTitle": "Kundali-generator",
+  "natalChartTitle": "Födelsehoroskop",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Ascendantgrad",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Okänd",
+  "clearHoroscope": "Tydligt horoskop",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Rensa aviseringar",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Rensa chatthistorik",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Utloggning",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Ta bort konto",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Alla fält är obligatoriska.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Kontot har återställts.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Återställningen misslyckades. Kontrollera din information.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Återhämtningshemligheten:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Om oss",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Om vårt företag",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Vi strävar efter att leverera den bästa astrologiupplevelsen till våra användare.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Vårt uppdrag",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Att ge korrekta och personliga astrologiska insikter för att hjälpa användare att fatta välgrundade beslut i sina liv.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Vår vision",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Att bli den mest betrodda astrologiplattformen, som kombinerar teknologi och uråldrig visdom.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Våra värderingar",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Integritet, noggrannhet, användarcentrerad design och kontinuerlig innovation.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Kontakta oss",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "E-post: support@dittföretag.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Webbplats: www.dittföretag.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Kundsupport",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Vi finns här för att hjälpa till",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Fyll i formuläret nedan så återkommer vårt supportteam till dig så snart som möjligt.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Ditt namn",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Din e-postadress",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Meddelande",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Ange din e-postadress",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Ange en giltig e-postadress",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Ange {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Skicka",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Sändning...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ E-postmeddelandet har skickats!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Misslyckades med att skicka e-post",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro-ordbok",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Söktermer...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Inga termer hittades",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Köpfrågor",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Användaren är inte autentiserad",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Misslyckades med att ladda butiksdata",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Saknad autentiseringstoken",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat-appen",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Betalning lyckad! Fråga skickad",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Betalningen misslyckades: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Ditt saldo",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Frågor",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Tillgängliga erbjudanden",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Fråga",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Köpa",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Dagligt horoskop",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Användar-ID saknas",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Misslyckades med att hämta horoskop",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Inget horoskop hittades.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Tecken",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "I dag",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "I går",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Denna vecka",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Förra månaden",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Chatt",
+  "typeYourQuestionHint": "Skriv din fråga...",
+  "paymentRequired": "Betalning krävs",
+  "paymentRequiredMessage": "Du har använt dina gratisfrågor. Betala ₹50 för att fortsätta.",
+  "payNowButton": "Betala nu",
+  "freeQuestionsRemaining": "{count} lediga frågor kvar",
+  "paidQuestionsRemaining": "{count} betalda frågor kvar",
+  "thankYouFeedback": "Tack för din feedback!",
+  "ratingSubmitted": "Betyg skickat!",
+  "setUserIdFirst": "Vänligen ange ditt användar-ID först",
+  "failedToFetchPrevious": "Misslyckades med att hämta tidigare frågor och svar",
+  "errorOccurred": "Fel: {error}",
+  "drawerAstroProfile": "Astro-profil",
+  "drawerDailyHoroscope": "Dagligt horoskop",
+  "drawerBuyQuestions": "Köpfrågor",
+  "drawerAstroDictionary": "Astro-ordbok",
+  "drawerSettings": "Inställningar",
+  "drawerCustomerSupport": "Kundsupport",
+  "drawerAbout": "Om",
+  "drawerProfileSettings": "Profilinställningar",
+  "demoNotificationTitle": "🔔 Demomeddelande",
+  "demoNotificationBody": "Detta är en testavisering från din app!",
+  "notificationsTitle": "Aviseringar",
+  "noNotifications": "Inga aviseringar",
+  "allTab": "Alla",
+  "markAllAsRead": "Markera alla som lästa",
+  "notificationMarkedRead": "Avisering markerad som läst",
+  "failedToLoadNotifications": "Det gick inte att läsa in aviseringar",
+  "failedToMarkRead": "Kunde inte markera som läst",
+  "failedToMarkAllRead": "Misslyckades med att markera alla som lästa",
+  "socketConnected": "Uttag anslutet",
+  "socketDisconnected": "Uttaget frånkopplat",
+  "newNotificationReceived": "Ny anmälan mottagen",
+  "generalCategory": "Allmän",
+  "horoscopeCategory": "Horoskop",
+  "chatCategory": "Chatt",
+  "systemCategory": "System",
+  "updateCategory": "Uppdateringar",
+  "howToAskTitle": "Hur man frågar",
+  "noQuestionsAvailable": "Inga frågor tillgängliga",
+  "failedToLoadQuestions": "Misslyckades med att ladda frågorna",
+  "pullToRefresh": "Dra för att uppdatera",
+  "careerCategory": "Karriär",
+  "loveCategory": "Kärlek och relationer",
+  "healthCategory": "Hälsa",
+  "financeCategory": "Finansiera",
+  "familyCategory": "Familj",
+  "educationCategory": "Utbildning",
+  "travelCategory": "Resa",
+  "spiritualCategory": "Andlig",
+  "profileLoaded": "Profilen har laddats",
+  "imageUploaded": "Bilden har laddats upp",
+  "savedInformationConfirmation": "Jag har sparat den här informationen",
+  "noHistoryAvailable": "Ingen historik tillgänglig",
+  "missingUserIdError": "Användar-ID krävs",
+  "networkError": "Nätverksfel. Försök igen.",
+  "timeoutError": "Begäran har nått tidsgränsen",
+  "genericError": "Något gick fel",
+  "reactionUpdateError": "Misslyckades med att uppdatera reaktionen",
+  "noSearchResults": "Inga sökresultat hittades",
+  "clearSearch": "Rensa sökningen",
+  "resultsFound": "Resultat funna",
+  "recoverySecretHint": "Kopiera och klistra kanske inte fungerar, skriv manuellt",
+  "recoverAccountDescription": "Följ dessa steg för att återställa ditt konto",
+  "processingLabel": "Bearbetar...",
+  "clearChatSuccess": "Chatten har rensats",
+  "notificationsEnabled": "Aviseringar aktiverade",
+  "notificationsDisabled": "Aviseringar inaktiverade",
+  "securityNotice": "Dina data är säkert krypterade och lagrade",
+  "loading": "Belastning...",
+  "selectLanguage": "Välj språk",
+  "onboardingGetStartedDesc": "Kom igång genom att välja ditt språk",
+  "accountRecoveryTitle": "🔐 Detaljer om kontoåterställning",
+  "recoveryInstructions": "Spara informationen på ett säkert sätt. Du behöver den för att återställa ditt konto.",
+  "importantNotice": "⚠️ Viktigt:",
+  "astrologerProfileTitle": "Astrologprofil",
+  "personalAstrologer": "Personlig astrolog",
+  "makePersonalAstrologer": "Gör dig till personlig astrolog",
+  "favoriteDescription": "Dina frågor kommer att prioriteras till denna astrolog. Om du inte är tillgänglig kommer en annan kvalificerad astrolog att hjälpa dig.",
+  "educationQualifications": "Utbildning och kvalifikationer",
+  "aboutSection": "Om",
+  "shareProfile": "Dela profil",
+  "loadingAstrologer": "Laddar astrologuppgifter...",
+  "failedToLoadAstrologer": "Misslyckades med att ladda astrologuppgifter",
+  "authenticationRequired": "Autentisering krävs. Vänligen logga in.",
+  "securityCheckFailed": "Säkerhetskontrollen misslyckades: {error}",
+  "addedToFavorites": "🎯 {name} är nu din personliga astrolog",
+  "removedFromFavorites": "✅ Tog bort {name} från favoriter",
+  "toggleFavoriteError": "Misslyckades med att uppdatera favoritstatusen",
+  "shareMessage": "{name}\n🎓 Utbildning: {education}\n📜 Kvalifikation: {qualification}\n⏳ Erfarenhet: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Inte tillhandahållet",
+  "reviews": "({count} recensioner)",
+  "specialties": "Specialiteter",
+  "experience": "Uppleva",
+  "qualification": "Kompetens",
+  "education": "Utbildning",
+  "recoveryTips": "• Ta en skärmdump av informationen\n• Förvara den på ett säkert ställe\n• Dela den inte med någon\n• Detta visas bara en gång"
+}

@@ -1,0 +1,439 @@
+{
+  "@@locale": "de",
+  "settingsTitle": "Einstellungen",
+  "notificationSettings": "Benachrichtigungseinstellungen",
+  "privacySettings": "Datenschutzeinstellungen",
+  "accountSettings": "Kontoeinstellungen",
+  "languageSettings": "Spracheinstellungen",
+  "languageChanged": "Sprache geändert",
+  "existingUserButton": "Ich bin bereits ein Benutzer.",
+  "chooseCountryTitle": "Land auswählen",
+  "yesText": "Ja",
+  "noText": "NEIN",
+  "appBarTitle": "Profileinstellungen",
+  "userIdLabel": "Benutzer-ID *",
+  "nameLabel": "Name",
+  "birthCountryLabel": "Geburtsland",
+  "birthCityLabel": "Geburtsort",
+  "countrySelectionTitle": "Wählen Sie Ihr Land",
+  "maleLabel": "Männlich",
+  "femaleLabel": "Weiblich",
+  "birthDateLabel": "Geburtsdatum",
+  "birthDatePlaceholder": "Geburtsdatum auswählen",
+  "birthTimeLabel": "Geburtszeit",
+  "birthTimePlaceholder": "Geburtszeit auswählen",
+  "saveProfileButton": "Profil speichern",
+  "noCitiesFound": "Keine Städte gefunden",
+  "cityPlaceholder": "Geben Sie die Stadt in {country} ein.",
+  "countryFirstPlaceholder": "Wählen Sie zuerst das Land aus.",
+  "versionHistoryTitle": "Versionsverlauf",
+  "notSetText": "Nicht festgelegt",
+  "nameHistory": "Name: {name}",
+  "cityHistory": "Stadt: {city}",
+  "countryHistory": "Land: {country}",
+  "genderHistory": "Geschlecht: {gender}",
+  "birthDateHistory": "Geburtsdatum: {date}",
+  "birthTimeHistory": "Geburtszeit: {time}",
+  "locationHistory": "Standort: {latitude}, {longitude}",
+  "timezoneHistory": "Zeitzone: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Bundesland: {state}",
+  "versionFromText": "Aktualisiert am {date}",
+  "userIdRequired": "Benutzer-ID erforderlich",
+  "profileSaved": "Profil erfolgreich gespeichert",
+  "saveFailed": "Profil konnte nicht gespeichert werden",
+  "errorPrefix": "Fehler:",
+  "onboardingChooseLanguage": "Wählen Sie Ihre Sprache",
+  "onboardingChooseLanguageDesc": "Wählen Sie Ihre bevorzugte Sprache, um fortzufahren.",
+  "onboardingWhatIsAstrology": "Was ist Astrologie?",
+  "onboardingWhatIsAstrologyDesc": "Astrologie ist die Lehre von den Himmelskörpern...",
+  "onboardingWhyUseApp": "Warum diese App nutzen?",
+  "onboardingWhyUseAppDesc": "Erhalten Sie personalisierte Horoskope, tägliche Vorhersagen und Ratschläge, um fundierte Entscheidungen zu treffen.",
+  "onboardingHowToUse": "Wie benutzt man diese App?",
+  "onboardingHowToUseDesc": "Navigieren Sie einfach, lesen Sie Ihre Tageshoroskope und verwalten Sie Ihr Profil für präzise Vorhersagen.",
+  "onboardingGetStarted": "Los geht's",
+  "onboardingNewUser": "Neuer Benutzer",
+  "onboardingExistingUser": "Bestehender Benutzer",
+  "onboardingBack": "Zurück",
+  "onboardingNext": "Nächste",
+  "userIdNotFound": "Benutzer-ID nicht gefunden. Bitte melden Sie sich an oder richten Sie Ihr Profil ein.",
+  "clearNotificationsTitle": "Benachrichtigungen löschen",
+  "clearNotificationsMessage": "Möchten Sie wirklich alle Benachrichtigungen löschen?",
+  "clearNotificationsSuccess": "Alle Benachrichtigungen wurden erfolgreich gelöscht.",
+  "clearHoroscopeTitle": "Klares Horoskop",
+  "clearHoroscopeMessage": "Möchten Sie Ihre Horoskopdaten wirklich löschen?",
+  "clearHoroscopeSuccess": "Horoskop erfolgreich gelöscht.",
+  "clearChatTitle": "Chatverlauf löschen",
+  "clearChatMessage": "Möchtest du wirklich deinen gesamten Chatverlauf löschen?",
+  "clearChatLocal": "Chat wurde lokal gelöscht.",
+  "deleteAccountTitle": "Konto löschen",
+  "deleteAccountMessage": "Möchten Sie Ihr Konto wirklich löschen? Dadurch werden auch Ihr gesamter Chatverlauf und alle Benachrichtigungen gelöscht.",
+  "deleteAccountSuccess": "Ihr Konto und alle zugehörigen Daten wurden gelöscht.",
+  "deleteAccountError": "Fehler beim Löschen des Kontos",
+  "logoutTitle": "Abmelden",
+  "logoutMessage": "Möchten Sie sich wirklich abmelden?",
+  "termsPrivacyTitle": "Nutzungsbedingungen und Datenschutz",
+  "privacyPolicyTitle": "Datenschutzrichtlinie",
+  "termsConditionsTitle": "Allgemeine Geschäftsbedingungen",
+  "dataControlTitle": "Datenkontrolle",
+  "cancelButton": "Stornieren",
+  "confirmButton": "Bestätigen",
+  "clearQuestionsSuccess": "Alle Fragen wurden erfolgreich gelöscht.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Herr",
+  "startLabel": "Start",
+  "recoverAccount": "Konto wiederherstellen",
+  "endLabel": "Ende",
+  "startDateLabel": "Startdatum",
+  "endDateLabel": "Enddatum",
+  "notAvailable": "Nicht verfügbar",
+  "noData": "Keine Daten",
+  "unknownError": "Unbekannter Fehler",
+  "retryButton": "Wiederholen",
+  "kundaliGeneratorTitle": "Kundali-Generator",
+  "natalChartTitle": "Geburtsdiagramm",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Aszendent",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Unbekannt",
+  "clearHoroscope": "Klares Horoskop",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Benachrichtigungen löschen",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Chatverlauf löschen",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Abmelden",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Konto löschen",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Alle Felder sind Pflichtfelder.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Konto erfolgreich wiederhergestellt.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Die Wiederherstellung ist fehlgeschlagen. Überprüfen Sie Ihre Angaben.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Geheimnis der Genesung:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Über uns",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Über unser Unternehmen",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Wir sind bestrebt, unseren Nutzern das beste Astrologie-Erlebnis zu bieten.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Unsere Mission",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Um präzise und personalisierte astrologische Einblicke zu bieten, die den Nutzern helfen, fundierte Entscheidungen in ihrem Leben zu treffen.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Unsere Vision",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Ziel ist es, die vertrauenswürdigste Astrologie-Plattform zu werden, indem Technologie und uralte Weisheit miteinander verbunden werden.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Unsere Werte",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Integrität, Genauigkeit, nutzerzentriertes Design und kontinuierliche Innovation.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Kontaktieren Sie uns",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "E-Mail: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Website: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Kundensupport",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Wir sind hier, um zu helfen.",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Füllen Sie das untenstehende Formular aus, und unser Support-Team wird sich schnellstmöglich bei Ihnen melden.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Ihr Name",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Ihre E-Mail",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Nachricht",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Geben Sie Ihre E-Mail-Adresse ein",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Geben Sie eine gültige E-Mail-Adresse ein.",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Geben Sie {fieldName} ein.",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Schicken",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Wird gesendet...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ E-Mail erfolgreich versendet!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ E-Mail konnte nicht gesendet werden",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro-Wörterbuch",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Suchbegriffe...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Keine Begriffe gefunden",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Kauffragen",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Benutzer nicht authentifiziert",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Fehler beim Laden der Speicherdaten",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Fehlendes Authentifizierungstoken",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat App",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Zahlung erfolgreich! Frage gesendet",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Zahlung fehlgeschlagen: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Ihr Guthaben",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Fragen",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Verfügbare Angebote",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Frage",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Kaufen",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Tageshoroskop",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Die Benutzer-ID fehlt.",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Horoskope konnten nicht abgerufen werden",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Kein Horoskop gefunden.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Zeichen",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Heute",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Gestern",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Diese Woche",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Letzter Monat",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Chat",
+  "typeYourQuestionHint": "Geben Sie Ihre Frage ein...",
+  "paymentRequired": "Zahlung erforderlich",
+  "paymentRequiredMessage": "Sie haben Ihre kostenlosen Fragen aufgebraucht. Zahlen Sie 50 ₹, um fortzufahren.",
+  "payNowButton": "Jetzt bezahlen",
+  "freeQuestionsRemaining": "{count} verbleibende freie Fragen",
+  "paidQuestionsRemaining": "{count} verbleibende bezahlte Fragen",
+  "thankYouFeedback": "Vielen Dank für Ihr Feedback!",
+  "ratingSubmitted": "Bewertung abgegeben!",
+  "setUserIdFirst": "Bitte legen Sie zuerst Ihre Benutzer-ID fest.",
+  "failedToFetchPrevious": "Vorherige Fragen und Antworten konnten nicht abgerufen werden.",
+  "errorOccurred": "Fehler: {error}",
+  "drawerAstroProfile": "Astroprofil",
+  "drawerDailyHoroscope": "Tageshoroskop",
+  "drawerBuyQuestions": "Kauffragen",
+  "drawerAstroDictionary": "Astro-Wörterbuch",
+  "drawerSettings": "Einstellungen",
+  "drawerCustomerSupport": "Kundensupport",
+  "drawerAbout": "Um",
+  "drawerProfileSettings": "Profileinstellungen",
+  "demoNotificationTitle": "🔔 Demo-Benachrichtigung",
+  "demoNotificationBody": "Dies ist eine Testbenachrichtigung Ihrer App!",
+  "notificationsTitle": "Benachrichtigungen",
+  "noNotifications": "Keine Benachrichtigungen",
+  "allTab": "Alle",
+  "markAllAsRead": "Alle als gelesen markieren",
+  "notificationMarkedRead": "Benachrichtigung als gelesen markiert",
+  "failedToLoadNotifications": "Benachrichtigungen konnten nicht geladen werden",
+  "failedToMarkRead": "Fehler beim Markieren als gelesen",
+  "failedToMarkAllRead": "Alle Artikel konnten nicht als gelesen markiert werden.",
+  "socketConnected": "Steckdose angeschlossen",
+  "socketDisconnected": "Steckdose getrennt",
+  "newNotificationReceived": "Neue Benachrichtigung erhalten",
+  "generalCategory": "Allgemein",
+  "horoscopeCategory": "Horoskop",
+  "chatCategory": "Chat",
+  "systemCategory": "System",
+  "updateCategory": "Aktualisierungen",
+  "howToAskTitle": "Wie man fragt",
+  "noQuestionsAvailable": "Keine Fragen verfügbar",
+  "failedToLoadQuestions": "Fragen konnten nicht geladen werden",
+  "pullToRefresh": "Zum Aktualisieren ziehen",
+  "careerCategory": "Karriere",
+  "loveCategory": "Liebe & Beziehungen",
+  "healthCategory": "Gesundheit",
+  "financeCategory": "Finanzen",
+  "familyCategory": "Familie",
+  "educationCategory": "Ausbildung",
+  "travelCategory": "Reisen",
+  "spiritualCategory": "Spirituell",
+  "profileLoaded": "Profil erfolgreich geladen",
+  "imageUploaded": "Bild erfolgreich hochgeladen",
+  "savedInformationConfirmation": "Ich habe diese Informationen gespeichert.",
+  "noHistoryAvailable": "Keine Historie verfügbar",
+  "missingUserIdError": "Benutzer-ID erforderlich",
+  "networkError": "Netzwerkfehler. Bitte versuchen Sie es erneut.",
+  "timeoutError": "Zeitüberschreitung der Anfrage",
+  "genericError": "Etwas ist schiefgelaufen.",
+  "reactionUpdateError": "Reaktion konnte nicht aktualisiert werden",
+  "noSearchResults": "Es wurden keine Suchergebnisse gefunden.",
+  "clearSearch": "Suche löschen",
+  "resultsFound": "Ergebnisse gefunden",
+  "recoverySecretHint": "Kopieren und Einfügen funktioniert möglicherweise nicht, bitte manuell eingeben.",
+  "recoverAccountDescription": "Befolgen Sie diese Schritte, um Ihr Konto wiederherzustellen.",
+  "processingLabel": "Verarbeitung...",
+  "clearChatSuccess": "Chat erfolgreich gelöscht",
+  "notificationsEnabled": "Benachrichtigungen aktiviert",
+  "notificationsDisabled": "Benachrichtigungen deaktiviert",
+  "securityNotice": "Ihre Daten werden sicher verschlüsselt und gespeichert.",
+  "loading": "Laden...",
+  "selectLanguage": "Sprache auswählen",
+  "onboardingGetStartedDesc": "Beginnen Sie, indem Sie Ihre Sprache auswählen.",
+  "accountRecoveryTitle": "🔐 Details zur Kontowiederherstellung",
+  "recoveryInstructions": "Bitte bewahren Sie diese Informationen sicher auf. Sie benötigen sie, um Ihr Konto wiederherzustellen.",
+  "importantNotice": "⚠️ Wichtig:",
+  "astrologerProfileTitle": "Astrologenprofil",
+  "personalAstrologer": "Persönlicher Astrologe",
+  "makePersonalAstrologer": "Persönlichen Astrologen erstellen",
+  "favoriteDescription": "Ihre Fragen werden diesem Astrologen vorrangig vorgelegt. Sollte dieser nicht verfügbar sein, wird Ihnen ein anderer qualifizierter Astrologe weiterhelfen.",
+  "educationQualifications": "Ausbildung & Qualifikationen",
+  "aboutSection": "Um",
+  "shareProfile": "Profil teilen",
+  "loadingAstrologer": "Astrologendetails werden geladen...",
+  "failedToLoadAstrologer": "Astrologendetails konnten nicht geladen werden",
+  "authenticationRequired": "Authentifizierung erforderlich. Bitte melden Sie sich an.",
+  "securityCheckFailed": "Sicherheitsprüfung fehlgeschlagen: {error}",
+  "addedToFavorites": "🎯 {name} ist jetzt Ihr persönlicher Astrologe",
+  "removedFromFavorites": "✅ {name} aus den Favoriten entfernt",
+  "toggleFavoriteError": "Status der Favoriten konnte nicht aktualisiert werden",
+  "shareMessage": "{name}\n🎓 Ausbildung: {education}\n📜 Qualifikation: {qualification}\n⏳ Berufserfahrung: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Nicht angegeben",
+  "reviews": "({count} Rezensionen)",
+  "specialties": "Spezialgebiete",
+  "experience": "Erfahrung",
+  "qualification": "Qualifikation",
+  "education": "Ausbildung",
+  "recoveryTips": "• Erstellen Sie einen Screenshot dieser Informationen.\n\n• Bewahren Sie ihn an einem sicheren Ort auf.\n\n• Geben Sie ihn nicht an Dritte weiter.\n\nDiese Information wird nur einmal angezeigt."
+}

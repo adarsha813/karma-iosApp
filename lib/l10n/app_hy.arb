@@ -1,0 +1,439 @@
+{
+  "@@locale": "hy",
+  "settingsTitle": "Կարգավորումներ",
+  "notificationSettings": "Ծանուցումների կարգավորումներ",
+  "privacySettings": "Գաղտնիության կարգավորումներ",
+  "accountSettings": "Հաշվի կարգավորումներ",
+  "languageSettings": "Լեզվի կարգավորումներ",
+  "languageChanged": "Լեզուն փոխվել է",
+  "existingUserButton": "Ես արդեն իսկ գրանցված օգտատեր եմ",
+  "chooseCountryTitle": "Ընտրեք երկիրը",
+  "yesText": "Այո",
+  "noText": "Ոչ",
+  "appBarTitle": "Պրոֆիլի կարգավորումներ",
+  "userIdLabel": "Օգտատիրոջ ID *",
+  "nameLabel": "Անուն",
+  "birthCountryLabel": "Ծննդյան երկիր",
+  "birthCityLabel": "Ծննդավայր",
+  "countrySelectionTitle": "Ընտրեք ձեր երկիրը",
+  "maleLabel": "Արական",
+  "femaleLabel": "Իգական",
+  "birthDateLabel": "Ծննդյան ամսաթիվ",
+  "birthDatePlaceholder": "Ընտրեք ծննդյան ամսաթիվը",
+  "birthTimeLabel": "Ծննդյան ժամը",
+  "birthTimePlaceholder": "Ընտրեք ծննդյան ժամը",
+  "saveProfileButton": "Պահպանել պրոֆիլը",
+  "noCitiesFound": "Քաղաքներ չեն գտնվել",
+  "cityPlaceholder": "Մուտքագրեք քաղաքը {country} դաշտում",
+  "countryFirstPlaceholder": "Նախ ընտրեք երկիրը",
+  "versionHistoryTitle": "Տարբերակների պատմություն",
+  "notSetText": "Սահմանված չէ",
+  "nameHistory": "Անուն՝ {name}",
+  "cityHistory": "Քաղաք՝ {city}",
+  "countryHistory": "Երկիր՝ {country}",
+  "genderHistory": "Սեռը՝ {gender}",
+  "birthDateHistory": "Ծննդյան ամսաթիվ՝ {date}",
+  "birthTimeHistory": "Ծննդյան ժամը՝ {time}",
+  "locationHistory": "Գտնվելու վայրը՝ {latitude}, {longitude}",
+  "timezoneHistory": "Ժամային գոտի՝ GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Վիճակ՝ {state}",
+  "versionFromText": "Թարմացվել է {date}-ին",
+  "userIdRequired": "Օգտատիրոջ ID-ն պարտադիր է",
+  "profileSaved": "Պրոֆիլը հաջողությամբ պահպանվեց",
+  "saveFailed": "Չհաջողվեց պահպանել պրոֆիլը",
+  "errorPrefix": "Սխալ՝",
+  "onboardingChooseLanguage": "Ընտրեք ձեր լեզուն",
+  "onboardingChooseLanguageDesc": "Շարունակելու համար ընտրեք ձեր նախընտրած լեզուն։",
+  "onboardingWhatIsAstrology": "Ի՞նչ է աստղագուշակությունը։",
+  "onboardingWhatIsAstrologyDesc": "Աստղագուշակությունը երկնային մարմինների ուսումնասիրությունն է...",
+  "onboardingWhyUseApp": "Ինչու՞ օգտագործել այս հավելվածը։",
+  "onboardingWhyUseAppDesc": "Ստացեք անհատականացված հորոսկոպներ, ամենօրյա կանխատեսումներ և ուղեցույց՝ տեղեկացված որոշումներ կայացնելու համար։",
+  "onboardingHowToUse": "Ինչպե՞ս օգտագործել այս հավելվածը։",
+  "onboardingHowToUseDesc": "Հեշտությամբ նավարկեք, ստուգեք ամենօրյա հորոսկոպները և կառավարեք ձեր պրոֆիլը՝ ճշգրիտ կանխատեսումներ ստանալու համար։",
+  "onboardingGetStarted": "Սկսել",
+  "onboardingNewUser": "Նոր օգտատեր",
+  "onboardingExistingUser": "Գոյություն ունեցող օգտատեր",
+  "onboardingBack": "Հետ",
+  "onboardingNext": "Հաջորդը",
+  "userIdNotFound": "Օգտատիրոջ ID-ն չի գտնվել։ Մուտք գործեք կամ կարգավորեք ձեր պրոֆիլը։",
+  "clearNotificationsTitle": "Մաքրել ծանուցումները",
+  "clearNotificationsMessage": "Վստա՞հ եք, որ ուզում եք մաքրել բոլոր ծանուցումները։",
+  "clearNotificationsSuccess": "Բոլոր ծանուցումները հաջողությամբ մաքրվեցին։",
+  "clearHoroscopeTitle": "Մաքուր հորոսկոպ",
+  "clearHoroscopeMessage": "Վստա՞հ եք, որ ուզում եք մաքրել ձեր հորոսկոպի տվյալները։",
+  "clearHoroscopeSuccess": "Հորոսկոպը հաջողությամբ մաքրվեց։",
+  "clearChatTitle": "Մաքրել զրույցի պատմությունը",
+  "clearChatMessage": "Վստա՞հ եք, որ ուզում եք ջնջել ձեր զրույցի ամբողջ պատմությունը։",
+  "clearChatLocal": "Զրույցը մաքրվել է տեղական մակարդակով։",
+  "deleteAccountTitle": "Ջնջել հաշիվը",
+  "deleteAccountMessage": "Վստա՞հ եք, որ ուզում եք ջնջել ձեր հաշիվը: Սա նաև կջնջի ձեր բոլոր զրույցների պատմությունը և ծանուցումները:",
+  "deleteAccountSuccess": "Ձեր հաշիվը և բոլոր տվյալները հեռացվել են։",
+  "deleteAccountError": "Հաշիվը ջնջելիս սխալ առաջացավ։",
+  "logoutTitle": "Ելք",
+  "logoutMessage": "Վստա՞հ եք, որ ուզում եք դուրս գալ։",
+  "termsPrivacyTitle": "Պայմաններ և գաղտնիություն",
+  "privacyPolicyTitle": "Գաղտնիության քաղաքականություն",
+  "termsConditionsTitle": "Պայմաններ և դրույթներ",
+  "dataControlTitle": "Տվյալների վերահսկողություն",
+  "cancelButton": "Չեղարկել",
+  "confirmButton": "Հաստատել",
+  "clearQuestionsSuccess": "Բոլոր հարցերը հաջողությամբ ջնջվեցին։",
+  "yoginiLabel": "Յոգինի",
+  "lordLabel": "Տեր",
+  "startLabel": "Սկսել",
+  "recoverAccount": "Վերականգնել հաշիվը",
+  "endLabel": "Ավարտ",
+  "startDateLabel": "Սկզբի ամսաթիվ",
+  "endDateLabel": "Ավարտի ամսաթիվ",
+  "notAvailable": "Հասանելի չէ",
+  "noData": "Տվյալներ չկան",
+  "unknownError": "Անհայտ սխալ",
+  "retryButton": "Կրկին փորձել",
+  "kundaliGeneratorTitle": "Կունդալիի գեներատոր",
+  "natalChartTitle": "Ծննդյան քարտեզ",
+  "lagnaLabel": "Լագնա",
+  "rashiLabel": "Ռաշի",
+  "ascDegreeLabel": "Ասցենդենտ աստիճան",
+  "vimshottariDashaTitle": "Վիմշոտարի Դաշա",
+  "yoginiDashaTitle": "Յոգինի Դաշա",
+  "unknown": "Անհայտ",
+  "clearHoroscope": "Մաքուր հորոսկոպ",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Մաքրել ծանուցումները",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Մաքրել զրույցի պատմությունը",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Ելք",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Ջնջել հաշիվը",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Բոլոր դաշտերը պարտադիր են։",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Հաշիվը հաջողությամբ վերականգնվեց։",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Վերականգնումը ձախողվեց։ Ստուգեք ձեր տեղեկությունները։",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Վերականգնման գաղտնիքը.",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Մեր մասին",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Մեր ընկերության մասին",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Մենք հանձնառու ենք մեր օգտատերերին լավագույն աստղագուշակական փորձը մատուցելուն։",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Մեր առաքելությունը",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Տրամադրել ճշգրիտ և անհատականացված աստղագուշակական պատկերացումներ՝ օգտատերերին օգնելու կայացնել տեղեկացված որոշումներ իրենց կյանքում։",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Մեր տեսլականը",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Դառնալ ամենահուսալի աստղագուշակության հարթակը՝ համատեղելով տեխնոլոգիան և հին իմաստությունը։",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Մեր արժեքները",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Ամբողջականություն, ճշգրտություն, օգտատերակենտրոն դիզայն և շարունակական նորարարություն։",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Կապ մեզ հետ",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Էլ․ հասցե՝ support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Կայք՝ www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Հաճախորդների աջակցություն",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Մենք այստեղ ենք՝ օգնելու համար",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Լրացրեք ստորև բերված ձևը, և մեր աջակցության թիմը կկապվի ձեզ հետ հնարավորինս շուտ։",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Ձեր անունը",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Ձեր էլ. փոստը",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Հաղորդագրություն",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Մուտքագրեք ձեր էլ․ հասցեն",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Մուտքագրեք վավեր էլեկտրոնային հասցե",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Մուտքագրեք {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Ուղարկել",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Ուղարկվում է...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Էլ․ փոստը հաջողությամբ ուղարկվեց։",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Էլ․փոստը չհաջողվեց ուղարկել",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Աստղագիտական բառարան",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Որոնման տերմիններ...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Տերմիններ չեն գտնվել",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Գնման հարցեր",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Օգտատերը չի հաստատվել",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Չհաջողվեց բեռնել խանութի տվյալները",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Հաստատման տոկենը բացակայում է",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat հավելված",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Վճարումը հաջողվեց։ Հարցն ուղարկված է։",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Վճարումը ձախողվեց՝ {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Ձեր մնացորդը",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Հարցեր",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Հասանելի առաջարկներ",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Հարց",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Գնել",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Օրական հորոսկոպ",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Օգտատիրոջ ID-ն բացակայում է",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Չհաջողվեց ստանալ հորոսկոպները",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Հորոսկոպ չի գտնվել։",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Նշան",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Այսօր",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Երեկ",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Այս շաբաթ",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Անցյալ ամիս",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Զրուցարան",
+  "typeYourQuestionHint": "Մուտքագրեք ձեր հարցը...",
+  "paymentRequired": "Վճարումը պարտադիր է",
+  "paymentRequiredMessage": "Դուք օգտագործել եք ձեր անվճար հարցերը։ Վճարեք ₹50՝ շարունակելու համար։",
+  "payNowButton": "Վճարեք հիմա",
+  "freeQuestionsRemaining": "{count} Մնացել են անվճար հարցեր",
+  "paidQuestionsRemaining": "{count} վճարովի հարցեր են մնացել",
+  "thankYouFeedback": "Շնորհակալություն ձեր կարծիքի համար։",
+  "ratingSubmitted": "Գնահատականը ներկայացված է։",
+  "setUserIdFirst": "Խնդրում ենք նախ սահմանել ձեր օգտատիրոջ ID-ն",
+  "failedToFetchPrevious": "Չհաջողվեց ստանալ նախորդ հարցերն ու պատասխանները",
+  "errorOccurred": "Սխալ՝ {error}",
+  "drawerAstroProfile": "Աստրո պրոֆիլ",
+  "drawerDailyHoroscope": "Օրական հորոսկոպ",
+  "drawerBuyQuestions": "Գնման հարցեր",
+  "drawerAstroDictionary": "Աստղագիտական բառարան",
+  "drawerSettings": "Կարգավորումներ",
+  "drawerCustomerSupport": "Հաճախորդների աջակցություն",
+  "drawerAbout": "Մասին",
+  "drawerProfileSettings": "Պրոֆիլի կարգավորումներ",
+  "demoNotificationTitle": "🔔 Դեմո ծանուցում",
+  "demoNotificationBody": "Սա ձեր հավելվածից փորձնական ծանուցում է։",
+  "notificationsTitle": "Ծանուցումներ",
+  "noNotifications": "Ծանուցումներ չկան",
+  "allTab": "Բոլորը",
+  "markAllAsRead": "Նշել բոլորը որպես կարդացված",
+  "notificationMarkedRead": "Ծանուցումը նշված է որպես կարդացված",
+  "failedToLoadNotifications": "Ծանուցումները չհաջողվեց բեռնել",
+  "failedToMarkRead": "Չհաջողվեց նշել որպես կարդացված",
+  "failedToMarkAllRead": "Չհաջողվեց բոլորը նշել որպես կարդացված",
+  "socketConnected": "Սոկեթը միացված է",
+  "socketDisconnected": "Վարդակը անջատված է",
+  "newNotificationReceived": "Ստացվել է նոր ծանուցում",
+  "generalCategory": "Ընդհանուր",
+  "horoscopeCategory": "Հորոսկոպ",
+  "chatCategory": "Զրուցարան",
+  "systemCategory": "Համակարգ",
+  "updateCategory": "Թարմացումներ",
+  "howToAskTitle": "Ինչպես հարցնել",
+  "noQuestionsAvailable": "Հարցեր չկան",
+  "failedToLoadQuestions": "Հարցերը չհաջողվեց բեռնել",
+  "pullToRefresh": "Քաշեք՝ թարմացնելու համար",
+  "careerCategory": "Կարիերա",
+  "loveCategory": "Սեր և հարաբերություններ",
+  "healthCategory": "Առողջություն",
+  "financeCategory": "Ֆինանսներ",
+  "familyCategory": "Ընտանիք",
+  "educationCategory": "Կրթություն",
+  "travelCategory": "Ճանապարհորդություն",
+  "spiritualCategory": "Հոգևոր",
+  "profileLoaded": "Պրոֆիլը հաջողությամբ բեռնվեց",
+  "imageUploaded": "Պատկերը հաջողությամբ վերբեռնվեց",
+  "savedInformationConfirmation": "Ես պահպանել եմ այս տեղեկատվությունը",
+  "noHistoryAvailable": "Պատմությունը հասանելի չէ",
+  "missingUserIdError": "Օգտատիրոջ ID-ն պարտադիր է",
+  "networkError": "Ցանցի սխալ։ Խնդրում ենք կրկին փորձել։",
+  "timeoutError": "Հարցման ժամանակը սպառվել է",
+  "genericError": "Ինչ-որ բան սխալ է գնացել",
+  "reactionUpdateError": "Չհաջողվեց թարմացնել արձագանքը",
+  "noSearchResults": "Որոնման արդյունքներ չեն գտնվել",
+  "clearSearch": "Մաքրել որոնումը",
+  "resultsFound": "Գտնվել են արդյունքներ",
+  "recoverySecretHint": "Պատճենել-տեղադրել կարող է չաշխատել, գրեք ձեռքով",
+  "recoverAccountDescription": "Հետևեք այս քայլերին՝ ձեր հաշիվը վերականգնելու համար",
+  "processingLabel": "Մշակվում է...",
+  "clearChatSuccess": "Զրույցը հաջողությամբ մաքրվեց",
+  "notificationsEnabled": "Ծանուցումները միացված են",
+  "notificationsDisabled": "Ծանուցումներն անջատված են",
+  "securityNotice": "Ձեր տվյալները անվտանգ կերպով կոդավորված և պահվում են",
+  "loading": "Բեռնվում է...",
+  "selectLanguage": "Ընտրեք լեզուն",
+  "onboardingGetStartedDesc": "Սկսեք՝ ընտրելով ձեր լեզուն",
+  "accountRecoveryTitle": "🔐 Հաշվի վերականգնման մանրամասներ",
+  "recoveryInstructions": "Խնդրում ենք այս տեղեկատվությունը անվտանգ պահել։ Այն ձեզ անհրաժեշտ կլինի ձեր հաշիվը վերականգնելու համար։",
+  "importantNotice": "⚠️ Կարևոր է.",
+  "astrologerProfileTitle": "Աստղագուշակի պրոֆիլ",
+  "personalAstrologer": "Անձնական աստղագուշակ",
+  "makePersonalAstrologer": "Ստեղծեք անձնական աստղագուշակ",
+  "favoriteDescription": "Ձեր հարցերը առաջնահերթ կքննարկվեն այս աստղագուշակի հետ։ Եթե դուք հասանելի չեք, ձեզ կօգնի մեկ այլ որակավորված աստղագուշակ։",
+  "educationQualifications": "Կրթություն և որակավորում",
+  "aboutSection": "Մասին",
+  "shareProfile": "Կիսվել պրոֆիլով",
+  "loadingAstrologer": "Աստղաբանի մանրամասները բեռնվում են...",
+  "failedToLoadAstrologer": "Աստղագուշակի մանրամասները չհաջողվեց բեռնել",
+  "authenticationRequired": "Անհրաժեշտ է նույնականացում։ Խնդրում ենք մուտք գործել։",
+  "securityCheckFailed": "Անվտանգության ստուգումը ձախողվեց. {error}",
+  "addedToFavorites": "🎯 {name}-ը այժմ ձեր անձնական աստղագուշակն է",
+  "removedFromFavorites": "✅ {name}-ը հեռացվել է ընտրյալներից",
+  "toggleFavoriteError": "Չհաջողվեց թարմացնել նախընտրածի կարգավիճակը",
+  "shareMessage": "{name}\n🎓 Կրթություն՝ {education}\n📜 Որակավորում՝ {qualification}\n⏳ Աշխատանքային փորձ՝ {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Չի տրամադրվել",
+  "reviews": "({count} ակնարկներ)",
+  "specialties": "Մասնագիտություններ",
+  "experience": "Փորձառություն",
+  "qualification": "Որակավորում",
+  "education": "Կրթություն",
+  "recoveryTips": "• Կատարեք այս տեղեկատվության էկրանի նկարը\n• Պահեք այն անվտանգ տեղում\n• Մի կիսվեք որևէ մեկի հետ\n• Սա կցուցադրվի միայն մեկ անգամ"
+}

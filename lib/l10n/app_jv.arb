@@ -1,0 +1,439 @@
+{
+  "@@locale": "jv",
+  "settingsTitle": "Setelan",
+  "notificationSettings": "Setelan Notifikasi",
+  "privacySettings": "Setelan Privasi",
+  "accountSettings": "Setelan akun",
+  "languageSettings": "Setelan Basa",
+  "languageChanged": "Basa diganti",
+  "existingUserButton": "Aku pangguna sing wis ana",
+  "chooseCountryTitle": "Pilih Negara",
+  "yesText": "ya wis",
+  "noText": "Ora",
+  "appBarTitle": "Setelan Profil",
+  "userIdLabel": "ID pangguna *",
+  "nameLabel": "jeneng",
+  "birthCountryLabel": "Negara Lahir",
+  "birthCityLabel": "Kutha Lair",
+  "countrySelectionTitle": "Pilih negara sampeyan",
+  "maleLabel": "lanang",
+  "femaleLabel": "wadon",
+  "birthDateLabel": "Tanggal Lair",
+  "birthDatePlaceholder": "Pilih Tanggal Lahir",
+  "birthTimeLabel": "Wektu Lair",
+  "birthTimePlaceholder": "Pilih Wektu Lair",
+  "saveProfileButton": "Simpen Profil",
+  "noCitiesFound": "Ora ana kutha sing ditemokake",
+  "cityPlaceholder": "Ketik kutha ing {country}",
+  "countryFirstPlaceholder": "Pilih negara pisanan",
+  "versionHistoryTitle": "Riwayat versi",
+  "notSetText": "Ora disetel",
+  "nameHistory": "Jeneng: {name}",
+  "cityHistory": "Kutha: {city}",
+  "countryHistory": "Negara: {country}",
+  "genderHistory": "Jenis Kelamin: {gender}",
+  "birthDateHistory": "Tanggal Lahir: {date}",
+  "birthTimeHistory": "Wektu Lahir: {time}",
+  "locationHistory": "Lokasi: {latitude}, {longitude}",
+  "timezoneHistory": "Zona wektu: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Status: {state}",
+  "versionFromText": "Dianyari ing {date}",
+  "userIdRequired": "ID pangguna dibutuhake",
+  "profileSaved": "Profil kasil disimpen",
+  "saveFailed": "Gagal nyimpen profil",
+  "errorPrefix": "kesalahan:",
+  "onboardingChooseLanguage": "Pilih Basa Sampeyan",
+  "onboardingChooseLanguageDesc": "Pilih basa sing disenengi kanggo nerusake.",
+  "onboardingWhatIsAstrology": "Apa Astrologi?",
+  "onboardingWhatIsAstrologyDesc": "Astrologi minangka studi babagan benda langit ...",
+  "onboardingWhyUseApp": "Apa nggunakake app iki?",
+  "onboardingWhyUseAppDesc": "Entuk horoskop pribadi, ramalan saben dina, lan tuntunan kanggo nggawe keputusan sing tepat.",
+  "onboardingHowToUse": "Kepiye cara nggunakake aplikasi iki?",
+  "onboardingHowToUseDesc": "Navigasi kanthi gampang, priksa horoskop saben dina, lan atur profil kanggo ramalan sing akurat.",
+  "onboardingGetStarted": "Miwiti",
+  "onboardingNewUser": "Panganggo anyar",
+  "onboardingExistingUser": "Pangguna sing ana",
+  "onboardingBack": "Mbalik",
+  "onboardingNext": "Sabanjure",
+  "userIdNotFound": "ID pangguna ora ditemokake. Mangga mlebu utawa nyetel profil sampeyan.",
+  "clearNotificationsTitle": "Clear Notifikasi",
+  "clearNotificationsMessage": "Apa sampeyan yakin pengin mbusak kabeh kabar?",
+  "clearNotificationsSuccess": "Kabeh kabar kasil dibusak.",
+  "clearHoroscopeTitle": "Horoskop sing cetha",
+  "clearHoroscopeMessage": "Apa sampeyan yakin pengin mbusak data horoskop?",
+  "clearHoroscopeSuccess": "Horoskop kasil dibusak.",
+  "clearChatTitle": "Mbusak Sajarah Chat",
+  "clearChatMessage": "Apa sampeyan yakin pengin mbusak kabeh riwayat obrolan sampeyan?",
+  "clearChatLocal": "Obrolan dibusak sacara lokal.",
+  "deleteAccountTitle": "Mbusak Akun",
+  "deleteAccountMessage": "Apa sampeyan yakin arep mbusak akun sampeyan? Iki uga bakal mbusak kabeh riwayat chatting lan kabar.",
+  "deleteAccountSuccess": "Akun sampeyan lan kabeh data wis dibusak.",
+  "deleteAccountError": "Kesalahan mbusak akun",
+  "logoutTitle": "logout",
+  "logoutMessage": "Apa sampeyan yakin arep logout?",
+  "termsPrivacyTitle": "Sarat & Privasi",
+  "privacyPolicyTitle": "Kebijakan Privasi",
+  "termsConditionsTitle": "Syarat & Ketentuan",
+  "dataControlTitle": "Kontrol Data",
+  "cancelButton": "Batal",
+  "confirmButton": "Konfirmasi",
+  "clearQuestionsSuccess": "Kabeh pitakonan kasil dibusak.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Gusti",
+  "startLabel": "Miwiti",
+  "recoverAccount": "Waras Akun",
+  "endLabel": "Pungkasan",
+  "startDateLabel": "Tanggal wiwitan",
+  "endDateLabel": "Tanggal pungkasan",
+  "notAvailable": "Ora kasedhiya",
+  "noData": "Ora ana data",
+  "unknownError": "Kesalahan sing ora dingerteni",
+  "retryButton": "Coba maneh",
+  "kundaliGeneratorTitle": "Generator Kundali",
+  "natalChartTitle": "Bagan Natal",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Gelar munggah pangkat",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasa",
+  "unknown": "Ora dingerteni",
+  "clearHoroscope": "Horoskop sing cetha",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Clear Notifikasi",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Mbusak Sajarah Chat",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "logout",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Mbusak Akun",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Kabeh kolom dibutuhake.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Akun kasil pulih.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Recovery gagal. Priksa informasi sampeyan.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Rahasia Recovery:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Babagan Kita",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Babagan Perusahaan Kita",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Kita setya menehi pengalaman astrologi sing paling apik kanggo pangguna.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Misi Kita",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Kanggo nyedhiyakake wawasan astrologi sing akurat lan khusus kanggo mbantu pangguna nggawe keputusan sing tepat ing urip.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Visi Kita",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Kanggo dadi platform astrologi sing paling dipercaya, nggabungake teknologi lan kawicaksanan kuna.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Nilai Kita",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Integritas, Akurasi, Desain Sentris Panganggo, lan Inovasi Terus-terusan.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Hubungi Kita",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Email: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Situs web: www.perusahaananda.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Dhukungan Pelanggan",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Kita kene kanggo mbantu",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Isi formulir ing ngisor iki lan tim dhukungan bakal bali menyang sampeyan sanalika bisa.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Jenengmu",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Email Panjenengan",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Pesen",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Ketik email sampeyan",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Ketik alamat email sing bener",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Ketik {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Ngirim",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Ngirim...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Email kasil dikirim!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Gagal ngirim email",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Kamus Astro",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Golek istilah...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Ora ana istilah sing ditemokake",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Tuku Pitakonan",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Pangguna ora dikonfirmasi",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Gagal mbukak data nyimpen",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Token otentik ilang",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Aplikasi Astro Chat",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Pembayaran sukses! Pitakonan dikirim",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Pembayaran gagal: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Balance Panjenengan",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Pitakonan",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Nawakake kasedhiya",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Pitakonan",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "tuku",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Horoskop saben dina",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "ID pangguna ilang",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Gagal njupuk horoskop",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Ora ana horoskop sing ditemokake.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "mlebu",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Dina iki",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "wingi",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Minggu iki",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Wulan kepungkur",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Ngobrol",
+  "typeYourQuestionHint": "Ketik pitakonan sampeyan...",
+  "paymentRequired": "Pembayaran dibutuhake",
+  "paymentRequiredMessage": "Sampeyan wis nggunakake pitakonan gratis. Mbayar ₹50 kanggo nerusake.",
+  "payNowButton": "Bayar Saiki",
+  "freeQuestionsRemaining": "{count} isih ana pitakonan gratis",
+  "paidQuestionsRemaining": "{count} isih ana pitakonan mbayar",
+  "thankYouFeedback": "Matur nuwun kanggo saran!",
+  "ratingSubmitted": "Rating diajukake!",
+  "setUserIdFirst": "Setel ID pangguna dhisik",
+  "failedToFetchPrevious": "Gagal njupuk pitakonan lan jawaban sadurunge",
+  "errorOccurred": "Kasalahan: {error}",
+  "drawerAstroProfile": "Profil Astro Kab",
+  "drawerDailyHoroscope": "Horoskop saben dina",
+  "drawerBuyQuestions": "Tuku Pitakonan",
+  "drawerAstroDictionary": "Kamus Astro",
+  "drawerSettings": "Setelan",
+  "drawerCustomerSupport": "Dhukungan Pelanggan",
+  "drawerAbout": "Babagan",
+  "drawerProfileSettings": "Setelan Profil",
+  "demoNotificationTitle": "🔔 Notifikasi Demo",
+  "demoNotificationBody": "Iki minangka kabar tes saka app sampeyan!",
+  "notificationsTitle": "Kabar",
+  "noNotifications": "Ora ana kabar",
+  "allTab": "Kabeh",
+  "markAllAsRead": "Tandhani kabeh minangka diwaca",
+  "notificationMarkedRead": "Notifikasi ditandhani minangka diwaca",
+  "failedToLoadNotifications": "Gagal mbukak kabar",
+  "failedToMarkRead": "Gagal menehi tandha minangka diwaca",
+  "failedToMarkAllRead": "Gagal menehi tandha kabeh wis diwaca",
+  "socketConnected": "Soket disambungake",
+  "socketDisconnected": "Soket pedhot",
+  "newNotificationReceived": "Kabar anyar ditampa",
+  "generalCategory": "Umum",
+  "horoscopeCategory": "Horoskop",
+  "chatCategory": "Ngobrol",
+  "systemCategory": "Sistem",
+  "updateCategory": "Nganyari",
+  "howToAskTitle": "Carane Takon",
+  "noQuestionsAvailable": "Ora ana pitakonan sing kasedhiya",
+  "failedToLoadQuestions": "Gagal mbukak pitakonan",
+  "pullToRefresh": "Tarik kanggo refresh",
+  "careerCategory": "Karir",
+  "loveCategory": "Katresnan & Hubungan",
+  "healthCategory": "kesehatan",
+  "financeCategory": "Keuangan",
+  "familyCategory": "kulawarga",
+  "educationCategory": "Pendidikan",
+  "travelCategory": "Lelungan",
+  "spiritualCategory": "spiritual",
+  "profileLoaded": "Profil kasil dimuat",
+  "imageUploaded": "Gambar kasil diunggah",
+  "savedInformationConfirmation": "Aku wis nyimpen informasi iki",
+  "noHistoryAvailable": "Ora ana riwayat sing kasedhiya",
+  "missingUserIdError": "ID pangguna dibutuhake",
+  "networkError": "Kesalahan jaringan. Coba maneh.",
+  "timeoutError": "Panjaluk wis entek",
+  "genericError": "Ana sing salah",
+  "reactionUpdateError": "Gagal nganyari reaksi",
+  "noSearchResults": "Ora ana asil panelusuran sing ditemokake",
+  "clearSearch": "Mbusak panelusuran",
+  "resultsFound": "Asil ditemokake",
+  "recoverySecretHint": "Salin-tempel bisa uga ora bisa, ketik kanthi manual",
+  "recoverAccountDescription": "Tindakake langkah iki kanggo mbalekake akun",
+  "processingLabel": "Ngolah...",
+  "clearChatSuccess": "Obrolan kasil dibusak",
+  "notificationsEnabled": "Kabar diaktifake",
+  "notificationsDisabled": "Kabar dipatèni",
+  "securityNotice": "Data sampeyan dienkripsi lan disimpen kanthi aman",
+  "loading": "Loading...",
+  "selectLanguage": "Pilih Basa",
+  "onboardingGetStartedDesc": "Miwiti kanthi milih basa sampeyan",
+  "accountRecoveryTitle": "🔐 Rincian Recovery Akun",
+  "recoveryInstructions": "Mangga simpen informasi iki kanthi aman. Sampeyan perlu kanggo mbalekake akun.",
+  "importantNotice": "⚠️ Penting:",
+  "astrologerProfileTitle": "Profil Astrologer",
+  "personalAstrologer": "Astrologer pribadi",
+  "makePersonalAstrologer": "Nggawe Astrologer Pribadi",
+  "favoriteDescription": "Pitakonan sampeyan bakal dadi prioritas kanggo ahli nujum iki. Yen ora kasedhiya, ahli nujum liyane sing mumpuni bakal nulungi sampeyan.",
+  "educationQualifications": "Pendidikan & Kualifikasi",
+  "aboutSection": "Babagan",
+  "shareProfile": "Nuduhake Profil",
+  "loadingAstrologer": "Memuat rincian ahli nujum...",
+  "failedToLoadAstrologer": "Gagal ngemot rincian ahli nujum",
+  "authenticationRequired": "Authentication dibutuhake. Mangga mlebu.",
+  "securityCheckFailed": "Priksa keamanan gagal: {error}",
+  "addedToFavorites": "🎯 {name} saiki dadi Astrologi Pribadi sampeyan",
+  "removedFromFavorites": "✅ Mbusak {name} saka favorit",
+  "toggleFavoriteError": "Gagal nganyari status favorit",
+  "shareMessage": "{name}\n🎓 Pendidikan: {education}\n📜 Kualifikasi: {qualification}\n⏳ Pengalaman: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Ora kasedhiya",
+  "reviews": "({count} ulasan)",
+  "specialties": "Spesialisasi",
+  "experience": "Pengalaman",
+  "qualification": "Kualifikasi",
+  "education": "Pendidikan",
+  "recoveryTips": "• Njupuk gambar saka informasi iki\n• Simpen ing panggonan kang aman\n• Aja nuduhake karo sapa wae\n• Iki mung bakal ditampilake sapisan"
+}

@@ -1,0 +1,439 @@
+{
+  "@@locale": "su",
+  "settingsTitle": "Setélan",
+  "notificationSettings": "Setélan Bewara",
+  "privacySettings": "Setélan Privasi",
+  "accountSettings": "Sétingan akun",
+  "languageSettings": "Setélan Basa",
+  "languageChanged": "Basa robah",
+  "existingUserButton": "Abdi pangguna anu tos aya",
+  "chooseCountryTitle": "Pilih Nagara",
+  "yesText": "Sumuhun",
+  "noText": "No",
+  "appBarTitle": "Setélan Propil",
+  "userIdLabel": "ID Pangguna *",
+  "nameLabel": "Ngaran",
+  "birthCountryLabel": "Nagara kalahiran",
+  "birthCityLabel": "Kota kalahiran",
+  "countrySelectionTitle": "Pilih nagara anjeun",
+  "maleLabel": "Jalu",
+  "femaleLabel": "Awéwé",
+  "birthDateLabel": "Tanggal lahir",
+  "birthDatePlaceholder": "Pilih Tanggal Lahir",
+  "birthTimeLabel": "Waktos kalahiran",
+  "birthTimePlaceholder": "Pilih Kalahiran",
+  "saveProfileButton": "Simpen Propil",
+  "noCitiesFound": "Taya kota kapanggih",
+  "cityPlaceholder": "Lebetkeun kota dina {country}",
+  "countryFirstPlaceholder": "Pilih nagara heula",
+  "versionHistoryTitle": "Sajarah Vérsi",
+  "notSetText": "Teu diatur",
+  "nameHistory": "Ngaran: {name}",
+  "cityHistory": "Kota: {city}",
+  "countryHistory": "Nagara: {country}",
+  "genderHistory": "Gender: {gender}",
+  "birthDateHistory": "Tanggal Lahir: {date}",
+  "birthTimeHistory": "Waktu Lahir: {time}",
+  "locationHistory": "Lokasi: {latitude}, {longitude}",
+  "timezoneHistory": "Zona waktu: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Kaayaan: {state}",
+  "versionFromText": "Diropéa dina {date}",
+  "userIdRequired": "ID pamaké diperlukeun",
+  "profileSaved": "Propil suksés disimpen",
+  "saveFailed": "Gagal nyimpen profil",
+  "errorPrefix": "Kasalahan:",
+  "onboardingChooseLanguage": "Pilih Basa Anjeun",
+  "onboardingChooseLanguageDesc": "Pilih basa anu anjeun pikaresep pikeun neraskeun.",
+  "onboardingWhatIsAstrology": "Naon Astrologi?",
+  "onboardingWhatIsAstrologyDesc": "Astrologi nyaéta ulikan ngeunaan benda langit ...",
+  "onboardingWhyUseApp": "Naha make aplikasi ieu?",
+  "onboardingWhyUseAppDesc": "Kéngingkeun horoskop pribadi, prediksi sapopoé, sareng pituduh pikeun nyandak kaputusan anu terang.",
+  "onboardingHowToUse": "Kumaha ngagunakeun aplikasi ieu?",
+  "onboardingHowToUseDesc": "Gampang navigasi, pariksa horoskop sapopoé, sareng atur profil anjeun pikeun prediksi anu akurat.",
+  "onboardingGetStarted": "Mimitian",
+  "onboardingNewUser": "Pamaké anyar",
+  "onboardingExistingUser": "Pamaké anu aya",
+  "onboardingBack": "Balik deui",
+  "onboardingNext": "Teras",
+  "userIdNotFound": "ID pamaké teu kapanggih. Mangga lebet atanapi nyetél profil anjeun.",
+  "clearNotificationsTitle": "Hapus Bewara",
+  "clearNotificationsMessage": "Naha anjeun yakin hoyong mupus sadaya bewara?",
+  "clearNotificationsSuccess": "Sadaya bewara junun diberesihan.",
+  "clearHoroscopeTitle": "Horoskop jelas",
+  "clearHoroscopeMessage": "Naha anjeun yakin hoyong mupus data horoskop anjeun?",
+  "clearHoroscopeSuccess": "Horoskop diberesihan suksés.",
+  "clearChatTitle": "Hapus Sajarah Chat",
+  "clearChatMessage": "Naha anjeun yakin hoyong mupus sadaya riwayat obrolan anjeun?",
+  "clearChatLocal": "Obrolan diberesihan sacara lokal.",
+  "deleteAccountTitle": "Hapus Akun",
+  "deleteAccountMessage": "Naha anjeun yakin hoyong mupus akun anjeun? Ieu ogé bakal mupus sadaya sajarah obrolan sareng bewara anjeun.",
+  "deleteAccountSuccess": "Akun anjeun sareng sadaya data parantos dihapus.",
+  "deleteAccountError": "Kasalahan mupus akun",
+  "logoutTitle": "Logout",
+  "logoutMessage": "Anjeun yakin rék kaluar?",
+  "termsPrivacyTitle": "Sarat & Privasi",
+  "privacyPolicyTitle": "kabijakan privasi",
+  "termsConditionsTitle": "Sarat & Kaayaan",
+  "dataControlTitle": "Kontrol Data",
+  "cancelButton": "Ngabolaykeun",
+  "confirmButton": "Konpirmasi",
+  "clearQuestionsSuccess": "Sadaya patarosan suksés dihapus.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Gusti",
+  "startLabel": "Mimitian",
+  "recoverAccount": "Pulihkeun Akun",
+  "endLabel": "Tungtung",
+  "startDateLabel": "Tanggal mimiti",
+  "endDateLabel": "Tanggal tungtung",
+  "notAvailable": "Henteu sayogi",
+  "noData": "Taya data",
+  "unknownError": "Kasalahan teu dipikanyaho",
+  "retryButton": "Coba deui",
+  "kundaliGeneratorTitle": "Kundali generator",
+  "natalChartTitle": "Bagan Natal",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Gelar Ascendant",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Teu kanyahoan",
+  "clearHoroscope": "Horoskop jelas",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Hapus Bewara",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Hapus Sajarah Chat",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Logout",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Hapus Akun",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Kabéh widang diperlukeun.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Rekening suksés pulih.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Pamulihan gagal. Pariksa inpormasi anjeun.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Rahasia Pamulihan:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Tentang Kami",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Ngeunaan Perusahaan Kami",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Kami komitmen pikeun nganteurkeun pangalaman astrologi anu pangsaéna pikeun pangguna urang.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Misi kami",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Pikeun masihan wawasan astrologi anu akurat sareng pribadi pikeun ngabantosan pangguna nyandak kaputusan anu terang dina kahirupanna.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Visi Urang",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Pikeun janten platform astrologi anu paling dipercaya, ngagabungkeun téknologi sareng hikmah kuno.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Nilai Urang",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Integritas, Akurasi, Desain-Centric Pamaké, sareng Inovasi Kontinyu.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Taros Kami",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Surélék: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Situs Web: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Rojongan Palanggan",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Kami di dieu pikeun mantuan",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Eusian formulir di handap sarta tim rojongan kami bakal balik deui ka anjeun pas mungkin.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Nami anjeun",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Surélék anjeun",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "talatah",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Lebetkeun surélék anjeun",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Asupkeun alamat surélék nu sah",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Lebetkeun {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Ngirimkeun",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Ngirim...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Surélék suksés dikirim!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Gagal ngirim email",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Kamus Astro",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Istilah pilarian...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Taya istilah kapanggih",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Mésér Patarosan",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Pamaké teu dioténtikasi",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Gagal ngamuat data toko",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Token otentik leungit",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat App",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Pamayaran suksés! Patarosan dikirim",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Pamayaran gagal: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Kasaimbangan Anjeun",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Patarosan",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Panawaran sadia",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Patarosan",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Meuli",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Horoskop poean",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "ID pamaké leungit",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Gagal nyandak horoskop",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Horoskop teu kapanggih.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "asup",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Kiwari",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Kamari",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Minggu ayeuna",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Bulan kamari",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Obrolan",
+  "typeYourQuestionHint": "Ketik patarosan anjeun...",
+  "paymentRequired": "Mayar Diperlukeun",
+  "paymentRequiredMessage": "Anjeun parantos nganggo patarosan gratis anjeun. Mayar ₹50 pikeun neraskeun.",
+  "payNowButton": "Bayar Ayeuna",
+  "freeQuestionsRemaining": "{count} patarosan bébas sésana",
+  "paidQuestionsRemaining": "{count} patarosan mayar sésana",
+  "thankYouFeedback": "Hatur nuhun pikeun eupan balik anjeun!",
+  "ratingSubmitted": "Peunteun dikintunkeun!",
+  "setUserIdFirst": "Mangga setel User ID anjeun heula",
+  "failedToFetchPrevious": "Gagal nyandak patarosan sareng jawaban sateuacana",
+  "errorOccurred": "Kasalahan: {error}",
+  "drawerAstroProfile": "Propil Astro",
+  "drawerDailyHoroscope": "Horoskop poean",
+  "drawerBuyQuestions": "Mésér Patarosan",
+  "drawerAstroDictionary": "Kamus Astro",
+  "drawerSettings": "Setélan",
+  "drawerCustomerSupport": "Rojongan Palanggan",
+  "drawerAbout": "Ngeunaan",
+  "drawerProfileSettings": "Setélan Propil",
+  "demoNotificationTitle": "🔔 Bewara Demo",
+  "demoNotificationBody": "Ieu mangrupikeun béwara tés tina aplikasi anjeun!",
+  "notificationsTitle": "Bewara",
+  "noNotifications": "Taya béja",
+  "allTab": "Sadayana",
+  "markAllAsRead": "Cirian kabéh geus dibaca",
+  "notificationMarkedRead": "Bewara ditandaan salaku dibaca",
+  "failedToLoadNotifications": "Gagal ngamuat béwara",
+  "failedToMarkRead": "Gagal ditandaan salaku dibaca",
+  "failedToMarkAllRead": "Gagal nyirian sadayana janten dibaca",
+  "socketConnected": "Socket disambungkeun",
+  "socketDisconnected": "Stop kontak dipegatkeun",
+  "newNotificationReceived": "Bewara anyar nampi",
+  "generalCategory": "Umum",
+  "horoscopeCategory": "Horoskop",
+  "chatCategory": "Obrolan",
+  "systemCategory": "Sistim",
+  "updateCategory": "Pembaruan",
+  "howToAskTitle": "Kumaha Naroskeun",
+  "noQuestionsAvailable": "Taya patarosan sadia",
+  "failedToLoadQuestions": "Gagal ngamuat patarosan",
+  "pullToRefresh": "Tarik pikeun nyegerkeun",
+  "careerCategory": "Karir",
+  "loveCategory": "Cinta & Hubungan",
+  "healthCategory": "Kaséhatan",
+  "financeCategory": "Keuangan",
+  "familyCategory": "Kulawarga",
+  "educationCategory": "Atikan",
+  "travelCategory": "Lalampahan",
+  "spiritualCategory": "Rohani",
+  "profileLoaded": "Propil junun dimuat",
+  "imageUploaded": "Gambar suksés diunggah",
+  "savedInformationConfirmation": "Kuring Nyimpen Inpormasi Ieu",
+  "noHistoryAvailable": "Taya sajarah sadia",
+  "missingUserIdError": "ID pamaké diperlukeun",
+  "networkError": "Kasalahan jaringan. Mangga cobian deui.",
+  "timeoutError": "Paménta waktos kaluar",
+  "genericError": "Aya nu lepat",
+  "reactionUpdateError": "Gagal ngapdet réaksi",
+  "noSearchResults": "Teu kapanggih hasil teangan",
+  "clearSearch": "Hapus pilarian",
+  "resultsFound": "Hasil kapanggih",
+  "recoverySecretHint": "Salin-témpél moal jalan, ngetik sacara manual",
+  "recoverAccountDescription": "Turutan lengkah ieu pikeun cageur akun anjeun",
+  "processingLabel": "Ngolah...",
+  "clearChatSuccess": "Obrolan suksés dipupus",
+  "notificationsEnabled": "Bewara diaktipkeun",
+  "notificationsDisabled": "Bewara ditumpurkeun",
+  "securityNotice": "Data anjeun énkripsi sareng disimpen sacara aman",
+  "loading": "Ngamuat...",
+  "selectLanguage": "Pilih Basa",
+  "onboardingGetStartedDesc": "Mimitian ku milih basa anjeun",
+  "accountRecoveryTitle": "🔐 Rincian Pamulihan Akun",
+  "recoveryInstructions": "Mangga simpen inpo ieu aman. Anjeun peryogi éta pikeun ngabalikeun akun anjeun.",
+  "importantNotice": "⚠️ Penting:",
+  "astrologerProfileTitle": "Astrologer Propil",
+  "personalAstrologer": "Astrologer pribadi",
+  "makePersonalAstrologer": "Jieun Astrologer Pribadi",
+  "favoriteDescription": "Patarosan anjeun bakal diprioritaskeun ka ahli nujum ieu. Upami henteu sayogi, ahli nujum mumpuni sanés bakal ngabantosan anjeun.",
+  "educationQualifications": "Atikan & Kualifikasi",
+  "aboutSection": "Ngeunaan",
+  "shareProfile": "Bagikeun Propil",
+  "loadingAstrologer": "Ngamuat rinci astrologer...",
+  "failedToLoadAstrologer": "Gagal ngamuat rinci astrologer",
+  "authenticationRequired": "Auténtikasi diperlukeun. Mangga lebet.",
+  "securityCheckFailed": "Pamariksaan kaamanan gagal: {error}",
+  "addedToFavorites": "🎯 {name} ayeuna mangrupikeun Astrologer Pribadi anjeun",
+  "removedFromFavorites": "✅ Ngahapus {name} tina paporit",
+  "toggleFavoriteError": "Gagal ngapdet status paporit",
+  "shareMessage": "{name}\n🎓 Atikan: {education}\n📜 Kualifikasi: {qualification}\n⏳ Pangalaman: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Teu disadiakeun",
+  "reviews": "({count} ulasan)",
+  "specialties": "Spésialisasi",
+  "experience": "Pangalaman",
+  "qualification": "Kualifikasi",
+  "education": "Atikan",
+  "recoveryTips": "• Candak Potret layar inpormasi ieu\n• Simpen dina tempat anu aman\n• Ulah babagi jeung saha\n• Ieu ngan bakal ditémbongkeun sakali"
+}

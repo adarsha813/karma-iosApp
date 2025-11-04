@@ -1,0 +1,439 @@
+{
+  "@@locale": "mi",
+  "settingsTitle": "Tautuhinga",
+  "notificationSettings": "Tautuhinga Whakamōhiotanga",
+  "privacySettings": "Tautuhinga Matatapu",
+  "accountSettings": "Tautuhinga Pūkete",
+  "languageSettings": "Tautuhinga Reo",
+  "languageChanged": "I huri te reo",
+  "existingUserButton": "He kaiwhakamahi au",
+  "chooseCountryTitle": "Kōwhiri Whenua",
+  "yesText": "Ae",
+  "noText": "Kao",
+  "appBarTitle": "Tautuhinga Kōtaha",
+  "userIdLabel": "ID Kaiwhakamahi *",
+  "nameLabel": "Ingoa",
+  "birthCountryLabel": "Whenua Whanau",
+  "birthCityLabel": "Taone Whanau",
+  "countrySelectionTitle": "Whiriwhiria to whenua",
+  "maleLabel": "Tane",
+  "femaleLabel": "Wahine",
+  "birthDateLabel": "Te Ra Whanau",
+  "birthDatePlaceholder": "Tīpakohia te Rā Whanau",
+  "birthTimeLabel": "Wā Whanautanga",
+  "birthTimePlaceholder": "Tīpakohia te wa whanau",
+  "saveProfileButton": "Tiaki Kōtaha",
+  "noCitiesFound": "Kaore he taone i kitea",
+  "cityPlaceholder": "Whakauruhia te taone ki {country}",
+  "countryFirstPlaceholder": "Tīpako whenua tuatahi",
+  "versionHistoryTitle": "Tuhinga o mua",
+  "notSetText": "Kaore i whakaritea",
+  "nameHistory": "Ingoa: {name}",
+  "cityHistory": "Taone: {city}",
+  "countryHistory": "Whenua: {country}",
+  "genderHistory": "Ira: {gender}",
+  "birthDateHistory": "Te Ra Whanau: {date}",
+  "birthTimeHistory": "Wā Whanau: {time}",
+  "locationHistory": "Tauwāhi: {latitude}, {longitude}",
+  "timezoneHistory": "Rohe Wā: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "State: {state}",
+  "versionFromText": "I whakahōuhia i te {date}",
+  "userIdRequired": "Ko te ID Kaiwhakamahi e hiahiatia ana",
+  "profileSaved": "Kua tiakina paitia te kōtaha",
+  "saveFailed": "I rahua te tiaki kōtaha",
+  "errorPrefix": "Hapa:",
+  "onboardingChooseLanguage": "Kōwhiria To Reo",
+  "onboardingChooseLanguageDesc": "Tīpakohia tō reo pai ki te haere tonu.",
+  "onboardingWhatIsAstrology": "He aha te Astrology?",
+  "onboardingWhatIsAstrologyDesc": "Ko te Astrology te rangahau mo nga tinana o te rangi...",
+  "onboardingWhyUseApp": "He aha te whakamahi i tenei taupānga?",
+  "onboardingWhyUseAppDesc": "Tikina nga horoscope whaiaro, nga matapae o ia ra, me te arahi ki te whakatau whakatau.",
+  "onboardingHowToUse": "Me pehea te whakamahi i tenei taupānga?",
+  "onboardingHowToUseDesc": "Whakatere ngawari, tirohia nga horoscope o ia ra, me te whakahaere i to korero mo nga matapae tika.",
+  "onboardingGetStarted": "Tīmatahia",
+  "onboardingNewUser": "Kaiwhakamahi Hou",
+  "onboardingExistingUser": "Kaiwhakamahi o naianei",
+  "onboardingBack": "Whakamuri",
+  "onboardingNext": "Whai muri",
+  "userIdNotFound": "Kāore i kitea te ID Kaiwhakamahi. Tena koa takiuru, tautuhia ranei to kōtaha.",
+  "clearNotificationsTitle": "Maama Whakamōhiotanga",
+  "clearNotificationsMessage": "Kei te tino hiahia koe ki te whakakore i nga whakamohiotanga katoa?",
+  "clearNotificationsSuccess": "I ūkuia nga whakamohiotanga katoa.",
+  "clearHoroscopeTitle": "Marama Horoscope",
+  "clearHoroscopeMessage": "Kei te tino hiahia koe ki te whakakore i o raraunga horoscope?",
+  "clearHoroscopeSuccess": "I pai te whakakore i te Horoscope.",
+  "clearChatTitle": "Ūkui Kōrerorero History",
+  "clearChatMessage": "Kei te tino hiahia koe ki te muku i o hitori korero katoa?",
+  "clearChatLocal": "I whakawāteahia te kōrerorero i te rohe.",
+  "deleteAccountTitle": "Muku Pūkete",
+  "deleteAccountMessage": "Kei te tino hiahia koe ki te muku i to putea? Ma tenei ka ūkui katoa o korero korero me o whakamohiotanga.",
+  "deleteAccountSuccess": "Kua tangohia to putea me nga raraunga katoa.",
+  "deleteAccountError": "Hapa te muku pūkete",
+  "logoutTitle": "Takiputa",
+  "logoutMessage": "Kei te tino hiahia koe ki te takiputa?",
+  "termsPrivacyTitle": "Nga Ture me te Matatapu",
+  "privacyPolicyTitle": "Kaupapahere Tūmataiti",
+  "termsConditionsTitle": "Nga Ture me nga Tikanga",
+  "dataControlTitle": "Mana Raraunga",
+  "cancelButton": "Whakakore",
+  "confirmButton": "Whakaū",
+  "clearQuestionsSuccess": "I tutuki pai nga patai katoa.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Ariki",
+  "startLabel": "Tīmata",
+  "recoverAccount": "Whakaora Pūkete",
+  "endLabel": "Whakamutunga",
+  "startDateLabel": "Rā Tīmata",
+  "endDateLabel": "Te Ra Whakamutunga",
+  "notAvailable": "Kāore i te wātea",
+  "noData": "Karekau he raraunga",
+  "unknownError": "Hapa kore mohio",
+  "retryButton": "Ngana ano",
+  "kundaliGeneratorTitle": "Kaihanga Kundali",
+  "natalChartTitle": "Tutohi Natal",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rahi",
+  "ascDegreeLabel": "Tohu Paetahi",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Kaore i te mohiotia",
+  "clearHoroscope": "Marama Horoscope",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Maama Whakamōhiotanga",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Ūkui Kōrerorero History",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Takiputa",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Muku Pūkete",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Ko nga mara katoa e hiahiatia ana.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "I ora pai te kaute.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "I rahua te whakaora. Tirohia o korero.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Mea ngaro Whakaora:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Mo Tatou",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Mo To Tatou Kamupene",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Ka whakapau kaha matou ki te tuku i nga wheako wheturangi pai ki o maatau kaiwhakamahi.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "To Tatou Mihana",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Hei whakarato i nga mohiotanga whetu tika me te whakawhaiaro hei awhina i nga kaiwhakamahi ki te whakatau whakatau i roto i o raatau oranga.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "To Tatou Matakite",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Kia noho hei turanga wheturangi tino pono, te whakakotahi i te hangarau me te whakaaro nui o mua.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "O Tatou Uara",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Te Tika, te Tika, te Hoahoa-a-Kaiwhakamahi, me te Whakahoutanga Tonu.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Whakapā mai",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Īmēra: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "paetukutuku: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Tautoko Kiritaki",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Kei konei matou ki te awhina",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Whakakiia te puka i raro nei ka hoki wawe mai to matou roopu tautoko ki a koe.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "To Ingoa",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "To Īmēra",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Karere",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Whakauruhia to imeera",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Whakauruhia he wahitau imeera whaimana",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Whakauruhia {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Tukua",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Tuku ana...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ I pai te tuku imeera!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ I rahua te tuku imeera",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro Dictionary",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Nga kupu rapu...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Karekau he kupu i kitea",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Hokona nga patai",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Kaiwhakamahi kaore i motuhēhēhia",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "I rahua te uta i nga raraunga rokiroki",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Kei te ngaro te tohu mana",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Kōrerorero App",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ I angitu te utu! Ka tukuna te patai",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ I rahua te utu: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "To Taurite",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Uiui",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Nga Tukunga Wātea",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Pātai",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Hoko",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Horoscope o ia ra",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Kei te ngaro te ID Kaiwhakamahi",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "I rahua te tiki horoscope",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Kaore i kitea he horoscope.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Waitohu",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "I tenei ra",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Inanahi",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "I tenei wiki",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "I tera Marama",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Kōrerorero",
+  "typeYourQuestionHint": "Patohia to patai...",
+  "paymentRequired": "Utu e hiahiatia ana",
+  "paymentRequiredMessage": "Kua whakamahia e koe o patai koreutu. Utu ₹50 ki te haere tonu.",
+  "payNowButton": "Utu Inaianei",
+  "freeQuestionsRemaining": "{count} nga paatai koreutu e toe ana",
+  "paidQuestionsRemaining": "{count} e toe ana nga patai utu",
+  "thankYouFeedback": "Mauruuru koe mo to urupare!",
+  "ratingSubmitted": "Whakatauranga i tukuna!",
+  "setUserIdFirst": "Whakatakotoria to ID Kaiwhakamahi i te tuatahi",
+  "failedToFetchPrevious": "I rahua te tiki i nga patai me nga whakautu o mua",
+  "errorOccurred": "Hapa: {error}",
+  "drawerAstroProfile": "Kōtaha Astro",
+  "drawerDailyHoroscope": "Horoscope ia ra",
+  "drawerBuyQuestions": "Hokona nga patai",
+  "drawerAstroDictionary": "Astro Dictionary",
+  "drawerSettings": "Tautuhinga",
+  "drawerCustomerSupport": "Tautoko Kiritaki",
+  "drawerAbout": "Mō",
+  "drawerProfileSettings": "Tautuhinga Kōtaha",
+  "demoNotificationTitle": "🔔 Whakaaturanga Whakaaturanga",
+  "demoNotificationBody": "He panui whakamatautau tenei mai i to taupānga!",
+  "notificationsTitle": "Whakamōhiotanga",
+  "noNotifications": "Kaore he panui",
+  "allTab": "Katoa",
+  "markAllAsRead": "Tohu katoa kua panuitia",
+  "notificationMarkedRead": "Kua tohua te panui kua panuitia",
+  "failedToLoadNotifications": "I rahua te uta whakamohiotanga",
+  "failedToMarkRead": "I rahua te tohu kua panuitia",
+  "failedToMarkAllRead": "I rahua te tohu katoa kua panuitia",
+  "socketConnected": "Tuhono hono",
+  "socketDisconnected": "Kua momotu te turanga",
+  "newNotificationReceived": "Kua tae mai he panui hou",
+  "generalCategory": "Whānui",
+  "horoscopeCategory": "Horoscope",
+  "chatCategory": "Kōrerorero",
+  "systemCategory": "Pūnaha",
+  "updateCategory": "Nga whakahou",
+  "howToAskTitle": "Me pehea te patai",
+  "noQuestionsAvailable": "Karekau he patai e waatea ana",
+  "failedToLoadQuestions": "I rahua te uta i nga patai",
+  "pullToRefresh": "Toia ki te tāmata",
+  "careerCategory": "Mahi",
+  "loveCategory": "Aroha & Whanaungatanga",
+  "healthCategory": "Hauora",
+  "financeCategory": "Pūtea",
+  "familyCategory": "Whanau",
+  "educationCategory": "Mātauranga",
+  "travelCategory": "Haerenga",
+  "spiritualCategory": "Wairua",
+  "profileLoaded": "I momoho te utaina o te kōtaha",
+  "imageUploaded": "I pai te tukunga ake o te ahua",
+  "savedInformationConfirmation": "Kua Tiaki e ahau tenei korero",
+  "noHistoryAvailable": "Karekau he hitori e waatea ana",
+  "missingUserIdError": "Ko te ID Kaiwhakamahi e hiahiatia ana",
+  "networkError": "Hapa whatunga. Me ngana ano.",
+  "timeoutError": "Kua pau te tono",
+  "genericError": "Kua he tetahi",
+  "reactionUpdateError": "I rahua te whakahōu tauhohenga",
+  "noSearchResults": "Karekau he kitenga rapunga",
+  "clearSearch": "Maama te rapu",
+  "resultsFound": "Kua kitea nga hua",
+  "recoverySecretHint": "Kare pea te kape-whakapiri e mahi, pato a ringa",
+  "recoverAccountDescription": "A pee i enei mahi ki te whakaora i to putea",
+  "processingLabel": "Tukatuka...",
+  "clearChatSuccess": "I pai te whakakore i nga korero",
+  "notificationsEnabled": "Kua whakahohea nga whakamohiotanga",
+  "notificationsDisabled": "Kua monoa nga whakamohiotanga",
+  "securityNotice": "Kua whakamunatia, kua rongoatia o raraunga",
+  "loading": "Uta ana...",
+  "selectLanguage": "Tīpakohia te Reo",
+  "onboardingGetStartedDesc": "Me timata ma te whiriwhiri i to reo",
+  "accountRecoveryTitle": "🔐 Nga Taipitopito Whakaora Kaute",
+  "recoveryInstructions": "Tena koa tiakina enei korero kia mau. Ka hiahia koe ki te whakaora i to putea.",
+  "importantNotice": "⚠️ He mea nui:",
+  "astrologerProfileTitle": "Tohunga Kairangi",
+  "personalAstrologer": "Kairangi Whaiaro",
+  "makePersonalAstrologer": "Hanga Whaiaro Astrologer",
+  "favoriteDescription": "Ko o patai ka aro nui ki tenei tohunga whetu. Mena kaore i te waatea, ma tetahi atu tohunga wheturangi e awhina i a koe.",
+  "educationQualifications": "Mātauranga & Tohu",
+  "aboutSection": "Mō",
+  "shareProfile": "Tiri Kōtaha",
+  "loadingAstrologer": "E uta ana i nga korero a te tohunga whetu...",
+  "failedToLoadAstrologer": "I rahua te uta i nga korero a te kaitirotiro whetu",
+  "authenticationRequired": "Motuhēhēnga e hiahiatia ana. Tena koa takiuru.",
+  "securityCheckFailed": "I rahua te taki haumarutanga: {error}",
+  "addedToFavorites": "🎯 Ko {name} to Kairangi Whaiaro inaianei",
+  "removedFromFavorites": "✅ I tangohia {name} mai i nga makau",
+  "toggleFavoriteError": "I rahua te whakahōu i te tūnga tino pai",
+  "shareMessage": "{name}\n🎓 Mātauranga: {education}\n📜 Tohu: {qualification}\n⏳ He wheako: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Kaore i whakaratohia",
+  "reviews": "({count} arotake)",
+  "specialties": "Nga tohungatanga",
+  "experience": "Te wheako",
+  "qualification": "Tohu",
+  "education": "Mātauranga",
+  "recoveryTips": "• Tangohia he whakaahua o enei korero\n• Whakaorangia ki te waahi haumaru\n• Kaua e tohatoha ki tetahi\n• Kotahi anake te whakaaturanga"
+}

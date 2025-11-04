@@ -1,0 +1,439 @@
+{
+  "@@locale": "ca",
+  "settingsTitle": "Configuració",
+  "notificationSettings": "Configuració de notificacions",
+  "privacySettings": "Configuració de privadesa",
+  "accountSettings": "Configuració del compte",
+  "languageSettings": "Configuració d'idioma",
+  "languageChanged": "L'idioma ha canviat",
+  "existingUserButton": "Ja sóc un usuari",
+  "chooseCountryTitle": "Tria el país",
+  "yesText": "Sí",
+  "noText": "No",
+  "appBarTitle": "Configuració del perfil",
+  "userIdLabel": "ID d'usuari *",
+  "nameLabel": "Nom",
+  "birthCountryLabel": "País de naixement",
+  "birthCityLabel": "Ciutat de naixement",
+  "countrySelectionTitle": "Tria el teu país",
+  "maleLabel": "Masculí",
+  "femaleLabel": "Dona",
+  "birthDateLabel": "Data de naixement",
+  "birthDatePlaceholder": "Selecciona la data de naixement",
+  "birthTimeLabel": "Hora de naixement",
+  "birthTimePlaceholder": "Selecciona l'hora de naixement",
+  "saveProfileButton": "Desa el perfil",
+  "noCitiesFound": "No s'han trobat ciutats",
+  "cityPlaceholder": "Introduïu la ciutat a {country}",
+  "countryFirstPlaceholder": "Selecciona primer el país",
+  "versionHistoryTitle": "Historial de versions",
+  "notSetText": "No definit",
+  "nameHistory": "Nom: {name}",
+  "cityHistory": "Ciutat: {city}",
+  "countryHistory": "País: {country}",
+  "genderHistory": "Gènere: {gender}",
+  "birthDateHistory": "Data de naixement: {date}",
+  "birthTimeHistory": "Hora de naixement: {time}",
+  "locationHistory": "Ubicació: {latitude}, {longitude}",
+  "timezoneHistory": "Fus horari: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Estat: {state}",
+  "versionFromText": "Actualitzat el {date}",
+  "userIdRequired": "Cal l'ID d'usuari",
+  "profileSaved": "El perfil s'ha desat correctament",
+  "saveFailed": "No s'ha pogut desar el perfil",
+  "errorPrefix": "Error:",
+  "onboardingChooseLanguage": "Trieu el vostre idioma",
+  "onboardingChooseLanguageDesc": "Seleccioneu el vostre idioma preferit per continuar.",
+  "onboardingWhatIsAstrology": "Què és l'astrologia?",
+  "onboardingWhatIsAstrologyDesc": "L'astrologia és l'estudi dels cossos celestes...",
+  "onboardingWhyUseApp": "Per què utilitzar aquesta aplicació?",
+  "onboardingWhyUseAppDesc": "Obtén horòscops personalitzats, prediccions diàries i orientació per prendre decisions informades.",
+  "onboardingHowToUse": "Com s'utilitza aquesta aplicació?",
+  "onboardingHowToUseDesc": "Navega fàcilment, consulta els horòscops diaris i gestiona el teu perfil per obtenir prediccions precises.",
+  "onboardingGetStarted": "Començar",
+  "onboardingNewUser": "Nou usuari",
+  "onboardingExistingUser": "Usuari existent",
+  "onboardingBack": "Enrere",
+  "onboardingNext": "Següent",
+  "userIdNotFound": "No s'ha trobat l'ID d'usuari. Si us plau, inicia la sessió o configura el teu perfil.",
+  "clearNotificationsTitle": "Esborrar notificacions",
+  "clearNotificationsMessage": "Esteu segur que voleu esborrar totes les notificacions?",
+  "clearNotificationsSuccess": "Totes les notificacions s'han esborrat correctament.",
+  "clearHoroscopeTitle": "Horòscop clar",
+  "clearHoroscopeMessage": "Esteu segur que voleu esborrar les dades del vostre horòscop?",
+  "clearHoroscopeSuccess": "Horòscop esborrat correctament.",
+  "clearChatTitle": "Esborra l'historial de xats",
+  "clearChatMessage": "Esteu segur que voleu suprimir tot l'historial de xat?",
+  "clearChatLocal": "Xat esborrat localment.",
+  "deleteAccountTitle": "Suprimeix el compte",
+  "deleteAccountMessage": "Segur que vols eliminar el teu compte? Això també esborrarà tot l'historial de xat i les notificacions.",
+  "deleteAccountSuccess": "El vostre compte i totes les dades s'han eliminat.",
+  "deleteAccountError": "S'ha produït un error en suprimir el compte",
+  "logoutTitle": "Tanca la sessió",
+  "logoutMessage": "Esteu segur que voleu tancar la sessió?",
+  "termsPrivacyTitle": "Termes i privadesa",
+  "privacyPolicyTitle": "Política de privacitat",
+  "termsConditionsTitle": "Termes i condicions",
+  "dataControlTitle": "Control de dades",
+  "cancelButton": "Cancel·la",
+  "confirmButton": "Confirma",
+  "clearQuestionsSuccess": "Totes les preguntes s'han suprimit correctament.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Senyor",
+  "startLabel": "Inici",
+  "recoverAccount": "Recuperar compte",
+  "endLabel": "Final",
+  "startDateLabel": "Data d'inici",
+  "endDateLabel": "Data de finalització",
+  "notAvailable": "No disponible",
+  "noData": "Sense dades",
+  "unknownError": "Error desconegut",
+  "retryButton": "Torna-ho a intentar",
+  "kundaliGeneratorTitle": "Generador de Kundali",
+  "natalChartTitle": "Carta Natal",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Raixi",
+  "ascDegreeLabel": "Grau d'Ascendent",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Desconegut",
+  "clearHoroscope": "Horòscop clar",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Esborrar notificacions",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Esborra l'historial de xats",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Tanca la sessió",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Suprimeix el compte",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Tots els camps són obligatoris.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Compte recuperat correctament.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "La recuperació ha fallat. Revisa la teva informació.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Secret de recuperació:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Sobre nosaltres",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Sobre la nostra empresa",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Ens comprometem a oferir la millor experiència d'astrologia als nostres usuaris.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "La nostra missió",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Proporcionar informació astrològica precisa i personalitzada per ajudar els usuaris a prendre decisions informades a la seva vida.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "La nostra visió",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Convertir-se en la plataforma d'astrologia més fiable, combinant tecnologia i saviesa antiga.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Els nostres valors",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Integritat, precisió, disseny centrat en l'usuari i innovació contínua.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Contacta amb nosaltres",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Correu electrònic: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Lloc web: www.latevaempresa.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Atenció al client",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Som aquí per ajudar",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Empleneu el formulari següent i el nostre equip d'assistència us respondrà el més aviat possible.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "El vostre nom",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "El vostre correu electrònic",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Missatge",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Introdueix el teu correu electrònic",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Introduïu una adreça electrònica vàlida",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Introduïu {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Enviar",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Enviant...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Correu electrònic enviat correctament!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ No s'ha pogut enviar el correu electrònic",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Diccionari d'astrologia",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Termes de cerca...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "No s'han trobat termes",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Preguntes de compra",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Usuari no autenticat",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "No s'han pogut carregar les dades de la botiga",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Falta el testimoni d'autorització",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Aplicació de xat Astro",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Pagament correcte! Pregunta enviada",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ El pagament ha fallat: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "El vostre saldo",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Preguntes",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Ofertes disponibles",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Pregunta",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Comprar",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Horòscop diari",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Falta l'ID d'usuari",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "No s'han pogut obtenir els horòscops",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "No s'ha trobat cap horòscop.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Signa",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Avui",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Ahir",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Aquesta setmana",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "El mes passat",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Xat",
+  "typeYourQuestionHint": "Escriu la teva pregunta...",
+  "paymentRequired": "Pagament requerit",
+  "paymentRequiredMessage": "Has utilitzat les teves preguntes gratuïtes. Paga 50 ₹ per continuar.",
+  "payNowButton": "Paga ara",
+  "freeQuestionsRemaining": "{count} preguntes lliures restants",
+  "paidQuestionsRemaining": "{count} preguntes de pagament restants",
+  "thankYouFeedback": "Gràcies pels teus comentaris!",
+  "ratingSubmitted": "Valoració enviada!",
+  "setUserIdFirst": "Si us plau, primer configureu el vostre ID d'usuari",
+  "failedToFetchPrevious": "No s'han pogut recuperar les preguntes i respostes anteriors",
+  "errorOccurred": "Error: {error}",
+  "drawerAstroProfile": "Perfil d'astro",
+  "drawerDailyHoroscope": "Horòscop diari",
+  "drawerBuyQuestions": "Preguntes de compra",
+  "drawerAstroDictionary": "Diccionari d'astrologia",
+  "drawerSettings": "Configuració",
+  "drawerCustomerSupport": "Atenció al client",
+  "drawerAbout": "Sobre",
+  "drawerProfileSettings": "Configuració del perfil",
+  "demoNotificationTitle": "🔔 Notificació de demostració",
+  "demoNotificationBody": "Aquesta és una notificació de prova de la teva aplicació!",
+  "notificationsTitle": "Notificacions",
+  "noNotifications": "Sense notificacions",
+  "allTab": "Tot",
+  "markAllAsRead": "Marca-ho tot com a llegit",
+  "notificationMarkedRead": "Notificació marcada com a llegida",
+  "failedToLoadNotifications": "No s'han pogut carregar les notificacions",
+  "failedToMarkRead": "No s'ha pogut marcar com llegit",
+  "failedToMarkAllRead": "No s'ha pogut marcar tot com a llegit",
+  "socketConnected": "Presa connectada",
+  "socketDisconnected": "Presa desconnectada",
+  "newNotificationReceived": "Nova notificació rebuda",
+  "generalCategory": "General",
+  "horoscopeCategory": "Horòscop",
+  "chatCategory": "Xat",
+  "systemCategory": "Sistema",
+  "updateCategory": "Actualitzacions",
+  "howToAskTitle": "Com preguntar",
+  "noQuestionsAvailable": "No hi ha preguntes disponibles",
+  "failedToLoadQuestions": "No s'han pogut carregar les preguntes",
+  "pullToRefresh": "Estireu per actualitzar",
+  "careerCategory": "Carrera professional",
+  "loveCategory": "Amor i relacions",
+  "healthCategory": "Salut",
+  "financeCategory": "Finances",
+  "familyCategory": "Família",
+  "educationCategory": "Educació",
+  "travelCategory": "Viatge",
+  "spiritualCategory": "Espiritual",
+  "profileLoaded": "El perfil s'ha carregat correctament",
+  "imageUploaded": "La imatge s'ha carregat correctament",
+  "savedInformationConfirmation": "He desat aquesta informació",
+  "noHistoryAvailable": "No hi ha historial disponible",
+  "missingUserIdError": "Cal l'ID d'usuari",
+  "networkError": "Error de xarxa. Si us plau, torna-ho a intentar.",
+  "timeoutError": "S'ha esgotat el temps d'espera de la sol·licitud",
+  "genericError": "Alguna cosa ha anat malament",
+  "reactionUpdateError": "No s'ha pogut actualitzar la reacció",
+  "noSearchResults": "No s'han trobat resultats de cerca",
+  "clearSearch": "Esborra la cerca",
+  "resultsFound": "Resultats trobats",
+  "recoverySecretHint": "Pot ser que copiar i enganxar no funcioni, escriviu manualment.",
+  "recoverAccountDescription": "Segueix aquests passos per recuperar el teu compte",
+  "processingLabel": "Processant...",
+  "clearChatSuccess": "El xat s'ha esborrat correctament",
+  "notificationsEnabled": "Notificacions activades",
+  "notificationsDisabled": "Notificacions desactivades",
+  "securityNotice": "Les teves dades estan xifrades i emmagatzemades de manera segura",
+  "loading": "S'està carregant...",
+  "selectLanguage": "Selecciona l'idioma",
+  "onboardingGetStartedDesc": "Comença triant el teu idioma",
+  "accountRecoveryTitle": "🔐 Detalls de recuperació del compte",
+  "recoveryInstructions": "Si us plau, deseu aquesta informació de manera segura. La necessitareu per recuperar el vostre compte.",
+  "importantNotice": "⚠️ Important:",
+  "astrologerProfileTitle": "Perfil d'astròleg",
+  "personalAstrologer": "Astròleg personal",
+  "makePersonalAstrologer": "Fes-te astròleg personal",
+  "favoriteDescription": "Les teves preguntes es prioritzaran a aquest astròleg. Si no està disponible, un altre astròleg qualificat t'ajudarà.",
+  "educationQualifications": "Educació i qualificacions",
+  "aboutSection": "Sobre",
+  "shareProfile": "Comparteix el perfil",
+  "loadingAstrologer": "S'estan carregant els detalls de l'astròleg...",
+  "failedToLoadAstrologer": "No s'han pogut carregar els detalls de l'astròleg",
+  "authenticationRequired": "Cal autenticació. Si us plau, inicieu la sessió.",
+  "securityCheckFailed": "La comprovació de seguretat ha fallat: {error}",
+  "addedToFavorites": "🎯 {name} ara és el teu astròleg personal",
+  "removedFromFavorites": "✅ S'ha eliminat {name} dels preferits",
+  "toggleFavoriteError": "No s'ha pogut actualitzar l'estat dels preferits",
+  "shareMessage": "{name}\n🎓 Educació: {education}\n📜 Titulació: {qualification}\n⏳ Experiència: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "No proporcionat",
+  "reviews": "({count} ressenyes)",
+  "specialties": "Especialitats",
+  "experience": "Experiència",
+  "qualification": "Qualificació",
+  "education": "Educació",
+  "recoveryTips": "• Fes una captura de pantalla d'aquesta informació\n• Guarda-la en un lloc segur\n• No la comparteixis amb ningú\n• Només es mostrarà una vegada"
+}

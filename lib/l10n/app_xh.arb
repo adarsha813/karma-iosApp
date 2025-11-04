@@ -1,0 +1,439 @@
+{
+  "@@locale": "xh",
+  "settingsTitle": "Iisetingi",
+  "notificationSettings": "Iisetingi zesaziso",
+  "privacySettings": "Iisetingi zabucala",
+  "accountSettings": "Iisetingi ze-akhawunti",
+  "languageSettings": "Iisetingi zolwimi",
+  "languageChanged": "Ulwimi lutshintshile",
+  "existingUserButton": "Ndingumsebenzisi okhoyo",
+  "chooseCountryTitle": "Khetha Ilizwe",
+  "yesText": "Ewe",
+  "noText": "Hayi",
+  "appBarTitle": "Izicwangciso zeProfayili",
+  "userIdLabel": "Isazisi somsebenzisi *",
+  "nameLabel": "Igama",
+  "birthCountryLabel": "Ilizwe Lokuzalwa",
+  "birthCityLabel": "IsiXeko sokuzalwa",
+  "countrySelectionTitle": "Khetha ilizwe lakho",
+  "maleLabel": "Indoda",
+  "femaleLabel": "Ibhinqa",
+  "birthDateLabel": "Usuku lokuzalwa",
+  "birthDatePlaceholder": "Khetha Umhla wokuzalwa",
+  "birthTimeLabel": "Ixesha Lokuzalwa",
+  "birthTimePlaceholder": "Khetha Ixesha Lokuzalwa",
+  "saveProfileButton": "Gcina iProfayile",
+  "noCitiesFound": "Akukho zixeko zifunyenwe",
+  "cityPlaceholder": "Ngena kwisixeko {country}",
+  "countryFirstPlaceholder": "Khetha ilizwe kuqala",
+  "versionHistoryTitle": "Imbali yenguqulelo",
+  "notSetText": "Akumiselwanga",
+  "nameHistory": "Igama: {name}",
+  "cityHistory": "Isixeko: {city}",
+  "countryHistory": "Ilizwe: {country}",
+  "genderHistory": "Isini: {gender}",
+  "birthDateHistory": "Umhla wokuzalwa: {date}",
+  "birthTimeHistory": "Ixesha lokuzalwa: {time}",
+  "locationHistory": "Indawo: {latitude}, {longitude}",
+  "timezoneHistory": "Ixesha lexesha: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Isimo: {state}",
+  "versionFromText": "Ihlaziywe kwi {date}",
+  "userIdRequired": "Isazisi somsebenzisi siyafuneka",
+  "profileSaved": "Iprofayile igcinwe ngempumelelo",
+  "saveFailed": "Ayiphumelelanga ukugcina inkangeleko yesimo",
+  "errorPrefix": "Impazamo:",
+  "onboardingChooseLanguage": "Khetha Ulwimi Lwakho",
+  "onboardingChooseLanguageDesc": "Khetha ulwimi olukhethayo ukuqhubeka.",
+  "onboardingWhatIsAstrology": "Yintoni ukuvumisa ngeenkwenkwezi?",
+  "onboardingWhatIsAstrologyDesc": "Ukuvumisa ngeenkwenkwezi kukufunda ngezinto ezisesibhakabhakeni...",
+  "onboardingWhyUseApp": "Kutheni usebenzisa le app?",
+  "onboardingWhyUseAppDesc": "Fumana i-horoscopes eyeyakho, uqikelelo lwemihla ngemihla, kunye nesikhokelo sokwenza izigqibo ezinolwazi.",
+  "onboardingHowToUse": "Uyisebenzisa njani le app?",
+  "onboardingHowToUseDesc": "Hamba ngokulula, jonga i-horoscopes yemihla ngemihla, kwaye ulawule iprofayile yakho ukuze ufumane uqikelelo oluchanekileyo.",
+  "onboardingGetStarted": "Qalisa",
+  "onboardingNewUser": "Umsebenzisi omtsha",
+  "onboardingExistingUser": "Umsebenzisi okhoyo",
+  "onboardingBack": "Emva",
+  "onboardingNext": "Okulandelayo",
+  "userIdNotFound": "Isazisi somsebenzisi asifunyenwanga. Nceda ungene okanye usete iprofayile yakho.",
+  "clearNotificationsTitle": "Izaziso ezicacileyo",
+  "clearNotificationsMessage": "Uqinisekile ufuna ukucima zonke izaziso?",
+  "clearNotificationsSuccess": "Zonke izaziso zicinywe ngempumelelo.",
+  "clearHoroscopeTitle": "I-Horoscope ecacileyo",
+  "clearHoroscopeMessage": "Ngaba uqinisekile ukuba ufuna ukucima idatha yakho ye-horoscope?",
+  "clearHoroscopeSuccess": "Ihoroscope isuswe ngempumelelo.",
+  "clearChatTitle": "Coca Imbali yeNcoko",
+  "clearChatMessage": "Ngaba uqinisekile ukuba ufuna ukucima yonke imbali yakho yengxoxo?",
+  "clearChatLocal": "Incoko isusiwe ekuhlaleni.",
+  "deleteAccountTitle": "Cima iAkhawunti",
+  "deleteAccountMessage": "Uqinisekile ufuna ukucima iakhawunti yakho? Oku kuya kucima yonke imbali yakho yengxoxo kunye nezaziso.",
+  "deleteAccountSuccess": "Iakhawunti yakho kunye nayo yonke idatha isusiwe.",
+  "deleteAccountError": "Impazamo yokucima iakhawunti",
+  "logoutTitle": "Phuma",
+  "logoutMessage": "Uqinisekile ufuna ukuphuma?",
+  "termsPrivacyTitle": "Imigaqo kunye noBucala",
+  "privacyPolicyTitle": "Umthetho wabucala",
+  "termsConditionsTitle": "Immimiselo & nemiqathango",
+  "dataControlTitle": "Ulawulo Lwedatha",
+  "cancelButton": "Rhoxisa",
+  "confirmButton": "Qinisekisa",
+  "clearQuestionsSuccess": "Yonke imibuzo icinywe ngempumelelo.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Nkosi",
+  "startLabel": "Qala",
+  "recoverAccount": "Fumana iAkhawunti",
+  "endLabel": "Isiphelo",
+  "startDateLabel": "Umhla wokuqala",
+  "endDateLabel": "Umhla wokuphela",
+  "notAvailable": "Ayifumaneki",
+  "noData": "Akukho datha",
+  "unknownError": "Imposiso engaziwayo",
+  "retryButton": "Zama kwakhona",
+  "kundaliGeneratorTitle": "Kundali Generator",
+  "natalChartTitle": "Itshathi yaseNatal",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "URashi",
+  "ascDegreeLabel": "iDegree yokunyuka",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Akwaziwa",
+  "clearHoroscope": "I-Horoscope ecacileyo",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Izaziso ezicacileyo",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Sula iMbali yeNcoko",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Phuma",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Cima iAkhawunti",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Zonke iindawo ziyafuneka.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "I-akhawunti ifunyenwe ngempumelelo.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Ukubuyisela akuphumelelanga. Jonga ulwazi lwakho.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Imfihlo yoBuyiselo:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Ngathi",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Malunga neNkampani yethu",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Sizimisele ukuhambisa awona mava abalaseleyo okuvumisa ngeenkwenkwezi kubasebenzisi bethu.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Injongo yethu",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Ukubonelela ngolwazi oluchanekileyo kunye nolwakho lokuvumisa ngeenkwenkwezi ukunceda abasebenzisi ukwenza izigqibo ezinolwazi kubomi babo.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Umbono wethu",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Ukuze ube lelona qonga lithembekileyo lokuvumisa ngeenkwenkwezi, ukudibanisa itekhnoloji kunye nobulumko bakudala.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Imilinganiselo Yethu",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Imfezeko, Ukuchaneka, uYilo olukwiZiko loMsebenzisi, kunye noTshintsho oluqhubekayo.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Qhagamshelana nathi",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "I-imeyile: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Iwebhusayithi: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Uxhaso lwabathengi",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Silapha ukuze Sincede",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Gcwalisa le fomu ingezantsi kwaye iqela lethu lenkxaso liya kubuyela kuwe ngokukhawuleza.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Ingama lakho",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Imeyile yakho",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Umyalezo",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Faka i-imeyile yakho",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Ngenisa idilesi ye-imeyile esebenzayo",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Ngena {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Thumela",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Iyathumela...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ I-imeyile ithunyelwe ngempumelelo!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Ayiphumelelanga ukuthumela i-imeyile",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro Dictionary",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Amagama okukhangela...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Akukho migaqo ifunyenweyo",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Thenga Imibuzo",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Umsebenzisi akaqinisekiswanga",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Ayiphumelelanga ukulayisha idatha yokugcina",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Akukho uphawu lobungqina",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "I-Astro Chat App",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Intlawulo iphumelele! Umbuzo uthunyelwe",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Intlawulo ayiphumelelanga: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Ibhalansi yakho",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Imibuzo",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Unikezelo olufumanekayo",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Umbuzo",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Thenga",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 IHoroscope yemihla ngemihla",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Isazisi somsebenzisi asikho",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Ayiphumelelanga ukulanda iinkwenkwezi",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Akukho horoscope ifunyenweyo.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Sayina",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Namhlanje",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Izolo",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Kule veki",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Kwinyanga ephelile",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Ncokola",
+  "typeYourQuestionHint": "Chwetheza umbuzo wakho...",
+  "paymentRequired": "Intlawulo iyafuneka",
+  "paymentRequiredMessage": "Uyisebenzisile imibuzo yakho yasimahla. Hlawula R50 ukuze uqhubeke.",
+  "payNowButton": "Bhatala ngoku",
+  "freeQuestionsRemaining": "{count} imibuzo yasimahla eseleyo",
+  "paidQuestionsRemaining": "{count} imibuzo ehlawulweyo eseleyo",
+  "thankYouFeedback": "Enkosi ngempendulo yakho!",
+  "ratingSubmitted": "Umlinganiselo ungenisiwe!",
+  "setUserIdFirst": "Nceda useta i-ID yakho yoMsebenzisi kuqala",
+  "failedToFetchPrevious": "Ayiphumelelanga ukulanda imibuzo edlulileyo kunye neempendulo",
+  "errorOccurred": "Imposiso: {error}",
+  "drawerAstroProfile": "Iprofayile ye-Astro",
+  "drawerDailyHoroscope": "I-Horoscope yemihla ngemihla",
+  "drawerBuyQuestions": "Thenga Imibuzo",
+  "drawerAstroDictionary": "Astro Dictionary",
+  "drawerSettings": "Iisetingi",
+  "drawerCustomerSupport": "Uxhaso lwabathengi",
+  "drawerAbout": "Malunga",
+  "drawerProfileSettings": "Izicwangciso zeProfayili",
+  "demoNotificationTitle": "🔔 Isaziso sedemo",
+  "demoNotificationBody": "Esi sisaziso sovavanyo kwi-app yakho!",
+  "notificationsTitle": "Izaziso",
+  "noNotifications": "Akukho zaziso",
+  "allTab": "Konke",
+  "markAllAsRead": "Phawula zonke njengoko zifundiwe",
+  "notificationMarkedRead": "Isaziso siphawulwe njengesifundiwe",
+  "failedToLoadNotifications": "Ayiphumelelanga ukulayisha izaziso",
+  "failedToMarkRead": "Ayiphumelelanga ukuphawula njengefundiweyo",
+  "failedToMarkAllRead": "Ayiphumelelanga ukuphawula zonke njengezifundiweyo",
+  "socketConnected": "Isokethi iqhagamshelwe",
+  "socketDisconnected": "Isokethi iqhawulwe",
+  "newNotificationReceived": "Isaziso esitsha sifunyenwe",
+  "generalCategory": "Ngokubanzi",
+  "horoscopeCategory": "IHoroscope",
+  "chatCategory": "Ncokola",
+  "systemCategory": "Inkqubo",
+  "updateCategory": "Uhlaziyo",
+  "howToAskTitle": "Indlela yokubuza",
+  "noQuestionsAvailable": "Akukho mibuzo ikhoyo",
+  "failedToLoadQuestions": "Ayiphumelelanga ukulayisha imibuzo",
+  "pullToRefresh": "Tsala ukuze uhlaziye",
+  "careerCategory": "Umsebenzi",
+  "loveCategory": "Uthando kunye nobudlelwane",
+  "healthCategory": "Impilo",
+  "financeCategory": "Ezemali",
+  "familyCategory": "Usapho",
+  "educationCategory": "Imfundo",
+  "travelCategory": "Ukuhamba",
+  "spiritualCategory": "Ezomoya",
+  "profileLoaded": "Iprofayile ilayishwe ngempumelelo",
+  "imageUploaded": "Umfanekiso ulayishwe ngempumelelo",
+  "savedInformationConfirmation": "Ndilugcinile Olu Lwazi",
+  "noHistoryAvailable": "Akukho mbali ikhoyo",
+  "missingUserIdError": "Isazisi somsebenzisi siyafuneka",
+  "networkError": "Impazamo yenethiwekhi. Nceda zama kwakhona.",
+  "timeoutError": "Isicelo siphelelwe lixesha",
+  "genericError": "Into ayihamba kakuhle",
+  "reactionUpdateError": "Ayiphumelelanga ukuhlaziya impendulo",
+  "noSearchResults": "Akukho ziphumo zophendlo zifunyenweyo",
+  "clearSearch": "Cima uphendlo",
+  "resultsFound": "Iziphumo zifunyenwe",
+  "recoverySecretHint": "Copy-copy isenokungasebenzi, chwetheza ngesandla",
+  "recoverAccountDescription": "Landela la manyathelo ukubuyisela iakhawunti yakho",
+  "processingLabel": "Iyaqhuba...",
+  "clearChatSuccess": "Incoko isuswe ngempumelelo",
+  "notificationsEnabled": "Izaziso zenziwe zasebenza",
+  "notificationsDisabled": "Izaziso zivaliwe",
+  "securityNotice": "Idatha yakho ifihliwe ngokukhuselekileyo kwaye igcinwe",
+  "loading": "Iyalayisha...",
+  "selectLanguage": "Khetha ulwimi",
+  "onboardingGetStartedDesc": "Qalisa ngokukhetha ulwimi lwakho",
+  "accountRecoveryTitle": "🔐 IiNkcukacha zokuBuyisa iakhawunti",
+  "recoveryInstructions": "Nceda ugcine olu lwazi ngokukhuselekileyo. Uyakuyidinga ukuze ufumane i-akhawunti yakho.",
+  "importantNotice": "⚠️ Kubalulekile:",
+  "astrologerProfileTitle": "Iprofayile yoMvumisi ngeenkwenkwezi",
+  "personalAstrologer": "ISivumisi ngeenkwenkwezi sobuqu",
+  "makePersonalAstrologer": "Zenzele Isivumisi Ngeenkwenkwezi",
+  "favoriteDescription": "Imibuzo yakho iya kubekwa phambili kwesi sivumisi ngeenkwenkwezi. Ukuba akafumaneki, esinye isazi ngeenkwenkwezi siya kukunceda.",
+  "educationQualifications": "IMfundo neziQinisekiso",
+  "aboutSection": "Malunga",
+  "shareProfile": "Yabelana ngeProfayile",
+  "loadingAstrologer": "Ilayisha iinkcukacha zeenkwenkwezi...",
+  "failedToLoadAstrologer": "Ayiphumelelanga ukulayisha iinkcukacha zeenkwenkwezi",
+  "authenticationRequired": "Kufuneka uqinisekiso. Nceda ungene.",
+  "securityCheckFailed": "Ukhangelo lokhuseleko aluphumelelanga: {error}",
+  "addedToFavorites": "🎯 {name} ngoku siSivumisi ngeenkwenkwezi sakho",
+  "removedFromFavorites": "✅ Isusiwe {name} kwezithandwayo",
+  "toggleFavoriteError": "Isilele ukuhlaziya isimo esithandwayo",
+  "shareMessage": "{name}\n🎓 Imfundo: {education}\n📜 Isiqinisekiso: {qualification}\n⏳ Amava: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Ayinikezwanga",
+  "reviews": "({count} uphononongo)",
+  "specialties": "Iingcali",
+  "experience": "Amava",
+  "qualification": "Isiqinisekiso",
+  "education": "Imfundo",
+  "recoveryTips": "• Thatha umfanekiso weskrini wolu lwazi\n• Yigcine kwindawo ekhuselekileyo\n• Ungabelani nabani na\n• Oku kuya kuboniswa kube kanye kuphela"
+}

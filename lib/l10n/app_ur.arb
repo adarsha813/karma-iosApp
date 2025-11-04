@@ -1,0 +1,439 @@
+{
+  "@@locale": "ur",
+  "settingsTitle": "ترتیبات",
+  "notificationSettings": "اطلاع کی ترتیبات",
+  "privacySettings": "رازداری کی ترتیبات",
+  "accountSettings": "اکاؤنٹ کی ترتیبات",
+  "languageSettings": "زبان کی ترتیبات",
+  "languageChanged": "زبان بدل گئی۔",
+  "existingUserButton": "میں ایک موجودہ صارف ہوں۔",
+  "chooseCountryTitle": "ملک کا انتخاب کریں۔",
+  "yesText": "جی ہاں",
+  "noText": "نہیں",
+  "appBarTitle": "پروفائل کی ترتیبات",
+  "userIdLabel": "یوزر آئی ڈی *",
+  "nameLabel": "نام",
+  "birthCountryLabel": "ملک پیدائش",
+  "birthCityLabel": "پیدائش کا شہر",
+  "countrySelectionTitle": "اپنا ملک منتخب کریں۔",
+  "maleLabel": "مرد",
+  "femaleLabel": "خاتون",
+  "birthDateLabel": "تاریخ پیدائش",
+  "birthDatePlaceholder": "تاریخ پیدائش منتخب کریں۔",
+  "birthTimeLabel": "پیدائش کا وقت",
+  "birthTimePlaceholder": "پیدائش کا وقت منتخب کریں۔",
+  "saveProfileButton": "پروفائل محفوظ کریں۔",
+  "noCitiesFound": "کوئی شہر نہیں ملا",
+  "cityPlaceholder": "{country} میں شہر درج کریں۔",
+  "countryFirstPlaceholder": "پہلے ملک کا انتخاب کریں۔",
+  "versionHistoryTitle": "ورژن کی تاریخ",
+  "notSetText": "سیٹ نہیں ہے۔",
+  "nameHistory": "نام: {name}",
+  "cityHistory": "شہر: {city}",
+  "countryHistory": "ملک: {country}",
+  "genderHistory": "صنف: {gender}",
+  "birthDateHistory": "تاریخ پیدائش: {date}",
+  "birthTimeHistory": "پیدائش کا وقت: {time}",
+  "locationHistory": "مقام: {latitude}, {longitude}",
+  "timezoneHistory": "ٹائم زون: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "ریاست: {state}",
+  "versionFromText": "{date} کو اپ ڈیٹ کیا گیا۔",
+  "userIdRequired": "یوزر آئی ڈی درکار ہے۔",
+  "profileSaved": "پروفائل کامیابی کے ساتھ محفوظ ہو گیا۔",
+  "saveFailed": "پروفائل محفوظ کرنے میں ناکام",
+  "errorPrefix": "خرابی:",
+  "onboardingChooseLanguage": "اپنی زبان کا انتخاب کریں۔",
+  "onboardingChooseLanguageDesc": "جاری رکھنے کے لیے اپنی پسند کی زبان منتخب کریں۔",
+  "onboardingWhatIsAstrology": "علم نجوم کیا ہے؟",
+  "onboardingWhatIsAstrologyDesc": "علم نجوم آسمانی اجسام کا مطالعہ ہے...",
+  "onboardingWhyUseApp": "اس ایپ کو کیوں استعمال کریں؟",
+  "onboardingWhyUseAppDesc": "باخبر فیصلے کرنے کے لیے ذاتی نوعیت کے زائچے، روزانہ کی پیشین گوئیاں اور رہنمائی حاصل کریں۔",
+  "onboardingHowToUse": "اس ایپ کو کیسے استعمال کیا جائے؟",
+  "onboardingHowToUseDesc": "آسانی سے نیویگیٹ کریں، روزانہ کی زائچہ چیک کریں، اور درست پیشین گوئیوں کے لیے اپنے پروفائل کا نظم کریں۔",
+  "onboardingGetStarted": "شروع کریں",
+  "onboardingNewUser": "نیا صارف",
+  "onboardingExistingUser": "موجودہ صارف",
+  "onboardingBack": "پیچھے",
+  "onboardingNext": "اگلا",
+  "userIdNotFound": "یوزر آئی ڈی نہیں ملی۔ براہ کرم لاگ ان کریں یا اپنا پروفائل سیٹ کریں۔",
+  "clearNotificationsTitle": "اطلاعات کو صاف کریں۔",
+  "clearNotificationsMessage": "کیا آپ واقعی تمام اطلاعات کو صاف کرنا چاہتے ہیں؟",
+  "clearNotificationsSuccess": "تمام اطلاعات کامیابی سے صاف ہو گئیں۔",
+  "clearHoroscopeTitle": "زائچہ صاف کریں۔",
+  "clearHoroscopeMessage": "کیا آپ واقعی اپنے زائچہ کا ڈیٹا صاف کرنا چاہتے ہیں؟",
+  "clearHoroscopeSuccess": "زائچہ کامیابی سے صاف ہو گیا۔",
+  "clearChatTitle": "چیٹ کی سرگزشت صاف کریں۔",
+  "clearChatMessage": "کیا آپ واقعی اپنی تمام چیٹ کی سرگزشت کو حذف کرنا چاہتے ہیں؟",
+  "clearChatLocal": "چیٹ مقامی طور پر صاف ہو گئی۔",
+  "deleteAccountTitle": "اکاؤنٹ حذف کریں۔",
+  "deleteAccountMessage": "کیا آپ واقعی اپنا اکاؤنٹ حذف کرنا چاہتے ہیں؟ اس سے آپ کی تمام چیٹ کی سرگزشت اور اطلاعات بھی صاف ہو جائیں گی۔",
+  "deleteAccountSuccess": "آپ کا اکاؤنٹ اور تمام ڈیٹا ہٹا دیا گیا ہے۔",
+  "deleteAccountError": "اکاؤنٹ حذف کرنے میں خرابی۔",
+  "logoutTitle": "لاگ آؤٹ",
+  "logoutMessage": "کیا آپ واقعی لاگ آؤٹ کرنا چاہتے ہیں؟",
+  "termsPrivacyTitle": "شرائط اور رازداری",
+  "privacyPolicyTitle": "رازداری کی پالیسی",
+  "termsConditionsTitle": "شرائط و ضوابط",
+  "dataControlTitle": "ڈیٹا کنٹرول",
+  "cancelButton": "منسوخ کریں۔",
+  "confirmButton": "تصدیق کریں۔",
+  "clearQuestionsSuccess": "تمام سوالات کامیابی کے ساتھ حذف ہو گئے۔",
+  "yoginiLabel": "یوگنی",
+  "lordLabel": "رب",
+  "startLabel": "شروع کریں۔",
+  "recoverAccount": "اکاؤنٹ بازیافت کریں۔",
+  "endLabel": "ختم",
+  "startDateLabel": "آغاز کی تاریخ",
+  "endDateLabel": "اختتامی تاریخ",
+  "notAvailable": "دستیاب نہیں۔",
+  "noData": "کوئی ڈیٹا نہیں۔",
+  "unknownError": "نامعلوم خرابی۔",
+  "retryButton": "دوبارہ کوشش کریں۔",
+  "kundaliGeneratorTitle": "کنڈلی جنریٹر",
+  "natalChartTitle": "نٹل چارٹ",
+  "lagnaLabel": "لگنا",
+  "rashiLabel": "راشی",
+  "ascDegreeLabel": "عروج کی ڈگری",
+  "vimshottariDashaTitle": "ویمشوتری دشا",
+  "yoginiDashaTitle": "یوگنی دشا",
+  "unknown": "نامعلوم",
+  "clearHoroscope": "زائچہ صاف کریں۔",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "اطلاعات کو صاف کریں۔",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "چیٹ کی سرگزشت صاف کریں۔",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "لاگ آؤٹ",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "اکاؤنٹ حذف کریں۔",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "تمام فیلڈز درکار ہیں۔",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "اکاؤنٹ کامیابی کے ساتھ بحال ہو گیا۔",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "بازیابی ناکام ہوگئی۔ اپنی معلومات چیک کریں۔",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "بازیابی کا راز:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "ہمارے بارے میں",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "ہماری کمپنی کے بارے میں",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "ہم اپنے صارفین کو علم نجوم کا بہترین تجربہ فراہم کرنے کے لیے پرعزم ہیں۔",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "ہمارا مشن",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "صارفین کو اپنی زندگی میں باخبر فیصلے کرنے میں مدد کرنے کے لیے علم نجوم کی درست اور ذاتی بصیرت فراہم کرنا۔",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "ہمارا وژن",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "ٹکنالوجی اور قدیم حکمت کو یکجا کرتے ہوئے علم نجوم کا سب سے قابل اعتماد پلیٹ فارم بننا۔",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "ہماری اقدار",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "سالمیت، درستگی، صارف پر مبنی ڈیزائن، اور مسلسل جدت۔",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "ہم سے رابطہ کریں۔",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "ای میل: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "ویب سائٹ: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "کسٹمر سپورٹ",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "ہم مدد کے لیے حاضر ہیں۔",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "نیچے دیئے گئے فارم کو پُر کریں اور ہماری سپورٹ ٹیم جلد از جلد آپ سے رابطہ کرے گی۔",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "آپ کا نام",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "آپ کا ای میل",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "پیغام",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "اپنا ای میل درج کریں۔",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "ایک درست ای میل ایڈریس درج کریں۔",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "{fieldName} درج کریں۔",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "بھیجیں۔",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "بھیج رہا ہے...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ ای میل کامیابی کے ساتھ بھیج دیا گیا!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ ای میل بھیجنے میں ناکام",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "آسٹرو ڈکشنری",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "تلاش کی اصطلاحات...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "کوئی شرائط نہیں ملیں۔",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "سوالات خریدیں۔",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "صارف کی توثیق نہیں ہوئی۔",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "اسٹور ڈیٹا لوڈ کرنے میں ناکام",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "گمشدہ توثیق ٹوکن",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "ایسٹرو چیٹ ایپ",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ ادائیگی کامیاب! سوال بھیجا گیا۔",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ ادائیگی ناکام ہو گئی: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "آپ کا بیلنس",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} سوالات",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "دستیاب پیشکشیں",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} سوال",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "خریدیں۔",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 یومیہ زائچہ",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "یوزر آئی ڈی غائب ہے۔",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "زائچہ حاصل کرنے میں ناکام",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "کوئی زائچہ نہیں ملا۔",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "دستخط",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "آج",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "کل",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "اس ہفتے",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "پچھلے مہینے",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "گپ شپ",
+  "typeYourQuestionHint": "اپنا سوال ٹائپ کریں...",
+  "paymentRequired": "ادائیگی کی ضرورت ہے۔",
+  "paymentRequiredMessage": "آپ نے اپنے مفت سوالات کا استعمال کیا ہے۔ جاری رکھنے کے لیے ₹50 ادا کریں۔",
+  "payNowButton": "ابھی ادائیگی کریں۔",
+  "freeQuestionsRemaining": "{count} مفت سوالات باقی ہیں۔",
+  "paidQuestionsRemaining": "{count} بامعاوضہ سوالات باقی ہیں۔",
+  "thankYouFeedback": "آپ کے تاثرات کا شکریہ!",
+  "ratingSubmitted": "درجہ بندی جمع کرائی گئی!",
+  "setUserIdFirst": "براہ کرم پہلے اپنا یوزر آئی ڈی سیٹ کریں۔",
+  "failedToFetchPrevious": "پچھلے سوالات اور جوابات حاصل کرنے میں ناکام",
+  "errorOccurred": "خرابی: {error}",
+  "drawerAstroProfile": "ایسٹرو پروفائل",
+  "drawerDailyHoroscope": "روزانہ زائچہ",
+  "drawerBuyQuestions": "سوالات خریدیں۔",
+  "drawerAstroDictionary": "آسٹرو ڈکشنری",
+  "drawerSettings": "ترتیبات",
+  "drawerCustomerSupport": "کسٹمر سپورٹ",
+  "drawerAbout": "کے بارے میں",
+  "drawerProfileSettings": "پروفائل کی ترتیبات",
+  "demoNotificationTitle": "🔔 ڈیمو نوٹیفکیشن",
+  "demoNotificationBody": "یہ آپ کی ایپ کی طرف سے ٹیسٹ کی اطلاع ہے!",
+  "notificationsTitle": "اطلاعات",
+  "noNotifications": "کوئی اطلاع نہیں۔",
+  "allTab": "تمام",
+  "markAllAsRead": "سبھی کو پڑھا ہوا نشان زد کریں۔",
+  "notificationMarkedRead": "اطلاع کو پڑھا ہوا کے بطور نشان زد کیا گیا۔",
+  "failedToLoadNotifications": "اطلاعات لوڈ کرنے میں ناکام",
+  "failedToMarkRead": "پڑھا ہوا کے بطور نشان زد کرنے میں ناکام",
+  "failedToMarkAllRead": "سبھی کو پڑھا ہوا کے بطور نشان زد کرنے میں ناکام",
+  "socketConnected": "ساکٹ منسلک ہے۔",
+  "socketDisconnected": "ساکٹ منقطع ہو گیا۔",
+  "newNotificationReceived": "نیا نوٹیفکیشن موصول ہوا۔",
+  "generalCategory": "جنرل",
+  "horoscopeCategory": "زائچہ",
+  "chatCategory": "گپ شپ",
+  "systemCategory": "سسٹم",
+  "updateCategory": "اپڈیٹس",
+  "howToAskTitle": "کیسے پوچھیں۔",
+  "noQuestionsAvailable": "کوئی سوال دستیاب نہیں۔",
+  "failedToLoadQuestions": "سوالات لوڈ کرنے میں ناکام",
+  "pullToRefresh": "تازہ دم کرنے کے لیے کھینچیں۔",
+  "careerCategory": "کیریئر",
+  "loveCategory": "محبت اور رشتے",
+  "healthCategory": "صحت",
+  "financeCategory": "فنانس",
+  "familyCategory": "خاندان",
+  "educationCategory": "تعلیم",
+  "travelCategory": "سفر",
+  "spiritualCategory": "روحانی",
+  "profileLoaded": "پروفائل کامیابی کے ساتھ لوڈ ہو گیا۔",
+  "imageUploaded": "تصویر کامیابی کے ساتھ اپ لوڈ ہو گئی۔",
+  "savedInformationConfirmation": "میں نے یہ معلومات محفوظ کر لی ہیں۔",
+  "noHistoryAvailable": "کوئی تاریخ دستیاب نہیں ہے۔",
+  "missingUserIdError": "یوزر آئی ڈی درکار ہے۔",
+  "networkError": "نیٹ ورک کی خرابی۔ براہ کرم دوبارہ کوشش کریں۔",
+  "timeoutError": "درخواست کا وقت ختم ہو گیا۔",
+  "genericError": "کچھ غلط ہو گیا۔",
+  "reactionUpdateError": "ردعمل کو اپ ڈیٹ کرنے میں ناکام",
+  "noSearchResults": "تلاش کے کوئی نتائج نہیں ملے",
+  "clearSearch": "تلاش صاف کریں۔",
+  "resultsFound": "نتائج ملے",
+  "recoverySecretHint": "کاپی پیسٹ کام نہیں کر سکتا، دستی طور پر ٹائپ کریں۔",
+  "recoverAccountDescription": "اپنا اکاؤنٹ بازیافت کرنے کے لیے ان اقدامات پر عمل کریں۔",
+  "processingLabel": "پروسیسنگ...",
+  "clearChatSuccess": "چیٹ کامیابی سے صاف ہو گئی۔",
+  "notificationsEnabled": "اطلاعات فعال ہیں۔",
+  "notificationsDisabled": "اطلاعات غیر فعال ہیں۔",
+  "securityNotice": "آپ کا ڈیٹا محفوظ طریقے سے انکرپٹ اور محفوظ ہے۔",
+  "loading": "لوڈ ہو رہا ہے...",
+  "selectLanguage": "زبان منتخب کریں۔",
+  "onboardingGetStartedDesc": "اپنی زبان کا انتخاب کرکے شروعات کریں۔",
+  "accountRecoveryTitle": "🔐 اکاؤنٹ کی بازیابی کی تفصیلات",
+  "recoveryInstructions": "براہ کرم اس معلومات کو محفوظ طریقے سے محفوظ کریں۔ آپ کو اپنا اکاؤنٹ بحال کرنے کے لیے اس کی ضرورت ہوگی۔",
+  "importantNotice": "⚠️ اہم:",
+  "astrologerProfileTitle": "نجومی پروفائل",
+  "personalAstrologer": "ذاتی نجومی۔",
+  "makePersonalAstrologer": "ذاتی نجومی بنائیں",
+  "favoriteDescription": "آپ کے سوالات کو اس نجومی سے ترجیح دی جائے گی۔ اگر دستیاب نہ ہو تو کوئی اور مستند نجومی آپ کی مدد کرے گا۔",
+  "educationQualifications": "تعلیم اور قابلیت",
+  "aboutSection": "کے بارے میں",
+  "shareProfile": "پروفائل شیئر کریں۔",
+  "loadingAstrologer": "نجومی کی تفصیلات لوڈ ہو رہی ہیں...",
+  "failedToLoadAstrologer": "نجومی کی تفصیلات لوڈ کرنے میں ناکام",
+  "authenticationRequired": "توثیق درکار ہے۔ براہ کرم لاگ ان کریں۔",
+  "securityCheckFailed": "سیکیورٹی چیک ناکام: {error}",
+  "addedToFavorites": "🎯 {name} اب آپ کا ذاتی نجومی ہے",
+  "removedFromFavorites": "✅ پسندیدہ سے {name} کو ہٹا دیا گیا۔",
+  "toggleFavoriteError": "پسندیدہ اسٹیٹس کو اپ ڈیٹ کرنے میں ناکام",
+  "shareMessage": "{name}\n🎓 تعلیم: {education}\n📜 اہلیت: {qualification}\n⏳ تجربہ: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "فراہم نہیں کیا گیا۔",
+  "reviews": "({count} جائزے)",
+  "specialties": "خصوصیات",
+  "experience": "تجربہ",
+  "qualification": "قابلیت",
+  "education": "تعلیم",
+  "recoveryTips": "• اس معلومات کا اسکرین شاٹ لیں۔\n• اسے محفوظ جگہ پر ذخیرہ کریں۔\n• کسی کے ساتھ اشتراک نہ کریں۔\n• یہ صرف ایک بار دکھایا جائے گا۔"
+}

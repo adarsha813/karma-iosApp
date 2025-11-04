@@ -1,0 +1,439 @@
+{
+  "@@locale": "zh",
+  "settingsTitle": "设置",
+  "notificationSettings": "通知设置",
+  "privacySettings": "隐私设置",
+  "accountSettings": "账户设置",
+  "languageSettings": "语言设置",
+  "languageChanged": "语言已改变",
+  "existingUserButton": "我是现有用户",
+  "chooseCountryTitle": "选择国家/地区",
+  "yesText": "是的",
+  "noText": "不",
+  "appBarTitle": "个人资料设置",
+  "userIdLabel": "用户身份 *",
+  "nameLabel": "姓名",
+  "birthCountryLabel": "出生国",
+  "birthCityLabel": "出生地",
+  "countrySelectionTitle": "选择您的国家/地区",
+  "maleLabel": "男性",
+  "femaleLabel": "女性",
+  "birthDateLabel": "出生日期",
+  "birthDatePlaceholder": "选择出生日期",
+  "birthTimeLabel": "出生时间",
+  "birthTimePlaceholder": "选择出生时间",
+  "saveProfileButton": "保存个人资料",
+  "noCitiesFound": "未找到城市",
+  "cityPlaceholder": "输入城市 {country}",
+  "countryFirstPlaceholder": "首先选择国家/地区",
+  "versionHistoryTitle": "版本历史记录",
+  "notSetText": "未设置",
+  "nameHistory": "姓名：{name}",
+  "cityHistory": "城市：{city}",
+  "countryHistory": "国家/地区：{country}",
+  "genderHistory": "性别：{gender}",
+  "birthDateHistory": "出生日期：{date}",
+  "birthTimeHistory": "出生时间：{time}",
+  "locationHistory": "位置：{latitude}，{longitude}",
+  "timezoneHistory": "时区：GMT{offset}",
+  "dstHistory": "DST：{value}",
+  "stateHistory": "州：{state}",
+  "versionFromText": "更新于 {date}",
+  "userIdRequired": "需要用户 ID",
+  "profileSaved": "个人资料已成功保存",
+  "saveFailed": "保存个人资料失败",
+  "errorPrefix": "错误：",
+  "onboardingChooseLanguage": "选择您的语言",
+  "onboardingChooseLanguageDesc": "请选择您偏好的语言继续。",
+  "onboardingWhatIsAstrology": "什么是占星术？",
+  "onboardingWhatIsAstrologyDesc": "占星术是研究天体的学科……",
+  "onboardingWhyUseApp": "为什么要使用这款应用？",
+  "onboardingWhyUseAppDesc": "获取个性化星座运势、每日预测和指导，帮助您做出明智的决定。",
+  "onboardingHowToUse": "如何使用这款应用？",
+  "onboardingHowToUseDesc": "轻松浏览，查看每日星座运势，管理个人资料以获得准确预测。",
+  "onboardingGetStarted": "开始使用",
+  "onboardingNewUser": "新用户",
+  "onboardingExistingUser": "现有用户",
+  "onboardingBack": "后退",
+  "onboardingNext": "下一个",
+  "userIdNotFound": "未找到用户ID。请登录或设置您的个人资料。",
+  "clearNotificationsTitle": "清除通知",
+  "clearNotificationsMessage": "您确定要清除所有通知吗？",
+  "clearNotificationsSuccess": "所有通知已成功清除。",
+  "clearHoroscopeTitle": "清晰星座运势",
+  "clearHoroscopeMessage": "您确定要清除您的星座运势数据吗？",
+  "clearHoroscopeSuccess": "星座运势已顺利清除。",
+  "clearChatTitle": "清除聊天记录",
+  "clearChatMessage": "您确定要删除所有聊天记录吗？",
+  "clearChatLocal": "聊天记录已在本地清除。",
+  "deleteAccountTitle": "删除帐户",
+  "deleteAccountMessage": "您确定要删除您的帐户吗？此操作也会清除您的所有聊天记录和通知。",
+  "deleteAccountSuccess": "您的账户及所有数据已被删除。",
+  "deleteAccountError": "删除帐户时出错",
+  "logoutTitle": "注销",
+  "logoutMessage": "您确定要退出登录吗？",
+  "termsPrivacyTitle": "条款与隐私",
+  "privacyPolicyTitle": "隐私政策",
+  "termsConditionsTitle": "条款及细则",
+  "dataControlTitle": "数据控制",
+  "cancelButton": "取消",
+  "confirmButton": "确认",
+  "clearQuestionsSuccess": "所有问题已成功删除。",
+  "yoginiLabel": "瑜伽女",
+  "lordLabel": "主",
+  "startLabel": "开始",
+  "recoverAccount": "恢复账户",
+  "endLabel": "结尾",
+  "startDateLabel": "开始日期",
+  "endDateLabel": "结束日期",
+  "notAvailable": "无法使用",
+  "noData": "无数据",
+  "unknownError": "未知错误",
+  "retryButton": "重试",
+  "kundaliGeneratorTitle": "昆达利发电机",
+  "natalChartTitle": "出生星盘",
+  "lagnaLabel": "拉格纳",
+  "rashiLabel": "拉希",
+  "ascDegreeLabel": "上升点度数",
+  "vimshottariDashaTitle": "维姆肖塔里·达莎",
+  "yoginiDashaTitle": "瑜伽女达莎",
+  "unknown": "未知",
+  "clearHoroscope": "清晰星座运势",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "清除通知",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "清除聊天记录",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "注销",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "删除帐户",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "所有字段均为必填项。",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "账户已成功恢复。",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "恢复失败。请检查您的信息。",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "恢复秘诀：",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "关于我们",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "关于我们公司",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "我们致力于为用户提供最佳的占星体验。",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "我们的使命",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "提供准确、个性化的占星见解，帮助用户在生活中做出明智的决定。",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "我们的愿景",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "成为最值得信赖的占星平台，将科技与古代智慧相结合。",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "我们的价值观",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "诚信、准确、以用户为中心的设计、持续创新。",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "联系我们",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "电子邮件：support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "网站：www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "客户支持",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "我们随时为您提供帮助",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "请填写以下表格，我们的支持团队将尽快与您联系。",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "你的名字",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "您的电子邮件",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "信息",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "请输入您的邮箱",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "请输入有效的电子邮件地址",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "输入{fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "发送",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "正在发送...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ 邮件已成功发送！",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ 邮件发送失败",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "星象词典",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "搜索词……",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "未找到相关术语",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "购买问题",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "用户未通过身份验证。",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "加载商店数据失败",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "缺少身份验证令牌",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro聊天应用程序",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ 付款成功！问题已发送",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ 付款失败：{error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "您的余额",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} 问题",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "现有优惠",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} 问题",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "买",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟每日星座运势",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "用户 ID 缺失",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "获取星座运势失败",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "未找到星座运势。",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "符号",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "今天",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "昨天",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "本星期",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "上个月",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "聊天",
+  "typeYourQuestionHint": "请输入您的问题……",
+  "paymentRequired": "需支付款项",
+  "paymentRequiredMessage": "您已用完免费提问次数。支付 50 卢比即可继续。",
+  "payNowButton": "立即支付",
+  "freeQuestionsRemaining": "{count} 剩余免费问题数",
+  "paidQuestionsRemaining": "{count} 剩余付费问题数",
+  "thankYouFeedback": "感谢您的反馈！",
+  "ratingSubmitted": "评分已提交！",
+  "setUserIdFirst": "请先设置您的用户ID。",
+  "failedToFetchPrevious": "获取之前的问题和答案失败",
+  "errorOccurred": "错误：{error}",
+  "drawerAstroProfile": "星象概况",
+  "drawerDailyHoroscope": "每日星座运势",
+  "drawerBuyQuestions": "购买问题",
+  "drawerAstroDictionary": "星象词典",
+  "drawerSettings": "设置",
+  "drawerCustomerSupport": "客户支持",
+  "drawerAbout": "关于",
+  "drawerProfileSettings": "个人资料设置",
+  "demoNotificationTitle": "🔔 演示通知",
+  "demoNotificationBody": "这是来自您应用的测试通知！",
+  "notificationsTitle": "通知",
+  "noNotifications": "无通知",
+  "allTab": "全部",
+  "markAllAsRead": "全部标记为已读",
+  "notificationMarkedRead": "通知已读",
+  "failedToLoadNotifications": "通知加载失败",
+  "failedToMarkRead": "标记为已读失败",
+  "failedToMarkAllRead": "未能将所有内容标记为已读",
+  "socketConnected": "插座已连接",
+  "socketDisconnected": "插座已断开连接",
+  "newNotificationReceived": "收到新通知",
+  "generalCategory": "一般的",
+  "horoscopeCategory": "星座运势",
+  "chatCategory": "聊天",
+  "systemCategory": "系统",
+  "updateCategory": "更新",
+  "howToAskTitle": "如何提问",
+  "noQuestionsAvailable": "暂无问题",
+  "failedToLoadQuestions": "问题加载失败",
+  "pullToRefresh": "下拉刷新",
+  "careerCategory": "职业",
+  "loveCategory": "爱情与人际关系",
+  "healthCategory": "健康",
+  "financeCategory": "金融",
+  "familyCategory": "家庭",
+  "educationCategory": "教育",
+  "travelCategory": "旅行",
+  "spiritualCategory": "精神",
+  "profileLoaded": "配置文件已成功加载",
+  "imageUploaded": "图片上传成功",
+  "savedInformationConfirmation": "我已保存此信息",
+  "noHistoryAvailable": "暂无历史记录",
+  "missingUserIdError": "需要用户 ID",
+  "networkError": "网络错误，请重试。",
+  "timeoutError": "请求超时",
+  "genericError": "出问题了",
+  "reactionUpdateError": "未能更新反应",
+  "noSearchResults": "未找到搜索结果",
+  "clearSearch": "清除搜索",
+  "resultsFound": "结果发现",
+  "recoverySecretHint": "复制粘贴可能无法正常工作，请手动输入。",
+  "recoverAccountDescription": "请按照以下步骤恢复您的帐户",
+  "processingLabel": "加工...",
+  "clearChatSuccess": "聊天记录已成功清除",
+  "notificationsEnabled": "已启用通知",
+  "notificationsDisabled": "通知已禁用",
+  "securityNotice": "您的数据经过安全加密并存储。",
+  "loading": "加载中...",
+  "selectLanguage": "选择语言",
+  "onboardingGetStartedDesc": "首先选择您的语言。",
+  "accountRecoveryTitle": "🔐 账户恢复详情",
+  "recoveryInstructions": "请妥善保存此信息。您需要它来恢复您的帐户。",
+  "importantNotice": "⚠️ 重要提示：",
+  "astrologerProfileTitle": "占星师简介",
+  "personalAstrologer": "私人占星师",
+  "makePersonalAstrologer": "聘请私人占星师",
+  "favoriteDescription": "您的提问将优先由这位占星师解答。如果他/她不在，我们会安排另一位合格的占星师为您提供帮助。",
+  "educationQualifications": "教育背景及资格",
+  "aboutSection": "关于",
+  "shareProfile": "分享个人资料",
+  "loadingAstrologer": "正在加载占星师详情……",
+  "failedToLoadAstrologer": "加载占星师详情失败",
+  "authenticationRequired": "需要身份验证。请登录。",
+  "securityCheckFailed": "安全检查失败：{error}",
+  "addedToFavorites": "🎯 {name} 现在是您的私人占星师",
+  "removedFromFavorites": "✅ 从收藏夹中移除 {name}",
+  "toggleFavoriteError": "更新收藏状态失败",
+  "shareMessage": "{name}\n\n🎓 教育背景：{education}\n\n📜 资格证书：{qualification}\n\n⏳ 工作经验：{experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "未提供",
+  "reviews": "（{count} 条评论）",
+  "specialties": "专业领域",
+  "experience": "经验",
+  "qualification": "资格",
+  "education": "教育",
+  "recoveryTips": "• 请截屏保存此信息\n\n• 请将其保存在安全的地方\n\n• 请勿与任何人分享\n\n• 此信息仅显示一次"
+}

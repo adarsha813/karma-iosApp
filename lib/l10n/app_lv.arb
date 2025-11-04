@@ -1,0 +1,439 @@
+{
+  "@@locale": "lv",
+  "settingsTitle": "Iestatījumi",
+  "notificationSettings": "Paziņojumu iestatījumi",
+  "privacySettings": "Privātuma iestatījumi",
+  "accountSettings": "Konta iestatījumi",
+  "languageSettings": "Valodas iestatījumi",
+  "languageChanged": "Valoda mainīta",
+  "existingUserButton": "Esmu esošs lietotājs",
+  "chooseCountryTitle": "Izvēlieties valsti",
+  "yesText": "Jā",
+  "noText": "Nē",
+  "appBarTitle": "Profila iestatījumi",
+  "userIdLabel": "Lietotāja ID *",
+  "nameLabel": "Vārds",
+  "birthCountryLabel": "Dzimšanas valsts",
+  "birthCityLabel": "Dzimšanas pilsēta",
+  "countrySelectionTitle": "Izvēlieties savu valsti",
+  "maleLabel": "Vīrietis",
+  "femaleLabel": "Sieviete",
+  "birthDateLabel": "Dzimšanas datums",
+  "birthDatePlaceholder": "Izvēlieties dzimšanas datumu",
+  "birthTimeLabel": "Dzimšanas laiks",
+  "birthTimePlaceholder": "Izvēlieties dzimšanas laiku",
+  "saveProfileButton": "Saglabāt profilu",
+  "noCitiesFound": "Nav atrastas pilsētas",
+  "cityPlaceholder": "Ievadiet pilsētu šajā valstī: {country}",
+  "countryFirstPlaceholder": "Vispirms atlasiet valsti",
+  "versionHistoryTitle": "Versiju vēsture",
+  "notSetText": "Nav iestatīts",
+  "nameHistory": "Vārds: {name}",
+  "cityHistory": "Pilsēta: {city}",
+  "countryHistory": "Valsts: {country}",
+  "genderHistory": "Dzimums: {gender}",
+  "birthDateHistory": "Dzimšanas datums: {date}",
+  "birthTimeHistory": "Dzimšanas laiks: {time}",
+  "locationHistory": "Atrašanās vieta: {latitude}, {longitude}",
+  "timezoneHistory": "Laika josla: GMT{offset}",
+  "dstHistory": "Vasaras/ziemas laiks: {value}",
+  "stateHistory": "Štats: {state}",
+  "versionFromText": "Atjaunināts {date}",
+  "userIdRequired": "Lietotāja ID ir obligāts",
+  "profileSaved": "Profils veiksmīgi saglabāts",
+  "saveFailed": "Neizdevās saglabāt profilu",
+  "errorPrefix": "Kļūda:",
+  "onboardingChooseLanguage": "Izvēlieties savu valodu",
+  "onboardingChooseLanguageDesc": "Lai turpinātu, izvēlieties vēlamo valodu.",
+  "onboardingWhatIsAstrology": "Kas ir astroloģija?",
+  "onboardingWhatIsAstrologyDesc": "Astroloģija ir debess ķermeņu izpēte...",
+  "onboardingWhyUseApp": "Kāpēc izmantot šo lietotni?",
+  "onboardingWhyUseAppDesc": "Saņemiet personalizētus horoskopus, ikdienas prognozes un norādījumus, lai pieņemtu pārdomātus lēmumus.",
+  "onboardingHowToUse": "Kā lietot šo lietotni?",
+  "onboardingHowToUseDesc": "Ērti pārvietojieties, pārbaudiet ikdienas horoskopus un pārvaldiet savu profilu, lai iegūtu precīzas prognozes.",
+  "onboardingGetStarted": "Sākt darbu",
+  "onboardingNewUser": "Jauns lietotājs",
+  "onboardingExistingUser": "Esošais lietotājs",
+  "onboardingBack": "Atpakaļ",
+  "onboardingNext": "Nākamais",
+  "userIdNotFound": "Lietotāja ID nav atrasts. Lūdzu, piesakieties vai iestatiet savu profilu.",
+  "clearNotificationsTitle": "Notīrīt paziņojumus",
+  "clearNotificationsMessage": "Vai tiešām vēlaties notīrīt visus paziņojumus?",
+  "clearNotificationsSuccess": "Visi paziņojumi ir veiksmīgi notīrīti.",
+  "clearHoroscopeTitle": "Skaidrs horoskops",
+  "clearHoroscopeMessage": "Vai tiešām vēlaties notīrīt savus horoskopa datus?",
+  "clearHoroscopeSuccess": "Horoskops veiksmīgi notīrīts.",
+  "clearChatTitle": "Notīrīt tērzēšanas vēsturi",
+  "clearChatMessage": "Vai tiešām vēlaties dzēst visu savu tērzēšanas vēsturi?",
+  "clearChatLocal": "Tērzēšana lokāli notīrīta.",
+  "deleteAccountTitle": "Dzēst kontu",
+  "deleteAccountMessage": "Vai tiešām vēlaties dzēst savu kontu? Tādējādi tiks notīrīta arī visa jūsu tērzēšanas vēsture un paziņojumi.",
+  "deleteAccountSuccess": "Jūsu konts un visi dati ir noņemti.",
+  "deleteAccountError": "Kļūda, dzēšot kontu",
+  "logoutTitle": "Izrakstīties",
+  "logoutMessage": "Vai tiešām vēlaties atteikties?",
+  "termsPrivacyTitle": "Noteikumi un konfidencialitāte",
+  "privacyPolicyTitle": "Privātuma politika",
+  "termsConditionsTitle": "Noteikumi un nosacījumi",
+  "dataControlTitle": "Datu kontrole",
+  "cancelButton": "Atcelt",
+  "confirmButton": "Apstiprināt",
+  "clearQuestionsSuccess": "Visi jautājumi veiksmīgi izdzēsti.",
+  "yoginiLabel": "Jogīni",
+  "lordLabel": "Kungs",
+  "startLabel": "Sākt",
+  "recoverAccount": "Atgūt kontu",
+  "endLabel": "Beigas",
+  "startDateLabel": "Sākuma datums",
+  "endDateLabel": "Beigu datums",
+  "notAvailable": "Nav pieejams",
+  "noData": "Nav datu",
+  "unknownError": "Nezināma kļūda",
+  "retryButton": "Mēģināt vēlreiz",
+  "kundaliGeneratorTitle": "Kundali ģenerators",
+  "natalChartTitle": "Dzimšanas diagramma",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Raši",
+  "ascDegreeLabel": "Ascendenta grāds",
+  "vimshottariDashaTitle": "Vimshotari Daša",
+  "yoginiDashaTitle": "Jogīni Daša",
+  "unknown": "Nezināms",
+  "clearHoroscope": "Skaidrs horoskops",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Notīrīt paziņojumus",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Notīrīt tērzēšanas vēsturi",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Izrakstīties",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Dzēst kontu",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Visi lauki ir obligāti jāaizpilda.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Konts veiksmīgi atgūts.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Atkopšana neizdevās. Pārbaudiet savu informāciju.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Atgūšanas noslēpums:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Par mums",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Par mūsu uzņēmumu",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Mēs esam apņēmušies sniegt vislabāko astroloģijas pieredzi mūsu lietotājiem.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Mūsu misija",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Sniegt precīzu un personalizētu astroloģijas ieskatu, lai palīdzētu lietotājiem pieņemt pārdomātus lēmumus savā dzīvē.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Mūsu vīzija",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Kļūt par visuzticamāko astroloģijas platformu, apvienojot tehnoloģijas un seno gudrību.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Mūsu vērtības",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Godprātība, precizitāte, uz lietotāju orientēts dizains un nepārtrauktas inovācijas.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Sazinieties ar mums",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "E-pasts: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Tīmekļa vietne: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Klientu atbalsts",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Mēs esam šeit, lai palīdzētu",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Aizpildiet zemāk esošo veidlapu, un mūsu atbalsta komanda sazināsies ar jums, cik drīz vien iespējams.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Tavs vārds",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Jūsu e-pasts",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Ziņojums",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Ievadiet savu e-pasta adresi",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Ievadiet derīgu e-pasta adresi",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Ievadiet {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Sūtīt",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Sūtīšana...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ E-pasts veiksmīgi nosūtīts!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Neizdevās nosūtīt e-pastu",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro vārdnīca",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Meklēšanas termini...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Nav atrasti termini",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Pirkšanas jautājumi",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Lietotājs nav autentificēts",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Neizdevās ielādēt veikala datus",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Trūkst autorizācijas marķiera",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro tērzēšanas lietotne",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Maksājums veiksmīgs! Jautājums nosūtīts",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Maksājums neizdevās: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Jūsu atlikums",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Jautājumi",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Pieejamie piedāvājumi",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Jautājums",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Pirkt",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Dienas horoskops",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Trūkst lietotāja ID",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Neizdevās izgūt horoskopus.",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Nav atrasts horoskops.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Zīme",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Šodien",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Vakar",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Šonedēļ",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Pagājušajā mēnesī",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Tērzēšana",
+  "typeYourQuestionHint": "Ierakstiet savu jautājumu...",
+  "paymentRequired": "Nepieciešams maksājums",
+  "paymentRequiredMessage": "Jūs esat izmantojis savus bezmaksas jautājumus. Lai turpinātu, samaksājiet ₹50.",
+  "payNowButton": "Maksāt tūlīt",
+  "freeQuestionsRemaining": "Atlikušie {count} bezmaksas jautājumi",
+  "paidQuestionsRemaining": "Atlikušie maksas jautājumi: {count}",
+  "thankYouFeedback": "Paldies par jūsu atsauksmi!",
+  "ratingSubmitted": "Vērtējums iesniegts!",
+  "setUserIdFirst": "Lūdzu, vispirms iestatiet savu lietotāja ID.",
+  "failedToFetchPrevious": "Neizdevās izgūt iepriekšējos jautājumus un atbildes.",
+  "errorOccurred": "Kļūda: {error}",
+  "drawerAstroProfile": "Astro profils",
+  "drawerDailyHoroscope": "Dienas horoskops",
+  "drawerBuyQuestions": "Pirkšanas jautājumi",
+  "drawerAstroDictionary": "Astro vārdnīca",
+  "drawerSettings": "Iestatījumi",
+  "drawerCustomerSupport": "Klientu atbalsts",
+  "drawerAbout": "Par mums",
+  "drawerProfileSettings": "Profila iestatījumi",
+  "demoNotificationTitle": "🔔 Demonstrācijas paziņojums",
+  "demoNotificationBody": "Šis ir testa paziņojums no jūsu lietotnes!",
+  "notificationsTitle": "Paziņojumi",
+  "noNotifications": "Nav paziņojumu",
+  "allTab": "Visi",
+  "markAllAsRead": "Atzīmēt visu kā izlasītu",
+  "notificationMarkedRead": "Paziņojums atzīmēts kā izlasīts",
+  "failedToLoadNotifications": "Neizdevās ielādēt paziņojumus",
+  "failedToMarkRead": "Neizdevās atzīmēt kā izlasītu",
+  "failedToMarkAllRead": "Neizdevās atzīmēt visu kā izlasītu",
+  "socketConnected": "Kontaktligzda pievienota",
+  "socketDisconnected": "Kontaktligzda atvienota",
+  "newNotificationReceived": "Saņemts jauns paziņojums",
+  "generalCategory": "Vispārīgi",
+  "horoscopeCategory": "Horoskops",
+  "chatCategory": "Tērzēšana",
+  "systemCategory": "Sistēma",
+  "updateCategory": "Atjauninājumi",
+  "howToAskTitle": "Kā jautāt",
+  "noQuestionsAvailable": "Nav pieejamu jautājumu",
+  "failedToLoadQuestions": "Neizdevās ielādēt jautājumus",
+  "pullToRefresh": "Pavelciet, lai atsvaidzinātu",
+  "careerCategory": "Karjera",
+  "loveCategory": "Mīlestība un attiecības",
+  "healthCategory": "Veselība",
+  "financeCategory": "Finanses",
+  "familyCategory": "Ģimene",
+  "educationCategory": "Izglītība",
+  "travelCategory": "Ceļošana",
+  "spiritualCategory": "Garīgs",
+  "profileLoaded": "Profils veiksmīgi ielādēts",
+  "imageUploaded": "Attēls veiksmīgi augšupielādēts",
+  "savedInformationConfirmation": "Esmu saglabājis šo informāciju",
+  "noHistoryAvailable": "Vēsture nav pieejama",
+  "missingUserIdError": "Lietotāja ID ir obligāts",
+  "networkError": "Tīkla kļūda. Lūdzu, mēģiniet vēlreiz.",
+  "timeoutError": "Pieprasījuma taimauts ir beidzies",
+  "genericError": "Kaut kas nogāja greizi",
+  "reactionUpdateError": "Neizdevās atjaunināt reakciju",
+  "noSearchResults": "Nav atrasti meklēšanas rezultāti",
+  "clearSearch": "Notīrīt meklēšanu",
+  "resultsFound": "Atrasti rezultāti",
+  "recoverySecretHint": "Kopēšana un ielīmēšana var nedarboties, rakstiet manuāli",
+  "recoverAccountDescription": "Lai atgūtu savu kontu, veiciet šīs darbības",
+  "processingLabel": "Notiek apstrāde...",
+  "clearChatSuccess": "Tērzēšana veiksmīgi notīrīta",
+  "notificationsEnabled": "Paziņojumi ir iespējoti",
+  "notificationsDisabled": "Paziņojumi ir atspējoti",
+  "securityNotice": "Jūsu dati tiek droši šifrēti un glabāti",
+  "loading": "Notiek ielāde...",
+  "selectLanguage": "Izvēlieties valodu",
+  "onboardingGetStartedDesc": "Sāciet, izvēloties valodu",
+  "accountRecoveryTitle": "🔐 Konta atkopšanas informācija",
+  "recoveryInstructions": "Lūdzu, droši saglabājiet šo informāciju. Tā būs nepieciešama, lai atgūtu savu kontu.",
+  "importantNotice": "⚠️ Svarīgi:",
+  "astrologerProfileTitle": "Astrologa profils",
+  "personalAstrologer": "Personīgais astrologs",
+  "makePersonalAstrologer": "Izveidojiet personīgo astrologu",
+  "favoriteDescription": "Jūsu jautājumi tiks nodoti šim astrologam prioritārā secībā. Ja tas nav pieejams, jums palīdzēs cits kvalificēts astrologs.",
+  "educationQualifications": "Izglītība un kvalifikācija",
+  "aboutSection": "Par mums",
+  "shareProfile": "Kopīgot profilu",
+  "loadingAstrologer": "Notiek astrologa informācijas ielāde...",
+  "failedToLoadAstrologer": "Neizdevās ielādēt astrologa informāciju.",
+  "authenticationRequired": "Nepieciešama autentifikācija. Lūdzu, piesakieties.",
+  "securityCheckFailed": "Drošības pārbaude neizdevās: {error}",
+  "addedToFavorites": "🎯 {name} tagad ir jūsu personīgais astrologs",
+  "removedFromFavorites": "✅ Noņemts {name} no izlases",
+  "toggleFavoriteError": "Neizdevās atjaunināt iecienītāko statusu",
+  "shareMessage": "{name}\n🎓 Izglītība: {education}\n📜 Kvalifikācija: {qualification}\n⏳ Pieredze: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Nav sniegts",
+  "reviews": "({count} atsauksmes)",
+  "specialties": "Specialitātes",
+  "experience": "Pieredze",
+  "qualification": "Kvalifikācija",
+  "education": "Izglītība",
+  "recoveryTips": "• Uzņemiet šīs informācijas ekrānuzņēmumu\n• Glabājiet to drošā vietā\n• Neizpaudiet nevienam\n• Tas tiks parādīts tikai vienu reizi"
+}

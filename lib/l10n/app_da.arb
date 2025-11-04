@@ -1,0 +1,439 @@
+{
+  "@@locale": "da",
+  "settingsTitle": "Indstillinger",
+  "notificationSettings": "Meddelelsesindstillinger",
+  "privacySettings": "Privatlivsindstillinger",
+  "accountSettings": "Kontoindstillinger",
+  "languageSettings": "Sprogindstillinger",
+  "languageChanged": "Sprog ændret",
+  "existingUserButton": "Jeg er en eksisterende bruger",
+  "chooseCountryTitle": "Vælg land",
+  "yesText": "Ja",
+  "noText": "Ingen",
+  "appBarTitle": "Profilindstillinger",
+  "userIdLabel": "Bruger-ID *",
+  "nameLabel": "Navn",
+  "birthCountryLabel": "Fødeland",
+  "birthCityLabel": "Fødeby",
+  "countrySelectionTitle": "Vælg dit land",
+  "maleLabel": "Han",
+  "femaleLabel": "Kvinde",
+  "birthDateLabel": "Fødselsdato",
+  "birthDatePlaceholder": "Vælg fødselsdato",
+  "birthTimeLabel": "Fødselstidspunkt",
+  "birthTimePlaceholder": "Vælg fødselstidspunkt",
+  "saveProfileButton": "Gem profil",
+  "noCitiesFound": "Ingen byer fundet",
+  "cityPlaceholder": "Indtast by i {country}",
+  "countryFirstPlaceholder": "Vælg land først",
+  "versionHistoryTitle": "Versionshistorik",
+  "notSetText": "Ikke indstillet",
+  "nameHistory": "Navn: {name}",
+  "cityHistory": "By: {city}",
+  "countryHistory": "Land: {country}",
+  "genderHistory": "Køn: {gender}",
+  "birthDateHistory": "Fødselsdato: {date}",
+  "birthTimeHistory": "Fødselstidspunkt: {time}",
+  "locationHistory": "Placering: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT{offset}",
+  "dstHistory": "Sommertid: {value}",
+  "stateHistory": "Tilstand: {state}",
+  "versionFromText": "Opdateret den {date}",
+  "userIdRequired": "Bruger-ID er påkrævet",
+  "profileSaved": "Profilen er gemt",
+  "saveFailed": "Profilen kunne ikke gemmes",
+  "errorPrefix": "Fejl:",
+  "onboardingChooseLanguage": "Vælg dit sprog",
+  "onboardingChooseLanguageDesc": "Vælg dit foretrukne sprog for at fortsætte.",
+  "onboardingWhatIsAstrology": "Hvad er astrologi?",
+  "onboardingWhatIsAstrologyDesc": "Astrologi er studiet af himmellegemer ...",
+  "onboardingWhyUseApp": "Hvorfor bruge denne app?",
+  "onboardingWhyUseAppDesc": "Få personlige horoskoper, daglige forudsigelser og vejledning til at træffe informerede beslutninger.",
+  "onboardingHowToUse": "Hvordan bruger man denne app?",
+  "onboardingHowToUseDesc": "Naviger nemt, tjek daglige horoskoper, og administrer din profil for at få præcise forudsigelser.",
+  "onboardingGetStarted": "Kom i gang",
+  "onboardingNewUser": "Ny bruger",
+  "onboardingExistingUser": "Eksisterende bruger",
+  "onboardingBack": "Tilbage",
+  "onboardingNext": "Næste",
+  "userIdNotFound": "Bruger-ID ikke fundet. Log venligst ind eller opret din profil.",
+  "clearNotificationsTitle": "Ryd notifikationer",
+  "clearNotificationsMessage": "Er du sikker på, at du vil rydde alle notifikationer?",
+  "clearNotificationsSuccess": "Alle notifikationer er blevet slettet.",
+  "clearHoroscopeTitle": "Klart horoskop",
+  "clearHoroscopeMessage": "Er du sikker på, at du vil slette dine horoskopdata?",
+  "clearHoroscopeSuccess": "Horoskopet er ryddet.",
+  "clearChatTitle": "Ryd chathistorik",
+  "clearChatMessage": "Er du sikker på, at du vil slette hele din chathistorik?",
+  "clearChatLocal": "Chatten er ryddet lokalt.",
+  "deleteAccountTitle": "Slet konto",
+  "deleteAccountMessage": "Er du sikker på, at du vil slette din konto? Dette vil også rydde al din chathistorik og alle dine notifikationer.",
+  "deleteAccountSuccess": "Din konto og alle data er blevet fjernet.",
+  "deleteAccountError": "Fejl ved sletning af konto",
+  "logoutTitle": "Log ud",
+  "logoutMessage": "Er du sikker på, at du vil logge ud?",
+  "termsPrivacyTitle": "Vilkår og privatliv",
+  "privacyPolicyTitle": "Privatlivspolitik",
+  "termsConditionsTitle": "Vilkår og betingelser",
+  "dataControlTitle": "Datakontrol",
+  "cancelButton": "Ophæve",
+  "confirmButton": "Bekræfte",
+  "clearQuestionsSuccess": "Alle spørgsmål er slettet.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Herre",
+  "startLabel": "Starte",
+  "recoverAccount": "Gendan konto",
+  "endLabel": "Ende",
+  "startDateLabel": "Startdato",
+  "endDateLabel": "Slutdato",
+  "notAvailable": "Ikke tilgængelig",
+  "noData": "Ingen data",
+  "unknownError": "Ukendt fejl",
+  "retryButton": "Prøv igen",
+  "kundaliGeneratorTitle": "Kundali-generator",
+  "natalChartTitle": "Fødselshoroskop",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Ascendantgrad",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Ukendt",
+  "clearHoroscope": "Klart horoskop",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Ryd notifikationer",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Ryd chathistorik",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Log ud",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Slet konto",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Alle felter er obligatoriske.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Kontoen er blevet gendannet.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Gendannelse mislykkedes. Tjek dine oplysninger.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Genopretningshemmeligheden:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Om os",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Om vores virksomhed",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Vi er forpligtet til at levere den bedste astrologioplevelse til vores brugere.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Vores mission",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "At give præcise og personlige astrologiske indsigter for at hjælpe brugerne med at træffe informerede beslutninger i deres liv.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Vores vision",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "At blive den mest betroede astrologiplatform, der kombinerer teknologi og ældgammel visdom.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Vores værdier",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Integritet, nøjagtighed, brugercentreret design og kontinuerlig innovation.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Kontakt os",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "E-mail: support@dinvirksomhed.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Hjemmeside: www.dinvirksomhed.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Kundesupport",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Vi er her for at hjælpe",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Udfyld formularen nedenfor, så vender vores supportteam tilbage til dig hurtigst muligt.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Dit navn",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Din e-mail",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Besked",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Indtast din e-mail",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Indtast en gyldig e-mailadresse",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Indtast {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Sende",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Sender...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ E-mail sendt!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Kunne ikke sende e-mail",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro-ordbog",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Søgeord...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Ingen termer fundet",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Køb spørgsmål",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Brugeren er ikke godkendt",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Kunne ikke indlæse butiksdata",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Manglende godkendelsestoken",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat-app",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Betaling gennemført! Spørgsmål sendt",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Betaling mislykkedes: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Din saldo",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Spørgsmål",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Tilgængelige tilbud",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Spørgsmål",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Købe",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Dagligt horoskop",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Bruger-ID mangler",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Kunne ikke hente horoskoper",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Intet horoskop fundet.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Tegn",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "I dag",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "I går",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Denne uge",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Sidste måned",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Snak",
+  "typeYourQuestionHint": "Skriv dit spørgsmål...",
+  "paymentRequired": "Betaling påkrævet",
+  "paymentRequiredMessage": "Du har brugt dine gratis spørgsmål. Betal ₹50 for at fortsætte.",
+  "payNowButton": "Betal nu",
+  "freeQuestionsRemaining": "{count} ledige spørgsmål tilbage",
+  "paidQuestionsRemaining": "{count} betalte spørgsmål tilbage",
+  "thankYouFeedback": "Tak for din feedback!",
+  "ratingSubmitted": "Bedømmelse indsendt!",
+  "setUserIdFirst": "Angiv venligst dit bruger-ID først",
+  "failedToFetchPrevious": "Kunne ikke hente tidligere spørgsmål og svar",
+  "errorOccurred": "Fejl: {error}",
+  "drawerAstroProfile": "Astro-profil",
+  "drawerDailyHoroscope": "Dagligt horoskop",
+  "drawerBuyQuestions": "Køb spørgsmål",
+  "drawerAstroDictionary": "Astro-ordbog",
+  "drawerSettings": "Indstillinger",
+  "drawerCustomerSupport": "Kundesupport",
+  "drawerAbout": "Om",
+  "drawerProfileSettings": "Profilindstillinger",
+  "demoNotificationTitle": "🔔 Demo-notifikation",
+  "demoNotificationBody": "Dette er en testnotifikation fra din app!",
+  "notificationsTitle": "Notifikationer",
+  "noNotifications": "Ingen notifikationer",
+  "allTab": "Alle",
+  "markAllAsRead": "Markér alle som læst",
+  "notificationMarkedRead": "Notifikation markeret som læst",
+  "failedToLoadNotifications": "Kunne ikke indlæse notifikationer",
+  "failedToMarkRead": "Kunne ikke markere som læst",
+  "failedToMarkAllRead": "Kunne ikke markere alt som læst",
+  "socketConnected": "Stikkontakt tilsluttet",
+  "socketDisconnected": "Stikkontakten er frakoblet",
+  "newNotificationReceived": "Ny meddelelse modtaget",
+  "generalCategory": "Generel",
+  "horoscopeCategory": "Horoskop",
+  "chatCategory": "Snak",
+  "systemCategory": "System",
+  "updateCategory": "Opdateringer",
+  "howToAskTitle": "Sådan spørger du",
+  "noQuestionsAvailable": "Ingen spørgsmål tilgængelige",
+  "failedToLoadQuestions": "Spørgsmålene kunne ikke indlæses",
+  "pullToRefresh": "Træk for at opdatere",
+  "careerCategory": "Karriere",
+  "loveCategory": "Kærlighed og forhold",
+  "healthCategory": "Sundhed",
+  "financeCategory": "Finansiere",
+  "familyCategory": "Familie",
+  "educationCategory": "Undervisning",
+  "travelCategory": "Rejse",
+  "spiritualCategory": "Åndelig",
+  "profileLoaded": "Profilen er indlæst",
+  "imageUploaded": "Billedet er blevet uploadet",
+  "savedInformationConfirmation": "Jeg har gemt disse oplysninger",
+  "noHistoryAvailable": "Ingen historik tilgængelig",
+  "missingUserIdError": "Bruger-ID er påkrævet",
+  "networkError": "Netværksfejl. Prøv igen.",
+  "timeoutError": "Anmodningen udløb",
+  "genericError": "Noget gik galt",
+  "reactionUpdateError": "Reaktionen kunne ikke opdateres",
+  "noSearchResults": "Ingen søgeresultater fundet",
+  "clearSearch": "Ryd søgning",
+  "resultsFound": "Resultater fundet",
+  "recoverySecretHint": "Kopiér/indsæt virker muligvis ikke, skriv manuelt",
+  "recoverAccountDescription": "Følg disse trin for at gendanne din konto",
+  "processingLabel": "Forarbejdning...",
+  "clearChatSuccess": "Chatten er blevet ryddet",
+  "notificationsEnabled": "Notifikationer aktiveret",
+  "notificationsDisabled": "Notifikationer deaktiveret",
+  "securityNotice": "Dine data er sikkert krypteret og gemt",
+  "loading": "Indlæser...",
+  "selectLanguage": "Vælg sprog",
+  "onboardingGetStartedDesc": "Kom i gang ved at vælge dit sprog",
+  "accountRecoveryTitle": "🔐 Oplysninger om kontogendannelse",
+  "recoveryInstructions": "Gem venligst disse oplysninger sikkert. Du skal bruge dem for at gendanne din konto.",
+  "importantNotice": "⚠️ Vigtigt:",
+  "astrologerProfileTitle": "Astrologprofil",
+  "personalAstrologer": "Personlig astrolog",
+  "makePersonalAstrologer": "Bliv personlig astrolog",
+  "favoriteDescription": "Dine spørgsmål vil blive prioriteret til denne astrolog. Hvis denne ikke er tilgængelig, vil en anden kvalificeret astrolog hjælpe dig.",
+  "educationQualifications": "Uddannelse og kvalifikationer",
+  "aboutSection": "Om",
+  "shareProfile": "Del profil",
+  "loadingAstrologer": "Indlæser astrologoplysninger...",
+  "failedToLoadAstrologer": "Kunne ikke indlæse astrologoplysninger",
+  "authenticationRequired": "Godkendelse kræves. Log venligst ind.",
+  "securityCheckFailed": "Sikkerhedstjek mislykkedes: {error}",
+  "addedToFavorites": "🎯 {name} er nu din personlige astrolog",
+  "removedFromFavorites": "✅ Fjernet {name} fra favoritter",
+  "toggleFavoriteError": "Kunne ikke opdatere favoritstatus",
+  "shareMessage": "{name}\n🎓 Uddannelse: {education}\n📜 Kvalifikation: {qualification}\n⏳ Erfaring: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Ikke angivet",
+  "reviews": "({count} anmeldelser)",
+  "specialties": "Specialiteter",
+  "experience": "Erfaring",
+  "qualification": "Kvalifikation",
+  "education": "Undervisning",
+  "recoveryTips": "• Tag et skærmbillede af disse oplysninger\n• Gem dem et sikkert sted\n• Del dem ikke med nogen\n• Dette vises kun én gang"
+}

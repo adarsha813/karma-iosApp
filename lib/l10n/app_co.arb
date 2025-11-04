@@ -1,0 +1,439 @@
+{
+  "@@locale": "co",
+  "settingsTitle": "Impostazioni",
+  "notificationSettings": "Impostazioni di notificazione",
+  "privacySettings": "Impostazioni di privacy",
+  "accountSettings": "Impostazioni di u contu",
+  "languageSettings": "Impostazioni di lingua",
+  "languageChanged": "Lingua cambiata",
+  "existingUserButton": "Sò un utilizatore esistente",
+  "chooseCountryTitle": "Sceglie u paese",
+  "yesText": "Iè",
+  "noText": "Innò",
+  "appBarTitle": "Impostazioni di u prufilu",
+  "userIdLabel": "ID utilizatore *",
+  "nameLabel": "Nome",
+  "birthCountryLabel": "Paese di nascita",
+  "birthCityLabel": "Cità di nascita",
+  "countrySelectionTitle": "Sceglite u vostru paese",
+  "maleLabel": "Maschile",
+  "femaleLabel": "Femina",
+  "birthDateLabel": "Data di nascita",
+  "birthDatePlaceholder": "Selezziunate a data di nascita",
+  "birthTimeLabel": "Ora di nascita",
+  "birthTimePlaceholder": "Selezziunate l'ora di nascita",
+  "saveProfileButton": "Salvà u prufilu",
+  "noCitiesFound": "Nisuna cità truvata",
+  "cityPlaceholder": "Inserite a cità in {country}",
+  "countryFirstPlaceholder": "Selezziunate prima u paese",
+  "versionHistoryTitle": "Cronologia di e versioni",
+  "notSetText": "Micca stabilitu",
+  "nameHistory": "Nome: {name}",
+  "cityHistory": "Cità: {city}",
+  "countryHistory": "Paese: {country}",
+  "genderHistory": "Sessu: {gender}",
+  "birthDateHistory": "Data di nascita: {date}",
+  "birthTimeHistory": "Ora di nascita: {time}",
+  "locationHistory": "Locu: {latitude}, {longitude}",
+  "timezoneHistory": "Fusu orariu: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Statu: {state}",
+  "versionFromText": "Aghjurnatu u {date}",
+  "userIdRequired": "L'ID utilizatore hè necessariu",
+  "profileSaved": "U prufilu hè statu salvatu cù successu",
+  "saveFailed": "Ùn hè micca statu pussibule di salvà u prufilu",
+  "errorPrefix": "Errore:",
+  "onboardingChooseLanguage": "Sceglite a vostra lingua",
+  "onboardingChooseLanguageDesc": "Selezziunate a vostra lingua preferita per cuntinuà.",
+  "onboardingWhatIsAstrology": "Chì ghjè l'Astrologia ?",
+  "onboardingWhatIsAstrologyDesc": "L'astrologia hè u studiu di i corpi celesti...",
+  "onboardingWhyUseApp": "Perchè aduprà sta applicazione?",
+  "onboardingWhyUseAppDesc": "Uttenite oroscopi persunalizati, previsioni ghjurnaliere è guida per piglià decisioni infurmate.",
+  "onboardingHowToUse": "Cumu aduprà sta applicazione?",
+  "onboardingHowToUseDesc": "Navigate facilmente, verificate l'oroscopu di ogni ghjornu è gestite u vostru prufilu per previsioni precise.",
+  "onboardingGetStarted": "Cumincià",
+  "onboardingNewUser": "Novu utilizatore",
+  "onboardingExistingUser": "Utilizatore esistente",
+  "onboardingBack": "Indietro",
+  "onboardingNext": "Dopu",
+  "userIdNotFound": "ID utilizatore micca trovu. Per piacè cunnettatevi o cunfigurate u vostru prufilu.",
+  "clearNotificationsTitle": "Sguassà e Notificazioni",
+  "clearNotificationsMessage": "Site sicuru di vulè sguassà tutte e notificazioni ?",
+  "clearNotificationsSuccess": "Tutte e notificazioni sò state sguassate cù successu.",
+  "clearHoroscopeTitle": "Oroscopu chjaru",
+  "clearHoroscopeMessage": "Site sicuru di vulè sguassà i dati di u vostru oroscopu ?",
+  "clearHoroscopeSuccess": "L'oroscopu hè statu sbulicatu cù successu.",
+  "clearChatTitle": "Sguassà a storia di e chat",
+  "clearChatMessage": "Site sicuru di vulè sguassà tutta a vostra storia di chat?",
+  "clearChatLocal": "Chat sbulicata lucalmente.",
+  "deleteAccountTitle": "Sguassà u contu",
+  "deleteAccountMessage": "Site sicuru di vulè sguassà u vostru contu ? Questu sguasserà ancu tutta a vostra storia di chat è e notificazioni.",
+  "deleteAccountSuccess": "U vostru contu è tutti i dati sò stati eliminati.",
+  "deleteAccountError": "Errore di sguassà u contu",
+  "logoutTitle": "Scunnettà si",
+  "logoutMessage": "Site sicuru di vulè disconnettevi ?",
+  "termsPrivacyTitle": "Termini è privacy",
+  "privacyPolicyTitle": "Pulitica di privacy",
+  "termsConditionsTitle": "Termini è Cundizioni",
+  "dataControlTitle": "Cuntrollu di i dati",
+  "cancelButton": "Annulà",
+  "confirmButton": "Cunfirmà",
+  "clearQuestionsSuccess": "Tutte e dumande sò state sguassate cù successu.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Signore",
+  "startLabel": "Principià",
+  "recoverAccount": "Recuperà u contu",
+  "endLabel": "Fine",
+  "startDateLabel": "Data d'iniziu",
+  "endDateLabel": "Data di fine",
+  "notAvailable": "Micca dispunibule",
+  "noData": "Nisuna data",
+  "unknownError": "Errore scunnisciutu",
+  "retryButton": "Pruvà torna",
+  "kundaliGeneratorTitle": "Generatore di Kundali",
+  "natalChartTitle": "Carta Natale",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Gradu Ascendente",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Scunnisciutu",
+  "clearHoroscope": "Oroscopu chjaru",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Sguassà e Notificazioni",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Sguassà a storia di e chat",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Scunnettà si",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Sguassà u contu",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Tutti i campi sò ubligatorii.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "U contu hè statu recuperatu cù successu.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "A ricuperazione hà fiascatu. Verificate e vostre informazioni.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Secretu di Ripresa:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Nantu à noi",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "À propositu di a nostra cumpagnia",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Ci impegnemu à furnisce a megliu sperienza d'astrologia à i nostri utilizatori.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "A nostra missione",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Per furnisce insights astrologichi precisi è persunalizati per aiutà l'utilizatori à piglià decisioni infurmate in a so vita.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "A nostra visione",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Per diventà a piattaforma astrologica più affidabile, cumbinendu tecnulugia è saviezza antica.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "I nostri valori",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Integrità, Precisione, Design Centratu nantu à l'Utilizatore è Innuvazione Continua.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Cuntatta ci",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "E-mail: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Situ web: www.a vostra cumpagnia.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Assistenza à i clienti",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Semu quì per aiutà",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Riempite u furmulariu quì sottu è a nostra squadra di supportu vi cuntatterà u più prestu pussibule.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "U vostru nome",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "U vostru email",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Missaghju",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Inserite u vostru indirizzu email",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Inserite un indirizzu email validu",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Inserite {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Mandà",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Inviendu...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Email mandatu cù successu!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Impossibile mandà l'email",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Dizziunariu Astrologicu",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Termini di ricerca...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Nisun termine trovu",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Cumprà Dumande",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Utilizatore micca autenticatu",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Impossibile caricà i dati di u magazinu",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Manca u token d'autentificazione",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Applicazione di Chat Astro",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Pagamentu riesciutu! Quistione mandata",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Pagamentu fiascatu: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "U vostru equilibriu",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Questions",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Offerte dispunibili",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Quistione",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Cumprà",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Oroscopu di u ghjornu",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "L'ID utilizatore manca",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Impussibile di recuperà l'oroscopu",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Nisun oroscopu trovu.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Firmà",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Oghje",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Eri",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Sta settimana",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "U mese scorsu",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Chat",
+  "typeYourQuestionHint": "Scrivite a vostra dumanda...",
+  "paymentRequired": "Pagamentu necessariu",
+  "paymentRequiredMessage": "Avete utilizatu e vostre dumande gratuite. Pagate ₹50 per cuntinuà.",
+  "payNowButton": "Pagà Avà",
+  "freeQuestionsRemaining": "{count} dumande libere rimanenti",
+  "paidQuestionsRemaining": "{count} dumande pagate rimanenti",
+  "thankYouFeedback": "Grazie per u vostru feedback!",
+  "ratingSubmitted": "Valutazione sottumessa!",
+  "setUserIdFirst": "Per piacè, impostate prima u vostru ID utilizatore",
+  "failedToFetchPrevious": "Ùn hè statu pussibule di recuperà e dumande è e risposte precedenti",
+  "errorOccurred": "Errore: {error}",
+  "drawerAstroProfile": "Profilu Astro",
+  "drawerDailyHoroscope": "Oroscopu cutidianu",
+  "drawerBuyQuestions": "Cumprà Dumande",
+  "drawerAstroDictionary": "Dizziunariu Astrologicu",
+  "drawerSettings": "Impostazioni",
+  "drawerCustomerSupport": "Assistenza à i clienti",
+  "drawerAbout": "À propositu",
+  "drawerProfileSettings": "Impostazioni di u prufilu",
+  "demoNotificationTitle": "🔔 Notificazione di Dimostrazione",
+  "demoNotificationBody": "Questa hè una notificazione di prova da a vostra applicazione!",
+  "notificationsTitle": "Notificazioni",
+  "noNotifications": "Nisuna notificazione",
+  "allTab": "Tuttu",
+  "markAllAsRead": "Marcà tuttu cum'è lettu",
+  "notificationMarkedRead": "Notificazione marcata cum'è letta",
+  "failedToLoadNotifications": "Ùn hè micca statu pussibule di caricà e notificazioni",
+  "failedToMarkRead": "Ùn hè statu pussibule di marcà cum'è lettu",
+  "failedToMarkAllRead": "Ùn hè micca statu pussibule di marcà tuttu cum'è lettu",
+  "socketConnected": "Presa cunnessa",
+  "socketDisconnected": "Presa scollegata",
+  "newNotificationReceived": "Nova notificazione ricevuta",
+  "generalCategory": "Generale",
+  "horoscopeCategory": "Oroscopu",
+  "chatCategory": "Chat",
+  "systemCategory": "Sistema",
+  "updateCategory": "Aghjurnamenti",
+  "howToAskTitle": "Cumu dumandà",
+  "noQuestionsAvailable": "Nisuna dumanda dispunibile",
+  "failedToLoadQuestions": "Ùn hè micca statu pussibule di caricà e dumande",
+  "pullToRefresh": "Tira per rinfrescà",
+  "careerCategory": "Carriera",
+  "loveCategory": "Amore è Relazioni",
+  "healthCategory": "Salute",
+  "financeCategory": "Finanza",
+  "familyCategory": "Famiglia",
+  "educationCategory": "Educazione",
+  "travelCategory": "Viaghju",
+  "spiritualCategory": "Spirituale",
+  "profileLoaded": "U prufilu hè statu caricatu cù successu",
+  "imageUploaded": "L'imagine hè stata caricata cù successu",
+  "savedInformationConfirmation": "Aghju salvatu sta infurmazione",
+  "noHistoryAvailable": "Nisuna storia dispunibile",
+  "missingUserIdError": "L'ID utilizatore hè necessariu",
+  "networkError": "Errore di rete. Per piacè pruvate torna.",
+  "timeoutError": "A dumanda hè scaduta",
+  "genericError": "Qualcosa hè andatu male",
+  "reactionUpdateError": "Ùn hè micca statu pussibule d'aghjurnà a reazione",
+  "noSearchResults": "Nisun risultatu di ricerca trovu",
+  "clearSearch": "Sguassà a ricerca",
+  "resultsFound": "Risultati truvati",
+  "recoverySecretHint": "A copia-incolla ùn pò micca funziunà, scrivite manualmente",
+  "recoverAccountDescription": "Segui sti passi per ricuperà u vostru contu",
+  "processingLabel": "Trasfurmazione...",
+  "clearChatSuccess": "A chat hè stata sbulicata cù successu",
+  "notificationsEnabled": "Notificazioni attivate",
+  "notificationsDisabled": "Notificazioni disattivate",
+  "securityNotice": "I vostri dati sò criptati è almacenati in modu sicuru",
+  "loading": "Caricamentu in corsu...",
+  "selectLanguage": "Selezziunate a lingua",
+  "onboardingGetStartedDesc": "Cuminciate scegliendu a vostra lingua",
+  "accountRecoveryTitle": "🔐 Dettagli di Recuperazione di u Contu",
+  "recoveryInstructions": "Per piacè, salvate sta infurmazione in modu sicuru. Ne averete bisognu per recuperà u vostru contu.",
+  "importantNotice": "⚠️ Impurtante:",
+  "astrologerProfileTitle": "Profilu di l'astrologu",
+  "personalAstrologer": "Astrologu persunale",
+  "makePersonalAstrologer": "Fate un Astrologu Persunale",
+  "favoriteDescription": "E vostre dumande seranu prioritizate à questu astrologu. S'ellu ùn hè micca dispunibule, un altru astrologu qualificatu vi assisterà.",
+  "educationQualifications": "Educazione è Qualificazioni",
+  "aboutSection": "À propositu",
+  "shareProfile": "Sparte u prufilu",
+  "loadingAstrologer": "Caricamentu di i dettagli di l'astrologu...",
+  "failedToLoadAstrologer": "Ùn hè micca statu pussibule di caricà i dettagli di l'astrologu",
+  "authenticationRequired": "Autentificazione necessaria. Per piacè cunnettatevi.",
+  "securityCheckFailed": "A verificazione di sicurezza hà fiascatu: {error}",
+  "addedToFavorites": "🎯 {name} hè avà u vostru Astrologu Personale",
+  "removedFromFavorites": "✅ Eliminatu {name} da i preferiti",
+  "toggleFavoriteError": "Ùn hè micca statu pussibule d'aghjurnà u statutu di i preferiti",
+  "shareMessage": "{name}\n🎓 Educazione: {education}\n📜 Qualificazione: {qualification}\n⏳ Esperienza: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Micca furnitu",
+  "reviews": "({count} recensioni)",
+  "specialties": "Specialità",
+  "experience": "Esperienza",
+  "qualification": "Qualificazione",
+  "education": "Educazione",
+  "recoveryTips": "• Fate una cattura di schermu di sta infurmazione\n• Conservatela in un locu sicuru\n• Ùn spartetela cù nimu\n• Questu serà mostratu solu una volta"
+}

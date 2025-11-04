@@ -1,0 +1,439 @@
+{
+  "@@locale": "ht",
+  "settingsTitle": "Anviwònman",
+  "notificationSettings": "Paramèt Notifikasyon yo",
+  "privacySettings": "Paramèt Konfidansyalite",
+  "accountSettings": "Anviwònman Kont",
+  "languageSettings": "Paramèt Lang",
+  "languageChanged": "Lang chanje",
+  "existingUserButton": "Mwen se yon itilizatè ki deja egziste",
+  "chooseCountryTitle": "Chwazi peyi",
+  "yesText": "Wi",
+  "noText": "Non",
+  "appBarTitle": "Anviwònman Pwofil",
+  "userIdLabel": "ID itilizatè *",
+  "nameLabel": "Non",
+  "birthCountryLabel": "Peyi nesans",
+  "birthCityLabel": "Vil nesans",
+  "countrySelectionTitle": "Chwazi peyi ou",
+  "maleLabel": "Gason",
+  "femaleLabel": "Fi",
+  "birthDateLabel": "Dat Nesans",
+  "birthDatePlaceholder": "Chwazi Dat Nesans",
+  "birthTimeLabel": "Lè nesans",
+  "birthTimePlaceholder": "Chwazi Lè Nesans",
+  "saveProfileButton": "Sove Pwofil la",
+  "noCitiesFound": "Pa jwenn okenn vil",
+  "cityPlaceholder": "Antre vil la nan {country}",
+  "countryFirstPlaceholder": "Chwazi peyi a an premye",
+  "versionHistoryTitle": "Istwa Vèsyon",
+  "notSetText": "Pa mete",
+  "nameHistory": "Non: {name}",
+  "cityHistory": "Vil: {city}",
+  "countryHistory": "Peyi: {country}",
+  "genderHistory": "Sèks: {gender}",
+  "birthDateHistory": "Dat Nesans: {date}",
+  "birthTimeHistory": "Lè nesans: {time}",
+  "locationHistory": "Kote: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Eta: {state}",
+  "versionFromText": "Mizajou sou {date}",
+  "userIdRequired": "ID itilizatè a obligatwa",
+  "profileSaved": "Pwofil la sove avèk siksè",
+  "saveFailed": "Echèk pou sove pwofil la",
+  "errorPrefix": "Erè:",
+  "onboardingChooseLanguage": "Chwazi Lang Ou",
+  "onboardingChooseLanguageDesc": "Chwazi lang ou prefere a pou kontinye.",
+  "onboardingWhatIsAstrology": "Kisa Astwoloji ye?",
+  "onboardingWhatIsAstrologyDesc": "Astwoloji se syans ki etidye kò selès yo...",
+  "onboardingWhyUseApp": "Poukisa pou itilize aplikasyon sa a?",
+  "onboardingWhyUseAppDesc": "Jwenn oroskop pèsonalize, prediksyon chak jou, ak konsèy pou pran desizyon enfòme.",
+  "onboardingHowToUse": "Kijan pou itilize aplikasyon sa a?",
+  "onboardingHowToUseDesc": "Navige fasilman, tcheke oroskop chak jou, epi jere pwofil ou pou prediksyon egzat.",
+  "onboardingGetStarted": "Kòmanse",
+  "onboardingNewUser": "Nouvo Itilizatè",
+  "onboardingExistingUser": "Itilizatè ki deja egziste",
+  "onboardingBack": "Retounen",
+  "onboardingNext": "Apre",
+  "userIdNotFound": "Pa jwenn ID itilizatè a. Tanpri konekte oswa konfigire pwofil ou.",
+  "clearNotificationsTitle": "Efase Notifikasyon yo",
+  "clearNotificationsMessage": "Èske ou sèten ou vle efase tout notifikasyon yo?",
+  "clearNotificationsSuccess": "Tout notifikasyon yo efase avèk siksè.",
+  "clearHoroscopeTitle": "Oroskop Klè",
+  "clearHoroscopeMessage": "Èske ou sèten ou vle efase done oroskop ou yo?",
+  "clearHoroscopeSuccess": "Oroskop la efase avèk siksè.",
+  "clearChatTitle": "Efase Istwa Chat la",
+  "clearChatMessage": "Èske ou sèten ou vle efase tout istwa chat ou a?",
+  "clearChatLocal": "Chat la efase lokalman.",
+  "deleteAccountTitle": "Efase Kont",
+  "deleteAccountMessage": "Èske ou sèten ou vle efase kont ou a? Sa ap efase tout istwa chat ou yo ak notifikasyon ou yo tou.",
+  "deleteAccountSuccess": "Yo retire kont ou ak tout done ou yo.",
+  "deleteAccountError": "Erè pandan efase kont lan",
+  "logoutTitle": "Dekonekte",
+  "logoutMessage": "Èske ou sèten ou vle dekonekte?",
+  "termsPrivacyTitle": "Tèm ak Konfidansyalite",
+  "privacyPolicyTitle": "Règleman sou enfòmasyon prive",
+  "termsConditionsTitle": "Tèm ak Kondisyon",
+  "dataControlTitle": "Kontwòl Done",
+  "cancelButton": "Anile",
+  "confirmButton": "Konfime",
+  "clearQuestionsSuccess": "Tout kesyon yo efase avèk siksè.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Senyè",
+  "startLabel": "Kòmanse",
+  "recoverAccount": "Rekipere Kont",
+  "endLabel": "Fen",
+  "startDateLabel": "Dat kòmansman",
+  "endDateLabel": "Dat Finisman",
+  "notAvailable": "Pa disponib",
+  "noData": "Pa gen done",
+  "unknownError": "Erè enkoni",
+  "retryButton": "Eseye ankò",
+  "kundaliGeneratorTitle": "Jeneratè Kundali",
+  "natalChartTitle": "Tablo Natal",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rachi",
+  "ascDegreeLabel": "Degre Asandan",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Enkoni",
+  "clearHoroscope": "Oroskop Klè",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Efase Notifikasyon yo",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Efase Istwa Chat la",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Dekonekte",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Efase Kont",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Tout chan yo obligatwa.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Kont lan refè avèk siksè.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Rekiperasyon an echwe. Tcheke enfòmasyon ou yo.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Sekrè Rekiperasyon an:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Konsènan nou",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Konsènan Konpayi nou an",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Nou angaje nou pou nou bay itilizatè nou yo pi bon eksperyans astwoloji a.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Misyon nou",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Pou bay enfòmasyon astwolojik pèsonalize ak egzat pou ede itilizatè yo pran desizyon enfòme nan lavi yo.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Vizyon nou",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Pou vin platfòm astwoloji ki pi fyab la, ki konbine teknoloji ak sajès ansyen.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Valè nou yo",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Entegrite, Presizyon, Konsepsyon Santre sou Itilizatè, ak Inovasyon Kontinyèl.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Kontakte nou",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Imèl: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Sit wèb: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Sipò Kliyan",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Nou la pou ede",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Ranpli fòm ki anba a epi ekip sipò nou an ap kontakte ou pi vit posib.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Non ou",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Imèl ou",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Mesaj",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Antre imèl ou",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Antre yon adrès imel ki valab",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Antre {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Voye",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Ap voye...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Imèl la voye avèk siksè!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Echèk pou voye imèl la",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Diksyonè Astro",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Tèm rechèch...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Pa jwenn okenn tèm",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Kesyon Achte",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Itilizatè a pa otantifye",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Echèk pou chaje done magazen an",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Jeton otorizasyon ki manke",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Aplikasyon Chat Astro",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Peman an reyisi! Kesyon an voye",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Peman an echwe: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Balans ou",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Questions",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Ofri ki disponib yo",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Question",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Achte",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Oroskop chak jou",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "ID itilizatè a manke",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Echèk pou jwenn oroskop yo",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Pa jwenn okenn oroskop.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Siyen",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Jodi a",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Yè",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Semèn sa a",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Mwa pase a",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Chat",
+  "typeYourQuestionHint": "Tape kesyon ou an...",
+  "paymentRequired": "Peman obligatwa",
+  "paymentRequiredMessage": "Ou fin itilize kesyon gratis ou yo. Peye ₹50 pou kontinye.",
+  "payNowButton": "Peye Kounye a",
+  "freeQuestionsRemaining": "{count} kesyon gratis ki rete",
+  "paidQuestionsRemaining": "Kesyon peye ki rete yo {count}",
+  "thankYouFeedback": "Mèsi pou fidbak ou a!",
+  "ratingSubmitted": "Evalyasyon soumèt!",
+  "setUserIdFirst": "Tanpri mete ID itilizatè ou an premye",
+  "failedToFetchPrevious": "Echèk pou jwenn kesyon ak repons anvan yo",
+  "errorOccurred": "Erè: {error}",
+  "drawerAstroProfile": "Pwofil Astro",
+  "drawerDailyHoroscope": "Oroskop chak jou",
+  "drawerBuyQuestions": "Kesyon Achte",
+  "drawerAstroDictionary": "Diksyonè Astro",
+  "drawerSettings": "Anviwònman",
+  "drawerCustomerSupport": "Sipò Kliyan",
+  "drawerAbout": "A pwopo",
+  "drawerProfileSettings": "Anviwònman Pwofil",
+  "demoNotificationTitle": "🔔 Notifikasyon Demo",
+  "demoNotificationBody": "Sa a se yon notifikasyon tès ki soti nan aplikasyon ou an!",
+  "notificationsTitle": "Notifikasyon",
+  "noNotifications": "Pa gen notifikasyon",
+  "allTab": "Tout",
+  "markAllAsRead": "Make tout kòm li",
+  "notificationMarkedRead": "Notifikasyon make kòm li",
+  "failedToLoadNotifications": "Echèk pou chaje notifikasyon yo",
+  "failedToMarkRead": "Echèk pou make kòm li",
+  "failedToMarkAllRead": "Echèk pou make tout kòm li",
+  "socketConnected": "Priz konekte",
+  "socketDisconnected": "Priz dekonekte",
+  "newNotificationReceived": "Nouvo notifikasyon resevwa",
+  "generalCategory": "Jeneral",
+  "horoscopeCategory": "Oroskop",
+  "chatCategory": "Chat",
+  "systemCategory": "Sistèm",
+  "updateCategory": "Mizajou",
+  "howToAskTitle": "Kijan Pou Mande",
+  "noQuestionsAvailable": "Pa gen kesyon disponib",
+  "failedToLoadQuestions": "Echèk pou chaje kesyon yo",
+  "pullToRefresh": "Rale pou rafrechi",
+  "careerCategory": "Karyè",
+  "loveCategory": "Lanmou ak Relasyon",
+  "healthCategory": "Sante",
+  "financeCategory": "Finans",
+  "familyCategory": "Fanmi",
+  "educationCategory": "Edikasyon",
+  "travelCategory": "Vwayaj",
+  "spiritualCategory": "Espirityèl",
+  "profileLoaded": "Pwofil la chaje avèk siksè",
+  "imageUploaded": "Imaj la telechaje avèk siksè",
+  "savedInformationConfirmation": "Mwen sove enfòmasyon sa a",
+  "noHistoryAvailable": "Pa gen istwa disponib",
+  "missingUserIdError": "ID itilizatè a obligatwa",
+  "networkError": "Erè rezo. Tanpri eseye ankò.",
+  "timeoutError": "Demann lan te ekspire",
+  "genericError": "Yon bagay te ale mal",
+  "reactionUpdateError": "Echèk pou mete ajou reyaksyon an",
+  "noSearchResults": "Pa jwenn okenn rezilta rechèch",
+  "clearSearch": "Rechèch klè",
+  "resultsFound": "Rezilta yo te jwenn",
+  "recoverySecretHint": "Kopi-kole a ka pa mache, tape alamen.",
+  "recoverAccountDescription": "Swiv etap sa yo pou rekipere kont ou",
+  "processingLabel": "Ap trete...",
+  "clearChatSuccess": "Chat la fini avèk siksè",
+  "notificationsEnabled": "Notifikasyon yo aktive",
+  "notificationsDisabled": "Notifikasyon yo enfim",
+  "securityNotice": "Done ou yo byen chiffres epi estoke",
+  "loading": "Ap chaje...",
+  "selectLanguage": "Chwazi Lang",
+  "onboardingGetStartedDesc": "Kòmanse pa chwazi lang ou",
+  "accountRecoveryTitle": "🔐 Detay sou Rekiperasyon Kont",
+  "recoveryInstructions": "Tanpri sove enfòmasyon sa yo yon fason ki an sekirite. W ap bezwen yo pou rekipere kont ou an.",
+  "importantNotice": "⚠️ Enpòtan:",
+  "astrologerProfileTitle": "Pwofil Astwològ",
+  "personalAstrologer": "Astwològ pèsonèl",
+  "makePersonalAstrologer": "Vin yon astwològ pèsonèl",
+  "favoriteDescription": "Kesyon ou yo pral priyorize bay astwològ sa a. Si li pa disponib, yon lòt astwològ kalifye ap ede ou.",
+  "educationQualifications": "Edikasyon ak Kalifikasyon",
+  "aboutSection": "A pwopo",
+  "shareProfile": "Pataje Pwofil",
+  "loadingAstrologer": "Ap chaje detay astwològ la...",
+  "failedToLoadAstrologer": "Echèk pou chaje detay astwològ la",
+  "authenticationRequired": "Otantifikasyon obligatwa. Tanpri konekte.",
+  "securityCheckFailed": "Verifikasyon sekirite a echwe: {error}",
+  "addedToFavorites": "🎯 {name} se kounye a Astwològ Pèsonèl ou.",
+  "removedFromFavorites": "✅ Retire {name} nan favoris yo",
+  "toggleFavoriteError": "Echèk pou mete ajou estati favori an",
+  "shareMessage": "{name}\n🎓 Edikasyon: {education}\n📜 Kalifikasyon: {qualification}\n⏳ Eksperyans: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Pa bay",
+  "reviews": "({count} revizyon)",
+  "specialties": "Espesyalite",
+  "experience": "Eksperyans",
+  "qualification": "Kalifikasyon",
+  "education": "Edikasyon",
+  "recoveryTips": "• Pran yon kopi ekran enfòmasyon sa a\n• Sere l nan yon kote ki an sekirite\n• Pa pataje l ak pèsonn\n• Sa ap parèt yon sèl fwa"
+}

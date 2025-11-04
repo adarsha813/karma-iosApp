@@ -1,0 +1,439 @@
+{
+  "@@locale": "ps",
+  "settingsTitle": "امستنې",
+  "notificationSettings": "د خبرتیا ترتیبات",
+  "privacySettings": "د محرمیت ترتیبات",
+  "accountSettings": "د حساب تنظیمات",
+  "languageSettings": "د ژبې ترتیبات",
+  "languageChanged": "ژبه بدله شوه",
+  "existingUserButton": "زه یو موجود کاروونکی یم",
+  "chooseCountryTitle": "هیواد غوره کړئ",
+  "yesText": "هو",
+  "noText": "نه",
+  "appBarTitle": "د پروفایل ترتیبات",
+  "userIdLabel": "د کارونکي پېژندپاڼه *",
+  "nameLabel": "نوم",
+  "birthCountryLabel": "د زیږیدو هیواد",
+  "birthCityLabel": "د زیږون ښار",
+  "countrySelectionTitle": "خپل هیواد غوره کړئ",
+  "maleLabel": "نارینه",
+  "femaleLabel": "ښځه",
+  "birthDateLabel": "د زیږون نیټه",
+  "birthDatePlaceholder": "د زیږون نیټه وټاکئ",
+  "birthTimeLabel": "د زیږون وخت",
+  "birthTimePlaceholder": "د زیږون وخت وټاکئ",
+  "saveProfileButton": "پروفایل خوندي کړئ",
+  "noCitiesFound": "هیڅ ښار ونه موندل شو",
+  "cityPlaceholder": "ښار په {country} کې دننه کړئ",
+  "countryFirstPlaceholder": "لومړی هیواد غوره کړئ",
+  "versionHistoryTitle": "د نسخې تاریخ",
+  "notSetText": "نه دی ټاکل شوی",
+  "nameHistory": "نوم: {name}",
+  "cityHistory": "ښار: {city}",
+  "countryHistory": "هیواد: {country}",
+  "genderHistory": "جنس: {gender}",
+  "birthDateHistory": "د زیږون نیټه: {date}",
+  "birthTimeHistory": "د زیږون وخت: {time}",
+  "locationHistory": "موقعیت: {latitude}, {longitude}",
+  "timezoneHistory": "د وخت زون: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "حالت: {state}",
+  "versionFromText": "تازه شوی په {date}",
+  "userIdRequired": "د کارونکي ID اړین دی",
+  "profileSaved": "پروفایل په بریالیتوب سره خوندي شو",
+  "saveFailed": "د پروفایل خوندي کولو کې پاتې راغی",
+  "errorPrefix": "تېروتنه:",
+  "onboardingChooseLanguage": "خپله ژبه غوره کړئ",
+  "onboardingChooseLanguageDesc": "د دوام لپاره خپله خوښه ژبه غوره کړئ.",
+  "onboardingWhatIsAstrology": "ستورپوهنه څه ده؟",
+  "onboardingWhatIsAstrologyDesc": "ستورپوهنه د اسماني اجسامو مطالعه ده...",
+  "onboardingWhyUseApp": "ولې دا اپلیکیشن وکاروئ؟",
+  "onboardingWhyUseAppDesc": "د باخبره پریکړو کولو لپاره شخصي افقونه، ورځني وړاندوینې، او لارښوونې ترلاسه کړئ.",
+  "onboardingHowToUse": "دا اپلیکیشن څنګه وکاروئ؟",
+  "onboardingHowToUseDesc": "په اسانۍ سره حرکت وکړئ، ورځني افقونه وګورئ، او د دقیقو وړاندوینو لپاره خپل پروفایل اداره کړئ.",
+  "onboardingGetStarted": "پیل وکړئ",
+  "onboardingNewUser": "نوی کارن",
+  "onboardingExistingUser": "موجوده کارن",
+  "onboardingBack": "شاته",
+  "onboardingNext": "بل",
+  "userIdNotFound": "د کارونکي ID ونه موندل شو. مهرباني وکړئ ننوتل یا خپل پروفایل تنظیم کړئ.",
+  "clearNotificationsTitle": "خبرتیاوې پاکې کړئ",
+  "clearNotificationsMessage": "ایا تاسو ډاډه یاست چې غواړئ ټول خبرتیاوې پاکې کړئ؟",
+  "clearNotificationsSuccess": "ټول خبرتیاوې په بریالیتوب سره پاکې شوې.",
+  "clearHoroscopeTitle": "روښانه افق",
+  "clearHoroscopeMessage": "ایا تاسو ډاډه یاست چې غواړئ خپل د افق معلومات پاک کړئ؟",
+  "clearHoroscopeSuccess": "افق په بریالیتوب سره پاک شو.",
+  "clearChatTitle": "د چیٹ تاریخ پاک کړئ",
+  "clearChatMessage": "ایا تاسو ډاډه یاست چې غواړئ د خپل ټول چیٹ تاریخ ړنګ کړئ؟",
+  "clearChatLocal": "چیٹ په محلي ډول پاک شو.",
+  "deleteAccountTitle": "حساب ړنګ کړئ",
+  "deleteAccountMessage": "ایا تاسو ډاډه یاست چې غواړئ خپل حساب حذف کړئ؟ دا به ستاسو د چیټ ټول تاریخ او خبرتیاوې هم پاکې کړي.",
+  "deleteAccountSuccess": "ستاسو حساب او ټول معلومات لرې شوي دي.",
+  "deleteAccountError": "د حساب حذف کولو کې تېروتنه",
+  "logoutTitle": "وتل",
+  "logoutMessage": "ایا تاسو ډاډه یاست چې ننوتل غواړئ؟",
+  "termsPrivacyTitle": "شرایط او محرمیت",
+  "privacyPolicyTitle": "د محرمیت تګلاره",
+  "termsConditionsTitle": "شرایط او مقررات",
+  "dataControlTitle": "د معلوماتو کنټرول",
+  "cancelButton": "لغوه کول",
+  "confirmButton": "تایید کړئ",
+  "clearQuestionsSuccess": "ټولې پوښتنې په بریالیتوب سره حذف شوې.",
+  "yoginiLabel": "یوګیني",
+  "lordLabel": "ربه",
+  "startLabel": "پیل",
+  "recoverAccount": "حساب بیرته ترلاسه کړئ",
+  "endLabel": "پای",
+  "startDateLabel": "د پیل نیټه",
+  "endDateLabel": "د پای نیټه",
+  "notAvailable": "شتون نلري",
+  "noData": "هیڅ معلومات نشته",
+  "unknownError": "نامعلومه تېروتنه",
+  "retryButton": "بیا هڅه وکړئ",
+  "kundaliGeneratorTitle": "د کنډالي جنراتور",
+  "natalChartTitle": "د زېږون چارټ",
+  "lagnaLabel": "لګنا",
+  "rashiLabel": "راشي",
+  "ascDegreeLabel": "د لوړو درجو",
+  "vimshottariDashaTitle": "ویمشوتری داشا",
+  "yoginiDashaTitle": "یوګیني داشا",
+  "unknown": "نامعلوم",
+  "clearHoroscope": "روښانه افق",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "خبرتیاوې پاکې کړئ",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "د چیٹ تاریخ پاک کړئ",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "وتل",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "حساب ړنګ کړئ",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "ټولې ساحې اړینې دي.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "حساب په بریالیتوب سره بیرته ترلاسه شو.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "بیا رغونه ناکامه شوه. خپل معلومات وګورئ.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "د بیا رغونې راز:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "زموږ په اړه",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "زموږ د شرکت په اړه",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "موږ ژمن یو چې خپلو کاروونکو ته د ستورپوهنې غوره تجربه وړاندې کړو.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "زموږ ماموریت",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "د ستورپوهنې دقیق او شخصي بصیرت چمتو کول ترڅو کاروونکو سره د دوی په ژوند کې باخبره پریکړې کولو کې مرسته وکړي.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "زموږ لید",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "د ټیکنالوژۍ او لرغوني حکمت سره یوځای کولو سره، د ستورپوهنې ترټولو باوري پلیټ فارم شي.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "زموږ ارزښتونه",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "صداقت، دقت، د کاروونکي پر بنسټ ډیزاین، او دوامداره نوښت.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "موږ سره اړیکه ونیسئ",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "برېښنالیک: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "ویب پاڼه: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "د پیرودونکو ملاتړ",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "موږ دلته د مرستې لپاره یو",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "لاندې فورمه ډکه کړئ او زموږ د ملاتړ ټیم به ژر تر ژره له تاسو سره اړیکه ونیسي.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "ستاسو نوم",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "ستاسو برېښنالیک",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "پیغام",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "خپل برېښنالیک ولیکئ",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "یو باوري برېښنالیک پته دننه کړئ",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "{fieldName} دننه کړئ",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "ولېږئ",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "لیږل...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ برېښنالیک په بریالیتوب سره واستول شو!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ د برېښنالیک لیږلو کې پاتې راغلل",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "د ستورو قاموس",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "د لټون اصطلاحات...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "هیڅ اصطلاح ونه موندل شوه",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "پوښتنې واخلئ",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "کارن تصدیق شوی نه دی",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "د ذخیرې ډاټا بارولو کې پاتې راغله",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "د اعتبار نښه ورکه ده",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "د اسټرو چیټ اپلیکیشن",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ تادیه بریالۍ شوه! پوښتنه واستول شوه",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ تادیه ناکامه شوه: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "ستاسو بیلانس",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} پوښتنې",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "شته وړاندیزونه",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} پوښتنه",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "پېرود",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 ورځنی افق",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "د کارونکي ID ورک دی",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "د ستورپوهنو په ترلاسه کولو کې پاتې راغلل",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "هیڅ افق ونه موندل شو.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "لاسلیک",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "نن",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "پرون",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "دا اونۍ",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "تېره میاشت",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "چیٹ",
+  "typeYourQuestionHint": "خپله پوښتنه ولیکئ...",
+  "paymentRequired": "تادیه اړینه ده",
+  "paymentRequiredMessage": "تاسو خپلې وړیا پوښتنې کارولې دي. د دوام لپاره ₹ 50 ورکړئ.",
+  "payNowButton": "اوس پیسې ورکړئ",
+  "freeQuestionsRemaining": "{count} پاتې وړیا پوښتنې",
+  "paidQuestionsRemaining": "{count} پاتې پیسې ورکړل شوې پوښتنې",
+  "thankYouFeedback": "ستاسو د نظر څخه مننه!",
+  "ratingSubmitted": "درجه بندي وسپارل شوه!",
+  "setUserIdFirst": "مهرباني وکړئ لومړی خپل د کارونکي ID تنظیم کړئ",
+  "failedToFetchPrevious": "د پخوانیو پوښتنو او ځوابونو په ترلاسه کولو کې پاتې راغلل",
+  "errorOccurred": "تېروتنه: {error}",
+  "drawerAstroProfile": "د اسټرو پروفایل",
+  "drawerDailyHoroscope": "ورځنی افق",
+  "drawerBuyQuestions": "پوښتنې واخلئ",
+  "drawerAstroDictionary": "د ستورو قاموس",
+  "drawerSettings": "امستنې",
+  "drawerCustomerSupport": "د پیرودونکو ملاتړ",
+  "drawerAbout": "په اړه",
+  "drawerProfileSettings": "د پروفایل ترتیبات",
+  "demoNotificationTitle": "🔔 د ډیمو خبرتیا",
+  "demoNotificationBody": "دا ستاسو د اپلیکیشن څخه د ازموینې خبرتیا ده!",
+  "notificationsTitle": "خبرتیاوې",
+  "noNotifications": "هیڅ خبرتیا نشته",
+  "allTab": "ټول",
+  "markAllAsRead": "ټول د لوستل شوي په توګه په نښه کړئ",
+  "notificationMarkedRead": "خبرتیا د لوستل شوي په توګه نښه شوې",
+  "failedToLoadNotifications": "د خبرتیاوو بارولو کې پاتې راغلل",
+  "failedToMarkRead": "د لوستل شوي په توګه په نښه کولو کې پاتې راغلل",
+  "failedToMarkAllRead": "ټول د لوستل شوي په توګه په نښه کولو کې پاتې راغلل",
+  "socketConnected": "ساکټ وصل شو",
+  "socketDisconnected": "ساکټ منقطع شو",
+  "newNotificationReceived": "نوی خبرتیا ترلاسه شوه",
+  "generalCategory": "جنرال",
+  "horoscopeCategory": "د ستورپوهنې",
+  "chatCategory": "چیٹ",
+  "systemCategory": "سیسټم",
+  "updateCategory": "تازه معلومات",
+  "howToAskTitle": "څنګه پوښتنه وکړو",
+  "noQuestionsAvailable": "هیڅ پوښتنه نشته",
+  "failedToLoadQuestions": "د پوښتنو بارولو کې پاتې راغلل",
+  "pullToRefresh": "د تازه کولو لپاره کش کړئ",
+  "careerCategory": "مسلک",
+  "loveCategory": "مینه او اړیکې",
+  "healthCategory": "روغتیا",
+  "financeCategory": "اقتصاد",
+  "familyCategory": "کورنۍ",
+  "educationCategory": "زده کړه",
+  "travelCategory": "سفر",
+  "spiritualCategory": "روحاني",
+  "profileLoaded": "پروفایل په بریالیتوب سره پورته شو",
+  "imageUploaded": "انځور په بریالیتوب سره پورته شو",
+  "savedInformationConfirmation": "ما دا معلومات خوندي کړي دي",
+  "noHistoryAvailable": "هیڅ تاریخ شتون نلري",
+  "missingUserIdError": "د کارونکي ID اړین دی",
+  "networkError": "د شبکې تېروتنه. مهرباني وکړئ بیا هڅه وکړئ.",
+  "timeoutError": "د غوښتنې وخت پای ته ورسېد",
+  "genericError": "یو څه غلط شول",
+  "reactionUpdateError": "د غبرګون تازه کولو کې پاتې راغی",
+  "noSearchResults": "د لټون کومه پایله ونه موندل شوه",
+  "clearSearch": "لټون پاک کړئ",
+  "resultsFound": "پایلې وموندل شوې",
+  "recoverySecretHint": "کاپي او پیسټ ممکن کار ونکړي، په لاسي ډول یې ولیکئ",
+  "recoverAccountDescription": "د خپل حساب بیرته ترلاسه کولو لپاره دا ګامونه تعقیب کړئ",
+  "processingLabel": "پروسس کول...",
+  "clearChatSuccess": "چیٹ په بریالیتوب سره پاک شو",
+  "notificationsEnabled": "خبرتیاوې فعالې شوې",
+  "notificationsDisabled": "خبرتیاوې غیر فعالې شوې",
+  "securityNotice": "ستاسو معلومات په خوندي ډول کوډ شوي او زیرمه شوي دي",
+  "loading": "بارول کیږي...",
+  "selectLanguage": "ژبه غوره کړه",
+  "onboardingGetStartedDesc": "د خپلې ژبې په غوره کولو سره پیل وکړئ",
+  "accountRecoveryTitle": "🔐 د حساب بیرته ترلاسه کولو توضیحات",
+  "recoveryInstructions": "مهرباني وکړئ دا معلومات په خوندي ډول خوندي کړئ. تاسو به د خپل حساب بیرته ترلاسه کولو لپاره دې ته اړتیا ولرئ.",
+  "importantNotice": "⚠️ مهم:",
+  "astrologerProfileTitle": "د ستورپوه پروفایل",
+  "personalAstrologer": "شخصي ستورپوه",
+  "makePersonalAstrologer": "شخصي ستورپوه جوړ کړئ",
+  "favoriteDescription": "ستاسو پوښتنې به دې ستورپوه ته لومړیتوب ورکړل شي. که شتون ونلري، نو بل وړ ستورپوه به ستاسو سره مرسته وکړي.",
+  "educationQualifications": "تعلیم او وړتیاوې",
+  "aboutSection": "په اړه",
+  "shareProfile": "پروفایل شریک کړئ",
+  "loadingAstrologer": "د ستورپوهنې توضیحات پورته کیږي...",
+  "failedToLoadAstrologer": "د ستورپوهنې جزئیات بارولو کې پاتې راغلل",
+  "authenticationRequired": "تصدیق اړین دی. مهرباني وکړئ ننوتل.",
+  "securityCheckFailed": "د امنیت معاینه ناکامه شوه: {error}",
+  "addedToFavorites": "🎯 {name} اوس ستاسو شخصي ستورپوه دی",
+  "removedFromFavorites": "✅ د خوښې څخه {name} لرې شو",
+  "toggleFavoriteError": "د خوښې حالت تازه کولو کې پاتې راغی",
+  "shareMessage": "{name}\n🎓 زده کړه: {education}\n📜 وړتیا: {qualification}\n⏳ تجربه: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "نه دی ورکړل شوی",
+  "reviews": "({count} بیاکتنې)",
+  "specialties": "ځانګړتیاوې",
+  "experience": "تجربه",
+  "qualification": "وړتوب",
+  "education": "زده کړه",
+  "recoveryTips": "• د دې معلوماتو سکرین شاټ واخلئ\n• په خوندي ځای کې یې وساتئ\n• له هیچا سره مه شریکوئ\n• دا به یوازې یو ځل وښودل شي"
+}

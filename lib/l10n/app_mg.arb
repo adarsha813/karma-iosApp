@@ -1,0 +1,439 @@
+{
+  "@@locale": "mg",
+  "settingsTitle": "Fikirana",
+  "notificationSettings": "Fikirana fampahafantarana",
+  "privacySettings": "Fikirana tsiambaratelo",
+  "accountSettings": "Tefin'ny kaonty",
+  "languageSettings": "Fikirana fiteny",
+  "languageChanged": "Niova ny fiteny",
+  "existingUserButton": "Mpampiasa efa misy aho",
+  "chooseCountryTitle": "Mifidiana Firenena",
+  "yesText": "ENY",
+  "noText": "tsy misy",
+  "appBarTitle": "Fikirana mombamomba",
+  "userIdLabel": "Anara-mpampiasa *",
+  "nameLabel": "Anarana",
+  "birthCountryLabel": "Firenena nahaterahana",
+  "birthCityLabel": "Tanàna nahaterahana",
+  "countrySelectionTitle": "Fidio ny firenenao",
+  "maleLabel": "Lahy",
+  "femaleLabel": "vehivavy",
+  "birthDateLabel": "Daty nahaterahana",
+  "birthDatePlaceholder": "Safidio ny daty nahaterahana",
+  "birthTimeLabel": "Fotoana nahaterahana",
+  "birthTimePlaceholder": "Safidio ny fotoana nahaterahana",
+  "saveProfileButton": "Save Profile",
+  "noCitiesFound": "Tsy nisy tanàna hita",
+  "cityPlaceholder": "Ampidiro tanàna ao amin'ny {country}",
+  "countryFirstPlaceholder": "Fidio firenena aloha",
+  "versionHistoryTitle": "Version History",
+  "notSetText": "Tsy napetraka",
+  "nameHistory": "Anarana: {name}",
+  "cityHistory": "Tanàna: {city}",
+  "countryHistory": "Firenena: {country}",
+  "genderHistory": "Fananahana: {gender}",
+  "birthDateHistory": "Daty nahaterahana: {date}",
+  "birthTimeHistory": "Fotoana nahaterahana: {time}",
+  "locationHistory": "Toerana: {latitude}, {longitude}",
+  "timezoneHistory": "Faritra ora: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Fanjakana: {state}",
+  "versionFromText": "Nohavaozina tamin'ny {date}",
+  "userIdRequired": "Ilaina ny ID mpampiasa",
+  "profileSaved": "Voatahiry soa aman-tsara ny mombamomba azy",
+  "saveFailed": "Tsy voatahiry ny mombamomba azy",
+  "errorPrefix": "Error:",
+  "onboardingChooseLanguage": "Fidio ny fiteninao",
+  "onboardingChooseLanguageDesc": "Fidio ny fiteny tianao hanohizana.",
+  "onboardingWhatIsAstrology": "Inona no atao hoe Astrology?",
+  "onboardingWhatIsAstrologyDesc": "Ny astrolojia dia ny fandalinana ny zavatra eny amin'ny lanitra...",
+  "onboardingWhyUseApp": "Nahoana no mampiasa ity fampiharana ity?",
+  "onboardingWhyUseAppDesc": "Makà horoscope manokana, vinavina isan'andro ary torolalana handraisana fanapahan-kevitra tsara.",
+  "onboardingHowToUse": "Ahoana ny fampiasana ity fampiharana ity?",
+  "onboardingHowToUseDesc": "Mandehana mora foana, jereo ny horoscope isan'andro, ary tantano ny mombamomba anao mba hahazoana faminaniana marina.",
+  "onboardingGetStarted": "Manomboha",
+  "onboardingNewUser": "Mpampiasa vaovao",
+  "onboardingExistingUser": "Mpampiasa efa misy",
+  "onboardingBack": "indray",
+  "onboardingNext": "Manaraka",
+  "userIdNotFound": "Tsy hita ny ID mpampiasa. Midira na mametraka ny mombamomba anao azafady.",
+  "clearNotificationsTitle": "Fampandrenesana mazava",
+  "clearNotificationsMessage": "Tena te-hamafa ny fampandrenesana rehetra ve ianao?",
+  "clearNotificationsSuccess": "Voafafa soa aman-tsara ny fampahafantarana rehetra.",
+  "clearHoroscopeTitle": "Horoscope mazava",
+  "clearHoroscopeMessage": "Tena te-hamafa ny angona horoscope-nao ve ianao?",
+  "clearHoroscopeSuccess": "Voafafa soa aman-tsara ny horoscope.",
+  "clearChatTitle": "Fadio ny tantaran'ny chat",
+  "clearChatMessage": "Tena te-hamafa ny tantaran'ny chat rehetra ve ianao?",
+  "clearChatLocal": "Voafafa teo an-toerana ny chat.",
+  "deleteAccountTitle": "Fafao ny kaonty",
+  "deleteAccountMessage": "Tena te-hamafa ny kaontinao tokoa ve ianao? Izany koa dia hamafa ny tantaran'ny chat sy ny fampandrenesanao rehetra.",
+  "deleteAccountSuccess": "Nesorina ny kaontinao sy ny angona rehetra.",
+  "deleteAccountError": "Error famafana kaonty",
+  "logoutTitle": "Hivoaka",
+  "logoutMessage": "Tena te-hivoaka ve ianao?",
+  "termsPrivacyTitle": "Fepetra & tsiambaratelo",
+  "privacyPolicyTitle": "politika fiarovana fiainan'olona",
+  "termsConditionsTitle": "Fepetra sy fepetra",
+  "dataControlTitle": "Fanaraha-maso ny angona",
+  "cancelButton": "hanafoana",
+  "confirmButton": "Manamarina",
+  "clearQuestionsSuccess": "Voafafa soa aman-tsara ny fanontaniana rehetra.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Tompo",
+  "startLabel": "fanombohana",
+  "recoverAccount": "Recover Account",
+  "endLabel": "Tapitra",
+  "startDateLabel": "Daty nanombohana",
+  "endDateLabel": "Daty famaranana",
+  "notAvailable": "Tsy misy",
+  "noData": "Tsy misy angona",
+  "unknownError": "Error tsy fantatra",
+  "retryButton": "Hanandrana indray",
+  "kundaliGeneratorTitle": "Kundali Generator",
+  "natalChartTitle": "Tabilao Natal",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Ascendant Degree",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "TSY FANTATRA",
+  "clearHoroscope": "Horoscope mazava",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Fampandrenesana mazava",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Fadio ny tantaran'ny chat",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Hivoaka",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Fafao ny kaonty",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Ilaina ny saha rehetra.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Tafaverina soa aman-tsara ny kaonty.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Tsy nahomby ny fanarenana. Jereo ny mombamomba anao.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Tsiambaratelon'ny fanarenana:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Momba anay",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Momba ny orinasanay",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Nanolo-tena izahay hanome traikefa astrolojia tsara indrindra ho an'ireo mpampiasa anay.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Ny Iraka",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Mba hanomezana hevitra momba ny fanandroana marina sy manokana mba hanampiana ireo mpampiasa handray fanapahan-kevitra tsara eo amin'ny fiainany.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Ny Vinantsika",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Mba ho lasa sehatra fanandroana azo itokisana indrindra, manambatra ny teknolojia sy ny fahendrena taloha.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Ny Soatoavinay",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Ny fahamendrehana, ny fahamendrehana, ny famolavolana mifototra amin'ny mpampiasa, ary ny fanavaozana mitohy.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Mifandraisa aminay",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Email: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Tranonkala: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Fanohanana ny mpanjifa",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Eto izahay hanampy",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Fenoy ny taratasy etsy ambany dia hiverina aminao haingana araka izay azo atao ny ekipa mpanohana anay.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Ny anaranao",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Ny mailakao",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "hAFATRA",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Ampidiro ny mailakao",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Ampidiro adiresy mailaka manan-kery",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Ampidiro {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Alefaso",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Mandefa...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Nalefa soa aman-tsara ny mailaka!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Tsy nahavita nandefa mailaka",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro Dictionary",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Teny fikarohana...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Tsy misy teny hita",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Mividiana fanontaniana",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Tsy voamarina ny mpampiasa",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Tsy nahomby ny fampidirana ny angona fitehirizana",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Tsy misy mari-pamantarana fanamarinana",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat App",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Tafita ny fandoavam-bola! Nalefa ny fanontaniana",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Tsy nahomby ny fandoavam-bola: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Ny fandanjalanjanao",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Fanontaniana",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Tolotra azo",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Fanontaniana",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Buy",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Horoscope isan'andro",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Tsy misy ny ID mpampiasa",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Tsy nahavita naka horoscope",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Tsy hita ny horoscope.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Sign",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "ankehitriny",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Omaly",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Ity herinandro ity",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Volana lasa",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "hiresaka",
+  "typeYourQuestionHint": "Soraty ny fanontanianao...",
+  "paymentRequired": "Ilaina ny fandoavam-bola",
+  "paymentRequiredMessage": "Nampiasa ny fanontanianao maimaim-poana ianao. Mandoa ₹50 hanohizana.",
+  "payNowButton": "Aloavy izao",
+  "freeQuestionsRemaining": "{count} fanontaniana maimaim-poana sisa",
+  "paidQuestionsRemaining": "{count} fanontaniana misy karama sisa",
+  "thankYouFeedback": "Misaotra anao tamin'ny fanehoan-kevitrao!",
+  "ratingSubmitted": "Natolotra ny naoty!",
+  "setUserIdFirst": "Apetraho aloha ny ID-nao",
+  "failedToFetchPrevious": "Tsy nahavita naka fanontaniana sy valiny teo aloha",
+  "errorOccurred": "Error: {error}",
+  "drawerAstroProfile": "Astro Profile",
+  "drawerDailyHoroscope": "Horoscope isan'andro",
+  "drawerBuyQuestions": "Mividiana fanontaniana",
+  "drawerAstroDictionary": "Astro Dictionary",
+  "drawerSettings": "Fikirana",
+  "drawerCustomerSupport": "Fanohanana ny mpanjifa",
+  "drawerAbout": "About",
+  "drawerProfileSettings": "Fikirana mombamomba",
+  "demoNotificationTitle": "🔔 Fampahafantarana Demo",
+  "demoNotificationBody": "Fampandrenesana fitsapana avy amin'ny fampiharanao ity!",
+  "notificationsTitle": "fampahatsiahivana",
+  "noNotifications": "Tsy misy fampahafantarana",
+  "allTab": "rehetra",
+  "markAllAsRead": "Mariho ho voavaky ny rehetra",
+  "notificationMarkedRead": "Fampandrenesana voamarika ho voavaky",
+  "failedToLoadNotifications": "Tsy nahomby ny fampandrenesana",
+  "failedToMarkRead": "Tsy voamarika ho novakiana",
+  "failedToMarkAllRead": "Tsy voamarika ho voavaky ny rehetra",
+  "socketConnected": "Socket mifandray",
+  "socketDisconnected": "Tapaka ny socket",
+  "newNotificationReceived": "Fampandrenesana vaovao voaray",
+  "generalCategory": "General",
+  "horoscopeCategory": "tonon'andro",
+  "chatCategory": "hiresaka",
+  "systemCategory": "RAFITRA",
+  "updateCategory": "vaovao farany",
+  "howToAskTitle": "Ahoana ny fanontaniana",
+  "noQuestionsAvailable": "Tsy misy fanontaniana azo",
+  "failedToLoadQuestions": "Tsy nahomby ny fametrahana fanontaniana",
+  "pullToRefresh": "Sintonina hamelombelona",
+  "careerCategory": "FIVELOMANA",
+  "loveCategory": "Fitiavana & Fifandraisana",
+  "healthCategory": "FAHASALAMANA",
+  "financeCategory": "Finance",
+  "familyCategory": "Family",
+  "educationCategory": "FAMPIANARANA",
+  "travelCategory": "Tsangatsangana",
+  "spiritualCategory": "ARA-PANAHY",
+  "profileLoaded": "Vita soa aman-tsara ny mombamomba azy",
+  "imageUploaded": "Tafiditra soa aman-tsara ny sary",
+  "savedInformationConfirmation": "Notahiriko ity fampahalalana ity",
+  "noHistoryAvailable": "Tsy misy tantara azo",
+  "missingUserIdError": "Ilaina ny ID mpampiasa",
+  "networkError": "Error amin'ny tambajotra. Andramo indray azafady.",
+  "timeoutError": "Tapitra ny fangatahana",
+  "genericError": "Nisy zavatra tsy nety",
+  "reactionUpdateError": "Tsy nahomby ny fanavaozana ny fanehoan-kevitra",
+  "noSearchResults": "Tsy hita ny valin'ny fikarohana",
+  "clearSearch": "Fafao ny fikarohana",
+  "resultsFound": "Hita ny valiny",
+  "recoverySecretHint": "Mety tsy mandeha ny kopia mametaka, soraty amin'ny tanana",
+  "recoverAccountDescription": "Araho ireto dingana ireto mba hamerenana ny kaontinao",
+  "processingLabel": "Mikarakara...",
+  "clearChatSuccess": "Voafafa soa aman-tsara ny chat",
+  "notificationsEnabled": "Nalefa ny fampahafantarana",
+  "notificationsDisabled": "Tsy nety ny fampandrenesana",
+  "securityNotice": "Voafefy sy voatahiry tsara ny angonao",
+  "loading": "Loading...",
+  "selectLanguage": "Select Language",
+  "onboardingGetStartedDesc": "Manomboha amin'ny fisafidianana ny fiteninao",
+  "accountRecoveryTitle": "🔐 Antsipirihan'ny fanarenana ny kaonty",
+  "recoveryInstructions": "Tehirizo tsara ity fampahalalana ity azafady. Mila izany ianao hamerenana ny kaontinao.",
+  "importantNotice": "⚠️ Zava-dehibe:",
+  "astrologerProfileTitle": "mombamomba ny mpanandro",
+  "personalAstrologer": "Mpanandroa manokana",
+  "makePersonalAstrologer": "Manaova mpanandro manokana",
+  "favoriteDescription": "Ny fanontanianao dia ho laharam-pahamehana amin'ity mpanandro ity. Raha tsy misy dia misy mpanandro mahay hafa hanampy anao.",
+  "educationQualifications": "Fanabeazana & Fepetra",
+  "aboutSection": "About",
+  "shareProfile": "Zarao ny mombamomba",
+  "loadingAstrologer": "Mametraka ny antsipirian'ny mpanandro...",
+  "failedToLoadAstrologer": "Tsy nahomby ny fampidirana ny antsipirian'ny mpanandro",
+  "authenticationRequired": "Ilaina ny fanamarinana. Midira azafady.",
+  "securityCheckFailed": "Tsy nahomby ny fisavana fiarovana: {error}",
+  "addedToFavorites": "🎯 {name} no mpanandro manokana anao izao",
+  "removedFromFavorites": "✅ Nesorina ny {name} tamin'ny ankafiziny",
+  "toggleFavoriteError": "Tsy nahomby ny fanavaozana ny sata tianao indrindra",
+  "shareMessage": "{name}\n🎓 Fanabeazana: {education}\n📜 Fahafahana: {qualification}\n⏳ Traikefa: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Tsy nomena",
+  "reviews": "({count} hevitra)",
+  "specialties": "specialties",
+  "experience": "Experience",
+  "qualification": "fahaizana",
+  "education": "FAMPIANARANA",
+  "recoveryTips": "• Makà pikantsary amin'ity fampahalalana ity\n• Tehirizo ao amin'ny toerana azo antoka izy io\n• Aza mizara amin'iza na iza\n• Indray mandeha ihany no hiseho ity"
+}

@@ -1,0 +1,439 @@
+{
+  "@@locale": "lb",
+  "settingsTitle": "Astellungen",
+  "notificationSettings": "Notifikatiounsastellungen",
+  "privacySettings": "Dateschutzastellungen",
+  "accountSettings": "Kontastellungen",
+  "languageSettings": "Sproochastellungen",
+  "languageChanged": "Sprooch geännert",
+  "existingUserButton": "Ech sinn e bestehenden Benotzer",
+  "chooseCountryTitle": "Land auswielen",
+  "yesText": "Jo",
+  "noText": "Nee",
+  "appBarTitle": "Profilastellungen",
+  "userIdLabel": "Benotzer-ID *",
+  "nameLabel": "Numm",
+  "birthCountryLabel": "Gebuertsland",
+  "birthCityLabel": "Gebuertsstad",
+  "countrySelectionTitle": "Wielt Äert Land",
+  "maleLabel": "Männlech",
+  "femaleLabel": "Weiblech",
+  "birthDateLabel": "Gebuertsdatum",
+  "birthDatePlaceholder": "Gebuertsdatum auswielen",
+  "birthTimeLabel": "Gebuertszäit",
+  "birthTimePlaceholder": "Gebuertszäit auswielen",
+  "saveProfileButton": "Profil späicheren",
+  "noCitiesFound": "Keng Stied fonnt",
+  "cityPlaceholder": "Gitt d'Stad an {country} an",
+  "countryFirstPlaceholder": "Wielt als éischt d'Land",
+  "versionHistoryTitle": "Versiounsgeschicht",
+  "notSetText": "Net agestallt",
+  "nameHistory": "Numm: {name}",
+  "cityHistory": "Stad: {city}",
+  "countryHistory": "Land: {country}",
+  "genderHistory": "Geschlecht: {gender}",
+  "birthDateHistory": "Gebuertsdatum: {date}",
+  "birthTimeHistory": "Gebuertszäit: {time}",
+  "locationHistory": "Standuert: {latitude}, {longitude}",
+  "timezoneHistory": "Zäitzon: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Zoustand: {state}",
+  "versionFromText": "Aktualiséiert den {date}",
+  "userIdRequired": "Benotzer-ID ass erfuerderlech",
+  "profileSaved": "Profil erfollegräich gespäichert",
+  "saveFailed": "Konnt de Profil net späicheren",
+  "errorPrefix": "Feeler:",
+  "onboardingChooseLanguage": "Wielt Är Sprooch",
+  "onboardingChooseLanguageDesc": "Wielt Är bevorzugt Sprooch fir weiderzemaachen.",
+  "onboardingWhatIsAstrology": "Wat ass Astrologie?",
+  "onboardingWhatIsAstrologyDesc": "Astrologie ass d'Studie vun Himmelskierper...",
+  "onboardingWhyUseApp": "Firwat dës App benotzen?",
+  "onboardingWhyUseAppDesc": "Kritt personaliséiert Horoskoper, deeglech Prognosen a Berodung fir informéiert Entscheedungen ze treffen.",
+  "onboardingHowToUse": "Wéi kann een dës App benotzen?",
+  "onboardingHowToUseDesc": "Navigéiert einfach, kontrolléiert deeglech Horoskoper a verwaltet Äre Profil fir korrekt Prognosen.",
+  "onboardingGetStarted": "Ufänken",
+  "onboardingNewUser": "Neie Benotzer",
+  "onboardingExistingUser": "Bestehenden Benotzer",
+  "onboardingBack": "Zréck",
+  "onboardingNext": "Weider",
+  "userIdNotFound": "Benotzer-ID net fonnt. Mellt Iech w.e.g. un oder setzt Äre Profil an.",
+  "clearNotificationsTitle": "Notifikatiounen läschen",
+  "clearNotificationsMessage": "Bass du sécher, datt du all Notifikatioune läschen wëlls?",
+  "clearNotificationsSuccess": "All Notifikatioune goufen erfollegräich geläscht.",
+  "clearHoroscopeTitle": "Kloert Horoskop",
+  "clearHoroscopeMessage": "Bass du sécher, datt du deng Horoskopdaten läschen wëlls?",
+  "clearHoroscopeSuccess": "Horoskop erfollegräich geläscht.",
+  "clearChatTitle": "Chat-Verlaf läschen",
+  "clearChatMessage": "Bass du sécher, datt du däi ganze Chat-Verlaf läsche wëlls?",
+  "clearChatLocal": "Chat lokal geläscht.",
+  "deleteAccountTitle": "Kont läschen",
+  "deleteAccountMessage": "Bass du sécher, datt du däi Kont läschen wëlls? Dëst läscht och deng ganz Chatgeschicht an all d'Notifikatiounen.",
+  "deleteAccountSuccess": "Äre Kont an all Är Donnéeë goufen geläscht.",
+  "deleteAccountError": "Feeler beim Läschen vum Kont",
+  "logoutTitle": "Ausloggen",
+  "logoutMessage": "Bass du sécher, datt du dech auslogge wëlls?",
+  "termsPrivacyTitle": "Konditiounen & Dateschutz",
+  "privacyPolicyTitle": "Dateschutzbestimmungen",
+  "termsConditionsTitle": "Konditioune & Bedéngungen",
+  "dataControlTitle": "Datenkontroll",
+  "cancelButton": "Ofbriechen",
+  "confirmButton": "Bestätegen",
+  "clearQuestionsSuccess": "All Froen erfollegräich geläscht.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Här",
+  "startLabel": "Ufank",
+  "recoverAccount": "Kont erëmkréien",
+  "endLabel": "Enn",
+  "startDateLabel": "Ufanksdatum",
+  "endDateLabel": "Enndatum",
+  "notAvailable": "Net verfügbar",
+  "noData": "Keng Donnéeën",
+  "unknownError": "Onbekannte Feeler",
+  "retryButton": "Probéieren nach eng Kéier",
+  "kundaliGeneratorTitle": "Kundali Generator",
+  "natalChartTitle": "Gebuertshoroskop",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Raschi",
+  "ascDegreeLabel": "Aszendentgrad",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Onbekannt",
+  "clearHoroscope": "Kloert Horoskop",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Notifikatiounen läschen",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Chat-Verlaf läschen",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Ausloggen",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Kont läschen",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "All Felder sinn obligatoresch.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Kont erfollegräich restauréiert.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "D'Wiederherstellung ass gescheitert. Iwwerpréift Är Informatiounen.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Geheimnis vun der Erhuelung:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Iwwer eis",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Iwwer eis Firma",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Mir engagéieren eis fir eis Benotzer déi bescht Astrologie-Erfahrung ze bidden.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Eis Missioun",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Fir korrekt an personaliséiert Astrologie-Abléck ze bidden, fir de Benotzer ze hëllefen, informéiert Entscheedungen an hirem Liewen ze treffen.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Eis Visioun",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Fir déi vertrauenswierdegst Astrologieplattform ze ginn, déi Technologie an antik Wäisheet kombinéiert.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Eis Wäerter",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Integritéit, Genauegkeet, benotzerzentriert Design a kontinuéierlech Innovatioun.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Kontaktéiert eis",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "E-Mail: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Websäit: www.ÄrFirma.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Clientssupport",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Mir sinn hei fir ze hëllefen",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Fëllt de Formulaire hei ënnendrënner aus an eis Supportéquipe mellt sech sou séier wéi méiglech bei Iech zréck.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Ären Numm",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Är E-Mail",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Message",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Gitt Är E-Mail-Adress an",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Gitt eng gülteg E-Mailadress an",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Gitt {fieldName} an",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Schécken",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Schécken...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ E-Mail erfollegräich geschéckt!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Konnt d'E-Mail net schécken",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro-Wierderbuch",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Sichbegrëffer...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Keng Begrëffer fonnt",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Froen zum Kaafen",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Benotzer net authentifizéiert",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "D'Luede vun de Butteksdaten ass fehlgeschloen",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Fehlenden Autorisatiounstoken",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat App",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Bezuelung erfollegräich! Fro geschéckt",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Bezuelung feelgeschloen: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Äre Saldo",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Froen",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Verfügbar Offeren",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Fro",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Kaafen",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Deeglecht Horoskop",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Benotzer-ID feelt",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Horoskoper konnten net ofgeruff ginn",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Kee Horoskop fonnt.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Ënnerschreift",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Haut",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Gëschter",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Des woch",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Läschte Mount",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Chat",
+  "typeYourQuestionHint": "Schreift Är Fro an...",
+  "paymentRequired": "Bezuelung erfuerderlech",
+  "paymentRequiredMessage": "Dir hutt Är gratis Froen benotzt. Bezuelt ₹50 fir weiderzemaachen.",
+  "payNowButton": "Bezuelt elo",
+  "freeQuestionsRemaining": "{count} fräi Froen bleiwen",
+  "paidQuestionsRemaining": "{count} bezuelte Froen bleiwen",
+  "thankYouFeedback": "Merci fir Äre Feedback!",
+  "ratingSubmitted": "Bewäertung geschéckt!",
+  "setUserIdFirst": "Gitt w.e.g. als éischt Är Benotzer-ID an",
+  "failedToFetchPrevious": "Konnt fréier Froen an Äntwerten net ofruffen",
+  "errorOccurred": "Feeler: {error}",
+  "drawerAstroProfile": "Astro Profil",
+  "drawerDailyHoroscope": "Deeglecht Horoskop",
+  "drawerBuyQuestions": "Froen zum Kaafen",
+  "drawerAstroDictionary": "Astro-Wierderbuch",
+  "drawerSettings": "Astellungen",
+  "drawerCustomerSupport": "Clientssupport",
+  "drawerAbout": "Iwwer",
+  "drawerProfileSettings": "Profilastellungen",
+  "demoNotificationTitle": "🔔 Demo-Notifikatioun",
+  "demoNotificationBody": "Dëst ass eng Testnotifikatioun vun Ärer App!",
+  "notificationsTitle": "Notifikatiounen",
+  "noNotifications": "Keng Notifikatiounen",
+  "allTab": "Alles",
+  "markAllAsRead": "Alles als gelies markéieren",
+  "notificationMarkedRead": "Notifikatioun als gelies markéiert",
+  "failedToLoadNotifications": "Konnt d'Notifikatioune net lueden",
+  "failedToMarkRead": "Konnt net als gelies markéieren",
+  "failedToMarkAllRead": "Konnt alles net als gelies markéieren",
+  "socketConnected": "Steckdous ugeschloss",
+  "socketDisconnected": "Steckdous getrennt",
+  "newNotificationReceived": "Nei Notifikatioun kritt",
+  "generalCategory": "Allgemeng",
+  "horoscopeCategory": "Horoskop",
+  "chatCategory": "Chat",
+  "systemCategory": "System",
+  "updateCategory": "Aktualiséierungen",
+  "howToAskTitle": "Wéi froen",
+  "noQuestionsAvailable": "Keng Froen verfügbar",
+  "failedToLoadQuestions": "D'Froen konnten net geluede ginn",
+  "pullToRefresh": "Zéien fir ze aktualiséieren",
+  "careerCategory": "Carrière",
+  "loveCategory": "Léift & Bezéiungen",
+  "healthCategory": "Gesondheet",
+  "financeCategory": "Finanzen",
+  "familyCategory": "Famill",
+  "educationCategory": "Ausbildung",
+  "travelCategory": "Reesen",
+  "spiritualCategory": "Geeschtlech",
+  "profileLoaded": "Profil erfollegräich gelueden",
+  "imageUploaded": "Bild erfollegräich eropgelueden",
+  "savedInformationConfirmation": "Ech hunn dës Informatioun gespäichert",
+  "noHistoryAvailable": "Kee Verlaf verfügbar",
+  "missingUserIdError": "Benotzer-ID ass erfuerderlech",
+  "networkError": "Netzwierkfehler. Probéiert et nach eng Kéier.",
+  "timeoutError": "Ufro ass ofgelaf",
+  "genericError": "Eppes ass schifgaang",
+  "reactionUpdateError": "D'Aktualiséierung vun der Reaktioun ass fehlgeschloen",
+  "noSearchResults": "Keng Sichresultater fonnt",
+  "clearSearch": "Sich läschen",
+  "resultsFound": "Resultater fonnt",
+  "recoverySecretHint": "Kopéieren a Paste funktionéiert vläicht net, tippt manuell",
+  "recoverAccountDescription": "Follegt dës Schrëtt fir Äre Kont ze recuperéieren",
+  "processingLabel": "Veraarbechtung...",
+  "clearChatSuccess": "Chat erfollegräich geläscht",
+  "notificationsEnabled": "Notifikatiounen aktivéiert",
+  "notificationsDisabled": "Notifikatiounen deaktivéiert",
+  "securityNotice": "Är Donnéeë sinn sécher verschlësselt a gespäichert",
+  "loading": "Lueden...",
+  "selectLanguage": "Sprooch auswielen",
+  "onboardingGetStartedDesc": "Fänkt un andeems Dir Är Sprooch auswielt",
+  "accountRecoveryTitle": "🔐 Detailer fir d'Kont-Erhuelung",
+  "recoveryInstructions": "Späichert dës Informatioun w.e.g. sécher. Dir braucht se fir Äre Kont erëmzestellen.",
+  "importantNotice": "⚠️ Wichteg:",
+  "astrologerProfileTitle": "Profil vum Astrolog",
+  "personalAstrologer": "Perséinlechen Astrolog",
+  "makePersonalAstrologer": "Perséinlechen Astrolog maachen",
+  "favoriteDescription": "Är Froen ginn un dësen Astrolog prioritär behandelt. Wann hien net verfügbar ass, hëlleft Iech en aneren qualifizéierten Astrolog.",
+  "educationQualifications": "Ausbildung & Qualifikatiounen",
+  "aboutSection": "Iwwer",
+  "shareProfile": "Profil deelen",
+  "loadingAstrologer": "Detailer vum Astrolog ginn gelueden...",
+  "failedToLoadAstrologer": "Konnt d'Detailer vum Astrolog net lueden",
+  "authenticationRequired": "Authentifikatioun erfuerderlech. Mellt Iech w.e.g. un.",
+  "securityCheckFailed": "Sécherheetskontroll gescheitert: {error}",
+  "addedToFavorites": "🎯 {name} ass elo Äre perséinlechen Astrolog",
+  "removedFromFavorites": "✅ {name} aus de Favoritten ewechgeholl",
+  "toggleFavoriteError": "Konnt de Favoritstatus net aktualiséieren",
+  "shareMessage": "{name}\n🎓 Ausbildung: {education}\n📜 Qualifikatioun: {qualification}\n⏳ Erfahrung: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Net geliwwert",
+  "reviews": "({count} Bewäertungen)",
+  "specialties": "Spezialitéiten",
+  "experience": "Erfahrung",
+  "qualification": "Qualifikatioun",
+  "education": "Ausbildung",
+  "recoveryTips": "• Maacht e Screenshot vun dëser Informatioun\n• Späichert se op enger sécherer Plaz\n• Deelt se mat kengem\n• Dëst gëtt nëmmen eemol ugewisen"
+}

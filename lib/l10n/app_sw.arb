@@ -1,0 +1,439 @@
+{
+  "@@locale": "sw",
+  "settingsTitle": "Mipangilio",
+  "notificationSettings": "Mipangilio ya Arifa",
+  "privacySettings": "Mipangilio ya Faragha",
+  "accountSettings": "Mipangilio ya Akaunti",
+  "languageSettings": "Mipangilio ya Lugha",
+  "languageChanged": "Lugha imebadilika",
+  "existingUserButton": "Mimi ni mtumiaji aliyepo",
+  "chooseCountryTitle": "Chagua Nchi",
+  "yesText": "Ndiyo",
+  "noText": "Hapana",
+  "appBarTitle": "Mipangilio ya Wasifu",
+  "userIdLabel": "Kitambulisho cha Mtumiaji *",
+  "nameLabel": "Jina",
+  "birthCountryLabel": "Nchi ya Kuzaliwa",
+  "birthCityLabel": "Mji wa kuzaliwa",
+  "countrySelectionTitle": "Chagua nchi yako",
+  "maleLabel": "Mwanaume",
+  "femaleLabel": "Mwanamke",
+  "birthDateLabel": "Tarehe ya Kuzaliwa",
+  "birthDatePlaceholder": "Chagua Tarehe ya Kuzaliwa",
+  "birthTimeLabel": "Wakati wa Kuzaliwa",
+  "birthTimePlaceholder": "Chagua Wakati wa Kuzaliwa",
+  "saveProfileButton": "Hifadhi Wasifu",
+  "noCitiesFound": "Hakuna miji iliyopatikana",
+  "cityPlaceholder": "Ingiza jiji katika {country}",
+  "countryFirstPlaceholder": "Chagua nchi kwanza",
+  "versionHistoryTitle": "Historia ya Toleo",
+  "notSetText": "Haijawekwa",
+  "nameHistory": "Jina: {name}",
+  "cityHistory": "Mji: {city}",
+  "countryHistory": "Nchi: {country}",
+  "genderHistory": "Jinsia: {gender}",
+  "birthDateHistory": "Tarehe ya Kuzaliwa: {date}",
+  "birthTimeHistory": "Wakati wa Kuzaliwa: {time}",
+  "locationHistory": "Mahali: {latitude}, {longitude}",
+  "timezoneHistory": "Saa za eneo: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Jimbo: {state}",
+  "versionFromText": "Ilisasishwa mnamo {date}",
+  "userIdRequired": "Kitambulisho cha Mtumiaji kinahitajika",
+  "profileSaved": "Wasifu umehifadhiwa",
+  "saveFailed": "Imeshindwa kuhifadhi wasifu",
+  "errorPrefix": "Hitilafu:",
+  "onboardingChooseLanguage": "Chagua Lugha Yako",
+  "onboardingChooseLanguageDesc": "Chagua lugha unayopendelea ili kuendelea.",
+  "onboardingWhatIsAstrology": "Unajimu ni nini?",
+  "onboardingWhatIsAstrologyDesc": "Unajimu ni utafiti wa mambo ya anga...",
+  "onboardingWhyUseApp": "Kwa nini utumie programu hii?",
+  "onboardingWhyUseAppDesc": "Pata nyota zilizobinafsishwa, ubashiri wa kila siku na mwongozo ili kufanya maamuzi sahihi.",
+  "onboardingHowToUse": "Jinsi ya kutumia programu hii?",
+  "onboardingHowToUseDesc": "Sogeza kwa urahisi, angalia nyota za kila siku, na udhibiti wasifu wako kwa utabiri sahihi.",
+  "onboardingGetStarted": "Anza",
+  "onboardingNewUser": "Mtumiaji Mpya",
+  "onboardingExistingUser": "Mtumiaji Aliyepo",
+  "onboardingBack": "Nyuma",
+  "onboardingNext": "Inayofuata",
+  "userIdNotFound": "Kitambulisho cha Mtumiaji hakijapatikana. Tafadhali ingia au weka wasifu wako.",
+  "clearNotificationsTitle": "Futa Arifa",
+  "clearNotificationsMessage": "Je, una uhakika unataka kufuta arifa zote?",
+  "clearNotificationsSuccess": "Arifa zote zimefutwa.",
+  "clearHoroscopeTitle": "Nyota ya wazi",
+  "clearHoroscopeMessage": "Je, una uhakika unataka kufuta data yako ya nyota?",
+  "clearHoroscopeSuccess": "Nyota imefutwa.",
+  "clearChatTitle": "Futa Historia ya Gumzo",
+  "clearChatMessage": "Je, una uhakika unataka kufuta historia yako yote ya gumzo?",
+  "clearChatLocal": "Gumzo limefutwa ndani ya nchi.",
+  "deleteAccountTitle": "Futa Akaunti",
+  "deleteAccountMessage": "Je, una uhakika unataka kufuta akaunti yako? Hii pia itafuta historia yako yote ya gumzo na arifa.",
+  "deleteAccountSuccess": "Akaunti yako na data zote zimeondolewa.",
+  "deleteAccountError": "Hitilafu katika kufuta akaunti",
+  "logoutTitle": "Ondoka",
+  "logoutMessage": "Je, una uhakika unataka kuondoka?",
+  "termsPrivacyTitle": "Masharti na Faragha",
+  "privacyPolicyTitle": "Sera ya Faragha",
+  "termsConditionsTitle": "Sheria na Masharti",
+  "dataControlTitle": "Udhibiti wa Data",
+  "cancelButton": "Ghairi",
+  "confirmButton": "Thibitisha",
+  "clearQuestionsSuccess": "Maswali yote yamefutwa.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Bwana",
+  "startLabel": "Anza",
+  "recoverAccount": "Rejesha Akaunti",
+  "endLabel": "Mwisho",
+  "startDateLabel": "Tarehe ya Kuanza",
+  "endDateLabel": "Tarehe ya Mwisho",
+  "notAvailable": "Haipatikani",
+  "noData": "Hakuna data",
+  "unknownError": "Hitilafu isiyojulikana",
+  "retryButton": "Jaribu tena",
+  "kundaliGeneratorTitle": "Jenereta ya Kundali",
+  "natalChartTitle": "Chati ya Natal",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Shahada ya Kupanda",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Haijulikani",
+  "clearHoroscope": "Nyota ya wazi",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Futa Arifa",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Futa Historia ya Gumzo",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Ondoka",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Futa Akaunti",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Sehemu zote zinahitajika.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Akaunti imerejeshwa.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Urejeshaji haukufaulu. Angalia maelezo yako.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Siri ya kurejesha:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Kuhusu Sisi",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Kuhusu Kampuni Yetu",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Tumejitolea kuwasilisha hali bora zaidi ya unajimu kwa watumiaji wetu.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Dhamira Yetu",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Ili kutoa maarifa sahihi na ya kibinafsi ya unajimu ili kuwasaidia watumiaji kufanya maamuzi sahihi katika maisha yao.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Maono Yetu",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Ili kuwa jukwaa la unajimu linaloaminika zaidi, linalochanganya teknolojia na hekima ya zamani.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Maadili Yetu",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Uadilifu, Usahihi, Muundo wa Msingi wa Mtumiaji, na Ubunifu Unaoendelea.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Wasiliana Nasi",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Barua pepe: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Tovuti: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Usaidizi wa Wateja",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Tuko Hapa Kusaidia",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Jaza fomu iliyo hapa chini na timu yetu ya usaidizi itarejea kwako haraka iwezekanavyo.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Jina Lako",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Barua pepe yako",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Ujumbe",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Weka barua pepe yako",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Weka barua pepe halali",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Weka {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Tuma",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Inatuma...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Barua pepe imetumwa kwa mafanikio!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Imeshindwa kutuma barua pepe",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Kamusi ya Astro",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Hoja za utafutaji...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Hakuna masharti yaliyopatikana",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Nunua Maswali",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Mtumiaji hajathibitishwa",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Imeshindwa kupakia data ya hifadhi",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Tokeni ya uthibitishaji haipo",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Programu ya Gumzo ya Astro",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Malipo yamefanikiwa! Swali limetumwa",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Malipo yameshindwa: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Mizani Yako",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Maswali",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Matoleo Yanayopatikana",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "Swali la {count}",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Nunua",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Nyota ya Kila Siku",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Kitambulisho cha Mtumiaji hakipo",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Imeshindwa kuleta nyota",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Hakuna nyota iliyopatikana.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Ishara",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Leo",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Jana",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Wiki Hii",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Mwezi uliopita",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Soga",
+  "typeYourQuestionHint": "Andika swali lako...",
+  "paymentRequired": "Malipo yanahitajika",
+  "paymentRequiredMessage": "Umetumia maswali yako yasiyolipishwa. Lipa ₹50 ili kuendelea.",
+  "payNowButton": "Lipa Sasa",
+  "freeQuestionsRemaining": "{count} maswali yasiyolipishwa yamesalia",
+  "paidQuestionsRemaining": "{count} maswali yanayolipwa yamesalia",
+  "thankYouFeedback": "Asante kwa maoni yako!",
+  "ratingSubmitted": "Ukadiriaji umewasilishwa!",
+  "setUserIdFirst": "Tafadhali weka Kitambulisho chako cha Mtumiaji kwanza",
+  "failedToFetchPrevious": "Imeshindwa kuleta maswali na majibu yaliyotangulia",
+  "errorOccurred": "Hitilafu: {error}",
+  "drawerAstroProfile": "Wasifu wa Astro",
+  "drawerDailyHoroscope": "Nyota ya Kila siku",
+  "drawerBuyQuestions": "Nunua Maswali",
+  "drawerAstroDictionary": "Kamusi ya Astro",
+  "drawerSettings": "Mipangilio",
+  "drawerCustomerSupport": "Usaidizi wa Wateja",
+  "drawerAbout": "Kuhusu",
+  "drawerProfileSettings": "Mipangilio ya Wasifu",
+  "demoNotificationTitle": "🔔 Arifa ya Onyesho",
+  "demoNotificationBody": "Hii ni arifa ya majaribio kutoka kwa programu yako!",
+  "notificationsTitle": "Arifa",
+  "noNotifications": "Hakuna arifa",
+  "allTab": "Wote",
+  "markAllAsRead": "Weka alama zote kama zimesomwa",
+  "notificationMarkedRead": "Arifa imetiwa alama kuwa imesomwa",
+  "failedToLoadNotifications": "Imeshindwa kupakia arifa",
+  "failedToMarkRead": "Imeshindwa kutia alama kuwa imesomwa",
+  "failedToMarkAllRead": "Imeshindwa kutia alama zote kuwa zimesomwa",
+  "socketConnected": "Soketi imeunganishwa",
+  "socketDisconnected": "Soketi imetenganishwa",
+  "newNotificationReceived": "Arifa mpya imepokelewa",
+  "generalCategory": "Mkuu",
+  "horoscopeCategory": "Nyota",
+  "chatCategory": "Soga",
+  "systemCategory": "Mfumo",
+  "updateCategory": "Sasisho",
+  "howToAskTitle": "Jinsi ya Kuuliza",
+  "noQuestionsAvailable": "Hakuna maswali yanayopatikana",
+  "failedToLoadQuestions": "Imeshindwa kupakia maswali",
+  "pullToRefresh": "Vuta ili kuonyesha upya",
+  "careerCategory": "Kazi",
+  "loveCategory": "Mapenzi na Mahusiano",
+  "healthCategory": "Afya",
+  "financeCategory": "Fedha",
+  "familyCategory": "Familia",
+  "educationCategory": "Elimu",
+  "travelCategory": "Safari",
+  "spiritualCategory": "Kiroho",
+  "profileLoaded": "Wasifu umepakiwa",
+  "imageUploaded": "Picha imepakiwa",
+  "savedInformationConfirmation": "Nimehifadhi Habari Hii",
+  "noHistoryAvailable": "Hakuna historia inayopatikana",
+  "missingUserIdError": "Kitambulisho cha Mtumiaji kinahitajika",
+  "networkError": "Hitilafu ya mtandao. Tafadhali jaribu tena.",
+  "timeoutError": "Muda wa ombi umekwisha",
+  "genericError": "Hitilafu fulani imetokea",
+  "reactionUpdateError": "Imeshindwa kusasisha maoni",
+  "noSearchResults": "Hakuna matokeo ya utafutaji yaliyopatikana",
+  "clearSearch": "Futa utafutaji",
+  "resultsFound": "Matokeo yamepatikana",
+  "recoverySecretHint": "Nakili-kubandika inaweza kufanya kazi, chapa mwenyewe",
+  "recoverAccountDescription": "Fuata hatua hizi ili kurejesha akaunti yako",
+  "processingLabel": "Inachakata...",
+  "clearChatSuccess": "Soga imefutwa",
+  "notificationsEnabled": "Arifa zimewashwa",
+  "notificationsDisabled": "Arifa zimezimwa",
+  "securityNotice": "Data yako imesimbwa kwa njia fiche na kuhifadhiwa kwa usalama",
+  "loading": "Inapakia...",
+  "selectLanguage": "Chagua Lugha",
+  "onboardingGetStartedDesc": "Anza kwa kuchagua lugha yako",
+  "accountRecoveryTitle": "🔐 Maelezo ya Urejeshaji wa Akaunti",
+  "recoveryInstructions": "Tafadhali hifadhi maelezo haya kwa usalama. Utaihitaji ili kurejesha akaunti yako.",
+  "importantNotice": "⚠️ Muhimu:",
+  "astrologerProfileTitle": "Wasifu wa Mnajimu",
+  "personalAstrologer": "Mnajimu Binafsi",
+  "makePersonalAstrologer": "Fanya Mnajimu wa Kibinafsi",
+  "favoriteDescription": "Maswali yako yatapewa kipaumbele kwa mnajimu huyu. Ikiwa haipatikani, mnajimu mwingine aliyehitimu atakusaidia.",
+  "educationQualifications": "Elimu na Sifa",
+  "aboutSection": "Kuhusu",
+  "shareProfile": "Shiriki Wasifu",
+  "loadingAstrologer": "Inapakia maelezo ya mnajimu...",
+  "failedToLoadAstrologer": "Imeshindwa kupakia maelezo ya mnajimu",
+  "authenticationRequired": "Uthibitishaji unahitajika. Tafadhali ingia.",
+  "securityCheckFailed": "Ukaguzi wa usalama haukufaulu: {error}",
+  "addedToFavorites": "🎯 {name} sasa ndiye Mnajimu wako wa Kibinafsi",
+  "removedFromFavorites": "✅ Imeondolewa {name} kutoka kwa vipendwa",
+  "toggleFavoriteError": "Imeshindwa kusasisha hali pendwa",
+  "shareMessage": "{name}\n🎓 Elimu: {education}\n📜 Sifa: {qualification}\n⏳ Uzoefu: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Haijatolewa",
+  "reviews": "({count} ukaguzi)",
+  "specialties": "Utaalam",
+  "experience": "Uzoefu",
+  "qualification": "Sifa",
+  "education": "Elimu",
+  "recoveryTips": "• Piga picha ya skrini ya maelezo haya\n• Ihifadhi mahali salama\n• Usishiriki na mtu yeyote\n• Hii itaonyeshwa mara moja tu"
+}

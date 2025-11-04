@@ -1,0 +1,439 @@
+{
+  "@@locale": "ug",
+  "settingsTitle": "تەڭشەك",
+  "notificationSettings": "ئۇقتۇرۇش تەڭشىكى",
+  "privacySettings": "مەخپىيەتلىك تەڭشەكلىرى",
+  "accountSettings": "ھېسابات تەڭشىكى",
+  "languageSettings": "تىل تەڭشىكى",
+  "languageChanged": "تىل ئۆزگەردى",
+  "existingUserButton": "مەن ھازىر بار ئىشلەتكۈچى",
+  "chooseCountryTitle": "دۆلەت تاللاڭ",
+  "yesText": "ھەئە",
+  "noText": "ياق",
+  "appBarTitle": "ئارخىپ تەڭشىكى",
+  "userIdLabel": "ئىشلەتكۈچى كىملىكى *",
+  "nameLabel": "ئىسمى",
+  "birthCountryLabel": "تۇغۇلغان دۆلەت",
+  "birthCityLabel": "تۇغۇلغان شەھەر",
+  "countrySelectionTitle": "دۆلىتىڭىزنى تاللاڭ",
+  "maleLabel": "ئەر",
+  "femaleLabel": "ئايال",
+  "birthDateLabel": "تۇغۇلغان كۈنى",
+  "birthDatePlaceholder": "تۇغۇلغان كۈنىنى تاللاڭ",
+  "birthTimeLabel": "تۇغۇلغان ۋاقتى",
+  "birthTimePlaceholder": "تۇغۇلغان ۋاقىتنى تاللاڭ",
+  "saveProfileButton": "ئارخىپنى ساقلاش",
+  "noCitiesFound": "شەھەر تېپىلمىدى",
+  "cityPlaceholder": "Enter city in {country}",
+  "countryFirstPlaceholder": "ئالدى بىلەن دۆلەتنى تاللاڭ",
+  "versionHistoryTitle": "نەشرى تارىخى",
+  "notSetText": "تەڭشەلمىدى",
+  "nameHistory": "Name: {name}",
+  "cityHistory": "City: {city}",
+  "countryHistory": "Country: {country}",
+  "genderHistory": "Gender: {gender}",
+  "birthDateHistory": "Birth Date: {date}",
+  "birthTimeHistory": "Birth Time: {time}",
+  "locationHistory": "Location: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "State: {state}",
+  "versionFromText": "Updated on {date}",
+  "userIdRequired": "ئىشلەتكۈچى كىملىكى تەلەپ قىلىنىدۇ",
+  "profileSaved": "ئارخىپ مۇۋەپپەقىيەتلىك ساقلاندى",
+  "saveFailed": "ئارخىپنى ساقلىيالمىدى",
+  "errorPrefix": "خاتالىق:",
+  "onboardingChooseLanguage": "تىلىڭىزنى تاللاڭ",
+  "onboardingChooseLanguageDesc": "داۋاملاشتۇرۇش ئۈچۈن ياقتۇرىدىغان تىلىڭىزنى تاللاڭ.",
+  "onboardingWhatIsAstrology": "ئاسترونومىيە دېگەن نېمە؟",
+  "onboardingWhatIsAstrologyDesc": "ئاسترونومىيە ئاسمان جىسىملىرىنى تەتقىق قىلىش ...",
+  "onboardingWhyUseApp": "نېمىشقا بۇ ئەپنى ئىشلىتىسىز؟",
+  "onboardingWhyUseAppDesc": "خاسلاشتۇرۇلغان ئۇپۇق سىزىقى ، كۈندىلىك ئالدىن مەلۇمات ۋە توغرا قارار چىقىرىشقا يېتەكچىلىك قىلىڭ.",
+  "onboardingHowToUse": "بۇ ئەپنى قانداق ئىشلىتىش كېرەك؟",
+  "onboardingHowToUseDesc": "ئاسان يول باشلاڭ ، كۈندىلىك ئۇپۇق سىزىقىنى تەكشۈرۈپ ، توغرا پەرەز ئۈچۈن ئارخىپىڭىزنى باشقۇرۇڭ.",
+  "onboardingGetStarted": "باشلاڭ",
+  "onboardingNewUser": "يېڭى ئىشلەتكۈچى",
+  "onboardingExistingUser": "مەۋجۇت ئىشلەتكۈچى",
+  "onboardingBack": "قايتىش",
+  "onboardingNext": "كېيىنكى",
+  "userIdNotFound": "ئىشلەتكۈچى كىملىكى تېپىلمىدى. كىرىڭ ياكى ئارخىپىڭىزنى تەڭشەڭ.",
+  "clearNotificationsTitle": "ئېنىق ئۇقتۇرۇش",
+  "clearNotificationsMessage": "بارلىق ئۇقتۇرۇشلارنى ئۆچۈرمەكچىمۇ؟",
+  "clearNotificationsSuccess": "بارلىق ئۇقتۇرۇشلار مۇۋەپپەقىيەتلىك تازىلاندى.",
+  "clearHoroscopeTitle": "Horoscope نى تازىلاش",
+  "clearHoroscopeMessage": "ئۆزىڭىزنىڭ سانلىق مەلۇماتلىرىڭىزنى تازىلاشنى خالامسىز؟",
+  "clearHoroscopeSuccess": "Horoscope مۇۋەپپەقىيەتلىك تازىلاندى.",
+  "clearChatTitle": "پاراڭلىشىش تارىخىنى تازىلاش",
+  "clearChatMessage": "بارلىق پاراڭلىشىش تارىخىڭىزنى ئۆچۈرمەكچىمۇ؟",
+  "clearChatLocal": "پاراڭ يەرلىكتە تازىلاندى.",
+  "deleteAccountTitle": "ھېساباتنى ئۆچۈرۈڭ",
+  "deleteAccountMessage": "ھېساباتىڭىزنى ئۆچۈرمەكچىمۇ؟ بۇ سىزنىڭ بارلىق پاراڭلىشىش تارىخىڭىز ۋە ئۇقتۇرۇشلىرىڭىزنى تازىلايدۇ.",
+  "deleteAccountSuccess": "ھېساباتىڭىز ۋە بارلىق سانلىق مەلۇماتلار ئۆچۈرۈلدى.",
+  "deleteAccountError": "ھېساباتنى ئۆچۈرۈشتە خاتالىق",
+  "logoutTitle": "Logout",
+  "logoutMessage": "چېكىنىشنى خالامسىز؟",
+  "termsPrivacyTitle": "شەرت ۋە مەخپىيەتلىك",
+  "privacyPolicyTitle": "مەخپىيەتلىك تۈزۈمى",
+  "termsConditionsTitle": "شەرت ۋە شەرت",
+  "dataControlTitle": "سانلىق مەلۇمات كونترول قىلىش",
+  "cancelButton": "بىكار قىلىش",
+  "confirmButton": "جەزملەشتۈرۈڭ",
+  "clearQuestionsSuccess": "بارلىق سوئاللار مۇۋەپپەقىيەتلىك ئۆچۈرۈلدى.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "رەببىم",
+  "startLabel": "باشلاش",
+  "recoverAccount": "ھېساباتنى ئەسلىگە كەلتۈرۈش",
+  "endLabel": "ئاخىر",
+  "startDateLabel": "باشلىنىش ۋاقتى",
+  "endDateLabel": "ئاخىرلىشىش ۋاقتى",
+  "notAvailable": "ئىشلەتكىلى بولمايدۇ",
+  "noData": "سانلىق مەلۇمات يوق",
+  "unknownError": "نامەلۇم خاتالىق",
+  "retryButton": "قايتا سىناڭ",
+  "kundaliGeneratorTitle": "قۇندالى گېنېراتورى",
+  "natalChartTitle": "Natal Chart",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "ئۆرلەش دەرىجىسى",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "نامەلۇم",
+  "clearHoroscope": "Horoscope نى تازىلاش",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "ئېنىق ئۇقتۇرۇش",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "پاراڭلىشىش تارىخىنى تازىلاش",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Logout",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "ھېساباتنى ئۆچۈرۈڭ",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "بارلىق ساھە تەلەپ قىلىنىدۇ.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "ھېسابات مۇۋەپپەقىيەتلىك ئەسلىگە كەلدى.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "ئەسلىگە كەلتۈرۈش مەغلۇپ بولدى. ئۇچۇرلىرىڭىزنى تەكشۈرۈڭ.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "ئەسلىگە كەلتۈرۈش مەخپىيىتى:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "بىز ھەققىدە",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "شىركىتىمىز ھەققىدە",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "بىز ئەڭ ياخشى ئاسترونومىيە تەجرىبىسىنى ئابونتلىرىمىزغا يەتكۈزۈشكە ۋەدە بېرىمىز.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "بىزنىڭ ۋەزىپىمىز",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "توغرا ۋە خاسلاشتۇرۇلغان ئاسترونومىيە چۈشەنچىلىرى بىلەن تەمىنلەپ ، ئابونتلارنىڭ ھاياتىدا توغرا قارار چىقىرىشىغا ياردەم بېرىدۇ.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Vision",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "تېخنىكا بىلەن قەدىمكى ھېكمەتنى بىرلەشتۈرگەن ئەڭ ئىشەنچلىك ئاسترونومىيە سۇپىسىغا ئايلىنىش.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "بىزنىڭ قىممەت قارىشىمىز",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "سەمىمىيەت ، ئېنىقلىق ، ئىشلەتكۈچى مەركەزلىك لايىھىلەش ۋە ئۈزلۈكسىز يېڭىلىق يارىتىش.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "بىز بىلەن ئالاقىلىشىڭ",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "ئېلخەت: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "تور بېكىتى: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "خېرىدارلارنى قوللاش",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "بىز ياردەم قىلىمىز",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "تۆۋەندىكى جەدۋەلنى تولدۇرۇڭ ، قوللاش ئەترىتىمىز بالدۇرراق سىزگە قايتىپ كېلىدۇ.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "ئىسمىڭىز",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "ئېلېكترونلۇق خەت",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "ئۇچۇر",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "ئېلېكترونلۇق خەتنى كىرگۈزۈڭ",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "ئىناۋەتلىك ئېلېكترونلۇق خەت ئادرېسىنى كىرگۈزۈڭ",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Enter {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "ئەۋەتىڭ",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "ئەۋەتىش ...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ ئېلېكترونلۇق خەت مۇۋەپپەقىيەتلىك ئەۋەتىلدى!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "Email ئېلېكترونلۇق خەت ئەۋەتمىدى",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "ئاسترو لۇغىتى",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "ئىزدەش شەرتلىرى ...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "ھېچقانداق ئاتالغۇ تېپىلمىدى",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "سوئاللارنى سېتىۋېلىش",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "ئىشلەتكۈچى دەلىللەنمىدى",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "دۇكان سانلىق مەلۇماتلىرىنى يۈكلىيەلمىدى",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "يوقاپ كەتكەن ئاپتور بەلگىسى",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat App",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ چىقىم مۇۋەپپەقىيەتلىك! سوئال ئەۋەتىلدى",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Payment failed: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "تەڭپۇڭلۇقىڭىز",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Questions",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "ئىشلەتكىلى بولىدىغان تەكلىپلەر",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Question",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "سېتىۋېلىش",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Daily Horoscope",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "ئىشلەتكۈچى كىملىكى يوقاپ كەتتى",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "ئۇپۇق سىزىقىنى ئالالمىدى",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Horoscope تېپىلمىدى.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "ئىمزا",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "بۈگۈن",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "تۈنۈگۈن",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "بۇ ھەپتە",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "ئالدىنقى ئاي",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "پاراڭ",
+  "typeYourQuestionHint": "سوئالىڭىزنى يېزىڭ ...",
+  "paymentRequired": "پۇل تۆلەش تەلەپ قىلىنىدۇ",
+  "paymentRequiredMessage": "ھەقسىز سوئاللىرىڭىزنى ئىشلەتتىڭىز. داۋاملاشتۇرۇش ئۈچۈن 50 فوندستېرلىڭ تۆلەڭ.",
+  "payNowButton": "ھازىر تۆلەڭ",
+  "freeQuestionsRemaining": "{count} free questions remaining",
+  "paidQuestionsRemaining": "{count} paid questions remaining",
+  "thankYouFeedback": "ئىنكاسىڭىزغا رەھمەت!",
+  "ratingSubmitted": "باھا يوللاندى!",
+  "setUserIdFirst": "ئالدى بىلەن ئىشلەتكۈچى كىملىكىڭىزنى تەڭشەڭ",
+  "failedToFetchPrevious": "ئىلگىرىكى سوئال ۋە جاۋابلارنى ئالالمىدى",
+  "errorOccurred": "Error: {error}",
+  "drawerAstroProfile": "Astro Profile",
+  "drawerDailyHoroscope": "كۈندىلىك Horoscope",
+  "drawerBuyQuestions": "سوئاللارنى سېتىۋېلىش",
+  "drawerAstroDictionary": "ئاسترو لۇغىتى",
+  "drawerSettings": "تەڭشەك",
+  "drawerCustomerSupport": "خېرىدارلارنى قوللاش",
+  "drawerAbout": "ھەققىدە",
+  "drawerProfileSettings": "ئارخىپ تەڭشىكى",
+  "demoNotificationTitle": "🔔 Demo Notification",
+  "demoNotificationBody": "بۇ ئەپ دېتالىڭىزدىكى سىناق ئۇقتۇرۇشى!",
+  "notificationsTitle": "ئۇقتۇرۇش",
+  "noNotifications": "ئۇقتۇرۇش يوق",
+  "allTab": "ھەممىسى",
+  "markAllAsRead": "ھەممىنى ئوقۇغاندەك بەلگە قويۇڭ",
+  "notificationMarkedRead": "ئوقۇشقا بەلگە قويۇلغان ئۇقتۇرۇش",
+  "failedToLoadNotifications": "ئۇقتۇرۇشنى يۈكلىيەلمىدى",
+  "failedToMarkRead": "ئوقۇغاندەك بەلگە قويۇلمىدى",
+  "failedToMarkAllRead": "ھەممىنى ئوقۇغاندەك بەلگە قويمىدى",
+  "socketConnected": "Socket ئۇلاندى",
+  "socketDisconnected": "Socket ئۈزۈلۈپ قالدى",
+  "newNotificationReceived": "يېڭى ئۇقتۇرۇش تاپشۇرۇۋېلىندى",
+  "generalCategory": "General",
+  "horoscopeCategory": "Horoscope",
+  "chatCategory": "پاراڭ",
+  "systemCategory": "سىستېما",
+  "updateCategory": "يېڭىلانمىلار",
+  "howToAskTitle": "قانداق سوراش",
+  "noQuestionsAvailable": "سوئال يوق",
+  "failedToLoadQuestions": "سوئاللارنى يۈكلىيەلمىدى",
+  "pullToRefresh": "يېڭىلاش",
+  "careerCategory": "كەسپى",
+  "loveCategory": "مۇھەببەت ۋە مۇناسىۋەت",
+  "healthCategory": "ساغلاملىق",
+  "financeCategory": "مالىيە",
+  "familyCategory": "ئائىلە",
+  "educationCategory": "مائارىپ",
+  "travelCategory": "ساياھەت",
+  "spiritualCategory": "مەنىۋى",
+  "profileLoaded": "ئارخىپ مۇۋەپپەقىيەتلىك يۈكلەندى",
+  "imageUploaded": "رەسىم مۇۋەپپەقىيەتلىك يۈكلەندى",
+  "savedInformationConfirmation": "مەن بۇ ئۇچۇرلارنى ساقلىدىم",
+  "noHistoryAvailable": "تارىخ يوق",
+  "missingUserIdError": "ئىشلەتكۈچى كىملىكى تەلەپ قىلىنىدۇ",
+  "networkError": "تور خاتالىقى. قايتا سىناڭ.",
+  "timeoutError": "تەلەپ ۋاقتى توشتى",
+  "genericError": "چاتاق چىقتى",
+  "reactionUpdateError": "ئىنكاس يېڭىلانمىدى",
+  "noSearchResults": "ئىزدەش نەتىجىسى تېپىلمىدى",
+  "clearSearch": "ئىزدەشنى تازىلاش",
+  "resultsFound": "نەتىجە تېپىلدى",
+  "recoverySecretHint": "كۆچۈرۈپ چاپلاش ئىشلىمەسلىكى مۇمكىن ، قولدا كىرگۈزۈڭ",
+  "recoverAccountDescription": "ھېساباتىڭىزنى ئەسلىگە كەلتۈرۈش ئۈچۈن بۇ باسقۇچلارغا ئەگىشىڭ",
+  "processingLabel": "بىر تەرەپ قىلىش ...",
+  "clearChatSuccess": "پاراڭ مۇۋەپپەقىيەتلىك تازىلاندى",
+  "notificationsEnabled": "ئۇقتۇرۇش قوزغىتىلدى",
+  "notificationsDisabled": "ئۇقتۇرۇش چەكلەنگەن",
+  "securityNotice": "سانلىق مەلۇماتلىرىڭىز بىخەتەر شىفىرلىنىدۇ ۋە ساقلىنىدۇ",
+  "loading": "Loading ...",
+  "selectLanguage": "تىل تاللاڭ",
+  "onboardingGetStartedDesc": "تىلىڭىزنى تاللاش ئارقىلىق باشلاڭ",
+  "accountRecoveryTitle": "🔐 ھېساباتنى ئەسلىگە كەلتۈرۈش تەپسىلاتلىرى",
+  "recoveryInstructions": "بۇ ئۇچۇرلارنى بىخەتەر ساقلاڭ. ھېساباتىڭىزنى ئەسلىگە كەلتۈرۈشىڭىز كېرەك.",
+  "importantNotice": "⚠️ موھىم:",
+  "astrologerProfileTitle": "ئاسترونومىيە ئارخىپى",
+  "personalAstrologer": "شەخسىي ئاسترونومىيە",
+  "makePersonalAstrologer": "شەخسىي ئاسترونومىيە قىلىڭ",
+  "favoriteDescription": "سوئاللىرىڭىز بۇ ئاسترونومىيەگە ئالدىنقى ئورۇنغا قويۇلىدۇ. ئەگەر ئىشلەتكىلى بولمىسا ، باشقا لاياقەتلىك جۇلدىز سىزگە ياردەم قىلىدۇ.",
+  "educationQualifications": "مائارىپ ۋە سالاھىيەت",
+  "aboutSection": "ھەققىدە",
+  "shareProfile": "ئارخىپنى ھەمبەھىرلەش",
+  "loadingAstrologer": "ئاسترونومىيە تەپسىلاتلىرىنى يۈكلەۋاتىدۇ ...",
+  "failedToLoadAstrologer": "جۇلدىزلارنىڭ تەپسىلاتلىرىنى يۈكلىيەلمىدى",
+  "authenticationRequired": "دەلىللەش تەلەپ قىلىنىدۇ. كىرىڭ.",
+  "securityCheckFailed": "Security check failed: {error}",
+  "addedToFavorites": "🎯 {name} is now your Personal Astrologer",
+  "removedFromFavorites": "✅ Removed {name} from favorites",
+  "toggleFavoriteError": "ياخشى كۆرىدىغان ھالەتنى يېڭىلاش مەغلۇب بولدى",
+  "shareMessage": "{name}\n🎓 Education: {education}\n📜 Qualification: {qualification}\n⏳ Experience: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "تەمىنلەنمىدى",
+  "reviews": "({count} reviews)",
+  "specialties": "كەسپى",
+  "experience": "تەجرىبە",
+  "qualification": "سالاھىيەت",
+  "education": "مائارىپ",
+  "recoveryTips": "• بۇ ئۇچۇرنىڭ ئېكران رەسىمىنى ئېلىڭ\n• ئۇنى بىخەتەر جايدا ساقلاڭ\n• ھېچكىم بىلەن ئورتاقلاشماڭ\n• بۇ پەقەت بىرلا قېتىم كۆرسىتىلىدۇ"
+}

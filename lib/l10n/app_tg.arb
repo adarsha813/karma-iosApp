@@ -1,0 +1,439 @@
+{
+  "@@locale": "tg",
+  "settingsTitle": "Танзимотҳо",
+  "notificationSettings": "Танзимоти огоҳинома",
+  "privacySettings": "Танзимоти махфият",
+  "accountSettings": "Коргузории Ҳисоб",
+  "languageSettings": "Танзимоти забон",
+  "languageChanged": "Забон иваз шуд",
+  "existingUserButton": "Ман корбари мавҷуда ҳастам",
+  "chooseCountryTitle": "Кишварро интихоб кунед",
+  "yesText": "Бале",
+  "noText": "Не",
+  "appBarTitle": "Танзимоти профил",
+  "userIdLabel": "Шаҳодатномаи Корбар *",
+  "nameLabel": "Ном",
+  "birthCountryLabel": "Кишвари таваллуд",
+  "birthCityLabel": "Шаҳри таваллуд",
+  "countrySelectionTitle": "Кишвари худро интихоб кунед",
+  "maleLabel": "Мард",
+  "femaleLabel": "Зан",
+  "birthDateLabel": "Рӯзи таваллуд",
+  "birthDatePlaceholder": "Санаи таваллудро интихоб кунед",
+  "birthTimeLabel": "Вақти таваллуд",
+  "birthTimePlaceholder": "Вақти таваллудро интихоб кунед",
+  "saveProfileButton": "Профилро захира кунед",
+  "noCitiesFound": "Ягон шаҳр ёфт нашуд",
+  "cityPlaceholder": "Дар {country} шаҳрро ворид кунед",
+  "countryFirstPlaceholder": "Аввал кишварро интихоб кунед",
+  "versionHistoryTitle": "Таърихи версия",
+  "notSetText": "Муқаррар нашудааст",
+  "nameHistory": "Ном: {name}",
+  "cityHistory": "Шаҳр: {city}",
+  "countryHistory": "Кишвар: {country}",
+  "genderHistory": "Гендер: {gender}",
+  "birthDateHistory": "Санаи таваллуд: {date}",
+  "birthTimeHistory": "Вақти таваллуд: {time}",
+  "locationHistory": "Ҷойгир: {latitude}, {longitude}",
+  "timezoneHistory": "Минтақаи вақт: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Ҳолат: {state}",
+  "versionFromText": "Дар {date} навсозӣ шудааст",
+  "userIdRequired": "ID корбар лозим аст",
+  "profileSaved": "Профил бомуваффақият захира карда шуд",
+  "saveFailed": "Наҷоти профил",
+  "errorPrefix": "Хатогӣ:",
+  "onboardingChooseLanguage": "Забони худро интихоб кунед",
+  "onboardingChooseLanguageDesc": "Барои идома додани забони дилхоҳатонро интихоб кунед.",
+  "onboardingWhatIsAstrology": "Астрология чист?",
+  "onboardingWhatIsAstrologyDesc": "Астрология илмест, ки чисмҳои осмониро меомӯзад...",
+  "onboardingWhyUseApp": "Чаро ин барномаро истифода баред?",
+  "onboardingWhyUseAppDesc": "Гороскопи фардӣ, пешгӯиҳои ҳаррӯза ва роҳнамо барои қабули қарорҳои оқилона гиред.",
+  "onboardingHowToUse": "Чӣ тавр истифода бурдани ин барнома?",
+  "onboardingHowToUseDesc": "Ба осонӣ паймоиш кунед, гороскопи ҳаррӯзаро тафтиш кунед ва профили худро барои пешгӯиҳои дақиқ идора кунед.",
+  "onboardingGetStarted": "Оғоз кунед",
+  "onboardingNewUser": "Корбари нав",
+  "onboardingExistingUser": "Корбари мавҷуда",
+  "onboardingBack": "Бозгашт",
+  "onboardingNext": "Баъдӣ",
+  "userIdNotFound": "ID корбар ёфт нашуд. Лутфан ворид шавед ё профили худро танзим кунед.",
+  "clearNotificationsTitle": "Огоҳиҳоро тоза кунед",
+  "clearNotificationsMessage": "Шумо мутмаин ҳастед, ки мехоҳед ҳамаи огоҳиҳоро тоза кунед?",
+  "clearNotificationsSuccess": "Ҳама огоҳиҳо бомуваффақият тоза карда шуданд.",
+  "clearHoroscopeTitle": "Гороскопи равшан",
+  "clearHoroscopeMessage": "Шумо мутмаин ҳастед, ки мехоҳед маълумоти гороскопи худро тоза кунед?",
+  "clearHoroscopeSuccess": "Гороскопи бомуваффақият тоза карда шуд.",
+  "clearChatTitle": "Таърихи чатро тоза кунед",
+  "clearChatMessage": "Шумо мутмаин ҳастед, ки мехоҳед тамоми таърихи сӯҳбати худро нест кунед?",
+  "clearChatLocal": "Чат ба таври маҳаллӣ тоза карда шуд.",
+  "deleteAccountTitle": "Ҳисобро нест кунед",
+  "deleteAccountMessage": "Шумо мутмаин ҳастед, ки мехоҳед ҳисоби худро нест кунед? Ин инчунин тамоми таърихи сӯҳбат ва огоҳиҳои шуморо тоза мекунад.",
+  "deleteAccountSuccess": "Ҳисоби шумо ва ҳама маълумоти шумо нест карда шуданд.",
+  "deleteAccountError": "Хатогӣ ҳангоми нест кардани ҳисоб",
+  "logoutTitle": "Хуруҷ",
+  "logoutMessage": "Шумо мутмаин ҳастед, ки мехоҳед баромад кунед?",
+  "termsPrivacyTitle": "Шартҳо ва махфият",
+  "privacyPolicyTitle": "Сиёсати Корбурди Маълумоти Шахсӣ",
+  "termsConditionsTitle": "Шартҳо ва шартҳо",
+  "dataControlTitle": "Назорати маълумот",
+  "cancelButton": "Бекор кардан",
+  "confirmButton": "Тасдиқ кунед",
+  "clearQuestionsSuccess": "Ҳама саволҳо бомуваффақият нест карда шуданд.",
+  "yoginiLabel": "Йогини",
+  "lordLabel": "Худовандо",
+  "startLabel": "Оғоз",
+  "recoverAccount": "Ҳисобро барқарор кунед",
+  "endLabel": "Поён",
+  "startDateLabel": "Саршавии Сана",
+  "endDateLabel": "Санаи анҷом",
+  "notAvailable": "Дастрас нест",
+  "noData": "Маълумот нест",
+  "unknownError": "Хатогии номаълум",
+  "retryButton": "Аз нав кӯшиш кунед",
+  "kundaliGeneratorTitle": "Генератори Кундали",
+  "natalChartTitle": "Диаграммаи таваллуд",
+  "lagnaLabel": "Лагна",
+  "rashiLabel": "Раши",
+  "ascDegreeLabel": "Дараҷаи боло",
+  "vimshottariDashaTitle": "Вимшоттари Даша",
+  "yoginiDashaTitle": "Йогини Даша",
+  "unknown": "Номаълум",
+  "clearHoroscope": "Гороскопи равшан",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Огоҳиҳоро тоза кунед",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Таърихи чатро тоза кунед",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Хуруҷ",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Ҳисобро нест кунед",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Ҳама майдонҳо талаб карда мешаванд.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Ҳисоб бомуваффақият барқарор карда шуд.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Барқароркунӣ ноком шуд. Маълумоти худро тафтиш кунед.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Сирри барқарорсозӣ:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Дар бораи мо",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Дар бораи ширкати мо",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Мо ӯҳдадор ҳастем, ки таҷрибаи беҳтарини ситорашиносиро ба корбарони худ расонем.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Миссияи мо",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Пешниҳоди фаҳмишҳои дақиқ ва фардии астрология барои кӯмак ба корбарон дар қабули қарорҳои оқилона дар ҳаёти худ.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Нигоҳи мо",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Барои табдил додани платформаи боэътимоди ситорашиносӣ, ки технология ва ҳикмати қадимиро муттаҳид мекунад.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Арзишҳои мо",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Беайбӣ, дақиқӣ, тарҳрезии ба корбар нигаронидашуда ва навовариҳои пайваста.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Бо мо тамос гиред",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Почтаи электронӣ: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Вебсайт: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Дастгирии муштариён",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Мо барои кӯмак дар ин ҷо ҳастем",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Шакли зерро пур кунед ва дастаи дастгирии мо ҳарчи зудтар ба шумо бармегардад.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Номи шумо",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Почтаи электронии шумо",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Паём",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Почтаи электронии худро ворид кунед",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Суроғаи почтаи электронии дурустро ворид кунед",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "{fieldName}-ро ворид кунед",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Фиристодан",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Фиристодан...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Почтаи электронӣ бомуваффақият фиристода шуд!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Ирсоли почтаи электронӣ ноком шуд",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Луғати астро",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Шартҳои ҷустуҷӯ...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Ягон истилоҳот ёфт нашуд",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Саволҳоро харед",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Истифодабаранда тасдиқ нашудааст",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Бор кардани маълумоти мағоза",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Токени аутентификация нест",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Барномаи Astro Chat",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Пардохт муваффақ шуд! Савол фиристода шуд",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Пардохт ноком шуд: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Тавозуни шумо",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Саволҳо",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Пешниҳодҳои дастрас",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Савол",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "харид",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Гороскопи ҳаррӯза",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "ID корбар нест",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Гирифтани гороскопҳо муваффақ нашуд",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Гороскопи ёфт нашуд.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Имзо",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Имруз",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Дируз",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Ҳамин ҳафта",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Мохи гузашта",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Чат",
+  "typeYourQuestionHint": "Саволи худро нависед...",
+  "paymentRequired": "Пардохт талаб карда мешавад",
+  "paymentRequiredMessage": "Шумо саволҳои ройгони худро истифода бурдед. Барои идома додан ₹50 пардохт кунед.",
+  "payNowButton": "Ҳоло пардохт кунед",
+  "freeQuestionsRemaining": "{count} саволҳои ройгон боқӣ мондаанд",
+  "paidQuestionsRemaining": "{count} саволҳои пардохтшуда боқӣ мондаанд",
+  "thankYouFeedback": "Ташаккур барои фикру мулоҳизаатон!",
+  "ratingSubmitted": "Рейтинг пешниҳод карда шуд!",
+  "setUserIdFirst": "Лутфан аввал ID корбари худро таъин кунед",
+  "failedToFetchPrevious": "Саволҳо ва ҷавобҳои қаблиро гирифта натавонистанд",
+  "errorOccurred": "Хатогӣ: {error}",
+  "drawerAstroProfile": "Профили Astro",
+  "drawerDailyHoroscope": "Гороскопи ҳаррӯза",
+  "drawerBuyQuestions": "Саволҳоро харед",
+  "drawerAstroDictionary": "Луғати астро",
+  "drawerSettings": "Танзимотҳо",
+  "drawerCustomerSupport": "Дастгирии муштариён",
+  "drawerAbout": "Дар бораи",
+  "drawerProfileSettings": "Танзимоти профил",
+  "demoNotificationTitle": "🔔 Огоҳиномаи намоишӣ",
+  "demoNotificationBody": "Ин огоҳии санҷишӣ аз барномаи шумост!",
+  "notificationsTitle": "Огоҳиномаҳо",
+  "noNotifications": "Огоҳиҳо нест",
+  "allTab": "Ҳама",
+  "markAllAsRead": "Ҳамаро ҳамчун хондашуда қайд кунед",
+  "notificationMarkedRead": "Огоҳинома ҳамчун хондашуда қайд карда шуд",
+  "failedToLoadNotifications": "Огоҳиномаҳоро бор кардан натавонист",
+  "failedToMarkRead": "Ҳамчун хондан қайд карда нашуд",
+  "failedToMarkAllRead": "Ҳамаро ҳамчун хондан қайд кардан натавонист",
+  "socketConnected": "Розетка пайваст",
+  "socketDisconnected": "Розетка ҷудо карда шудааст",
+  "newNotificationReceived": "Огоҳиномаи нав гирифта шуд",
+  "generalCategory": "Генерал",
+  "horoscopeCategory": "Гороскопи",
+  "chatCategory": "Чат",
+  "systemCategory": "Система",
+  "updateCategory": "Навсозиҳо",
+  "howToAskTitle": "Чӣ тавр пурсед",
+  "noQuestionsAvailable": "Саволе дастрас нест",
+  "failedToLoadQuestions": "Саволҳоро бор карда натавонист",
+  "pullToRefresh": "Барои навсозӣ кашед",
+  "careerCategory": "Карера",
+  "loveCategory": "Муҳаббат ва Муносибатҳо",
+  "healthCategory": "Тандурустй",
+  "financeCategory": "Молия",
+  "familyCategory": "Оила",
+  "educationCategory": "Маориф",
+  "travelCategory": "Сафар",
+  "spiritualCategory": "рӯҳонӣ",
+  "profileLoaded": "Профил бомуваффақият бор карда шуд",
+  "imageUploaded": "Тасвир бомуваффақият бор карда шуд",
+  "savedInformationConfirmation": "Ман ин маълумотро захира кардам",
+  "noHistoryAvailable": "Таърих дастрас нест",
+  "missingUserIdError": "ID корбар лозим аст",
+  "networkError": "Хатогии шабака. Лутфан бори дигар кӯшиш кунед.",
+  "timeoutError": "Дархост ба охир расид",
+  "genericError": "Чизе хато кард",
+  "reactionUpdateError": "Навсозии аксуламал муяссар нашуд",
+  "noSearchResults": "Ягон натиҷаи ҷустуҷӯ ёфт нашуд",
+  "clearSearch": "Ҷустуҷӯро тоза кунед",
+  "resultsFound": "Натиҷаҳо ёфт шуданд",
+  "recoverySecretHint": "Нусхабардорӣ-часбондан метавонад кор накунад, дастӣ нависед",
+  "recoverAccountDescription": "Барои барқарор кардани ҳисоби худ ин қадамҳоро иҷро кунед",
+  "processingLabel": "Коркард...",
+  "clearChatSuccess": "Чат бомуваффақият тоза карда шуд",
+  "notificationsEnabled": "Огоҳиҳо фаъол карда шуданд",
+  "notificationsDisabled": "Огоҳиҳо хомӯш карда шуданд",
+  "securityNotice": "Маълумоти шумо бехатар рамзгузорӣ ва нигоҳ дошта мешавад",
+  "loading": "Loading...",
+  "selectLanguage": "Забонро интихоб кунед",
+  "onboardingGetStartedDesc": "Бо интихоби забони худ оғоз кунед",
+  "accountRecoveryTitle": "🔐 Тафсилоти барқарорсозии ҳисоб",
+  "recoveryInstructions": "Лутфан ин маълумотро бехатар захира кунед. Он ба шумо барои барқарор кардани ҳисоби худ лозим аст.",
+  "importantNotice": "⚠️ Муҳим:",
+  "astrologerProfileTitle": "Профили астролог",
+  "personalAstrologer": "Astrologer шахсӣ",
+  "makePersonalAstrologer": "Astrologer шахсӣ созед",
+  "favoriteDescription": "Саволҳои шумо ба ин ситорашинос авлавият дода мешаванд. Агар дастрас набошад, як ситорашиноси соҳибихтисос ба шумо кӯмак мекунад.",
+  "educationQualifications": "Маълумот ва тахассус",
+  "aboutSection": "Дар бораи",
+  "shareProfile": "Мубодилаи профил",
+  "loadingAstrologer": "Тафсилоти ситорашинос бор карда мешавад...",
+  "failedToLoadAstrologer": "Тафсилоти ситорашиносро бор карда натавонист",
+  "authenticationRequired": "Аутентификатсия талаб карда мешавад. Лутфан ворид шавед.",
+  "securityCheckFailed": "Санҷиши амният ноком шуд: {error}",
+  "addedToFavorites": "🎯 {name} акнун астрологи шахсии шумост",
+  "removedFromFavorites": "✅ {name} аз дӯстдоштаҳо хориҷ карда шуд",
+  "toggleFavoriteError": "Навсозии ҳолати дӯстдошта",
+  "shareMessage": "{name}\n🎓 Маълумот: {education}\n📜 Тахассус: {qualification}\n⏳ Таҷриба: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "таъмин карда нашудааст",
+  "reviews": "({count} баррасиҳо)",
+  "specialties": "Ихтисосҳо",
+  "experience": "Таҷриба",
+  "qualification": "Тахассус",
+  "education": "Маориф",
+  "recoveryTips": "• Скриншоти ин маълумотро гиред\n• Онро дар ҷои амн нигоҳ доред\n• Бо касе мубодила накунед\n• Ин танҳо як маротиба нишон дода мешавад"
+}

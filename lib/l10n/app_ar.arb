@@ -1,0 +1,439 @@
+{
+  "@@locale": "ar",
+  "settingsTitle": "إعدادات",
+  "notificationSettings": "إعدادات الإشعارات",
+  "privacySettings": "إعدادات الخصوصية",
+  "accountSettings": "إعدادات الحساب",
+  "languageSettings": "إعدادات اللغة",
+  "languageChanged": "تم تغيير اللغة",
+  "existingUserButton": "أنا مستخدم موجود",
+  "chooseCountryTitle": "اختر البلد",
+  "yesText": "نعم",
+  "noText": "لا",
+  "appBarTitle": "إعدادات الملف الشخصي",
+  "userIdLabel": "معرف المستخدم *",
+  "nameLabel": "اسم",
+  "birthCountryLabel": "بلد الميلاد",
+  "birthCityLabel": "مدينة الميلاد",
+  "countrySelectionTitle": "اختر بلدك",
+  "maleLabel": "ذكر",
+  "femaleLabel": "أنثى",
+  "birthDateLabel": "تاريخ الميلاد",
+  "birthDatePlaceholder": "حدد تاريخ الميلاد",
+  "birthTimeLabel": "وقت الميلاد",
+  "birthTimePlaceholder": "حدد وقت الميلاد",
+  "saveProfileButton": "حفظ الملف الشخصي",
+  "noCitiesFound": "لم يتم العثور على مدن",
+  "cityPlaceholder": "أدخل المدينة في {country}",
+  "countryFirstPlaceholder": "حدد البلد أولا",
+  "versionHistoryTitle": "تاريخ الإصدار",
+  "notSetText": "غير محدد",
+  "nameHistory": "الاسم: {name}",
+  "cityHistory": "المدينة: {city}",
+  "countryHistory": "البلد: {country}",
+  "genderHistory": "الجنس: {gender}",
+  "birthDateHistory": "تاريخ الميلاد: {date}",
+  "birthTimeHistory": "وقت الميلاد: {time}",
+  "locationHistory": "الموقع: {latitude}, {longitude}",
+  "timezoneHistory": "المنطقة الزمنية: توقيت جرينتش{offset}",
+  "dstHistory": "التوقيت الصيفي: {value}",
+  "stateHistory": "الحالة: {state}",
+  "versionFromText": "تم التحديث في {date}",
+  "userIdRequired": "مطلوب معرف المستخدم",
+  "profileSaved": "تم حفظ الملف الشخصي بنجاح",
+  "saveFailed": "فشل في حفظ الملف الشخصي",
+  "errorPrefix": "خطأ:",
+  "onboardingChooseLanguage": "اختر لغتك",
+  "onboardingChooseLanguageDesc": "حدد اللغة المفضلة لديك للمتابعة.",
+  "onboardingWhatIsAstrology": "ما هو علم التنجيم؟",
+  "onboardingWhatIsAstrologyDesc": "علم التنجيم هو دراسة الأجرام السماوية...",
+  "onboardingWhyUseApp": "لماذا تستخدم هذا التطبيق؟",
+  "onboardingWhyUseAppDesc": "احصل على الأبراج الشخصية والتوقعات اليومية والإرشادات اللازمة لاتخاذ قرارات مستنيرة.",
+  "onboardingHowToUse": "كيفية استخدام هذا التطبيق؟",
+  "onboardingHowToUseDesc": "تنقل بسهولة، وتحقق من الأبراج اليومية، وقم بإدارة ملفك الشخصي للحصول على تنبؤات دقيقة.",
+  "onboardingGetStarted": "البدء",
+  "onboardingNewUser": "مستخدم جديد",
+  "onboardingExistingUser": "المستخدم الحالي",
+  "onboardingBack": "خلف",
+  "onboardingNext": "التالي",
+  "userIdNotFound": "لم يتم العثور على مُعرّف المستخدم. يُرجى تسجيل الدخول أو إنشاء ملفك الشخصي.",
+  "clearNotificationsTitle": "مسح الإشعارات",
+  "clearNotificationsMessage": "هل أنت متأكد أنك تريد مسح كافة الإشعارات؟",
+  "clearNotificationsSuccess": "تم مسح كافة الإشعارات بنجاح.",
+  "clearHoroscopeTitle": "برجك الواضح",
+  "clearHoroscopeMessage": "هل أنت متأكد أنك تريد مسح بيانات برجك؟",
+  "clearHoroscopeSuccess": "تم مسح برجك بنجاح.",
+  "clearChatTitle": "مسح سجل الدردشة",
+  "clearChatMessage": "هل أنت متأكد أنك تريد حذف كافة محفوظات الدردشة الخاصة بك؟",
+  "clearChatLocal": "تم مسح الدردشة محليًا.",
+  "deleteAccountTitle": "حذف الحساب",
+  "deleteAccountMessage": "هل أنت متأكد من رغبتك في حذف حسابك؟ سيؤدي هذا أيضًا إلى مسح جميع سجلات الدردشة والإشعارات.",
+  "deleteAccountSuccess": "لقد تم إزالة حسابك وجميع البيانات.",
+  "deleteAccountError": "خطأ في حذف الحساب",
+  "logoutTitle": "تسجيل الخروج",
+  "logoutMessage": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "termsPrivacyTitle": "الشروط والخصوصية",
+  "privacyPolicyTitle": "سياسة الخصوصية",
+  "termsConditionsTitle": "الشروط والأحكام",
+  "dataControlTitle": "التحكم في البيانات",
+  "cancelButton": "يلغي",
+  "confirmButton": "يتأكد",
+  "clearQuestionsSuccess": "تم حذف كافة الأسئلة بنجاح.",
+  "yoginiLabel": "يوجيني",
+  "lordLabel": "رب",
+  "startLabel": "يبدأ",
+  "recoverAccount": "استعادة الحساب",
+  "endLabel": "نهاية",
+  "startDateLabel": "تاريخ البدء",
+  "endDateLabel": "تاريخ الانتهاء",
+  "notAvailable": "غير متوفر",
+  "noData": "لا يوجد بيانات",
+  "unknownError": "خطأ غير معروف",
+  "retryButton": "إعادة المحاولة",
+  "kundaliGeneratorTitle": "مولد كوندالي",
+  "natalChartTitle": "مخطط الولادة",
+  "lagnaLabel": "لاجنا",
+  "rashiLabel": "راشي",
+  "ascDegreeLabel": "الدرجة الصاعدة",
+  "vimshottariDashaTitle": "فيمشوتاري داشا",
+  "yoginiDashaTitle": "يوجيني داشا",
+  "unknown": "مجهول",
+  "clearHoroscope": "برجك الواضح",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "مسح الإشعارات",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "مسح سجل الدردشة",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "تسجيل الخروج",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "حذف الحساب",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "جميع الحقول مطلوبة.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "تم استرداد الحساب بنجاح.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "فشل الاسترداد. تحقق من معلوماتك.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "سر الاسترداد:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "معلومات عنا",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "نبذة عن شركتنا",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "نحن ملتزمون بتقديم أفضل تجربة في علم التنجيم لمستخدمينا.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "مهمتنا",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "توفير رؤى فلكية دقيقة ومخصصة لمساعدة المستخدمين على اتخاذ قرارات مستنيرة في حياتهم.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "رؤيتنا",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "أن نصبح منصة علم التنجيم الأكثر ثقة، من خلال الجمع بين التكنولوجيا والحكمة القديمة.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "قيمنا",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "النزاهة والدقة والتصميم الموجه نحو المستخدم والابتكار المستمر.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "اتصل بنا",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "البريد الإلكتروني: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "الموقع الإلكتروني: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "دعم العملاء",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "نحن هنا للمساعدة",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "قم بملء النموذج أدناه وسيقوم فريق الدعم الخاص بنا بالتواصل معك في أقرب وقت ممكن.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "اسمك",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "بريدك الإلكتروني",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "رسالة",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "أدخل بريدك الإلكتروني",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "أدخل عنوان بريد إلكتروني صالح",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "أدخل {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "يرسل",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "إرسال...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ تم إرسال البريد الإلكتروني بنجاح!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌فشل في إرسال البريد الإلكتروني",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "قاموس الفلك",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "مصطلحات البحث...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "لم يتم العثور على أي مصطلحات",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "أسئلة الشراء",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "المستخدم غير مُصادق عليه",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "فشل تحميل بيانات المتجر",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "رمز المصادقة مفقود",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "تطبيق الدردشة الفلكية",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ تم الدفع بنجاح! تم إرسال السؤال",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ فشل الدفع: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "رصيدك",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} الأسئلة",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "العروض المتاحة",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} سؤال",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "يشتري",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 برجك اليومي",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "معرف المستخدم مفقود",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "فشل في جلب الأبراج",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "لم يتم العثور على برجك.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "لافتة",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "اليوم",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "أمس",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "هذا الاسبوع",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "الشهر الماضي",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "محادثة",
+  "typeYourQuestionHint": "اكتب سؤالك...",
+  "paymentRequired": "الدفع مطلوب",
+  "paymentRequiredMessage": "لقد استخدمت أسئلتك المجانية. ادفع ٥٠ روبية للمتابعة.",
+  "payNowButton": "ادفع الآن",
+  "freeQuestionsRemaining": "{count} الأسئلة المجانية المتبقية",
+  "paidQuestionsRemaining": "{count} الأسئلة المدفوعة المتبقية",
+  "thankYouFeedback": "شكرا لتعليقاتك!",
+  "ratingSubmitted": "تم تقديم التقييم!",
+  "setUserIdFirst": "الرجاء تعيين معرف المستخدم الخاص بك أولاً",
+  "failedToFetchPrevious": "فشل في جلب الأسئلة والأجوبة السابقة",
+  "errorOccurred": "خطأ: {error}",
+  "drawerAstroProfile": "الملف الشخصي الفلكي",
+  "drawerDailyHoroscope": "برجك اليومي",
+  "drawerBuyQuestions": "أسئلة الشراء",
+  "drawerAstroDictionary": "قاموس الفلك",
+  "drawerSettings": "إعدادات",
+  "drawerCustomerSupport": "دعم العملاء",
+  "drawerAbout": "عن",
+  "drawerProfileSettings": "إعدادات الملف الشخصي",
+  "demoNotificationTitle": "🔔 إشعار العرض التوضيحي",
+  "demoNotificationBody": "هذا إشعار اختبار من تطبيقك!",
+  "notificationsTitle": "إشعارات",
+  "noNotifications": "لا يوجد إشعارات",
+  "allTab": "الجميع",
+  "markAllAsRead": "وضع علامة على الكل كمقروء",
+  "notificationMarkedRead": "تم وضع علامة على الإشعار كمقروء",
+  "failedToLoadNotifications": "فشل تحميل الإشعارات",
+  "failedToMarkRead": "فشل في وضع علامة على القراءة",
+  "failedToMarkAllRead": "فشل في وضع علامة على قراءة الكل",
+  "socketConnected": "المقبس متصل",
+  "socketDisconnected": "المقبس مفصول",
+  "newNotificationReceived": "تم استلام إشعار جديد",
+  "generalCategory": "عام",
+  "horoscopeCategory": "برجك",
+  "chatCategory": "محادثة",
+  "systemCategory": "نظام",
+  "updateCategory": "التحديثات",
+  "howToAskTitle": "كيفية السؤال",
+  "noQuestionsAvailable": "لا توجد أسئلة متاحة",
+  "failedToLoadQuestions": "فشل تحميل الأسئلة",
+  "pullToRefresh": "اسحب للتحديث",
+  "careerCategory": "حياة مهنية",
+  "loveCategory": "الحب والعلاقات",
+  "healthCategory": "صحة",
+  "financeCategory": "تمويل",
+  "familyCategory": "عائلة",
+  "educationCategory": "تعليم",
+  "travelCategory": "يسافر",
+  "spiritualCategory": "روحي",
+  "profileLoaded": "تم تحميل الملف الشخصي بنجاح",
+  "imageUploaded": "تم تحميل الصورة بنجاح",
+  "savedInformationConfirmation": "لقد قمت بحفظ هذه المعلومات",
+  "noHistoryAvailable": "لا يوجد تاريخ متاح",
+  "missingUserIdError": "مطلوب معرف المستخدم",
+  "networkError": "خطأ في الشبكة. يُرجى المحاولة مرة أخرى.",
+  "timeoutError": "انتهت مهلة الطلب",
+  "genericError": "لقد حدث خطأ ما",
+  "reactionUpdateError": "فشل في تحديث التفاعل",
+  "noSearchResults": "لم يتم العثور على نتائج البحث",
+  "clearSearch": "مسح البحث",
+  "resultsFound": "تم العثور على النتائج",
+  "recoverySecretHint": "قد لا تعمل عملية النسخ واللصق، لذا اكتب يدويًا",
+  "recoverAccountDescription": "اتبع هذه الخطوات لاستعادة حسابك",
+  "processingLabel": "يعالج...",
+  "clearChatSuccess": "تم مسح الدردشة بنجاح",
+  "notificationsEnabled": "تم تمكين الإشعارات",
+  "notificationsDisabled": "تم تعطيل الإشعارات",
+  "securityNotice": "يتم تشفير بياناتك وتخزينها بشكل آمن",
+  "loading": "تحميل...",
+  "selectLanguage": "اختر اللغة",
+  "onboardingGetStartedDesc": "ابدأ باختيار لغتك",
+  "accountRecoveryTitle": "🔐 تفاصيل استرداد الحساب",
+  "recoveryInstructions": "يرجى حفظ هذه المعلومات بأمان. ستحتاجها لاستعادة حسابك.",
+  "importantNotice": "⚠️ هام:",
+  "astrologerProfileTitle": "الملف الشخصي للمنجم",
+  "personalAstrologer": "منجم شخصي",
+  "makePersonalAstrologer": "اصنع منجمًا شخصيًا",
+  "favoriteDescription": "سيتم توجيه أسئلتكم إلى هذا المنجم. في حال عدم توفره، سيساعدكم منجم مؤهل آخر.",
+  "educationQualifications": "التعليم والمؤهلات",
+  "aboutSection": "عن",
+  "shareProfile": "مشاركة الملف الشخصي",
+  "loadingAstrologer": "جاري تحميل تفاصيل المنجم...",
+  "failedToLoadAstrologer": "فشل تحميل تفاصيل المنجم",
+  "authenticationRequired": "مطلوب المصادقة. يرجى تسجيل الدخول.",
+  "securityCheckFailed": "فشل التحقق الأمني: {error}",
+  "addedToFavorites": "🎯 {name} هو الآن منجمك الشخصي",
+  "removedFromFavorites": "✅ تمت إزالة {name} من المفضلة",
+  "toggleFavoriteError": "فشل في تحديث الحالة المفضلة",
+  "shareMessage": "{name}\n🎓 التعليم: {education}\n📜 المؤهل: {qualification}\n⏳ الخبرة: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "غير متوفر",
+  "reviews": "({count} مراجعات)",
+  "specialties": "التخصصات",
+  "experience": "خبرة",
+  "qualification": "مؤهل",
+  "education": "تعليم",
+  "recoveryTips": "• التقط لقطة شاشة لهذه المعلومات.\n• احفظها في مكان آمن.\n• لا تشاركها مع أي شخص.\n• ستظهر هذه المعلومات مرة واحدة فقط."
+}

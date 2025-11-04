@@ -1,0 +1,439 @@
+{
+  "@@locale": "so",
+  "settingsTitle": "Dejinta",
+  "notificationSettings": "Dejinta Ogeysiinta",
+  "privacySettings": "Dejinta Qarsoodiga",
+  "accountSettings": "Dejinta Akoonka",
+  "languageSettings": "Dejinta Luuqadda",
+  "languageChanged": "Luuqada ayaa is badashay",
+  "existingUserButton": "Waxaan ahay isticmaale jira",
+  "chooseCountryTitle": "Dal dooro",
+  "yesText": "Haa",
+  "noText": "Maya",
+  "appBarTitle": "Dejinta Xogta",
+  "userIdLabel": "Aqoonsiga isticmaalaha *",
+  "nameLabel": "Magaca",
+  "birthCountryLabel": "Dalka dhalashada",
+  "birthCityLabel": "Magaalada dhalashada",
+  "countrySelectionTitle": "Dooro dalkaaga",
+  "maleLabel": "Lab",
+  "femaleLabel": "Dheddig",
+  "birthDateLabel": "Taariikhda Dhalashada",
+  "birthDatePlaceholder": "Dooro Taariikhda Dhalashada",
+  "birthTimeLabel": "Waqtiga Dhalashada",
+  "birthTimePlaceholder": "Dooro Waqtiga Dhalashada",
+  "saveProfileButton": "Keydi Profile",
+  "noCitiesFound": "Lama helin magaalooyin",
+  "cityPlaceholder": "Geli magaalada gudaha {country}",
+  "countryFirstPlaceholder": "Marka hore dalka dooro",
+  "versionHistoryTitle": "Nooca Taariikhda",
+  "notSetText": "Lama dejin",
+  "nameHistory": "Magaca: {name}",
+  "cityHistory": "City: {city}",
+  "countryHistory": "Dalka: {country}",
+  "genderHistory": "Jinsiga: {gender}",
+  "birthDateHistory": "Taariikhda Dhalashada: {date}",
+  "birthTimeHistory": "Waqtiga Dhalashada: {time}",
+  "locationHistory": "Goobta: {latitude}, {longitude}",
+  "timezoneHistory": "Waqtiga: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "State: {state}",
+  "versionFromText": "La cusboonaysiiyay {date}",
+  "userIdRequired": "Aqoonsiga isticmaale ayaa loo baahan yahay",
+  "profileSaved": "Xogta si guul leh loo keydiyay",
+  "saveFailed": "Ku guul daraystay in la kaydiyo profile",
+  "errorPrefix": "Khalad:",
+  "onboardingChooseLanguage": "Dooro Luuqadaada",
+  "onboardingChooseLanguageDesc": "Dooro luqadda aad doorbidayso si aad u sii waddo.",
+  "onboardingWhatIsAstrology": "Waa maxay xiddigiska?",
+  "onboardingWhatIsAstrologyDesc": "Astroloji waa barashada jidhadhka samada...",
+  "onboardingWhyUseApp": "Maxaad u isticmaashaa app-kan?",
+  "onboardingWhyUseAppDesc": "Hel horoscopes shaqsiyeysan, saadaal maalinle ah, iyo hagitaan si aad u gaarto go'aamo xog ogaal ah.",
+  "onboardingHowToUse": "Sida loo isticmaalo abkan?",
+  "onboardingHowToUseDesc": "Si fudud u soco, hubi horoscopes maalinlaha ah, oo maamul astaantaada si aad u hesho saadaal sax ah.",
+  "onboardingGetStarted": "Bilow",
+  "onboardingNewUser": "Isticmaale Cusub",
+  "onboardingExistingUser": "Isticmaale jira",
+  "onboardingBack": "Dib u noqo",
+  "onboardingNext": "Xiga",
+  "userIdNotFound": "Aqoonsiga isticmaalaha lama helin Fadlan gal ama deji astaantaada",
+  "clearNotificationsTitle": "Nadiifi Ogeysiisyada",
+  "clearNotificationsMessage": "Ma hubtaa inaad rabto inaad tirtirto dhammaan ogeysiisyada?",
+  "clearNotificationsSuccess": "Dhammaan ogeysiisyada waa la nadiifiyey si guul leh",
+  "clearHoroscopeTitle": "Nadiifi Horoscope",
+  "clearHoroscopeMessage": "Ma hubtaa inaad rabto inaad nadiifiso xogta horoscope-kaaga?",
+  "clearHoroscopeSuccess": "Horoscope ayaa si guul leh u nadiifiyay",
+  "clearChatTitle": "Nadiifi Taariikhda Sheekaysiga",
+  "clearChatMessage": "Ma hubtaa inaad rabto inaad tirtirto dhammaan taariikhdaada wada sheekaysiga?",
+  "clearChatLocal": "Sheekada waa la nadiifiyay.",
+  "deleteAccountTitle": "Tirtir Koontada",
+  "deleteAccountMessage": "Ma hubtaa inaad doonayso inaad tirtirto akoonkaaga? Tani waxay sidoo kale tirtiri doontaa dhammaan taariikhdaada wada sheekaysiga iyo ogeysiisyada",
+  "deleteAccountSuccess": "Koontadaada iyo dhammaan xogta waa laga saaray",
+  "deleteAccountError": "Khalad tirtirida akoontiga",
+  "logoutTitle": "Ka bax",
+  "logoutMessage": "Ma hubtaa inaad doonayso inaad ka baxdo?",
+  "termsPrivacyTitle": "Shuruudaha & Qarsoonaanta",
+  "privacyPolicyTitle": "Siyaasadda Qarsoonnimada",
+  "termsConditionsTitle": "Shuruudaha & Shuruudaha",
+  "dataControlTitle": "Xakamaynta Xogta",
+  "cancelButton": "Jooji",
+  "confirmButton": "Xaqiiji",
+  "clearQuestionsSuccess": "Dhammaan su'aalaha waa la tirtiray si guul leh.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Rabbiyow",
+  "startLabel": "Bilow",
+  "recoverAccount": "Soo kabso Akoonka",
+  "endLabel": "Dhammaad",
+  "startDateLabel": "Taariikhda Bilawga",
+  "endDateLabel": "Taariikhda dhamaadka",
+  "notAvailable": "Lama heli karo",
+  "noData": "Xog malaha",
+  "unknownError": "Khalad aan la garanayn",
+  "retryButton": "Isku day",
+  "kundaliGeneratorTitle": "Generator Kundali",
+  "natalChartTitle": "Jaantuska Dhalashada",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Darajada Koritaanka",
+  "vimshottariDashaTitle": "Vimhottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Lama garanayo",
+  "clearHoroscope": "Nadiifi Horoscope",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Nadiifi Ogeysiisyada",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Nadiifi Taariikhda Sheekaysiga",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Ka bax",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Tirtir Koontada",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Dhammaan beeraha ayaa loo baahan yahay.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Akoonka si guul leh ayaa loo helay",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Soo kabashada waa fashilantay Hubi macluumaadkaaga.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Sirta Soo kabashada:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Annaga",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Ku saabsan Shirkaddayada",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Waxaa naga go'an inaan u gudbino isticmaaleyaashayada khibradda xiddigiska ugu wanaagsan.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Himiladayada",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Si loo bixiyo aragtiyo xiddigiska oo la gaaryeelay oo sax ah si loo caawiyo isticmaalayaasha inay go'aanno xog ogaal ah ku gaaraan noloshooda.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Aragtideena",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Si aad u noqoto goobta ugu kalsoonida badan ee xiddigiska, isku-darka tignoolajiyada iyo xikmadaha qadiimiga ah.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Qiimahayada",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Daacadnimada, Saxnaanta, Naqshadda Isticmaalaha-Centric, iyo Hal-abuur joogto ah.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Nala Soo Xidhiidh",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Iimayl: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Website: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Taageerada Macmiilka",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Waxaan u joognaa inaan caawinno",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Buuxi foomka hoose kooxdayada taageerada ayaa kuugu soo celin doonta sida ugu dhakhsaha badan.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Magacaaga",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Iimaylkaaga",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Fariinta",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Geli iimaylkaga",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Geli ciwaan email sax ah",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Geli {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Dir",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Diraya...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Iimayl si guul leh ayaa loo soo diray!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Waa ku guul daraystay in ay dirto iimaylka",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Qaamuuska Astro",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Erayada raadinta...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Shuruudo lagama helin",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Su'aalaha iibso",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Isticmaalaha lama xaqiijin",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Ku guuldarraystay in la raro xogta kaydka",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Calaamada aqoonsiga maqan",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat App",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Lacag bixintu waa lagu guulaystay! Su'aal la diray",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Lacag-bixinta ayaa fashilantay: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Dheelitirkaaga",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Questions",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Dalabyo La heli karo",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Question",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Iibso",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Horoscope maalinle ah",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Aqoonsiga isticmaalaha ayaa maqan",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Ku guuldarraystay inuu keeno horoscopes",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Lama helin horoscope",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Saxeex",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Maanta",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Shalay",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Todobaadkan",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Bishii hore",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Sheekaysi",
+  "typeYourQuestionHint": "Ku qor su'aashaada...",
+  "paymentRequired": "Lacag-bixinta ayaa loo baahan yahay",
+  "paymentRequiredMessage": "Waxaad isticmaashay su'aalahaaga bilaashka ah. Bixi 50 si aad u sii wadato.",
+  "payNowButton": "Hadda Bixi",
+  "freeQuestionsRemaining": "{count} su'aalo bilaash ah ayaa hadhsan",
+  "paidQuestionsRemaining": "{count} paid questions remaining",
+  "thankYouFeedback": "Waad ku mahadsan tahay faallo celintaada!",
+  "ratingSubmitted": "Qiimaynta waa la gudbiyay!",
+  "setUserIdFirst": "Fadlan marka hore deji aqoonsigaaga isticmaale",
+  "failedToFetchPrevious": "Ku guuldareystay inuu keeno su'aalo iyo jawaabo hore",
+  "errorOccurred": "Khalad: {error}",
+  "drawerAstroProfile": "Profile Astro",
+  "drawerDailyHoroscope": "Horoscope maalinle ah",
+  "drawerBuyQuestions": "Su'aalaha iibso",
+  "drawerAstroDictionary": "Qaamuuska Astro",
+  "drawerSettings": "Dejinta",
+  "drawerCustomerSupport": "Taageerada Macmiilka",
+  "drawerAbout": "Ku saabsan",
+  "drawerProfileSettings": "Dejinta Xogta",
+  "demoNotificationTitle": "🔔 Ogeysiinta Bandhigga",
+  "demoNotificationBody": "Kani waa ogeysiis tijaabo ah oo ka yimid abkaaga!",
+  "notificationsTitle": "Ogeysiisyada",
+  "noNotifications": "Ogeysiis ma jiro",
+  "allTab": "Dhammaan",
+  "markAllAsRead": "Ku calaamadee dhammaan sida loo akhriyay",
+  "notificationMarkedRead": "Ogeysiinta loo calaamadeeyay sidii loo akhriyay",
+  "failedToLoadNotifications": "Ku guuldarreystay in la soo geliyo ogeysiisyada",
+  "failedToMarkRead": "Ku guuldareystay inuu calaamadiyo sidii wax loo akhriyay",
+  "failedToMarkAllRead": "Ku guuldarraystay inuu dhammaan u calaamadiyo sidii wax loo akhriyay",
+  "socketConnected": "Socket ku xiran",
+  "socketDisconnected": "Socket go'ay",
+  "newNotificationReceived": "Ogeysiis cusub ayaa helay",
+  "generalCategory": "Guud ahaan",
+  "horoscopeCategory": "Horoscope",
+  "chatCategory": "Sheekaysi",
+  "systemCategory": "Nidaamka",
+  "updateCategory": "Cusbooneysii",
+  "howToAskTitle": "Sida Loo Weydiiyo",
+  "noQuestionsAvailable": "Su'aalo lama hayo",
+  "failedToLoadQuestions": "Ku guuldarraystay inuu soo raro su'aalaha",
+  "pullToRefresh": "Jiid si aad dib ugu soo kiciso",
+  "careerCategory": "Xirfad",
+  "loveCategory": "Jacaylka & Xiriirka",
+  "healthCategory": "Caafimaadka",
+  "financeCategory": "Maaliyadda",
+  "familyCategory": "Qoyska",
+  "educationCategory": "Waxbarashada",
+  "travelCategory": "Safarka",
+  "spiritualCategory": "Ruuxa",
+  "profileLoaded": "Xogta si guul leh ayaa loo raray",
+  "imageUploaded": "Sawirka si guul leh ayaa loo soo raray",
+  "savedInformationConfirmation": "Waan kaydiyay macluumaadkan",
+  "noHistoryAvailable": "Taariikh lama hayo",
+  "missingUserIdError": "Aqoonsiga isticmaale ayaa loo baahan yahay",
+  "networkError": "Cilada shabakada Fadlan isku day mar kale",
+  "timeoutError": "Codsiga waa dhacay",
+  "genericError": "Wax baa khaldamay",
+  "reactionUpdateError": "Ku guuldareystay inuu cusboonaysiiyo falcelinta",
+  "noSearchResults": "Wax natiijooyin raadin ah lama helin",
+  "clearSearch": "Nadiifi raadinta",
+  "resultsFound": "Natiijooyinka waa la helay",
+  "recoverySecretHint": "Copy-paste ma shaqayn karo, gacanta ku qor",
+  "recoverAccountDescription": "Raac tillaabooyinkan si aad u soo ceshato akoonkaaga",
+  "processingLabel": "Hagaajinta...",
+  "clearChatSuccess": "Sheekada si guul leh ayaa loo nadiifiyay",
+  "notificationsEnabled": "Ogeysiinta waa la furay",
+  "notificationsDisabled": "Ogeysiinta waa la joojiyay",
+  "securityNotice": "Xogtaada si ammaan ah ayaa loo xafiday oo loo kaydiyay",
+  "loading": "Soodejinaya...",
+  "selectLanguage": "Dooro Luuqad",
+  "onboardingGetStartedDesc": "Ku bilow adiga oo dooranaya luqadaada",
+  "accountRecoveryTitle": "🔐 Faahfaahinta Soo Celinta Akoonka",
+  "recoveryInstructions": "Fadlan u xafid macluumaadkan si ammaan ah. Waxaad u baahan doontaa si aad u soo ceshato akoonkaaga",
+  "importantNotice": "⚠️ Muhiim:",
+  "astrologerProfileTitle": "Profile Falimka",
+  "personalAstrologer": "Xiddigaha Shakhsiyeed",
+  "makePersonalAstrologer": "Samee xiddigiye shaqsiyeed",
+  "favoriteDescription": "Su'aalahaaga waxa la hor marin doonaa xiddiggan. Haddii aan la heli karin, xiddigiye kale oo u qalma ayaa ku caawin doona.",
+  "educationQualifications": "Waxbarashada & Shahaadooyinka",
+  "aboutSection": "Ku saabsan",
+  "shareProfile": "La wadaag Profile",
+  "loadingAstrologer": "Soo raraysa faahfaahinta xiddigiyaha...",
+  "failedToLoadAstrologer": "Ku guuldarraystay in la soo geliyo faahfaahinta xiddigiyaha",
+  "authenticationRequired": "Xaqiijinta ayaa loo baahan yahay Fadlan gal",
+  "securityCheckFailed": "Hubinta amniga ayaa guuldareystay: {error}",
+  "addedToFavorites": "🎯 {name} hadda waa xiddigiyahaaga gaarka ah",
+  "removedFromFavorites": "✅ Waxaa laga saaray {name} kuwa ugu cadcad",
+  "toggleFavoriteError": "Waa lagu guul daraystay in la cusboonaysiiyo heerka aad jeceshahay",
+  "shareMessage": "<span data-placeholder=\"name\"> </span>\n🎓 Waxbarashada: {education}\n📜 Aqoonta: {qualification}\nKhibrad: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Lama bixin",
+  "reviews": "({count} faallooyin)",
+  "specialties": "Takhasusyada",
+  "experience": "Khibrad",
+  "qualification": "U qalmida",
+  "education": "Waxbarashada",
+  "recoveryTips": "• Sawir qaade xogtan\n• Ku kaydi meel ammaan ah\n• Cidna ha la wadaagin\nTan waxa la tusi doonaa hal mar oo kaliya"
+}

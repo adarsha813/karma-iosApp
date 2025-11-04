@@ -1,0 +1,439 @@
+{
+  "@@locale": "tl",
+  "settingsTitle": "Mga setting",
+  "notificationSettings": "Mga Setting ng Notification",
+  "privacySettings": "Mga Setting ng Privacy",
+  "accountSettings": "Mga Setting ng Account",
+  "languageSettings": "Mga Setting ng Wika",
+  "languageChanged": "Nagbago ang wika",
+  "existingUserButton": "Ako ay isang umiiral na gumagamit",
+  "chooseCountryTitle": "Piliin ang Bansa",
+  "yesText": "Oo",
+  "noText": "Hindi",
+  "appBarTitle": "Mga Setting ng Profile",
+  "userIdLabel": "User ID *",
+  "nameLabel": "Pangalan",
+  "birthCountryLabel": "Bansa ng Kapanganakan",
+  "birthCityLabel": "Lungsod ng Kapanganakan",
+  "countrySelectionTitle": "Piliin ang iyong bansa",
+  "maleLabel": "Lalaki",
+  "femaleLabel": "Babae",
+  "birthDateLabel": "Petsa ng Kapanganakan",
+  "birthDatePlaceholder": "Piliin ang Petsa ng Kapanganakan",
+  "birthTimeLabel": "Oras ng Kapanganakan",
+  "birthTimePlaceholder": "Piliin ang Oras ng Kapanganakan",
+  "saveProfileButton": "I-save ang Profile",
+  "noCitiesFound": "Walang nakitang mga lungsod",
+  "cityPlaceholder": "Ipasok ang lungsod sa {country}",
+  "countryFirstPlaceholder": "Pumili muna ng bansa",
+  "versionHistoryTitle": "Kasaysayan ng Bersyon",
+  "notSetText": "Hindi nakatakda",
+  "nameHistory": "Pangalan: {name}",
+  "cityHistory": "Lungsod: {city}",
+  "countryHistory": "Bansa: {country}",
+  "genderHistory": "Kasarian: {gender}",
+  "birthDateHistory": "Petsa ng Kapanganakan: {date}",
+  "birthTimeHistory": "Oras ng Kapanganakan: {time}",
+  "locationHistory": "Lokasyon: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Estado: {state}",
+  "versionFromText": "Na-update noong {date}",
+  "userIdRequired": "Kinakailangan ang User ID",
+  "profileSaved": "Matagumpay na na-save ang profile",
+  "saveFailed": "Nabigong i-save ang profile",
+  "errorPrefix": "Error:",
+  "onboardingChooseLanguage": "Piliin ang Iyong Wika",
+  "onboardingChooseLanguageDesc": "Piliin ang iyong gustong wika upang magpatuloy.",
+  "onboardingWhatIsAstrology": "Ano ang Astrology?",
+  "onboardingWhatIsAstrologyDesc": "Ang astrolohiya ay ang pag-aaral ng celestial bodies...",
+  "onboardingWhyUseApp": "Bakit gagamitin ang app na ito?",
+  "onboardingWhyUseAppDesc": "Kumuha ng mga personalized na horoscope, pang-araw-araw na hula, at gabay upang makagawa ng matalinong mga pagpapasya.",
+  "onboardingHowToUse": "Paano gamitin ang app na ito?",
+  "onboardingHowToUseDesc": "Madaling mag-navigate, tingnan ang mga araw-araw na horoscope, at pamahalaan ang iyong profile para sa mga tumpak na hula.",
+  "onboardingGetStarted": "Magsimula",
+  "onboardingNewUser": "Bagong User",
+  "onboardingExistingUser": "Umiiral na Gumagamit",
+  "onboardingBack": "Bumalik",
+  "onboardingNext": "Susunod",
+  "userIdNotFound": "Hindi nahanap ang user ID. Mangyaring mag-login o itakda ang iyong profile.",
+  "clearNotificationsTitle": "I-clear ang Mga Notification",
+  "clearNotificationsMessage": "Sigurado ka bang gusto mong i-clear ang lahat ng notification?",
+  "clearNotificationsSuccess": "Matagumpay na na-clear ang lahat ng notification.",
+  "clearHoroscopeTitle": "Malinaw na Horoscope",
+  "clearHoroscopeMessage": "Sigurado ka bang gusto mong i-clear ang iyong data ng horoscope?",
+  "clearHoroscopeSuccess": "Matagumpay na na-clear ang horoscope.",
+  "clearChatTitle": "I-clear ang History ng Chat",
+  "clearChatMessage": "Sigurado ka bang gusto mong tanggalin ang lahat ng iyong kasaysayan ng chat?",
+  "clearChatLocal": "Na-clear ang chat nang lokal.",
+  "deleteAccountTitle": "Tanggalin ang Account",
+  "deleteAccountMessage": "Sigurado ka bang gusto mong tanggalin ang iyong account? Iki-clear din nito ang lahat ng iyong history ng chat at mga notification.",
+  "deleteAccountSuccess": "Inalis ang iyong account at lahat ng data.",
+  "deleteAccountError": "Error sa pagtanggal ng account",
+  "logoutTitle": "Mag-logout",
+  "logoutMessage": "Sigurado ka bang gusto mong mag-logout?",
+  "termsPrivacyTitle": "Mga Tuntunin at Privacy",
+  "privacyPolicyTitle": "Patakaran sa Privacy",
+  "termsConditionsTitle": "Mga Tuntunin at Kundisyon",
+  "dataControlTitle": "Kontrol ng Data",
+  "cancelButton": "Kanselahin",
+  "confirmButton": "Kumpirmahin",
+  "clearQuestionsSuccess": "Matagumpay na natanggal ang lahat ng tanong.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Panginoon",
+  "startLabel": "Magsimula",
+  "recoverAccount": "I-recover ang Account",
+  "endLabel": "Tapusin",
+  "startDateLabel": "Petsa ng Pagsisimula",
+  "endDateLabel": "Petsa ng Pagtatapos",
+  "notAvailable": "Hindi available",
+  "noData": "Walang data",
+  "unknownError": "Hindi kilalang error",
+  "retryButton": "Subukan muli",
+  "kundaliGeneratorTitle": "Kundali Generator",
+  "natalChartTitle": "Natal Chart",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Ascendant Degree",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Hindi alam",
+  "clearHoroscope": "Malinaw na Horoscope",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "I-clear ang Mga Notification",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "I-clear ang History ng Chat",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Mag-logout",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Tanggalin ang Account",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Kinakailangan ang lahat ng field.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Matagumpay na nabawi ang account.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Nabigo ang pagbawi. Suriin ang iyong impormasyon.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Lihim sa Pagbawi:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Tungkol sa Amin",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Tungkol sa Aming Kumpanya",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Nakatuon kami sa paghahatid ng pinakamahusay na karanasan sa astrolohiya sa aming mga user.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Ang Aming Misyon",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Upang magbigay ng tumpak at personalized na mga insight sa astrolohiya upang matulungan ang mga user na gumawa ng matalinong mga pagpapasya sa kanilang buhay.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Ang Ating Pananaw",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Upang maging pinakapinagkakatiwalaang platform ng astrolohiya, pagsasama-sama ng teknolohiya at sinaunang karunungan.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Ang aming mga Halaga",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Integridad, Katumpakan, Disenyong Nakasentro sa Gumagamit, at Patuloy na Pagbabago.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Makipag-ugnayan sa Amin",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Email: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Website: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Suporta sa Customer",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Narito Kami para Tumulong",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Punan ang form sa ibaba at babalikan ka ng aming team ng suporta sa lalong madaling panahon.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Pangalan mo",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Iyong Email",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Mensahe",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Ilagay ang iyong email",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Maglagay ng wastong email address",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Ilagay ang {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Ipadala",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Ipinapadala...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Matagumpay na naipadala ang email!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Nabigong magpadala ng email",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro Dictionary",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Mga termino para sa paghahanap...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Walang nakitang mga termino",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Bumili ng Mga Tanong",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Hindi na-authenticate ang user",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Nabigong i-load ang data ng tindahan",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Nawawalang auth token",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat App",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Matagumpay ang pagbabayad! Ipinadala ang tanong",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Nabigo ang pagbabayad: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Iyong Balanse",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Mga Tanong",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Magagamit na Mga Alok",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Tanong",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Bumili",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Araw-araw na Horoscope",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Nawawala ang user ID",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Nabigong kumuha ng mga horoscope",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Walang nakitang horoscope.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Lagda",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Ngayong araw",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Kahapon",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Ngayong Linggo",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Noong nakaraang Buwan",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Chat",
+  "typeYourQuestionHint": "I-type ang iyong tanong...",
+  "paymentRequired": "Kinakailangan ang Pagbabayad",
+  "paymentRequiredMessage": "Nagamit mo na ang iyong mga libreng tanong. Magbayad ng ₹50 upang magpatuloy.",
+  "payNowButton": "Magbayad na",
+  "freeQuestionsRemaining": "{count} libreng tanong ang natitira",
+  "paidQuestionsRemaining": "{count} mga bayad na tanong ang natitira",
+  "thankYouFeedback": "Salamat sa iyong feedback!",
+  "ratingSubmitted": "Naisumite ang rating!",
+  "setUserIdFirst": "Mangyaring itakda muna ang iyong User ID",
+  "failedToFetchPrevious": "Nabigong makuha ang mga nakaraang tanong at sagot",
+  "errorOccurred": "Error: {error}",
+  "drawerAstroProfile": "Profile ng Astro",
+  "drawerDailyHoroscope": "Araw-araw na Horoscope",
+  "drawerBuyQuestions": "Bumili ng Mga Tanong",
+  "drawerAstroDictionary": "Astro Dictionary",
+  "drawerSettings": "Mga setting",
+  "drawerCustomerSupport": "Suporta sa Customer",
+  "drawerAbout": "Tungkol sa",
+  "drawerProfileSettings": "Mga Setting ng Profile",
+  "demoNotificationTitle": "🔔 Abiso sa Demo",
+  "demoNotificationBody": "Isa itong pansubok na notification mula sa iyong app!",
+  "notificationsTitle": "Mga abiso",
+  "noNotifications": "Walang notification",
+  "allTab": "Lahat",
+  "markAllAsRead": "Markahan ang lahat bilang nabasa na",
+  "notificationMarkedRead": "Ang abiso ay minarkahan bilang nabasa na",
+  "failedToLoadNotifications": "Nabigong i-load ang mga notification",
+  "failedToMarkRead": "Nabigong markahan bilang nabasa na",
+  "failedToMarkAllRead": "Nabigong markahan ang lahat bilang nabasa na",
+  "socketConnected": "Nakakonekta ang socket",
+  "socketDisconnected": "Nadiskonekta ang socket",
+  "newNotificationReceived": "Bagong abiso ang natanggap",
+  "generalCategory": "Heneral",
+  "horoscopeCategory": "Horoscope",
+  "chatCategory": "Chat",
+  "systemCategory": "Sistema",
+  "updateCategory": "Mga update",
+  "howToAskTitle": "Paano Magtanong",
+  "noQuestionsAvailable": "Walang available na katanungan",
+  "failedToLoadQuestions": "Nabigong i-load ang mga tanong",
+  "pullToRefresh": "Hilahin para i-refresh",
+  "careerCategory": "Karera",
+  "loveCategory": "Pag-ibig at Relasyon",
+  "healthCategory": "Kalusugan",
+  "financeCategory": "Pananalapi",
+  "familyCategory": "Pamilya",
+  "educationCategory": "Edukasyon",
+  "travelCategory": "Paglalakbay",
+  "spiritualCategory": "Espirituwal",
+  "profileLoaded": "Matagumpay na na-load ang profile",
+  "imageUploaded": "Matagumpay na na-upload ang larawan",
+  "savedInformationConfirmation": "Nai-save Ko ang Impormasyong Ito",
+  "noHistoryAvailable": "Walang available na history",
+  "missingUserIdError": "Kinakailangan ang User ID",
+  "networkError": "Error sa network. Pakisubukang muli.",
+  "timeoutError": "Nag-time out ang kahilingan",
+  "genericError": "Nagkaproblema",
+  "reactionUpdateError": "Nabigong i-update ang reaksyon",
+  "noSearchResults": "Walang nakitang resulta ng paghahanap",
+  "clearSearch": "I-clear ang paghahanap",
+  "resultsFound": "Nakita ang mga resulta",
+  "recoverySecretHint": "Maaaring hindi gumana ang copy-paste, manu-mano ang pag-type",
+  "recoverAccountDescription": "Sundin ang mga hakbang na ito upang mabawi ang iyong account",
+  "processingLabel": "Pinoproseso...",
+  "clearChatSuccess": "Matagumpay na na-clear ang chat",
+  "notificationsEnabled": "Pinagana ang mga notification",
+  "notificationsDisabled": "Na-disable ang mga notification",
+  "securityNotice": "Ang iyong data ay ligtas na naka-encrypt at nakaimbak",
+  "loading": "Naglo-load...",
+  "selectLanguage": "Piliin ang Wika",
+  "onboardingGetStartedDesc": "Magsimula sa pamamagitan ng pagpili ng iyong wika",
+  "accountRecoveryTitle": "🔐 Mga Detalye ng Pagbawi ng Account",
+  "recoveryInstructions": "Mangyaring i-save ang impormasyong ito nang ligtas. Kakailanganin mo ito para mabawi ang iyong account.",
+  "importantNotice": "⚠️ Mahalaga:",
+  "astrologerProfileTitle": "Profile ng Astrologo",
+  "personalAstrologer": "Personal na Astrologo",
+  "makePersonalAstrologer": "Gumawa ng Personal na Astrologo",
+  "favoriteDescription": "Ang iyong mga katanungan ay uunahin sa astrologong ito. Kung hindi available, tutulungan ka ng isa pang kwalipikadong astrologo.",
+  "educationQualifications": "Edukasyon at Kwalipikasyon",
+  "aboutSection": "Tungkol sa",
+  "shareProfile": "Ibahagi ang Profile",
+  "loadingAstrologer": "Nilo-load ang mga detalye ng astrologo...",
+  "failedToLoadAstrologer": "Nabigong i-load ang mga detalye ng astrologo",
+  "authenticationRequired": "Kinakailangan ang pagpapatunay. Mangyaring mag-log in.",
+  "securityCheckFailed": "Nabigo ang pagsusuri sa seguridad: {error}",
+  "addedToFavorites": "🎯 {name} ay ang iyong Personal na Astrologer",
+  "removedFromFavorites": "✅ Inalis ang {name} sa mga paborito",
+  "toggleFavoriteError": "Nabigong i-update ang paboritong status",
+  "shareMessage": "{name}\n🎓 Edukasyon: {education}\n📜 Kwalipikasyon: {qualification}\n⏳ Karanasan: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Hindi ibinigay",
+  "reviews": "({count} mga review)",
+  "specialties": "Mga espesyalidad",
+  "experience": "Karanasan",
+  "qualification": "Kwalipikasyon",
+  "education": "Edukasyon",
+  "recoveryTips": "• Kumuha ng screenshot ng impormasyong ito\n• Itago ito sa isang ligtas na lugar\n• Huwag ibahagi sa sinuman\n• Isang beses lang ito ipapakita"
+}

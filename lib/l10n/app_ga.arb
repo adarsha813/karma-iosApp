@@ -1,0 +1,439 @@
+{
+  "@@locale": "ga",
+  "settingsTitle": "Socruithe",
+  "notificationSettings": "Socruithe Fógra",
+  "privacySettings": "Socruithe Príobháideachta",
+  "accountSettings": "Socruithe Cuntais",
+  "languageSettings": "Socruithe Teanga",
+  "languageChanged": "Athraíodh an teanga",
+  "existingUserButton": "Is úsáideoir reatha mé",
+  "chooseCountryTitle": "Roghnaigh Tír",
+  "yesText": "Tá",
+  "noText": "Níl",
+  "appBarTitle": "Socruithe Próifíle",
+  "userIdLabel": "Aitheantas Úsáideora *",
+  "nameLabel": "Ainm",
+  "birthCountryLabel": "Tír Bhreithe",
+  "birthCityLabel": "Cathair Bhreithe",
+  "countrySelectionTitle": "Roghnaigh do thír",
+  "maleLabel": "Fireann",
+  "femaleLabel": "Baineann",
+  "birthDateLabel": "Dáta Breithe",
+  "birthDatePlaceholder": "Roghnaigh Dáta Breithe",
+  "birthTimeLabel": "Am Breithe",
+  "birthTimePlaceholder": "Roghnaigh Am Breithe",
+  "saveProfileButton": "Sábháil Próifíl",
+  "noCitiesFound": "Níor aimsíodh aon chathracha",
+  "cityPlaceholder": "Cuir isteach cathair i {country}",
+  "countryFirstPlaceholder": "Roghnaigh tír ar dtús",
+  "versionHistoryTitle": "Stair Leagan",
+  "notSetText": "Gan socrú",
+  "nameHistory": "Ainm: {name}",
+  "cityHistory": "Cathair: {city}",
+  "countryHistory": "Tír: {country}",
+  "genderHistory": "Inscne: {gender}",
+  "birthDateHistory": "Dáta Breithe: {date}",
+  "birthTimeHistory": "Am Breithe: {time}",
+  "locationHistory": "Suíomh: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Stát: {state}",
+  "versionFromText": "Nuashonraithe ar {date}",
+  "userIdRequired": "Tá ID úsáideora ag teastáil",
+  "profileSaved": "Sábháilte go rathúil an phróifíl",
+  "saveFailed": "Theip ar an bpróifíl a shábháil",
+  "errorPrefix": "Earráid:",
+  "onboardingChooseLanguage": "Roghnaigh Do Theanga",
+  "onboardingChooseLanguageDesc": "Roghnaigh do theanga is fearr leat le leanúint ar aghaidh.",
+  "onboardingWhatIsAstrology": "Cad is Réalteolaíocht ann?",
+  "onboardingWhatIsAstrologyDesc": "Is í an réalteolaíocht staidéar na gcorp neamhaí...",
+  "onboardingWhyUseApp": "Cén fáth a n-úsáidfeá an aip seo?",
+  "onboardingWhyUseAppDesc": "Faigh horoscóip phearsantaithe, réamhaisnéisí laethúla, agus treoir chun cinntí eolasacha a dhéanamh.",
+  "onboardingHowToUse": "Conas an aip seo a úsáid?",
+  "onboardingHowToUseDesc": "Déan nascleanúint go héasca, seiceáil horoscóip laethúla, agus bainistigh do phróifíl le haghaidh tuartha cruinne.",
+  "onboardingGetStarted": "Tosaigh",
+  "onboardingNewUser": "Úsáideoir Nua",
+  "onboardingExistingUser": "Úsáideoir atá ann cheana",
+  "onboardingBack": "Ar ais",
+  "onboardingNext": "Ar Aghaidh",
+  "userIdNotFound": "Níor aimsíodh ID úsáideora. Logáil isteach nó socraigh do phróifíl le do thoil.",
+  "clearNotificationsTitle": "Fógraí Glan",
+  "clearNotificationsMessage": "An bhfuil tú cinnte gur mian leat gach fógra a ghlanadh?",
+  "clearNotificationsSuccess": "Glanadh na fógraí go léir go rathúil.",
+  "clearHoroscopeTitle": "Horoscóp Glan",
+  "clearHoroscopeMessage": "An bhfuil tú cinnte gur mian leat do shonraí horoscóipe a ghlanadh?",
+  "clearHoroscopeSuccess": "Glanadh an horoscóp go rathúil.",
+  "clearChatTitle": "Glan Stair Comhrá",
+  "clearChatMessage": "An bhfuil tú cinnte gur mian leat do stair comhrá go léir a scriosadh?",
+  "clearChatLocal": "Glanadh an comhrá go háitiúil.",
+  "deleteAccountTitle": "Scrios Cuntas",
+  "deleteAccountMessage": "An bhfuil tú cinnte gur mian leat do chuntas a scriosadh? Glanfaidh sé seo do stair comhrá agus fógraí go léir freisin.",
+  "deleteAccountSuccess": "Tá do chuntas agus na sonraí go léir bainte.",
+  "deleteAccountError": "Earráid ag scriosadh cuntais",
+  "logoutTitle": "Logáil Amach",
+  "logoutMessage": "An bhfuil tú cinnte gur mian leat logáil amach?",
+  "termsPrivacyTitle": "Téarmaí & Príobháideacht",
+  "privacyPolicyTitle": "Polasaí Príobháideachais",
+  "termsConditionsTitle": "Téarmaí & Coinníollacha",
+  "dataControlTitle": "Rialú Sonraí",
+  "cancelButton": "Cealaigh",
+  "confirmButton": "Deimhnigh",
+  "clearQuestionsSuccess": "Scriosadh na ceisteanna go léir go rathúil.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Tiarna",
+  "startLabel": "Tosaigh",
+  "recoverAccount": "Aisghabháil Cuntas",
+  "endLabel": "Deireadh",
+  "startDateLabel": "Dáta Tosaigh",
+  "endDateLabel": "Dáta Deiridh",
+  "notAvailable": "Níl sé ar fáil",
+  "noData": "Gan aon sonraí",
+  "unknownError": "Earráid anaithnid",
+  "retryButton": "Déan iarracht eile",
+  "kundaliGeneratorTitle": "Gineadóir Kundali",
+  "natalChartTitle": "Cairt Breithe",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Ráshi",
+  "ascDegreeLabel": "Céim Ardaitheach",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Anaithnid",
+  "clearHoroscope": "Horoscóp Glan",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Fógraí Glan",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Glan Stair Comhrá",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Logáil Amach",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Scrios Cuntas",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Tá gach réimse riachtanach.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Aisghabhadh an cuntas go rathúil.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Theip ar an aisghabháil. Seiceáil do chuid faisnéise.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Rún Aisghabhála:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Fúinn",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Maidir lenár gCuideachta",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Táimid tiomanta don taithí réalteolaíochta is fearr a sholáthar dár n-úsáideoirí.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Ár Misean",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Chun léargais réalteolaíochta cruinne agus pearsantaithe a sholáthar chun cabhrú le húsáideoirí cinntí eolasacha a dhéanamh ina saol.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Ár bhFís",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Chun bheith ar an ardán réalteolaíochta is iontaofa, ag comhcheangal teicneolaíochta agus eagna ársa.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Ár Luachanna",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Ionracas, Cruinneas, Dearadh Dírithe ar an Úsáideoir, agus Nuálaíocht Leanúnach.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Déan Teagmháil Linn",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Ríomhphost: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Suíomh Gréasáin: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Tacaíocht do Chustaiméirí",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Táimid anseo chun cabhrú leat",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Líon isteach an fhoirm thíos agus rachaidh ár bhfoireann tacaíochta i dteagmháil leat a luaithe is féidir.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "D'ainm",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Do Ríomhphost",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Teachtaireacht",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Cuir isteach do sheoladh ríomhphoist",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Cuir isteach seoladh ríomhphoist bailí",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Cuir isteach {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Seol",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Ag seoladh...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Seoladh an ríomhphost go rathúil!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Theip ar ríomhphost a sheoladh",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Foclóir Réalteolaíochta",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Téarmaí cuardaigh...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Níor aimsíodh aon téarmaí",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Ceisteanna Ceannaigh",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Níl an t-úsáideoir fíordheimhnithe",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Theip ar shonraí an tsiopa a lódáil",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Comhartha údaraithe ar iarraidh",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Aip Comhrá Astro",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Íocaíocht rathúil! Ceist seolta",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Theip ar an íocaíocht: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Do Iarmhéid",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "Ceisteanna {count}",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Tairiscintí atá ar Fáil",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "Ceist {count}",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Ceannaigh",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Horoscóp Laethúil",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Tá ID úsáideora ar iarraidh",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Theip ar horoscopes a fháil",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Níor aimsíodh aon horoscóp.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Sínigh",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Inniu",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Inné",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "An tSeachtain seo",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "An Mhí Seo Caite",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Comhrá",
+  "typeYourQuestionHint": "Clóscríobh do cheist...",
+  "paymentRequired": "Íocaíocht Riachtanach",
+  "paymentRequiredMessage": "Tá do cheisteanna saor in aisce úsáidte agat. Íoc ₹50 le leanúint ar aghaidh.",
+  "payNowButton": "Íoc Anois",
+  "freeQuestionsRemaining": "{count} ceisteanna saora fágtha",
+  "paidQuestionsRemaining": "{count} ceisteanna íoctha fágtha",
+  "thankYouFeedback": "Go raibh maith agat as d'aiseolas!",
+  "ratingSubmitted": "Rátáil curtha isteach!",
+  "setUserIdFirst": "Socraigh d'Aitheantas Úsáideora ar dtús le do thoil",
+  "failedToFetchPrevious": "Theip ar cheisteanna agus freagraí roimhe seo a fháil",
+  "errorOccurred": "Earráid: {error}",
+  "drawerAstroProfile": "Próifíl Astro",
+  "drawerDailyHoroscope": "Horoscóp Laethúil",
+  "drawerBuyQuestions": "Ceisteanna Ceannaigh",
+  "drawerAstroDictionary": "Foclóir Réalteolaíochta",
+  "drawerSettings": "Socruithe",
+  "drawerCustomerSupport": "Tacaíocht do Chustaiméirí",
+  "drawerAbout": "Maidir",
+  "drawerProfileSettings": "Socruithe Próifíle",
+  "demoNotificationTitle": "🔔 Fógra Taispeána",
+  "demoNotificationBody": "Is fógra tástála é seo ó d'aip!",
+  "notificationsTitle": "Fógraí",
+  "noNotifications": "Gan aon fhógraí",
+  "allTab": "Gach",
+  "markAllAsRead": "Marcáil gach rud mar léite",
+  "notificationMarkedRead": "Fógra marcáilte mar léite",
+  "failedToLoadNotifications": "Theip ar fhógraí a lódáil",
+  "failedToMarkRead": "Theip ar mharcáil mar léite",
+  "failedToMarkAllRead": "Theip ar gach rud a mharcáil mar léite",
+  "socketConnected": "Soicéad ceangailte",
+  "socketDisconnected": "Soicéad dícheangailte",
+  "newNotificationReceived": "Fógra nua faighte",
+  "generalCategory": "Ginearálta",
+  "horoscopeCategory": "Horoscóp",
+  "chatCategory": "Comhrá",
+  "systemCategory": "Córas",
+  "updateCategory": "Nuashonruithe",
+  "howToAskTitle": "Conas a Iarraidh",
+  "noQuestionsAvailable": "Níl aon cheisteanna ar fáil",
+  "failedToLoadQuestions": "Theip ar lódáil na ceisteanna",
+  "pullToRefresh": "Tarraing chun athnuachan",
+  "careerCategory": "Gairme",
+  "loveCategory": "Grá & Caidrimh",
+  "healthCategory": "Sláinte",
+  "financeCategory": "Airgeadas",
+  "familyCategory": "Teaghlach",
+  "educationCategory": "Oideachas",
+  "travelCategory": "Taisteal",
+  "spiritualCategory": "Spioradálta",
+  "profileLoaded": "Luchtaithe go rathúil an phróifíl",
+  "imageUploaded": "Uaslódáilte go rathúil an íomhá",
+  "savedInformationConfirmation": "Tá an fhaisnéis seo sábháilte agam",
+  "noHistoryAvailable": "Níl aon stair ar fáil",
+  "missingUserIdError": "Tá ID úsáideora ag teastáil",
+  "networkError": "Earráid líonra. Déan iarracht arís.",
+  "timeoutError": "Iarratas imithe thar an am",
+  "genericError": "Chuaigh rud éigin mícheart",
+  "reactionUpdateError": "Theip ar an imoibriú a nuashonrú",
+  "noSearchResults": "Níor aimsíodh aon torthaí cuardaigh",
+  "clearSearch": "Glan an cuardach",
+  "resultsFound": "Torthaí a fuarthas",
+  "recoverySecretHint": "B’fhéidir nach n-oibreoidh cóipeáil-ghreamú, clóscríobh de láimh",
+  "recoverAccountDescription": "Lean na céimeanna seo chun do chuntas a aisghabháil",
+  "processingLabel": "Ag próiseáil...",
+  "clearChatSuccess": "Glanadh an comhrá go rathúil",
+  "notificationsEnabled": "Fógraí cumasaithe",
+  "notificationsDisabled": "Fógraí díchumasaithe",
+  "securityNotice": "Tá do shonraí criptithe agus stóráilte go slán",
+  "loading": "Ag lódáil...",
+  "selectLanguage": "Roghnaigh Teanga",
+  "onboardingGetStartedDesc": "Tosaigh trí do theanga a roghnú",
+  "accountRecoveryTitle": "🔐 Sonraí Aisghabhála Cuntais",
+  "recoveryInstructions": "Sábháil an fhaisnéis seo go slán le do thoil. Beidh sí ag teastáil uait chun do chuntas a aisghabháil.",
+  "importantNotice": "⚠️ Tábhachtach:",
+  "astrologerProfileTitle": "Próifíl Réalteolaithe",
+  "personalAstrologer": "Réalteolaithe Pearsanta",
+  "makePersonalAstrologer": "Déan Réalteolaithe Pearsanta",
+  "favoriteDescription": "Tabharfar tús áite do do cheisteanna don réalteolaí seo. Mura bhfuil sé ar fáil, cabhróidh réalteolaí cáilithe eile leat.",
+  "educationQualifications": "Oideachas & Cáilíochtaí",
+  "aboutSection": "Maidir",
+  "shareProfile": "Comhroinn Próifíl",
+  "loadingAstrologer": "Ag lódáil sonraí an réalteolaithe...",
+  "failedToLoadAstrologer": "Theip ar shonraí an réalteolaithe a lódáil",
+  "authenticationRequired": "Tá fíordheimhniú ag teastáil. Logáil isteach le do thoil.",
+  "securityCheckFailed": "Theip ar an seiceáil slándála: {error}",
+  "addedToFavorites": "🎯 Is é {name} d'Astrólaí Pearsanta anois",
+  "removedFromFavorites": "✅ Baineadh {name} de na cinn is ansa liom",
+  "toggleFavoriteError": "Theip ar stádas is fearr leat a nuashonrú",
+  "shareMessage": "{name}\n🎓 Oideachas: {education}\n📜 Cáilíocht: {qualification}\n⏳ Taithí: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Níor soláthraíodh",
+  "reviews": "({count} léirmheasanna)",
+  "specialties": "Speisialtachtaí",
+  "experience": "Taithí",
+  "qualification": "Cáilíocht",
+  "education": "Oideachas",
+  "recoveryTips": "• Glac pictiúr scáileáin den fhaisnéis seo\n• Stóráil in áit shábháilte í\n• Ná roinn le duine ar bith í\n• Ní thaispeánfar í seo ach uair amháin"
+}

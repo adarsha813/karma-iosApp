@@ -1,0 +1,439 @@
+{
+  "@@locale": "nl",
+  "settingsTitle": "Instellingen",
+  "notificationSettings": "Meldingsinstellingen",
+  "privacySettings": "Privacy-instellingen",
+  "accountSettings": "Accountinstellingen",
+  "languageSettings": "Taalinstellingen",
+  "languageChanged": "Taal gewijzigd",
+  "existingUserButton": "Ik ben een bestaande gebruiker",
+  "chooseCountryTitle": "Kies land",
+  "yesText": "Ja",
+  "noText": "Nee",
+  "appBarTitle": "Profielinstellingen",
+  "userIdLabel": "Gebruikers-ID *",
+  "nameLabel": "Naam",
+  "birthCountryLabel": "Geboorteland",
+  "birthCityLabel": "Geboortestad",
+  "countrySelectionTitle": "Kies uw land",
+  "maleLabel": "Mannelijk",
+  "femaleLabel": "Vrouwelijk",
+  "birthDateLabel": "Geboortedatum",
+  "birthDatePlaceholder": "Selecteer geboortedatum",
+  "birthTimeLabel": "Geboortetijd",
+  "birthTimePlaceholder": "Selecteer geboortetijd",
+  "saveProfileButton": "Profiel opslaan",
+  "noCitiesFound": "Geen steden gevonden",
+  "cityPlaceholder": "Voer een stad in {country} in",
+  "countryFirstPlaceholder": "Selecteer eerst een land",
+  "versionHistoryTitle": "Versiegeschiedenis",
+  "notSetText": "Niet ingesteld",
+  "nameHistory": "Naam: {name}",
+  "cityHistory": "Stad: {city}",
+  "countryHistory": "Land: {country}",
+  "genderHistory": "Geslacht: {gender}",
+  "birthDateHistory": "Geboortedatum: {date}",
+  "birthTimeHistory": "Geboortetijd: {time}",
+  "locationHistory": "Locatie: {latitude}, {longitude}",
+  "timezoneHistory": "Tijdzone: GMT{offset}",
+  "dstHistory": "Zomertijd: {value}",
+  "stateHistory": "Status: {state}",
+  "versionFromText": "Bijgewerkt op {date}",
+  "userIdRequired": "Gebruikers-ID is vereist",
+  "profileSaved": "Profiel succesvol opgeslagen",
+  "saveFailed": "Profiel opslaan mislukt",
+  "errorPrefix": "Fout:",
+  "onboardingChooseLanguage": "Kies uw taal",
+  "onboardingChooseLanguageDesc": "Selecteer uw voorkeurstaal om verder te gaan.",
+  "onboardingWhatIsAstrology": "Wat is astrologie?",
+  "onboardingWhatIsAstrologyDesc": "Astrologie is de studie van hemellichamen.",
+  "onboardingWhyUseApp": "Waarom deze app gebruiken?",
+  "onboardingWhyUseAppDesc": "Ontvang gepersonaliseerde horoscopen, dagelijkse voorspellingen en begeleiding om weloverwogen beslissingen te nemen.",
+  "onboardingHowToUse": "Hoe gebruik je deze app?",
+  "onboardingHowToUseDesc": "Navigeer eenvoudig, bekijk uw dagelijkse horoscopen en beheer uw profiel voor nauwkeurige voorspellingen.",
+  "onboardingGetStarted": "Aan de slag",
+  "onboardingNewUser": "Nieuwe gebruiker",
+  "onboardingExistingUser": "Bestaande gebruiker",
+  "onboardingBack": "Rug",
+  "onboardingNext": "Volgende",
+  "userIdNotFound": "Gebruikers-ID niet gevonden. Log in of stel uw profiel in.",
+  "clearNotificationsTitle": "Meldingen wissen",
+  "clearNotificationsMessage": "Weet u zeker dat u alle meldingen wilt wissen?",
+  "clearNotificationsSuccess": "Alle meldingen zijn succesvol verwijderd.",
+  "clearHoroscopeTitle": "Heldere horoscoop",
+  "clearHoroscopeMessage": "Weet u zeker dat u uw horoscoopgegevens wilt wissen?",
+  "clearHoroscopeSuccess": "Horoscoop succesvol gewist.",
+  "clearChatTitle": "Chatgeschiedenis wissen",
+  "clearChatMessage": "Weet u zeker dat u uw volledige chatgeschiedenis wilt verwijderen?",
+  "clearChatLocal": "Chat lokaal gewist.",
+  "deleteAccountTitle": "Account verwijderen",
+  "deleteAccountMessage": "Weet je zeker dat je je account wilt verwijderen? Hiermee worden ook al je chatgeschiedenis en meldingen gewist.",
+  "deleteAccountSuccess": "Uw account en alle gegevens zijn verwijderd.",
+  "deleteAccountError": "Fout bij het verwijderen van account",
+  "logoutTitle": "Uitloggen",
+  "logoutMessage": "Weet u zeker dat u wilt uitloggen?",
+  "termsPrivacyTitle": "Voorwaarden en privacy",
+  "privacyPolicyTitle": "Privacybeleid",
+  "termsConditionsTitle": "Algemene voorwaarden",
+  "dataControlTitle": "Gegevensbeheer",
+  "cancelButton": "Annuleren",
+  "confirmButton": "Bevestigen",
+  "clearQuestionsSuccess": "Alle vragen zijn succesvol verwijderd.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Heer",
+  "startLabel": "Begin",
+  "recoverAccount": "Account herstellen",
+  "endLabel": "Einde",
+  "startDateLabel": "Startdatum",
+  "endDateLabel": "Einddatum",
+  "notAvailable": "Niet beschikbaar",
+  "noData": "Geen gegevens",
+  "unknownError": "Onbekende fout",
+  "retryButton": "Opnieuw proberen",
+  "kundaliGeneratorTitle": "Kundali-generator",
+  "natalChartTitle": "Geboortehoroscoop",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rasji",
+  "ascDegreeLabel": "Opgaande graad",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Onbekend",
+  "clearHoroscope": "Heldere horoscoop",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Meldingen wissen",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Chatgeschiedenis wissen",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Uitloggen",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Account verwijderen",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Alle velden zijn verplicht.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Account succesvol hersteld.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Herstel mislukt. Controleer uw gegevens.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Herstelgeheim:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Over ons",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Over ons bedrijf",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Wij streven ernaar onze gebruikers de beste astrologie-ervaring te bieden.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Onze missie",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Om nauwkeurige en gepersonaliseerde astrologische inzichten te bieden, zodat gebruikers weloverwogen beslissingen kunnen nemen in hun leven.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Onze visie",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Om het meest betrouwbare astrologieplatform te worden, dat technologie en oude wijsheid combineert.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Onze waarden",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Integriteit, nauwkeurigheid, gebruikersgericht ontwerp en continue innovatie.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Neem contact met ons op",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "E-mailadres: support@uwbedrijf.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Website: www.uwbedrijf.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Klantenservice",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Wij zijn er om te helpen",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Vul onderstaand formulier in, dan neemt ons supportteam zo snel mogelijk contact met u op.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Jouw naam",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Uw e-mailadres",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Bericht",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Voer uw e-mailadres in",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Voer een geldig e-mailadres in",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Voer {fieldName} in",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Versturen",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Verzenden...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ E-mail succesvol verzonden!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ E-mail verzenden mislukt",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro Woordenboek",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Zoektermen...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Geen termen gevonden",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Koopvragen",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Gebruiker niet geauthenticeerd",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Het laden van winkelgegevens is mislukt",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Ontbrekend autorisatietoken",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat-app",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Betaling succesvol! Vraag verzonden",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Betaling mislukt: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Uw saldo",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Vragen",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Beschikbare aanbiedingen",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Vraag",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Kopen",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Dagelijkse horoscoop",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Gebruikers-ID ontbreekt",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Het ophalen van horoscopen is mislukt",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Geen horoscoop gevonden.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Teken",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Vandaag",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Gisteren",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Deze week",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Vorige maand",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Chat",
+  "typeYourQuestionHint": "Typ uw vraag...",
+  "paymentRequired": "Betaling vereist",
+  "paymentRequiredMessage": "Je hebt je gratis vragen gebruikt. Betaal ₹50 om verder te gaan.",
+  "payNowButton": "Nu betalen",
+  "freeQuestionsRemaining": "{count} resterende vrije vragen",
+  "paidQuestionsRemaining": "{count} betaalde vragen resterend",
+  "thankYouFeedback": "Bedankt voor uw feedback!",
+  "ratingSubmitted": "Beoordeling ingediend!",
+  "setUserIdFirst": "Stel eerst uw gebruikers-ID in",
+  "failedToFetchPrevious": "Het is niet gelukt om eerdere vragen en antwoorden op te halen",
+  "errorOccurred": "Fout: {error}",
+  "drawerAstroProfile": "Astroprofiel",
+  "drawerDailyHoroscope": "Dagelijkse horoscoop",
+  "drawerBuyQuestions": "Koopvragen",
+  "drawerAstroDictionary": "Astro Woordenboek",
+  "drawerSettings": "Instellingen",
+  "drawerCustomerSupport": "Klantenservice",
+  "drawerAbout": "Over",
+  "drawerProfileSettings": "Profielinstellingen",
+  "demoNotificationTitle": "🔔 Demo-melding",
+  "demoNotificationBody": "Dit is een testmelding van uw app!",
+  "notificationsTitle": "Meldingen",
+  "noNotifications": "Geen meldingen",
+  "allTab": "Alle",
+  "markAllAsRead": "Markeer alles als gelezen",
+  "notificationMarkedRead": "Melding gemarkeerd als gelezen",
+  "failedToLoadNotifications": "Het laden van meldingen is mislukt",
+  "failedToMarkRead": "Het is niet gelukt om het bericht als gelezen te markeren",
+  "failedToMarkAllRead": "Het is niet gelukt om alles als gelezen te markeren",
+  "socketConnected": "Stopcontact aangesloten",
+  "socketDisconnected": "Stopcontact losgekoppeld",
+  "newNotificationReceived": "Nieuwe melding ontvangen",
+  "generalCategory": "Algemeen",
+  "horoscopeCategory": "Horoscoop",
+  "chatCategory": "Chat",
+  "systemCategory": "Systeem",
+  "updateCategory": "Updates",
+  "howToAskTitle": "Hoe te vragen",
+  "noQuestionsAvailable": "Geen vragen beschikbaar",
+  "failedToLoadQuestions": "Vragen laden mislukt",
+  "pullToRefresh": "Trekken om te vernieuwen",
+  "careerCategory": "Carrière",
+  "loveCategory": "Liefde en relaties",
+  "healthCategory": "Gezondheid",
+  "financeCategory": "Financiën",
+  "familyCategory": "Familie",
+  "educationCategory": "Onderwijs",
+  "travelCategory": "Reis",
+  "spiritualCategory": "Spiritueel",
+  "profileLoaded": "Profiel succesvol geladen",
+  "imageUploaded": "Afbeelding succesvol geüpload",
+  "savedInformationConfirmation": "Ik heb deze informatie opgeslagen",
+  "noHistoryAvailable": "Geen geschiedenis beschikbaar",
+  "missingUserIdError": "Gebruikers-ID is vereist",
+  "networkError": "Netwerkfout. Probeer het opnieuw.",
+  "timeoutError": "Verzoek is verlopen",
+  "genericError": "Er is iets misgegaan",
+  "reactionUpdateError": "Reactie kon niet worden bijgewerkt",
+  "noSearchResults": "Geen zoekresultaten gevonden",
+  "clearSearch": "Zoekopdracht wissen",
+  "resultsFound": "Resultaten gevonden",
+  "recoverySecretHint": "Kopiëren en plakken werkt mogelijk niet, typ handmatig",
+  "recoverAccountDescription": "Volg deze stappen om uw account te herstellen",
+  "processingLabel": "Verwerken...",
+  "clearChatSuccess": "Chat succesvol gewist",
+  "notificationsEnabled": "Meldingen ingeschakeld",
+  "notificationsDisabled": "Meldingen uitgeschakeld",
+  "securityNotice": "Uw gegevens worden veilig versleuteld en opgeslagen",
+  "loading": "Bezig met laden...",
+  "selectLanguage": "Selecteer taal",
+  "onboardingGetStartedDesc": "Begin met het kiezen van uw taal",
+  "accountRecoveryTitle": "🔐 Details over accountherstel",
+  "recoveryInstructions": "Bewaar deze informatie veilig. U heeft deze nodig om uw account te herstellen.",
+  "importantNotice": "⚠️ Belangrijk:",
+  "astrologerProfileTitle": "Astroloog Profiel",
+  "personalAstrologer": "Persoonlijke Astroloog",
+  "makePersonalAstrologer": "Maak een persoonlijke astroloog",
+  "favoriteDescription": "Uw vragen worden met voorrang aan deze astroloog voorgelegd. Indien deze niet beschikbaar is, zal een andere gekwalificeerde astroloog u helpen.",
+  "educationQualifications": "Onderwijs en kwalificaties",
+  "aboutSection": "Over",
+  "shareProfile": "Profiel delen",
+  "loadingAstrologer": "Gegevens van astroloog worden geladen...",
+  "failedToLoadAstrologer": "Het laden van de astrolooggegevens is mislukt",
+  "authenticationRequired": "Authenticatie vereist. Log in.",
+  "securityCheckFailed": "Beveiligingscontrole mislukt: {error}",
+  "addedToFavorites": "🎯 {name} is nu uw persoonlijke astroloog",
+  "removedFromFavorites": "✅ {name} verwijderd uit favorieten",
+  "toggleFavoriteError": "Het is niet gelukt om de favorietenstatus bij te werken",
+  "shareMessage": "{name}\n🎓 Opleiding: {education}\n📜 Kwalificatie: {qualification}\n⏳ Ervaring: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Niet verstrekt",
+  "reviews": "({count} beoordelingen)",
+  "specialties": "Specialiteiten",
+  "experience": "Ervaring",
+  "qualification": "Kwalificatie",
+  "education": "Onderwijs",
+  "recoveryTips": "• Maak een screenshot van deze informatie\n• Bewaar deze op een veilige plek\n• Deel deze niet met anderen\n• Deze informatie wordt slechts één keer weergegeven"
+}

@@ -1,0 +1,439 @@
+{
+  "@@locale": "fy",
+  "settingsTitle": "Ynstellings",
+  "notificationSettings": "Notifikaasje-ynstellings",
+  "privacySettings": "Privacyynstellingen",
+  "accountSettings": "Akkountynstellingen",
+  "languageSettings": "Taalynstellingen",
+  "languageChanged": "Taal feroare",
+  "existingUserButton": "Ik bin in besteande brûker",
+  "chooseCountryTitle": "Kies lân",
+  "yesText": "Ja",
+  "noText": "Nee",
+  "appBarTitle": "Profylynstellingen",
+  "userIdLabel": "Brûkers-ID *",
+  "nameLabel": "Namme",
+  "birthCountryLabel": "Bertelân",
+  "birthCityLabel": "Bertestêd",
+  "countrySelectionTitle": "Kies dyn lân",
+  "maleLabel": "Manlik",
+  "femaleLabel": "Froulik",
+  "birthDateLabel": "Bertedatum",
+  "birthDatePlaceholder": "Selektearje bertedatum",
+  "birthTimeLabel": "Bertetiid",
+  "birthTimePlaceholder": "Selektearje bertetiid",
+  "saveProfileButton": "Profyl bewarje",
+  "noCitiesFound": "Gjin stêden fûn",
+  "cityPlaceholder": "Fier stêd yn yn {country}",
+  "countryFirstPlaceholder": "Selektearje earst lân",
+  "versionHistoryTitle": "Ferzjehistoarje",
+  "notSetText": "Net ynsteld",
+  "nameHistory": "Namme: {name}",
+  "cityHistory": "Stêd: {city}",
+  "countryHistory": "Lân: {country}",
+  "genderHistory": "Geslacht: {gender}",
+  "birthDateHistory": "Bertedatum: {date}",
+  "birthTimeHistory": "Bertetiid: {time}",
+  "locationHistory": "Lokaasje: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Steat: {state}",
+  "versionFromText": "Bywurke op {date}",
+  "userIdRequired": "Brûkers-ID is fereaske",
+  "profileSaved": "Profyl mei súkses bewarre",
+  "saveFailed": "Koe profyl net bewarje",
+  "errorPrefix": "Fersin:",
+  "onboardingChooseLanguage": "Kies dyn taal",
+  "onboardingChooseLanguageDesc": "Selektearje jo foarkarstaal om troch te gean.",
+  "onboardingWhatIsAstrology": "Wat is astrology?",
+  "onboardingWhatIsAstrologyDesc": "Astrology is de stúdzje fan himellichems ...",
+  "onboardingWhyUseApp": "Wêrom dizze app brûke?",
+  "onboardingWhyUseAppDesc": "Krij personaliseare horoskopen, deistige foarsizzingen en begelieding om ynformearre besluten te nimmen.",
+  "onboardingHowToUse": "Hoe kinne jo dizze app brûke?",
+  "onboardingHowToUseDesc": "Navigearje maklik, kontrolearje deistige horoskopen en beheare jo profyl foar krekte foarsizzingen.",
+  "onboardingGetStarted": "Begjinne",
+  "onboardingNewUser": "Nije brûker",
+  "onboardingExistingUser": "Besteande brûker",
+  "onboardingBack": "Rêch",
+  "onboardingNext": "Folgjende",
+  "userIdNotFound": "Brûkers-ID net fûn. Meld jo oan of stel jo profyl yn.",
+  "clearNotificationsTitle": "Notifikaasjes wiskje",
+  "clearNotificationsMessage": "Binne jo wis dat jo alle notifikaasjes wiskje wolle?",
+  "clearNotificationsSuccess": "Alle notifikaasjes binne mei súkses wiske.",
+  "clearHoroscopeTitle": "Dúdlike horoskoop",
+  "clearHoroscopeMessage": "Binne jo wis dat jo jo horoskoopgegevens wiskje wolle?",
+  "clearHoroscopeSuccess": "Horoskoop mei súkses wiske.",
+  "clearChatTitle": "Chathistoarje wiskje",
+  "clearChatMessage": "Binne jo wis dat jo al jo petearhistoarje wiskje wolle?",
+  "clearChatLocal": "Chat lokaal wiske.",
+  "deleteAccountTitle": "Akkoant wiskje",
+  "deleteAccountMessage": "Binne jo wis dat jo jo akkount wiskje wolle? Dit sil ek al jo petearhistoarje en notifikaasjes wiskje.",
+  "deleteAccountSuccess": "Dyn akkount en alle gegevens binne fuortsmiten.",
+  "deleteAccountError": "Fout by it wiskjen fan akkount",
+  "logoutTitle": "Útlogge",
+  "logoutMessage": "Binne jo wis dat jo útlogge wolle?",
+  "termsPrivacyTitle": "Betingsten en privacy",
+  "privacyPolicyTitle": "Privacybelied",
+  "termsConditionsTitle": "Betingsten en Kondysjes",
+  "dataControlTitle": "Gegevenskontrôle",
+  "cancelButton": "Annulearje",
+  "confirmButton": "Befêstigje",
+  "clearQuestionsSuccess": "Alle fragen mei súkses wiske.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Hear",
+  "startLabel": "Start",
+  "recoverAccount": "Akkoant weromhelje",
+  "endLabel": "Ein",
+  "startDateLabel": "Begjindatum",
+  "endDateLabel": "Eindatum",
+  "notAvailable": "Net beskikber",
+  "noData": "Gjin gegevens",
+  "unknownError": "Unbekende flater",
+  "retryButton": "Opnij besykje",
+  "kundaliGeneratorTitle": "Kundali-generator",
+  "natalChartTitle": "Geboortehoroskoop",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rasji",
+  "ascDegreeLabel": "Ascendantgraad",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Ûnbekend",
+  "clearHoroscope": "Dúdlike horoskoop",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Notifikaasjes wiskje",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Chathistoarje wiskje",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Útlogge",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Akkoant wiskje",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Alle fjilden binne ferplicht.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Akkoant mei súkses weromhelle.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Herstel mislearre. Kontrolearje jo ynformaasje.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Geheim fan herstel:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Oer ús",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Oer ús bedriuw",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Wy binne fan doel om ús brûkers de bêste astrologyske ûnderfining te jaan.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Us missy",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Om krekte en personaliseare astrologyske ynsjoch te jaan om brûkers te helpen ynformearre besluten te nimmen yn har libben.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Us fisy",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Om it meast fertroude astrologyplatfoarm te wurden, kombinearret technology en âlde wiisheid.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Us wearden",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Yntegriteit, krektens, brûker-sintraal ûntwerp en trochgeande ynnovaasje.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Kontakt mei ús opnimme",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "E-post: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Webside: www.jobedriuw.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Klanttsjinst",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Wy binne hjir om te helpen",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Folje it ûndersteande formulier yn en ús stipeteam sil sa gau mooglik kontakt mei jo opnimme.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Dyn namme",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Dyn e-postadres",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Berjocht",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Fier jo e-postadres yn",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Fier in jildich e-mailadres yn",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Fier {fieldName} yn",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Stjoere",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Ferstjoere...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ E-post mei súkses ferstjoerd!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Koe e-post net ferstjoere",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro Wurdboek",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Syktermen...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Gjin termen fûn",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Keapje fragen",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Brûker net autentisearre",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Koe winkelgegevens net laden",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Untbrekkende autorisaasjetoken",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat-app",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Betelling slagge! Fraach ferstjoerd",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Betelling mislearre: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Dyn saldo",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Fragen",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Beskikbere oanbiedingen",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Fraach",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Keapje",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Deistige horoskoop",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Brûkers-ID ûntbrekt",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Koe horoskopen net ophelje",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Gjin horoskoop fûn.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Teken",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Hjoed",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Juster",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Dizze wike",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Ferline moanne",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Chat",
+  "typeYourQuestionHint": "Typ jo fraach...",
+  "paymentRequired": "Betelling fereaske",
+  "paymentRequiredMessage": "Jo hawwe jo fergese fragen brûkt. Betelje ₹50 om troch te gean.",
+  "payNowButton": "Betelje no",
+  "freeQuestionsRemaining": "{count} frije fragen oer",
+  "paidQuestionsRemaining": "{count} betelle fragen oer",
+  "thankYouFeedback": "Tankewol foar jo feedback!",
+  "ratingSubmitted": "Beoardieling yntsjinne!",
+  "setUserIdFirst": "Stel earst jo brûkers-ID yn",
+  "failedToFetchPrevious": "Koe foarige fragen en antwurden net ophelje",
+  "errorOccurred": "Fout: {error}",
+  "drawerAstroProfile": "Astro-profyl",
+  "drawerDailyHoroscope": "Deistige horoskoop",
+  "drawerBuyQuestions": "Keapje fragen",
+  "drawerAstroDictionary": "Astro Wurdboek",
+  "drawerSettings": "Ynstellings",
+  "drawerCustomerSupport": "Klanttsjinst",
+  "drawerAbout": "Oer",
+  "drawerProfileSettings": "Profylynstellingen",
+  "demoNotificationTitle": "🔔 Demo-notifikaasje",
+  "demoNotificationBody": "Dit is in testnotifikaasje fan jo app!",
+  "notificationsTitle": "Notifikaasjes",
+  "noNotifications": "Gjin notifikaasjes",
+  "allTab": "Alle",
+  "markAllAsRead": "Markearje alles as lêzen",
+  "notificationMarkedRead": "Notifikaasje markearre as lêzen",
+  "failedToLoadNotifications": "Koe notifikaasjes net laden",
+  "failedToMarkRead": "Markearjen as lêzen mislearre",
+  "failedToMarkAllRead": "Koe net alles as lêzen markearje",
+  "socketConnected": "Socket ferbûn",
+  "socketDisconnected": "Socket loskeppele",
+  "newNotificationReceived": "Nije melding ûntfongen",
+  "generalCategory": "Algemien",
+  "horoscopeCategory": "Horoskoop",
+  "chatCategory": "Chat",
+  "systemCategory": "Systeem",
+  "updateCategory": "Updates",
+  "howToAskTitle": "Hoe te freegjen",
+  "noQuestionsAvailable": "Gjin fragen beskikber",
+  "failedToLoadQuestions": "Koe fragen net laden",
+  "pullToRefresh": "Lûke om te ferfarskjen",
+  "careerCategory": "Karriêre",
+  "loveCategory": "Leafde en relaasjes",
+  "healthCategory": "Sûnens",
+  "financeCategory": "Finânsjes",
+  "familyCategory": "Famylje",
+  "educationCategory": "Oplieding",
+  "travelCategory": "Reizgje",
+  "spiritualCategory": "Geastlik",
+  "profileLoaded": "Profyl mei súkses laden",
+  "imageUploaded": "Ofbylding mei súkses uploaden",
+  "savedInformationConfirmation": "Ik haw dizze ynformaasje bewarre",
+  "noHistoryAvailable": "Gjin skiednis beskikber",
+  "missingUserIdError": "Brûkers-ID is fereaske",
+  "networkError": "Netwurkflater. Besykje it nochris.",
+  "timeoutError": "Fersyk ferrûn",
+  "genericError": "Der gie wat mis",
+  "reactionUpdateError": "Koe reaksje net bywurkje",
+  "noSearchResults": "Gjin sykresultaten fûn",
+  "clearSearch": "Sykje wiskje",
+  "resultsFound": "Resultaten fûn",
+  "recoverySecretHint": "Kopiearje-plakke wurket miskien net, typ mei de hân",
+  "recoverAccountDescription": "Folgje dizze stappen om jo akkount te herstellen",
+  "processingLabel": "Ferwurkjen...",
+  "clearChatSuccess": "Chat mei súkses wiske",
+  "notificationsEnabled": "Notifikaasjes ynskeakele",
+  "notificationsDisabled": "Notifikaasjes útskeakele",
+  "securityNotice": "Dyn gegevens wurde feilich fersifere en opslein",
+  "loading": "Ynladen...",
+  "selectLanguage": "Selektearje taal",
+  "onboardingGetStartedDesc": "Begjin troch jo taal te kiezen",
+  "accountRecoveryTitle": "🔐 Details foar akkountherstel",
+  "recoveryInstructions": "Bewarje dizze ynformaasje feilich. Jo sille it nedich hawwe om jo akkount te herstellen.",
+  "importantNotice": "⚠️ Wichtich:",
+  "astrologerProfileTitle": "Profyl fan astrolooch",
+  "personalAstrologer": "Persoanlike astrolooch",
+  "makePersonalAstrologer": "Meitsje in persoanlike astrolooch",
+  "favoriteDescription": "Dyn fragen sille prioriteit krije by dizze astrolooch. As dy net beskikber is, sil in oare kwalifisearre astrolooch dy helpe.",
+  "educationQualifications": "Oplieding en kwalifikaasjes",
+  "aboutSection": "Oer",
+  "shareProfile": "Profyl diele",
+  "loadingAstrologer": "Details fan astrolooch wurde laden...",
+  "failedToLoadAstrologer": "Koe details fan astrolooch net laden",
+  "authenticationRequired": "Autentikaasje fereaske. Meld jo oan.",
+  "securityCheckFailed": "Feiligenskontrôle mislearre: {error}",
+  "addedToFavorites": "🎯 {name} is no dyn Persoanlike Astrolooch",
+  "removedFromFavorites": "✅ {name} út favoriten helle",
+  "toggleFavoriteError": "Koe gjin favorite status bywurkje",
+  "shareMessage": "{name}\n🎓 Oplieding: {education}\n📜 Kwalifikaasje: {qualification}\n⏳ Ervaring: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Net foarsjoen",
+  "reviews": "({count} resinsjes)",
+  "specialties": "Spesjaliteiten",
+  "experience": "Ûnderfining",
+  "qualification": "Kwalifikaasje",
+  "education": "Oplieding",
+  "recoveryTips": "• Meitsje in skermôfbylding fan dizze ynformaasje\n• Bewarje it op in feilich plak\n• Diel it net mei oaren\n• Dit wurdt mar ien kear werjûn"
+}

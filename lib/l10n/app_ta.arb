@@ -1,0 +1,439 @@
+{
+  "@@locale": "ta",
+  "settingsTitle": "அமைப்புகள்",
+  "notificationSettings": "அறிவிப்பு அமைப்புகள்",
+  "privacySettings": "தனியுரிமை அமைப்புகள்",
+  "accountSettings": "கணக்கு அமைப்புகள்",
+  "languageSettings": "மொழி அமைப்புகள்",
+  "languageChanged": "மொழி மாற்றப்பட்டது",
+  "existingUserButton": "நான் ஏற்கனவே உள்ள பயனர்.",
+  "chooseCountryTitle": "நாட்டைத் தேர்வுசெய்க",
+  "yesText": "ஆம்",
+  "noText": "இல்லை",
+  "appBarTitle": "சுயவிவர அமைப்புகள்",
+  "userIdLabel": "பயனர் ஐடி *",
+  "nameLabel": "பெயர்",
+  "birthCountryLabel": "பிறந்த நாடு",
+  "birthCityLabel": "பிறந்த நகரம்",
+  "countrySelectionTitle": "உங்கள் நாட்டைத் தேர்வுசெய்க",
+  "maleLabel": "ஆண்",
+  "femaleLabel": "பெண்",
+  "birthDateLabel": "பிறந்த தேதி",
+  "birthDatePlaceholder": "பிறந்த தேதியைத் தேர்ந்தெடுக்கவும்",
+  "birthTimeLabel": "பிறந்த நேரம்",
+  "birthTimePlaceholder": "பிறந்த நேரத்தைத் தேர்ந்தெடுக்கவும்",
+  "saveProfileButton": "சுயவிவரத்தைச் சேமி",
+  "noCitiesFound": "நகரங்கள் எதுவும் இல்லை",
+  "cityPlaceholder": "{country} இல் நகரத்தை உள்ளிடவும்",
+  "countryFirstPlaceholder": "முதலில் நாட்டைத் தேர்ந்தெடுக்கவும்",
+  "versionHistoryTitle": "பதிப்பு வரலாறு",
+  "notSetText": "அமைக்கப்படவில்லை",
+  "nameHistory": "பெயர்: {name}",
+  "cityHistory": "நகரம்: {city}",
+  "countryHistory": "நாடு: {country}",
+  "genderHistory": "பாலினம்: {gender}",
+  "birthDateHistory": "பிறந்த தேதி: {date}",
+  "birthTimeHistory": "பிறந்த நேரம்: {time}",
+  "locationHistory": "இடம்: {latitude}, {longitude}",
+  "timezoneHistory": "நேர மண்டலம்: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "நிலை: {state}",
+  "versionFromText": "{date} அன்று புதுப்பிக்கப்பட்டது.",
+  "userIdRequired": "பயனர் ஐடி அவசியம்",
+  "profileSaved": "சுயவிவரம் வெற்றிகரமாக சேமிக்கப்பட்டது",
+  "saveFailed": "சுயவிவரத்தைச் சேமிக்க முடியவில்லை.",
+  "errorPrefix": "பிழை:",
+  "onboardingChooseLanguage": "உங்கள் மொழியை தேர்வு செய்யவும்",
+  "onboardingChooseLanguageDesc": "தொடர உங்களுக்கு விருப்பமான மொழியைத் தேர்ந்தெடுக்கவும்.",
+  "onboardingWhatIsAstrology": "ஜோதிடம் என்றால் என்ன?",
+  "onboardingWhatIsAstrologyDesc": "ஜோதிடம் என்பது வான உடல்களைப் பற்றிய ஆய்வு...",
+  "onboardingWhyUseApp": "இந்த பயன்பாட்டை ஏன் பயன்படுத்த வேண்டும்?",
+  "onboardingWhyUseAppDesc": "தனிப்பயனாக்கப்பட்ட ஜாதகங்கள், தினசரி கணிப்புகள் மற்றும் தகவலறிந்த முடிவுகளை எடுக்க வழிகாட்டுதல்களைப் பெறுங்கள்.",
+  "onboardingHowToUse": "இந்த பயன்பாட்டை எவ்வாறு பயன்படுத்துவது?",
+  "onboardingHowToUseDesc": "எளிதாக செல்லவும், தினசரி ஜாதகங்களைச் சரிபார்க்கவும், துல்லியமான கணிப்புகளுக்கு உங்கள் சுயவிவரத்தை நிர்வகிக்கவும்.",
+  "onboardingGetStarted": "தொடங்குங்கள்",
+  "onboardingNewUser": "புதிய பயனர்",
+  "onboardingExistingUser": "ஏற்கனவே உள்ள பயனர்",
+  "onboardingBack": "மீண்டும்",
+  "onboardingNext": "அடுத்து",
+  "userIdNotFound": "பயனர் ஐடி கிடைக்கவில்லை. உள்நுழையவும் அல்லது உங்கள் சுயவிவரத்தை அமைக்கவும்.",
+  "clearNotificationsTitle": "அறிவிப்புகளை அழி",
+  "clearNotificationsMessage": "எல்லா அறிவிப்புகளையும் அழிக்க விரும்புகிறீர்களா?",
+  "clearNotificationsSuccess": "அனைத்து அறிவிப்புகளும் வெற்றிகரமாக அழிக்கப்பட்டன.",
+  "clearHoroscopeTitle": "தெளிவான ஜாதகம்",
+  "clearHoroscopeMessage": "உங்கள் ஜாதகத் தரவை நிச்சயமாக அழிக்க விரும்புகிறீர்களா?",
+  "clearHoroscopeSuccess": "ஜாதகம் வெற்றிகரமாக அழிக்கப்பட்டது.",
+  "clearChatTitle": "அரட்டை வரலாற்றை அழி",
+  "clearChatMessage": "உங்கள் அரட்டை வரலாறு முழுவதையும் நீக்க விரும்புகிறீர்களா?",
+  "clearChatLocal": "அரட்டை உள்ளூரில் அழிக்கப்பட்டது.",
+  "deleteAccountTitle": "கணக்கை நீக்கு",
+  "deleteAccountMessage": "உங்கள் கணக்கை நீக்க விரும்புகிறீர்களா? இது உங்கள் அரட்டை வரலாறு மற்றும் அறிவிப்புகள் அனைத்தையும் அழிக்கும்.",
+  "deleteAccountSuccess": "உங்கள் கணக்கும் எல்லா தரவும் நீக்கப்பட்டன.",
+  "deleteAccountError": "கணக்கை நீக்குவதில் பிழை",
+  "logoutTitle": "வெளியேறு",
+  "logoutMessage": "நீங்கள் நிச்சயமாக வெளியேற விரும்புகிறீர்களா?",
+  "termsPrivacyTitle": "விதிமுறைகள் & தனியுரிமை",
+  "privacyPolicyTitle": "தனியுரிமைக் கொள்கை",
+  "termsConditionsTitle": "விதிமுறைகளும் நிபந்தனைகளும்",
+  "dataControlTitle": "தரவு கட்டுப்பாடு",
+  "cancelButton": "ரத்துசெய்",
+  "confirmButton": "உறுதிப்படுத்தவும்",
+  "clearQuestionsSuccess": "அனைத்து கேள்விகளும் வெற்றிகரமாக நீக்கப்பட்டன.",
+  "yoginiLabel": "யோகினி",
+  "lordLabel": "இறைவன்",
+  "startLabel": "தொடங்கு",
+  "recoverAccount": "கணக்கை மீட்டெடுங்கள்",
+  "endLabel": "முடிவு",
+  "startDateLabel": "தொடக்க தேதி",
+  "endDateLabel": "முடிவு தேதி",
+  "notAvailable": "கிடைக்கவில்லை",
+  "noData": "தரவு இல்லை",
+  "unknownError": "தெரியாத பிழை",
+  "retryButton": "மீண்டும் முயற்சிக்கவும்",
+  "kundaliGeneratorTitle": "குண்டலி ஜெனரேட்டர்",
+  "natalChartTitle": "பிறப்பு விளக்கப்படம்",
+  "lagnaLabel": "லக்னம்",
+  "rashiLabel": "ராஷி",
+  "ascDegreeLabel": "ஏறுவரிசை பட்டம்",
+  "vimshottariDashaTitle": "விம்ஷோத்தரி தசா",
+  "yoginiDashaTitle": "யோகினி தசா",
+  "unknown": "தெரியவில்லை",
+  "clearHoroscope": "தெளிவான ஜாதகம்",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "அறிவிப்புகளை அழி",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "அரட்டை வரலாற்றை அழி",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "வெளியேறு",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "கணக்கை நீக்கு",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "அனைத்து புலங்களும் தேவை.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "கணக்கு வெற்றிகரமாக மீட்டெடுக்கப்பட்டது.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "மீட்பு தோல்வியடைந்தது. உங்கள் தகவலைச் சரிபார்க்கவும்.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "மீட்பு ரகசியம்:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "எங்களை பற்றி",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "எங்கள் நிறுவனம் பற்றி",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "எங்கள் பயனர்களுக்கு சிறந்த ஜோதிட அனுபவத்தை வழங்க நாங்கள் உறுதிபூண்டுள்ளோம்.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "எங்கள் நோக்கம்",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "பயனர்கள் தங்கள் வாழ்க்கையில் தகவலறிந்த முடிவுகளை எடுக்க உதவும் வகையில் துல்லியமான மற்றும் தனிப்பயனாக்கப்பட்ட ஜோதிட நுண்ணறிவுகளை வழங்குதல்.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "எங்கள் தொலைநோக்கு",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "தொழில்நுட்பத்தையும் பண்டைய ஞானத்தையும் இணைத்து, மிகவும் நம்பகமான ஜோதிட தளமாக மாறுதல்.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "எங்கள் மதிப்புகள்",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "நேர்மை, துல்லியம், பயனர் மையப்படுத்தப்பட்ட வடிவமைப்பு மற்றும் தொடர்ச்சியான புதுமை.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "எங்களை தொடர்பு கொள்ள",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "மின்னஞ்சல்: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "வலைத்தளம்: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "வாடிக்கையாளர் ஆதரவு",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "நாங்கள் உதவ இங்கே இருக்கிறோம்",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "கீழே உள்ள படிவத்தை நிரப்பவும், எங்கள் ஆதரவு குழு விரைவில் உங்களைத் தொடர்பு கொள்ளும்.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "உங்கள் பெயர்",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "உங்கள் மின்னஞ்சல் முகவரி",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "செய்தி",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "உங்கள் மின்னஞ்சலை உள்ளிடவும்",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "செல்லுபடியாகும் மின்னஞ்சல் முகவரியை உள்ளிடவும்.",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "{fieldName} ஐ உள்ளிடவும்",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "அனுப்பவும்",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "அனுப்புகிறது...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ மின்னஞ்சல் வெற்றிகரமாக அனுப்பப்பட்டது!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ மின்னஞ்சல் அனுப்ப முடியவில்லை.",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "ஜோதிட அகராதி",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "தேடல் சொற்கள்...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "எந்த சொற்களும் கிடைக்கவில்லை.",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "கேள்விகளை வாங்கவும்",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "பயனர் அங்கீகரிக்கப்படவில்லை.",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "ஸ்டோர் தரவை ஏற்ற முடியவில்லை.",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "அங்கீகார டோக்கன் இல்லை.",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "ஆஸ்ட்ரோ அரட்டை செயலி",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ பணம் செலுத்தப்பட்டது! கேள்வி அனுப்பப்பட்டது.",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ பணம் செலுத்துதல் தோல்வியடைந்தது: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "உங்கள் இருப்பு",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} கேள்விகள்",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "கிடைக்கும் சலுகைகள்",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} கேள்வி",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "வாங்கவும்",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 தினசரி ஜாதகம்",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "பயனர் ஐடி இல்லை.",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "ஜாதகங்களைப் பெற முடியவில்லை.",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "ஜாதகம் கிடைக்கவில்லை.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "அடையாளம்",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "இன்று",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "நேற்று",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "இந்த வாரம்",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "கடந்த மாதம்",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "அரட்டை",
+  "typeYourQuestionHint": "உங்கள் கேள்வியை தட்டச்சு செய்யவும்...",
+  "paymentRequired": "கட்டணம் செலுத்த வேண்டும்",
+  "paymentRequiredMessage": "உங்கள் இலவச கேள்விகளைப் பயன்படுத்திவிட்டீர்கள். தொடர ₹50 செலுத்துங்கள்.",
+  "payNowButton": "இப்போதே பணம் செலுத்துங்கள்",
+  "freeQuestionsRemaining": "{count} மீதமுள்ள இலவச கேள்விகள்",
+  "paidQuestionsRemaining": "{count} மீதமுள்ள பணம் செலுத்திய கேள்விகள்",
+  "thankYouFeedback": "உங்கள் கருத்துக்கு நன்றி!",
+  "ratingSubmitted": "மதிப்பீடு சமர்ப்பிக்கப்பட்டது!",
+  "setUserIdFirst": "முதலில் உங்கள் பயனர் ஐடியை அமைக்கவும்.",
+  "failedToFetchPrevious": "முந்தைய கேள்விகள் மற்றும் பதில்களைப் பெற முடியவில்லை.",
+  "errorOccurred": "பிழை: {error}",
+  "drawerAstroProfile": "ஆஸ்ட்ரோ சுயவிவரம்",
+  "drawerDailyHoroscope": "தினசரி ஜாதகம்",
+  "drawerBuyQuestions": "கேள்விகளை வாங்கவும்",
+  "drawerAstroDictionary": "ஜோதிட அகராதி",
+  "drawerSettings": "அமைப்புகள்",
+  "drawerCustomerSupport": "வாடிக்கையாளர் ஆதரவு",
+  "drawerAbout": "பற்றி",
+  "drawerProfileSettings": "சுயவிவர அமைப்புகள்",
+  "demoNotificationTitle": "🔔 டெமோ அறிவிப்பு",
+  "demoNotificationBody": "இது உங்கள் பயன்பாட்டிலிருந்து வந்த சோதனை அறிவிப்பு!",
+  "notificationsTitle": "அறிவிப்புகள்",
+  "noNotifications": "அறிவிப்புகள் இல்லை",
+  "allTab": "அனைத்தும்",
+  "markAllAsRead": "அனைத்தையும் படித்ததாகக் குறி",
+  "notificationMarkedRead": "அறிவிப்பு படித்ததாகக் குறிக்கப்பட்டது",
+  "failedToLoadNotifications": "அறிவிப்புகளை ஏற்ற முடியவில்லை.",
+  "failedToMarkRead": "படித்ததாகக் குறிக்க முடியவில்லை.",
+  "failedToMarkAllRead": "அனைத்தையும் படித்ததாகக் குறிக்க முடியவில்லை.",
+  "socketConnected": "சாக்கெட் இணைக்கப்பட்டது",
+  "socketDisconnected": "சாக்கெட் துண்டிக்கப்பட்டது",
+  "newNotificationReceived": "புதிய அறிவிப்பு பெறப்பட்டது",
+  "generalCategory": "பொது",
+  "horoscopeCategory": "ஜாதகம்",
+  "chatCategory": "அரட்டை",
+  "systemCategory": "அமைப்பு",
+  "updateCategory": "புதுப்பிப்புகள்",
+  "howToAskTitle": "எப்படி கேட்பது",
+  "noQuestionsAvailable": "கேள்விகள் எதுவும் இல்லை.",
+  "failedToLoadQuestions": "கேள்விகளை ஏற்ற முடியவில்லை.",
+  "pullToRefresh": "புதுப்பிக்க இழுக்கவும்",
+  "careerCategory": "தொழில்",
+  "loveCategory": "காதல் & உறவுகள்",
+  "healthCategory": "சுகாதாரம்",
+  "financeCategory": "நிதி",
+  "familyCategory": "குடும்பம்",
+  "educationCategory": "கல்வி",
+  "travelCategory": "பயணம்",
+  "spiritualCategory": "ஆன்மீகம்",
+  "profileLoaded": "சுயவிவரம் வெற்றிகரமாக ஏற்றப்பட்டது",
+  "imageUploaded": "படம் வெற்றிகரமாக பதிவேற்றப்பட்டது.",
+  "savedInformationConfirmation": "நான் இந்த தகவலை சேமித்துள்ளேன்.",
+  "noHistoryAvailable": "வரலாறு எதுவும் கிடைக்கவில்லை.",
+  "missingUserIdError": "பயனர் ஐடி அவசியம்",
+  "networkError": "நெட்வொர்க் பிழை. மீண்டும் முயற்சிக்கவும்.",
+  "timeoutError": "கோரிக்கை நேரம் முடிந்தது",
+  "genericError": "ஏதோ தவறாகிவிட்டது.",
+  "reactionUpdateError": "எதிர்வினையைப் புதுப்பிக்க முடியவில்லை.",
+  "noSearchResults": "தேடல் முடிவுகள் எதுவும் கிடைக்கவில்லை.",
+  "clearSearch": "தேடலை அழி",
+  "resultsFound": "முடிவுகள் கிடைத்தன",
+  "recoverySecretHint": "நகலெடுத்து ஒட்டுவது வேலை செய்யாமல் போகலாம், கைமுறையாக தட்டச்சு செய்யவும்.",
+  "recoverAccountDescription": "உங்கள் கணக்கை மீட்டெடுக்க இந்தப் படிகளைப் பின்பற்றவும்.",
+  "processingLabel": "செயலாக்குகிறது...",
+  "clearChatSuccess": "அரட்டை வெற்றிகரமாக அழிக்கப்பட்டது.",
+  "notificationsEnabled": "அறிவிப்புகள் இயக்கப்பட்டன",
+  "notificationsDisabled": "அறிவிப்புகள் முடக்கப்பட்டுள்ளன",
+  "securityNotice": "உங்கள் தரவு பாதுகாப்பாக குறியாக்கம் செய்யப்பட்டு சேமிக்கப்படுகிறது.",
+  "loading": "ஏற்றுகிறது...",
+  "selectLanguage": "மொழியைத் தேர்ந்தெடுங்கள்",
+  "onboardingGetStartedDesc": "உங்கள் மொழியைத் தேர்ந்தெடுப்பதன் மூலம் தொடங்குங்கள்.",
+  "accountRecoveryTitle": "🔐 கணக்கு மீட்பு விவரங்கள்",
+  "recoveryInstructions": "இந்தத் தகவலைப் பாதுகாப்பாகச் சேமிக்கவும். உங்கள் கணக்கை மீட்டெடுக்க இது உங்களுக்குத் தேவைப்படும்.",
+  "importantNotice": "⚠️ முக்கியமானது:",
+  "astrologerProfileTitle": "ஜோதிடர் சுயவிவரம்",
+  "personalAstrologer": "தனிப்பட்ட ஜோதிடர்",
+  "makePersonalAstrologer": "தனிப்பட்ட ஜோதிடரை உருவாக்குங்கள்",
+  "favoriteDescription": "உங்கள் கேள்விகள் இந்த ஜோதிடருக்கு முன்னுரிமை அளிக்கப்படும். கிடைக்கவில்லை என்றால், மற்றொரு தகுதிவாய்ந்த ஜோதிடர் உங்களுக்கு உதவுவார்.",
+  "educationQualifications": "கல்வி & தகுதிகள்",
+  "aboutSection": "பற்றி",
+  "shareProfile": "சுயவிவரத்தைப் பகிரவும்",
+  "loadingAstrologer": "ஜோதிடர் விவரங்களை ஏற்றுகிறது...",
+  "failedToLoadAstrologer": "ஜோதிடர் விவரங்களை ஏற்ற முடியவில்லை.",
+  "authenticationRequired": "அங்கீகாரம் தேவை. உள்நுழையவும்.",
+  "securityCheckFailed": "பாதுகாப்பு சோதனை தோல்வியடைந்தது: {error}",
+  "addedToFavorites": "🎯 {name} இப்போது உங்கள் தனிப்பட்ட ஜோதிடர்.",
+  "removedFromFavorites": "✅ {name} பிடித்தவையிலிருந்து அகற்றப்பட்டது.",
+  "toggleFavoriteError": "பிடித்த நிலையைப் புதுப்பிக்க முடியவில்லை.",
+  "shareMessage": "{name}\n🎓 கல்வி: {education}\n📜 தகுதி: {qualification}\n⏳ அனுபவம்: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "வழங்கப்படவில்லை",
+  "reviews": "({count} மதிப்புரைகள்)",
+  "specialties": "சிறப்புகள்",
+  "experience": "அனுபவம்",
+  "qualification": "தகுதி",
+  "education": "கல்வி",
+  "recoveryTips": "• இந்தத் தகவலின் ஸ்கிரீன்ஷாட்டை எடுக்கவும்\n• பாதுகாப்பான இடத்தில் சேமிக்கவும்\n• யாருடனும் பகிர வேண்டாம்\n• இது ஒரு முறை மட்டுமே காண்பிக்கப்படும்"
+}

@@ -1,0 +1,439 @@
+{
+  "@@locale": "gd",
+  "settingsTitle": "Roghainnean",
+  "notificationSettings": "Roghainnean Fiosrachaidh",
+  "privacySettings": "Roghainnean Prìobhaideachd",
+  "accountSettings": "Roghainnean a' Chunntais",
+  "languageSettings": "Roghainnean Cànain",
+  "languageChanged": "Cànan air atharrachadh",
+  "existingUserButton": "Tha mi nam neach-cleachdaidh a th’ ann mar-thà",
+  "chooseCountryTitle": "Tagh Dùthaich",
+  "yesText": "Tha",
+  "noText": "Chan eil",
+  "appBarTitle": "Roghainnean Pròifil",
+  "userIdLabel": "ID Cleachdaiche *",
+  "nameLabel": "Ainm",
+  "birthCountryLabel": "Dùthaich Breith",
+  "birthCityLabel": "Baile-breith",
+  "countrySelectionTitle": "Tagh do dhùthaich",
+  "maleLabel": "Fireann",
+  "femaleLabel": "Boireann",
+  "birthDateLabel": "Ceann-latha breith",
+  "birthDatePlaceholder": "Tagh Ceann-latha Breith",
+  "birthTimeLabel": "Àm Breith",
+  "birthTimePlaceholder": "Tagh Àm Breith",
+  "saveProfileButton": "Sàbhail Pròifil",
+  "noCitiesFound": "Cha deach bailtean a lorg",
+  "cityPlaceholder": "Cuir a-steach baile-mòr ann an {country}",
+  "countryFirstPlaceholder": "Tagh dùthaich an toiseach",
+  "versionHistoryTitle": "Eachdraidh nan Tionndaidhean",
+  "notSetText": "Gun a shuidheachadh",
+  "nameHistory": "Ainm: {name}",
+  "cityHistory": "Baile-mòr: {city}",
+  "countryHistory": "Dùthaich: {country}",
+  "genderHistory": "Gnè: {gender}",
+  "birthDateHistory": "Ceann-latha breith: {date}",
+  "birthTimeHistory": "Àm Breith: {time}",
+  "locationHistory": "Àite: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Stàit: {state}",
+  "versionFromText": "Air ùrachadh air {date}",
+  "userIdRequired": "Tha feum air ID cleachdaiche",
+  "profileSaved": "Pròifil air a shàbhaladh gu soirbheachail",
+  "saveFailed": "Dh’fhàillig sàbhaladh a’ phròifil",
+  "errorPrefix": "Mearachd:",
+  "onboardingChooseLanguage": "Tagh do chànan",
+  "onboardingChooseLanguageDesc": "Tagh do chànan as fheàrr leat gus leantainn air adhart.",
+  "onboardingWhatIsAstrology": "Dè a th' ann an reul-eòlas?",
+  "onboardingWhatIsAstrologyDesc": "Is e reul-eòlas sgrùdadh air cuirp nèamhaidh...",
+  "onboardingWhyUseApp": "Carson a chleachdas tu an aplacaid seo?",
+  "onboardingWhyUseAppDesc": "Faigh horoscopan pearsanta, ro-innse làitheil, agus stiùireadh gus co-dhùnaidhean fiosraichte a dhèanamh.",
+  "onboardingHowToUse": "Ciamar a chleachdas mi an aplacaid seo?",
+  "onboardingHowToUseDesc": "Seòl gu furasta, thoir sùil air horoscopan làitheil, agus stiùirich do phròifil airson ro-innse ceart.",
+  "onboardingGetStarted": "Tòisich",
+  "onboardingNewUser": "Cleachdaiche Ùr",
+  "onboardingExistingUser": "Cleachdaiche a th’ ann mar-thà",
+  "onboardingBack": "Air ais",
+  "onboardingNext": "An ath rud",
+  "userIdNotFound": "Cha deach ID cleachdaiche a lorg. Log a-steach no suidhich do phròifil.",
+  "clearNotificationsTitle": "Glan fiosan",
+  "clearNotificationsMessage": "A bheil thu cinnteach gu bheil thu airson na fiosan uile a dhubhadh às?",
+  "clearNotificationsSuccess": "Chaidh a h-uile fios a ghlanadh gu soirbheachail.",
+  "clearHoroscopeTitle": "Horoscope Soilleir",
+  "clearHoroscopeMessage": "A bheil thu cinnteach gu bheil thu airson dàta an horoscope agad a ghlanadh?",
+  "clearHoroscopeSuccess": "Horoscope air a ghlanadh gu soirbheachail.",
+  "clearChatTitle": "Glan Eachdraidh a' Chabaid",
+  "clearChatMessage": "A bheil thu cinnteach gu bheil thu airson eachdraidh do chòmhraidh gu lèir a dhubhadh às?",
+  "clearChatLocal": "Chaidh an còmhradh a ghlanadh gu h-ionadail.",
+  "deleteAccountTitle": "Sguab às Cunntas",
+  "deleteAccountMessage": "A bheil thu cinnteach gu bheil thu airson do chunntas a dhubhadh às? Glanaidh seo eachdraidh do chòmhraidh agus do fhiosan uile cuideachd.",
+  "deleteAccountSuccess": "Chaidh do chunntas agus a h-uile dàta a thoirt air falbh.",
+  "deleteAccountError": "Mearachd le bhith a’ sguabadh às cunntas",
+  "logoutTitle": "Log a-mach",
+  "logoutMessage": "A bheil thu cinnteach gu bheil thu airson logadh a-mach?",
+  "termsPrivacyTitle": "Teirmichean & Prìobhaideachd",
+  "privacyPolicyTitle": "Poileasaidh Prìobhaideachd",
+  "termsConditionsTitle": "Teirmichean & Cùmhnantan",
+  "dataControlTitle": "Smachd Dàta",
+  "cancelButton": "Sguir dheth",
+  "confirmButton": "Dearbhaich",
+  "clearQuestionsSuccess": "Chaidh a h-uile ceist a dhubhadh às gu soirbheachail.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Tighearna",
+  "startLabel": "Tòisich",
+  "recoverAccount": "Faigh air ais Cunntas",
+  "endLabel": "Crìoch",
+  "startDateLabel": "Ceann-latha Tòiseachaidh",
+  "endDateLabel": "Ceann-latha crìochnachaidh",
+  "notAvailable": "Chan eil e ri fhaighinn",
+  "noData": "Gun dàta",
+  "unknownError": "Mearachd neo-aithnichte",
+  "retryButton": "Feuch a-rithist",
+  "kundaliGeneratorTitle": "Gineadair Kundali",
+  "natalChartTitle": "Cairt Breith",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Ceum Àrdachaidh",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Neo-aithnichte",
+  "clearHoroscope": "Horoscope Soilleir",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Glan fiosan",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Glan Eachdraidh a' Chabaid",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Log a-mach",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Sguab às Cunntas",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Tha a h-uile raon riatanach.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Chaidh an cunntas fhaighinn air ais gu soirbheachail.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Dh’fhàillig an ath-bheothachadh. Thoir sùil air an fhiosrachadh agad.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Dìomhaireachd Ath-bheothachaidh:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Mu ar deidhinn",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Mu ar Companaidh",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Tha sinn dealasach a thaobh an t-eòlas reul-eòlais as fheàrr a lìbhrigeadh don luchd-cleachdaidh againn.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Ar Misean",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Gus lèirsinn reul-eòlais cheart is pearsanta a thoirt seachad gus luchd-cleachdaidh a chuideachadh gus co-dhùnaidhean fiosraichte a dhèanamh nam beatha.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Ar Lèirsinn",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Gus a bhith mar an àrd-ùrlar reul-eòlais as earbsaiche, a’ cothlamadh teicneòlais agus gliocas àrsaidh.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Ar Luachan",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Ionracas, Cruinneas, Dealbhadh a tha ag amas air an neach-cleachdaidh, agus Nuadh-chruthachadh leantainneach.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Cuir fios thugainn",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Post-d: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Làrach-lìn: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Taic Luchd-ceannach",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Tha sinn an seo gus cuideachadh",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Lìon am foirm gu h-ìosal agus cuiridh an sgioba taic againn fios thugad cho luath ‘s a ghabhas.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "D'Ainm",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Do phost-d",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Teachdaireachd",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Cuir a-steach do phost-d",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Cuir a-steach seòladh puist-d dligheach",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Cuir a-steach {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Cuir",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "A’ cur…",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Post-d air a chur gu soirbheachail!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Dh’fhàillig post-d a chur",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Faclair Astro",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Teirmean rannsachaidh...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Cha deach teirmean a lorg",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Ceistean Ceannaich",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Cleachdaiche gun dearbhadh",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Dh’fhàillig luchdachadh dàta na stòrais",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Comharra dearbhaidh a dhìth",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Aplacaid cabadaich Astro",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Pàigheadh soirbheachail! Ceist air a cur",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Dh’fhàillig am pàigheadh: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Do Chothromachadh",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "Ceistean {count}",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Tairgsean a tha rim faighinn",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "Ceist {count}",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Ceannaich",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Horoscope Làitheil",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Tha ID cleachdaiche a dhìth",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Dh’fhàillig faighinn nan horoscopan",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Cha deach horoscope a lorg.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Soidhne",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "An-diugh",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "An-dè",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "An t-Seachdain seo",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "A’ mhìos a chaidh seachad",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Còmhradh",
+  "typeYourQuestionHint": "Sgrìobh do cheist...",
+  "paymentRequired": "Pàigheadh a dhìth",
+  "paymentRequiredMessage": "Tha thu air na ceistean an-asgaidh agad a chleachdadh. Pàigh ₹50 gus leantainn air adhart.",
+  "payNowButton": "Pàigh a-nis",
+  "freeQuestionsRemaining": "{count} ceistean saora air fhàgail",
+  "paidQuestionsRemaining": "{count} ceistean pàighte air fhàgail",
+  "thankYouFeedback": "Tapadh leibh airson ur fios-air-ais!",
+  "ratingSubmitted": "Rangachadh air a chur a-steach!",
+  "setUserIdFirst": "Suidhich an ID Cleachdaiche agad an toiseach",
+  "failedToFetchPrevious": "Dh’fhàillig e ri ceistean is freagairtean roimhe fhaighinn",
+  "errorOccurred": "Mearachd: {error}",
+  "drawerAstroProfile": "Pròifil Astro",
+  "drawerDailyHoroscope": "Horoscope Làitheil",
+  "drawerBuyQuestions": "Ceistean Ceannaich",
+  "drawerAstroDictionary": "Faclair Astro",
+  "drawerSettings": "Roghainnean",
+  "drawerCustomerSupport": "Taic Luchd-ceannach",
+  "drawerAbout": "Mu dheidhinn",
+  "drawerProfileSettings": "Roghainnean Pròifil",
+  "demoNotificationTitle": "🔔 Fiosrachadh Taisbeanaidh",
+  "demoNotificationBody": "Seo fios deuchainn bhon aplacaid agad!",
+  "notificationsTitle": "Fiosan",
+  "noNotifications": "Gun fiosan",
+  "allTab": "Uile",
+  "markAllAsRead": "Comharraich a h-uile rud mar air a leughadh",
+  "notificationMarkedRead": "Fiosrachadh air a chomharrachadh mar air a leughadh",
+  "failedToLoadNotifications": "Dh’fhàillig luchdachadh fiosan",
+  "failedToMarkRead": "Dh’fhàillig comharrachadh mar air a leughadh",
+  "failedToMarkAllRead": "Dh’fhàillig comharrachadh a h-uile càil mar air a leughadh",
+  "socketConnected": "Socaid ceangailte",
+  "socketDisconnected": "Socaid air a dhì-cheangal",
+  "newNotificationReceived": "Fios ùr air fhaighinn",
+  "generalCategory": "Coitcheann",
+  "horoscopeCategory": "Horoscope",
+  "chatCategory": "Còmhradh",
+  "systemCategory": "Siostam",
+  "updateCategory": "Ùrachaidhean",
+  "howToAskTitle": "Mar a dh'iarras tu",
+  "noQuestionsAvailable": "Chan eil ceistean ri fhaighinn",
+  "failedToLoadQuestions": "Dh’fhàillig luchdachadh cheistean",
+  "pullToRefresh": "Tarraing gus ùrachadh",
+  "careerCategory": "Dreuchd",
+  "loveCategory": "Gràdh is Dàimhean",
+  "healthCategory": "Slàinte",
+  "financeCategory": "Ionmhas",
+  "familyCategory": "Teaghlach",
+  "educationCategory": "Foghlam",
+  "travelCategory": "Siubhal",
+  "spiritualCategory": "Spioradail",
+  "profileLoaded": "Chaidh am pròifil a luchdachadh gu soirbheachail",
+  "imageUploaded": "Chaidh an dealbh a luchdadh suas gu soirbheachail",
+  "savedInformationConfirmation": "Tha mi air an fhiosrachadh seo a shàbhaladh",
+  "noHistoryAvailable": "Chan eil eachdraidh ri fhaighinn",
+  "missingUserIdError": "Tha feum air ID cleachdaiche",
+  "networkError": "Mearachd lìonra. Feuch ris a-rithist.",
+  "timeoutError": "Dh’fhalbh an ùine air an iarrtas",
+  "genericError": "Chaidh rudeigin ceàrr",
+  "reactionUpdateError": "Dh’fhàillig ùrachadh a dhèanamh air an ath-bhualadh",
+  "noSearchResults": "Cha deach toraidhean rannsachaidh a lorg",
+  "clearSearch": "Glan an rannsachadh",
+  "resultsFound": "Toraidhean a chaidh a lorg",
+  "recoverySecretHint": "Is dòcha nach obraich lethbhreac-pasgadh, sgrìobh le làimh",
+  "recoverAccountDescription": "Lean na ceumannan seo gus do chunntas fhaighinn air ais",
+  "processingLabel": "Giullachd...",
+  "clearChatSuccess": "Chaidh an còmhradh a ghlanadh gu soirbheachail",
+  "notificationsEnabled": "Fiosan air an comasachadh",
+  "notificationsDisabled": "Fiosan air an cur à comas",
+  "securityNotice": "Tha an dàta agad air a chrioptachadh agus air a stòradh gu tèarainte",
+  "loading": "A’ luchdadh...",
+  "selectLanguage": "Tagh Cànan",
+  "onboardingGetStartedDesc": "Tòisich le bhith a’ taghadh do chànan",
+  "accountRecoveryTitle": "🔐 Mion-fhiosrachadh mu Ath-bheothachadh Cunntais",
+  "recoveryInstructions": "Feuch an sàbhail thu am fiosrachadh seo gu tèarainte. Bidh feum agad air gus do chunntas fhaighinn air ais.",
+  "importantNotice": "⚠️ Cudromach:",
+  "astrologerProfileTitle": "Pròifil Reul-eòlaiche",
+  "personalAstrologer": "Reul-eòlaiche Pearsanta",
+  "makePersonalAstrologer": "Dèan Reul-eòlaiche Pearsanta",
+  "favoriteDescription": "Thèid prìomhachas a thoirt do na ceistean agad don reul-eòlaiche seo. Mura h-eil e ri fhaighinn, cuidichidh reul-eòlaiche teisteanasach eile thu.",
+  "educationQualifications": "Foghlam & Teisteanasan",
+  "aboutSection": "Mu dheidhinn",
+  "shareProfile": "Roinn Pròifil",
+  "loadingAstrologer": "A’ luchdachadh fiosrachadh mu reul-eòlaiche...",
+  "failedToLoadAstrologer": "Dh’fhàillig luchdachadh mion-fhiosrachadh an reul-eòlaiche",
+  "authenticationRequired": "Feumar dearbhadh. Log a-steach, ma 's e do thoil e.",
+  "securityCheckFailed": "Dh’fhàillig sgrùdadh tèarainteachd: {error}",
+  "addedToFavorites": "🎯 {name} a-nis 's e do Reul-eòlaiche Pearsanta a th' ann",
+  "removedFromFavorites": "✅ Chaidh {name} a thoirt air falbh bho na rudan as fheàrr leat",
+  "toggleFavoriteError": "Dh’fhàillig ùrachadh inbhe as fheàrr leat",
+  "shareMessage": "{name}\n🎓 Foghlam: {education}\n📜 Teisteanas: {qualification}\n⏳ Eòlas: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Gun a thoirt seachad",
+  "reviews": "({count} lèirmheasan)",
+  "specialties": "Speisealachdan",
+  "experience": "Eòlas",
+  "qualification": "Teisteanas",
+  "education": "Foghlam",
+  "recoveryTips": "• Gabh dealbh-sgrìn den fhiosrachadh seo\n• Stòraich e ann an àite tèarainte\n• Na roinn le duine sam bith\n• Cha tèid seo a shealltainn ach aon uair"
+}

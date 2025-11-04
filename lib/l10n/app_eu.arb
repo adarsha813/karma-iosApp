@@ -1,0 +1,439 @@
+{
+  "@@locale": "eu",
+  "settingsTitle": "Ezarpenak",
+  "notificationSettings": "Jakinarazpenen ezarpenak",
+  "privacySettings": "Pribatutasun ezarpenak",
+  "accountSettings": "Kontuaren ezarpenak",
+  "languageSettings": "Hizkuntza-ezarpenak",
+  "languageChanged": "Hizkuntza aldatu da",
+  "existingUserButton": "Erabiltzaile bat naiz",
+  "chooseCountryTitle": "Aukeratu herrialdea",
+  "yesText": "Bai",
+  "noText": "Ez",
+  "appBarTitle": "Profilaren ezarpenak",
+  "userIdLabel": "Erabiltzaile IDa *",
+  "nameLabel": "Izena",
+  "birthCountryLabel": "Jaioterria",
+  "birthCityLabel": "Jaioterria",
+  "countrySelectionTitle": "Aukeratu zure herrialdea",
+  "maleLabel": "Gizonezkoa",
+  "femaleLabel": "Emakumezkoa",
+  "birthDateLabel": "Jaiotze data",
+  "birthDatePlaceholder": "Hautatu jaiotze data",
+  "birthTimeLabel": "Jaiotze ordua",
+  "birthTimePlaceholder": "Aukeratu jaiotze ordua",
+  "saveProfileButton": "Gorde profila",
+  "noCitiesFound": "Ez da hiririk aurkitu",
+  "cityPlaceholder": "Sartu hiria hemen: {country}",
+  "countryFirstPlaceholder": "Hautatu herrialdea lehenik",
+  "versionHistoryTitle": "Bertsioen historia",
+  "notSetText": "Ezarri gabe",
+  "nameHistory": "Izena: {name}",
+  "cityHistory": "Hiria: {city}",
+  "countryHistory": "Herrialdea: {country}",
+  "genderHistory": "Generoa: {gender}",
+  "birthDateHistory": "Jaiotze data: {date}",
+  "birthTimeHistory": "Jaiotze ordua: {time}",
+  "locationHistory": "Kokapena: {latitude}, {longitude}",
+  "timezoneHistory": "Ordu-zona: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Estatua: {state}",
+  "versionFromText": "Eguneratua {date}",
+  "userIdRequired": "Erabiltzaile IDa beharrezkoa da",
+  "profileSaved": "Profila behar bezala gorde da",
+  "saveFailed": "Ezin izan da profila gorde",
+  "errorPrefix": "Errorea:",
+  "onboardingChooseLanguage": "Aukeratu zure hizkuntza",
+  "onboardingChooseLanguageDesc": "Hautatu nahiago duzun hizkuntza jarraitzeko.",
+  "onboardingWhatIsAstrology": "Zer da Astrologia?",
+  "onboardingWhatIsAstrologyDesc": "Astrologia zeruko gorputzen azterketa da...",
+  "onboardingWhyUseApp": "Zergatik erabili aplikazio hau?",
+  "onboardingWhyUseAppDesc": "Lortu horoskopo pertsonalizatuak, eguneroko iragarpenak eta erabaki informatuak hartzeko orientazioa.",
+  "onboardingHowToUse": "Nola erabili aplikazio hau?",
+  "onboardingHowToUseDesc": "Erraz nabigatu, eguneroko horoskopoak kontsultatu eta zure profila kudeatu iragarpen zehatzak lortzeko.",
+  "onboardingGetStarted": "Hasi",
+  "onboardingNewUser": "Erabiltzaile berria",
+  "onboardingExistingUser": "Erabiltzaile zaharra",
+  "onboardingBack": "Atzera",
+  "onboardingNext": "Hurrengoa",
+  "userIdNotFound": "Erabiltzaile IDa ez da aurkitu. Mesedez, hasi saioa edo konfiguratu zure profila.",
+  "clearNotificationsTitle": "Garbitu jakinarazpenak",
+  "clearNotificationsMessage": "Ziur zaude jakinarazpen guztiak garbitu nahi dituzula?",
+  "clearNotificationsSuccess": "Jakinarazpen guztiak behar bezala garbitu dira.",
+  "clearHoroscopeTitle": "Horoskopo garbia",
+  "clearHoroscopeMessage": "Ziur zaude zure horoskopoaren datuak garbitu nahi dituzula?",
+  "clearHoroscopeSuccess": "Horoskopoa behar bezala garbitu da.",
+  "clearChatTitle": "Garbitu txataren historia",
+  "clearChatMessage": "Ziur zaude txat-historia guztia ezabatu nahi duzula?",
+  "clearChatLocal": "Txata tokian bertan garbitu da.",
+  "deleteAccountTitle": "Ezabatu kontua",
+  "deleteAccountMessage": "Ziur zaude zure kontua ezabatu nahi duzula? Honek zure txat-historia eta jakinarazpen guztiak ere garbituko ditu.",
+  "deleteAccountSuccess": "Zure kontua eta datu guztiak kendu dira.",
+  "deleteAccountError": "Errorea kontua ezabatzean",
+  "logoutTitle": "Saioa itxi",
+  "logoutMessage": "Ziur zaude saioa itxi nahi duzula?",
+  "termsPrivacyTitle": "Baldintzak eta pribatutasuna",
+  "privacyPolicyTitle": "Pribatutasun Politika",
+  "termsConditionsTitle": "Baldintzak eta zehaztapenak",
+  "dataControlTitle": "Datuen kontrola",
+  "cancelButton": "Utzi",
+  "confirmButton": "Berretsi",
+  "clearQuestionsSuccess": "Galdera guztiak behar bezala ezabatu dira.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Jauna",
+  "startLabel": "Hasi",
+  "recoverAccount": "Berreskuratu kontua",
+  "endLabel": "Amaiera",
+  "startDateLabel": "Hasiera data",
+  "endDateLabel": "Amaiera data",
+  "notAvailable": "Ez dago eskuragarri",
+  "noData": "Daturik ez",
+  "unknownError": "Errore ezezaguna",
+  "retryButton": "Saiatu berriro",
+  "kundaliGeneratorTitle": "Kundali Sorgailua",
+  "natalChartTitle": "Jaiotza-karta",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Goranzko gradua",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Ezezaguna",
+  "clearHoroscope": "Horoskopo garbia",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Garbitu jakinarazpenak",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Garbitu txataren historia",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Saioa itxi",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Ezabatu kontua",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Eremu guztiak bete behar dira.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Kontua arrakastaz berreskuratu da.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Berreskuratzea huts egin du. Egiaztatu zure informazioa.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Berreskuratzeko sekretua:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Guri buruz",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Gure Enpresari Buruz",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Gure erabiltzaileei astrologia esperientzia onena eskaintzeko konpromisoa dugu.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Gure Misioa",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Erabiltzaileei bizitzan erabaki informatuak hartzen laguntzeko astrologia-informazio zehatza eta pertsonalizatua eskaintzea.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Gure ikuspegia",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Teknologia eta antzinako jakinduria konbinatuz, astrologia plataforma fidagarriena bihurtzea.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Gure balioak",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Osotasuna, Zehaztasuna, Erabiltzailean Zentratutako Diseinua eta Etengabeko Berrikuntza.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Jarri gurekin harremanetan",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Helbide elektronikoa: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Webgunea: www.zureenpresa.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Bezeroarentzako Arreta",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Laguntzeko hemen gaude",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Bete beheko formularioa eta gure laguntza taldeak ahalik eta azkarren jarriko da zurekin harremanetan.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Zure izena",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Zure posta elektronikoa",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Mezua",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Sartu zure helbide elektronikoa",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Sartu baliozko helbide elektroniko bat",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Sartu {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Bidali",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Bidaltzen...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Mezu elektronikoa behar bezala bidali da!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Ezin izan da mezu elektronikoa bidali",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro Hiztegia",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Bilaketa-terminoak...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Ez da terminorik aurkitu",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Erosketa galderak",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Erabiltzailea ez dago autentifikatuta",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Ezin izan dira dendako datuak kargatu",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Baimen-tokena falta da",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Txat Aplikazioa",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Ordainketa arrakastatsua! Galdera bidali da",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Ordainketa huts egin du: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Zure saldoa",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Galderak",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Eskuragarri dauden eskaintzak",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Galdera",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Erosi",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Eguneko Horoskopoa",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Erabiltzaile IDa falta da",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Ezin izan dira horoskopoak eskuratu",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Ez da horoskoporik aurkitu.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Sinatu",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Gaur",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Atzo",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Aste honetan",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Aurreko hilabetean",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Txata",
+  "typeYourQuestionHint": "Idatzi zure galdera...",
+  "paymentRequired": "Ordainketa beharrezkoa",
+  "paymentRequiredMessage": "Doako galderak erabili dituzu. Ordaindu 50 ₹ jarraitzeko.",
+  "payNowButton": "Ordaindu orain",
+  "freeQuestionsRemaining": "{count} galdera libre geratzen dira",
+  "paidQuestionsRemaining": "{count} ordainpeko galderak geratzen dira",
+  "thankYouFeedback": "Eskerrik asko zure iritziagatik!",
+  "ratingSubmitted": "Balorazioa bidali da!",
+  "setUserIdFirst": "Mesedez, ezarri zure erabiltzaile IDa lehenik",
+  "failedToFetchPrevious": "Aurreko galderak eta erantzunak berreskuratzea huts egin da",
+  "errorOccurred": "Errorea: {error}",
+  "drawerAstroProfile": "Astro Profila",
+  "drawerDailyHoroscope": "Eguneroko Horoskopoa",
+  "drawerBuyQuestions": "Erosketa galderak",
+  "drawerAstroDictionary": "Astro Hiztegia",
+  "drawerSettings": "Ezarpenak",
+  "drawerCustomerSupport": "Bezeroarentzako Arreta",
+  "drawerAbout": "Buruz",
+  "drawerProfileSettings": "Profilaren ezarpenak",
+  "demoNotificationTitle": "🔔 Demo jakinarazpena",
+  "demoNotificationBody": "Hau zure aplikazioaren proba-jakinarazpen bat da!",
+  "notificationsTitle": "Jakinarazpenak",
+  "noNotifications": "Ez dago jakinarazpenik",
+  "allTab": "Guztiak",
+  "markAllAsRead": "Markatu dena irakurrita bezala",
+  "notificationMarkedRead": "Irakurritako gisa markatutako jakinarazpena",
+  "failedToLoadNotifications": "Ezin izan dira jakinarazpenak kargatu",
+  "failedToMarkRead": "Irakurritako gisa markatzea huts egin da",
+  "failedToMarkAllRead": "Huts egin da dena irakurrita bezala markatzean",
+  "socketConnected": "Entxufea konektatuta",
+  "socketDisconnected": "Entxufea deskonektatuta",
+  "newNotificationReceived": "Jakinarazpen berria jaso da",
+  "generalCategory": "Orokorra",
+  "horoscopeCategory": "Horoskopoa",
+  "chatCategory": "Txata",
+  "systemCategory": "Sistema",
+  "updateCategory": "Eguneraketak",
+  "howToAskTitle": "Nola galdetu",
+  "noQuestionsAvailable": "Ez dago galderarik eskuragarri",
+  "failedToLoadQuestions": "Galderak kargatzea huts egin da",
+  "pullToRefresh": "Tira freskatzeko",
+  "careerCategory": "Karrera",
+  "loveCategory": "Maitasuna eta harremanak",
+  "healthCategory": "Osasuna",
+  "financeCategory": "Finantzak",
+  "familyCategory": "Familia",
+  "educationCategory": "Hezkuntza",
+  "travelCategory": "Bidaiak",
+  "spiritualCategory": "Espirituala",
+  "profileLoaded": "Profila behar bezala kargatu da",
+  "imageUploaded": "Irudia behar bezala kargatu da",
+  "savedInformationConfirmation": "Informazio hau gorde dut",
+  "noHistoryAvailable": "Ez dago historiarik eskuragarri",
+  "missingUserIdError": "Erabiltzaile IDa beharrezkoa da",
+  "networkError": "Sareko errorea. Saiatu berriro.",
+  "timeoutError": "Eskaera denbora-muga gainditu da",
+  "genericError": "Zerbait gaizki joan da",
+  "reactionUpdateError": "Erreakzioa eguneratzea huts egin da",
+  "noSearchResults": "Ez da bilaketa-emaitzarik aurkitu",
+  "clearSearch": "Garbitu bilaketa",
+  "resultsFound": "Emaitzak aurkitu dira",
+  "recoverySecretHint": "Kopiatu-itsatsi aukerak agian ez du funtzionatuko, idatzi eskuz",
+  "recoverAccountDescription": "Jarraitu urrats hauek zure kontua berreskuratzeko",
+  "processingLabel": "Prozesatzen...",
+  "clearChatSuccess": "Txata behar bezala garbitu da",
+  "notificationsEnabled": "Jakinarazpenak gaituta",
+  "notificationsDisabled": "Jakinarazpenak desgaituta",
+  "securityNotice": "Zure datuak modu seguruan enkriptatuta eta gordeta daude",
+  "loading": "Kargatzen...",
+  "selectLanguage": "Hautatu hizkuntza",
+  "onboardingGetStartedDesc": "Hasi zure hizkuntza aukeratuz",
+  "accountRecoveryTitle": "🔐 Kontua berreskuratzeko xehetasunak",
+  "recoveryInstructions": "Gorde informazio hau modu seguruan. Zure kontua berreskuratzeko beharko duzu.",
+  "importantNotice": "⚠️ Garrantzitsua:",
+  "astrologerProfileTitle": "Astrologoaren profila",
+  "personalAstrologer": "Astrologo pertsonala",
+  "makePersonalAstrologer": "Egin astrologo pertsonala",
+  "favoriteDescription": "Zure galderak astrologo honi lehentasuna emango zaizkio. Eskuragarri ez bazaude, beste astrologo kualifikatu batek lagunduko dizu.",
+  "educationQualifications": "Hezkuntza eta Tituluak",
+  "aboutSection": "Buruz",
+  "shareProfile": "Partekatu profila",
+  "loadingAstrologer": "Astrologoaren xehetasunak kargatzen...",
+  "failedToLoadAstrologer": "Astrologoaren xehetasunak kargatzea huts egin du",
+  "authenticationRequired": "Autentifikazioa beharrezkoa da. Mesedez, hasi saioa.",
+  "securityCheckFailed": "Segurtasun-egiaztapena huts egin du: {error}",
+  "addedToFavorites": "🎯 {name} zure Astrologo Pertsonala da orain",
+  "removedFromFavorites": "✅ {name} gogokoetatik kendu da",
+  "toggleFavoriteError": "Gogokoen egoera eguneratzea huts egin da",
+  "shareMessage": "{name}\n🎓 Hezkuntza: {education}\n📜 Titulazioa: {qualification}\n⏳ Esperientzia: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Ez da eman",
+  "reviews": "({count} iritziak)",
+  "specialties": "Espezialitateak",
+  "experience": "Esperientzia",
+  "qualification": "Titulazioa",
+  "education": "Hezkuntza",
+  "recoveryTips": "• Atera informazio honen pantaila-argazki bat\n• Gorde leku seguru batean\n• Ez partekatu inorekin\n• Behin bakarrik erakutsiko da"
+}

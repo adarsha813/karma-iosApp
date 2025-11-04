@@ -1,0 +1,439 @@
+{
+  "@@locale": "ny",
+  "settingsTitle": "Zokonda",
+  "notificationSettings": "Zokonda Zidziwitso",
+  "privacySettings": "Zokonda Zazinsinsi",
+  "accountSettings": "Makonda a akaunti",
+  "languageSettings": "Zokonda pa Chiyankhulo",
+  "languageChanged": "Chinenero chinasintha",
+  "existingUserButton": "Ndine wogwiritsa ntchito",
+  "chooseCountryTitle": "Sankhani Dziko",
+  "yesText": "Inde",
+  "noText": "Ayi",
+  "appBarTitle": "Zokonda pa Mbiri",
+  "userIdLabel": "Dzina Lolowera *",
+  "nameLabel": "Dzina",
+  "birthCountryLabel": "Dziko Lobadwira",
+  "birthCityLabel": "Birth City",
+  "countrySelectionTitle": "Sankhani dziko lanu",
+  "maleLabel": "Mwamuna",
+  "femaleLabel": "Mkazi",
+  "birthDateLabel": "Tsiku lobadwa",
+  "birthDatePlaceholder": "Sankhani Tsiku Lobadwa",
+  "birthTimeLabel": "Nthawi Yobadwa",
+  "birthTimePlaceholder": "Sankhani Nthawi Yobadwa",
+  "saveProfileButton": "Sungani Mbiri",
+  "noCitiesFound": "Palibe mizinda yomwe yapezeka",
+  "cityPlaceholder": "Lowetsani mzinda mu {country}",
+  "countryFirstPlaceholder": "Sankhani dziko kaye",
+  "versionHistoryTitle": "Mbiri Yakale",
+  "notSetText": "Osayikidwa",
+  "nameHistory": "Dzina: {name}",
+  "cityHistory": "Mzinda: {city}",
+  "countryHistory": "Dziko: {country}",
+  "genderHistory": "Jenda: {gender}",
+  "birthDateHistory": "Tsiku Lobadwa: {date}",
+  "birthTimeHistory": "Nthawi Yobadwa: {time}",
+  "locationHistory": "Malo: {latitude}, {longitude}",
+  "timezoneHistory": "Nthawi: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Boma: {state}",
+  "versionFromText": "Zasinthidwa pa {date}",
+  "userIdRequired": "ID ID ndiyofunika",
+  "profileSaved": "Mbiri yasungidwa bwino",
+  "saveFailed": "Zalephera kusunga mbiri",
+  "errorPrefix": "Cholakwika:",
+  "onboardingChooseLanguage": "Sankhani Chinenero Chanu",
+  "onboardingChooseLanguageDesc": "Sankhani chilankhulo chomwe mukufuna kuti mupitilize.",
+  "onboardingWhatIsAstrology": "Kodi Astrology ndi chiyani?",
+  "onboardingWhatIsAstrologyDesc": "Nyenyezi ndi kuphunzira zakuthambo ...",
+  "onboardingWhyUseApp": "Chifukwa chiyani mugwiritse ntchito pulogalamuyi?",
+  "onboardingWhyUseAppDesc": "Pezani ma horoscope makonda anu, zolosera zatsiku ndi tsiku, ndi chitsogozo kuti mupange zisankho zanzeru.",
+  "onboardingHowToUse": "Momwe mungagwiritsire ntchito pulogalamuyi?",
+  "onboardingHowToUseDesc": "Yendani mosavuta, yang'anani zolosera za tsiku ndi tsiku, ndikuwongolera mbiri yanu kuti mulosere zolondola.",
+  "onboardingGetStarted": "Yambanipo",
+  "onboardingNewUser": "Wogwiritsa Watsopano",
+  "onboardingExistingUser": "Wogwiritsa Alipo",
+  "onboardingBack": "Kubwerera",
+  "onboardingNext": "Ena",
+  "userIdNotFound": "ID yanu sinapezeke. Chonde lowani kapena khazikitsani mbiri yanu.",
+  "clearNotificationsTitle": "Chotsani Zidziwitso",
+  "clearNotificationsMessage": "Kodi mukutsimikiza kuti mukufuna kuchotsa zidziwitso zonse?",
+  "clearNotificationsSuccess": "Zidziwitso zonse zachotsedwa bwino.",
+  "clearHoroscopeTitle": "Chotsani Horoscope",
+  "clearHoroscopeMessage": "Kodi mukutsimikiza kuti mukufuna kuchotsa deta yanu ya horoscope?",
+  "clearHoroscopeSuccess": "Horoscope yachotsedwa bwino.",
+  "clearChatTitle": "Chotsani Mbiri Yamacheza",
+  "clearChatMessage": "Kodi mukutsimikiza kuti mukufuna kuchotsa mbiri yanu yonse yochezera?",
+  "clearChatLocal": "Macheza achotsedwa kwanuko.",
+  "deleteAccountTitle": "Chotsani Akaunti",
+  "deleteAccountMessage": "Kodi mukutsimikiza kuti mukufuna kuchotsa akaunti yanu? Izi zidzachotsanso mbiri yanu yonse yochezera ndi zidziwitso.",
+  "deleteAccountSuccess": "Akaunti yanu ndi data yonse zachotsedwa.",
+  "deleteAccountError": "Vuto pakuchotsa akaunti",
+  "logoutTitle": "Tulukani",
+  "logoutMessage": "Mukutsimikiza kuti mukufuna kutuluka?",
+  "termsPrivacyTitle": "Migwirizano & Zazinsinsi",
+  "privacyPolicyTitle": "mfundo zazinsinsi",
+  "termsConditionsTitle": "Terms & Conditions",
+  "dataControlTitle": "Data Control",
+  "cancelButton": "Letsani",
+  "confirmButton": "Tsimikizani",
+  "clearQuestionsSuccess": "Mafunso onse achotsedwa bwino.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Ambuye",
+  "startLabel": "Yambani",
+  "recoverAccount": "Bwezerani Akaunti",
+  "endLabel": "TSIRIZA",
+  "startDateLabel": "Tsiku loyambira",
+  "endDateLabel": "Tsiku Lomaliza",
+  "notAvailable": "Sakupezeka",
+  "noData": "Palibe deta",
+  "unknownError": "Cholakwika chosadziwika",
+  "retryButton": "Yesaninso",
+  "kundaliGeneratorTitle": "Kundali jenereta",
+  "natalChartTitle": "Chithunzi cha Natal",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Digiri ya Ascendant",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Zosadziwika",
+  "clearHoroscope": "Chotsani Horoscope",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Chotsani Zidziwitso",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Chotsani Mbiri Yamacheza",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Tulukani",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Chotsani Akaunti",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Minda yonse ikufunika.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Akaunti yachira bwino.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Kuchira kwalephera. Onani zambiri zanu.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Chinsinsi Chochira:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Zambiri zaife",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Za Kampani Yathu",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Tadzipereka kupereka zabwino kwambiri zakuthambo kwa ogwiritsa ntchito.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Ntchito Yathu",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Kupereka zidziwitso zolondola komanso zokonda zakuthambo kuti zithandize ogwiritsa ntchito kupanga zisankho zodziwika bwino pamoyo wawo.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Masomphenya Athu",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Kuti mukhale nsanja yodalirika kwambiri yokhulupirira nyenyezi, kuphatikiza ukadaulo ndi nzeru zakale.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Makhalidwe Athu",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Kukhulupirika, Kulondola, Mapangidwe Ogwiritsa Ntchito Pakatikati, ndi Kupanga Kwatsopano Kopitilira.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Lumikizanani nafe",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Imelo: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Webusayiti: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Thandizo la Makasitomala",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Tabwera Kuti Tithandize",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Lembani fomu ili pansipa ndipo gulu lathu lothandizira libweranso kwa inu posachedwa.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Dzina lanu",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Imelo Yanu",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Uthenga",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Lowetsani imelo yanu",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Lowetsani imelo adilesi yolondola",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Lowetsani {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Tumizani",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Kutumiza...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Imelo yatumizidwa bwino!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Zalephera kutumiza imelo",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Dikishonale ya Astro",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Sakani mawu...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Palibe mawu omwe apezeka",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Gulani Mafunso",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Wogwiritsa sanatsimikizidwe",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Zalephereka kutsitsa data ya sitolo",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Chizindikiro chotsimikizika chikusowa",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Pulogalamu ya Astro Chat",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Malipiro apambana! Funso latumizidwa",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Malipiro alephera: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Kusamala kwanu",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Mafunso",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Zopereka Zomwe Zilipo",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Funso",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Gulani",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Horoscope ya tsiku ndi tsiku",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "ID ya munthu ikusowa",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Zalephera kutenga zowerengera zamatsenga",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Palibe nyenyezi yomwe yapezeka.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Chizindikiro",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Lero",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Dzulo",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Sabata ino",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Mwezi watha",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Chezani",
+  "typeYourQuestionHint": "Lembani funso lanu...",
+  "paymentRequired": "Malipiro Amafunika",
+  "paymentRequiredMessage": "Mwagwiritsa ntchito mafunso anu aulere. Lipirani ₹50 kuti mupitilize.",
+  "payNowButton": "Lipirani Tsopano",
+  "freeQuestionsRemaining": "{count} mafunso aulere atsala",
+  "paidQuestionsRemaining": "{count} mafunso olipidwa atsala",
+  "thankYouFeedback": "Zikomo chifukwa cha ndemanga zanu!",
+  "ratingSubmitted": "Mavoti atumizidwa!",
+  "setUserIdFirst": "Chonde khazikitsani ID yanu Yogwiritsa ntchito poyamba",
+  "failedToFetchPrevious": "Zalephera kutenga mafunso ndi mayankho am'mbuyomu",
+  "errorOccurred": "Vuto: {error}",
+  "drawerAstroProfile": "Mbiri ya Astro",
+  "drawerDailyHoroscope": "Horoscope yatsiku ndi tsiku",
+  "drawerBuyQuestions": "Gulani Mafunso",
+  "drawerAstroDictionary": "Dikishonale ya Astro",
+  "drawerSettings": "Zokonda",
+  "drawerCustomerSupport": "Thandizo la Makasitomala",
+  "drawerAbout": "Za",
+  "drawerProfileSettings": "Zokonda pa Mbiri",
+  "demoNotificationTitle": "🔔 Chidziwitso cha Demo",
+  "demoNotificationBody": "Ichi ndi chidziwitso choyesera kuchokera ku pulogalamu yanu!",
+  "notificationsTitle": "Zidziwitso",
+  "noNotifications": "Palibe zidziwitso",
+  "allTab": "Zonse",
+  "markAllAsRead": "Chongani zonse kuti zawerengedwa",
+  "notificationMarkedRead": "Chidziwitso chalembedwa kuti chawerengedwa",
+  "failedToLoadNotifications": "Zalephera kutsegula zidziwitso",
+  "failedToMarkRead": "Zalephera kuyika kuti zawerengedwa",
+  "failedToMarkAllRead": "Zalephera kuyika zonse kuti zawerengedwa",
+  "socketConnected": "Soketi yolumikizidwa",
+  "socketDisconnected": "Soketi yatha",
+  "newNotificationReceived": "Chidziwitso chatsopano chalandiridwa",
+  "generalCategory": "General",
+  "horoscopeCategory": "Horoscope",
+  "chatCategory": "Chezani",
+  "systemCategory": "Dongosolo",
+  "updateCategory": "Zosintha",
+  "howToAskTitle": "Mmene Mungafunse",
+  "noQuestionsAvailable": "Palibe mafunso",
+  "failedToLoadQuestions": "Zalephera kutsegula mafunso",
+  "pullToRefresh": "Kokani kuti mutsitsimutse",
+  "careerCategory": "Ntchito",
+  "loveCategory": "Chikondi & Maubale",
+  "healthCategory": "Thanzi",
+  "financeCategory": "Zachuma",
+  "familyCategory": "Banja",
+  "educationCategory": "Maphunziro",
+  "travelCategory": "Ulendo",
+  "spiritualCategory": "Zauzimu",
+  "profileLoaded": "Mbiri idakwezedwa bwino",
+  "imageUploaded": "Chithunzi chidakwezedwa bwino",
+  "savedInformationConfirmation": "Ndasunga Zambiri",
+  "noHistoryAvailable": "Palibe mbiri yomwe ilipo",
+  "missingUserIdError": "ID ID ndiyofunika",
+  "networkError": "Vuto la netiweki. Chonde yesaninso.",
+  "timeoutError": "Pempho latha",
+  "genericError": "China chake chalakwika",
+  "reactionUpdateError": "Zalephera kusintha zomwe zikuchitika",
+  "noSearchResults": "Palibe zotsatira zomwe zapezeka",
+  "clearSearch": "Chotsani kufufuza",
+  "resultsFound": "Zotsatira zapezeka",
+  "recoverySecretHint": "Copy-paste singagwire ntchito, lembani pamanja",
+  "recoverAccountDescription": "Tsatirani izi kuti mubwezeretse akaunti yanu",
+  "processingLabel": "Kukonza...",
+  "clearChatSuccess": "Macheza achotsedwa bwino",
+  "notificationsEnabled": "Zidziwitso zayatsidwa",
+  "notificationsDisabled": "Zidziwitso zayimitsidwa",
+  "securityNotice": "Zambiri zanu zimasungidwa mwachinsinsi ndikusungidwa",
+  "loading": "Tikutsegula...",
+  "selectLanguage": "Sankhani Chiyankhulo",
+  "onboardingGetStartedDesc": "Yambani posankha chinenero chanu",
+  "accountRecoveryTitle": "🔐 Tsatanetsatane Wobwezeretsa Akaunti",
+  "recoveryInstructions": "Chonde sungani izi motetezedwa. Muyifuna kuti mutengere akaunti yanu.",
+  "importantNotice": "⚠️ Zofunika:",
+  "astrologerProfileTitle": "Mbiri ya Okhulupirira nyenyezi",
+  "personalAstrologer": "Wopenda Nyenyezi Pawekha",
+  "makePersonalAstrologer": "Pangani Wokhulupirira Nyenyezi",
+  "favoriteDescription": "Mafunso anu adzakhala patsogolo kwa wokhulupirira nyenyezi uyu. Ngati palibe, wokhulupirira nyenyezi wina woyenerera adzakuthandizani.",
+  "educationQualifications": "Maphunziro & Ziyeneretso",
+  "aboutSection": "Za",
+  "shareProfile": "Gawani Mbiri",
+  "loadingAstrologer": "Tikutsegula zambiri za okhulupirira nyenyezi...",
+  "failedToLoadAstrologer": "Zalephera kutsegula zambiri za okhulupirira nyenyezi",
+  "authenticationRequired": "Kutsimikizika kumafunika. Chonde lowani.",
+  "securityCheckFailed": "Kuwona chitetezo kwalephera: {error}",
+  "addedToFavorites": "🎯 {name} ndiye Wopenda nyenyezi wanu",
+  "removedFromFavorites": "✅ Yachotsedwa {name} kuchokera ku zokonda",
+  "toggleFavoriteError": "Zalephera kusintha mawonekedwe omwe mumakonda",
+  "shareMessage": "{name}\n🎓 Maphunziro: {education}\n📜 Zoyenereza: {qualification}\n⏳ Zochitika: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Osaperekedwa",
+  "reviews": "({count} ndemanga)",
+  "specialties": "Zapadera",
+  "experience": "Zochitika",
+  "qualification": "Chiyeneretso",
+  "education": "Maphunziro",
+  "recoveryTips": "• Tengani chithunzi cha chidziwitso ichi\n• Sungani pamalo otetezeka\n• Osagawana ndi aliyense\n• Izi zidzawonetsedwa kamodzi kokha"
+}

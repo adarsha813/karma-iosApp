@@ -1,0 +1,439 @@
+{
+  "@@locale": "uz",
+  "settingsTitle": "Sozlamalar",
+  "notificationSettings": "Bildirishnoma sozlamalari",
+  "privacySettings": "Maxfiylik sozlamalari",
+  "accountSettings": "Hisob sozlamalari",
+  "languageSettings": "Til sozlamalari",
+  "languageChanged": "Til o'zgartirildi",
+  "existingUserButton": "Men mavjud foydalanuvchiman",
+  "chooseCountryTitle": "Mamlakatni tanlang",
+  "yesText": "Ha",
+  "noText": "Yo'q",
+  "appBarTitle": "Profil sozlamalari",
+  "userIdLabel": "Foydalanuvchi IDsi *",
+  "nameLabel": "Ism",
+  "birthCountryLabel": "Tug'ilgan mamlakat",
+  "birthCityLabel": "Tug'ilgan shahar",
+  "countrySelectionTitle": "Mamlakatingizni tanlang",
+  "maleLabel": "Erkak",
+  "femaleLabel": "Ayol",
+  "birthDateLabel": "Tug'ilgan kun sanasi",
+  "birthDatePlaceholder": "Tug'ilgan sanani tanlang",
+  "birthTimeLabel": "Tug'ilgan vaqti",
+  "birthTimePlaceholder": "Tug'ilgan vaqtni tanlang",
+  "saveProfileButton": "Profilni saqlash",
+  "noCitiesFound": "Hech qanday shahar topilmadi",
+  "cityPlaceholder": "{country}da shaharni kiriting",
+  "countryFirstPlaceholder": "Avval mamlakatni tanlang",
+  "versionHistoryTitle": "Versiya tarixi",
+  "notSetText": "Belgilanmagan",
+  "nameHistory": "Nomi: {name}",
+  "cityHistory": "Shahar: {city}",
+  "countryHistory": "Mamlakat: {country}",
+  "genderHistory": "Jins: {gender}",
+  "birthDateHistory": "Tug'ilgan sanasi: {date}",
+  "birthTimeHistory": "Tug'ilgan vaqti: {time}",
+  "locationHistory": "Joylashuv: {latitude}, {longitude}",
+  "timezoneHistory": "Vaqt mintaqasi: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Holat: {state}",
+  "versionFromText": "{date} kuni yangilangan",
+  "userIdRequired": "Foydalanuvchi identifikatori talab qilinadi",
+  "profileSaved": "Profil muvaffaqiyatli saqlandi",
+  "saveFailed": "Profilni saqlab bo‘lmadi",
+  "errorPrefix": "Xato:",
+  "onboardingChooseLanguage": "Tilingizni tanlang",
+  "onboardingChooseLanguageDesc": "Davom etish uchun sizga yoqqan tilni tanlang.",
+  "onboardingWhatIsAstrology": "Astrologiya nima?",
+  "onboardingWhatIsAstrologyDesc": "Astrologiya - bu osmon jismlarini o'rganadigan fan ...",
+  "onboardingWhyUseApp": "Nima uchun bu ilovadan foydalanasiz?",
+  "onboardingWhyUseAppDesc": "Aniq qarorlar qabul qilish uchun moslashtirilgan munajjimlar bashorati, kundalik bashorat va ko'rsatmalar oling.",
+  "onboardingHowToUse": "Ushbu ilovadan qanday foydalanish kerak?",
+  "onboardingHowToUseDesc": "Osonlik bilan harakatlaning, kundalik munajjimlar bashoratini tekshiring va aniq bashoratlar uchun profilingizni boshqaring.",
+  "onboardingGetStarted": "Boshlash",
+  "onboardingNewUser": "Yangi foydalanuvchi",
+  "onboardingExistingUser": "Mavjud foydalanuvchi",
+  "onboardingBack": "Orqaga",
+  "onboardingNext": "Keyingisi",
+  "userIdNotFound": "Foydalanuvchi identifikatori topilmadi. Iltimos, tizimga kiring yoki profilingizni o'rnating.",
+  "clearNotificationsTitle": "Bildirishnomalarni tozalash",
+  "clearNotificationsMessage": "Haqiqatan ham barcha bildirishnomalarni oʻchirib tashlamoqchimisiz?",
+  "clearNotificationsSuccess": "Barcha bildirishnomalar muvaffaqiyatli tozalandi.",
+  "clearHoroscopeTitle": "Aniq munajjimlar bashorati",
+  "clearHoroscopeMessage": "Haqiqatan ham munajjimlar bashorati maʼlumotlarini tozalamoqchimisiz?",
+  "clearHoroscopeSuccess": "Munajjimlar bashorati muvaffaqiyatli tozalandi.",
+  "clearChatTitle": "Chat tarixini tozalash",
+  "clearChatMessage": "Haqiqatan ham barcha chat tarixingizni oʻchirib tashlamoqchimisiz?",
+  "clearChatLocal": "Chat mahalliy sifatida tozalandi.",
+  "deleteAccountTitle": "Hisobni o'chirish",
+  "deleteAccountMessage": "Hisobingizni oʻchirib tashlamoqchimisiz? Bu, shuningdek, barcha chat tarixi va bildirishnomalarni o'chirib tashlaydi.",
+  "deleteAccountSuccess": "Hisobingiz va barcha maʼlumotlaringiz olib tashlandi.",
+  "deleteAccountError": "Hisobni o‘chirishda xatolik yuz berdi",
+  "logoutTitle": "Chiqish",
+  "logoutMessage": "Haqiqatan ham tizimdan chiqmoqchimisiz?",
+  "termsPrivacyTitle": "Shartlar va Maxfiylik",
+  "privacyPolicyTitle": "Maxfiylik siyosati",
+  "termsConditionsTitle": "Foydalanish shartlari",
+  "dataControlTitle": "Ma'lumotlarni nazorat qilish",
+  "cancelButton": "Bekor qilish",
+  "confirmButton": "Tasdiqlang",
+  "clearQuestionsSuccess": "Barcha savollar muvaffaqiyatli oʻchirildi.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Rabbim",
+  "startLabel": "Boshlash",
+  "recoverAccount": "Hisobni tiklash",
+  "endLabel": "Oxiri",
+  "startDateLabel": "Boshlanish sanasi",
+  "endDateLabel": "Tugash sanasi",
+  "notAvailable": "Mavjud emas",
+  "noData": "Maʼlumot yoʻq",
+  "unknownError": "Noma'lum xato",
+  "retryButton": "Qayta urinish",
+  "kundaliGeneratorTitle": "Kundali generatori",
+  "natalChartTitle": "Tug'ilish jadvali",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Yuqori daraja",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Noma'lum",
+  "clearHoroscope": "Aniq munajjimlar bashorati",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Bildirishnomalarni tozalash",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Chat tarixini tozalash",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Chiqish",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Hisobni o'chirish",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Barcha maydonlar talab qilinadi.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Hisob muvaffaqiyatli tiklandi.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Qayta tiklash amalga oshmadi. Ma'lumotlaringizni tekshiring.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Qayta tiklash siri:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Biz haqimizda",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Kompaniyamiz haqida",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Biz foydalanuvchilarimiz uchun eng yaxshi astrologiya tajribasini taqdim etishga intilamiz.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Bizning missiyamiz",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Foydalanuvchilarga o'z hayotida ongli qarorlar qabul qilishda yordam berish uchun to'g'ri va shaxsiylashtirilgan munajjimlar haqidagi ma'lumotlarni taqdim etish.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Bizning Vizyonimiz",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Texnologiya va qadimiy donolikni birlashtirgan eng ishonchli astrologiya platformasiga aylanish.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Bizning qadriyatlarimiz",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Butunlik, aniqlik, foydalanuvchiga yo'naltirilgan dizayn va doimiy innovatsiyalar.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Biz bilan bog'lanish",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Elektron pochta: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Veb-sayt: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Mijozlarni qo‘llab-quvvatlash",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Biz yordam berish uchun shu yerdamiz",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Quyidagi shaklni to'ldiring va bizning qo'llab-quvvatlash jamoamiz sizga imkon qadar tezroq javob beradi.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Sizning ismingiz",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Sizning elektron pochtangiz",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Xabar",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Elektron pochtangizni kiriting",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Yaroqli elektron pochta manzilini kiriting",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "{fieldName} kiriting",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Yuborish",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Yuborilmoqda...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Elektron pochta muvaffaqiyatli yuborildi!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Elektron pochta xabarini yuborib bo‘lmadi",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro lug'at",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Qidiruv shartlari...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Hech qanday shart topilmadi",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Savollarni sotib oling",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Foydalanuvchi autentifikatsiya qilinmagan",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Doʻkon maʼlumotlarini yuklab boʻlmadi",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Autentifikatsiya belgisi yetishmayapti",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat ilovasi",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Toʻlov muvaffaqiyatli amalga oshirildi! Savol yuborildi",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ To‘lov amalga oshmadi: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Sizning balansingiz",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Savollar",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Mavjud takliflar",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Savol",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Sotib olish",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Kundalik munajjimlar bashorati",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Foydalanuvchi identifikatori yetishmayapti",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Munajjimlar bashorati olib bo‘lmadi",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Munajjimlar bashorati topilmadi.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Imzo",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Bugun",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Kecha",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Ushbu hafta",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "O'tgan oy",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Chat",
+  "typeYourQuestionHint": "Savolingizni yozing...",
+  "paymentRequired": "To'lov talab qilinadi",
+  "paymentRequiredMessage": "Siz bepul savollaringizdan foydalandingiz. Davom etish uchun ₹50 toʻlang.",
+  "payNowButton": "Hozir toʻlash",
+  "freeQuestionsRemaining": "{count} bepul savollar qoldi",
+  "paidQuestionsRemaining": "{count} pulli savollar qoldi",
+  "thankYouFeedback": "Fikr-mulohazangiz uchun rahmat!",
+  "ratingSubmitted": "Baho berildi!",
+  "setUserIdFirst": "Iltimos, avvalo foydalanuvchi identifikatoringizni o'rnating",
+  "failedToFetchPrevious": "Oldingi savol va javoblarni olib boʻlmadi",
+  "errorOccurred": "Xato: {error}",
+  "drawerAstroProfile": "Astro profili",
+  "drawerDailyHoroscope": "Kundalik munajjimlar bashorati",
+  "drawerBuyQuestions": "Savollarni sotib oling",
+  "drawerAstroDictionary": "Astro lug'at",
+  "drawerSettings": "Sozlamalar",
+  "drawerCustomerSupport": "Mijozlarni qo‘llab-quvvatlash",
+  "drawerAbout": "Haqida",
+  "drawerProfileSettings": "Profil sozlamalari",
+  "demoNotificationTitle": "🔔 Namoyish haqida bildirishnoma",
+  "demoNotificationBody": "Bu ilovangizdan sinov bildirishnomasi!",
+  "notificationsTitle": "Bildirishnomalar",
+  "noNotifications": "Hech qanday bildirishnoma yo'q",
+  "allTab": "Hammasi",
+  "markAllAsRead": "Hammasini o'qilgan deb belgilang",
+  "notificationMarkedRead": "Bildirishnoma o‘qilgan deb belgilandi",
+  "failedToLoadNotifications": "Bildirishnomalar yuklanmadi",
+  "failedToMarkRead": "O‘qilgan deb belgilab bo‘lmadi",
+  "failedToMarkAllRead": "Hammasini o‘qilgan deb belgilab bo‘lmadi",
+  "socketConnected": "Soket ulangan",
+  "socketDisconnected": "Soket uzildi",
+  "newNotificationReceived": "Yangi bildirishnoma qabul qilindi",
+  "generalCategory": "General",
+  "horoscopeCategory": "Munajjimlar bashorati",
+  "chatCategory": "Chat",
+  "systemCategory": "Tizim",
+  "updateCategory": "Yangilanishlar",
+  "howToAskTitle": "Qanday so'rash kerak",
+  "noQuestionsAvailable": "Hech qanday savol mavjud emas",
+  "failedToLoadQuestions": "Savollarni yuklab bo‘lmadi",
+  "pullToRefresh": "Yangilash uchun torting",
+  "careerCategory": "Karyera",
+  "loveCategory": "Sevgi va munosabatlar",
+  "healthCategory": "Salomatlik",
+  "financeCategory": "Moliya",
+  "familyCategory": "Oila",
+  "educationCategory": "Ta'lim",
+  "travelCategory": "Sayohat",
+  "spiritualCategory": "Ruhiy",
+  "profileLoaded": "Profil muvaffaqiyatli yuklandi",
+  "imageUploaded": "Rasm muvaffaqiyatli yuklandi",
+  "savedInformationConfirmation": "Men bu ma'lumotni saqladim",
+  "noHistoryAvailable": "Tarix mavjud emas",
+  "missingUserIdError": "Foydalanuvchi identifikatori talab qilinadi",
+  "networkError": "Tarmoq xatosi. Iltimos, qayta urinib koʻring.",
+  "timeoutError": "So‘rov muddati tugadi",
+  "genericError": "Nimadir xato ketdi",
+  "reactionUpdateError": "Reaksiyani yangilab bo‘lmadi",
+  "noSearchResults": "Hech qanday qidiruv natijalari topilmadi",
+  "clearSearch": "Qidiruvni tozalash",
+  "resultsFound": "Natijalar topildi",
+  "recoverySecretHint": "Nusxalash va joylashtirish ishlamasligi mumkin, qo'lda kiriting",
+  "recoverAccountDescription": "Hisobingizni tiklash uchun quyidagi amallarni bajaring",
+  "processingLabel": "Qayta ishlanmoqda...",
+  "clearChatSuccess": "Chat muvaffaqiyatli tozalandi",
+  "notificationsEnabled": "Bildirishnomalar yoqilgan",
+  "notificationsDisabled": "Bildirishnomalar o‘chirilgan",
+  "securityNotice": "Sizning ma'lumotlaringiz xavfsiz shifrlangan va saqlanadi",
+  "loading": "Yuklanmoqda...",
+  "selectLanguage": "Tilni tanlang",
+  "onboardingGetStartedDesc": "Tilingizni tanlash bilan boshlang",
+  "accountRecoveryTitle": "🔐 Hisobni tiklash tafsilotlari",
+  "recoveryInstructions": "Iltimos, ushbu ma'lumotni xavfsiz saqlang. Bu hisobingizni tiklash uchun kerak bo'ladi.",
+  "importantNotice": "⚠️ Muhim:",
+  "astrologerProfileTitle": "Astrolog profili",
+  "personalAstrologer": "Shaxsiy munajjim",
+  "makePersonalAstrologer": "Shaxsiy munajjim qiling",
+  "favoriteDescription": "Sizning savollaringiz ushbu munajjimga ustuvor bo'ladi. Agar mavjud bo'lmasa, boshqa malakali munajjim sizga yordam beradi.",
+  "educationQualifications": "Ta'lim va malaka",
+  "aboutSection": "Haqida",
+  "shareProfile": "Profilni ulashish",
+  "loadingAstrologer": "Astrolog tafsilotlari yuklanmoqda...",
+  "failedToLoadAstrologer": "Astrolog tafsilotlarini yuklab bo‘lmadi",
+  "authenticationRequired": "Autentifikatsiya talab qilinadi. Iltimos, tizimga kiring.",
+  "securityCheckFailed": "Xavfsizlik tekshiruvi amalga oshmadi: {error}",
+  "addedToFavorites": "🎯 {name} endi sizning shaxsiy munajjimingiz",
+  "removedFromFavorites": "✅ {name} sevimlilardan olib tashlandi",
+  "toggleFavoriteError": "Sevimli holatni yangilab bo‘lmadi",
+  "shareMessage": "{name}\n🎓 Taʼlim: {education}\n📜 Malaka: {qualification}\n⏳ Tajriba: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Taqdim etilmaydi",
+  "reviews": "({count} sharhlar)",
+  "specialties": "Mutaxassisliklar",
+  "experience": "Tajriba",
+  "qualification": "Malaka",
+  "education": "Ta'lim",
+  "recoveryTips": "• Ushbu ma'lumotning skrinshotini oling\n• Uni xavfsiz joyda saqlang\n• Hech kim bilan baham ko'rmang\n• Bu faqat bir marta ko'rsatiladi"
+}

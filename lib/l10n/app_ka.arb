@@ -1,0 +1,439 @@
+{
+  "@@locale": "ka",
+  "settingsTitle": "პარამეტრები",
+  "notificationSettings": "შეტყობინებების პარამეტრები",
+  "privacySettings": "კონფიდენციალურობის პარამეტრები",
+  "accountSettings": "ანგარიშის პარამეტრები",
+  "languageSettings": "ენის პარამეტრები",
+  "languageChanged": "ენა შეიცვალა",
+  "existingUserButton": "მე უკვე არსებული მომხმარებელი ვარ",
+  "chooseCountryTitle": "აირჩიეთ ქვეყანა",
+  "yesText": "დიახ",
+  "noText": "არა",
+  "appBarTitle": "პროფილის პარამეტრები",
+  "userIdLabel": "მომხმარებლის ID *",
+  "nameLabel": "სახელი",
+  "birthCountryLabel": "დაბადების ქვეყანა",
+  "birthCityLabel": "დაბადების ქალაქი",
+  "countrySelectionTitle": "აირჩიეთ თქვენი ქვეყანა",
+  "maleLabel": "მამაკაცი",
+  "femaleLabel": "ქალი",
+  "birthDateLabel": "დაბადების თარიღი",
+  "birthDatePlaceholder": "დაბადების თარიღის არჩევა",
+  "birthTimeLabel": "დაბადების დრო",
+  "birthTimePlaceholder": "აირჩიეთ დაბადების დრო",
+  "saveProfileButton": "პროფილის შენახვა",
+  "noCitiesFound": "ქალაქები ვერ მოიძებნა",
+  "cityPlaceholder": "შეიყვანეთ ქალაქი {country}-ში",
+  "countryFirstPlaceholder": "ჯერ ქვეყანა აირჩიეთ",
+  "versionHistoryTitle": "ვერსიის ისტორია",
+  "notSetText": "არ არის დაყენებული",
+  "nameHistory": "სახელი: {name}",
+  "cityHistory": "ქალაქი: {city}",
+  "countryHistory": "ქვეყანა: {country}",
+  "genderHistory": "სქესი: {gender}",
+  "birthDateHistory": "დაბადების თარიღი: {date}",
+  "birthTimeHistory": "დაბადების დრო: {time}",
+  "locationHistory": "მდებარეობა: {latitude}, {longitude}",
+  "timezoneHistory": "დროის სარტყელი: GMT{offset}",
+  "dstHistory": "ზამთრის დრო: {value}",
+  "stateHistory": "მდგომარეობა: {state}",
+  "versionFromText": "განახლებულია {date}-ში",
+  "userIdRequired": "მომხმარებლის ID საჭიროა",
+  "profileSaved": "პროფილი წარმატებით შენახულია",
+  "saveFailed": "პროფილის შენახვა ვერ მოხერხდა",
+  "errorPrefix": "შეცდომა:",
+  "onboardingChooseLanguage": "აირჩიეთ თქვენი ენა",
+  "onboardingChooseLanguageDesc": "გასაგრძელებლად აირჩიეთ თქვენთვის სასურველი ენა.",
+  "onboardingWhatIsAstrology": "რა არის ასტროლოგია?",
+  "onboardingWhatIsAstrologyDesc": "ასტროლოგია არის ციური სხეულების შესწავლა...",
+  "onboardingWhyUseApp": "რატომ უნდა გამოვიყენოთ ეს აპლიკაცია?",
+  "onboardingWhyUseAppDesc": "მიიღეთ პერსონალიზებული ჰოროსკოპები, ყოველდღიური პროგნოზები და რჩევები ინფორმირებული გადაწყვეტილებების მისაღებად.",
+  "onboardingHowToUse": "როგორ გამოვიყენოთ ეს აპლიკაცია?",
+  "onboardingHowToUseDesc": "მარტივად ნავიგაცია, ყოველდღიური ჰოროსკოპების შემოწმება და თქვენი პროფილის მართვა ზუსტი პროგნოზებისთვის.",
+  "onboardingGetStarted": "დაწყება",
+  "onboardingNewUser": "ახალი მომხმარებელი",
+  "onboardingExistingUser": "არსებული მომხმარებელი",
+  "onboardingBack": "უკან",
+  "onboardingNext": "შემდეგი",
+  "userIdNotFound": "მომხმარებლის ID ვერ მოიძებნა. გთხოვთ, შეხვიდეთ სისტემაში ან დააყენოთ თქვენი პროფილი.",
+  "clearNotificationsTitle": "შეტყობინებების გასუფთავება",
+  "clearNotificationsMessage": "დარწმუნებული ხართ, რომ გსურთ ყველა შეტყობინების წაშლა?",
+  "clearNotificationsSuccess": "ყველა შეტყობინება წარმატებით წაიშალა.",
+  "clearHoroscopeTitle": "წმინდა ჰოროსკოპი",
+  "clearHoroscopeMessage": "დარწმუნებული ხართ, რომ გსურთ თქვენი ჰოროსკოპის მონაცემების გასუფთავება?",
+  "clearHoroscopeSuccess": "ჰოროსკოპი წარმატებით გაიწმინდა.",
+  "clearChatTitle": "ჩატის ისტორიის გასუფთავება",
+  "clearChatMessage": "დარწმუნებული ხართ, რომ გსურთ თქვენი ჩატის ისტორიის მთლიანად წაშლა?",
+  "clearChatLocal": "ჩატი ადგილობრივად გაიწმინდა.",
+  "deleteAccountTitle": "ანგარიშის წაშლა",
+  "deleteAccountMessage": "დარწმუნებული ხართ, რომ გსურთ თქვენი ანგარიშის წაშლა? ეს ასევე წაშლის თქვენი ჩატის ისტორიას და შეტყობინებებს.",
+  "deleteAccountSuccess": "თქვენი ანგარიში და ყველა მონაცემი წაიშალა.",
+  "deleteAccountError": "ანგარიშის წაშლისას შეცდომა მოხდა: მოხდა ანგარიშის წაშლა.",
+  "logoutTitle": "გასვლა",
+  "logoutMessage": "დარწმუნებული ხართ, რომ გსურთ გასვლა?",
+  "termsPrivacyTitle": "პირობები და კონფიდენციალურობა",
+  "privacyPolicyTitle": "კონფიდენციალურობის პოლიტიკა",
+  "termsConditionsTitle": "წესები და პირობები",
+  "dataControlTitle": "მონაცემთა კონტროლი",
+  "cancelButton": "გაუქმება",
+  "confirmButton": "დადასტურება",
+  "clearQuestionsSuccess": "ყველა კითხვა წარმატებით წაიშალა.",
+  "yoginiLabel": "იოგინი",
+  "lordLabel": "უფალი",
+  "startLabel": "დაწყება",
+  "recoverAccount": "ანგარიშის აღდგენა",
+  "endLabel": "დასასრული",
+  "startDateLabel": "დაწყების თარიღი",
+  "endDateLabel": "დასრულების თარიღი",
+  "notAvailable": "მიუწვდომელია",
+  "noData": "მონაცემები არ არის",
+  "unknownError": "უცნობი შეცდომა",
+  "retryButton": "ხელახლა ცდა",
+  "kundaliGeneratorTitle": "კუნდალის გენერატორი",
+  "natalChartTitle": "ნატალური რუკა",
+  "lagnaLabel": "ლაგნა",
+  "rashiLabel": "რაში",
+  "ascDegreeLabel": "აღმავალი ხარისხი",
+  "vimshottariDashaTitle": "ვიმშოტარი დაშა",
+  "yoginiDashaTitle": "იოგინი დაშა",
+  "unknown": "უცნობი",
+  "clearHoroscope": "წმინდა ჰოროსკოპი",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "შეტყობინებების გასუფთავება",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "ჩატის ისტორიის გასუფთავება",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "გასვლა",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "ანგარიშის წაშლა",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "ყველა ველი სავალდებულოა.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "ანგარიში წარმატებით აღდგა.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "აღდგენა ვერ მოხერხდა. შეამოწმეთ თქვენი ინფორმაცია.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "აღდგენის საიდუმლო:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "ჩვენს შესახებ",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "ჩვენი კომპანიის შესახებ",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "ჩვენ ვალდებულნი ვართ, ჩვენს მომხმარებლებს საუკეთესო ასტროლოგიური გამოცდილება შევთავაზოთ.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "ჩვენი მისია",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "ზუსტი და პერსონალიზებული ასტროლოგიური ინფორმაციის მიწოდება, რათა მომხმარებლებს დაეხმაროს ცხოვრებაში ინფორმირებული გადაწყვეტილებების მიღებაში.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "ჩვენი ხედვა",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "გახდეს ყველაზე სანდო ასტროლოგიური პლატფორმა, რომელიც აერთიანებს ტექნოლოგიასა და უძველეს სიბრძნეს.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "ჩვენი ღირებულებები",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "მთლიანობა, სიზუსტე, მომხმარებელზე ორიენტირებული დიზაინი და უწყვეტი ინოვაცია.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "დაგვიკავშირდით",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "ელ. ფოსტა: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "ვებსაიტი: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "მომხმარებელთა მხარდაჭერა",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "ჩვენ აქ ვართ დასახმარებლად",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "შეავსეთ ქვემოთ მოცემული ფორმა და ჩვენი მხარდაჭერის გუნდი რაც შეიძლება მალე დაგიკავშირდებათ.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "თქვენი სახელი",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "თქვენი ელ. ფოსტა",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "შეტყობინება",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "შეიყვანეთ თქვენი ელ. ფოსტა",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "შეიყვანეთ სწორი ელექტრონული ფოსტის მისამართი",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "შეიყვანეთ {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "გაგზავნა",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "იგზავნება...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ ელ.წერილი წარმატებით გაიგზავნა!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ ელფოსტის გაგზავნა ვერ მოხერხდა",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "ასტრო ლექსიკონი",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "საძიებო ტერმინები...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "ტერმინები ვერ მოიძებნა",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "შესყიდვის კითხვები",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "მომხმარებელი არ არის ავტორიზებული",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "მაღაზიის მონაცემების ჩატვირთვა ვერ მოხერხდა",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "ავტორიზაციის ტოკენი აკლია",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "ასტრო ჩატის აპლიკაცია",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ გადახდა წარმატებით დასრულდა! კითხვა გაგზავნილია!",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ გადახდა ვერ მოხერხდა: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "თქვენი ბალანსი",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} კითხვები",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "ხელმისაწვდომი შეთავაზებები",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} კითხვა",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "ყიდვა",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 ყოველდღიური ჰოროსკოპი",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "მომხმარებლის ID აკლია",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "ჰოროსკოპების მიღება ვერ მოხერხდა",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "ჰოროსკოპი ვერ მოიძებნა.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "ნიშანი",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "დღეს",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "გუშინ",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "ამ კვირაში",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "გასული თვე",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "ჩატი",
+  "typeYourQuestionHint": "აკრიფეთ თქვენი კითხვა...",
+  "paymentRequired": "გადახდა სავალდებულოა",
+  "paymentRequiredMessage": "თქვენ გამოიყენეთ თქვენი უფასო კითხვები. გასაგრძელებლად გადაიხადეთ 50₹.",
+  "payNowButton": "გადაიხადეთ ახლავე",
+  "freeQuestionsRemaining": "{count} დარჩენილია უფასო კითხვები",
+  "paidQuestionsRemaining": "{count} დარჩენილია ფასიანი კითხვები",
+  "thankYouFeedback": "გმადლობთ თქვენი გამოხმაურებისთვის!",
+  "ratingSubmitted": "შეფასება წარდგენილია!",
+  "setUserIdFirst": "გთხოვთ, ჯერ თქვენი მომხმარებლის ID დააყენოთ",
+  "failedToFetchPrevious": "წინა კითხვებისა და პასუხების მოძიება ვერ მოხერხდა",
+  "errorOccurred": "შეცდომა: {error}",
+  "drawerAstroProfile": "ასტრო პროფილი",
+  "drawerDailyHoroscope": "ყოველდღიური ჰოროსკოპი",
+  "drawerBuyQuestions": "შესყიდვის კითხვები",
+  "drawerAstroDictionary": "ასტრო ლექსიკონი",
+  "drawerSettings": "პარამეტრები",
+  "drawerCustomerSupport": "მომხმარებელთა მხარდაჭერა",
+  "drawerAbout": "შესახებ",
+  "drawerProfileSettings": "პროფილის პარამეტრები",
+  "demoNotificationTitle": "🔔 დემო შეტყობინება",
+  "demoNotificationBody": "ეს თქვენი აპლიკაციიდან სატესტო შეტყობინებაა!",
+  "notificationsTitle": "შეტყობინებები",
+  "noNotifications": "შეტყობინებები არ არის",
+  "allTab": "ყველა",
+  "markAllAsRead": "ყველას წაკითხულად მონიშვნა",
+  "notificationMarkedRead": "შეტყობინება მონიშნულია, როგორც წაკითხული",
+  "failedToLoadNotifications": "შეტყობინებების ჩატვირთვა ვერ მოხერხდა",
+  "failedToMarkRead": "წაკითხულად მონიშვნა ვერ მოხერხდა",
+  "failedToMarkAllRead": "ყველას წაკითხულად მონიშვნა ვერ მოხერხდა",
+  "socketConnected": "სოკეტი დაკავშირებულია",
+  "socketDisconnected": "სოკეტი გათიშულია",
+  "newNotificationReceived": "ახალი შეტყობინება მიღებულია",
+  "generalCategory": "ზოგადი",
+  "horoscopeCategory": "ჰოროსკოპი",
+  "chatCategory": "ჩატი",
+  "systemCategory": "სისტემა",
+  "updateCategory": "განახლებები",
+  "howToAskTitle": "როგორ ვიკითხოთ",
+  "noQuestionsAvailable": "კითხვები არ არის ხელმისაწვდომი",
+  "failedToLoadQuestions": "კითხვების ჩატვირთვა ვერ მოხერხდა",
+  "pullToRefresh": "გაწიეთ განახლებისთვის",
+  "careerCategory": "კარიერა",
+  "loveCategory": "სიყვარული და ურთიერთობები",
+  "healthCategory": "ჯანმრთელობა",
+  "financeCategory": "ფინანსები",
+  "familyCategory": "ოჯახი",
+  "educationCategory": "განათლება",
+  "travelCategory": "მოგზაურობა",
+  "spiritualCategory": "სულიერი",
+  "profileLoaded": "პროფილი წარმატებით ჩაიტვირთა",
+  "imageUploaded": "სურათი წარმატებით აიტვირთა",
+  "savedInformationConfirmation": "ეს ინფორმაცია შენახული მაქვს",
+  "noHistoryAvailable": "ისტორია მიუწვდომელია",
+  "missingUserIdError": "მომხმარებლის ID საჭიროა",
+  "networkError": "ქსელის შეცდომა. გთხოვთ, სცადოთ ხელახლა.",
+  "timeoutError": "მოთხოვნის დრო ამოიწურა",
+  "genericError": "რაღაც არასწორად მოხდა",
+  "reactionUpdateError": "რეაქციის განახლება ვერ მოხერხდა",
+  "noSearchResults": "ძიების შედეგები ვერ მოიძებნა",
+  "clearSearch": "ძიების გასუფთავება",
+  "resultsFound": "ნაპოვნი შედეგები",
+  "recoverySecretHint": "კოპირება-ჩასმა შეიძლება არ იმუშაოს, ხელით აკრიფეთ",
+  "recoverAccountDescription": "თქვენი ანგარიშის აღსადგენად მიჰყევით ამ ნაბიჯებს",
+  "processingLabel": "დამუშავება...",
+  "clearChatSuccess": "ჩატი წარმატებით გაიწმინდა",
+  "notificationsEnabled": "შეტყობინებები ჩართულია",
+  "notificationsDisabled": "შეტყობინებები გამორთულია",
+  "securityNotice": "თქვენი მონაცემები უსაფრთხოდ დაშიფრული და შენახულია",
+  "loading": "იტვირთება...",
+  "selectLanguage": "ენის არჩევა",
+  "onboardingGetStartedDesc": "დაიწყეთ თქვენი ენის არჩევით",
+  "accountRecoveryTitle": "🔐 ანგარიშის აღდგენის დეტალები",
+  "recoveryInstructions": "გთხოვთ, უსაფრთხოდ შეინახოთ ეს ინფორმაცია. ის თქვენი ანგარიშის აღსადგენად დაგჭირდებათ.",
+  "importantNotice": "⚠️ მნიშვნელოვანია:",
+  "astrologerProfileTitle": "ასტროლოგის პროფილი",
+  "personalAstrologer": "პირადი ასტროლოგი",
+  "makePersonalAstrologer": "გახდი პირადი ასტროლოგი",
+  "favoriteDescription": "თქვენს კითხვებს პრიორიტეტულად სწორედ ამ ასტროლოგს გადასცემენ. თუ ის არ არის ხელმისაწვდომი, სხვა კვალიფიციური ასტროლოგი დაგეხმარებათ.",
+  "educationQualifications": "განათლება და კვალიფიკაცია",
+  "aboutSection": "შესახებ",
+  "shareProfile": "პროფილის გაზიარება",
+  "loadingAstrologer": "ასტროლოგის დეტალები იტვირთება...",
+  "failedToLoadAstrologer": "ასტროლოგის დეტალების ჩატვირთვა ვერ მოხერხდა",
+  "authenticationRequired": "საჭიროა ავტორიზაცია. გთხოვთ, შეხვიდეთ სისტემაში.",
+  "securityCheckFailed": "უსაფრთხოების შემოწმება ვერ მოხერხდა: {error}",
+  "addedToFavorites": "🎯 {name} ახლა თქვენი პირადი ასტროლოგია",
+  "removedFromFavorites": "✅ {name} წაშლილია რჩეულებიდან",
+  "toggleFavoriteError": "ფავორიტის სტატუსის განახლება ვერ მოხერხდა",
+  "shareMessage": "{name}\n🎓 განათლება: {education}\n📜 კვალიფიკაცია: {qualification}\n⏳ გამოცდილება: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "არ არის მოწოდებული",
+  "reviews": "({count} მიმოხილვები)",
+  "specialties": "სპეციალობები",
+  "experience": "გამოცდილება",
+  "qualification": "კვალიფიკაცია",
+  "education": "განათლება",
+  "recoveryTips": "• გადაიღეთ ამ ინფორმაციის ეკრანის ანაბეჭდი\n• შეინახეთ უსაფრთხო ადგილას\n• არავის გაუზიარეთ\n• ეს მხოლოდ ერთხელ გამოჩნდება"
+}

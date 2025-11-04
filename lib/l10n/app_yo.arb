@@ -1,0 +1,439 @@
+{
+  "@@locale": "yo",
+  "settingsTitle": "Eto",
+  "notificationSettings": "Eto iwifunni",
+  "privacySettings": "Awọn Eto Aṣiri",
+  "accountSettings": "Eto iroyin",
+  "languageSettings": "Eto Ede",
+  "languageChanged": "Ede yi pada",
+  "existingUserButton": "Mo jẹ olumulo ti o wa tẹlẹ",
+  "chooseCountryTitle": "Yan Orilẹ-ede",
+  "yesText": "Bẹẹni",
+  "noText": "Rara",
+  "appBarTitle": "Eto profaili",
+  "userIdLabel": "Idanimọ olumulo *",
+  "nameLabel": "Oruko",
+  "birthCountryLabel": "Orilẹ-ede ibi",
+  "birthCityLabel": "Ilu ibi",
+  "countrySelectionTitle": "Yan orilẹ-ede rẹ",
+  "maleLabel": "Okunrin",
+  "femaleLabel": "Obirin",
+  "birthDateLabel": "Ojo ibi",
+  "birthDatePlaceholder": "Yan Ọjọ ibi",
+  "birthTimeLabel": "Akoko ibi",
+  "birthTimePlaceholder": "Yan Akoko ibi",
+  "saveProfileButton": "Fi Profaili pamọ",
+  "noCitiesFound": "Ko si ilu ti a ri",
+  "cityPlaceholder": "Tẹ ilu sii ni {country}",
+  "countryFirstPlaceholder": "Yan orilẹ-ede ni akọkọ",
+  "versionHistoryTitle": "Itan Ẹya",
+  "notSetText": "Ko ṣeto",
+  "nameHistory": "Orukọ: {name}",
+  "cityHistory": "Ilu: {city}",
+  "countryHistory": "Orilẹ-ede: {country}",
+  "genderHistory": "Iwa-iwa: {gender}",
+  "birthDateHistory": "Ọjọ ibi: {date}",
+  "birthTimeHistory": "Àkókò Ìbí: {time}",
+  "locationHistory": "Ibi: {latitude}, {longitude}",
+  "timezoneHistory": "Aago: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "State: {state}",
+  "versionFromText": "Ti ṣe imudojuiwọn lori {date}",
+  "userIdRequired": "A nilo ID olumulo",
+  "profileSaved": "Profaili ti fipamọ ni aṣeyọri",
+  "saveFailed": "Kuna lati fi profaili pamọ",
+  "errorPrefix": "Asise:",
+  "onboardingChooseLanguage": "Yan Èdè Rẹ",
+  "onboardingChooseLanguageDesc": "Yan ede ti o fẹ lati tẹsiwaju.",
+  "onboardingWhatIsAstrology": "Kí ni Afirawọ?",
+  "onboardingWhatIsAstrologyDesc": "Afirawọ jẹ iwadi ti awọn ara ọrun...",
+  "onboardingWhyUseApp": "Kilode ti o lo app yii?",
+  "onboardingWhyUseAppDesc": "Gba awọn horoscopes ti ara ẹni, awọn asọtẹlẹ ojoojumọ, ati itọsọna lati ṣe awọn ipinnu alaye.",
+  "onboardingHowToUse": "Bawo ni lati lo app yii?",
+  "onboardingHowToUseDesc": "Lilọ kiri ni irọrun, ṣayẹwo awọn horoscopes ojoojumọ, ati ṣakoso profaili rẹ fun awọn asọtẹlẹ deede.",
+  "onboardingGetStarted": "Bẹrẹ",
+  "onboardingNewUser": "Olumulo Tuntun",
+  "onboardingExistingUser": "Olumulo to wa",
+  "onboardingBack": "Pada",
+  "onboardingNext": "Itele",
+  "userIdNotFound": "A ko ri ID olumulo. Jọwọ buwolu wọle tabi ṣeto profaili rẹ.",
+  "clearNotificationsTitle": "Ko awọn iwifunni kuro",
+  "clearNotificationsMessage": "Ṣe o da ọ loju pe o fẹ lati ko gbogbo awọn iwifunni kuro?",
+  "clearNotificationsSuccess": "Gbogbo awọn iwifunni ti paarẹ ni aṣeyọri.",
+  "clearHoroscopeTitle": "Ko Horoscope kuro",
+  "clearHoroscopeMessage": "Ṣe o da ọ loju pe o fẹ lati ko data horoscope rẹ kuro?",
+  "clearHoroscopeSuccess": "Horoscope ti yọ kuro ni aṣeyọri.",
+  "clearChatTitle": "Ko Itan iwiregbe kuro",
+  "clearChatMessage": "Ṣe o da ọ loju pe o fẹ pa gbogbo itan iwiregbe rẹ rẹ bi?",
+  "clearChatLocal": "Iwiregbe nso tibile.",
+  "deleteAccountTitle": "Pa Account",
+  "deleteAccountMessage": "Ṣe o da ọ loju pe o fẹ pa akọọlẹ rẹ rẹ bi? Eyi yoo tun ko gbogbo itan iwiregbe rẹ ati awọn iwifunni rẹ kuro.",
+  "deleteAccountSuccess": "Iwe akọọlẹ rẹ ati gbogbo data ti yọkuro.",
+  "deleteAccountError": "Aṣiṣe piparẹ akọọlẹ",
+  "logoutTitle": "Jade jade",
+  "logoutMessage": "Ṣe o da ọ loju pe o fẹ jade bi?",
+  "termsPrivacyTitle": "Awọn ofin & Asiri",
+  "privacyPolicyTitle": "Asiri Afihan",
+  "termsConditionsTitle": "Awọn ofin & Awọn ipo",
+  "dataControlTitle": "Iṣakoso data",
+  "cancelButton": "Fagilee",
+  "confirmButton": "Jẹrisi",
+  "clearQuestionsSuccess": "Gbogbo awọn ibeere ti paarẹ ni aṣeyọri.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Oluwa",
+  "startLabel": "Bẹrẹ",
+  "recoverAccount": "Bọsipọ Account",
+  "endLabel": "Ipari",
+  "startDateLabel": "Ọjọ Ibẹrẹ",
+  "endDateLabel": "Ọjọ Ipari",
+  "notAvailable": "Ko si",
+  "noData": "Ko si data",
+  "unknownError": "Aṣiṣe aimọ",
+  "retryButton": "Tun gbiyanju",
+  "kundaliGeneratorTitle": "Kundali monomono",
+  "natalChartTitle": "Natal Chart",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Igoke ìyí",
+  "vimshottariDashaTitle": "Vimhottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Aimọ",
+  "clearHoroscope": "Ko Horoscope kuro",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Ko awọn iwifunni kuro",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Ko Itan iwiregbe kuro",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Jade jade",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Pa Account",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Gbogbo awọn aaye ni a beere.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "A gba iroyin pada ni aṣeyọri.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Imularada kuna. Ṣayẹwo alaye rẹ.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Aṣiri Imularada:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Nipa re",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Nipa Ile-iṣẹ Wa",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "A ti pinnu lati jiṣẹ iriri airawọ ti o dara julọ si awọn olumulo wa.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Iṣẹ apinfunni wa",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Lati pese awọn oye awòràwọ deede ati ti ara ẹni lati ṣe iranlọwọ fun awọn olumulo lati ṣe awọn ipinnu alaye ni igbesi aye wọn.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Iran wa",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Lati di pẹpẹ awòràwọ ti o ni igbẹkẹle julọ, apapọ imọ-ẹrọ ati ọgbọn atijọ.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Awọn iye wa",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Iduroṣinṣin, Ipeye, Apẹrẹ-Centric Olumulo, ati Innovation Tesiwaju.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Pe wa",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Imeeli: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Aaye ayelujara: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Onibara Support",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "A wa Nibi lati ṣe iranlọwọ",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Fọwọsi fọọmu ni isalẹ ati ẹgbẹ atilẹyin wa yoo pada si ọdọ rẹ ni kete bi o ti ṣee.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Orukọ rẹ",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Imeeli rẹ",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Ifiranṣẹ",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Tẹ imeeli rẹ sii",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Tẹ adirẹsi imeeli to wulo",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Tẹ {fieldName} sii",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Firanṣẹ",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Fifiranṣẹ...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Imeeli firanṣẹ ni aṣeyọri!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Kuna lati fi imeeli ranṣẹ",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro Dictionary",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Awọn ọrọ wiwa...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Ko si awọn ofin ti a rii",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Ra Awọn ibeere",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Olumulo ko ni ijẹrisi",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Kuna lati kojọpọ data itaja",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Atokun auth ti o padanu",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Wiregbe App",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Isanwo ṣaṣeyọri! Ìbéèrè rán",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Isanwo kuna: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Iwọntunwọnsi rẹ",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Awọn ibeere",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Awọn ipese to wa",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Ibeere",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Ra",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Horoscope Ojoojumọ",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "ID olumulo ti sonu",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "O kuna lati mu awọn horoscopes wa",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Ko si horoscope ti a rii.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Wole",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Loni",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Lana",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Ose yi",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Osu to koja",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Wiregbe",
+  "typeYourQuestionHint": "Tẹ ibeere rẹ sii...",
+  "paymentRequired": "Ti beere owo sisan",
+  "paymentRequiredMessage": "O ti lo awọn ibeere ọfẹ rẹ. San ₹50 lati tẹsiwaju.",
+  "payNowButton": "Sanwo Bayi",
+  "freeQuestionsRemaining": "{count} awọn ibeere ọfẹ ti o ku",
+  "paidQuestionsRemaining": "{count} awọn ibeere isanwo to ku",
+  "thankYouFeedback": "O ṣeun fun esi rẹ!",
+  "ratingSubmitted": "Rating silẹ!",
+  "setUserIdFirst": "Jọwọ ṣeto ID olumulo rẹ akọkọ",
+  "failedToFetchPrevious": "Kuna lati mu awọn ibeere ati awọn idahun ti tẹlẹ wa",
+  "errorOccurred": "Aṣiṣe: {error}",
+  "drawerAstroProfile": "Astro Profaili",
+  "drawerDailyHoroscope": "Horoscope ojoojumọ",
+  "drawerBuyQuestions": "Ra Awọn ibeere",
+  "drawerAstroDictionary": "Astro Dictionary",
+  "drawerSettings": "Eto",
+  "drawerCustomerSupport": "Onibara Support",
+  "drawerAbout": "Nipa",
+  "drawerProfileSettings": "Eto profaili",
+  "demoNotificationTitle": "🔔 Ifitonileti Ririnkiri",
+  "demoNotificationBody": "Eyi jẹ ifitonileti idanwo lati inu ohun elo rẹ!",
+  "notificationsTitle": "Awọn iwifunni",
+  "noNotifications": "Ko si awọn iwifunni",
+  "allTab": "Gbogbo",
+  "markAllAsRead": "Samisi gbogbo bi o ti ka",
+  "notificationMarkedRead": "Ifitonileti samisi bi kika",
+  "failedToLoadNotifications": "Kuna lati kojọpọ awọn iwifunni",
+  "failedToMarkRead": "Kuna lati samisi bi kika",
+  "failedToMarkAllRead": "Kuna lati samisi gbogbo rẹ bi kika",
+  "socketConnected": "Socket ti sopọ",
+  "socketDisconnected": "Socket ge asopọ",
+  "newNotificationReceived": "Titun iwifunni gba",
+  "generalCategory": "Gbogboogbo",
+  "horoscopeCategory": "Horoscope",
+  "chatCategory": "Wiregbe",
+  "systemCategory": "Eto",
+  "updateCategory": "Awọn imudojuiwọn",
+  "howToAskTitle": "Bawo ni Lati Beere",
+  "noQuestionsAvailable": "Ko si ibeere to wa",
+  "failedToLoadQuestions": "Kuna lati kojọpọ awọn ibeere",
+  "pullToRefresh": "Fa lati sọ di mimọ",
+  "careerCategory": "Iṣẹ",
+  "loveCategory": "Ife & Awọn ibatan",
+  "healthCategory": "Ilera",
+  "financeCategory": "Isuna",
+  "familyCategory": "Idile",
+  "educationCategory": "Ẹkọ",
+  "travelCategory": "Irin-ajo",
+  "spiritualCategory": "Ẹ̀mí",
+  "profileLoaded": "Ti kojọpọ profaili ni aṣeyọri",
+  "imageUploaded": "Aworan ti kojọpọ ni aṣeyọri",
+  "savedInformationConfirmation": "Mo ti fipamọ Alaye yii",
+  "noHistoryAvailable": "Ko si itan ti o wa",
+  "missingUserIdError": "A nilo ID olumulo",
+  "networkError": "Aṣiṣe nẹtiwọki. Jọwọ gbiyanju lẹẹkansi.",
+  "timeoutError": "Ibere ti pari",
+  "genericError": "Nkankan ti ko tọ",
+  "reactionUpdateError": "Kuna lati mu esi pada",
+  "noSearchResults": "Ko si awọn abajade wiwa",
+  "clearSearch": "Ko wiwa kuro",
+  "resultsFound": "Awọn abajade ri",
+  "recoverySecretHint": "Daakọ-lẹẹmọ le ma ṣiṣẹ, tẹ pẹlu ọwọ",
+  "recoverAccountDescription": "Tẹle awọn igbesẹ wọnyi lati gba akọọlẹ rẹ pada",
+  "processingLabel": "Nṣiṣẹ...",
+  "clearChatSuccess": "Iwiregbe nso ni aṣeyọri",
+  "notificationsEnabled": "Awọn iwifunni ṣiṣẹ",
+  "notificationsDisabled": "Awọn iwifunni alaabo",
+  "securityNotice": "Awọn data rẹ ti wa ni ipamọ ni aabo ati fipamọ",
+  "loading": "Nkojọpọ...",
+  "selectLanguage": "Yan Ede",
+  "onboardingGetStartedDesc": "Bẹrẹ nipa yiyan ede rẹ",
+  "accountRecoveryTitle": "🔐 Awọn alaye Imularada Account",
+  "recoveryInstructions": "Jọwọ ṣafipamọ alaye yii ni aabo. Iwọ yoo nilo rẹ lati gba akọọlẹ rẹ pada.",
+  "importantNotice": "⚠️ Pataki:",
+  "astrologerProfileTitle": "Astrologer Profaili",
+  "personalAstrologer": "Ti ara ẹni Afirawọ",
+  "makePersonalAstrologer": "Ṣe Personal Afirawọ",
+  "favoriteDescription": "Awọn ibeere rẹ yoo jẹ pataki si awòràwọ yii. Ti ko ba si, awòràwọ oṣiṣẹ miiran yoo ran ọ lọwọ.",
+  "educationQualifications": "Ẹkọ & Awọn afijẹẹri",
+  "aboutSection": "Nipa",
+  "shareProfile": "Pin Profaili",
+  "loadingAstrologer": "Nkojọpọ awọn alaye awòràwọ...",
+  "failedToLoadAstrologer": "Kuna lati kojọpọ awọn alaye awòràwọ",
+  "authenticationRequired": "Ijeri beere. Jọwọ wọle.",
+  "securityCheckFailed": "Ayẹwo aabo kuna: {error}",
+  "addedToFavorites": "🎯 {name} jẹ Aworawo Ti ara ẹni rẹ ni bayi",
+  "removedFromFavorites": "✅ Yọ {name} kuro ninu awọn ayanfẹ",
+  "toggleFavoriteError": "Kuna lati ṣe imudojuiwọn ipo ayanfẹ",
+  "shareMessage": "{name}\n🎓 Ẹkọ: {education}\n📜 Ijẹẹri: {qualification}\n⏳ Iriri: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Ko pese",
+  "reviews": "({count} agbeyewo)",
+  "specialties": "Pataki",
+  "experience": "Iriri",
+  "qualification": "Ijẹẹri",
+  "education": "Ẹkọ",
+  "recoveryTips": "• Ya aworan sikirinifoto ti alaye yii\nFipamọ si ibi aabo\n• Maṣe pin pẹlu ẹnikẹni\n• Eyi yoo han ni ẹẹkan"
+}

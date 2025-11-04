@@ -1,0 +1,439 @@
+{
+  "@@locale": "si",
+  "settingsTitle": "සැකසුම්",
+  "notificationSettings": "දැනුම්දීම් සැකසුම්",
+  "privacySettings": "රහස්‍යතා සැකසුම්",
+  "accountSettings": "ගිණුම් සැකසුම්",
+  "languageSettings": "භාෂා සැකසුම්",
+  "languageChanged": "භාෂාව වෙනස් විය",
+  "existingUserButton": "මම දැනට සිටින පරිශීලකයෙක්.",
+  "chooseCountryTitle": "රට තෝරන්න",
+  "yesText": "ඔව්",
+  "noText": "නැත",
+  "appBarTitle": "පැතිකඩ සැකසුම්",
+  "userIdLabel": "පරිශීලක ID *",
+  "nameLabel": "නම",
+  "birthCountryLabel": "උපන් රට",
+  "birthCityLabel": "උපන් නගරය",
+  "countrySelectionTitle": "ඔබේ රට තෝරන්න",
+  "maleLabel": "පිරිමි",
+  "femaleLabel": "ගැහැණු",
+  "birthDateLabel": "උපන් දිනය",
+  "birthDatePlaceholder": "උපන් දිනය තෝරන්න",
+  "birthTimeLabel": "උපන් වේලාව",
+  "birthTimePlaceholder": "උපන් වේලාව තෝරන්න",
+  "saveProfileButton": "පැතිකඩ සුරකින්න",
+  "noCitiesFound": "නගර කිසිවක් හමු නොවීය",
+  "cityPlaceholder": "{country} හි නගරය ඇතුළත් කරන්න",
+  "countryFirstPlaceholder": "පළමුව රට තෝරන්න",
+  "versionHistoryTitle": "අනුවාද ඉතිහාසය",
+  "notSetText": "සකසා නැත",
+  "nameHistory": "නම: {name}",
+  "cityHistory": "නගරය: {city}",
+  "countryHistory": "රට: {country}",
+  "genderHistory": "ස්ත්‍රී පුරුෂ භාවය: {gender}",
+  "birthDateHistory": "උපන් දිනය: {date}",
+  "birthTimeHistory": "උපන් වේලාව: {time}",
+  "locationHistory": "ස්ථානය: {latitude}, {longitude}",
+  "timezoneHistory": "වේලා කලාපය: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "තත්වය: {state}",
+  "versionFromText": "{date} දින යාවත්කාලීන කරන ලදී.",
+  "userIdRequired": "පරිශීලක හැඳුනුම්පත අවශ්‍යයි",
+  "profileSaved": "පැතිකඩ සාර්ථකව සුරකින ලදී",
+  "saveFailed": "පැතිකඩ සුරැකීමට අසමත් විය.",
+  "errorPrefix": "දෝෂය:",
+  "onboardingChooseLanguage": "ඔබේ භාෂාව තෝරන්න",
+  "onboardingChooseLanguageDesc": "ඉදිරියට යාමට ඔබ කැමති භාෂාව තෝරන්න.",
+  "onboardingWhatIsAstrology": "ජ්‍යොතිෂය යනු කුමක්ද?",
+  "onboardingWhatIsAstrologyDesc": "ජ්‍යොතිෂය යනු ආකාශ වස්තූන් පිළිබඳ අධ්‍යයනයයි...",
+  "onboardingWhyUseApp": "මෙම යෙදුම භාවිතා කරන්නේ ඇයි?",
+  "onboardingWhyUseAppDesc": "පුද්ගලාරෝපිත කේන්දර, දෛනික අනාවැකි සහ දැනුවත් තීරණ ගැනීමට මග පෙන්වීම ලබා ගන්න.",
+  "onboardingHowToUse": "මෙම යෙදුම භාවිතා කරන්නේ කෙසේද?",
+  "onboardingHowToUseDesc": "පහසුවෙන් සංචාලනය කරන්න, දිනපතා කේන්දර පරීක්ෂා කරන්න, සහ නිවැරදි අනාවැකි සඳහා ඔබේ පැතිකඩ කළමනාකරණය කරන්න.",
+  "onboardingGetStarted": "ආරම්භ කරන්න",
+  "onboardingNewUser": "නව පරිශීලකයා",
+  "onboardingExistingUser": "පවතින පරිශීලකයා",
+  "onboardingBack": "ආපසු",
+  "onboardingNext": "ඊළඟ",
+  "userIdNotFound": "පරිශීලක හැඳුනුම්පත හමු නොවීය. කරුණාකර පුරනය වන්න හෝ ඔබේ පැතිකඩ සකසන්න.",
+  "clearNotificationsTitle": "දැනුම්දීම් හිස් කරන්න",
+  "clearNotificationsMessage": "ඔබට සියලුම දැනුම්දීම් හිස් කිරීමට අවශ්‍ය බව ඔබට විශ්වාසද?",
+  "clearNotificationsSuccess": "සියලුම දැනුම්දීම් සාර්ථකව හිස් කරන ලදී.",
+  "clearHoroscopeTitle": "පැහැදිලි කේන්දර සටහන",
+  "clearHoroscopeMessage": "ඔබේ කේන්දර දත්ත හිස් කිරීමට ඔබට අවශ්‍ය බව ඔබට විශ්වාසද?",
+  "clearHoroscopeSuccess": "කේන්දර සටහන සාර්ථකව නිෂ්කාශනය විය.",
+  "clearChatTitle": "කතාබස් ඉතිහාසය හිස් කරන්න",
+  "clearChatMessage": "ඔබට ඔබේ සියලු කතාබස් ඉතිහාසය මකා දැමීමට අවශ්‍ය බව ඔබට විශ්වාසද?",
+  "clearChatLocal": "කතාබහ දේශීයව හිස් කරන ලදී.",
+  "deleteAccountTitle": "ගිණුම මකන්න",
+  "deleteAccountMessage": "ඔබගේ ගිණුම මකා දැමීමට ඔබට අවශ්‍ය බව ඔබට විශ්වාසද? මෙය ඔබගේ සියලු කතාබස් ඉතිහාසය සහ දැනුම්දීම් ද හිස් කරනු ඇත.",
+  "deleteAccountSuccess": "ඔබගේ ගිණුම සහ සියලු දත්ත ඉවත් කර ඇත.",
+  "deleteAccountError": "ගිණුම මැකීමේ දෝෂයකි",
+  "logoutTitle": "පිටවීම",
+  "logoutMessage": "ඔබට ලොග් අවුට් වීමට අවශ්‍ය බව විශ්වාසද?",
+  "termsPrivacyTitle": "නියමයන් සහ රහස්‍යතාව",
+  "privacyPolicyTitle": "රහස්යතා ප්රතිපත්තිය",
+  "termsConditionsTitle": "නියමයන් සහ කොන්දේසි",
+  "dataControlTitle": "දත්ත පාලනය",
+  "cancelButton": "අවලංගු කරන්න",
+  "confirmButton": "තහවුරු කරන්න",
+  "clearQuestionsSuccess": "සියලුම ප්‍රශ්න සාර්ථකව මකා දමන ලදී.",
+  "yoginiLabel": "යෝගිනි",
+  "lordLabel": "සමිඳාණන්",
+  "startLabel": "ආරම්භ කරන්න",
+  "recoverAccount": "ගිණුම ප්‍රතිසාධනය කරන්න",
+  "endLabel": "අවසානය",
+  "startDateLabel": "ආරම්භක දිනය",
+  "endDateLabel": "අවසන් දිනය",
+  "notAvailable": "ලද නොහැක",
+  "noData": "දත්ත නැත",
+  "unknownError": "නොදන්නා දෝෂයකි",
+  "retryButton": "නැවත උත්සාහ කරන්න",
+  "kundaliGeneratorTitle": "කුණ්ඩලි උත්පාදක යන්ත්‍රය",
+  "natalChartTitle": "ජන්ම පත්‍රය",
+  "lagnaLabel": "ලග්නය",
+  "rashiLabel": "රාෂි",
+  "ascDegreeLabel": "ආරෝහණ උපාධිය",
+  "vimshottariDashaTitle": "විම්ෂෝත්තරි දශා",
+  "yoginiDashaTitle": "යෝගිනී දශා",
+  "unknown": "නොදන්නා",
+  "clearHoroscope": "පැහැදිලි කේන්දර සටහන",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "දැනුම්දීම් හිස් කරන්න",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "කතාබස් ඉතිහාසය හිස් කරන්න",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "පිටවීම",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "ගිණුම මකන්න",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "සියලුම ක්ෂේත්‍ර අවශ්‍යයි.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "ගිණුම සාර්ථකව ප්‍රතිසාධනය කරන ලදී.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "ප්‍රතිසාධනය අසාර්ථක විය. ඔබේ තොරතුරු පරීක්ෂා කරන්න.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "ප්‍රතිසාධන රහස:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "අපි ගැන",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "අපගේ සමාගම ගැන",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "අපගේ පරිශීලකයින්ට හොඳම ජ්‍යොතිෂ අත්දැකීම ලබා දීමට අපි කැපවී සිටිමු.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "අපගේ මෙහෙවර",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "පරිශීලකයින්ට තම ජීවිතවල දැනුවත් තීරණ ගැනීමට උපකාර කිරීම සඳහා නිවැරදි සහ පුද්ගලාරෝපිත ජ්‍යොතිෂ අවබෝධයක් ලබා දීම.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "අපගේ දැක්ම",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "තාක්ෂණය සහ පුරාණ ප්‍රඥාව ඒකාබද්ධ කරමින් වඩාත්ම විශ්වාසදායක ජ්‍යොතිෂ වේදිකාව බවට පත්වීම.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "අපගේ වටිනාකම්",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "අඛණ්ඩතාව, නිරවද්‍යතාවය, පරිශීලක කේන්ද්‍රීය නිර්මාණය සහ අඛණ්ඩ නවෝත්පාදනය.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "අපව අමතන්න",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "විද්‍යුත් තැපෑල: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "වෙබ් අඩවිය: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "පාරිභෝගික සහාය",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "අපි උදව් කිරීමට මෙහි සිටිමු",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "පහත පෝරමය පුරවන්න, අපගේ සහාය කණ්ඩායම හැකි ඉක්මනින් ඔබ හා සම්බන්ධ වනු ඇත.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "ඔයාගේ නම",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "ඔබගේ විද්‍යුත් තැපෑල",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "පණිවිඩය",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "ඔබගේ විද්‍යුත් තැපෑල ඇතුළත් කරන්න",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "වලංගු විද්‍යුත් තැපැල් ලිපිනයක් ඇතුළත් කරන්න.",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "{fieldName} ඇතුළත් කරන්න",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "යවන්න",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "යවමින්...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ විද්‍යුත් තැපෑල සාර්ථකව යවන ලදී!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ ඊමේල් යැවීමට අසමත් විය.",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "තාරකා ශබ්දකෝෂය",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "සෙවුම් පද...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "පද කිසිවක් හමු නොවීය",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "ප්‍රශ්න මිලදී ගන්න",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "පරිශීලකයා සත්‍යාපනය කර නොමැත.",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "ගබඩා දත්ත පූරණය කිරීමට අසමත් විය.",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "සත්‍යාපන ටෝකනය අස්ථානගත වී ඇත",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "ඇස්ට්‍රෝ චැට් යෙදුම",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ ගෙවීම සාර්ථකයි! ප්‍රශ්නය යවන ලදී.",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ ගෙවීම අසාර්ථක විය: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "ඔබේ ශේෂය",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} ප්‍රශ්න",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "ලබා ගත හැකි දීමනා",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} ප්‍රශ්නය",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "මිලදී ගන්න",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 දෛනික කේන්දර සටහන",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "පරිශීලක හැඳුනුම්පත අස්ථානගත වී ඇත.",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "කේන්දර ලබා ගැනීමට අසමත් විය.",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "කේන්දරයක් හමු නොවීය.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "ලකුණ",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "අද",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "ඊයේ",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "මෙම සතිය",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "පසුගිය මාසයේ",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "කතාබස් කරන්න",
+  "typeYourQuestionHint": "ඔබේ ප්‍රශ්නය ටයිප් කරන්න...",
+  "paymentRequired": "ගෙවීම අවශ්‍යයි",
+  "paymentRequiredMessage": "ඔබ ඔබේ නොමිලේ ප්‍රශ්න භාවිතා කර ඇත. ඉදිරියට යාමට රුපියල් 50ක් ගෙවන්න.",
+  "payNowButton": "දැන් ගෙවන්න",
+  "freeQuestionsRemaining": "{count} නොමිලේ ප්‍රශ්න ඉතිරිව ඇත",
+  "paidQuestionsRemaining": "{count} ඉතිරිව ඇති ගෙවූ ප්‍රශ්න",
+  "thankYouFeedback": "ඔබගේ ප්‍රතිපෝෂණයට ස්තූතියි!",
+  "ratingSubmitted": "ඇගයීම ඉදිරිපත් කරන ලදී!",
+  "setUserIdFirst": "කරුණාකර පළමුව ඔබගේ පරිශීලක හැඳුනුම්පත සකසන්න.",
+  "failedToFetchPrevious": "පෙර ප්‍රශ්න සහ පිළිතුරු ලබා ගැනීමට අපොහොසත් විය.",
+  "errorOccurred": "දෝෂය: {error}",
+  "drawerAstroProfile": "තාරකා පැතිකඩ",
+  "drawerDailyHoroscope": "දෛනික කේන්දර සටහන",
+  "drawerBuyQuestions": "ප්‍රශ්න මිලදී ගන්න",
+  "drawerAstroDictionary": "තාරකා ශබ්දකෝෂය",
+  "drawerSettings": "සැකසුම්",
+  "drawerCustomerSupport": "පාරිභෝගික සහාය",
+  "drawerAbout": "ගැන",
+  "drawerProfileSettings": "පැතිකඩ සැකසුම්",
+  "demoNotificationTitle": "🔔 ආදර්ශන දැනුම්දීම",
+  "demoNotificationBody": "මෙය ඔබගේ යෙදුමෙන් ලැබුණු පරීක්ෂණ දැනුම්දීමකි!",
+  "notificationsTitle": "දැනුම්දීම්",
+  "noNotifications": "දැනුම්දීම් නැත",
+  "allTab": "සියල්ල",
+  "markAllAsRead": "සියල්ල කියවූ ලෙස සලකුණු කරන්න",
+  "notificationMarkedRead": "දැනුම්දීම කියවූ ලෙස සලකුණු කරන ලදී",
+  "failedToLoadNotifications": "දැනුම්දීම් පූරණය කිරීමට අසමත් විය.",
+  "failedToMarkRead": "කියවූ ලෙස සලකුණු කිරීමට අසමත් විය.",
+  "failedToMarkAllRead": "සියල්ල කියවූ ලෙස සලකුණු කිරීමට අසමත් විය.",
+  "socketConnected": "සොකට් එක සම්බන්ධයි",
+  "socketDisconnected": "සොකට් එක විසන්ධි විය",
+  "newNotificationReceived": "නව දැනුම්දීමක් ලැබුණි",
+  "generalCategory": "ජනරාල්",
+  "horoscopeCategory": "කේන්දර සටහන",
+  "chatCategory": "කතාබස් කරන්න",
+  "systemCategory": "පද්ධතිය",
+  "updateCategory": "යාවත්කාලීන කිරීම්",
+  "howToAskTitle": "අසන්නේ කෙසේද?",
+  "noQuestionsAvailable": "ප්‍රශ්න නොමැත",
+  "failedToLoadQuestions": "ප්‍රශ්න පූරණය කිරීමට අසමත් විය.",
+  "pullToRefresh": "නැවුම් කිරීමට අදින්න",
+  "careerCategory": "වෘත්තීය ජීවිතය",
+  "loveCategory": "ආදරය සහ සබඳතා",
+  "healthCategory": "සෞඛ්‍යය",
+  "financeCategory": "මූල්‍ය",
+  "familyCategory": "පවුල",
+  "educationCategory": "අධ්‍යාපනය",
+  "travelCategory": "ගමන්",
+  "spiritualCategory": "ආධ්‍යාත්මික",
+  "profileLoaded": "පැතිකඩ සාර්ථකව පූරණය විය",
+  "imageUploaded": "රූපය සාර්ථකව උඩුගත කරන ලදී.",
+  "savedInformationConfirmation": "මම මෙම තොරතුරු සුරකින ලදී.",
+  "noHistoryAvailable": "ඉතිහාසයක් නොමැත",
+  "missingUserIdError": "පරිශීලක හැඳුනුම්පත අවශ්‍යයි",
+  "networkError": "ජාල දෝෂයකි. කරුණාකර නැවත උත්සාහ කරන්න.",
+  "timeoutError": "ඉල්ලීම කල් ඉකුත් විය",
+  "genericError": "යමක් වැරදී ඇත.",
+  "reactionUpdateError": "ප්‍රතිචාරය යාවත්කාලීන කිරීමට අසමත් විය",
+  "noSearchResults": "සෙවුම් ප්‍රතිඵල හමු නොවීය.",
+  "clearSearch": "සෙවීම හිස් කරන්න",
+  "resultsFound": "ප්‍රතිඵල හමු විය",
+  "recoverySecretHint": "පිටපත් කිරීම සහ ඇලවීම ක්‍රියා නොකරනු ඇත, අතින් ටයිප් කරන්න.",
+  "recoverAccountDescription": "ඔබගේ ගිණුම ප්‍රතිසාධනය කිරීමට මෙම පියවර අනුගමනය කරන්න.",
+  "processingLabel": "සකසමින්...",
+  "clearChatSuccess": "කතාබහ සාර්ථකව හිස් කරන ලදී",
+  "notificationsEnabled": "දැනුම්දීම් සබල කර ඇත",
+  "notificationsDisabled": "දැනුම්දීම් අබල කර ඇත",
+  "securityNotice": "ඔබගේ දත්ත ආරක්ෂිතව සංකේතනය කර ගබඩා කර ඇත",
+  "loading": "පූරණය වෙමින්...",
+  "selectLanguage": "භාෂාව තෝරන්න",
+  "onboardingGetStartedDesc": "ඔබේ භාෂාව තෝරා ගැනීමෙන් ආරම්භ කරන්න",
+  "accountRecoveryTitle": "🔐 ගිණුම් ප්‍රතිසාධන විස්තර",
+  "recoveryInstructions": "කරුණාකර මෙම තොරතුරු ආරක්ෂිතව සුරකින්න. ඔබේ ගිණුම ප්‍රතිසාධනය කිරීමට ඔබට එය අවශ්‍ය වනු ඇත.",
+  "importantNotice": "⚠️ වැදගත්:",
+  "astrologerProfileTitle": "ජ්‍යෝතිඃ ශාස්ත්‍රඥ පැතිකඩ",
+  "personalAstrologer": "පුද්ගලික ජ්‍යෝතිඃ ශාස්ත්‍රඥයා",
+  "makePersonalAstrologer": "පුද්ගලික ජ්‍යෝතිඃ ශාස්ත්‍රඥයෙකු සාදන්න",
+  "favoriteDescription": "ඔබේ ප්‍රශ්න මෙම ජ්‍යෝතිඃ ශාස්ත්‍රඥයාට ප්‍රමුඛත්වය දෙනු ලැබේ. නොමැති නම්, වෙනත් සුදුසුකම් ලත් ජ්‍යෝතිඃ ශාස්ත්‍රඥයෙකු ඔබට සහාය වනු ඇත.",
+  "educationQualifications": "අධ්‍යාපනය සහ සුදුසුකම්",
+  "aboutSection": "ගැන",
+  "shareProfile": "පැතිකඩ බෙදා ගන්න",
+  "loadingAstrologer": "ජ්‍යෝතිඃ ශාස්ත්‍රඥ විස්තර පූරණය වෙමින්...",
+  "failedToLoadAstrologer": "ජ්‍යෝතිඃ ශාස්ත්‍රඥ විස්තර පූරණය කිරීමට අසමත් විය.",
+  "authenticationRequired": "සත්‍යාපනය අවශ්‍යයි. කරුණාකර පුරනය වන්න.",
+  "securityCheckFailed": "ආරක්ෂක පරීක්ෂාව අසාර්ථක විය: {error}",
+  "addedToFavorites": "🎯 {name} දැන් ඔබේ පුද්ගලික ජ්‍යෝතිඃ ශාස්ත්‍රඥයායි",
+  "removedFromFavorites": "✅ {name} ප්‍රියතමයන්ගෙන් ඉවත් කරන ලදී.",
+  "toggleFavoriteError": "ප්‍රියතම තත්ත්වය යාවත්කාලීන කිරීමට අසමත් විය.",
+  "shareMessage": "{name}\n🎓 අධ්‍යාපනය: {education}\n📜 සුදුසුකම්: {qualification}\n⏳ පළපුරුද්ද: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "සපයා නැත",
+  "reviews": "({count} සමාලෝචන)",
+  "specialties": "විශේෂතා",
+  "experience": "අත්දැකීම්",
+  "qualification": "සුදුසුකම්",
+  "education": "අධ්‍යාපනය",
+  "recoveryTips": "• මෙම තොරතුරු වල තිර රුවක් ගන්න\n• එය ආරක්ෂිත ස්ථානයක ගබඩා කරන්න\n• කිසිවෙකු සමඟ බෙදා නොගන්න\n• මෙය එක් වරක් පමණක් පෙන්වනු ලැබේ"
+}

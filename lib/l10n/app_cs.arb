@@ -1,0 +1,439 @@
+{
+  "@@locale": "cs",
+  "settingsTitle": "Nastavení",
+  "notificationSettings": "Nastavení oznámení",
+  "privacySettings": "Nastavení soukromí",
+  "accountSettings": "Nastavení účtu",
+  "languageSettings": "Nastavení jazyka",
+  "languageChanged": "Jazyk změněn",
+  "existingUserButton": "Jsem stávající uživatel",
+  "chooseCountryTitle": "Vyberte zemi",
+  "yesText": "Ano",
+  "noText": "Žádný",
+  "appBarTitle": "Nastavení profilu",
+  "userIdLabel": "ID uživatele *",
+  "nameLabel": "Jméno",
+  "birthCountryLabel": "Země narození",
+  "birthCityLabel": "Rodné město",
+  "countrySelectionTitle": "Vyberte si svou zemi",
+  "maleLabel": "Samec",
+  "femaleLabel": "Žena",
+  "birthDateLabel": "Datum narození",
+  "birthDatePlaceholder": "Vyberte datum narození",
+  "birthTimeLabel": "Čas narození",
+  "birthTimePlaceholder": "Vyberte čas narození",
+  "saveProfileButton": "Uložit profil",
+  "noCitiesFound": "Nenalezena žádná města",
+  "cityPlaceholder": "Zadejte město do {country}",
+  "countryFirstPlaceholder": "Nejprve vyberte zemi",
+  "versionHistoryTitle": "Historie verzí",
+  "notSetText": "Není nastaveno",
+  "nameHistory": "Jméno: {name}",
+  "cityHistory": "Město: {city}",
+  "countryHistory": "Země: {country}",
+  "genderHistory": "Pohlaví: {gender}",
+  "birthDateHistory": "Datum narození: {date}",
+  "birthTimeHistory": "Čas narození: {time}",
+  "locationHistory": "Poloha: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT{offset}",
+  "dstHistory": "Letní čas: {value}",
+  "stateHistory": "Stát: {state}",
+  "versionFromText": "Aktualizováno dne {date}",
+  "userIdRequired": "Je vyžadováno ID uživatele",
+  "profileSaved": "Profil byl úspěšně uložen",
+  "saveFailed": "Profil se nepodařilo uložit",
+  "errorPrefix": "Chyba:",
+  "onboardingChooseLanguage": "Vyberte si jazyk",
+  "onboardingChooseLanguageDesc": "Pro pokračování vyberte preferovaný jazyk.",
+  "onboardingWhatIsAstrology": "Co je astrologie?",
+  "onboardingWhatIsAstrologyDesc": "Astrologie je studium nebeských těles...",
+  "onboardingWhyUseApp": "Proč používat tuto aplikaci?",
+  "onboardingWhyUseAppDesc": "Získejte personalizované horoskopy, denní předpovědi a rady pro informovaná rozhodnutí.",
+  "onboardingHowToUse": "Jak tuto aplikaci používat?",
+  "onboardingHowToUseDesc": "Snadno se orientujte, kontrolujte denní horoskopy a spravujte svůj profil pro přesné předpovědi.",
+  "onboardingGetStarted": "Začít",
+  "onboardingNewUser": "Nový uživatel",
+  "onboardingExistingUser": "Stávající uživatel",
+  "onboardingBack": "Zadní",
+  "onboardingNext": "Další",
+  "userIdNotFound": "ID uživatele nenalezeno. Přihlaste se prosím nebo si nastavte profil.",
+  "clearNotificationsTitle": "Vymazat oznámení",
+  "clearNotificationsMessage": "Opravdu chcete vymazat všechna oznámení?",
+  "clearNotificationsSuccess": "Všechna oznámení byla úspěšně smazána.",
+  "clearHoroscopeTitle": "Vymazat horoskop",
+  "clearHoroscopeMessage": "Jste si jisti, že chcete vymazat data svého horoskopu?",
+  "clearHoroscopeSuccess": "Horoskop byl úspěšně vymazán.",
+  "clearChatTitle": "Vymazat historii chatu",
+  "clearChatMessage": "Opravdu chcete smazat veškerou historii chatu?",
+  "clearChatLocal": "Chat byl lokálně vymazán.",
+  "deleteAccountTitle": "Smazat účet",
+  "deleteAccountMessage": "Opravdu chcete smazat svůj účet? Tímto se také vymaže veškerá historie chatu a oznámení.",
+  "deleteAccountSuccess": "Váš účet a všechna data byly odstraněny.",
+  "deleteAccountError": "Chyba při mazání účtu",
+  "logoutTitle": "Odhlásit se",
+  "logoutMessage": "Jste si jisti, že se chcete odhlásit?",
+  "termsPrivacyTitle": "Podmínky a ochrana osobních údajů",
+  "privacyPolicyTitle": "Zásady ochrany osobních údajů",
+  "termsConditionsTitle": "Obchodní podmínky",
+  "dataControlTitle": "Kontrola dat",
+  "cancelButton": "Zrušit",
+  "confirmButton": "Potvrdit",
+  "clearQuestionsSuccess": "Všechny otázky byly úspěšně smazány.",
+  "yoginiLabel": "Jógíni",
+  "lordLabel": "Pán",
+  "startLabel": "Start",
+  "recoverAccount": "Obnovit účet",
+  "endLabel": "Konec",
+  "startDateLabel": "Datum zahájení",
+  "endDateLabel": "Datum ukončení",
+  "notAvailable": "Není k dispozici",
+  "noData": "Žádná data",
+  "unknownError": "Neznámá chyba",
+  "retryButton": "Zkusit znovu",
+  "kundaliGeneratorTitle": "Generátor Kundali",
+  "natalChartTitle": "Horoskop",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Raši",
+  "ascDegreeLabel": "Stupeň ascendentu",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Jógini Dáša",
+  "unknown": "Neznámý",
+  "clearHoroscope": "Vymazat horoskop",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Vymazat oznámení",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Vymazat historii chatu",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Odhlásit se",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Smazat účet",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Všechna pole jsou povinná.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Účet byl úspěšně obnoven.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Obnovení se nezdařilo. Zkontrolujte své informace.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Tajemství obnovy:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "O nás",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "O naší společnosti",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Zavázali jsme se poskytovat našim uživatelům ten nejlepší astrologický zážitek.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Naše poslání",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Poskytovat přesné a personalizované astrologické poznatky, které uživatelům pomohou činit informovaná rozhodnutí v jejich životě.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Naše vize",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Stát se nejdůvěryhodnější astrologickou platformou, která kombinuje technologie a starověkou moudrost.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Naše hodnoty",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Integrita, přesnost, design zaměřený na uživatele a neustálé inovace.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Kontaktujte nás",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "E-mail: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Webové stránky: www.vasefirma.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Zákaznická podpora",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Jsme tu, abychom vám pomohli",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Vyplňte níže uvedený formulář a náš tým podpory se vám co nejdříve ozve.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Vaše jméno",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Váš e-mail",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Zpráva",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Zadejte svůj e-mail",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Zadejte platnou e-mailovou adresu",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Zadejte {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Poslat",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Odesílání...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ E-mail byl úspěšně odeslán!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Odeslání e-mailu se nezdařilo",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro slovník",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Hledané výrazy...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Nenalezeny žádné výrazy",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Otázky k nákupu",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Uživatel nebyl ověřen",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Nepodařilo se načíst data úložiště",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Chybí autorizační token",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Aplikace Astro Chat",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Platba úspěšná! Dotaz odeslán",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Platba selhala: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Váš zůstatek",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Questions",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Dostupné nabídky",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Question",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Nakoupit",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Denní horoskop",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Chybí ID uživatele",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Nepodařilo se načíst horoskopy",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Nebyl nalezen žádný horoskop.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Znamení",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Dnes",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Včera",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Tento týden",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Minulý měsíc",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Povídání",
+  "typeYourQuestionHint": "Napište svou otázku...",
+  "paymentRequired": "Platba je vyžadována",
+  "paymentRequiredMessage": "Vyčerpali jste své bezplatné otázky. Zaplaťte 50 ₹ a pokračujte.",
+  "payNowButton": "Zaplatit nyní",
+  "freeQuestionsRemaining": "Zbývá {count} otázek zdarma",
+  "paidQuestionsRemaining": "Zbývá {count} placených otázek",
+  "thankYouFeedback": "Děkujeme za vaši zpětnou vazbu!",
+  "ratingSubmitted": "Hodnocení odesláno!",
+  "setUserIdFirst": "Nejprve si prosím nastavte své uživatelské ID",
+  "failedToFetchPrevious": "Nepodařilo se načíst předchozí otázky a odpovědi",
+  "errorOccurred": "Chyba: {error}",
+  "drawerAstroProfile": "Astro profil",
+  "drawerDailyHoroscope": "Denní horoskop",
+  "drawerBuyQuestions": "Otázky k nákupu",
+  "drawerAstroDictionary": "Astro slovník",
+  "drawerSettings": "Nastavení",
+  "drawerCustomerSupport": "Zákaznická podpora",
+  "drawerAbout": "O",
+  "drawerProfileSettings": "Nastavení profilu",
+  "demoNotificationTitle": "🔔 Oznámení o demoverzi",
+  "demoNotificationBody": "Toto je testovací oznámení z vaší aplikace!",
+  "notificationsTitle": "Oznámení",
+  "noNotifications": "Žádná oznámení",
+  "allTab": "Vše",
+  "markAllAsRead": "Označit vše jako přečtené",
+  "notificationMarkedRead": "Oznámení označeno jako přečtené",
+  "failedToLoadNotifications": "Načtení oznámení se nezdařilo",
+  "failedToMarkRead": "Označení jako přečtené se nezdařilo",
+  "failedToMarkAllRead": "Nepodařilo se označit vše jako přečtené",
+  "socketConnected": "Zásuvka připojena",
+  "socketDisconnected": "Zásuvka odpojena",
+  "newNotificationReceived": "Nové oznámení přijato",
+  "generalCategory": "Generál",
+  "horoscopeCategory": "Horoskop",
+  "chatCategory": "Povídání",
+  "systemCategory": "Systém",
+  "updateCategory": "Aktualizace",
+  "howToAskTitle": "Jak se zeptat",
+  "noQuestionsAvailable": "Žádné dostupné otázky",
+  "failedToLoadQuestions": "Načtení otázek se nezdařilo",
+  "pullToRefresh": "Tažením obnovíte",
+  "careerCategory": "Kariéra",
+  "loveCategory": "Láska a vztahy",
+  "healthCategory": "Zdraví",
+  "financeCategory": "Finance",
+  "familyCategory": "Rodina",
+  "educationCategory": "Školství",
+  "travelCategory": "Cestovat",
+  "spiritualCategory": "Duchovní",
+  "profileLoaded": "Profil byl úspěšně načten",
+  "imageUploaded": "Obrázek byl úspěšně nahrán",
+  "savedInformationConfirmation": "Tyto informace jsem si uložil/a",
+  "noHistoryAvailable": "Žádná historie k dispozici",
+  "missingUserIdError": "Je vyžadováno ID uživatele",
+  "networkError": "Chyba sítě. Zkuste to prosím znovu.",
+  "timeoutError": "Časový limit požadavku vypršel",
+  "genericError": "Něco se pokazilo",
+  "reactionUpdateError": "Reakci se nepodařilo aktualizovat",
+  "noSearchResults": "Nebyly nalezeny žádné výsledky vyhledávání",
+  "clearSearch": "Vymazat vyhledávání",
+  "resultsFound": "Nalezené výsledky",
+  "recoverySecretHint": "Kopírování a vkládání nemusí fungovat, pište ručně",
+  "recoverAccountDescription": "Postupujte podle těchto kroků k obnovení účtu",
+  "processingLabel": "Zpracování...",
+  "clearChatSuccess": "Chat byl úspěšně vymazán",
+  "notificationsEnabled": "Oznámení povolena",
+  "notificationsDisabled": "Oznámení zakázána",
+  "securityNotice": "Vaše data jsou bezpečně šifrována a uložena",
+  "loading": "Načítání...",
+  "selectLanguage": "Vyberte jazyk",
+  "onboardingGetStartedDesc": "Začněte výběrem jazyka",
+  "accountRecoveryTitle": "🔐 Podrobnosti o obnovení účtu",
+  "recoveryInstructions": "Prosím, uložte si tyto informace bezpečně. Budete je potřebovat k obnovení účtu.",
+  "importantNotice": "⚠️ Důležité:",
+  "astrologerProfileTitle": "Profil astrologa",
+  "personalAstrologer": "Osobní astrolog",
+  "makePersonalAstrologer": "Staňte se osobním astrologem",
+  "favoriteDescription": "Vaše otázky budou tomuto astrologovi přednostně předány. Pokud nebude k dispozici, pomůže vám jiný kvalifikovaný astrolog.",
+  "educationQualifications": "Vzdělání a kvalifikace",
+  "aboutSection": "O",
+  "shareProfile": "Sdílet profil",
+  "loadingAstrologer": "Načítání údajů o astrologovi...",
+  "failedToLoadAstrologer": "Nepodařilo se načíst údaje o astrologovi",
+  "authenticationRequired": "Vyžaduje se ověření. Přihlaste se.",
+  "securityCheckFailed": "Bezpečnostní kontrola selhala: {error}",
+  "addedToFavorites": "🎯 {name} je nyní váš osobní astrolog",
+  "removedFromFavorites": "✅ Odebráno {name} z oblíbených",
+  "toggleFavoriteError": "Nepodařilo se aktualizovat stav oblíbených",
+  "shareMessage": "{name}\n🎓 Vzdělání: {education}\n📜 Kvalifikace: {qualification}\n⏳ Praxe: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Není uvedeno",
+  "reviews": "({count} recenzí)",
+  "specialties": "Speciality",
+  "experience": "Zažít",
+  "qualification": "Kvalifikace",
+  "education": "Školství",
+  "recoveryTips": "• Pořiďte snímek obrazovky s těmito informacemi\n• Uložte je na bezpečném místě\n• Nesdílejte je s nikým\n• Zobrazí se pouze jednou"
+}

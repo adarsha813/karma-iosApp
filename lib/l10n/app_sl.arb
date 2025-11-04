@@ -1,0 +1,439 @@
+{
+  "@@locale": "sl",
+  "settingsTitle": "Nastavitve",
+  "notificationSettings": "Nastavitve obvestil",
+  "privacySettings": "Nastavitve zasebnosti",
+  "accountSettings": "Nastavitve računa",
+  "languageSettings": "Jezikovne nastavitve",
+  "languageChanged": "Jezik spremenjen",
+  "existingUserButton": "Sem obstoječi uporabnik",
+  "chooseCountryTitle": "Izberite državo",
+  "yesText": "Da",
+  "noText": "Ne",
+  "appBarTitle": "Nastavitve profila",
+  "userIdLabel": "ID uporabnika *",
+  "nameLabel": "Ime",
+  "birthCountryLabel": "Država rojstva",
+  "birthCityLabel": "Rojstno mesto",
+  "countrySelectionTitle": "Izberite svojo državo",
+  "maleLabel": "Moški",
+  "femaleLabel": "Ženska",
+  "birthDateLabel": "Datum rojstva",
+  "birthDatePlaceholder": "Izberite datum rojstva",
+  "birthTimeLabel": "Čas rojstva",
+  "birthTimePlaceholder": "Izberite čas rojstva",
+  "saveProfileButton": "Shrani profil",
+  "noCitiesFound": "Ni najdenih mest",
+  "cityPlaceholder": "Vnesite mesto v {country}",
+  "countryFirstPlaceholder": "Najprej izberite državo",
+  "versionHistoryTitle": "Zgodovina različic",
+  "notSetText": "Ni nastavljeno",
+  "nameHistory": "Ime: {name}",
+  "cityHistory": "Mesto: {city}",
+  "countryHistory": "Država: {country}",
+  "genderHistory": "Spol: {gender}",
+  "birthDateHistory": "Datum rojstva: {date}",
+  "birthTimeHistory": "Čas rojstva: {time}",
+  "locationHistory": "Lokacija: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT{offset}",
+  "dstHistory": "Poletni čas: {value}",
+  "stateHistory": "Zvezna država: {state}",
+  "versionFromText": "Posodobljeno dne {date}",
+  "userIdRequired": "Zahtevan je uporabniški ID",
+  "profileSaved": "Profil je bil uspešno shranjen",
+  "saveFailed": "Shranjevanje profila ni uspelo",
+  "errorPrefix": "Napaka:",
+  "onboardingChooseLanguage": "Izberite svoj jezik",
+  "onboardingChooseLanguageDesc": "Za nadaljevanje izberite želeni jezik.",
+  "onboardingWhatIsAstrology": "Kaj je astrologija?",
+  "onboardingWhatIsAstrologyDesc": "Astrologija je veda o nebesnih telesih ...",
+  "onboardingWhyUseApp": "Zakaj uporabljati to aplikacijo?",
+  "onboardingWhyUseAppDesc": "Pridobite personalizirane horoskope, dnevne napovedi in smernice za sprejemanje premišljenih odločitev.",
+  "onboardingHowToUse": "Kako uporabljati to aplikacijo?",
+  "onboardingHowToUseDesc": "Preprosto krmarite, preverjajte dnevne horoskope in upravljajte svoj profil za natančne napovedi.",
+  "onboardingGetStarted": "Začnite",
+  "onboardingNewUser": "Nov uporabnik",
+  "onboardingExistingUser": "Obstoječi uporabnik",
+  "onboardingBack": "Nazaj",
+  "onboardingNext": "Naprej",
+  "userIdNotFound": "Uporabniškega ID-ja ni bilo mogoče najti. Prosimo, prijavite se ali nastavite svoj profil.",
+  "clearNotificationsTitle": "Počisti obvestila",
+  "clearNotificationsMessage": "Ali ste prepričani, da želite počistiti vsa obvestila?",
+  "clearNotificationsSuccess": "Vsa obvestila so bila uspešno izbrisana.",
+  "clearHoroscopeTitle": "Počisti horoskop",
+  "clearHoroscopeMessage": "Ali ste prepričani, da želite izbrisati podatke svojega horoskopa?",
+  "clearHoroscopeSuccess": "Horoskop je bil uspešno izbrisan.",
+  "clearChatTitle": "Počisti zgodovino klepeta",
+  "clearChatMessage": "Ali ste prepričani, da želite izbrisati vso zgodovino klepeta?",
+  "clearChatLocal": "Klepet je bil lokalno izbrisan.",
+  "deleteAccountTitle": "Izbriši račun",
+  "deleteAccountMessage": "Ali ste prepričani, da želite izbrisati svoj račun? S tem boste izbrisali tudi vso zgodovino klepetov in obvestila.",
+  "deleteAccountSuccess": "Vaš račun in vsi podatki so bili odstranjeni.",
+  "deleteAccountError": "Napaka pri brisanju računa",
+  "logoutTitle": "Odjava",
+  "logoutMessage": "Ste prepričani, da se želite odjaviti?",
+  "termsPrivacyTitle": "Pogoji in zasebnost",
+  "privacyPolicyTitle": "Pravilnik o zasebnosti",
+  "termsConditionsTitle": "Pogoji poslovanja",
+  "dataControlTitle": "Nadzor podatkov",
+  "cancelButton": "Prekliči",
+  "confirmButton": "Potrdi",
+  "clearQuestionsSuccess": "Vsa vprašanja so bila uspešno izbrisana.",
+  "yoginiLabel": "Jogini",
+  "lordLabel": "Gospod",
+  "startLabel": "Začni",
+  "recoverAccount": "Obnovi račun",
+  "endLabel": "Konec",
+  "startDateLabel": "Začetni datum",
+  "endDateLabel": "Končni datum",
+  "notAvailable": "Ni na voljo",
+  "noData": "Ni podatkov",
+  "unknownError": "Neznana napaka",
+  "retryButton": "Poskusi znova",
+  "kundaliGeneratorTitle": "Kundali generator",
+  "natalChartTitle": "Natalna karta",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Raši",
+  "ascDegreeLabel": "Stopnja ascendenta",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Jogini Daša",
+  "unknown": "Neznano",
+  "clearHoroscope": "Počisti horoskop",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Počisti obvestila",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Počisti zgodovino klepeta",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Odjava",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Izbriši račun",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Vsa polja so obvezna.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Račun je bil uspešno obnovljen.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Obnovitev ni uspela. Preverite svoje podatke.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Skrivnost okrevanja:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "O nas",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "O našem podjetju",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Zavezani smo k temu, da našim uporabnikom zagotovimo najboljšo astrološko izkušnjo.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Naše poslanstvo",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Zagotavljati natančne in prilagojene astrološke vpoglede, ki bodo uporabnikom pomagali pri sprejemanju premišljenih odločitev v njihovem življenju.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Naša vizija",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Postati najbolj zaupanja vredna astrološka platforma, ki združuje tehnologijo in starodavno modrost.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Naše vrednote",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Integriteta, natančnost, uporabniku prijazna zasnova in nenehne inovacije.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Kontaktirajte nas",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "E-pošta: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Spletna stran: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Podpora strankam",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Tukaj smo, da vam pomagamo",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Izpolnite spodnji obrazec in naša ekipa za podporo vam bo odgovorila v najkrajšem možnem času.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Vaše ime",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Vaš e-poštni naslov",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Sporočilo",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Vnesite svoj e-poštni naslov",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Vnesite veljaven e-poštni naslov",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Vnesite {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Pošlji",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Pošiljanje ...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ E-pošta je bila uspešno poslana!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Pošiljanje e-pošte ni uspelo",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro slovar",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Iskalni izrazi ...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Ni najdenih izrazov",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Vprašanja o nakupu",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Uporabnik ni bil overjen",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Nalaganje podatkov trgovine ni uspelo",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Manjka žeton za avtorizacijo",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Aplikacija za astro klepet",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Plačilo uspešno! Vprašanje poslano",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Plačilo ni uspelo: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Vaše stanje",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Questions",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Razpoložljive ponudbe",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Question",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Kupi",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Dnevni horoskop",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Manjka uporabniški ID",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Horoskopov ni bilo mogoče pridobiti",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Horoskopa ni bilo mogoče najti.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Podpis",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Danes",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Včeraj",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Ta teden",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Prejšnji mesec",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Klepet",
+  "typeYourQuestionHint": "Vpišite svoje vprašanje ...",
+  "paymentRequired": "Zahtevano plačilo",
+  "paymentRequiredMessage": "Brezplačna vprašanja ste že uporabili. Za nadaljevanje plačajte 50 ₹.",
+  "payNowButton": "Plačaj zdaj",
+  "freeQuestionsRemaining": "Preostalo je {count} brezplačnih vprašanj",
+  "paidQuestionsRemaining": "Preostalih {count} plačanih vprašanj",
+  "thankYouFeedback": "Hvala za vaše povratne informacije!",
+  "ratingSubmitted": "Ocena poslana!",
+  "setUserIdFirst": "Najprej nastavite svoj uporabniški ID",
+  "failedToFetchPrevious": "Prejšnjih vprašanj in odgovorov ni bilo mogoče pridobiti",
+  "errorOccurred": "Napaka: {error}",
+  "drawerAstroProfile": "Astro profil",
+  "drawerDailyHoroscope": "Dnevni horoskop",
+  "drawerBuyQuestions": "Vprašanja o nakupu",
+  "drawerAstroDictionary": "Astro slovar",
+  "drawerSettings": "Nastavitve",
+  "drawerCustomerSupport": "Podpora strankam",
+  "drawerAbout": "O nas",
+  "drawerProfileSettings": "Nastavitve profila",
+  "demoNotificationTitle": "🔔 Obvestilo o predstavitvi",
+  "demoNotificationBody": "To je testno obvestilo iz vaše aplikacije!",
+  "notificationsTitle": "Obvestila",
+  "noNotifications": "Brez obvestil",
+  "allTab": "Vse",
+  "markAllAsRead": "Označi vse kot prebrano",
+  "notificationMarkedRead": "Obvestilo označeno kot prebrano",
+  "failedToLoadNotifications": "Nalaganje obvestil ni uspelo",
+  "failedToMarkRead": "Označevanje kot prebrano ni uspelo",
+  "failedToMarkAllRead": "Označevanje vseh kot prebranih ni uspelo",
+  "socketConnected": "Vtičnica priključena",
+  "socketDisconnected": "Vtičnica odklopljena",
+  "newNotificationReceived": "Prejeto novo obvestilo",
+  "generalCategory": "Splošno",
+  "horoscopeCategory": "Horoskop",
+  "chatCategory": "Klepet",
+  "systemCategory": "Sistem",
+  "updateCategory": "Posodobitve",
+  "howToAskTitle": "Kako vprašati",
+  "noQuestionsAvailable": "Ni razpoložljivih vprašanj",
+  "failedToLoadQuestions": "Vprašanj ni bilo mogoče naložiti",
+  "pullToRefresh": "Povlecite za osvežitev",
+  "careerCategory": "Kariera",
+  "loveCategory": "Ljubezen in odnosi",
+  "healthCategory": "Zdravje",
+  "financeCategory": "Finance",
+  "familyCategory": "Družina",
+  "educationCategory": "Izobraževanje",
+  "travelCategory": "Potovanja",
+  "spiritualCategory": "Duhovno",
+  "profileLoaded": "Profil je bil uspešno naložen",
+  "imageUploaded": "Slika je bila uspešno naložena",
+  "savedInformationConfirmation": "Te informacije sem shranil/a",
+  "noHistoryAvailable": "Zgodovina ni na voljo",
+  "missingUserIdError": "Zahtevan je uporabniški ID",
+  "networkError": "Napaka omrežja. Poskusite znova.",
+  "timeoutError": "Zahteva je potekla",
+  "genericError": "Nekaj je šlo narobe",
+  "reactionUpdateError": "Posodobitev odziva ni uspela",
+  "noSearchResults": "Ni najdenih rezultatov iskanja",
+  "clearSearch": "Počisti iskanje",
+  "resultsFound": "Najdeni rezultati",
+  "recoverySecretHint": "Kopiranje in lepljenje morda ne bo delovalo, vnesite ročno",
+  "recoverAccountDescription": "Za obnovitev računa sledite tem korakom",
+  "processingLabel": "Obdelava ...",
+  "clearChatSuccess": "Klepet je bil uspešno počiščen",
+  "notificationsEnabled": "Obvestila omogočena",
+  "notificationsDisabled": "Obvestila so onemogočena",
+  "securityNotice": "Vaši podatki so varno šifrirani in shranjeni",
+  "loading": "Nalaganje ...",
+  "selectLanguage": "Izberite jezik",
+  "onboardingGetStartedDesc": "Začnite z izbiro jezika",
+  "accountRecoveryTitle": "🔐 Podrobnosti o obnovitvi računa",
+  "recoveryInstructions": "Prosimo, shranite te podatke varno. Potrebovali jih boste za obnovitev računa.",
+  "importantNotice": "⚠️ Pomembno:",
+  "astrologerProfileTitle": "Profil astrologa",
+  "personalAstrologer": "Osebni astrolog",
+  "makePersonalAstrologer": "Postanite osebni astrolog",
+  "favoriteDescription": "Vaša vprašanja bodo prednostno obravnavana pri tem astrologu. Če astrolog ni na voljo, vam bo pomagal drug usposobljen astrolog.",
+  "educationQualifications": "Izobrazba in kvalifikacije",
+  "aboutSection": "O nas",
+  "shareProfile": "Deli profil",
+  "loadingAstrologer": "Nalaganje podatkov o astrologu ...",
+  "failedToLoadAstrologer": "Nalaganje podatkov o astrologu ni uspelo",
+  "authenticationRequired": "Zahtevana je avtentikacija. Prosimo, prijavite se.",
+  "securityCheckFailed": "Varnostno preverjanje ni uspelo: {error}",
+  "addedToFavorites": "🎯 {name} je zdaj vaš osebni astrolog",
+  "removedFromFavorites": "✅ Odstranjeno {name} iz priljubljenih",
+  "toggleFavoriteError": "Stanja priljubljenih ni bilo mogoče posodobiti",
+  "shareMessage": "{name}\n🎓 Izobrazba: {education}\n📜 Kvalifikacije: {qualification}\n⏳ Izkušnje: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Ni navedeno",
+  "reviews": "({count} mnenj)",
+  "specialties": "Specialitete",
+  "experience": "Izkušnje",
+  "qualification": "Kvalifikacija",
+  "education": "Izobraževanje",
+  "recoveryTips": "• Naredite posnetek zaslona teh podatkov\n• Shranite ga na varno mesto\n• Ne delite z nikomer\n• To bo prikazano samo enkrat"
+}

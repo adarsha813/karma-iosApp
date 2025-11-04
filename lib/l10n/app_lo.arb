@@ -1,0 +1,439 @@
+{
+  "@@locale": "lo",
+  "settingsTitle": "ການຕັ້ງຄ່າ",
+  "notificationSettings": "ການຕັ້ງຄ່າການແຈ້ງເຕືອນ",
+  "privacySettings": "ການຕັ້ງຄ່າຄວາມເປັນສ່ວນຕົວ",
+  "accountSettings": "ການຕັ້ງຄ່າບັນຊີ",
+  "languageSettings": "ການຕັ້ງຄ່າພາສາ",
+  "languageChanged": "ປ່ຽນພາສາ",
+  "existingUserButton": "ຂ້ອຍເປັນຜູ້ໃຊ້ທີ່ມີຢູ່ແລ້ວ",
+  "chooseCountryTitle": "ເລືອກປະເທດ",
+  "yesText": "ແມ່ນແລ້ວ",
+  "noText": "ບໍ່",
+  "appBarTitle": "ການຕັ້ງຄ່າໂປຣໄຟລ໌",
+  "userIdLabel": "ID ຜູ້​ໃຊ້ *",
+  "nameLabel": "ຊື່",
+  "birthCountryLabel": "ປະເທດເກີດ",
+  "birthCityLabel": "ເມືອງເກີດ",
+  "countrySelectionTitle": "ເລືອກປະເທດຂອງເຈົ້າ",
+  "maleLabel": "ເພດຊາຍ",
+  "femaleLabel": "ເພດຍິງ",
+  "birthDateLabel": "ວັນເດືອນປີເກີດ",
+  "birthDatePlaceholder": "ເລືອກວັນເດືອນປີເກີດ",
+  "birthTimeLabel": "ເວລາເກີດ",
+  "birthTimePlaceholder": "ເລືອກເວລາເກີດ",
+  "saveProfileButton": "ບັນທຶກໂປຣໄຟລ໌",
+  "noCitiesFound": "ບໍ່ພົບເມືອງ",
+  "cityPlaceholder": "ໃສ່ເມືອງໃນ {country}",
+  "countryFirstPlaceholder": "ເລືອກປະເທດກ່ອນ",
+  "versionHistoryTitle": "ປະຫວັດສະບັບ",
+  "notSetText": "ບໍ່ໄດ້ຕັ້ງ",
+  "nameHistory": "ຊື່: {name}",
+  "cityHistory": "ເມືອງ: {city}",
+  "countryHistory": "ປະເທດ: {country}",
+  "genderHistory": "ເພດ: {gender}",
+  "birthDateHistory": "ວັນເດືອນປີເກີດ: {date}",
+  "birthTimeHistory": "ເວລາເກີດ: {time}",
+  "locationHistory": "ສະຖານທີ່: {latitude}, {longitude}",
+  "timezoneHistory": "ເຂດເວລາ: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "ລັດ: {state}",
+  "versionFromText": "ອັບເດດເມື່ອ {date}",
+  "userIdRequired": "ຕ້ອງການ ID ຜູ້ໃຊ້",
+  "profileSaved": "ບັນທຶກໂປຣໄຟລ໌ສຳເລັດແລ້ວ",
+  "saveFailed": "ບັນທຶກໂປຣໄຟລ໌ບໍ່ສຳເລັດ",
+  "errorPrefix": "ຄວາມຜິດພາດ:",
+  "onboardingChooseLanguage": "ເລືອກພາສາຂອງທ່ານ",
+  "onboardingChooseLanguageDesc": "ເລືອກພາສາທີ່ທ່ານຕ້ອງການເພື່ອສືບຕໍ່.",
+  "onboardingWhatIsAstrology": "ໂຫລາສາດແມ່ນຫຍັງ?",
+  "onboardingWhatIsAstrologyDesc": "ໂຫລາສາດແມ່ນການສຶກສາກ່ຽວກັບຮ່າງກາຍຊັ້ນສູງ ...",
+  "onboardingWhyUseApp": "ເປັນຫຍັງຕ້ອງໃຊ້ແອັບນີ້?",
+  "onboardingWhyUseAppDesc": "ໄດ້ຮັບ horoscopes ສ່ວນບຸກຄົນ, ການຄາດຄະເນປະຈໍາວັນ, ແລະການຊີ້ນໍາເພື່ອເຮັດການຕັດສິນໃຈຢ່າງມີຂໍ້ມູນ.",
+  "onboardingHowToUse": "ໃຊ້ແອັບນີ້ແນວໃດ?",
+  "onboardingHowToUseDesc": "ທ່ອງ​ໄປ​ຫາ​ໄດ້​ຢ່າງ​ງ່າຍ​ດາຍ​, ກວດ​ສອບ horoscopes ປະ​ຈໍາ​ວັນ​, ແລະ​ການ​ຄຸ້ມ​ຄອງ​ຂໍ້​ມູນ​ຂອງ​ທ່ານ​ສໍາ​ລັບ​ການ​ຄາດ​ຄະ​ເນ​ທີ່​ຖືກ​ຕ້ອງ​.",
+  "onboardingGetStarted": "ເລີ່ມຕົ້ນ",
+  "onboardingNewUser": "ຜູ້ໃຊ້ໃໝ່",
+  "onboardingExistingUser": "ຜູ້ໃຊ້ທີ່ມີຢູ່ແລ້ວ",
+  "onboardingBack": "ກັບຄືນໄປບ່ອນ",
+  "onboardingNext": "ຕໍ່ໄປ",
+  "userIdNotFound": "ບໍ່ພົບ ID ຜູ້ໃຊ້. ກະລຸນາເຂົ້າສູ່ລະບົບ ຫຼືຕັ້ງໂປຣໄຟລ໌ຂອງທ່ານ.",
+  "clearNotificationsTitle": "ລຶບລ້າງການແຈ້ງເຕືອນ",
+  "clearNotificationsMessage": "ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລຶບລ້າງການແຈ້ງເຕືອນທັງໝົດ?",
+  "clearNotificationsSuccess": "ການແຈ້ງເຕືອນທັງໝົດຖືກລຶບລ້າງສຳເລັດແລ້ວ.",
+  "clearHoroscopeTitle": "ລ້າງ Horoscope",
+  "clearHoroscopeMessage": "ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລຶບຂໍ້ມູນ horoscope ຂອງທ່ານ?",
+  "clearHoroscopeSuccess": "Horoscope ລ້າງສົບຜົນສໍາເລັດ.",
+  "clearChatTitle": "ລຶບປະຫວັດການສົນທະນາ",
+  "clearChatMessage": "ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລຶບປະຫວັດການສົນທະນາທັງໝົດຂອງທ່ານ?",
+  "clearChatLocal": "ການສົນທະນາຖືກລຶບລ້າງຢູ່ໃນທ້ອງຖິ່ນ.",
+  "deleteAccountTitle": "ລຶບບັນຊີ",
+  "deleteAccountMessage": "ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລຶບບັນຊີຂອງທ່ານ? ນີ້ຈະເປັນການລຶບລ້າງປະຫວັດການສົນທະນາ ແລະການແຈ້ງເຕືອນທັງໝົດຂອງທ່ານນຳ.",
+  "deleteAccountSuccess": "ບັນ​ຊີ​ຂອງ​ທ່ານ​ແລະ​ຂໍ້​ມູນ​ທັງ​ຫມົດ​ໄດ້​ຖືກ​ໂຍກ​ຍ້າຍ​ອອກ​.",
+  "deleteAccountError": "ເກີດຄວາມຜິດພາດໃນການລຶບບັນຊີ",
+  "logoutTitle": "ອອກຈາກລະບົບ",
+  "logoutMessage": "ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການອອກຈາກລະບົບ?",
+  "termsPrivacyTitle": "ເງື່ອນໄຂ & ຄວາມເປັນສ່ວນຕົວ",
+  "privacyPolicyTitle": "ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ",
+  "termsConditionsTitle": "ຂໍ້ກຳນົດ ແລະເງື່ອນໄຂ",
+  "dataControlTitle": "ການຄວບຄຸມຂໍ້ມູນ",
+  "cancelButton": "ຍົກເລີກ",
+  "confirmButton": "ຢືນຢັນ",
+  "clearQuestionsSuccess": "ລຶບຄຳຖາມທັງໝົດອອກສຳເລັດແລ້ວ.",
+  "yoginiLabel": "ໂຍກິນີ",
+  "lordLabel": "ພຣະຜູ້ເປັນເຈົ້າ",
+  "startLabel": "ເລີ່ມ",
+  "recoverAccount": "ກູ້ຄືນບັນຊີ",
+  "endLabel": "ຈົບ",
+  "startDateLabel": "ວັນທີເລີ່ມຕົ້ນ",
+  "endDateLabel": "ວັນທີສິ້ນສຸດ",
+  "notAvailable": "ບໍ່ມີໃຫ້",
+  "noData": "ບໍ່ມີຂໍ້ມູນ",
+  "unknownError": "ຄວາມຜິດພາດທີ່ບໍ່ຮູ້ຈັກ",
+  "retryButton": "ລອງໃໝ່",
+  "kundaliGeneratorTitle": "Kundali Generator",
+  "natalChartTitle": "ຕາຕະລາງ Natal",
+  "lagnaLabel": "ລາກນາ",
+  "rashiLabel": "ລາຊິ",
+  "ascDegreeLabel": "Ascendant degree",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "ບໍ່ຮູ້ຈັກ",
+  "clearHoroscope": "ລ້າງ Horoscope",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "ລຶບລ້າງການແຈ້ງເຕືອນ",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "ລຶບປະຫວັດການສົນທະນາ",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "ອອກຈາກລະບົບ",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "ລຶບບັນຊີ",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "ຊ່ອງຂໍ້ມູນທັງໝົດແມ່ນຕ້ອງການ.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "ກູ້ຄືນບັນຊີສຳເລັດແລ້ວ.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "ການຟື້ນຕົວລົ້ມເຫລວ. ກວດເບິ່ງຂໍ້ມູນຂອງທ່ານ.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "ຄວາມລັບການຟື້ນຕົວ:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "ກ່ຽວກັບພວກເຮົາ",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "ກ່ຽວກັບບໍລິສັດຂອງພວກເຮົາ",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "ພວກເຮົາມຸ່ງໝັ້ນທີ່ຈະສະໜອງປະສົບການທາງໂຫລາສາດທີ່ດີທີ່ສຸດໃຫ້ກັບຜູ້ໃຊ້ຂອງພວກເຮົາ.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "ພາລະກິດຂອງພວກເຮົາ",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "ເພື່ອສະຫນອງຄວາມເຂົ້າໃຈທາງໂຫລາສາດທີ່ຖືກຕ້ອງແລະເປັນສ່ວນບຸກຄົນເພື່ອຊ່ວຍໃຫ້ຜູ້ໃຊ້ເຮັດການຕັດສິນໃຈຢ່າງມີຂໍ້ມູນໃນຊີວິດຂອງເຂົາເຈົ້າ.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "ວິໄສທັດຂອງພວກເຮົາ",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "ກາຍເປັນເວທີໂຫລາສາດທີ່ເຊື່ອຖືໄດ້ຫຼາຍທີ່ສຸດ, ປະສົມປະສານເຕັກໂນໂລຢີແລະປັນຍາບູຮານ.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "ຄຸນຄ່າຂອງພວກເຮົາ",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "ຄວາມຊື່ສັດ, ຄວາມຖືກຕ້ອງ, ການອອກແບບຂອງຜູ້ໃຊ້ເປັນໃຈກາງ, ແລະການປະດິດສ້າງຢ່າງຕໍ່ເນື່ອງ.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "ຕິດຕໍ່ພວກເຮົາ",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "ອີເມວ: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "ເວັບໄຊທ໌: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "ການຊ່ວຍເຫຼືອລູກຄ້າ",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "ພວກເຮົາຢູ່ທີ່ນີ້ເພື່ອຊ່ວຍເຫຼືອ",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "ຕື່ມຂໍ້ມູນໃສ່ແບບຟອມຂ້າງລຸ່ມນີ້ ແລະທີມງານຊ່ວຍເຫຼືອຂອງພວກເຮົາຈະຕິດຕໍ່ຫາທ່ານໄວເທົ່າທີ່ຈະໄວໄດ້.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "ຊື່ຂອງເຈົ້າ",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "ອີເມວຂອງເຈົ້າ",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "ຂໍ້ຄວາມ",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "ໃສ່ອີເມວຂອງເຈົ້າ",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "ໃສ່ທີ່ຢູ່ອີເມວທີ່ຖືກຕ້ອງ",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "ໃສ່ {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "ສົ່ງ",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "ກຳລັງສົ່ງ...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ ສົ່ງອີເມວສຳເລັດແລ້ວ!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ ສົ່ງອີເມວບໍ່ສຳເລັດ",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "ວັດຈະນານຸກົມ Astro",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "ຄຳສັບຊອກຫາ...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "ບໍ່ພົບເງື່ອນໄຂ",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "ຊື້ຄໍາຖາມ",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "ຜູ້​ໃຊ້​ບໍ່​ໄດ້​ຮັບ​ຮອງ​",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "ລົ້ມເຫລວໃນການໂຫຼດຂໍ້ມູນເກັບຮັກສາ",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "ບໍ່ມີໂທເຄັນການພິສູດຢືນຢັນ",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "ແອັບສົນທະນາ Astro",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ ຊໍາລະສຳເລັດ! ສົ່ງຄຳຖາມແລ້ວ",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ ການຈ່າຍເງິນບໍ່ສຳເລັດ: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "ຍອດເງິນຂອງທ່ານ",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} ຄຳຖາມ",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "ຂໍ້ສະເໜີທີ່ມີຢູ່",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} ຄຳຖາມ",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "ຊື້",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Horoscope ປະຈໍາວັນ",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "ID ຜູ້ໃຊ້ຫາຍໄປ",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "ລົ້ມເຫລວໃນການດຶງເອົາ horoscopes",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "ບໍ່ພົບ horoscope.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "ເຊັນ",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "ມື້ນີ້",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "ມື້ວານນີ້",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "ອາທິດນີ້",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "ເດືອນທີ່ຜ່ານມາ",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "ສົນທະນາ",
+  "typeYourQuestionHint": "ພິມຄຳຖາມຂອງເຈົ້າ...",
+  "paymentRequired": "ຕ້ອງການການຈ່າຍເງິນ",
+  "paymentRequiredMessage": "ທ່ານໄດ້ໃຊ້ຄໍາຖາມຟຣີຂອງທ່ານ. ຈ່າຍ ₹50 ເພື່ອສືບຕໍ່.",
+  "payNowButton": "ຈ່າຍດຽວນີ້",
+  "freeQuestionsRemaining": "{count} ຄຳຖາມຟຣີທີ່ຍັງເຫຼືອ",
+  "paidQuestionsRemaining": "{count} ຄຳຖາມທີ່ຈ່າຍຍັງເຫຼືອ",
+  "thankYouFeedback": "ຂໍ​ຂອບ​ໃຈ​ທ່ານ​ສໍາ​ລັບ​ຄໍາ​ຄຶດ​ຄໍາ​ເຫັນ​ຂອງ​ທ່ານ​!",
+  "ratingSubmitted": "ສົ່ງຄະແນນແລ້ວ!",
+  "setUserIdFirst": "ກະລຸນາຕັ້ງ User ID ຂອງທ່ານກ່ອນ",
+  "failedToFetchPrevious": "ດຶງເອົາຄຳຖາມ ແລະຄຳຕອບທີ່ຜ່ານມາບໍ່ສຳເລັດ",
+  "errorOccurred": "ຜິດພາດ: {error}",
+  "drawerAstroProfile": "ຂໍ້ມູນຮູບດາວ",
+  "drawerDailyHoroscope": "Horoscope ປະຈໍາວັນ",
+  "drawerBuyQuestions": "ຊື້ຄໍາຖາມ",
+  "drawerAstroDictionary": "ວັດຈະນານຸກົມ Astro",
+  "drawerSettings": "ການຕັ້ງຄ່າ",
+  "drawerCustomerSupport": "ການຊ່ວຍເຫຼືອລູກຄ້າ",
+  "drawerAbout": "ກ່ຽວກັບ",
+  "drawerProfileSettings": "ການຕັ້ງຄ່າໂປຣໄຟລ໌",
+  "demoNotificationTitle": "🔔 ແຈ້ງການສາທິດ",
+  "demoNotificationBody": "ນີ້​ແມ່ນ​ການ​ແຈ້ງ​ການ​ທົດ​ສອບ​ຈາກ app ຂອງ​ທ່ານ​!",
+  "notificationsTitle": "ການແຈ້ງເຕືອນ",
+  "noNotifications": "ບໍ່ມີການແຈ້ງເຕືອນ",
+  "allTab": "ທັງໝົດ",
+  "markAllAsRead": "ໝາຍທັງໝົດວ່າອ່ານແລ້ວ",
+  "notificationMarkedRead": "ໝາຍການແຈ້ງເຕືອນວ່າອ່ານແລ້ວ",
+  "failedToLoadNotifications": "ໂຫຼດການແຈ້ງເຕືອນບໍ່ສຳເລັດ",
+  "failedToMarkRead": "ໝາຍວ່າອ່ານແລ້ວບໍ່ສຳເລັດ",
+  "failedToMarkAllRead": "ໝາຍທັງໝົດວ່າອ່ານແລ້ວບໍ່ສຳເລັດ",
+  "socketConnected": "ເຊື່ອມຕໍ່ເຕົ້າຮັບ",
+  "socketDisconnected": "ເຕົ້າຮັບຕັດການເຊື່ອມຕໍ່",
+  "newNotificationReceived": "ໄດ້ຮັບການແຈ້ງເຕືອນໃໝ່",
+  "generalCategory": "ທົ່ວໄປ",
+  "horoscopeCategory": "Horoscope",
+  "chatCategory": "ສົນທະນາ",
+  "systemCategory": "ລະບົບ",
+  "updateCategory": "ອັບເດດ",
+  "howToAskTitle": "ວິທີການຖາມ",
+  "noQuestionsAvailable": "ບໍ່ມີຄຳຖາມ",
+  "failedToLoadQuestions": "ໂຫຼດຄຳຖາມບໍ່ສຳເລັດ",
+  "pullToRefresh": "ດຶງເພື່ອໂຫຼດຫນ້າຈໍຄືນ",
+  "careerCategory": "ອາຊີບ",
+  "loveCategory": "ຄວາມຮັກ & ຄວາມສຳພັນ",
+  "healthCategory": "ສຸຂະພາບ",
+  "financeCategory": "ການເງິນ",
+  "familyCategory": "ຄອບຄົວ",
+  "educationCategory": "ການສຶກສາ",
+  "travelCategory": "ການເດີນທາງ",
+  "spiritualCategory": "ທາງວິນຍານ",
+  "profileLoaded": "ໂຫຼດໂປຣໄຟລ໌ສຳເລັດແລ້ວ",
+  "imageUploaded": "ອັບໂຫຼດຮູບສຳເລັດແລ້ວ",
+  "savedInformationConfirmation": "ຂ້ອຍໄດ້ບັນທຶກຂໍ້ມູນນີ້ໄວ້",
+  "noHistoryAvailable": "ບໍ່ມີປະຫວັດ",
+  "missingUserIdError": "ຕ້ອງການ ID ຜູ້ໃຊ້",
+  "networkError": "ເຄືອຂ່າຍຜິດພາດ. ກະລຸນາລອງອີກຄັ້ງ.",
+  "timeoutError": "ຄຳຮ້ອງຂໍໝົດເວລາ",
+  "genericError": "ມີບາງຢ່າງຜິດພາດ",
+  "reactionUpdateError": "ລົ້ມເຫລວໃນການປັບປຸງການໂຕ້ຕອບ",
+  "noSearchResults": "ບໍ່ພົບຜົນການຊອກຫາ",
+  "clearSearch": "ລຶບການຊອກຫາ",
+  "resultsFound": "ພົບຜົນໄດ້ຮັບ",
+  "recoverySecretHint": "Copy-paste ອາດຈະບໍ່ເຮັດວຽກ, ພິມດ້ວຍຕົນເອງ",
+  "recoverAccountDescription": "ປະຕິບັດຕາມຂັ້ນຕອນເຫຼົ່ານີ້ເພື່ອກູ້ຄືນບັນຊີຂອງທ່ານ",
+  "processingLabel": "ກຳລັງປະມວນຜົນ...",
+  "clearChatSuccess": "ລຶບການສົນທະນາສຳເລັດແລ້ວ",
+  "notificationsEnabled": "ເປີດໃຊ້ການແຈ້ງເຕືອນແລ້ວ",
+  "notificationsDisabled": "ການແຈ້ງເຕືອນຖືກປິດໄວ້",
+  "securityNotice": "ຂໍ້ມູນຂອງທ່ານຖືກເຂົ້າລະຫັດ ແລະເກັບຮັກສາໄວ້ຢ່າງປອດໄພ",
+  "loading": "ກຳລັງໂຫລດ...",
+  "selectLanguage": "ເລືອກພາສາ",
+  "onboardingGetStartedDesc": "ເລີ່ມຕົ້ນໂດຍການເລືອກພາສາຂອງທ່ານ",
+  "accountRecoveryTitle": "🔐 ລາຍລະອຽດການກູ້ບັນຊີ",
+  "recoveryInstructions": "ກະລຸນາບັນທຶກຂໍ້ມູນນີ້ຢ່າງປອດໄພ. ທ່ານຈະຕ້ອງການມັນເພື່ອກູ້ຄືນບັນຊີຂອງທ່ານ.",
+  "importantNotice": "⚠️ທີ່ສຳຄັນ:",
+  "astrologerProfileTitle": "ໂປຣໄຟລ໌ນັກໂຫລາສາດ",
+  "personalAstrologer": "ໂຫລາສາດສ່ວນຕົວ",
+  "makePersonalAstrologer": "ເຮັດ​ໃຫ້​ທາງ​ໂຫລາ​ສາດ​ສ່ວນ​ບຸກ​ຄົນ​",
+  "favoriteDescription": "ຄໍາຖາມຂອງເຈົ້າຈະຖືກຈັດລໍາດັບຄວາມສໍາຄັນກັບນັກໂຫລາສາດນີ້. ຖ້າບໍ່ມີ, ນັກໂຫລາສາດທີ່ມີຄຸນວຸດທິອື່ນຈະຊ່ວຍເຈົ້າ.",
+  "educationQualifications": "ການສຶກສາ & ຄຸນສົມບັດ",
+  "aboutSection": "ກ່ຽວກັບ",
+  "shareProfile": "ແບ່ງປັນໂປຣໄຟລ໌",
+  "loadingAstrologer": "ກຳລັງໂຫລດລາຍລະອຽດນັກໂຫລາສາດ...",
+  "failedToLoadAstrologer": "ລົ້ມເຫລວໃນການໂຫລດລາຍລະອຽດຂອງນັກໂຫລາສາດ",
+  "authenticationRequired": "ຕ້ອງມີການຢັ້ງຢືນ. ກະລຸນາເຂົ້າສູ່ລະບົບ.",
+  "securityCheckFailed": "ການກວດສອບຄວາມປອດໄພລົ້ມເຫລວ: {error}",
+  "addedToFavorites": "🎯 {name} ດຽວນີ້ເປັນນັກໂຫລາສາດສ່ວນຕົວຂອງເຈົ້າ",
+  "removedFromFavorites": "✅ ເອົາ {name} ອອກຈາກລາຍການທີ່ມັກ",
+  "toggleFavoriteError": "ລົ້ມເຫລວໃນການອັບເດດສະຖານະທີ່ມັກ",
+  "shareMessage": "{name}\n🎓 ການສຶກສາ: {education}\n📜 ເງື່ອນໄຂ: {qualification}\n⏳ ປະສົບການ: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "ບໍ່ໄດ້ສະໜອງໃຫ້",
+  "reviews": "({count} ການທົບທວນຄືນ)",
+  "specialties": "ພິເສດ",
+  "experience": "ປະສົບການ",
+  "qualification": "ຄຸນສົມບັດ",
+  "education": "ການສຶກສາ",
+  "recoveryTips": "•ຖ່າຍຮູບໜ້າຈໍຂອງຂໍ້ມູນນີ້\n• ເກັບຮັກສາໄວ້ໃນບ່ອນທີ່ປອດໄພ\n• ຢ່າແບ່ງປັນກັບໃຜ\n• ອັນນີ້ຈະຖືກສະແດງພຽງຄັ້ງດຽວເທົ່ານັ້ນ"
+}

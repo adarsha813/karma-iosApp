@@ -1,0 +1,439 @@
+{
+  "@@locale": "th",
+  "settingsTitle": "การตั้งค่า",
+  "notificationSettings": "การตั้งค่าการแจ้งเตือน",
+  "privacySettings": "การตั้งค่าความเป็นส่วนตัว",
+  "accountSettings": "การตั้งค่าบัญชี",
+  "languageSettings": "การตั้งค่าภาษา",
+  "languageChanged": "ภาษาเปลี่ยนไป",
+  "existingUserButton": "ฉันเป็นผู้ใช้ที่มีอยู่แล้ว",
+  "chooseCountryTitle": "เลือกประเทศ",
+  "yesText": "ใช่",
+  "noText": "เลขที่",
+  "appBarTitle": "การตั้งค่าโปรไฟล์",
+  "userIdLabel": "รหัสผู้ใช้ *",
+  "nameLabel": "ชื่อ",
+  "birthCountryLabel": "ประเทศที่เกิด",
+  "birthCityLabel": "เมืองเกิด",
+  "countrySelectionTitle": "เลือกประเทศของคุณ",
+  "maleLabel": "ชาย",
+  "femaleLabel": "หญิง",
+  "birthDateLabel": "วันเกิด",
+  "birthDatePlaceholder": "เลือกวันเกิด",
+  "birthTimeLabel": "เวลาเกิด",
+  "birthTimePlaceholder": "เลือกเวลาเกิด",
+  "saveProfileButton": "บันทึกโปรไฟล์",
+  "noCitiesFound": "ไม่พบเมือง",
+  "cityPlaceholder": "ป้อนเมืองใน {country}",
+  "countryFirstPlaceholder": "เลือกประเทศก่อน",
+  "versionHistoryTitle": "ประวัติเวอร์ชัน",
+  "notSetText": "ไม่ได้ตั้งค่า",
+  "nameHistory": "ชื่อ: {name}",
+  "cityHistory": "เมือง: {city}",
+  "countryHistory": "ประเทศ: {country}",
+  "genderHistory": "เพศ: {gender}",
+  "birthDateHistory": "วันเกิด: {date}",
+  "birthTimeHistory": "เวลาเกิด: {time}",
+  "locationHistory": "ตำแหน่ง: {latitude}, {longitude}",
+  "timezoneHistory": "เขตเวลา: GMT{offset}",
+  "dstHistory": "เวลาออมแสง: {value}",
+  "stateHistory": "รัฐ: {state}",
+  "versionFromText": "อัปเดตเมื่อ {date}",
+  "userIdRequired": "จำเป็นต้องมีรหัสผู้ใช้",
+  "profileSaved": "บันทึกโปรไฟล์สำเร็จแล้ว",
+  "saveFailed": "ไม่สามารถบันทึกโปรไฟล์ได้",
+  "errorPrefix": "ข้อผิดพลาด:",
+  "onboardingChooseLanguage": "เลือกภาษาของคุณ",
+  "onboardingChooseLanguageDesc": "เลือกภาษาที่คุณต้องการเพื่อดำเนินการต่อ",
+  "onboardingWhatIsAstrology": "โหราศาสตร์คืออะไร?",
+  "onboardingWhatIsAstrologyDesc": "โหราศาสตร์ คือ การศึกษาเกี่ยวกับวัตถุท้องฟ้า...",
+  "onboardingWhyUseApp": "เหตุใดจึงต้องใช้แอพนี้?",
+  "onboardingWhyUseAppDesc": "รับคำทำนายดวงชะตาส่วนบุคคล คำทำนายรายวัน และคำแนะนำเพื่อให้ตัดสินใจได้อย่างถูกต้อง",
+  "onboardingHowToUse": "วิธีใช้แอพนี้?",
+  "onboardingHowToUseDesc": "นำทางได้อย่างง่ายดาย ตรวจสอบดวงชะตารายวัน และจัดการโปรไฟล์ของคุณเพื่อการทำนายที่แม่นยำ",
+  "onboardingGetStarted": "เริ่มต้นใช้งาน",
+  "onboardingNewUser": "ผู้ใช้ใหม่",
+  "onboardingExistingUser": "ผู้ใช้ที่มีอยู่",
+  "onboardingBack": "กลับ",
+  "onboardingNext": "ต่อไป",
+  "userIdNotFound": "ไม่พบรหัสผู้ใช้ กรุณาเข้าสู่ระบบหรือตั้งค่าโปรไฟล์ของคุณ",
+  "clearNotificationsTitle": "การแจ้งเตือนที่ชัดเจน",
+  "clearNotificationsMessage": "คุณแน่ใจว่าต้องการล้างการแจ้งเตือนทั้งหมดหรือไม่?",
+  "clearNotificationsSuccess": "การแจ้งเตือนทั้งหมดได้รับการเคลียร์สำเร็จแล้ว",
+  "clearHoroscopeTitle": "ดวงชะตาแจ่มใส",
+  "clearHoroscopeMessage": "คุณแน่ใจหรือไม่ว่าต้องการล้างข้อมูลดวงชะตาของคุณ?",
+  "clearHoroscopeSuccess": "ดวงชะตาเคลียร์เรียบร้อยแล้ว",
+  "clearChatTitle": "ล้างประวัติการแชท",
+  "clearChatMessage": "คุณแน่ใจหรือไม่ว่าต้องการลบประวัติการแชททั้งหมดของคุณ?",
+  "clearChatLocal": "แชทได้รับการเคลียร์ภายในเครื่องแล้ว",
+  "deleteAccountTitle": "ลบบัญชี",
+  "deleteAccountMessage": "คุณแน่ใจหรือไม่ว่าต้องการลบบัญชีของคุณ? การดำเนินการนี้จะล้างประวัติการแชทและการแจ้งเตือนทั้งหมดของคุณด้วย",
+  "deleteAccountSuccess": "บัญชีและข้อมูลทั้งหมดของคุณถูกลบออกแล้ว",
+  "deleteAccountError": "เกิดข้อผิดพลาดในการลบบัญชี",
+  "logoutTitle": "ออกจากระบบ",
+  "logoutMessage": "คุณแน่ใจว่าต้องการออกจากระบบใช่ไหม?",
+  "termsPrivacyTitle": "ข้อกำหนดและความเป็นส่วนตัว",
+  "privacyPolicyTitle": "นโยบายความเป็นส่วนตัว",
+  "termsConditionsTitle": "ข้อกำหนดและเงื่อนไข",
+  "dataControlTitle": "การควบคุมข้อมูล",
+  "cancelButton": "ยกเลิก",
+  "confirmButton": "ยืนยัน",
+  "clearQuestionsSuccess": "ลบคำถามทั้งหมดสำเร็จแล้ว",
+  "yoginiLabel": "โยคินี",
+  "lordLabel": "พระเจ้า",
+  "startLabel": "เริ่ม",
+  "recoverAccount": "กู้คืนบัญชี",
+  "endLabel": "จบ",
+  "startDateLabel": "วันที่เริ่มต้น",
+  "endDateLabel": "วันที่สิ้นสุด",
+  "notAvailable": "ไม่สามารถใช้งานได้",
+  "noData": "ไม่มีข้อมูล",
+  "unknownError": "ข้อผิดพลาดที่ไม่รู้จัก",
+  "retryButton": "ลองใหม่อีกครั้ง",
+  "kundaliGeneratorTitle": "เครื่องกำเนิด Kundali",
+  "natalChartTitle": "แผนภูมิการเกิด",
+  "lagnaLabel": "ลัคนา",
+  "rashiLabel": "ราชี",
+  "ascDegreeLabel": "ระดับขั้นขึ้น",
+  "vimshottariDashaTitle": "วิมช็อตตารี ดาชา",
+  "yoginiDashaTitle": "โยคินี ทศา",
+  "unknown": "ไม่ทราบ",
+  "clearHoroscope": "ดวงชะตาแจ่มใส",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "การแจ้งเตือนที่ชัดเจน",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "ล้างประวัติการแชท",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "ออกจากระบบ",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "ลบบัญชี",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "ต้องกรอกข้อมูลทุกช่อง",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "กู้คืนบัญชีสำเร็จแล้ว",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "การกู้คืนล้มเหลว โปรดตรวจสอบข้อมูลของคุณ",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "ความลับในการกู้คืน:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "เกี่ยวกับเรา",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "เกี่ยวกับบริษัทของเรา",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "เรามุ่งมั่นที่จะมอบประสบการณ์โหราศาสตร์ที่ดีที่สุดให้กับผู้ใช้ของเรา",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "ภารกิจของเรา",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "เพื่อให้ข้อมูลเชิงลึกเกี่ยวกับโหราศาสตร์ที่แม่นยำและเฉพาะบุคคลเพื่อช่วยให้ผู้ใช้ตัดสินใจในชีวิตได้อย่างถูกต้อง",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "วิสัยทัศน์ของเรา",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "เพื่อที่จะกลายเป็นแพลตฟอร์มโหราศาสตร์ที่น่าเชื่อถือที่สุด โดยผสมผสานเทคโนโลยีและภูมิปัญญาโบราณ",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "คุณค่าของเรา",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "ความซื่อสัตย์ ความแม่นยำ การออกแบบที่เน้นผู้ใช้ และนวัตกรรมอย่างต่อเนื่อง",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "ติดต่อเรา",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "อีเมล: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "เว็บไซต์: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "ฝ่ายสนับสนุนลูกค้า",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "เราอยู่ที่นี่เพื่อช่วยเหลือคุณ",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "กรอกแบบฟอร์มด้านล่างนี้และทีมสนับสนุนของเราจะติดต่อกลับคุณโดยเร็วที่สุด",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "ชื่อของคุณ",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "อีเมล์ของคุณ",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "ข้อความ",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "กรอกอีเมล์ของคุณ",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "ป้อนที่อยู่อีเมลที่ถูกต้อง",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "ป้อน {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "ส่ง",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "กำลังส่ง...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ ส่งอีเมลเรียบร้อยแล้ว!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ ไม่สามารถส่งอีเมล์ได้",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "พจนานุกรมโหราศาสตร์",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "เงื่อนไขการค้นหา...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "ไม่พบเงื่อนไข",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "คำถามเกี่ยวกับการซื้อ",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "ผู้ใช้ไม่ได้รับการรับรอง",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "ไม่สามารถโหลดข้อมูลร้านค้าได้",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "โทเค็นการตรวจสอบสิทธิ์หายไป",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "แอป Astro Chat",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ ชำระเงินสำเร็จ! ส่งคำถามแล้ว",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ การชำระเงินล้มเหลว: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "ยอดคงเหลือของคุณ",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} คำถาม",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "ข้อเสนอที่มีจำหน่าย",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} คำถาม",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "ซื้อ",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 ดูดวงรายวัน",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "รหัสผู้ใช้หายไป",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "ไม่สามารถดึงข้อมูลดวงชะตาได้",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "ไม่พบดวงชะตา",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "เข้าสู่ระบบ",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "วันนี้",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "เมื่อวาน",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "สัปดาห์นี้",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "เดือนที่แล้ว",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "แชท",
+  "typeYourQuestionHint": "พิมพ์คำถามของคุณ...",
+  "paymentRequired": "ต้องชำระเงิน",
+  "paymentRequiredMessage": "คุณใช้คำถามฟรีของคุณแล้ว จ่าย ₹50 เพื่อดำเนินการต่อ",
+  "payNowButton": "ชำระเงินตอนนี้",
+  "freeQuestionsRemaining": "{count} คำถามฟรีที่เหลืออยู่",
+  "paidQuestionsRemaining": "{count} คำถามที่ชำระเงินแล้วที่เหลืออยู่",
+  "thankYouFeedback": "ขอขอบคุณสำหรับคำติชมของคุณ!",
+  "ratingSubmitted": "ส่งคะแนนแล้ว!",
+  "setUserIdFirst": "กรุณาตั้งค่า User ID ของคุณก่อน",
+  "failedToFetchPrevious": "ไม่สามารถดึงคำถามและคำตอบก่อนหน้าได้",
+  "errorOccurred": "ข้อผิดพลาด: {error}",
+  "drawerAstroProfile": "โปรไฟล์แอสโตร",
+  "drawerDailyHoroscope": "ดวงรายวัน",
+  "drawerBuyQuestions": "คำถามเกี่ยวกับการซื้อ",
+  "drawerAstroDictionary": "พจนานุกรมโหราศาสตร์",
+  "drawerSettings": "การตั้งค่า",
+  "drawerCustomerSupport": "ฝ่ายสนับสนุนลูกค้า",
+  "drawerAbout": "เกี่ยวกับ",
+  "drawerProfileSettings": "การตั้งค่าโปรไฟล์",
+  "demoNotificationTitle": "🔔 การแจ้งเตือนการสาธิต",
+  "demoNotificationBody": "นี่คือการแจ้งเตือนทดสอบจากแอปของคุณ!",
+  "notificationsTitle": "การแจ้งเตือน",
+  "noNotifications": "ไม่มีการแจ้งเตือน",
+  "allTab": "ทั้งหมด",
+  "markAllAsRead": "ทำเครื่องหมายทั้งหมดว่าอ่านแล้ว",
+  "notificationMarkedRead": "การแจ้งเตือนถูกทำเครื่องหมายว่าอ่านแล้ว",
+  "failedToLoadNotifications": "ไม่สามารถโหลดการแจ้งเตือนได้",
+  "failedToMarkRead": "ไม่สามารถทำเครื่องหมายว่าอ่านแล้ว",
+  "failedToMarkAllRead": "ไม่สามารถทำเครื่องหมายว่าอ่านแล้วทั้งหมดได้",
+  "socketConnected": "เชื่อมต่อซ็อกเก็ตแล้ว",
+  "socketDisconnected": "ซ็อกเก็ตถูกตัดการเชื่อมต่อ",
+  "newNotificationReceived": "ได้รับการแจ้งเตือนใหม่",
+  "generalCategory": "ทั่วไป",
+  "horoscopeCategory": "ดวงชะตา",
+  "chatCategory": "แชท",
+  "systemCategory": "ระบบ",
+  "updateCategory": "อัพเดท",
+  "howToAskTitle": "วิธีการถาม",
+  "noQuestionsAvailable": "ไม่มีคำถามใดๆ",
+  "failedToLoadQuestions": "ไม่สามารถโหลดคำถามได้",
+  "pullToRefresh": "ดึงเพื่อรีเฟรช",
+  "careerCategory": "อาชีพ",
+  "loveCategory": "ความรักและความสัมพันธ์",
+  "healthCategory": "สุขภาพ",
+  "financeCategory": "การเงิน",
+  "familyCategory": "ตระกูล",
+  "educationCategory": "การศึกษา",
+  "travelCategory": "การท่องเที่ยว",
+  "spiritualCategory": "จิตวิญญาณ",
+  "profileLoaded": "โหลดโปรไฟล์สำเร็จแล้ว",
+  "imageUploaded": "อัพโหลดรูปภาพสำเร็จแล้ว",
+  "savedInformationConfirmation": "ฉันได้บันทึกข้อมูลนี้ไว้",
+  "noHistoryAvailable": "ไม่มีประวัติ",
+  "missingUserIdError": "จำเป็นต้องมีรหัสผู้ใช้",
+  "networkError": "ข้อผิดพลาดของเครือข่าย โปรดลองอีกครั้ง",
+  "timeoutError": "คำขอหมดเวลาแล้ว",
+  "genericError": "มีบางอย่างผิดพลาดเกิดขึ้น",
+  "reactionUpdateError": "ไม่สามารถอัปเดตปฏิกิริยาได้",
+  "noSearchResults": "ไม่พบผลการค้นหา",
+  "clearSearch": "ค้นหาที่ชัดเจน",
+  "resultsFound": "ผลลัพธ์ที่พบ",
+  "recoverySecretHint": "การคัดลอกและวางอาจใช้ไม่ได้ โปรดพิมพ์ด้วยตนเอง",
+  "recoverAccountDescription": "ปฏิบัติตามขั้นตอนเหล่านี้เพื่อกู้คืนบัญชีของคุณ",
+  "processingLabel": "กำลังประมวลผล...",
+  "clearChatSuccess": "ล้างแชทสำเร็จแล้ว",
+  "notificationsEnabled": "เปิดใช้งานการแจ้งเตือนแล้ว",
+  "notificationsDisabled": "การแจ้งเตือนถูกปิดใช้งาน",
+  "securityNotice": "ข้อมูลของคุณได้รับการเข้ารหัสและจัดเก็บอย่างปลอดภัย",
+  "loading": "กำลังโหลด...",
+  "selectLanguage": "เลือกภาษา",
+  "onboardingGetStartedDesc": "เริ่มต้นด้วยการเลือกภาษาของคุณ",
+  "accountRecoveryTitle": "🔐 รายละเอียดการกู้คืนบัญชี",
+  "recoveryInstructions": "โปรดบันทึกข้อมูลนี้ไว้อย่างปลอดภัย คุณจะต้องใช้ข้อมูลนี้เพื่อกู้คืนบัญชีของคุณ",
+  "importantNotice": "⚠️ สำคัญ:",
+  "astrologerProfileTitle": "โปรไฟล์นักโหราศาสตร์",
+  "personalAstrologer": "โหรส่วนตัว",
+  "makePersonalAstrologer": "สร้างนักโหราศาสตร์ส่วนตัว",
+  "favoriteDescription": "คำถามของคุณจะถูกส่งต่อไปยังนักโหราศาสตร์ท่านนี้ก่อน หากไม่ว่าง นักโหราศาสตร์ท่านอื่นที่มีคุณสมบัติเหมาะสมจะช่วยเหลือคุณ",
+  "educationQualifications": "การศึกษาและคุณสมบัติ",
+  "aboutSection": "เกี่ยวกับ",
+  "shareProfile": "แชร์โปรไฟล์",
+  "loadingAstrologer": "กำลังโหลดรายละเอียดนักโหราศาสตร์...",
+  "failedToLoadAstrologer": "ไม่สามารถโหลดรายละเอียดนักโหราศาสตร์ได้",
+  "authenticationRequired": "จำเป็นต้องมีการตรวจสอบสิทธิ์ กรุณาเข้าสู่ระบบ",
+  "securityCheckFailed": "การตรวจสอบความปลอดภัยล้มเหลว: {error}",
+  "addedToFavorites": "🎯 {name} เป็นนักโหราศาสตร์ส่วนตัวของคุณแล้ว",
+  "removedFromFavorites": "✅ ลบ {name} ออกจากรายการโปรด",
+  "toggleFavoriteError": "ไม่สามารถอัปเดตสถานะรายการโปรดได้",
+  "shareMessage": "{name}\n🎓 การศึกษา: {education}\n📜 คุณสมบัติ: {qualification}\n⏳ ประสบการณ์: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "ไม่ได้จัดเตรียมไว้",
+  "reviews": "({count} รีวิว)",
+  "specialties": "ความเชี่ยวชาญ",
+  "experience": "ประสบการณ์",
+  "qualification": "คุณสมบัติ",
+  "education": "การศึกษา",
+  "recoveryTips": "• จับภาพหน้าจอข้อมูลนี้\n• เก็บไว้ในที่ปลอดภัย\n• ห้ามแชร์ข้อมูลกับผู้อื่น\n• ข้อมูลนี้จะแสดงเพียงครั้งเดียว"
+}

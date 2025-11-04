@@ -1,0 +1,439 @@
+{
+  "@@locale": "mt",
+  "settingsTitle": "Issettjar",
+  "notificationSettings": "Issettjar tan-Notifika",
+  "privacySettings": "Issettjar tal-Privatezza",
+  "accountSettings": "Issettjar tal-Kont",
+  "languageSettings": "Issettjar tal-Lingwa",
+  "languageChanged": "Il-lingwa nbidlet",
+  "existingUserButton": "Jiena utent eżistenti",
+  "chooseCountryTitle": "Agħżel Pajjiż",
+  "yesText": "Iva",
+  "noText": "Le",
+  "appBarTitle": "Issettjar tal-Profil",
+  "userIdLabel": "ID tal-Utent *",
+  "nameLabel": "Isem",
+  "birthCountryLabel": "Pajjiż tat-Twelid",
+  "birthCityLabel": "Belt tat-Twelid",
+  "countrySelectionTitle": "Agħżel pajjiżek",
+  "maleLabel": "Raġel",
+  "femaleLabel": "Mara",
+  "birthDateLabel": "Data tat-Twelid",
+  "birthDatePlaceholder": "Agħżel id-Data tat-Twelid",
+  "birthTimeLabel": "Ħin tat-Twelid",
+  "birthTimePlaceholder": "Agħżel il-Ħin tat-Twelid",
+  "saveProfileButton": "Salva l-Profil",
+  "noCitiesFound": "Ma nstabet l-ebda belt",
+  "cityPlaceholder": "Daħħal il-belt f'{country}",
+  "countryFirstPlaceholder": "Agħżel il-pajjiż l-ewwel",
+  "versionHistoryTitle": "Storja tal-Verżjonijiet",
+  "notSetText": "Mhux issettjat",
+  "nameHistory": "Isem: {name}",
+  "cityHistory": "Belt: {city}",
+  "countryHistory": "Pajjiż: {country}",
+  "genderHistory": "Sess: {gender}",
+  "birthDateHistory": "Data tat-Twelid: {date}",
+  "birthTimeHistory": "Ħin tat-Twelid: {time}",
+  "locationHistory": "Lokazzjoni: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Stat: {state}",
+  "versionFromText": "Aġġornat fi {date}",
+  "userIdRequired": "L-ID tal-utent huwa meħtieġ",
+  "profileSaved": "Il-profil ġie salvat b'suċċess",
+  "saveFailed": "Ma rnexxiex insalva l-profil",
+  "errorPrefix": "Żball:",
+  "onboardingChooseLanguage": "Agħżel il-Lingwa Tiegħek",
+  "onboardingChooseLanguageDesc": "Agħżel il-lingwa preferuta tiegħek biex tkompli.",
+  "onboardingWhatIsAstrology": "X'inhi l-Astroloġija?",
+  "onboardingWhatIsAstrologyDesc": "L-astroloġija hija l-istudju tal-korpi ċelesti...",
+  "onboardingWhyUseApp": "Għaliex tuża din l-app?",
+  "onboardingWhyUseAppDesc": "Ikseb oroskopji personalizzati, tbassir ta' kuljum, u gwida biex tieħu deċiżjonijiet infurmati.",
+  "onboardingHowToUse": "Kif tuża din l-app?",
+  "onboardingHowToUseDesc": "Innaviga faċilment, iċċekkja l-oroskopji ta' kuljum, u immaniġġja l-profil tiegħek għal tbassir preċiż.",
+  "onboardingGetStarted": "Ibda",
+  "onboardingNewUser": "Utent Ġdid",
+  "onboardingExistingUser": "Utent Eżistenti",
+  "onboardingBack": "Lura",
+  "onboardingNext": "Li jmiss",
+  "userIdNotFound": "L-ID tal-utent ma nstabx. Jekk jogħġbok idħol jew issettja l-profil tiegħek.",
+  "clearNotificationsTitle": "Notifiki Ċari",
+  "clearNotificationsMessage": "Żgur li trid tħassar in-notifiki kollha?",
+  "clearNotificationsSuccess": "In-notifiki kollha tħassru b'suċċess.",
+  "clearHoroscopeTitle": "Oroskopju Ċar",
+  "clearHoroscopeMessage": "Żgur li trid tħassar id-dejta tal-oroskopju tiegħek?",
+  "clearHoroscopeSuccess": "L-oroskopju tneħħa b'suċċess.",
+  "clearChatTitle": "Ħassar l-Istorja taċ-Chat",
+  "clearChatMessage": "Żgur li trid tħassar l-istorja kollha taċ-chat tiegħek?",
+  "clearChatLocal": "Iċ-chat tnaddaf lokalment.",
+  "deleteAccountTitle": "Ħassar il-Kont",
+  "deleteAccountMessage": "Żgur li trid tħassar il-kont tiegħek? Dan se jħassar ukoll l-istorja taċ-chat u n-notifiki kollha tiegħek.",
+  "deleteAccountSuccess": "Il-kont tiegħek u d-dejta kollha tneħħew.",
+  "deleteAccountError": "Żball fit-tħassir tal-kont",
+  "logoutTitle": "Oħroġ",
+  "logoutMessage": "Żgur li trid tagħmel il-logout?",
+  "termsPrivacyTitle": "Termini u Privatezza",
+  "privacyPolicyTitle": "Politika tal-Privatezza",
+  "termsConditionsTitle": "Termini u Kundizzjonijiet",
+  "dataControlTitle": "Kontroll tad-Data",
+  "cancelButton": "Ikkanċella",
+  "confirmButton": "Ikkonferma",
+  "clearQuestionsSuccess": "Il-mistoqsijiet kollha tħassru b'suċċess.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Mulej",
+  "startLabel": "Ibda",
+  "recoverAccount": "Irkupra l-Kont",
+  "endLabel": "Tmiem",
+  "startDateLabel": "Data tal-Bidu",
+  "endDateLabel": "Data tat-Tmiem",
+  "notAvailable": "Mhux disponibbli",
+  "noData": "L-ebda dejta",
+  "unknownError": "Żball mhux magħruf",
+  "retryButton": "Erġa' pprova",
+  "kundaliGeneratorTitle": "Ġeneratur tal-Kundali",
+  "natalChartTitle": "Ċart Natali",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Grad Axxendent",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Mhux magħruf",
+  "clearHoroscope": "Oroskopju Ċar",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Notifiki Ċari",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Ħassar l-Istorja taċ-Chat",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Oħroġ",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Ħassar il-Kont",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "L-oqsma kollha huma meħtieġa.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Il-kont ġie rkuprat b'suċċess.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "L-irkupru falla. Iċċekkja l-informazzjoni tiegħek.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Sigriet ta' Rkupru:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Dwarna",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Dwar il-Kumpanija Tagħna",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Aħna impenjati li nwasslu l-aqwa esperjenza tal-astroloġija lill-utenti tagħna.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Il-Missjoni Tagħna",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Biex nipprovdu għarfien astroloġiċi preċiż u personalizzat biex ngħinu lill-utenti jieħdu deċiżjonijiet infurmati f'ħajjithom.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Il-Viżjoni Tagħna",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Li ssir l-aktar pjattaforma tal-astroloġija fdata, li tgħaqqad it-teknoloġija u l-għerf antik.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Il-Valuri Tagħna",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Integrità, Preċiżjoni, Disinn Iċċentrat fuq l-Utent, u Innovazzjoni Kontinwa.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Ikkuntattjana",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Email: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Sit elettroniku: www.il-kumpanija tiegħek.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Appoġġ għall-Klijent",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Aħna Hawn biex Ngħinu",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Imla l-formola t'hawn taħt u t-tim ta' appoġġ tagħna se jikkuntattjak mill-aktar fis possibbli.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Ismek",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "L-Email Tiegħek",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Messaġġ",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Daħħal l-email tiegħek",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Daħħal indirizz elettroniku validu",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Daħħal {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Ibgħat",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Qed nibgħat...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ L-email intbagħtet b'suċċess!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Ma rnexxiliex tibgħat email",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Dizzjunarju Astroloġiku",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Termini tat-tiftix...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Ma nstabu l-ebda termini",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Mistoqsijiet dwar ix-Xiri",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Utent mhux awtentikat",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Ma rnexxiex ittella' d-dejta tal-maħżen",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Token tal-awtentikazzjoni nieqes",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "App taċ-Chat Astro",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Ħlas b'suċċess! Mistoqsija mibgħuta",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Il-ħlas falla: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Il-Bilanċ Tiegħek",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Mistoqsijiet",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Offerti Disponibbli",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Question",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Ixtri",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Oroskopju ta' Kuljum",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "L-ID tal-utent hija nieqsa",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Ma rnexxiliex inġib l-oroskopji",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Ma nstab l-ebda oroskopju.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Sinjal",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Illum",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Ilbieraħ",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Din il-Ġimgħa",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Xahar li għadda",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Ċett",
+  "typeYourQuestionHint": "Ittajpja l-mistoqsija tiegħek...",
+  "paymentRequired": "Ħlas Meħtieġ",
+  "paymentRequiredMessage": "Użajt il-mistoqsijiet bla ħlas tiegħek. Ħallas ₹50 biex tkompli.",
+  "payNowButton": "Ħallas Issa",
+  "freeQuestionsRemaining": "{count} mistoqsijiet bla ħlas li fadal",
+  "paidQuestionsRemaining": "{count} mistoqsijiet imħallsa li fadal",
+  "thankYouFeedback": "Grazzi għar-rispons tiegħek!",
+  "ratingSubmitted": "Klassifikazzjoni sottomessa!",
+  "setUserIdFirst": "Jekk jogħġbok issettja l-ID tal-Utent tiegħek l-ewwel",
+  "failedToFetchPrevious": "Ma rnexxiliex inġib mistoqsijiet u tweġibiet preċedenti",
+  "errorOccurred": "Żball: {error}",
+  "drawerAstroProfile": "Profil Astroloġiku",
+  "drawerDailyHoroscope": "Oroskopju ta' Kuljum",
+  "drawerBuyQuestions": "Mistoqsijiet dwar ix-Xiri",
+  "drawerAstroDictionary": "Dizzjunarju Astroloġiku",
+  "drawerSettings": "Issettjar",
+  "drawerCustomerSupport": "Appoġġ għall-Klijent",
+  "drawerAbout": "Dwar",
+  "drawerProfileSettings": "Issettjar tal-Profil",
+  "demoNotificationTitle": "🔔 Notifika tad-Demo",
+  "demoNotificationBody": "Din hija notifika ta' prova mill-app tiegħek!",
+  "notificationsTitle": "Notifiki",
+  "noNotifications": "L-ebda notifika",
+  "allTab": "Kollha",
+  "markAllAsRead": "Immarka kollox bħala moqri",
+  "notificationMarkedRead": "Notifika mmarkata bħala moqrija",
+  "failedToLoadNotifications": "Ma rnexxilniex in-notifiki jitgħabbew",
+  "failedToMarkRead": "Ma rnexxiex timmarka bħala moqri",
+  "failedToMarkAllRead": "Ma rnexxiex timmarka kollox bħala moqri",
+  "socketConnected": "Sokit konness",
+  "socketDisconnected": "Sokit skonnettjat",
+  "newNotificationReceived": "Notifika ġdida riċevuta",
+  "generalCategory": "Ġenerali",
+  "horoscopeCategory": "Oroskopju",
+  "chatCategory": "Ċett",
+  "systemCategory": "Sistema",
+  "updateCategory": "Aġġornamenti",
+  "howToAskTitle": "Kif Tistaqsi",
+  "noQuestionsAvailable": "L-ebda mistoqsija disponibbli",
+  "failedToLoadQuestions": "Ma rnexxilniex intella' l-mistoqsijiet",
+  "pullToRefresh": "Iġbed biex tirrifreska",
+  "careerCategory": "Karriera",
+  "loveCategory": "Imħabba u Relazzjonijiet",
+  "healthCategory": "Saħħa",
+  "financeCategory": "Finanzi",
+  "familyCategory": "Familja",
+  "educationCategory": "Edukazzjoni",
+  "travelCategory": "Ivvjaġġar",
+  "spiritualCategory": "Spiritwali",
+  "profileLoaded": "Il-profil tgħabba b'suċċess",
+  "imageUploaded": "L-immaġni ġiet imtella’ b’suċċess",
+  "savedInformationConfirmation": "Salvajt Din l-Informazzjoni",
+  "noHistoryAvailable": "L-ebda storja disponibbli",
+  "missingUserIdError": "L-ID tal-utent huwa meħtieġ",
+  "networkError": "Żball fin-netwerk. Jekk jogħġbok erġa' pprova.",
+  "timeoutError": "It-talba skadiet",
+  "genericError": "Xi ħaġa marret ħażin",
+  "reactionUpdateError": "Ma rnexxiliex taġġorna r-reazzjoni",
+  "noSearchResults": "Ma nstabu l-ebda riżultati tat-tfittxija",
+  "clearSearch": "Tiftix ċar",
+  "resultsFound": "Riżultati misjuba",
+  "recoverySecretHint": "Il-kopja u l-pejst jistgħu ma jaħdmux, ittajpja manwalment",
+  "recoverAccountDescription": "Segwi dawn il-passi biex tirkupra l-kont tiegħek",
+  "processingLabel": "Ipproċessar...",
+  "clearChatSuccess": "Iċ-chat tnaddaf b'suċċess",
+  "notificationsEnabled": "Notifiki attivati",
+  "notificationsDisabled": "Notifiki diżattivati",
+  "securityNotice": "Id-dejta tiegħek hija kriptata u maħżuna b'mod sigur",
+  "loading": "Qed jitgħabba...",
+  "selectLanguage": "Agħżel Lingwa",
+  "onboardingGetStartedDesc": "Ibda billi tagħżel il-lingwa tiegħek",
+  "accountRecoveryTitle": "🔐 Dettalji dwar l-Irkupru tal-Kont",
+  "recoveryInstructions": "Jekk jogħġbok salva din l-informazzjoni b'mod sigur. Ikollok bżonnha biex tirkupra l-kont tiegħek.",
+  "importantNotice": "⚠️ Importanti:",
+  "astrologerProfileTitle": "Profil tal-Astrologu",
+  "personalAstrologer": "Astrologu Personali",
+  "makePersonalAstrologer": "Agħmel Astrologu Personali",
+  "favoriteDescription": "Il-mistoqsijiet tiegħek se jiġu prijoritizzati lil dan l-astrologu. Jekk ma jkunx disponibbli, astrologu kwalifikat ieħor se jgħinek.",
+  "educationQualifications": "Edukazzjoni u Kwalifiki",
+  "aboutSection": "Dwar",
+  "shareProfile": "Aqsam il-Profil",
+  "loadingAstrologer": "Qed jitgħabbew id-dettalji tal-astrologu...",
+  "failedToLoadAstrologer": "Ma rnexxilniex nitgħabbew id-dettalji tal-astrologu",
+  "authenticationRequired": "Awtentikazzjoni meħtieġa. Jekk jogħġbok idħol.",
+  "securityCheckFailed": "Il-verifika tas-sigurtà falliet: {error}",
+  "addedToFavorites": "🎯 {name} issa huwa l-Astrologu Personali tiegħek",
+  "removedFromFavorites": "✅ Neħħejt {name} mill-favoriti",
+  "toggleFavoriteError": "Ma rnexxiex naġġorna l-istatus tal-favorit",
+  "shareMessage": "{name}\n🎓 Edukazzjoni: {education}\n📜 Kwalifika: {qualification}\n⏳ Esperjenza: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Mhux ipprovdut",
+  "reviews": "({count} reviżjonijiet)",
+  "specialties": "Speċjalitajiet",
+  "experience": "Esperjenza",
+  "qualification": "Kwalifika",
+  "education": "Edukazzjoni",
+  "recoveryTips": "• Ħu screenshot ta’ din l-informazzjoni\n• Aħżenha f’post sigur\n• Taqsamha ma’ ħadd\n• Din tintwera darba biss"
+}

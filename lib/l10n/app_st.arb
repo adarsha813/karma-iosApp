@@ -1,0 +1,439 @@
+{
+  "@@locale": "st",
+  "settingsTitle": "Litlhophiso",
+  "notificationSettings": "Litlhophiso tsa Tsebiso",
+  "privacySettings": "Litlhophiso tsa Lekunutu",
+  "accountSettings": "Litlhophiso tsa akhaonte",
+  "languageSettings": "Litlhophiso tsa Puo",
+  "languageChanged": "Puo e fetohile",
+  "existingUserButton": "Ke mosebelisi ea teng",
+  "chooseCountryTitle": "Khetha Naha",
+  "yesText": "Ee",
+  "noText": "Che",
+  "appBarTitle": "Litlhophiso tsa Profaele",
+  "userIdLabel": "Theneketso *",
+  "nameLabel": "Lebitso",
+  "birthCountryLabel": "Naha ea Tsoalo",
+  "birthCityLabel": "Motse oa Tsoalo",
+  "countrySelectionTitle": "Khetha naha ea heno",
+  "maleLabel": "Monna",
+  "femaleLabel": "E tšehali",
+  "birthDateLabel": "Letsatsi la tsoalo",
+  "birthDatePlaceholder": "Kgetha Letsatsi la Tswalo",
+  "birthTimeLabel": "Nako ea Tsoalo",
+  "birthTimePlaceholder": "Kgetha Nako ya Tswalo",
+  "saveProfileButton": "Boloka Profile",
+  "noCitiesFound": "Ha ho litoropo tse fumanoeng",
+  "cityPlaceholder": "Kena toropong {country}",
+  "countryFirstPlaceholder": "Khetha naha pele",
+  "versionHistoryTitle": "Histori ea Phetolelo",
+  "notSetText": "Ha ea behoa",
+  "nameHistory": "Lebitso: {name}",
+  "cityHistory": "Toropo: {city}",
+  "countryHistory": "Naha: {country}",
+  "genderHistory": "Bong: {gender}",
+  "birthDateHistory": "Letsatsi la tsoalo: {date}",
+  "birthTimeHistory": "Nako ea Tsoalo: {time}",
+  "locationHistory": "Sebaka: {latitude}, {longitude}",
+  "timezoneHistory": "Nako: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Naha: {state}",
+  "versionFromText": "E ntlafalitsoe ka {date}",
+  "userIdRequired": "ID ea mosebelisi ea hlokahala",
+  "profileSaved": "Boemo bo bolokiloe ka katleho",
+  "saveFailed": "E hlolehile ho boloka boemo",
+  "errorPrefix": "Phoso:",
+  "onboardingChooseLanguage": "Kgetha Puo ya Hao",
+  "onboardingChooseLanguageDesc": "Khetha puo eo u e ratang hore u tsoele pele.",
+  "onboardingWhatIsAstrology": "Bonohe ba Linaleli ke Eng?",
+  "onboardingWhatIsAstrologyDesc": "Bonohe ba linaleli ke thuto ea lihloliloeng tsa leholimo...",
+  "onboardingWhyUseApp": "Hobaneng o sebelisa sesebelisoa see?",
+  "onboardingWhyUseAppDesc": "Fumana li-horoscope tsa motho ka mong, likhakanyo tsa letsatsi le letsatsi le tataiso ho etsa liqeto tse nepahetseng.",
+  "onboardingHowToUse": "Mokhoa oa ho sebelisa sesebelisoa see?",
+  "onboardingHowToUseDesc": "Tsamaea habonolo, hlahloba li-horoscope tsa letsatsi le letsatsi, 'me u tsamaise boemo ba hau bakeng sa likhakanyo tse nepahetseng.",
+  "onboardingGetStarted": "Qala",
+  "onboardingNewUser": "Mosebelisi e Mocha",
+  "onboardingExistingUser": "Mosebelisi ea teng",
+  "onboardingBack": "Morao",
+  "onboardingNext": "E 'ngoe",
+  "userIdNotFound": "ID ea mosebelisi ha e fumanehe. Ka kopo, kena kapa u hlophise boemo ba hau.",
+  "clearNotificationsTitle": "Hlakola Litsebiso",
+  "clearNotificationsMessage": "Na ehlile u batla ho hlakola litemoso kaofela?",
+  "clearNotificationsSuccess": "Litsebiso tsohle li hlakotsoe ka katleho.",
+  "clearHoroscopeTitle": "Horoscope e hlakileng",
+  "clearHoroscopeMessage": "Na u na le bonnete ba hore u batla ho hlakola lintlha tsa hau tsa linaleli?",
+  "clearHoroscopeSuccess": "Linaleli tsa linaleli li hlakotsoe ka katleho.",
+  "clearChatTitle": "Hlakola Nalane ea Chat",
+  "clearChatMessage": "Na ehlile u batla ho hlakola nalane eohle ea meqoqo?",
+  "clearChatLocal": "Puisano e tlositsoe sebakeng sa heno.",
+  "deleteAccountTitle": "Hlakola Account",
+  "deleteAccountMessage": "Na ehlile u batla ho hlakola ak'haonte ea hau? Sena se tla hlakola nalane eohle ea meqoqo le litemoso.",
+  "deleteAccountSuccess": "Ak'haonte ea hau le data kaofela li tlositsoe.",
+  "deleteAccountError": "Phoso ea ho hlakola ak'haonte",
+  "logoutTitle": "Tsoa",
+  "logoutMessage": "Na ehlile u batla ho tsoa?",
+  "termsPrivacyTitle": "Melao le Lekunutu",
+  "privacyPolicyTitle": "leano la lekunutu",
+  "termsConditionsTitle": "Melao le Lipehelo",
+  "dataControlTitle": "Taolo ea Boitsebiso",
+  "cancelButton": "Hlakola",
+  "confirmButton": "Netefatsa",
+  "clearQuestionsSuccess": "Lipotso tsohle li hlakotsoe ka katleho.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Morena",
+  "startLabel": "Qala",
+  "recoverAccount": "Fumana Account",
+  "endLabel": "QETA",
+  "startDateLabel": "Letsatsi la qalo",
+  "endDateLabel": "Letsatsi la ho Qetela",
+  "notAvailable": "Ha e fumanehe",
+  "noData": "Ha ho data",
+  "unknownError": "Phoso e sa tsejoeng",
+  "retryButton": "Leka hape",
+  "kundaliGeneratorTitle": "Jenereithara ea Kundali",
+  "natalChartTitle": "Chate ea Natala",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Degree ea Ascendant",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Tse sa tsejoeng",
+  "clearHoroscope": "Horoscope e hlakileng",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Hlakola Litsebiso",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Hlakola Nalane ea Chat",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Tsoa",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Hlakola Account",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Likarolo tsohle lia hlokahala.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Ak'haonte e hlaphohetsoe ka katleho.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Ho hlaphoheloa ho hlolehile. Sheba lintlha tsa hau.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Lekunutu la Phodiso:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Mabapi le rona",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Mabapi le Khampani ea Rona",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Re ikemiselitse ho fana ka phihlelo e ntle ka ho fetisisa ea bonohe ba linaleli ho basebelisi ba rona.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Morero oa rona",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Ho fana ka lintlha tse nepahetseng tsa bonohe ba linaleli ho thusa basebelisi ho etsa liqeto tse nepahetseng bophelong ba bona.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Pono ea Rona",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Ho ba sethala se tšeptjoang ka ho fetesisa sa bonohe ba linaleli, se kopanyang theknoloji le bohlale ba khale.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Melao ea Rōna",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Botšepehi, Ho Nepaha, Moralo oa Bohareng ba Basebelisi, le Boqapi bo Tsoelang Pele.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Iteanye le rona",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Email: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Webosaete: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Tšehetso ea Bareki",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Re Mona ho Thusa",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Tlatsa foromo e ka tlase 'me sehlopha sa rona sa ts'ehetso se tla khutlela ho uena kapele kamoo ho ka khonehang.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Lebitso la hau",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Imeile ea hau",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Molaetsa",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Kenya lengolo-tsoibila la hau",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Kenya aterese ea lengolo-tsoibila e nepahetseng",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Kenya {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Romela",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "E ea romela...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Imeile e rometsoe ka katleho!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ E hlolehile ho romela lengolo-tsoibila",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Bukana ea Astro",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Batla mantsoe...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Ha ho mantsoe a fumanoeng",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Reka Lipotso",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Mosebedisi ha a netefatswa",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "E hlolehile ho bula lintlha tsa lebenkele",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Letshwao la nnete le sieo",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Sesebelisoa sa Astro Chat",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Tefo e atlehile! Potso e rometsoe",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Tefo e hlotsoe: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Tekanyo ea Hao",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Lipotso",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Litlhahiso Tse Fumanehang",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Potso",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Reka",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Horoscope ea Letsatsi le Letsatsi",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "ID ea mosebelisi ha e eo",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "E hlolehile ho lata linaleli",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Ha ho na horoscope e fumanoeng.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Letshoao",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Kajeno",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Maobane",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Bekeng ena",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Kgweding e Fetileng",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Chat",
+  "typeYourQuestionHint": "Ngola potso ea hau...",
+  "paymentRequired": "Tefo e Hlokahala",
+  "paymentRequiredMessage": "U sebelisitse lipotso tsa hau tsa mahala. Lefa ₹50 hore o tsoelepele.",
+  "payNowButton": "Lefa Hona Joale",
+  "freeQuestionsRemaining": "{count} ho setse lipotso tsa mahala",
+  "paidQuestionsRemaining": "Ho setse lipotso tse {count}",
+  "thankYouFeedback": "Kea leboha ka maikutlo a hau!",
+  "ratingSubmitted": "Lintlha li kentsoe!",
+  "setUserIdFirst": "Ka kopo, beha ID ea hau ea mosebelisi pele",
+  "failedToFetchPrevious": "E hlolehile ho fumana lipotso le likarabo tse fetileng",
+  "errorOccurred": "Phoso: {error}",
+  "drawerAstroProfile": "Boemo ba Astro",
+  "drawerDailyHoroscope": "Horoscope ea letsatsi le letsatsi",
+  "drawerBuyQuestions": "Reka Lipotso",
+  "drawerAstroDictionary": "Bukana ea Astro",
+  "drawerSettings": "Litlhophiso",
+  "drawerCustomerSupport": "Tšehetso ea Bareki",
+  "drawerAbout": "About",
+  "drawerProfileSettings": "Litlhophiso tsa Profaele",
+  "demoNotificationTitle": "🔔 Tsebiso ea demo",
+  "demoNotificationBody": "Ena ke tsebiso ea teko ho tsoa ho sesebelisoa sa hau!",
+  "notificationsTitle": "Litsebiso",
+  "noNotifications": "Ha ho litsebiso",
+  "allTab": "Tsohle",
+  "markAllAsRead": "Tšoaea kaofela ha li baliloe",
+  "notificationMarkedRead": "Tsebiso e tšoailoe e balletsoe",
+  "failedToLoadNotifications": "E hlolehile ho kenya litsebiso",
+  "failedToMarkRead": "E hlolehile ho tshwaya hore e badilwe",
+  "failedToMarkAllRead": "E hlolehile ho tshwaya kaofela ha di ballwe",
+  "socketConnected": "Socket e hokahane",
+  "socketDisconnected": "Sokete e khaotsoe",
+  "newNotificationReceived": "Tsebiso e ncha e amohetsoe",
+  "generalCategory": "Kakaretso",
+  "horoscopeCategory": "Horoscope",
+  "chatCategory": "Chat",
+  "systemCategory": "Tsamaiso",
+  "updateCategory": "Lintlafatso",
+  "howToAskTitle": "Mokhoa oa ho Botsa",
+  "noQuestionsAvailable": "Ha ho lipotso tse teng",
+  "failedToLoadQuestions": "E hlolehile ho hlahisa lipotso",
+  "pullToRefresh": "Hula ho hlabolla",
+  "careerCategory": "Mosebetsi",
+  "loveCategory": "Lerato & Likamano",
+  "healthCategory": "Bophelo bo botle",
+  "financeCategory": "Lichelete",
+  "familyCategory": "Lelapa",
+  "educationCategory": "Thuto",
+  "travelCategory": "Tsamaea",
+  "spiritualCategory": "Ea moea",
+  "profileLoaded": "Boemo bo kentsoe ka katleho",
+  "imageUploaded": "Setšoantšo se kentsoe ka katleho",
+  "savedInformationConfirmation": "Ke Bolokile Litaba Tsena",
+  "noHistoryAvailable": "Ha ho na nalane e fumanehang",
+  "missingUserIdError": "ID ea mosebelisi ea hlokahala",
+  "networkError": "Phoso ea marang-rang. Ka kopo, leka hape.",
+  "timeoutError": "Kopo e feletsoe ke nako",
+  "genericError": "Ho bile le phoso",
+  "reactionUpdateError": "E hlolehile ho ntlafatsa maikutlo",
+  "noSearchResults": "Ha ho liphetho tse fumanoeng",
+  "clearSearch": "Hlakola patlo",
+  "resultsFound": "Liphetho li fumanoe",
+  "recoverySecretHint": "Copy-paste e kanna ea se sebetse, thaepa ka letsoho",
+  "recoverAccountDescription": "Latela mehato ena ho khutlisa akhaonto ea hau",
+  "processingLabel": "E ntse e sebetsa...",
+  "clearChatSuccess": "Puisano e hlakotsoe ka katleho",
+  "notificationsEnabled": "Litsebiso li lumelletsoe",
+  "notificationsDisabled": "Litsebiso li timiloe",
+  "securityNotice": "Lintlha tsa hau li patiloe ka mokhoa o sireletsehileng 'me li bolokiloe",
+  "loading": "E ea kenya...",
+  "selectLanguage": "Kgetha Puo",
+  "onboardingGetStartedDesc": "Qala ka ho khetha puo ea hau",
+  "accountRecoveryTitle": "🔐 Lintlha tsa ho Khutlisa Akhaonto",
+  "recoveryInstructions": "Ka kopo, boloka lintlha tsena ka mokhoa o sireletsehileng. U tla e hloka ho khutlisa ak'haonte ea hau.",
+  "importantNotice": "⚠️ Bohlokoa:",
+  "astrologerProfileTitle": "Boemo ba linohe tsa linaleli",
+  "personalAstrologer": "Molepi oa Linaleli oa Motho",
+  "makePersonalAstrologer": "Etsa Linohe Tsa Linaleli",
+  "favoriteDescription": "Lipotso tsa hau li tla etelletsoa pele ho senohe sena sa linaleli. Haeba e sa fumanehe, senohe se seng se tšoanelehang se tla u thusa.",
+  "educationQualifications": "Thuto & Litšoaneleho",
+  "aboutSection": "About",
+  "shareProfile": "Arolelana Profile",
+  "loadingAstrologer": "E kenya lintlha tsa linohe tsa linaleli...",
+  "failedToLoadAstrologer": "E hlolehile ho kenya lintlha tsa linohe tsa linaleli",
+  "authenticationRequired": "Netefatso ea hlokahala. Ke kopa o kene.",
+  "securityCheckFailed": "Ho hloleha ho hlahloba tshireletso: {error}",
+  "addedToFavorites": "🎯 {name} ke Setsebi sa hao sa Linaleli",
+  "removedFromFavorites": "✅ E tlositsoe {name} ho tse ratoang",
+  "toggleFavoriteError": "E hlolehile ho nchafatsa boemo boo u bo ratang",
+  "shareMessage": "{name}\n🎓 Thuto: {education}\n📜 Litšoaneleho: {qualification}\n⏳ Phihlelo: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Ha e fanoe",
+  "reviews": "({count} maikutlo)",
+  "specialties": "Tse khethehileng",
+  "experience": "Phihlelo",
+  "qualification": "Tšoaneleho",
+  "education": "Thuto",
+  "recoveryTips": "• Nka skrine ea tlhahisoleseding ena\n• E boloke sebakeng se sireletsehileng\n• Se ke oa arolelana le mang kapa mang\n• Sena se tla bontšoa hang feela"
+}

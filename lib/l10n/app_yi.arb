@@ -1,0 +1,439 @@
+{
+  "@@locale": "yi",
+  "settingsTitle": "סעטטינגס",
+  "notificationSettings": "מעלדונג סעטטינגס",
+  "privacySettings": "פּריוואַטקייט סעטטינגס",
+  "accountSettings": "קאנטע סעטינגס",
+  "languageSettings": "שפּראַך סעטטינגס",
+  "languageChanged": "שפּראַך געביטן",
+  "existingUserButton": "איך בין אַן עקזיסטירנדיקער באַניצער",
+  "chooseCountryTitle": "אויסקלייבן לאַנד",
+  "yesText": "יא",
+  "noText": "ניין",
+  "appBarTitle": "פּראָפיל סעטטינגס",
+  "userIdLabel": "באַניצער אידענטיטעט *",
+  "nameLabel": "נאָמען",
+  "birthCountryLabel": "געבורטסלאַנד",
+  "birthCityLabel": "געבורטשטאט",
+  "countrySelectionTitle": "קלייַבט אויס דיין לאַנד",
+  "maleLabel": "זכר",
+  "femaleLabel": "ווייַבלעך",
+  "birthDateLabel": "געבורטסדאַטום",
+  "birthDatePlaceholder": "אויסקלייבן געבורטסדאטום",
+  "birthTimeLabel": "געבורט צייט",
+  "birthTimePlaceholder": "אויסקלייבן געבורטס צייט",
+  "saveProfileButton": "ראַטעווען פּראָפיל",
+  "noCitiesFound": "קיין שטעט נישט געפונען",
+  "cityPlaceholder": "אַרייַן שטאָט אין {country}",
+  "countryFirstPlaceholder": "אויסקלייבן לאַנד ערשט",
+  "versionHistoryTitle": "ווערסיע געשיכטע",
+  "notSetText": "נישט באַשטעטיקט",
+  "nameHistory": "נאמען: {name}",
+  "cityHistory": "שטאָט: {city}",
+  "countryHistory": "לאַנד: {country}",
+  "genderHistory": "געשלעכט: {gender}",
+  "birthDateHistory": "געבורטסדאַטום: {date}",
+  "birthTimeHistory": "געבורט צייט: {time}",
+  "locationHistory": "לאקאציע: {latitude}, {longitude}",
+  "timezoneHistory": "צייט זאנע: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "שטאַט: {state}",
+  "versionFromText": "דערהייַנטיקט אויף {date}",
+  "userIdRequired": "באַניצער אידענטיטעט איז פארלאנגט",
+  "profileSaved": "פּראָפֿיל געראָטן",
+  "saveFailed": "נישט געקענט ראַטעווען פּראָפֿיל",
+  "errorPrefix": "טעות:",
+  "onboardingChooseLanguage": "קלייבט אייער שפּראַך",
+  "onboardingChooseLanguageDesc": "אויסקלייבן אייער בילכער שפּראַך צו פאָרזעצן.",
+  "onboardingWhatIsAstrology": "וואָס איז אַסטראָלאָגיע?",
+  "onboardingWhatIsAstrologyDesc": "אַסטראָלאָגיע איז די שטודיע פון הימלישע קערפּערס...",
+  "onboardingWhyUseApp": "פארוואס ניצן די דאזיגע אפליקאציע?",
+  "onboardingWhyUseAppDesc": "באַקומען פערזענליכע האָראָסקאָפּן, טעגלעכע פאָרויסזאָגן און גיידאַנס צו מאַכן אינפאָרמירטע דיסיזשאַנז.",
+  "onboardingHowToUse": "ווי אזוי צו ניצן די דאזיגע אפליקאציע?",
+  "onboardingHowToUseDesc": "נאַוויגירן לייכט, קאָנטראָלירן טעגלעכע האָראָסקאָפּן, און פירן דיין פּראָפיל פֿאַר פּינקטלעכע פאָרויסזאָגן.",
+  "onboardingGetStarted": "אָנהייבן",
+  "onboardingNewUser": "נייַער באַניצער",
+  "onboardingExistingUser": "עקזיסטירנדיקער באַניצער",
+  "onboardingBack": "צוריק",
+  "onboardingNext": "ווייטער",
+  "userIdNotFound": "באַניצער אידענטיטעט נישט געפֿונען. ביטע לאָגין אָדער שטעלן דיין פּראָפֿיל.",
+  "clearNotificationsTitle": "קלאָרע נאָוטאַפאַקיישאַנז",
+  "clearNotificationsMessage": "ביסטו זיכער אז דו ווילסט אויסמעקן אלע נאטיפיקאציעס?",
+  "clearNotificationsSuccess": "אַלע נאָטיפיקאַציעס זענען געראָטן אויסגעמעקט.",
+  "clearHoroscopeTitle": "קלאָרער האָראָסקאָפּ",
+  "clearHoroscopeMessage": "ביסטו זיכער אז דו ווילסט אויסמעקן דיינע האָראָסקאָפּ דאַטן?",
+  "clearHoroscopeSuccess": "האָראָסקאָפּ איז געראָטן אויסגעמעקט.",
+  "clearChatTitle": "ויסמעקן שמועס געשיכטע",
+  "clearChatMessage": "ביסטו זיכער אז דו ווילסט אויסמעקן דיין גאנצע שמועס געשיכטע?",
+  "clearChatLocal": "טשאַט איז לאָקאַל אויסגעמעקט געוואָרן.",
+  "deleteAccountTitle": "אויסמעקן אקאונט",
+  "deleteAccountMessage": "ביסטו זיכער אז דו ווילסט אויסמעקן דיין אקאונט? דאס וועט אויך אויסמעקן דיין גאנצע שמועס געשיכטע און נאטיפיקאציעס.",
+  "deleteAccountSuccess": "אייער אקאונט און אלע דאטן זענען אַוועקגענומען געוואָרן.",
+  "deleteAccountError": "טעות אויסמעקן אקאונט",
+  "logoutTitle": "אויסלאָגירן",
+  "logoutMessage": "ביסטו זיכער אז דו ווילסט זיך אויסלאָגירן?",
+  "termsPrivacyTitle": "תּנאים און פּריוואַטקייט",
+  "privacyPolicyTitle": "פּריוואַטקייט פּאָליטיק",
+  "termsConditionsTitle": "תּנאים און באַדינגונגען",
+  "dataControlTitle": "דאַטן קאָנטראָל",
+  "cancelButton": "אָפּרופן",
+  "confirmButton": "באַשטעטיקן",
+  "clearQuestionsSuccess": "אַלע פֿראַגעס זענען געראָטן אויסגעמעקט.",
+  "yoginiLabel": "יאָגיני",
+  "lordLabel": "האר",
+  "startLabel": "אָנהייבן",
+  "recoverAccount": "צוריקקריגן אקאונט",
+  "endLabel": "ענדע",
+  "startDateLabel": "אָנהייב דאַטע",
+  "endDateLabel": "ענדע דאַטע",
+  "notAvailable": "נישט פֿאַראַן",
+  "noData": "קיין דאַטן נישט",
+  "unknownError": "אומבאַקאַנטער טעות",
+  "retryButton": "פרובירן נאכאמאל",
+  "kundaliGeneratorTitle": "קונדאַלי גענעראַטאָר",
+  "natalChartTitle": "געבורט טשאַרט",
+  "lagnaLabel": "לאַגנאַ",
+  "rashiLabel": "רש\"י",
+  "ascDegreeLabel": "אַסצענדאַנט גראַד",
+  "vimshottariDashaTitle": "ווימשאָטאַרי דאַשאַ",
+  "yoginiDashaTitle": "יאָגיני דאַשאַ",
+  "unknown": "אומבאַקאַנט",
+  "clearHoroscope": "קלאָרער האָראָסקאָפּ",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "קלאָרע נאָוטאַפאַקיישאַנז",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "ויסמעקן שמועס געשיכטע",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "אויסלאָגירן",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "אויסמעקן אקאונט",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "אַלע פעלדער זענען פארלאנגט.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "קאנטע איז ערפאלגרייך צוריקגעכאפט געווארן.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "די רעקאָווערי איז דורכגעפאַלן. קאָנטראָלירט אייער אינפֿאָרמאַציע.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "סוד פון רעקאָווערי:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "וועגן אונדז",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "וועגן אונדזער פירמע",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "מיר זענען מחויב צו צושטעלן די בעסטע אַסטראָלאָגיע דערפאַרונג צו אונדזערע באַניצער.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "אונדזער מיסיע",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "צו צושטעלן גענויע און פערזענליכע אַסטראָלאָגיע איינזיכטן צו העלפֿן ניצערס מאַכן אינפאָרמירטע דיסיזשאַנז אין זייער לעבן.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "אונדזער זעאונג",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "צו ווערן די מערסט פארטרויענסווערדיגע אַסטראָלאָגיע פּלאַטפאָרמע, וואָס קאָמבינירט טעכנאָלאָגיע און אלטע חכמה.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "אונדזערע ווערטן",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "אָרנטלעכקייט, אַקיעראַסי, באַניצער-צענטרירט פּלאַן, און קעסיידערדיקע כידעש.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "קאָנטאַקט אונדז",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "אימעיל: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "וועבזייטל: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "קונה שטיצע",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "מיר זענען דאָ צו העלפֿן",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "פֿילט אויס דעם פֿאָרמולאַר אונטן און אונדזער שטיצע־מאַנשאַפֿט וועט זיך צוריקמעלדן צו אײַך אַזוי שנעל ווי מעגלעך.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "דיין נאָמען",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "דיין אימעיל",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "מעסעדזש",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "אַרייַן דיין בליצפּאָסט",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "אַרייַן אַ גילטיקע בליצפּאָסט אַדרעס",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "אַרייַן {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "שיקן",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "שיקן...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ אימעיל געשיקט מיט הצלחה!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ נישט געקענט שיקן אימעיל",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "אַסטראָ ווערטערבוך",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "זוכ-טערמינען...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "קיין טערמינען נישט געפונען",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "קויפן פראגעס",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "באַניצער נישט אויטענטיפיצירט",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "נישט געלונגען צו לאָדן קראָם דאַטן",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "פעלנדיקער אויטאָריזאַציע טאָקען",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "אַסטראָ טשאַט אַפּ",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ צאָלונג געראָטן! פֿראַגע געשיקט",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ צאָלונג איז דורכגעפֿאַלן: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "דיין באַלאַנס",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} פראגעס",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "פאַראַן אָפפערס",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} פראגע",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "קויפן",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 טעגלעכער האָראָסקאָפּ",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "באַניצער אידענטיטעט פעלט",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "נישט געקענט ברענגען האָראָסקאָפּן",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "קיין האָראָסקאָפּ נישט געפֿונען.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "צייכן",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "היינט",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "נעכטן",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "די וואָך",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "לעצטן חודש",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "טשאַט",
+  "typeYourQuestionHint": "שרייב דיין קשיא...",
+  "paymentRequired": "צאָלונג פארלאנגט",
+  "paymentRequiredMessage": "דו האסט שוין אויסגענוצט דיינע פרייע פראגעס. צאל ₹50 צו פאָרזעצן.",
+  "payNowButton": "צאָלן איצט",
+  "freeQuestionsRemaining": "{count} פרייע פראגעס פארבליבן",
+  "paidQuestionsRemaining": "{count} באַצאָלטע פֿראַגעס פֿאַרבליבן",
+  "thankYouFeedback": "א דאנק פאר אייערע רעאקציעס!",
+  "ratingSubmitted": "שאַצונג אַריינגעגעבן!",
+  "setUserIdFirst": "ביטע שטעלן ערשט איין אייער באַניצער ID",
+  "failedToFetchPrevious": "נישט געקענט צוריקברענגען פריערדיגע פראגעס און ענטפֿערס",
+  "errorOccurred": "טעות: {error}",
+  "drawerAstroProfile": "אַסטראָ פּראָפיל",
+  "drawerDailyHoroscope": "טעגלעכער האָראָסקאָפּ",
+  "drawerBuyQuestions": "קויפן פראגעס",
+  "drawerAstroDictionary": "אַסטראָ ווערטערבוך",
+  "drawerSettings": "סעטטינגס",
+  "drawerCustomerSupport": "קונה שטיצע",
+  "drawerAbout": "וועגן",
+  "drawerProfileSettings": "פּראָפיל סעטטינגס",
+  "demoNotificationTitle": "🔔 דעמאָ נאָטיפיקאַציע",
+  "demoNotificationBody": "דאָס איז אַ טעסט נאָטיפיקאַציע פֿון דיין אַפּ!",
+  "notificationsTitle": "נאָטיפיקאַציעס",
+  "noNotifications": "קיין נאָוטאַפאַקיישאַנז",
+  "allTab": "אַלע",
+  "markAllAsRead": "מאַרקירן אַלץ ווי געלייענט",
+  "notificationMarkedRead": "מעלדונג געמאַרקט ווי געלײענט",
+  "failedToLoadNotifications": "נישט געלונגען צו לאָדן נאָוטאַפאַקיישאַנז",
+  "failedToMarkRead": "נישט געקענט מאַרקירן ווי געלייענט",
+  "failedToMarkAllRead": "נישט געקענט מאַרקירן אַלץ ווי געלייענט",
+  "socketConnected": "סאָקעט פארבונדן",
+  "socketDisconnected": "סאָקעט דיסקאַנעקטעד",
+  "newNotificationReceived": "נייע מעלדונג באַקומען",
+  "generalCategory": "אַלגעמיין",
+  "horoscopeCategory": "האָראָסקאָפּ",
+  "chatCategory": "טשאַט",
+  "systemCategory": "סיסטעם",
+  "updateCategory": "דערהייַנטיקונגען",
+  "howToAskTitle": "ווי אזוי צו פרעגן",
+  "noQuestionsAvailable": "קיין פראגעס נישט פאראן",
+  "failedToLoadQuestions": "נישט געלונגען צו לאָדן פֿראַגעס",
+  "pullToRefresh": "ציען צו דערפרישן",
+  "careerCategory": "קאַריערע",
+  "loveCategory": "ליבע און באַציִונגען",
+  "healthCategory": "געזונט",
+  "financeCategory": "פינאַנץ",
+  "familyCategory": "משפּחה",
+  "educationCategory": "בילדונג",
+  "travelCategory": "רייזע",
+  "spiritualCategory": "גייסטיק",
+  "profileLoaded": "פּראָפיל געלאָדן געראָטן",
+  "imageUploaded": "בילד איז געלונגען צו ארויפלייגן",
+  "savedInformationConfirmation": "איך האָב די אינפֿאָרמאַציע געראַטעוועט",
+  "noHistoryAvailable": "קיין געשיכטע נישט פֿאַראַן",
+  "missingUserIdError": "באַניצער אידענטיטעט איז פארלאנגט",
+  "networkError": "נעץ טעות. ביטע פרובירט נאכאמאל.",
+  "timeoutError": "פארלאנג האט אויסגעלאפן די צייט",
+  "genericError": "עפּעס איז שלעכט געגאַנגען",
+  "reactionUpdateError": "נישט געקענט דערהייַנטיקן די רעאַקציע",
+  "noSearchResults": "קיין זוכ רעזולטאַטן געפֿונען",
+  "clearSearch": "אויסמעקן זוכן",
+  "resultsFound": "רעזולטאַטן געפֿונען",
+  "recoverySecretHint": "קאפירן-פייסטן וועט אפשר נישט ארבעטן, שרייבט אריין מיט די האנט",
+  "recoverAccountDescription": "פֿאָלגט די סטעפּס צו צוריקקריגן אייער חשבון",
+  "processingLabel": "פאַראַרבעטן...",
+  "clearChatSuccess": "טשאַט געראָטן אויסגעמעקט",
+  "notificationsEnabled": "נאטיפיקאציעס אקטיווירט",
+  "notificationsDisabled": "נאטיפיקאציעס אויסגעלאשן",
+  "securityNotice": "אייערע דאַטן זענען זיכער ענקריפּטעד און געהיט",
+  "loading": "לאָודינג...",
+  "selectLanguage": "אויסקלייבן שפּראַך",
+  "onboardingGetStartedDesc": "הייבט אן דורך אויסקלויבן אייער שפראך",
+  "accountRecoveryTitle": "🔐 קאנטע רעקאָווערי דעטאלן",
+  "recoveryInstructions": "ביטע ראַטעוועט די אינפֿאָרמאַציע זיכער. איר וועט עס דאַרפֿן צו צוריקקריגן אייער חשבון.",
+  "importantNotice": "⚠️ וויכטיג:",
+  "astrologerProfileTitle": "אַסטראָלאָג פּראָפיל",
+  "personalAstrologer": "פערזענלעכער אַסטראָלאָג",
+  "makePersonalAstrologer": "מאַכט אַ פּערזענלעכער אַסטראָלאָג",
+  "favoriteDescription": "אייערע פראגעס וועלן געגעבן ווערן פריאריטעט צו דעם אסטראלאג. אויב נישט פאראן, וועט אן אנדער קוואליפיצירטער אסטראלאג אייך העלפן.",
+  "educationQualifications": "בילדונג און קוואַליפיקאַציעס",
+  "aboutSection": "וועגן",
+  "shareProfile": "טיילן פּראָפיל",
+  "loadingAstrologer": "לאָודינג אַסטראָלאָג דעטאַילס...",
+  "failedToLoadAstrologer": "נישט געלונגען צו לאָדן אַסטראָלאָג דעטאַלן",
+  "authenticationRequired": "אויטענטיפֿיקאַציע פארלאנגט. ביטע לאָגין.",
+  "securityCheckFailed": "זיכערהייט קאָנטראָל איז דורכגעפֿאַלן: {error}",
+  "addedToFavorites": "🎯 {name} איז איצט אייער פערזענלעכער אסטראלאגער",
+  "removedFromFavorites": "✅ אַוועקגענומען {name} פֿון פֿאַוואָריטן",
+  "toggleFavoriteError": "נישט געקענט דערהייַנטיקן באַליבט סטאַטוס",
+  "shareMessage": "{name}\n🎓 בילדונג: {education}\n📜 קוואַליפיקאַציע: {qualification}\n⏳ דערפאַרונג: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "נישט צוגעשטעלט",
+  "reviews": "({count} באריכטן)",
+  "specialties": "ספּעציאַליטעטן",
+  "experience": "דערפאַרונג",
+  "qualification": "קוואַליפיקאַציע",
+  "education": "בילדונג",
+  "recoveryTips": "• נעמט א סקרינשאט פון די אינפארמאציע\n• לייגט עס אויף אין א זיכערן ארט\n• טיילט עס נישט מיט קיינעם\n• דאס וועט נאר ווערן געוויזן איין מאל"
+}

@@ -1,0 +1,439 @@
+{
+  "@@locale": "lt",
+  "settingsTitle": "Nustatymai",
+  "notificationSettings": "Pranešimų nustatymai",
+  "privacySettings": "Privatumo nustatymai",
+  "accountSettings": "Paskyros nustatymai",
+  "languageSettings": "Kalbos nustatymai",
+  "languageChanged": "Kalba pakeista",
+  "existingUserButton": "Esu esamas naudotojas",
+  "chooseCountryTitle": "Pasirinkite šalį",
+  "yesText": "Taip",
+  "noText": "Ne",
+  "appBarTitle": "Profilio nustatymai",
+  "userIdLabel": "Naudotojo ID *",
+  "nameLabel": "Vardas",
+  "birthCountryLabel": "Gimimo šalis",
+  "birthCityLabel": "Gimimo miestas",
+  "countrySelectionTitle": "Pasirinkite savo šalį",
+  "maleLabel": "Vyras",
+  "femaleLabel": "Moteris",
+  "birthDateLabel": "Gimimo data",
+  "birthDatePlaceholder": "Pasirinkite gimimo datą",
+  "birthTimeLabel": "Gimimo laikas",
+  "birthTimePlaceholder": "Pasirinkite gimimo laiką",
+  "saveProfileButton": "Išsaugoti profilį",
+  "noCitiesFound": "Nerasta jokių miestų",
+  "cityPlaceholder": "Įveskite miestą šalyje {country}",
+  "countryFirstPlaceholder": "Pirmiausia pasirinkite šalį",
+  "versionHistoryTitle": "Versijų istorija",
+  "notSetText": "Nenustatyta",
+  "nameHistory": "Vardas: {name}",
+  "cityHistory": "Miestas: {city}",
+  "countryHistory": "Šalis: {country}",
+  "genderHistory": "Lytis: {gender}",
+  "birthDateHistory": "Gimimo data: {date}",
+  "birthTimeHistory": "Gimimo laikas: {time}",
+  "locationHistory": "Vieta: {latitude}, {longitude}",
+  "timezoneHistory": "Laiko juosta: GMT{offset}",
+  "dstHistory": "Vasaros laikas: {value}",
+  "stateHistory": "Valstija: {state}",
+  "versionFromText": "Atnaujinta {date}",
+  "userIdRequired": "Reikalingas vartotojo ID",
+  "profileSaved": "Profilis sėkmingai išsaugotas",
+  "saveFailed": "Nepavyko išsaugoti profilio",
+  "errorPrefix": "Klaida:",
+  "onboardingChooseLanguage": "Pasirinkite kalbą",
+  "onboardingChooseLanguageDesc": "Norėdami tęsti, pasirinkite pageidaujamą kalbą.",
+  "onboardingWhatIsAstrology": "Kas yra astrologija?",
+  "onboardingWhatIsAstrologyDesc": "Astrologija yra dangaus kūnų tyrimas...",
+  "onboardingWhyUseApp": "Kodėl verta naudoti šią programėlę?",
+  "onboardingWhyUseAppDesc": "Gaukite suasmenintus horoskopus, dienos prognozes ir patarimus, kad galėtumėte priimti pagrįstus sprendimus.",
+  "onboardingHowToUse": "Kaip naudotis šia programėle?",
+  "onboardingHowToUseDesc": "Lengvai naršykite, tikrinkite dienos horoskopus ir tvarkykite savo profilį, kad gautumėte tikslias prognozes.",
+  "onboardingGetStarted": "Pradėti",
+  "onboardingNewUser": "Naujas vartotojas",
+  "onboardingExistingUser": "Esamas vartotojas",
+  "onboardingBack": "Atgal",
+  "onboardingNext": "Toliau",
+  "userIdNotFound": "Naudotojo ID nerastas. Prisijunkite arba nustatykite savo profilį.",
+  "clearNotificationsTitle": "Išvalyti pranešimus",
+  "clearNotificationsMessage": "Ar tikrai norite išvalyti visus pranešimus?",
+  "clearNotificationsSuccess": "Visi pranešimai sėkmingai išvalyti.",
+  "clearHoroscopeTitle": "Aiškus horoskopas",
+  "clearHoroscopeMessage": "Ar tikrai norite išvalyti savo horoskopo duomenis?",
+  "clearHoroscopeSuccess": "Horoskopas sėkmingai išvalytas.",
+  "clearChatTitle": "Išvalyti pokalbių istoriją",
+  "clearChatMessage": "Ar tikrai norite ištrinti visą pokalbių istoriją?",
+  "clearChatLocal": "Pokalbis išvalytas vietoje.",
+  "deleteAccountTitle": "Ištrinti paskyrą",
+  "deleteAccountMessage": "Ar tikrai norite ištrinti savo paskyrą? Taip pat bus išvalyta visa pokalbių istorija ir pranešimai.",
+  "deleteAccountSuccess": "Jūsų paskyra ir visi duomenys buvo pašalinti.",
+  "deleteAccountError": "Klaida ištrinant paskyrą",
+  "logoutTitle": "Atsijungti",
+  "logoutMessage": "Ar tikrai norite atsijungti?",
+  "termsPrivacyTitle": "Sąlygos ir privatumas",
+  "privacyPolicyTitle": "Privatumo politika",
+  "termsConditionsTitle": "Sąlygos ir nuostatos",
+  "dataControlTitle": "Duomenų kontrolė",
+  "cancelButton": "Atšaukti",
+  "confirmButton": "Patvirtinti",
+  "clearQuestionsSuccess": "Visi klausimai sėkmingai ištrinti.",
+  "yoginiLabel": "Joginis",
+  "lordLabel": "Viešpats",
+  "startLabel": "Pradėti",
+  "recoverAccount": "Atkurti paskyrą",
+  "endLabel": "Pabaiga",
+  "startDateLabel": "Pradžios data",
+  "endDateLabel": "Pabaigos data",
+  "notAvailable": "Nėra",
+  "noData": "Nėra duomenų",
+  "unknownError": "Nežinoma klaida",
+  "retryButton": "Bandyti dar kartą",
+  "kundaliGeneratorTitle": "Kundali generatorius",
+  "natalChartTitle": "Gimimo diagrama",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Raši",
+  "ascDegreeLabel": "Ascendentinis laipsnis",
+  "vimshottariDashaTitle": "Vimshottari Daša",
+  "yoginiDashaTitle": "Jogini Daša",
+  "unknown": "Nežinoma",
+  "clearHoroscope": "Aiškus horoskopas",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Išvalyti pranešimus",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Išvalyti pokalbių istoriją",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Atsijungti",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Ištrinti paskyrą",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Visi laukai yra privalomi.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Paskyra sėkmingai atkurta.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Atkūrimas nepavyko. Patikrinkite savo informaciją.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Atgavimo paslaptis:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Apie mus",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Apie mūsų įmonę",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Esame įsipareigoję savo vartotojams teikti geriausią astrologijos patirtį.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Mūsų misija",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Teikti tikslias ir suasmenintas astrologijos įžvalgas, kurios padėtų vartotojams priimti pagrįstus sprendimus savo gyvenime.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Mūsų vizija",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Tapti patikimiausia astrologijos platforma, apjungiančia technologijas ir senovės išmintį.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Mūsų vertybės",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Sąžiningumas, tikslumas, į vartotoją orientuotas dizainas ir nuolatinis inovacijų diegimas.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Susisiekite su mumis",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "El. paštas: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Svetainė: www.jūsųįmonė.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Klientų aptarnavimas",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Mes pasiruošę padėti",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Užpildykite žemiau esančią formą ir mūsų palaikymo komanda su jumis susisieks kaip įmanoma greičiau.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Jūsų vardas",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Jūsų el. pašto adresas",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Žinutė",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Įveskite savo el. pašto adresą",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Įveskite galiojantį el. pašto adresą",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Įveskite {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Siųsti",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Siunčiama...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ El. laiškas sėkmingai išsiųstas!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Nepavyko išsiųsti el. laiško",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro žodynas",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Paieškos terminai...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Nerasta jokių terminų",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Pirkimo klausimai",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Vartotojas neautentifikuotas",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Nepavyko įkelti parduotuvės duomenų",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Trūksta autentifikavimo rakto",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro pokalbių programėlė",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Mokėjimas sėkmingas! Klausimas išsiųstas",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Mokėjimas nepavyko: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Jūsų likutis",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Klausimai",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Galimi pasiūlymai",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Klausimas",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Pirkti",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Dienos horoskopas",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Trūksta naudotojo ID",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Nepavyko gauti horoskopų",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Horoskopo nerasta.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Ženklas",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Šiandien",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Vakar",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Šią savaitę",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Praėjusį mėnesį",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Pokalbis",
+  "typeYourQuestionHint": "Įveskite savo klausimą...",
+  "paymentRequired": "Mokėjimas būtinas",
+  "paymentRequiredMessage": "Išnaudojote savo nemokamus klausimus. Norėdami tęsti, sumokėkite 50 ₹.",
+  "payNowButton": "Mokėti dabar",
+  "freeQuestionsRemaining": "Liko {count} nemokamų klausimų",
+  "paidQuestionsRemaining": "Liko {count} mokamų klausimų",
+  "thankYouFeedback": "Dėkojame už atsiliepimą!",
+  "ratingSubmitted": "Įvertinimas pateiktas!",
+  "setUserIdFirst": "Pirmiausia nustatykite savo vartotojo ID",
+  "failedToFetchPrevious": "Nepavyko gauti ankstesnių klausimų ir atsakymų",
+  "errorOccurred": "Klaida: {error}",
+  "drawerAstroProfile": "Astro profilis",
+  "drawerDailyHoroscope": "Dienos horoskopas",
+  "drawerBuyQuestions": "Pirkimo klausimai",
+  "drawerAstroDictionary": "Astro žodynas",
+  "drawerSettings": "Nustatymai",
+  "drawerCustomerSupport": "Klientų aptarnavimas",
+  "drawerAbout": "Apie",
+  "drawerProfileSettings": "Profilio nustatymai",
+  "demoNotificationTitle": "🔔 Demonstracinis pranešimas",
+  "demoNotificationBody": "Tai bandomasis pranešimas iš jūsų programėlės!",
+  "notificationsTitle": "Pranešimai",
+  "noNotifications": "Nėra pranešimų",
+  "allTab": "Visi",
+  "markAllAsRead": "Pažymėti visus kaip skaitytus",
+  "notificationMarkedRead": "Pranešimas pažymėtas kaip perskaitytas",
+  "failedToLoadNotifications": "Nepavyko įkelti pranešimų",
+  "failedToMarkRead": "Nepavyko pažymėti kaip perskaityto",
+  "failedToMarkAllRead": "Nepavyko pažymėti visų kaip perskaitytų",
+  "socketConnected": "Lizdas prijungtas",
+  "socketDisconnected": "Lizdas atjungtas",
+  "newNotificationReceived": "Gautas naujas pranešimas",
+  "generalCategory": "Bendra",
+  "horoscopeCategory": "Horoskopas",
+  "chatCategory": "Pokalbis",
+  "systemCategory": "Sistema",
+  "updateCategory": "Atnaujinimai",
+  "howToAskTitle": "Kaip paklausti",
+  "noQuestionsAvailable": "Nėra klausimų",
+  "failedToLoadQuestions": "Nepavyko įkelti klausimų",
+  "pullToRefresh": "Patraukite, kad atnaujintumėte",
+  "careerCategory": "Karjera",
+  "loveCategory": "Meilė ir santykiai",
+  "healthCategory": "Sveikata",
+  "financeCategory": "Finansai",
+  "familyCategory": "Šeima",
+  "educationCategory": "Švietimas",
+  "travelCategory": "Kelionės",
+  "spiritualCategory": "Dvasinis",
+  "profileLoaded": "Profilis sėkmingai įkeltas",
+  "imageUploaded": "Vaizdas sėkmingai įkeltas",
+  "savedInformationConfirmation": "Išsaugojau šią informaciją",
+  "noHistoryAvailable": "Nėra istorijos",
+  "missingUserIdError": "Reikalingas vartotojo ID",
+  "networkError": "Tinklo klaida. Bandykite dar kartą.",
+  "timeoutError": "Užklausos skirtasis laikas baigėsi",
+  "genericError": "Kažkas nutiko ne taip",
+  "reactionUpdateError": "Nepavyko atnaujinti reakcijos",
+  "noSearchResults": "Nerasta paieškos rezultatų",
+  "clearSearch": "Išvalyti paiešką",
+  "resultsFound": "Rasta rezultatų",
+  "recoverySecretHint": "Kopijavimas ir įklijavimas gali neveikti, rašykite rankiniu būdu",
+  "recoverAccountDescription": "Atlikite šiuos veiksmus, kad atkurtumėte savo paskyrą",
+  "processingLabel": "Apdorojama...",
+  "clearChatSuccess": "Pokalbis sėkmingai išvalytas",
+  "notificationsEnabled": "Pranešimai įjungti",
+  "notificationsDisabled": "Pranešimai išjungti",
+  "securityNotice": "Jūsų duomenys yra saugiai užšifruoti ir saugomi",
+  "loading": "Kraunama...",
+  "selectLanguage": "Pasirinkite kalbą",
+  "onboardingGetStartedDesc": "Pradėkite pasirinkdami kalbą",
+  "accountRecoveryTitle": "🔐 Paskyros atkūrimo informacija",
+  "recoveryInstructions": "Saugiai išsaugokite šią informaciją. Jos reikės norint atkurti paskyrą.",
+  "importantNotice": "⚠️ Svarbu:",
+  "astrologerProfileTitle": "Astrologo profilis",
+  "personalAstrologer": "Asmeninis astrologas",
+  "makePersonalAstrologer": "Sukurkite asmeninį astrologą",
+  "favoriteDescription": "Jūsų klausimus prioritetu perduos šis astrologas. Jei jis nepasiekiamas, jums padės kitas kvalifikuotas astrologas.",
+  "educationQualifications": "Išsilavinimas ir kvalifikacija",
+  "aboutSection": "Apie",
+  "shareProfile": "Bendrinti profilį",
+  "loadingAstrologer": "Kraunama astrologo informacija...",
+  "failedToLoadAstrologer": "Nepavyko įkelti astrologo duomenų",
+  "authenticationRequired": "Reikalingas autentifikavimas. Prisijunkite.",
+  "securityCheckFailed": "Saugos patikra nepavyko: {error}",
+  "addedToFavorites": "🎯 {name} dabar yra jūsų asmeninis astrologas",
+  "removedFromFavorites": "✅ Pašalino {name} iš mėgstamiausių",
+  "toggleFavoriteError": "Nepavyko atnaujinti mėgstamiausio būsenos",
+  "shareMessage": "{name}\n🎓 Išsilavinimas: {education}\n📜 Kvalifikacija: {qualification}\n⏳ Patirtis: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Nepateikta",
+  "reviews": "({count} atsiliepimų)",
+  "specialties": "Specialybės",
+  "experience": "Patirtis",
+  "qualification": "Kvalifikacija",
+  "education": "Švietimas",
+  "recoveryTips": "• Padarykite šios informacijos ekrano kopiją\n• Laikykite ją saugioje vietoje\n• Nesidalinkite su niekuo\n• Tai bus rodoma tik vieną kartą"
+}

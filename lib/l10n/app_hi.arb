@@ -1,210 +1,378 @@
 {
   "@@locale": "hi",
-  "settingsTitle": "सेटिंग",
-  "notificationSettings": "अधिसूचना सेटिंग",
-  "privacySettings": "गोपनीयता सेटिंग",
-  "accountSettings": "खाता सेटिंग",
-  "languageSettings": "भाषा सेटिंग",
-  "languageChanged": "भाषा बदली",
+  "settingsTitle": "सेटिंग्स",
+  "notificationSettings": "अधिसूचना सेटिंग्स",
+  "privacySettings": "गोपनीय सेटिंग",
+  "accountSettings": "अकाउंट सेटिंग",
+  "languageSettings": "भाषा सेटिंग्स",
+  "languageChanged": "भाषा बदल गई",
   "existingUserButton": "मैं एक मौजूदा उपयोगकर्ता हूँ",
-  "chooseCountryTitle": "अपना देश चुनें",
+  "chooseCountryTitle": "देश चुनें",
   "yesText": "हाँ",
   "noText": "नहीं",
-  "appBarTitle": "प्रोफ़ाइल सेटिंग",
-  "userIdLabel": "उपयोगकर्ता ID",
+  "appBarTitle": "प्रोफ़ाइल सेटिंग्स",
+  "userIdLabel": "उपयोगकर्ता पहचान *",
   "nameLabel": "नाम",
-  "birthCountryLabel": "जन्म देश",
+  "birthCountryLabel": "जन्म का देश",
   "birthCityLabel": "जन्म शहर",
   "countrySelectionTitle": "अपना देश चुनें",
   "maleLabel": "पुरुष",
   "femaleLabel": "महिला",
   "birthDateLabel": "जन्म तिथि",
-  "birthDatePlaceholder": "जन्म तिथि",
+  "birthDatePlaceholder": "जन्म तिथि चुनें",
   "birthTimeLabel": "जन्म समय",
   "birthTimePlaceholder": "जन्म समय चुनें",
-  "saveProfileButton": "प्रोफ़ाइल सहेजें",
+  "saveProfileButton": "प्रोफ़ाइल बचा",
   "noCitiesFound": "कोई शहर नहीं मिला",
-  "cityPlaceholder": "शहर में प्रवेश करें",
-  "countryFirstPlaceholder": "पहला देश चुनें",
+  "cityPlaceholder": "{country} में शहर दर्ज करें",
+  "countryFirstPlaceholder": "पहले देश चुनें",
   "versionHistoryTitle": "संस्करण इतिहास",
   "notSetText": "सेट नहीं",
   "nameHistory": "नाम: {name}",
   "cityHistory": "शहर: {city}",
   "countryHistory": "देश: {country}",
-  "genderHistory": "Gender: {gender}",
+  "genderHistory": "लिंग: {gender}",
   "birthDateHistory": "जन्म तिथि: {date}",
   "birthTimeHistory": "जन्म समय: {time}",
   "locationHistory": "स्थान: {latitude}, {longitude}",
-  "timezoneHistory": "टाइमज़ोन: GMT{offset}",
-  "dstHistory": "DST: {value}",
-  "stateHistory": "राज्य: {state}",
-  "versionFromText": "{date} से संस्करण",
-  "userIdRequired": "उपयोगकर्ता ID की आवश्यकता है",
-  "profileSaved": "प्रोफ़ाइल सफलतापूर्वक बचाया",
-  "saveFailed": "प्रोफ़ाइल को बचाने में विफल",
-  "errorPrefix": "त्रुटि:",
+  "timezoneHistory": "समय क्षेत्र: GMT{offset}",
+  "dstHistory": "डीएसटी: {value}",
+  "stateHistory": "स्थिति: {state}",
+  "versionFromText": "{date} को अपडेट किया गया",
+  "userIdRequired": "उपयोगकर्ता आईडी आवश्यक है",
+  "profileSaved": "प्रोफ़ाइल सफलतापूर्वक सहेजी गई",
+  "saveFailed": "प्रोफ़ाइल सहेजने में विफल",
+  "errorPrefix": "गलती:",
   "onboardingChooseLanguage": "अपनी भाषा चुनें",
-  "onboardingChooseLanguageDesc": "अपनी पसंदीदा भाषा को जारी रखने के लिए चुनें।.",
+  "onboardingChooseLanguageDesc": "जारी रखने के लिए अपनी पसंदीदा भाषा चुनें.",
   "onboardingWhatIsAstrology": "ज्योतिष क्या है?",
-  "onboardingWhatIsAstrologyDesc": "ज्योतिष, खगोलीय शरीर का अध्ययन है।.",
-  "onboardingWhyUseApp": "इस एप्लिकेशन का उपयोग क्यों करें?",
-  "onboardingWhyUseAppDesc": "व्यक्तिगत कुंडली, दैनिक भविष्यवाणियों और सूचित निर्णय लेने के लिए मार्गदर्शन प्राप्त करें।.",
-  "onboardingHowToUse": "इस एप्लिकेशन का उपयोग कैसे करें?",
-  "onboardingHowToUseDesc": "आसानी से नेविगेट करें, दैनिक कुंडली की जांच करें और सटीक भविष्यवाणियों के लिए अपनी प्रोफ़ाइल का प्रबंधन करें।.",
-  "onboardingGetStarted": "शुरू करना",
-  "onboardingNewUser": "नया उपयोगकर्ता",
+  "onboardingWhatIsAstrologyDesc": "ज्योतिष शास्त्र खगोलीय पिंडों का अध्ययन है...",
+  "onboardingWhyUseApp": "इस ऐप का उपयोग क्यों करें?",
+  "onboardingWhyUseAppDesc": "सूचित निर्णय लेने के लिए व्यक्तिगत राशिफल, दैनिक भविष्यवाणियां और मार्गदर्शन प्राप्त करें।",
+  "onboardingHowToUse": "इस ऐप का उपयोग कैसे करें?",
+  "onboardingHowToUseDesc": "आसानी से नेविगेट करें, दैनिक राशिफल देखें, और सटीक भविष्यवाणियों के लिए अपनी प्रोफ़ाइल प्रबंधित करें।",
+  "onboardingGetStarted": "शुरू हो जाओ",
+  "onboardingNewUser": "नए उपयोगकर्ता",
   "onboardingExistingUser": "मौजूदा उपयोगकर्ता",
-  "onboardingBack": "वापस",
+  "onboardingBack": "पीछे",
   "onboardingNext": "अगला",
-  "userIdNotFound": "उपयोगकर्ता ID नहीं मिली।",
-   "profileLoaded": "प्रोफाइल सफलतापूर्वक लोड भयो",
-  "imageUploaded": "तस्बिर सफलतापूर्वक अपलोड भयो",
-  "clearNotificationsTitle": "सूचनाएँ साफ़ करें",
-  "clearNotificationsMessage": "क्या आप सभी सूचनाएँ साफ़ करना चाहते हैं?",
-  "clearNotificationsSuccess": "सभी सूचनाएँ सफलतापूर्वक साफ़ की गईं।",
-  "clearHoroscopeTitle": "कुंडली साफ़ करें",
-  "clearHoroscopeMessage": "क्या आप अपनी कुंडली डेटा को साफ़ करना चाहते हैं?",
-  "clearHoroscopeSuccess": "कुंडली सफलतापूर्वक साफ़ की गई।",
+  "userIdNotFound": "उपयोगकर्ता आईडी नहीं मिली। कृपया लॉगिन करें या अपनी प्रोफ़ाइल सेट करें।",
+  "clearNotificationsTitle": "सूचनाएं साफ़ करें",
+  "clearNotificationsMessage": "क्या आप वाकई सभी सूचनाएं साफ़ करना चाहते हैं?",
+  "clearNotificationsSuccess": "सभी अधिसूचनाएं सफलतापूर्वक साफ़ कर दी गईं.",
+  "clearHoroscopeTitle": "स्पष्ट राशिफल",
+  "clearHoroscopeMessage": "क्या आप वाकई अपनी कुंडली का डेटा साफ़ करना चाहते हैं?",
+  "clearHoroscopeSuccess": "कुंडली सफलतापूर्वक साफ़ हो गई।",
   "clearChatTitle": "चैट इतिहास साफ़ करें",
-  "clearChatMessage": "क्या आप अपना पूरा चैट इतिहास हटाना चाहते हैं?",
-  "clearChatLocal": "चैट स्थानीय रूप से साफ़ की गई।",
-  "deleteAccountTitle": "खाता हटाएँ",
-  "deleteAccountMessage": "क्या आप वाकई अपना खाता हटाना चाहते हैं? इससे आपका चैट इतिहास और सूचनाएँ भी हट जाएँगी।",
-  "deleteAccountSuccess": "आपका खाता और सभी डेटा हटा दिए गए हैं।",
+  "clearChatMessage": "क्या आप वाकई अपना पूरा चैट इतिहास हटाना चाहते हैं?",
+  "clearChatLocal": "चैट स्थानीय रूप से साफ़ कर दी गई.",
+  "deleteAccountTitle": "खाता हटा दो",
+  "deleteAccountMessage": "क्या आप वाकई अपना अकाउंट डिलीट करना चाहते हैं? इससे आपकी सारी चैट हिस्ट्री और नोटिफ़िकेशन भी डिलीट हो जाएँगे।",
+  "deleteAccountSuccess": "आपका खाता और सारा डेटा हटा दिया गया है.",
   "deleteAccountError": "खाता हटाने में त्रुटि",
-  "logoutTitle": "लॉगआउट",
-  "logoutMessage": "क्या आप वाकई लॉगआउट करना चाहते हैं?",
-  "termsPrivacyTitle": "नियम और गोपनीयता",
+  "logoutTitle": "लॉग आउट",
+  "logoutMessage": "क्या आप लॉग आउट करना चाहते हैं?",
+  "termsPrivacyTitle": "नियम एवं गोपनीयता",
   "privacyPolicyTitle": "गोपनीयता नीति",
-  "termsConditionsTitle": "नियम और शर्तें",
+  "termsConditionsTitle": "नियम एवं शर्तें",
   "dataControlTitle": "डेटा नियंत्रण",
-  "cancelButton": "रद्द करें",
-  "confirmButton": "पुष्टि करें",
-  "clearQuestionsSuccess": "सभी प्रश्न सफलतापूर्वक हटाए गए।",
+  "cancelButton": "रद्द करना",
+  "confirmButton": "पुष्टि करना",
+  "clearQuestionsSuccess": "सभी प्रश्न सफलतापूर्वक हटा दिए गए.",
   "yoginiLabel": "योगिनी",
-  "lordLabel": "स्वामी",
-  "startLabel": "प्रारंभ",
-  "endLabel": "समाप्ति",
-  "startDateLabel": "प्रारंभ तिथि",
-  "endDateLabel": "समाप्ति तिथि",
-  "notAvailable": "उपलब्ध नहीं",
+  "lordLabel": "भगवान",
+  "startLabel": "शुरू",
+  "recoverAccount": "खाते की वसूली",
+  "endLabel": "अंत",
+  "startDateLabel": "आरंभ करने की तिथि",
+  "endDateLabel": "अंतिम तिथि",
+  "notAvailable": "उपलब्ध नहीं है",
   "noData": "कोई डेटा नहीं",
   "unknownError": "अज्ञात त्रुटि",
-  "retryButton": "पुनः प्रयास करें",
+  "retryButton": "पुन: प्रयास करें",
   "kundaliGeneratorTitle": "कुंडली जनरेटर",
   "natalChartTitle": "जन्म कुंडली",
   "lagnaLabel": "लग्न",
   "rashiLabel": "राशि",
   "ascDegreeLabel": "लग्न डिग्री",
-  "vimshottariDashaTitle": "विम्शोत्तरी दशा",
+  "vimshottariDashaTitle": "विंशोत्तरी दशा",
   "yoginiDashaTitle": "योगिनी दशा",
   "unknown": "अज्ञात",
-   "clearHoroscope": "कुंडली साफ करें",
-  "clearNotifications": "सूचनाएं साफ करें",
-  "clearChatHistory": "चैट इतिहास साफ करें",
-  "logout": "लॉगआउट",
-    "recoverAccount": "खाता पुनर्प्राप्त करें",
-  "deleteAccount": "खाता हटाएं",
-    "allFieldsRequired": "सभी फ़ील्ड आवश्यक हैं।",
-  "accountRecoveredSuccess": "खाता सफलतापूर्वक पुनर्प्राप्त कर लिया गया।",
-  "recoveryFailed": "पुनर्प्राप्ति विफल। अपनी जानकारी जांचें।",
-  "recoverySecretLabel": "पुनर्प्राप्ति सीक्रेट",
-    "aboutUsTitle": "हमारे बारे में",
+  "clearHoroscope": "स्पष्ट राशिफल",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "सूचनाएं साफ़ करें",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "चैट इतिहास साफ़ करें",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "लॉग आउट",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "खाता हटा दो",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "सभी फ़ील्ड आवश्यक हैं।",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "खाता सफलतापूर्वक पुनर्प्राप्त किया गया.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "पुनर्प्राप्ति विफल. अपनी जानकारी जांचें.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "पुनर्प्राप्ति रहस्य:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "हमारे बारे में",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
   "aboutOurCompany": "हमारी कंपनी के बारे में",
-  "aboutCompanyDescription": "हम अपने उपयोगकर्ताओं को सर्वश्रेष्ठ ज्योतिष अनुभव प्रदान करने के लिए प्रतिबद्ध हैं।",
-  "ourMission": "हमारा मिशन",
-  "missionDescription": "उपयोगकर्ताओं को उनके जीवन में सूचित निर्णय लेने में मदद करने के लिए सटीक और व्यक्तिगत ज्योतिष अंतर्दृष्टि प्रदान करना।",
-  "ourVision": "हमारी दृष्टि",
-  "visionDescription": "प्रौद्योगिकी और प्राचीन ज्ञान को मिलाकर सबसे भरोसेमंद ज्योतिष प्लेटफॉर्म बनना।",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "हम अपने उपयोगकर्ताओं को सर्वोत्तम ज्योतिष अनुभव प्रदान करने के लिए प्रतिबद्ध हैं।",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "हमारा विशेष कार्य",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "उपयोगकर्ताओं को अपने जीवन में सूचित निर्णय लेने में मदद करने के लिए सटीक और व्यक्तिगत ज्योतिष अंतर्दृष्टि प्रदान करना।",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "हमारा नज़रिया",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "प्रौद्योगिकी और प्राचीन ज्ञान को मिलाकर सबसे विश्वसनीय ज्योतिष मंच बनना।",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
   "ourValues": "हमारे मूल्य",
-  "valuesDescription": "ईमानदारी, सटीकता, उपयोगकर्ता-केंद्रित डिजाइन, और निरंतर नवाचार।",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "अखंडता, सटीकता, उपयोगकर्ता-केंद्रित डिजाइन और निरंतर नवाचार।",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
   "contactUs": "हमसे संपर्क करें",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
   "contactEmail": "ईमेल: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
   "contactWebsite": "वेबसाइट: www.yourcompany.com",
-    "customerSupport": "ग्राहक सहायता",
-  "supportHeroTitle": "हम आपकी मदद के लिए यहां हैं",
-  "supportHeroDescription": "नीचे दिया गया फॉर्म भरें और हमारी सहायता टीम आपसे जल्द से जल्द संपर्क करेगी।",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "ग्राहक सहेयता",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "हम आपकी मदद के लिए यहाँ हैं",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "नीचे दिया गया फॉर्म भरें और हमारी सहायता टीम यथाशीघ्र आपसे संपर्क करेगी।",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
   "yourName": "आपका नाम",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
   "yourEmail": "आपका ईमेल",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
   "message": "संदेश",
+  "@message": {
+    "description": "Label for message input field"
+  },
   "enterEmail": "अपना ईमेल दर्ज करें",
-  "enterValidEmail": "एक वैध ईमेल पता दर्ज करें",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "एक मान्य ईमेल पता दर्ज करें",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
   "enterField": "{fieldName} दर्ज करें",
-  "send": "भेजें",
-  "sending": "भेज रहे हैं...",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "भेजना",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "भेजा जा रहा है...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
   "emailSentSuccess": "✅ ईमेल सफलतापूर्वक भेजा गया!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
   "emailSendFailed": "❌ ईमेल भेजने में विफल",
-    "astroDictionaryTitle": "ज्योतिष शब्दकोश",
-  "searchTermsHint": "शब्द खोजें...",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "खगोल शब्दकोश",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "खोज शब्द...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
   "noTermsFound": "कोई शब्द नहीं मिला",
-    "buyQuestionsTitle": "प्रश्न खरीदें",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "खरीदें प्रश्न",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
   "userNotAuthenticated": "उपयोगकर्ता प्रमाणित नहीं है",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
   "loadStoreDataFailed": "स्टोर डेटा लोड करने में विफल",
-  "missingAuthToken": "ऑथ टोकन गुम है",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "प्राधिकरण टोकन गुम है",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
   "merchantDisplayName": "एस्ट्रो चैट ऐप",
-  "paymentSuccessful": "भुगतान सफल!",
-  "paymentFailed": "भुगतान विफल",
-  "yourBalance": "आपका बैलेंस",
-  "questionsBalance": "{count} प्रश्न",
-  "availableOffers": "उपलब्ध ऑफ़र",
-  "questionsCount": "{count} प्रश्न",
-  "buyButton": "खरीदें",
-   "dailyHoroscopeTitle": "🌟 दैनिक राशिफल",
-  "userIdMissing": "उपयोगकर्ता ID गुम है",
-  "fetchHoroscopesFailed": "राशिफल लाने में विफल",
-  "noHoroscopeFound": "कोई राशिफल नहीं मिला।",
-  "signLabel": "राशि",
-  "todayLabel": "आज",
-  "yesterdayLabel": "कल",
-  "thisWeekLabel": "इस सप्ताह",
-  "lastMonthLabel": "पिछला महीना",
-  "chatTitle": "चैट",
-  "typeYourQuestionHint": "अपना प्रश्न टाइप करें...",
-  "paymentRequired": "भुगतान आवश्यक",
-  "paymentRequiredMessage": "आपने अपने मुफ्त प्रश्नों का उपयोग कर लिया है। जारी रखने के लिए ₹50 का भुगतान करें।",
-  "cancelButton": "रद्द करें",
-  "payNowButton": "अभी भुगतान करें",
-  "freeQuestionsRemaining": "{count} मुफ्त प्रश्न शेष",
-  "paidQuestionsRemaining": "{count} भुगतान किए गए प्रश्न शेष",
-  "thankYouFeedback": "आपके फीडबैक के लिए धन्यवाद!",
-  "ratingSubmitted": "रेटिंग सबमिट की गई!",
-  "userIdNotFound": "उपयोगकर्ता ID नहीं मिली। कृपया लॉगिन करें या अपनी प्रोफ़ाइल सेट करें।",
-  "setUserIdFirst": "कृपया पहले अपना उपयोगकर्ता ID सेट करें",
-  "failedToFetchPrevious": "पिछले प्रश्न और उत्तर लाने में विफल",
-  "errorOccurred": "त्रुटि: {error}",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
   "paymentSuccessful": "✅ भुगतान सफल! प्रश्न भेजा गया",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
   "paymentFailed": "❌ भुगतान विफल: {error}",
-  "drawerAstroProfile": "ज्योतिष प्रोफ़ाइल",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "आपका बैलेंस",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} प्रश्न",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "उपलब्ध ऑफर",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} प्रश्न",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "खरीदना",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 दैनिक राशिफल",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "उपयोगकर्ता आईडी गायब है",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "कुंडली प्राप्त करने में विफल",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "कोई कुंडली नहीं मिली.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "संकेत",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "आज",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "कल",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "इस सप्ताह",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "पिछला महीना",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "बात करना",
+  "typeYourQuestionHint": "अपना प्रश्न लिखें...",
+  "paymentRequired": "भुगतान आवश्यक",
+  "paymentRequiredMessage": "आपने अपने मुफ़्त प्रश्नों का उपयोग कर लिया है। जारी रखने के लिए ₹50 का भुगतान करें।",
+  "payNowButton": "अब भुगतान करें",
+  "freeQuestionsRemaining": "{count} निःशुल्क प्रश्न शेष हैं",
+  "paidQuestionsRemaining": "{count} भुगतान किए गए प्रश्न शेष हैं",
+  "thankYouFeedback": "आपकी प्रतिक्रिया के लिए आपका धन्यवाद!",
+  "ratingSubmitted": "रेटिंग सबमिट की गई!",
+  "setUserIdFirst": "कृपया पहले अपना उपयोगकर्ता आईडी सेट करें",
+  "failedToFetchPrevious": "पिछले प्रश्न और उत्तर प्राप्त करने में विफल",
+  "errorOccurred": "त्रुटि: {error}",
+  "drawerAstroProfile": "एस्ट्रो प्रोफाइल",
   "drawerDailyHoroscope": "दैनिक राशिफल",
-  "drawerBuyQuestions": "प्रश्न खरीदें",
-  "drawerAstroDictionary": "ज्योतिष शब्दकोश",
-  "drawerSettings": "सेटिंग",
-  "drawerCustomerSupport": "ग्राहक सहायता",
-  "drawerAbout": "हमारे बारे में",
-  "drawerProfileSettings": "प्रोफ़ाइल सेटिंग",
-  "demoNotificationTitle": "🔔 डेमो सूचना",
-  "demoNotificationBody": "यह आपके ऐप से एक परीक्षण सूचना है!",
-   "notificationsTitle": "सूचनाएं",
+  "drawerBuyQuestions": "खरीदें प्रश्न",
+  "drawerAstroDictionary": "खगोल शब्दकोश",
+  "drawerSettings": "सेटिंग्स",
+  "drawerCustomerSupport": "ग्राहक सहेयता",
+  "drawerAbout": "के बारे में",
+  "drawerProfileSettings": "प्रोफ़ाइल सेटिंग्स",
+  "demoNotificationTitle": "🔔 डेमो अधिसूचना",
+  "demoNotificationBody": "यह आपके ऐप से एक परीक्षण अधिसूचना है!",
+  "notificationsTitle": "सूचनाएं",
   "noNotifications": "कोई सूचना नहीं",
   "allTab": "सभी",
-  "markAllAsRead": "सभी को पढ़ा हुआ चिह्नित करें",
-  "notificationMarkedRead": "सूचना को पढ़ा हुआ चिह्नित किया गया",
-  "failedToLoadNotifications": "सूचनाएं लोड करने में विफल",
+  "markAllAsRead": "सभी को पढ़ा हुआ मार्क करें",
+  "notificationMarkedRead": "अधिसूचना को पढ़ा हुआ चिह्नित किया गया",
+  "failedToLoadNotifications": "सूचनाएँ लोड करने में विफल",
   "failedToMarkRead": "पढ़ा हुआ चिह्नित करने में विफल",
   "failedToMarkAllRead": "सभी को पढ़ा हुआ चिह्नित करने में विफल",
   "socketConnected": "सॉकेट कनेक्टेड",
-  "socketDisconnected": "सॉकेट डिस्कनेक्टेड",
-  "newNotificationReceived": "नई सूचना प्राप्त हुई",
+  "socketDisconnected": "सॉकेट डिस्कनेक्ट हो गया",
+  "newNotificationReceived": "नई अधिसूचना प्राप्त हुई",
   "generalCategory": "सामान्य",
   "horoscopeCategory": "राशिफल",
-  "chatCategory": "चैट",
-  "systemCategory": "सिस्टम",
-  "updateCategory": "अपडेट्स",
-   "howToAskTitle": "कैसे पूछें",
-  "noQuestionsAvailable": "कोई प्रश्न उपलब्ध नहीं",
+  "chatCategory": "बात करना",
+  "systemCategory": "प्रणाली",
+  "updateCategory": "अपडेट",
+  "howToAskTitle": "कैसे पूछें",
+  "noQuestionsAvailable": "कोई प्रश्न उपलब्ध नहीं है",
   "failedToLoadQuestions": "प्रश्न लोड करने में विफल",
-  "pullToRefresh": "रिफ्रेश करने के लिए खींचें",
-  "careerCategory": "करियर",
+  "pullToRefresh": "रीफ़्रेश करने के लिए खींचें",
+  "careerCategory": "आजीविका",
   "loveCategory": "प्यार और रिश्ते",
   "healthCategory": "स्वास्थ्य",
   "financeCategory": "वित्त",
@@ -212,62 +380,47 @@
   "educationCategory": "शिक्षा",
   "travelCategory": "यात्रा",
   "spiritualCategory": "आध्यात्मिक",
-  "generalCategory": "सामान्य",
+  "profileLoaded": "प्रोफ़ाइल सफलतापूर्वक लोड हो गई",
+  "imageUploaded": "छवि सफलतापूर्वक अपलोड की गई",
   "savedInformationConfirmation": "मैंने यह जानकारी सहेज ली है",
-  "versionHistoryTitle": "संस्करण इतिहास",
   "noHistoryAvailable": "कोई इतिहास उपलब्ध नहीं है",
-   "missingUserIdError": "उपयोगकर्ता आईडी आवश्यक है",
-  "networkError": "नेटवर्क त्रुटि हुई",
+  "missingUserIdError": "उपयोगकर्ता आईडी आवश्यक है",
+  "networkError": "नेटवर्क त्रुटि. कृपया पुनः प्रयास करें.",
   "timeoutError": "अनुरोध का समय समाप्त हो गया",
   "genericError": "कुछ गलत हो गया",
   "reactionUpdateError": "प्रतिक्रिया अपडेट करने में विफल",
-  "processingLabel": "प्रसंस्करण हो रहा है...",
-  "clearChatSuccess": "चैट सफलतापूर्वक साफ़ किया गया",
-  "notificationsEnabled": "सूचनाएं सक्षम हैं",
-  "notificationsDisabled": "सूचनाएं अक्षम हैं",
-   "noSearchResults": "कोई परिणाम नहीं मिला",
+  "noSearchResults": "कोई खोज परिणाम नहीं मिला",
   "clearSearch": "खोज साफ़ करें",
   "resultsFound": "परिणाम मिले",
- "recoverySecretHint": "कॉपी-पेस्ट काम नहीं करेगा, कृपया मैन्युअली टाइप करें",
-"recoverAccountDescription": "अपने खाते को पुनर्प्राप्त करने के लिए इन चरणों का पालन करें",
- "loading": "लोड हो रहा है...",
-  "retryButton": "पुनः प्रयास करें",
-  "noNotifications": "कोई नोटिफिकेशन नहीं",
-  "notificationsTitle": "नोटिफिकेशन",
-  "markAllAsRead": "सभी को पढ़ा हुआ दिखाएं",
-  "allTab": "सभी",
-  "generalCategory": "सामान्य",
-   "selectLanguage": "भाषा चुनें",
-  "onboardingGetStartedDesc": "अपनी भाषा चुनकर शुरू करें",
-  "horoscopeCategory": "राशिफल",
-  "chatCategory": "चैट",
-  "systemCategory": "सिस्टम",
-  "updateCategory": "अपडेट",
-  "noCitiesFound": "कोई शहर नहीं मिला",
-  "chooseCountryTitle": "देश चुनें",
-  "securityNotice": "आपका डेटा सुरक्षित रूप से एन्क्रिप्ट और संग्रहीत किया गया है",
+  "recoverySecretHint": "कॉपी-पेस्ट काम नहीं कर सकता, मैन्युअल रूप से टाइप करें",
+  "recoverAccountDescription": "अपना खाता पुनः प्राप्त करने के लिए इन चरणों का पालन करें",
+  "processingLabel": "प्रसंस्करण...",
+  "clearChatSuccess": "चैट सफलतापूर्वक साफ़ हो गई",
+  "notificationsEnabled": "सूचनाएं सक्षम",
+  "notificationsDisabled": "सूचनाएं अक्षम",
+  "securityNotice": "आपका डेटा सुरक्षित रूप से एन्क्रिप्ट और संग्रहीत किया जाता है",
+  "loading": "लोड हो रहा है...",
+  "selectLanguage": "भाषा चुने",
+  "onboardingGetStartedDesc": "अपनी भाषा चुनकर शुरुआत करें",
   "accountRecoveryTitle": "🔐 खाता पुनर्प्राप्ति विवरण",
-  "recoveryInstructions": "कृपया इस जानकारी को सुरक्षित रूप से सहेजें। आपको अपने खाते को पुनर्प्राप्त करने के लिए इसकी आवश्यकता होगी।",
-  "recoverySecretLabel": "पुनर्प्राप्ति गुप्त:",
+  "recoveryInstructions": "कृपया इस जानकारी को सुरक्षित रूप से सहेजें। आपको अपना खाता पुनर्प्राप्त करने के लिए इसकी आवश्यकता होगी।",
   "importantNotice": "⚠️ महत्वपूर्ण:",
-   "astrologerProfileTitle": "ज्योतिषी प्रोफाइल",
-  "personalAstrologer": "निजी ज्योतिषी",
-  "makePersonalAstrologer": "निजी ज्योतिषी बनाएं",
-  "favoriteDescription": "आपके प्रश्नों को इस ज्योतिषी को प्राथमिकता दी जाएगी। यदि उपलब्ध नहीं हैं, तो कोई अन्य योग्य ज्योतिषी आपकी सहायता करेगा।",
-  "educationQualifications": "शिक्षा और योग्यताएं",
-  "aboutSection": "परिचय",
-  "shareProfile": "प्रोफाइल साझा करें",
-  "loadingAstrologer": "ज्योतिषी का विवरण लोड हो रहा है...",
+  "astrologerProfileTitle": "ज्योतिषी प्रोफ़ाइल",
+  "personalAstrologer": "व्यक्तिगत ज्योतिषी",
+  "makePersonalAstrologer": "व्यक्तिगत ज्योतिषी बनाएं",
+  "favoriteDescription": "आपके प्रश्नों को प्राथमिकता के आधार पर इस ज्योतिषी के पास भेजा जाएगा। यदि उपलब्ध न हो, तो कोई अन्य योग्य ज्योतिषी आपकी सहायता करेगा।",
+  "educationQualifications": "शैक्षणिक योग्यता",
+  "aboutSection": "के बारे में",
+  "shareProfile": "प्रोफ़ाइल साझा करें",
+  "loadingAstrologer": "ज्योतिषी विवरण लोड हो रहा है...",
   "failedToLoadAstrologer": "ज्योतिषी का विवरण लोड करने में विफल",
-  "retryButton": "पुनः प्रयास करें",
-  "authenticationRequired": "प्रमाणीकरण आवश्यक है। कृपया लॉगिन करें।",
-  "networkError": "नेटवर्क त्रुटि। कृपया पुनः प्रयास करें।",
-  "securityCheckFailed": "सुरक्षा जांच विफल: {error}",
+  "authenticationRequired": "प्रमाणीकरण आवश्यक है। कृपया लॉग इन करें।",
+  "securityCheckFailed": "सुरक्षा जाँच विफल: {error}",
   "addedToFavorites": "🎯 {name} अब आपके निजी ज्योतिषी हैं",
   "removedFromFavorites": "✅ {name} को पसंदीदा से हटा दिया गया",
   "toggleFavoriteError": "पसंदीदा स्थिति अपडेट करने में विफल",
   "shareMessage": "{name}\n🎓 शिक्षा: {education}\n📜 योग्यता: {qualification}\n⏳ अनुभव: {experience}",
-    "@shareMessage": {
+  "@shareMessage": {
     "description": "Message text when sharing astrologer profile",
     "placeholders": {
       "name": {},
@@ -276,11 +429,11 @@
       "experience": {}
     }
   },
-  "notProvided": "प्रदान नहीं किया गया",
+  "notProvided": "उपलब्ध नहीं कराया",
   "reviews": "({count} समीक्षाएं)",
-  "specialties": "विशेषज्ञताएं",
+  "specialties": "विशिष्टताओं",
   "experience": "अनुभव",
   "qualification": "योग्यता",
   "education": "शिक्षा",
-  "recoveryTips": "• इस जानकारी का स्क्रीनशॉट लें\n• इसे सुरक्षित स्थान पर सहेजें\n• किसी के साथ साझा न करें\n• यह केवल एक बार दिखाया जाएगा"
+  "recoveryTips": "• इस जानकारी का स्क्रीनशॉट लें\n• इसे सुरक्षित स्थान पर रखें\n• किसी के साथ साझा न करें\n• यह केवल एक बार दिखाई देगा"
 }

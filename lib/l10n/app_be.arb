@@ -1,0 +1,439 @@
+{
+  "@@locale": "be",
+  "settingsTitle": "Налады",
+  "notificationSettings": "Налады апавяшчэнняў",
+  "privacySettings": "Налады прыватнасці",
+  "accountSettings": "Налады ўліковага запісу",
+  "languageSettings": "Моўныя налады",
+  "languageChanged": "Мова зменена",
+  "existingUserButton": "Я ўжо зарэгістраваны карыстальнік",
+  "chooseCountryTitle": "Выберыце краіну",
+  "yesText": "Так",
+  "noText": "Не",
+  "appBarTitle": "Налады профілю",
+  "userIdLabel": "Ідэнтыфікатар карыстальніка *",
+  "nameLabel": "Імя",
+  "birthCountryLabel": "Краіна нараджэння",
+  "birthCityLabel": "Горад нараджэння",
+  "countrySelectionTitle": "Выберыце сваю краіну",
+  "maleLabel": "Мужчынскі",
+  "femaleLabel": "Жанчына",
+  "birthDateLabel": "Дата нараджэння",
+  "birthDatePlaceholder": "Выберыце дату нараджэння",
+  "birthTimeLabel": "Час нараджэння",
+  "birthTimePlaceholder": "Выберыце час нараджэння",
+  "saveProfileButton": "Захаваць профіль",
+  "noCitiesFound": "Гарады не знойдзены",
+  "cityPlaceholder": "Увядзіце горад у {country}",
+  "countryFirstPlaceholder": "Спачатку выберыце краіну",
+  "versionHistoryTitle": "Гісторыя версій",
+  "notSetText": "Не зададзена",
+  "nameHistory": "Імя: {name}",
+  "cityHistory": "Горад: {city}",
+  "countryHistory": "Краіна: {country}",
+  "genderHistory": "Пол: {gender}",
+  "birthDateHistory": "Дата нараджэння: {date}",
+  "birthTimeHistory": "Час нараджэння: {time}",
+  "locationHistory": "Месцазнаходжанне: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT{offset}",
+  "dstHistory": "Летні час: {value}",
+  "stateHistory": "Штат: {state}",
+  "versionFromText": "Абноўлена {date}",
+  "userIdRequired": "Патрабуецца ідэнтыфікатар карыстальніка",
+  "profileSaved": "Профіль паспяхова захаваны",
+  "saveFailed": "Не ўдалося захаваць профіль",
+  "errorPrefix": "Памылка:",
+  "onboardingChooseLanguage": "Выберыце сваю мову",
+  "onboardingChooseLanguageDesc": "Выберыце патрэбную мову, каб працягнуць.",
+  "onboardingWhatIsAstrology": "Што такое астралогія?",
+  "onboardingWhatIsAstrologyDesc": "Астралогія — гэта навука пра нябесныя целы...",
+  "onboardingWhyUseApp": "Чаму выкарыстоўваць гэта дадатак?",
+  "onboardingWhyUseAppDesc": "Атрымлівайце персаналізаваныя гараскопы, штодзённыя прагнозы і рэкамендацыі для прыняцця абгрунтаваных рашэнняў.",
+  "onboardingHowToUse": "Як карыстацца гэтым дадаткам?",
+  "onboardingHowToUseDesc": "Лёгка перамяшчайцеся, правярайце штодзённыя гараскопы і кіруйце сваім профілем для дакладных прагнозаў.",
+  "onboardingGetStarted": "Пачаць",
+  "onboardingNewUser": "Новы карыстальнік",
+  "onboardingExistingUser": "Існуючы карыстальнік",
+  "onboardingBack": "Назад",
+  "onboardingNext": "Далей",
+  "userIdNotFound": "Ідэнтыфікатар карыстальніка не знойдзены. Калі ласка, увайдзіце ў сістэму або наладзьце свой профіль.",
+  "clearNotificationsTitle": "Ачысціць апавяшчэнні",
+  "clearNotificationsMessage": "Вы ўпэўненыя, што хочаце ачысціць усе апавяшчэнні?",
+  "clearNotificationsSuccess": "Усе апавяшчэнні паспяхова выдалены.",
+  "clearHoroscopeTitle": "Ачысціць гараскоп",
+  "clearHoroscopeMessage": "Вы ўпэўненыя, што хочаце ачысціць дадзеныя свайго гараскопа?",
+  "clearHoroscopeSuccess": "Гараскоп паспяхова ачышчаны.",
+  "clearChatTitle": "Ачысціць гісторыю чата",
+  "clearChatMessage": "Вы ўпэўненыя, што хочаце выдаліць усю гісторыю чата?",
+  "clearChatLocal": "Чат ачышчаны лакальна.",
+  "deleteAccountTitle": "Выдаліць уліковы запіс",
+  "deleteAccountMessage": "Вы ўпэўненыя, што хочаце выдаліць свой уліковы запіс? Гэта таксама ачысціць усю гісторыю чатаў і апавяшчэнні.",
+  "deleteAccountSuccess": "Ваш уліковы запіс і ўсе даныя былі выдалены.",
+  "deleteAccountError": "Памылка выдалення ўліковага запісу",
+  "logoutTitle": "Выйсці",
+  "logoutMessage": "Вы ўпэўненыя, што хочаце выйсці?",
+  "termsPrivacyTitle": "Умовы і прыватнасць",
+  "privacyPolicyTitle": "Палітыка прыватнасці",
+  "termsConditionsTitle": "Умовы і палажэнні",
+  "dataControlTitle": "Кантроль дадзеных",
+  "cancelButton": "Адмена",
+  "confirmButton": "Пацвердзіць",
+  "clearQuestionsSuccess": "Усе пытанні паспяхова выдалены.",
+  "yoginiLabel": "Ёгіні",
+  "lordLabel": "Лорд",
+  "startLabel": "Пачатак",
+  "recoverAccount": "Аднавіць уліковы запіс",
+  "endLabel": "Канец",
+  "startDateLabel": "Дата пачатку",
+  "endDateLabel": "Дата заканчэння",
+  "notAvailable": "Недаступна",
+  "noData": "Няма дадзеных",
+  "unknownError": "Невядомая памылка",
+  "retryButton": "Паўтарыць спробу",
+  "kundaliGeneratorTitle": "Генератар Кундалі",
+  "natalChartTitle": "Натальная карта",
+  "lagnaLabel": "Лагна",
+  "rashiLabel": "Рашы",
+  "ascDegreeLabel": "Градус узыходзячага",
+  "vimshottariDashaTitle": "Вімшотары Даша",
+  "yoginiDashaTitle": "Ёгіні Даша",
+  "unknown": "Невядома",
+  "clearHoroscope": "Ачысціць гараскоп",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Ачысціць апавяшчэнні",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Ачысціць гісторыю чата",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Выйсці",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Выдаліць уліковы запіс",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Усе палі абавязковыя для запаўнення.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Уліковы запіс паспяхова адноўлены.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Аднаўленне не атрымалася. Праверце сваю інфармацыю.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Сакрэт аднаўлення:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Пра нас",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Пра нашу кампанію",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Мы імкнемся даць нашым карыстальнікам найлепшы астралагічны вопыт.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Наша місія",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Каб даць дакладную і персаналізаваную астралагічную інфармацыю, каб дапамагчы карыстальнікам прымаць абгрунтаваныя рашэнні ў сваім жыцці.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Наша бачанне",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Стаць самай надзейнай астралагічнай платформай, якая спалучае тэхналогіі і старажытную мудрасць.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Нашы каштоўнасці",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Цэласнасць, дакладнасць, дызайн, арыентаваны на карыстальніка, і пастаянныя інавацыі.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Звяжыцеся з намі",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Электронная пошта: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Вэб-сайт: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Падтрымка кліентаў",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Мы тут, каб дапамагчы",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Запоўніце форму ніжэй, і наша служба падтрымкі звяжацца з вамі як мага хутчэй.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Ваша імя",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Ваш адрас электроннай пошты",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Паведамленне",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Увядзіце свой адрас электроннай пошты",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Увядзіце сапраўдны адрас электроннай пошты",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Увядзіце {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Адправіць",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Адпраўка...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Электронны ліст паспяхова адпраўлены!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Не атрымалася адправіць электронны ліст",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Астралагічны слоўнік",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Пошукавыя тэрміны...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Тэрміны не знойдзены",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Пытанні па куплі",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Карыстальнік не аўтэнтыфікаваны",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Не атрымалася загрузіць дадзеныя крамы",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Адсутнічае токен аўтарызацыі",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Прыкладанне для астра-чата",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Аплата паспяховая! Пытанне адпраўлена",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Памылка аплаты: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Ваш баланс",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Questions",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Даступныя прапановы",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Question",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Купіць",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Штодзённы гараскоп",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Адсутнічае ідэнтыфікатар карыстальніка",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Не атрымалася атрымаць гараскопы",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Гараскоп не знойдзены.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Знак",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Сёння",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Учора",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Гэты тыдзень",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Апошні месяц",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Чат",
+  "typeYourQuestionHint": "Увядзіце сваё пытанне...",
+  "paymentRequired": "Патрабуецца аплата",
+  "paymentRequiredMessage": "Вы выкарысталі свае бясплатныя пытанні. Заплаціце 50 рупій, каб працягнуць.",
+  "payNowButton": "Аплаціць зараз",
+  "freeQuestionsRemaining": "Засталося {count} бясплатных пытанняў",
+  "paidQuestionsRemaining": "Засталося {count} платных пытанняў",
+  "thankYouFeedback": "Дзякуй за ваш водгук!",
+  "ratingSubmitted": "Ацэнка адпраўлена!",
+  "setUserIdFirst": "Спачатку ўсталюйце свой ідэнтыфікатар карыстальніка",
+  "failedToFetchPrevious": "Не атрымалася атрымаць папярэднія пытанні і адказы",
+  "errorOccurred": "Памылка: {error}",
+  "drawerAstroProfile": "Астралагічны профіль",
+  "drawerDailyHoroscope": "Штодзённы гараскоп",
+  "drawerBuyQuestions": "Пытанні па куплі",
+  "drawerAstroDictionary": "Астралагічны слоўнік",
+  "drawerSettings": "Налады",
+  "drawerCustomerSupport": "Падтрымка кліентаў",
+  "drawerAbout": "Пра нас",
+  "drawerProfileSettings": "Налады профілю",
+  "demoNotificationTitle": "🔔 Апавяшчэнне аб дэма-версіі",
+  "demoNotificationBody": "Гэта тэставае апавяшчэнне ад вашай праграмы!",
+  "notificationsTitle": "Апавяшчэнні",
+  "noNotifications": "Няма апавяшчэнняў",
+  "allTab": "Усе",
+  "markAllAsRead": "Адзначыць усе як прачытаныя",
+  "notificationMarkedRead": "Апавяшчэнне пазначана як прачытанае",
+  "failedToLoadNotifications": "Не атрымалася загрузіць апавяшчэнні",
+  "failedToMarkRead": "Не атрымалася пазначыць як прачытанае",
+  "failedToMarkAllRead": "Не атрымалася адзначыць усе як прачытаныя",
+  "socketConnected": "Разетка падключана",
+  "socketDisconnected": "Разетка адключана",
+  "newNotificationReceived": "Атрымана новае апавяшчэнне",
+  "generalCategory": "Агульныя",
+  "horoscopeCategory": "Гараскоп",
+  "chatCategory": "Чат",
+  "systemCategory": "Сістэма",
+  "updateCategory": "Абнаўленні",
+  "howToAskTitle": "Як спытаць",
+  "noQuestionsAvailable": "Няма даступных пытанняў",
+  "failedToLoadQuestions": "Не атрымалася загрузіць пытанні",
+  "pullToRefresh": "Пацягніце, каб абнавіць",
+  "careerCategory": "Кар'ера",
+  "loveCategory": "Каханне і адносіны",
+  "healthCategory": "Здароўе",
+  "financeCategory": "Фінансы",
+  "familyCategory": "Сям'я",
+  "educationCategory": "Адукацыя",
+  "travelCategory": "Падарожжы",
+  "spiritualCategory": "Духоўны",
+  "profileLoaded": "Профіль паспяхова загружаны",
+  "imageUploaded": "Выява паспяхова загружана",
+  "savedInformationConfirmation": "Я захаваў гэтую інфармацыю",
+  "noHistoryAvailable": "Гісторыя недаступная",
+  "missingUserIdError": "Патрабуецца ідэнтыфікатар карыстальніка",
+  "networkError": "Памылка сеткі. Паўтарыце спробу.",
+  "timeoutError": "Запыт перавысіў час чакання",
+  "genericError": "Нешта пайшло не так",
+  "reactionUpdateError": "Не атрымалася абнавіць рэакцыю",
+  "noSearchResults": "Вынікаў пошуку не знойдзена",
+  "clearSearch": "Ачысціць пошук",
+  "resultsFound": "Знойдзеныя вынікі",
+  "recoverySecretHint": "Капіраванне і ўстаўка могуць не працаваць, увядзіце ўручную",
+  "recoverAccountDescription": "Выканайце наступныя дзеянні, каб аднавіць свой уліковы запіс",
+  "processingLabel": "Апрацоўка...",
+  "clearChatSuccess": "Чат паспяхова ачышчаны",
+  "notificationsEnabled": "Апавяшчэнні ўключаны",
+  "notificationsDisabled": "Апавяшчэнні адключаны",
+  "securityNotice": "Вашы дадзеныя надзейна зашыфраваны і захоўваюцца",
+  "loading": "Загрузка...",
+  "selectLanguage": "Выберыце мову",
+  "onboardingGetStartedDesc": "Пачніце з выбару мовы",
+  "accountRecoveryTitle": "🔐 Падрабязнасці аднаўлення ўліковага запісу",
+  "recoveryInstructions": "Калі ласка, захавайце гэтую інфармацыю ў надзейным месцы. Яна спатрэбіцца вам для аднаўлення вашага ўліковага запісу.",
+  "importantNotice": "⚠️ Важна:",
+  "astrologerProfileTitle": "Профіль астролага",
+  "personalAstrologer": "асабісты астралог",
+  "makePersonalAstrologer": "Зрабіць асабістым астралагам",
+  "favoriteDescription": "Вашы пытанні будуць прыярытэтна перададзены гэтаму астролагу. Калі ён недаступны, вам дапаможа іншы кваліфікаваны астролаг.",
+  "educationQualifications": "Адукацыя і кваліфікацыя",
+  "aboutSection": "Пра нас",
+  "shareProfile": "Падзяліцца профілем",
+  "loadingAstrologer": "Загрузка звестак пра астролага...",
+  "failedToLoadAstrologer": "Не атрымалася загрузіць звесткі пра астролага",
+  "authenticationRequired": "Патрабуецца аўтэнтыфікацыя. Калі ласка, увайдзіце.",
+  "securityCheckFailed": "Праверка бяспекі не ўдалася: {error}",
+  "addedToFavorites": "🎯 {name} цяпер ваш асабісты астралаг",
+  "removedFromFavorites": "✅ Выдалена {name} з абранага",
+  "toggleFavoriteError": "Не атрымалася абнавіць статус абранага",
+  "shareMessage": "{name}\n🎓 Адукацыя: {education}\n📜 Кваліфікацыя: {qualification}\n⏳ Вопыт працы: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Не пазначана",
+  "reviews": "({count} водгукаў)",
+  "specialties": "Спецыяльнасці",
+  "experience": "Вопыт",
+  "qualification": "Кваліфікацыя",
+  "education": "Адукацыя",
+  "recoveryTips": "• Зрабіце скрыншот гэтай інфармацыі\n• Захоўвайце яе ў бяспечным месцы\n• Ні з кім не дзяліцеся ёю\n• Гэта будзе паказана толькі адзін раз"
+}

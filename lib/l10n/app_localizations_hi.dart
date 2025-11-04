@@ -9,22 +9,22 @@ class AppLocalizationsHi extends AppLocalizations {
   AppLocalizationsHi([String locale = 'hi']) : super(locale);
 
   @override
-  String get settingsTitle => 'सेटिंग';
+  String get settingsTitle => 'सेटिंग्स';
 
   @override
-  String get notificationSettings => 'अधिसूचना सेटिंग';
+  String get notificationSettings => 'अधिसूचना सेटिंग्स';
 
   @override
-  String get privacySettings => 'गोपनीयता सेटिंग';
+  String get privacySettings => 'गोपनीय सेटिंग';
 
   @override
-  String get accountSettings => 'खाता सेटिंग';
+  String get accountSettings => 'अकाउंट सेटिंग';
 
   @override
-  String get languageSettings => 'भाषा सेटिंग';
+  String get languageSettings => 'भाषा सेटिंग्स';
 
   @override
-  String get languageChanged => 'भाषा बदली';
+  String get languageChanged => 'भाषा बदल गई';
 
   @override
   String get existingUserButton => 'मैं एक मौजूदा उपयोगकर्ता हूँ';
@@ -39,16 +39,16 @@ class AppLocalizationsHi extends AppLocalizations {
   String get noText => 'नहीं';
 
   @override
-  String get appBarTitle => 'प्रोफ़ाइल सेटिंग';
+  String get appBarTitle => 'प्रोफ़ाइल सेटिंग्स';
 
   @override
-  String get userIdLabel => 'उपयोगकर्ता ID';
+  String get userIdLabel => 'उपयोगकर्ता पहचान *';
 
   @override
   String get nameLabel => 'नाम';
 
   @override
-  String get birthCountryLabel => 'जन्म देश';
+  String get birthCountryLabel => 'जन्म का देश';
 
   @override
   String get birthCityLabel => 'जन्म शहर';
@@ -66,7 +66,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get birthDateLabel => 'जन्म तिथि';
 
   @override
-  String get birthDatePlaceholder => 'जन्म तिथि';
+  String get birthDatePlaceholder => 'जन्म तिथि चुनें';
 
   @override
   String get birthTimeLabel => 'जन्म समय';
@@ -75,18 +75,18 @@ class AppLocalizationsHi extends AppLocalizations {
   String get birthTimePlaceholder => 'जन्म समय चुनें';
 
   @override
-  String get saveProfileButton => 'प्रोफ़ाइल सहेजें';
+  String get saveProfileButton => 'प्रोफ़ाइल बचा';
 
   @override
   String get noCitiesFound => 'कोई शहर नहीं मिला';
 
   @override
   String cityPlaceholder(Object country) {
-    return 'शहर में प्रवेश करें';
+    return '$country में शहर दर्ज करें';
   }
 
   @override
-  String get countryFirstPlaceholder => 'पहला देश चुनें';
+  String get countryFirstPlaceholder => 'पहले देश चुनें';
 
   @override
   String get versionHistoryTitle => 'संस्करण इतिहास';
@@ -111,7 +111,7 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String genderHistory(Object gender) {
-    return 'Gender: $gender';
+    return 'लिंग: $gender';
   }
 
   @override
@@ -131,177 +131,177 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String timezoneHistory(Object offset) {
-    return 'टाइमज़ोन: GMT$offset';
+    return 'समय क्षेत्र: GMT$offset';
   }
 
   @override
   String dstHistory(Object value) {
-    return 'DST: $value';
+    return 'डीएसटी: $value';
   }
 
   @override
   String stateHistory(Object state) {
-    return 'राज्य: $state';
+    return 'स्थिति: $state';
   }
 
   @override
   String versionFromText(Object date) {
-    return '$date से संस्करण';
+    return '$date को अपडेट किया गया';
   }
 
   @override
-  String get userIdRequired => 'उपयोगकर्ता ID की आवश्यकता है';
+  String get userIdRequired => 'उपयोगकर्ता आईडी आवश्यक है';
 
   @override
-  String get profileSaved => 'प्रोफ़ाइल सफलतापूर्वक बचाया';
+  String get profileSaved => 'प्रोफ़ाइल सफलतापूर्वक सहेजी गई';
 
   @override
-  String get saveFailed => 'प्रोफ़ाइल को बचाने में विफल';
+  String get saveFailed => 'प्रोफ़ाइल सहेजने में विफल';
 
   @override
-  String get errorPrefix => 'त्रुटि:';
+  String get errorPrefix => 'गलती:';
 
   @override
   String get onboardingChooseLanguage => 'अपनी भाषा चुनें';
 
   @override
   String get onboardingChooseLanguageDesc =>
-      'अपनी पसंदीदा भाषा को जारी रखने के लिए चुनें।.';
+      'जारी रखने के लिए अपनी पसंदीदा भाषा चुनें.';
 
   @override
   String get onboardingWhatIsAstrology => 'ज्योतिष क्या है?';
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'ज्योतिष, खगोलीय शरीर का अध्ययन है।.';
+      'ज्योतिष शास्त्र खगोलीय पिंडों का अध्ययन है...';
 
   @override
-  String get onboardingWhyUseApp => 'इस एप्लिकेशन का उपयोग क्यों करें?';
+  String get onboardingWhyUseApp => 'इस ऐप का उपयोग क्यों करें?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'व्यक्तिगत कुंडली, दैनिक भविष्यवाणियों और सूचित निर्णय लेने के लिए मार्गदर्शन प्राप्त करें।.';
+      'सूचित निर्णय लेने के लिए व्यक्तिगत राशिफल, दैनिक भविष्यवाणियां और मार्गदर्शन प्राप्त करें।';
 
   @override
-  String get onboardingHowToUse => 'इस एप्लिकेशन का उपयोग कैसे करें?';
+  String get onboardingHowToUse => 'इस ऐप का उपयोग कैसे करें?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'आसानी से नेविगेट करें, दैनिक कुंडली की जांच करें और सटीक भविष्यवाणियों के लिए अपनी प्रोफ़ाइल का प्रबंधन करें।.';
+      'आसानी से नेविगेट करें, दैनिक राशिफल देखें, और सटीक भविष्यवाणियों के लिए अपनी प्रोफ़ाइल प्रबंधित करें।';
 
   @override
-  String get onboardingGetStarted => 'शुरू करना';
+  String get onboardingGetStarted => 'शुरू हो जाओ';
 
   @override
-  String get onboardingNewUser => 'नया उपयोगकर्ता';
+  String get onboardingNewUser => 'नए उपयोगकर्ता';
 
   @override
   String get onboardingExistingUser => 'मौजूदा उपयोगकर्ता';
 
   @override
-  String get onboardingBack => 'वापस';
+  String get onboardingBack => 'पीछे';
 
   @override
   String get onboardingNext => 'अगला';
 
   @override
   String get userIdNotFound =>
-      'उपयोगकर्ता ID नहीं मिली। कृपया लॉगिन करें या अपनी प्रोफ़ाइल सेट करें।';
+      'उपयोगकर्ता आईडी नहीं मिली। कृपया लॉगिन करें या अपनी प्रोफ़ाइल सेट करें।';
 
   @override
-  String get clearNotificationsTitle => 'सूचनाएँ साफ़ करें';
+  String get clearNotificationsTitle => 'सूचनाएं साफ़ करें';
 
   @override
   String get clearNotificationsMessage =>
-      'क्या आप सभी सूचनाएँ साफ़ करना चाहते हैं?';
+      'क्या आप वाकई सभी सूचनाएं साफ़ करना चाहते हैं?';
 
   @override
   String get clearNotificationsSuccess =>
-      'सभी सूचनाएँ सफलतापूर्वक साफ़ की गईं।';
+      'सभी अधिसूचनाएं सफलतापूर्वक साफ़ कर दी गईं.';
 
   @override
-  String get clearHoroscopeTitle => 'कुंडली साफ़ करें';
+  String get clearHoroscopeTitle => 'स्पष्ट राशिफल';
 
   @override
   String get clearHoroscopeMessage =>
-      'क्या आप अपनी कुंडली डेटा को साफ़ करना चाहते हैं?';
+      'क्या आप वाकई अपनी कुंडली का डेटा साफ़ करना चाहते हैं?';
 
   @override
-  String get clearHoroscopeSuccess => 'कुंडली सफलतापूर्वक साफ़ की गई।';
+  String get clearHoroscopeSuccess => 'कुंडली सफलतापूर्वक साफ़ हो गई।';
 
   @override
   String get clearChatTitle => 'चैट इतिहास साफ़ करें';
 
   @override
   String get clearChatMessage =>
-      'क्या आप अपना पूरा चैट इतिहास हटाना चाहते हैं?';
+      'क्या आप वाकई अपना पूरा चैट इतिहास हटाना चाहते हैं?';
 
   @override
-  String get clearChatLocal => 'चैट स्थानीय रूप से साफ़ की गई।';
+  String get clearChatLocal => 'चैट स्थानीय रूप से साफ़ कर दी गई.';
 
   @override
-  String get deleteAccountTitle => 'खाता हटाएँ';
+  String get deleteAccountTitle => 'खाता हटा दो';
 
   @override
   String get deleteAccountMessage =>
-      'क्या आप वाकई अपना खाता हटाना चाहते हैं? इससे आपका चैट इतिहास और सूचनाएँ भी हट जाएँगी।';
+      'क्या आप वाकई अपना अकाउंट डिलीट करना चाहते हैं? इससे आपकी सारी चैट हिस्ट्री और नोटिफ़िकेशन भी डिलीट हो जाएँगे।';
 
   @override
-  String get deleteAccountSuccess => 'आपका खाता और सभी डेटा हटा दिए गए हैं।';
+  String get deleteAccountSuccess => 'आपका खाता और सारा डेटा हटा दिया गया है.';
 
   @override
   String get deleteAccountError => 'खाता हटाने में त्रुटि';
 
   @override
-  String get logoutTitle => 'लॉगआउट';
+  String get logoutTitle => 'लॉग आउट';
 
   @override
-  String get logoutMessage => 'क्या आप वाकई लॉगआउट करना चाहते हैं?';
+  String get logoutMessage => 'क्या आप लॉग आउट करना चाहते हैं?';
 
   @override
-  String get termsPrivacyTitle => 'नियम और गोपनीयता';
+  String get termsPrivacyTitle => 'नियम एवं गोपनीयता';
 
   @override
   String get privacyPolicyTitle => 'गोपनीयता नीति';
 
   @override
-  String get termsConditionsTitle => 'नियम और शर्तें';
+  String get termsConditionsTitle => 'नियम एवं शर्तें';
 
   @override
   String get dataControlTitle => 'डेटा नियंत्रण';
 
   @override
-  String get cancelButton => 'रद्द करें';
+  String get cancelButton => 'रद्द करना';
 
   @override
-  String get confirmButton => 'पुष्टि करें';
+  String get confirmButton => 'पुष्टि करना';
 
   @override
-  String get clearQuestionsSuccess => 'सभी प्रश्न सफलतापूर्वक हटाए गए।';
+  String get clearQuestionsSuccess => 'सभी प्रश्न सफलतापूर्वक हटा दिए गए.';
 
   @override
   String get yoginiLabel => 'योगिनी';
 
   @override
-  String get lordLabel => 'स्वामी';
+  String get lordLabel => 'भगवान';
 
   @override
-  String get startLabel => 'प्रारंभ';
+  String get startLabel => 'शुरू';
 
   @override
-  String get recoverAccount => 'खाता पुनर्प्राप्त करें';
+  String get recoverAccount => 'खाते की वसूली';
 
   @override
-  String get endLabel => 'समाप्ति';
+  String get endLabel => 'अंत';
 
   @override
-  String get startDateLabel => 'प्रारंभ तिथि';
+  String get startDateLabel => 'आरंभ करने की तिथि';
 
   @override
-  String get endDateLabel => 'समाप्ति तिथि';
+  String get endDateLabel => 'अंतिम तिथि';
 
   @override
-  String get notAvailable => 'उपलब्ध नहीं';
+  String get notAvailable => 'उपलब्ध नहीं है';
 
   @override
   String get noData => 'कोई डेटा नहीं';
@@ -310,7 +310,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get unknownError => 'अज्ञात त्रुटि';
 
   @override
-  String get retryButton => 'पुनः प्रयास करें';
+  String get retryButton => 'पुन: प्रयास करें';
 
   @override
   String get kundaliGeneratorTitle => 'कुंडली जनरेटर';
@@ -328,7 +328,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get ascDegreeLabel => 'लग्न डिग्री';
 
   @override
-  String get vimshottariDashaTitle => 'विम्शोत्तरी दशा';
+  String get vimshottariDashaTitle => 'विंशोत्तरी दशा';
 
   @override
   String get yoginiDashaTitle => 'योगिनी दशा';
@@ -337,32 +337,32 @@ class AppLocalizationsHi extends AppLocalizations {
   String get unknown => 'अज्ञात';
 
   @override
-  String get clearHoroscope => 'कुंडली साफ करें';
+  String get clearHoroscope => 'स्पष्ट राशिफल';
 
   @override
-  String get clearNotifications => 'सूचनाएं साफ करें';
+  String get clearNotifications => 'सूचनाएं साफ़ करें';
 
   @override
-  String get clearChatHistory => 'चैट इतिहास साफ करें';
+  String get clearChatHistory => 'चैट इतिहास साफ़ करें';
 
   @override
-  String get logout => 'लॉगआउट';
+  String get logout => 'लॉग आउट';
 
   @override
-  String get deleteAccount => 'खाता हटाएं';
+  String get deleteAccount => 'खाता हटा दो';
 
   @override
   String get allFieldsRequired => 'सभी फ़ील्ड आवश्यक हैं।';
 
   @override
   String get accountRecoveredSuccess =>
-      'खाता सफलतापूर्वक पुनर्प्राप्त कर लिया गया।';
+      'खाता सफलतापूर्वक पुनर्प्राप्त किया गया.';
 
   @override
-  String get recoveryFailed => 'पुनर्प्राप्ति विफल। अपनी जानकारी जांचें।';
+  String get recoveryFailed => 'पुनर्प्राप्ति विफल. अपनी जानकारी जांचें.';
 
   @override
-  String get recoverySecretLabel => 'पुनर्प्राप्ति गुप्त:';
+  String get recoverySecretLabel => 'पुनर्प्राप्ति रहस्य:';
 
   @override
   String get aboutUsTitle => 'हमारे बारे में';
@@ -372,28 +372,28 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'हम अपने उपयोगकर्ताओं को सर्वश्रेष्ठ ज्योतिष अनुभव प्रदान करने के लिए प्रतिबद्ध हैं।';
+      'हम अपने उपयोगकर्ताओं को सर्वोत्तम ज्योतिष अनुभव प्रदान करने के लिए प्रतिबद्ध हैं।';
 
   @override
-  String get ourMission => 'हमारा मिशन';
+  String get ourMission => 'हमारा विशेष कार्य';
 
   @override
   String get missionDescription =>
-      'उपयोगकर्ताओं को उनके जीवन में सूचित निर्णय लेने में मदद करने के लिए सटीक और व्यक्तिगत ज्योतिष अंतर्दृष्टि प्रदान करना।';
+      'उपयोगकर्ताओं को अपने जीवन में सूचित निर्णय लेने में मदद करने के लिए सटीक और व्यक्तिगत ज्योतिष अंतर्दृष्टि प्रदान करना।';
 
   @override
-  String get ourVision => 'हमारी दृष्टि';
+  String get ourVision => 'हमारा नज़रिया';
 
   @override
   String get visionDescription =>
-      'प्रौद्योगिकी और प्राचीन ज्ञान को मिलाकर सबसे भरोसेमंद ज्योतिष प्लेटफॉर्म बनना।';
+      'प्रौद्योगिकी और प्राचीन ज्ञान को मिलाकर सबसे विश्वसनीय ज्योतिष मंच बनना।';
 
   @override
   String get ourValues => 'हमारे मूल्य';
 
   @override
   String get valuesDescription =>
-      'ईमानदारी, सटीकता, उपयोगकर्ता-केंद्रित डिजाइन, और निरंतर नवाचार।';
+      'अखंडता, सटीकता, उपयोगकर्ता-केंद्रित डिजाइन और निरंतर नवाचार।';
 
   @override
   String get contactUs => 'हमसे संपर्क करें';
@@ -405,14 +405,14 @@ class AppLocalizationsHi extends AppLocalizations {
   String get contactWebsite => 'वेबसाइट: www.yourcompany.com';
 
   @override
-  String get customerSupport => 'ग्राहक सहायता';
+  String get customerSupport => 'ग्राहक सहेयता';
 
   @override
-  String get supportHeroTitle => 'हम आपकी मदद के लिए यहां हैं';
+  String get supportHeroTitle => 'हम आपकी मदद के लिए यहाँ हैं';
 
   @override
   String get supportHeroDescription =>
-      'नीचे दिया गया फॉर्म भरें और हमारी सहायता टीम आपसे जल्द से जल्द संपर्क करेगी।';
+      'नीचे दिया गया फॉर्म भरें और हमारी सहायता टीम यथाशीघ्र आपसे संपर्क करेगी।';
 
   @override
   String get yourName => 'आपका नाम';
@@ -427,7 +427,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get enterEmail => 'अपना ईमेल दर्ज करें';
 
   @override
-  String get enterValidEmail => 'एक वैध ईमेल पता दर्ज करें';
+  String get enterValidEmail => 'एक मान्य ईमेल पता दर्ज करें';
 
   @override
   String enterField(Object fieldName) {
@@ -435,10 +435,10 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get send => 'भेजें';
+  String get send => 'भेजना';
 
   @override
-  String get sending => 'भेज रहे हैं...';
+  String get sending => 'भेजा जा रहा है...';
 
   @override
   String get emailSentSuccess => '✅ ईमेल सफलतापूर्वक भेजा गया!';
@@ -447,16 +447,16 @@ class AppLocalizationsHi extends AppLocalizations {
   String get emailSendFailed => '❌ ईमेल भेजने में विफल';
 
   @override
-  String get astroDictionaryTitle => 'ज्योतिष शब्दकोश';
+  String get astroDictionaryTitle => 'खगोल शब्दकोश';
 
   @override
-  String get searchTermsHint => 'शब्द खोजें...';
+  String get searchTermsHint => 'खोज शब्द...';
 
   @override
   String get noTermsFound => 'कोई शब्द नहीं मिला';
 
   @override
-  String get buyQuestionsTitle => 'प्रश्न खरीदें';
+  String get buyQuestionsTitle => 'खरीदें प्रश्न';
 
   @override
   String get userNotAuthenticated => 'उपयोगकर्ता प्रमाणित नहीं है';
@@ -465,7 +465,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get loadStoreDataFailed => 'स्टोर डेटा लोड करने में विफल';
 
   @override
-  String get missingAuthToken => 'ऑथ टोकन गुम है';
+  String get missingAuthToken => 'प्राधिकरण टोकन गुम है';
 
   @override
   String get merchantDisplayName => 'एस्ट्रो चैट ऐप';
@@ -487,7 +487,7 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get availableOffers => 'उपलब्ध ऑफ़र';
+  String get availableOffers => 'उपलब्ध ऑफर';
 
   @override
   String questionsCount(Object count) {
@@ -495,22 +495,22 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get buyButton => 'खरीदें';
+  String get buyButton => 'खरीदना';
 
   @override
   String get dailyHoroscopeTitle => '🌟 दैनिक राशिफल';
 
   @override
-  String get userIdMissing => 'उपयोगकर्ता ID गुम है';
+  String get userIdMissing => 'उपयोगकर्ता आईडी गायब है';
 
   @override
-  String get fetchHoroscopesFailed => 'राशिफल लाने में विफल';
+  String get fetchHoroscopesFailed => 'कुंडली प्राप्त करने में विफल';
 
   @override
-  String get noHoroscopeFound => 'कोई राशिफल नहीं मिला।';
+  String get noHoroscopeFound => 'कोई कुंडली नहीं मिली.';
 
   @override
-  String get signLabel => 'राशि';
+  String get signLabel => 'संकेत';
 
   @override
   String get todayLabel => 'आज';
@@ -525,42 +525,43 @@ class AppLocalizationsHi extends AppLocalizations {
   String get lastMonthLabel => 'पिछला महीना';
 
   @override
-  String get chatTitle => 'चैट';
+  String get chatTitle => 'बात करना';
 
   @override
-  String get typeYourQuestionHint => 'अपना प्रश्न टाइप करें...';
+  String get typeYourQuestionHint => 'अपना प्रश्न लिखें...';
 
   @override
   String get paymentRequired => 'भुगतान आवश्यक';
 
   @override
   String get paymentRequiredMessage =>
-      'आपने अपने मुफ्त प्रश्नों का उपयोग कर लिया है। जारी रखने के लिए ₹50 का भुगतान करें।';
+      'आपने अपने मुफ़्त प्रश्नों का उपयोग कर लिया है। जारी रखने के लिए ₹50 का भुगतान करें।';
 
   @override
-  String get payNowButton => 'अभी भुगतान करें';
+  String get payNowButton => 'अब भुगतान करें';
 
   @override
   String freeQuestionsRemaining(Object count) {
-    return '$count मुफ्त प्रश्न शेष';
+    return '$count निःशुल्क प्रश्न शेष हैं';
   }
 
   @override
   String paidQuestionsRemaining(Object count) {
-    return '$count भुगतान किए गए प्रश्न शेष';
+    return '$count भुगतान किए गए प्रश्न शेष हैं';
   }
 
   @override
-  String get thankYouFeedback => 'आपके फीडबैक के लिए धन्यवाद!';
+  String get thankYouFeedback => 'आपकी प्रतिक्रिया के लिए आपका धन्यवाद!';
 
   @override
   String get ratingSubmitted => 'रेटिंग सबमिट की गई!';
 
   @override
-  String get setUserIdFirst => 'कृपया पहले अपना उपयोगकर्ता ID सेट करें';
+  String get setUserIdFirst => 'कृपया पहले अपना उपयोगकर्ता आईडी सेट करें';
 
   @override
-  String get failedToFetchPrevious => 'पिछले प्रश्न और उत्तर लाने में विफल';
+  String get failedToFetchPrevious =>
+      'पिछले प्रश्न और उत्तर प्राप्त करने में विफल';
 
   @override
   String errorOccurred(Object error) {
@@ -568,52 +569,52 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get drawerAstroProfile => 'ज्योतिष प्रोफ़ाइल';
+  String get drawerAstroProfile => 'एस्ट्रो प्रोफाइल';
 
   @override
   String get drawerDailyHoroscope => 'दैनिक राशिफल';
 
   @override
-  String get drawerBuyQuestions => 'प्रश्न खरीदें';
+  String get drawerBuyQuestions => 'खरीदें प्रश्न';
 
   @override
-  String get drawerAstroDictionary => 'ज्योतिष शब्दकोश';
+  String get drawerAstroDictionary => 'खगोल शब्दकोश';
 
   @override
-  String get drawerSettings => 'सेटिंग';
+  String get drawerSettings => 'सेटिंग्स';
 
   @override
-  String get drawerCustomerSupport => 'ग्राहक सहायता';
+  String get drawerCustomerSupport => 'ग्राहक सहेयता';
 
   @override
-  String get drawerAbout => 'हमारे बारे में';
+  String get drawerAbout => 'के बारे में';
 
   @override
-  String get drawerProfileSettings => 'प्रोफ़ाइल सेटिंग';
+  String get drawerProfileSettings => 'प्रोफ़ाइल सेटिंग्स';
 
   @override
-  String get demoNotificationTitle => '🔔 डेमो सूचना';
+  String get demoNotificationTitle => '🔔 डेमो अधिसूचना';
 
   @override
-  String get demoNotificationBody => 'यह आपके ऐप से एक परीक्षण सूचना है!';
+  String get demoNotificationBody => 'यह आपके ऐप से एक परीक्षण अधिसूचना है!';
 
   @override
-  String get notificationsTitle => 'नोटिफिकेशन';
+  String get notificationsTitle => 'सूचनाएं';
 
   @override
-  String get noNotifications => 'कोई नोटिफिकेशन नहीं';
+  String get noNotifications => 'कोई सूचना नहीं';
 
   @override
   String get allTab => 'सभी';
 
   @override
-  String get markAllAsRead => 'सभी को पढ़ा हुआ दिखाएं';
+  String get markAllAsRead => 'सभी को पढ़ा हुआ मार्क करें';
 
   @override
-  String get notificationMarkedRead => 'सूचना को पढ़ा हुआ चिह्नित किया गया';
+  String get notificationMarkedRead => 'अधिसूचना को पढ़ा हुआ चिह्नित किया गया';
 
   @override
-  String get failedToLoadNotifications => 'सूचनाएं लोड करने में विफल';
+  String get failedToLoadNotifications => 'सूचनाएँ लोड करने में विफल';
 
   @override
   String get failedToMarkRead => 'पढ़ा हुआ चिह्नित करने में विफल';
@@ -625,10 +626,10 @@ class AppLocalizationsHi extends AppLocalizations {
   String get socketConnected => 'सॉकेट कनेक्टेड';
 
   @override
-  String get socketDisconnected => 'सॉकेट डिस्कनेक्टेड';
+  String get socketDisconnected => 'सॉकेट डिस्कनेक्ट हो गया';
 
   @override
-  String get newNotificationReceived => 'नई सूचना प्राप्त हुई';
+  String get newNotificationReceived => 'नई अधिसूचना प्राप्त हुई';
 
   @override
   String get generalCategory => 'सामान्य';
@@ -637,10 +638,10 @@ class AppLocalizationsHi extends AppLocalizations {
   String get horoscopeCategory => 'राशिफल';
 
   @override
-  String get chatCategory => 'चैट';
+  String get chatCategory => 'बात करना';
 
   @override
-  String get systemCategory => 'सिस्टम';
+  String get systemCategory => 'प्रणाली';
 
   @override
   String get updateCategory => 'अपडेट';
@@ -649,16 +650,16 @@ class AppLocalizationsHi extends AppLocalizations {
   String get howToAskTitle => 'कैसे पूछें';
 
   @override
-  String get noQuestionsAvailable => 'कोई प्रश्न उपलब्ध नहीं';
+  String get noQuestionsAvailable => 'कोई प्रश्न उपलब्ध नहीं है';
 
   @override
   String get failedToLoadQuestions => 'प्रश्न लोड करने में विफल';
 
   @override
-  String get pullToRefresh => 'रिफ्रेश करने के लिए खींचें';
+  String get pullToRefresh => 'रीफ़्रेश करने के लिए खींचें';
 
   @override
-  String get careerCategory => 'करियर';
+  String get careerCategory => 'आजीविका';
 
   @override
   String get loveCategory => 'प्यार और रिश्ते';
@@ -682,10 +683,10 @@ class AppLocalizationsHi extends AppLocalizations {
   String get spiritualCategory => 'आध्यात्मिक';
 
   @override
-  String get profileLoaded => 'प्रोफाइल सफलतापूर्वक लोड भयो';
+  String get profileLoaded => 'प्रोफ़ाइल सफलतापूर्वक लोड हो गई';
 
   @override
-  String get imageUploaded => 'तस्बिर सफलतापूर्वक अपलोड भयो';
+  String get imageUploaded => 'छवि सफलतापूर्वक अपलोड की गई';
 
   @override
   String get savedInformationConfirmation => 'मैंने यह जानकारी सहेज ली है';
@@ -697,7 +698,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get missingUserIdError => 'उपयोगकर्ता आईडी आवश्यक है';
 
   @override
-  String get networkError => 'नेटवर्क त्रुटि। कृपया पुनः प्रयास करें।';
+  String get networkError => 'नेटवर्क त्रुटि. कृपया पुनः प्रयास करें.';
 
   @override
   String get timeoutError => 'अनुरोध का समय समाप्त हो गया';
@@ -709,7 +710,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get reactionUpdateError => 'प्रतिक्रिया अपडेट करने में विफल';
 
   @override
-  String get noSearchResults => 'कोई परिणाम नहीं मिला';
+  String get noSearchResults => 'कोई खोज परिणाम नहीं मिला';
 
   @override
   String get clearSearch => 'खोज साफ़ करें';
@@ -719,82 +720,82 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get recoverySecretHint =>
-      'कॉपी-पेस्ट काम नहीं करेगा, कृपया मैन्युअली टाइप करें';
+      'कॉपी-पेस्ट काम नहीं कर सकता, मैन्युअल रूप से टाइप करें';
 
   @override
   String get recoverAccountDescription =>
-      'अपने खाते को पुनर्प्राप्त करने के लिए इन चरणों का पालन करें';
+      'अपना खाता पुनः प्राप्त करने के लिए इन चरणों का पालन करें';
 
   @override
-  String get processingLabel => 'प्रसंस्करण हो रहा है...';
+  String get processingLabel => 'प्रसंस्करण...';
 
   @override
-  String get clearChatSuccess => 'चैट सफलतापूर्वक साफ़ किया गया';
+  String get clearChatSuccess => 'चैट सफलतापूर्वक साफ़ हो गई';
 
   @override
-  String get notificationsEnabled => 'सूचनाएं सक्षम हैं';
+  String get notificationsEnabled => 'सूचनाएं सक्षम';
 
   @override
-  String get notificationsDisabled => 'सूचनाएं अक्षम हैं';
+  String get notificationsDisabled => 'सूचनाएं अक्षम';
 
   @override
   String get securityNotice =>
-      'आपका डेटा सुरक्षित रूप से एन्क्रिप्ट और संग्रहीत किया गया है';
+      'आपका डेटा सुरक्षित रूप से एन्क्रिप्ट और संग्रहीत किया जाता है';
 
   @override
   String get loading => 'लोड हो रहा है...';
 
   @override
-  String get selectLanguage => 'भाषा चुनें';
+  String get selectLanguage => 'भाषा चुने';
 
   @override
-  String get onboardingGetStartedDesc => 'अपनी भाषा चुनकर शुरू करें';
+  String get onboardingGetStartedDesc => 'अपनी भाषा चुनकर शुरुआत करें';
 
   @override
   String get accountRecoveryTitle => '🔐 खाता पुनर्प्राप्ति विवरण';
 
   @override
   String get recoveryInstructions =>
-      'कृपया इस जानकारी को सुरक्षित रूप से सहेजें। आपको अपने खाते को पुनर्प्राप्त करने के लिए इसकी आवश्यकता होगी।';
+      'कृपया इस जानकारी को सुरक्षित रूप से सहेजें। आपको अपना खाता पुनर्प्राप्त करने के लिए इसकी आवश्यकता होगी।';
 
   @override
   String get importantNotice => '⚠️ महत्वपूर्ण:';
 
   @override
-  String get astrologerProfileTitle => 'ज्योतिषी प्रोफाइल';
+  String get astrologerProfileTitle => 'ज्योतिषी प्रोफ़ाइल';
 
   @override
-  String get personalAstrologer => 'निजी ज्योतिषी';
+  String get personalAstrologer => 'व्यक्तिगत ज्योतिषी';
 
   @override
-  String get makePersonalAstrologer => 'निजी ज्योतिषी बनाएं';
+  String get makePersonalAstrologer => 'व्यक्तिगत ज्योतिषी बनाएं';
 
   @override
   String get favoriteDescription =>
-      'आपके प्रश्नों को इस ज्योतिषी को प्राथमिकता दी जाएगी। यदि उपलब्ध नहीं हैं, तो कोई अन्य योग्य ज्योतिषी आपकी सहायता करेगा।';
+      'आपके प्रश्नों को प्राथमिकता के आधार पर इस ज्योतिषी के पास भेजा जाएगा। यदि उपलब्ध न हो, तो कोई अन्य योग्य ज्योतिषी आपकी सहायता करेगा।';
 
   @override
-  String get educationQualifications => 'शिक्षा और योग्यताएं';
+  String get educationQualifications => 'शैक्षणिक योग्यता';
 
   @override
-  String get aboutSection => 'परिचय';
+  String get aboutSection => 'के बारे में';
 
   @override
-  String get shareProfile => 'प्रोफाइल साझा करें';
+  String get shareProfile => 'प्रोफ़ाइल साझा करें';
 
   @override
-  String get loadingAstrologer => 'ज्योतिषी का विवरण लोड हो रहा है...';
+  String get loadingAstrologer => 'ज्योतिषी विवरण लोड हो रहा है...';
 
   @override
   String get failedToLoadAstrologer => 'ज्योतिषी का विवरण लोड करने में विफल';
 
   @override
   String get authenticationRequired =>
-      'प्रमाणीकरण आवश्यक है। कृपया लॉगिन करें।';
+      'प्रमाणीकरण आवश्यक है। कृपया लॉग इन करें।';
 
   @override
   String securityCheckFailed(Object error) {
-    return 'सुरक्षा जांच विफल: $error';
+    return 'सुरक्षा जाँच विफल: $error';
   }
 
   @override
@@ -821,7 +822,7 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get notProvided => 'प्रदान नहीं किया गया';
+  String get notProvided => 'उपलब्ध नहीं कराया';
 
   @override
   String reviews(Object count) {
@@ -829,7 +830,7 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get specialties => 'विशेषज्ञताएं';
+  String get specialties => 'विशिष्टताओं';
 
   @override
   String get experience => 'अनुभव';
@@ -842,5 +843,5 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get recoveryTips =>
-      '• इस जानकारी का स्क्रीनशॉट लें\n• इसे सुरक्षित स्थान पर सहेजें\n• किसी के साथ साझा न करें\n• यह केवल एक बार दिखाया जाएगा';
+      '• इस जानकारी का स्क्रीनशॉट लें\n• इसे सुरक्षित स्थान पर रखें\n• किसी के साथ साझा न करें\n• यह केवल एक बार दिखाई देगा';
 }

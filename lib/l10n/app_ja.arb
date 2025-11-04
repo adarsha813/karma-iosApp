@@ -1,0 +1,439 @@
+{
+  "@@locale": "ja",
+  "settingsTitle": "設定",
+  "notificationSettings": "通知設定",
+  "privacySettings": "プライバシー設定",
+  "accountSettings": "アカウント設定",
+  "languageSettings": "言語設定",
+  "languageChanged": "言語が変更されました",
+  "existingUserButton": "私は既存のユーザーです",
+  "chooseCountryTitle": "国を選択",
+  "yesText": "はい",
+  "noText": "いいえ",
+  "appBarTitle": "プロフィール設定",
+  "userIdLabel": "ユーザーID *",
+  "nameLabel": "名前",
+  "birthCountryLabel": "出生地",
+  "birthCityLabel": "出生地",
+  "countrySelectionTitle": "国を選択してください",
+  "maleLabel": "男",
+  "femaleLabel": "女性",
+  "birthDateLabel": "生年月日",
+  "birthDatePlaceholder": "生年月日を選択",
+  "birthTimeLabel": "出生時間",
+  "birthTimePlaceholder": "出生時間を選択",
+  "saveProfileButton": "プロフィールを保存",
+  "noCitiesFound": "都市が見つかりません",
+  "cityPlaceholder": "{country} に都市名を入力してください",
+  "countryFirstPlaceholder": "最初に国を選択してください",
+  "versionHistoryTitle": "バージョン履歴",
+  "notSetText": "未設定",
+  "nameHistory": "名前: {name}",
+  "cityHistory": "都市: {city}",
+  "countryHistory": "国: {country}",
+  "genderHistory": "性別: {gender}",
+  "birthDateHistory": "生年月日: {date}",
+  "birthTimeHistory": "出生時間: {time}",
+  "locationHistory": "場所: {latitude}、{longitude}",
+  "timezoneHistory": "タイムゾーン: GMT{offset}",
+  "dstHistory": "夏時間: {value}",
+  "stateHistory": "州: {state}",
+  "versionFromText": "{date} に更新されました",
+  "userIdRequired": "ユーザーIDが必要です",
+  "profileSaved": "プロフィールが正常に保存されました",
+  "saveFailed": "プロフィールを保存できませんでした",
+  "errorPrefix": "エラー：",
+  "onboardingChooseLanguage": "言語を選択してください",
+  "onboardingChooseLanguageDesc": "続行するには、希望する言語を選択してください。",
+  "onboardingWhatIsAstrology": "占星術とは何ですか?",
+  "onboardingWhatIsAstrologyDesc": "占星術は天体の研究です。",
+  "onboardingWhyUseApp": "このアプリを使う理由は？",
+  "onboardingWhyUseAppDesc": "パーソナライズされた星占い、毎日の予測、ガイダンスを入手して、情報に基づいた決定を下しましょう。",
+  "onboardingHowToUse": "このアプリの使い方は？",
+  "onboardingHowToUseDesc": "簡単にナビゲートし、毎日の星占いをチェックし、正確な予測のためにプロフィールを管理します。",
+  "onboardingGetStarted": "始める",
+  "onboardingNewUser": "新規ユーザー",
+  "onboardingExistingUser": "既存ユーザー",
+  "onboardingBack": "戻る",
+  "onboardingNext": "次",
+  "userIdNotFound": "ユーザーIDが見つかりません。ログインするか、プロフィールを設定してください。",
+  "clearNotificationsTitle": "通知をクリアする",
+  "clearNotificationsMessage": "すべての通知をクリアしてもよろしいですか?",
+  "clearNotificationsSuccess": "すべての通知が正常にクリアされました。",
+  "clearHoroscopeTitle": "クリアホロスコープ",
+  "clearHoroscopeMessage": "星占いデータを消去してもよろしいですか?",
+  "clearHoroscopeSuccess": "ホロスコープが正常にクリアされました。",
+  "clearChatTitle": "チャット履歴を消去",
+  "clearChatMessage": "すべてのチャット履歴を削除してもよろしいですか?",
+  "clearChatLocal": "チャットはローカルでクリアされました。",
+  "deleteAccountTitle": "アカウントを削除",
+  "deleteAccountMessage": "アカウントを削除してもよろしいですか？削除すると、チャット履歴と通知もすべて消去されます。",
+  "deleteAccountSuccess": "アカウントとすべてのデータが削除されました。",
+  "deleteAccountError": "アカウントの削除中にエラーが発生しました",
+  "logoutTitle": "ログアウト",
+  "logoutMessage": "ログアウトしてもよろしいですか?",
+  "termsPrivacyTitle": "利用規約とプライバシー",
+  "privacyPolicyTitle": "プライバシーポリシー",
+  "termsConditionsTitle": "利用規約",
+  "dataControlTitle": "データ管理",
+  "cancelButton": "キャンセル",
+  "confirmButton": "確認する",
+  "clearQuestionsSuccess": "すべての質問が正常に削除されました。",
+  "yoginiLabel": "ヨギーニ",
+  "lordLabel": "主",
+  "startLabel": "始める",
+  "recoverAccount": "アカウントを回復する",
+  "endLabel": "終わり",
+  "startDateLabel": "開始日",
+  "endDateLabel": "終了日",
+  "notAvailable": "利用不可",
+  "noData": "データなし",
+  "unknownError": "不明なエラー",
+  "retryButton": "リトライ",
+  "kundaliGeneratorTitle": "クンダリジェネレータ",
+  "natalChartTitle": "出生図",
+  "lagnaLabel": "ラグナ",
+  "rashiLabel": "ラシ",
+  "ascDegreeLabel": "アセンダント度数",
+  "vimshottariDashaTitle": "ヴィムショタリ・ダシャ",
+  "yoginiDashaTitle": "ヨギーニ・ダシャ",
+  "unknown": "未知",
+  "clearHoroscope": "クリアホロスコープ",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "通知をクリアする",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "チャット履歴を消去",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "ログアウト",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "アカウントを削除",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "すべてのフィールドが必須です。",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "アカウントが正常に回復されました。",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "回復に失敗しました。情報を確認してください。",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "回復の秘密:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "私たちについて",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "当社について",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "私たちは、ユーザーに最高の占星術体験を提供することに尽力しています。",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "私たちの使命",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "正確でパーソナライズされた占星術の洞察を提供し、ユーザーが人生において情報に基づいた決定を下せるよう支援します。",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "私たちのビジョン",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "テクノロジーと古代の知恵を融合し、最も信頼される占星術プラットフォームになること。",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "私たちの価値観",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "誠実さ、正確さ、ユーザー中心の設計、継続的な革新。",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "お問い合わせ",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "メールアドレス: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "ウェブサイト: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "カスタマーサポート",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "私たちはお手伝いします",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "以下のフォームにご記入いただければ、弊社のサポートチームができるだけ早くご返答いたします。",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "あなたの名前",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "あなたのメールアドレス",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "メッセージ",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "メールアドレスを入力してください",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "有効なメールアドレスを入力してください",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "{fieldName} と入力します",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "送信",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "送信中...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ メールは正常に送信されました!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ メールの送信に失敗しました",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "アストロ辞書",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "検索用語...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "用語が見つかりません",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "購入に関する質問",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "ユーザーが認証されていません",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "ストアデータの読み込みに失敗しました",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "認証トークンがありません",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "アストロチャットアプリ",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ お支払いが完了しました！質問を送信しました",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ 支払いに失敗しました: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "残高",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} 質問",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "利用可能なオファー",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} 質問",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "買う",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 毎日の星占い",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "ユーザーIDがありません",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "星占いを取得できませんでした",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "星占いが見つかりません。",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "サイン",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "今日",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "昨日",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "今週",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "先月",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "チャット",
+  "typeYourQuestionHint": "質問を入力してください...",
+  "paymentRequired": "お支払いが必要です",
+  "paymentRequiredMessage": "無料の質問はご利用いただけました。続行するには ₹50 をお支払いください。",
+  "payNowButton": "今すぐ支払う",
+  "freeQuestionsRemaining": "無料の質問が {count} 問残っています",
+  "paidQuestionsRemaining": "残りの有料質問は {count} 件です",
+  "thankYouFeedback": "フィードバックありがとうございます！",
+  "ratingSubmitted": "評価を送信しました!",
+  "setUserIdFirst": "まずユーザーIDを設定してください",
+  "failedToFetchPrevious": "以前の質問と回答を取得できませんでした",
+  "errorOccurred": "エラー: {error}",
+  "drawerAstroProfile": "アストロプロフィール",
+  "drawerDailyHoroscope": "毎日の星占い",
+  "drawerBuyQuestions": "購入に関する質問",
+  "drawerAstroDictionary": "アストロ辞書",
+  "drawerSettings": "設定",
+  "drawerCustomerSupport": "カスタマーサポート",
+  "drawerAbout": "について",
+  "drawerProfileSettings": "プロフィール設定",
+  "demoNotificationTitle": "🔔デモ通知",
+  "demoNotificationBody": "これはアプリからのテスト通知です。",
+  "notificationsTitle": "通知",
+  "noNotifications": "通知なし",
+  "allTab": "全て",
+  "markAllAsRead": "すべてを既読にする",
+  "notificationMarkedRead": "通知を既読としてマークしました",
+  "failedToLoadNotifications": "通知を読み込めませんでした",
+  "failedToMarkRead": "既読にできませんでした",
+  "failedToMarkAllRead": "すべてを既読にできませんでした",
+  "socketConnected": "ソケット接続",
+  "socketDisconnected": "ソケットが切断されました",
+  "newNotificationReceived": "新しい通知を受信しました",
+  "generalCategory": "一般的な",
+  "horoscopeCategory": "星占い",
+  "chatCategory": "チャット",
+  "systemCategory": "システム",
+  "updateCategory": "アップデート",
+  "howToAskTitle": "質問の仕方",
+  "noQuestionsAvailable": "質問はありません",
+  "failedToLoadQuestions": "質問を読み込めませんでした",
+  "pullToRefresh": "引いて更新",
+  "careerCategory": "キャリア",
+  "loveCategory": "愛と人間関係",
+  "healthCategory": "健康",
+  "financeCategory": "ファイナンス",
+  "familyCategory": "家族",
+  "educationCategory": "教育",
+  "travelCategory": "旅行",
+  "spiritualCategory": "スピリチュアル",
+  "profileLoaded": "プロフィールが正常に読み込まれました",
+  "imageUploaded": "画像のアップロードに成功しました",
+  "savedInformationConfirmation": "この情報を保存しました",
+  "noHistoryAvailable": "履歴はありません",
+  "missingUserIdError": "ユーザーIDが必要です",
+  "networkError": "ネットワークエラーです。もう一度お試しください。",
+  "timeoutError": "リクエストがタイムアウトしました",
+  "genericError": "問題が発生しました",
+  "reactionUpdateError": "反応を更新できませんでした",
+  "noSearchResults": "検索結果が見つかりません",
+  "clearSearch": "検索をクリア",
+  "resultsFound": "見つかった結果",
+  "recoverySecretHint": "コピー＆ペーストが機能しない可能性があります。手動で入力してください。",
+  "recoverAccountDescription": "アカウントを回復するには、次の手順に従ってください",
+  "processingLabel": "処理...",
+  "clearChatSuccess": "チャットは正常にクリアされました",
+  "notificationsEnabled": "通知が有効",
+  "notificationsDisabled": "通知が無効になっています",
+  "securityNotice": "データは安全に暗号化され保存されます",
+  "loading": "読み込み中...",
+  "selectLanguage": "言語を選択",
+  "onboardingGetStartedDesc": "言語を選択して始めましょう",
+  "accountRecoveryTitle": "🔐 アカウント回復の詳細",
+  "recoveryInstructions": "この情報は安全に保管してください。アカウントを復旧する際に必要となります。",
+  "importantNotice": "⚠️ 重要:",
+  "astrologerProfileTitle": "占星術師プロフィール",
+  "personalAstrologer": "個人占星術師",
+  "makePersonalAstrologer": "パーソナル占星術師を作る",
+  "favoriteDescription": "ご質問は、この占星術師が優先的に対応いたします。担当できない場合は、別の資格を持った占星術師が対応いたします。",
+  "educationQualifications": "学歴と資格",
+  "aboutSection": "について",
+  "shareProfile": "プロフィールを共有",
+  "loadingAstrologer": "占星術師の詳細を読み込んでいます...",
+  "failedToLoadAstrologer": "占星術師の詳細を読み込めませんでした",
+  "authenticationRequired": "認証が必要です。ログインしてください。",
+  "securityCheckFailed": "セキュリティ チェックに失敗しました: {error}",
+  "addedToFavorites": "🎯 {name} があなたのパーソナル占星術師になりました",
+  "removedFromFavorites": "✅ {name} をお気に入りから削除しました",
+  "toggleFavoriteError": "お気に入りステータスの更新に失敗しました",
+  "shareMessage": "{name}\n🎓 学歴: {education}\n📜 資格: {qualification}\n⏳ 経験: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "提供されていません",
+  "reviews": "（{count} 件のレビュー）",
+  "specialties": "専門分野",
+  "experience": "経験",
+  "qualification": "資格",
+  "education": "教育",
+  "recoveryTips": "• この情報のスクリーンショットを撮る\n• 安全な場所に保管する\n• 誰とも共有しない\n• この情報は一度だけ表示される"
+}

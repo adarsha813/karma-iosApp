@@ -1,0 +1,439 @@
+{
+  "@@locale": "my",
+  "settingsTitle": "ဆက်တင်များ",
+  "notificationSettings": "အကြောင်းကြားချက် ဆက်တင်များ",
+  "privacySettings": "ကိုယ်ရေးကိုယ်တာ ဆက်တင်များ",
+  "accountSettings": "အကောင့်ဆက်တင်များ",
+  "languageSettings": "ဘာသာစကား ဆက်တင်များ",
+  "languageChanged": "ဘာသာစကား ပြောင်းသွားတယ်။",
+  "existingUserButton": "ကျွန်ုပ်သည် လက်ရှိအသုံးပြုသူဖြစ်သည်။",
+  "chooseCountryTitle": "နိုင်ငံကို ရွေးပါ။",
+  "yesText": "ဟုတ်ကဲ့",
+  "noText": "မရှိ",
+  "appBarTitle": "ပရိုဖိုင် ဆက်တင်များ",
+  "userIdLabel": "သုံးစွဲသူအိုင်ဒီ *",
+  "nameLabel": "နာမည်",
+  "birthCountryLabel": "မွေးရပ်မြေ",
+  "birthCityLabel": "မွေးရပ်မြို့",
+  "countrySelectionTitle": "သင်၏နိုင်ငံကိုရွေးချယ်ပါ။",
+  "maleLabel": "အထီး",
+  "femaleLabel": "အပျို",
+  "birthDateLabel": "မွေးနေ့",
+  "birthDatePlaceholder": "မွေးရက်ကို ရွေးပါ။",
+  "birthTimeLabel": "မွေးချိန်",
+  "birthTimePlaceholder": "မွေးဖွားချိန်ကို ရွေးပါ။",
+  "saveProfileButton": "Profile ကို သိမ်းဆည်းပါ။",
+  "noCitiesFound": "မြို့များကိုမတွေ့ပါ။",
+  "cityPlaceholder": "{country} တွင် မြို့ကိုထည့်ပါ။",
+  "countryFirstPlaceholder": "နိုင်ငံကို အရင်ရွေးပါ။",
+  "versionHistoryTitle": "ဗားရှင်းမှတ်တမ်း",
+  "notSetText": "မသတ်မှတ်ထားဘူး။",
+  "nameHistory": "အမည်- {name}",
+  "cityHistory": "မြို့- {city}",
+  "countryHistory": "နိုင်ငံ- {country}",
+  "genderHistory": "လိင်- {gender}",
+  "birthDateHistory": "မွေးရက်- {date}",
+  "birthTimeHistory": "မွေးချိန်- {time}",
+  "locationHistory": "တည်နေရာ- {latitude}၊ {longitude}",
+  "timezoneHistory": "အချိန်ဇုန်- GMT{offset}",
+  "dstHistory": "DST- {value}",
+  "stateHistory": "အခြေအနေ- {state}",
+  "versionFromText": "{date} တွင် အပ်ဒိတ်လုပ်ထားသည်။",
+  "userIdRequired": "အသုံးပြုသူ ID လိုအပ်ပါသည်။",
+  "profileSaved": "ပရိုဖိုင်ကို အောင်မြင်စွာ သိမ်းဆည်းပြီးပါပြီ။",
+  "saveFailed": "ပရိုဖိုင်ကို သိမ်းဆည်းရန် မအောင်မြင်ပါ။",
+  "errorPrefix": "အမှား-",
+  "onboardingChooseLanguage": "သင်၏ဘာသာစကားကိုရွေးချယ်ပါ။",
+  "onboardingChooseLanguageDesc": "ရှေ့ဆက်ရန် သင်နှစ်သက်သော ဘာသာစကားကို ရွေးချယ်ပါ။",
+  "onboardingWhatIsAstrology": "ဗေဒင်ဆိုတာဘာလဲ။",
+  "onboardingWhatIsAstrologyDesc": "နက္ခတ်ဗေဒင်သည် ကောင်းကင်ဘုံကို လေ့လာခြင်းဖြစ်သည်...",
+  "onboardingWhyUseApp": "ဘာကြောင့် ဒီအက်ပ်ကို သုံးတာလဲ။",
+  "onboardingWhyUseAppDesc": "အသိဥာဏ်ရှိသော ဆုံးဖြတ်ချက်များချရန်အတွက် စိတ်ကြိုက်ဇာတာများ၊ နေ့စဥ်ခန့်မှန်းချက်များနှင့် လမ်းညွှန်မှုများကို ရယူပါ။",
+  "onboardingHowToUse": "ဒီအက်ပ်ကို ဘယ်လိုသုံးမလဲ။",
+  "onboardingHowToUseDesc": "အလွယ်တကူ သွားလာပါ၊ နေ့စဉ် ဇာတာများကို စစ်ဆေးပြီး တိကျသော ခန့်မှန်းချက်များ အတွက် သင့်ပရိုဖိုင်ကို စီမံပါ။",
+  "onboardingGetStarted": "စတင်လိုက်ပါ။",
+  "onboardingNewUser": "အသုံးပြုသူအသစ်",
+  "onboardingExistingUser": "လက်ရှိအသုံးပြုသူ",
+  "onboardingBack": "ကျော",
+  "onboardingNext": "နောက်တစ်ခု",
+  "userIdNotFound": "အသုံးပြုသူ ID မတွေ့ပါ။ ကျေးဇူးပြု၍ ဝင်ရောက်ပါ သို့မဟုတ် သင့်ပရိုဖိုင်ကို သတ်မှတ်ပါ။",
+  "clearNotificationsTitle": "အကြောင်းကြားချက်များကို ရှင်းလင်းပါ။",
+  "clearNotificationsMessage": "အကြောင်းကြားချက်များအားလုံးကို ရှင်းလင်းလိုသည်မှာ သေချာပါသလား။",
+  "clearNotificationsSuccess": "အကြောင်းကြားချက်အားလုံးကို အောင်မြင်စွာ ရှင်းလင်းပြီးပါပြီ။",
+  "clearHoroscopeTitle": "Horoscope ရှင်းပါ။",
+  "clearHoroscopeMessage": "သင့်ဇာတာအချက်အလက်ကို ရှင်းလင်းလိုသည်မှာ သေချာပါသလား။",
+  "clearHoroscopeSuccess": "ဇာတာရှင်သည် ရှင်းရှင်းလင်းလင်း အောင်မြင်ခဲ့သည်။",
+  "clearChatTitle": "ချတ်မှတ်တမ်းကို ရှင်းလင်းပါ။",
+  "clearChatMessage": "သင့်ချတ်မှတ်တမ်းအားလုံးကို ဖျက်လိုသည်မှာ သေချာပါသလား။",
+  "clearChatLocal": "ဒေသအလိုက် ချတ်ကို ရှင်းလင်းထားသည်။",
+  "deleteAccountTitle": "အကောင့်ဖျက်ပါ။",
+  "deleteAccountMessage": "သင့်အကောင့်ကို ဖျက်လိုသည်မှာ သေချာပါသလား။ ၎င်းသည် သင့်ချတ်မှတ်တမ်းနှင့် အကြောင်းကြားချက်များအားလုံးကိုလည်း ရှင်းလင်းပါမည်။",
+  "deleteAccountSuccess": "သင့်အကောင့်နှင့် ဒေတာအားလုံးကို ဖယ်ရှားလိုက်ပါပြီ။",
+  "deleteAccountError": "အကောင့်ဖျက်ရာတွင် အမှားအယွင်းရှိနေသည်။",
+  "logoutTitle": "ထွက်လိုက်ပါ။",
+  "logoutMessage": "ထွက်လိုသည်မှာ သေချာပါသလား။",
+  "termsPrivacyTitle": "စည်းမျဥ်းစည်းကမ်းများနှင့် ကိုယ်ရေးကိုယ်တာ",
+  "privacyPolicyTitle": "ကိုယ်ရေးအချက်အလက်မူဝါဒ",
+  "termsConditionsTitle": "စည်းကမ်းသတ်မှတ်ချက်များ",
+  "dataControlTitle": "ဒေတာထိန်းချုပ်ရေး",
+  "cancelButton": "မလုပ်တော့",
+  "confirmButton": "အတည်ပြုပါ။",
+  "clearQuestionsSuccess": "မေးခွန်းအားလုံးကို အောင်မြင်စွာ ဖျက်လိုက်ပါပြီ။",
+  "yoginiLabel": "ယောဂီ",
+  "lordLabel": "သခင်",
+  "startLabel": "စတင်ပါ။",
+  "recoverAccount": "အကောင့်ပြန်လည်ရယူပါ။",
+  "endLabel": "အဆုံး",
+  "startDateLabel": "စတင်သည့်ရက်စွဲ",
+  "endDateLabel": "ကုန်ဆုံးရက်စွဲ",
+  "notAvailable": "မရရှိနိုင်ပါ",
+  "noData": "ဒေတာမရှိပါ။",
+  "unknownError": "အမည်မသိ အမှား",
+  "retryButton": "ပြန်ကြိုးစားပါ။",
+  "kundaliGeneratorTitle": "Kundali မီးစက်",
+  "natalChartTitle": "Natal Chart",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "ရာရှီ",
+  "ascDegreeLabel": "Ascendant ဘွဲ့",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "မသိ",
+  "clearHoroscope": "Horoscope ရှင်းပါ။",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "အကြောင်းကြားချက်များကို ရှင်းလင်းပါ။",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "ချတ်မှတ်တမ်းကို ရှင်းလင်းပါ။",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "ထွက်လိုက်ပါ။",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "အကောင့်ဖျက်ပါ။",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "အကွက်အားလုံး လိုအပ်သည်။",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "အကောင့်ကို အောင်မြင်စွာ ပြန်လည်ရယူနိုင်ပါပြီ။",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "ပြန်လည်ရယူခြင်း မအောင်မြင်ပါ။ သင်၏အချက်အလက်များကိုစစ်ဆေးပါ။",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "ပြန်လည်ရယူခြင်းလျှို့ဝှက်ချက်-",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "ကြှနျုပျတို့အကွောငျး",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "ကျွန်ုပ်တို့၏ကုမ္ပဏီအကြောင်း",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "ကျွန်ုပ်တို့၏အသုံးပြုသူများအတွက် အကောင်းဆုံး နက္ခတ်ဗေဒင်အတွေ့အကြုံကို ပေးအပ်ရန် ကျွန်ုပ်တို့ကတိပြုပါသည်။",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "ကျွန်ုပ်တို့၏သာသနာ",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "သုံးစွဲသူများသည် ၎င်းတို့၏ဘဝတွင် အသိဉာဏ်ဖြင့် ဆုံးဖြတ်ချက်များချရာတွင် ကူညီပေးရန်အတွက် တိကျပြီး စိတ်ကြိုက်နက္ခတ်ဗေဒင် ထိုးထွင်းသိမြင်မှုများကို ပေးဆောင်ရန်။",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "ကျွန်ုပ်တို့၏အမြင်",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "အယုံကြည်ရဆုံး နက္ခတ်ဗေဒင် ပလက်ဖောင်း ဖြစ်လာစေရန်၊ နည်းပညာနှင့် ရှေးပညာများကို ပေါင်းစပ်ထားသည်။",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "ကျွန်ုပ်တို့၏တန်ဖိုးများ",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "သမာဓိ၊ တိကျမှု၊ သုံးစွဲသူဗဟိုပြု ဒီဇိုင်းနှင့် စဉ်ဆက်မပြတ် ဆန်းသစ်တီထွင်မှု။",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "ကြှနျုပျတို့ကိုဆကျသှယျရနျ",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "အီးမေးလ်- support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "ဝဘ်ဆိုဒ်- www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "ဖောက်သည်ပံ့ပိုးမှု",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "ကူညီရန် ကျွန်ုပ်တို့ ဤနေရာတွင် ရှိနေပါသည်။",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "အောက်ပါဖောင်ကိုဖြည့်ပြီး ကျွန်ုပ်တို့၏ ပံ့ပိုးကူညီရေးအဖွဲ့သည် သင့်ထံ အမြန်ဆုံးပြန်လည်ရောက်ရှိပါမည်။",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "သင့်နာမည်",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "သင့်အီးမေးလ်",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "မက်ဆေ့ချ်",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "သင့်အီးမေးလ်ကို ထည့်ပါ။",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "တရားဝင်အီးမေးလ်လိပ်စာကို ထည့်ပါ။",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "{fieldName} ထည့်ပါ။",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "ပို့ပါ။",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "ပို့နေသည်...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Email အောင်မြင်စွာ ပို့ပြီးပါပြီ။",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ အီးမေးလ်ပို့၍မရပါ။",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro Dictionary",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "ရှာဖွေမှု ဝေါဟာရများ...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "ဝေါဟာရ ရှာမတွေ့ပါ။",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "မေးခွန်းများဝယ်ယူပါ။",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "အသုံးပြုသူကို စစ်မှန်ကြောင်း အထောက်အထား မပြပါ။",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "သိမ်းဆည်းဒေတာကို တင်၍မရပါ။",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "အထောက်အထား သင်္ကေတ ပျောက်နေပါသည်။",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat အက်ပ်",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ ငွေပေးချေမှု အောင်မြင်ပါသည်။ မေးခွန်းပို့လိုက်ပါပြီ။",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ ငွေပေးချေမှု မအောင်မြင်ပါ- {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "သင်၏လက်ကျန်ငွေ",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} မေးခွန်းများ",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "ရနိုင်သောကမ်းလှမ်းချက်များ",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} မေးခွန်း",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "ဝယ်ပါ။",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 နေ့စဉ် Horoscope",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "အသုံးပြုသူ ID ပျောက်ဆုံးနေပါသည်။",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "ဇာတာများ မအောင်မြင်ပါ။",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "ဇာတာမတွေ့။",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "ဆိုင်းဘုတ်",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "ဒီနေ့",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "မနေ့က",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "ဒီတစ်ပတ်",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "ပြီးခဲ့သည့်လ",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "စကားစမြည်",
+  "typeYourQuestionHint": "သင့်မေးခွန်းကို ရိုက်ထည့်ပါ...",
+  "paymentRequired": "ငွေပေးချေမှု လိုအပ်ပါသည်။",
+  "paymentRequiredMessage": "သင့်အခမဲ့မေးခွန်းများကို သင်အသုံးပြုပြီးပါပြီ။ ရှေ့ဆက်ရန် ₹50 ပေးချေပါ။",
+  "payNowButton": "ယခုငွေပေးချေပါ။",
+  "freeQuestionsRemaining": "{count} အခမဲ့မေးခွန်းများ ကျန်ရှိပါသည်။",
+  "paidQuestionsRemaining": "{count} အခပေးမေးခွန်းများ ကျန်ရှိပါသည်။",
+  "thankYouFeedback": "သင့်အကြံပြုချက်အတွက် ကျေးဇူးတင်ပါသည်။",
+  "ratingSubmitted": "အဆင့်သတ်မှတ်ခြင်းကို တင်သွင်းခဲ့သည်။",
+  "setUserIdFirst": "သင်၏ User ID ကို ဦးစွာ သတ်မှတ်ပါ။",
+  "failedToFetchPrevious": "ယခင်မေးခွန်းများနှင့် အဖြေများကို ရယူ၍မရပါ။",
+  "errorOccurred": "အမှား- {error}",
+  "drawerAstroProfile": "Astro Profile",
+  "drawerDailyHoroscope": "နေ့စဉ် Horoscope",
+  "drawerBuyQuestions": "မေးခွန်းများဝယ်ယူပါ။",
+  "drawerAstroDictionary": "Astro Dictionary",
+  "drawerSettings": "ဆက်တင်များ",
+  "drawerCustomerSupport": "ဖောက်သည်ပံ့ပိုးမှု",
+  "drawerAbout": "အကြောင်း",
+  "drawerProfileSettings": "ပရိုဖိုင် ဆက်တင်များ",
+  "demoNotificationTitle": "🔔 သရုပ်ပြ အသိပေးချက်",
+  "demoNotificationBody": "၎င်းသည် သင့်အက်ပ်မှ စမ်းသပ်မှုသတိပေးချက်ဖြစ်သည်။",
+  "notificationsTitle": "အသိပေးချက်များ",
+  "noNotifications": "အကြောင်းကြားချက်များမရှိပါ။",
+  "allTab": "အားလုံး",
+  "markAllAsRead": "အားလုံးကို ဖတ်ပြီးကြောင်း အမှတ်အသားပြုပါ။",
+  "notificationMarkedRead": "အကြောင်းကြားချက်ကို ဖတ်ပြီးကြောင်း အမှတ်အသားပြုထားသည်။",
+  "failedToLoadNotifications": "အကြောင်းကြားချက်များကို တင်ရန် မအောင်မြင်ပါ။",
+  "failedToMarkRead": "ဖတ်ပြီးကြောင်း အမှတ်အသားလုပ်၍ မရပါ။",
+  "failedToMarkAllRead": "အားလုံးကို ဖတ်ပြီးကြောင်း အမှတ်အသားလုပ်၍ မရပါ။",
+  "socketConnected": "Socket ချိတ်ဆက်ထားသည်။",
+  "socketDisconnected": "ပလပ်ပေါက်ကို ဖြုတ်ထားသည်။",
+  "newNotificationReceived": "အကြောင်းကြားချက်အသစ်ကို လက်ခံရရှိခဲ့သည်။",
+  "generalCategory": "အထွေထွေ",
+  "horoscopeCategory": "ဇာတာရှင်",
+  "chatCategory": "စကားစမြည်",
+  "systemCategory": "စနစ်",
+  "updateCategory": "အပ်ဒိတ်များ",
+  "howToAskTitle": "မေးနည်း",
+  "noQuestionsAvailable": "မေးခွန်းများ မရရှိနိုင်ပါ။",
+  "failedToLoadQuestions": "မေးခွန်းများကို တင်၍မရပါ။",
+  "pullToRefresh": "ပြန်လည်ဆန်းသစ်ရန် ဆွဲပါ။",
+  "careerCategory": "အသက်မွေးဝမ်းကြောင်း",
+  "loveCategory": "အချစ်နှင့်ဆက်ဆံရေး",
+  "healthCategory": "ကျန်းမာရေး",
+  "financeCategory": "ဘဏ္ဍာရေး",
+  "familyCategory": "မိသားစု",
+  "educationCategory": "ပညာရေး",
+  "travelCategory": "ခရီးသွား",
+  "spiritualCategory": "ဝိညာဏ",
+  "profileLoaded": "ပရိုဖိုင်ကို အောင်မြင်စွာ တင်ပြီးပါပြီ။",
+  "imageUploaded": "ပုံကို အောင်မြင်စွာ အပ်လုဒ်လုပ်ပါ။",
+  "savedInformationConfirmation": "ဒီအချက်အလက်ကို ကျွန်တော် သိမ်းဆည်းပြီးပါပြီ။",
+  "noHistoryAvailable": "မှတ်တမ်းမရရှိနိုင်ပါ။",
+  "missingUserIdError": "အသုံးပြုသူ ID လိုအပ်ပါသည်။",
+  "networkError": "ကွန်ရက် အမှားအယွင်း ထပ်စမ်းကြည့်ပါ။",
+  "timeoutError": "တောင်းဆိုမှု အချိန်ကုန်သွားသည်။",
+  "genericError": "တစ်ခုခုမှားသွားသည်။",
+  "reactionUpdateError": "တုံ့ပြန်မှုကို အပ်ဒိတ်လုပ်၍မရပါ။",
+  "noSearchResults": "ရှာဖွေမှုရလဒ်များ မတွေ့ပါ။",
+  "clearSearch": "ရှာဖွေမှုကို ရှင်းလင်းပါ။",
+  "resultsFound": "ရလဒ်များ တွေ့ရှိခဲ့သည်။",
+  "recoverySecretHint": "ကော်ပီကူးထည့်ခြင်း အလုပ်မဖြစ်နိုင်ပါ၊ ကိုယ်တိုင်ရိုက်ထည့်ပါ။",
+  "recoverAccountDescription": "သင့်အကောင့်ကို ပြန်လည်ရယူရန် ဤအဆင့်များကို လိုက်နာပါ။",
+  "processingLabel": "လုပ်ဆောင်နေသည်...",
+  "clearChatSuccess": "ချတ်ကို အောင်မြင်စွာ ရှင်းလင်းခဲ့သည်။",
+  "notificationsEnabled": "အကြောင်းကြားချက်များကို ဖွင့်ထားသည်။",
+  "notificationsDisabled": "အကြောင်းကြားချက်များကို ပိတ်ထားသည်။",
+  "securityNotice": "သင့်ဒေတာကို လုံခြုံစွာ ကုဒ်ဝှက်ပြီး သိမ်းဆည်းထားသည်။",
+  "loading": "ဖွင့်နေသည်...",
+  "selectLanguage": "ဘာသာစကားကို ရွေးပါ။",
+  "onboardingGetStartedDesc": "သင့်ဘာသာစကားကို ရွေးချယ်ခြင်းဖြင့် စတင်လိုက်ပါ။",
+  "accountRecoveryTitle": "🔐 အကောင့်ပြန်လည်ရယူခြင်းအသေးစိတ်",
+  "recoveryInstructions": "ဤအချက်အလက်ကို လုံခြုံစွာသိမ်းဆည်းပါ။ သင့်အကောင့်ကို ပြန်လည်ရယူရန် ၎င်းကို လိုအပ်မည်ဖြစ်သည်။",
+  "importantNotice": "⚠️ အရေးကြီးသည်-",
+  "astrologerProfileTitle": "ဗေဒင်ဆရာကိုယ်ရေးအကျဉ်း",
+  "personalAstrologer": "ကိုယ်ပိုင်ဗေဒင်ဆရာ",
+  "makePersonalAstrologer": "ကိုယ်ပိုင်ဗေဒင်ဆရာလုပ်ပါ။",
+  "favoriteDescription": "သင်၏မေးခွန်းများကို ဤဗေဒင်ဆရာအတွက် ဦးစားပေးပါမည်။ မရရှိနိုင်ပါက အခြားသော အရည်အချင်းပြည့်မီသော နက္ခတ်ဗေဒင်ဆရာက သင့်ကို ကူညီပေးပါမည်။",
+  "educationQualifications": "ပညာရေးနှင့် အရည်အချင်းများ",
+  "aboutSection": "အကြောင်း",
+  "shareProfile": "Profile ကို မျှဝေပါ။",
+  "loadingAstrologer": "ဗေဒင်ဆရာ အသေးစိတ်ကို တင်ပေးနေသည်...",
+  "failedToLoadAstrologer": "ဗေဒင်ဆရာအသေးစိတ်ကို တင်၍မရပါ။",
+  "authenticationRequired": "စစ်မှန်ကြောင်းအထောက်အထားလိုအပ်သည်။ ကျေးဇူးပြု၍ ဝင်ရောက်ပါ။",
+  "securityCheckFailed": "လုံခြုံရေးစစ်ဆေးမှု မအောင်မြင်ပါ- {error}",
+  "addedToFavorites": "🎯 {name} သည် ယခုအခါ သင့်ကိုယ်ပိုင်ဗေဒင်ဆရာဖြစ်သည်။",
+  "removedFromFavorites": "✅ စိတ်ကြိုက်များမှ {name} ကို ဖယ်ရှားခဲ့သည်။",
+  "toggleFavoriteError": "အကြိုက်ဆုံး အခြေအနေကို အပ်ဒိတ်လုပ်၍မရပါ။",
+  "shareMessage": "{name}\n🎓 ပညာရေး- {education}\n📜 အရည်အချင်း- {qualification}\n⏳ အတွေ့အကြုံ- {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "မပေးထားပါ။",
+  "reviews": "({count} သုံးသပ်ချက်)",
+  "specialties": "အထူးပြု",
+  "experience": "အတွေ့အကြုံ",
+  "qualification": "အရည်အချင်း",
+  "education": "ပညာရေး",
+  "recoveryTips": "• ဤအချက်အလက်ကို ဖန်သားပြင်ဓာတ်ပုံရိုက်ပါ။\n• လုံခြုံသောနေရာတွင် သိမ်းဆည်းပါ။\n• မည်သူနှင့်မျှ မမျှဝေပါနှင့်\n• ၎င်းကို တစ်ကြိမ်သာ ပြသပါမည်။"
+}

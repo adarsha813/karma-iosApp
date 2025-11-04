@@ -1,0 +1,439 @@
+{
+  "@@locale": "et",
+  "settingsTitle": "Seaded",
+  "notificationSettings": "Teavitusseaded",
+  "privacySettings": "Privaatsusseaded",
+  "accountSettings": "Konto seaded",
+  "languageSettings": "Keeleseaded",
+  "languageChanged": "Keel muudetud",
+  "existingUserButton": "Olen olemasolev kasutaja",
+  "chooseCountryTitle": "Vali riik",
+  "yesText": "Jah",
+  "noText": "Ei",
+  "appBarTitle": "Profiili seaded",
+  "userIdLabel": "Kasutaja ID *",
+  "nameLabel": "Nimi",
+  "birthCountryLabel": "Sünnimaa",
+  "birthCityLabel": "Sünnilinn",
+  "countrySelectionTitle": "Vali oma riik",
+  "maleLabel": "Mees",
+  "femaleLabel": "Naine",
+  "birthDateLabel": "Sünnikuupäev",
+  "birthDatePlaceholder": "Valige sünnikuupäev",
+  "birthTimeLabel": "Sünniaeg",
+  "birthTimePlaceholder": "Valige sünniaeg",
+  "saveProfileButton": "Salvesta profiil",
+  "noCitiesFound": "Linnasid ei leitud",
+  "cityPlaceholder": "Sisesta linn riigis {country}",
+  "countryFirstPlaceholder": "Valige esmalt riik",
+  "versionHistoryTitle": "Versiooniajalugu",
+  "notSetText": "Pole määratud",
+  "nameHistory": "Nimi: {name}",
+  "cityHistory": "Linn: {city}",
+  "countryHistory": "Riik: {country}",
+  "genderHistory": "Sugu: {gender}",
+  "birthDateHistory": "Sünnikuupäev: {date}",
+  "birthTimeHistory": "Sünniaeg: {time}",
+  "locationHistory": "Asukoht: {latitude}, {longitude}",
+  "timezoneHistory": "Ajavöönd: GMT{offset}",
+  "dstHistory": "Suveaeg: {value}",
+  "stateHistory": "Olek: {state}",
+  "versionFromText": "Uuendatud kuupäeval {date}",
+  "userIdRequired": "Kasutaja ID on nõutav",
+  "profileSaved": "Profiili salvestamine õnnestus",
+  "saveFailed": "Profiili salvestamine ebaõnnestus",
+  "errorPrefix": "Viga:",
+  "onboardingChooseLanguage": "Valige oma keel",
+  "onboardingChooseLanguageDesc": "Jätkamiseks valige oma eelistatud keel.",
+  "onboardingWhatIsAstrology": "Mis on astroloogia?",
+  "onboardingWhatIsAstrologyDesc": "Astroloogia on taevakehade uurimine...",
+  "onboardingWhyUseApp": "Miks seda rakendust kasutada?",
+  "onboardingWhyUseAppDesc": "Hankige isikupärastatud horoskoope, päevaprognoose ja juhiseid teadlike otsuste langetamiseks.",
+  "onboardingHowToUse": "Kuidas seda rakendust kasutada?",
+  "onboardingHowToUseDesc": "Navigeeri hõlpsalt, vaata igapäevaseid horoskoope ja halda oma profiili täpsete ennustuste saamiseks.",
+  "onboardingGetStarted": "Alustamine",
+  "onboardingNewUser": "Uus kasutaja",
+  "onboardingExistingUser": "Olemasolev kasutaja",
+  "onboardingBack": "Tagasi",
+  "onboardingNext": "Järgmine",
+  "userIdNotFound": "Kasutaja ID-d ei leitud. Palun logi sisse või seadista oma profiil.",
+  "clearNotificationsTitle": "Tühjenda märguanded",
+  "clearNotificationsMessage": "Kas oled kindel, et soovid kõik märguanded kustutada?",
+  "clearNotificationsSuccess": "Kõik märguanded kustutati edukalt.",
+  "clearHoroscopeTitle": "Selge horoskoop",
+  "clearHoroscopeMessage": "Kas oled kindel, et soovid oma horoskoobi andmed kustutada?",
+  "clearHoroscopeSuccess": "Horoskoop edukalt kustutatud.",
+  "clearChatTitle": "Tühjenda vestlusajalugu",
+  "clearChatMessage": "Kas oled kindel, et soovid kogu oma vestlusajaloo kustutada?",
+  "clearChatLocal": "Vestlus kustutati lokaalselt.",
+  "deleteAccountTitle": "Kustuta konto",
+  "deleteAccountMessage": "Kas oled kindel, et soovid oma konto kustutada? See kustutab ka kogu sinu vestlusajaloo ja märguanded.",
+  "deleteAccountSuccess": "Teie konto ja kõik andmed on eemaldatud.",
+  "deleteAccountError": "Viga konto kustutamisel",
+  "logoutTitle": "Logi välja",
+  "logoutMessage": "Kas oled kindel, et soovid välja logida?",
+  "termsPrivacyTitle": "Tingimused ja privaatsus",
+  "privacyPolicyTitle": "Privaatsuspoliitika",
+  "termsConditionsTitle": "Tingimused",
+  "dataControlTitle": "Andmekontroll",
+  "cancelButton": "Tühista",
+  "confirmButton": "Kinnita",
+  "clearQuestionsSuccess": "Kõik küsimused on edukalt kustutatud.",
+  "yoginiLabel": "Joogini",
+  "lordLabel": "Issand",
+  "startLabel": "Alusta",
+  "recoverAccount": "Konto taastamine",
+  "endLabel": "Lõpp",
+  "startDateLabel": "Alguskuupäev",
+  "endDateLabel": "Lõppkuupäev",
+  "notAvailable": "Pole saadaval",
+  "noData": "Andmeid pole",
+  "unknownError": "Tundmatu viga",
+  "retryButton": "Proovi uuesti",
+  "kundaliGeneratorTitle": "Kundali generaator",
+  "natalChartTitle": "Natali diagramm",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Raši",
+  "ascDegreeLabel": "Tõusev kraad",
+  "vimshottariDashaTitle": "Vimshottari Daša",
+  "yoginiDashaTitle": "Joogini Daša",
+  "unknown": "Tundmatu",
+  "clearHoroscope": "Selge horoskoop",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Tühjenda märguanded",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Tühjenda vestlusajalugu",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Logi välja",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Kustuta konto",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Kõik väljad on kohustuslikud.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Konto taastati edukalt.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Taastamine ebaõnnestus. Kontrollige oma andmeid.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Taastumise saladus:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Meist",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Meie ettevõttest",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Oleme pühendunud pakkuma oma kasutajatele parimat astroloogiakogemust.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Meie missioon",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Pakkuda täpseid ja isikupärastatud astroloogiaalaseid teadmisi, mis aitavad kasutajatel oma elus teadlikke otsuseid langetada.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Meie visioon",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Et saada kõige usaldusväärsemaks astroloogiaplatvormiks, mis ühendab tehnoloogia ja iidse tarkuse.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Meie väärtused",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Ausus, täpsus, kasutajakeskne disain ja pidev innovatsioon.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Võta meiega ühendust",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Meiliaadress: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Veebisait: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Klienditugi",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Oleme siin, et aidata",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Täitke allolev vorm ja meie tugimeeskond võtab teiega esimesel võimalusel ühendust.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Sinu nimi",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Teie e-post",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Sõnum",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Sisesta oma e-posti aadress",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Sisestage kehtiv e-posti aadress",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Sisesta {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Saada",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Saadetakse...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ E-kiri saadeti edukalt!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ E-kirja saatmine ebaõnnestus",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro sõnaraamat",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Otsinguterminid...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Termineid ei leitud",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Ostuküsimused",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Kasutaja pole autentitud",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Poe andmete laadimine ebaõnnestus",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Puudub autoriseerimistunnus",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro vestlusrakendus",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Makse õnnestus! Küsimus saadetud",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Makse ebaõnnestus: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Teie saldo",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Questions",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Saadaval olevad pakkumised",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Question",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Osta",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Päevahoroskoop",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Kasutaja ID puudub",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Horoskoopide toomine ebaõnnestus",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Horoskoopi ei leitud.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Märk",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Täna",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Eile",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Sel nädalal",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Eelmisel kuul",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Vestlus",
+  "typeYourQuestionHint": "Tippige oma küsimus...",
+  "paymentRequired": "Makse nõutav",
+  "paymentRequiredMessage": "Oled oma tasuta küsimused ära kasutanud. Jätkamiseks maksa 50 ₹.",
+  "payNowButton": "Maksa kohe",
+  "freeQuestionsRemaining": "{count} tasuta küsimust on jäänud",
+  "paidQuestionsRemaining": "{count} tasulist küsimust on jäänud",
+  "thankYouFeedback": "Täname tagasiside eest!",
+  "ratingSubmitted": "Hinnang esitatud!",
+  "setUserIdFirst": "Palun määrake kõigepealt oma kasutajatunnus",
+  "failedToFetchPrevious": "Eelmiste küsimuste ja vastuste toomine ebaõnnestus",
+  "errorOccurred": "Viga: {error}",
+  "drawerAstroProfile": "Astroprofiil",
+  "drawerDailyHoroscope": "Päevahoroskoop",
+  "drawerBuyQuestions": "Ostuküsimused",
+  "drawerAstroDictionary": "Astro sõnaraamat",
+  "drawerSettings": "Seaded",
+  "drawerCustomerSupport": "Klienditugi",
+  "drawerAbout": "Teave",
+  "drawerProfileSettings": "Profiili seaded",
+  "demoNotificationTitle": "🔔 Demoteatis",
+  "demoNotificationBody": "See on teie rakenduse testteade!",
+  "notificationsTitle": "Teavitused",
+  "noNotifications": "Teavitusi pole",
+  "allTab": "Kõik",
+  "markAllAsRead": "Märgi kõik loetuks",
+  "notificationMarkedRead": "Teade märgitud loetuks",
+  "failedToLoadNotifications": "Teavituste laadimine ebaõnnestus",
+  "failedToMarkRead": "Loetuks märkimine ebaõnnestus",
+  "failedToMarkAllRead": "Kõikide loetuks märkimine ebaõnnestus",
+  "socketConnected": "Pistikupesa ühendatud",
+  "socketDisconnected": "Pistikupesa lahti ühendatud",
+  "newNotificationReceived": "Uus teade saabus",
+  "generalCategory": "Üldine",
+  "horoscopeCategory": "Horoskoop",
+  "chatCategory": "Vestlus",
+  "systemCategory": "Süsteem",
+  "updateCategory": "Värskendused",
+  "howToAskTitle": "Kuidas küsida",
+  "noQuestionsAvailable": "Küsimusi pole saadaval",
+  "failedToLoadQuestions": "Küsimuste laadimine ebaõnnestus",
+  "pullToRefresh": "Värskendamiseks tõmmake",
+  "careerCategory": "Karjäär",
+  "loveCategory": "Armastus ja suhted",
+  "healthCategory": "Tervis",
+  "financeCategory": "Rahandus",
+  "familyCategory": "Perekond",
+  "educationCategory": "Haridus",
+  "travelCategory": "Reisimine",
+  "spiritualCategory": "Vaimne",
+  "profileLoaded": "Profiil laaditi edukalt",
+  "imageUploaded": "Pilt on edukalt üles laaditud",
+  "savedInformationConfirmation": "Olen selle teabe salvestanud",
+  "noHistoryAvailable": "Ajalugu pole saadaval",
+  "missingUserIdError": "Kasutaja ID on nõutav",
+  "networkError": "Võrgu viga. Palun proovige uuesti.",
+  "timeoutError": "Päring aegus",
+  "genericError": "Midagi läks valesti",
+  "reactionUpdateError": "Reaktsiooni värskendamine ebaõnnestus",
+  "noSearchResults": "Otsingutulemusi ei leitud",
+  "clearSearch": "Tühjenda otsing",
+  "resultsFound": "Tulemused leiti",
+  "recoverySecretHint": "Kopeerimine ja kleepimine ei pruugi töötada, tippige käsitsi",
+  "recoverAccountDescription": "Konto taastamiseks järgige neid samme",
+  "processingLabel": "Töötlemine...",
+  "clearChatSuccess": "Vestlus edukalt tühistatud",
+  "notificationsEnabled": "Teavitused on lubatud",
+  "notificationsDisabled": "Märguanded on keelatud",
+  "securityNotice": "Teie andmed on turvaliselt krüpteeritud ja salvestatud",
+  "loading": "Laadimine...",
+  "selectLanguage": "Valige keel",
+  "onboardingGetStartedDesc": "Alustage keele valimisega",
+  "accountRecoveryTitle": "🔐 Konto taastamise üksikasjad",
+  "recoveryInstructions": "Palun salvestage see teave turvaliselt. Teil on seda vaja oma konto taastamiseks.",
+  "importantNotice": "⚠️ Tähtis:",
+  "astrologerProfileTitle": "Astroloogi profiil",
+  "personalAstrologer": "Isiklik astroloog",
+  "makePersonalAstrologer": "Loo isiklik astroloog",
+  "favoriteDescription": "Teie küsimused edastatakse sellele astroloogile prioriteetselt. Kui ta pole saadaval, aitab teid teine kvalifitseeritud astroloog.",
+  "educationQualifications": "Haridus ja kvalifikatsioon",
+  "aboutSection": "Teave",
+  "shareProfile": "Jaga profiili",
+  "loadingAstrologer": "Astroloogi andmete laadimine...",
+  "failedToLoadAstrologer": "Astroloogi andmete laadimine ebaõnnestus",
+  "authenticationRequired": "Autentimine on vajalik. Palun logige sisse.",
+  "securityCheckFailed": "Turvakontroll ebaõnnestus: {error}",
+  "addedToFavorites": "🎯 {name} on nüüd teie isiklik astroloog",
+  "removedFromFavorites": "✅ Eemaldas {name} lemmikute hulgast",
+  "toggleFavoriteError": "Lemmikute staatuse värskendamine ebaõnnestus",
+  "shareMessage": "{name}\n🎓 Haridus: {education}\n📜 Kvalifikatsioon: {qualification}\n⏳ Kogemus: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Pole esitatud",
+  "reviews": "({count} arvustust)",
+  "specialties": "Erialad",
+  "experience": "Kogemus",
+  "qualification": "Kvalifikatsioon",
+  "education": "Haridus",
+  "recoveryTips": "• Tehke sellest teabest ekraanipilt\n• Hoidke seda turvalises kohas\n• Ärge jagage seda kellegagi\n• Seda kuvatakse ainult üks kord"
+}

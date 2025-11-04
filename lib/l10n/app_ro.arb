@@ -1,0 +1,439 @@
+{
+  "@@locale": "ro",
+  "settingsTitle": "Setări",
+  "notificationSettings": "Setări de notificare",
+  "privacySettings": "Setări de confidențialitate",
+  "accountSettings": "Setările contului",
+  "languageSettings": "Setări de limbă",
+  "languageChanged": "Limba a fost schimbată",
+  "existingUserButton": "Sunt un utilizator existent",
+  "chooseCountryTitle": "Alegeți țara",
+  "yesText": "Da",
+  "noText": "Nu",
+  "appBarTitle": "Setări profil",
+  "userIdLabel": "ID-ul de utilizator *",
+  "nameLabel": "Nume",
+  "birthCountryLabel": "Țara de naștere",
+  "birthCityLabel": "Orașul nașterii",
+  "countrySelectionTitle": "Alege-ți țara",
+  "maleLabel": "Bărbat",
+  "femaleLabel": "Femeie",
+  "birthDateLabel": "Data de naștere",
+  "birthDatePlaceholder": "Selectați data nașterii",
+  "birthTimeLabel": "Ora nașterii",
+  "birthTimePlaceholder": "Selectați ora nașterii",
+  "saveProfileButton": "Salvați profilul",
+  "noCitiesFound": "Nu s-au găsit orașe",
+  "cityPlaceholder": "Introduceți orașul în {country}",
+  "countryFirstPlaceholder": "Selectați mai întâi țara",
+  "versionHistoryTitle": "Istoricul versiunilor",
+  "notSetText": "Nesetat",
+  "nameHistory": "Nume: {name}",
+  "cityHistory": "Oraș: {city}",
+  "countryHistory": "Țară: {country}",
+  "genderHistory": "Sex: {gender}",
+  "birthDateHistory": "Data nașterii: {date}",
+  "birthTimeHistory": "Ora nașterii: {time}",
+  "locationHistory": "Locație: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Stat: {state}",
+  "versionFromText": "Actualizat pe {date}",
+  "userIdRequired": "ID-ul de utilizator este obligatoriu",
+  "profileSaved": "Profilul a fost salvat cu succes",
+  "saveFailed": "Profilul nu a putut fi salvat.",
+  "errorPrefix": "Eroare:",
+  "onboardingChooseLanguage": "Alege-ți limba",
+  "onboardingChooseLanguageDesc": "Selectați limba preferată pentru a continua.",
+  "onboardingWhatIsAstrology": "Ce este Astrologia?",
+  "onboardingWhatIsAstrologyDesc": "Astrologia este studiul corpurilor cerești...",
+  "onboardingWhyUseApp": "De ce să folosești această aplicație?",
+  "onboardingWhyUseAppDesc": "Obține horoscop personalizat, predicții zilnice și îndrumări pentru a lua decizii informate.",
+  "onboardingHowToUse": "Cum se folosește această aplicație?",
+  "onboardingHowToUseDesc": "Navighează cu ușurință, verifică horoscopul zilnic și gestionează-ți profilul pentru predicții precise.",
+  "onboardingGetStarted": "Începeți",
+  "onboardingNewUser": "Utilizator nou",
+  "onboardingExistingUser": "Utilizator existent",
+  "onboardingBack": "Spate",
+  "onboardingNext": "Următorul",
+  "userIdNotFound": "ID-ul utilizatorului nu a fost găsit. Vă rugăm să vă conectați sau să vă configurați profilul.",
+  "clearNotificationsTitle": "Ștergeți notificările",
+  "clearNotificationsMessage": "Sigur vrei să ștergi toate notificările?",
+  "clearNotificationsSuccess": "Toate notificările au fost șterse cu succes.",
+  "clearHoroscopeTitle": "Horoscop clar",
+  "clearHoroscopeMessage": "Sigur vrei să ștergi datele horoscopului tău?",
+  "clearHoroscopeSuccess": "Horoscop șters cu succes.",
+  "clearChatTitle": "Ștergeți istoricul chatului",
+  "clearChatMessage": "Sigur vrei să ștergi tot istoricul chat-urilor?",
+  "clearChatLocal": "Chatul a fost șters local.",
+  "deleteAccountTitle": "Șterge contul",
+  "deleteAccountMessage": "Sigur vrei să-ți ștergi contul? Această acțiune va șterge și tot istoricul chat-urilor și notificările.",
+  "deleteAccountSuccess": "Contul tău și toate datele au fost eliminate.",
+  "deleteAccountError": "Eroare la ștergerea contului",
+  "logoutTitle": "Deconectare",
+  "logoutMessage": "Sigur vrei să te deconectezi?",
+  "termsPrivacyTitle": "Termeni și confidențialitate",
+  "privacyPolicyTitle": "Politica de confidențialitate",
+  "termsConditionsTitle": "Termeni și condiții",
+  "dataControlTitle": "Controlul datelor",
+  "cancelButton": "Anula",
+  "confirmButton": "Confirma",
+  "clearQuestionsSuccess": "Toate întrebările au fost șterse cu succes.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Domnul",
+  "startLabel": "Început",
+  "recoverAccount": "Recuperează contul",
+  "endLabel": "Sfârşit",
+  "startDateLabel": "Data de începere",
+  "endDateLabel": "Data de încheiere",
+  "notAvailable": "Nu este disponibil",
+  "noData": "Fără date",
+  "unknownError": "Eroare necunoscută",
+  "retryButton": "Reîncercați",
+  "kundaliGeneratorTitle": "Generator Kundali",
+  "natalChartTitle": "Harta natală",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rași",
+  "ascDegreeLabel": "Grad Ascendent",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Necunoscut",
+  "clearHoroscope": "Horoscop clar",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Ștergeți notificările",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Ștergeți istoricul chatului",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Deconectare",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Șterge contul",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Toate câmpurile sunt obligatorii.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Contul a fost recuperat cu succes.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Recuperarea a eșuat. Verificați-vă informațiile.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Secretul recuperării:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Despre noi",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Despre compania noastră",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Ne angajăm să oferim cea mai bună experiență de astrologie utilizatorilor noștri.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Misiunea noastră",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Pentru a oferi informații astrologice precise și personalizate, care să ajute utilizatorii să ia decizii informate în viața lor.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Viziunea noastră",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Să devenim cea mai de încredere platformă de astrologie, combinând tehnologia și înțelepciunea străveche.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Valorile noastre",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Integritate, Precizie, Design Centrat pe Utilizator și Inovație Continuă.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Contactaţi-ne",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "E-mail: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Site web: www.companiatavoastră.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Asistență clienți",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Suntem aici pentru a vă ajuta",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Completați formularul de mai jos și echipa noastră de asistență vă va răspunde cât mai curând posibil.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Numele dumneavoastră",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Adresa dvs. de e-mail",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Mesaj",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Introdu adresa ta de e-mail",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Introduceți o adresă de e-mail validă",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Introduceți {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Trimite",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Se trimite...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ E-mail trimis cu succes!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Nu s-a putut trimite e-mailul",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Dicționar Astrologic",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Termeni de căutare...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Nu s-au găsit termeni",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Întrebări de cumpărare",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Utilizator neautentificat",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Nu s-au putut încărca datele din magazin",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Lipsește jetonul de autentificare",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Aplicația de chat Astro",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Plată reușită! Întrebare trimisă",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Plata a eșuat: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Soldul dumneavoastră",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Questions",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Oferte disponibile",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Question",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Cumpăra",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Horoscop zilnic",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "ID-ul utilizatorului lipsește",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Horoscopul nu a putut fi preluat",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Nu s-a găsit niciun horoscop.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Semn",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Astăzi",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Ieri",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "În această săptămână",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Luna trecută",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Chat",
+  "typeYourQuestionHint": "Scrieți întrebarea dvs...",
+  "paymentRequired": "Plată necesară",
+  "paymentRequiredMessage": "Ți-ai folosit întrebările gratuite. Plătește 50 ₹ pentru a continua.",
+  "payNowButton": "Plătește acum",
+  "freeQuestionsRemaining": "{count} întrebări libere rămase",
+  "paidQuestionsRemaining": "{count} întrebări plătite rămase",
+  "thankYouFeedback": "Mulțumesc pentru feedback!",
+  "ratingSubmitted": "Evaluare trimisă!",
+  "setUserIdFirst": "Vă rugăm să setați mai întâi ID-ul de utilizator",
+  "failedToFetchPrevious": "Nu s-au putut prelua întrebările și răspunsurile anterioare",
+  "errorOccurred": "Eroare: {error}",
+  "drawerAstroProfile": "Profil Astro",
+  "drawerDailyHoroscope": "Horoscop zilnic",
+  "drawerBuyQuestions": "Întrebări de cumpărare",
+  "drawerAstroDictionary": "Dicționar Astrologic",
+  "drawerSettings": "Setări",
+  "drawerCustomerSupport": "Asistență clienți",
+  "drawerAbout": "Despre",
+  "drawerProfileSettings": "Setări profil",
+  "demoNotificationTitle": "🔔 Notificare demonstrație",
+  "demoNotificationBody": "Aceasta este o notificare de test de la aplicația ta!",
+  "notificationsTitle": "Notificări",
+  "noNotifications": "Nicio notificare",
+  "allTab": "Toate",
+  "markAllAsRead": "Marchează toate ca citite",
+  "notificationMarkedRead": "Notificare marcată ca citită",
+  "failedToLoadNotifications": "Nu s-au putut încărca notificările",
+  "failedToMarkRead": "Marcarea ca citită a eșuat",
+  "failedToMarkAllRead": "Nu s-au putut marca toate ca citite",
+  "socketConnected": "Priză conectată",
+  "socketDisconnected": "Priză deconectată",
+  "newNotificationReceived": "Notificare nouă primită",
+  "generalCategory": "General",
+  "horoscopeCategory": "Horoscop",
+  "chatCategory": "Chat",
+  "systemCategory": "Sistem",
+  "updateCategory": "Actualizări",
+  "howToAskTitle": "Cum să întrebi",
+  "noQuestionsAvailable": "Nu sunt disponibile întrebări",
+  "failedToLoadQuestions": "Întrebările nu au putut fi încărcate",
+  "pullToRefresh": "Trageți pentru a reîmprospăta",
+  "careerCategory": "Carieră",
+  "loveCategory": "Dragoste și relații",
+  "healthCategory": "Sănătate",
+  "financeCategory": "Finanţa",
+  "familyCategory": "Familial",
+  "educationCategory": "Educaţie",
+  "travelCategory": "Voiaj",
+  "spiritualCategory": "Spiritual",
+  "profileLoaded": "Profilul a fost încărcat cu succes",
+  "imageUploaded": "Imaginea a fost încărcată cu succes",
+  "savedInformationConfirmation": "Am salvat aceste informații",
+  "noHistoryAvailable": "Nu este disponibil istoricul",
+  "missingUserIdError": "ID-ul de utilizator este obligatoriu",
+  "networkError": "Eroare de rețea. Vă rugăm să încercați din nou.",
+  "timeoutError": "Solicitarea a expirat",
+  "genericError": "Ceva nu a mers bine",
+  "reactionUpdateError": "Reacția nu a putut fi actualizată",
+  "noSearchResults": "Nu s-au găsit rezultate ale căutării",
+  "clearSearch": "Șterge căutarea",
+  "resultsFound": "Rezultate găsite",
+  "recoverySecretHint": "Copiere-lipire s-ar putea să nu funcționeze, tastați manual",
+  "recoverAccountDescription": "Urmați acești pași pentru a vă recupera contul",
+  "processingLabel": "Prelucrare...",
+  "clearChatSuccess": "Chatul a fost șters cu succes",
+  "notificationsEnabled": "Notificări activate",
+  "notificationsDisabled": "Notificări dezactivate",
+  "securityNotice": "Datele dumneavoastră sunt criptate și stocate în siguranță",
+  "loading": "Încărcare...",
+  "selectLanguage": "Selectați limba",
+  "onboardingGetStartedDesc": "Începeți prin a alege limba",
+  "accountRecoveryTitle": "🔐 Detalii despre recuperarea contului",
+  "recoveryInstructions": "Vă rugăm să salvați aceste informații în siguranță. Veți avea nevoie de ele pentru a vă recupera contul.",
+  "importantNotice": "⚠️ Important:",
+  "astrologerProfileTitle": "Profilul astrologului",
+  "personalAstrologer": "Astrolog personal",
+  "makePersonalAstrologer": "Devino astrolog personal",
+  "favoriteDescription": "Întrebările dumneavoastră vor fi transmise cu prioritate acestui astrolog. Dacă nu este disponibil, vă va ajuta un alt astrolog calificat.",
+  "educationQualifications": "Educație și calificări",
+  "aboutSection": "Despre",
+  "shareProfile": "Distribuiți profilul",
+  "loadingAstrologer": "Se încarcă detaliile astrologului...",
+  "failedToLoadAstrologer": "Nu s-au putut încărca detaliile astrologului",
+  "authenticationRequired": "Autentificare necesară. Vă rugăm să vă conectați.",
+  "securityCheckFailed": "Verificarea de securitate a eșuat: {error}",
+  "addedToFavorites": "🎯 {name} este acum Astrologul tău Personal",
+  "removedFromFavorites": "✅ {name} a fost eliminat din favorite",
+  "toggleFavoriteError": "Nu s-a putut actualiza starea favoritelor",
+  "shareMessage": "{name}\n🎓 Educație: {education}\n📜 Calificare: {qualification}\n⏳ Experiență: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Nefurnizat",
+  "reviews": "({count} recenzii)",
+  "specialties": "Specialități",
+  "experience": "Experienţă",
+  "qualification": "Calificare",
+  "education": "Educaţie",
+  "recoveryTips": "• Faceți o captură de ecran a acestor informații\n• Păstrați-o într-un loc sigur\n• Nu o partajați cu nimeni\n• Aceasta va fi afișată o singură dată"
+}

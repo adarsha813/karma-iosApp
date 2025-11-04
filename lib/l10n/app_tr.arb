@@ -1,0 +1,439 @@
+{
+  "@@locale": "tr",
+  "settingsTitle": "Ayarlar",
+  "notificationSettings": "Bildirim Ayarları",
+  "privacySettings": "Gizlilik Ayarları",
+  "accountSettings": "Hesap Ayarları",
+  "languageSettings": "Dil Ayarları",
+  "languageChanged": "Dil değiştirildi",
+  "existingUserButton": "Ben mevcut bir kullanıcıyım",
+  "chooseCountryTitle": "Ülke Seçin",
+  "yesText": "Evet",
+  "noText": "HAYIR",
+  "appBarTitle": "Profil Ayarları",
+  "userIdLabel": "Kullanıcı kimliği *",
+  "nameLabel": "İsim",
+  "birthCountryLabel": "Doğum Ülkesi",
+  "birthCityLabel": "Doğum Şehri",
+  "countrySelectionTitle": "Ülkenizi seçin",
+  "maleLabel": "Erkek",
+  "femaleLabel": "Dişi",
+  "birthDateLabel": "Doğum Tarihi",
+  "birthDatePlaceholder": "Doğum Tarihini Seçin",
+  "birthTimeLabel": "Doğum Saati",
+  "birthTimePlaceholder": "Doğum Saatini Seçin",
+  "saveProfileButton": "Profili Kaydet",
+  "noCitiesFound": "Şehir bulunamadı",
+  "cityPlaceholder": "{country} şehir girin",
+  "countryFirstPlaceholder": "Önce ülkeyi seçin",
+  "versionHistoryTitle": "Sürüm Geçmişi",
+  "notSetText": "Ayarlanmamış",
+  "nameHistory": "Adı: {name}",
+  "cityHistory": "Şehir: {city}",
+  "countryHistory": "Ülke: {country}",
+  "genderHistory": "Cinsiyet: {gender}",
+  "birthDateHistory": "Doğum Tarihi: {date}",
+  "birthTimeHistory": "Doğum Saati: {time}",
+  "locationHistory": "Konum: {latitude}, {longitude}",
+  "timezoneHistory": "Saat dilimi: GMT{offset}",
+  "dstHistory": "Yaz Saati Uygulaması: {value}",
+  "stateHistory": "Durum: {state}",
+  "versionFromText": "{date} tarihinde güncellendi",
+  "userIdRequired": "Kullanıcı kimliği gereklidir",
+  "profileSaved": "Profil başarıyla kaydedildi",
+  "saveFailed": "Profil kaydedilemedi",
+  "errorPrefix": "Hata:",
+  "onboardingChooseLanguage": "Dilinizi Seçin",
+  "onboardingChooseLanguageDesc": "Devam etmek için tercih ettiğiniz dili seçin.",
+  "onboardingWhatIsAstrology": "Astroloji Nedir?",
+  "onboardingWhatIsAstrologyDesc": "Astroloji gök cisimlerinin incelenmesidir...",
+  "onboardingWhyUseApp": "Bu uygulamayı neden kullanmalısınız?",
+  "onboardingWhyUseAppDesc": "Kişiselleştirilmiş burç yorumları, günlük tahminler ve bilinçli kararlar alabilmeniz için rehberlik alın.",
+  "onboardingHowToUse": "Bu uygulama nasıl kullanılır?",
+  "onboardingHowToUseDesc": "Kolayca gezinin, günlük burç yorumlarını inceleyin ve doğru tahminler için profilinizi yönetin.",
+  "onboardingGetStarted": "Başlayın",
+  "onboardingNewUser": "Yeni Kullanıcı",
+  "onboardingExistingUser": "Mevcut Kullanıcı",
+  "onboardingBack": "Geri",
+  "onboardingNext": "Sonraki",
+  "userIdNotFound": "Kullanıcı kimliği bulunamadı. Lütfen giriş yapın veya profilinizi ayarlayın.",
+  "clearNotificationsTitle": "Bildirimleri Temizle",
+  "clearNotificationsMessage": "Tüm bildirimleri temizlemek istediğinizden emin misiniz?",
+  "clearNotificationsSuccess": "Tüm bildirimler başarıyla temizlendi.",
+  "clearHoroscopeTitle": "Net Burçlar",
+  "clearHoroscopeMessage": "Burç verilerinizi temizlemek istediğinizden emin misiniz?",
+  "clearHoroscopeSuccess": "Burç başarıyla temizlendi.",
+  "clearChatTitle": "Sohbet Geçmişini Temizle",
+  "clearChatMessage": "Sohbet geçmişinizi tamamen silmek istediğinizden emin misiniz?",
+  "clearChatLocal": "Sohbet yerel olarak temizlendi.",
+  "deleteAccountTitle": "Hesabı Sil",
+  "deleteAccountMessage": "Hesabınızı silmek istediğinizden emin misiniz? Bu işlem tüm sohbet geçmişinizi ve bildirimlerinizi de temizleyecektir.",
+  "deleteAccountSuccess": "Hesabınız ve tüm verileriniz silinmiştir.",
+  "deleteAccountError": "Hesap silinirken hata oluştu",
+  "logoutTitle": "Çıkış yap",
+  "logoutMessage": "Çıkış yapmak istediğinize emin misiniz?",
+  "termsPrivacyTitle": "Şartlar ve Gizlilik",
+  "privacyPolicyTitle": "Gizlilik Politikası",
+  "termsConditionsTitle": "Şartlar ve Koşullar",
+  "dataControlTitle": "Veri Kontrolü",
+  "cancelButton": "İptal etmek",
+  "confirmButton": "Onaylamak",
+  "clearQuestionsSuccess": "Tüm sorular başarıyla silindi.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Tanrım",
+  "startLabel": "Başlangıç",
+  "recoverAccount": "Hesabı Kurtar",
+  "endLabel": "Son",
+  "startDateLabel": "Başlangıç Tarihi",
+  "endDateLabel": "Bitiş Tarihi",
+  "notAvailable": "Müsait değil",
+  "noData": "Veri yok",
+  "unknownError": "Bilinmeyen hata",
+  "retryButton": "Tekrar dene",
+  "kundaliGeneratorTitle": "Kundali Jeneratörü",
+  "natalChartTitle": "Doğum Haritası",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Raşi",
+  "ascDegreeLabel": "Yükselen Derece",
+  "vimshottariDashaTitle": "Vimshottari Daşa",
+  "yoginiDashaTitle": "Yogini Daşa",
+  "unknown": "Bilinmeyen",
+  "clearHoroscope": "Net Burçlar",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Bildirimleri Temizle",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Sohbet Geçmişini Temizle",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Çıkış yap",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Hesabı Sil",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Tüm alanların doldurulması zorunludur.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Hesap başarıyla kurtarıldı.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Kurtarma başarısız oldu. Bilgilerinizi kontrol edin.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Kurtarma Sırrı:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Hakkımızda",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Şirketimiz Hakkında",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Kullanıcılarımıza en iyi astroloji deneyimini sunmaya kararlıyız.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Misyonumuz",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Kullanıcıların hayatlarında bilinçli kararlar almalarına yardımcı olmak için doğru ve kişiselleştirilmiş astroloji içgörüleri sağlamak.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Vizyonumuz",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Teknolojiyi kadim bilgelikle birleştirerek en güvenilir astroloji platformu olmak.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Değerlerimiz",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Dürüstlük, Doğruluk, Kullanıcı Odaklı Tasarım ve Sürekli Yenilik.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Bize Ulaşın",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "E-posta: support@şirketiniz.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Web sitesi: www.sirketiniz.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Müşteri Desteği",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Yardım Etmek İçin Buradayız",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Aşağıdaki formu doldurun, destek ekibimiz en kısa sürede size geri dönüş yapacaktır.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Adınız",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "E-postanız",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Mesaj",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "E-postanızı girin",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Geçerli bir e-posta adresi girin",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "{fieldName} girin",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Göndermek",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Gönderiliyor...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ E-posta başarıyla gönderildi!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ E-posta gönderilemedi",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astroloji Sözlüğü",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Arama terimleri...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Hiçbir terim bulunamadı",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Soruları Satın Al",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Kullanıcı kimliği doğrulanmadı",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Mağaza verileri yüklenemedi",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Eksik yetkilendirme belirteci",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Sohbet Uygulaması",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Ödeme başarılı! Soru gönderildi",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Ödeme başarısız oldu: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Bakiyeniz",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Sorular",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Mevcut Teklifler",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Soru",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Satın almak",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Günlük Burç Yorumları",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Kullanıcı kimliği eksik",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Burçlar alınamadı",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Burç bulunamadı.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "İmza",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Bugün",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Dün",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Bu hafta",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Geçen ay",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Sohbet",
+  "typeYourQuestionHint": "Sorunuzu yazın...",
+  "paymentRequired": "Ödeme Gerekli",
+  "paymentRequiredMessage": "Ücretsiz sorularınızı kullandınız. Devam etmek için ₹50 ödeyin.",
+  "payNowButton": "Şimdi Öde",
+  "freeQuestionsRemaining": "{count} kalan ücretsiz sorular",
+  "paidQuestionsRemaining": "{count} ücretli soru kaldı",
+  "thankYouFeedback": "Geri bildiriminiz için teşekkür ederiz!",
+  "ratingSubmitted": "Oylama gönderildi!",
+  "setUserIdFirst": "Lütfen önce Kullanıcı Kimliğinizi ayarlayın",
+  "failedToFetchPrevious": "Önceki sorular ve yanıtlar alınamadı",
+  "errorOccurred": "Hata: {error}",
+  "drawerAstroProfile": "Astro Profili",
+  "drawerDailyHoroscope": "Günlük Burç Yorumları",
+  "drawerBuyQuestions": "Soruları Satın Al",
+  "drawerAstroDictionary": "Astroloji Sözlüğü",
+  "drawerSettings": "Ayarlar",
+  "drawerCustomerSupport": "Müşteri Desteği",
+  "drawerAbout": "Hakkında",
+  "drawerProfileSettings": "Profil Ayarları",
+  "demoNotificationTitle": "🔔 Demo Bildirimi",
+  "demoNotificationBody": "Bu, uygulamanızdan gelen bir test bildirimidir!",
+  "notificationsTitle": "Bildirimler",
+  "noNotifications": "Hiçbir bildirim yok",
+  "allTab": "Tüm",
+  "markAllAsRead": "Tümünü okundu olarak işaretle",
+  "notificationMarkedRead": "Bildirim okundu olarak işaretlendi",
+  "failedToLoadNotifications": "Bildirimler yüklenemedi",
+  "failedToMarkRead": "Okundu olarak işaretlenemedi",
+  "failedToMarkAllRead": "Tümünü okundu olarak işaretleme başarısız oldu",
+  "socketConnected": "Soket bağlı",
+  "socketDisconnected": "Soket bağlantısı kesildi",
+  "newNotificationReceived": "Yeni bildirim alındı",
+  "generalCategory": "Genel",
+  "horoscopeCategory": "Burç",
+  "chatCategory": "Sohbet",
+  "systemCategory": "Sistem",
+  "updateCategory": "Güncellemeler",
+  "howToAskTitle": "Nasıl Sorulur",
+  "noQuestionsAvailable": "Soru bulunamadı",
+  "failedToLoadQuestions": "Sorular yüklenemedi",
+  "pullToRefresh": "Yenilemek için çekin",
+  "careerCategory": "Kariyer",
+  "loveCategory": "Aşk ve İlişkiler",
+  "healthCategory": "Sağlık",
+  "financeCategory": "Finans",
+  "familyCategory": "Aile",
+  "educationCategory": "Eğitim",
+  "travelCategory": "Seyahat",
+  "spiritualCategory": "Manevi",
+  "profileLoaded": "Profil başarıyla yüklendi",
+  "imageUploaded": "Resim başarıyla yüklendi",
+  "savedInformationConfirmation": "Bu Bilgileri Kaydettim",
+  "noHistoryAvailable": "Geçmiş mevcut değil",
+  "missingUserIdError": "Kullanıcı kimliği gereklidir",
+  "networkError": "Ağ hatası. Lütfen tekrar deneyin.",
+  "timeoutError": "İstek zaman aşımına uğradı",
+  "genericError": "Bir şeyler ters gitti",
+  "reactionUpdateError": "Tepki güncellenemedi",
+  "noSearchResults": "Hiçbir arama sonucu bulunamadı",
+  "clearSearch": "Aramayı temizle",
+  "resultsFound": "Bulunan sonuçlar",
+  "recoverySecretHint": "Kopyala-yapıştır işe yaramayabilir, elle yazın",
+  "recoverAccountDescription": "Hesabınızı kurtarmak için şu adımları izleyin",
+  "processingLabel": "İşleme...",
+  "clearChatSuccess": "Sohbet başarıyla temizlendi",
+  "notificationsEnabled": "Bildirimler etkinleştirildi",
+  "notificationsDisabled": "Bildirimler devre dışı bırakıldı",
+  "securityNotice": "Verileriniz güvenli bir şekilde şifrelenir ve saklanır",
+  "loading": "Yükleniyor...",
+  "selectLanguage": "Dil Seçin",
+  "onboardingGetStartedDesc": "Dilinizi seçerek başlayın",
+  "accountRecoveryTitle": "🔐 Hesap Kurtarma Ayrıntıları",
+  "recoveryInstructions": "Lütfen bu bilgileri güvenli bir şekilde saklayın. Hesabınızı kurtarmak için bunlara ihtiyacınız olacak.",
+  "importantNotice": "⚠️ Önemli:",
+  "astrologerProfileTitle": "Astrolog Profili",
+  "personalAstrologer": "Kişisel Astrolog",
+  "makePersonalAstrologer": "Kişisel Astrolog Oluşturun",
+  "favoriteDescription": "Sorularınız bu astrologa önceliklendirilecektir. Müsait değilseniz, başka bir kalifiye astrolog size yardımcı olacaktır.",
+  "educationQualifications": "Eğitim ve Nitelikler",
+  "aboutSection": "Hakkında",
+  "shareProfile": "Profili Paylaş",
+  "loadingAstrologer": "Astrolog detayları yükleniyor...",
+  "failedToLoadAstrologer": "Astrolog detayları yüklenemedi",
+  "authenticationRequired": "Kimlik doğrulaması gerekiyor. Lütfen giriş yapın.",
+  "securityCheckFailed": "Güvenlik kontrolü başarısız oldu: {error}",
+  "addedToFavorites": "🎯 {name} artık Kişisel Astroloğunuz",
+  "removedFromFavorites": "✅ {name} favorilerden kaldırıldı",
+  "toggleFavoriteError": "Favori durumu güncellenemedi",
+  "shareMessage": "{name}\n🎓 Eğitim: {education}\n📜 Nitelikler: {qualification}\n⏳ Deneyim: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Sağlanmadı",
+  "reviews": "({count} inceleme)",
+  "specialties": "Uzmanlıklar",
+  "experience": "Deneyim",
+  "qualification": "Vasıf",
+  "education": "Eğitim",
+  "recoveryTips": "• Bu bilgilerin ekran görüntüsünü alın\n• Güvenli bir yerde saklayın\n• Kimseyle paylaşmayın\n• Bu yalnızca bir kez gösterilecektir"
+}

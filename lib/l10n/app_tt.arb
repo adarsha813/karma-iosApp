@@ -1,0 +1,439 @@
+{
+  "@@locale": "tt",
+  "settingsTitle": "Көйләүләр",
+  "notificationSettings": "Хәбәрләр көйләүләре",
+  "privacySettings": "Хосусыйлык көйләүләре",
+  "accountSettings": "Хисап көйләүләре",
+  "languageSettings": "Тел көйләүләре",
+  "languageChanged": "Тел үзгәрде",
+  "existingUserButton": "Мин булган кулланучы",
+  "chooseCountryTitle": "Илне сайлагыз",
+  "yesText": "Әйе",
+  "noText": ".К",
+  "appBarTitle": "Профиль көйләүләре",
+  "userIdLabel": "Кулланучының ID *",
+  "nameLabel": "Исем",
+  "birthCountryLabel": "Туган ил",
+  "birthCityLabel": "Туган шәһәр",
+  "countrySelectionTitle": "Илегезне сайлагыз",
+  "maleLabel": "Ир-ат",
+  "femaleLabel": "Хатын-кыз",
+  "birthDateLabel": "Туган көн",
+  "birthDatePlaceholder": "Туган көнен сайлагыз",
+  "birthTimeLabel": "Туган вакыт",
+  "birthTimePlaceholder": "Туган вакытны сайлагыз",
+  "saveProfileButton": "Профильне сакла",
+  "noCitiesFound": "Шәһәрләр табылмады",
+  "cityPlaceholder": "Enter city in {country}",
+  "countryFirstPlaceholder": "Башта илне сайлагыз",
+  "versionHistoryTitle": "Вариант тарихы",
+  "notSetText": "Көтелмәгән",
+  "nameHistory": "Name: {name}",
+  "cityHistory": "City: {city}",
+  "countryHistory": "Country: {country}",
+  "genderHistory": "Gender: {gender}",
+  "birthDateHistory": "Birth Date: {date}",
+  "birthTimeHistory": "Birth Time: {time}",
+  "locationHistory": "Location: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "State: {state}",
+  "versionFromText": "Updated on {date}",
+  "userIdRequired": "Кулланучының таныклыгы кирәк",
+  "profileSaved": "Профиль уңышлы сакланды",
+  "saveFailed": "Профильне саклый алмады",
+  "errorPrefix": "Хата:",
+  "onboardingChooseLanguage": "Сезнең телегезне сайлагыз",
+  "onboardingChooseLanguageDesc": "Дәвам итәр өчен өстенлекле телегезне сайлагыз.",
+  "onboardingWhatIsAstrology": "Нәрсә ул астрология?",
+  "onboardingWhatIsAstrologyDesc": "Астрология - күк җисемнәрен өйрәнү ...",
+  "onboardingWhyUseApp": "Нигә бу кушымтаны кулланырга?",
+  "onboardingWhyUseAppDesc": "Персональләштерелгән гороскоплар, көндәлек фаразлар, мәгълүматлы карарлар кабул итү өчен җитәкчелек алыгыз.",
+  "onboardingHowToUse": "Бу кушымтаны ничек кулланырга?",
+  "onboardingHowToUseDesc": "Easilyиңел юл белән йөрегез, көндәлек гороскопларны тикшерегез, төгәл фаразлау өчен профилегез белән идарә итегез.",
+  "onboardingGetStarted": "Башлау",
+  "onboardingNewUser": "Яңа кулланучы",
+  "onboardingExistingUser": "Хәзерге кулланучы",
+  "onboardingBack": "Кире",
+  "onboardingNext": "Киләсе",
+  "userIdNotFound": "Кулланучы таныклыгы табылмады. Зинһар, керегез яки профилегезне куегыз.",
+  "clearNotificationsTitle": "Чиста хәбәрләр",
+  "clearNotificationsMessage": "Сез барлык хәбәрләрне чистартырга телисезме?",
+  "clearNotificationsSuccess": "Барлык хәбәрләр дә уңышлы чистартылды.",
+  "clearHoroscopeTitle": "Гороскопны чистарту",
+  "clearHoroscopeMessage": "Сез гороскоп мәгълүматларын чистартырга телисезме?",
+  "clearHoroscopeSuccess": "Гороскоп уңышлы чистартылды.",
+  "clearChatTitle": "Чат тарихын чистарту",
+  "clearChatMessage": "Барлык чат тарихыгызны бетерергә телисезме?",
+  "clearChatLocal": "Чат җирле чистартылды.",
+  "deleteAccountTitle": "Хисапны бетерү",
+  "deleteAccountMessage": "Сезнең счетыгызны бетерергә телисезме? Бу шулай ук сезнең чат тарихыгызны һәм хәбәрләрегезне чистартачак.",
+  "deleteAccountSuccess": "Сезнең счетыгыз һәм барлык мәгълүматлар бетерелде.",
+  "deleteAccountError": "Хисапны бетерүдә хата",
+  "logoutTitle": "Чыгу",
+  "logoutMessage": "Сез чыгарга телисезме?",
+  "termsPrivacyTitle": "Шартлар һәм хосусыйлык",
+  "privacyPolicyTitle": "Хосусыйлык политикасы",
+  "termsConditionsTitle": "Шартлар",
+  "dataControlTitle": "Мәгълүмат белән идарә итү",
+  "cancelButton": "Баш тарту",
+  "confirmButton": "Ышандыр",
+  "clearQuestionsSuccess": "Барлык сораулар да уңышлы бетерелде.",
+  "yoginiLabel": "Йогини",
+  "lordLabel": "Ходаем",
+  "startLabel": "Башлау",
+  "recoverAccount": "Хисапны торгызу",
+  "endLabel": "Ахыр",
+  "startDateLabel": "Башлау датасы",
+  "endDateLabel": "Ахыр датасы",
+  "notAvailable": "Мөмкин түгел",
+  "noData": "Мәгълүмат юк",
+  "unknownError": "Билгесез хата",
+  "retryButton": "Кабатлап карагыз",
+  "kundaliGeneratorTitle": "Кундали Генераторы",
+  "natalChartTitle": "Наталь диаграмма",
+  "lagnaLabel": "Лагна",
+  "rashiLabel": "Раши",
+  "ascDegreeLabel": "Күтәрелү дәрәҗәсе",
+  "vimshottariDashaTitle": "Вимшоттари Даша",
+  "yoginiDashaTitle": "Йогини Даша",
+  "unknown": "Билгесез",
+  "clearHoroscope": "Гороскопны чистарту",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Чиста хәбәрләр",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Чат тарихын чистарту",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Чыгу",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Хисапны бетерү",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Барлык кырлар да кирәк.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Хисап уңышлы торгызылды.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Бетерү уңышсыз. Мәгълүматыгызны тикшерегез.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Реставрация сере:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Безнең турында",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Безнең компания турында",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Без кулланучыларга иң яхшы астрология тәҗрибәсен җиткерергә әзер.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Безнең миссия",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Кулланучыларга тормышларында мәгълүматлы карарлар кабул итәр өчен, төгәл һәм персональләштерелгән астрология күзаллаулары бирү.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Безнең күренеш",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Технология белән борыңгы зирәклекне берләштереп, иң ышанычлы астрология платформасы булырга.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Безнең кыйммәтләр",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Сафлык, төгәллек, кулланучы-үзәк дизайны, өзлексез инновация.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Безнең белән элемтәгә керегез",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Электрон почта: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Вебсайт: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Клиентларга ярдәм",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Без монда булышырга",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Түбәндәге форманы тутырыгыз, безнең ярдәм командасы тиз арада сезгә кайтачак.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Синең исемең",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Сезнең электрон почта",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Хәбәр",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Электрон почтагызны кертегез",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Дөрес электрон почта адресын кертегез",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Enter {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Sendибәр",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Ибәрү ...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "Mail Электрон почта уңышлы җибәрелде!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "Email Электрон почта җибәрә алмады",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Астро сүзлеге",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Эзләү терминнары ...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Терминнар табылмады",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Сораулар сатып алыгыз",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Кулланучы расланмаган",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Кибет мәгълүматларын йөкли алмады",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Сагыну",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Астро Чат кушымтасы",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "Ment Түләү уңышлы! Сорау җибәрелде",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Payment failed: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Сезнең баланс",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Questions",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Мөмкин тәкъдимнәр",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Question",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Сатып ал",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Көндәлек гороскоп",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Кулланучы таныклыгы юк",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Гороскоплар ала алмады",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Гороскоп табылмады.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Билге",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Бүген",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Кичә",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Бу атнада",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Соңгы ай",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Чат",
+  "typeYourQuestionHint": "Соравыгызны языгыз ...",
+  "paymentRequired": "Түләү кирәк",
+  "paymentRequiredMessage": "Сез буш сорауларны кулландыгыз. Дәвам итәр өчен ₹ 50 түләгез.",
+  "payNowButton": "Хәзер түләгез",
+  "freeQuestionsRemaining": "{count} free questions remaining",
+  "paidQuestionsRemaining": "{count} paid questions remaining",
+  "thankYouFeedback": "Фикерләрегез өчен рәхмәт!",
+  "ratingSubmitted": "Рейтинг тапшырылды!",
+  "setUserIdFirst": "Зинһар, башта кулланучы таныклыгыгызны куегыз",
+  "failedToFetchPrevious": "Алдагы сорауларны һәм җавапларны ала алмады",
+  "errorOccurred": "Error: {error}",
+  "drawerAstroProfile": "Астро профиле",
+  "drawerDailyHoroscope": "Көндәлек гороскоп",
+  "drawerBuyQuestions": "Сораулар сатып алыгыз",
+  "drawerAstroDictionary": "Астро сүзлеге",
+  "drawerSettings": "Көйләүләр",
+  "drawerCustomerSupport": "Клиентларга ярдәм",
+  "drawerAbout": "Турында",
+  "drawerProfileSettings": "Профиль көйләүләре",
+  "demoNotificationTitle": "O Демо хәбәр итү",
+  "demoNotificationBody": "Бу сезнең кушымтадан сынау хәбәре!",
+  "notificationsTitle": "Хәбәрләр",
+  "noNotifications": "Хәбәрләр юк",
+  "allTab": "Барысы да",
+  "markAllAsRead": "Барысын да укылганча билгеләргә",
+  "notificationMarkedRead": "Укылган дип билгеләнгән хәбәр",
+  "failedToLoadNotifications": "Хәбәрләр йөкләнмәде",
+  "failedToMarkRead": "Укылган дип билгеләргә булмады",
+  "failedToMarkAllRead": "Барысын да укылган дип билгели алмады",
+  "socketConnected": "Сокет тоташтырылган",
+  "socketDisconnected": "Сокет өзелгән",
+  "newNotificationReceived": "Яңа хәбәр килде",
+  "generalCategory": "Генерал",
+  "horoscopeCategory": "Гороскоп",
+  "chatCategory": "Чат",
+  "systemCategory": "Система",
+  "updateCategory": "Яңартулар",
+  "howToAskTitle": "Ничек сорарга",
+  "noQuestionsAvailable": "Сораулар юк",
+  "failedToLoadQuestions": "Сорауларны йөкли алмады",
+  "pullToRefresh": "Яңартырга тарт",
+  "careerCategory": "Карьера",
+  "loveCategory": "Мәхәббәт һәм мөнәсәбәтләр",
+  "healthCategory": "Сәламәтлек",
+  "financeCategory": "Финанс",
+  "familyCategory": "Гаилә",
+  "educationCategory": "Мәгариф",
+  "travelCategory": "Сәяхәт",
+  "spiritualCategory": "Рухи",
+  "profileLoaded": "Профиль уңышлы йөкләнде",
+  "imageUploaded": "Рәсем уңышлы йөкләнде",
+  "savedInformationConfirmation": "Мин бу мәгълүматны сакладым",
+  "noHistoryAvailable": "Тарих юк",
+  "missingUserIdError": "Кулланучының таныклыгы кирәк",
+  "networkError": "Челтәр хата. Зинһар, кабатлап карагыз.",
+  "timeoutError": "Сорау вакыты бетте",
+  "genericError": "Нәрсәдер дөрес булмаган",
+  "reactionUpdateError": "Реакцияне яңарта алмады",
+  "noSearchResults": "Эзләү нәтиҗәләре табылмады",
+  "clearSearch": "Эзләү",
+  "resultsFound": "Нәтиҗә табылды",
+  "recoverySecretHint": "Күчереп язу эшләмәскә мөмкин, кул белән языгыз",
+  "recoverAccountDescription": "Хисап язмагызны торгызу өчен бу адымнарны үтәгез",
+  "processingLabel": "Эшкәртү ...",
+  "clearChatSuccess": "Чат уңышлы чистартылды",
+  "notificationsEnabled": "Хәбәрләр кушылган",
+  "notificationsDisabled": "Хәбәрләр сүндерелгән",
+  "securityNotice": "Сезнең мәгълүматлар куркынычсыз шифрланган һәм сакланган",
+  "loading": "Йөкләү ...",
+  "selectLanguage": "Телне сайлагыз",
+  "onboardingGetStartedDesc": "Languageз телеңне сайлап башлап җибәр",
+  "accountRecoveryTitle": "🔐 Хисапны торгызу турында мәгълүмат",
+  "recoveryInstructions": "Зинһар, бу мәгълүматны саклагыз. Сезнең счетыгызны торгызу өчен сезгә кирәк булачак.",
+  "importantNotice": "⚠️ Мөһим:",
+  "astrologerProfileTitle": "Астролог профиле",
+  "personalAstrologer": "Шәхси астролог",
+  "makePersonalAstrologer": "Шәхси астролог ясагыз",
+  "favoriteDescription": "Сезнең сорауларыгыз бу астрологка өстенлек биреләчәк. Мөмкин булмаса, сезгә тагын бер квалификацияле астролог ярдәм итәчәк.",
+  "educationQualifications": "Мәгариф һәм квалификация",
+  "aboutSection": "Турында",
+  "shareProfile": "Профильне бүлешү",
+  "loadingAstrologer": "Йолдызчы детальләрен йөкләү ...",
+  "failedToLoadAstrologer": "Йолдызчы детальләрен йөкли алмады",
+  "authenticationRequired": "Аутентификация кирәк. Зинһар, керегез.",
+  "securityCheckFailed": "Security check failed: {error}",
+  "addedToFavorites": "🎯 {name} is now your Personal Astrologer",
+  "removedFromFavorites": "✅ Removed {name} from favorites",
+  "toggleFavoriteError": "Яраткан статусны яңарта алмады",
+  "shareMessage": "{name}\n🎓 Education: {education}\n📜 Qualification: {qualification}\n⏳ Experience: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Бирелмәгән",
+  "reviews": "({count} reviews)",
+  "specialties": "Белгечлекләр",
+  "experience": "Тәҗрибә",
+  "qualification": "Квалификация",
+  "education": "Мәгариф",
+  "recoveryTips": "• Бу мәгълүматның скриншотын алыгыз\n• Аны куркынычсыз урында саклагыз\n• Беркем белән дә бүлешмәгез\n• Бу бер генә тапкыр күрсәтеләчәк"
+}

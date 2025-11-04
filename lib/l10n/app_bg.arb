@@ -1,0 +1,439 @@
+{
+  "@@locale": "bg",
+  "settingsTitle": "Настройки",
+  "notificationSettings": "Настройки за известия",
+  "privacySettings": "Настройки за поверителност",
+  "accountSettings": "Настройки на акаунта",
+  "languageSettings": "Езикови настройки",
+  "languageChanged": "Езикът е променен",
+  "existingUserButton": "Аз съм съществуващ потребител",
+  "chooseCountryTitle": "Изберете държава",
+  "yesText": "Да",
+  "noText": "Не",
+  "appBarTitle": "Настройки на профила",
+  "userIdLabel": "Потребителски идентификатор *",
+  "nameLabel": "Име",
+  "birthCountryLabel": "Държава на раждане",
+  "birthCityLabel": "Роден град",
+  "countrySelectionTitle": "Изберете вашата държава",
+  "maleLabel": "Мъж",
+  "femaleLabel": "Жена",
+  "birthDateLabel": "Дата на раждане",
+  "birthDatePlaceholder": "Изберете дата на раждане",
+  "birthTimeLabel": "Време на раждане",
+  "birthTimePlaceholder": "Изберете час на раждане",
+  "saveProfileButton": "Запазване на профил",
+  "noCitiesFound": "Не са намерени градове",
+  "cityPlaceholder": "Въведете град в {country}",
+  "countryFirstPlaceholder": "Първо изберете държава",
+  "versionHistoryTitle": "История на версиите",
+  "notSetText": "Не е зададено",
+  "nameHistory": "Име: {name}",
+  "cityHistory": "Град: {city}",
+  "countryHistory": "Държава: {country}",
+  "genderHistory": "Пол: {gender}",
+  "birthDateHistory": "Дата на раждане: {date}",
+  "birthTimeHistory": "Време на раждане: {time}",
+  "locationHistory": "Местоположение: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT{offset}",
+  "dstHistory": "Лятно време: {value}",
+  "stateHistory": "Щат: {state}",
+  "versionFromText": "Актуализирано на {date}",
+  "userIdRequired": "Изисква се потребителско име",
+  "profileSaved": "Профилът е запазен успешно",
+  "saveFailed": "Запазването на профила не бе успешно",
+  "errorPrefix": "Грешка:",
+  "onboardingChooseLanguage": "Изберете Вашия език",
+  "onboardingChooseLanguageDesc": "Изберете предпочитания от вас език, за да продължите.",
+  "onboardingWhatIsAstrology": "Какво е астрология?",
+  "onboardingWhatIsAstrologyDesc": "Астрологията е наука за небесните тела...",
+  "onboardingWhyUseApp": "Защо да използвате това приложение?",
+  "onboardingWhyUseAppDesc": "Получавайте персонализирани хороскопи, ежедневни прогнози и насоки, за да вземате информирани решения.",
+  "onboardingHowToUse": "Как да използвам това приложение?",
+  "onboardingHowToUseDesc": "Навигирайте лесно, проверявайте ежедневните хороскопи и управлявайте профила си за точни прогнози.",
+  "onboardingGetStarted": "Започнете",
+  "onboardingNewUser": "Нов потребител",
+  "onboardingExistingUser": "Съществуващ потребител",
+  "onboardingBack": "Обратно",
+  "onboardingNext": "Следващо",
+  "userIdNotFound": "Потребителският идентификатор не е намерен. Моля, влезте или настройте профила си.",
+  "clearNotificationsTitle": "Изчистване на известията",
+  "clearNotificationsMessage": "Сигурни ли сте, че искате да изчистите всички известия?",
+  "clearNotificationsSuccess": "Всички известия са изчистени успешно.",
+  "clearHoroscopeTitle": "Ясен хороскоп",
+  "clearHoroscopeMessage": "Сигурни ли сте, че искате да изчистите данните от хороскопа си?",
+  "clearHoroscopeSuccess": "Хороскопът е успешно изчистен.",
+  "clearChatTitle": "Изчистване на историята на чата",
+  "clearChatMessage": "Сигурни ли сте, че искате да изтриете цялата си история на чата?",
+  "clearChatLocal": "Чатът е изчистен локално.",
+  "deleteAccountTitle": "Изтриване на акаунт",
+  "deleteAccountMessage": "Сигурни ли сте, че искате да изтриете акаунта си? Това ще изчисти и цялата ви история на чата и известията.",
+  "deleteAccountSuccess": "Вашият акаунт и всички данни са премахнати.",
+  "deleteAccountError": "Грешка при изтриване на акаунт",
+  "logoutTitle": "Изход",
+  "logoutMessage": "Сигурни ли сте, че искате да излезете?",
+  "termsPrivacyTitle": "Условия и поверителност",
+  "privacyPolicyTitle": "Политика за поверителност",
+  "termsConditionsTitle": "Общи условия",
+  "dataControlTitle": "Контрол на данните",
+  "cancelButton": "Отказ",
+  "confirmButton": "Потвърди",
+  "clearQuestionsSuccess": "Всички въпроси са успешно изтрити.",
+  "yoginiLabel": "Йогини",
+  "lordLabel": "Господ",
+  "startLabel": "Старт",
+  "recoverAccount": "Възстановяване на акаунт",
+  "endLabel": "Край",
+  "startDateLabel": "Начална дата",
+  "endDateLabel": "Крайна дата",
+  "notAvailable": "Не е налично",
+  "noData": "Няма данни",
+  "unknownError": "Неизвестна грешка",
+  "retryButton": "Опитай отново",
+  "kundaliGeneratorTitle": "Генератор Кундали",
+  "natalChartTitle": "Натална карта",
+  "lagnaLabel": "Лагна",
+  "rashiLabel": "Раши",
+  "ascDegreeLabel": "Градус на Асцендента",
+  "vimshottariDashaTitle": "Вимшоттари Даша",
+  "yoginiDashaTitle": "Йогини Даша",
+  "unknown": "Неизвестен",
+  "clearHoroscope": "Ясен хороскоп",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Изчистване на известията",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Изчистване на историята на чата",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Изход",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Изтриване на акаунт",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Всички полета са задължителни.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Профилът е възстановен успешно.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Възстановяването не бе успешно. Проверете информацията си.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Тайна за възстановяване:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "За нас",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "За нашата компания",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Ние сме ангажирани да предоставим най-доброто астрологично изживяване на нашите потребители.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Нашата мисия",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Да предоставя точни и персонализирани астрологични прозрения, които да помогнат на потребителите да вземат информирани решения в живота си.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Нашата визия",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Да се превърнем в най-доверената астрологична платформа, съчетаваща технологии и древна мъдрост.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Нашите ценности",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Честност, точност, дизайн, ориентиран към потребителя, и непрекъснати иновации.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Свържете се с нас",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Имейл: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Уебсайт: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Поддръжка на клиенти",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Тук сме, за да помогнем",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Попълнете формата по-долу и нашият екип за поддръжка ще се свърже с вас възможно най-скоро.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Вашето име",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Вашият имейл",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Съобщение",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Въведете имейла си",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Въведете валиден имейл адрес",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Въведете {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Изпрати",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Изпраща се...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Имейлът е изпратен успешно!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Изпращането на имейл не бе успешно",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Астрологичен речник",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Търсени термини...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Няма намерени термини",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Въпроси за покупка",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Потребителят не е удостоверен",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Зареждането на данните от магазина не бе успешно",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Липсва токен за удостоверяване",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Приложение за астро чат",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Плащането е успешно! Въпросът е изпратен",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Плащането не бе успешно: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Вашият баланс",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Questions",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Налични оферти",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Question",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Купете",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Дневен хороскоп",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Липсва потребителски идентификатор",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Извличането на хороскопи не бе успешно",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Не е намерен хороскоп.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Знак",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Днес",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Вчера",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Тази седмица",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Миналия месец",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Чат",
+  "typeYourQuestionHint": "Въведете въпроса си...",
+  "paymentRequired": "Необходимо плащане",
+  "paymentRequiredMessage": "Използвахте безплатните си въпроси. Платете 50 рупии, за да продължите.",
+  "payNowButton": "Плати сега",
+  "freeQuestionsRemaining": "Остават {count} безплатни въпроса",
+  "paidQuestionsRemaining": "Остават {count} платени въпроса",
+  "thankYouFeedback": "Благодаря ви за обратната връзка!",
+  "ratingSubmitted": "Оценката е изпратена!",
+  "setUserIdFirst": "Моля, първо задайте потребителския си идентификатор",
+  "failedToFetchPrevious": "Неуспешно извличане на предишни въпроси и отговори",
+  "errorOccurred": "Грешка: {error}",
+  "drawerAstroProfile": "Астро профил",
+  "drawerDailyHoroscope": "Дневен хороскоп",
+  "drawerBuyQuestions": "Въпроси за покупка",
+  "drawerAstroDictionary": "Астрологичен речник",
+  "drawerSettings": "Настройки",
+  "drawerCustomerSupport": "Поддръжка на клиенти",
+  "drawerAbout": "Относно",
+  "drawerProfileSettings": "Настройки на профила",
+  "demoNotificationTitle": "🔔 Известие за демо версия",
+  "demoNotificationBody": "Това е тестово известие от вашето приложение!",
+  "notificationsTitle": "Известия",
+  "noNotifications": "Няма известия",
+  "allTab": "Всички",
+  "markAllAsRead": "Маркирай всички като прочетени",
+  "notificationMarkedRead": "Известието е маркирано като прочетено",
+  "failedToLoadNotifications": "Зареждането на известията не бе успешно",
+  "failedToMarkRead": "Маркирането като прочетено не бе успешно",
+  "failedToMarkAllRead": "Неуспешно маркиране на всички като прочетени",
+  "socketConnected": "Гнездото е свързано",
+  "socketDisconnected": "Контактът е изключен",
+  "newNotificationReceived": "Получено е ново известие",
+  "generalCategory": "Общи",
+  "horoscopeCategory": "Хороскоп",
+  "chatCategory": "Чат",
+  "systemCategory": "Система",
+  "updateCategory": "Актуализации",
+  "howToAskTitle": "Как да попитате",
+  "noQuestionsAvailable": "Няма налични въпроси",
+  "failedToLoadQuestions": "Зареждането на въпросите не бе успешно",
+  "pullToRefresh": "Плъзнете, за да обновите",
+  "careerCategory": "Кариера",
+  "loveCategory": "Любов и връзки",
+  "healthCategory": "Здраве",
+  "financeCategory": "Финанси",
+  "familyCategory": "Семейство",
+  "educationCategory": "Образование",
+  "travelCategory": "Пътуване",
+  "spiritualCategory": "Духовен",
+  "profileLoaded": "Профилът е зареден успешно",
+  "imageUploaded": "Изображението е качено успешно",
+  "savedInformationConfirmation": "Запазих тази информация",
+  "noHistoryAvailable": "Няма налична история",
+  "missingUserIdError": "Изисква се потребителско име",
+  "networkError": "Мрежова грешка. Моля, опитайте отново.",
+  "timeoutError": "Времето за изчакване на заявката е изтекло",
+  "genericError": "Нещо се обърка",
+  "reactionUpdateError": "Актуализирането на реакцията не бе успешно",
+  "noSearchResults": "Няма намерени резултати от търсенето",
+  "clearSearch": "Изчистване на търсенето",
+  "resultsFound": "Намерени резултати",
+  "recoverySecretHint": "Копирането и поставянето може да не работят, въведете ръчно",
+  "recoverAccountDescription": "Следвайте тези стъпки, за да възстановите акаунта си",
+  "processingLabel": "Обработва се...",
+  "clearChatSuccess": "Чатът е изчистен успешно",
+  "notificationsEnabled": "Известията са активирани",
+  "notificationsDisabled": "Известията са деактивирани",
+  "securityNotice": "Вашите данни са сигурно криптирани и съхранявани",
+  "loading": "Зареждане...",
+  "selectLanguage": "Изберете език",
+  "onboardingGetStartedDesc": "Започнете, като изберете езика си",
+  "accountRecoveryTitle": "🔐 Подробности за възстановяване на акаунт",
+  "recoveryInstructions": "Моля, запазете тази информация сигурно. Ще ви е необходима, за да възстановите акаунта си.",
+  "importantNotice": "⚠️ Важно:",
+  "astrologerProfileTitle": "Профил на астролог",
+  "personalAstrologer": "Личен астролог",
+  "makePersonalAstrologer": "Направете личен астролог",
+  "favoriteDescription": "Вашите въпроси ще бъдат приоритетно насочени към този астролог. Ако няма такъв, друг квалифициран астролог ще ви помогне.",
+  "educationQualifications": "Образование и квалификации",
+  "aboutSection": "Относно",
+  "shareProfile": "Споделяне на профил",
+  "loadingAstrologer": "Зареждане на данни за астролога...",
+  "failedToLoadAstrologer": "Зареждането на данните за астролога не бе успешно",
+  "authenticationRequired": "Изисква се удостоверяване. Моля, влезте.",
+  "securityCheckFailed": "Проверката за сигурност не бе успешна: {error}",
+  "addedToFavorites": "🎯 {name} вече е вашият личен астролог",
+  "removedFromFavorites": "✅ Премахнато {name} от любими",
+  "toggleFavoriteError": "Актуализирането на статуса „Любими“ не бе успешно",
+  "shareMessage": "{name}\n🎓 Образование: {education}\n📜 Квалификация: {qualification}\n⏳ Опит: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Не е предоставено",
+  "reviews": "({count} отзива)",
+  "specialties": "Специалности",
+  "experience": "Опит",
+  "qualification": "Квалификация",
+  "education": "Образование",
+  "recoveryTips": "• Направете екранна снимка на тази информация\n• Съхранявайте я на сигурно място\n• Не я споделяйте с никого\n• Това ще бъде показано само веднъж"
+}

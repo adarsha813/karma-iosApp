@@ -1,0 +1,439 @@
+{
+  "@@locale": "cy",
+  "settingsTitle": "Gosodiadau",
+  "notificationSettings": "Gosodiadau Hysbysiadau",
+  "privacySettings": "Gosodiadau Preifatrwydd",
+  "accountSettings": "Gosodiadau Cyfrif",
+  "languageSettings": "Gosodiadau Iaith",
+  "languageChanged": "Iaith wedi'i newid",
+  "existingUserButton": "Rwy'n ddefnyddiwr presennol",
+  "chooseCountryTitle": "Dewiswch Wlad",
+  "yesText": "Ie",
+  "noText": "Na",
+  "appBarTitle": "Gosodiadau Proffil",
+  "userIdLabel": "ID Defnyddiwr *",
+  "nameLabel": "Enw",
+  "birthCountryLabel": "Gwlad Geni",
+  "birthCityLabel": "Dinas Geni",
+  "countrySelectionTitle": "Dewiswch eich gwlad",
+  "maleLabel": "Gwrywaidd",
+  "femaleLabel": "Benyw",
+  "birthDateLabel": "Dyddiad Geni",
+  "birthDatePlaceholder": "Dewiswch Ddyddiad Geni",
+  "birthTimeLabel": "Amser Geni",
+  "birthTimePlaceholder": "Dewiswch Amser Geni",
+  "saveProfileButton": "Cadw Proffil",
+  "noCitiesFound": "Ni chanfuwyd unrhyw ddinasoedd",
+  "cityPlaceholder": "Rhowch ddinas yn {country}",
+  "countryFirstPlaceholder": "Dewiswch wlad yn gyntaf",
+  "versionHistoryTitle": "Hanes Fersiynau",
+  "notSetText": "Heb ei osod",
+  "nameHistory": "Enw: {name}",
+  "cityHistory": "Dinas: {city}",
+  "countryHistory": "Gwlad: {country}",
+  "genderHistory": "Rhyw: {gender}",
+  "birthDateHistory": "Dyddiad Geni: {date}",
+  "birthTimeHistory": "Amser Geni: {time}",
+  "locationHistory": "Lleoliad: {latitude}, {longitude}",
+  "timezoneHistory": "Parth amser: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Cyflwr: {state}",
+  "versionFromText": "Wedi'i ddiweddaru ar {date}",
+  "userIdRequired": "Mae angen ID Defnyddiwr",
+  "profileSaved": "Proffil wedi'i gadw'n llwyddiannus",
+  "saveFailed": "Methwyd cadw proffil",
+  "errorPrefix": "Gwall:",
+  "onboardingChooseLanguage": "Dewiswch Eich Iaith",
+  "onboardingChooseLanguageDesc": "Dewiswch eich iaith ddewisol i barhau.",
+  "onboardingWhatIsAstrology": "Beth yw Astroleg?",
+  "onboardingWhatIsAstrologyDesc": "Astroleg yw astudiaeth cyrff nefol...",
+  "onboardingWhyUseApp": "Pam defnyddio'r ap hwn?",
+  "onboardingWhyUseAppDesc": "Cael horosgopau personol, rhagfynegiadau dyddiol, ac arweiniad i wneud penderfyniadau gwybodus.",
+  "onboardingHowToUse": "Sut i ddefnyddio'r ap hwn?",
+  "onboardingHowToUseDesc": "Llywiwch yn hawdd, gwiriwch horosgopau dyddiol, a rheolwch eich proffil i gael rhagfynegiadau cywir.",
+  "onboardingGetStarted": "Dechrau Arni",
+  "onboardingNewUser": "Defnyddiwr Newydd",
+  "onboardingExistingUser": "Defnyddiwr Presennol",
+  "onboardingBack": "Yn ôl",
+  "onboardingNext": "Nesaf",
+  "userIdNotFound": "Ni chanfuwyd ID defnyddiwr. Mewngofnodwch neu gosodwch eich proffil.",
+  "clearNotificationsTitle": "Hysbysiadau Clirio",
+  "clearNotificationsMessage": "Ydych chi'n siŵr eich bod chi eisiau clirio'r holl hysbysiadau?",
+  "clearNotificationsSuccess": "Cliriwyd yr holl hysbysiadau yn llwyddiannus.",
+  "clearHoroscopeTitle": "Horoscope Clir",
+  "clearHoroscopeMessage": "Ydych chi'n siŵr eich bod chi eisiau clirio data eich horosgop?",
+  "clearHoroscopeSuccess": "Horoscope wedi'i glirio'n llwyddiannus.",
+  "clearChatTitle": "Clirio Hanes Sgwrs",
+  "clearChatMessage": "Ydych chi'n siŵr eich bod chi eisiau dileu eich holl hanes sgwrsio?",
+  "clearChatLocal": "Cafodd y sgwrs ei chlirio'n lleol.",
+  "deleteAccountTitle": "Dileu Cyfrif",
+  "deleteAccountMessage": "Ydych chi'n siŵr eich bod chi eisiau dileu eich cyfrif? Bydd hyn hefyd yn clirio eich holl hanes sgwrsio a hysbysiadau.",
+  "deleteAccountSuccess": "Mae eich cyfrif a'ch holl ddata wedi'u dileu.",
+  "deleteAccountError": "Gwall wrth ddileu cyfrif",
+  "logoutTitle": "Allgofnodi",
+  "logoutMessage": "Ydych chi'n siŵr eich bod chi eisiau allgofnodi?",
+  "termsPrivacyTitle": "Telerau a Phreifatrwydd",
+  "privacyPolicyTitle": "Polisi Preifatrwydd",
+  "termsConditionsTitle": "Telerau ac Amodau",
+  "dataControlTitle": "Rheoli Data",
+  "cancelButton": "Canslo",
+  "confirmButton": "Cadarnhau",
+  "clearQuestionsSuccess": "Pob cwestiwn wedi'i ddileu'n llwyddiannus.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Arglwydd",
+  "startLabel": "Dechrau",
+  "recoverAccount": "Adfer Cyfrif",
+  "endLabel": "Diwedd",
+  "startDateLabel": "Dyddiad Dechrau",
+  "endDateLabel": "Dyddiad Gorffen",
+  "notAvailable": "Ddim ar gael",
+  "noData": "Dim data",
+  "unknownError": "Gwall anhysbys",
+  "retryButton": "Ail-geisio",
+  "kundaliGeneratorTitle": "Generadur Kundali",
+  "natalChartTitle": "Siart Geni",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Gradd Esgynnol",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Anhysbys",
+  "clearHoroscope": "Horoscope Clir",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Hysbysiadau Clirio",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Clirio Hanes Sgwrs",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Allgofnodi",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Dileu Cyfrif",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Mae angen pob maes.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Adferwyd y cyfrif yn llwyddiannus.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Methodd yr adferiad. Gwiriwch eich gwybodaeth.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Cyfrinach Adferiad:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Amdanom Ni",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Ynglŷn â'n Cwmni",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Rydym wedi ymrwymo i ddarparu'r profiad astroleg gorau i'n defnyddwyr.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Ein Cenhadaeth",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "I ddarparu mewnwelediadau cywir a phersonol ar astroleg i helpu defnyddwyr i wneud penderfyniadau gwybodus yn eu bywydau.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Ein Gweledigaeth",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "I ddod y platfform astroleg mwyaf dibynadwy, gan gyfuno technoleg a doethineb hynafol.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Ein Gwerthoedd",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Uniondeb, Cywirdeb, Dylunio sy'n Canolbwyntio ar y Defnyddiwr, ac Arloesi Parhaus.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Cysylltwch â Ni",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "E-bost: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Gwefan: www.eichcwmni.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Cymorth Cwsmeriaid",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Rydym Yma i Helpu",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Llenwch y ffurflen isod a bydd ein tîm cymorth yn cysylltu â chi cyn gynted â phosibl.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Eich Enw",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Eich E-bost",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Neges",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Rhowch eich e-bost",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Rhowch gyfeiriad e-bost dilys",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Rhowch {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Anfon",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Yn anfon...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Anfonwyd yr e-bost yn llwyddiannus!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Methwyd anfon e-bost",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Geiriadur Astro",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Termau chwilio...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Ni chanfuwyd unrhyw dermau",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Cwestiynau Prynu",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Defnyddiwr heb ei ddilysu",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Methwyd llwytho data'r siop",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Tocyn awdurdodi ar goll",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Ap Sgwrs Astro",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Taliad llwyddiannus! Cwestiwn wedi'i anfon",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Methodd y taliad: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Eich Balans",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "Cwestiynau {count}",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Cynigion sydd ar Gael",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "Cwestiwn {count}",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Prynu",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Horoscope Dyddiol",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Mae ID defnyddiwr ar goll",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Methwyd nôl horosgopau",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Ni chanfuwyd horosgop.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Arwydd",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Heddiw",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Ddoe",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Yr Wythnos Hon",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Mis Diwethaf",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Sgwrs",
+  "typeYourQuestionHint": "Teipiwch eich cwestiwn...",
+  "paymentRequired": "Taliad Angenrheidiol",
+  "paymentRequiredMessage": "Rydych chi wedi defnyddio eich cwestiynau am ddim. Talwch ₹50 i barhau.",
+  "payNowButton": "Talu Nawr",
+  "freeQuestionsRemaining": "{count} cwestiynau rhydd ar ôl",
+  "paidQuestionsRemaining": "{count} cwestiynau taledig sy'n weddill",
+  "thankYouFeedback": "Diolch am eich adborth!",
+  "ratingSubmitted": "Sgôr wedi'i gyflwyno!",
+  "setUserIdFirst": "Gosodwch eich ID Defnyddiwr yn gyntaf",
+  "failedToFetchPrevious": "Methwyd â nôl cwestiynau ac atebion blaenorol",
+  "errorOccurred": "Gwall: {error}",
+  "drawerAstroProfile": "Proffil Astro",
+  "drawerDailyHoroscope": "Horoscope Dyddiol",
+  "drawerBuyQuestions": "Cwestiynau Prynu",
+  "drawerAstroDictionary": "Geiriadur Astro",
+  "drawerSettings": "Gosodiadau",
+  "drawerCustomerSupport": "Cymorth Cwsmeriaid",
+  "drawerAbout": "Ynglŷn â",
+  "drawerProfileSettings": "Gosodiadau Proffil",
+  "demoNotificationTitle": "🔔 Hysbysiad Demo",
+  "demoNotificationBody": "Dyma hysbysiad prawf o'ch ap!",
+  "notificationsTitle": "Hysbysiadau",
+  "noNotifications": "Dim hysbysiadau",
+  "allTab": "Pawb",
+  "markAllAsRead": "Marcio popeth fel wedi'i ddarllen",
+  "notificationMarkedRead": "Hysbysiad wedi'i farcio fel wedi'i ddarllen",
+  "failedToLoadNotifications": "Methwyd llwytho hysbysiadau",
+  "failedToMarkRead": "Methwyd marcio fel wedi'i ddarllen",
+  "failedToMarkAllRead": "Methwyd marcio popeth fel wedi'i ddarllen",
+  "socketConnected": "Soced wedi'i gysylltu",
+  "socketDisconnected": "Soced wedi'i ddatgysylltu",
+  "newNotificationReceived": "Hysbysiad newydd wedi'i dderbyn",
+  "generalCategory": "Cyffredinol",
+  "horoscopeCategory": "Horoscope",
+  "chatCategory": "Sgwrs",
+  "systemCategory": "System",
+  "updateCategory": "Diweddariadau",
+  "howToAskTitle": "Sut i Ofyn",
+  "noQuestionsAvailable": "Dim cwestiynau ar gael",
+  "failedToLoadQuestions": "Methwyd llwytho cwestiynau",
+  "pullToRefresh": "Tynnwch i adnewyddu",
+  "careerCategory": "Gyrfa",
+  "loveCategory": "Cariad a Pherthnasau",
+  "healthCategory": "Iechyd",
+  "financeCategory": "Cyllid",
+  "familyCategory": "Teulu",
+  "educationCategory": "Addysg",
+  "travelCategory": "Teithio",
+  "spiritualCategory": "Ysbrydol",
+  "profileLoaded": "Llwythwyd y proffil yn llwyddiannus",
+  "imageUploaded": "Llwythwyd y ddelwedd i fyny'n llwyddiannus",
+  "savedInformationConfirmation": "Rydw i wedi Cadw'r wybodaeth hon",
+  "noHistoryAvailable": "Dim hanes ar gael",
+  "missingUserIdError": "Mae angen ID Defnyddiwr",
+  "networkError": "Gwall rhwydwaith. Rhowch gynnig arall arni.",
+  "timeoutError": "Cais wedi dod i ben am amser",
+  "genericError": "Aeth rhywbeth o'i le",
+  "reactionUpdateError": "Methwyd diweddaru'r ymateb",
+  "noSearchResults": "Ni chanfuwyd unrhyw ganlyniadau chwilio",
+  "clearSearch": "Clirio chwiliad",
+  "resultsFound": "Canlyniadau a gafwyd",
+  "recoverySecretHint": "Efallai na fydd copïo-gludo yn gweithio, teipiwch â llaw",
+  "recoverAccountDescription": "Dilynwch y camau hyn i adfer eich cyfrif",
+  "processingLabel": "Prosesu...",
+  "clearChatSuccess": "Clirio'r sgwrs yn llwyddiannus",
+  "notificationsEnabled": "Hysbysiadau wedi'u galluogi",
+  "notificationsDisabled": "Hysbysiadau wedi'u hanalluogi",
+  "securityNotice": "Mae eich data wedi'i amgryptio a'i storio'n ddiogel",
+  "loading": "Yn llwytho...",
+  "selectLanguage": "Dewis Iaith",
+  "onboardingGetStartedDesc": "Dechreuwch drwy ddewis eich iaith",
+  "accountRecoveryTitle": "🔐 Manylion Adfer Cyfrif",
+  "recoveryInstructions": "Cadwch y wybodaeth hon yn ddiogel. Bydd ei hangen arnoch i adfer eich cyfrif.",
+  "importantNotice": "⚠️ Pwysig:",
+  "astrologerProfileTitle": "Proffil yr Astrolegydd",
+  "personalAstrologer": "Astrolegydd Personol",
+  "makePersonalAstrologer": "Gwneud yn Astrolegydd Personol",
+  "favoriteDescription": "Bydd eich cwestiynau'n cael blaenoriaeth i'r astrolegydd hwn. Os nad yw ar gael, bydd astrolegydd cymwys arall yn eich cynorthwyo.",
+  "educationQualifications": "Addysg a Chymwysterau",
+  "aboutSection": "Ynglŷn â",
+  "shareProfile": "Rhannu Proffil",
+  "loadingAstrologer": "Yn llwytho manylion yr astrolegydd...",
+  "failedToLoadAstrologer": "Methwyd llwytho manylion yr astrolegydd",
+  "authenticationRequired": "Mae angen dilysu. Mewngofnodwch.",
+  "securityCheckFailed": "Methodd y gwiriad diogelwch: {error}",
+  "addedToFavorites": "🎯 {name} yw eich Astrolegydd Personol nawr",
+  "removedFromFavorites": "✅ Tynnwyd {name} o'r ffefrynnau",
+  "toggleFavoriteError": "Methwyd diweddaru statws ffefryn",
+  "shareMessage": "{name}\n🎓 Addysg: {education}\n📜 Cymhwyster: {qualification}\n⏳ Profiad: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Heb ei ddarparu",
+  "reviews": "({count} adolygiadau)",
+  "specialties": "Arbenigeddau",
+  "experience": "Profiad",
+  "qualification": "Cymhwyster",
+  "education": "Addysg",
+  "recoveryTips": "• Tynnwch sgrinlun o'r wybodaeth hon\n• Storiwch hi mewn lle diogel\n• Peidiwch â rhannu ag unrhyw un\n• Dim ond unwaith y bydd hyn yn cael ei ddangos"
+}

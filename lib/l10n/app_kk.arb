@@ -1,0 +1,439 @@
+{
+  "@@locale": "kk",
+  "settingsTitle": "Параметрлер",
+  "notificationSettings": "Хабарландыру параметрлері",
+  "privacySettings": "Құпиялық параметрлері",
+  "accountSettings": "Есеп жазбасын түзету",
+  "languageSettings": "Тіл параметрлері",
+  "languageChanged": "Тіл өзгерді",
+  "existingUserButton": "Мен бұрыннан бар пайдаланушымын",
+  "chooseCountryTitle": "Елді таңдаңыз",
+  "yesText": "Иә",
+  "noText": "Жоқ",
+  "appBarTitle": "Профиль параметрлері",
+  "userIdLabel": "Пайдаланушы идентификаторы *",
+  "nameLabel": "Аты",
+  "birthCountryLabel": "Туған елі",
+  "birthCityLabel": "Туған қала",
+  "countrySelectionTitle": "Өз еліңізді таңдаңыз",
+  "maleLabel": "Еркек",
+  "femaleLabel": "Әйел",
+  "birthDateLabel": "Туылған күні",
+  "birthDatePlaceholder": "Туған күні таңдаңыз",
+  "birthTimeLabel": "Туылған уақыты",
+  "birthTimePlaceholder": "Туған уақытын таңдаңыз",
+  "saveProfileButton": "Профильді сақтау",
+  "noCitiesFound": "Ешқандай қала табылмады",
+  "cityPlaceholder": "Қаланы {country} ішіне енгізіңіз",
+  "countryFirstPlaceholder": "Алдымен елді таңдаңыз",
+  "versionHistoryTitle": "Нұсқалар тарихы",
+  "notSetText": "Орнатылмаған",
+  "nameHistory": "Атауы: {name}",
+  "cityHistory": "Қала: {city}",
+  "countryHistory": "Ел: {country}",
+  "genderHistory": "Жынысы: {gender}",
+  "birthDateHistory": "Туған күні: {date}",
+  "birthTimeHistory": "Туылған уақыты: {time}",
+  "locationHistory": "Орналасқан жері: {latitude}, {longitude}",
+  "timezoneHistory": "Уақыт белдеуі: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Күй: {state}",
+  "versionFromText": "{date} жаңартылды",
+  "userIdRequired": "Пайдаланушы идентификаторы қажет",
+  "profileSaved": "Профиль сәтті сақталды",
+  "saveFailed": "Профильді сақтау мүмкін болмады",
+  "errorPrefix": "Қате:",
+  "onboardingChooseLanguage": "Тіліңізді таңдаңыз",
+  "onboardingChooseLanguageDesc": "Жалғастыру үшін қалаған тілді таңдаңыз.",
+  "onboardingWhatIsAstrology": "Астрология дегеніміз не?",
+  "onboardingWhatIsAstrologyDesc": "Астрология – аспан денелерін зерттейтін ғылым...",
+  "onboardingWhyUseApp": "Неліктен бұл қолданбаны пайдалану керек?",
+  "onboardingWhyUseAppDesc": "Саналы шешім қабылдау үшін жеке жұлдыз жорамалдарын, күнделікті болжамдарды және нұсқауларды алыңыз.",
+  "onboardingHowToUse": "Бұл қолданбаны қалай пайдалануға болады?",
+  "onboardingHowToUseDesc": "Оңай шарлаңыз, күнделікті жұлдыз жорамалдарды тексеріңіз және дәл болжамдар үшін профиліңізді басқарыңыз.",
+  "onboardingGetStarted": "Жұмысты бастау",
+  "onboardingNewUser": "Жаңа пайдаланушы",
+  "onboardingExistingUser": "Қолданыстағы пайдаланушы",
+  "onboardingBack": "Артқа",
+  "onboardingNext": "Келесі",
+  "userIdNotFound": "Пайдаланушы идентификаторы табылмады. Жүйеге кіріңіз немесе профиліңізді орнатыңыз.",
+  "clearNotificationsTitle": "Хабарландыруларды тазалау",
+  "clearNotificationsMessage": "Барлық хабарландыруларды өшіргіңіз келетініне сенімдісіз бе?",
+  "clearNotificationsSuccess": "Барлық хабарландырулар сәтті өшірілді.",
+  "clearHoroscopeTitle": "Ашық жұлдыз жорамал",
+  "clearHoroscopeMessage": "Жұлдызнама деректерін шынымен өшіргіңіз келе ме?",
+  "clearHoroscopeSuccess": "Жұлдызнама сәтті аяқталды.",
+  "clearChatTitle": "Сөйлесу тарихын тазалау",
+  "clearChatMessage": "Барлық сөйлесу тарихын жойғыңыз келетініне сенімдісіз бе?",
+  "clearChatLocal": "Чат жергілікті түрде өшірілді.",
+  "deleteAccountTitle": "Есептік жазбаны жою",
+  "deleteAccountMessage": "Есептік жазбаңызды шынымен жойғыңыз келе ме? Бұл сонымен қатар барлық сөйлесу журналы мен хабарландыруларды өшіреді.",
+  "deleteAccountSuccess": "Есептік жазбаңыз және барлық деректер жойылды.",
+  "deleteAccountError": "Есептік жазбаны жою қатесі",
+  "logoutTitle": "Шығу",
+  "logoutMessage": "Шығуды қалайсыз ба?",
+  "termsPrivacyTitle": "Шарттар мен құпиялылық",
+  "privacyPolicyTitle": "Құпиялылық саясаты",
+  "termsConditionsTitle": "Шарттар мен талаптар",
+  "dataControlTitle": "Деректерді басқару",
+  "cancelButton": "Болдырмау",
+  "confirmButton": "Растау",
+  "clearQuestionsSuccess": "Барлық сұрақтар сәтті жойылды.",
+  "yoginiLabel": "Йогини",
+  "lordLabel": "Мырза",
+  "startLabel": "Бастау",
+  "recoverAccount": "Есептік жазбаны қалпына келтіру",
+  "endLabel": "Соңы",
+  "startDateLabel": "Басталу күні",
+  "endDateLabel": "Аяқталу күні",
+  "notAvailable": "Жоқ",
+  "noData": "Деректер жоқ",
+  "unknownError": "Белгісіз қате",
+  "retryButton": "Қайталап көріңіз",
+  "kundaliGeneratorTitle": "Кундали генераторы",
+  "natalChartTitle": "Натальдық диаграмма",
+  "lagnaLabel": "Лагна",
+  "rashiLabel": "Раши",
+  "ascDegreeLabel": "Жоғары дәреже",
+  "vimshottariDashaTitle": "Вимшоттари Даша",
+  "yoginiDashaTitle": "Йогини Даша",
+  "unknown": "Белгісіз",
+  "clearHoroscope": "Ашық жұлдыз жорамал",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Хабарландыруларды тазалау",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Сөйлесу тарихын тазалау",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Шығу",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Есептік жазбаны жою",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Барлық өрістер міндетті.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Есептік жазба сәтті қалпына келтірілді.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Қалпына келтіру сәтсіз аяқталды. Ақпаратыңызды тексеріңіз.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Қалпына келтіру құпиясы:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Біз туралы",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Біздің компания туралы",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Біз пайдаланушыларымызға ең жақсы астрология тәжірибесін жеткізуге дайынбыз.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Біздің миссиямыз",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Пайдаланушыларға өмірлерінде негізделген шешімдер қабылдауға көмектесу үшін дәл және жекеленген астрологиялық түсініктерді қамтамасыз ету.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Біздің көзқарасымыз",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Технология мен ежелгі даналықты біріктіретін ең сенімді астрологиялық платформа болу.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Біздің құндылықтарымыз",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Тұтастық, дәлдік, пайдаланушыға бағытталған дизайн және үздіксіз инновация.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Бізбен хабарласыңы",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Электрондық пошта: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Веб-сайт: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Тұтынушыларды қолдау",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Біз көмектесуге келдік",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Төмендегі пішінді толтырыңыз және қолдау көрсету тобы сізге мүмкіндігінше тезірек хабарласады.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Сіздің атыңыз",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Сіздің электрондық поштаңыз",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Хабарлама",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Электрондық поштаңызды енгізіңіз",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Жарамды электрондық пошта мекенжайын енгізіңіз",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "{fieldName} енгізіңіз",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Жіберу",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Жіберілуде...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Электрондық пошта сәтті жіберілді!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Электрондық поштаны жіберу мүмкін болмады",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Астро сөздігі",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Терминдерді іздеу...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Ешбір термин табылмады",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Сатып алу сұрақтары",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Пайдаланушы аутентификацияланбаған",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Дүкен деректерін жүктеу сәтсіз аяқталды",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Аутентификация белгісі жоқ",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat қолданбасы",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Төлем сәтті өтті! Сұрақ жіберілді",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Төлем орындалмады: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Сіздің балансыңыз",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Сұрақтар",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Қолжетімді ұсыныстар",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Сұрақ",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Сатып алу",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Күнделікті жұлдыз жорамал",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Пайдаланушы идентификаторы жоқ",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Жұлдыз жорамалдары алынбады",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Жұлдыз жорамал табылмады.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Қол қою",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Бүгін",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Кеше",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Осы аптада",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Өткен айда",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Чат",
+  "typeYourQuestionHint": "Сұрағыңызды теріңіз...",
+  "paymentRequired": "Төлем қажет",
+  "paymentRequiredMessage": "Сіз тегін сұрақтарыңызды пайдаландыңыз. Жалғастыру үшін ₹50 төлеңіз.",
+  "payNowButton": "Қазір төлеңіз",
+  "freeQuestionsRemaining": "{count} бос сұрақтар қалды",
+  "paidQuestionsRemaining": "{count} ақылы сұрақтар қалды",
+  "thankYouFeedback": "Пікіріңізге рахмет!",
+  "ratingSubmitted": "Рейтинг жіберілді!",
+  "setUserIdFirst": "Алдымен пайдаланушы идентификаторыңызды орнатыңыз",
+  "failedToFetchPrevious": "Алдыңғы сұрақтар мен жауаптар алынбады",
+  "errorOccurred": "Қате: {error}",
+  "drawerAstroProfile": "Astro профилі",
+  "drawerDailyHoroscope": "Күнделікті жұлдыз жорамал",
+  "drawerBuyQuestions": "Сатып алу сұрақтары",
+  "drawerAstroDictionary": "Астро сөздігі",
+  "drawerSettings": "Параметрлер",
+  "drawerCustomerSupport": "Тұтынушыларды қолдау",
+  "drawerAbout": "туралы",
+  "drawerProfileSettings": "Профиль параметрлері",
+  "demoNotificationTitle": "🔔 Демо хабарландыру",
+  "demoNotificationBody": "Бұл қолданбаңыздың сынақ хабарландыруы!",
+  "notificationsTitle": "Хабарландырулар",
+  "noNotifications": "Хабарландырулар жоқ",
+  "allTab": "Барлығы",
+  "markAllAsRead": "Барлығын оқылған деп белгілеңіз",
+  "notificationMarkedRead": "Хабарландыру оқылған деп белгіленді",
+  "failedToLoadNotifications": "Хабарландырулар жүктелмеді",
+  "failedToMarkRead": "Оқылған деп белгілеу мүмкін болмады",
+  "failedToMarkAllRead": "Барлығын оқылған деп белгілеу мүмкін болмады",
+  "socketConnected": "Розетка қосылған",
+  "socketDisconnected": "Розетка ажыратылды",
+  "newNotificationReceived": "Жаңа хабарландыру алынды",
+  "generalCategory": "Жалпы",
+  "horoscopeCategory": "Жұлдыз жорамал",
+  "chatCategory": "Чат",
+  "systemCategory": "Жүйе",
+  "updateCategory": "Жаңартулар",
+  "howToAskTitle": "Қалай сұрауға болады",
+  "noQuestionsAvailable": "Сұрақтар жоқ",
+  "failedToLoadQuestions": "Сұрақтар жүктелмеді",
+  "pullToRefresh": "Жаңарту үшін тартыңыз",
+  "careerCategory": "Мансап",
+  "loveCategory": "Махаббат және қарым-қатынас",
+  "healthCategory": "Денсаулық",
+  "financeCategory": "Қаржы",
+  "familyCategory": "Отбасы",
+  "educationCategory": "Білім",
+  "travelCategory": "Саяхат",
+  "spiritualCategory": "Рухани",
+  "profileLoaded": "Профиль сәтті жүктелді",
+  "imageUploaded": "Кескін жүктеп салынды",
+  "savedInformationConfirmation": "Мен бұл ақпаратты сақтадым",
+  "noHistoryAvailable": "Тарих жоқ",
+  "missingUserIdError": "Пайдаланушы идентификаторы қажет",
+  "networkError": "Желі қатесі. Қайталап көріңіз.",
+  "timeoutError": "Сұрау уақыты аяқталды",
+  "genericError": "Бірдеңе дұрыс болмады",
+  "reactionUpdateError": "Реакцияны жаңарту мүмкін болмады",
+  "noSearchResults": "Іздеу нәтижелері табылмады",
+  "clearSearch": "Іздеуді тазалау",
+  "resultsFound": "Нәтижелер табылды",
+  "recoverySecretHint": "Көшіру-қою жұмыс істемеуі мүмкін, қолмен теріңіз",
+  "recoverAccountDescription": "Есептік жазбаңызды қалпына келтіру үшін мына қадамдарды орындаңыз",
+  "processingLabel": "Өңдеуде...",
+  "clearChatSuccess": "Чат сәтті жойылды",
+  "notificationsEnabled": "Хабарландырулар қосылды",
+  "notificationsDisabled": "Хабарландырулар өшірілді",
+  "securityNotice": "Сіздің деректеріңіз қауіпсіз шифрланған және сақталады",
+  "loading": "Жүктелуде...",
+  "selectLanguage": "Тіл таңдаңыз",
+  "onboardingGetStartedDesc": "Тілді таңдаудан бастаңыз",
+  "accountRecoveryTitle": "🔐 Есептік жазбаны қалпына келтіру мәліметтері",
+  "recoveryInstructions": "Бұл ақпаратты қауіпсіз сақтаңыз. Бұл есептік жазбаңызды қалпына келтіру үшін қажет болады.",
+  "importantNotice": "⚠️ Маңызды:",
+  "astrologerProfileTitle": "Астролог профилі",
+  "personalAstrologer": "Жеке астролог",
+  "makePersonalAstrologer": "Жеке астролог жасаңыз",
+  "favoriteDescription": "Сіздің сұрақтарыңыз осы астрологқа басымдық беріледі. Қолжетімсіз болса, сізге басқа білікті астролог көмектеседі.",
+  "educationQualifications": "Білім және біліктілік",
+  "aboutSection": "туралы",
+  "shareProfile": "Профильді бөлісу",
+  "loadingAstrologer": "Астролог мәліметтері жүктелуде...",
+  "failedToLoadAstrologer": "Астролог мәліметтері жүктелмеді",
+  "authenticationRequired": "Аутентификация қажет. Жүйеге кіріңіз.",
+  "securityCheckFailed": "Қауіпсіздікті тексеру сәтсіз аяқталды: {error}",
+  "addedToFavorites": "🎯 {name} енді сіздің жеке астрологыңыз",
+  "removedFromFavorites": "✅ Таңдаулылардан {name} жойылды",
+  "toggleFavoriteError": "Таңдаулы күйді жаңарту мүмкін болмады",
+  "shareMessage": "{name}\n🎓 Білім: {education}\n📜 Біліктілік: {qualification}\n⏳ Тәжірибе: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Берілмеген",
+  "reviews": "({count} шолулар)",
+  "specialties": "Мамандықтар",
+  "experience": "Тәжірибе",
+  "qualification": "Біліктілік",
+  "education": "Білім",
+  "recoveryTips": "• Осы ақпараттың скриншотын алыңыз\n• Оны қауіпсіз жерде сақтаңыз\n• Ешкіммен бөліспеңіз\n• Бұл тек бір рет көрсетіледі"
+}

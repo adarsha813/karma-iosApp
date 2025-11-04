@@ -12,25 +12,25 @@ class AppLocalizationsEs extends AppLocalizations {
   String get settingsTitle => 'Ajustes';
 
   @override
-  String get notificationSettings => 'Ajustes de notificación';
+  String get notificationSettings => 'Configuración de notificaciones';
 
   @override
   String get privacySettings => 'Configuración de privacidad';
 
   @override
-  String get accountSettings => 'Ajustes de la cuenta';
+  String get accountSettings => 'Configuraciones de la cuenta';
 
   @override
-  String get languageSettings => 'Ajustes del idioma';
+  String get languageSettings => 'Configuración de idioma';
 
   @override
-  String get languageChanged => 'Idioma cambiado';
+  String get languageChanged => 'El idioma cambió';
 
   @override
   String get existingUserButton => 'Soy un usuario existente';
 
   @override
-  String get chooseCountryTitle => 'Elegir país';
+  String get chooseCountryTitle => 'Seleccione un país';
 
   @override
   String get yesText => 'Sí';
@@ -39,7 +39,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get noText => 'No';
 
   @override
-  String get appBarTitle => 'Ajustes del perfil';
+  String get appBarTitle => 'Configuración de perfil';
 
   @override
   String get userIdLabel => 'ID de usuario *';
@@ -57,10 +57,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get countrySelectionTitle => 'Elige tu país';
 
   @override
-  String get maleLabel => 'Hombre';
+  String get maleLabel => 'Masculino';
 
   @override
-  String get femaleLabel => 'Mujer';
+  String get femaleLabel => 'Femenino';
 
   @override
   String get birthDateLabel => 'Fecha de nacimiento';
@@ -72,7 +72,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get birthTimeLabel => 'Hora de nacimiento';
 
   @override
-  String get birthTimePlaceholder => 'Seleccione la hora de nacimiento';
+  String get birthTimePlaceholder => 'Seleccionar hora de nacimiento';
 
   @override
   String get saveProfileButton => 'Guardar perfil';
@@ -82,11 +82,11 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String cityPlaceholder(Object country) {
-    return 'Ingrese la ciudad';
+    return 'Ingrese la ciudad en $country';
   }
 
   @override
-  String get countryFirstPlaceholder => 'Seleccione el país primero';
+  String get countryFirstPlaceholder => 'Primero, seleccione el país.';
 
   @override
   String get versionHistoryTitle => 'Historial de versiones';
@@ -131,7 +131,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String timezoneHistory(Object offset) {
-    return 'Zona horaria: GMT$offset';
+    return 'Timezone: GMT$offset';
   }
 
   @override
@@ -146,14 +146,14 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String versionFromText(Object date) {
-    return 'Versión de $date';
+    return 'Actualizado el $date';
   }
 
   @override
   String get userIdRequired => 'Se requiere ID de usuario';
 
   @override
-  String get profileSaved => 'Perfil guardado con éxito';
+  String get profileSaved => 'Perfil guardado correctamente';
 
   @override
   String get saveFailed => 'No se pudo guardar el perfil';
@@ -162,14 +162,14 @@ class AppLocalizationsEs extends AppLocalizations {
   String get errorPrefix => 'Error:';
 
   @override
-  String get onboardingChooseLanguage => 'Elija su idioma';
+  String get onboardingChooseLanguage => 'Elige tu idioma';
 
   @override
   String get onboardingChooseLanguageDesc =>
       'Seleccione su idioma preferido para continuar.';
 
   @override
-  String get onboardingWhatIsAstrology => '¿Qué es la Astrología?';
+  String get onboardingWhatIsAstrology => '¿Qué es la astrología?';
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
@@ -180,17 +180,17 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Obtenga horóscopos personalizados, predicciones diarias y orientación para tomar decisiones informadas.';
+      'Obtén horóscopos personalizados, predicciones diarias y orientación para tomar decisiones informadas.';
 
   @override
-  String get onboardingHowToUse => '¿Cómo utilizar esta aplicación?';
+  String get onboardingHowToUse => '¿Cómo se usa esta aplicación?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Navegue fácilmente, consulte los horóscopos diarios y gestione su perfil para predicciones precisas.';
+      'Navega fácilmente, consulta los horóscopos diarios y gestiona tu perfil para obtener predicciones precisas.';
 
   @override
-  String get onboardingGetStarted => 'Empezar';
+  String get onboardingGetStarted => 'Comienza';
 
   @override
   String get onboardingNewUser => 'Nuevo usuario';
@@ -202,39 +202,39 @@ class AppLocalizationsEs extends AppLocalizations {
   String get onboardingBack => 'Atrás';
 
   @override
-  String get onboardingNext => 'Siguiente';
+  String get onboardingNext => 'Próximo';
 
   @override
   String get userIdNotFound =>
-      'ID de usuario no encontrado. Por favor inicia sesión o configura tu perfil.';
+      'No se encontró el ID de usuario. Por favor, inicie sesión o configure su perfil.';
 
   @override
   String get clearNotificationsTitle => 'Borrar notificaciones';
 
   @override
   String get clearNotificationsMessage =>
-      '¿Seguro que deseas borrar todas las notificaciones?';
+      '¿Seguro que quieres borrar todas las notificaciones?';
 
   @override
   String get clearNotificationsSuccess =>
-      'Todas las notificaciones se borraron correctamente.';
+      'Todas las notificaciones se han eliminado correctamente.';
 
   @override
-  String get clearHoroscopeTitle => 'Borrar horóscopo';
+  String get clearHoroscopeTitle => 'Horóscopo claro';
 
   @override
   String get clearHoroscopeMessage =>
-      '¿Seguro que deseas borrar tus datos del horóscopo?';
+      '¿Estás seguro de que quieres borrar los datos de tu horóscopo?';
 
   @override
-  String get clearHoroscopeSuccess => 'Horóscopo borrado correctamente.';
+  String get clearHoroscopeSuccess => 'Horóscopo revisado con éxito.';
 
   @override
   String get clearChatTitle => 'Borrar historial de chat';
 
   @override
   String get clearChatMessage =>
-      '¿Seguro que deseas eliminar todo tu historial de chat?';
+      '¿Estás seguro de que quieres borrar todo tu historial de chat?';
 
   @override
   String get clearChatLocal => 'Chat borrado localmente.';
@@ -244,11 +244,11 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get deleteAccountMessage =>
-      '¿Seguro que deseas eliminar tu cuenta? Esto también borrará tu historial de chat y notificaciones.';
+      '¿Seguro que quieres eliminar tu cuenta? Esto también borrará todo tu historial de chat y notificaciones.';
 
   @override
   String get deleteAccountSuccess =>
-      'Tu cuenta y todos los datos han sido eliminados.';
+      'Tu cuenta y todos tus datos han sido eliminados.';
 
   @override
   String get deleteAccountError => 'Error al eliminar la cuenta';
@@ -257,13 +257,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get logoutTitle => 'Cerrar sesión';
 
   @override
-  String get logoutMessage => '¿Seguro que deseas cerrar sesión?';
+  String get logoutMessage => '¿Seguro que quieres cerrar sesión?';
 
   @override
   String get termsPrivacyTitle => 'Términos y privacidad';
 
   @override
-  String get privacyPolicyTitle => 'Política de privacidad';
+  String get privacyPolicyTitle => 'política de privacidad';
 
   @override
   String get termsConditionsTitle => 'Términos y condiciones';
@@ -279,16 +279,16 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get clearQuestionsSuccess =>
-      'Todas las preguntas se borraron correctamente.';
+      'Todas las preguntas se eliminaron correctamente.';
 
   @override
   String get yoginiLabel => 'Yogini';
 
   @override
-  String get lordLabel => 'Señor';
+  String get lordLabel => 'Caballero';
 
   @override
-  String get startLabel => 'Inicio';
+  String get startLabel => 'Comenzar';
 
   @override
   String get recoverAccount => 'Recuperar cuenta';
@@ -300,7 +300,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get startDateLabel => 'Fecha de inicio';
 
   @override
-  String get endDateLabel => 'Fecha de fin';
+  String get endDateLabel => 'Fecha de finalización';
 
   @override
   String get notAvailable => 'No disponible';
@@ -312,10 +312,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get unknownError => 'Error desconocido';
 
   @override
-  String get retryButton => 'Reintentar';
+  String get retryButton => 'Rever';
 
   @override
-  String get kundaliGeneratorTitle => 'Generador de Kundali';
+  String get kundaliGeneratorTitle => 'Generador Kundali';
 
   @override
   String get natalChartTitle => 'Carta natal';
@@ -330,158 +330,161 @@ class AppLocalizationsEs extends AppLocalizations {
   String get ascDegreeLabel => 'Grado ascendente';
 
   @override
-  String get vimshottariDashaTitle => 'Dasha Vimshottari';
+  String get vimshottariDashaTitle => 'Vimshottari Dasha';
 
   @override
-  String get yoginiDashaTitle => 'Dasha Yogini';
+  String get yoginiDashaTitle => 'Yogini Dasha';
 
   @override
   String get unknown => 'Desconocido';
 
   @override
-  String get clearHoroscope => 'Borrar Horóscopo';
+  String get clearHoroscope => 'Horóscopo claro';
 
   @override
-  String get clearNotifications => 'Borrar Notificaciones';
+  String get clearNotifications => 'Borrar notificaciones';
 
   @override
-  String get clearChatHistory => 'Borrar Historial de Chat';
+  String get clearChatHistory => 'Borrar historial de chat';
 
   @override
-  String get logout => 'Cerrar Sesión';
+  String get logout => 'Cerrar sesión';
 
   @override
-  String get deleteAccount => 'Eliminar Cuenta';
+  String get deleteAccount => 'Eliminar cuenta';
 
   @override
   String get allFieldsRequired => 'Todos los campos son obligatorios.';
 
   @override
-  String get accountRecoveredSuccess => 'Cuenta recuperada exitosamente.';
+  String get accountRecoveredSuccess => 'Cuenta recuperada correctamente.';
 
   @override
-  String get recoveryFailed => 'Recuperación fallida. Verifica tu información.';
+  String get recoveryFailed =>
+      'La recuperación falló. Verifique su información.';
 
   @override
   String get recoverySecretLabel => 'Secreto de recuperación:';
 
   @override
-  String get aboutUsTitle => 'Acerca de Nosotros';
+  String get aboutUsTitle => 'Sobre nosotros';
 
   @override
-  String get aboutOurCompany => 'Acerca de Nuestra Empresa';
+  String get aboutOurCompany => 'Acerca de nuestra empresa';
 
   @override
   String get aboutCompanyDescription =>
-      'Estamos comprometidos a ofrecer la mejor experiencia de astrología a nuestros usuarios.';
+      'Estamos comprometidos a brindar la mejor experiencia astrológica a nuestros usuarios.';
 
   @override
-  String get ourMission => 'Nuestra Misión';
+  String get ourMission => 'Nuestra misión';
 
   @override
   String get missionDescription =>
-      'Proporcionar conocimientos astrológicos precisos y personalizados para ayudar a los usuarios a tomar decisiones informadas en sus vidas.';
+      'Proporcionar información astrológica precisa y personalizada para ayudar a los usuarios a tomar decisiones informadas en sus vidas.';
 
   @override
   String get ourVision => 'Nuestra Visión';
 
   @override
   String get visionDescription =>
-      'Convertirnos en la plataforma de astrología más confiable, combinando tecnología y sabiduría antigua.';
+      'Convertirnos en la plataforma de astrología más confiable, combinando tecnología y sabiduría ancestral.';
 
   @override
-  String get ourValues => 'Nuestros Valores';
+  String get ourValues => 'Nuestros valores';
 
   @override
   String get valuesDescription =>
-      'Integridad, Precisión, Diseño Centrado en el Usuario e Innovación Continua.';
+      'Integridad, precisión, diseño centrado en el usuario e innovación continua.';
 
   @override
-  String get contactUs => 'Contáctenos';
+  String get contactUs => 'Contáctanos';
 
   @override
-  String get contactEmail => 'Correo: support@yourcompany.com';
+  String get contactEmail => 'Correo electrónico: support@tuempresa.com';
 
   @override
-  String get contactWebsite => 'Sitio web: www.yourcompany.com';
+  String get contactWebsite => 'Sitio web: www.tuempresa.com';
 
   @override
-  String get customerSupport => 'Atención al Cliente';
+  String get customerSupport => 'Soporte al cliente';
 
   @override
-  String get supportHeroTitle => 'Estamos Aquí para Ayudar';
+  String get supportHeroTitle => 'Estamos aquí para ayudar';
 
   @override
   String get supportHeroDescription =>
-      'Complete el formulario a continuación y nuestro equipo de soporte se comunicará con usted lo antes posible.';
+      'Rellene el siguiente formulario y nuestro equipo de soporte se pondrá en contacto con usted lo antes posible.';
 
   @override
-  String get yourName => 'Tu Nombre';
+  String get yourName => 'Su nombre';
 
   @override
-  String get yourEmail => 'Tu Correo Electrónico';
+  String get yourEmail => 'Tu correo electrónico';
 
   @override
   String get message => 'Mensaje';
 
   @override
-  String get enterEmail => 'Ingresa tu correo electrónico';
+  String get enterEmail => 'Introduce tu correo electrónico';
 
   @override
   String get enterValidEmail =>
-      'Ingresa una dirección de correo electrónico válida';
+      'Introduce una dirección de correo electrónico válida';
 
   @override
   String enterField(Object fieldName) {
-    return 'Ingresa $fieldName';
+    return 'Ingrese $fieldName';
   }
 
   @override
   String get send => 'Enviar';
 
   @override
-  String get sending => 'Enviando...';
+  String get sending => 'Envío...';
 
   @override
-  String get emailSentSuccess => '✅ ¡Correo enviado exitosamente!';
+  String get emailSentSuccess => '✅ ¡Correo electrónico enviado correctamente!';
 
   @override
-  String get emailSendFailed => '❌ Error al enviar el correo';
+  String get emailSendFailed => '❌ No se pudo enviar el correo electrónico';
 
   @override
-  String get astroDictionaryTitle => 'Diccionario Astrológico';
+  String get astroDictionaryTitle => 'Diccionario de Astrología';
 
   @override
-  String get searchTermsHint => 'Buscar términos...';
+  String get searchTermsHint => 'Términos de búsqueda...';
 
   @override
   String get noTermsFound => 'No se encontraron términos';
 
   @override
-  String get buyQuestionsTitle => 'Comprar Preguntas';
+  String get buyQuestionsTitle => 'Preguntas sobre la compra';
 
   @override
   String get userNotAuthenticated => 'Usuario no autenticado';
 
   @override
-  String get loadStoreDataFailed => 'Error al cargar datos de la tienda';
+  String get loadStoreDataFailed =>
+      'No se pudieron cargar los datos de la tienda.';
 
   @override
-  String get missingAuthToken => 'Falta token de autenticación';
+  String get missingAuthToken => 'Falta el token de autenticación';
 
   @override
-  String get merchantDisplayName => 'App de Chat Astrológico';
+  String get merchantDisplayName => 'Aplicación Astro Chat';
 
   @override
-  String get paymentSuccessful => '✅ ¡Pago exitoso! Pregunta enviada';
+  String get paymentSuccessful =>
+      '✅ ¡Pago realizado correctamente! Consulta enviada.';
 
   @override
   String paymentFailed(Object error) {
-    return '❌ Pago fallido: $error';
+    return '❌ Error en el pago: $error';
   }
 
   @override
-  String get yourBalance => 'Tu Saldo';
+  String get yourBalance => 'Su saldo';
 
   @override
   String questionsBalance(Object count) {
@@ -489,7 +492,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get availableOffers => 'Ofertas Disponibles';
+  String get availableOffers => 'Ofertas disponibles';
 
   @override
   String questionsCount(Object count) {
@@ -500,19 +503,19 @@ class AppLocalizationsEs extends AppLocalizations {
   String get buyButton => 'Comprar';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horóscopo Diario';
+  String get dailyHoroscopeTitle => '🌟 Horóscopo diario';
 
   @override
-  String get userIdMissing => 'Falta ID de usuario';
+  String get userIdMissing => 'Falta el ID de usuario.';
 
   @override
-  String get fetchHoroscopesFailed => 'Error al obtener horóscopos';
+  String get fetchHoroscopesFailed => 'No se pudieron obtener los horóscopos.';
 
   @override
-  String get noHoroscopeFound => 'No se encontró horóscopo.';
+  String get noHoroscopeFound => 'No se encontró ningún horóscopo.';
 
   @override
-  String get signLabel => 'Signo';
+  String get signLabel => 'Firmar';
 
   @override
   String get todayLabel => 'Hoy';
@@ -521,49 +524,49 @@ class AppLocalizationsEs extends AppLocalizations {
   String get yesterdayLabel => 'Ayer';
 
   @override
-  String get thisWeekLabel => 'Esta Semana';
+  String get thisWeekLabel => 'Esta semana';
 
   @override
-  String get lastMonthLabel => 'Mes Pasado';
+  String get lastMonthLabel => 'Mes pasado';
 
   @override
-  String get chatTitle => 'Chat';
+  String get chatTitle => 'Charlar';
 
   @override
   String get typeYourQuestionHint => 'Escribe tu pregunta...';
 
   @override
-  String get paymentRequired => 'Pago Requerido';
+  String get paymentRequired => 'Pago requerido';
 
   @override
   String get paymentRequiredMessage =>
-      'Has usado tus preguntas gratuitas. Paga ₹50 para continuar.';
+      'Has usado tus preguntas gratuitas. Paga 50 rupias para continuar.';
 
   @override
-  String get payNowButton => 'Pagar Ahora';
+  String get payNowButton => 'Paga ahora';
 
   @override
   String freeQuestionsRemaining(Object count) {
-    return 'Te quedan $count preguntas gratuitas';
+    return '$count preguntas gratuitas restantes';
   }
 
   @override
   String paidQuestionsRemaining(Object count) {
-    return 'Te quedan $count preguntas pagadas';
+    return '$count preguntas pagadas restantes';
   }
 
   @override
-  String get thankYouFeedback => '¡Gracias por tus comentarios!';
+  String get thankYouFeedback => '¡Gracias por sus comentarios!';
 
   @override
   String get ratingSubmitted => '¡Calificación enviada!';
 
   @override
-  String get setUserIdFirst => 'Por favor, establece tu ID de usuario primero';
+  String get setUserIdFirst => 'Por favor, configure primero su ID de usuario.';
 
   @override
   String get failedToFetchPrevious =>
-      'Error al obtener preguntas y respuestas anteriores';
+      'No se pudieron recuperar las preguntas y respuestas anteriores.';
 
   @override
   String errorOccurred(Object error) {
@@ -571,31 +574,31 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get drawerAstroProfile => 'Perfil Astrológico';
+  String get drawerAstroProfile => 'Perfil astrológico';
 
   @override
-  String get drawerDailyHoroscope => 'Horóscopo Diario';
+  String get drawerDailyHoroscope => 'Horóscopo diario';
 
   @override
-  String get drawerBuyQuestions => 'Comprar Preguntas';
+  String get drawerBuyQuestions => 'Preguntas de compra';
 
   @override
-  String get drawerAstroDictionary => 'Diccionario Astrológico';
+  String get drawerAstroDictionary => 'Diccionario de Astrología';
 
   @override
   String get drawerSettings => 'Ajustes';
 
   @override
-  String get drawerCustomerSupport => 'Atención al Cliente';
+  String get drawerCustomerSupport => 'Soporte al cliente';
 
   @override
   String get drawerAbout => 'Acerca de';
 
   @override
-  String get drawerProfileSettings => 'Ajustes de Perfil';
+  String get drawerProfileSettings => 'Configuración de perfil';
 
   @override
-  String get demoNotificationTitle => '🔔 Notificación de Demo';
+  String get demoNotificationTitle => '🔔 Notificación de demostración';
 
   @override
   String get demoNotificationBody =>
@@ -605,7 +608,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get notificationsTitle => 'Notificaciones';
 
   @override
-  String get noNotifications => 'No hay notificaciones';
+  String get noNotifications => 'Sin notificaciones';
 
   @override
   String get allTab => 'Todo';
@@ -617,19 +620,20 @@ class AppLocalizationsEs extends AppLocalizations {
   String get notificationMarkedRead => 'Notificación marcada como leída';
 
   @override
-  String get failedToLoadNotifications => 'Error al cargar notificaciones';
+  String get failedToLoadNotifications =>
+      'No se pudieron cargar las notificaciones';
 
   @override
-  String get failedToMarkRead => 'Error al marcar como leído';
+  String get failedToMarkRead => 'No se pudo marcar como leído';
 
   @override
-  String get failedToMarkAllRead => 'Error al marcar todo como leído';
+  String get failedToMarkAllRead => 'No se pudo marcar todo como leído.';
 
   @override
-  String get socketConnected => 'Socket conectado';
+  String get socketConnected => 'Enchufe conectado';
 
   @override
-  String get socketDisconnected => 'Socket desconectado';
+  String get socketDisconnected => 'Enchufe desconectado';
 
   @override
   String get newNotificationReceived => 'Nueva notificación recibida';
@@ -641,7 +645,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get horoscopeCategory => 'Horóscopo';
 
   @override
-  String get chatCategory => 'Chat';
+  String get chatCategory => 'Charlar';
 
   @override
   String get systemCategory => 'Sistema';
@@ -650,22 +654,22 @@ class AppLocalizationsEs extends AppLocalizations {
   String get updateCategory => 'Actualizaciones';
 
   @override
-  String get howToAskTitle => 'Cómo Preguntar';
+  String get howToAskTitle => 'Cómo preguntar';
 
   @override
   String get noQuestionsAvailable => 'No hay preguntas disponibles';
 
   @override
-  String get failedToLoadQuestions => 'Error al cargar preguntas';
+  String get failedToLoadQuestions => 'No se pudieron cargar las preguntas';
 
   @override
-  String get pullToRefresh => 'Tira para actualizar';
+  String get pullToRefresh => 'Desliza para actualizar';
 
   @override
   String get careerCategory => 'Carrera';
 
   @override
-  String get loveCategory => 'Amor y Relaciones';
+  String get loveCategory => 'Amor y relaciones';
 
   @override
   String get healthCategory => 'Salud';
@@ -680,31 +684,31 @@ class AppLocalizationsEs extends AppLocalizations {
   String get educationCategory => 'Educación';
 
   @override
-  String get travelCategory => 'Viajes';
+  String get travelCategory => 'Viajar';
 
   @override
   String get spiritualCategory => 'Espiritual';
 
   @override
-  String get profileLoaded => 'Profile loaded successfully';
+  String get profileLoaded => 'Perfil cargado correctamente';
 
   @override
-  String get imageUploaded => 'Image uploaded successfully';
+  String get imageUploaded => 'Imagen subida correctamente';
 
   @override
-  String get savedInformationConfirmation => 'He guardado esta información';
+  String get savedInformationConfirmation => 'He guardado esta información.';
 
   @override
-  String get noHistoryAvailable => 'No hay historial disponible';
+  String get noHistoryAvailable => 'No hay historial disponible.';
 
   @override
-  String get missingUserIdError => 'Se requiere el ID de usuario';
+  String get missingUserIdError => 'Se requiere ID de usuario';
 
   @override
-  String get networkError => 'Error de red. Por favor intenta de nuevo.';
+  String get networkError => 'Error de red. Inténtelo de nuevo.';
 
   @override
-  String get timeoutError => 'La solicitud ha superado el tiempo de espera';
+  String get timeoutError => 'La solicitud ha expirado';
 
   @override
   String get genericError => 'Algo salió mal';
@@ -713,7 +717,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get reactionUpdateError => 'No se pudo actualizar la reacción';
 
   @override
-  String get noSearchResults => 'No se encontraron resultados';
+  String get noSearchResults => 'No se encontraron resultados de búsqueda.';
 
   @override
   String get clearSearch => 'Borrar búsqueda';
@@ -723,27 +727,27 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get recoverySecretHint =>
-      'No se puede copiar y pegar, escríbalo manualmente';
+      'Es posible que copiar y pegar no funcione; escriba manualmente.';
 
   @override
   String get recoverAccountDescription =>
-      'Siga estos pasos para recuperar su cuenta';
+      'Sigue estos pasos para recuperar tu cuenta.';
 
   @override
-  String get processingLabel => 'Procesando...';
+  String get processingLabel => 'Tratamiento...';
 
   @override
-  String get clearChatSuccess => 'Chat borrado con éxito';
+  String get clearChatSuccess => 'Chat finalizado correctamente';
 
   @override
-  String get notificationsEnabled => 'Notificaciones activadas';
+  String get notificationsEnabled => 'Notificaciones habilitadas';
 
   @override
   String get notificationsDisabled => 'Notificaciones desactivadas';
 
   @override
   String get securityNotice =>
-      'Tus datos están cifrados y almacenados de forma segura';
+      'Sus datos están cifrados y almacenados de forma segura.';
 
   @override
   String get loading => 'Cargando...';
@@ -759,61 +763,62 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get recoveryInstructions =>
-      'Guarda esta información de forma segura. La necesitarás para recuperar tu cuenta.';
+      'Por favor, guarda esta información de forma segura. La necesitarás para recuperar tu cuenta.';
 
   @override
   String get importantNotice => '⚠️ Importante:';
 
   @override
-  String get astrologerProfileTitle => 'Perfil del Astrólogo';
+  String get astrologerProfileTitle => 'Perfil de astrólogo';
 
   @override
-  String get personalAstrologer => 'Astrólogo Personal';
+  String get personalAstrologer => 'Astrólogo personal';
 
   @override
-  String get makePersonalAstrologer => 'Hacer Astrólogo Personal';
+  String get makePersonalAstrologer => 'Hazte astrólogo personal';
 
   @override
   String get favoriteDescription =>
-      'Tus preguntas serán priorizadas para este astrólogo. Si no está disponible, otro astrólogo calificado te asistirá.';
+      'Sus preguntas serán priorizadas para este astrólogo. Si no está disponible, otro astrólogo cualificado le ayudará.';
 
   @override
-  String get educationQualifications => 'Educación y Calificaciones';
+  String get educationQualifications => 'Educación y cualificaciones';
 
   @override
   String get aboutSection => 'Acerca de';
 
   @override
-  String get shareProfile => 'Compartir Perfil';
+  String get shareProfile => 'Compartir perfil';
 
   @override
   String get loadingAstrologer => 'Cargando detalles del astrólogo...';
 
   @override
   String get failedToLoadAstrologer =>
-      'Error al cargar los detalles del astrólogo';
+      'No se pudieron cargar los detalles del astrólogo';
 
   @override
   String get authenticationRequired =>
-      'Autenticación requerida. Por favor inicia sesión.';
+      'Se requiere autenticación. Por favor, inicie sesión.';
 
   @override
   String securityCheckFailed(Object error) {
-    return 'Falló la verificación de seguridad: $error';
+    return 'Error en la comprobación de seguridad: $error';
   }
 
   @override
   String addedToFavorites(Object name) {
-    return '🎯 $name ahora es tu Astrólogo Personal';
+    return '🎯 $name ahora es tu astrólogo personal';
   }
 
   @override
   String removedFromFavorites(Object name) {
-    return '✅ $name eliminado de favoritos';
+    return '✅ Eliminado $name de favoritos';
   }
 
   @override
-  String get toggleFavoriteError => 'Error al actualizar el estado de favorito';
+  String get toggleFavoriteError =>
+      'No se pudo actualizar el estado de favoritos';
 
   @override
   String shareMessage(
@@ -822,11 +827,11 @@ class AppLocalizationsEs extends AppLocalizations {
     Object qualification,
     Object experience,
   ) {
-    return '$name\n🎓 Educación: $education\n📜 Calificación: $qualification\n⏳ Experiencia: $experience';
+    return '$name\n🎓 Educación: $education\n📜 Cualificaciones: $qualification\n\n⏳ Experiencia: $experience';
   }
 
   @override
-  String get notProvided => 'No proporcionado';
+  String get notProvided => 'No se proporcionó';
 
   @override
   String reviews(Object count) {
@@ -847,5 +852,5 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get recoveryTips =>
-      '• Toma una captura de pantalla de esta información\n• Guárdala en un lugar seguro\n• No la compartas con nadie\n• Solo se mostrará una vez';
+      '• Haz una captura de pantalla de esta información.\n• Guárdala en un lugar seguro.\n• No la compartas con nadie.\n• Esto solo se mostrará una vez.';
 }

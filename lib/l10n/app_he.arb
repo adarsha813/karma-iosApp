@@ -1,0 +1,439 @@
+{
+  "@@locale": "he",
+  "settingsTitle": "הגדרות",
+  "notificationSettings": "הגדרות התראות",
+  "privacySettings": "הגדרות פרטיות",
+  "accountSettings": "הגדרות חשבון",
+  "languageSettings": "הגדרות שפה",
+  "languageChanged": "השפה השתנתה",
+  "existingUserButton": "אני משתמש קיים",
+  "chooseCountryTitle": "בחר מדינה",
+  "yesText": "כֵּן",
+  "noText": "לֹא",
+  "appBarTitle": "הגדרות פרופיל",
+  "userIdLabel": "מזהה משתמש *",
+  "nameLabel": "שֵׁם",
+  "birthCountryLabel": "ארץ לידה",
+  "birthCityLabel": "עיר לידה",
+  "countrySelectionTitle": "בחר את המדינה שלך",
+  "maleLabel": "זָכָר",
+  "femaleLabel": "נְקֵבָה",
+  "birthDateLabel": "תאריך לידה",
+  "birthDatePlaceholder": "בחר תאריך לידה",
+  "birthTimeLabel": "זמן לידה",
+  "birthTimePlaceholder": "בחר שעת לידה",
+  "saveProfileButton": "שמור פרופיל",
+  "noCitiesFound": "לא נמצאו ערים",
+  "cityPlaceholder": "הזן עיר ב-{country}",
+  "countryFirstPlaceholder": "בחר תחילה מדינה",
+  "versionHistoryTitle": "היסטוריית גרסאות",
+  "notSetText": "לא מוגדר",
+  "nameHistory": "שם: {name}",
+  "cityHistory": "עיר: {city}",
+  "countryHistory": "מדינה: {country}",
+  "genderHistory": "מין: {gender}",
+  "birthDateHistory": "תאריך לידה: {date}",
+  "birthTimeHistory": "שעת לידה: {time}",
+  "locationHistory": "מיקום: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT{offset}",
+  "dstHistory": "שעון קיץ: {value}",
+  "stateHistory": "מצב: {state}",
+  "versionFromText": "עודכן בתאריך {date}",
+  "userIdRequired": "נדרש מזהה משתמש",
+  "profileSaved": "הפרופיל נשמר בהצלחה",
+  "saveFailed": "שמירת הפרופיל נכשלה",
+  "errorPrefix": "שְׁגִיאָה:",
+  "onboardingChooseLanguage": "בחר את השפה שלך",
+  "onboardingChooseLanguageDesc": "בחר את השפה המועדפת עליך כדי להמשיך.",
+  "onboardingWhatIsAstrology": "מהי אסטרולוגיה?",
+  "onboardingWhatIsAstrologyDesc": "אסטרולוגיה היא חקר גופים שמימיים...",
+  "onboardingWhyUseApp": "למה להשתמש באפליקציה הזו?",
+  "onboardingWhyUseAppDesc": "קבלו הורוסקופים מותאמים אישית, תחזיות יומיות והכוונה לקבלת החלטות מושכלות.",
+  "onboardingHowToUse": "איך להשתמש באפליקציה הזו?",
+  "onboardingHowToUseDesc": "נווטו בקלות, בדקו הורוסקופים יומיים ונהלו את הפרופיל שלכם לקבלת תחזיות מדויקות.",
+  "onboardingGetStarted": "התחל",
+  "onboardingNewUser": "משתמש חדש",
+  "onboardingExistingUser": "משתמש קיים",
+  "onboardingBack": "בְּחֲזָרָה",
+  "onboardingNext": "הַבָּא",
+  "userIdNotFound": "מזהה המשתמש לא נמצא. אנא התחבר או הגדר את הפרופיל שלך.",
+  "clearNotificationsTitle": "נקה התראות",
+  "clearNotificationsMessage": "האם אתה בטוח שברצונך למחוק את כל ההתראות?",
+  "clearNotificationsSuccess": "כל ההתראות נמחקו בהצלחה.",
+  "clearHoroscopeTitle": "הורוסקופ ברור",
+  "clearHoroscopeMessage": "האם אתה בטוח שברצונך למחוק את נתוני ההורוסקופ שלך?",
+  "clearHoroscopeSuccess": "ההורוסקופ נוקה בהצלחה.",
+  "clearChatTitle": "נקה היסטוריית צ'אט",
+  "clearChatMessage": "האם אתה בטוח שאתה רוצה למחוק את כל היסטוריית הצ'אט שלך?",
+  "clearChatLocal": "הצ'אט נוקה באופן מקומי.",
+  "deleteAccountTitle": "מחיקת חשבון",
+  "deleteAccountMessage": "האם אתה בטוח שאתה רוצה למחוק את החשבון שלך? פעולה זו תמחק גם את כל היסטוריית הצ'אט וההתראות שלך.",
+  "deleteAccountSuccess": "החשבון שלך וכל הנתונים הוסרו.",
+  "deleteAccountError": "שגיאה במחיקת חשבון",
+  "logoutTitle": "התנתק",
+  "logoutMessage": "האם אתה בטוח שאתה רוצה להתנתק?",
+  "termsPrivacyTitle": "תנאים ופרטיות",
+  "privacyPolicyTitle": "מדיניות פרטיות",
+  "termsConditionsTitle": "תנאים והגבלות",
+  "dataControlTitle": "בקרת נתונים",
+  "cancelButton": "לְבַטֵל",
+  "confirmButton": "לְאַשֵׁר",
+  "clearQuestionsSuccess": "כל השאלות נמחקו בהצלחה.",
+  "yoginiLabel": "יוגיני",
+  "lordLabel": "אָדוֹן",
+  "startLabel": "הַתחָלָה",
+  "recoverAccount": "שחזור חשבון",
+  "endLabel": "סוֹף",
+  "startDateLabel": "תאריך התחלה",
+  "endDateLabel": "תאריך סיום",
+  "notAvailable": "לא זמין",
+  "noData": "אין נתונים",
+  "unknownError": "שגיאה לא ידועה",
+  "retryButton": "נסה שוב",
+  "kundaliGeneratorTitle": "מחולל קונדאלי",
+  "natalChartTitle": "מפת לידה",
+  "lagnaLabel": "לגנה",
+  "rashiLabel": "רש\"י",
+  "ascDegreeLabel": "דרגת עלייה",
+  "vimshottariDashaTitle": "וימשוטארי דאשה",
+  "yoginiDashaTitle": "יוגיני דאשה",
+  "unknown": "לֹא יְדוּעַ",
+  "clearHoroscope": "הורוסקופ ברור",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "נקה התראות",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "נקה היסטוריית צ'אט",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "התנתק",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "מחיקת חשבון",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "כל השדות נדרשים.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "החשבון שוחזר בהצלחה.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "השחזור נכשל. בדוק את המידע שלך.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "סוד ההחלמה:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "אודותינו",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "אודות החברה שלנו",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "אנו מחויבים לספק את חוויית האסטרולוגיה הטובה ביותר למשתמשים שלנו.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "המשימה שלנו",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "לספק תובנות אסטרולוגיות מדויקות ואישיות שיעזרו למשתמשים לקבל החלטות מושכלות בחייהם.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "החזון שלנו",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "להפוך לפלטפורמת האסטרולוגיה המהימנה ביותר, המשלבת טכנולוגיה וחוכמה עתיקה.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "הערכים שלנו",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "יושרה, דיוק, עיצוב ממוקד משתמש וחדשנות מתמשכת.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "צרו קשר",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "דוא\"ל: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "אתר אינטרנט: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "תמיכת לקוחות",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "אנחנו כאן כדי לעזור",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "מלאו את הטופס למטה וצוות התמיכה שלנו יחזור אליכם בהקדם האפשרי.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "השם שלך",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "האימייל שלך",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "הוֹדָעָה",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "הזן את כתובת הדוא\"ל שלך",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "הזן כתובת דוא\"ל חוקית",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "הזן {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "לִשְׁלוֹחַ",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "שְׁלִיחָה...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ המייל נשלח בהצלחה!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ שליחת הדוא\"ל נכשלה",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "מילון אסטרו",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "מונחי חיפוש...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "לא נמצאו מונחים",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "שאלות קנייה",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "המשתמש לא אומת",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "טעינת נתוני החנות נכשלה",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "אסימון אימות חסר",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "אפליקציית אסטרו צ'אט",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ התשלום הצליח! השאלה נשלחה",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ התשלום נכשל: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "היתרה שלך",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "שאלות {count}",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "הצעות זמינות",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "שאלה {count}",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "לִקְנוֹת",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 הורוסקופ יומי",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "חסר מזהה משתמש",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "נכשלה שליפת ההורוסקופים",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "לא נמצא הורוסקופ.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "סִימָן",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "הַיוֹם",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "אֶתמוֹל",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "השבוע",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "החודש שעבר",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "לְשׂוֹחֵחַ",
+  "typeYourQuestionHint": "הקלד את השאלה שלך...",
+  "paymentRequired": "נדרש תשלום",
+  "paymentRequiredMessage": "ניצלת את השאלות החינמיות שלך. שלם ₹50 כדי להמשיך.",
+  "payNowButton": "שלם עכשיו",
+  "freeQuestionsRemaining": "נותרו {count} שאלות פנויות",
+  "paidQuestionsRemaining": "נותרו {count} שאלות בתשלום",
+  "thankYouFeedback": "תודה על המשוב שלך!",
+  "ratingSubmitted": "דירוג נשלח!",
+  "setUserIdFirst": "אנא הגדר תחילה את מזהה המשתמש שלך",
+  "failedToFetchPrevious": "נכשלה אחזור השאלות והתשובות הקודמות",
+  "errorOccurred": "שגיאה: {error}",
+  "drawerAstroProfile": "פרופיל אסטרו",
+  "drawerDailyHoroscope": "הורוסקופ יומי",
+  "drawerBuyQuestions": "שאלות קנייה",
+  "drawerAstroDictionary": "מילון אסטרו",
+  "drawerSettings": "הגדרות",
+  "drawerCustomerSupport": "תמיכת לקוחות",
+  "drawerAbout": "אוֹדוֹת",
+  "drawerProfileSettings": "הגדרות פרופיל",
+  "demoNotificationTitle": "🔔 הודעת הדגמה",
+  "demoNotificationBody": "זוהי הודעת ניסיון מהאפליקציה שלך!",
+  "notificationsTitle": "התראות",
+  "noNotifications": "אין התראות",
+  "allTab": "כֹּל",
+  "markAllAsRead": "סמן הכל כנקרא",
+  "notificationMarkedRead": "התראה סומנה כנקראה",
+  "failedToLoadNotifications": "טעינת ההתראות נכשלה",
+  "failedToMarkRead": "נכשל הסימון כנקרא",
+  "failedToMarkAllRead": "נכשל בסימון הכל כנקרא",
+  "socketConnected": "שקע מחובר",
+  "socketDisconnected": "שקע מנותק",
+  "newNotificationReceived": "התקבלה הודעה חדשה",
+  "generalCategory": "כְּלָלִי",
+  "horoscopeCategory": "הוֹרוֹסקוֹפּ",
+  "chatCategory": "לְשׂוֹחֵחַ",
+  "systemCategory": "מַעֲרֶכֶת",
+  "updateCategory": "עדכונים",
+  "howToAskTitle": "איך לשאול",
+  "noQuestionsAvailable": "אין שאלות זמינות",
+  "failedToLoadQuestions": "טעינת השאלות נכשלה",
+  "pullToRefresh": "משוך כדי לרענן",
+  "careerCategory": "קריירה",
+  "loveCategory": "אהבה ומערכות יחסים",
+  "healthCategory": "בְּרִיאוּת",
+  "financeCategory": "לְמַמֵן",
+  "familyCategory": "מִשׁפָּחָה",
+  "educationCategory": "הַשׂכָּלָה",
+  "travelCategory": "לִנְסוֹעַ",
+  "spiritualCategory": "רוּחָנִי",
+  "profileLoaded": "הפרופיל נטען בהצלחה",
+  "imageUploaded": "התמונה הועלתה בהצלחה",
+  "savedInformationConfirmation": "שמרתי את המידע הזה",
+  "noHistoryAvailable": "אין היסטוריה זמינה",
+  "missingUserIdError": "נדרש מזהה משתמש",
+  "networkError": "שגיאת רשת. אנא נסה שוב.",
+  "timeoutError": "תם הזמן שהוקצב לבקשה",
+  "genericError": "משהו השתבש",
+  "reactionUpdateError": "עדכון התגובה נכשל",
+  "noSearchResults": "לא נמצאו תוצאות חיפוש",
+  "clearSearch": "נקה חיפוש",
+  "resultsFound": "תוצאות שנמצאו",
+  "recoverySecretHint": "העתקה והדבקה אולי לא יעבדו, הקלד ידנית",
+  "recoverAccountDescription": "בצע את השלבים הבאים כדי לשחזר את חשבונך",
+  "processingLabel": "עיבוד...",
+  "clearChatSuccess": "הצ'אט נוקה בהצלחה",
+  "notificationsEnabled": "התראות מופעלות",
+  "notificationsDisabled": "התראות מושבתות",
+  "securityNotice": "הנתונים שלך מוצפנים ומאוחסנים בצורה מאובטחת",
+  "loading": "טְעִינָה...",
+  "selectLanguage": "בחר שפה",
+  "onboardingGetStartedDesc": "התחל על ידי בחירת השפה שלך",
+  "accountRecoveryTitle": "🔐 פרטי שחזור חשבון",
+  "recoveryInstructions": "אנא שמור מידע זה בצורה מאובטחת. תזדקק לו כדי לשחזר את חשבונך.",
+  "importantNotice": "⚠️ חשוב:",
+  "astrologerProfileTitle": "פרופיל אסטרולוג",
+  "personalAstrologer": "אסטרולוג אישי",
+  "makePersonalAstrologer": "להפוך לאסטרולוג אישי",
+  "favoriteDescription": "שאלותיך יקבלו עדיפות לאסטרולוג זה. אם לא זמין, אסטרולוג מוסמך אחר יסייע לך.",
+  "educationQualifications": "השכלה וכישורים",
+  "aboutSection": "אוֹדוֹת",
+  "shareProfile": "שתף פרופיל",
+  "loadingAstrologer": "טוען פרטי אסטרולוג...",
+  "failedToLoadAstrologer": "טעינת פרטי האסטרולוג נכשלה",
+  "authenticationRequired": "נדרש אימות. אנא התחבר.",
+  "securityCheckFailed": "בדיקת אבטחה נכשלה: {error}",
+  "addedToFavorites": "🎯 {name} הוא עכשיו האסטרולוג האישי שלך",
+  "removedFromFavorites": "✅ {name} הוסר מהמועדפים",
+  "toggleFavoriteError": "נכשל עדכון סטטוס המועדף",
+  "shareMessage": "{name}\n🎓 השכלה: {education}\n📜 הסמכה: {qualification}\n⏳ ניסיון: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "לא סופק",
+  "reviews": "({count} ביקורות)",
+  "specialties": "התמחויות",
+  "experience": "הִתנַסוּת",
+  "qualification": "הַכשָׁרָה",
+  "education": "הַשׂכָּלָה",
+  "recoveryTips": "• צלם צילום מסך של מידע זה\n• אחסן אותו במקום מאובטח\n• אל תשתף עם אף אחד\n• זה יוצג פעם אחת בלבד"
+}

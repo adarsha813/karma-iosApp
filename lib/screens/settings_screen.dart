@@ -893,10 +893,157 @@ class _ActionListTile extends StatelessWidget {
   }
 }
 
-class _LanguageSettingsTile extends StatelessWidget {
+class _LanguageSettingsTile extends StatefulWidget {
   final AppLocalizations l10n;
 
   const _LanguageSettingsTile({required this.l10n});
+
+  @override
+  State<_LanguageSettingsTile> createState() => _LanguageSettingsTileState();
+}
+
+class _LanguageSettingsTileState extends State<_LanguageSettingsTile> {
+  final TextEditingController _searchController = TextEditingController();
+  List<Map<String, dynamic>> _filteredLanguages = [];
+
+  // Define complete languages list
+  static final List<Map<String, dynamic>> _allLanguages = [
+    {'name': 'English', 'locale': const Locale('en')},
+    {'name': 'Afrikaans', 'locale': const Locale('af')},
+    {'name': 'Albanian', 'locale': const Locale('sq')},
+    {'name': 'Amharic', 'locale': const Locale('am')},
+    {'name': 'Arabic', 'locale': const Locale('ar')},
+    {'name': 'Armenian', 'locale': const Locale('hy')},
+    {'name': 'Azerbaijani', 'locale': const Locale('az')},
+    {'name': 'Basque', 'locale': const Locale('eu')},
+    {'name': 'Belarusian', 'locale': const Locale('be')},
+    {'name': 'Bengali', 'locale': const Locale('bn')},
+    {'name': 'Bosnian', 'locale': const Locale('bs')},
+    {'name': 'Bulgarian', 'locale': const Locale('bg')},
+    {'name': 'Catalan', 'locale': const Locale('ca')},
+    {'name': 'Cebuano', 'locale': const Locale('ceb')},
+    {'name': 'Chinese (Simplified)', 'locale': const Locale('zh')},
+    {'name': 'Chinese (Traditional)', 'locale': const Locale('zh', 'TW')},
+    {'name': 'Corsican', 'locale': const Locale('co')},
+    {'name': 'Croatian', 'locale': const Locale('hr')},
+    {'name': 'Czech', 'locale': const Locale('cs')},
+    {'name': 'Danish', 'locale': const Locale('da')},
+    {'name': 'Dutch', 'locale': const Locale('nl')},
+    {'name': 'Esperanto', 'locale': const Locale('eo')},
+    {'name': 'Estonian', 'locale': const Locale('et')},
+    {'name': 'Finnish', 'locale': const Locale('fi')},
+    {'name': 'French', 'locale': const Locale('fr')},
+    {'name': 'Frisian', 'locale': const Locale('fy')},
+    {'name': 'Galician', 'locale': const Locale('gl')},
+    {'name': 'Georgian', 'locale': const Locale('ka')},
+    {'name': 'German', 'locale': const Locale('de')},
+    {'name': 'Greek', 'locale': const Locale('el')},
+    {'name': 'Gujarati', 'locale': const Locale('gu')},
+    {'name': 'Haitian Creole', 'locale': const Locale('ht')},
+    {'name': 'Hausa', 'locale': const Locale('ha')},
+    {'name': 'Hawaiian', 'locale': const Locale('haw')},
+    {'name': 'Hebrew', 'locale': const Locale('he')},
+    {'name': 'Hindi', 'locale': const Locale('hi')},
+    {'name': 'Hmong', 'locale': const Locale('hmn')},
+    {'name': 'Hungarian', 'locale': const Locale('hu')},
+    {'name': 'Icelandic', 'locale': const Locale('is')},
+    {'name': 'Igbo', 'locale': const Locale('ig')},
+    {'name': 'Indonesian', 'locale': const Locale('id')},
+    {'name': 'Irish', 'locale': const Locale('ga')},
+    {'name': 'Italian', 'locale': const Locale('it')},
+    {'name': 'Japanese', 'locale': const Locale('ja')},
+    {'name': 'Javanese', 'locale': const Locale('jv')},
+    {'name': 'Kannada', 'locale': const Locale('kn')},
+    {'name': 'Kazakh', 'locale': const Locale('kk')},
+    {'name': 'Khmer', 'locale': const Locale('km')},
+    {'name': 'Kinyarwanda', 'locale': const Locale('rw')},
+    {'name': 'Korean', 'locale': const Locale('ko')},
+    {'name': 'Kurdish', 'locale': const Locale('ku')},
+    {'name': 'Kyrgyz', 'locale': const Locale('ky')},
+    {'name': 'Lao', 'locale': const Locale('lo')},
+    {'name': 'Latvian', 'locale': const Locale('lv')},
+    {'name': 'Lithuanian', 'locale': const Locale('lt')},
+    {'name': 'Luxembourgish', 'locale': const Locale('lb')},
+    {'name': 'Macedonian', 'locale': const Locale('mk')},
+    {'name': 'Malagasy', 'locale': const Locale('mg')},
+    {'name': 'Malay', 'locale': const Locale('ms')},
+    {'name': 'Malayalam', 'locale': const Locale('ml')},
+    {'name': 'Maltese', 'locale': const Locale('mt')},
+    {'name': 'Maori', 'locale': const Locale('mi')},
+    {'name': 'Marathi', 'locale': const Locale('mr')},
+    {'name': 'Mongolian', 'locale': const Locale('mn')},
+    {'name': 'Myanmar (Burmese)', 'locale': const Locale('my')},
+    {'name': 'Nepali', 'locale': const Locale('ne')},
+    {'name': 'Norwegian', 'locale': const Locale('no')},
+    {'name': 'Nyanja (Chichewa)', 'locale': const Locale('ny')},
+    {'name': 'Odia (Oriya)', 'locale': const Locale('or')},
+    {'name': 'Pashto', 'locale': const Locale('ps')},
+    {'name': 'Persian', 'locale': const Locale('fa')},
+    {'name': 'Polish', 'locale': const Locale('pl')},
+    {'name': 'Portuguese', 'locale': const Locale('pt')},
+    {'name': 'Punjabi', 'locale': const Locale('pa')},
+    {'name': 'Romanian', 'locale': const Locale('ro')},
+    {'name': 'Russian', 'locale': const Locale('ru')},
+    {'name': 'Samoan', 'locale': const Locale('sm')},
+    {'name': 'Scots Gaelic', 'locale': const Locale('gd')},
+    {'name': 'Serbian', 'locale': const Locale('sr')},
+    {'name': 'Sesotho', 'locale': const Locale('st')},
+    {'name': 'Shona', 'locale': const Locale('sn')},
+    {'name': 'Sindhi', 'locale': const Locale('sd')},
+    {'name': 'Sinhala', 'locale': const Locale('si')},
+    {'name': 'Slovak', 'locale': const Locale('sk')},
+    {'name': 'Slovenian', 'locale': const Locale('sl')},
+    {'name': 'Somali', 'locale': const Locale('so')},
+    {'name': 'Spanish', 'locale': const Locale('es')},
+    {'name': 'Sundanese', 'locale': const Locale('su')},
+    {'name': 'Swahili', 'locale': const Locale('sw')},
+    {'name': 'Swedish', 'locale': const Locale('sv')},
+    {'name': 'Tagalog (Filipino)', 'locale': const Locale('tl')},
+    {'name': 'Tajik', 'locale': const Locale('tg')},
+    {'name': 'Tamil', 'locale': const Locale('ta')},
+    {'name': 'Tatar', 'locale': const Locale('tt')},
+    {'name': 'Telugu', 'locale': const Locale('te')},
+    {'name': 'Thai', 'locale': const Locale('th')},
+    {'name': 'Turkish', 'locale': const Locale('tr')},
+    {'name': 'Turkmen', 'locale': const Locale('tk')},
+    {'name': 'Ukrainian', 'locale': const Locale('uk')},
+    {'name': 'Urdu', 'locale': const Locale('ur')},
+    {'name': 'Uyghur', 'locale': const Locale('ug')},
+    {'name': 'Uzbek', 'locale': const Locale('uz')},
+    {'name': 'Vietnamese', 'locale': const Locale('vi')},
+    {'name': 'Welsh', 'locale': const Locale('cy')},
+    {'name': 'Xhosa', 'locale': const Locale('xh')},
+    {'name': 'Yiddish', 'locale': const Locale('yi')},
+    {'name': 'Yoruba', 'locale': const Locale('yo')},
+    {'name': 'Zulu', 'locale': const Locale('zu')},
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _filteredLanguages = _allLanguages;
+    _searchController.addListener(_filterLanguages);
+  }
+
+  void _filterLanguages() {
+    final query = _searchController.text.toLowerCase();
+    setState(() {
+      if (query.isEmpty) {
+        _filteredLanguages = _allLanguages;
+      } else {
+        _filteredLanguages =
+            _allLanguages.where((lang) {
+              return lang['name'].toString().toLowerCase().contains(query);
+            }).toList();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -905,24 +1052,61 @@ class _LanguageSettingsTile extends StatelessWidget {
       child: ExpansionTile(
         leading: Icon(Icons.language, color: Theme.of(context).primaryColor),
         title: Text(
-          l10n.languageSettings,
+          widget.l10n.languageSettings,
           style: const TextStyle(fontWeight: FontWeight.w500),
         ),
+        initiallyExpanded: false,
+        onExpansionChanged: (expanded) {
+          if (!expanded) {
+            _searchController.clear();
+          }
+        },
         children: [
-          _LanguageRadioTile(
-            language: "English",
-            locale: const Locale('en'),
-            l10n: l10n,
+          // Search bar
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+              vertical: 8.0,
+            ),
+            child: TextField(
+              controller: _searchController,
+              decoration: InputDecoration(
+                hintText: 'Search languages...',
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 12.0),
+                isDense: true,
+              ),
+            ),
           ),
-          _LanguageRadioTile(
-            language: "Español",
-            locale: const Locale('es'),
-            l10n: l10n,
-          ),
-          _LanguageRadioTile(
-            language: "हिन्दी",
-            locale: const Locale('hi'),
-            l10n: l10n,
+          const SizedBox(height: 8),
+          // Limited height list with builder
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxHeight: 300),
+            child:
+                _filteredLanguages.isEmpty
+                    ? Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        'No languages found',
+                        style: TextStyle(color: Colors.grey.shade600),
+                      ),
+                    )
+                    : ListView.builder(
+                      shrinkWrap: true,
+                      physics: const ClampingScrollPhysics(),
+                      itemCount: _filteredLanguages.length,
+                      itemBuilder: (context, index) {
+                        final language = _filteredLanguages[index];
+                        return _LanguageRadioTile(
+                          language: language['name'] as String,
+                          locale: language['locale'] as Locale,
+                          l10n: widget.l10n,
+                        );
+                      },
+                    ),
           ),
         ],
       ),
@@ -977,8 +1161,6 @@ class _LanguageRadioTile extends StatelessWidget {
 
       if (response.statusCode == 200) {
         logger.i("✅ Language updated on backend successfully.");
-        // ✅ Use the new method - language is already saved locally via saveLanguage()
-        // The backend sync happens automatically in the secured ProfileProvider
 
         if (Environment.isProduction) {
           logger.i('📊 Analytics: language_changed - lang: $langCode');
@@ -1010,9 +1192,14 @@ class _LanguageRadioTile extends StatelessWidget {
             : localeProvider.locale.languageCode;
 
     return RadioListTile<String>(
-      title: Text(language),
+      title: Text(
+        language,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: const TextStyle(fontSize: 14),
+      ),
       value: locale.languageCode,
-      groupValue: currentLanguage, // ✅ FIX: Use the reliable current language
+      groupValue: currentLanguage,
       onChanged: (String? value) async {
         if (value != null) {
           final logger = Logger();
@@ -1032,6 +1219,7 @@ class _LanguageRadioTile extends StatelessWidget {
                 listen: false,
               ).refreshProfile();
             }
+
             if (Environment.isProduction) {
               logger.i('📊 Analytics: language_changed - lang: $value');
             }
@@ -1046,16 +1234,17 @@ class _LanguageRadioTile extends StatelessWidget {
                 ),
               );
             }
+
+            // Update backend if user is logged in
+            if (profileProvider.userId != null) {
+              await _updateLanguageOnBackend(context, value);
+            }
           } catch (e) {
             final errorLogger = Logger();
             errorLogger.e('🔴 Error changing language: $e');
 
             if (Environment.isProduction) {
               errorLogger.e('📊 Analytics: language_change_error - error: $e');
-            }
-            // Update backend if user is logged in
-            if (profileProvider.userId != null) {
-              await _updateLanguageOnBackend(context, value);
             }
 
             if (context.mounted) {
@@ -1069,6 +1258,10 @@ class _LanguageRadioTile extends StatelessWidget {
           }
         }
       },
+      // Optimize performance
+      dense: true,
+      visualDensity: VisualDensity.compact,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
     );
   }
 }

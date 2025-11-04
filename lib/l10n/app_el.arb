@@ -1,0 +1,439 @@
+{
+  "@@locale": "el",
+  "settingsTitle": "Ρυθμίσεις",
+  "notificationSettings": "Ρυθμίσεις ειδοποιήσεων",
+  "privacySettings": "Ρυθμίσεις απορρήτου",
+  "accountSettings": "Ρυθμίσεις λογαριασμού",
+  "languageSettings": "Ρυθμίσεις γλώσσας",
+  "languageChanged": "Γλώσσα άλλαξε",
+  "existingUserButton": "Είμαι ένας υπάρχοντας χρήστης",
+  "chooseCountryTitle": "Επιλέξτε χώρα",
+  "yesText": "Ναί",
+  "noText": "Οχι",
+  "appBarTitle": "Ρυθμίσεις προφίλ",
+  "userIdLabel": "Αναγνωριστικό χρήστη *",
+  "nameLabel": "Ονομα",
+  "birthCountryLabel": "Χώρα Γέννησης",
+  "birthCityLabel": "Πόλη γέννησης",
+  "countrySelectionTitle": "Επιλέξτε τη χώρα σας",
+  "maleLabel": "Αρσενικός",
+  "femaleLabel": "Θηλυκός",
+  "birthDateLabel": "Ημερομηνία γέννησης",
+  "birthDatePlaceholder": "Επιλέξτε Ημερομηνία Γέννησης",
+  "birthTimeLabel": "Ώρα Γέννησης",
+  "birthTimePlaceholder": "Επιλέξτε Ώρα Γέννησης",
+  "saveProfileButton": "Αποθήκευση προφίλ",
+  "noCitiesFound": "Δεν βρέθηκαν πόλεις",
+  "cityPlaceholder": "Εισαγάγετε την πόλη στο {country}",
+  "countryFirstPlaceholder": "Επιλέξτε πρώτα χώρα",
+  "versionHistoryTitle": "Ιστορικό εκδόσεων",
+  "notSetText": "Δεν έχει οριστεί",
+  "nameHistory": "Όνομα: {name}",
+  "cityHistory": "Πόλη: {city}",
+  "countryHistory": "Χώρα: {country}",
+  "genderHistory": "Φύλο: {gender}",
+  "birthDateHistory": "Ημερομηνία γέννησης: {date}",
+  "birthTimeHistory": "Ώρα Γέννησης: {time}",
+  "locationHistory": "Τοποθεσία: {latitude}, {longitude}",
+  "timezoneHistory": "Ζώνη ώρας: GMT{offset}",
+  "dstHistory": "Θερινή ώρα: {value}",
+  "stateHistory": "Κατάσταση: {state}",
+  "versionFromText": "Ενημερώθηκε στις {date}",
+  "userIdRequired": "Απαιτείται αναγνωριστικό χρήστη",
+  "profileSaved": "Το προφίλ αποθηκεύτηκε με επιτυχία.",
+  "saveFailed": "Η αποθήκευση του προφίλ απέτυχε",
+  "errorPrefix": "Σφάλμα:",
+  "onboardingChooseLanguage": "Επιλέξτε τη γλώσσα σας",
+  "onboardingChooseLanguageDesc": "Επιλέξτε την προτιμώμενη γλώσσα σας για να συνεχίσετε.",
+  "onboardingWhatIsAstrology": "Τι είναι η Αστρολογία;",
+  "onboardingWhatIsAstrologyDesc": "Η αστρολογία είναι η μελέτη των ουράνιων σωμάτων...",
+  "onboardingWhyUseApp": "Γιατί να χρησιμοποιήσετε αυτήν την εφαρμογή;",
+  "onboardingWhyUseAppDesc": "Λάβετε εξατομικευμένα ωροσκόπια, καθημερινές προβλέψεις και καθοδήγηση για να λαμβάνετε τεκμηριωμένες αποφάσεις.",
+  "onboardingHowToUse": "Πώς να χρησιμοποιήσετε αυτήν την εφαρμογή;",
+  "onboardingHowToUseDesc": "Πλοηγηθείτε εύκολα, ελέγξτε τα καθημερινά ωροσκόπια και διαχειριστείτε το προφίλ σας για ακριβείς προβλέψεις.",
+  "onboardingGetStarted": "Ξεκινήστε",
+  "onboardingNewUser": "Νέος χρήστης",
+  "onboardingExistingUser": "Υπάρχων χρήστης",
+  "onboardingBack": "Πίσω",
+  "onboardingNext": "Επόμενος",
+  "userIdNotFound": "Δεν βρέθηκε αναγνωριστικό χρήστη. Συνδεθείτε ή ορίστε το προφίλ σας.",
+  "clearNotificationsTitle": "Διαγραφή ειδοποιήσεων",
+  "clearNotificationsMessage": "Είστε βέβαιοι ότι θέλετε να διαγράψετε όλες τις ειδοποιήσεις;",
+  "clearNotificationsSuccess": "Όλες οι ειδοποιήσεις διαγράφηκαν με επιτυχία.",
+  "clearHoroscopeTitle": "Καθαρό Ωροσκόπιο",
+  "clearHoroscopeMessage": "Είστε σίγουροι ότι θέλετε να διαγράψετε τα δεδομένα του ωροσκοπίου σας;",
+  "clearHoroscopeSuccess": "Το ωροσκόπιο διαγράφηκε με επιτυχία.",
+  "clearChatTitle": "Εκκαθάριση ιστορικού συνομιλίας",
+  "clearChatMessage": "Είστε σίγουροι ότι θέλετε να διαγράψετε όλο το ιστορικό συνομιλιών σας;",
+  "clearChatLocal": "Η συνομιλία διαγράφηκε τοπικά.",
+  "deleteAccountTitle": "Διαγραφή λογαριασμού",
+  "deleteAccountMessage": "Είστε βέβαιοι ότι θέλετε να διαγράψετε τον λογαριασμό σας; Αυτή η ενέργεια θα διαγράψει επίσης όλο το ιστορικό συνομιλιών και τις ειδοποιήσεις σας.",
+  "deleteAccountSuccess": "Ο λογαριασμός σας και όλα τα δεδομένα σας έχουν καταργηθεί.",
+  "deleteAccountError": "Σφάλμα κατά τη διαγραφή του λογαριασμού κατά τη διαγραφή του.",
+  "logoutTitle": "Αποσύνδεση",
+  "logoutMessage": "Είστε σίγουροι ότι θέλετε να αποσυνδεθείτε;",
+  "termsPrivacyTitle": "Όροι και Απόρρητο",
+  "privacyPolicyTitle": "Πολιτική Απορρήτου",
+  "termsConditionsTitle": "Όροι και Προϋποθέσεις",
+  "dataControlTitle": "Έλεγχος Δεδομένων",
+  "cancelButton": "Ματαίωση",
+  "confirmButton": "Επιβεβαιώνω",
+  "clearQuestionsSuccess": "Όλες οι ερωτήσεις διαγράφηκαν με επιτυχία.",
+  "yoginiLabel": "Γιογκίνι",
+  "lordLabel": "Αρχοντας",
+  "startLabel": "Αρχή",
+  "recoverAccount": "Ανάκτηση Λογαριασμού",
+  "endLabel": "Τέλος",
+  "startDateLabel": "Ημερομηνία έναρξης",
+  "endDateLabel": "Ημερομηνία λήξης",
+  "notAvailable": "Δεν είναι διαθέσιμο",
+  "noData": "Δεν υπάρχουν δεδομένα",
+  "unknownError": "Άγνωστο σφάλμα",
+  "retryButton": "Δοκιμάζω πάλι",
+  "kundaliGeneratorTitle": "Γεννήτρια Κουντάλι",
+  "natalChartTitle": "Γενέθλιος Χάρτης",
+  "lagnaLabel": "Λάγκνα",
+  "rashiLabel": "Ρασί",
+  "ascDegreeLabel": "Ανοδική Μοίρα",
+  "vimshottariDashaTitle": "Βιμσοτάρι Ντάσα",
+  "yoginiDashaTitle": "Γιογκίνι Ντάσα",
+  "unknown": "Αγνωστος",
+  "clearHoroscope": "Καθαρό Ωροσκόπιο",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Διαγραφή ειδοποιήσεων",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Εκκαθάριση ιστορικού συνομιλίας",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Αποσύνδεση",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Διαγραφή λογαριασμού",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Όλα τα πεδία είναι υποχρεωτικά.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Ο λογαριασμός ανακτήθηκε με επιτυχία.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Η ανάκτηση απέτυχε. Ελέγξτε τα στοιχεία σας.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Μυστικό Ανάρρωσης:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Σχετικά με εμάς",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Σχετικά με την εταιρεία μας",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Δεσμευόμαστε να προσφέρουμε την καλύτερη αστρολογική εμπειρία στους χρήστες μας.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Η Αποστολή μας",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Να παρέχει ακριβείς και εξατομικευμένες αστρολογικές πληροφορίες που θα βοηθήσουν τους χρήστες να λαμβάνουν τεκμηριωμένες αποφάσεις στη ζωή τους.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Το Όραμά μας",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Να γίνει η πιο αξιόπιστη πλατφόρμα αστρολογίας, συνδυάζοντας την τεχνολογία και την αρχαία σοφία.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Οι Αξίες μας",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Ακεραιότητα, Ακρίβεια, Σχεδιασμός με επίκεντρο τον χρήστη και Συνεχής Καινοτομία.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Επικοινωνήστε μαζί μας",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Ηλεκτρονικό ταχυδρομείο: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Ιστότοπος: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Υποστήριξη πελατών",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Είμαστε εδώ για να βοηθήσουμε",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Συμπληρώστε την παρακάτω φόρμα και η ομάδα υποστήριξής μας θα επικοινωνήσει μαζί σας το συντομότερο δυνατό.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Το όνομά σας",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Το ηλεκτρονικό σας ταχυδρομείο",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Μήνυμα",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Εισαγάγετε το email σας",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Εισαγάγετε μια έγκυρη διεύθυνση ηλεκτρονικού ταχυδρομείου",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Εισαγάγετε {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Στέλνω",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Αποστολή...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Το email στάλθηκε με επιτυχία!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Αποτυχία αποστολής email",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Αστρολογικό Λεξικό",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Όροι αναζήτησης...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Δεν βρέθηκαν όροι",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Ερωτήσεις αγοράς",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Ο χρήστης δεν έχει πιστοποιηθεί",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Αποτυχία φόρτωσης δεδομένων καταστήματος",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Λείπει διακριτικό εξουσιοδότησης",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Εφαρμογή Astro Chat",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Η πληρωμή ήταν επιτυχής! Η ερώτηση στάλθηκε!",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Η πληρωμή απέτυχε: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Το Υπόλοιπό σας",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Ερωτήσεις",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Διαθέσιμες προσφορές",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Ερώτηση",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Αγορά",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Ημερήσιο Ωροσκόπιο",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Λείπει το αναγνωριστικό χρήστη",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Αποτυχία λήψης ωροσκοπίων",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Δεν βρέθηκε ωροσκόπιο.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Σημείο",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Σήμερα",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Εχθές",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Αυτή την εβδομάδα",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Τον περασμένο μήνα",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Κουβέντα",
+  "typeYourQuestionHint": "Πληκτρολογήστε την ερώτησή σας...",
+  "paymentRequired": "Απαιτείται πληρωμή",
+  "paymentRequiredMessage": "Χρησιμοποιήσατε τις δωρεάν ερωτήσεις σας. Πληρώστε ₹50 για να συνεχίσετε.",
+  "payNowButton": "Πληρώστε τώρα",
+  "freeQuestionsRemaining": "{count} Απομένουν δωρεάν ερωτήσεις",
+  "paidQuestionsRemaining": "{count} Απομένουν ερωτήσεις επί πληρωμή",
+  "thankYouFeedback": "Σας ευχαριστούμε για τα σχόλιά σας!",
+  "ratingSubmitted": "Η αξιολόγηση υποβλήθηκε!",
+  "setUserIdFirst": "Παρακαλώ ορίστε πρώτα το αναγνωριστικό χρήστη σας",
+  "failedToFetchPrevious": "Αποτυχία ανάκτησης προηγούμενων ερωτήσεων και απαντήσεων",
+  "errorOccurred": "Σφάλμα: {error}",
+  "drawerAstroProfile": "Προφίλ Astro",
+  "drawerDailyHoroscope": "Ημερήσιο Ωροσκόπιο",
+  "drawerBuyQuestions": "Ερωτήσεις αγοράς",
+  "drawerAstroDictionary": "Αστρολογικό Λεξικό",
+  "drawerSettings": "Ρυθμίσεις",
+  "drawerCustomerSupport": "Υποστήριξη πελατών",
+  "drawerAbout": "Για",
+  "drawerProfileSettings": "Ρυθμίσεις προφίλ",
+  "demoNotificationTitle": "🔔 Ειδοποίηση επίδειξης",
+  "demoNotificationBody": "Αυτή είναι μια δοκιμαστική ειδοποίηση από την εφαρμογή σας!",
+  "notificationsTitle": "Ειδοποιήσεις",
+  "noNotifications": "Δεν υπάρχουν ειδοποιήσεις",
+  "allTab": "Ολοι",
+  "markAllAsRead": "Σήμανση όλων ως αναγνωσμένων",
+  "notificationMarkedRead": "Η ειδοποίηση επισημάνθηκε ως αναγνωσμένη",
+  "failedToLoadNotifications": "Η φόρτωση των ειδοποιήσεων απέτυχε",
+  "failedToMarkRead": "Η σήμανση ως αναγνωσμένης απέτυχε",
+  "failedToMarkAllRead": "Αποτυχία επισήμανσης όλων ως αναγνωσμένων",
+  "socketConnected": "Πρίζα συνδεδεμένη",
+  "socketDisconnected": "Η υποδοχή αποσυνδέθηκε",
+  "newNotificationReceived": "Νέα ειδοποίηση ελήφθη",
+  "generalCategory": "Γενικός",
+  "horoscopeCategory": "Ωροσκόπιο",
+  "chatCategory": "Κουβέντα",
+  "systemCategory": "Σύστημα",
+  "updateCategory": "Ενημερώσεις",
+  "howToAskTitle": "Πώς να ρωτήσετε",
+  "noQuestionsAvailable": "Δεν υπάρχουν διαθέσιμες ερωτήσεις",
+  "failedToLoadQuestions": "Η φόρτωση ερωτήσεων απέτυχε",
+  "pullToRefresh": "Τραβήξτε για ανανέωση",
+  "careerCategory": "Καριέρα",
+  "loveCategory": "Αγάπη & Σχέσεις",
+  "healthCategory": "Υγεία",
+  "financeCategory": "Οικονομικά",
+  "familyCategory": "Οικογένεια",
+  "educationCategory": "Εκπαίδευση",
+  "travelCategory": "Ταξίδι",
+  "spiritualCategory": "Πνευματικός",
+  "profileLoaded": "Το προφίλ φορτώθηκε με επιτυχία.",
+  "imageUploaded": "Η εικόνα μεταφορτώθηκε με επιτυχία.",
+  "savedInformationConfirmation": "Έχω αποθηκεύσει αυτές τις πληροφορίες",
+  "noHistoryAvailable": "Δεν υπάρχει διαθέσιμο ιστορικό",
+  "missingUserIdError": "Απαιτείται αναγνωριστικό χρήστη",
+  "networkError": "Σφάλμα δικτύου. Δοκιμάστε ξανά.",
+  "timeoutError": "Το αίτημα έληξε",
+  "genericError": "Κάτι πήγε στραβά",
+  "reactionUpdateError": "Η ενημέρωση της αντίδρασης απέτυχε",
+  "noSearchResults": "Δεν βρέθηκαν αποτελέσματα αναζήτησης",
+  "clearSearch": "Εκκαθάριση αναζήτησης",
+  "resultsFound": "Βρέθηκαν αποτελέσματα",
+  "recoverySecretHint": "Η αντιγραφή-επικόλληση ενδέχεται να μην λειτουργεί, πληκτρολογήστε χειροκίνητα",
+  "recoverAccountDescription": "Ακολουθήστε αυτά τα βήματα για να ανακτήσετε τον λογαριασμό σας",
+  "processingLabel": "Επεξεργασία...",
+  "clearChatSuccess": "Η συνομιλία διαγράφηκε με επιτυχία.",
+  "notificationsEnabled": "Οι ειδοποιήσεις ενεργοποιήθηκαν",
+  "notificationsDisabled": "Οι ειδοποιήσεις απενεργοποιήθηκαν",
+  "securityNotice": "Τα δεδομένα σας κρυπτογραφούνται και αποθηκεύονται με ασφάλεια",
+  "loading": "Φόρτωση...",
+  "selectLanguage": "Επιλογή Γλώσσας",
+  "onboardingGetStartedDesc": "Ξεκινήστε επιλέγοντας τη γλώσσα σας",
+  "accountRecoveryTitle": "🔐 Λεπτομέρειες ανάκτησης λογαριασμού",
+  "recoveryInstructions": "Αποθηκεύστε αυτές τις πληροφορίες με ασφάλεια. Θα τις χρειαστείτε για να ανακτήσετε τον λογαριασμό σας.",
+  "importantNotice": "⚠️ Σημαντικό:",
+  "astrologerProfileTitle": "Προφίλ Αστρολόγου",
+  "personalAstrologer": "Προσωπικός Αστρολόγος",
+  "makePersonalAstrologer": "Δημιουργήστε έναν προσωπικό αστρολόγο",
+  "favoriteDescription": "Οι ερωτήσεις σας θα εξεταστούν κατά προτεραιότητα από αυτόν τον αστρολόγο. Εάν δεν είστε διαθέσιμος, ένας άλλος εξειδικευμένος αστρολόγος θα σας βοηθήσει.",
+  "educationQualifications": "Εκπαίδευση & Προσόντα",
+  "aboutSection": "Για",
+  "shareProfile": "Κοινοποίηση προφίλ",
+  "loadingAstrologer": "Φόρτωση στοιχείων αστρολόγου...",
+  "failedToLoadAstrologer": "Αποτυχία φόρτωσης στοιχείων αστρολόγου",
+  "authenticationRequired": "Απαιτείται έλεγχος ταυτότητας. Παρακαλούμε συνδεθείτε.",
+  "securityCheckFailed": "Ο έλεγχος ασφαλείας απέτυχε: {error}",
+  "addedToFavorites": "🎯 Ο/Η {name} είναι πλέον ο/η Προσωπικός/ή σας Αστρολόγος",
+  "removedFromFavorites": "✅ Αφαιρέθηκε το {name} από τα αγαπημένα",
+  "toggleFavoriteError": "Η ενημέρωση της κατάστασης αγαπημένου απέτυχε",
+  "shareMessage": "{name}\n🎓 Εκπαίδευση: {education}\n📜 Προσόντα: {qualification}\n⏳ Εμπειρία: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Δεν παρέχεται",
+  "reviews": "({count} αξιολογήσεις)",
+  "specialties": "Ειδικότητες",
+  "experience": "Εμπειρία",
+  "qualification": "Προσόν",
+  "education": "Εκπαίδευση",
+  "recoveryTips": "• Λήψη στιγμιότυπου οθόνης αυτών των πληροφοριών\n• Αποθηκεύστε το σε ασφαλές μέρος\n• Μην το κοινοποιήσετε σε κανέναν\n• Αυτό θα εμφανιστεί μόνο μία φορά"
+}

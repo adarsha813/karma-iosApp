@@ -1,0 +1,439 @@
+{
+  "@@locale": "ha",
+  "settingsTitle": "Saituna",
+  "notificationSettings": "Saitunan Sanarwa",
+  "privacySettings": "Saitunan Sirri",
+  "accountSettings": "Saitunan Asusu",
+  "languageSettings": "Saitunan Harshe",
+  "languageChanged": "An canza harshe",
+  "existingUserButton": "Ni mai amfani ne",
+  "chooseCountryTitle": "Zabi Ƙasa",
+  "yesText": "Ee",
+  "noText": "A'a",
+  "appBarTitle": "Saitunan Bayani",
+  "userIdLabel": "ID mai amfani*",
+  "nameLabel": "Suna",
+  "birthCountryLabel": "Ƙasar Haihuwa",
+  "birthCityLabel": "Birnin Haihuwa",
+  "countrySelectionTitle": "Zabi ƙasar ku",
+  "maleLabel": "Namiji",
+  "femaleLabel": "Mace",
+  "birthDateLabel": "Ranar haifuwa",
+  "birthDatePlaceholder": "Zaɓi Ranar Haihuwa",
+  "birthTimeLabel": "Lokacin Haihuwa",
+  "birthTimePlaceholder": "Zaɓi Lokacin Haihuwa",
+  "saveProfileButton": "Ajiye bayanan martaba",
+  "noCitiesFound": "Babu garuruwan da aka samu",
+  "cityPlaceholder": "Shigar da birni a cikin {country}",
+  "countryFirstPlaceholder": "Zaɓi ƙasa tukuna",
+  "versionHistoryTitle": "Tarihin Sigar",
+  "notSetText": "Ba a saita ba",
+  "nameHistory": "Name: {name}",
+  "cityHistory": "City: {city}",
+  "countryHistory": "Ƙasa: {country}",
+  "genderHistory": "Jinsi: {gender}",
+  "birthDateHistory": "Birth Date: {date}",
+  "birthTimeHistory": "Birth Time: {time}",
+  "locationHistory": "Wuri: <span data-placeholder=\"latitude\"> </span>, {longitude}",
+  "timezoneHistory": "Yankin lokaci: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "State: {state}",
+  "versionFromText": "An sabunta shi a kan {date}",
+  "userIdRequired": "Ana buƙatar ID mai amfani",
+  "profileSaved": "An adana bayanan martaba cikin nasara",
+  "saveFailed": "An kasa ajiye bayanin martaba",
+  "errorPrefix": "Kuskure:",
+  "onboardingChooseLanguage": "Zaɓi Harshenku",
+  "onboardingChooseLanguageDesc": "Zaɓi harshen da kuka fi so don ci gaba.",
+  "onboardingWhatIsAstrology": "Menene Astrology?",
+  "onboardingWhatIsAstrologyDesc": "Astrology shine nazarin jikunan sama...",
+  "onboardingWhyUseApp": "Me yasa amfani da wannan app?",
+  "onboardingWhyUseAppDesc": "Samo keɓaɓɓen horoscopes, tsinkaya na yau da kullun, da jagora don yanke shawara na yau da kullun.",
+  "onboardingHowToUse": "Yadda ake amfani da wannan app?",
+  "onboardingHowToUseDesc": "Yi kewayawa cikin sauƙi, bincika horoscopes na yau da kullun, kuma sarrafa bayanan martaba don ingantattun tsinkaya.",
+  "onboardingGetStarted": "Fara",
+  "onboardingNewUser": "Sabon Mai Amfani",
+  "onboardingExistingUser": "Mai Amfani",
+  "onboardingBack": "Baya",
+  "onboardingNext": "Na gaba",
+  "userIdNotFound": "Ba a sami ID na mai amfani ba. Da fatan za a shiga ko saita bayanin martaba.",
+  "clearNotificationsTitle": "Share Fadakarwa",
+  "clearNotificationsMessage": "Shin kun tabbata kuna son share duk sanarwar?",
+  "clearNotificationsSuccess": "An share duk sanarwar cikin nasara.",
+  "clearHoroscopeTitle": "Share Horoscope",
+  "clearHoroscopeMessage": "Shin kun tabbata kuna son share bayanan horoscope ɗin ku?",
+  "clearHoroscopeSuccess": "An share horoscope cikin nasara.",
+  "clearChatTitle": "Share Tarihin Taɗi",
+  "clearChatMessage": "Shin kun tabbata kuna son share duk tarihin taɗi na ku?",
+  "clearChatLocal": "An share taɗi a cikin gida.",
+  "deleteAccountTitle": "Share Account",
+  "deleteAccountMessage": "Ka tabbata kana son share asusunka? Wannan kuma zai share duk tarihin taɗi da sanarwarku.",
+  "deleteAccountSuccess": "An cire asusun ku da duk bayanan.",
+  "deleteAccountError": "Kuskuren share asusun",
+  "logoutTitle": "Fita",
+  "logoutMessage": "Kun tabbata kuna son fita?",
+  "termsPrivacyTitle": "Sharuɗɗa & Keɓantawa",
+  "privacyPolicyTitle": "takardar kebantawa",
+  "termsConditionsTitle": "Sharuɗɗa & Sharuɗɗa",
+  "dataControlTitle": "Kula da bayanai",
+  "cancelButton": "Soke",
+  "confirmButton": "Tabbatar",
+  "clearQuestionsSuccess": "An goge duk tambayoyin cikin nasara.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Ubangiji",
+  "startLabel": "Fara",
+  "recoverAccount": "Maida Asusu",
+  "endLabel": "Ƙarshe",
+  "startDateLabel": "Ranar farawa",
+  "endDateLabel": "Kwanan Ƙarshen",
+  "notAvailable": "Babu",
+  "noData": "Babu bayanai",
+  "unknownError": "Kuskuren da ba a sani ba",
+  "retryButton": "Sake gwadawa",
+  "kundaliGeneratorTitle": "Kundali Generator",
+  "natalChartTitle": "Natal Chart",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Matsayin Digiri",
+  "vimshottariDashaTitle": "Vimshotari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Ba a sani ba",
+  "clearHoroscope": "Share Horoscope",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Share Fadakarwa",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Share Tarihin Taɗi",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Fita",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Share Account",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Ana buƙatar duk filayen.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "An dawo da asusun cikin nasara.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "An kasa farfadowa. Duba bayanan ku.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Sirrin farfadowa:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Game da Mu",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Game da Kamfaninmu",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Mun himmatu don isar da mafi kyawun ƙwarewar taurari ga masu amfani da mu.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Manufar Mu",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Don samar da ingantattun bayanan taurari na keɓaɓɓen don taimakawa masu amfani su yanke shawara mai zurfi a rayuwarsu.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Burinmu",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Don zama mafi amintaccen dandalin taurari, haɗa fasaha da tsohuwar hikima.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Darajojin mu",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Mutunci, Daidaito, Tsara-Cintar Mai Amfani, da Cigaba da Ƙirƙiri.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Tuntube Mu",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Imel: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Yanar Gizo: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Tallafin Abokin Ciniki",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Muna nan don Taimakawa",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Cika fom ɗin da ke ƙasa kuma ƙungiyar tallafin mu za ta dawo gare ku da wuri-wuri.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Sunan ku",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Imel ɗin ku",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Sako",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Shigar da imel ɗin ku",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Shigar da ingantaccen adireshin imel",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Shigar da {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Aika",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Ana aikawa...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ An aika imel cikin nasara!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ An kasa aika imel",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Kamus na Astro",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Neman sharuddan...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Ba a sami sharuɗɗan ba",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Sayi Tambayoyi",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Ba a tantance mai amfani ba",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "An kasa loda bayanan ajiya",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Babu alamar auth",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Bayanin App na Astro Chat",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Biyan ya yi nasara! An aika tambaya",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Biyan kuɗi ya gaza: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Balance ku",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Questions",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Akwai Abubuwan Taimako",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Tambaya",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Saya",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Horoscope na yau da kullun",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "ID mai amfani ya ɓace",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Ba a yi nasarar debo horoscopes ba",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Ba a sami horoscope ba.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Alama",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Yau",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Jiya",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Wannan Makon",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "A watan da ya gabata",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Taɗi",
+  "typeYourQuestionHint": "Buga tambayar ku...",
+  "paymentRequired": "Ana Bukatar Biyan Kuɗi",
+  "paymentRequiredMessage": "Kun yi amfani da tambayoyinku kyauta. Biya ₹50 don ci gaba.",
+  "payNowButton": "Biya Yanzu",
+  "freeQuestionsRemaining": "{count} free questions remaining",
+  "paidQuestionsRemaining": "{count} paid questions remaining",
+  "thankYouFeedback": "Na gode da ra'ayin ku!",
+  "ratingSubmitted": "An ƙaddamar da ƙima!",
+  "setUserIdFirst": "Da fatan za a saita ID na mai amfani tukuna",
+  "failedToFetchPrevious": "An kasa kawo tambayoyi da amsoshi na baya",
+  "errorOccurred": "Error: {error}",
+  "drawerAstroProfile": "Bayanan Bayani na Astro",
+  "drawerDailyHoroscope": "Horoscope na yau da kullun",
+  "drawerBuyQuestions": "Sayi Tambayoyi",
+  "drawerAstroDictionary": "Kamus na Astro",
+  "drawerSettings": "Saituna",
+  "drawerCustomerSupport": "Tallafin Abokin Ciniki",
+  "drawerAbout": "Game da",
+  "drawerProfileSettings": "Saitunan Bayani",
+  "demoNotificationTitle": "🔔 Sanarwa Demo",
+  "demoNotificationBody": "Wannan sanarwar gwaji ce daga app ɗin ku!",
+  "notificationsTitle": "Sanarwa",
+  "noNotifications": "Babu sanarwa",
+  "allTab": "Duka",
+  "markAllAsRead": "Yi alama duka kamar yadda aka karanta",
+  "notificationMarkedRead": "Sanarwa alama kamar yadda ake karantawa",
+  "failedToLoadNotifications": "An kasa loda sanarwar",
+  "failedToMarkRead": "An kasa yin alama kamar yadda ake karantawa",
+  "failedToMarkAllRead": "An kasa yiwa duk alama kamar yadda aka karanta",
+  "socketConnected": "An haɗa soket",
+  "socketDisconnected": "An katse soket",
+  "newNotificationReceived": "An karɓi sabon sanarwar",
+  "generalCategory": "Gabaɗaya",
+  "horoscopeCategory": "Horoscope",
+  "chatCategory": "Taɗi",
+  "systemCategory": "Tsari",
+  "updateCategory": "Sabuntawa",
+  "howToAskTitle": "Yadda Ake Tambaya",
+  "noQuestionsAvailable": "Babu tambayoyi akwai",
+  "failedToLoadQuestions": "An kasa loda tambayoyi",
+  "pullToRefresh": "Ja don sabuntawa",
+  "careerCategory": "Sana'a",
+  "loveCategory": "Soyayya & Dangantaka",
+  "healthCategory": "Lafiya",
+  "financeCategory": "Kudi",
+  "familyCategory": "Iyali",
+  "educationCategory": "Ilimi",
+  "travelCategory": "Tafiya",
+  "spiritualCategory": "Ruhaniya",
+  "profileLoaded": "An ɗora bayanin martaba cikin nasara",
+  "imageUploaded": "An ɗora hoton cikin nasara",
+  "savedInformationConfirmation": "Na Ajiye Wannan Bayanin",
+  "noHistoryAvailable": "Babu tarihi akwai",
+  "missingUserIdError": "Ana buƙatar ID mai amfani",
+  "networkError": "Kuskuren hanyar sadarwa. Da fatan za a sake gwadawa.",
+  "timeoutError": "Neman ya ƙare",
+  "genericError": "Wani abu ya faru",
+  "reactionUpdateError": "An kasa sabunta martani",
+  "noSearchResults": "Ba a sami sakamakon bincike ba",
+  "clearSearch": "Share bincike",
+  "resultsFound": "An samo sakamako",
+  "recoverySecretHint": "Kwafi-manna bazai yi aiki ba, rubuta da hannu",
+  "recoverAccountDescription": "Bi waɗannan matakan don dawo da asusunku",
+  "processingLabel": "Ana aiwatarwa...",
+  "clearChatSuccess": "An share taɗi cikin nasara",
+  "notificationsEnabled": "An kunna sanarwar",
+  "notificationsDisabled": "An kashe sanarwar",
+  "securityNotice": "An rufaffen bayanan ku cikin aminci kuma an adana shi",
+  "loading": "Ana lodawa...",
+  "selectLanguage": "Zaɓi Harshe",
+  "onboardingGetStartedDesc": "Fara ta hanyar zabar yaren ku",
+  "accountRecoveryTitle": "🔐 Bayanin Maido da Asusu",
+  "recoveryInstructions": "Da fatan za a adana wannan bayanin amintacce. Kuna buƙatar shi don dawo da asusun ku.",
+  "importantNotice": "⚠️ Muhimmanci:",
+  "astrologerProfileTitle": "Bayanin Taurari",
+  "personalAstrologer": "Masanin Taurari na Kai",
+  "makePersonalAstrologer": "Yi Tauraron Dan Adam",
+  "favoriteDescription": "Tambayoyinku za a ba su fifiko ga wannan masanin taurari. Idan babu, wani ƙwararren masanin taurari zai taimake ku.",
+  "educationQualifications": "Ilimi & Kwarewa",
+  "aboutSection": "Game da",
+  "shareProfile": "Raba Bayanan martaba",
+  "loadingAstrologer": "Ana loda bayanan taurari...",
+  "failedToLoadAstrologer": "An kasa loda bayanan taurari",
+  "authenticationRequired": "Ana buƙatar tabbaci. Da fatan za a shiga",
+  "securityCheckFailed": "Binciken tsaro ya kasa: {error}",
+  "addedToFavorites": "🎯 {name} is now your Personal Astrologer",
+  "removedFromFavorites": "✅ An cire {name} daga abubuwan da aka fi so",
+  "toggleFavoriteError": "An kasa sabunta matsayin da aka fi so",
+  "shareMessage": "<span data-placeholder=\"name\"> </span>\n🎓 Ilimi: {education}\n📜 Qualification: {qualification}\n⏳ Kwarewa: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Ba a bayar ba",
+  "reviews": "({count} sake dubawa)",
+  "specialties": "Musamman",
+  "experience": "Kwarewa",
+  "qualification": "cancanta",
+  "education": "Ilimi",
+  "recoveryTips": "• Ɗauki hoton wannan bayanin\n• Ajiye shi a wuri mai tsaro\n• Kada ku raba tare da kowa\nZa a nuna wannan sau ɗaya kawai"
+}

@@ -1,0 +1,439 @@
+{
+  "@@locale": "fa",
+  "settingsTitle": "تنظیمات",
+  "notificationSettings": "تنظیمات اعلان",
+  "privacySettings": "تنظیمات حریم خصوصی",
+  "accountSettings": "تنظیمات حساب",
+  "languageSettings": "تنظیمات زبان",
+  "languageChanged": "زبان تغییر کرد",
+  "existingUserButton": "من یک کاربر موجود هستم",
+  "chooseCountryTitle": "کشور را انتخاب کنید",
+  "yesText": "بله",
+  "noText": "خیر",
+  "appBarTitle": "تنظیمات پروفایل",
+  "userIdLabel": "شناسه کاربری *",
+  "nameLabel": "نام",
+  "birthCountryLabel": "کشور محل تولد",
+  "birthCityLabel": "شهر محل تولد",
+  "countrySelectionTitle": "کشور خود را انتخاب کنید",
+  "maleLabel": "مرد",
+  "femaleLabel": "زن",
+  "birthDateLabel": "تاریخ تولد",
+  "birthDatePlaceholder": "تاریخ تولد را انتخاب کنید",
+  "birthTimeLabel": "زمان تولد",
+  "birthTimePlaceholder": "انتخاب زمان تولد",
+  "saveProfileButton": "ذخیره پروفایل",
+  "noCitiesFound": "هیچ شهری یافت نشد",
+  "cityPlaceholder": "شهر را در {country} وارد کنید",
+  "countryFirstPlaceholder": "ابتدا کشور را انتخاب کنید",
+  "versionHistoryTitle": "تاریخچه نسخه",
+  "notSetText": "تنظیم نشده",
+  "nameHistory": "نام: {name}",
+  "cityHistory": "شهر: {city}",
+  "countryHistory": "کشور: {country}",
+  "genderHistory": "جنسیت: {gender}",
+  "birthDateHistory": "تاریخ تولد: {date}",
+  "birthTimeHistory": "زمان تولد: {time}",
+  "locationHistory": "مکان: {latitude}، {longitude}",
+  "timezoneHistory": "منطقه زمانی: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "وضعیت: {state}",
+  "versionFromText": "به‌روزرسانی‌شده در {date}",
+  "userIdRequired": "شناسه کاربری الزامی است",
+  "profileSaved": "مشخصات با موفقیت ذخیره شد",
+  "saveFailed": "ذخیره پروفایل ناموفق بود",
+  "errorPrefix": "خطا:",
+  "onboardingChooseLanguage": "زبان خود را انتخاب کنید",
+  "onboardingChooseLanguageDesc": "برای ادامه، زبان مورد نظر خود را انتخاب کنید.",
+  "onboardingWhatIsAstrology": "طالع بینی چیست؟",
+  "onboardingWhatIsAstrologyDesc": "طالع بینی علم مطالعه اجرام آسمانی است...",
+  "onboardingWhyUseApp": "چرا از این برنامه استفاده کنیم؟",
+  "onboardingWhyUseAppDesc": "فال‌های شخصی‌سازی‌شده، پیش‌بینی‌های روزانه و راهنمایی برای تصمیم‌گیری‌های آگاهانه دریافت کنید.",
+  "onboardingHowToUse": "چگونه از این برنامه استفاده کنیم؟",
+  "onboardingHowToUseDesc": "به راحتی پیمایش کنید، فال روزانه را بررسی کنید و پروفایل خود را برای پیش‌بینی‌های دقیق مدیریت کنید.",
+  "onboardingGetStarted": "شروع کنید",
+  "onboardingNewUser": "کاربر جدید",
+  "onboardingExistingUser": "کاربر فعلی",
+  "onboardingBack": "برگشت",
+  "onboardingNext": "بعدی",
+  "userIdNotFound": "شناسه کاربری یافت نشد. لطفا وارد شوید یا نمایه خود را تنظیم کنید.",
+  "clearNotificationsTitle": "پاک کردن اعلان‌ها",
+  "clearNotificationsMessage": "آیا مطمئن هستید که می‌خواهید همه اعلان‌ها را پاک کنید؟",
+  "clearNotificationsSuccess": "همه اعلان‌ها با موفقیت پاک شدند.",
+  "clearHoroscopeTitle": "فال پاک",
+  "clearHoroscopeMessage": "آیا مطمئن هستید که می‌خواهید داده‌های طالع بینی خود را پاک کنید؟",
+  "clearHoroscopeSuccess": "فال با موفقیت پاک شد.",
+  "clearChatTitle": "پاک کردن تاریخچه چت",
+  "clearChatMessage": "آیا مطمئن هستید که می‌خواهید تمام تاریخچه چت خود را حذف کنید؟",
+  "clearChatLocal": "چت به صورت محلی پاک شد.",
+  "deleteAccountTitle": "حذف حساب کاربری",
+  "deleteAccountMessage": "آیا از حذف حساب کاربری خود مطمئن هستید؟ با این کار تمام تاریخچه چت‌ها و اعلان‌های شما نیز پاک می‌شود.",
+  "deleteAccountSuccess": "حساب کاربری و تمام اطلاعات شما حذف شد.",
+  "deleteAccountError": "خطا در حذف حساب کاربری",
+  "logoutTitle": "خروج",
+  "logoutMessage": "آیا مطمئن هستید که می‌خواهید از سیستم خارج شوید؟",
+  "termsPrivacyTitle": "شرایط و حریم خصوصی",
+  "privacyPolicyTitle": "سیاست حفظ حریم خصوصی",
+  "termsConditionsTitle": "شرایط و ضوابط",
+  "dataControlTitle": "کنترل داده‌ها",
+  "cancelButton": "لغو",
+  "confirmButton": "تأیید",
+  "clearQuestionsSuccess": "همه سوالات با موفقیت حذف شدند.",
+  "yoginiLabel": "یوگینی",
+  "lordLabel": "پروردگار",
+  "startLabel": "شروع",
+  "recoverAccount": "بازیابی حساب کاربری",
+  "endLabel": "پایان",
+  "startDateLabel": "تاریخ شروع",
+  "endDateLabel": "تاریخ پایان",
+  "notAvailable": "موجود نیست",
+  "noData": "بدون داده",
+  "unknownError": "خطای ناشناخته",
+  "retryButton": "دوباره امتحان کنید",
+  "kundaliGeneratorTitle": "ژنراتور کندالی",
+  "natalChartTitle": "نمودار تولد",
+  "lagnaLabel": "لاگنا",
+  "rashiLabel": "راشی",
+  "ascDegreeLabel": "درجه صعودی",
+  "vimshottariDashaTitle": "ویمشوتاری داشا",
+  "yoginiDashaTitle": "یوگینی داشا",
+  "unknown": "ناشناخته",
+  "clearHoroscope": "فال پاک",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "پاک کردن اعلان‌ها",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "پاک کردن تاریخچه چت",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "خروج",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "حذف حساب کاربری",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "همه فیلدها الزامی هستند.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "حساب کاربری با موفقیت بازیابی شد.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "بازیابی ناموفق بود. اطلاعات خود را بررسی کنید.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "راز بهبودی:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "درباره ما",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "درباره شرکت ما",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "ما متعهد به ارائه بهترین تجربه طالع بینی به کاربران خود هستیم.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "ماموریت ما",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "ارائه بینش‌های طالع‌بینی دقیق و شخصی‌سازی‌شده برای کمک به کاربران در تصمیم‌گیری‌های آگاهانه در زندگی‌شان.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "دیدگاه ما",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "برای تبدیل شدن به معتبرترین پلتفرم طالع بینی، با ترکیب فناوری و خرد باستانی.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "ارزش‌های ما",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "صداقت، دقت، طراحی کاربر محور و نوآوری مستمر.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "تماس با ما",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "ایمیل: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "وب‌سایت: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "پشتیبانی مشتری",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "ما اینجا هستیم تا کمک کنیم",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "فرم زیر را پر کنید، تیم پشتیبانی ما در اسرع وقت با شما تماس خواهد گرفت.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "نام شما",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "ایمیل شما",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "پیام",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "ایمیل خود را وارد کنید",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "یک آدرس ایمیل معتبر وارد کنید",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "{fieldName} را وارد کنید",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "ارسال",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "در حال ارسال...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ ایمیل با موفقیت ارسال شد!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ ارسال ایمیل ناموفق بود",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "فرهنگ لغت آسترو",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "عبارات جستجو ...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "هیچ اصطلاحی یافت نشد",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "سوالات خرید",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "کاربر احراز هویت نشده است",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "بارگیری داده‌های فروشگاه ناموفق بود",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "توکن احراز هویت وجود ندارد",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "اپلیکیشن چت آسترو",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ پرداخت با موفقیت انجام شد! سوال ارسال شد",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ پرداخت ناموفق بود: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "موجودی شما",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} سوالات",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "پیشنهادات موجود",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} سوال",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "خرید",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 فال روزانه",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "شناسه کاربری موجود نیست",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "دریافت فال ناموفق بود",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "طالع بینی پیدا نشد.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "علامت",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "امروز",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "دیروز",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "این هفته",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "ماه گذشته",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "چت",
+  "typeYourQuestionHint": "سوال خود را تایپ کنید...",
+  "paymentRequired": "پرداخت مورد نیاز",
+  "paymentRequiredMessage": "شما از سوالات رایگان خود استفاده کردید. برای ادامه، 50 روپیه پرداخت کنید.",
+  "payNowButton": "همین حالا پرداخت کنید",
+  "freeQuestionsRemaining": "{count} سوالات رایگان باقی مانده",
+  "paidQuestionsRemaining": "{count} سوالات پولی باقی مانده",
+  "thankYouFeedback": "از بازخورد شما متشکرم!",
+  "ratingSubmitted": "امتیاز ارسال شد!",
+  "setUserIdFirst": "لطفا ابتدا شناسه کاربری خود را تنظیم کنید",
+  "failedToFetchPrevious": "نتوانستم سوالات و پاسخ‌های قبلی را دریافت کنم",
+  "errorOccurred": "خطا: {error}",
+  "drawerAstroProfile": "پروفایل آسترو",
+  "drawerDailyHoroscope": "فال روزانه",
+  "drawerBuyQuestions": "سوالات خرید",
+  "drawerAstroDictionary": "فرهنگ لغت آسترو",
+  "drawerSettings": "تنظیمات",
+  "drawerCustomerSupport": "پشتیبانی مشتری",
+  "drawerAbout": "درباره",
+  "drawerProfileSettings": "تنظیمات پروفایل",
+  "demoNotificationTitle": "🔔 اطلاع رسانی نسخه آزمایشی",
+  "demoNotificationBody": "این یک اعلان آزمایشی از برنامه شماست!",
+  "notificationsTitle": "اعلان‌ها",
+  "noNotifications": "بدون اعلان",
+  "allTab": "همه",
+  "markAllAsRead": "علامت گذاری همه به عنوان خوانده شده",
+  "notificationMarkedRead": "اعلان علامت‌گذاری شده به عنوان خوانده شده",
+  "failedToLoadNotifications": "بارگیری اعلان‌ها ناموفق بود",
+  "failedToMarkRead": "علامت‌گذاری به عنوان خوانده‌شده ناموفق بود",
+  "failedToMarkAllRead": "علامت‌گذاری همه به عنوان خوانده شده ناموفق بود",
+  "socketConnected": "سوکت متصل است",
+  "socketDisconnected": "سوکت قطع شده است",
+  "newNotificationReceived": "اطلاعیه جدید دریافت شد",
+  "generalCategory": "عمومی",
+  "horoscopeCategory": "فال و طالع بینی",
+  "chatCategory": "چت",
+  "systemCategory": "سیستم",
+  "updateCategory": "به‌روزرسانی‌ها",
+  "howToAskTitle": "چگونه بپرسیم",
+  "noQuestionsAvailable": "هیچ سوالی موجود نیست",
+  "failedToLoadQuestions": "بارگیری سوالات ناموفق بود",
+  "pullToRefresh": "برای تازه کردن بکشید",
+  "careerCategory": "شغل",
+  "loveCategory": "عشق و روابط",
+  "healthCategory": "سلامت",
+  "financeCategory": "امور مالی",
+  "familyCategory": "خانواده",
+  "educationCategory": "آموزش",
+  "travelCategory": "سفر",
+  "spiritualCategory": "معنوی",
+  "profileLoaded": "نمایه با موفقیت بارگذاری شد",
+  "imageUploaded": "تصویر با موفقیت آپلود شد",
+  "savedInformationConfirmation": "من این اطلاعات را ذخیره کرده‌ام",
+  "noHistoryAvailable": "سابقه ای موجود نیست",
+  "missingUserIdError": "شناسه کاربری الزامی است",
+  "networkError": "خطای شبکه. لطفا دوباره امتحان کنید.",
+  "timeoutError": "مهلت درخواست تمام شد",
+  "genericError": "چیزی اشتباه پیش رفت",
+  "reactionUpdateError": "به‌روزرسانی واکنش انجام نشد",
+  "noSearchResults": "هیچ نتیجه‌ای برای جستجو یافت نشد",
+  "clearSearch": "پاک کردن جستجو",
+  "resultsFound": "نتایج یافت شد",
+  "recoverySecretHint": "کپی پیست ممکن است کار نکند، دستی تایپ کنید",
+  "recoverAccountDescription": "برای بازیابی حساب کاربری خود این مراحل را دنبال کنید",
+  "processingLabel": "در حال پردازش...",
+  "clearChatSuccess": "چت با موفقیت پاک شد",
+  "notificationsEnabled": "اعلان‌ها فعال شدند",
+  "notificationsDisabled": "اعلان‌ها غیرفعال شدند",
+  "securityNotice": "داده‌های شما به صورت امن رمزگذاری و ذخیره می‌شوند",
+  "loading": "در حال بارگذاری...",
+  "selectLanguage": "انتخاب زبان",
+  "onboardingGetStartedDesc": "با انتخاب زبان خود شروع کنید",
+  "accountRecoveryTitle": "🔐 جزئیات بازیابی حساب",
+  "recoveryInstructions": "لطفاً این اطلاعات را در جای امنی ذخیره کنید. برای بازیابی حساب کاربری خود به آن نیاز خواهید داشت.",
+  "importantNotice": "⚠️ نکته مهم:",
+  "astrologerProfileTitle": "پروفایل ستاره شناس",
+  "personalAstrologer": "ستاره‌شناس شخصی",
+  "makePersonalAstrologer": "ستاره شناس شخصی بسازید",
+  "favoriteDescription": "سوالات شما با اولویت به این منجم ارجاع داده خواهد شد. در صورت عدم دسترسی، یک منجم واجد شرایط دیگر به شما کمک خواهد کرد.",
+  "educationQualifications": "تحصیلات و مدارک تحصیلی",
+  "aboutSection": "درباره",
+  "shareProfile": "اشتراک‌گذاری پروفایل",
+  "loadingAstrologer": "در حال بارگذاری جزئیات اخترشناس...",
+  "failedToLoadAstrologer": "جزئیات اخترشناس بارگیری نشد",
+  "authenticationRequired": "احراز هویت لازم است. لطفا وارد شوید.",
+  "securityCheckFailed": "بررسی امنیتی ناموفق بود: {error}",
+  "addedToFavorites": "🎯 {name} اکنون ستاره‌شناس شخصی شماست",
+  "removedFromFavorites": "✅ {name} از موارد دلخواه حذف شد",
+  "toggleFavoriteError": "به‌روزرسانی وضعیت مورد علاقه ناموفق بود",
+  "shareMessage": "{name}\n🎓 تحصیلات: {education}\n📜 مدرک تحصیلی: {qualification}\n⏳ سابقه کار: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "ارائه نشده است",
+  "reviews": "({count} نقد و بررسی‌ها)",
+  "specialties": "تخصص‌ها",
+  "experience": "تجربه",
+  "qualification": "صلاحیت",
+  "education": "آموزش",
+  "recoveryTips": "• از این اطلاعات اسکرین شات بگیرید\n• آن را در جای امنی ذخیره کنید\n• با کسی به اشتراک نگذارید\n• این فقط یک بار نمایش داده می‌شود"
+}

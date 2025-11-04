@@ -1,0 +1,439 @@
+{
+  "@@locale": "eo",
+  "settingsTitle": "Agordoj",
+  "notificationSettings": "Sciigaj Agordoj",
+  "privacySettings": "Privatecaj Agordoj",
+  "accountSettings": "Konto-Agordoj",
+  "languageSettings": "Lingvaj Agordoj",
+  "languageChanged": "Lingvo ŝanĝiĝis",
+  "existingUserButton": "Mi estas ekzistanta uzanto",
+  "chooseCountryTitle": "Elektu Landon",
+  "yesText": "Jes",
+  "noText": "Ne",
+  "appBarTitle": "Profilaj Agordoj",
+  "userIdLabel": "Uzanto-identigilo *",
+  "nameLabel": "Nomo",
+  "birthCountryLabel": "Naskiĝlando",
+  "birthCityLabel": "Naskiĝurbo",
+  "countrySelectionTitle": "Elektu vian landon",
+  "maleLabel": "Vira",
+  "femaleLabel": "Ina",
+  "birthDateLabel": "Naskiĝdato",
+  "birthDatePlaceholder": "Elektu Naskiĝdaton",
+  "birthTimeLabel": "Naskiĝtempo",
+  "birthTimePlaceholder": "Elektu Naskiĝtempon",
+  "saveProfileButton": "Konservi Profilon",
+  "noCitiesFound": "Neniuj urboj trovitaj",
+  "cityPlaceholder": "Enigu urbon en {country}",
+  "countryFirstPlaceholder": "Unue elektu landon",
+  "versionHistoryTitle": "Versihistorio",
+  "notSetText": "Ne agordita",
+  "nameHistory": "Nomo: {name}",
+  "cityHistory": "Urbo: {city}",
+  "countryHistory": "Lando: {country}",
+  "genderHistory": "Sekso: {gender}",
+  "birthDateHistory": "Naskiĝdato: {date}",
+  "birthTimeHistory": "Naskiĝtempo: {time}",
+  "locationHistory": "Loko: {latitude}, {longitude}",
+  "timezoneHistory": "Horzono: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Ŝtato: {state}",
+  "versionFromText": "Ĝisdatigita je {date}",
+  "userIdRequired": "Uzanto-identigilo estas necesa",
+  "profileSaved": "Profilo sukcese konservita",
+  "saveFailed": "Malsukcesis konservi profilon",
+  "errorPrefix": "Eraro:",
+  "onboardingChooseLanguage": "Elektu Vian Lingvon",
+  "onboardingChooseLanguageDesc": "Elektu vian preferatan lingvon por daŭrigi.",
+  "onboardingWhatIsAstrology": "Kio estas Astrologio?",
+  "onboardingWhatIsAstrologyDesc": "Astrologio estas la studo de ĉielaj korpoj...",
+  "onboardingWhyUseApp": "Kial uzi ĉi tiun aplikaĵon?",
+  "onboardingWhyUseAppDesc": "Ricevu personigitajn horoskopojn, ĉiutagajn prognozojn kaj gvidon por fari informitajn decidojn.",
+  "onboardingHowToUse": "Kiel uzi ĉi tiun aplikaĵon?",
+  "onboardingHowToUseDesc": "Navigu facile, kontrolu ĉiutagajn horoskopojn kaj administru vian profilon por precizaj antaŭdiroj.",
+  "onboardingGetStarted": "Komencu",
+  "onboardingNewUser": "Nova uzanto",
+  "onboardingExistingUser": "Ekzistanta uzanto",
+  "onboardingBack": "Reen",
+  "onboardingNext": "Sekva",
+  "userIdNotFound": "Uzanto-identigilo ne trovita. Bonvolu ensaluti aŭ agordi vian profilon.",
+  "clearNotificationsTitle": "Forigi Sciigojn",
+  "clearNotificationsMessage": "Ĉu vi certas, ke vi volas forigi ĉiujn sciigojn?",
+  "clearNotificationsSuccess": "Ĉiuj sciigoj sukcese malaperis.",
+  "clearHoroscopeTitle": "Klara Horoskopo",
+  "clearHoroscopeMessage": "Ĉu vi certas, ke vi volas forigi viajn horoskopajn datumojn?",
+  "clearHoroscopeSuccess": "Horoskopo sukcese malplenigita.",
+  "clearChatTitle": "Forigi Babilejan Historion",
+  "clearChatMessage": "Ĉu vi certas, ke vi volas forigi vian tutan babilhistorion?",
+  "clearChatLocal": "Babilado malplenigita loke.",
+  "deleteAccountTitle": "Forigi Konton",
+  "deleteAccountMessage": "Ĉu vi certas, ke vi volas forigi vian konton? Tio ankaŭ forigos vian tutan babilhistorion kaj sciigojn.",
+  "deleteAccountSuccess": "Via konto kaj ĉiuj datumoj estas forigitaj.",
+  "deleteAccountError": "Eraro forigante konton",
+  "logoutTitle": "Elsaluti",
+  "logoutMessage": "Ĉu vi certas, ke vi volas elsaluti?",
+  "termsPrivacyTitle": "Kondiĉoj kaj Privateco",
+  "privacyPolicyTitle": "Regularo pri Privateco",
+  "termsConditionsTitle": "Kondiĉoj kaj Regularoj",
+  "dataControlTitle": "Datuma Kontrolo",
+  "cancelButton": "Nuligi",
+  "confirmButton": "Konfirmi",
+  "clearQuestionsSuccess": "Ĉiuj demandoj sukcese forigitaj.",
+  "yoginiLabel": "Jogini",
+  "lordLabel": "Sinjoro",
+  "startLabel": "Komencu",
+  "recoverAccount": "Reakiri Konton",
+  "endLabel": "Fino",
+  "startDateLabel": "Komencdato",
+  "endDateLabel": "Findato",
+  "notAvailable": "Ne havebla",
+  "noData": "Neniuj datumoj",
+  "unknownError": "Nekonata eraro",
+  "retryButton": "Reprovi",
+  "kundaliGeneratorTitle": "Kundali-Generatoro",
+  "natalChartTitle": "Naska diagramo",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Raŝi",
+  "ascDegreeLabel": "Ascenda Grado",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Nekonata",
+  "clearHoroscope": "Klara Horoskopo",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Forigi Sciigojn",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Forigi Babilejan Historion",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Elsaluti",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Forigi Konton",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Ĉiuj kampoj estas devigaj.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Konto sukcese reakiriĝis.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Reakiro malsukcesis. Kontrolu viajn informojn.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Sekreto de Resaniĝo:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Pri Ni",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Pri Nia Firmao",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Ni celas liveri la plej bonan astrologian sperton al niaj uzantoj.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Nia Misio",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Provizi precizajn kaj personigitajn astrologiajn komprenojn por helpi uzantojn fari informitajn decidojn en siaj vivoj.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Nia Vizio",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Fariĝi la plej fidinda astrologia platformo, kombinante teknologion kaj antikvan saĝon.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Niaj Valoroj",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Integreco, Precizeco, Uzanto-Centra Dezajno, kaj Kontinua Novigado.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Kontaktu nin",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Retpoŝto: subteno@viafirmao.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Retejo: www.viafirmao.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Klienta Subteno",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Ni estas ĉi tie por helpi",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Plenigu la suban formularon kaj nia subtena teamo kontaktos vin kiel eble plej baldaŭ.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Via Nomo",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Via Retpoŝto",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Mesaĝo",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Enigu vian retpoŝtadreson",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Enigu validan retpoŝtadreson",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Enigu {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Sendi",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Sendante...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Retpoŝto sukcese sendita!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Malsukcesis sendi retpoŝton",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro-Vortaro",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Serĉvortoj...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Neniuj terminoj trovitaj",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Aĉetu Demandojn",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Uzanto ne aŭtentikigita",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Malsukcesis ŝargi vendejajn datumojn",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Mankas aŭtentiga ĵetono",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro-babileja aplikaĵo",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Pago sukcesa! Demando sendita",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Pago malsukcesis: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Via Ekvilibro",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Questions",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Haveblaj Ofertoj",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Question",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Aĉeti",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Ĉiutaga Horoskopo",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Uzanto-identigilo mankas",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Malsukcesis akiri horoskopojn",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Neniu horoskopo trovita.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Subskribi",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Hodiaŭ",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Hieraŭ",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Ĉi tiu Semajno",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Lasta Monato",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Babilejo",
+  "typeYourQuestionHint": "Tajpu vian demandon...",
+  "paymentRequired": "Pago Bezonata",
+  "paymentRequiredMessage": "Vi uzis viajn senpagajn demandojn. Pagu ₹50 por daŭrigi.",
+  "payNowButton": "Pagu Nun",
+  "freeQuestionsRemaining": "{count} liberaj demandoj restas",
+  "paidQuestionsRemaining": "{count} pagitaj demandoj restantaj",
+  "thankYouFeedback": "Dankon pro via komento!",
+  "ratingSubmitted": "Takso sendita!",
+  "setUserIdFirst": "Bonvolu unue agordi vian uzant-identigilon",
+  "failedToFetchPrevious": "Malsukcesis preni antaŭajn demandojn kaj respondojn",
+  "errorOccurred": "Eraro: {error}",
+  "drawerAstroProfile": "Astro-Profilo",
+  "drawerDailyHoroscope": "Ĉiutaga Horoskopo",
+  "drawerBuyQuestions": "Aĉetu Demandojn",
+  "drawerAstroDictionary": "Astro-Vortaro",
+  "drawerSettings": "Agordoj",
+  "drawerCustomerSupport": "Klienta Subteno",
+  "drawerAbout": "Pri",
+  "drawerProfileSettings": "Profilaj Agordoj",
+  "demoNotificationTitle": "🔔 Demonstraĵa Sciigo",
+  "demoNotificationBody": "Jen testa sciigo de via aplikaĵo!",
+  "notificationsTitle": "Sciigoj",
+  "noNotifications": "Neniuj sciigoj",
+  "allTab": "Ĉiuj",
+  "markAllAsRead": "Marki ĉion kiel legitan",
+  "notificationMarkedRead": "Sciigo markita kiel legita",
+  "failedToLoadNotifications": "Malsukcesis ŝargi sciigojn",
+  "failedToMarkRead": "Malsukcesis marki kiel legita",
+  "failedToMarkAllRead": "Malsukcesis marki ĉion kiel legitan",
+  "socketConnected": "Ingo konektita",
+  "socketDisconnected": "Ingo malkonektita",
+  "newNotificationReceived": "Nova sciigo ricevita",
+  "generalCategory": "Generalo",
+  "horoscopeCategory": "Horoskopo",
+  "chatCategory": "Babilejo",
+  "systemCategory": "Sistemo",
+  "updateCategory": "Ĝisdatigoj",
+  "howToAskTitle": "Kiel Demandi",
+  "noQuestionsAvailable": "Neniuj demandoj haveblaj",
+  "failedToLoadQuestions": "Malsukcesis ŝargi demandojn",
+  "pullToRefresh": "Tiru por refreŝigi",
+  "careerCategory": "Kariero",
+  "loveCategory": "Amo kaj Rilatoj",
+  "healthCategory": "Sano",
+  "financeCategory": "Financo",
+  "familyCategory": "Familio",
+  "educationCategory": "Edukado",
+  "travelCategory": "Vojaĝado",
+  "spiritualCategory": "Spirita",
+  "profileLoaded": "Profilo sukcese ŝarĝita",
+  "imageUploaded": "Bildo sukcese alŝutita",
+  "savedInformationConfirmation": "Mi konservis ĉi tiun informon",
+  "noHistoryAvailable": "Neniu historio havebla",
+  "missingUserIdError": "Uzanto-identigilo estas bezonata",
+  "networkError": "Reta eraro. Bonvolu provi denove.",
+  "timeoutError": "Peto eksvalidiĝis",
+  "genericError": "Io misfunkciis",
+  "reactionUpdateError": "Malsukcesis ĝisdatigi reagon",
+  "noSearchResults": "Neniuj serĉrezultoj trovitaj",
+  "clearSearch": "Forigi serĉon",
+  "resultsFound": "Rezultoj trovitaj",
+  "recoverySecretHint": "Kopii-alglui eble ne funkcios, tajpu permane",
+  "recoverAccountDescription": "Sekvu ĉi tiujn paŝojn por reakiri vian konton",
+  "processingLabel": "Prilaborado...",
+  "clearChatSuccess": "Babilejo sukcese forigita",
+  "notificationsEnabled": "Sciigoj ebligitaj",
+  "notificationsDisabled": "Sciigoj malŝaltitaj",
+  "securityNotice": "Viaj datumoj estas sekure ĉifritaj kaj konservitaj",
+  "loading": "Ŝarĝante...",
+  "selectLanguage": "Elektu lingvon",
+  "onboardingGetStartedDesc": "Komencu elektante vian lingvon",
+  "accountRecoveryTitle": "🔐 Detaloj pri Reakiro de Konto",
+  "recoveryInstructions": "Bonvolu konservi ĉi tiun informon sekure. Vi bezonos ĝin por reakiri vian konton.",
+  "importantNotice": "⚠️ Grave:",
+  "astrologerProfileTitle": "Astrologa Profilo",
+  "personalAstrologer": "Persona Astrologo",
+  "makePersonalAstrologer": "Fari Personan Astrologon",
+  "favoriteDescription": "Viaj demandoj estos prioritatigitaj al ĉi tiu astrologo. Se ne disponebla, alia kvalifikita astrologo helpos vin.",
+  "educationQualifications": "Edukado kaj Kvalifikoj",
+  "aboutSection": "Pri",
+  "shareProfile": "Kunhavigi Profilon",
+  "loadingAstrologer": "Ŝarĝante detalojn pri astrologo...",
+  "failedToLoadAstrologer": "Malsukcesis ŝargi detalojn pri astrologo",
+  "authenticationRequired": "Aŭtentigo necesas. Bonvolu ensaluti.",
+  "securityCheckFailed": "Sekureckontrolo malsukcesis: {error}",
+  "addedToFavorites": "🎯 {name} nun estas via Persona Astrologo",
+  "removedFromFavorites": "✅ Forigis {name} el la plej ŝatataj",
+  "toggleFavoriteError": "Malsukcesis ĝisdatigi ŝatostaton",
+  "shareMessage": "{name}\n🎓 Edukado: {education}\n📜 Kvalifiko: {qualification}\n⏳ Sperto: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Ne provizita",
+  "reviews": "({count} recenzoj)",
+  "specialties": "Specialaĵoj",
+  "experience": "Sperto",
+  "qualification": "Kvalifiko",
+  "education": "Edukado",
+  "recoveryTips": "• Faru ekranfoton de ĉi tiu informo\n• Konservu ĝin en sekura loko\n• Ne dividu kun iu ajn\n• Ĉi tio estos montrata nur unufoje"
+}

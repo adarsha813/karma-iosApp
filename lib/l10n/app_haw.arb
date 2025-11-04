@@ -1,0 +1,439 @@
+{
+  "@@locale": "haw",
+  "settingsTitle": "Nā hoʻonohonoho",
+  "notificationSettings": "Nā hoʻonohonoho hoʻolaha",
+  "privacySettings": "Nā hoʻonohonoho pilikino",
+  "accountSettings": "Hoʻonohonoho moʻokāki",
+  "languageSettings": "Hoʻonohonoho ʻōlelo",
+  "languageChanged": "Ua loli ka ʻōlelo",
+  "existingUserButton": "He mea hoʻohana au",
+  "chooseCountryTitle": "E koho i ka ʻāina",
+  "yesText": "ʻAe",
+  "noText": "ʻAʻole",
+  "appBarTitle": "Nā hoʻonohonoho hoʻonohonoho",
+  "userIdLabel": "ID mea hoʻohana *",
+  "nameLabel": "inoa",
+  "birthCountryLabel": "ʻāina hānau",
+  "birthCityLabel": "Kulanakauhale Hanau",
+  "countrySelectionTitle": "E koho i kou ʻāina",
+  "maleLabel": "Kane",
+  "femaleLabel": "Wahine",
+  "birthDateLabel": "La Hanau",
+  "birthDatePlaceholder": "E koho i ka lā hānau",
+  "birthTimeLabel": "Manawa Hanau",
+  "birthTimePlaceholder": "E koho i ka manawa hānau",
+  "saveProfileButton": "E mālama i ka moʻolelo",
+  "noCitiesFound": "ʻAʻohe kūlanakauhale i loaʻa",
+  "cityPlaceholder": "E komo i ke kūlanakauhale ma {country}",
+  "countryFirstPlaceholder": "E koho mua i ka ʻāina",
+  "versionHistoryTitle": "Moʻolelo moʻolelo",
+  "notSetText": "ʻAʻole i hoʻonohonoho ʻia",
+  "nameHistory": "Inoa: {name}",
+  "cityHistory": "Kulanakauhale: {city}",
+  "countryHistory": "ʻĀina: {country}",
+  "genderHistory": "Ke kāne kāne: {gender}",
+  "birthDateHistory": "La Hanau: {date}",
+  "birthTimeHistory": "Manawa Hanau: {time}",
+  "locationHistory": "Wahi: {latitude}, {longitude}",
+  "timezoneHistory": "Wahi manawa: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Mokuʻāina: {state}",
+  "versionFromText": "Hōʻano hou ʻia ma {date}",
+  "userIdRequired": "Pono ka mea hoʻohana ID",
+  "profileSaved": "Ua mālama pono ʻia ka moʻolelo",
+  "saveFailed": "ʻAʻole hiki ke mālama i ka moʻolelo",
+  "errorPrefix": "Kuʻia:",
+  "onboardingChooseLanguage": "E koho i kāu ʻōlelo",
+  "onboardingChooseLanguageDesc": "E koho i kāu ʻōlelo makemake e hoʻomau.",
+  "onboardingWhatIsAstrology": "He aha ka Astrology?",
+  "onboardingWhatIsAstrologyDesc": "ʻO ka Astrology ke aʻo ʻana i nā kino lani ...",
+  "onboardingWhyUseApp": "No ke aha e hoʻohana ai i kēia polokalamu?",
+  "onboardingWhyUseAppDesc": "E kiʻi i nā horoscopes pilikino, nā wānana i kēlā me kēia lā, a me ke alakaʻi e hoʻoholo i nā hoʻoholo.",
+  "onboardingHowToUse": "Pehea e hoʻohana ai i kēia polokalamu?",
+  "onboardingHowToUseDesc": "E hoʻokele maʻalahi, e nānā i nā horoscopes i kēlā me kēia lā, a mālama i kāu ʻaoʻao no nā wānana pololei.",
+  "onboardingGetStarted": "E hoʻomaka",
+  "onboardingNewUser": "Mea hoʻohana hou",
+  "onboardingExistingUser": "Mea hoʻohana e kū nei",
+  "onboardingBack": "Ke kua",
+  "onboardingNext": "Aʻe",
+  "userIdNotFound": "ʻAʻole i loaʻa ka ID mea hoʻohana. E ʻoluʻolu e ʻeʻe a hoʻonohonoho i kāu ʻaoʻao.",
+  "clearNotificationsTitle": "Hōʻike maopopo",
+  "clearNotificationsMessage": "Makemake ʻoe e holoi i nā leka hoʻomaopopo a pau?",
+  "clearNotificationsSuccess": "Holoi ʻia nā leka hoʻomaopopo a pau.",
+  "clearHoroscopeTitle": "Hoʻomaʻamaʻa Horoscope",
+  "clearHoroscopeMessage": "Makemake ʻoe e holoi i kāu ʻikepili horoscope?",
+  "clearHoroscopeSuccess": "Holopono ʻia ka Horoscope.",
+  "clearChatTitle": "Holoi i ka mōʻaukala kamaʻilio",
+  "clearChatMessage": "Makemake ʻoe e holoi i kāu mōʻaukala kamaʻilio āpau?",
+  "clearChatLocal": "Holoi ʻia ke kamaʻilio ma ka ʻāina.",
+  "deleteAccountTitle": "Holoi moʻokāki",
+  "deleteAccountMessage": "Makemake ʻoe e holoi i kāu moʻokāki? E holoi pū kēia i kāu mōʻaukala kamaʻilio a me nā leka hoʻomaopopo.",
+  "deleteAccountSuccess": "Ua wehe ʻia kāu moʻokāki a me nā ʻikepili āpau.",
+  "deleteAccountError": "Ua hewa ke holoi ʻana i ka moʻokāki",
+  "logoutTitle": "Haʻalele",
+  "logoutMessage": "Makemake ʻoe e haʻalele?",
+  "termsPrivacyTitle": "Nā ʻōlelo a me ka pilikino",
+  "privacyPolicyTitle": "Kulekele pilikino",
+  "termsConditionsTitle": "Nā Kūlana a me nā Kūlana",
+  "dataControlTitle": "Manaʻoʻikepili",
+  "cancelButton": "Hoʻopau",
+  "confirmButton": "E hōʻoia",
+  "clearQuestionsSuccess": "Holoi pono nā nīnau a pau.",
+  "yoginiLabel": "ʻo Yogini",
+  "lordLabel": "Haku",
+  "startLabel": "Hoʻomaka",
+  "recoverAccount": "Hoihoi mooolelo",
+  "endLabel": "Hoʻopau",
+  "startDateLabel": "lā hoʻomaka",
+  "endDateLabel": "Lā Hoʻopau",
+  "notAvailable": "ʻAʻole loaʻa",
+  "noData": "ʻAʻohe ʻikepili",
+  "unknownError": "Kupa ʻike ʻole ʻia",
+  "retryButton": "E hoao hou",
+  "kundaliGeneratorTitle": "Kundali Generator",
+  "natalChartTitle": "Palapala Kiʻi Natal",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Kiekie Kiekie",
+  "vimshottariDashaTitle": "ʻO Vimshottari Dasha",
+  "yoginiDashaTitle": "ʻO Yogini Dasha",
+  "unknown": "ʻAʻole ʻike ʻia",
+  "clearHoroscope": "Hōʻikeʻikeʻike",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Hōʻike maopopo",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Holoi i ka mōʻaukala kamaʻilio",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Haʻalele",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Holoi moʻokāki",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Pono nā kahua āpau.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Loaʻa ka moʻokāki.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "ʻAʻole hiki ke hoʻihoʻi. E nānā i kāu ʻike.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Mea huna hoʻihoʻi:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "E pili ana iā mākou",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "E pili ana i kā mākou Hui",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Kūpaʻa mākou i ka hāʻawi ʻana i ka ʻike astrology maikaʻi loa i kā mākou mea hoʻohana.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Ko makou Misiona",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "E hāʻawi i nā ʻike astrology pololei a pilikino e kōkua i nā mea hoʻohana e hoʻoholo i ka ʻike i ko lākou ola.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "ʻO kā mākou ʻike",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "E lilo i mea hilinaʻi nui astrology platform, e hui pū ana i ka ʻenehana a me ka naʻauao kahiko.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Ko makou Waiwai",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Pono, Pono, Hoʻolālā Mea Hoʻohana, a me ka Hoʻomau mau.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Kāhea iā mā˚ou",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Leka uila: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Paena pūnaewele: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Kākoʻo mea kūʻai aku",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Aia mākou e kōkua",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "E hoʻopiha i ka palapala ma lalo a e hoʻi koke mai kā mākou hui kākoʻo iā ʻoe i ka hikiwawe.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Kou inoa",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "ʻO kāu leka uila",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "ʻŌlelo",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "E hoʻokomo i kāu leka uila",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "E hoʻokomo i kahi leka uila kūpono",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "E komo i {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Hoʻouna",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "E hoʻouna ana...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Ua hoʻouna maikaʻi ʻia ka leka uila!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ ʻAʻole i hoʻouna ʻia ka leka uila",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro Dictionary",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Huli huaʻōlelo...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "ʻAʻohe huaʻōlelo i loaʻa",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Kūʻai i nā nīnau",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "ʻAʻole i hōʻoia ʻia ka mea hoʻohana",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "ʻAʻole hiki ke hoʻouka i ka ʻikepili hale kūʻai",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Nalo ka hōʻailona hōʻoia",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat App",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Ua holomua ka uku! Hoʻouna ʻia ka nīnau",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Ua hāʻule ka uku: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Kou Kaulike",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Nīnau",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Loaʻa nā Hāʻawi",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Nīnau",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Kūʻai",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Horoscope i kēlā me kēia lā",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Nalo ka ID mea hoʻohana",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "ʻAʻole hiki ke kiʻi i nā horoscope",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "ʻAʻohe horoscope i loaʻa.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "hōʻailona",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "I kēia lā",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "I nehinei",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "I keia pule",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "I ka mahina i hala",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Kūkākūkā",
+  "typeYourQuestionHint": "Kākau i kāu nīnau...",
+  "paymentRequired": "Pono ka uku",
+  "paymentRequiredMessage": "Ua hoʻohana ʻoe i kāu mau nīnau manuahi. E uku iā ₹50 e hoʻomau.",
+  "payNowButton": "Uku Ano",
+  "freeQuestionsRemaining": "{count} mau nīnau manuahi i koe",
+  "paidQuestionsRemaining": "{count} nā nīnau uku i koe",
+  "thankYouFeedback": "Mahalo iā ʻoe no kāu manaʻo manaʻo!",
+  "ratingSubmitted": "Hāʻawi ʻia ka helu!",
+  "setUserIdFirst": "E ʻoluʻolu e hoʻonohonoho mua i kāu ID mea hoʻohana",
+  "failedToFetchPrevious": "ʻAʻole i kiʻi i nā nīnau a me nā pane mua",
+  "errorOccurred": "Hapa: {error}",
+  "drawerAstroProfile": "Hōʻike Astro",
+  "drawerDailyHoroscope": "Horoscope i kēlā me kēia lā",
+  "drawerBuyQuestions": "Kūʻai i nā nīnau",
+  "drawerAstroDictionary": "Astro Dictionary",
+  "drawerSettings": "Nā hoʻonohonoho",
+  "drawerCustomerSupport": "Kākoʻo mea kūʻai aku",
+  "drawerAbout": "E pili ana",
+  "drawerProfileSettings": "Nā hoʻonohonoho hoʻonohonoho",
+  "demoNotificationTitle": "🔔 Hoolaha Demo",
+  "demoNotificationBody": "He leka ho'āʻo kēia mai kāu polokalamu!",
+  "notificationsTitle": "Hoolaha",
+  "noNotifications": "ʻAʻohe hoʻolaha",
+  "allTab": "ʻO nā mea a pau",
+  "markAllAsRead": "E kaha i na mea a pau i heluheluia",
+  "notificationMarkedRead": "Heluhelu ʻia ka leka hoʻomaopopo",
+  "failedToLoadNotifications": "ʻAʻole hiki ke hoʻouka i nā leka hoʻomaopopo",
+  "failedToMarkRead": "ʻAʻole i hōʻailona ʻia e like me ka heluhelu ʻana",
+  "failedToMarkAllRead": "ʻAʻole hiki ke kaha i nā mea a pau i heluhelu ʻia",
+  "socketConnected": "Hoʻopili ʻia ke kumu",
+  "socketDisconnected": "Ua hemo ke kumu",
+  "newNotificationReceived": "Loaʻa ka hoʻolaha hou",
+  "generalCategory": "Generala",
+  "horoscopeCategory": "Horoscope",
+  "chatCategory": "Kūkākūkā",
+  "systemCategory": "Pūnaehana",
+  "updateCategory": "Nā mea hou",
+  "howToAskTitle": "Pehea e Ninau ai",
+  "noQuestionsAvailable": "ʻAʻohe nīnau i loaʻa",
+  "failedToLoadQuestions": "ʻAʻole hiki ke hoʻouka i nā nīnau",
+  "pullToRefresh": "Huki e hōʻoluʻolu",
+  "careerCategory": "ʻoihana",
+  "loveCategory": "Aloha & Pilina",
+  "healthCategory": "Ola kino",
+  "financeCategory": "Waiwai",
+  "familyCategory": "ʻOhana",
+  "educationCategory": "Hoʻonaʻauao",
+  "travelCategory": "Kaahele",
+  "spiritualCategory": "ʻuhane",
+  "profileLoaded": "Hoʻouka pono ʻia ka moʻolelo",
+  "imageUploaded": "Hoʻouka maikaʻi ʻia ke kiʻi",
+  "savedInformationConfirmation": "Ua mālama au i kēia ʻike",
+  "noHistoryAvailable": "ʻAʻohe mōʻaukala i loaʻa",
+  "missingUserIdError": "Pono ka mea hoʻohana ID",
+  "networkError": "Kuwaho pūnaewele. E ʻoluʻolu e hoʻāʻo hou.",
+  "timeoutError": "Ua pau ka manawa noi",
+  "genericError": "Ua hewa kekahi mea",
+  "reactionUpdateError": "ʻAʻole hiki ke hōʻano hou i ka pane",
+  "noSearchResults": "ʻAʻohe hualoaʻa i loaʻa",
+  "clearSearch": "Holoi i ka huli",
+  "resultsFound": "Loaʻa nā hopena",
+  "recoverySecretHint": "ʻAʻole hiki ke hana kope-paʻi, paʻi lima me ka lima",
+  "recoverAccountDescription": "E hahai i kēia mau ʻanuʻu e hoʻihoʻi i kāu moʻokāki",
+  "processingLabel": "Ke hana nei...",
+  "clearChatSuccess": "Holoi ʻia ke kamaʻilio ʻana",
+  "notificationsEnabled": "Ua hiki ke hoolaha",
+  "notificationsDisabled": "Ua pio nā leka hoʻomaopopo",
+  "securityNotice": "Hoʻopili paʻa ʻia kāu ʻikepili a mālama ʻia",
+  "loading": "Ke hoʻouka nei...",
+  "selectLanguage": "E koho i ka ʻōlelo",
+  "onboardingGetStartedDesc": "E hoʻomaka ma ke koho ʻana i kāu ʻōlelo",
+  "accountRecoveryTitle": "🔐 Nā kikoʻī hoʻihoʻi moʻokāki",
+  "recoveryInstructions": "E mālama pono i kēia ʻike. Pono ʻoe e hoʻihoʻi i kāu moʻokāki.",
+  "importantNotice": "⚠️ Mea nui:",
+  "astrologerProfileTitle": "Palapala Hoku",
+  "personalAstrologer": "Ka Hoku Pilikino",
+  "makePersonalAstrologer": "Hana Pilikino Astrologer",
+  "favoriteDescription": "E kau mua ʻia kāu mau nīnau i kēia kilo. Inā ʻaʻole i loaʻa, e kōkua ʻia ʻoe e kahi kilo kilo ʻē aʻe.",
+  "educationQualifications": "Hoʻonaʻauao & Kuʻina",
+  "aboutSection": "E pili ana",
+  "shareProfile": "Kaʻana moʻolelo",
+  "loadingAstrologer": "Ke hoʻouka nei i nā kikoʻī astrologer...",
+  "failedToLoadAstrologer": "ʻAʻole hiki ke hoʻouka i nā kikoʻī astrologer",
+  "authenticationRequired": "Pono ka hōʻoia. E ʻoluʻolu e komo.",
+  "securityCheckFailed": "ʻAʻole hiki ke nānā palekana: {error}",
+  "addedToFavorites": "🎯 ʻO {name} kāu kanaka Astrologer",
+  "removedFromFavorites": "✅ Wehe ʻia {name} mai nā punahele",
+  "toggleFavoriteError": "ʻAʻole hiki ke hōʻano hou i ke kūlana punahele",
+  "shareMessage": "{name}\n🎓 Hoʻonaʻauao: {education}\n📜 Koho: {qualification}\n⏳ ʻIke: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "ʻAʻole hāʻawi ʻia",
+  "reviews": "({count} hōʻike manaʻo)",
+  "specialties": "Nā mea kūikawā",
+  "experience": "ʻike",
+  "qualification": "Kupono",
+  "education": "Hoʻonaʻauao",
+  "recoveryTips": "• E paʻi kiʻi paʻi kiʻi o kēia ʻike\n• E mālama ma kahi paʻa\n• Mai kaʻana like me kekahi\n• Hoʻokahi wale nō e hōʻike ʻia kēia"
+}

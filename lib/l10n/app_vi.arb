@@ -1,0 +1,439 @@
+{
+  "@@locale": "vi",
+  "settingsTitle": "Cài đặt",
+  "notificationSettings": "Cài đặt thông báo",
+  "privacySettings": "Cài đặt quyền riêng tư",
+  "accountSettings": "Cài đặt tài khoản",
+  "languageSettings": "Cài đặt ngôn ngữ",
+  "languageChanged": "Ngôn ngữ đã thay đổi",
+  "existingUserButton": "Tôi là người dùng hiện tại",
+  "chooseCountryTitle": "Chọn quốc gia",
+  "yesText": "Đúng",
+  "noText": "KHÔNG",
+  "appBarTitle": "Cài đặt hồ sơ",
+  "userIdLabel": "ID người dùng *",
+  "nameLabel": "Tên",
+  "birthCountryLabel": "Quốc gia sinh",
+  "birthCityLabel": "Thành phố sinh",
+  "countrySelectionTitle": "Chọn quốc gia của bạn",
+  "maleLabel": "Nam giới",
+  "femaleLabel": "Nữ giới",
+  "birthDateLabel": "Ngày sinh",
+  "birthDatePlaceholder": "Chọn ngày sinh",
+  "birthTimeLabel": "Thời gian sinh",
+  "birthTimePlaceholder": "Chọn thời gian sinh",
+  "saveProfileButton": "Lưu hồ sơ",
+  "noCitiesFound": "Không tìm thấy thành phố nào",
+  "cityPlaceholder": "Nhập thành phố vào {country}",
+  "countryFirstPlaceholder": "Chọn quốc gia trước",
+  "versionHistoryTitle": "Lịch sử phiên bản",
+  "notSetText": "Chưa thiết lập",
+  "nameHistory": "Tên: {name}",
+  "cityHistory": "Thành phố: {city}",
+  "countryHistory": "Quốc gia: {country}",
+  "genderHistory": "Giới tính: {gender}",
+  "birthDateHistory": "Ngày sinh: {date}",
+  "birthTimeHistory": "Thời gian sinh: {time}",
+  "locationHistory": "Vị trí: {latitude}, {longitude}",
+  "timezoneHistory": "Múi giờ: GMT{offset}",
+  "dstHistory": "Giờ mùa hè: {value}",
+  "stateHistory": "Trạng thái: {state}",
+  "versionFromText": "Cập nhật vào {date}",
+  "userIdRequired": "ID người dùng là bắt buộc",
+  "profileSaved": "Hồ sơ đã được lưu thành công",
+  "saveFailed": "Không lưu được hồ sơ",
+  "errorPrefix": "Lỗi:",
+  "onboardingChooseLanguage": "Chọn ngôn ngữ của bạn",
+  "onboardingChooseLanguageDesc": "Chọn ngôn ngữ bạn muốn để tiếp tục.",
+  "onboardingWhatIsAstrology": "Chiêm tinh học là gì?",
+  "onboardingWhatIsAstrologyDesc": "Chiêm tinh học là ngành nghiên cứu về các thiên thể...",
+  "onboardingWhyUseApp": "Tại sao nên sử dụng ứng dụng này?",
+  "onboardingWhyUseAppDesc": "Nhận tử vi cá nhân, dự đoán hàng ngày và hướng dẫn để đưa ra quyết định sáng suốt.",
+  "onboardingHowToUse": "Làm thế nào để sử dụng ứng dụng này?",
+  "onboardingHowToUseDesc": "Điều hướng dễ dàng, kiểm tra tử vi hàng ngày và quản lý hồ sơ của bạn để có những dự đoán chính xác.",
+  "onboardingGetStarted": "Bắt đầu",
+  "onboardingNewUser": "Người dùng mới",
+  "onboardingExistingUser": "Người dùng hiện tại",
+  "onboardingBack": "Mặt sau",
+  "onboardingNext": "Kế tiếp",
+  "userIdNotFound": "Không tìm thấy ID người dùng. Vui lòng đăng nhập hoặc thiết lập hồ sơ của bạn.",
+  "clearNotificationsTitle": "Xóa thông báo",
+  "clearNotificationsMessage": "Bạn có chắc chắn muốn xóa tất cả thông báo không?",
+  "clearNotificationsSuccess": "Đã xóa tất cả thông báo thành công.",
+  "clearHoroscopeTitle": "Tử vi rõ ràng",
+  "clearHoroscopeMessage": "Bạn có chắc chắn muốn xóa dữ liệu tử vi của mình không?",
+  "clearHoroscopeSuccess": "Đã xóa tử vi thành công.",
+  "clearChatTitle": "Xóa lịch sử trò chuyện",
+  "clearChatMessage": "Bạn có chắc chắn muốn xóa toàn bộ lịch sử trò chuyện của mình không?",
+  "clearChatLocal": "Đã xóa trò chuyện cục bộ.",
+  "deleteAccountTitle": "Xóa tài khoản",
+  "deleteAccountMessage": "Bạn có chắc chắn muốn xóa tài khoản của mình không? Thao tác này cũng sẽ xóa toàn bộ lịch sử trò chuyện và thông báo của bạn.",
+  "deleteAccountSuccess": "Tài khoản của bạn và toàn bộ dữ liệu đã bị xóa.",
+  "deleteAccountError": "Lỗi khi xóa tài khoản",
+  "logoutTitle": "Đăng xuất",
+  "logoutMessage": "Bạn có chắc chắn muốn đăng xuất không?",
+  "termsPrivacyTitle": "Điều khoản & Quyền riêng tư",
+  "privacyPolicyTitle": "Chính sách bảo mật",
+  "termsConditionsTitle": "Điều khoản & Điều kiện",
+  "dataControlTitle": "Kiểm soát dữ liệu",
+  "cancelButton": "Hủy bỏ",
+  "confirmButton": "Xác nhận",
+  "clearQuestionsSuccess": "Tất cả các câu hỏi đã được xóa thành công.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Chúa",
+  "startLabel": "Bắt đầu",
+  "recoverAccount": "Khôi phục tài khoản",
+  "endLabel": "Kết thúc",
+  "startDateLabel": "Ngày bắt đầu",
+  "endDateLabel": "Ngày kết thúc",
+  "notAvailable": "Không có sẵn",
+  "noData": "Không có dữ liệu",
+  "unknownError": "Lỗi không xác định",
+  "retryButton": "Thử lại",
+  "kundaliGeneratorTitle": "Máy phát điện Kundali",
+  "natalChartTitle": "Biểu đồ sinh",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Bậc tăng dần",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Không rõ",
+  "clearHoroscope": "Tử vi rõ ràng",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Xóa thông báo",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Xóa lịch sử trò chuyện",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Đăng xuất",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Xóa tài khoản",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Tất cả các trường đều bắt buộc.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Tài khoản đã được khôi phục thành công.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Khôi phục không thành công. Hãy kiểm tra lại thông tin của bạn.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Bí quyết phục hồi:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Giới thiệu về chúng tôi",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Giới thiệu về công ty chúng tôi",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Chúng tôi cam kết mang lại trải nghiệm chiêm tinh tốt nhất cho người dùng.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Sứ mệnh của chúng tôi",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Cung cấp những hiểu biết chiêm tinh chính xác và cá nhân hóa để giúp người dùng đưa ra quyết định sáng suốt trong cuộc sống.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Tầm nhìn của chúng tôi",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Trở thành nền tảng chiêm tinh đáng tin cậy nhất, kết hợp công nghệ và trí tuệ cổ xưa.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Giá trị của chúng tôi",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Tính toàn vẹn, chính xác, thiết kế lấy người dùng làm trung tâm và đổi mới liên tục.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Liên hệ với chúng tôi",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Email: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Trang web: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Hỗ trợ khách hàng",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Chúng tôi ở đây để giúp đỡ",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Hãy điền vào mẫu dưới đây và nhóm hỗ trợ của chúng tôi sẽ liên hệ lại với bạn trong thời gian sớm nhất.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Tên của bạn",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Email của bạn",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Tin nhắn",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Nhập email của bạn",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Nhập địa chỉ email hợp lệ",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Nhập {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Gửi",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Đang gửi...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Email đã được gửi thành công!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Không gửi được email",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Từ điển thiên văn",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Các thuật ngữ tìm kiếm...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Không tìm thấy thuật ngữ nào",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Mua câu hỏi",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Người dùng chưa được xác thực",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Không tải được dữ liệu lưu trữ",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Thiếu mã thông báo xác thực",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Ứng dụng trò chuyện Astro",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Thanh toán thành công! Đã gửi câu hỏi",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Thanh toán không thành công: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Số dư của bạn",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Câu hỏi",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Ưu đãi có sẵn",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Câu hỏi",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Mua",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Tử vi hàng ngày",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "ID người dùng bị thiếu",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Không thể tải tử vi",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Không tìm thấy tử vi.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Dấu hiệu",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Hôm nay",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Hôm qua",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Tuần này",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Tháng trước",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Trò chuyện",
+  "typeYourQuestionHint": "Nhập câu hỏi của bạn...",
+  "paymentRequired": "Yêu cầu thanh toán",
+  "paymentRequiredMessage": "Bạn đã sử dụng hết số câu hỏi miễn phí. Vui lòng trả 50 Rupee để tiếp tục.",
+  "payNowButton": "Thanh toán ngay",
+  "freeQuestionsRemaining": "{count} còn lại câu hỏi miễn phí",
+  "paidQuestionsRemaining": "{count} số câu hỏi đã trả phí còn lại",
+  "thankYouFeedback": "Cảm ơn phản hồi của bạn!",
+  "ratingSubmitted": "Đã gửi đánh giá!",
+  "setUserIdFirst": "Vui lòng thiết lập ID người dùng của bạn trước",
+  "failedToFetchPrevious": "Không thể lấy được các câu hỏi và câu trả lời trước đó",
+  "errorOccurred": "Lỗi: {error}",
+  "drawerAstroProfile": "Hồ sơ Astro",
+  "drawerDailyHoroscope": "Tử vi hàng ngày",
+  "drawerBuyQuestions": "Mua câu hỏi",
+  "drawerAstroDictionary": "Từ điển thiên văn",
+  "drawerSettings": "Cài đặt",
+  "drawerCustomerSupport": "Hỗ trợ khách hàng",
+  "drawerAbout": "Về",
+  "drawerProfileSettings": "Cài đặt hồ sơ",
+  "demoNotificationTitle": "🔔 Thông báo bản demo",
+  "demoNotificationBody": "Đây là thông báo thử nghiệm từ ứng dụng của bạn!",
+  "notificationsTitle": "Thông báo",
+  "noNotifications": "Không có thông báo",
+  "allTab": "Tất cả",
+  "markAllAsRead": "Đánh dấu tất cả là đã đọc",
+  "notificationMarkedRead": "Thông báo được đánh dấu là đã đọc",
+  "failedToLoadNotifications": "Không tải được thông báo",
+  "failedToMarkRead": "Không thể đánh dấu là đã đọc",
+  "failedToMarkAllRead": "Không thể đánh dấu tất cả là đã đọc",
+  "socketConnected": "Ổ cắm đã kết nối",
+  "socketDisconnected": "Ổ cắm bị ngắt kết nối",
+  "newNotificationReceived": "Đã nhận được thông báo mới",
+  "generalCategory": "Tổng quan",
+  "horoscopeCategory": "Tử vi",
+  "chatCategory": "Trò chuyện",
+  "systemCategory": "Hệ thống",
+  "updateCategory": "Cập nhật",
+  "howToAskTitle": "Cách hỏi",
+  "noQuestionsAvailable": "Không có câu hỏi nào có sẵn",
+  "failedToLoadQuestions": "Không tải được câu hỏi",
+  "pullToRefresh": "Kéo để làm mới",
+  "careerCategory": "Sự nghiệp",
+  "loveCategory": "Tình yêu và các mối quan hệ",
+  "healthCategory": "Sức khỏe",
+  "financeCategory": "Tài chính",
+  "familyCategory": "Gia đình",
+  "educationCategory": "Giáo dục",
+  "travelCategory": "Du lịch",
+  "spiritualCategory": "Tâm linh",
+  "profileLoaded": "Hồ sơ đã được tải thành công",
+  "imageUploaded": "Hình ảnh đã được tải lên thành công",
+  "savedInformationConfirmation": "Tôi đã lưu thông tin này",
+  "noHistoryAvailable": "Không có lịch sử có sẵn",
+  "missingUserIdError": "ID người dùng là bắt buộc",
+  "networkError": "Lỗi mạng. Vui lòng thử lại.",
+  "timeoutError": "Yêu cầu đã hết thời gian",
+  "genericError": "Có gì đó không ổn",
+  "reactionUpdateError": "Không cập nhật được phản ứng",
+  "noSearchResults": "Không tìm thấy kết quả tìm kiếm",
+  "clearSearch": "Xóa tìm kiếm",
+  "resultsFound": "Kết quả tìm thấy",
+  "recoverySecretHint": "Sao chép-dán có thể không hoạt động, hãy nhập thủ công",
+  "recoverAccountDescription": "Thực hiện theo các bước sau để khôi phục tài khoản của bạn",
+  "processingLabel": "Xử lý...",
+  "clearChatSuccess": "Trò chuyện đã được xóa thành công",
+  "notificationsEnabled": "Đã bật thông báo",
+  "notificationsDisabled": "Thông báo đã bị vô hiệu hóa",
+  "securityNotice": "Dữ liệu của bạn được mã hóa và lưu trữ an toàn",
+  "loading": "Đang tải...",
+  "selectLanguage": "Chọn ngôn ngữ",
+  "onboardingGetStartedDesc": "Bắt đầu bằng cách chọn ngôn ngữ của bạn",
+  "accountRecoveryTitle": "🔐 Chi tiết khôi phục tài khoản",
+  "recoveryInstructions": "Vui lòng lưu thông tin này một cách an toàn. Bạn sẽ cần thông tin này để khôi phục tài khoản.",
+  "importantNotice": "⚠️ Quan trọng:",
+  "astrologerProfileTitle": "Hồ sơ nhà chiêm tinh",
+  "personalAstrologer": "Nhà chiêm tinh cá nhân",
+  "makePersonalAstrologer": "Tạo nhà chiêm tinh cá nhân",
+  "favoriteDescription": "Câu hỏi của bạn sẽ được ưu tiên chuyển đến nhà chiêm tinh này. Nếu không thể liên lạc, một nhà chiêm tinh khác có trình độ sẽ hỗ trợ bạn.",
+  "educationQualifications": "Giáo dục & Bằng cấp",
+  "aboutSection": "Về",
+  "shareProfile": "Chia sẻ hồ sơ",
+  "loadingAstrologer": "Đang tải thông tin chi tiết về nhà chiêm tinh...",
+  "failedToLoadAstrologer": "Không tải được thông tin chi tiết về nhà chiêm tinh",
+  "authenticationRequired": "Cần xác thực. Vui lòng đăng nhập.",
+  "securityCheckFailed": "Kiểm tra bảo mật không thành công: {error}",
+  "addedToFavorites": "🎯 {name} hiện là Nhà chiêm tinh cá nhân của bạn",
+  "removedFromFavorites": "✅ Đã xóa {name} khỏi mục yêu thích",
+  "toggleFavoriteError": "Không cập nhật được trạng thái yêu thích",
+  "shareMessage": "{name}\n🎓 Học vấn: {education}\n📜 Bằng cấp: {qualification}\n⏳ Kinh nghiệm: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Không được cung cấp",
+  "reviews": "({count} đánh giá)",
+  "specialties": "Chuyên ngành",
+  "experience": "Kinh nghiệm",
+  "qualification": "Trình độ chuyên môn",
+  "education": "Giáo dục",
+  "recoveryTips": "• Chụp ảnh màn hình thông tin này\n• Lưu trữ ở nơi an toàn\n• Không chia sẻ với bất kỳ ai\n• Thông tin này chỉ được hiển thị một lần"
+}

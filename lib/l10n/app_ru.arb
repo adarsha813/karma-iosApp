@@ -1,0 +1,439 @@
+{
+  "@@locale": "ru",
+  "settingsTitle": "Настройки",
+  "notificationSettings": "Настройки уведомлений",
+  "privacySettings": "Настройки конфиденциальности",
+  "accountSettings": "Настройки учетной записи",
+  "languageSettings": "Настройки языка",
+  "languageChanged": "Язык изменен",
+  "existingUserButton": "Я существующий пользователь",
+  "chooseCountryTitle": "Выберите страну",
+  "yesText": "Да",
+  "noText": "Нет",
+  "appBarTitle": "Настройки профиля",
+  "userIdLabel": "ID пользователя *",
+  "nameLabel": "Имя",
+  "birthCountryLabel": "Страна рождения",
+  "birthCityLabel": "Город рождения",
+  "countrySelectionTitle": "Выберите свою страну",
+  "maleLabel": "Мужской",
+  "femaleLabel": "Женский",
+  "birthDateLabel": "Дата рождения",
+  "birthDatePlaceholder": "Выберите дату рождения",
+  "birthTimeLabel": "Время рождения",
+  "birthTimePlaceholder": "Выберите время рождения",
+  "saveProfileButton": "Сохранить профиль",
+  "noCitiesFound": "Города не найдены",
+  "cityPlaceholder": "Введите город в {country}",
+  "countryFirstPlaceholder": "Сначала выберите страну",
+  "versionHistoryTitle": "История версий",
+  "notSetText": "Не установлено",
+  "nameHistory": "Имя: {name}",
+  "cityHistory": "Город: {city}",
+  "countryHistory": "Страна: {country}",
+  "genderHistory": "Пол: {gender}",
+  "birthDateHistory": "Дата рождения: {date}",
+  "birthTimeHistory": "Время рождения: {time}",
+  "locationHistory": "Местоположение: {latitude}, {longitude}",
+  "timezoneHistory": "Часовой пояс: GMT{offset}",
+  "dstHistory": "Летнее время: {value}",
+  "stateHistory": "Штат: {state}",
+  "versionFromText": "Обновлено {date}",
+  "userIdRequired": "Требуется идентификатор пользователя",
+  "profileSaved": "Профиль успешно сохранен",
+  "saveFailed": "Не удалось сохранить профиль.",
+  "errorPrefix": "Ошибка:",
+  "onboardingChooseLanguage": "Выберите свой язык",
+  "onboardingChooseLanguageDesc": "Выберите предпочитаемый язык, чтобы продолжить.",
+  "onboardingWhatIsAstrology": "Что такое астрология?",
+  "onboardingWhatIsAstrologyDesc": "Астрология — это наука о небесных телах...",
+  "onboardingWhyUseApp": "Зачем использовать это приложение?",
+  "onboardingWhyUseAppDesc": "Получайте персонализированные гороскопы, ежедневные прогнозы и рекомендации для принятия обоснованных решений.",
+  "onboardingHowToUse": "Как пользоваться этим приложением?",
+  "onboardingHowToUseDesc": "Легко ориентируйтесь, проверяйте ежедневные гороскопы и управляйте своим профилем для получения точных прогнозов.",
+  "onboardingGetStarted": "Начать",
+  "onboardingNewUser": "Новый пользователь",
+  "onboardingExistingUser": "Существующий пользователь",
+  "onboardingBack": "Назад",
+  "onboardingNext": "Следующий",
+  "userIdNotFound": "Идентификатор пользователя не найден. Пожалуйста, войдите в систему или настройте свой профиль.",
+  "clearNotificationsTitle": "Очистить уведомления",
+  "clearNotificationsMessage": "Вы уверены, что хотите удалить все уведомления?",
+  "clearNotificationsSuccess": "Все уведомления успешно удалены.",
+  "clearHoroscopeTitle": "Ясный гороскоп",
+  "clearHoroscopeMessage": "Вы уверены, что хотите очистить данные своего гороскопа?",
+  "clearHoroscopeSuccess": "Гороскоп успешно очищен.",
+  "clearChatTitle": "Очистить историю чата",
+  "clearChatMessage": "Вы уверены, что хотите удалить всю историю чата?",
+  "clearChatLocal": "Чат очищен локально.",
+  "deleteAccountTitle": "Удалить аккаунт",
+  "deleteAccountMessage": "Вы уверены, что хотите удалить свою учётную запись? Это также удалит всю историю чатов и уведомления.",
+  "deleteAccountSuccess": "Ваша учетная запись и все данные были удалены.",
+  "deleteAccountError": "Ошибка при удалении аккаунта",
+  "logoutTitle": "Выйти",
+  "logoutMessage": "Вы уверены, что хотите выйти?",
+  "termsPrivacyTitle": "Условия и конфиденциальность",
+  "privacyPolicyTitle": "политика конфиденциальности",
+  "termsConditionsTitle": "Условия и положения",
+  "dataControlTitle": "Контроль данных",
+  "cancelButton": "Отмена",
+  "confirmButton": "Подтверждать",
+  "clearQuestionsSuccess": "Все вопросы успешно удалены.",
+  "yoginiLabel": "Йогини",
+  "lordLabel": "Господин",
+  "startLabel": "Начинать",
+  "recoverAccount": "Восстановить аккаунт",
+  "endLabel": "Конец",
+  "startDateLabel": "Дата начала",
+  "endDateLabel": "Дата окончания",
+  "notAvailable": "Нет в наличии",
+  "noData": "Нет данных",
+  "unknownError": "Неизвестная ошибка",
+  "retryButton": "Повторить попытку",
+  "kundaliGeneratorTitle": "Генератор Кундали",
+  "natalChartTitle": "Натальная карта",
+  "lagnaLabel": "Лагна",
+  "rashiLabel": "Раши",
+  "ascDegreeLabel": "Восходящий градус",
+  "vimshottariDashaTitle": "Вимшоттари Даша",
+  "yoginiDashaTitle": "Йогини Даша",
+  "unknown": "Неизвестный",
+  "clearHoroscope": "Ясный гороскоп",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Очистить уведомления",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Очистить историю чата",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Выйти",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Удалить аккаунт",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Все поля обязательны для заполнения.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Аккаунт успешно восстановлен.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Восстановление не удалось. Проверьте информацию.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Секрет восстановления:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "О нас",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "О нашей компании",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Мы стремимся предоставить нашим пользователям наилучший опыт в области астрологии.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Наша миссия",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Предоставлять точную и персонализированную астрологическую информацию, помогающую пользователям принимать обоснованные решения в своей жизни.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Наше видение",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Стать самой надежной астрологической платформой, сочетающей технологии и древнюю мудрость.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Наши ценности",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Целостность, точность, ориентированный на пользователя дизайн и постоянные инновации.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Связаться с нами",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Электронная почта: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Веб-сайт: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Служба поддержки клиентов",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Мы здесь, чтобы помочь",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Заполните форму ниже, и наша служба поддержки свяжется с вами как можно скорее.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Ваше имя",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Ваш адрес электронной почты",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Сообщение",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Введите свой адрес электронной почты",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Введите действительный адрес электронной почты",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Введите {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Отправлять",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Отправка...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Письмо успешно отправлено!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Не удалось отправить электронное письмо",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Астрологический словарь",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Условия поиска...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Термины не найдены",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Вопросы о покупке",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Пользователь не аутентифицирован",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Не удалось загрузить данные магазина.",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Отсутствует токен авторизации",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Приложение Astro Chat",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Оплата прошла успешно! Вопрос отправлен.",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Платеж не прошёл: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Ваш баланс",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Вопросы",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Доступные предложения",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Вопрос",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Купить",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Ежедневный гороскоп",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Идентификатор пользователя отсутствует",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Не удалось загрузить гороскопы",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Гороскоп не найден.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Знак",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Сегодня",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Вчера",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "На этой неделе",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "В прошлом месяце",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Чат",
+  "typeYourQuestionHint": "Введите свой вопрос...",
+  "paymentRequired": "Требуется оплата",
+  "paymentRequiredMessage": "Вы использовали бесплатные вопросы. Заплатите 50 ₹, чтобы продолжить.",
+  "payNowButton": "Оплатить сейчас",
+  "freeQuestionsRemaining": "{count} оставшиеся бесплатные вопросы",
+  "paidQuestionsRemaining": "{count} осталось оплаченных вопросов",
+  "thankYouFeedback": "Спасибо за ваш отзыв!",
+  "ratingSubmitted": "Рейтинг отправлен!",
+  "setUserIdFirst": "Сначала установите свой идентификатор пользователя.",
+  "failedToFetchPrevious": "Не удалось получить предыдущие вопросы и ответы.",
+  "errorOccurred": "Ошибка: {error}",
+  "drawerAstroProfile": "Астропрофиль",
+  "drawerDailyHoroscope": "Ежедневный гороскоп",
+  "drawerBuyQuestions": "Вопросы о покупке",
+  "drawerAstroDictionary": "Астрологический словарь",
+  "drawerSettings": "Настройки",
+  "drawerCustomerSupport": "Служба поддержки клиентов",
+  "drawerAbout": "О",
+  "drawerProfileSettings": "Настройки профиля",
+  "demoNotificationTitle": "🔔 Уведомление о демонстрации",
+  "demoNotificationBody": "Это тестовое уведомление от вашего приложения!",
+  "notificationsTitle": "Уведомления",
+  "noNotifications": "Нет уведомлений",
+  "allTab": "Все",
+  "markAllAsRead": "Отметить все как прочитанное",
+  "notificationMarkedRead": "Уведомление отмечено как прочитанное",
+  "failedToLoadNotifications": "Не удалось загрузить уведомления.",
+  "failedToMarkRead": "Не удалось отметить как прочитанное",
+  "failedToMarkAllRead": "Не удалось отметить все как прочитанные.",
+  "socketConnected": "Розетка подключена",
+  "socketDisconnected": "Розетка отключена",
+  "newNotificationReceived": "Получено новое уведомление",
+  "generalCategory": "Общий",
+  "horoscopeCategory": "Гороскоп",
+  "chatCategory": "Чат",
+  "systemCategory": "Система",
+  "updateCategory": "Обновления",
+  "howToAskTitle": "Как спросить",
+  "noQuestionsAvailable": "Нет доступных вопросов",
+  "failedToLoadQuestions": "Не удалось загрузить вопросы",
+  "pullToRefresh": "Потяните, чтобы обновить",
+  "careerCategory": "Карьера",
+  "loveCategory": "Любовь и отношения",
+  "healthCategory": "Здоровье",
+  "financeCategory": "Финансы",
+  "familyCategory": "Семья",
+  "educationCategory": "Образование",
+  "travelCategory": "Путешествовать",
+  "spiritualCategory": "Духовный",
+  "profileLoaded": "Профиль успешно загружен",
+  "imageUploaded": "Изображение успешно загружено",
+  "savedInformationConfirmation": "Я сохранил эту информацию",
+  "noHistoryAvailable": "История недоступна",
+  "missingUserIdError": "Требуется идентификатор пользователя",
+  "networkError": "Ошибка сети. Попробуйте ещё раз.",
+  "timeoutError": "Запрос истек",
+  "genericError": "Что-то пошло не так",
+  "reactionUpdateError": "Не удалось обновить реакцию.",
+  "noSearchResults": "Результаты поиска не найдены.",
+  "clearSearch": "Очистить поиск",
+  "resultsFound": "Результаты найдены",
+  "recoverySecretHint": "Копирование-вставка может не работать, вводите вручную",
+  "recoverAccountDescription": "Выполните следующие действия, чтобы восстановить свою учетную запись.",
+  "processingLabel": "Обработка...",
+  "clearChatSuccess": "Чат успешно очищен",
+  "notificationsEnabled": "Уведомления включены",
+  "notificationsDisabled": "Уведомления отключены",
+  "securityNotice": "Ваши данные надежно зашифрованы и хранятся",
+  "loading": "Загрузка...",
+  "selectLanguage": "Выберите язык",
+  "onboardingGetStartedDesc": "Начните с выбора языка",
+  "accountRecoveryTitle": "🔐 Информация о восстановлении аккаунта",
+  "recoveryInstructions": "Сохраните эту информацию в безопасном месте. Она понадобится вам для восстановления учётной записи.",
+  "importantNotice": "⚠️ Важно:",
+  "astrologerProfileTitle": "Профиль астролога",
+  "personalAstrologer": "Персональный астролог",
+  "makePersonalAstrologer": "Назначить личного астролога",
+  "favoriteDescription": "Ваши вопросы будут в первую очередь адресованы этому астрологу. Если он занят, вам поможет другой квалифицированный астролог.",
+  "educationQualifications": "Образование и квалификация",
+  "aboutSection": "О",
+  "shareProfile": "Поделиться профилем",
+  "loadingAstrologer": "Загрузка данных астролога...",
+  "failedToLoadAstrologer": "Не удалось загрузить данные астролога.",
+  "authenticationRequired": "Требуется аутентификация. Пожалуйста, войдите в систему.",
+  "securityCheckFailed": "Проверка безопасности не пройдена: {error}",
+  "addedToFavorites": "🎯 {name} теперь ваш персональный астролог",
+  "removedFromFavorites": "✅ Удален {name} из избранного",
+  "toggleFavoriteError": "Не удалось обновить статус избранного.",
+  "shareMessage": "{name}\n🎓 Образование: {education}\n📜 Квалификация: {qualification}\n⏳ Опыт работы: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Не предоставлено",
+  "reviews": "({count} отзывов)",
+  "specialties": "Специальности",
+  "experience": "Опыт",
+  "qualification": "Квалификация",
+  "education": "Образование",
+  "recoveryTips": "• Сделайте скриншот этой информации\n• Сохраните его в безопасном месте\n• Не передавайте никому\n• Эта информация будет показана только один раз"
+}

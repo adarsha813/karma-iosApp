@@ -1,0 +1,439 @@
+{
+  "@@locale": "sm",
+  "settingsTitle": "Fa'atonu",
+  "notificationSettings": "Fa'aaliga Fa'aaliga",
+  "privacySettings": "Fa'atonu Fa'atonu",
+  "accountSettings": "Fa'atonu Fa'amatalaga",
+  "languageSettings": "Gagana Fa'atonu",
+  "languageChanged": "Ua suia le gagana",
+  "existingUserButton": "O aʻu o se tagata faʻaoga o loʻo i ai nei",
+  "chooseCountryTitle": "Filifili Atunuu",
+  "yesText": "Ioe",
+  "noText": "Leai",
+  "appBarTitle": "Fa'asologa o Tala'aga",
+  "userIdLabel": "ID fa'aoga *",
+  "nameLabel": "Igoa",
+  "birthCountryLabel": "Atunuu Fanau",
+  "birthCityLabel": "Aai Fanau",
+  "countrySelectionTitle": "Filifili lou atunuu",
+  "maleLabel": "Male",
+  "femaleLabel": "Fafine",
+  "birthDateLabel": "Aso Fanau",
+  "birthDatePlaceholder": "Filifili Aso Fanau",
+  "birthTimeLabel": "Taimi Fanau mai",
+  "birthTimePlaceholder": "Filifili Taimi Fanau",
+  "saveProfileButton": "Fa'asaoina Tala'aga",
+  "noCitiesFound": "Leai ni aai na maua",
+  "cityPlaceholder": "Ulufale le aai i {country}",
+  "countryFirstPlaceholder": "Filifili muamua le atunuu",
+  "versionHistoryTitle": "Tala fa'asolopito",
+  "notSetText": "E le'i setiina",
+  "nameHistory": "Igoa: {name}",
+  "cityHistory": "Aai: {city}",
+  "countryHistory": "Atunu'u: {country}",
+  "genderHistory": "Itupa: {gender}",
+  "birthDateHistory": "Aso Fanau: {date}",
+  "birthTimeHistory": "Taimi Fanau: {time}",
+  "locationHistory": "Nofoaga: {latitude}, {longitude}",
+  "timezoneHistory": "Sone Taimi: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Setete: {state}",
+  "versionFromText": "Fa'afou ile {date}",
+  "userIdRequired": "E mana'omia le ID fa'aoga",
+  "profileSaved": "Ua manuia le teuina o talaaga",
+  "saveFailed": "Ua le mafai ona sefe le talaaga",
+  "errorPrefix": "Sese:",
+  "onboardingChooseLanguage": "Filifili Lau Gagana",
+  "onboardingChooseLanguageDesc": "Filifili lau gagana e te mana'o e fa'aauau.",
+  "onboardingWhatIsAstrology": "O le a le Astrology?",
+  "onboardingWhatIsAstrologyDesc": "Astrology o le su'esu'ega o tino fa'alelagi...",
+  "onboardingWhyUseApp": "Aisea e fa'aoga ai lenei app?",
+  "onboardingWhyUseAppDesc": "Maua su'esu'ega fa'apitoa, valo'aga i aso ta'itasi, ma ta'iala e fai ai fa'ai'uga lelei.",
+  "onboardingHowToUse": "E fa'afefea ona fa'aoga lenei app?",
+  "onboardingHowToUseDesc": "Su'e faigofie, siaki horoscope i aso uma, ma pulea lau talaaga mo fa'amatalaga sa'o.",
+  "onboardingGetStarted": "Amata",
+  "onboardingNewUser": "Tagata fou",
+  "onboardingExistingUser": "Tagata fa'aoga o iai nei",
+  "onboardingBack": "Tua",
+  "onboardingNext": "Sosoo ai",
+  "userIdNotFound": "E le'i maua le ID fa'aoga. Fa'amolemole saini pe seti lau talaaga.",
+  "clearNotificationsTitle": "Fa'ailoa manino",
+  "clearNotificationsMessage": "E te mautinoa e te mana'o e tape uma fa'amatalaga?",
+  "clearNotificationsSuccess": "Na manuia fa'aaliga uma.",
+  "clearHoroscopeTitle": "Fa'aaliga manino",
+  "clearHoroscopeMessage": "E te mautinoa e te mana'o e tape au fa'amatalaga o le horoscope?",
+  "clearHoroscopeSuccess": "Ua manuia le kilia o le Horoscope.",
+  "clearChatTitle": "Fa'amama Tala Talafaasolopito",
+  "clearChatMessage": "E te mautinoa e te mana'o e tape uma au tala fa'asolopito?",
+  "clearChatLocal": "Ua kilia talanoaga i le lotoifale.",
+  "deleteAccountTitle": "Ave'ese Fa'amatalaga",
+  "deleteAccountMessage": "E te mautinoa e te mana'o e tape lau tala? Ole a fa'amama uma ai lau tala fa'asolopito ma fa'amatalaga.",
+  "deleteAccountSuccess": "Ua aveese lau tala ma fa'amaumauga uma.",
+  "deleteAccountError": "Sese ile tapeina ole tala",
+  "logoutTitle": "Saini ese j",
+  "logoutMessage": "E te mautinoa e te mana'o e alu ese?",
+  "termsPrivacyTitle": "Tulaga & Fa'alilolilo",
+  "privacyPolicyTitle": "Faiga Fa'alilolilo",
+  "termsConditionsTitle": "Tuutuuga & Tulaga",
+  "dataControlTitle": "Puleaina o Faamatalaga",
+  "cancelButton": "Fa'aleaogaina",
+  "confirmButton": "Faamaonia",
+  "clearQuestionsSuccess": "Ua soloi lelei fesili uma.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Alii e",
+  "startLabel": "Amata",
+  "recoverAccount": "Toe Fa'afo'i Fa'amatalaga",
+  "endLabel": "Fa'ai'uga",
+  "startDateLabel": "Aso Amata",
+  "endDateLabel": "Aso Fa'ai'u",
+  "notAvailable": "Le avanoa",
+  "noData": "Leai ni fa'amatalaga",
+  "unknownError": "Sese le iloa",
+  "retryButton": "Toe taumafai",
+  "kundaliGeneratorTitle": "Kundali Generator",
+  "natalChartTitle": "Natal Siata",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Fa'ailoga Maualuga",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Le iloa",
+  "clearHoroscope": "Fa'aaliga manino",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Fa'ailoa manino",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Fa'amama Tala Talafaasolopito",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Saini ese j",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Ave'ese Fa'amatalaga",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "E mana'omia uma fanua.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Fa'aola manuia le tala.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Ua le manuia. Siaki lau fa'amatalaga.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Toe Fa'aleleia Mea lilo:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Faatatau ia tatou",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "E uiga i le tatou Kamupani",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Matou te tuuto atu i le tuʻuina atu o faʻamatalaga sili ona lelei o suʻesuʻega i a matou tagata faʻaoga.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "La Tatou Misiona",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Ina ia tu'uina atu fa'amatalaga sa'o ma fa'apitoa i fetu e fesoasoani ai i tagata fa'aoga e fai fa'ai'uga lelei io latou olaga.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "La Tatou Vaaiga",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Ina ia avea ma faʻailoga faʻatauvaʻa sili ona faʻatuatuaina, tuʻufaʻatasia tekinolosi ma le poto anamua.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "O tatou Tulaga Faatauaina",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Fa'amaoni, Sa'o, Fuafuaga Fa'aoga-Fa'aoga, ma Fa'aauau Fa'afouga.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Faafesootai matou",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Imeli: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Upega tafa'ilagi: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Lagolago Tagata Fa'atau",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Ua matou i ai e Fesoasoani",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Faatumu le fomu o lo'o i lalo ma o le a toe fo'i atu la matou 'au lagolago ia te oe i se taimi vave e mafai ai.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Lou Suafa",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Lau Email",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Savali",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Ulufale lau imeli",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Ulufale se tuatusi imeli aoga",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Ulufale {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Auina atu",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Tuuina atu...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Na manuia le lafoina o imeli!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Ua le mafai ona lafo imeli",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro Dictionary",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Su'e upu...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Leai ni upu na maua",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Fa'atau Fesili",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "E le fa'amaonia le tagata fa'aoga",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Ua le mafai ona la'uina fa'amatalaga teu",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Ua misi le fa'ailoga fa'amaonia",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat App",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Manuia le totogi! Fesili lafo",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Ua le mafai ona totogi: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Lou Paleni",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Fesili",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Avanoa ofo",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Fesili",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Fa'atau",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Fa'ailo o aso ta'itasi",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "O lo'o misi le ID fa'aoga",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Ua le mafai ona aumai su'esu'ega",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Leai se su'esu'ega na maua.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Faailoga",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "I aso nei",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "O ananafi",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Ole Vaiaso lenei",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "O le masina ua mavae",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Talanoaga",
+  "typeYourQuestionHint": "Tusi lau fesili...",
+  "paymentRequired": "Totogi Manaomia",
+  "paymentRequiredMessage": "Ua e fa'aogaina au fesili maua fua. Totogi ₹50 e fa'aauau ai.",
+  "payNowButton": "Totogi Nei",
+  "freeQuestionsRemaining": "{count} fesili saoloto o totoe",
+  "paidQuestionsRemaining": "{count} fesili totogi o totoe",
+  "thankYouFeedback": "Faafetai mo lou finagalo faaalia!",
+  "ratingSubmitted": "Fa'ailoga ua tu'uina atu!",
+  "setUserIdFirst": "Fa'amolemole seti muamua lau ID Fa'aoga",
+  "failedToFetchPrevious": "Ua le mafai ona aumai fesili ma tali muamua",
+  "errorOccurred": "Sese: {error}",
+  "drawerAstroProfile": "Tala'aga a Astro",
+  "drawerDailyHoroscope": "Fa'ailo o aso ta'itasi",
+  "drawerBuyQuestions": "Fa'atau Fesili",
+  "drawerAstroDictionary": "Astro Dictionary",
+  "drawerSettings": "Fa'atonu",
+  "drawerCustomerSupport": "Lagolago Tagata Fa'atau",
+  "drawerAbout": "E uiga i",
+  "drawerProfileSettings": "Fa'asologa o Tala'aga",
+  "demoNotificationTitle": "🔔 Fa'aaliga Fa'aaliga",
+  "demoNotificationBody": "Ole fa'aaliga lea ole su'ega mai lau app!",
+  "notificationsTitle": "Fa'asilasilaga",
+  "noNotifications": "Leai ni fa'amatalaga",
+  "allTab": "O mea uma",
+  "markAllAsRead": "Faailoga uma ua faitau",
+  "notificationMarkedRead": "Fa'asilasilaga fa'ailoga ua faitau",
+  "failedToLoadNotifications": "Ua le mafai ona uta fa'amatalaga",
+  "failedToMarkRead": "Ua le mafai ona makaina ua faitau",
+  "failedToMarkAllRead": "Ua le mafai ona maka uma ua faitau",
+  "socketConnected": "Socket so'o",
+  "socketDisconnected": "Ua motu le so'o",
+  "newNotificationReceived": "Fa'asilasilaga fou ua maua",
+  "generalCategory": "lautele",
+  "horoscopeCategory": "Horoscope",
+  "chatCategory": "Talanoaga",
+  "systemCategory": "Faiga",
+  "updateCategory": "Fa'afouga",
+  "howToAskTitle": "Auala e Fesili",
+  "noQuestionsAvailable": "E leai ni fesili e maua",
+  "failedToLoadQuestions": "Ua le mafai ona utaina fesili",
+  "pullToRefresh": "Toso e faafou",
+  "careerCategory": "Galuega",
+  "loveCategory": "Alofa & Mafutaga",
+  "healthCategory": "Soifua Maloloina",
+  "financeCategory": "Tupe",
+  "familyCategory": "Aiga",
+  "educationCategory": "A'oga",
+  "travelCategory": "Malaga",
+  "spiritualCategory": "Faaleagaga",
+  "profileLoaded": "Ua manuia le utaina o talaaga",
+  "imageUploaded": "Ua manuia le la'uina o ata",
+  "savedInformationConfirmation": "Ua Ou Faasaoina Lenei Faamatalaga",
+  "noHistoryAvailable": "Leai se tala fa'asolopito e maua",
+  "missingUserIdError": "E mana'omia le ID fa'aoga",
+  "networkError": "Sese feso'otaiga. Fa'amolemole toe taumafai.",
+  "timeoutError": "Taimi ua uma le talosaga",
+  "genericError": "Sa i ai se mea na faaletonu",
+  "reactionUpdateError": "Ua le mafai ona faafou le tali",
+  "noSearchResults": "Leai se su'esu'ega na maua",
+  "clearSearch": "Fa'amama su'esu'ega",
+  "resultsFound": "I'uga maua",
+  "recoverySecretHint": "Kopi-pepe atonu e le aoga, lolomi ma le lima",
+  "recoverAccountDescription": "Mulimuli i laasaga nei e toe maua ai lau tala",
+  "processingLabel": "Fa'agasolo...",
+  "clearChatSuccess": "Ua manuia le kilia o talanoaga",
+  "notificationsEnabled": "Fa'asilasilaga ua mafai",
+  "notificationsDisabled": "Fa'asilasilaga fa'aletonu",
+  "securityNotice": "O au fa'amatalaga o lo'o fa'ailoga ma teu lelei",
+  "loading": "utaina...",
+  "selectLanguage": "Filifili Gagana",
+  "onboardingGetStartedDesc": "Amata i le filifilia o lau gagana",
+  "accountRecoveryTitle": "🔐 Fa'amatalaga Toe Fa'aleleia",
+  "recoveryInstructions": "Fa'amolemole fa'asaoina lelei lenei fa'amatalaga. E te mana'omia e toe maua ai lau tala.",
+  "importantNotice": "⚠️ Taua:",
+  "astrologerProfileTitle": "Tala'aga o Tagata Fetu",
+  "personalAstrologer": "Tagata Fetu Patino",
+  "makePersonalAstrologer": "Fai Tagata Va'aiga Fetu",
+  "favoriteDescription": "O au fesili o le a faʻamuamua i lenei tagata suʻesuʻe fetu. Afai e lē maua, o le a fesoasoani atu se isi tagata suʻesuʻe fetu agavaa iā te oe.",
+  "educationQualifications": "A'oga & Fa'ailoga",
+  "aboutSection": "E uiga i",
+  "shareProfile": "Fa'asoa Fa'amatalaga",
+  "loadingAstrologer": "O lo'o uta fa'amatalaga a le tagata fetu...",
+  "failedToLoadAstrologer": "Ua le mafai ona la'uina fa'amatalaga a le au fetu",
+  "authenticationRequired": "Manaomia le fa'amaoni. Faamolemole saini i totonu.",
+  "securityCheckFailed": "Ua le mafai ona siaki le puipuiga: {error}",
+  "addedToFavorites": "🎯 {name} ua avea nei ma sau Tagata Vaai Fetu",
+  "removedFromFavorites": "✅ Aveese {name} mai mea e fiafia i ai",
+  "toggleFavoriteError": "Ua le mafai ona faafou le tulaga e fiafia iai",
+  "shareMessage": "{name}\n🎓 A'oa'oga: {education}\n📜 Fa'ailoga: {qualification}\n⏳ Aafiaga: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "E le'i saunia",
+  "reviews": "({count} iloiloga)",
+  "specialties": "Fa'apitoa",
+  "experience": "Aafiaga",
+  "qualification": "Fa'ailoga",
+  "education": "A'oga",
+  "recoveryTips": "• Ave se fa'amalama o lenei fa'amatalaga\n• Teu i se nofoaga malupuipuia\n• Aua le faasoa atu i se tasi\n• O le a na'o le tasi ona fa'aalia"
+}

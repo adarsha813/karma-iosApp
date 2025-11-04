@@ -1,0 +1,439 @@
+{
+  "@@locale": "tk",
+  "settingsTitle": "Sazlamalar",
+  "notificationSettings": "Duýduryş sazlamalary",
+  "privacySettings": "Gizlinlik sazlamalary",
+  "accountSettings": "Hasap sazlamalary",
+  "languageSettings": "Dil sazlamalary",
+  "languageChanged": "Dil üýtgedi",
+  "existingUserButton": "Men bar bolan ulanyjy",
+  "chooseCountryTitle": "Countryurt saýlaň",
+  "yesText": "Hawa",
+  "noText": ".Ok",
+  "appBarTitle": "Profil sazlamalary",
+  "userIdLabel": "Ulanyjy ID *",
+  "nameLabel": "Ady",
+  "birthCountryLabel": "Doglan ýurt",
+  "birthCityLabel": "Doglan şäher",
+  "countrySelectionTitle": "Yoururduňyzy saýlaň",
+  "maleLabel": "Erkek",
+  "femaleLabel": "Aýal",
+  "birthDateLabel": "Doglan senesi",
+  "birthDatePlaceholder": "Doglan senesini saýlaň",
+  "birthTimeLabel": "Doglan wagty",
+  "birthTimePlaceholder": "Doglan wagty saýlaň",
+  "saveProfileButton": "Profil ýazdyr",
+  "noCitiesFound": "Şäher tapylmady",
+  "cityPlaceholder": "Enter city in {country}",
+  "countryFirstPlaceholder": "Ilki bilen ýurdy saýlaň",
+  "versionHistoryTitle": "Wersiýa taryhy",
+  "notSetText": "Bellenmedi",
+  "nameHistory": "Name: {name}",
+  "cityHistory": "City: {city}",
+  "countryHistory": "Country: {country}",
+  "genderHistory": "Gender: {gender}",
+  "birthDateHistory": "Birth Date: {date}",
+  "birthTimeHistory": "Birth Time: {time}",
+  "locationHistory": "Location: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "State: {state}",
+  "versionFromText": "Updated on {date}",
+  "userIdRequired": "Ulanyjy ID talap edilýär",
+  "profileSaved": "Profil üstünlikli saklandy",
+  "saveFailed": "Profil ýazdyryp bilmedi",
+  "errorPrefix": "Roralňyşlyk:",
+  "onboardingChooseLanguage": "Diliňizi saýlaň",
+  "onboardingChooseLanguageDesc": "Dowam etmek üçin halaýan diliňizi saýlaň.",
+  "onboardingWhatIsAstrology": "Astrologiýa näme?",
+  "onboardingWhatIsAstrologyDesc": "Astrologiýa asman jisimlerini öwrenmekdir ...",
+  "onboardingWhyUseApp": "Näme üçin bu programmany ulanmaly?",
+  "onboardingWhyUseAppDesc": "Şahsylaşdyrylan goroskoplary, gündelik çaklamalary we habarly karar bermek üçin görkezmeleri alyň.",
+  "onboardingHowToUse": "Bu programmany nädip ulanmaly?",
+  "onboardingHowToUseDesc": "Ansatlyk bilen geziň, gündelik goroskoplary barlaň we takyk çaklamalar üçin profiliňizi dolandyryň.",
+  "onboardingGetStarted": "Başla",
+  "onboardingNewUser": "Täze ulanyjy",
+  "onboardingExistingUser": "Bar bolan ulanyjy",
+  "onboardingBack": "Yzyna",
+  "onboardingNext": "Indiki",
+  "userIdNotFound": "Ulanyjy ID tapylmady Giriň ýa-da profiliňizi düzüň.",
+  "clearNotificationsTitle": "Duýduryşlary arassalaň",
+  "clearNotificationsMessage": "Allhli bildirişleri arassalamak isleýändigiňize ynanýarsyňyzmy?",
+  "clearNotificationsSuccess": "Allhli bildirişler üstünlikli arassalandy.",
+  "clearHoroscopeTitle": "Goroskopy arassalaň",
+  "clearHoroscopeMessage": "Goroskop maglumatlaryňyzy arassalamak isleýändigiňize ynanýarsyňyzmy?",
+  "clearHoroscopeSuccess": "Goroskop üstünlikli arassalandy.",
+  "clearChatTitle": "Söhbet taryhyny arassala",
+  "clearChatMessage": "Chathli söhbetdeşlik taryhyňyzy pozmak isleýändigiňize ynanýarsyňyzmy?",
+  "clearChatLocal": "Söhbet ýerli derejede arassalandy.",
+  "deleteAccountTitle": "Hasaby öçüriň",
+  "deleteAccountMessage": "Hasabyňyzy pozmak isleýändigiňize ynanýarsyňyzmy? Şeýle hem, ähli söhbetdeşlik taryhyňyzy we bildirişleriňizi arassalaýar.",
+  "deleteAccountSuccess": "Hasabyňyz we ähli maglumatlar aýryldy.",
+  "deleteAccountError": "Hasaby pozmakda säwlik",
+  "logoutTitle": "Çykmak",
+  "logoutMessage": "Çykmak isleýändigiňize ynanýarsyňyzmy?",
+  "termsPrivacyTitle": "Şertler we gizlinlik",
+  "privacyPolicyTitle": "Gizlinlik syýasaty",
+  "termsConditionsTitle": "Şertler we şertler",
+  "dataControlTitle": "Maglumatlara gözegçilik",
+  "cancelButton": "Elatyr",
+  "confirmButton": "Tassykla",
+  "clearQuestionsSuccess": "Questionshli soraglar üstünlikli öçürildi.",
+  "yoginiLabel": "Ogogini",
+  "lordLabel": "Lorda Reb",
+  "startLabel": "Başla",
+  "recoverAccount": "Hasaby dikeltmek",
+  "endLabel": "Ahyry",
+  "startDateLabel": "Başlangyç senesi",
+  "endDateLabel": "Ahyrky senesi",
+  "notAvailable": "Elýeterli däl",
+  "noData": "Maglumat ýok",
+  "unknownError": "Näbelli ýalňyşlyk",
+  "retryButton": "Gaýtadan synanyşyň",
+  "kundaliGeneratorTitle": "Kundali Generator",
+  "natalChartTitle": "Natal diagramma",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Raşi",
+  "ascDegreeLabel": "Asmana göterilen dereje",
+  "vimshottariDashaTitle": "Wimşottari Daşa",
+  "yoginiDashaTitle": "Ogogini Daşa",
+  "unknown": "Näbelli",
+  "clearHoroscope": "Goroskopy arassalaň",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Duýduryşlary arassalaň",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Söhbet taryhyny arassala",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Çykmak",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Hasaby öçüriň",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Fieldshli meýdanlar hökmanydyr.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Hasap üstünlikli dikeldildi.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Dikeldiş şowsuz boldy. Maglumatyňyzy barlaň.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Dikeldiş syry:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Biz hakda",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Kompaniýamyz hakda",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Iň oňat astrologiýa tejribesini ulanyjylarymyza ýetirmegi maksat edinýäris.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Biziň wezipämiz",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Ulanyjylara durmuşynda habarly karar bermäge kömek etmek üçin takyk we şahsylaşdyrylan astrologiýa düşünjelerini bermek.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Görüşimiz",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Tehnologiýany we gadymy paýhasy birleşdirip, iň ynamdar astrologiýa platformasyna öwrülmek.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Gymmatlyklarymyz",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Bütewilik, takyklyk, ulanyjy merkezi dizaýny we üznüksiz täzelik.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Biz bilen habarlaşyň",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "E-poçta: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Sahypa: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Müşderi goldawy",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Biz kömek etmek üçin geldik",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Aşakdaky blankany dolduryň we goldaw toparymyz mümkin boldugyça gysga wagtda size gaýdyp geler.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Adyňyz",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "E-poçtaňyz",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Habar",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "E-poçtaňyzy giriziň",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Dogry e-poçta salgysyny giriziň",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Enter {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Iber",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Iberýän ...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ E-poçta üstünlikli iberildi!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "E-poçta iberip bilmedi",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro sözlügi",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Gözleg sözleri ...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Hiç hili termin tapylmady",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Sorag satyn alyň",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Ulanyjy tassyklanmady",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Dükan maglumatlaryny ýükläp bilmedi",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Authitirilen awtor belgisi",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "“Astro Chat” programmasy",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "Ment Töleg üstünlikli! Sorag iberildi",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Payment failed: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Balansyňyz",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Questions",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Elýeterli teklipler",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Question",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Satyn alyň",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Gündelik goroskop",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Ulanyjy şahsyýeti ýok",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Goroskoplary alyp bilmedi",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Goroskop tapylmady",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Gol çekiň",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Bu gün",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Düýn",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Bu hepde",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Geçen aý",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Söhbet",
+  "typeYourQuestionHint": "Soragyňyzy ýazyň ...",
+  "paymentRequired": "Töleg talap edilýär",
+  "paymentRequiredMessage": "Mugt soraglaryňyzy ulandyňyz. Dowam etmek üçin 50 funt töläň.",
+  "payNowButton": "Indi töläň",
+  "freeQuestionsRemaining": "{count} free questions remaining",
+  "paidQuestionsRemaining": "{count} paid questions remaining",
+  "thankYouFeedback": "Pikirleriňiz üçin sag boluň!",
+  "ratingSubmitted": "Reýting tabşyryldy",
+  "setUserIdFirst": "Ilki bilen Ulanyjy şahsyýetiňizi belläň",
+  "failedToFetchPrevious": "Öňki soraglary we jogaplary alyp bilmedi",
+  "errorOccurred": "Error: {error}",
+  "drawerAstroProfile": "Astro profil",
+  "drawerDailyHoroscope": "Gündelik goroskop",
+  "drawerBuyQuestions": "Sorag satyn alyň",
+  "drawerAstroDictionary": "Astro sözlügi",
+  "drawerSettings": "Sazlamalar",
+  "drawerCustomerSupport": "Müşderi goldawy",
+  "drawerAbout": "Takmynan",
+  "drawerProfileSettings": "Profil sazlamalary",
+  "demoNotificationTitle": "O Demo habarnamasy",
+  "demoNotificationBody": "Bu programmaňyzdan synag habarnamasy!",
+  "notificationsTitle": "Duýduryşlar",
+  "noNotifications": "Duýduryş ýok",
+  "allTab": "Hemmesi",
+  "markAllAsRead": "Hemmesini okalýan ýaly belläň",
+  "notificationMarkedRead": "Okalýan ýaly bildiriş",
+  "failedToLoadNotifications": "Duýduryşlary ýükläp bilmedi",
+  "failedToMarkRead": "Okaldy diýip bellik edip bilmedi",
+  "failedToMarkAllRead": "Hemmesini okalan diýip bellemek başartmady",
+  "socketConnected": "Soket birikdirildi",
+  "socketDisconnected": "Soket kesildi",
+  "newNotificationReceived": "Täze bildiriş alyndy",
+  "generalCategory": "General",
+  "horoscopeCategory": "Goroskop",
+  "chatCategory": "Söhbet",
+  "systemCategory": "Ulgam",
+  "updateCategory": "Täzelenmeler",
+  "howToAskTitle": "Nädip soramaly",
+  "noQuestionsAvailable": "Sorag ýok",
+  "failedToLoadQuestions": "Sorag ýükläp bilmedi",
+  "pullToRefresh": "Täzelenmek üçin çekiň",
+  "careerCategory": "Hünär",
+  "loveCategory": "Söýgi we gatnaşyklar",
+  "healthCategory": "Saglyk",
+  "financeCategory": "Maliýe",
+  "familyCategory": "Maşgala",
+  "educationCategory": "Bilim",
+  "travelCategory": "Syýahat",
+  "spiritualCategory": "Ruhy",
+  "profileLoaded": "Profil üstünlikli ýüklendi",
+  "imageUploaded": "Surat üstünlikli ýüklendi",
+  "savedInformationConfirmation": "Men bu maglumatlary sakladym",
+  "noHistoryAvailable": "Taryh ýok",
+  "missingUserIdError": "Ulanyjy ID talap edilýär",
+  "networkError": "Tor ýalňyşlygy. Gaýtadan synanyşmagyňyzy haýyş edýäris.",
+  "timeoutError": "Talap gutardy",
+  "genericError": "Bir zat nädogry boldy",
+  "reactionUpdateError": "Reaksiýany täzeläp bilmedi",
+  "noSearchResults": "Gözleg netijeleri tapylmady",
+  "clearSearch": "Gözleg arassala",
+  "resultsFound": "Netijeler tapyldy",
+  "recoverySecretHint": "Göçürmek-goýup bilmez, el bilen ýazyň",
+  "recoverAccountDescription": "Hasabyňyzy dikeltmek üçin şu ädimleri ýerine ýetiriň",
+  "processingLabel": "Gaýtadan işlemek ...",
+  "clearChatSuccess": "Söhbet üstünlikli arassalandy",
+  "notificationsEnabled": "Duýduryşlar açyk",
+  "notificationsDisabled": "Duýduryşlar ýapyldy",
+  "securityNotice": "Maglumatlaryňyz ygtybarly kodlanýar we saklanýar",
+  "loading": "Adingüklenýär ...",
+  "selectLanguage": "Dil saýlaň",
+  "onboardingGetStartedDesc": "Diliňizi saýlap başlaň",
+  "accountRecoveryTitle": "🔐 Hasaby dikeltmek maglumatlary",
+  "recoveryInstructions": "Bu maglumatlary ygtybarly saklaň. Hasabyňyzy dikeltmek üçin size zerur bolar.",
+  "importantNotice": "⚠️ Möhüm:",
+  "astrologerProfileTitle": "Astrolog profil",
+  "personalAstrologer": "Şahsy astrolog",
+  "makePersonalAstrologer": "Şahsy astrolog ediň",
+  "favoriteDescription": "Soraglaryňyz bu astrologda ileri tutular. Elýeterli däl bolsa, başga bir hünärli astrolog size kömek eder.",
+  "educationQualifications": "Bilim we kärler",
+  "aboutSection": "Takmynan",
+  "shareProfile": "Profil paýlaş",
+  "loadingAstrologer": "Jadygöý maglumatlaryny ýüklemek ...",
+  "failedToLoadAstrologer": "Jadygöý jikme-jikliklerini ýükläp bilmedi",
+  "authenticationRequired": "Hakyky tassyklamak zerur. Hasaba girmegiňizi haýyş edýäris.",
+  "securityCheckFailed": "Security check failed: {error}",
+  "addedToFavorites": "🎯 {name} is now your Personal Astrologer",
+  "removedFromFavorites": "✅ Removed {name} from favorites",
+  "toggleFavoriteError": "Halaýan ýagdaýy täzeläp bilmedi",
+  "shareMessage": "{name}\n🎓 Education: {education}\n📜 Qualification: {qualification}\n⏳ Experience: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Berilmedi",
+  "reviews": "({count} reviews)",
+  "specialties": "Hünärler",
+  "experience": "Tejribe",
+  "qualification": "Kwalifikasiýa",
+  "education": "Bilim",
+  "recoveryTips": "• Bu maglumatlaryň skrinshotyny alyň\n• Ygtybarly ýerde saklaň\n• Hiç kim bilen paýlaşmaň\n• Bu diňe bir gezek görkeziler"
+}

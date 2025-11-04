@@ -1,0 +1,439 @@
+{
+  "@@locale": "ig",
+  "settingsTitle": "Ntọala",
+  "notificationSettings": "Ntọala ngosi",
+  "privacySettings": "Ntọala nzuzo",
+  "accountSettings": "Ntọala akaụntụ",
+  "languageSettings": "Ntọala asụsụ",
+  "languageChanged": "Asụsụ gbanwere",
+  "existingUserButton": "Abụ m onye ọrụ dị adị",
+  "chooseCountryTitle": "Họrọ Obodo",
+  "yesText": "Ee",
+  "noText": "Mba",
+  "appBarTitle": "Ntọala profaịlụ",
+  "userIdLabel": "Njirimara Onye Ọrụ *",
+  "nameLabel": "Aha",
+  "birthCountryLabel": "Obodo amuru",
+  "birthCityLabel": "Obodo ọmụmụ",
+  "countrySelectionTitle": "Họrọ obodo gị",
+  "maleLabel": "Nwoke",
+  "femaleLabel": "Nwanyị",
+  "birthDateLabel": "Ụbọchị ọmụmụ",
+  "birthDatePlaceholder": "Họrọ Ụbọchị ọmụmụ",
+  "birthTimeLabel": "Oge ọmụmụ",
+  "birthTimePlaceholder": "Họrọ Oge ọmụmụ",
+  "saveProfileButton": "Chekwa profaịlụ",
+  "noCitiesFound": "Enweghị obodo ahụrụ",
+  "cityPlaceholder": "Tinye obodo na {country}",
+  "countryFirstPlaceholder": "Buru ụzọ họrọ obodo",
+  "versionHistoryTitle": "Akụkọ ụdị",
+  "notSetText": "Edobeghị",
+  "nameHistory": "Aha: {name}",
+  "cityHistory": "Obodo: {city}",
+  "countryHistory": "Obodo: {country}",
+  "genderHistory": "okike: {gender}",
+  "birthDateHistory": "Ụbọchị ọmụmụ: {date}",
+  "birthTimeHistory": "Oge ọmụmụ: {time}",
+  "locationHistory": "Ebe: {latitude}, {longitude}",
+  "timezoneHistory": "Mpaghara oge: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Steeti: {state}",
+  "versionFromText": "Emelitere na {date}",
+  "userIdRequired": "Achọrọ ID onye ọrụ",
+  "profileSaved": "A na-echekwa profaịlụ nke ọma",
+  "saveFailed": "Ịchekwa profaịlụ adịghị",
+  "errorPrefix": "Njehie:",
+  "onboardingChooseLanguage": "Họrọ Asụsụ Gị",
+  "onboardingChooseLanguageDesc": "Họrọ asụsụ ọkacha mmasị gị ka ịga n'ihu.",
+  "onboardingWhatIsAstrology": "Gịnị bụ ịgụ kpakpando?",
+  "onboardingWhatIsAstrologyDesc": "Ịgụ kpakpando bụ ọmụmụ ihe nke eluigwe...",
+  "onboardingWhyUseApp": "Gịnị kpatara iji ngwa a?",
+  "onboardingWhyUseAppDesc": "Nweta horoscopes ahaziri onwe ya, amụma kwa ụbọchị, na ntụzịaka iji mee mkpebi ziri ezi.",
+  "onboardingHowToUse": "Kedu otu esi eji ngwa a?",
+  "onboardingHowToUseDesc": "Gaa n'ụzọ dị mfe, lelee horoscopes kwa ụbọchị ma jikwaa profaịlụ gị maka amụma ziri ezi.",
+  "onboardingGetStarted": "Malite",
+  "onboardingNewUser": "Onye ọrụ ọhụrụ",
+  "onboardingExistingUser": "Onye ọrụ dị adị",
+  "onboardingBack": "Azu",
+  "onboardingNext": "Osote",
+  "userIdNotFound": "Ahụghị ID onye ọrụ. Biko banye ma ọ bụ tọọ profaịlụ gị.",
+  "clearNotificationsTitle": "Kpochapụ ọkwa",
+  "clearNotificationsMessage": "Ị ji n'aka na ịchọrọ ikpochapụ ọkwa niile?",
+  "clearNotificationsSuccess": "A kpochapụrụ ọkwa niile nke ọma.",
+  "clearHoroscopeTitle": "Kpochapụ horoscope",
+  "clearHoroscopeMessage": "Ị ji n'aka na ịchọrọ ikpochapụ data horoscope gị?",
+  "clearHoroscopeSuccess": "Horoscope kpochapụrụ nke ọma.",
+  "clearChatTitle": "Hichapụ Akụkọ Nkata",
+  "clearChatMessage": "Ị ji n'aka na ịchọrọ ihichapụ akụkọ nkata gị niile?",
+  "clearChatLocal": "A kpochapụrụ nkata na mpaghara.",
+  "deleteAccountTitle": "Hichapụ Akaụntụ",
+  "deleteAccountMessage": "Ị ji n'aka na ịchọrọ ihichapụ akaụntụ gị? Nke a ga-ehichapụkwa akụkọ nkata gị na ọkwa gị niile.",
+  "deleteAccountSuccess": "Ewepula akaụntụ gị na data niile.",
+  "deleteAccountError": "Njehie ihichapụ akaụntụ",
+  "logoutTitle": "Wepụ",
+  "logoutMessage": "Ị ji n'aka na ịchọrọ ịpụpụ?",
+  "termsPrivacyTitle": "Usoro & Nzuzo",
+  "privacyPolicyTitle": "amụma nzuzo",
+  "termsConditionsTitle": "Usoro & Ọnọdụ",
+  "dataControlTitle": "Njikwa data",
+  "cancelButton": "Kagbuo",
+  "confirmButton": "Kwenye",
+  "clearQuestionsSuccess": "Ajụjụ niile ehichapụrụ nke ọma.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Onyenweanyị",
+  "startLabel": "Malite",
+  "recoverAccount": "Weghachite Akaụntụ",
+  "endLabel": "Ọgwụgwụ",
+  "startDateLabel": "Ụbọchị mmalite",
+  "endDateLabel": "Ụbọchị ngwụcha",
+  "notAvailable": "Adịghị",
+  "noData": "Enweghị data",
+  "unknownError": "Njehie amaghị",
+  "retryButton": "Gbalịa ọzọ",
+  "kundaliGeneratorTitle": "Kundali Generator",
+  "natalChartTitle": "Chart nke Natal",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Degree Ascendant",
+  "vimshottariDashaTitle": "Vimhottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Amaghi ama",
+  "clearHoroscope": "Kpochapụ horoscope",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Kpochapụ ọkwa",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Hichapụ Akụkọ Nkata",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Wepụ",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Hichapụ Akaụntụ",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "A chọrọ mpaghara niile.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "enwetara akaụntụ nke ọma.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Iweghachi adịghị. Lelee ozi gị.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Nzuzo mgbake:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Gbasara anyị",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Banyere Ụlọ Ọrụ Anyị",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Anyị na-agba mbọ ịnye ndị ọrụ anyị ahụmịhe ịgụ kpakpando kacha mma.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Ebumnuche anyị",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Iji nye nghọta gbasara ịgụ kpakpando ziri ezi yana ahaziri onwe ya iji nyere ndị ọrụ aka ime mkpebi ziri ezi na ndụ ha.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Ọhụụ anyị",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Iji bụrụ ikpo okwu ịgụ kpakpando tụkwasịrị obi, na-ejikọta teknụzụ na amamihe oge ochie.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Ụkpụrụ Anyị",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Iguzosi ike n'ezi ihe, izi ezi, Nhazi-Centric nke onye ọrụ, yana ihe ọhụrụ na-aga n'ihu.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Kpọtụrụ anyị",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Email: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Weebụsaịtị: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Nkwado ndị ahịa",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Anyị nọ ebe a iji nyere aka",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Dejupụta fọm dị n'okpuru na ndị otu nkwado anyị ga-alaghachikwute gị ozugbo enwere ike.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Aha gị",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Email gị",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Ozi",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Tinye email gị",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Tinye adreesị ozi-e bara uru",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Tinye {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Ziga",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Na-eziga...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ ezitere email nke ọma!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ izipu ozi-e agaghị",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Akwụkwọ ọkọwa okwu Astro",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Chọọ okwu...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Enweghị usoro ahụrụ",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Zụrụ ajụjụ",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Ekwenyeghị onye ọrụ",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Ịbunye data ụlọ ahịa agaghị",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Ihe ngosi nyocha efu",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Ngwa Astro Chat",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Ịkwụ ụgwọ gara nke ọma! E zigara ajụjụ",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Ịkwụ ụgwọ dara: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Balance gị",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Ajụjụ",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Onyinye dị",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Ajụjụ",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Zụrụ",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Horoscope kwa ụbọchị",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "NJ onye ọrụ na-efu",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Ị nweta horoscopes agaghị ekwe omume",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Ahụghị horoscope ọ bụla.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Banye aka",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Taa",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Ụnyahụ",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Izu a",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Ọnwa gara aga",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Kpaa nkata",
+  "typeYourQuestionHint": "Pịnye ajụjụ gị...",
+  "paymentRequired": "Achọrọ ịkwụ ụgwọ",
+  "paymentRequiredMessage": "I jirila ajụjụ gị n'efu. Kwụọ ₹50 ka ịga n'ihu.",
+  "payNowButton": "kwụọ ụgwọ ugbu a",
+  "freeQuestionsRemaining": "{count} ajụjụ efu fọdụrụ",
+  "paidQuestionsRemaining": "{count} ajụjụ akwụ ụgwọ fọdụrụ",
+  "thankYouFeedback": "Daalụ maka nzaghachi gị!",
+  "ratingSubmitted": "Enyere ọkwa!",
+  "setUserIdFirst": "Biko buru ụzọ tọọ ID onye ọrụ gị",
+  "failedToFetchPrevious": "Ị nweta ajụjụ na azịza ndị gara aga agaghị aga",
+  "errorOccurred": "Njehie: {error}",
+  "drawerAstroProfile": "Profaịlụ Astro",
+  "drawerDailyHoroscope": "Horoscope kwa ụbọchị",
+  "drawerBuyQuestions": "Zụrụ ajụjụ",
+  "drawerAstroDictionary": "Akwụkwọ ọkọwa okwu Astro",
+  "drawerSettings": "Ntọala",
+  "drawerCustomerSupport": "Nkwado ndị ahịa",
+  "drawerAbout": "Ihe gbasara",
+  "drawerProfileSettings": "Ntọala profaịlụ",
+  "demoNotificationTitle": "🔔 ngosi ngosi",
+  "demoNotificationBody": "Nke a bụ ọkwa nlele sitere na ngwa gị!",
+  "notificationsTitle": "Amamọkwa",
+  "noNotifications": "Enweghị ọkwa",
+  "allTab": "Ha niile",
+  "markAllAsRead": "Kanye ihe niile ka ọ na-agụ",
+  "notificationMarkedRead": "Akara ọkwa ka ọ na-agụ",
+  "failedToLoadNotifications": "Ịkwado ọkwa adịghị",
+  "failedToMarkRead": "Ekpughị akara dị ka agụ",
+  "failedToMarkAllRead": "Ekpughị ihe niile ka agụọ",
+  "socketConnected": "Ejikọrọ oghere",
+  "socketDisconnected": "Akwụsịla oghere",
+  "newNotificationReceived": "enwetara ọkwa ọhụrụ",
+  "generalCategory": "Izugbe",
+  "horoscopeCategory": "Horoscope",
+  "chatCategory": "Kpaa nkata",
+  "systemCategory": "Sistemu",
+  "updateCategory": "Mmelite",
+  "howToAskTitle": "Otu esi ajụ",
+  "noQuestionsAvailable": "Enweghị ajụjụ dị",
+  "failedToLoadQuestions": "Ịbunye ajụjụ agaghị",
+  "pullToRefresh": "Dọrọ ka ọ dị ọhụrụ",
+  "careerCategory": "Ọrụ",
+  "loveCategory": "Ịhụnanya & Mmekọrịta",
+  "healthCategory": "Ahụike",
+  "financeCategory": "Ego",
+  "familyCategory": "Ezinụlọ",
+  "educationCategory": "Agụmakwụkwọ",
+  "travelCategory": "Njem",
+  "spiritualCategory": "Ime mmụọ",
+  "profileLoaded": "Akwadoro profaịlụ nke ọma",
+  "imageUploaded": "Ebugoro onyonyo nke ọma",
+  "savedInformationConfirmation": "Echekwala m ozi a",
+  "noHistoryAvailable": "Enweghị akụkọ ihe mere eme dị",
+  "missingUserIdError": "Achọrọ ID onye ọrụ",
+  "networkError": "Njehie netwọkụ. Biko nwaa ọzọ.",
+  "timeoutError": "Arịrịọ agwụla",
+  "genericError": "Ọ nwere ihe adịghị mma",
+  "reactionUpdateError": "Emelite mmeghachi omume agaghị ekwe omume",
+  "noSearchResults": "Ọnweghị nsonaazụ ọchụchọ ahụrụ",
+  "clearSearch": "Kpochapụ ọchụchọ",
+  "resultsFound": "Achọpụtara nsonaazụ ya",
+  "recoverySecretHint": "Copy-paste nwere ike ọ gaghị arụ ọrụ, jiri aka pịnye",
+  "recoverAccountDescription": "Soro usoro ndị a iji nwetaghachi akaụntụ gị",
+  "processingLabel": "Na-ahazi...",
+  "clearChatSuccess": "A kpochapụrụ nkata nke ọma",
+  "notificationsEnabled": "Agbanyere ọkwa",
+  "notificationsDisabled": "Agbanyụrụ amamọkwa",
+  "securityNotice": "Ezochiri ma chekwaa data gị nke ọma",
+  "loading": "Na-ebu...",
+  "selectLanguage": "Họrọ Asụsụ",
+  "onboardingGetStartedDesc": "Bido site na ịhọrọ asụsụ gị",
+  "accountRecoveryTitle": "🔐 Nkọwa mgbake akaụntụ",
+  "recoveryInstructions": "Biko chekwaa ozi a nke ọma. Ị ga-achọ ya iji nwetaghachi akaụntụ gị.",
+  "importantNotice": "⚠️ dị mkpa:",
+  "astrologerProfileTitle": "Profaịlụ onye na-agụ kpakpando",
+  "personalAstrologer": "Onye na-agụ kpakpando nkeonwe",
+  "makePersonalAstrologer": "Mee onwe onye na-agụ kpakpando",
+  "favoriteDescription": "A ga-ebute ajụjụ gị ụzọ maka onye na-agụ kpakpando a. Ọ bụrụ na ọ dịghị, onye ọzọ na-agụ kpakpando ga-enyere gị aka.",
+  "educationQualifications": "Agụmakwụkwọ & ntozu",
+  "aboutSection": "Ihe gbasara",
+  "shareProfile": "Kekọrịta profaịlụ",
+  "loadingAstrologer": "Na-ebu nkọwa ndị na-agụ kpakpando...",
+  "failedToLoadAstrologer": "Ịbunye nkọwa ndị na-agụ kpakpando agaghị",
+  "authenticationRequired": "Achọrọ nyocha. Biko banye.",
+  "securityCheckFailed": "Nlele nchekwa dara: {error}",
+  "addedToFavorites": "🎯 {name} bụ onye na-agụ kpakpando nkeonwe gị ugbu a",
+  "removedFromFavorites": "✅ Wepụrụ {name} na ọkacha mmasị",
+  "toggleFavoriteError": "Emeliteghị ọkwa ọkacha mmasị",
+  "shareMessage": "{name}\n🎓 Education: {education}\n📜 Ntozu: {qualification}\n⏳ Ahụmahụ: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Enyereghị ya",
+  "reviews": "(nlebanya {count} nyocha)",
+  "specialties": "Ọpụrụiche",
+  "experience": "Ahụmahụ",
+  "qualification": "Ikike",
+  "education": "Agụmakwụkwọ",
+  "recoveryTips": "• Were nseta ihuenyo nke ozi a\n• Chekwaa ya n'ebe echekwara\n• Ekekọrịtala onye ọ bụla\n• A ga-egosi nke a naanị otu ugboro"
+}

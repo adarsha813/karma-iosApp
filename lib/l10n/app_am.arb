@@ -1,0 +1,439 @@
+{
+  "@@locale": "am",
+  "settingsTitle": "ቅንብሮች",
+  "notificationSettings": "የማሳወቂያ ቅንብሮች",
+  "privacySettings": "የግላዊነት ቅንብሮች",
+  "accountSettings": "የመለያ ቅንብሮች",
+  "languageSettings": "የቋንቋ ቅንብሮች",
+  "languageChanged": "ቋንቋ ተለውጧል",
+  "existingUserButton": "እኔ ነባር ተጠቃሚ ነኝ",
+  "chooseCountryTitle": "አገር ይምረጡ",
+  "yesText": "አዎ",
+  "noText": "አይ",
+  "appBarTitle": "የመገለጫ ቅንብሮች",
+  "userIdLabel": "የተጠቃሚ መታወቂያ *",
+  "nameLabel": "ስም",
+  "birthCountryLabel": "የትውልድ ሀገር",
+  "birthCityLabel": "የትውልድ ከተማ",
+  "countrySelectionTitle": "አገርህን ምረጥ",
+  "maleLabel": "ወንድ",
+  "femaleLabel": "ሴት",
+  "birthDateLabel": "የልደት ቀን",
+  "birthDatePlaceholder": "የልደት ቀን ይምረጡ",
+  "birthTimeLabel": "የልደት ጊዜ",
+  "birthTimePlaceholder": "የልደት ጊዜን ይምረጡ",
+  "saveProfileButton": "መገለጫ አስቀምጥ",
+  "noCitiesFound": "ምንም ከተሞች አልተገኙም።",
+  "cityPlaceholder": "በ{country} ውስጥ ከተማ አስገባ",
+  "countryFirstPlaceholder": "መጀመሪያ አገር ይምረጡ",
+  "versionHistoryTitle": "የስሪት ታሪክ",
+  "notSetText": "አልተዘጋጀም።",
+  "nameHistory": "ስም፡ {name}",
+  "cityHistory": "ከተማ፡ {city}",
+  "countryHistory": "አገር፡ {country}",
+  "genderHistory": "ጾታ፡ {gender}",
+  "birthDateHistory": "የትውልድ ቀን፡ {date}",
+  "birthTimeHistory": "የትውልድ ጊዜ፡ {time}",
+  "locationHistory": "አካባቢ፡ {latitude}፣ {longitude}",
+  "timezoneHistory": "የሰዓት ሰቅ፡ GMT{offset}",
+  "dstHistory": "DST፡ {value}",
+  "stateHistory": "ግዛት፡ {state}",
+  "versionFromText": "በ{date} ተዘምኗል",
+  "userIdRequired": "የተጠቃሚ መታወቂያ ያስፈልጋል",
+  "profileSaved": "መገለጫ በተሳካ ሁኔታ ተቀምጧል",
+  "saveFailed": "መገለጫን ማስቀመጥ አልተሳካም።",
+  "errorPrefix": "ስህተት፡-",
+  "onboardingChooseLanguage": "ቋንቋዎን ይምረጡ",
+  "onboardingChooseLanguageDesc": "ለመቀጠል የመረጡትን ቋንቋ ይምረጡ።",
+  "onboardingWhatIsAstrology": "ኮከብ ቆጠራ ምንድን ነው?",
+  "onboardingWhatIsAstrologyDesc": "አስትሮሎጂ የሰለስቲያል አካላት ጥናት ነው...",
+  "onboardingWhyUseApp": "ለምን ይህን መተግበሪያ ይጠቀሙ?",
+  "onboardingWhyUseAppDesc": "በመረጃ ላይ የተመሰረተ ውሳኔ ለማድረግ ለግል የተበጁ ሆሮስኮፖችን፣ ዕለታዊ ትንበያዎችን እና መመሪያን ያግኙ።",
+  "onboardingHowToUse": "ይህን መተግበሪያ እንዴት መጠቀም ይቻላል?",
+  "onboardingHowToUseDesc": "በቀላሉ ያስሱ፣ ዕለታዊ የኮከብ ቆጠራዎችን ይፈትሹ እና ለትክክለኛ ትንበያዎች መገለጫዎን ያስተዳድሩ።",
+  "onboardingGetStarted": "እንጀምር",
+  "onboardingNewUser": "አዲስ ተጠቃሚ",
+  "onboardingExistingUser": "ነባር ተጠቃሚ",
+  "onboardingBack": "ተመለስ",
+  "onboardingNext": "ቀጥሎ",
+  "userIdNotFound": "የተጠቃሚ መታወቂያ አልተገኘም። እባክዎ ይግቡ ወይም መገለጫዎን ያዘጋጁ።",
+  "clearNotificationsTitle": "ማሳወቂያዎችን ያጽዱ",
+  "clearNotificationsMessage": "እርግጠኛ ነዎት ሁሉንም ማሳወቂያዎች ማጽዳት ይፈልጋሉ?",
+  "clearNotificationsSuccess": "ሁሉም ማሳወቂያዎች በተሳካ ሁኔታ ጸድተዋል።",
+  "clearHoroscopeTitle": "ሆሮስኮፕን አጽዳ",
+  "clearHoroscopeMessage": "እርግጠኛ ነዎት የኮከብ ቆጠራ ውሂብዎን ማጽዳት ይፈልጋሉ?",
+  "clearHoroscopeSuccess": "ሆሮስኮፕ በተሳካ ሁኔታ ጸድቷል።",
+  "clearChatTitle": "የውይይት ታሪክ አጽዳ",
+  "clearChatMessage": "እርግጠኛ ነህ ሁሉንም የውይይት ታሪክህን መሰረዝ ትፈልጋለህ?",
+  "clearChatLocal": "ውይይት በአካባቢው ጸድቷል።",
+  "deleteAccountTitle": "መለያ ሰርዝ",
+  "deleteAccountMessage": "እርግጠኛ ነህ መለያህን መሰረዝ ትፈልጋለህ? ይህ ሁሉንም የውይይት ታሪክዎን እና ማሳወቂያዎችን ያጸዳል።",
+  "deleteAccountSuccess": "የእርስዎ መለያ እና ሁሉም ውሂብ ተወግደዋል።",
+  "deleteAccountError": "መለያን መሰረዝ ላይ ስህተት",
+  "logoutTitle": "ውጣ",
+  "logoutMessage": "እርግጠኛ ነህ መውጣት ትፈልጋለህ?",
+  "termsPrivacyTitle": "ውሎች እና ግላዊነት",
+  "privacyPolicyTitle": "የግላዊነት ፖሊሲ",
+  "termsConditionsTitle": "ውሎች እና ሁኔታዎች",
+  "dataControlTitle": "የውሂብ ቁጥጥር",
+  "cancelButton": "ሰርዝ",
+  "confirmButton": "አረጋግጥ",
+  "clearQuestionsSuccess": "ሁሉም ጥያቄዎች በተሳካ ሁኔታ ተሰርዘዋል።",
+  "yoginiLabel": "ዮጊኒ",
+  "lordLabel": "ጌታ",
+  "startLabel": "ጀምር",
+  "recoverAccount": "መለያ መልሰው ያግኙ",
+  "endLabel": "መጨረሻ",
+  "startDateLabel": "የመጀመሪያ ቀን",
+  "endDateLabel": "የመጨረሻ ቀን",
+  "notAvailable": "አይገኝም",
+  "noData": "ምንም ውሂብ የለም",
+  "unknownError": "ያልታወቀ ስህተት",
+  "retryButton": "እንደገና ይሞክሩ",
+  "kundaliGeneratorTitle": "Kundali ጄኔሬተር",
+  "natalChartTitle": "ናታል ገበታ",
+  "lagnaLabel": "ላግና",
+  "rashiLabel": "ራሺ",
+  "ascDegreeLabel": "አስከሬን ዲግሪ",
+  "vimshottariDashaTitle": "ቪምሾታሪ ዳሻ",
+  "yoginiDashaTitle": "ዮጊኒ ዳሻ",
+  "unknown": "ያልታወቀ",
+  "clearHoroscope": "ሆሮስኮፕን አጽዳ",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "ማሳወቂያዎችን ያጽዱ",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "የውይይት ታሪክ አጽዳ",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "ውጣ",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "መለያ ሰርዝ",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "ሁሉም መስኮች ያስፈልጋሉ።",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "መለያ በተሳካ ሁኔታ ተመልሷል።",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "መልሶ ማግኘት አልተሳካም። መረጃዎን ያረጋግጡ።",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "የመልሶ ማግኛ ሚስጥር",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "ስለ እኛ",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "ስለ ኩባንያችን",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "ምርጡን የኮከብ ቆጠራ ልምድ ለተጠቃሚዎቻችን ለማድረስ ቁርጠኞች ነን።",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "የእኛ ተልዕኮ",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "ተጠቃሚዎች በሕይወታቸው ውስጥ በመረጃ ላይ የተመሰረተ ውሳኔ እንዲያደርጉ ለማገዝ ትክክለኛ እና ግላዊ የኮከብ ቆጠራ ግንዛቤዎችን ለማቅረብ።",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "የእኛ እይታ",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "ቴክኖሎጂን እና ጥንታዊ ጥበብን በማጣመር በጣም የታመነ የኮከብ ቆጠራ መድረክ ለመሆን።",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "የእኛ እሴቶች",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "ታማኝነት፣ ትክክለኛነት፣ በተጠቃሚ ያማከለ ንድፍ እና ቀጣይነት ያለው ፈጠራ።",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "ያግኙን",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "ኢሜል፡ support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "ድር ጣቢያ: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "የደንበኛ ድጋፍ",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "እኛ ለመርዳት እዚህ ነን",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "ከዚህ በታች ያለውን ቅጽ ይሙሉ እና የድጋፍ ቡድናችን በተቻለ ፍጥነት ወደ እርስዎ ይመለሳል።",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "የእርስዎ ስም",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "የእርስዎ ኢሜይል",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "መልእክት",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "ኢሜልዎን ያስገቡ",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "የሚሰራ የኢሜይል አድራሻ አስገባ",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "{fieldName} ያስገቡ",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "ላክ",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "በመላክ ላይ...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ ኢሜል በተሳካ ሁኔታ ተልኳል!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ ኢሜል መላክ አልተሳካም።",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "አስትሮ መዝገበ ቃላት",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "የፍለጋ ቃላት...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "ምንም ውሎች አልተገኙም።",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "ጥያቄዎችን ይግዙ",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "ተጠቃሚው አልተረጋገጠም።",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "የማከማቻ ውሂብን መጫን አልተሳካም።",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "የጠፋ ማረጋገጫ ማስመሰያ",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "የአስትሮ ውይይት መተግበሪያ",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ ክፍያ ተሳክቷል! ጥያቄ ተልኳል።",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ ክፍያ አልተሳካም፦ {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "የእርስዎ ሚዛን",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} ጥያቄዎች",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "የሚገኙ ቅናሾች",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} ጥያቄ",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "ይግዙ",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 ዕለታዊ ሆሮስኮፕ",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "የተጠቃሚ መታወቂያ ይጎድላል",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "ሆሮስኮፖችን ማምጣት አልተሳካም።",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "ምንም የኮከብ ቆጠራ አልተገኘም።",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "ይፈርሙ",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "ዛሬ",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "ትናንት",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "በዚህ ሳምንት",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "ባለፈው ወር",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "ተወያይ",
+  "typeYourQuestionHint": "ጥያቄህን ተይብ...",
+  "paymentRequired": "ክፍያ ያስፈልጋል",
+  "paymentRequiredMessage": "ነፃ ጥያቄዎችዎን ተጠቅመዋል። ለመቀጠል 50 ብር ይክፈሉ።",
+  "payNowButton": "አሁን ይክፈሉ።",
+  "freeQuestionsRemaining": "{count} ነጻ ጥያቄዎች ይቀራሉ",
+  "paidQuestionsRemaining": "{count} የሚከፈልባቸው ጥያቄዎች ይቀራሉ",
+  "thankYouFeedback": "ለአስተያየትዎ እናመሰግናለን!",
+  "ratingSubmitted": "ደረጃ ገብቷል!",
+  "setUserIdFirst": "እባክዎ መጀመሪያ የተጠቃሚ መታወቂያዎን ያዘጋጁ",
+  "failedToFetchPrevious": "ቀዳሚ ጥያቄዎችን እና መልሶችን ማምጣት አልተሳካም።",
+  "errorOccurred": "ስህተት፡ {error}",
+  "drawerAstroProfile": "የአስትሮ መገለጫ",
+  "drawerDailyHoroscope": "ዕለታዊ ሆሮስኮፕ",
+  "drawerBuyQuestions": "ጥያቄዎችን ይግዙ",
+  "drawerAstroDictionary": "አስትሮ መዝገበ ቃላት",
+  "drawerSettings": "ቅንብሮች",
+  "drawerCustomerSupport": "የደንበኛ ድጋፍ",
+  "drawerAbout": "ስለ",
+  "drawerProfileSettings": "የመገለጫ ቅንብሮች",
+  "demoNotificationTitle": "🔔 የማሳያ ማስታወቂያ",
+  "demoNotificationBody": "ይህ ከእርስዎ መተግበሪያ የመጣ የሙከራ ማሳወቂያ ነው!",
+  "notificationsTitle": "ማሳወቂያዎች",
+  "noNotifications": "ምንም ማሳወቂያዎች የሉም",
+  "allTab": "ሁሉም",
+  "markAllAsRead": "ሁሉንም እንደተነበቡ ምልክት ያድርጉበት",
+  "notificationMarkedRead": "ማስታወቂያ እንደተነበበ ምልክት ተደርጎበታል።",
+  "failedToLoadNotifications": "ማሳወቂያዎችን መጫን አልተሳካም።",
+  "failedToMarkRead": "እንደተነበበ ምልክት ማድረግ አልተሳካም።",
+  "failedToMarkAllRead": "ሁሉንም እንደተነበቡ ምልክት ማድረግ አልተሳካም።",
+  "socketConnected": "ሶኬት ተገናኝቷል።",
+  "socketDisconnected": "ሶኬት ተቋርጧል",
+  "newNotificationReceived": "አዲስ ማሳወቂያ ደርሷል",
+  "generalCategory": "አጠቃላይ",
+  "horoscopeCategory": "ሆሮስኮፕ",
+  "chatCategory": "ተወያይ",
+  "systemCategory": "ስርዓት",
+  "updateCategory": "ዝማኔዎች",
+  "howToAskTitle": "እንዴት መጠየቅ እንደሚቻል",
+  "noQuestionsAvailable": "ምንም ጥያቄዎች የሉም",
+  "failedToLoadQuestions": "ጥያቄዎችን መጫን አልተሳካም።",
+  "pullToRefresh": "ለማደስ ይጎትቱ",
+  "careerCategory": "ሙያ",
+  "loveCategory": "ፍቅር እና ግንኙነቶች",
+  "healthCategory": "ጤና",
+  "financeCategory": "ፋይናንስ",
+  "familyCategory": "ቤተሰብ",
+  "educationCategory": "ትምህርት",
+  "travelCategory": "ጉዞ",
+  "spiritualCategory": "መንፈሳዊ",
+  "profileLoaded": "መገለጫ በተሳካ ሁኔታ ተጭኗል",
+  "imageUploaded": "ምስል በተሳካ ሁኔታ ተሰቅሏል።",
+  "savedInformationConfirmation": "ይህን መረጃ አስቀምጫለሁ።",
+  "noHistoryAvailable": "ምንም ታሪክ አይገኝም",
+  "missingUserIdError": "የተጠቃሚ መታወቂያ ያስፈልጋል",
+  "networkError": "የአውታረ መረብ ስህተት። እባክዎ እንደገና ይሞክሩ።",
+  "timeoutError": "ጥያቄ ጊዜው አልፏል",
+  "genericError": "የሆነ ችግር ተፈጥሯል።",
+  "reactionUpdateError": "ምላሽን ማዘመን አልተሳካም።",
+  "noSearchResults": "ምንም የፍለጋ ውጤቶች አልተገኙም።",
+  "clearSearch": "ፍለጋን አጽዳ",
+  "resultsFound": "ውጤቶች ተገኝተዋል",
+  "recoverySecretHint": "ኮፒ ለጥፍ ላይሰራ ይችላል፣ በእጅ ይተይቡ",
+  "recoverAccountDescription": "መለያዎን መልሰው ለማግኘት እነዚህን ደረጃዎች ይከተሉ",
+  "processingLabel": "በማሰናዳት ላይ...",
+  "clearChatSuccess": "ውይይት በተሳካ ሁኔታ ጸድቷል።",
+  "notificationsEnabled": "ማሳወቂያዎች ነቅተዋል።",
+  "notificationsDisabled": "ማሳወቂያዎች ተሰናክለዋል።",
+  "securityNotice": "የእርስዎ ውሂብ ደህንነቱ በተጠበቀ ሁኔታ የተመሰጠረ እና የተከማቸ ነው።",
+  "loading": "በመጫን ላይ...",
+  "selectLanguage": "ቋንቋ ይምረጡ",
+  "onboardingGetStartedDesc": "ቋንቋዎን በመምረጥ ይጀምሩ",
+  "accountRecoveryTitle": "🔐 የመለያ መልሶ ማግኛ ዝርዝሮች",
+  "recoveryInstructions": "እባክዎ ይህንን መረጃ ደህንነቱ በተጠበቀ ሁኔታ ያስቀምጡ። መለያዎን መልሰው ለማግኘት ያስፈልግዎታል።",
+  "importantNotice": "⚠️ ጠቃሚ፡-",
+  "astrologerProfileTitle": "ኮከብ ቆጣሪዎች መገለጫ",
+  "personalAstrologer": "የግል ኮከብ ቆጣሪ",
+  "makePersonalAstrologer": "የግል ኮከብ ቆጣሪ ያድርጉ",
+  "favoriteDescription": "ለዚህ ኮከብ ቆጣሪ ጥያቄዎቻችሁ ቅድሚያ ይሰጣሉ። የማይገኝ ከሆነ ሌላ ብቃት ያለው ኮከብ ቆጣሪ ይረዳሃል።",
+  "educationQualifications": "ትምህርት እና ብቃቶች",
+  "aboutSection": "ስለ",
+  "shareProfile": "መገለጫ አጋራ",
+  "loadingAstrologer": "የኮከብ ቆጣሪ ዝርዝሮችን በመጫን ላይ...",
+  "failedToLoadAstrologer": "የኮከብ ቆጣሪ ዝርዝሮችን መጫን አልተሳካም።",
+  "authenticationRequired": "ማረጋገጥ ያስፈልጋል። እባክዎ ይግቡ።",
+  "securityCheckFailed": "የደህንነት ፍተሻ አልተሳካም፦ {error}",
+  "addedToFavorites": "🎯 {name} አሁን የእርስዎ የግል ኮከብ ቆጣሪ ነው።",
+  "removedFromFavorites": "✅ {name} ከተወዳጆች ተወግዷል",
+  "toggleFavoriteError": "ተወዳጅ ሁኔታን ማዘመን አልተሳካም።",
+  "shareMessage": "{name}\n🎓 ትምህርት፡ {education}\n📜 ብቃት፡ {qualification}\n⏳ ልምድ፡ {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "አልተሰጠም።",
+  "reviews": "({count} ግምገማዎች)",
+  "specialties": "ስፔሻሊስቶች",
+  "experience": "ልምድ",
+  "qualification": "ብቃት",
+  "education": "ትምህርት",
+  "recoveryTips": "• የዚህን መረጃ ቅጽበታዊ ገጽ እይታ ያንሱ\n• ደህንነቱ በተጠበቀ ቦታ ያስቀምጡት።\n• ለማንም አያካፍሉ።\n• ይህ አንድ ጊዜ ብቻ ነው የሚታየው"
+}

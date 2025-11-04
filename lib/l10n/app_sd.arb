@@ -1,0 +1,439 @@
+{
+  "@@locale": "sd",
+  "settingsTitle": "سيٽنگون",
+  "notificationSettings": "اطلاع جي سيٽنگون",
+  "privacySettings": "رازداري سيٽنگون",
+  "accountSettings": "اڪائونٽ سيٽنگون",
+  "languageSettings": "ٻولي سيٽنگون",
+  "languageChanged": "ٻولي تبديل ٿي وئي",
+  "existingUserButton": "مان هڪ موجوده استعمال ڪندڙ آهيان.",
+  "chooseCountryTitle": "ملڪ چونڊيو",
+  "yesText": "ها",
+  "noText": "نه",
+  "appBarTitle": "پروفائل سيٽنگون",
+  "userIdLabel": "استعمال ڪندڙ جي سڃاڻپ *",
+  "nameLabel": "نالو",
+  "birthCountryLabel": "پيدائش جو ملڪ",
+  "birthCityLabel": "ڄمڻ جو شهر",
+  "countrySelectionTitle": "پنھنجو ملڪ چونڊيو",
+  "maleLabel": "مرد",
+  "femaleLabel": "عورت",
+  "birthDateLabel": "ڄمڻ جي تاريخ",
+  "birthDatePlaceholder": "ڄمڻ جي تاريخ چونڊيو",
+  "birthTimeLabel": "ڄمڻ جو وقت",
+  "birthTimePlaceholder": "ڄمڻ جو وقت چونڊيو",
+  "saveProfileButton": "پروفائل محفوظ ڪريو",
+  "noCitiesFound": "ڪوبه شهر نه مليو",
+  "cityPlaceholder": "{country} ۾ شهر داخل ڪريو",
+  "countryFirstPlaceholder": "پهرين ملڪ چونڊيو",
+  "versionHistoryTitle": "نسخي جي تاريخ",
+  "notSetText": "مقرر نه ٿيل",
+  "nameHistory": "نالو: {name}",
+  "cityHistory": "شهر: {city}",
+  "countryHistory": "ملڪ: {country}",
+  "genderHistory": "جنس: {gender}",
+  "birthDateHistory": "ڄمڻ جي تاريخ: {date}",
+  "birthTimeHistory": "ڄمڻ جو وقت: {time}",
+  "locationHistory": "جڳھ: {latitude}، {longitude}",
+  "timezoneHistory": "ٽائم زون: GMT{offset}",
+  "dstHistory": "ڊي ايس ٽي: {value}",
+  "stateHistory": "حالت: {state}",
+  "versionFromText": "{date} تي اپڊيٽ ڪيو ويو",
+  "userIdRequired": "استعمال ڪندڙ جي سڃاڻپ گهربل آهي",
+  "profileSaved": "پروفائل ڪاميابي سان محفوظ ٿي وئي.",
+  "saveFailed": "پروفائل محفوظ ڪرڻ ۾ ناڪام ٿيو.",
+  "errorPrefix": "غلطي:",
+  "onboardingChooseLanguage": "پنهنجي ٻولي چونڊيو",
+  "onboardingChooseLanguageDesc": "جاري رکڻ لاءِ پنهنجي پسنديده ٻولي چونڊيو.",
+  "onboardingWhatIsAstrology": "علم نجوم ڇا آهي؟",
+  "onboardingWhatIsAstrologyDesc": "علم نجوم آسماني جسمن جو مطالعو آهي...",
+  "onboardingWhyUseApp": "هي ايپ ڇو استعمال ڪجي؟",
+  "onboardingWhyUseAppDesc": "باخبر فيصلا ڪرڻ لاءِ ذاتي زائچا، روزاني اڳڪٿيون، ۽ هدايت حاصل ڪريو.",
+  "onboardingHowToUse": "هي ايپ ڪيئن استعمال ڪجي؟",
+  "onboardingHowToUseDesc": "آساني سان نيويگيٽ ڪريو، روزاني افقون چيڪ ڪريو، ۽ صحيح اڳڪٿين لاءِ پنهنجي پروفائل کي منظم ڪريو.",
+  "onboardingGetStarted": "شروع ڪريو",
+  "onboardingNewUser": "نئون استعمال ڪندڙ",
+  "onboardingExistingUser": "موجوده استعمال ڪندڙ",
+  "onboardingBack": "پوئتي",
+  "onboardingNext": "اڳيون",
+  "userIdNotFound": "استعمال ڪندڙ جي سڃاڻپ نه ملي. مھرباني ڪري لاگ ان ڪريو يا پنھنجو پروفائل سيٽ ڪريو.",
+  "clearNotificationsTitle": "اطلاع صاف ڪريو",
+  "clearNotificationsMessage": "ڇا توهان کي پڪ آهي ته توهان سڀ اطلاع صاف ڪرڻ چاهيو ٿا؟",
+  "clearNotificationsSuccess": "سڀ اطلاع ڪاميابي سان صاف ڪيا ويا.",
+  "clearHoroscopeTitle": "صاف افق",
+  "clearHoroscopeMessage": "ڇا توهان کي پڪ آهي ته توهان پنهنجي افق جي ڊيٽا کي صاف ڪرڻ چاهيو ٿا؟",
+  "clearHoroscopeSuccess": "هاروسڪوپ ڪاميابي سان صاف ٿي ويو.",
+  "clearChatTitle": "چيٽ جي تاريخ صاف ڪريو",
+  "clearChatMessage": "ڇا توهان کي پڪ آهي ته توهان پنهنجي سڄي چيٽ جي تاريخ ختم ڪرڻ چاهيو ٿا؟",
+  "clearChatLocal": "مقامي طور تي چيٽ صاف ڪئي وئي.",
+  "deleteAccountTitle": "اڪائونٽ ختم ڪريو",
+  "deleteAccountMessage": "ڇا توهان کي پڪ آهي ته توهان پنهنجو اڪائونٽ ختم ڪرڻ چاهيو ٿا؟ اهو توهان جي سڀني چيٽ جي تاريخ ۽ اطلاعن کي پڻ صاف ڪندو.",
+  "deleteAccountSuccess": "توهان جو اڪائونٽ ۽ سڀ ڊيٽا هٽايو ويو آهي.",
+  "deleteAccountError": "اڪائونٽ ختم ڪرڻ ۾ غلطي",
+  "logoutTitle": "لاگ آئوٽ",
+  "logoutMessage": "ڇا توهان کي پڪ آهي ته توهان لاگ آئوٽ ٿيڻ چاهيو ٿا؟",
+  "termsPrivacyTitle": "شرطون ۽ رازداري",
+  "privacyPolicyTitle": "رازداري پاليسي",
+  "termsConditionsTitle": "شرطن ۽ ضابطن",
+  "dataControlTitle": "ڊيٽا ڪنٽرول",
+  "cancelButton": "منسوخ ڪريو",
+  "confirmButton": "تصديق ڪريو",
+  "clearQuestionsSuccess": "سڀ سوال ڪاميابي سان ڊهي ويا.",
+  "yoginiLabel": "يوگيني",
+  "lordLabel": "رب",
+  "startLabel": "شروع ڪريو",
+  "recoverAccount": "اڪائونٽ واپس وٺو",
+  "endLabel": "آخر",
+  "startDateLabel": "شروعاتي تاريخ",
+  "endDateLabel": "آخري تاريخ",
+  "notAvailable": "دستياب ناهي",
+  "noData": "ڪو به ڊيٽا ناهي",
+  "unknownError": "اڻڄاتل غلطي",
+  "retryButton": "ٻيهر ڪوشش ڪريو",
+  "kundaliGeneratorTitle": "ڪُنڊلي جنريٽر",
+  "natalChartTitle": "پيدائشي چارٽ",
+  "lagnaLabel": "لگنا",
+  "rashiLabel": "رشي",
+  "ascDegreeLabel": "عروج جي ڊگري",
+  "vimshottariDashaTitle": "وِمشوتري دشا",
+  "yoginiDashaTitle": "يوگيني دشا",
+  "unknown": "اڻڄاتل",
+  "clearHoroscope": "صاف افق",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "اطلاع صاف ڪريو",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "چيٽ جي تاريخ صاف ڪريو",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "لاگ آئوٽ",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "اڪائونٽ ختم ڪريو",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "سڀ فيلڊ گهربل آهن.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "اڪائونٽ ڪاميابي سان بحال ٿيو.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "بحالي ناڪام ٿي. پنهنجي معلومات چيڪ ڪريو.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "بحالي جو راز:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "اسان جي باري ۾",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "اسان جي ڪمپني بابت",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "اسان پنهنجي استعمال ڪندڙن کي بهترين نجومي تجربو پهچائڻ لاءِ پرعزم آهيون.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "اسان جو مشن",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "استعمال ڪندڙن کي پنهنجي زندگي ۾ باخبر فيصلا ڪرڻ ۾ مدد ڏيڻ لاءِ صحيح ۽ ذاتي علم نجوم جي بصيرت فراهم ڪرڻ لاءِ.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "اسان جو خواب",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "ٽيڪنالاجي ۽ قديم حڪمت کي گڏ ڪندي، سڀ کان وڌيڪ قابل اعتماد نجومي پليٽ فارم بڻجڻ لاءِ.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "اسان جا قدر",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "سالميت، درستگي، استعمال ڪندڙ-مرڪزي ڊيزائن، ۽ مسلسل جدت.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "اسان سان رابطو ڪريو",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "اي ميل: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "ويب سائيٽ: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "ڪسٽمر سپورٽ",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "اسين مدد لاءِ هتي آهيون",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "هيٺ ڏنل فارم ڀريو ۽ اسان جي سپورٽ ٽيم جلد کان جلد توهان سان رابطو ڪندي.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "توهان جو نالو",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "اوهانجو ايميل",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "پيغام",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "پنهنجو اي ميل داخل ڪريو",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "صحيح اي ميل پتو داخل ڪريو.",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "{fieldName} داخل ڪريو",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "موڪليو",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "موڪلي رهيو آهي...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ اي ميل ڪاميابي سان موڪلي وئي!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ اي ميل موڪلڻ ۾ ناڪام ٿيو",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "ايسٽرو ڊڪشنري",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "ڳولا جون اصطلاحون...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "ڪي به اصطلاح نه مليا.",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "سوال خريد ڪريو",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "استعمال ڪندڙ جي تصديق نه ٿي آهي.",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "اسٽور ڊيٽا لوڊ ڪرڻ ۾ ناڪام ٿيو.",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "گم ٿيل تصديق ٽوڪن",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "ايسٽرو چيٽ ايپ",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ ادائيگي ڪامياب! سوال موڪليو ويو.",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ ادائيگي ناڪام ٿي: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "توهان جو بيلنس",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} سوال",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "موجود آڇون",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} سوال",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "خريد ڪريو",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 روزاني زائچو",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "استعمال ڪندڙ جي سڃاڻپ غائب آهي.",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "افقون حاصل ڪرڻ ۾ ناڪام ٿيو.",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "ڪو به افق نه مليو.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "نشاني",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "اڄ",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "ڪالهه",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "هن هفتي",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "گذريل مهينو",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "چيٽ",
+  "typeYourQuestionHint": "پنھنجو سوال لکو...",
+  "paymentRequired": "ادائيگي گهربل آهي",
+  "paymentRequiredMessage": "توهان پنهنجا مفت سوال استعمال ڪيا آهن. جاري رکڻ لاءِ ₹50 ادا ڪريو.",
+  "payNowButton": "هاڻي ادا ڪريو",
+  "freeQuestionsRemaining": "{count} مفت سوال باقي آهن",
+  "paidQuestionsRemaining": "{count} ادا ڪيل سوال باقي آهن",
+  "thankYouFeedback": "توهان جي راءِ لاءِ مهرباني!",
+  "ratingSubmitted": "درجه بندي جمع ڪرائي وئي!",
+  "setUserIdFirst": "مھرباني ڪري پھريان پنھنجي يوزر آئي ڊي سيٽ ڪريو.",
+  "failedToFetchPrevious": "پوئين سوال ۽ جواب حاصل ڪرڻ ۾ ناڪام ٿيو",
+  "errorOccurred": "غلطي: {error}",
+  "drawerAstroProfile": "ايسٽرو پروفائل",
+  "drawerDailyHoroscope": "روزاني افق",
+  "drawerBuyQuestions": "سوال خريد ڪريو",
+  "drawerAstroDictionary": "ايسٽرو ڊڪشنري",
+  "drawerSettings": "سيٽنگون",
+  "drawerCustomerSupport": "ڪسٽمر سپورٽ",
+  "drawerAbout": "بابت",
+  "drawerProfileSettings": "پروفائل سيٽنگون",
+  "demoNotificationTitle": "🔔 ڊيمو نوٽيفڪيشن",
+  "demoNotificationBody": "هي توهان جي ايپ مان هڪ ٽيسٽ نوٽيفڪيشن آهي!",
+  "notificationsTitle": "نوٽيفڪيشن",
+  "noNotifications": "ڪابه اطلاع ناهي",
+  "allTab": "سڀ",
+  "markAllAsRead": "سڀني کي پڙهيل طور نشان لڳايو.",
+  "notificationMarkedRead": "اطلاع کي پڙهيل طور نشان لڳايو ويو",
+  "failedToLoadNotifications": "اطلاعن کي لوڊ ڪرڻ ۾ ناڪام ٿيو.",
+  "failedToMarkRead": "پڙهيل طور نشان لڳائڻ ۾ ناڪام ٿيو.",
+  "failedToMarkAllRead": "سڀني کي پڙهيل طور نشان لڳائڻ ۾ ناڪام ٿيو.",
+  "socketConnected": "ساکٽ ڳنڍيل آهي",
+  "socketDisconnected": "ساکٽ ڊسڪنيڪٽ ٿي ويو",
+  "newNotificationReceived": "نئون اطلاع مليو",
+  "generalCategory": "جنرل",
+  "horoscopeCategory": "زائچو",
+  "chatCategory": "چيٽ",
+  "systemCategory": "سسٽم",
+  "updateCategory": "تازه ڪاريون",
+  "howToAskTitle": "ڪيئن پڇجي",
+  "noQuestionsAvailable": "ڪو به سوال موجود ناهي.",
+  "failedToLoadQuestions": "سوال لوڊ ڪرڻ ۾ ناڪام ٿيو.",
+  "pullToRefresh": "ريفريش ڪرڻ لاءِ ڇڪيو",
+  "careerCategory": "ڪيريئر",
+  "loveCategory": "پيار ۽ رشتا",
+  "healthCategory": "صحت",
+  "financeCategory": "معيشت",
+  "familyCategory": "خاندان",
+  "educationCategory": "تعليم",
+  "travelCategory": "سفر",
+  "spiritualCategory": "روحاني",
+  "profileLoaded": "پروفائل ڪاميابي سان لوڊ ٿي وئي.",
+  "imageUploaded": "تصوير ڪاميابي سان اپ لوڊ ٿي وئي.",
+  "savedInformationConfirmation": "مون هي معلومات محفوظ ڪئي آهي.",
+  "noHistoryAvailable": "ڪا به تاريخ موجود ناهي",
+  "missingUserIdError": "استعمال ڪندڙ جي سڃاڻپ گهربل آهي",
+  "networkError": "نيٽ ورڪ جي غلطي. مھرباني ڪري ٻيهر ڪوشش ڪريو.",
+  "timeoutError": "درخواست جو وقت ختم ٿي ويو",
+  "genericError": "ڪجهه غلط ٿيو.",
+  "reactionUpdateError": "رد عمل کي اپڊيٽ ڪرڻ ۾ ناڪام ٿيو",
+  "noSearchResults": "ڪو به ڳولا جو نتيجو نه مليو.",
+  "clearSearch": "ڳولا صاف ڪريو",
+  "resultsFound": "نتيجا مليا",
+  "recoverySecretHint": "ڪاپي پيسٽ ڪم نه ڪري سگھي ٿو، دستي طور تي ٽائيپ ڪريو",
+  "recoverAccountDescription": "پنهنجو اڪائونٽ بحال ڪرڻ لاءِ انهن قدمن تي عمل ڪريو",
+  "processingLabel": "پروسيسنگ...",
+  "clearChatSuccess": "چيٽ ڪاميابي سان صاف ٿي وئي",
+  "notificationsEnabled": "اطلاع فعال ڪيا ويا",
+  "notificationsDisabled": "اطلاعن کي بند ڪيو ويو",
+  "securityNotice": "توهان جو ڊيٽا محفوظ طور تي انڪرپٽ ٿيل ۽ محفوظ ٿيل آهي.",
+  "loading": "لوڊ ٿي رهيو آهي...",
+  "selectLanguage": "ٻولي چونڊيو",
+  "onboardingGetStartedDesc": "پنهنجي ٻولي چونڊڻ سان شروع ڪريو",
+  "accountRecoveryTitle": "🔐 اڪائونٽ جي وصولي جا تفصيل",
+  "recoveryInstructions": "مھرباني ڪري ھن معلومات کي محفوظ طور تي محفوظ ڪريو. توھان کي پنھنجو اڪائونٽ بحال ڪرڻ لاءِ ان جي ضرورت پوندي.",
+  "importantNotice": "⚠️ اهم:",
+  "astrologerProfileTitle": "نجومي جي پروفائيل",
+  "personalAstrologer": "ذاتي نجومي",
+  "makePersonalAstrologer": "ذاتي نجومي بڻجو",
+  "favoriteDescription": "توهان جا سوال هن نجومي کي ترجيح ڏني ويندي. جيڪڏهن دستياب نه هجي ته ٻيو ڪو قابل نجومي توهان جي مدد ڪندو.",
+  "educationQualifications": "تعليم ۽ قابليت",
+  "aboutSection": "بابت",
+  "shareProfile": "پروفائل شيئر ڪريو",
+  "loadingAstrologer": "نجومي تفصيل لوڊ ڪري رهيو آهي...",
+  "failedToLoadAstrologer": "نجومي جي تفصيل لوڊ ڪرڻ ۾ ناڪام ٿيو.",
+  "authenticationRequired": "تصديق گهربل آهي. مهرباني ڪري لاگ ان ٿيو.",
+  "securityCheckFailed": "سيڪيورٽي چيڪ ناڪام ٿيو: {error}",
+  "addedToFavorites": "🎯 {name} هاڻي توهان جو ذاتي نجومي آهي",
+  "removedFromFavorites": "✅ پسنديده مان {name} هٽايو ويو",
+  "toggleFavoriteError": "پسنديده حيثيت کي اپڊيٽ ڪرڻ ۾ ناڪام ٿيو.",
+  "shareMessage": "{name}\n🎓 تعليم: {education}\n📜 قابليت: {qualification}\n⏳ تجربو: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "مهيا نه ڪيو ويو آهي",
+  "reviews": "({count} جائزو)",
+  "specialties": "خاصيتون",
+  "experience": "تجربو",
+  "qualification": "قابليت",
+  "education": "تعليم",
+  "recoveryTips": "• هن معلومات جو اسڪرين شاٽ وٺو\n• ان کي محفوظ جاءِ تي محفوظ ڪريو\n• ڪنهن سان به شيئر نه ڪريو\n• هي صرف هڪ ڀيرو ڏيکاريو ويندو"
+}

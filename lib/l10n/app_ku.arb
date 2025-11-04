@@ -1,0 +1,439 @@
+{
+  "@@locale": "ku",
+  "settingsTitle": "Mîheng",
+  "notificationSettings": "Mîhengên Agahdariyê",
+  "privacySettings": "Mîhengên Taybetîtiyê",
+  "accountSettings": "Mîhengên Hesabê",
+  "languageSettings": "Mîhengên Ziman",
+  "languageChanged": "Ziman guherî",
+  "existingUserButton": "Ez bikarhênerekî heyî me",
+  "chooseCountryTitle": "Welat Hilbijêre",
+  "yesText": "Erê",
+  "noText": "Na",
+  "appBarTitle": "Mîhengên Profîlê",
+  "userIdLabel": "Nasnameya Bikarhêner *",
+  "nameLabel": "Nav",
+  "birthCountryLabel": "Welatê Jidayikbûnê",
+  "birthCityLabel": "Bajarê Jidayikbûnê",
+  "countrySelectionTitle": "Welatê xwe hilbijêre",
+  "maleLabel": "Nêrî",
+  "femaleLabel": "Mê",
+  "birthDateLabel": "Dîroka Jidayikbûnê",
+  "birthDatePlaceholder": "Dîroka Jidayikbûnê Hilbijêre",
+  "birthTimeLabel": "Dema Jidayikbûnê",
+  "birthTimePlaceholder": "Dema Jidayikbûnê Hilbijêre",
+  "saveProfileButton": "Profîlê Tomar Bike",
+  "noCitiesFound": "Ti bajar nehatin dîtin",
+  "cityPlaceholder": "Bajar li {country} binivîse",
+  "countryFirstPlaceholder": "Pêşî welat hilbijêre",
+  "versionHistoryTitle": "Dîroka Guhertoyan",
+  "notSetText": "Nehatiye danîn",
+  "nameHistory": "Nav: {name}",
+  "cityHistory": "Bajar: {city}",
+  "countryHistory": "Welat: {country}",
+  "genderHistory": "Zayend: {gender}",
+  "birthDateHistory": "Dîroka Jidayikbûnê: {date}",
+  "birthTimeHistory": "Dema Jidayikbûnê: {time}",
+  "locationHistory": "Cih: {latitude}, {longitude}",
+  "timezoneHistory": "Herêma demjimêrê: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Rewş: {state}",
+  "versionFromText": "Nûvekirin li ser {date}",
+  "userIdRequired": "Nasnameya bikarhêner pêwîst e",
+  "profileSaved": "Profîl bi serkeftî hat tomarkirin",
+  "saveFailed": "Tomarkirina profîlê bi ser neket",
+  "errorPrefix": "Şaşî:",
+  "onboardingChooseLanguage": "Zimanê Xwe Hilbijêre",
+  "onboardingChooseLanguageDesc": "Ji bo berdewamkirinê zimanê xwe yê bijarte hilbijêre.",
+  "onboardingWhatIsAstrology": "Astrolojî çi ye?",
+  "onboardingWhatIsAstrologyDesc": "Astrolojî lêkolîna cismên ezmanî ye ...",
+  "onboardingWhyUseApp": "Çima vê sepanê bi kar tînin?",
+  "onboardingWhyUseAppDesc": "Ji bo girtina biryarên agahdar, horoskopên kesane, pêşbîniyên rojane û rêbernameyê bistînin.",
+  "onboardingHowToUse": "Meriv çawa vê sepanê bikar tîne?",
+  "onboardingHowToUseDesc": "Bi hêsanî bigerin, horoskopên rojane kontrol bikin, û profîla xwe ji bo pêşbîniyên rast birêve bibin.",
+  "onboardingGetStarted": "Dest pê bike",
+  "onboardingNewUser": "Bikarhênerê Nû",
+  "onboardingExistingUser": "Bikarhênerê Heyî",
+  "onboardingBack": "Paş",
+  "onboardingNext": "Piştî",
+  "userIdNotFound": "Nasnameya bikarhêner nehat dîtin. Ji kerema xwe têkevinê an jî profîla xwe saz bikin.",
+  "clearNotificationsTitle": "Agahdariyên Paqij Bike",
+  "clearNotificationsMessage": "Ma tu piştrast î ku dixwazî hemû agahdariyan paqij bikî?",
+  "clearNotificationsSuccess": "Hemû agahdarî bi serkeftî hatin paqijkirin.",
+  "clearHoroscopeTitle": "Falkêşiya Zelal",
+  "clearHoroscopeMessage": "Ma tu piştrast î ku dixwazî daneyên horoskopê xwe paqij bikî?",
+  "clearHoroscopeSuccess": "Fal bi serkeftî hate paqijkirin.",
+  "clearChatTitle": "Dîroka Sohbetê Paqij Bike",
+  "clearChatMessage": "Ma tu piştrast î ku dixwazî hemû dîroka sohbeta xwe jê bibî?",
+  "clearChatLocal": "Sohbet bi awayekî herêmî hat paqijkirin.",
+  "deleteAccountTitle": "Hesabê Jê Bibe",
+  "deleteAccountMessage": "Ma tu piştrast î ku dixwazî hesabê xwe jê bibî? Ev ê hemû dîrok û agahdariyên te yên sohbetê jî jê bibe.",
+  "deleteAccountSuccess": "Hesabê te û hemû daneyên te hatine jêbirin.",
+  "deleteAccountError": "Çewtî di jêbirina hesabê de çêbû",
+  "logoutTitle": "Derkeve",
+  "logoutMessage": "Ma tu piştrast î ku dixwazî derkevî?",
+  "termsPrivacyTitle": "Merc û Nepenî",
+  "privacyPolicyTitle": "Siyaseta Taybetîtiyê",
+  "termsConditionsTitle": "Merc û Şert",
+  "dataControlTitle": "Kontrola Daneyan",
+  "cancelButton": "Bişûndekirin",
+  "confirmButton": "Tesdîqkirin",
+  "clearQuestionsSuccess": "Hemû pirs bi serkeftî hatin jêbirin.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Mirze",
+  "startLabel": "Destpêkirin",
+  "recoverAccount": "Hesabê Vegerîne",
+  "endLabel": "Dawî",
+  "startDateLabel": "Dîroka Destpêkê",
+  "endDateLabel": "Dîroka Dawîkirinê",
+  "notAvailable": "Ne berdest e",
+  "noData": "Dane tune ne",
+  "unknownError": "Çewtiyek nenas",
+  "retryButton": "Dubare biceribîne",
+  "kundaliGeneratorTitle": "Generatorê Kundali",
+  "natalChartTitle": "Nexşeya Zayînê",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Raşî",
+  "ascDegreeLabel": "Pileya Bilindbûnê",
+  "vimshottariDashaTitle": "Vimşottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Nenas",
+  "clearHoroscope": "Falkêşiya Zelal",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Agahdariyên Paqij Bike",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Dîroka Sohbetê Paqij Bike",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Derkeve",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Hesabê Jê Bibe",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Hemû qad pêwîst in.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Hesab bi serkeftî hate vegerandin.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Vegerandin bi ser neket. Agahiyên xwe kontrol bike.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Veşartina Vegerandinê:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Çûna nava",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Derbarê Şirketa me de",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Em pabend in ku ezmûna astrolojiyê ya çêtirîn pêşkêşî bikarhênerên xwe bikin.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Mîsyona me",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Ji bo peyda kirina têgihiştinên astrolojiyê yên rast û kesane da ku alîkariya bikarhêneran bike ku di jiyana xwe de biryarên agahdar bidin.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Vîzyona me",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Ji bo ku bibe platforma astrolojiyê ya herî pêbawer, teknolojiyê û şehrezayiya kevnar bi hev re dike yek.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Nirxên me",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Yekparebûn, Rastbûn, Sêwirana Bikarhêner-Navendî, û Nûjeniya Berdewam.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Paqij bûn",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Email: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Malper: www.kompaniyawe.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Piştgiriya Xerîdaran",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Em li vir in ji bo alîkariyê",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Forma li jêr dagirin û tîma piştgiriyê ya me dê di zûtirîn dem de bi we re têkilî daynin.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Navê Te",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "E-nameya Te",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Agah",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "E-nameya xwe binivîse",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Navnîşaneke e-nameyeke derbasdar binivîse",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "{fieldName} binivîse",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Şandin",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Dişîne...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ E-name bi serkeftî hat şandin!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Şandina e-nameyê neserkeftî bû",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Ferhenga Astro",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Peyvên lêgerînê...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Peyv nehatin dîtin",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Pirsên Kirînê",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Bikarhêner nehatiye pejirandin",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Barkirina daneyên firotgehê neserket",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Nîşana destûrdayînê winda ye",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat App",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Pere bi serkeftî hate dayîn! Pirs hat şandin",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Pere bi ser neket: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Balansa Te",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Pirs",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Pêşniyarên Berdest",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Pirs",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Kirrîn",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Falnameya Rojane",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Nasnameya bikarhêner tune ye",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Nekarî horoskopan bistîne",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Horoskop nehat dîtin.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Nîşan",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Îro",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Do",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Vê Hefteyê",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Meha Dawî",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Galgalkirin",
+  "typeYourQuestionHint": "Pirsa xwe binivîse...",
+  "paymentRequired": "Pêdivî bi dravdanê heye",
+  "paymentRequiredMessage": "Te pirsên xwe yên belaş bi kar anîn. Ji bo berdewamkirinê ₹50 bide.",
+  "payNowButton": "Niha Bide",
+  "freeQuestionsRemaining": "{count} pirsên belaş mane",
+  "paidQuestionsRemaining": "{count} pirsên dravî yên mayî",
+  "thankYouFeedback": "Spas ji bo bersiva te!",
+  "ratingSubmitted": "Nirxandin hat şandin!",
+  "setUserIdFirst": "Ji kerema xwe pêşî Nasnameya Bikarhênerê xwe destnîşan bikin",
+  "failedToFetchPrevious": "Nekarî pirs û bersivên berê bîne",
+  "errorOccurred": "Çewtî: {error}",
+  "drawerAstroProfile": "Profîla Astro",
+  "drawerDailyHoroscope": "Falografiya Rojane",
+  "drawerBuyQuestions": "Pirsên Kirînê",
+  "drawerAstroDictionary": "Ferhenga Astro",
+  "drawerSettings": "Mîheng",
+  "drawerCustomerSupport": "Piştgiriya Xerîdaran",
+  "drawerAbout": "Ji dor",
+  "drawerProfileSettings": "Mîhengên Profîlê",
+  "demoNotificationTitle": "🔔 Agahdariya Demo",
+  "demoNotificationBody": "Ev agahdariyek ceribandinê ye ji sepanê we!",
+  "notificationsTitle": "Agahdarî",
+  "noNotifications": "Agahdarî tune ne",
+  "allTab": "Gişt",
+  "markAllAsRead": "Hemûyan wekî xwendî nîşan bike",
+  "notificationMarkedRead": "Agahdarî wekî xwendî hatiye nîşankirin",
+  "failedToLoadNotifications": "Barkirina agahdariyan neserket",
+  "failedToMarkRead": "Nehat nîşankirin wekî xwendî",
+  "failedToMarkAllRead": "Nîşankirina hemûyan wekî xwendî neserket",
+  "socketConnected": "Soket girêdayî ye",
+  "socketDisconnected": "Soket qut bû",
+  "newNotificationReceived": "Agahdariya nû hat wergirtin",
+  "generalCategory": "Giştî",
+  "horoscopeCategory": "Fal",
+  "chatCategory": "Galgalkirin",
+  "systemCategory": "Sîstem",
+  "updateCategory": "Nûvekirin",
+  "howToAskTitle": "Çawa Bipirsin",
+  "noQuestionsAvailable": "Pirs tune ne",
+  "failedToLoadQuestions": "Barkirina pirsan neserket",
+  "pullToRefresh": "Ji bo nûjenkirinê bikşîne",
+  "careerCategory": "Pêşveçûnî",
+  "loveCategory": "Evîn û Têkilî",
+  "healthCategory": "Tendûrûstî",
+  "financeCategory": "Malî",
+  "familyCategory": "Malbat",
+  "educationCategory": "Zanyarî",
+  "travelCategory": "Gerrîn",
+  "spiritualCategory": "Fikrî",
+  "profileLoaded": "Profîl bi serkeftî hate barkirin",
+  "imageUploaded": "Wêne bi serkeftî hate barkirin",
+  "savedInformationConfirmation": "Min ev agahî tomar kir",
+  "noHistoryAvailable": "Dîrok tune ye",
+  "missingUserIdError": "Nasnameya bikarhêner pêwîst e",
+  "networkError": "Çewtiya torê. Ji kerema xwe dîsa biceribînin.",
+  "timeoutError": "Demê daxwazê qediya",
+  "genericError": "Tiştek xelet çû",
+  "reactionUpdateError": "Nûvekirina reaksiyonê bi ser neket",
+  "noSearchResults": "Encamên lêgerînê nehatin dîtin",
+  "clearSearch": "Lêgerînê paqij bike",
+  "resultsFound": "Encam hatin dîtin",
+  "recoverySecretHint": "Kopîkirin-pêvekirin dibe ku nexebite, bi destan binivîse",
+  "recoverAccountDescription": "Ji bo vegerandina hesabê xwe van gavan bişopînin",
+  "processingLabel": "Xebitandinî...",
+  "clearChatSuccess": "Sohbet bi serkeftî hate paqijkirin",
+  "notificationsEnabled": "Agahdarî çalak in",
+  "notificationsDisabled": "Agahdarî hatine astengkirin",
+  "securityNotice": "Agahiyên te bi ewlehî tên şîfrekirin û hilanîn",
+  "loading": "Barkirin...",
+  "selectLanguage": "Ziman Hilbijêre",
+  "onboardingGetStartedDesc": "Bi hilbijartina zimanê xwe dest pê bike",
+  "accountRecoveryTitle": "🔐 Hûrguliyên Vegerandina Hesabê",
+  "recoveryInstructions": "Ji kerema xwe vê agahiyê bi ewlehî hilînin. Hûn ê hewceyê wê bin da ku hûn hesabê xwe vegerînin.",
+  "importantNotice": "⚠️ Girîng:",
+  "astrologerProfileTitle": "Profîla Stêrnas",
+  "personalAstrologer": "Stêrnasê Şexsî",
+  "makePersonalAstrologer": "Astrologê Şexsî Biafirîne",
+  "favoriteDescription": "Pirsên te dê ji bo vî astrologî werin şandin. Ger ne amade be, astrologekî din ê pispor dê alîkariya te bike.",
+  "educationQualifications": "Perwerde û Jêhatîbûn",
+  "aboutSection": "Ji dor",
+  "shareProfile": "Profîlê Parve Bike",
+  "loadingAstrologer": "Hûrguliyên astrologan tên barkirin...",
+  "failedToLoadAstrologer": "Barkirina hûrguliyên astrologan bi ser neket",
+  "authenticationRequired": "Pêdivî bi pejirandinê heye. Ji kerema xwe têkevinê.",
+  "securityCheckFailed": "Kontrola ewlehiyê bi ser neket: {error}",
+  "addedToFavorites": "🎯 {name} niha Stêrnasê te yê Kesane ye",
+  "removedFromFavorites": "✅ {name} ji bijareyan hat rakirin",
+  "toggleFavoriteError": "Nûvekirina rewşa bijare bi ser neket",
+  "shareMessage": "{name}\n🎓 Perwerde: {education}\n📜 Jêhatîbûn: {qualification}\n⏳ Ezmûn: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Nehatiye peyda kirin",
+  "reviews": "({count} nirxandin)",
+  "specialties": "Taybetî",
+  "experience": "Tecribe",
+  "qualification": "Zanyarî",
+  "education": "Zanyarî",
+  "recoveryTips": "• Wêneyê ekranê yê vê agahiyê bigirin\n• Li cîhekî ewle hilînin\n• Bi kesî re parve nekin\n• Ev tenê carekê tê nîşandan"
+}

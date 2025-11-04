@@ -1,0 +1,439 @@
+{
+  "@@locale": "hmn",
+  "settingsTitle": "Chaw",
+  "notificationSettings": "Kev ceeb toom chaw",
+  "privacySettings": "Kev ceev ntiag tug",
+  "accountSettings": "Account Settings",
+  "languageSettings": "Kev teeb tsa lus",
+  "languageChanged": "Lus hloov",
+  "existingUserButton": "Kuv yog ib tug neeg siv uas twb muaj lawm",
+  "chooseCountryTitle": "Xaiv lub teb chaws",
+  "yesText": "Yog lawm",
+  "noText": "Tsis muaj",
+  "appBarTitle": "Kev teeb tsa Profile",
+  "userIdLabel": "Tus neeg siv ID *",
+  "nameLabel": "Lub npe",
+  "birthCountryLabel": "Lub Tebchaws yug",
+  "birthCityLabel": "Lub nroog yug",
+  "countrySelectionTitle": "Xaiv koj lub tebchaws",
+  "maleLabel": "Txiv neej",
+  "femaleLabel": "Poj niam",
+  "birthDateLabel": "Hnub yug",
+  "birthDatePlaceholder": "Xaiv Hnub Yug",
+  "birthTimeLabel": "Hnub yug",
+  "birthTimePlaceholder": "Xaiv Lub Sijhawm Yug",
+  "saveProfileButton": "Txuag Profile",
+  "noCitiesFound": "Tsis pom lub nroog",
+  "cityPlaceholder": "Nkag mus hauv nroog hauv {country}",
+  "countryFirstPlaceholder": "Xaiv lub teb chaws ua ntej",
+  "versionHistoryTitle": "Version Keeb Kwm",
+  "notSetText": "Tsis teem",
+  "nameHistory": "Lub npe: {name}",
+  "cityHistory": "Lub zos: {city}",
+  "countryHistory": "Lub teb chaws: {country}",
+  "genderHistory": "Tub los ntxhais: {gender}",
+  "birthDateHistory": "Hnub yug: {date}",
+  "birthTimeHistory": "Hnub yug: {time}",
+  "locationHistory": "Qhov chaw: {latitude}, {longitude}",
+  "timezoneHistory": "Timezone: GMT {offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Xeev: {state}",
+  "versionFromText": "Hloov tshiab ntawm {date}",
+  "userIdRequired": "Tus neeg siv ID yuav tsum tau",
+  "profileSaved": "Txuag Profile tiav",
+  "saveFailed": "Khaws qhov profile tsis tau",
+  "errorPrefix": "yuam kev:",
+  "onboardingChooseLanguage": "Xaiv Koj Hom Lus",
+  "onboardingChooseLanguageDesc": "Xaiv hom lus koj nyiam mus txuas ntxiv.",
+  "onboardingWhatIsAstrology": "Dab tsi yog Astrology?",
+  "onboardingWhatIsAstrologyDesc": "Astrology yog kev kawm ntawm lub cev xilethi-aus ...",
+  "onboardingWhyUseApp": "Vim li cas thiaj siv cov app no?",
+  "onboardingWhyUseAppDesc": "Tau txais tus kheej horoscopes, kev kwv yees txhua hnub, thiab kev taw qhia kom paub txog kev txiav txim siab.",
+  "onboardingHowToUse": "Yuav siv cov app no li cas?",
+  "onboardingHowToUseDesc": "Taug kev yooj yim, tshawb xyuas txhua hnub horoscopes, thiab tswj koj qhov profile kom raug kwv yees.",
+  "onboardingGetStarted": "Pib pib",
+  "onboardingNewUser": "Tus neeg siv tshiab",
+  "onboardingExistingUser": "Cov neeg siv tam sim no",
+  "onboardingBack": "Rov qab",
+  "onboardingNext": "Tom ntej no",
+  "userIdNotFound": "Tsis pom tus neeg siv ID. Thov sau npe lossis teeb tsa koj qhov profile.",
+  "clearNotificationsTitle": "Kev ceeb toom meej meej",
+  "clearNotificationsMessage": "Koj puas paub tseeb tias koj xav tshem tag nrho cov ntawv ceeb toom?",
+  "clearNotificationsSuccess": "Tag nrho cov ntawv ceeb toom tshem tawm tiav.",
+  "clearHoroscopeTitle": "Clear Horoscope",
+  "clearHoroscopeMessage": "Koj puas paub tseeb tias koj xav tshem koj cov ntaub ntawv horoscope?",
+  "clearHoroscopeSuccess": "Horoscope cleared tiav.",
+  "clearChatTitle": "Clear Chat History",
+  "clearChatMessage": "Koj puas paub tseeb tias koj xav rho tawm tag nrho koj cov keeb kwm sib tham?",
+  "clearChatLocal": "Tham tau tshem tawm hauv zos.",
+  "deleteAccountTitle": "Rho tawm Account",
+  "deleteAccountMessage": "Koj puas paub tseeb tias koj xav rho tawm koj tus account? Qhov no tseem yuav tshem tag nrho koj cov keeb kwm sib tham thiab cov ntawv ceeb toom.",
+  "deleteAccountSuccess": "Koj tus account thiab tag nrho cov ntaub ntawv tau raug tshem tawm.",
+  "deleteAccountError": "yuam kev deletion account",
+  "logoutTitle": "Logout",
+  "logoutMessage": "Koj puas paub tseeb tias koj xav rho tawm?",
+  "termsPrivacyTitle": "Cov ntsiab lus & Tsis pub twg paub",
+  "privacyPolicyTitle": "Txoj Cai Tswjfwm Ntiag Tug",
+  "termsConditionsTitle": "Cov Cai & Cov Cai",
+  "dataControlTitle": "Cov Ntaub Ntawv Tswj",
+  "cancelButton": "Tso tseg",
+  "confirmButton": "Paub meej",
+  "clearQuestionsSuccess": "Tag nrho cov lus nug deleted tiav.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Tswv",
+  "startLabel": "Pib",
+  "recoverAccount": "Rov qab Account",
+  "endLabel": "Xaus",
+  "startDateLabel": "Pib Hnub",
+  "endDateLabel": "Hnub Kawg",
+  "notAvailable": "Tsis muaj",
+  "noData": "Tsis muaj ntaub ntawv",
+  "unknownError": "Unknown yuam kev",
+  "retryButton": "Rov sim dua",
+  "kundaliGeneratorTitle": "Kundali Generator",
+  "natalChartTitle": "Natal Chart",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Ascendant Degree",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "Tsis paub",
+  "clearHoroscope": "Clear Horoscope",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Kev ceeb toom meej meej",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Clear Chat History",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Logout",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Rho tawm Account",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Txhua qhov chaw yuav tsum muaj.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Tus account tau rov qab ua tiav.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Rov qab ua tsis tiav. Tshawb xyuas koj cov ntaub ntawv.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Rov qab Secret:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Txog Peb",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Txog Peb Lub Tuam Txhab",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Peb tau cog lus tias yuav xa cov kev paub zoo tshaj plaws hauv hnub qub rau peb cov neeg siv.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Peb Lub Hom Phiaj",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Txhawm rau muab qhov tseeb thiab tus kheej kev nkag siab txog astrology los pab cov neeg siv txiav txim siab paub hauv lawv lub neej.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Peb Lub Zeem Muag",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Los ua qhov kev ntseeg siab tshaj plaws astrology platform, sib txuas thev naus laus zis thiab kev txawj ntse thaum ub.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Peb Qhov Tseem Ceeb",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Kev ncaj ncees, raug, neeg siv-Centric tsim, thiab txuas ntxiv Innovation.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Tiv tauj peb",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Email: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Lub Vev Xaib: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Kev Pab Txhawb Cov Neeg Siv Khoom",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Peb nyob ntawm no los pab",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Sau daim foos hauv qab no thiab peb pab neeg txhawb nqa yuav rov qab los rau koj sai li sai tau.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Koj Lub Npe",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Koj Email",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Xov xwm",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Sau koj tus email",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Sau tus email chaw nyob siv tau",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Sau {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Xa",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Xa...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Email xa tuaj!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Xa email tsis tau",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro phau ntawv txhais lus",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Cov ntsiab lus tshawb nrhiav...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Tsis pom cov ntsiab lus",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Yuav Cov Lus Nug",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Tus neeg siv tsis tau authenticated",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Ua tsis tiav cov ntaub ntawv khaws cia",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Tsis muaj auth token",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat App",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Kev them nyiaj tiav! Lus nug xa",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Them tsis tau: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Koj tshuav nyiaj li cas",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Cov lus nug",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Muaj Kev Muaj",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Lus nug",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Yuav",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Txhua hnub Horoscope",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Tus neeg siv ID ploj lawm",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Ua tsis tiav mus nqa horoscopes",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Tsis pom horoscope.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Kos npe",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Hnub no",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Nag hmo",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Lub lim tiam no",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Lub hli tas los",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Tham",
+  "typeYourQuestionHint": "Ntaus koj cov lus nug ...",
+  "paymentRequired": "Yuav tsum tau them nyiaj",
+  "paymentRequiredMessage": "Koj tau siv koj cov lus nug dawb. Them ₹50 mus ntxiv.",
+  "payNowButton": "Them Tam sim no",
+  "freeQuestionsRemaining": "{count} cov lus nug dawb ntxiv",
+  "paidQuestionsRemaining": "{count} them cov lus nug tseem tshuav",
+  "thankYouFeedback": "Ua tsaug rau koj cov lus teb!",
+  "ratingSubmitted": "Kev ntsuam xyuas xa!",
+  "setUserIdFirst": "Thov teev koj tus User ID ua ntej",
+  "failedToFetchPrevious": "Ua tsis tiav mus nqa cov lus nug thiab lus teb dhau los",
+  "errorOccurred": "yuam kev: {error}",
+  "drawerAstroProfile": "Astro Profile",
+  "drawerDailyHoroscope": "Hnub Horoscope",
+  "drawerBuyQuestions": "Yuav Cov Lus Nug",
+  "drawerAstroDictionary": "Astro phau ntawv txhais lus",
+  "drawerSettings": "Chaw",
+  "drawerCustomerSupport": "Kev Pab Txhawb Cov Neeg Siv Khoom",
+  "drawerAbout": "Txog",
+  "drawerProfileSettings": "Kev teeb tsa Profile",
+  "demoNotificationTitle": "🔔 Demo Ceeb Toom",
+  "demoNotificationBody": "Nov yog kev ceeb toom ntawm koj lub app!",
+  "notificationsTitle": "Kev ceeb toom",
+  "noNotifications": "Tsis muaj ntawv ceeb toom",
+  "allTab": "Tag nrho",
+  "markAllAsRead": "Kos tag nrho raws li nyeem",
+  "notificationMarkedRead": "Kev ceeb toom cim tias nyeem",
+  "failedToLoadNotifications": "Ua tsis tiav cov ntawv ceeb toom",
+  "failedToMarkRead": "Ua tsis tau tejyam cim raws li nyeem",
+  "failedToMarkAllRead": "Ua tsis tiav los cim tag nrho raws li nyeem",
+  "socketConnected": "Qhov (socket) txuas",
+  "socketDisconnected": "Lub qhov (socket) txiav tawm",
+  "newNotificationReceived": "Kev ceeb toom tshiab tau txais",
+  "generalCategory": "General",
+  "horoscopeCategory": "Horoscope",
+  "chatCategory": "Tham",
+  "systemCategory": "Qhov system",
+  "updateCategory": "Hloov tshiab",
+  "howToAskTitle": "Yuav Nug Li Cas",
+  "noQuestionsAvailable": "Tsis muaj lus nug",
+  "failedToLoadQuestions": "Ua tsis tiav cov lus nug",
+  "pullToRefresh": "Rub kom refresh",
+  "careerCategory": "Kev ua haujlwm",
+  "loveCategory": "Kev Hlub & Kev Sib Raug Zoo",
+  "healthCategory": "Kev noj qab haus huv",
+  "financeCategory": "Nyiaj txiag",
+  "familyCategory": "Tsev neeg",
+  "educationCategory": "Kev kawm",
+  "travelCategory": "Mus ncig",
+  "spiritualCategory": "sab ntsuj plig",
+  "profileLoaded": "Profile loaded tiav",
+  "imageUploaded": "Duab uploaded tiav",
+  "savedInformationConfirmation": "Kuv tau khaws cov ntaub ntawv no",
+  "noHistoryAvailable": "Tsis muaj keeb kwm muaj",
+  "missingUserIdError": "Tus neeg siv ID yuav tsum tau",
+  "networkError": "Network yuam kev. Thov rov sim dua.",
+  "timeoutError": "Thov ncua sij hawm",
+  "genericError": "Ib yam dab tsi mus tsis ncaj ncees lawm",
+  "reactionUpdateError": "Ua tsis tau tejyam hloov tshiab cov tshuaj tiv thaiv",
+  "noSearchResults": "Tsis muaj kev tshawb nrhiav pom",
+  "clearSearch": "Nrhiav kom meej",
+  "resultsFound": "Cov txiaj ntsig pom",
+  "recoverySecretHint": "Luam-paste yuav tsis ua haujlwm, ntaus ntawv manually",
+  "recoverAccountDescription": "Ua raws li cov kauj ruam no kom rov qab tau koj tus account",
+  "processingLabel": "Kev ua...",
+  "clearChatSuccess": "Kev sib tham tau ua tiav tiav",
+  "notificationsEnabled": "Kev ceeb toom tau qhib",
+  "notificationsDisabled": "Kev ceeb toom raug kaw",
+  "securityNotice": "Koj cov ntaub ntawv tau ruaj ntseg encrypted thiab khaws cia",
+  "loading": "Loading...",
+  "selectLanguage": "Xaiv hom lus",
+  "onboardingGetStartedDesc": "Pib los ntawm kev xaiv koj hom lus",
+  "accountRecoveryTitle": "🔐 Cov ntaub ntawv rov qab rau tus account",
+  "recoveryInstructions": "Thov khaws cov ntaub ntawv no kom ruaj ntseg. Koj yuav xav tau nws kom rov qab tau koj tus account.",
+  "importantNotice": "⚠️ Qhov tseem ceeb:",
+  "astrologerProfileTitle": "Astrologer Profile",
+  "personalAstrologer": "Tus Kheej Astrologer",
+  "makePersonalAstrologer": "Ua Tus Kheej Astrologer",
+  "favoriteDescription": "Koj cov lus nug yuav raug muab ua ntej rau tus kws qhia hnub qub no. Yog tias tsis muaj, lwm tus kws qhia hnub qub uas tsim nyog yuav pab koj.",
+  "educationQualifications": "Kev Kawm & Kev Tsim Nyog",
+  "aboutSection": "Txog",
+  "shareProfile": "Share Profile",
+  "loadingAstrologer": "Loading astrologer details...",
+  "failedToLoadAstrologer": "Ua tsis tiav cov ntsiab lus ntawm astrologer",
+  "authenticationRequired": "Yuav tsum muaj kev lees paub. Thov nkag rau hauv.",
+  "securityCheckFailed": "Kev kuaj xyuas kev nyab xeeb ua tsis tiav: {error}",
+  "addedToFavorites": "🎯 {name} tam sim no yog koj Tus Kheej Astrologer",
+  "removedFromFavorites": "✅ Tshem tawm {name} los ntawm cov nyiam",
+  "toggleFavoriteError": "Ua tsis tiav los hloov kho cov xwm txheej nyiam",
+  "shareMessage": "{name}\n🎓 Education: {education}\n📜 Kev Tsim Nyog: {qualification}\n⏳ Kev paub: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Tsis muab",
+  "reviews": "({count} tshuaj xyuas)",
+  "specialties": "Tshwj xeeb",
+  "experience": "Kev paub",
+  "qualification": "Kev tsim nyog",
+  "education": "Kev kawm",
+  "recoveryTips": "• Coj ib lub screenshot ntawm cov ntaub ntawv no\n• Khaws rau hauv qhov chaw ruaj ntseg\n• Tsis txhob koom nrog lwm tus\n• Qhov no tsuas yog qhia ib zaug xwb"
+}

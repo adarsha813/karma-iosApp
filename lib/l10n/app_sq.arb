@@ -1,0 +1,439 @@
+{
+  "@@locale": "sq",
+  "settingsTitle": "Cilësimet",
+  "notificationSettings": "Cilësimet e njoftimeve",
+  "privacySettings": "Cilësimet e privatësisë",
+  "accountSettings": "Cilësimet e llogarisë",
+  "languageSettings": "Cilësimet e gjuhës",
+  "languageChanged": "Gjuha ndryshoi",
+  "existingUserButton": "Unë jam një përdorues ekzistues",
+  "chooseCountryTitle": "Zgjidh Vendin",
+  "yesText": "Po",
+  "noText": "Jo",
+  "appBarTitle": "Cilësimet e profilit",
+  "userIdLabel": "ID e përdoruesit *",
+  "nameLabel": "Emri",
+  "birthCountryLabel": "Vendi i lindjes",
+  "birthCityLabel": "Qyteti i lindjes",
+  "countrySelectionTitle": "Zgjidhni vendin tuaj",
+  "maleLabel": "Mashkull",
+  "femaleLabel": "Femër",
+  "birthDateLabel": "Data e lindjes",
+  "birthDatePlaceholder": "Zgjidhni datën e lindjes",
+  "birthTimeLabel": "Ora e Lindjes",
+  "birthTimePlaceholder": "Zgjidhni Kohën e Lindjes",
+  "saveProfileButton": "Ruaj Profilin",
+  "noCitiesFound": "Nuk u gjetën qytete",
+  "cityPlaceholder": "Shkruani qytetin në {country}",
+  "countryFirstPlaceholder": "Zgjidhni vendin së pari",
+  "versionHistoryTitle": "Historiku i Versioneve",
+  "notSetText": "Nuk është vendosur",
+  "nameHistory": "Emri: {name}",
+  "cityHistory": "Qyteti: {city}",
+  "countryHistory": "Vendi: {country}",
+  "genderHistory": "Gjinia: {gender}",
+  "birthDateHistory": "Data e lindjes: {date}",
+  "birthTimeHistory": "Ora e Lindjes: {time}",
+  "locationHistory": "Vendndodhja: {latitude}, {longitude}",
+  "timezoneHistory": "Zona kohore: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Gjendja: {state}",
+  "versionFromText": "Përditësuar më {date}",
+  "userIdRequired": "Kërkohet ID-ja e përdoruesit",
+  "profileSaved": "Profili u ruajt me sukses",
+  "saveFailed": "Ruajtja e profilit dështoi",
+  "errorPrefix": "Gabim:",
+  "onboardingChooseLanguage": "Zgjidhni gjuhën tuaj",
+  "onboardingChooseLanguageDesc": "Zgjidhni gjuhën tuaj të preferuar për të vazhduar.",
+  "onboardingWhatIsAstrology": "Çfarë është Astrologjia?",
+  "onboardingWhatIsAstrologyDesc": "Astrologjia është studimi i trupave qiellorë...",
+  "onboardingWhyUseApp": "Pse ta përdorni këtë aplikacion?",
+  "onboardingWhyUseAppDesc": "Merrni horoskopë të personalizuar, parashikime ditore dhe udhëzime për të marrë vendime të informuara.",
+  "onboardingHowToUse": "Si ta përdorni këtë aplikacion?",
+  "onboardingHowToUseDesc": "Navigoni lehtësisht, kontrolloni horoskopët ditorë dhe menaxhoni profilin tuaj për parashikime të sakta.",
+  "onboardingGetStarted": "Filloni",
+  "onboardingNewUser": "Përdorues i Ri",
+  "onboardingExistingUser": "Përdorues ekzistues",
+  "onboardingBack": "Mbrapa",
+  "onboardingNext": "Tjetra",
+  "userIdNotFound": "ID-ja e përdoruesit nuk u gjet. Ju lutemi identifikoheni ose caktoni profilin tuaj.",
+  "clearNotificationsTitle": "Fshij njoftimet",
+  "clearNotificationsMessage": "Je i sigurt që dëshiron të fshish të gjitha njoftimet?",
+  "clearNotificationsSuccess": "Të gjitha njoftimet u fshinë me sukses.",
+  "clearHoroscopeTitle": "Horoskop i Qartë",
+  "clearHoroscopeMessage": "Je i sigurt që dëshiron të fshish të dhënat e horoskopit tënd?",
+  "clearHoroscopeSuccess": "Horoskopi u fshi me sukses.",
+  "clearChatTitle": "Fshij Historikun e Bisedave",
+  "clearChatMessage": "Je i sigurt që dëshiron të fshish të gjithë historikun tënd të bisedave?",
+  "clearChatLocal": "Biseda u fshi lokalisht.",
+  "deleteAccountTitle": "Fshij llogarinë",
+  "deleteAccountMessage": "Je i sigurt që dëshiron ta fshish llogarinë tënde? Kjo do të fshijë gjithashtu të gjithë historikun e bisedave dhe njoftimet e tua.",
+  "deleteAccountSuccess": "Llogaria juaj dhe të gjitha të dhënat janë hequr.",
+  "deleteAccountError": "Gabim gjatë fshirjes së llogarisë gjatë fshirjes së saj. Llogaria u fshi në gabim.",
+  "logoutTitle": "Dilni",
+  "logoutMessage": "Je i sigurt që dëshiron të dalësh?",
+  "termsPrivacyTitle": "Kushtet dhe Privatësia",
+  "privacyPolicyTitle": "Politika e Privatësisë",
+  "termsConditionsTitle": "Kushtet dhe Rregullat",
+  "dataControlTitle": "Kontrolli i të Dhënave",
+  "cancelButton": "Anulo",
+  "confirmButton": "Konfirmo",
+  "clearQuestionsSuccess": "Të gjitha pyetjet u fshinë me sukses.",
+  "yoginiLabel": "Yogini",
+  "lordLabel": "Zot",
+  "startLabel": "Filloni",
+  "recoverAccount": "Rikuperimi i llogarisë",
+  "endLabel": "Fund",
+  "startDateLabel": "Data e fillimit",
+  "endDateLabel": "Data e përfundimit",
+  "notAvailable": "Nuk është i disponueshëm",
+  "noData": "Pa të dhëna",
+  "unknownError": "Gabim i panjohur",
+  "retryButton": "Riprovo",
+  "kundaliGeneratorTitle": "Gjeneratori Kundali",
+  "natalChartTitle": "Karta e Lindjes",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rashi",
+  "ascDegreeLabel": "Shkalla Ascendent",
+  "vimshottariDashaTitle": "Vimshottari Dasha",
+  "yoginiDashaTitle": "Yogini Dasha",
+  "unknown": "I panjohur",
+  "clearHoroscope": "Horoskop i Qartë",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Fshij njoftimet",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Fshij Historikun e Bisedave",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Dilni",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Fshij llogarinë",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Të gjitha fushat janë të detyrueshme.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Llogaria u rikuperua me sukses.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Rikuperimi dështoi. Kontrolloni informacionin tuaj.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Sekreti i Rimëkëmbjes:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Rreth Nesh",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Rreth Kompanisë Sonë",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Ne jemi të përkushtuar t'u ofrojmë përdoruesve tanë përvojën më të mirë astrologjike.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Misioni ynë",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Për të ofruar njohuri të sakta dhe të personalizuara astrologjike për të ndihmuar përdoruesit të marrin vendime të informuara në jetën e tyre.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Vizioni ynë",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Të bëhet platforma më e besueshme e astrologjisë, duke kombinuar teknologjinë dhe mençurinë e lashtë.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Vlerat tona",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Integritet, Saktësi, Dizajn i Përqendruar te Përdoruesi dhe Inovacion i Vazhdueshëm.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Na Kontaktoni",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Email: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Uebfaqe: www.kompaniajuaj.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Ndihma për klientët",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Ne jemi këtu për të ndihmuar",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Plotësoni formularin më poshtë dhe ekipi ynë i mbështetjes do t'ju kontaktojë sa më shpejt të jetë e mundur.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Emri Juaj",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Email-i juaj",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Mesazh",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Fut email-in tënd",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Fut një adresë të vlefshme email-i",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Shkruani {fieldName}",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Dërgo",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Duke dërguar...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Email-i u dërgua me sukses!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Dështoi në dërgimin e email-it",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Fjalor Astro",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Termat e kërkimit...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Nuk u gjetën terma",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Pyetje për blerjen",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Përdoruesi nuk është autentifikuar",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Dështoi në ngarkimin e të dhënave të dyqanit",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Mungon tokeni i autorizimit",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Aplikacioni Astro Chat",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Pagesa u krye me sukses! Pyetja u dërgua!",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Pagesa dështoi: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Bilanci juaj",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Pyetje",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Ofertat e disponueshme",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Pyetje",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Bli",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Horoskopi i përditshëm",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "ID-ja e përdoruesit mungon",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Horoskopët dështuan në marrjen e tyre",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Nuk u gjet horoskop.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Shenjë",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Sot",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Dje",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Këtë javë",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Muajin e kaluar",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Bisedë",
+  "typeYourQuestionHint": "Shkruani pyetjen tuaj...",
+  "paymentRequired": "Pagesa e kërkuar",
+  "paymentRequiredMessage": "I ke përdorur pyetjet falas. Paguaj ₹50 për të vazhduar.",
+  "payNowButton": "Paguaj Tani",
+  "freeQuestionsRemaining": "{count} pyetje falas të mbetura",
+  "paidQuestionsRemaining": "{count} pyetje me pagesë të mbetura",
+  "thankYouFeedback": "Faleminderit për reagimet tuaja!",
+  "ratingSubmitted": "Vlerësimi u dorëzua!",
+  "setUserIdFirst": "Ju lutemi vendosni së pari ID-në tuaj të përdoruesit",
+  "failedToFetchPrevious": "Dështoi në marrjen e pyetjeve dhe përgjigjeve të mëparshme",
+  "errorOccurred": "Gabim: {error}",
+  "drawerAstroProfile": "Profili i Astros",
+  "drawerDailyHoroscope": "Horoskopi i përditshëm",
+  "drawerBuyQuestions": "Pyetje për blerjen",
+  "drawerAstroDictionary": "Fjalor Astro",
+  "drawerSettings": "Cilësimet",
+  "drawerCustomerSupport": "Ndihma për klientët",
+  "drawerAbout": "Rreth",
+  "drawerProfileSettings": "Cilësimet e profilit",
+  "demoNotificationTitle": "🔔 Njoftim Demo",
+  "demoNotificationBody": "Ky është një njoftim provë nga aplikacioni juaj!",
+  "notificationsTitle": "Njoftime",
+  "noNotifications": "Asnjë njoftim",
+  "allTab": "Të gjitha",
+  "markAllAsRead": "Shëno të gjitha si të lexuara",
+  "notificationMarkedRead": "Njoftimi u shënua si i lexuar",
+  "failedToLoadNotifications": "Ngarkimi i njoftimeve dështoi",
+  "failedToMarkRead": "Shënimi si i lexuar dështoi",
+  "failedToMarkAllRead": "Shënimi i të gjithave si të lexuara dështoi",
+  "socketConnected": "Soketa e lidhur",
+  "socketDisconnected": "Priza u shkëput",
+  "newNotificationReceived": "Njoftim i ri u mor",
+  "generalCategory": "Gjeneral",
+  "horoscopeCategory": "Horoskopi",
+  "chatCategory": "Bisedë",
+  "systemCategory": "Sistemi",
+  "updateCategory": "Përditësime",
+  "howToAskTitle": "Si të pyesësh",
+  "noQuestionsAvailable": "Nuk ka pyetje në dispozicion",
+  "failedToLoadQuestions": "Ngarkimi i pyetjeve dështoi",
+  "pullToRefresh": "Tërhiq për të rifreskuar",
+  "careerCategory": "Karriera",
+  "loveCategory": "Dashuri dhe Marrëdhënie",
+  "healthCategory": "Shëndetësia",
+  "financeCategory": "Financë",
+  "familyCategory": "Familja",
+  "educationCategory": "Arsimi",
+  "travelCategory": "Udhëtim",
+  "spiritualCategory": "Shpirtërore",
+  "profileLoaded": "Profili u ngarkua me sukses.",
+  "imageUploaded": "Imazhi u ngarkua me sukses.",
+  "savedInformationConfirmation": "E kam ruajtur këtë informacion",
+  "noHistoryAvailable": "Nuk ka histori të disponueshme",
+  "missingUserIdError": "Kërkohet ID-ja e përdoruesit",
+  "networkError": "Gabim rrjeti. Ju lutemi provoni përsëri.",
+  "timeoutError": "Kërkesa skadoi",
+  "genericError": "Diçka shkoi keq",
+  "reactionUpdateError": "Reagimi nuk u përditësua",
+  "noSearchResults": "Nuk u gjetën rezultate kërkimi",
+  "clearSearch": "Pastro kërkimin",
+  "resultsFound": "Rezultatet e gjetura",
+  "recoverySecretHint": "Kopjimi dhe ngjitja mund të mos funksionojnë, shkruani manualisht",
+  "recoverAccountDescription": "Ndiqni këto hapa për të rikuperuar llogarinë tuaj",
+  "processingLabel": "Duke u përpunuar...",
+  "clearChatSuccess": "Biseda u pastrua me sukses.",
+  "notificationsEnabled": "Njoftimet u aktivizuan",
+  "notificationsDisabled": "Njoftimet u çaktivizuan",
+  "securityNotice": "Të dhënat tuaja janë të koduara dhe të ruajtura në mënyrë të sigurt",
+  "loading": "Duke u ngarkuar...",
+  "selectLanguage": "Zgjidh Gjuhën",
+  "onboardingGetStartedDesc": "Filloni duke zgjedhur gjuhën tuaj",
+  "accountRecoveryTitle": "🔐 Detajet e Rimëkëmbjes së Llogarisë",
+  "recoveryInstructions": "Ju lutemi ruajeni këtë informacion në mënyrë të sigurt. Do t'ju duhet për të rikuperuar llogarinë tuaj.",
+  "importantNotice": "⚠️ E rëndësishme:",
+  "astrologerProfileTitle": "Profili i Astrologut",
+  "personalAstrologer": "Astrolog Personal",
+  "makePersonalAstrologer": "Bëhuni një Astrolog Personal",
+  "favoriteDescription": "Pyetjet tuaja do t'i jepen përparësi këtij astrologu. Nëse nuk jeni i disponueshëm, një astrolog tjetër i kualifikuar do t'ju ndihmojë.",
+  "educationQualifications": "Arsimi dhe Kualifikimet",
+  "aboutSection": "Rreth",
+  "shareProfile": "Shpërndaj Profilin",
+  "loadingAstrologer": "Duke ngarkuar detajet e astrologut...",
+  "failedToLoadAstrologer": "Ngarkimi i detajeve të astrologut dështoi.",
+  "authenticationRequired": "Kërkohet vërtetim. Ju lutemi, identifikohuni.",
+  "securityCheckFailed": "Kontrolli i sigurisë dështoi: {error}",
+  "addedToFavorites": "🎯 {name} tani është Astrologu juaj Personal",
+  "removedFromFavorites": "✅ {name} u hoq nga të preferuarat",
+  "toggleFavoriteError": "Dështoi në përditësimin e statusit të preferuar",
+  "shareMessage": "{name}\n🎓 Arsimi: {education}\n📜 Kualifikimi: {qualification}\n⏳ Përvoja: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Nuk është dhënë",
+  "reviews": "({count} vlerësime)",
+  "specialties": "Specialitete",
+  "experience": "Përvoja",
+  "qualification": "Kualifikimi",
+  "education": "Arsimi",
+  "recoveryTips": "• Bëni një pamje të ekranit të këtij informacioni\n• Ruajeni në një vend të sigurt\n• Mos e ndani me askënd\n• Kjo do të shfaqet vetëm një herë"
+}

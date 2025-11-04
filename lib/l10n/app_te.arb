@@ -1,0 +1,439 @@
+{
+  "@@locale": "te",
+  "settingsTitle": "సెట్టింగులు",
+  "notificationSettings": "నోటిఫికేషన్ సెట్టింగ్‌లు",
+  "privacySettings": "ప్రైవసీ సెటింగ్స్",
+  "accountSettings": "ఖాతా సెట్టింగ్‌లు",
+  "languageSettings": "భాషా సెట్టింగ్‌లు",
+  "languageChanged": "భాష మారింది",
+  "existingUserButton": "నేను ఇప్పటికే ఉన్న వినియోగదారుని",
+  "chooseCountryTitle": "దేశాన్ని ఎంచుకోండి",
+  "yesText": "అవును",
+  "noText": "లేదు",
+  "appBarTitle": "ప్రొఫైల్ సెట్టింగ్‌లు",
+  "userIdLabel": "వినియోగదారు ఐడి *",
+  "nameLabel": "పేరు",
+  "birthCountryLabel": "జన్మ దేశం",
+  "birthCityLabel": "జన్మ నగరం",
+  "countrySelectionTitle": "మీ దేశాన్ని ఎంచుకోండి",
+  "maleLabel": "పురుషుడు",
+  "femaleLabel": "స్త్రీ",
+  "birthDateLabel": "పుట్టిన తేదీ",
+  "birthDatePlaceholder": "పుట్టిన తేదీని ఎంచుకోండి",
+  "birthTimeLabel": "పుట్టిన సమయం",
+  "birthTimePlaceholder": "జనన సమయాన్ని ఎంచుకోండి",
+  "saveProfileButton": "ప్రొఫైల్‌ను సేవ్ చేయి",
+  "noCitiesFound": "నగరాలు ఏవీ కనుగొనబడలేదు",
+  "cityPlaceholder": "{country} లో నగరాన్ని నమోదు చేయండి",
+  "countryFirstPlaceholder": "ముందుగా దేశాన్ని ఎంచుకోండి",
+  "versionHistoryTitle": "వెర్షన్ చరిత్ర",
+  "notSetText": "సెట్ చేయబడలేదు",
+  "nameHistory": "పేరు: {name}",
+  "cityHistory": "నగరం: {city}",
+  "countryHistory": "దేశం: {country}",
+  "genderHistory": "లింగం: {gender}",
+  "birthDateHistory": "పుట్టిన తేదీ: {date}",
+  "birthTimeHistory": "జనన సమయం: {time}",
+  "locationHistory": "స్థానం: {latitude}, {longitude}",
+  "timezoneHistory": "టైమ్‌జోన్: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "స్థితి: {state}",
+  "versionFromText": "{date}న నవీకరించబడింది",
+  "userIdRequired": "యూజర్ ఐడి అవసరం",
+  "profileSaved": "ప్రొఫైల్ విజయవంతంగా సేవ్ చేయబడింది",
+  "saveFailed": "ప్రొఫైల్‌ను సేవ్ చేయడంలో విఫలమైంది.",
+  "errorPrefix": "లోపం:",
+  "onboardingChooseLanguage": "మీ భాషను ఎంచుకోండి",
+  "onboardingChooseLanguageDesc": "కొనసాగించడానికి మీకు నచ్చిన భాషను ఎంచుకోండి.",
+  "onboardingWhatIsAstrology": "జ్యోతిష్యం అంటే ఏమిటి?",
+  "onboardingWhatIsAstrologyDesc": "జ్యోతిషశాస్త్రం అంటే ఖగోళ వస్తువుల అధ్యయనం...",
+  "onboardingWhyUseApp": "ఈ యాప్‌ను ఎందుకు ఉపయోగించాలి?",
+  "onboardingWhyUseAppDesc": "వ్యక్తిగతీకరించిన జాతకాలు, రోజువారీ అంచనాలు మరియు సమాచారంతో కూడిన నిర్ణయాలు తీసుకోవడానికి మార్గదర్శకత్వం పొందండి.",
+  "onboardingHowToUse": "ఈ యాప్‌ను ఎలా ఉపయోగించాలి?",
+  "onboardingHowToUseDesc": "సులభంగా నావిగేట్ చేయండి, రోజువారీ జాతకాలను తనిఖీ చేయండి మరియు ఖచ్చితమైన అంచనాల కోసం మీ ప్రొఫైల్‌ను నిర్వహించండి.",
+  "onboardingGetStarted": "ప్రారంభించడానికి",
+  "onboardingNewUser": "కొత్త వినియోగదారు",
+  "onboardingExistingUser": "ఇప్పటికే ఉన్న వినియోగదారు",
+  "onboardingBack": "వెనుకకు",
+  "onboardingNext": "తరువాతి",
+  "userIdNotFound": "యూజర్ ఐడి దొరకలేదు. దయచేసి లాగిన్ అవ్వండి లేదా మీ ప్రొఫైల్ సెట్ చేసుకోండి.",
+  "clearNotificationsTitle": "నోటిఫికేషన్‌లను క్లియర్ చేయి",
+  "clearNotificationsMessage": "మీరు ఖచ్చితంగా అన్ని నోటిఫికేషన్‌లను క్లియర్ చేయాలనుకుంటున్నారా?",
+  "clearNotificationsSuccess": "అన్ని నోటిఫికేషన్‌లు విజయవంతంగా క్లియర్ చేయబడ్డాయి.",
+  "clearHoroscopeTitle": "స్పష్టమైన జాతకం",
+  "clearHoroscopeMessage": "మీరు మీ జాతక డేటాను ఖచ్చితంగా క్లియర్ చేయాలనుకుంటున్నారా?",
+  "clearHoroscopeSuccess": "జాతకం విజయవంతంగా క్లియర్ చేయబడింది.",
+  "clearChatTitle": "చాట్ చరిత్రను క్లియర్ చేయి",
+  "clearChatMessage": "మీరు మీ చాట్ హిస్టరీ మొత్తాన్ని తొలగించాలనుకుంటున్నారా?",
+  "clearChatLocal": "స్థానికంగా చాట్ క్లియర్ చేయబడింది.",
+  "deleteAccountTitle": "ఖాతాను తొలగించండి",
+  "deleteAccountMessage": "మీరు మీ ఖాతాను ఖచ్చితంగా తొలగించాలనుకుంటున్నారా? ఇది మీ చాట్ చరిత్ర మరియు నోటిఫికేషన్‌లన్నింటినీ కూడా క్లియర్ చేస్తుంది.",
+  "deleteAccountSuccess": "మీ ఖాతా మరియు దానిలోని మొత్తం డేటా తొలగించబడ్డాయి.",
+  "deleteAccountError": "ఖాతాను తొలగించడంలో లోపం ఏర్పడింది",
+  "logoutTitle": "లాగ్అవుట్",
+  "logoutMessage": "మీరు ఖచ్చితంగా లాగ్ అవుట్ చేయాలనుకుంటున్నారా?",
+  "termsPrivacyTitle": "నిబంధనలు & గోప్యత",
+  "privacyPolicyTitle": "గోప్యతా విధానం",
+  "termsConditionsTitle": "నిబంధనలు & షరతులు",
+  "dataControlTitle": "డేటా నియంత్రణ",
+  "cancelButton": "రద్దు చేయి",
+  "confirmButton": "నిర్ధారించండి",
+  "clearQuestionsSuccess": "అన్ని ప్రశ్నలు విజయవంతంగా తొలగించబడ్డాయి.",
+  "yoginiLabel": "యోగిని",
+  "lordLabel": "ప్రభువు",
+  "startLabel": "ప్రారంభించండి",
+  "recoverAccount": "ఖాతాను పునరుద్ధరించండి",
+  "endLabel": "ముగింపు",
+  "startDateLabel": "ప్రారంభ తేదీ",
+  "endDateLabel": "ముగింపు తేదీ",
+  "notAvailable": "అందుబాటులో లేదు",
+  "noData": "డేటా లేదు",
+  "unknownError": "తెలియని లోపం",
+  "retryButton": "మళ్ళీ ప్రయత్నించండి",
+  "kundaliGeneratorTitle": "కుండలి జనరేటర్",
+  "natalChartTitle": "జన్మ నక్షత్రం",
+  "lagnaLabel": "లగ్నము",
+  "rashiLabel": "రాశి",
+  "ascDegreeLabel": "అసెన్డెంట్ డిగ్రీ",
+  "vimshottariDashaTitle": "వింషోత్తరి దశ",
+  "yoginiDashaTitle": "యోగిని దశ",
+  "unknown": "తెలియదు",
+  "clearHoroscope": "స్పష్టమైన జాతకం",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "నోటిఫికేషన్‌లను క్లియర్ చేయి",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "చాట్ చరిత్రను క్లియర్ చేయి",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "లాగ్అవుట్",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "ఖాతాను తొలగించండి",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "అన్ని ఫీల్డ్‌లు తప్పనిసరి.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "ఖాతా విజయవంతంగా పునరుద్ధరించబడింది.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "పునరుద్ధరణ విఫలమైంది. మీ సమాచారాన్ని తనిఖీ చేయండి.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "రికవరీ రహస్యం:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "మా గురించి",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "మా కంపెనీ గురించి",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "మా వినియోగదారులకు ఉత్తమ జ్యోతిషశాస్త్ర అనుభవాన్ని అందించడానికి మేము కట్టుబడి ఉన్నాము.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "మా లక్ష్యం",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "వినియోగదారులు తమ జీవితాల్లో సమాచారంతో కూడిన నిర్ణయాలు తీసుకోవడంలో సహాయపడటానికి ఖచ్చితమైన మరియు వ్యక్తిగతీకరించిన జ్యోతిషశాస్త్ర అంతర్దృష్టులను అందించడానికి.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "మా దృష్టి",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "సాంకేతికత మరియు ప్రాచీన జ్ఞానాన్ని కలిపి అత్యంత విశ్వసనీయ జ్యోతిషశాస్త్ర వేదికగా మారడం.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "మా విలువలు",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "సమగ్రత, ఖచ్చితత్వం, వినియోగదారు కేంద్రీకృత రూపకల్పన మరియు నిరంతర ఆవిష్కరణ.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "మమ్మల్ని సంప్రదించండి",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "ఇమెయిల్: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "వెబ్‌సైట్: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "కస్టమర్ మద్దతు",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "మేము సహాయం చేయడానికి ఇక్కడ ఉన్నాము",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "దిగువన ఉన్న ఫారమ్ నింపండి, మా మద్దతు బృందం వీలైనంత త్వరగా మిమ్మల్ని సంప్రదిస్తుంది.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "మీ పేరు",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "మీ ఇమెయిల్",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "సందేశం",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "మీ ఇమెయిల్‌ను నమోదు చేయండి",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "చెల్లుబాటు అయ్యే ఇమెయిల్ చిరునామాను నమోదు చేయండి",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "{fieldName} ఎంటర్ చేయండి",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "పంపండి",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "పంపుతోంది...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ ఇమెయిల్ విజయవంతంగా పంపబడింది!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ ఇమెయిల్ పంపడంలో విఫలమైంది",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "ఆస్ట్రో నిఘంటువు",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "శోధన పదాలు...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "పదాలు కనుగొనబడలేదు",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "ప్రశ్నలు కొనండి",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "వినియోగదారు ప్రామాణీకరించబడలేదు",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "స్టోర్ డేటాను లోడ్ చేయడంలో విఫలమైంది.",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "ప్రామాణీకరణ టోకెన్ లేదు",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "ఆస్ట్రో చాట్ యాప్",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ చెల్లింపు విజయవంతమైంది! ప్రశ్న పంపబడింది",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ చెల్లింపు విఫలమైంది: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "మీ బ్యాలెన్స్",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} ప్రశ్నలు",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "అందుబాటులో ఉన్న ఆఫర్లు",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} ప్రశ్న",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "కొనుగోలు",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 రోజువారీ జాతకం",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "యూజర్ ఐడి లేదు.",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "జాతకాలను పొందడంలో విఫలమైంది",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "జాతకం దొరకలేదు.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "సంతకం చేయండి",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "ఈరోజు",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "నిన్న",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "ఈ వారం",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "గత నెల",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "చాట్",
+  "typeYourQuestionHint": "మీ ప్రశ్నను టైప్ చేయండి...",
+  "paymentRequired": "చెల్లింపు అవసరం",
+  "paymentRequiredMessage": "మీరు మీ ఉచిత ప్రశ్నలను ఉపయోగించారు. కొనసాగించడానికి ₹50 చెల్లించండి.",
+  "payNowButton": "ఇప్పుడే చెల్లించండి",
+  "freeQuestionsRemaining": "{count} ఇంకా ఉచిత ప్రశ్నలు మిగిలి ఉన్నాయి",
+  "paidQuestionsRemaining": "{count} చెల్లింపు ప్రశ్నలు మిగిలి ఉన్నాయి",
+  "thankYouFeedback": "మీ అభిప్రాయం తెలియచేసినందుకు ధన్యవాదాలు!",
+  "ratingSubmitted": "రేటింగ్ సమర్పించబడింది!",
+  "setUserIdFirst": "దయచేసి ముందుగా మీ యూజర్ ఐడిని సెట్ చేయండి.",
+  "failedToFetchPrevious": "మునుపటి ప్రశ్నలు మరియు సమాధానాలను పొందడంలో విఫలమైంది.",
+  "errorOccurred": "లోపం: {error}",
+  "drawerAstroProfile": "ఆస్ట్రో ప్రొఫైల్",
+  "drawerDailyHoroscope": "రోజువారీ జాతకం",
+  "drawerBuyQuestions": "ప్రశ్నలు కొనండి",
+  "drawerAstroDictionary": "ఆస్ట్రో నిఘంటువు",
+  "drawerSettings": "సెట్టింగులు",
+  "drawerCustomerSupport": "కస్టమర్ మద్దతు",
+  "drawerAbout": "మా గురించి",
+  "drawerProfileSettings": "ప్రొఫైల్ సెట్టింగ్‌లు",
+  "demoNotificationTitle": "🔔 డెమో నోటిఫికేషన్",
+  "demoNotificationBody": "ఇది మీ యాప్ నుండి వచ్చిన పరీక్ష నోటిఫికేషన్!",
+  "notificationsTitle": "నోటిఫికేషన్‌లు",
+  "noNotifications": "నోటిఫికేషన్‌లు లేవు",
+  "allTab": "అన్నీ",
+  "markAllAsRead": "అన్నీ చదివినట్లు గుర్తు పెట్టు",
+  "notificationMarkedRead": "నోటిఫికేషన్ చదివినట్లుగా గుర్తించబడింది",
+  "failedToLoadNotifications": "నోటిఫికేషన్‌లను లోడ్ చేయడంలో విఫలమైంది",
+  "failedToMarkRead": "చదివినట్లుగా గుర్తు పెట్టడంలో విఫలమైంది",
+  "failedToMarkAllRead": "అన్నీ చదివినట్లు గుర్తు పెట్టడంలో విఫలమైంది.",
+  "socketConnected": "సాకెట్ కనెక్ట్ చేయబడింది",
+  "socketDisconnected": "సాకెట్ డిస్‌కనెక్ట్ చేయబడింది",
+  "newNotificationReceived": "కొత్త నోటిఫికేషన్ అందింది",
+  "generalCategory": "జనరల్",
+  "horoscopeCategory": "జాతకం",
+  "chatCategory": "చాట్",
+  "systemCategory": "వ్యవస్థ",
+  "updateCategory": "నవీకరణలు",
+  "howToAskTitle": "ఎలా అడగాలి",
+  "noQuestionsAvailable": "ప్రశ్నలు అందుబాటులో లేవు",
+  "failedToLoadQuestions": "ప్రశ్నలను లోడ్ చేయడంలో విఫలమైంది",
+  "pullToRefresh": "రిఫ్రెష్ చేయడానికి లాగండి",
+  "careerCategory": "కెరీర్",
+  "loveCategory": "ప్రేమ & సంబంధాలు",
+  "healthCategory": "ఆరోగ్య",
+  "financeCategory": "ఫైనాన్స్",
+  "familyCategory": "కుటుంబం",
+  "educationCategory": "విద్య",
+  "travelCategory": "ప్రయాణం",
+  "spiritualCategory": "ఆధ్యాత్మికం",
+  "profileLoaded": "ప్రొఫైల్ విజయవంతంగా లోడ్ అయింది.",
+  "imageUploaded": "చిత్రం విజయవంతంగా అప్‌లోడ్ చేయబడింది",
+  "savedInformationConfirmation": "నేను ఈ సమాచారాన్ని సేవ్ చేసాను.",
+  "noHistoryAvailable": "చరిత్ర అందుబాటులో లేదు",
+  "missingUserIdError": "యూజర్ ఐడి అవసరం",
+  "networkError": "నెట్‌వర్క్ లోపం. దయచేసి మళ్ళీ ప్రయత్నించండి.",
+  "timeoutError": "అభ్యర్థన సమయం ముగిసింది",
+  "genericError": "ఏదో తప్పు జరిగింది.",
+  "reactionUpdateError": "ప్రతిస్పందనను నవీకరించడంలో విఫలమైంది",
+  "noSearchResults": "శోధన ఫలితాలు ఏవీ కనుగొనబడలేదు",
+  "clearSearch": "శోధనను క్లియర్ చేయి",
+  "resultsFound": "ఫలితాలు కనుగొనబడ్డాయి",
+  "recoverySecretHint": "కాపీ-పేస్ట్ పనిచేయకపోవచ్చు, మాన్యువల్‌గా టైప్ చేయండి",
+  "recoverAccountDescription": "మీ ఖాతాను పునరుద్ధరించడానికి ఈ దశలను అనుసరించండి.",
+  "processingLabel": "ప్రాసెస్ చేస్తోంది...",
+  "clearChatSuccess": "చాట్ విజయవంతంగా క్లియర్ చేయబడింది",
+  "notificationsEnabled": "నోటిఫికేషన్‌లు ప్రారంభించబడ్డాయి",
+  "notificationsDisabled": "నోటిఫికేషన్‌లు నిలిపివేయబడ్డాయి",
+  "securityNotice": "మీ డేటా సురక్షితంగా గుప్తీకరించబడింది మరియు నిల్వ చేయబడుతుంది",
+  "loading": "లోడ్ అవుతోంది...",
+  "selectLanguage": "భాషను ఎంచుకోండి",
+  "onboardingGetStartedDesc": "మీ భాషను ఎంచుకోవడం ద్వారా ప్రారంభించండి",
+  "accountRecoveryTitle": "🔐 ఖాతా రికవరీ వివరాలు",
+  "recoveryInstructions": "దయచేసి ఈ సమాచారాన్ని సురక్షితంగా సేవ్ చేయండి. మీ ఖాతాను పునరుద్ధరించడానికి మీకు ఇది అవసరం.",
+  "importantNotice": "⚠️ ముఖ్యమైనది:",
+  "astrologerProfileTitle": "జ్యోతిష్కుడి ప్రొఫైల్",
+  "personalAstrologer": "వ్యక్తిగత జ్యోతిష్కుడు",
+  "makePersonalAstrologer": "వ్యక్తిగత జ్యోతిష్కుడిని చేసుకోండి",
+  "favoriteDescription": "మీ ప్రశ్నలకు ఈ జ్యోతిష్కుడు ప్రాధాన్యత ఇస్తాడు. అందుబాటులో లేకపోతే, మరొక అర్హత కలిగిన జ్యోతిష్కుడు మీకు సహాయం చేస్తాడు.",
+  "educationQualifications": "విద్య & అర్హతలు",
+  "aboutSection": "మా గురించి",
+  "shareProfile": "ప్రొఫైల్‌ను షేర్ చేయండి",
+  "loadingAstrologer": "జ్యోతిష్కుల వివరాలను లోడ్ చేస్తోంది...",
+  "failedToLoadAstrologer": "జ్యోతిష్కుల వివరాలను లోడ్ చేయడంలో విఫలమైంది.",
+  "authenticationRequired": "ప్రామాణీకరణ అవసరం. దయచేసి లాగిన్ అవ్వండి.",
+  "securityCheckFailed": "భద్రతా తనిఖీ విఫలమైంది: {error}",
+  "addedToFavorites": "🎯 {name} ఇప్పుడు మీ వ్యక్తిగత జ్యోతిష్కుడు.",
+  "removedFromFavorites": "✅ ఇష్టమైన వాటి నుండి {name} తీసివేయబడింది",
+  "toggleFavoriteError": "ఇష్టమైన స్థితిని నవీకరించడంలో విఫలమైంది",
+  "shareMessage": "{name}\n🎓 విద్య: {education}\n📜 అర్హత: {qualification}\n⏳ అనుభవం: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "అందించబడలేదు",
+  "reviews": "({count} సమీక్షలు)",
+  "specialties": "ప్రత్యేకతలు",
+  "experience": "అనుభవం",
+  "qualification": "అర్హత",
+  "education": "విద్య",
+  "recoveryTips": "• ఈ సమాచారం యొక్క స్క్రీన్‌షాట్ తీసుకోండి\n• దీన్ని సురక్షితమైన స్థలంలో నిల్వ చేయండి\n• ఎవరితోనూ భాగస్వామ్యం చేయవద్దు\n• ఇది ఒక్కసారి మాత్రమే చూపబడుతుంది"
+}

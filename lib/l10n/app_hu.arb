@@ -1,0 +1,439 @@
+{
+  "@@locale": "hu",
+  "settingsTitle": "Beállítások",
+  "notificationSettings": "Értesítési beállítások",
+  "privacySettings": "Adatvédelmi beállítások",
+  "accountSettings": "Fiókbeállítások",
+  "languageSettings": "Nyelvi beállítások",
+  "languageChanged": "Nyelv megváltozott",
+  "existingUserButton": "Meglévő felhasználó vagyok",
+  "chooseCountryTitle": "Válasszon országot",
+  "yesText": "Igen",
+  "noText": "Nem",
+  "appBarTitle": "Profilbeállítások",
+  "userIdLabel": "Felhasználói azonosító *",
+  "nameLabel": "Név",
+  "birthCountryLabel": "Születési ország",
+  "birthCityLabel": "Születési város",
+  "countrySelectionTitle": "Válassza ki az országát",
+  "maleLabel": "Férfi",
+  "femaleLabel": "Női",
+  "birthDateLabel": "Születési dátum",
+  "birthDatePlaceholder": "Születési dátum kiválasztása",
+  "birthTimeLabel": "Születési idő",
+  "birthTimePlaceholder": "Születési idő kiválasztása",
+  "saveProfileButton": "Profil mentése",
+  "noCitiesFound": "Nem található város",
+  "cityPlaceholder": "Adja meg a várost ebben az országban: {country}",
+  "countryFirstPlaceholder": "Először válasszon országot",
+  "versionHistoryTitle": "Verzióelőzmények",
+  "notSetText": "Nincs beállítva",
+  "nameHistory": "Név: {name}",
+  "cityHistory": "Város: {city}",
+  "countryHistory": "Ország: {country}",
+  "genderHistory": "Nem: {gender}",
+  "birthDateHistory": "Születési dátum: {date}",
+  "birthTimeHistory": "Születési idő: {time}",
+  "locationHistory": "Helyszín: {latitude}, {longitude}",
+  "timezoneHistory": "Időzóna: GMT{offset}",
+  "dstHistory": "Nyári idő: {value}",
+  "stateHistory": "Állam: {state}",
+  "versionFromText": "Frissítve: {date}",
+  "userIdRequired": "Felhasználói azonosító megadása kötelező",
+  "profileSaved": "Profil sikeresen mentve",
+  "saveFailed": "Nem sikerült menteni a profilt",
+  "errorPrefix": "Hiba:",
+  "onboardingChooseLanguage": "Válassza ki a nyelvét",
+  "onboardingChooseLanguageDesc": "A folytatáshoz válassza ki a kívánt nyelvet.",
+  "onboardingWhatIsAstrology": "Mi az asztrológia?",
+  "onboardingWhatIsAstrologyDesc": "Az asztrológia az égitestek tanulmányozása...",
+  "onboardingWhyUseApp": "Miért érdemes ezt az alkalmazást használni?",
+  "onboardingWhyUseAppDesc": "Személyre szabott horoszkópokat, napi előrejelzéseket és útmutatást kaphatsz a megalapozott döntések meghozatalához.",
+  "onboardingHowToUse": "Hogyan kell használni ezt az alkalmazást?",
+  "onboardingHowToUseDesc": "Navigálj könnyedén, ellenőrizd a napi horoszkópokat, és kezeld a profilodat a pontos előrejelzésekért.",
+  "onboardingGetStarted": "Kezdés",
+  "onboardingNewUser": "Új felhasználó",
+  "onboardingExistingUser": "Meglévő felhasználó",
+  "onboardingBack": "Vissza",
+  "onboardingNext": "Következő",
+  "userIdNotFound": "Felhasználói azonosító nem található. Kérjük, jelentkezzen be, vagy állítsa be a profilját.",
+  "clearNotificationsTitle": "Értesítések törlése",
+  "clearNotificationsMessage": "Biztosan törölni szeretné az összes értesítést?",
+  "clearNotificationsSuccess": "Minden értesítés sikeresen törölve.",
+  "clearHoroscopeTitle": "Tiszta horoszkóp",
+  "clearHoroscopeMessage": "Biztosan törölni szeretnéd a horoszkópadataidat?",
+  "clearHoroscopeSuccess": "Horoszkóp sikeresen törölve.",
+  "clearChatTitle": "Csevegési előzmények törlése",
+  "clearChatMessage": "Biztosan törölni szeretnéd az összes csevegési előzményedet?",
+  "clearChatLocal": "A csevegés helyben törölve.",
+  "deleteAccountTitle": "Fiók törlése",
+  "deleteAccountMessage": "Biztosan törölni szeretnéd a fiókodat? Ezzel a csevegési előzményeidet és az értesítéseidet is törlöd.",
+  "deleteAccountSuccess": "A fiókját és az összes adatát eltávolítottuk.",
+  "deleteAccountError": "Hiba a fiók törlésekor",
+  "logoutTitle": "Kijelentkezés",
+  "logoutMessage": "Biztosan kijelentkezni szeretne?",
+  "termsPrivacyTitle": "Felhasználási feltételek és adatvédelem",
+  "privacyPolicyTitle": "Adatvédelmi irányelvek",
+  "termsConditionsTitle": "Felhasználási feltételek",
+  "dataControlTitle": "Adatkezelés",
+  "cancelButton": "Mégsem",
+  "confirmButton": "Megerősítés",
+  "clearQuestionsSuccess": "Minden kérdés sikeresen törölve.",
+  "yoginiLabel": "Jógini",
+  "lordLabel": "Lord",
+  "startLabel": "Indul",
+  "recoverAccount": "Fiók helyreállítása",
+  "endLabel": "Vége",
+  "startDateLabel": "Kezdő dátum",
+  "endDateLabel": "Befejezési dátum",
+  "notAvailable": "Nem elérhető",
+  "noData": "Nincsenek adatok",
+  "unknownError": "Ismeretlen hiba",
+  "retryButton": "Újrapróbálkozás",
+  "kundaliGeneratorTitle": "Kundali generátor",
+  "natalChartTitle": "Születési képlet",
+  "lagnaLabel": "Lagna",
+  "rashiLabel": "Rási",
+  "ascDegreeLabel": "Felemelkedő fokozat",
+  "vimshottariDashaTitle": "Vimshottari Dása",
+  "yoginiDashaTitle": "Jogini Dása",
+  "unknown": "Ismeretlen",
+  "clearHoroscope": "Tiszta horoszkóp",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Értesítések törlése",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Csevegési előzmények törlése",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Kijelentkezés",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Fiók törlése",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Minden mező kitöltése kötelező.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Fiók sikeresen helyreállítva.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "A helyreállítás sikertelen. Ellenőrizze az adatait.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Helyreállítási titok:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Rólunk",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Cégünkről",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Elkötelezettek vagyunk amellett, hogy a legjobb asztrológiai élményt nyújtsuk felhasználóink számára.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Küldetésünk",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Pontos és személyre szabott asztrológiai információk nyújtása, amelyek segítenek a felhasználóknak megalapozott döntéseket hozni az életükben.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Víziónk",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "A legmegbízhatóbb asztrológiai platformmá válni, ötvözve a technológiát és az ősi bölcsességet.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Értékeink",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Integritás, pontosság, felhasználóközpontú tervezés és folyamatos innováció.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Kapcsolat",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "E-mail: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Weboldal: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Ügyfélszolgálat",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Segítünk",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Töltse ki az alábbi űrlapot, és ügyfélszolgálatunk a lehető leghamarabb felveszi Önnel a kapcsolatot.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "A neved",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Az Ön e-mail címe",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Üzenet",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Add meg az e-mail címed",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Adjon meg egy érvényes e-mail címet",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "Írja be a {fieldName} mezőt.",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Elküld",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Küldés...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ E-mail sikeresen elküldve!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Nem sikerült elküldeni az e-mailt",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Asztro szótár",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Keresési kifejezések...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Nem található kifejezés",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Vásárlási kérdések",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "A felhasználó nincs hitelesítve",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Nem sikerült betölteni az áruház adatait",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Hiányzó hitelesítési token",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat alkalmazás",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Sikeres fizetés! Kérdés elküldve",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Fizetés sikertelen: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Az egyenleged",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Kérdések",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Elérhető ajánlatok",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Kérdés",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Vétel",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Napi horoszkóp",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Hiányzik a felhasználói azonosító",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Nem sikerült lekérni a horoszkópokat",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Nem található horoszkóp.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Jel",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Ma",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Tegnap",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Ez a hét",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Múlt hónap",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Csevegés",
+  "typeYourQuestionHint": "Írd be a kérdésedet...",
+  "paymentRequired": "Fizetés szükséges",
+  "paymentRequiredMessage": "Felhasználtad az ingyenes kérdéseidet. Fizess 50 ₹-t a folytatáshoz.",
+  "payNowButton": "Fizessen most",
+  "freeQuestionsRemaining": "{count} szabad kérdés maradt",
+  "paidQuestionsRemaining": "{count} fizetős kérdés maradt",
+  "thankYouFeedback": "Köszönjük a visszajelzését!",
+  "ratingSubmitted": "Értékelés elküldve!",
+  "setUserIdFirst": "Kérjük, először állítsa be a felhasználói azonosítóját",
+  "failedToFetchPrevious": "Nem sikerült lekérni a korábbi kérdéseket és válaszokat",
+  "errorOccurred": "Hiba: {error}",
+  "drawerAstroProfile": "Asztro profil",
+  "drawerDailyHoroscope": "Napi horoszkóp",
+  "drawerBuyQuestions": "Vásárlási kérdések",
+  "drawerAstroDictionary": "Asztro szótár",
+  "drawerSettings": "Beállítások",
+  "drawerCustomerSupport": "Ügyfélszolgálat",
+  "drawerAbout": "Körülbelül",
+  "drawerProfileSettings": "Profilbeállítások",
+  "demoNotificationTitle": "🔔 Demó értesítés",
+  "demoNotificationBody": "Ez egy tesztértesítés az alkalmazásodtól!",
+  "notificationsTitle": "Értesítések",
+  "noNotifications": "Nincsenek értesítések",
+  "allTab": "Minden",
+  "markAllAsRead": "Összes megjelölése olvasottként",
+  "notificationMarkedRead": "Értesítés megjelölve olvasottként",
+  "failedToLoadNotifications": "Nem sikerült betölteni az értesítéseket",
+  "failedToMarkRead": "Nem sikerült olvasottként megjelölni",
+  "failedToMarkAllRead": "Nem sikerült az összeset olvasottként megjelölni",
+  "socketConnected": "Aljzat csatlakoztatva",
+  "socketDisconnected": "Aljzat leválasztva",
+  "newNotificationReceived": "Új értesítés érkezett",
+  "generalCategory": "Általános",
+  "horoscopeCategory": "Horoszkóp",
+  "chatCategory": "Csevegés",
+  "systemCategory": "Rendszer",
+  "updateCategory": "Frissítések",
+  "howToAskTitle": "Hogyan kérdezzünk",
+  "noQuestionsAvailable": "Nincsenek elérhető kérdések",
+  "failedToLoadQuestions": "Nem sikerült betölteni a kérdéseket",
+  "pullToRefresh": "Húzza a frissítéshez",
+  "careerCategory": "Karrier",
+  "loveCategory": "Szerelem és kapcsolatok",
+  "healthCategory": "Egészség",
+  "financeCategory": "Pénzügy",
+  "familyCategory": "Család",
+  "educationCategory": "Oktatás",
+  "travelCategory": "Utazási",
+  "spiritualCategory": "Lelki",
+  "profileLoaded": "Profil sikeresen betöltve",
+  "imageUploaded": "Kép feltöltése sikeresen",
+  "savedInformationConfirmation": "Elmentettem ezt az információt",
+  "noHistoryAvailable": "Nincsenek elérhető előzmények",
+  "missingUserIdError": "Felhasználói azonosító megadása kötelező",
+  "networkError": "Hálózati hiba. Kérjük, próbálja újra.",
+  "timeoutError": "A kérés időtúllépést szenvedett",
+  "genericError": "Valami rosszul sült el",
+  "reactionUpdateError": "Nem sikerült frissíteni a reakciót",
+  "noSearchResults": "Nincsenek keresési eredmények",
+  "clearSearch": "Keresés törlése",
+  "resultsFound": "Találatok",
+  "recoverySecretHint": "A másolás-beillesztés nem biztos, hogy működik, gépelj be kézzel",
+  "recoverAccountDescription": "Kövesse ezeket a lépéseket fiókja helyreállításához",
+  "processingLabel": "Feldolgozás...",
+  "clearChatSuccess": "Csevegés sikeresen törölve",
+  "notificationsEnabled": "Értesítések engedélyezve",
+  "notificationsDisabled": "Értesítések letiltva",
+  "securityNotice": "Az adatait biztonságosan titkosítjuk és tároljuk",
+  "loading": "Terhelés...",
+  "selectLanguage": "Nyelv kiválasztása",
+  "onboardingGetStartedDesc": "Kezdje a nyelv kiválasztásával",
+  "accountRecoveryTitle": "🔐 Fiók-helyreállítási részletek",
+  "recoveryInstructions": "Kérjük, őrizze meg ezeket az információkat biztonságosan. Szüksége lesz rájuk fiókja helyreállításához.",
+  "importantNotice": "⚠️ Fontos:",
+  "astrologerProfileTitle": "Asztrológus profilja",
+  "personalAstrologer": "Személyes asztrológus",
+  "makePersonalAstrologer": "Személyes asztrológus létrehozása",
+  "favoriteDescription": "Kérdéseidet ez az asztrológus fogja elsőbbséggel intézni. Ha nem elérhető, egy másik képzett asztrológus fog segíteni.",
+  "educationQualifications": "Oktatás és képesítések",
+  "aboutSection": "Körülbelül",
+  "shareProfile": "Profil megosztása",
+  "loadingAstrologer": "Asztrológus adatainak betöltése...",
+  "failedToLoadAstrologer": "Nem sikerült betölteni az asztrológus adatait",
+  "authenticationRequired": "Hitelesítés szükséges. Kérjük, jelentkezzen be.",
+  "securityCheckFailed": "Biztonsági ellenőrzés sikertelen: {error}",
+  "addedToFavorites": "🎯 {name} mostantól a személyes asztrológusod",
+  "removedFromFavorites": "✅ Eltávolította a(z) {name} elemet a kedvencek közül",
+  "toggleFavoriteError": "Nem sikerült frissíteni a kedvenc állapotot",
+  "shareMessage": "{name}\n🎓 Végzettség: {education}\n📜 Végzettség: {qualification}\n⏳ Tapasztalat: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Nincs megadva",
+  "reviews": "({count} értékelés)",
+  "specialties": "Specialitások",
+  "experience": "Tapasztalat",
+  "qualification": "Képesítés",
+  "education": "Oktatás",
+  "recoveryTips": "• Készítsen képernyőképet erről az információról\n• Tárolja biztonságos helyen\n• Ne ossza meg senkivel\n• Ez csak egyszer jelenik meg"
+}

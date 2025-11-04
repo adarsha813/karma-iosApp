@@ -1,0 +1,439 @@
+{
+  "@@locale": "mn",
+  "settingsTitle": "Тохиргоо",
+  "notificationSettings": "Мэдэгдлийн тохиргоо",
+  "privacySettings": "Нууцлалын тохиргоо",
+  "accountSettings": "Бүртгэлийн тохиргоо",
+  "languageSettings": "Хэлний тохиргоо",
+  "languageChanged": "Хэл өөрчлөгдсөн",
+  "existingUserButton": "Би одоо байгаа хэрэглэгч",
+  "chooseCountryTitle": "Улсаа сонгоно уу",
+  "yesText": "Тиймээ",
+  "noText": "Үгүй",
+  "appBarTitle": "Профайлын тохиргоо",
+  "userIdLabel": "Хэрэглэгчийн ID *",
+  "nameLabel": "Нэр",
+  "birthCountryLabel": "Төрсөн улс",
+  "birthCityLabel": "Төрсөн хот",
+  "countrySelectionTitle": "Улсаа сонго",
+  "maleLabel": "Эрэгтэй",
+  "femaleLabel": "Эмэгтэй",
+  "birthDateLabel": "Төрсөн огноо",
+  "birthDatePlaceholder": "Төрсөн огноог сонгоно уу",
+  "birthTimeLabel": "Төрсөн цаг",
+  "birthTimePlaceholder": "Төрсөн цагийг сонгоно уу",
+  "saveProfileButton": "Профайлыг хадгалах",
+  "noCitiesFound": "Хот олдсонгүй",
+  "cityPlaceholder": "{country}-д хотыг оруулна уу",
+  "countryFirstPlaceholder": "Эхлээд улсаа сонгоно уу",
+  "versionHistoryTitle": "Хувилбарын түүх",
+  "notSetText": "Тохируулаагүй",
+  "nameHistory": "Нэр: {name}",
+  "cityHistory": "Хот: {city}",
+  "countryHistory": "Улс: {country}",
+  "genderHistory": "Хүйс: {gender}",
+  "birthDateHistory": "Төрсөн огноо: {date}",
+  "birthTimeHistory": "Төрсөн цаг: {time}",
+  "locationHistory": "Байршил: {latitude}, {longitude}",
+  "timezoneHistory": "Цагийн бүс: GMT{offset}",
+  "dstHistory": "DST: {value}",
+  "stateHistory": "Төлөв: {state}",
+  "versionFromText": "{date}-д шинэчлэгдсэн",
+  "userIdRequired": "Хэрэглэгчийн ID шаардлагатай",
+  "profileSaved": "Профайлыг амжилттай хадгаллаа",
+  "saveFailed": "Профайлыг хадгалж чадсангүй",
+  "errorPrefix": "Алдаа:",
+  "onboardingChooseLanguage": "Хэлээ сонго",
+  "onboardingChooseLanguageDesc": "Үргэлжлүүлэхийн тулд хүссэн хэлээ сонгоно уу.",
+  "onboardingWhatIsAstrology": "Astrology гэж юу вэ?",
+  "onboardingWhatIsAstrologyDesc": "Астрологи бол тэнгэрийн биетүүдийг судалдаг...",
+  "onboardingWhyUseApp": "Яагаад энэ програмыг ашиглах вэ?",
+  "onboardingWhyUseAppDesc": "Мэдээлэлтэй шийдвэр гаргахын тулд хувийн зурхай, өдөр тутмын таамаглал, удирдамжийг аваарай.",
+  "onboardingHowToUse": "Энэ програмыг хэрхэн ашиглах вэ?",
+  "onboardingHowToUseDesc": "Хялбар чиглүүлж, өдөр тутмын зурхайг шалгаж, үнэн зөв таамаглал гаргахын тулд профайлаа удирдаарай.",
+  "onboardingGetStarted": "Эхлэх",
+  "onboardingNewUser": "Шинэ хэрэглэгч",
+  "onboardingExistingUser": "Одоо байгаа хэрэглэгч",
+  "onboardingBack": "Буцах",
+  "onboardingNext": "Дараа нь",
+  "userIdNotFound": "Хэрэглэгчийн ID олдсонгүй. Нэвтрэх эсвэл профайлаа тохируулна уу.",
+  "clearNotificationsTitle": "Мэдэгдлийг арилгах",
+  "clearNotificationsMessage": "Та бүх мэдэгдлийг устгахдаа итгэлтэй байна уу?",
+  "clearNotificationsSuccess": "Бүх мэдэгдлийг амжилттай арилгалаа.",
+  "clearHoroscopeTitle": "Тодорхой зурхай",
+  "clearHoroscopeMessage": "Та зурхайн мэдээллээ устгахдаа итгэлтэй байна уу?",
+  "clearHoroscopeSuccess": "Зурхайг амжилттай арилгалаа.",
+  "clearChatTitle": "Чатын түүхийг арилгах",
+  "clearChatMessage": "Та бүх чатын түүхээ устгахдаа итгэлтэй байна уу?",
+  "clearChatLocal": "Орон нутгийн чатыг устгасан.",
+  "deleteAccountTitle": "Бүртгэл устгах",
+  "deleteAccountMessage": "Та бүртгэлээ устгахдаа итгэлтэй байна уу? Энэ нь таны бүх чатын түүх болон мэдэгдлийг арилгах болно.",
+  "deleteAccountSuccess": "Таны бүртгэл болон бүх өгөгдлийг устгасан.",
+  "deleteAccountError": "Бүртгэлийг устгахад алдаа гарлаа",
+  "logoutTitle": "Гарах",
+  "logoutMessage": "Та гарахдаа итгэлтэй байна уу?",
+  "termsPrivacyTitle": "Нөхцөл ба нууцлал",
+  "privacyPolicyTitle": "Нууцлалын бодлого",
+  "termsConditionsTitle": "Нөхцөл ба нөхцөл",
+  "dataControlTitle": "Өгөгдлийн хяналт",
+  "cancelButton": "Цуцлах",
+  "confirmButton": "Баталгаажуулах",
+  "clearQuestionsSuccess": "Бүх асуултыг амжилттай устгасан.",
+  "yoginiLabel": "Йогини",
+  "lordLabel": "Эзэн",
+  "startLabel": "Эхлэх",
+  "recoverAccount": "Бүртгэл сэргээх",
+  "endLabel": "Төгсгөл",
+  "startDateLabel": "Эхлэх огноо",
+  "endDateLabel": "Дуусах огноо",
+  "notAvailable": "Боломжгүй",
+  "noData": "Өгөгдөл алга",
+  "unknownError": "Үл мэдэгдэх алдаа",
+  "retryButton": "Дахин оролдоно уу",
+  "kundaliGeneratorTitle": "Кундали генератор",
+  "natalChartTitle": "Натал график",
+  "lagnaLabel": "Лагна",
+  "rashiLabel": "Раши",
+  "ascDegreeLabel": "Өсөх зэрэг",
+  "vimshottariDashaTitle": "Вимшоттари Даша",
+  "yoginiDashaTitle": "Йогини Даша",
+  "unknown": "Тодорхойгүй",
+  "clearHoroscope": "Тодорхой зурхай",
+  "@clearHoroscope": {
+    "description": "Title for clear horoscope option"
+  },
+  "clearNotifications": "Мэдэгдлийг арилгах",
+  "@clearNotifications": {
+    "description": "Title for clear notifications option"
+  },
+  "clearChatHistory": "Чатын түүхийг арилгах",
+  "@clearChatHistory": {
+    "description": "Title for clear chat history option"
+  },
+  "logout": "Гарах",
+  "@logout": {
+    "description": "Title for logout option"
+  },
+  "deleteAccount": "Бүртгэл устгах",
+  "@deleteAccount": {
+    "description": "Title for delete account option"
+  },
+  "allFieldsRequired": "Бүх талбарыг оруулах шаардлагатай.",
+  "@allFieldsRequired": {
+    "description": "Error message when fields are empty"
+  },
+  "accountRecoveredSuccess": "Бүртгэлийг амжилттай сэргээлээ.",
+  "@accountRecoveredSuccess": {
+    "description": "Success message for account recovery"
+  },
+  "recoveryFailed": "Сэргээх ажиллагаа амжилтгүй боллоо. Мэдээллээ шалгана уу.",
+  "@recoveryFailed": {
+    "description": "Error message for failed recovery"
+  },
+  "recoverySecretLabel": "Сэргээх нууц:",
+  "@recoverySecretLabel": {
+    "description": "Label for recovery secret input field"
+  },
+  "aboutUsTitle": "Бидний тухай",
+  "@aboutUsTitle": {
+    "description": "Title for About Us page"
+  },
+  "aboutOurCompany": "Манай компанийн тухай",
+  "@aboutOurCompany": {
+    "description": "Header title for company information"
+  },
+  "aboutCompanyDescription": "Бид хэрэглэгчиддээ зурхайн шилдэг туршлагыг хүргэхийг зорьж байна.",
+  "@aboutCompanyDescription": {
+    "description": "Description of company commitment"
+  },
+  "ourMission": "Бидний эрхэм зорилго",
+  "@ourMission": {
+    "description": "Title for mission section"
+  },
+  "missionDescription": "Хэрэглэгчдэд амьдралдаа мэдээлэлтэй шийдвэр гаргахад нь туслахын тулд үнэн зөв, хувь хүний зурхайн ойлголтыг өгөх.",
+  "@missionDescription": {
+    "description": "Description of company mission"
+  },
+  "ourVision": "Бидний Алсын хараа",
+  "@ourVision": {
+    "description": "Title for vision section"
+  },
+  "visionDescription": "Технологи болон эртний мэргэн ухааныг хослуулсан хамгийн найдвартай зурхайн платформ болох.",
+  "@visionDescription": {
+    "description": "Description of company vision"
+  },
+  "ourValues": "Бидний үнэт зүйлс",
+  "@ourValues": {
+    "description": "Title for values section"
+  },
+  "valuesDescription": "Шударга байдал, нарийвчлал, хэрэглэгчдэд чиглэсэн дизайн, тасралтгүй шинэчлэл.",
+  "@valuesDescription": {
+    "description": "Description of company values"
+  },
+  "contactUs": "Бидэнтэй холбоо барина уу",
+  "@contactUs": {
+    "description": "Title for contact section"
+  },
+  "contactEmail": "Имэйл: support@yourcompany.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  "contactWebsite": "Вэбсайт: www.yourcompany.com",
+  "@contactWebsite": {
+    "description": "Contact website URL"
+  },
+  "customerSupport": "Хэрэглэгчийн дэмжлэг",
+  "@customerSupport": {
+    "description": "Title for customer support page"
+  },
+  "supportHeroTitle": "Бид туслахаар ирлээ",
+  "@supportHeroTitle": {
+    "description": "Hero section title for support page"
+  },
+  "supportHeroDescription": "Доорх маягтыг бөглөнө үү, манай тусламжийн баг тантай аль болох хурдан холбогдох болно.",
+  "@supportHeroDescription": {
+    "description": "Hero section description for support page"
+  },
+  "yourName": "Таны нэр",
+  "@yourName": {
+    "description": "Label for name input field"
+  },
+  "yourEmail": "Таны имэйл",
+  "@yourEmail": {
+    "description": "Label for email input field"
+  },
+  "message": "Мессеж",
+  "@message": {
+    "description": "Label for message input field"
+  },
+  "enterEmail": "Имэйлээ оруулна уу",
+  "@enterEmail": {
+    "description": "Validation error for empty email"
+  },
+  "enterValidEmail": "Хүчинтэй имэйл хаяг оруулна уу",
+  "@enterValidEmail": {
+    "description": "Validation error for invalid email format"
+  },
+  "enterField": "{fieldName}-г оруулна уу",
+  "@enterField": {
+    "description": "Validation error for required fields"
+  },
+  "send": "Илгээх",
+  "@send": {
+    "description": "Send button text"
+  },
+  "sending": "Илгээж байна...",
+  "@sending": {
+    "description": "Send button text when sending"
+  },
+  "emailSentSuccess": "✅ Имэйлийг амжилттай илгээлээ!",
+  "@emailSentSuccess": {
+    "description": "Success message after sending email"
+  },
+  "emailSendFailed": "❌ Имэйл илгээж чадсангүй",
+  "@emailSendFailed": {
+    "description": "Error message when email fails to send"
+  },
+  "astroDictionaryTitle": "Astro толь бичиг",
+  "@astroDictionaryTitle": {
+    "description": "Title for astrology dictionary screen"
+  },
+  "searchTermsHint": "Хайлтын нэр томъёо...",
+  "@searchTermsHint": {
+    "description": "Hint text for search field in dictionary"
+  },
+  "noTermsFound": "Нөхцөл олдсонгүй",
+  "@noTermsFound": {
+    "description": "Message when no search results are found"
+  },
+  "buyQuestionsTitle": "Худалдан авах асуултууд",
+  "@buyQuestionsTitle": {
+    "description": "Title for question store screen"
+  },
+  "userNotAuthenticated": "Хэрэглэгч баталгаажаагүй байна",
+  "@userNotAuthenticated": {
+    "description": "Error message when user is not logged in"
+  },
+  "loadStoreDataFailed": "Дэлгүүрийн өгөгдлийг ачаалж чадсангүй",
+  "@loadStoreDataFailed": {
+    "description": "Error message when store data fails to load"
+  },
+  "missingAuthToken": "Баталгаажуулах токен дутуу байна",
+  "@missingAuthToken": {
+    "description": "Error message when authentication token is missing"
+  },
+  "merchantDisplayName": "Astro Chat програм",
+  "@merchantDisplayName": {
+    "description": "Merchant name for payment processing"
+  },
+  "paymentSuccessful": "✅ Төлбөр амжилттай боллоо! Асуулт илгээсэн",
+  "@paymentSuccessful": {
+    "description": "Success message after payment"
+  },
+  "paymentFailed": "❌ Төлбөр амжилтгүй болсон: {error}",
+  "@paymentFailed": {
+    "description": "Error message when payment fails"
+  },
+  "yourBalance": "Таны үлдэгдэл",
+  "@yourBalance": {
+    "description": "Label for user's question balance"
+  },
+  "questionsBalance": "{count} Асуултууд",
+  "@questionsBalance": {
+    "description": "Display user's question balance with count"
+  },
+  "availableOffers": "Боломжтой саналууд",
+  "@availableOffers": {
+    "description": "Title for available offers section"
+  },
+  "questionsCount": "{count} Асуулт",
+  "@questionsCount": {
+    "description": "Display question count with proper pluralization"
+  },
+  "buyButton": "Худалдан авах",
+  "@buyButton": {
+    "description": "Buy button text"
+  },
+  "dailyHoroscopeTitle": "🌟 Өдөр тутмын зурхай",
+  "@dailyHoroscopeTitle": {
+    "description": "Title for daily horoscope screen"
+  },
+  "userIdMissing": "Хэрэглэгчийн ID дутуу байна",
+  "@userIdMissing": {
+    "description": "Error message when user ID is not available"
+  },
+  "fetchHoroscopesFailed": "Зурхай дуудаж чадсангүй",
+  "@fetchHoroscopesFailed": {
+    "description": "Error message when horoscope fetch fails"
+  },
+  "noHoroscopeFound": "Зурхай олдсонгүй.",
+  "@noHoroscopeFound": {
+    "description": "Message when no horoscopes are available"
+  },
+  "signLabel": "Гарын үсэг зурах",
+  "@signLabel": {
+    "description": "Label for zodiac sign"
+  },
+  "todayLabel": "Өнөөдөр",
+  "@todayLabel": {
+    "description": "Label for today's horoscopes"
+  },
+  "yesterdayLabel": "Өчигдөр",
+  "@yesterdayLabel": {
+    "description": "Label for yesterday's horoscopes"
+  },
+  "thisWeekLabel": "Энэ долоо хоногт",
+  "@thisWeekLabel": {
+    "description": "Label for this week's horoscopes"
+  },
+  "lastMonthLabel": "Өнгөрсөн сард",
+  "@lastMonthLabel": {
+    "description": "Label for last month's horoscopes"
+  },
+  "chatTitle": "Чатлах",
+  "typeYourQuestionHint": "Асуултаа бичнэ үү...",
+  "paymentRequired": "Төлбөр хийх шаардлагатай",
+  "paymentRequiredMessage": "Та үнэгүй асуултуудаа ашигласан. Үргэлжлүүлэхийн тулд ₹50 төлнө үү.",
+  "payNowButton": "Одоо төл",
+  "freeQuestionsRemaining": "{count} үнэгүй асуултууд үлдсэн",
+  "paidQuestionsRemaining": "{count} төлбөртэй асуултууд үлдсэн",
+  "thankYouFeedback": "Санал хүсэлтээ өгсөнд баярлалаа!",
+  "ratingSubmitted": "Үнэлгээ өгсөн!",
+  "setUserIdFirst": "Эхлээд хэрэглэгчийн ID-аа тохируулна уу",
+  "failedToFetchPrevious": "Өмнөх асуулт, хариултыг дуудаж чадсангүй",
+  "errorOccurred": "Алдаа: {error}",
+  "drawerAstroProfile": "Астро профайл",
+  "drawerDailyHoroscope": "Өдөр тутмын зурхай",
+  "drawerBuyQuestions": "Худалдан авах асуултууд",
+  "drawerAstroDictionary": "Astro толь бичиг",
+  "drawerSettings": "Тохиргоо",
+  "drawerCustomerSupport": "Хэрэглэгчийн дэмжлэг",
+  "drawerAbout": "тухай",
+  "drawerProfileSettings": "Профайлын тохиргоо",
+  "demoNotificationTitle": "🔔 Демо мэдэгдэл",
+  "demoNotificationBody": "Энэ бол таны апп-аас ирсэн туршилтын мэдэгдэл юм!",
+  "notificationsTitle": "Мэдэгдэл",
+  "noNotifications": "Мэдэгдэл алга",
+  "allTab": "Бүгд",
+  "markAllAsRead": "Бүгдийг уншсан гэж тэмдэглэ",
+  "notificationMarkedRead": "Мэдэгдэл уншсан гэж тэмдэглэгдсэн",
+  "failedToLoadNotifications": "Мэдэгдлийг ачаалж чадсангүй",
+  "failedToMarkRead": "Уншсан гэж тэмдэглэж чадсангүй",
+  "failedToMarkAllRead": "Бүгдийг уншсан гэж тэмдэглэж чадсангүй",
+  "socketConnected": "Сокет холбогдсон",
+  "socketDisconnected": "Сокет салгагдсан",
+  "newNotificationReceived": "Шинэ мэдэгдэл хүлээн авлаа",
+  "generalCategory": "Генерал",
+  "horoscopeCategory": "Зурхай",
+  "chatCategory": "Чатлах",
+  "systemCategory": "Систем",
+  "updateCategory": "Шинэчлэлтүүд",
+  "howToAskTitle": "Хэрхэн асуух вэ",
+  "noQuestionsAvailable": "Асуулт байхгүй",
+  "failedToLoadQuestions": "Асуултуудыг ачаалж чадсангүй",
+  "pullToRefresh": "Дахин сэргээхийн тулд татна уу",
+  "careerCategory": "Карьер",
+  "loveCategory": "Хайр ба харилцаа",
+  "healthCategory": "Эрүүл мэнд",
+  "financeCategory": "Санхүү",
+  "familyCategory": "Гэр бүл",
+  "educationCategory": "Боловсрол",
+  "travelCategory": "Аялал",
+  "spiritualCategory": "Сүнслэг",
+  "profileLoaded": "Профайлыг амжилттай ачааллаа",
+  "imageUploaded": "Зургийг амжилттай байршууллаа",
+  "savedInformationConfirmation": "Би энэ мэдээллийг хадгалсан",
+  "noHistoryAvailable": "Түүх боломжгүй",
+  "missingUserIdError": "Хэрэглэгчийн ID шаардлагатай",
+  "networkError": "Сүлжээний алдаа. Дахин оролдоно уу.",
+  "timeoutError": "Хүсэлтийн хугацаа хэтэрсэн",
+  "genericError": "Ямар нэг алдаа гарлаа",
+  "reactionUpdateError": "Хариултыг шинэчилж чадсангүй",
+  "noSearchResults": "Хайлтын илэрц олдсонгүй",
+  "clearSearch": "Хайлтыг арилгах",
+  "resultsFound": "Үр дүн олдсон",
+  "recoverySecretHint": "Хуулж буулгах нь ажиллахгүй байж магадгүй, гараар бичнэ үү",
+  "recoverAccountDescription": "Бүртгэлээ сэргээхийн тулд эдгээр алхмуудыг дагана уу",
+  "processingLabel": "Боловсруулж байна...",
+  "clearChatSuccess": "Чатыг амжилттай арилгалаа",
+  "notificationsEnabled": "Мэдэгдэл идэвхжсэн",
+  "notificationsDisabled": "Мэдэгдлийг идэвхгүй болгосон",
+  "securityNotice": "Таны өгөгдлийг аюулгүйгээр шифрлэж, хадгална",
+  "loading": "Ачааж байна...",
+  "selectLanguage": "Хэл сонгоно уу",
+  "onboardingGetStartedDesc": "Хэлээ сонгоод эхэл",
+  "accountRecoveryTitle": "🔐 Бүртгэл сэргээх дэлгэрэнгүй мэдээлэл",
+  "recoveryInstructions": "Энэ мэдээллийг найдвартай хадгална уу. Бүртгэлээ сэргээхийн тулд танд хэрэгтэй болно.",
+  "importantNotice": "⚠️ Чухал:",
+  "astrologerProfileTitle": "Зурхайчийн танилцуулга",
+  "personalAstrologer": "Хувийн зурхайч",
+  "makePersonalAstrologer": "Хувийн зурхайч болго",
+  "favoriteDescription": "Таны асуултууд энэ зурхайчд нэн тэргүүнд тавигдах болно. Хэрэв боломжгүй бол өөр мэргэшсэн зурхайч танд туслах болно.",
+  "educationQualifications": "Боловсрол ба мэргэшил",
+  "aboutSection": "тухай",
+  "shareProfile": "Профайл хуваалцах",
+  "loadingAstrologer": "Зурхайчийн дэлгэрэнгүй мэдээллийг ачаалж байна...",
+  "failedToLoadAstrologer": "Зурхайчийн дэлгэрэнгүй мэдээллийг ачаалж чадсангүй",
+  "authenticationRequired": "Баталгаажуулалт шаардлагатай. Та нэвтэрнэ үү.",
+  "securityCheckFailed": "Аюулгүй байдлын шалгалт амжилтгүй боллоо: {error}",
+  "addedToFavorites": "🎯 {name} одоо таны хувийн зурхайч боллоо",
+  "removedFromFavorites": "✅ {name}-г дуртай зүйлсээс хассан",
+  "toggleFavoriteError": "Дуртай статусаа шинэчилж чадсангүй",
+  "shareMessage": "{name}\n🎓 Боловсрол: {education}\n📜 Мэргэшсэн байдал: {qualification}\n⏳ Туршлага: {experience}",
+  "@shareMessage": {
+    "description": "Message text when sharing astrologer profile",
+    "placeholders": {
+      "name": {},
+      "education": {},
+      "qualification": {},
+      "experience": {}
+    }
+  },
+  "notProvided": "Өгөгдөөгүй",
+  "reviews": "({count} шүүмж)",
+  "specialties": "Мэргэжил",
+  "experience": "Туршлага",
+  "qualification": "Мэргэшсэн байдал",
+  "education": "Боловсрол",
+  "recoveryTips": "• Энэ мэдээллийн дэлгэцийн агшинг авна уу\n• Аюулгүй газар хадгална\n• Хэнтэй ч бүү хуваалц\n• Үүнийг зөвхөн нэг удаа харуулах болно"
+}
