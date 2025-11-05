@@ -259,226 +259,166 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     ];
   }
 
+  // In _OnboardingScreenState class
   Widget _buildLanguageSelection(
     ProfileProvider profileProvider,
     LocaleProvider localeProvider,
     AppLocalizations l10n,
   ) {
-    final List<Map<String, dynamic>> allLanguages = [
-      {'name': 'English', 'value': 'en'},
-      {'name': 'Afrikaans', 'value': 'af'},
-      {'name': 'Albanian', 'value': 'sq'},
-      {'name': 'Amharic', 'value': 'am'},
-      {'name': 'Arabic', 'value': 'ar'},
-      {'name': 'Armenian', 'value': 'hy'},
-      {'name': 'Azerbaijani', 'value': 'az'},
-      {'name': 'Basque', 'value': 'eu'},
-      {'name': 'Belarusian', 'value': 'be'},
-      {'name': 'Bengali', 'value': 'bn'},
-      {'name': 'Bosnian', 'value': 'bs'},
-      {'name': 'Bulgarian', 'value': 'bg'},
-      {'name': 'Catalan', 'value': 'ca'},
-      {'name': 'Cebuano', 'value': 'ceb'},
-      {'name': 'Chinese (Simplified)', 'value': 'zh'},
-      {'name': 'Chinese (Traditional)', 'value': 'zh-TW'},
-      {'name': 'Corsican', 'value': 'co'},
-      {'name': 'Croatian', 'value': 'hr'},
-      {'name': 'Czech', 'value': 'cs'},
-      {'name': 'Danish', 'value': 'da'},
-      {'name': 'Dutch', 'value': 'nl'},
-      {'name': 'Esperanto', 'value': 'eo'},
-      {'name': 'Estonian', 'value': 'et'},
-      {'name': 'Finnish', 'value': 'fi'},
-      {'name': 'French', 'value': 'fr'},
-      {'name': 'Frisian', 'value': 'fy'},
-      {'name': 'Galician', 'value': 'gl'},
-      {'name': 'Georgian', 'value': 'ka'},
-      {'name': 'German', 'value': 'de'},
-      {'name': 'Greek', 'value': 'el'},
-      {'name': 'Gujarati', 'value': 'gu'},
-      {'name': 'Haitian Creole', 'value': 'ht'},
-      {'name': 'Hausa', 'value': 'ha'},
-      {'name': 'Hawaiian', 'value': 'haw'},
-      {'name': 'Hebrew', 'value': 'he'},
-      {'name': 'Hindi', 'value': 'hi'},
-      {'name': 'Hmong', 'value': 'hmn'},
-      {'name': 'Hungarian', 'value': 'hu'},
-      {'name': 'Icelandic', 'value': 'is'},
-      {'name': 'Igbo', 'value': 'ig'},
-      {'name': 'Indonesian', 'value': 'id'},
-      {'name': 'Irish', 'value': 'ga'},
-      {'name': 'Italian', 'value': 'it'},
-      {'name': 'Japanese', 'value': 'ja'},
-      {'name': 'Javanese', 'value': 'jv'},
-      {'name': 'Kannada', 'value': 'kn'},
-      {'name': 'Kazakh', 'value': 'kk'},
-      {'name': 'Khmer', 'value': 'km'},
-      {'name': 'Kinyarwanda', 'value': 'rw'},
-      {'name': 'Korean', 'value': 'ko'},
-      {'name': 'Kurdish', 'value': 'ku'},
-      {'name': 'Kyrgyz', 'value': 'ky'},
-      {'name': 'Lao', 'value': 'lo'},
-      {'name': 'Latvian', 'value': 'lv'},
-      {'name': 'Lithuanian', 'value': 'lt'},
-      {'name': 'Luxembourgish', 'value': 'lb'},
-      {'name': 'Macedonian', 'value': 'mk'},
-      {'name': 'Malagasy', 'value': 'mg'},
-      {'name': 'Malay', 'value': 'ms'},
-      {'name': 'Malayalam', 'value': 'ml'},
-      {'name': 'Maltese', 'value': 'mt'},
-      {'name': 'Maori', 'value': 'mi'},
-      {'name': 'Marathi', 'value': 'mr'},
-      {'name': 'Mongolian', 'value': 'mn'},
-      {'name': 'Myanmar (Burmese)', 'value': 'my'},
-      {'name': 'Nepali', 'value': 'ne'},
-      {'name': 'Norwegian', 'value': 'no'},
-      {'name': 'Nyanja (Chichewa)', 'value': 'ny'},
-      {'name': 'Odia (Oriya)', 'value': 'or'},
-      {'name': 'Pashto', 'value': 'ps'},
-      {'name': 'Persian', 'value': 'fa'},
-      {'name': 'Polish', 'value': 'pl'},
-      {'name': 'Portuguese', 'value': 'pt'},
-      {'name': 'Punjabi', 'value': 'pa'},
-      {'name': 'Romanian', 'value': 'ro'},
-      {'name': 'Russian', 'value': 'ru'},
-      {'name': 'Samoan', 'value': 'sm'},
-      {'name': 'Scots Gaelic', 'value': 'gd'},
-      {'name': 'Serbian', 'value': 'sr'},
-      {'name': 'Sesotho', 'value': 'st'},
-      {'name': 'Shona', 'value': 'sn'},
-      {'name': 'Sindhi', 'value': 'sd'},
-      {'name': 'Sinhala', 'value': 'si'},
-      {'name': 'Slovak', 'value': 'sk'},
-      {'name': 'Slovenian', 'value': 'sl'},
-      {'name': 'Somali', 'value': 'so'},
-      {'name': 'Spanish', 'value': 'es'},
-      {'name': 'Sundanese', 'value': 'su'},
-      {'name': 'Swahili', 'value': 'sw'},
-      {'name': 'Swedish', 'value': 'sv'},
-      {'name': 'Tagalog (Filipino)', 'value': 'tl'},
-      {'name': 'Tajik', 'value': 'tg'},
-      {'name': 'Tamil', 'value': 'ta'},
-      {'name': 'Tatar', 'value': 'tt'},
-      {'name': 'Telugu', 'value': 'te'},
-      {'name': 'Thai', 'value': 'th'},
-      {'name': 'Turkish', 'value': 'tr'},
-      {'name': 'Turkmen', 'value': 'tk'},
-      {'name': 'Ukrainian', 'value': 'uk'},
-      {'name': 'Urdu', 'value': 'ur'},
-      {'name': 'Uyghur', 'value': 'ug'},
-      {'name': 'Uzbek', 'value': 'uz'},
-      {'name': 'Vietnamese', 'value': 'vi'},
-      {'name': 'Welsh', 'value': 'cy'},
-      {'name': 'Xhosa', 'value': 'xh'},
-      {'name': 'Yiddish', 'value': 'yi'},
-      {'name': 'Yoruba', 'value': 'yo'},
-      {'name': 'Zulu', 'value': 'zu'},
-    ];
+    final languages = localeProvider.getLanguagesWithSupportInfo();
 
-    return StatefulBuilder(
-      builder: (context, setState) {
-        final filteredLanguages =
-            allLanguages.where((lang) {
-              final query = _searchController.text.toLowerCase();
-              return lang['name'].toString().toLowerCase().contains(query) ||
-                  lang['value'].toString().toLowerCase().contains(query);
+    return Column(
+      children: [
+        const SizedBox(height: 16),
+        Text(
+          l10n.selectLanguage,
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: Colors.black87,
+          ),
+        ),
+        const SizedBox(height: 8),
+
+        // Info banner about language support
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(12),
+          margin: const EdgeInsets.only(bottom: 12),
+          decoration: BoxDecoration(
+            color: Colors.blue.shade50,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: Colors.blue.shade100),
+          ),
+          child: Row(
+            children: [
+              Icon(Icons.info_outline, color: Colors.blue.shade600, size: 16),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  'Some languages may show system elements in English',
+                  style: TextStyle(fontSize: 12, color: Colors.blue.shade800),
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        // Search bar
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child: TextField(
+            controller: _searchController,
+            decoration: InputDecoration(
+              hintText: 'Search languages...',
+              prefixIcon: const Icon(Icons.search),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 12.0),
+              isDense: true,
+            ),
+            onChanged: (value) => setState(() {}),
+          ),
+        ),
+
+        // Language list
+        Expanded(
+          child: _buildLanguageList(languages, profileProvider, localeProvider),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildLanguageList(
+    List<Map<String, dynamic>> languages,
+    ProfileProvider profileProvider,
+    LocaleProvider localeProvider,
+  ) {
+    final query = _searchController.text.toLowerCase();
+    final filteredLanguages =
+        query.isEmpty
+            ? languages
+            : languages.where((lang) {
+              final name = lang['name'].toString().toLowerCase();
+              final code = lang['code'].toString().toLowerCase();
+              return name.contains(query) || code.contains(query);
             }).toList();
 
-        return Column(
-          children: [
-            const SizedBox(height: 16),
-            Text(
-              l10n.selectLanguage,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: Colors.black87,
-              ),
-            ),
-            const SizedBox(height: 12),
-
-            // Search bar
-            Padding(
-              padding: const EdgeInsets.only(bottom: 8.0),
-              child: TextField(
-                controller: _searchController,
-                decoration: InputDecoration(
-                  hintText: 'Search languages...',
-                  prefixIcon: const Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 12.0),
-                  isDense: true,
+    return Card(
+      elevation: 2,
+      child:
+          filteredLanguages.isEmpty
+              ? Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Text(
+                  'No languages found',
+                  style: TextStyle(color: Colors.grey.shade600),
                 ),
-                onChanged: (value) => setState(() {}),
-              ),
-            ),
+              )
+              : ListView.builder(
+                shrinkWrap: true,
+                physics: const ClampingScrollPhysics(),
+                itemCount: filteredLanguages.length,
+                itemBuilder: (context, index) {
+                  final language = filteredLanguages[index];
+                  final isLast = index == filteredLanguages.length - 1;
+                  final hasMaterialSupport =
+                      language['hasMaterialSupport'] as bool;
 
-            // FIX: Use Expanded to take available space and handle keyboard
-            Expanded(
-              child: Card(
-                elevation: 2,
-                child:
-                    filteredLanguages.isEmpty
-                        ? Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Text(
-                            'No languages found',
-                            style: TextStyle(color: Colors.grey.shade600),
-                          ),
-                        )
-                        : ListView.builder(
-                          shrinkWrap: true,
-                          physics: const ClampingScrollPhysics(),
-                          itemCount: filteredLanguages.length,
-                          itemBuilder: (context, index) {
-                            final language = filteredLanguages[index];
-                            final isLast =
-                                index == filteredLanguages.length - 1;
-
-                            return Column(
-                              children: [
-                                RadioListTile<String>(
-                                  title: Text(
-                                    language['name'] as String,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: const TextStyle(fontSize: 13),
-                                  ),
-                                  value: language['value'] as String,
-                                  groupValue: profileProvider.language,
-                                  onChanged: (value) async {
-                                    if (value != null && !_isNavigating) {
-                                      _logAnalyticsEvent(
-                                        'language_selected',
-                                        params: {'language': value},
-                                      );
-                                      await _updateLanguage(
-                                        value,
-                                        profileProvider,
-                                        localeProvider,
-                                      );
-                                      _searchController.clear();
-                                      setState(() {});
-                                    }
-                                  },
-                                  dense: true,
-                                  visualDensity: VisualDensity.compact,
-                                  contentPadding: const EdgeInsets.symmetric(
-                                    horizontal: 12.0,
-                                  ),
+                  return Column(
+                    children: [
+                      RadioListTile<String>(
+                        title: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                language['name'],
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(fontSize: 13),
+                              ),
+                            ),
+                            if (!hasMaterialSupport) ...[
+                              const SizedBox(width: 4),
+                              Tooltip(
+                                message: 'System elements may show in English',
+                                child: Icon(
+                                  Icons.info_outline,
+                                  size: 14,
+                                  color: Colors.orange.shade600,
                                 ),
-                                if (!isLast) const Divider(height: 1),
-                              ],
-                            );
-                          },
+                              ),
+                            ],
+                          ],
                         ),
+                        value: language['code'] as String,
+                        groupValue:
+                            profileProvider.language.isNotEmpty
+                                ? profileProvider.language
+                                : localeProvider.locale.languageCode,
+                        onChanged: (value) async {
+                          if (value != null && !_isNavigating) {
+                            await _updateLanguage(
+                              value,
+                              profileProvider,
+                              localeProvider,
+                            );
+                            _searchController.clear();
+                            setState(() {});
+                          }
+                        },
+                        dense: true,
+                        visualDensity: VisualDensity.compact,
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 12.0,
+                        ),
+                      ),
+                      if (!isLast) const Divider(height: 1),
+                    ],
+                  );
+                },
               ),
-            ),
-          ],
-        );
-      },
     );
   }
 

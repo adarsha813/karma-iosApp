@@ -1322,7 +1322,6 @@ class _SecureAppState extends State<SecureApp> {
   }
 
   void _logLaunchAnalytics() {
-    // Log launch analytics
     if (widget.launchResult.isFirstLaunch) {
       ProductionLogger.info('📊 Analytics: First app launch');
     } else if (widget.launchResult.isFirstLaunchForVersion) {
@@ -1330,7 +1329,6 @@ class _SecureAppState extends State<SecureApp> {
         '📊 Analytics: First launch for version ${widget.launchResult.appVersion}',
       );
     }
-
     ProductionLogger.info(
       '📊 Analytics: Total launches: ${widget.launchResult.launchCount}',
     );
@@ -1352,7 +1350,6 @@ class _SecureAppState extends State<SecureApp> {
 
       if (mounted) {
         setState(() {
-          // Only show onboarding if it's first launch AND not done AND no existing profile
           _showOnboarding =
               widget.launchResult.isFirstLaunch &&
               !onboardingDone &&
@@ -1363,7 +1360,7 @@ class _SecureAppState extends State<SecureApp> {
       ProductionLogger.error('Failed to check onboarding status', e);
       if (mounted) {
         setState(() {
-          _showOnboarding = false; // Don't show onboarding on error
+          _showOnboarding = false;
         });
       }
     }
@@ -1396,8 +1393,9 @@ class _SecureAppState extends State<SecureApp> {
   Widget build(BuildContext context) {
     final localeProvider = Provider.of<LocaleProvider>(context);
 
+    // Show loading while locale is being determined
     if (localeProvider.isLoading) {
-      return const MaterialApp(
+      return MaterialApp(
         home: Scaffold(
           body: Center(
             child: Column(
@@ -1405,7 +1403,7 @@ class _SecureAppState extends State<SecureApp> {
               children: [
                 CircularProgressIndicator(),
                 SizedBox(height: 16),
-                Text('Loading...'),
+                Text('Loading language...'),
               ],
             ),
           ),
@@ -1415,25 +1413,33 @@ class _SecureAppState extends State<SecureApp> {
 
     return MaterialApp(
       title: AppConstants.appName,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        brightness: Brightness.light,
-      ),
-      darkTheme: ThemeData.dark(),
+      theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
+      darkTheme: ThemeData.dark(useMaterial3: true),
       themeMode: ThemeMode.light,
       navigatorKey: navigatorKey,
+
+      // ✅ CRITICAL FIX: Use only supported locales for Material widgets
       localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
+        AppLocalizations.delegate, // Your app's localizations
+        GlobalMaterialLocalizations
+            .delegate, // Material widgets (limited languages)
+        GlobalWidgetsLocalizations.delegate, // Default widgets
+        GlobalCupertinoLocalizations
+            .delegate, // iOS widgets (limited languages)
       ],
-      supportedLocales: AppLocalizations.supportedLocales,
-      locale: localeProvider.locale,
+
+      // ✅ CRITICAL FIX: Filter to only supported Material locales
+      supportedLocales: _getSupportedMaterialLocales(),
+
+      // ✅ Use the provider's locale but fallback to English if unsupported
+      locale: _getSafeLocale(localeProvider.locale),
+
       debugShowCheckedModeBanner: false,
+
       builder: (context, child) {
         return SecureBadgeManager(child: child!);
       },
+
       home:
           _showOnboarding
               ? OnboardingScreen(
@@ -1445,6 +1451,96 @@ class _SecureAppState extends State<SecureApp> {
               )
               : const SecureHomeRouter(),
     );
+  }
+
+  // ✅ Filter locales to only those supported by Material/Cupertino widgets
+  List<Locale> _getSupportedMaterialLocales() {
+    // MaterialLocalizations supports these languages by default
+    const materialSupportedLanguages = {
+      'en',
+      'es',
+      'fr',
+      'de',
+      'it',
+      'pt',
+      'ru',
+      'ja',
+      'ko',
+      'zh',
+      'ar',
+      'hi',
+      'tr',
+      'pl',
+      'nl',
+      'sv',
+      'da',
+      'fi',
+      'no',
+      'cs',
+      'hu',
+      'ro',
+      'sk',
+      'uk',
+      'bg',
+      'hr',
+      'sr',
+      'sl',
+      'et',
+      'lv',
+      'lt',
+      'el',
+      'he',
+      'id',
+      'ms',
+      'th',
+      'vi',
+      'fa',
+      'ur',
+      'sw',
+      'am',
+      'bn',
+      'gu',
+      'kn',
+      'ml',
+      'mr',
+      'ne',
+      'pa',
+      'ta',
+      'te',
+      //'tr',
+      //'zh',
+      'zh-TW',
+    };
+
+    return AppLocalizations.supportedLocales.where((locale) {
+      final languageCode = locale.languageCode;
+      final fullCode =
+          locale.countryCode == null
+              ? languageCode
+              : '$languageCode-${locale.countryCode}';
+
+      return materialSupportedLanguages.contains(languageCode) ||
+          materialSupportedLanguages.contains(fullCode);
+    }).toList();
+  }
+
+  // ✅ Ensure we only use locales that Material widgets support
+  Locale _getSafeLocale(Locale desiredLocale) {
+    const fallbackLocale = Locale('en');
+
+    // Check if desired locale is supported by Material widgets
+    final isMaterialSupported = _getSupportedMaterialLocales().any(
+      (supported) => supported.languageCode == desiredLocale.languageCode,
+    );
+
+    if (isMaterialSupported) {
+      return desiredLocale;
+    } else {
+      ProductionLogger.warning(
+        'Locale ${desiredLocale.languageCode} not supported by Material widgets, falling back to English',
+      );
+      return fallbackLocale;
+    }
   }
 }
 
