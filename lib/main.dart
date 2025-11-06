@@ -17,6 +17,7 @@ import 'package:logger/logger.dart' as log;
 import 'screens/dailyHoroscope_screen.dart';
 import 'package:kundali/config/environment.dart';
 import 'services/first_launch_service.dart'; // Add this import
+import 'l10n/custom_localizations_delegate.dart'; // Add this import
 
 // Config
 import 'config/firebase_config.dart';
@@ -1426,6 +1427,8 @@ class _SecureAppState extends State<SecureApp> {
         GlobalWidgetsLocalizations.delegate, // Default widgets
         GlobalCupertinoLocalizations
             .delegate, // iOS widgets (limited languages)
+        CustomLocalizationsDelegate(), // Your custom Material localizations
+        CustomCupertinoLocalizationsDelegate(), // Your custom Cupertino localizations
       ],
 
       // ✅ CRITICAL FIX: Filter to only supported Material locales
@@ -1507,9 +1510,64 @@ class _SecureAppState extends State<SecureApp> {
       'pa',
       'ta',
       'te',
-      //'tr',
-      //'zh',
       'zh-TW',
+      'af',
+      'az',
+      'be',
+      'bs',
+      'ca',
+      'ceb',
+      'co',
+      'cy',
+      'eo',
+      'eu',
+      'fy',
+      'ga',
+      'gd',
+      'gl',
+      'ha',
+      'haw',
+      'hmn',
+      'ht',
+      'hy',
+      'ig',
+      'is',
+      'jv',
+      'ka',
+      'kk',
+      'km',
+      'ku',
+      'ky',
+      'lb',
+      'lo',
+      'mg',
+      'mi',
+      'mk',
+      'mn',
+      'mt',
+      'my',
+      'ny',
+      'or',
+      'ps',
+      'rw',
+      'sd',
+      'si',
+      'sm',
+      'sn',
+      'so',
+      'sq',
+      'st',
+      'su',
+      'tg',
+      'tk',
+      'tl',
+      'tt',
+      'ug',
+      'uz',
+      'xh',
+      'yi',
+      'yo',
+      'zu',
     };
 
     return AppLocalizations.supportedLocales.where((locale) {
