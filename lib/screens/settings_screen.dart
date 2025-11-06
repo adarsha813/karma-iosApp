@@ -1125,6 +1125,88 @@ class _LanguageRadioTile extends StatelessWidget {
     required this.l10n,
   });
 
+  @override
+  Widget build(BuildContext context) {
+    final profileProvider = Provider.of<ProfileProvider>(context);
+    final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
+
+    // ✅ FIX: Get current language with proper fallback logic
+    String getCurrentLanguage() {
+      // First priority: ProfileProvider language
+      if (profileProvider.language.isNotEmpty) {
+        return profileProvider.language;
+      }
+
+      // Second priority: LocaleProvider language
+      if (localeProvider.locale.languageCode.isNotEmpty) {
+        return localeProvider.locale.languageCode;
+      }
+
+      // Default fallback
+      return 'en';
+    }
+
+    final currentLanguage = getCurrentLanguage();
+
+    return RadioListTile<String>(
+      title: Text(
+        language,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: const TextStyle(fontSize: 14),
+      ),
+      value: locale.languageCode,
+      groupValue: currentLanguage,
+      onChanged: (String? value) async {
+        if (value != null) {
+          final logger = Logger();
+          logger.i('🌐 Changing language to: $value');
+
+          try {
+            // ✅ FIX: Update both providers atomically
+            await profileProvider.saveLanguage(value);
+            localeProvider.setLocale(Locale(value));
+
+            // Force rebuild of the settings screen
+            if (context.mounted) {
+              Provider.of<ProfileProvider>(
+                context,
+                listen: false,
+              ).refreshProfile();
+            }
+
+            // Show confirmation
+            if (context.mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(l10n.languageChanged),
+                  backgroundColor: Colors.green,
+                  duration: const Duration(seconds: 2),
+                ),
+              );
+            }
+
+            // Update backend
+            await _updateLanguageOnBackend(context, value);
+          } catch (e) {
+            logger.e('🔴 Error changing language: $e');
+            if (context.mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text("${l10n.genericError}: ${e.toString()}"),
+                  backgroundColor: Colors.red,
+                ),
+              );
+            }
+          }
+        }
+      },
+      dense: true,
+      visualDensity: VisualDensity.compact,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+    );
+  }
+
   Future<void> _updateLanguageOnBackend(
     BuildContext context,
     String langCode,
@@ -1180,88 +1262,5 @@ class _LanguageRadioTile extends StatelessWidget {
         errorLogger.e('📊 Analytics: language_update_error - error: $e');
       }
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final profileProvider = Provider.of<ProfileProvider>(context);
-    final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
-    final currentLanguage =
-        profileProvider.language.isNotEmpty
-            ? profileProvider.language
-            : localeProvider.locale.languageCode;
-
-    return RadioListTile<String>(
-      title: Text(
-        language,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: const TextStyle(fontSize: 14),
-      ),
-      value: locale.languageCode,
-      groupValue: currentLanguage,
-      onChanged: (String? value) async {
-        if (value != null) {
-          final logger = Logger();
-          logger.i('🌐 Changing language to: $value');
-
-          try {
-            // Update ProfileProvider state
-            await profileProvider.saveLanguage(value);
-
-            // Update Flutter locale
-            localeProvider.setLocale(Locale(value));
-
-            if (context.mounted) {
-              // This will trigger a rebuild of the entire settings screen
-              Provider.of<ProfileProvider>(
-                context,
-                listen: false,
-              ).refreshProfile();
-            }
-
-            if (Environment.isProduction) {
-              logger.i('📊 Analytics: language_changed - lang: $value');
-            }
-
-            // Show confirmation
-            if (context.mounted) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(l10n.languageChanged),
-                  backgroundColor: Colors.green,
-                  duration: const Duration(seconds: 2),
-                ),
-              );
-            }
-
-            // Update backend if user is logged in
-            if (profileProvider.userId != null) {
-              await _updateLanguageOnBackend(context, value);
-            }
-          } catch (e) {
-            final errorLogger = Logger();
-            errorLogger.e('🔴 Error changing language: $e');
-
-            if (Environment.isProduction) {
-              errorLogger.e('📊 Analytics: language_change_error - error: $e');
-            }
-
-            if (context.mounted) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text("${l10n.genericError}: ${e.toString()}"),
-                  backgroundColor: Colors.red,
-                ),
-              );
-            }
-          }
-        }
-      },
-      // Optimize performance
-      dense: true,
-      visualDensity: VisualDensity.compact,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
-    );
   }
 }

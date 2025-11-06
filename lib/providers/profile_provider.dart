@@ -318,8 +318,8 @@ class ProfileProvider with ChangeNotifier {
     try {
       final prefs = await SharedPreferences.getInstance();
 
-      // Load language preference
-      final language = prefs.getString(_StorageKeys.language) ?? 'en';
+      // Load language preference FIRST
+      final language = prefs.getString(_StorageKeys.language);
 
       // Load profile data if user exists
       if (_currentProfile != null) {
@@ -327,25 +327,31 @@ class ProfileProvider with ChangeNotifier {
         if (profileJson != null) {
           try {
             final profileMap = jsonDecode(profileJson) as Map<String, dynamic>;
-            _currentProfile = ProfileData.fromJson(
-              profileMap,
-            ).copyWith(language: language);
+            _currentProfile = ProfileData.fromJson(profileMap);
+
+            // ✅ FIX: Prioritize locally stored language over profile data language
+            if (language != null) {
+              _currentProfile = _currentProfile!.copyWith(language: language);
+            }
+
             debugPrint('✅ Loaded profile data from local storage');
           } catch (e) {
             debugPrint('⚠️ Corrupted profile data, starting fresh');
-            // Continue with basic profile
           }
+        } else if (language != null) {
+          // ✅ FIX: Apply language even if no full profile exists
+          _currentProfile = _currentProfile!.copyWith(language: language);
         }
-
-        // Load version history
-        await _loadVersionHistory();
       } else {
-        // No user ID, set default language
+        // No user ID, set language if available
         _currentProfile = ProfileData(
           userId: 'temp_${DateTime.now().millisecondsSinceEpoch}',
-          language: language,
+          language: language ?? 'en', // ✅ FIX: Use stored language or default
         );
       }
+
+      // Load version history
+      await _loadVersionHistory();
     } catch (e) {
       throw ProfileException(
         type: ProfileErrorType.storageError,
@@ -743,7 +749,22 @@ class ProfileProvider with ChangeNotifier {
         final backendProfile = data['profile'];
 
         if (backendProfile != null) {
-          // Merge backend data with local data (backend wins conflicts)
+          // ✅ FIX: Extract and apply backend language immediately
+          final backendLanguage = backendProfile['language'] as String?;
+          if (backendLanguage != null && backendLanguage.isNotEmpty) {
+            // Update local storage with backend language
+            final prefs = await SharedPreferences.getInstance();
+            await prefs.setString(_StorageKeys.language, backendLanguage);
+
+            // Update current profile
+            _currentProfile = _currentProfile!.copyWith(
+              language: backendLanguage,
+            );
+
+            debugPrint('✅ Applied backend language: $backendLanguage');
+          }
+
+          // Merge other backend data
           await _mergeWithBackendData(backendProfile);
           debugPrint('✅ Successfully synced with backend');
         }
