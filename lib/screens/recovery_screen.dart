@@ -35,6 +35,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
 
   DateTime? _selectedDob;
   TimeOfDay? _selectedTime;
+  String? _authToken;
 
   bool _isLoading = false;
 
@@ -46,7 +47,24 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
   @override
   void initState() {
     super.initState();
+    _loadToken();
     _logAnalyticsEvent('recovery_screen_opened');
+  }
+
+  Future<void> _loadToken() async {
+    final profileProvider = context.read<ProfileProvider>();
+    await profileProvider.ensureInitialized(); // ensures secure storage loaded
+    final token = profileProvider.token;
+
+    if (token == null) {
+      debugPrint('❌ No token found');
+    } else {
+      debugPrint('✅ Token loaded in ChatScreen: $token');
+    }
+
+    setState(() {
+      _authToken = token;
+    });
   }
 
   // Analytics and error reporting
@@ -298,7 +316,10 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
       final response = await http
           .post(
             Uri.parse("${Environment.baseUrl}/users/recover"),
-            headers: Environment.securityHeaders,
+            headers: {
+              ...Environment.securityHeaders,
+              'Authorization': 'Bearer $_authToken',
+            },
             body: jsonEncode({
               "name": name,
               "dob": dobStr,

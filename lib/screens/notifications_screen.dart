@@ -7,6 +7,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
 import '../providers/notification_provider.dart';
 import '../providers/dictionary_provider.dart';
+import '../providers/profile_provider.dart';
 
 import 'package:shimmer/shimmer.dart';
 import '../utils/dictionary_highlighter.dart';
@@ -57,6 +58,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
   bool _retrying = false;
   Completer<void>? _markAllReadCompleter;
   bool _isDisposed = false;
+  String? _authToken;
 
   late IO.Socket _socket;
   List<String> _categories = [];
@@ -71,10 +73,27 @@ class _NotificationsScreenState extends State<NotificationsScreen>
   @override
   void initState() {
     super.initState();
+    _loadToken();
     _logger.i('🔹 Initializing NotificationsScreen for user: ${widget.userId}');
     _initialLoadCompleter = Completer<void>();
 
     _initializeScreen();
+  }
+
+  Future<void> _loadToken() async {
+    final profileProvider = context.read<ProfileProvider>();
+    await profileProvider.ensureInitialized(); // ensures secure storage loaded
+    final token = profileProvider.token;
+
+    if (token == null) {
+      debugPrint('❌ No token found');
+    } else {
+      debugPrint('✅ Token loaded in ChatScreen: $token');
+    }
+
+    setState(() {
+      _authToken = token;
+    });
   }
 
   // Analytics and error reporting
@@ -218,7 +237,13 @@ class _NotificationsScreenState extends State<NotificationsScreen>
 
     try {
       final response = await http
-          .get(url, headers: Environment.securityHeaders)
+          .get(
+            url,
+            headers: {
+              ...Environment.securityHeaders,
+              'Authorization': 'Bearer $_authToken',
+            },
+          )
           .timeout(_apiTimeout);
 
       if (!mounted) return;
@@ -528,7 +553,10 @@ class _NotificationsScreenState extends State<NotificationsScreen>
       final response = await http
           .post(
             Uri.parse('${Environment.baseUrl}/notifications/mark-all-read'),
-            headers: Environment.securityHeaders,
+            headers: {
+              ...Environment.securityHeaders,
+              'Authorization': 'Bearer $_authToken',
+            },
             body: jsonEncode({"userId": widget.userId}),
           )
           .timeout(_apiTimeout);
@@ -575,13 +603,21 @@ class _NotificationsScreenState extends State<NotificationsScreen>
   }
 
   Future<void> _markNotificationAsRead(String notificationId) async {
+    if (_authToken == null) {
+      _logger.w('❌ Cannot mark notifications as read: no auth token');
+      return; // silent fail
+    }
     _logger.d('Marking notification as read: $notificationId');
 
     try {
       final response = await http
           .post(
             Uri.parse('${Environment.baseUrl}/notifications/mark-read'),
-            headers: Environment.securityHeaders,
+            headers: {
+              ...Environment.securityHeaders,
+              'Authorization': 'Bearer $_authToken', // use token
+              'Content-Type': 'application/json',
+            },
             body: jsonEncode({
               "notificationId": notificationId,
               "userId": widget.userId,
@@ -1087,7 +1123,10 @@ class _NotificationsScreenState extends State<NotificationsScreen>
       final response = await http
           .post(
             Uri.parse('${Environment.baseUrl}/notifications/mark-all-read'),
-            headers: Environment.securityHeaders,
+            headers: {
+              ...Environment.securityHeaders,
+              'Authorization': 'Bearer $_authToken',
+            },
             body: jsonEncode({"userId": widget.userId}),
           )
           .timeout(_apiTimeout);

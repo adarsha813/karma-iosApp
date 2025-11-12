@@ -6,6 +6,7 @@ import '../models/astro_term.dart';
 import 'package:logger/logger.dart';
 import 'package:kundali/config/environment.dart';
 import 'dart:async'; // ✅ Add this line
+import '../providers/profile_provider.dart'; // import your profile provider
 
 class ApiService {
   static final Logger _logger = Logger();
@@ -85,11 +86,14 @@ class ApiService {
   }
 
   static Map<String, String> _buildHeaders() {
+    final token = ProfileProvider().token; // Singleton instance
     final headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'User-Agent': 'AstroApp/${Environment.appVersion}',
       ...Environment.securityHeaders,
+      if (token != null)
+        'Authorization': 'Bearer $token', // add token if exists
     };
 
     // Add authentication token if available

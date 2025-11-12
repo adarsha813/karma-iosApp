@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
-
+import '../providers/profile_provider.dart'; // import your profile provider
 import 'package:kundali/config/environment.dart';
 
 class DeviceTimeService {
@@ -164,9 +164,12 @@ class DeviceTimeService {
   }
 
   Map<String, String> _buildHeaders() {
+    final token = ProfileProvider().token; // Singleton instance
     return {
       ...Environment.securityHeaders,
       'User-Agent': 'FlutterApp/${Environment.appVersion}',
+      if (token != null)
+        'Authorization': 'Bearer $token', // add token if exists
     };
   }
 

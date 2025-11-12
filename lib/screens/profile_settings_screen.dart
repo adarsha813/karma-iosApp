@@ -143,7 +143,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   void _onUserIdChanged() {
     _validationTimer?.cancel();
     _validationTimer = Timer(_debounceTimer, () {
-      // Add mounted check
       if (!mounted) return;
 
       final newUserId = _userIdController.text.trim();
@@ -153,8 +152,19 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           context,
           listen: false,
         );
-        profileProvider.saveUserId(newUserId);
-        _loadProfileData();
+
+        // This will automatically fetch and save the token
+        profileProvider
+            .saveUserId(newUserId)
+            .then((_) {
+              _loadProfileData();
+            })
+            .catchError((e) {
+              ErrorHandler.showErrorSnackbar(
+                context,
+                'Failed to authenticate user: $e',
+              );
+            });
       }
     });
   }
@@ -436,28 +446,33 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     Map<String, dynamic> profileData,
   ) async {
     try {
-      final result = await ProfileService.saveProfile(profileData);
+      final result = await ProfileService.saveProfile(profileData, context);
 
       if (result['success'] == true) {
-        return SaveProfileResult(
-          success: true,
-          data: result['data'] ?? result, // Handle both response structures
-        );
+        return SaveProfileResult(success: true, data: result['data'] ?? result);
       } else {
         return SaveProfileResult(
           success: false,
           message: result['error'] ?? 'Save failed',
         );
       }
-    } catch (e, stack) {
-      ErrorHandler.recordError(
-        e,
-        stackTrace: stack,
-        context: 'ProfileServiceFallback',
-      );
-
+    } catch (e) {
+      // Fallback to direct backend call
       try {
-        final directResult = await _sendProfileToBackend(profileData);
+        final profileProvider = Provider.of<ProfileProvider>(
+          context,
+          listen: false,
+        );
+        final token = profileProvider.token;
+
+        if (token == null) {
+          return SaveProfileResult(
+            success: false,
+            message: 'No authentication token',
+          );
+        }
+
+        final directResult = await _sendProfileToBackend(profileData, token);
         return SaveProfileResult(
           success: directResult['success'],
           message: directResult['message'],
@@ -641,6 +656,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
   Future<Map<String, dynamic>> _sendProfileToBackend(
     Map<String, dynamic> data,
+    String token,
   ) async {
     try {
       final uri = Uri.parse('${Environment.baseUrl}/api/profile/save-profile');
@@ -649,6 +665,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
             uri,
             headers: {
               'Content-Type': 'application/json',
+              'Authorization': 'Bearer $token',
               'X-Request-ID': _generateSecureRequestId(),
               ...Environment.securityHeaders,
             },
@@ -659,9 +676,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       if (response.statusCode == 200) {
         final responseData = jsonDecode(utf8.decode(response.bodyBytes));
 
-        // Handle different response structures
         if (responseData is Map) {
-          // Ensure type is Map<String, dynamic>
           final Map<String, dynamic> typedResponse = Map<String, dynamic>.from(
             responseData,
           );
@@ -677,6 +692,8 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
             'data': {'message': 'Profile saved'},
           };
         }
+      } else if (response.statusCode == 401) {
+        return {'success': false, 'message': 'Authentication failed'};
       } else if (response.statusCode >= 400 && response.statusCode < 500) {
         return {
           'success': false,
@@ -1433,7 +1450,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
   Future<void> _loadProfileData() async {
     if (_isLoading) return;
-    if (!mounted || _disposed) return; // ✅ Add disposed check
+    if (!mounted || _disposed) return;
 
     _safeSetState(() => _isLoading = true);
     final userId = _userIdController.text.trim();
@@ -1446,17 +1463,14 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     }
 
     try {
-      final uri = Uri.parse(
-        '${Environment.baseUrl}/api/profile/get-profile?userId=$userId',
-      );
-      final response = await http.get(uri).timeout(const Duration(seconds: 30));
+      final result = await ProfileService.getProfile(userId, context);
 
       if (!mounted || _disposed) return;
 
-      if (response.statusCode == 200) {
-        final responseData = jsonDecode(utf8.decode(response.bodyBytes));
-        final data = responseData['profile'];
+      if (result['success'] == true) {
+        final data = result['data']['profile'] ?? result['data'];
 
+        // ... rest of your existing parsing logic remains the same ...
         DateTime? parsedDate;
         TimeOfDay? parsedTime;
 
@@ -1497,17 +1511,17 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
             );
           }
         }
+
         if (!mounted || _disposed) return;
+
         final profileProvider = Provider.of<ProfileProvider>(
           context,
           listen: false,
         );
-        _logger.d(
-          '📚 Version history count: ${profileProvider.versionHistory.length}',
-        );
 
         await profileProvider.saveUserId(userId);
         final country = data['country'] ?? '';
+
         if (mounted) {
           _safeSetState(() {
             _selectedCountry = country;
@@ -1550,30 +1564,18 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         );
       } else {
         await _loadLocalProfileData();
-        if (response.statusCode == 404) {
+        if (result['error'] == 'Authentication failed') {
           ErrorHandler.showErrorSnackbar(
             context,
-            'Profile not found. Please check your User ID.',
+            'Authentication failed. Please check your user ID.',
           );
         } else {
           ErrorHandler.showErrorSnackbar(
             context,
-            'Failed to load profile from server',
+            result['error'] ?? 'Failed to load profile from server',
           );
         }
       }
-    } on TimeoutException {
-      await _loadLocalProfileData();
-      ErrorHandler.showErrorSnackbar(
-        context,
-        'Request timeout. Using local data.',
-      );
-    } on http.ClientException {
-      await _loadLocalProfileData();
-      ErrorHandler.showErrorSnackbar(
-        context,
-        'Network error. Using local data.',
-      );
     } catch (e, stack) {
       ErrorHandler.recordError(e, stackTrace: stack, context: 'LoadProfile');
       await _loadLocalProfileData();

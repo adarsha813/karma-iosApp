@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../config/environment.dart';
 import 'package:flutter/foundation.dart';
+import '../providers/profile_provider.dart'; // import your profile provider
 
 class AstroDetail {
   final String id;
@@ -86,6 +87,7 @@ class AstrologerService {
     try {
       final url = Uri.parse('${Environment.baseUrl}/api/councillor/$id');
       debugPrint('🔄 Fetching from: $url');
+      final token = ProfileProvider().token; // singleton instance
 
       final response = await http
           .get(
@@ -93,6 +95,7 @@ class AstrologerService {
             headers: {
               ...Environment.securityHeaders,
               'Accept': 'application/json',
+              if (token != null) 'Authorization': 'Bearer $token',
             },
           )
           .timeout(const Duration(seconds: 10));

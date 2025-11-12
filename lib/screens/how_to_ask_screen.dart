@@ -7,6 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../l10n/app_localizations.dart';
 import '../config/environment.dart';
 import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
+import '../providers/profile_provider.dart';
 
 // Custom logger instance
 final _logger = Logger(
@@ -40,14 +42,32 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
     hours: 24,
   ); // Cache for 24 hours
   Completer<void>? _initialLoadCompleter;
+  String? _authToken;
 
   @override
   void initState() {
     super.initState();
+    _loadToken();
     _logger.i('🔹 Initializing HowToAskScreen');
     _initialLoadCompleter = Completer<void>();
 
     _loadQuestionsWithRetry();
+  }
+
+  Future<void> _loadToken() async {
+    final profileProvider = context.read<ProfileProvider>();
+    await profileProvider.ensureInitialized(); // ensures secure storage loaded
+    final token = profileProvider.token;
+
+    if (token == null) {
+      debugPrint('❌ No token found');
+    } else {
+      debugPrint('✅ Token loaded in ChatScreen: $token');
+    }
+
+    setState(() {
+      _authToken = token;
+    });
   }
 
   // Analytics and error reporting
@@ -210,7 +230,13 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
 
     try {
       final response = await http
-          .get(url, headers: Environment.securityHeaders)
+          .get(
+            url,
+            headers: {
+              ...Environment.securityHeaders,
+              'Authorization': 'Bearer $_authToken', // Use loaded token
+            },
+          )
           .timeout(_apiTimeout);
 
       if (response.statusCode == 200) {

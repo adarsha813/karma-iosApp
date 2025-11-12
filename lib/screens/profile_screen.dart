@@ -36,6 +36,7 @@ class _ProfileScreenState extends State<ProfileScreen>
   bool _isLoading = true;
   String? _error;
   bool _retrying = false;
+  String? _authToken;
 
   // Network configuration
   static const int _maxRetries = 3;
@@ -45,11 +46,40 @@ class _ProfileScreenState extends State<ProfileScreen>
   @override
   void initState() {
     super.initState();
+
     WidgetsBinding.instance.addObserver(this);
     _logger.i('Initializing ProfileScreen for user: ${widget.userId}');
     _initialLoadCompleter = Completer<void>();
 
     _initializeData();
+    _loadToken();
+  }
+
+  Future<void> _loadToken() async {
+    try {
+      final profileProvider = context.read<ProfileProvider>();
+      await profileProvider.ensureInitialized();
+
+      // ✅ FIX: Add delay to ensure secure storage is fully loaded
+      await Future.delayed(const Duration(milliseconds: 100));
+
+      final token = profileProvider.token;
+
+      if (token == null) {
+        _logger.w('❌ No token found in ProfileProvider');
+      } else {
+        _logger.i('✅ Token loaded: ${token.length} characters');
+      }
+
+      if (mounted) {
+        setState(() {
+          _authToken = token;
+        });
+      }
+    } catch (e, stackTrace) {
+      _reportError(e, stackTrace, context: 'load_token');
+      _logger.e('Failed to load token: $e');
+    }
   }
 
   // Analytics and error reporting
@@ -178,7 +208,10 @@ class _ProfileScreenState extends State<ProfileScreen>
       _error = null;
       _retrying = false;
     });
-
+    // ✅ FIX: Ensure token is loaded before making the request
+    if (_authToken == null) {
+      await _loadToken();
+    }
     final actualUserId = userId ?? widget.userId;
     if (actualUserId == null || actualUserId.isEmpty) {
       _logger.w('Cannot fetch astro profile - missing user ID');
@@ -208,7 +241,13 @@ class _ProfileScreenState extends State<ProfileScreen>
 
     try {
       final response = await http
-          .get(Uri.parse(url), headers: Environment.securityHeaders)
+          .get(
+            Uri.parse(url),
+            headers: {
+              ...Environment.securityHeaders,
+              'Authorization': 'Bearer $_authToken',
+            },
+          )
           .timeout(_apiTimeout);
 
       if (!mounted) return;

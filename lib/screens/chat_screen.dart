@@ -1035,6 +1035,7 @@ class _ChatScreenState extends State<ChatScreen>
   String? currentUserId;
   Timer? _refreshTimer;
   bool _isInputEnabled = true;
+  String? _authToken;
 
   bool _disposed = false;
   Completer<void>? _initialDataCompleter;
@@ -1047,6 +1048,7 @@ class _ChatScreenState extends State<ChatScreen>
     super.initState();
     _disposed = false;
     _initializeProfile();
+    _loadToken();
 
     WidgetsFlutterBinding.ensureInitialized();
     FlutterError.onError = (details) {
@@ -1074,6 +1076,22 @@ class _ChatScreenState extends State<ChatScreen>
     AppLogger.info('ChatScreen initialized', feature: 'chat_screen');
     _initializeChat();
     _preloadAllAstrologers(); // ✅ ADD THIS
+  }
+
+  Future<void> _loadToken() async {
+    final profileProvider = context.read<ProfileProvider>();
+    await profileProvider.ensureInitialized(); // ensures secure storage loaded
+    final token = profileProvider.token;
+
+    if (token == null) {
+      debugPrint('❌ No token found');
+    } else {
+      debugPrint('✅ Token loaded in ChatScreen: $token');
+    }
+
+    setState(() {
+      _authToken = token;
+    });
   }
 
   Future<void> _initializeProfile() async {
@@ -1947,6 +1965,7 @@ class _ChatScreenState extends State<ChatScreen>
     try {
       final response = await SecureApiClient.get(
         url: '${ChatConstants.baseUrl}/questions/previous/$userId',
+        token: _authToken, // ✅ reuse
       ).timeout(const Duration(seconds: 10));
 
       if (response.statusCode == 200) {
@@ -1984,6 +2003,7 @@ class _ChatScreenState extends State<ChatScreen>
     try {
       final response = await SecureApiClient.get(
         url: '${ChatConstants.baseUrl}/advices/$userId',
+        token: _authToken, // ✅ reuse
       ).timeout(const Duration(seconds: 10));
 
       if (response.statusCode == 200) {
@@ -2399,6 +2419,7 @@ class _ChatScreenState extends State<ChatScreen>
           await SecureApiClient.get(
             url:
                 '${ChatConstants.baseUrl}/api/reset-clarification-free/$currentUserId',
+            token: _authToken, // ✅ reuse
           );
           AppLogger.info(
             '🔄 Clarification free question used and reset',
@@ -2435,6 +2456,7 @@ class _ChatScreenState extends State<ChatScreen>
       final clarificationRes = await SecureApiClient.get(
         url:
             '${ChatConstants.baseUrl}/api/check-clarification-eligibility/$userId',
+        token: _authToken, // ✅ reuse
       );
 
       if (clarificationRes.statusCode == 200) {
@@ -2467,6 +2489,7 @@ class _ChatScreenState extends State<ChatScreen>
       // 2️⃣ Check first-time login free quota
       final firstTimeResponse = await SecureApiClient.get(
         url: '${ChatConstants.baseUrl}/api/check-first-time/$userId',
+        token: _authToken, // ✅ reuse
       );
 
       if (firstTimeResponse.statusCode == 200) {
@@ -2486,6 +2509,7 @@ class _ChatScreenState extends State<ChatScreen>
       // 3️⃣ Check regular eligibility for returning users
       final eligibilityResponse = await SecureApiClient.get(
         url: '${ChatConstants.baseUrl}/api/check-question-eligibility/$userId',
+        token: _authToken, // ✅ reuse
       );
 
       if (eligibilityResponse.statusCode == 200) {
@@ -2526,6 +2550,7 @@ class _ChatScreenState extends State<ChatScreen>
     try {
       final response = await SecureApiClient.get(
         url: '${ChatConstants.baseUrl}/api/user-question-count/$userId',
+        token: _authToken, // ✅ reuse
       );
 
       if (response.statusCode == 200) {
@@ -2887,6 +2912,7 @@ class _ChatScreenState extends State<ChatScreen>
     try {
       final response = await SecureApiClient.post(
         url: '${ChatConstants.baseUrl}/questions/create',
+        token: _authToken, // ✅ reuse
         body: {
           'text': text,
           'userId': userId,
@@ -3261,6 +3287,7 @@ class _ChatScreenState extends State<ChatScreen>
 
       final response = await SecureApiClient.post(
         url: '${ChatConstants.baseUrl}/questions/rate',
+        token: _authToken, // ✅ reuse
         body: {
           'questionId': questionId,
           'rating': rating,
@@ -3325,6 +3352,7 @@ class _ChatScreenState extends State<ChatScreen>
 
       final response = await SecureApiClient.post(
         url: '${ChatConstants.baseUrl}/advices/$id/rate',
+        token: _authToken, // ✅ reuse
         body: {
           'rating': rating,
           'userId': userId,

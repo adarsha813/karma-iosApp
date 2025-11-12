@@ -17,6 +17,7 @@ import '../providers/notification_provider.dart';
 import '../l10n/app_localizations.dart';
 import '../config/environment.dart';
 import 'package:logger/logger.dart';
+import '../providers/profile_provider.dart';
 
 // Custom logger instance
 final _logger = Logger(
@@ -62,6 +63,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
   // Controllers for cancellation
   final List<StreamSubscription> _socketSubscriptions = [];
   Completer<void>? _initialLoadCompleter;
+  String? _authToken;
 
   @override
   void initState() {
@@ -71,6 +73,23 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
     _initialLoadCompleter = Completer<void>();
 
     _initializeScreen();
+    _loadToken();
+  }
+
+  Future<void> _loadToken() async {
+    final profileProvider = context.read<ProfileProvider>();
+    await profileProvider.ensureInitialized(); // ensures secure storage loaded
+    final token = profileProvider.token;
+
+    if (token == null) {
+      debugPrint('❌ No token found');
+    } else {
+      debugPrint('✅ Token loaded in ChatScreen: $token');
+    }
+
+    setState(() {
+      _authToken = token;
+    });
   }
 
   void _initializeScreen() async {
@@ -688,11 +707,27 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
     }
 
     final url = '${Environment.baseUrl}/horoscope/user/${widget.userId}';
+
     _logger.d('Fetching horoscopes from: $url');
+    // ✅ Ensure token is loaded
+    if (_authToken == null) {
+      _logger.e('❌ No auth token available — cannot fetch horoscopes');
+      setState(() {
+        _error = _getLocalizedError('auth_error');
+        _loading = false;
+      });
+      return;
+    }
 
     try {
       final response = await http
-          .get(Uri.parse(url), headers: Environment.securityHeaders)
+          .get(
+            Uri.parse(url),
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer $_authToken', // ✅ Securely add token
+            },
+          )
           .timeout(_apiTimeout);
 
       if (response.statusCode == 200) {
@@ -798,11 +833,27 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
 
     final url = '${Environment.baseUrl}/horoscope/$horoscopeId/reaction';
 
+    // ✅ Ensure token is loaded
+    if (_authToken == null) {
+      _logger.e('❌ No auth token available — cannot update reaction');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(_getLocalizedError('auth_error')),
+          backgroundColor: Colors.red,
+          duration: const Duration(seconds: 3),
+        ),
+      );
+      return;
+    }
+
     try {
       final response = await http
           .patch(
             Uri.parse(url),
-            headers: Environment.securityHeaders,
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer $_authToken', // ✅ secure token
+            },
             body: jsonEncode({'userId': widget.userId, 'reaction': reaction}),
           )
           .timeout(_apiTimeout);
