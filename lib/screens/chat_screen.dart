@@ -1046,6 +1046,7 @@ class _ChatScreenState extends State<ChatScreen>
   void initState() {
     super.initState();
     _disposed = false;
+    _initializeProfile();
 
     WidgetsFlutterBinding.ensureInitialized();
     FlutterError.onError = (details) {
@@ -1073,6 +1074,18 @@ class _ChatScreenState extends State<ChatScreen>
     AppLogger.info('ChatScreen initialized', feature: 'chat_screen');
     _initializeChat();
     _preloadAllAstrologers(); // ✅ ADD THIS
+  }
+
+  Future<void> _initializeProfile() async {
+    final profileProvider = context.read<ProfileProvider>();
+    await profileProvider.ensureInitialized();
+
+    // If no profile exists, create a default one
+    if (profileProvider.userId == null ||
+        profileProvider.userId!.startsWith('temp_') ||
+        profileProvider.userId!.startsWith('default_')) {
+      await profileProvider.createDefaultProfile();
+    }
   }
 
   // ✅ ADD THIS: Debug method to understand message structure
@@ -3595,7 +3608,11 @@ class _ChatScreenState extends State<ChatScreen>
   }
 */
   Widget _buildDrawer(AppLocalizations l10n) {
-    final userId = Provider.of<ProfileProvider>(context, listen: false).userId;
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
+    final userId = profileProvider.userId;
 
     return Consumer<HoroscopeProvider>(
       builder: (context, horoscopeProvider, _) {
