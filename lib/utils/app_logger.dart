@@ -23,4 +23,19 @@ class AppLogger {
       stackTrace: stackTrace,
     );
   }
+
+  // ✅ New security logger
+  static void security(
+    String message, {
+    String? feature,
+    String? userId, // ✅ add this
+    dynamic error,
+    StackTrace? stackTrace,
+  }) {
+    _logger.wtf(
+      '[SECURITY${feature != null ? ' - $feature' : ''}]${userId != null ? ' [User: $userId]' : ''} $message',
+      error: error,
+      stackTrace: stackTrace,
+    );
+  }
 }

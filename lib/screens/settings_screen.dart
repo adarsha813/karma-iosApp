@@ -101,6 +101,7 @@ class SettingsScreen extends StatelessWidget {
     String method = 'DELETE',
     Map<String, dynamic>? body,
     bool showSuccess = true,
+    String? token, // ✅ ADD: Accept token parameter
   }) async {
     _logger.d('Sending $method request to: $endpoint');
     _logAnalyticsEvent(
@@ -109,6 +110,7 @@ class SettingsScreen extends StatelessWidget {
         'endpoint': endpoint,
         'method': method,
         'has_body': body != null,
+        'has_token': token != null, // ✅ ADD: Track token presence
       },
     );
 
@@ -119,6 +121,7 @@ class SettingsScreen extends StatelessWidget {
       final headers = {
         ...Environment.securityHeaders,
         if (method != 'GET') 'Content-Type': 'application/json',
+        if (token != null && token.isNotEmpty) 'Authorization': 'Bearer $token',
       };
 
       switch (method) {
@@ -311,6 +314,7 @@ class SettingsScreen extends StatelessWidget {
       listen: false,
     );
     final userId = profileProvider.userId;
+    final token = profileProvider.token; // ✅ GET token
 
     if (userId == null || userId.isEmpty) {
       _logger.w('Cannot clear notifications - missing user ID');
@@ -333,6 +337,7 @@ class SettingsScreen extends StatelessWidget {
         l10n.clearNotificationsSuccess,
         method: 'PATCH',
         body: {'userId': userId},
+        token: token, // ✅ PASS token
       ),
       confirmText: l10n.confirmButton,
       cancelText: l10n.cancelButton,
@@ -346,6 +351,7 @@ class SettingsScreen extends StatelessWidget {
       listen: false,
     );
     final userId = profileProvider.userId;
+    final token = profileProvider.token; // ✅ GET tok
 
     if (userId == null || userId.isEmpty) {
       _logger.w('Cannot clear horoscope - missing user ID');
@@ -368,6 +374,7 @@ class SettingsScreen extends StatelessWidget {
         l10n.clearHoroscopeSuccess,
         method: 'PATCH',
         body: {'userId': userId},
+        token: token, // ✅ PASS token
       ),
       confirmText: l10n.confirmButton,
       cancelText: l10n.cancelButton,
@@ -382,6 +389,7 @@ class SettingsScreen extends StatelessWidget {
     );
     final chatService = Provider.of<SecureChatService>(context, listen: false);
     final userId = profileProvider.userId;
+    final token = profileProvider.token; // ✅ GET token
 
     if (userId == null || userId.isEmpty) {
       _logger.w('Cannot clear chat history - missing user ID');
@@ -421,6 +429,7 @@ class SettingsScreen extends StatelessWidget {
             method: 'PATCH',
             body: {'userId': userId, 'hide': true},
             showSuccess: false,
+            token: token, // ✅ PASS token
           ),
           _sendRequest(
             context,
@@ -428,6 +437,7 @@ class SettingsScreen extends StatelessWidget {
             "Clarifications cleared",
             method: 'PATCH',
             showSuccess: false,
+            token: token, // ✅ PASS token
           ),
           _sendRequest(
             context,
@@ -435,6 +445,7 @@ class SettingsScreen extends StatelessWidget {
             l10n.clearQuestionsSuccess,
             method: 'PATCH',
             showSuccess: false,
+            token: token, // ✅ PASS token
           ),
           _sendRequest(
             context,
@@ -442,6 +453,7 @@ class SettingsScreen extends StatelessWidget {
             "Answers cleared",
             method: 'PATCH',
             showSuccess: false,
+            token: token, // ✅ PASS token
           ),
         ];
 
@@ -480,6 +492,7 @@ class SettingsScreen extends StatelessWidget {
           listen: false,
         );
         final userId = profileProvider.userId;
+        final token = profileProvider.token; // ✅ GET token
 
         if (userId == null || userId.isEmpty) {
           _logger.w('Cannot delete account - missing user ID');
@@ -510,6 +523,7 @@ class SettingsScreen extends StatelessWidget {
               'userId': userId,
               'removed': true, // required by backend
             },
+            token: token, // ✅ PASS token
           );
 
           _logAnalyticsEvent('account_deleted_backend');

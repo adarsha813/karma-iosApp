@@ -146,6 +146,12 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     Message message,
   ) {
     final items = <Widget>[];
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
+    final userId = profileProvider.userId;
+    final token = profileProvider.token;
 
     Widget buildProfessionalOptionItem(
       IconData icon,
@@ -201,6 +207,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
             context,
             '/questions/${message.id}/hide-question',
             message.id,
+            userId: userId,
+            token: token,
           ),
         ),
       );
@@ -216,6 +224,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
             context,
             '/questions/${message.id}/hide-answer',
             message.id,
+            userId: userId,
+            token: token,
           ),
         ),
       );
@@ -232,6 +242,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
             '/advices/${message.id}/hide',
             message.id,
             isAdvice: true,
+            userId: userId,
+            token: token,
           ),
         ),
       );
@@ -247,6 +259,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
             context,
             '/questions/${message.id}/clarification/${message.clarificationId}/hide',
             message.id,
+            userId: userId,
+            token: token,
           ),
         ),
       );
@@ -264,6 +278,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     BuildContext context,
     String endpoint,
     String? messageId, {
+    required String? userId,
+    required String? token,
     bool isAdvice = false,
   }) async {
     _debugChatServiceState(); // ← here
@@ -283,13 +299,6 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       _showSnackBar(context, 'Invalid message parameters');
       return;
     }
-
-    final profileProvider = Provider.of<ProfileProvider>(
-      context,
-      listen: false,
-    );
-    final userId = profileProvider.userId;
-    final token = profileProvider.token;
 
     if (!_validateUserCredentials(userId, token)) {
       _showSnackBar(context, 'Authentication required');
@@ -358,11 +367,22 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   }
 
   bool _validateUserCredentials(String? userId, String? token) {
-    return userId != null &&
-        userId.isNotEmpty &&
-        userId.length <= SecurityConfig.maxIdLength &&
-        token != null &&
-        token.isNotEmpty;
+    if (userId == null || userId.isEmpty) {
+      debugPrint('❌ Hide action: User ID is null or empty');
+      return false;
+    }
+
+    if (token == null || token.isEmpty) {
+      debugPrint('❌ Hide action: Token is null or empty');
+      return false;
+    }
+
+    if (userId.length > SecurityConfig.maxIdLength) {
+      debugPrint('❌ Hide action: User ID too long');
+      return false;
+    }
+
+    return true;
   }
 
   Future<void> _performHideRequest(
@@ -382,7 +402,11 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
         url: url,
         method: 'PATCH',
         token: token,
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+          'Content-Type': 'application/json',
+          'X-User-ID':
+              userId, // Include user ID in headers if needed by backend
+        },
         body: isAdvice ? jsonEncode({'userId': userId, 'hide': true}) : null,
         timeout: const Duration(seconds: 10),
       );
