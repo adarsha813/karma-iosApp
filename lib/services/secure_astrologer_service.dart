@@ -80,22 +80,33 @@ class SecureAstrologerService {
     _validateAstrologerId(astrologerId);
 
     try {
-      // ✅ FIX: Use requireAuth: false for public endpoint
+      // ✅ FIX: Always include token in headers if available
+      final headers = {
+        'X-Feature': 'astrologer_details',
+        'X-Request-ID': 'astro_${DateTime.now().millisecondsSinceEpoch}',
+      };
+
+      // Add Authorization header if token is available
+      if (token != null && token.isNotEmpty) {
+        headers['Authorization'] = 'Bearer $token';
+      }
+
       final response = await _httpClient
           .get(
             '${Environment.baseUrl}/api/councillor/$astrologerId',
-            headers: {
-              'X-Feature': 'astrologer_details',
-              'X-Request-ID': 'astro_${DateTime.now().millisecondsSinceEpoch}',
-            },
-            requireAuth: false, // This should be false
-            token: token, // ✅ PASS token even if requireAuth is false
+            headers: headers,
+            requireAuth:
+                token != null &&
+                token.isNotEmpty, // Auth required only if token exists
+            token: token,
           )
           .timeout(_requestTimeout);
 
       return _handleAstrologerResponse(response);
     } on TimeoutException catch (e) {
       throw AstrologerException('Request timeout', 'TIMEOUT', e);
+    } on http.ClientException catch (e) {
+      throw AstrologerException('Network error: $e', 'NETWORK_ERROR', e);
     } catch (e) {
       throw AstrologerException(
         'Failed to load astrologer details: $e',
@@ -230,6 +241,8 @@ class SecureAstrologerService {
     if (response.statusCode == 200) {
       try {
         final data = json.decode(utf8.decode(response.bodyBytes));
+
+        debugPrint('🔍 Raw API Response: $data');
 
         if (data['success'] == true && data['data'] != null) {
           return AstrologerDetail.fromJson(data['data']);

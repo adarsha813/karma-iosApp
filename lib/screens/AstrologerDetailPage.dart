@@ -192,19 +192,13 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
       if (success && mounted) {
         setState(() => _isFavorite = newFavoriteState);
         final l10n = AppLocalizations.of(context)!;
-        final astrologerName = _astrologerData?.fullName ?? '';
+        final astrologerName = _astrologerData?.fullName ?? 'Astrologer';
 
         _showEnterpriseSnackbar(
           message:
               newFavoriteState
-                  ? l10n.addedToFavorites.toString().replaceFirst(
-                    '{name}',
-                    astrologerName,
-                  )
-                  : l10n.removedFromFavorites.toString().replaceFirst(
-                    '{name}',
-                    astrologerName,
-                  ),
+                  ? l10n.addedToFavorites(astrologerName)
+                  : l10n.removedFromFavorites(astrologerName),
           type: newFavoriteState ? SnackbarType.success : SnackbarType.info,
         );
 
