@@ -58,17 +58,6 @@ class EnterprisePaymentService {
             currencyCode: 'USD',
             testEnv: kDebugMode,
           ),
-          // 🛡️ ADD SECURITY CONFIGURATION
-          appearance: PaymentSheetAppearance(
-            colors: PaymentSheetAppearanceColors(
-              primary: Colors.blue,
-              background: Colors.white,
-              componentBackground: Colors.grey.shade50,
-              componentBorder: Colors.grey.shade300,
-              componentDivider: Colors.grey.shade200,
-              placeholderText: Colors.grey, // 👈 optional
-            ),
-          ),
         ),
       );
 

@@ -215,7 +215,6 @@ class SecurePaymentService {
   }) async {
     final idempotencyKey = PaymentSecurity.generateIdempotencyKey(userId);
     final token = await SecureStorage.getAuthToken();
-    print("🔑 Auth Token: $token");
 
     if (token == null) {
       throw PaymentException('Authentication token not found', 'NO_TOKEN');
@@ -304,7 +303,7 @@ class PaymentVerificationService {
   ) async {
     try {
       final token = await SecureStorage.getAuthToken();
-      print("🔑 Auth Token: $token");
+
       if (token == null) {
         AppLogger.error('No auth token for payment verification', null);
         return false;
@@ -3450,7 +3449,7 @@ class _ChatScreenState extends State<ChatScreen>
   Future<void> debugPayment(String paymentIntentId) async {
     try {
       final token = await SecureStorage.getAuthToken();
-      print("🔑 Auth Token: $token");
+
       final response = await SecureApiClient.get(
         url: '${ChatConstants.baseUrl}/api/debug-payment/$paymentIntentId',
         token: token,

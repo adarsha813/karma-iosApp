@@ -333,7 +333,7 @@
   "chatTitle": "Klets",
   "typeYourQuestionHint": "Tik jou vraag...",
   "paymentRequired": "Betaling Vereis",
-  "paymentRequiredMessage": "Jy het jou gratis vrae gebruik. Betaal ₹50 om voort te gaan.",
+  "paymentRequiredMessage": "Jy het jou gratis vrae gebruik. Betaal $5 om voort te gaan.",
   "payNowButton": "Betaal Nou",
   "freeQuestionsRemaining": "{count} gratis vrae oor",
   "paidQuestionsRemaining": "{count} betaalde vrae oor",
