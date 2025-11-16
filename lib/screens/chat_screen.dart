@@ -17,6 +17,7 @@ import 'dart:math' as math; // Add this line
 import '../config/environment.dart';
 import 'package:logger/logger.dart';
 import 'dart:math';
+import 'package:kundali/services/enterprise_payment_service.dart';
 
 // Import your app files
 import 'profile_screen.dart';
@@ -2437,7 +2438,7 @@ class _ChatScreenState extends State<ChatScreen>
       }
 
       // No balance left, show payment dialog
-      _showPaymentDialog(context, currentUserId, text);
+      _showEnterprisePaymentDialog(context, currentUserId, text);
     } catch (e) {
       AppLogger.error(
         'Error in message validation',
@@ -2664,33 +2665,6 @@ class _ChatScreenState extends State<ChatScreen>
       );
       rethrow;
     }
-  }
-
-  void _showPaymentDialog(BuildContext context, String userId, String text) {
-    final l10n = AppLocalizations.of(context)!;
-
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder:
-          (_) => AlertDialog(
-            title: Text(l10n.paymentRequired),
-            content: Text(l10n.paymentRequiredMessage),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text(l10n.cancelButton),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  startStripePayment(userId, text);
-                },
-                child: Text(l10n.payNowButton),
-              ),
-            ],
-          ),
-    );
   }
 
   Future<void> _sendPaidQuestion(String text, String userId) async {
@@ -2949,261 +2923,528 @@ class _ChatScreenState extends State<ChatScreen>
     }
   }
 
-  Future<void> startStripePayment(String userId, String questionText) async {
-    if (mounted) {
-      setState(() {
-        _isInputEnabled = false;
-      });
+  // In your chat_screen.dart - before startEnterprisePayment()
+  Future<void> _ensurePaymentReadiness() async {
+    final profileProvider = ProfileProvider();
+
+    // Ensure provider is initialized
+    await profileProvider.ensureInitialized();
+
+    // Check if token exists
+    if (profileProvider.token == null && profileProvider.userId != null) {
+      AppLogger.info('No token found, attempting to fetch...');
+      await profileProvider.fetchAndSaveToken(profileProvider.userId!);
     }
 
+    // Verify token is now available
+    if (profileProvider.token == null) {
+      throw PaymentException(
+        'Please complete authentication before making payments',
+        'AUTH_REQUIRED',
+      );
+    }
+  }
+
+  // 🛡️ ENTERPRISE-LEVEL PAYMENT FLOW
+  Future<void> startEnterprisePayment(
+    String userId,
+    String questionText,
+  ) async {
+    if (!mounted) return;
+
+    // 🛡️ 1. Disable UI immediately
+    setState(() {
+      _isInputEnabled = false;
+      _isSending = true;
+    });
+
+    String? paymentIntentId;
+    String? clientSecret;
+
     try {
-      // ✅ 1. Initialize Stripe first
-      await SecureStripeConfig.initialize();
+      await _ensurePaymentReadiness();
 
-      final profileProvider = Provider.of<ProfileProvider>(
-        context,
-        listen: false,
-      );
-      final token = await SecureStorage.getAuthToken() ?? profileProvider.token;
-      print("🔑 Auth Token: $token");
+      // 🛡️ 2. Get client context for security
+      final clientIp = await _getClientIp();
+      final userAgent = await _getUserAgent();
 
-      if (token == null) {
-        _showErrorSnackbar("Authentication required.");
-        return;
-      }
+      // 🛡️ 3. Initialize payment with enterprise service
+      final paymentIntent =
+          await EnterprisePaymentService.initializeQuestionPayment(
+            userId: userId,
+            questionText: questionText,
+            clientIp: clientIp,
+            userAgent: userAgent,
+          );
 
-      // ✅ 2. BIOMETRIC AUTHENTICATION (optional - you can remove if causing issues)
-      final biometricAvailable = await BiometricAuthService.isAvailable;
-      if (biometricAvailable) {
-        final biometricResult = await BiometricAuthService.authenticate(
-          reason: 'Confirm payment for your astrology question',
-        );
-        if (!biometricResult) {
-          _showErrorSnackbar('Authentication required for payment.');
-          return;
-        }
-      }
+      paymentIntentId = paymentIntent.paymentIntentId;
+      clientSecret = paymentIntent.clientSecret;
 
-      // ✅ 3. GET PAYMENT INTENT FROM SERVER
-      AppLogger.info('Creating payment intent...', feature: 'payment_flow');
-
-      final response = await SecureApiClient.post(
-        url: "${ChatConstants.baseUrl}/api/secure-question-payment",
-        body: {
-          'userId': userId,
-          'questionText': questionText,
-          'platform': Platform.operatingSystem,
-          'appVersion': Environment.appVersion,
-          'timestamp': DateTime.now().toIso8601String(),
-          'idempotencyKey': PaymentSecurity.generateIdempotencyKey(userId),
-        },
-        token: token,
+      // 🛡️ DEBUG: Verify we have client secret
+      AppLogger.info(
+        '🔍 Payment Intent Created - Client Secret: $clientSecret',
+        feature: 'payment_debug',
       );
 
-      if (response.statusCode == 200) {
-        final jsonResponse = json.decode(response.body);
-        final clientSecret = jsonResponse['clientSecret'];
-        final serverAmount = jsonResponse['amount'];
-        final currency = jsonResponse['currency'];
-        final paymentIntentId = jsonResponse['paymentIntentId'];
-
-        if (clientSecret == null || clientSecret.isEmpty) {
-          throw PaymentException(
-            'Invalid payment response from server',
-            'INVALID_CLIENT_SECRET',
-          );
-        }
-
-        // Show payment amount
-        final amountInDollars = (serverAmount / 100).toStringAsFixed(2);
-        _showInfoSnackbar("Payment amount: $amountInDollars $currency");
-
-        // ✅ 4. CONFIGURE STRIPE PAYMENT SHEET
-        await Stripe.instance.initPaymentSheet(
-          paymentSheetParameters: SetupPaymentSheetParameters(
-            paymentIntentClientSecret: clientSecret,
-            merchantDisplayName: 'Astro Chat App',
-            customerId: userId,
-            style: ThemeMode.light,
-            // Add these for better UX
-            customFlow: false,
-            allowsDelayedPaymentMethods: false,
-          ),
-        );
-
-        // ✅ 5. PRESENT PAYMENT SHEET
-        AppLogger.info('Presenting payment sheet...', feature: 'payment_flow');
-        await Stripe.instance.presentPaymentSheet();
-
-        // ✅ 6. VERIFY PAYMENT COMPLETION SERVER-SIDE
-        AppLogger.info(
-          'Payment sheet completed, verifying...',
-          feature: 'payment_flow',
-        );
-
-        final paymentVerified = await _verifyPaymentServerSide(
-          paymentIntentId,
-          userId,
-        );
-
-        if (!paymentVerified) {
-          throw PaymentException(
-            'Payment not confirmed by server',
-            'PAYMENT_NOT_VERIFIED',
-          );
-        }
-
-        // ✅ 7. PROCESS THE PAID QUESTION
-        final questionResponse = await SecureApiClient.post(
-          url: "${ChatConstants.baseUrl}/api/process-paid-question",
-          body: {
-            'userId': userId,
-            'questionText': questionText,
-            'paymentIntentId': paymentIntentId,
-          },
-          token: token,
-        );
-
-        if (questionResponse.statusCode == 200) {
-          final questionData = json.decode(questionResponse.body);
-          AppLogger.info(
-            'Paid question created via API: ${questionData['questionId']}',
-            feature: 'payment_flow',
-          );
-
-          // ✅ 8. CLEAR INPUT AFTER SUCCESS
-          if (mounted) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              _controller.clear();
-            });
-          }
-
-          _showSuccessSnackbar("✅ Payment successful! Question sent");
-
-          // ✅ 9. UPDATE SESSION
-          SessionManager.updateSession(userId);
-
-          AppLogger.info(
-            'Payment completed successfully - Question created via API',
-            feature: 'payment_flow',
-          );
-        } else {
-          throw PaymentException(
-            'Failed to create paid question: HTTP ${questionResponse.statusCode}',
-            'QUESTION_CREATION_FAILED',
-          );
-        }
-      } else {
-        final errorBody = json.decode(response.body);
+      if (clientSecret.isEmpty) {
         throw PaymentException(
-          errorBody['error'] ??
-              'Failed to create payment intent: HTTP ${response.statusCode}',
-          'PAYMENT_INTENT_CREATION_FAILED',
+          'Payment initialization failed - no client secret',
+          'CLIENT_SECRET_MISSING',
         );
+      }
+
+      // 🛡️ 4. Execute payment (now includes proper initialization)
+      final paymentResult = await EnterprisePaymentService.executePayment(
+        clientSecret: clientSecret,
+        paymentIntentId: paymentIntentId,
+        userId: userId,
+        questionText: questionText,
+      );
+
+      if (paymentResult.success) {
+        // 🛡️ 5. Success handling
+        _handlePaymentSuccess(
+          userId: userId,
+          questionText: questionText,
+          paymentIntentId: paymentIntentId,
+          questionId: paymentResult.questionId,
+        );
+      } else {
+        throw PaymentException('Payment execution failed', 'EXECUTION_FAILED');
       }
     } catch (e) {
-      _handlePaymentError(e);
+      // 🛡️ 6. Enhanced error handling with null safety
+      final errorMessage = e.toString();
+      debugPrint('Enterprise payment error: $errorMessage');
+      _handleEnterprisePaymentError(
+        error: e,
+        userId: userId,
+        paymentIntentId: paymentIntentId,
+        questionText: questionText,
+      );
     } finally {
+      // 🛡️ 7. Always re-enable UI
       if (mounted) {
         setState(() {
           _isInputEnabled = true;
+          _isSending = false;
         });
       }
     }
   }
 
-  Future<bool> _verifyPaymentServerSide(
-    String paymentIntentId,
-    String userId,
-  ) async {
-    try {
-      final profileProvider = Provider.of<ProfileProvider>(
-        context,
-        listen: false,
-      );
-      final token = profileProvider.token ?? await SecureStorage.getAuthToken();
+  // 🛡️ ENHANCED PAYMENT SUCCESS HANDLING
+  void _handlePaymentSuccess({
+    required String userId,
+    required String questionText,
+    required String paymentIntentId,
+    required String? questionId,
+  }) {
+    // 🛡️ 1. Clear input only after successful payment
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _controller.clear();
+    });
 
-      if (token == null) return false;
+    // 🛡️ 2. Show success message
+    _showSuccessSnackbar("✅ Payment successful! Question sent to astrologers");
 
-      final response = await SecureApiClient.post(
-        url: '${ChatConstants.baseUrl}/api/verify-payment',
-        body: {'paymentIntentId': paymentIntentId, 'userId': userId},
-        token: token,
-      );
+    // 🛡️ 3. Update session
+    SessionManager.updateSession(userId);
 
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        return data['verified'] == true;
-      } else {
-        AppLogger.error(
-          'Payment verification failed with status: ${response.statusCode}',
-          null,
-          feature: 'payment_flow',
-        );
+    // 🛡️ 4. Log success for analytics
+    AppLogger.info(
+      'Enterprise payment completed successfully',
+      feature: 'payment_success',
+    );
 
-        return false;
-      }
-    } catch (e) {
-      AppLogger.error('Payment verification failed', e);
-      return false;
-    }
+    // 🛡️ 5. Track payment completion
+    PaymentAnalytics.trackPaymentEvent(
+      event: 'payment_completed',
+      userId: userId,
+      status: 'success',
+      paymentIntentId: paymentIntentId,
+    );
   }
 
-  // ✅ CORRECTED ERROR HANDLING METHOD
-  void _handlePaymentError(dynamic error) {
-    AppLogger.error('Payment failed', error, feature: 'payment_flow');
+  // 🛡️ ENHANCED PAYMENT ERROR HANDLING
+  void _handleEnterprisePaymentError({
+    required dynamic error,
+    required String userId,
+    required String? paymentIntentId,
+    required String questionText,
+    bool paymentSheetInitialized = false,
+  }) {
+    // 🛡️ 1. Log error securely
+    AppLogger.error(
+      'Enterprise payment failed - Sheet Initialized: $paymentSheetInitialized',
+      error,
+      feature: 'payment_error',
+    );
 
-    String errorMessage = "Payment failed";
+    // 🛡️ 2. User-friendly error messages
+    String actualErrorMessage = _extractActualErrorMessage(error);
+    String errorCode = 'UNKNOWN_ERROR';
 
-    if (error is StripeException) {
+    String userFriendlyMessage = "Payment failed. ";
+
+    if (error is PaymentException) {
+      // Handle specific question processing errors
+      if (error.code == 'QUESTION_PROCESSING_FAILED') {
+        userFriendlyMessage =
+            "Payment successful but question submission failed. ";
+        userFriendlyMessage += "Error: ${error.message}";
+
+        // 🛡️ IMPORTANT: Don't clear the input so user can retry
+        // The payment was successful, just the question processing failed
+        // User can try sending the question again without paying
+        // 🛡️ IMPORTANT: Don't clear the input so user can retry
+      } else if (error.code == 'CLIENT_SECRET_MISSING') {
+        userFriendlyMessage = "Payment setup failed. ";
+        userFriendlyMessage += "Error: ${error.message}";
+      } else {
+        userFriendlyMessage += "Error: ${error.message}";
+      }
+    } else if (error is StripeException) {
       final stripeError = error.error;
-
-      // More specific Stripe error handling
+      errorCode = stripeError.code.name;
       switch (stripeError.code) {
-        case FailureCode.Failed:
-          errorMessage = "Payment failed. Please try another payment method.";
-          break;
         case FailureCode.Canceled:
-          errorMessage = "Payment was cancelled.";
+          AppLogger.info('User cancelled payment', feature: 'payment_flow');
           return; // Don't show error for cancellations
-        case FailureCode.Unknown:
-          errorMessage = "An unknown error occurred.";
+        case FailureCode.Failed:
+          userFriendlyMessage =
+              "Payment failed. Please try another payment method. ";
+          userFriendlyMessage +=
+              "Details: ${stripeError.message ?? actualErrorMessage}";
+          break;
+        case FailureCode.Timeout:
+          userFriendlyMessage = "Payment timeout. Please try again. ";
+          userFriendlyMessage +=
+              "Details: ${stripeError.message ?? actualErrorMessage}";
           break;
         default:
-          errorMessage =
-              "Payment error: ${stripeError.message ?? 'Please try again'}";
+          userFriendlyMessage = "Payment error. Please try again. ";
+          userFriendlyMessage +=
+              "Details: ${stripeError.message ?? actualErrorMessage}";
       }
-    } else if (error is TimeoutException) {
-      errorMessage = "Payment timeout. Please try again.";
-    } else if (error is PaymentException) {
-      errorMessage = error.message;
     } else if (error is SocketException) {
-      errorMessage = "Network error. Please check your connection.";
-    } else if (error is HttpException) {
-      errorMessage = "Server error. Please try again later.";
+      errorCode = 'NETWORK_ERROR';
+      userFriendlyMessage = "Network error. Please check your connection. ";
+      userFriendlyMessage += "Details: $actualErrorMessage";
+    } else if (error is TimeoutException) {
+      errorCode = 'TIMEOUT';
+      userFriendlyMessage = "Request timeout. Please try again. ";
+      userFriendlyMessage += "Details: $actualErrorMessage";
+    } else {
+      // 🛡️ SHOW ACTUAL ERROR FOR UNKNOWN ERRORS
+      userFriendlyMessage += "Error: $actualErrorMessage";
     }
 
-    // Only show error if it's not a user cancellation
-    if (!errorMessage.contains('cancelled') &&
-        !errorMessage.contains('canceled')) {
-      _showErrorSnackbar("❌ $errorMessage");
+    // 🛡️ 3. Track payment failure for analytics
+    PaymentAnalytics.trackPaymentEvent(
+      event: 'payment_failed',
+      userId: userId,
+      status: 'failed',
+      errorCode: errorCode,
+      paymentIntentId: paymentIntentId,
+    );
+    if (!userFriendlyMessage.toLowerCase().contains('cancelled') &&
+        !userFriendlyMessage.toLowerCase().contains('canceled')) {
+      _showDetailedErrorSnackbar("❌ $userFriendlyMessage", actualErrorMessage);
     }
 
-    // Log the specific error for debugging
-    AppLogger.error('Payment Error Details', error, feature: 'payment_flow');
+    // 🛡️ 6. For question processing failures, suggest retry without payment
+    if (errorCode == 'QUESTION_PROCESSING_FAILED') {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _showQuestionRetryDialog(userId, questionText, paymentIntentId);
+      });
+    }
   }
 
-  // ✅ HELPER METHOD FOR INFO SNACKBARS
-  void _showInfoSnackbar(String message) {
+  // 🛡️ HELPER METHOD TO EXTRACT ACTUAL ERROR MESSAGE
+  String _extractActualErrorMessage(dynamic error) {
+    try {
+      if (error is PaymentException) {
+        return error.message;
+      } else if (error is StripeException) {
+        return error.error.message ?? error.toString();
+      } else if (error is SocketException) {
+        return error.message;
+      } else if (error is TimeoutException) {
+        return 'Operation timed out';
+      } else if (error is HttpException) {
+        return error.message;
+      } else if (error is FormatException) {
+        return 'Data format error: ${error.message}';
+      } else if (error is String) {
+        return error;
+      } else {
+        return error.toString();
+      }
+    } catch (e) {
+      return 'Unknown error occurred';
+    }
+  }
+
+  // 🛡️ ENHANCED ERROR SNACKBAR WITH DETAILS
+  void _showDetailedErrorSnackbar(String userMessage, String technicalDetails) {
     if (mounted) {
+      // Show user-friendly message in snackbar
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(message),
-          backgroundColor: Colors.blue,
-          duration: const Duration(seconds: 3),
+          content: Text(userMessage),
+          backgroundColor: Colors.red,
+          duration: const Duration(seconds: 5),
+          action: SnackBarAction(
+            label: 'Details',
+            textColor: Colors.white,
+            onPressed: () {
+              // Show detailed error in a dialog
+              _showErrorDetailsDialog(userMessage, technicalDetails);
+            },
+          ),
         ),
       );
     }
+  }
+
+  void _showErrorDetailsDialog(String userMessage, String technicalDetails) {
+    showDialog(
+      context: context,
+      builder:
+          (context) => AlertDialog(
+            title: Row(
+              children: [
+                Icon(Icons.error_outline, color: Colors.red),
+                SizedBox(width: 8),
+                Text('Payment Error Details'),
+              ],
+            ),
+            content: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    userMessage,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 16),
+                  Text(
+                    'Technical Details:',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade100,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: SelectableText(
+                      technicalDetails,
+                      style: TextStyle(fontFamily: 'Monospace', fontSize: 12),
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                  Text(
+                    'Need help? Contact support with these details.',
+                    style: TextStyle(fontSize: 12, color: Colors.grey),
+                  ),
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Close'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  _contactSupport();
+                },
+                child: Text('Contact Support'),
+              ),
+            ],
+          ),
+    );
+  }
+
+  void _contactSupport() {
+    Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => const CustomerSupportPage()));
+  }
+
+  // 🛡️ Add retry dialog for question processing failures
+  void _showQuestionRetryDialog(
+    String userId,
+    String questionText,
+    String? paymentIntentId,
+  ) {
+    showDialog(
+      context: context,
+      builder:
+          (context) => AlertDialog(
+            title: Text('Payment Successful'),
+            content: Text(
+              'Your payment was successful but we encountered an issue submitting your question. '
+              'You can try sending it again without additional payment.',
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Cancel'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  _retryQuestionWithExistingPayment(
+                    userId,
+                    questionText,
+                    paymentIntentId!,
+                  );
+                },
+                child: Text('Retry Question'),
+              ),
+            ],
+          ),
+    );
+  }
+
+  // 🛡️ Retry question using existing payment
+  Future<void> _retryQuestionWithExistingPayment(
+    String userId,
+    String questionText,
+    String paymentIntentId,
+  ) async {
+    try {
+      // Send question directly using the existing payment intent
+      await sendQuestionToSocket(
+        questionText,
+        userId,
+        paid: true,
+        paymentIntentId: paymentIntentId,
+      );
+
+      _controller.clear();
+      _showSuccessSnackbar('Question sent successfully!');
+    } catch (e) {
+      _showErrorSnackbar('Failed to send question. Please contact support.');
+    }
+  }
+
+  // 🛡️ CLIENT CONTEXT METHODS
+  Future<String> _getClientIp() async {
+    try {
+      // Implement IP detection logic
+      // For mobile apps, this might be the network IP
+      return 'mobile_client';
+    } catch (e) {
+      return 'unknown';
+    }
+  }
+
+  Future<String> _getUserAgent() async {
+    try {
+      final deviceInfo = {
+        'platform': Platform.operatingSystem,
+        'version': Platform.operatingSystemVersion,
+        'appVersion': Environment.appVersion,
+        'model': '', // You can add device model if available
+      };
+      return json.encode(deviceInfo);
+    } catch (e) {
+      return 'unknown';
+    }
+  }
+
+  // 🛡️ ENTERPRISE PAYMENT DIALOG
+  void _showEnterprisePaymentDialog(
+    BuildContext context,
+    String userId,
+    String text,
+  ) {
+    final l10n = AppLocalizations.of(context)!;
+
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder:
+          (_) => AlertDialog(
+            title: Row(
+              children: [
+                Icon(Icons.credit_card, color: Colors.blue),
+                SizedBox(width: 8),
+                Text(l10n.paymentRequired),
+              ],
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  l10n.paymentRequiredMessage,
+                  style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(height: 16),
+                Container(
+                  padding: EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.blue.shade50,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(Icons.security, color: Colors.blue, size: 16),
+                      SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          'Secure payment processed by Stripe',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.blue.shade700,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  // 🛡️ Track cancellation
+                  PaymentAnalytics.trackPaymentEvent(
+                    event: 'payment_cancelled',
+                    userId: userId,
+                    status: 'cancelled',
+                  );
+                },
+                child: Text(l10n.cancelButton),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  // 🛡️ Use enterprise payment flow
+                  startEnterprisePayment(userId, text);
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  foregroundColor: Colors.white,
+                ),
+                child: Text(l10n.payNowButton),
+              ),
+            ],
+          ),
+    );
   }
 
   Future<void> debugPayment(String paymentIntentId) async {
@@ -3242,7 +3483,7 @@ class _ChatScreenState extends State<ChatScreen>
               ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
-                  startStripePayment(userId, text);
+                  startEnterprisePayment(userId, text);
                 },
                 child: Text(l10n.payNowButton),
               ),

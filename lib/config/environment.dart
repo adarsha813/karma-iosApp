@@ -63,6 +63,10 @@ class Environment {
     };
   }
 
+  static const int paymentTimeout = int.fromEnvironment(
+    'PAYMENT_TIMEOUT',
+    defaultValue: 30,
+  );
   // EmailJS Configuration
   static const String emailJsServiceId = String.fromEnvironment(
     'EMAILJS_SERVICE_ID',
