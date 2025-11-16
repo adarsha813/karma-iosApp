@@ -535,7 +535,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get paymentRequiredMessage =>
-      'You\'ve used your free questions. Pay ₹50 to continue.';
+      'You\'ve used your free questions. Pay \$5 to continue.';
 
   @override
   String get payNowButton => 'Pay Now';

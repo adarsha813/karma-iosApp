@@ -18,6 +18,7 @@ import 'screens/dailyHoroscope_screen.dart';
 import 'package:kundali/config/environment.dart';
 import 'services/first_launch_service.dart'; // Add this import
 import 'l10n/custom_localizations_delegate.dart'; // Add this import
+import 'services/ssl_pinning_service.dart';
 
 // Config
 import 'config/firebase_config.dart';
@@ -1745,6 +1746,7 @@ Future<void> main() async {
   SafeWidgetsBinding.ensureInitialized();
   WidgetsFlutterBinding.ensureInitialized();
 
+  await _initializeSecurity();
   // Get first launch result BEFORE using it
   final launchResult = await FirstLaunchService.checkFirstLaunch();
 
@@ -1952,6 +1954,30 @@ Future<void> main() async {
           ),
         ),
       ),
+    );
+  }
+}
+
+// 🛡️ Security initialization function
+Future<void> _initializeSecurity() async {
+  try {
+    // Initialize SSL pinning
+    await SSLPinningService.initialize();
+
+    ProductionLogger.info(
+      '🔐 SSL Certificate Pinning initialized successfully',
+    );
+  } catch (e, stackTrace) {
+    ProductionLogger.fatal(
+      '❌ SSL Pinning initialization failed - App may be vulnerable to MITM attacks',
+      e,
+      stackTrace,
+    );
+
+    // In production, you might want to block the app if security fails
+    // For now, we'll continue but log the security risk
+    ProductionLogger.warning(
+      '⚠️ Continuing without SSL pinning - SECURITY RISK',
     );
   }
 }

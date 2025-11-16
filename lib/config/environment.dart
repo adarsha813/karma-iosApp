@@ -1,5 +1,6 @@
 /// environment.dart
 /// Centralized environment configuration
+/// import 'package:uri/uri.dart'; // optional, for parsing URLs
 
 class Environment {
   static const String baseUrl = String.fromEnvironment(
@@ -101,5 +102,15 @@ class Environment {
   static const int socketConnectionTimeout = int.fromEnvironment(
     'SOCKET_CONNECTION_TIMEOUT',
     defaultValue: 20000,
+  );
+
+  static const String pinnedCertPrimary = String.fromEnvironment(
+    'PINNED_CERT_PRIMARY',
+    defaultValue: 'drJ7gKWAJ9w88dpo2sFwEO2TmX0LYD4vrb6FASSTtac=',
+  );
+
+  static const String pinnedCertBackup = String.fromEnvironment(
+    'D3788D482D4F24C5F8420E480EEEDCBE586CCE40E6EE837360AA2087010D88AF',
+    defaultValue: '',
   );
 }
