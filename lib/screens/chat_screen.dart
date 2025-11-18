@@ -2601,7 +2601,7 @@ class _ChatScreenState extends State<ChatScreen>
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        final remainingBalance = data['remaining'] ?? 0;
+        final remainingBalance = data['balance'] ?? 0;
         AppLogger.info(
           'Paid balance check: $remainingBalance',
           feature: 'balance_check',

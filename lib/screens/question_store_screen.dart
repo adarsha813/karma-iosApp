@@ -94,6 +94,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
       setState(() {
         questionBalance = balance;
         offers = offersList;
+        //usageStats = results[0]['usageStats'];
       });
 
       _retryCount = 0; // Reset retry count on success
@@ -153,7 +154,8 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
 
     // 4. Biometric auth for high-value purchases
     final offer = offers.firstWhere((o) => o['questions'] == questions);
-    final price = (offer['price'] as num).toDouble();
+    final packageId = offer['id'];
+    final double price = (offer['price'] as num).toDouble(); // <-- add this
 
     if (price >= 15.0) {
       final bool authenticated = await _authenticateWithBiometrics(
@@ -176,7 +178,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
     try {
       final clientSecret = await _paymentService.createPaymentIntent(
         token: token,
-        questions: questions,
+        packageId: packageId,
       );
 
       // Extract payment intent ID for verification
