@@ -744,6 +744,11 @@ class InputValidator {
     final validPattern = RegExp(r'^[a-zA-Z0-9_-]+$');
     return validPattern.hasMatch(userId);
   }
+
+  static String stripHtmlTags(String html) {
+    final regex = RegExp(r'<[^>]*>');
+    return html.replaceAll(regex, '');
+  }
 }
 
 class ValidationResult {
@@ -1076,6 +1081,39 @@ class _ChatScreenState extends State<ChatScreen>
     AppLogger.info('ChatScreen initialized', feature: 'chat_screen');
     _initializeChat();
     _preloadAllAstrologers(); // ✅ ADD THIS
+    Future.delayed(Duration(seconds: 2), () {
+      _checkSocketConnection();
+      _joinUserRoom();
+    });
+  }
+
+  void _checkSocketConnection() {
+    final isConnected = socket.connected && _isSocketConnected;
+    AppLogger.info(
+      '🔌 Socket Status - Connected: $isConnected, ID: ${socket.id}',
+      feature: 'socket_health',
+    );
+
+    if (!isConnected && userId != null) {
+      AppLogger.warning(
+        '⚠️ Socket not connected! User: $userId',
+        feature: 'socket_health',
+      );
+
+      // Attempt reconnect
+      if (!socket.connected) {
+        socket.connect();
+        AppLogger.info(
+          '🔄 Attempting socket reconnect',
+          feature: 'socket_health',
+        );
+      }
+    }
+
+    // Re-join room if connected but might have missed it
+    if (isConnected && userId != null) {
+      _joinUserRoom();
+    }
   }
 
   Future<void> _loadToken() async {
@@ -1304,7 +1342,7 @@ class _ChatScreenState extends State<ChatScreen>
     socket = IO.io(
       ChatConstants.socketUrl,
       IO.OptionBuilder()
-          .setTransports(['websocket'])
+          .setTransports(['websocket', 'polling'])
           .disableAutoConnect()
           .setReconnectionAttempts(ChatConstants.maxReconnectionAttempts)
           .setReconnectionDelay(ChatConstants.reconnectDelay.inMilliseconds)
@@ -1320,6 +1358,23 @@ class _ChatScreenState extends State<ChatScreen>
 
     _setupAllSocketHandlers();
     socket.connect();
+    AppLogger.info('🔗 Socket connection initiated', feature: 'socket');
+  }
+
+  void _joinUserRoom() {
+    if (userId != null && userId!.isNotEmpty && socket.connected) {
+      socket.emit('join_room', {'room': userId});
+      AppLogger.info(
+        '✅ Joined socket room for user: $userId',
+        feature: 'socket',
+      );
+
+      // Test the connection
+      socket.emit('test_ping', {
+        'userId': userId,
+        'timestamp': DateTime.now().toIso8601String(),
+      });
+    }
   }
 
   void _setupAllSocketHandlers() {
@@ -1348,6 +1403,9 @@ class _ChatScreenState extends State<ChatScreen>
 
       AppLogger.info('Socket connected: ${socket.id}', feature: 'socket');
       _isSocketConnected = true;
+
+      // ✅ JOIN ROOM IMMEDIATELY AFTER CONNECTION
+      _joinUserRoom();
 
       // ✅ FIX: Safe completer completion
       if (_socketConnectionCompleter != null &&
@@ -1408,68 +1466,230 @@ class _ChatScreenState extends State<ChatScreen>
       }
     });
 
-    // ✅ NEW_ANSWER HANDLER
+    // ✅ FIXED NEW_ANSWER HANDLER
     socket.on('new_answer', (data) {
       if (!_isSafe) return;
 
       try {
+        AppLogger.info(
+          '🎯 NEW_ANSWER EVENT RECEIVED - Processing...',
+          feature: 'socket_messages',
+        );
+
+        // Enhanced validation for answer structure
         if (data['questionId'] == null || data['answerTranslated'] == null) {
-          throw Exception('Invalid answer structure');
+          throw Exception('Invalid answer structure: $data');
         }
-        _validateSocketMessage({'text': data['answerTranslated']});
-        AppLogger.info('Received new_answer event', feature: 'socket_messages');
-        _handleNewAnswer(data);
+
+        // ✅ FIX: Extract and validate only the text content
+        final answerText = data['answerTranslated'] as String;
+        final validation = InputValidator.validateMessage(
+          InputValidator.stripHtmlTags(answerText),
+        );
+
+        if (!validation.isValid) {
+          throw Exception('Invalid answer content: ${validation.message}');
+        }
+
+        AppLogger.info(
+          '✅ Validated new_answer for question: ${data['questionId']}',
+          feature: 'socket_messages',
+        );
+
+        // Create and add message
+        final message = chat_model.Message(
+          id: data['questionId'],
+          text: data['answerTranslated'], // Keep original HTML for display
+          isMe: false,
+          adminId: data['adminId'] ?? data['councillorId'],
+          adminName: data['adminName'] ?? data['councillorName'],
+          answeredAt: DateTime.parse(data['answeredAt']),
+        );
+
+        AppLogger.info(
+          '📝 Created message: ${message.id}',
+          feature: 'socket_messages',
+        );
+
+        _addMessage(message);
+
+        AppLogger.info(
+          '🎉 Successfully added new answer to chat UI',
+          feature: 'socket_messages',
+        );
+
+        // Show success indicator
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('New answer received!'),
+              backgroundColor: Colors.green,
+              duration: Duration(seconds: 2),
+            ),
+          );
+        }
       } catch (e, stackTrace) {
         AppLogger.error(
-          'Invalid socket message rejected: $e',
+          '❌ Error processing new_answer event: $e',
           e,
-          feature: 'socket_validation',
+          feature: 'socket_messages',
           stackTrace: stackTrace,
         );
       }
     });
 
-    // ✅ NEW_CLARIFICATION HANDLER
+    // ✅ NEW_CLARIFICATION HANDLER (Improved & Safe)
     socket.on('new_clarification', (data) {
       if (!_isSafe) return;
 
       try {
-        if (data['questionId'] == null ||
-            data['clarificationMessage'] == null) {
-          throw Exception('Invalid clarification structure');
-        }
-        _validateSocketMessage({'text': data['clarificationMessage']});
         AppLogger.info(
-          'Received new_clarification event',
+          '🎯 NEW_CLARIFICATION EVENT RECEIVED - Processing...',
           feature: 'socket_messages',
         );
-        _handleNewClarification(data);
+
+        // 1️⃣ Validate structure
+        if (data['questionId'] == null ||
+            data['clarificationMessageTranslated'] == null) {
+          throw Exception('Invalid clarification structure: $data');
+        }
+
+        // 2️⃣ Extract and validate clean text
+        final clarificationText =
+            data['clarificationMessageTranslated'] as String;
+
+        final validation = InputValidator.validateMessage(
+          InputValidator.stripHtmlTags(clarificationText),
+        );
+
+        if (!validation.isValid) {
+          throw Exception(
+            'Invalid clarification content: ${validation.message}',
+          );
+        }
+
+        AppLogger.info(
+          '✅ Validated clarification for question: ${data['questionId']}',
+          feature: 'socket_messages',
+        );
+
+        // 3️⃣ Create UI message object
+        final message = chat_model.Message(
+          id: data['questionId'],
+          text: data['clarificationMessageTranslated'], // keep HTML for UI
+          isMe: false,
+          adminId: data['councillorId'],
+          adminName: data['councillorName'],
+          clarificatedAt: DateTime.parse(data['clarificatedAt']),
+          isClarification: true, // <-- Add to your model if needed
+        );
+
+        AppLogger.info(
+          '📝 Created clarification message: ${message.id}',
+          feature: 'socket_messages',
+        );
+
+        // 4️⃣ Add to UI
+        _addMessage(message);
+
+        AppLogger.info(
+          '🎉 Successfully added clarification to chat UI',
+          feature: 'socket_messages',
+        );
+
+        // 5️⃣ Optional: UI toast
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('New clarification received!'),
+              backgroundColor: Colors.orange,
+              duration: Duration(seconds: 2),
+            ),
+          );
+        }
       } catch (e, stackTrace) {
         AppLogger.error(
-          'Invalid socket message rejected: $e',
+          '❌ Error processing new_clarification event: $e',
           e,
-          feature: 'socket_validation',
+          feature: 'socket_messages',
           stackTrace: stackTrace,
         );
       }
     });
 
     // ✅ NEW_ADVICE HANDLER
+    // ✅ NEW_ADVICE HANDLER (Full payload support)
     socket.on('new_advice', (data) {
       if (!_isSafe) return;
 
       try {
-        if (data['adviceTranslated'] == null) {
-          throw Exception('Invalid advice structure');
+        AppLogger.info(
+          '🎯 NEW_ADVICE EVENT RECEIVED - Processing...',
+          feature: 'socket_messages',
+        );
+
+        // 1️⃣ Validate required fields
+        if (data['adviceTranslated'] == null || data['_id'] == null) {
+          throw Exception('Invalid advice structure: $data');
         }
-        _validateSocketMessage({'text': data['adviceTranslated']});
-        AppLogger.info('Received new_advice event', feature: 'socket_messages');
-        _handleNewAdvice(data);
+
+        // 2️⃣ Extract and validate clean text
+        final adviceText = data['adviceTranslated'] as String;
+
+        final validation = InputValidator.validateMessage(
+          InputValidator.stripHtmlTags(adviceText),
+        );
+
+        if (!validation.isValid) {
+          throw Exception('Invalid advice content: ${validation.message}');
+        }
+
+        AppLogger.info(
+          '✅ Validated new_advice content',
+          feature: 'socket_messages',
+        );
+
+        // 3️⃣ Create message object
+        final message = chat_model.Message(
+          id: data['_id'] ?? data['id'] ?? data['questionId'],
+          text: data['adviceTranslated'], // keep HTML for display
+          isMe: false,
+          adminId: data['adminId'],
+          adminName: data['adminName'],
+          answeredAt: DateTime.parse(data['advisedAt']),
+          type: data['type'],
+          title: data['title'],
+          isAdvice: true, // optional flag for UI
+        );
+
+        AppLogger.info(
+          '📝 Created advice message: ${message.id}',
+          feature: 'socket_messages',
+        );
+
+        // 4️⃣ Add message to chat UI
+        _addMessage(message);
+
+        AppLogger.info(
+          '🎉 Successfully added new advice to chat UI',
+          feature: 'socket_messages',
+        );
+
+        // 5️⃣ Optional toast
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('New advice received!'),
+              backgroundColor: Colors.blue,
+              duration: Duration(seconds: 2),
+            ),
+          );
+        }
       } catch (e, stackTrace) {
         AppLogger.error(
-          'Invalid socket message rejected: $e',
+          '❌ Error processing new_advice event: $e',
           e,
-          feature: 'socket_validation',
+          feature: 'socket_messages',
           stackTrace: stackTrace,
         );
       }
@@ -1621,49 +1841,6 @@ class _ChatScreenState extends State<ChatScreen>
         );
       }
     }
-  }
-
-  void _handleNewAnswer(Map<String, dynamic> data) {
-    final message = chat_model.Message(
-      id: data['questionId'],
-      text: data['answerTranslated'],
-      isMe: false,
-      adminId: data['councillorId'],
-      adminName: data['councillorName'],
-      answeredAt: DateTime.parse(data['answeredAt']),
-    );
-
-    _addMessage(message);
-  }
-
-  void _handleNewClarification(Map<String, dynamic> data) {
-    final message = chat_model.Message(
-      id: data['questionId'],
-      text: data['clarificationMessage'],
-      isMe: false,
-      isClarification: true,
-      adminId: data['councillorId'],
-      adminName: data['councillorName'],
-      clarificatedAt: DateTime.parse(data['clarificatedAt']),
-    );
-
-    _addMessage(message);
-  }
-
-  void _handleNewAdvice(Map<String, dynamic> data) {
-    final message = chat_model.Message(
-      id: data['_id'] ?? data['id'] ?? data['questionId'],
-      text: data['adviceTranslated'],
-      isMe: false,
-      adminId: data['adminId'],
-      adminName: data['adminName'],
-      answeredAt: DateTime.parse(data['advisedAt']),
-      isAdvice: true,
-      type: data['type'],
-      title: data['title'],
-    );
-
-    _addMessage(message);
   }
 
   void _handlePaymentRequired(Map<String, dynamic> data) {
