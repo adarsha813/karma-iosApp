@@ -257,6 +257,9 @@ class Message extends ChangeNotifier {
     bool? isAdviceHidden,
     int? rating,
     String? feedback,
+    String? type,
+    String? title,
+    String? adminImage,
   }) {
     return Message(
       id: id ?? this.id,
@@ -281,6 +284,9 @@ class Message extends ChangeNotifier {
       isAdviceHidden: isAdviceHidden ?? this.isAdviceHidden,
       rating: rating ?? _rating,
       feedback: feedback ?? _feedback,
+      type: type ?? this.type,
+      title: title ?? this.title,
+      adminImage: adminImage ?? this.adminImage,
     );
   }
 }

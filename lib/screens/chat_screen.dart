@@ -1196,10 +1196,6 @@ class _ChatScreenState extends State<ChatScreen>
             message.adminId!.isNotEmpty &&
             (message.adminImage == null || message.adminImage!.isEmpty)) {
           uniqueAdminIds.add(message.adminId!);
-
-          debugPrint(
-            '🔍 Message expects admin: ${message.adminId} -> ${message.adminName}',
-          );
         }
       }
 
@@ -4317,9 +4313,6 @@ class _ChatScreenState extends State<ChatScreen>
     for (final message in messages) {
       if (message.isMe && message.id != null && message.id!.isNotEmpty) {
         questionMap[message.id!] = message.text;
-        debugPrint(
-          '✅ MAPPED Question: ${message.id} -> "${message.text.substring(0, min(20, message.text.length))}..."',
-        );
       }
     }
 
@@ -4334,9 +4327,6 @@ class _ChatScreenState extends State<ChatScreen>
           if (questionText != null && questionText.isNotEmpty) {
             relationships[message.id!] = questionText;
             relationshipsFound++;
-            debugPrint(
-              '🎯 RELATIONSHIP FOUND: Answer ${message.id} -> Question: "${questionText.substring(0, min(20, questionText.length))}..."',
-            );
           } else {
             debugPrint('❌ NO QUESTION FOUND for answer: ${message.id}');
             debugPrint('   Available questions: ${questionMap.keys}');

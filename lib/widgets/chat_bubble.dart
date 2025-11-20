@@ -710,19 +710,6 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
         widget.relatedQuestionText != null &&
         widget.relatedQuestionText!.isNotEmpty;
 
-    debugPrint('🔍 Related Question Debug:');
-    debugPrint('   - Message ID: ${widget.message.id}');
-    debugPrint('   - isMe: ${widget.message.isMe}');
-    debugPrint('   - isAdvice: ${widget.message.isAdvice}');
-    debugPrint('   - isClarification: ${widget.message.isClarification}');
-    debugPrint(
-      '   - Related text provided: ${widget.relatedQuestionText != null}',
-    );
-    debugPrint(
-      '   - Related text length: ${widget.relatedQuestionText?.length ?? 0}',
-    );
-    debugPrint('   - Should show: $shouldShow');
-
     return shouldShow;
   }
 
@@ -1083,10 +1070,6 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   // ✅ SIMPLIFY _buildAdminInfo - No FutureBuilder!
   Widget _buildAdminInfo() {
     final message = widget.message;
-    debugPrint('🔍 Admin Info Debug:');
-    debugPrint('   - adminId: ${message.adminId}');
-    debugPrint('   - adminName: ${message.adminName}');
-    debugPrint('   - cachedAstrologer: ${widget.cachedAstrologer?.name}');
 
     // Early return if no admin data
     if ((message.adminName == null || message.adminName!.isEmpty) &&
@@ -1113,8 +1096,6 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
             : (message.adminName?.isNotEmpty == true
                 ? message.adminName!
                 : 'Councillor');
-
-    debugPrint('🎯 Final admin name: $adminName');
 
     return _buildAdminCard(
       adminImage: adminImage,
