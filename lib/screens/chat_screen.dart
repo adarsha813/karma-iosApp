@@ -1318,17 +1318,29 @@ class _ChatScreenState extends State<ChatScreen>
           .build(),
     );
 
-    _setupSocketEventHandlers();
+    _setupAllSocketHandlers();
     socket.connect();
   }
 
-  void _setupSocketEventHandlers() {
+  void _setupAllSocketHandlers() {
     // ✅ FIX: Always create a new completer and reset connection state
     _socketConnectionCompleter = Completer<void>();
     _isSocketConnected = false;
 
+    // First, remove ALL existing listeners to prevent duplicates
+    socket.off('connect');
+    socket.off('disconnect');
+    socket.off('connect_error');
+    socket.off('error');
+    socket.off('new_question');
+    socket.off('new_answer');
+    socket.off('new_clarification');
+    socket.off('new_advice');
+    socket.off('payment_required');
+    socket.off('joined_room');
+
+    // ==================== CONNECTION HANDLERS ====================
     socket.onConnect((_) {
-      // ✅ SAFETY CHECK
       if (!_isSafe) {
         socket.disconnect();
         return;
@@ -1352,34 +1364,10 @@ class _ChatScreenState extends State<ChatScreen>
         );
       }
     });
-    // Add similar safety checks to all socket event handlers
-    socket.on('new_question', (data) {
-      if (!_isSafe) return;
-
-      try {
-        _validateSocketMessage(data);
-        AppLogger.info(
-          'Received new_question event',
-          feature: 'socket_messages',
-        );
-        _handleNewQuestion(data);
-      } catch (e, stackTrace) {
-        if (_isSafe) {
-          AppLogger.error(
-            'Invalid socket message rejected: $e',
-            e,
-            feature: 'socket_validation',
-            stackTrace: stackTrace,
-          );
-        }
-      }
-    });
 
     socket.onDisconnect((_) {
       AppLogger.info('Socket disconnected', feature: 'socket');
       _isSocketConnected = false;
-
-      // ✅ FIX: Reset completer on disconnect for reconnection
       _socketConnectionCompleter = Completer<void>();
     });
 
@@ -1387,7 +1375,6 @@ class _ChatScreenState extends State<ChatScreen>
       AppLogger.error('Socket connection error', error, feature: 'socket');
       _isSocketConnected = false;
 
-      // ✅ FIX: Safe error completion
       if (_socketConnectionCompleter != null &&
           !_socketConnectionCompleter!.isCompleted) {
         _safeCompleteCompleterWithError(_socketConnectionCompleter, error);
@@ -1398,8 +1385,134 @@ class _ChatScreenState extends State<ChatScreen>
       AppLogger.error('Socket error', error, feature: 'socket');
     });
 
-    // Message event handlers
-    _setupMessageHandlers();
+    // ==================== MESSAGE HANDLERS ====================
+
+    // ✅ NEW_QUESTION HANDLER (Fixed)
+    socket.on('new_question', (data) {
+      if (!_isSafe) return;
+
+      try {
+        _validateSocketMessage(data);
+        AppLogger.info(
+          '📥 Received new_question event via socket',
+          feature: 'socket_messages',
+        );
+        _handleNewQuestion(data);
+      } catch (e, stackTrace) {
+        AppLogger.error(
+          'Invalid socket message rejected: $e',
+          e,
+          feature: 'socket_validation',
+          stackTrace: stackTrace,
+        );
+      }
+    });
+
+    // ✅ NEW_ANSWER HANDLER
+    socket.on('new_answer', (data) {
+      if (!_isSafe) return;
+
+      try {
+        if (data['questionId'] == null || data['answerTranslated'] == null) {
+          throw Exception('Invalid answer structure');
+        }
+        _validateSocketMessage({'text': data['answerTranslated']});
+        AppLogger.info('Received new_answer event', feature: 'socket_messages');
+        _handleNewAnswer(data);
+      } catch (e, stackTrace) {
+        AppLogger.error(
+          'Invalid socket message rejected: $e',
+          e,
+          feature: 'socket_validation',
+          stackTrace: stackTrace,
+        );
+      }
+    });
+
+    // ✅ NEW_CLARIFICATION HANDLER
+    socket.on('new_clarification', (data) {
+      if (!_isSafe) return;
+
+      try {
+        if (data['questionId'] == null ||
+            data['clarificationMessage'] == null) {
+          throw Exception('Invalid clarification structure');
+        }
+        _validateSocketMessage({'text': data['clarificationMessage']});
+        AppLogger.info(
+          'Received new_clarification event',
+          feature: 'socket_messages',
+        );
+        _handleNewClarification(data);
+      } catch (e, stackTrace) {
+        AppLogger.error(
+          'Invalid socket message rejected: $e',
+          e,
+          feature: 'socket_validation',
+          stackTrace: stackTrace,
+        );
+      }
+    });
+
+    // ✅ NEW_ADVICE HANDLER
+    socket.on('new_advice', (data) {
+      if (!_isSafe) return;
+
+      try {
+        if (data['adviceTranslated'] == null) {
+          throw Exception('Invalid advice structure');
+        }
+        _validateSocketMessage({'text': data['adviceTranslated']});
+        AppLogger.info('Received new_advice event', feature: 'socket_messages');
+        _handleNewAdvice(data);
+      } catch (e, stackTrace) {
+        AppLogger.error(
+          'Invalid socket message rejected: $e',
+          e,
+          feature: 'socket_validation',
+          stackTrace: stackTrace,
+        );
+      }
+    });
+
+    // ✅ PAYMENT_REQUIRED HANDLER
+    socket.on('payment_required', (data) {
+      if (!_isSafe) return;
+
+      try {
+        if (data['message'] == null) {
+          throw Exception('Invalid payment required structure');
+        }
+        AppLogger.info(
+          'Received payment_required event',
+          feature: 'socket_payments',
+        );
+        _handlePaymentRequired(data);
+      } catch (e, stackTrace) {
+        AppLogger.error(
+          'Invalid socket message rejected: $e',
+          e,
+          feature: 'socket_validation',
+          stackTrace: stackTrace,
+        );
+      }
+    });
+
+    // ✅ ROOM JOIN CONFIRMATION
+    socket.on('joined_room', (data) {
+      if (!_isSafe) return;
+      AppLogger.info('✅ Confirmed joined room: $data', feature: 'socket');
+    });
+
+    // ✅ DEBUG: Log all socket events (optional - remove in production)
+    if (kDebugMode) {
+      socket.onAny((event, data) {
+        AppLogger.info(
+          '📡 Socket event: $event → ${data != null ? json.encode(data) : "null"}',
+          feature: 'socket_debug',
+        );
+      });
+    }
   }
 
   void _checkPerformance() {
@@ -1439,118 +1552,6 @@ class _ChatScreenState extends State<ChatScreen>
     if (completer != null && !completer.isCompleted) {
       completer.completeError(error);
     }
-  }
-
-  void _setupMessageHandlers() {
-    socket.off('new_question');
-    socket.off('new_answer');
-    socket.off('new_clarification');
-    socket.off('new_advice');
-    socket.off('payment_required');
-
-    socket.on('new_question', (data) {
-      try {
-        _validateSocketMessage(data);
-        AppLogger.info(
-          'Received new_question event',
-          feature: 'socket_messages',
-        );
-        _handleNewQuestion(data);
-      } catch (e, stackTrace) {
-        AppLogger.error(
-          // ✅ FIXED: Use error() not security()
-          'Invalid socket message rejected: $e',
-          e,
-          feature: 'socket_validation',
-          stackTrace: stackTrace,
-        );
-      }
-    });
-
-    socket.on('new_answer', (data) {
-      try {
-        if (data['questionId'] == null || data['answerTranslated'] == null) {
-          throw Exception('Invalid answer structure');
-        }
-        _validateSocketMessage({'text': data['answerTranslated']});
-        AppLogger.info('Received new_answer event', feature: 'socket_messages');
-        _handleNewAnswer(data);
-      } catch (e, stackTrace) {
-        AppLogger.error(
-          // ✅ FIXED
-          'Invalid socket message rejected: $e',
-          e,
-          feature: 'socket_validation',
-          stackTrace: stackTrace,
-        );
-      }
-    });
-
-    socket.on('new_clarification', (data) {
-      try {
-        // ✅ ADDED VALIDATION
-        if (data['questionId'] == null ||
-            data['clarificationMessage'] == null) {
-          throw Exception('Invalid clarification structure');
-        }
-        _validateSocketMessage({'text': data['clarificationMessage']});
-        AppLogger.info(
-          'Received new_clarification event',
-          feature: 'socket_messages',
-        );
-        _handleNewClarification(data);
-      } catch (e, stackTrace) {
-        AppLogger.error(
-          // ✅ FIXED
-          'Invalid socket message rejected: $e',
-          e,
-          feature: 'socket_validation',
-          stackTrace: stackTrace,
-        );
-      }
-    });
-
-    socket.on('new_advice', (data) {
-      try {
-        // ✅ ADDED VALIDATION
-        if (data['adviceTranslated'] == null) {
-          throw Exception('Invalid advice structure');
-        }
-        _validateSocketMessage({'text': data['adviceTranslated']});
-        AppLogger.info('Received new_advice event', feature: 'socket_messages');
-        _handleNewAdvice(data);
-      } catch (e, stackTrace) {
-        AppLogger.error(
-          // ✅ FIXED
-          'Invalid socket message rejected: $e',
-          e,
-          feature: 'socket_validation',
-          stackTrace: stackTrace,
-        );
-      }
-    });
-
-    socket.on('payment_required', (data) {
-      try {
-        // ✅ ADDED VALIDATION
-        if (data['message'] == null) {
-          throw Exception('Invalid payment required structure');
-        }
-        AppLogger.info(
-          'Received payment_required event',
-          feature: 'socket_payments',
-        );
-        _handlePaymentRequired(data);
-      } catch (e, stackTrace) {
-        AppLogger.error(
-          // ✅ FIXED
-          'Invalid socket message rejected: $e',
-          e,
-          feature: 'socket_validation',
-          stackTrace: stackTrace,
-        );
-      }
-    });
   }
 
   void _handleNewQuestion(Map<String, dynamic> data) {
@@ -2632,13 +2633,11 @@ class _ChatScreenState extends State<ChatScreen>
     bool isClarificationFree = false, // ✅ ADD THIS PARAMETER
   }) async {
     try {
-      // ✅ PASS THE CLARIFICATION FLAG TO SOCKET
-      await sendQuestionToSocket(
-        text,
-        userId,
+      await sendQuestion(
+        text: text,
+        userId: userId,
         isClarificationFree: isClarificationFree,
       );
-
       _controller.clear();
       _scrollToBottom();
 
@@ -2668,7 +2667,11 @@ class _ChatScreenState extends State<ChatScreen>
 
   Future<void> _sendPaidQuestion(String text, String userId) async {
     try {
-      await sendQuestionToSocket(text, userId, paid: true);
+      await sendQuestion(
+        text: text, // named parameter
+        userId: userId, // named parameter
+        paid: true,
+      );
 
       // ✅ FIX: Clear controller after successful send
       _controller.clear();
@@ -2733,6 +2736,100 @@ class _ChatScreenState extends State<ChatScreen>
           backgroundColor: Colors.green,
           duration: const Duration(seconds: 2),
         ),
+      );
+    }
+  }
+
+  Future<void> sendQuestion({
+    required String text,
+    String? userId,
+    bool paid = false,
+    int? amount,
+    bool isClarificationFree = false,
+    String? paymentIntentId,
+  }) async {
+    if (text.trim().isEmpty) {
+      _showDetailedErrorSnackbar(
+        'Question cannot be empty',
+        'User tried sending an empty question',
+      );
+      return;
+    }
+
+    // Use passed userId or fetch from secure storage
+    final actualUserId = userId ?? await SecureStorage.getUserId();
+    if (actualUserId == null || actualUserId.isEmpty) {
+      _showDetailedErrorSnackbar(
+        'User not authenticated',
+        'UserId missing from secure storage',
+      );
+      return;
+    }
+
+    // Rate limiting
+    if (RateLimiter.isRateLimited(actualUserId, isPayment: paid)) {
+      _showDetailedErrorSnackbar(
+        paid
+            ? 'Too many paid questions. Wait a minute.'
+            : 'Too many questions. Wait a minute.',
+        'Rate limiter blocked request for user $actualUserId',
+      );
+      return;
+    }
+
+    try {
+      // ✅ USE SecureApiClient LIKE YOUR OTHER API CALLS
+      final response = await SecureApiClient.post(
+        url: '${ChatConstants.baseUrl}/api/questions',
+        body: {
+          'text': text,
+          'paid': paid,
+          'amount': amount ?? 0,
+          'isClarificationFree': isClarificationFree,
+          'paymentIntentId': paymentIntentId,
+        },
+        token: _authToken, // ✅ This will be handled by SecureApiClient
+      );
+
+      if (response.statusCode == 201) {
+        final data = json.decode(response.body);
+        final question = data['question'];
+
+        AppLogger.info(
+          '✅ Question created successfully via HTTPS: ${question['id']}',
+          feature: 'question',
+        );
+
+        // Let socket service handle instant UI
+        if (socket.connected) {
+          socket.emit('send_question', {
+            'text': text,
+            'userId': actualUserId,
+            'paid': paid,
+            'amount': amount ?? 0,
+            'isClarificationFree': isClarificationFree,
+            'paymentIntentId': paymentIntentId,
+            'createdAt': DateTime.now().toIso8601String(),
+          });
+        }
+      } else {
+        final errorData = json.decode(response.body);
+        _showDetailedErrorSnackbar(
+          'Failed to send question',
+          'Server responded with ${response.statusCode}: ${errorData['error']}',
+        );
+      }
+    } catch (e, stackTrace) {
+      AppLogger.error(
+        '❌ Sending question failed',
+        e,
+        feature: 'question',
+        stackTrace: stackTrace,
+      );
+
+      _showDetailedErrorSnackbar(
+        'Failed to send question. Try again.',
+        e.toString(),
       );
     }
   }
@@ -3323,10 +3420,9 @@ class _ChatScreenState extends State<ChatScreen>
     String paymentIntentId,
   ) async {
     try {
-      // Send question directly using the existing payment intent
-      await sendQuestionToSocket(
-        questionText,
-        userId,
+      await sendQuestion(
+        text: questionText,
+        userId: userId,
         paid: true,
         paymentIntentId: paymentIntentId,
       );

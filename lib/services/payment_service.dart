@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter_stripe/flutter_stripe.dart' hide Card;
-import '../config/environment_dev.dart'; // Import the concrete implementation
+import '../config/environment_dev.dart';
 import 'http_service.dart';
 import '../utils/error_handler.dart';
 
@@ -17,22 +17,16 @@ class PaymentService {
   String get _paymentIntentEndpoint =>
       '${DevelopmentEnvironment.baseUrl}/api/questionspayment/create-payment';
   String get _verifyPaymentEndpoint =>
-      '${DevelopmentEnvironment.baseUrl}/api/questionspayment/verify-payment'; // Add this
+      '${DevelopmentEnvironment.baseUrl}/api/questionspayment/verify-payment';
+
   Future<int> getQuestionBalance(String token) async {
     try {
-      print('🔄 Calling balance endpoint: $_balanceEndpoint'); // Debug
-      final response = await HttpService.get(
-        _balanceEndpoint, // This should now be full URL
-        token: token,
-      );
+      print('🔄 Calling balance endpoint: $_balanceEndpoint');
+      final response = await HttpService.get(_balanceEndpoint, token: token);
 
       if (response.statusCode == 200) {
         final jsonData = json.decode(response.body);
-
         final balance = jsonData['balance'] as int? ?? 0;
-
-        //final usageStats = jsonData['usageStats'] as Map<String, dynamic>?;
-
         return balance;
       } else {
         throw ApiException(
@@ -45,17 +39,14 @@ class PaymentService {
     }
   }
 
-  Future<List<Map<String, dynamic>>> getOffers() async {
+  Future<List<Map<String, dynamic>>> getOffers(String token) async {
     try {
       print('🔄 Calling offers endpoint: $_offersEndpoint');
-      final response = await HttpService.get(_offersEndpoint);
+      final response = await HttpService.get(_offersEndpoint, token: token);
 
       if (response.statusCode == 200) {
         final jsonData = json.decode(response.body);
-
-        // Extract the "packages" array
         final packages = jsonData['packages'] as List;
-
         return packages.cast<Map<String, dynamic>>();
       } else {
         throw ApiException(
@@ -93,8 +84,8 @@ class PaymentService {
     }
   }
 
-  // 🆕 NEW: Verify payment method
-  Future<Map<String, dynamic>> verifyPackagePayment({
+  // 🆕 ENHANCED: Verify payment with webhook status
+  Future<PaymentVerificationResult> verifyPackagePayment({
     required String token,
     required String paymentIntentId,
   }) async {
@@ -109,7 +100,32 @@ class PaymentService {
 
       if (response.statusCode == 200) {
         final jsonResponse = json.decode(response.body);
-        return jsonResponse;
+
+        // Handle the new response structure
+        if (jsonResponse['verified'] == true) {
+          if (jsonResponse['alreadyProcessed'] == true) {
+            return PaymentVerificationResult.completed(
+              questions: jsonResponse['questions'] as int,
+              amount: (jsonResponse['amount'] as num).toDouble(),
+              packageId: jsonResponse['packageId'] as String,
+              paymentIntentId: paymentIntentId,
+            );
+          } else {
+            return PaymentVerificationResult.awaitingWebhook(
+              questions: jsonResponse['questions'] as int,
+              amount: (jsonResponse['amount'] as num).toDouble(),
+              packageId: jsonResponse['packageId'] as String,
+              paymentIntentId: paymentIntentId,
+            );
+          }
+        } else {
+          return PaymentVerificationResult.failed(
+            error:
+                jsonResponse['error'] as String? ??
+                'Payment verification failed',
+            errorCode: jsonResponse['code'] as String?,
+          );
+        }
       } else {
         throw ApiException(
           'Failed to verify payment: ${response.statusCode}',
@@ -119,6 +135,56 @@ class PaymentService {
     } catch (e) {
       throw ErrorHandler.handlePaymentError(e);
     }
+  }
+
+  // 🆕 NEW: Poll for webhook completion
+  Future<PaymentVerificationResult> pollForWebhookCompletion({
+    required String token,
+    required String paymentIntentId,
+    int maxAttempts = 12,
+    int intervalSeconds = 2,
+  }) async {
+    for (int attempt = 1; attempt <= maxAttempts; attempt++) {
+      print('⏳ Polling for webhook completion (attempt $attempt/$maxAttempts)');
+
+      await Future.delayed(Duration(seconds: intervalSeconds));
+
+      try {
+        final result = await verifyPackagePayment(
+          token: token,
+          paymentIntentId: paymentIntentId,
+        );
+
+        if (result.isCompleted) {
+          return result;
+        }
+
+        // If still awaiting webhook, continue polling
+        if (result.isAwaitingWebhook) {
+          continue;
+        }
+
+        // If failed, return the failure
+        if (result.isFailed) {
+          return result;
+        }
+      } catch (e) {
+        print('❌ Polling attempt $attempt failed: $e');
+        // Continue polling on network errors
+        if (attempt == maxAttempts) {
+          return PaymentVerificationResult.failed(
+            error:
+                'Webhook processing timeout. Your questions will be added shortly.',
+            errorCode: 'WEBHOOK_TIMEOUT',
+          );
+        }
+      }
+    }
+
+    return PaymentVerificationResult.failed(
+      error: 'Payment is processing. Your questions will be added shortly.',
+      errorCode: 'PROCESSING_TIMEOUT',
+    );
   }
 
   Future<void> initializeStripe() async {
@@ -138,5 +204,82 @@ class PaymentService {
       print('❌ Stripe initialization error: $e');
       throw ErrorHandler.handleStripeError(e);
     }
+  }
+}
+
+// 🆕 Enhanced result class for better type handling
+class PaymentVerificationResult {
+  final bool isVerified;
+  final bool isCompleted;
+  final bool isAwaitingWebhook;
+  final bool isFailed;
+  final String? error;
+  final String? errorCode;
+  final int? questions;
+  final double? amount;
+  final String? packageId;
+  final String? paymentIntentId;
+
+  PaymentVerificationResult._({
+    required this.isVerified,
+    required this.isCompleted,
+    required this.isAwaitingWebhook,
+    required this.isFailed,
+    this.error,
+    this.errorCode,
+    this.questions,
+    this.amount,
+    this.packageId,
+    this.paymentIntentId,
+  });
+
+  factory PaymentVerificationResult.completed({
+    required int questions,
+    required double amount,
+    required String packageId,
+    required String paymentIntentId,
+  }) {
+    return PaymentVerificationResult._(
+      isVerified: true,
+      isCompleted: true,
+      isAwaitingWebhook: false,
+      isFailed: false,
+      questions: questions,
+      amount: amount,
+      packageId: packageId,
+      paymentIntentId: paymentIntentId,
+    );
+  }
+
+  factory PaymentVerificationResult.awaitingWebhook({
+    required int questions,
+    required double amount,
+    required String packageId,
+    required String paymentIntentId,
+  }) {
+    return PaymentVerificationResult._(
+      isVerified: true,
+      isCompleted: false,
+      isAwaitingWebhook: true,
+      isFailed: false,
+      questions: questions,
+      amount: amount,
+      packageId: packageId,
+      paymentIntentId: paymentIntentId,
+    );
+  }
+
+  factory PaymentVerificationResult.failed({
+    required String error,
+    String? errorCode,
+  }) {
+    return PaymentVerificationResult._(
+      isVerified: false,
+      isCompleted: false,
+      isAwaitingWebhook: false,
+      isFailed: true,
+      error: error,
+      errorCode: errorCode,
+    );
   }
 }

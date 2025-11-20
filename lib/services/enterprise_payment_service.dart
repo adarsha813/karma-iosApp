@@ -608,26 +608,42 @@ class EnterprisePaymentService {
                 data['paymentIntentId']?.toString() ?? paymentIntentId,
             'success': data['success'] ?? false,
           };
-        } else if (response.statusCode == 500 && attempt < maxRetries) {
-          // Retry on server errors
-          AppLogger.warning(
-            'Server error, retrying in ${2 * (attempt + 1)} seconds...',
-            feature: 'question_processing',
-          );
-          await Future.delayed(Duration(seconds: 2 * (attempt + 1)));
-          continue;
         } else {
           final errorData = json.decode(response.body);
-          throw PaymentException(
-            errorData['message'] ??
-                'Question processing failed: HTTP ${response.statusCode}',
-            errorData['code'] ?? 'QUESTION_PROCESSING_FAILED',
-          );
+          final errorCode = errorData['code'] ?? 'UNKNOWN';
+          final errorMessage =
+              errorData['message'] ?? 'Question processing failed';
+
+          // 🛡️ CRITICAL FIX: Don't retry on specific errors
+          if (_shouldNotRetry(errorCode)) {
+            throw PaymentException(errorMessage, errorCode);
+          }
+
+          // Only retry on server errors, not business logic errors
+          if (response.statusCode >= 500 && attempt < maxRetries) {
+            AppLogger.warning(
+              'Server error, retrying in ${2 * (attempt + 1)} seconds...',
+              feature: 'question_processing',
+            );
+            await Future.delayed(Duration(seconds: 2 * (attempt + 1)));
+            continue;
+          } else {
+            throw PaymentException(errorMessage, errorCode);
+          }
         }
       } catch (e) {
-        if (attempt == maxRetries) rethrow;
-        // Wait and retry on network errors
-        await Future.delayed(Duration(seconds: 1 * (attempt + 1)));
+        // 🛡️ CRITICAL FIX: Don't retry on specific exceptions
+        if (_shouldNotRetry(e) || attempt == maxRetries) {
+          rethrow;
+        }
+
+        // Only retry on network/timeout errors
+        if (e is SocketException || e is TimeoutException) {
+          await Future.delayed(Duration(seconds: 1 * (attempt + 1)));
+          continue;
+        } else {
+          rethrow;
+        }
       }
     }
 
@@ -635,6 +651,23 @@ class EnterprisePaymentService {
       'Question processing failed after $maxRetries retries',
       'MAX_RETRIES_EXCEEDED',
     );
+  }
+
+  static bool _shouldNotRetry(dynamic error) {
+    if (error is PaymentException) {
+      return error.code == 'DUPLICATE_QUESTION' ||
+          error.code == 'QUESTION_PROCESSING_FAILED' ||
+          error.code == 'USER_MISMATCH' ||
+          error.code == 'AMOUNT_MISMATCH';
+    }
+
+    if (error is String) {
+      return error.contains('Similar question was asked recently') ||
+          error.contains('duplicate') ||
+          error.contains('already exists');
+    }
+
+    return false;
   }
 
   // 🛡️ Enhanced validation

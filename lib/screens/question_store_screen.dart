@@ -8,11 +8,10 @@ import '../services/socket_service.dart';
 import '../services/secure_storage_service.dart';
 import '../services/local_auth_service.dart';
 import '../services/analytics_service.dart';
-import '../services/http_service.dart';
+
 import '../utils/error_handler.dart';
 import '../l10n/app_localizations.dart';
 import '../config/environment.dart';
-import 'dart:convert';
 
 class QuestionStoreScreen extends StatefulWidget {
   const QuestionStoreScreen({super.key});
@@ -85,7 +84,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
     try {
       final results = await Future.wait([
         _paymentService.getQuestionBalance(token),
-        _paymentService.getOffers(),
+        _paymentService.getOffers(token),
       ]);
 
       final balance = results[0] as int;
@@ -146,6 +145,12 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
     );
 
     final token = profileProvider.token ?? await _secureStorage.getToken();
+    final userId = profileProvider.userId ?? await _secureStorage.getUserId();
+
+    if (userId == null) {
+      _showErrorSnackBar("User not authenticated");
+      return;
+    }
 
     if (token == null) {
       _showErrorSnackBar(l10n.missingAuthToken);
@@ -154,7 +159,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
 
     // 4. Biometric auth for high-value purchases
     final offer = offers.firstWhere((o) => o['questions'] == questions);
-    final packageId = offer['id'];
+    final packageId = offer['packageId'];
     final double price = (offer['price'] as num).toDouble(); // <-- add this
 
     if (price >= 15.0) {
@@ -224,38 +229,36 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
       // Present payment sheet
       await Stripe.instance.presentPaymentSheet();
 
-      // ✅ CRITICAL: Verify payment with backend - FIXED LINE
-      final isVerified = await _verifyPayment(
-        paymentIntentId,
-        token,
-        questions,
+      final verificationResult = await _paymentService.verifyPackagePayment(
+        token: token,
+        paymentIntentId: paymentIntentId,
       );
-
-      if (!isVerified) {
-        throw Exception('Payment verification failed');
+      if (verificationResult.isFailed) {
+        throw Exception(
+          verificationResult.error ?? 'Payment verification failed',
+        );
       }
 
-      // Log successful payment
-      AnalyticsService().logPaymentSuccess(paymentIntentId, questions, price);
-
-      _showSuccessSnackBar(l10n.paymentSuccessful);
-
-      // Reload balance
-      await _loadData();
-
-      // Notify server via socket
-      final userId = profileProvider.userId ?? await _secureStorage.getUserId();
-      if (userId != null) {
-        SocketService().socket.emit('paymentComplete', {
-          'userId': userId,
-          'questions': questions,
-          'paymentIntentId': paymentIntentId,
-          'timestamp': DateTime.now().toIso8601String(),
-        });
+      if (verificationResult.isCompleted) {
+        // Webhook already processed - immediate success
+        _handleSuccessfulPayment(
+          verificationResult.questions!,
+          price,
+          paymentIntentId,
+          userId,
+          l10n,
+        );
+      } else if (verificationResult.isAwaitingWebhook) {
+        // Payment verified but waiting for webhook - show processing and poll
+        _handleAwaitingWebhook(
+          verificationResult,
+          token,
+          paymentIntentId,
+          price,
+          userId,
+          l10n,
+        );
       }
-
-      // Log successful payment
-      _logPaymentSuccess(questions, userId, paymentIntentId);
     } on StripeException catch (e) {
       if (e.error.code == FailureCode.Canceled) {
         AnalyticsService().logPaymentCancelled(questions, price);
@@ -277,40 +280,121 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
     }
   }
 
+  void _handleSuccessfulPayment(
+    int questions,
+    double price,
+    String paymentIntentId,
+    String? userId,
+    AppLocalizations l10n,
+  ) {
+    // Log successful payment
+    AnalyticsService().logPaymentSuccess(paymentIntentId, questions, price);
+
+    _showSuccessSnackBar(l10n.paymentSuccessful);
+
+    // Reload balance
+    _loadData();
+
+    // Notify server via socket
+    if (userId != null) {
+      SocketService().socket.emit('paymentComplete', {
+        'userId': userId,
+        'questions': questions,
+        'paymentIntentId': paymentIntentId,
+        'timestamp': DateTime.now().toIso8601String(),
+      });
+    }
+
+    // Log successful payment
+    _logPaymentSuccess(questions, userId, paymentIntentId);
+  }
+
+  void _handleAwaitingWebhook(
+    PaymentVerificationResult result,
+    String token,
+    String paymentIntentId,
+    double price,
+    String? userId,
+    AppLocalizations l10n,
+  ) {
+    // Show processing message
+    _showProcessingMessage(result.questions!);
+
+    // Start polling for webhook completion
+    _pollForWebhookCompletion(
+      token: token,
+      paymentIntentId: paymentIntentId,
+      expectedQuestions: result.questions!,
+      price: price,
+      userId: userId,
+      l10n: l10n,
+    );
+  }
+
+  void _showProcessingMessage(int questions) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Processing your $questions questions purchase...'),
+        backgroundColor: Colors.orange,
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(seconds: 5),
+      ),
+    );
+  }
+
+  Future<void> _pollForWebhookCompletion({
+    required String token,
+    required String paymentIntentId,
+    required int expectedQuestions,
+    required double price,
+    required String? userId,
+    required AppLocalizations l10n,
+  }) async {
+    try {
+      final result = await _paymentService.pollForWebhookCompletion(
+        token: token,
+        paymentIntentId: paymentIntentId,
+      );
+
+      if (result.isCompleted) {
+        // Webhook completed successfully
+        _handleSuccessfulPayment(
+          expectedQuestions,
+          price,
+          paymentIntentId,
+          userId,
+          l10n,
+        );
+      } else if (result.isFailed) {
+        // Show appropriate message based on error
+        if (result.errorCode == 'WEBHOOK_TIMEOUT' ||
+            result.errorCode == 'PROCESSING_TIMEOUT') {
+          _showInfoSnackBar(result.error!);
+          // Still reload balance as it might have been updated
+          _loadData();
+        } else {
+          _showErrorSnackBar(result.error!);
+        }
+      }
+    } catch (e) {
+      _showErrorSnackBar('Error checking payment status: ${e.toString()}');
+    }
+  }
+
+  void _showInfoSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: Colors.blue,
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
+  }
+
   // Helper method to extract payment intent ID
   String _extractPaymentIntentId(String clientSecret) {
     // clientSecret format: "pi_xxx_secret_yyy"
     return clientSecret.split('_secret_').first;
-  }
-
-  Future<bool> _verifyPayment(
-    String paymentIntentId,
-    String token,
-    int expectedQuestions,
-  ) async {
-    try {
-      final response = await HttpService.post(
-        '${Environment.baseUrl}/api/questionspayment/verify-payment',
-        token: token,
-        body: {
-          'paymentIntentId': paymentIntentId,
-          'expectedQuestions': expectedQuestions,
-        },
-      );
-
-      if (response.statusCode == 200) {
-        final jsonResponse = json.decode(response.body);
-        return jsonResponse['verified'] == true;
-      } else {
-        // Log the actual error from backend
-        final errorBody = json.decode(response.body);
-        print('Payment verification failed: ${errorBody['error']}');
-        return false;
-      }
-    } catch (e) {
-      print('Payment verification error: $e');
-      return false;
-    }
   }
 
   void _logPaymentEvent(String event, Map<String, dynamic> params) {
@@ -480,7 +564,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
   }
 
   Widget _buildOfferCard(Map<String, dynamic> offer, AppLocalizations l10n) {
-    int questions = offer['questions'];
+    final questions = (offer['questions'] as num?)?.toInt() ?? 0;
     double price = (offer['price'] as num).toDouble();
 
     bool isThisOfferProcessing = _processingOfferId == questions;
@@ -503,12 +587,26 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
           l10n.questionsCount(questions),
           style: const TextStyle(fontWeight: FontWeight.w600),
         ),
-        subtitle: Text(
-          "\$${price.toStringAsFixed(2)}",
-          style: const TextStyle(fontSize: 16),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "\$${price.toStringAsFixed(2)}",
+              style: const TextStyle(fontSize: 16),
+            ),
+            if ((offer['savings'] ?? 0) > 0)
+              Text(
+                "Save ${offer['savings']}%",
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.green.shade600,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+          ],
         ),
         trailing:
-            isThisOfferProcessing // ← Use the specific check
+            isThisOfferProcessing
                 ? const CircularProgressIndicator()
                 : ElevatedButton(
                   onPressed: () => _startStripePayment(questions),
