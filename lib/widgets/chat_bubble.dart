@@ -633,7 +633,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
       constraints: BoxConstraints(
-        maxWidth: MediaQuery.of(context).size.width * 0.75,
+        maxWidth: MediaQuery.of(context).size.width * 0.86,
       ),
       child: Column(
         crossAxisAlignment: _getCrossAxisAlignment(message),
@@ -652,8 +652,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withAlpha(25),
-                  blurRadius: 4,
-                  spreadRadius: 1,
+                  blurRadius: 1,
+                  spreadRadius: 0.5,
                 ),
               ],
             ),
@@ -793,41 +793,57 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       );
       final customerName = _getCustomerName(profileProvider);
 
-      return Text('Dear $customerName,', style: const TextStyle(fontSize: 14));
+      return Text('Dear $customerName,', style: const TextStyle(fontSize: 15));
     } catch (e) {
       debugPrint('Error building customer greeting: $e');
       // Fallback greeting
       return const Text(
         'Dear Valued Customer,',
-        style: TextStyle(fontSize: 14),
+        style: TextStyle(fontSize: 15),
       );
     }
   }
 
   String _getCustomerName(ProfileProvider profileProvider) {
-    // Check if profile provider is initialized and has data
+    // Check if profile provider is properly initialized and has data
     if (!profileProvider.isInitialized) {
+      debugPrint('🔄 ProfileProvider not initialized yet');
       return 'Valued Customer';
     }
 
     final userName = profileProvider.name;
+    debugPrint('👤 Current user name from provider: "$userName"');
 
-    // Validate the name
+    // If name is null or empty, use fallback
     if (userName == null || userName.isEmpty) {
+      debugPrint('❌ User name is null or empty');
       return 'Valued Customer';
     }
 
-    // Check if it's the default name
-    if (userName == 'User' || userName.toLowerCase().contains('user')) {
+    // Check if it's a default/generic name (be less strict)
+    final lowerName = userName.toLowerCase();
+    if (lowerName == 'user' ||
+        lowerName.contains('user') ||
+        lowerName == 'valued customer' ||
+        lowerName == 'default user') {
+      debugPrint('⚠️ Using generic name: "$userName"');
       return 'Valued Customer';
     }
 
-    // Check name length and content
-    if (userName.length < 2 || userName.length > 50) {
+    // More reasonable length check
+    if (userName.isEmpty || userName.length > 100) {
+      debugPrint('❌ User name length invalid: ${userName.length}');
       return 'Valued Customer';
     }
 
-    // Skip regex validation for now to fix the syntax error
+    // Allow more characters in names (international names, etc.)
+    final validNameRegex = RegExp(r"^[\p{L}\p{M}\s.\-']+$", unicode: true);
+    if (!validNameRegex.hasMatch(userName)) {
+      debugPrint('❌ User name contains invalid characters: "$userName"');
+      return 'Valued Customer';
+    }
+
+    debugPrint('✅ Using valid user name: "$userName"');
     return _capitalizeName(userName);
   }
 

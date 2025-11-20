@@ -34,7 +34,45 @@ class ApiService {
       _logger.i('API Response: ${response.statusCode} - $uri');
 
       if (response.statusCode == 200) {
-        final List<dynamic> data = json.decode(utf8.decode(response.bodyBytes));
+        final decodedBody = json.decode(utf8.decode(response.bodyBytes));
+
+        // Handle both array and object responses
+        List<dynamic> data;
+        if (decodedBody is List) {
+          // If the response is directly an array
+          data = decodedBody;
+        } else if (decodedBody is Map) {
+          // If the response is an object, look for common keys that might contain the array
+          if (decodedBody.containsKey('data')) {
+            data = decodedBody['data'];
+          } else if (decodedBody.containsKey('terms')) {
+            data = decodedBody['terms'];
+          } else if (decodedBody.containsKey('results')) {
+            data = decodedBody['results'];
+          } else if (decodedBody.containsKey('items')) {
+            data = decodedBody['items'];
+          } else {
+            // If no common key found, try to find any array in the response
+            final arrays =
+                decodedBody.entries
+                    .where((entry) => entry.value is List)
+                    .toList();
+
+            if (arrays.isNotEmpty) {
+              data = arrays.first.value;
+              _logger.w(
+                'Using first array found with key: "${arrays.first.key}"',
+              );
+            } else {
+              throw DataParsingException('No array found in response');
+            }
+          }
+        } else {
+          throw DataParsingException(
+            'Unexpected response type: ${decodedBody.runtimeType}',
+          );
+        }
+
         _logger.d('Fetched ${data.length} terms');
         return data.map((e) => AstroTerm.fromJson(e)).toList();
       } else {
