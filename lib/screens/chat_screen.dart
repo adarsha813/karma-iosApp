@@ -3036,11 +3036,19 @@ class _ChatScreenState extends State<ChatScreen>
           });
         }
       } else {
-        final errorData = json.decode(response.body);
-        _showDetailedErrorSnackbar(
-          'Failed to send question',
-          'Server responded with ${response.statusCode}: ${errorData['error']}',
-        );
+        final errorMessage = _extractActualErrorMessage(response);
+
+        // 🛡️ SPECIAL HANDLING FOR SIMILAR QUESTION ERROR - SHOW DIALOG INSTEAD OF SNACKBAR
+        if (errorMessage.contains('Similar question was asked recently')) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            _showSimilarQuestionDialog(text);
+          });
+        } else {
+          _showDetailedErrorSnackbar(
+            errorMessage, // Show actual server error message
+            'Server responded with ${response.statusCode}: ${response.body}',
+          );
+        }
       }
     } catch (e, stackTrace) {
       AppLogger.error(
