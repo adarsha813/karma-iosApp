@@ -1257,30 +1257,26 @@ class _ChatScreenState extends State<ChatScreen>
     return _astrologerCache[adminId];
   }
 
-  // ✅ UPDATE _fetchAllMessages to trigger preloading
   Future<void> _fetchAllMessages(
     String userId,
     SecureChatService chatService,
   ) async {
     try {
-      final questionsFuture = _fetchQuestions(userId);
-      final advicesFuture = _fetchAdvices(userId);
+      List<chat_model.Message> allMessages = [];
 
-      final results = await Future.wait([
-        questionsFuture,
-        advicesFuture,
-      ], eagerError: false);
-
-      final List<chat_model.Message> allMessages = [];
-
-      if (results[0] != null) {
-        allMessages.addAll(results[0]!);
+      // Fetch questions first
+      final questions = await _fetchQuestionsWithRetry(userId);
+      if (questions != null) {
+        allMessages.addAll(questions);
       }
 
-      if (results[1] != null) {
-        allMessages.addAll(results[1]!);
+      // Then fetch advices
+      final advices = await _fetchAdvicesWithRetry(userId);
+      if (advices != null) {
+        allMessages.addAll(advices);
       }
 
+      // Sort and update
       allMessages.sort((a, b) {
         final dateA = _getMessageDateTime(a);
         final dateB = _getMessageDateTime(b);
@@ -1289,10 +1285,8 @@ class _ChatScreenState extends State<ChatScreen>
 
       chatService.setMessages(allMessages);
 
-      // ✅ TRIGGER PRELOADING AFTER MESSAGES ARE LOADED
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        _preloadAllAstrologers();
-      });
+      // ✅ PRELOAD ASTROLOGERS IMMEDIATELY AFTER MESSAGES
+      await _preloadAllAstrologers();
 
       AppLogger.info(
         'Fetched ${allMessages.length} total messages',
@@ -1305,8 +1299,41 @@ class _ChatScreenState extends State<ChatScreen>
         feature: 'data_fetching',
         stackTrace: stackTrace,
       );
-      rethrow;
     }
+  }
+
+  Future<List<chat_model.Message>?> _fetchQuestionsWithRetry(
+    String userId,
+  ) async {
+    for (int attempt = 0; attempt < 3; attempt++) {
+      try {
+        final result = await _fetchQuestions(
+          userId,
+        ).timeout(Duration(seconds: 15));
+        if (result != null) return result;
+      } catch (e) {
+        if (attempt == 2) rethrow; // Last attempt
+        await Future.delayed(Duration(seconds: 1 * (attempt + 1)));
+      }
+    }
+    return null;
+  }
+
+  Future<List<chat_model.Message>?> _fetchAdvicesWithRetry(
+    String userId,
+  ) async {
+    for (int attempt = 0; attempt < 3; attempt++) {
+      try {
+        final result = await _fetchAdvices(
+          userId,
+        ).timeout(Duration(seconds: 15));
+        if (result != null) return result;
+      } catch (e) {
+        if (attempt == 2) rethrow;
+        await Future.delayed(Duration(seconds: 1 * (attempt + 1)));
+      }
+    }
+    return null;
   }
 
   void _initializeChat() {
@@ -2584,8 +2611,8 @@ class _ChatScreenState extends State<ChatScreen>
           text,
           currentUserId,
           eligibility.remainingFreeQuestions,
-          isClarificationFree:
-              eligibility.isFreeByClarification, // ✅ PASS THIS FLAG
+          isClarificationFree: eligibility.isFreeByClarification,
+          quotaId: eligibility.quotaId,
         );
 
         // ✅ Reset clarification flag ONLY if it was used
@@ -2692,6 +2719,7 @@ class _ChatScreenState extends State<ChatScreen>
           isFreeEligible: data['isFreeEligible'] ?? false,
           remainingFreeQuestions: data['remainingFreeQuestions'] ?? 0,
           isFirstTime: false,
+          quotaId: data['quotaId'], // <-- ADD THIS
         );
       }
 
@@ -2804,21 +2832,29 @@ class _ChatScreenState extends State<ChatScreen>
     String userId,
     int remaining, {
     bool isClarificationFree = false, // ✅ ADD THIS PARAMETER
+    String? quotaId,
   }) async {
     try {
+      print('📦 Sending free question');
+      print('UserId: $userId');
+      print('isClarificationFree: $isClarificationFree');
+      print('quotaId: $quotaId');
       await sendQuestion(
         text: text,
         userId: userId,
         isClarificationFree: isClarificationFree,
+        quotaId: quotaId,
       );
+
       _controller.clear();
       _scrollToBottom();
 
       if (remaining > 0) {
+        final remainingAfterThis = remaining > 0 ? remaining - 1 : 0;
         final message =
             isClarificationFree
                 ? 'Clarification free question sent!'
-                : '$remaining free questions remaining';
+                : '$remainingAfterThis free questions remaining';
         _showSuccessSnackbar(message);
       }
 
@@ -2920,6 +2956,7 @@ class _ChatScreenState extends State<ChatScreen>
     int? amount,
     bool isClarificationFree = false,
     String? paymentIntentId,
+    String? quotaId,
   }) async {
     if (text.trim().isEmpty) {
       _showDetailedErrorSnackbar(
@@ -2960,6 +2997,7 @@ class _ChatScreenState extends State<ChatScreen>
           'amount': amount ?? 0,
           'isClarificationFree': isClarificationFree,
           'paymentIntentId': paymentIntentId,
+          'quotaId': quotaId,
         },
         token: _authToken, // ✅ This will be handled by SecureApiClient
       );
@@ -4505,12 +4543,14 @@ class QuestionEligibility {
   final int remainingFreeQuestions;
   final bool isFirstTime; // ✅ add this
   final bool isFreeByClarification; // ✅ new
+  final String? quotaId;
 
   QuestionEligibility({
     required this.isFreeEligible,
     required this.remainingFreeQuestions,
     this.isFirstTime = false, // ✅ default to false
     this.isFreeByClarification = false,
+    this.quotaId,
   });
 }
 

@@ -540,6 +540,34 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     );
     String? userId = await _getOrCreateUserId();
 
+    // Get device info
+    final deviceInfoPlugin = DeviceInfoPlugin();
+    String deviceId = 'unknown';
+    String deviceType = 'unknown';
+    if (Platform.isAndroid) {
+      final androidInfo = await deviceInfoPlugin.androidInfo;
+      deviceId = androidInfo.id.isNotEmpty ? androidInfo.id : 'android_unknown';
+      deviceType = 'android';
+    } else if (Platform.isIOS) {
+      final iosInfo = await deviceInfoPlugin.iosInfo;
+      deviceId = iosInfo.identifierForVendor ?? 'ios_unknown';
+      deviceType = 'ios';
+    }
+
+    // Get IP address (requires connectivity plugin or a backend endpoint)
+    String? ipAddress;
+    try {
+      final res = await http.get(
+        Uri.parse('https://api.ipify.org?format=json'),
+      );
+      if (res.statusCode == 200) {
+        final data = jsonDecode(res.body);
+        ipAddress = data['ip']?.toString();
+      }
+    } catch (e) {
+      ipAddress = null; // fallback
+    }
+
     if (_cityController.text.isNotEmpty && _countryController.text.isNotEmpty) {
       await _fetchLocationDetails(
         SecurityUtils.sanitizeInput(_cityController.text),
@@ -572,6 +600,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       'language': savedLang,
       'timestamp': DateTime.now().toIso8601String(),
       'clientVersion': Environment.appVersion,
+      'ipAddress': ipAddress,
+      'deviceId': deviceId,
+      'deviceType': deviceType,
     };
   }
 
