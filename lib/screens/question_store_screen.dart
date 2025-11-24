@@ -92,7 +92,12 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
 
       setState(() {
         questionBalance = balance;
-        offers = offersList;
+        offers =
+            offersList..sort((a, b) {
+              final qa = (a['questions'] as num).toInt();
+              final qb = (b['questions'] as num).toInt();
+              return qa.compareTo(qb);
+            });
         //usageStats = results[0]['usageStats'];
       });
 

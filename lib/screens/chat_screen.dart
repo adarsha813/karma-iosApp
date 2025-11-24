@@ -2907,20 +2907,32 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   void _handleSendError(dynamic error) {
+    // 🛡️ DEBUG: Log the actual error structure
+    debugPrint('🔍 RAW ERROR TYPE: ${error.runtimeType}');
+    debugPrint('🔍 RAW ERROR: $error');
+
+    if (error is http.Response) {
+      debugPrint('🔍 HTTP STATUS: ${error.statusCode}');
+      debugPrint('🔍 HTTP BODY: ${error.body}');
+
+      try {
+        final errorData = json.decode(error.body);
+        debugPrint('🔍 PARSED ERROR: $errorData');
+        debugPrint('🔍 ERROR MESSAGE: ${errorData['message']}');
+        debugPrint('🔍 ERROR CODE: ${errorData['error']}');
+      } catch (e) {
+        debugPrint('🔍 JSON PARSE ERROR: $e');
+      }
+    }
+
     AppLogger.error(
       'Error sending question',
       error,
       feature: 'message_sending',
     );
 
-    String errorMessage = 'Failed to send question';
-    if (error is SocketException) {
-      errorMessage = 'Network error. Please check your connection.';
-    } else if (error is TimeoutException) {
-      errorMessage = 'Request timeout. Please try again.';
-    } else if (error is http.ClientException) {
-      errorMessage = 'Network error. Please try again.';
-    }
+    // 🛡️ CRITICAL FIX: Use the extracted actual error message
+    String errorMessage = _extractActualErrorMessage(error);
 
     _showErrorSnackbar(errorMessage);
   }
@@ -3323,6 +3335,10 @@ class _ChatScreenState extends State<ChatScreen>
       // 🛡️ 6. Enhanced error handling with null safety
       final errorMessage = e.toString();
       debugPrint('Enterprise payment error: $errorMessage');
+      _debugPaymentResponse(e);
+      // 🛡️ ADD DEBUG LOGGING HERE
+      _debugPaymentError(e);
+
       _handleEnterprisePaymentError(
         error: e,
         userId: userId,
@@ -3338,6 +3354,31 @@ class _ChatScreenState extends State<ChatScreen>
         });
       }
     }
+  }
+
+  void _debugPaymentResponse(dynamic error) {
+    debugPrint('🎯 PAYMENT RESPONSE DEBUG ==================');
+
+    if (error is http.Response) {
+      debugPrint('🔍 Status Code: ${error.statusCode}');
+      debugPrint('🔍 Headers: ${error.headers}');
+      debugPrint('🔍 Body: ${error.body}');
+
+      try {
+        final parsed = json.decode(error.body);
+        debugPrint('🔍 Parsed Body:');
+        parsed.forEach((key, value) {
+          debugPrint('   - $key: $value');
+        });
+      } catch (e) {
+        debugPrint('🔍 JSON Parse Error: $e');
+      }
+    } else {
+      debugPrint('🔍 Error Type: ${error.runtimeType}');
+      debugPrint('🔍 Error: $error');
+    }
+
+    debugPrint('🎯 END PAYMENT DEBUG ==================');
   }
 
   // 🛡️ ENHANCED PAYMENT SUCCESS HANDLING
@@ -3373,6 +3414,89 @@ class _ChatScreenState extends State<ChatScreen>
     );
   }
 
+  void _showSimilarQuestionDialog(String questionText) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder:
+          (_) => AlertDialog(
+            title: Row(
+              children: [
+                Icon(Icons.lightbulb_outline, color: Colors.orange),
+                SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    'Similar Question Found',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+              ],
+            ),
+            content: SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: MediaQuery.of(context).size.width * 0.8,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'A similar question was asked recently. Please rephrase your question for a better response.',
+                      style: TextStyle(fontSize: 14),
+                    ),
+                    SizedBox(height: 12),
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade100,
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: Text(
+                        '"${questionText.length > 100 ? '${questionText.substring(0, 100)}...' : questionText}"',
+                        style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 12),
+                    Text(
+                      'Tips:',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 4),
+                    Text('• Add more details or context'),
+                    Text('• Focus on a different aspect'),
+                    Text('• Ask about future possibilities or outcomes'),
+                  ],
+                ),
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  _focusNode.requestFocus();
+                },
+                child: Text('Edit Question'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context); // Close dialog first
+                  _controller.clear(); // ✅ CLEAR THE TEXT BOX
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.orange,
+                  foregroundColor: Colors.white,
+                ),
+                child: Text('Ask Different Question'),
+              ),
+            ],
+          ),
+    );
+  }
+
   // 🛡️ ENHANCED PAYMENT ERROR HANDLING
   void _handleEnterprisePaymentError({
     required dynamic error,
@@ -3392,7 +3516,35 @@ class _ChatScreenState extends State<ChatScreen>
     String actualErrorMessage = _extractActualErrorMessage(error);
     String errorCode = 'UNKNOWN_ERROR';
 
+    // 🛡️ 2. SPECIAL HANDLING FOR SIMILAR QUESTION ERROR
+    if (actualErrorMessage.contains('Similar question was asked recently')) {
+      errorCode = 'SIMILAR_QUESTION';
+
+      // Show special dialog for similar question error
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _showSimilarQuestionDialog(questionText);
+      });
+
+      // Log this specific case
+      AppLogger.info(
+        'Similar question detected - showing user dialog',
+        feature: 'payment_validation',
+      );
+
+      return; // Exit early since we handled this case with a dialog
+    }
+
     String userFriendlyMessage = "Payment failed. ";
+    if (actualErrorMessage.contains('Similar question was asked recently')) {
+      userFriendlyMessage = "Similar question was asked recently. ";
+      userFriendlyMessage +=
+          "Please ask a different question or rephrase your current one.";
+      errorCode = 'SIMILAR_QUESTION';
+
+      // Show this as a special dialog instead of snackbar for better UX
+      _showSimilarQuestionDialog(questionText);
+      return; // Exit early since we handled this case
+    }
 
     if (error is PaymentException) {
       // Handle specific question processing errors
@@ -3468,28 +3620,78 @@ class _ChatScreenState extends State<ChatScreen>
     }
   }
 
-  // 🛡️ HELPER METHOD TO EXTRACT ACTUAL ERROR MESSAGE
   String _extractActualErrorMessage(dynamic error) {
     try {
+      debugPrint('🔍 EXTRACTING ERROR FROM: ${error.runtimeType}');
+
+      // 🛡️ PRIORITY 1: Check for "Similar question" error first
+      if (error is String &&
+          error.contains('Similar question was asked recently')) {
+        return 'Similar question was asked recently';
+      }
+
+      // 🛡️ PRIORITY 2: Check PaymentException for similar question
       if (error is PaymentException) {
+        debugPrint('🔍 PaymentException message: ${error.message}');
+        debugPrint('🔍 PaymentException code: ${error.code}');
+
+        if (error.message.contains('Similar question was asked recently')) {
+          return 'Similar question was asked recently';
+        }
         return error.message;
-      } else if (error is StripeException) {
+      }
+
+      // 🛡️ PRIORITY 3: Check HTTP response for similar question error
+      if (error is http.Response) {
+        try {
+          final errorData = json.decode(error.body);
+          final serverMessage = errorData['message']?.toString() ?? '';
+          final errorCode = errorData['error']?.toString() ?? '';
+
+          debugPrint('🔍 SERVER MESSAGE: $serverMessage');
+          debugPrint('🔍 ERROR CODE: $errorCode');
+
+          // 🛡️ CRITICAL: Check for similar question error in various formats
+          if (serverMessage.contains('Similar question was asked recently') ||
+              errorCode.contains('Similar question') ||
+              serverMessage.toLowerCase().contains('similar question') ||
+              errorCode.toLowerCase().contains('similar_question')) {
+            return 'Similar question was asked recently';
+          }
+
+          // Return the server message as is if it's not empty
+          if (serverMessage.isNotEmpty) {
+            return serverMessage;
+          }
+
+          return 'Payment processing failed';
+        } catch (e) {
+          debugPrint('🔍 JSON PARSE ERROR: $e');
+          // Even if parsing fails, check the raw body
+          if (error.body.contains('Similar question was asked recently')) {
+            return 'Similar question was asked recently';
+          }
+          return 'Payment failed. Please try again.';
+        }
+      }
+
+      // 🛡️ Keep existing error handling for other cases
+      if (error is StripeException) {
         return error.error.message ?? error.toString();
       } else if (error is SocketException) {
-        return error.message;
+        return 'Network connection failed. Please check your internet.';
       } else if (error is TimeoutException) {
-        return 'Operation timed out';
+        return 'Request timed out. Please try again.';
       } else if (error is HttpException) {
         return error.message;
       } else if (error is FormatException) {
-        return 'Data format error: ${error.message}';
-      } else if (error is String) {
-        return error;
+        return 'Data format error. Please try again.';
       } else {
         return error.toString();
       }
     } catch (e) {
-      return 'Unknown error occurred';
+      debugPrint('🔍 ERROR EXTRACTION FAILED: $e');
+      return 'An unexpected error occurred';
     }
   }
 
@@ -3515,16 +3717,46 @@ class _ChatScreenState extends State<ChatScreen>
     }
   }
 
+  void _debugPaymentError(dynamic error) {
+    debugPrint('🎯 PAYMENT ERROR DEBUG START ==================');
+    debugPrint('🔍 Error Type: ${error.runtimeType}');
+    debugPrint('🔍 Error: $error');
+
+    if (error is http.Response) {
+      debugPrint('🔍 Status Code: ${error.statusCode}');
+      debugPrint('🔍 Headers: ${error.headers}');
+      debugPrint('🔍 Body: ${error.body}');
+
+      try {
+        final parsed = json.decode(error.body);
+        debugPrint('🔍 Parsed Body: $parsed');
+        debugPrint('🔍 Message: ${parsed['message']}');
+        debugPrint('🔍 Error Code: ${parsed['error']}');
+      } catch (e) {
+        debugPrint('🔍 Parse Error: $e');
+      }
+    }
+
+    debugPrint('🎯 PAYMENT ERROR DEBUG END ====================');
+  }
+
   void _showErrorDetailsDialog(String userMessage, String technicalDetails) {
     showDialog(
       context: context,
       builder:
           (context) => AlertDialog(
+            insetPadding: EdgeInsets.all(20), // ✅ SIMPLE FIX
+            contentPadding: EdgeInsets.all(16), // ✅ BETTER INTERNAL SPACING
             title: Row(
               children: [
                 Icon(Icons.error_outline, color: Colors.red),
                 SizedBox(width: 8),
-                Text('Payment Error Details'),
+                Expanded(
+                  child: Text(
+                    'Payment Error Details',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ),
               ],
             ),
             content: SingleChildScrollView(
@@ -3532,16 +3764,13 @@ class _ChatScreenState extends State<ChatScreen>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    userMessage,
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 16),
+                  Text(userMessage),
+                  SizedBox(height: 20),
                   Text(
                     'Technical Details:',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.grey.shade700,
                     ),
                   ),
                   SizedBox(height: 8),
@@ -3549,18 +3778,23 @@ class _ChatScreenState extends State<ChatScreen>
                     width: double.infinity,
                     padding: EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
+                      color: Colors.grey.shade50,
                       borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: Colors.grey.shade300),
                     ),
                     child: SelectableText(
                       technicalDetails,
-                      style: TextStyle(fontFamily: 'Monospace', fontSize: 12),
+                      style: TextStyle(
+                        fontFamily: 'Monospace',
+                        fontSize: 11,
+                        color: Colors.grey.shade800,
+                      ),
                     ),
                   ),
                   SizedBox(height: 16),
                   Text(
-                    'Need help? Contact support with these details.',
-                    style: TextStyle(fontSize: 12, color: Colors.grey),
+                    "Need help? Contact support with these details.",
+                    style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
                   ),
                 ],
               ),
@@ -3570,11 +3804,15 @@ class _ChatScreenState extends State<ChatScreen>
                 onPressed: () => Navigator.pop(context),
                 child: Text('Close'),
               ),
-              TextButton(
+              ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
                   _contactSupport();
                 },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  foregroundColor: Colors.white,
+                ),
                 child: Text('Contact Support'),
               ),
             ],

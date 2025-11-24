@@ -447,8 +447,6 @@ class EnterprisePaymentService {
     }
   }
 
-  // 🛡️ Enhanced payment intent creation
-  // 🛡️ Enhanced payment intent creation with better validation
   static Future<Map<String, dynamic>> _createPaymentIntent({
     required String userId,
     required String questionText,
@@ -478,6 +476,16 @@ class EnterprisePaymentService {
           }),
         )
         .timeout(const Duration(seconds: 30));
+
+    // 🛡️ ADD COMPREHENSIVE DEBUG LOGGING
+    AppLogger.info(
+      '🔍 PAYMENT INTENT RESPONSE - Status: ${response.statusCode}',
+      feature: 'payment_debug',
+    );
+    AppLogger.info(
+      '🔍 PAYMENT INTENT RESPONSE - Body: ${response.body}',
+      feature: 'payment_debug',
+    );
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
@@ -523,16 +531,44 @@ class EnterprisePaymentService {
         'requiresAction': responseData['requiresAction'] ?? false,
       };
     } else {
-      final errorData = json.decode(response.body);
-      AppLogger.error(
-        'Payment creation HTTP error',
-        error: Exception('HTTP ${response.statusCode}: ${response.body}'),
-        feature: 'payment_validation',
-      );
-      throw PaymentException(
-        errorData['error'] ?? 'Payment creation failed',
-        errorData['code'] ?? 'PAYMENT_CREATION_FAILED',
-      );
+      // 🛡️ CRITICAL FIX: Preserve the original error message from server
+      try {
+        final errorData = json.decode(response.body);
+
+        // 🛡️ EXTRACT THE ACTUAL ERROR MESSAGE FROM SERVER
+        final originalMessage =
+            errorData['message'] ?? 'Payment creation failed';
+        final errorCode = errorData['error'] ?? 'VALIDATION_FAILED';
+
+        AppLogger.error(
+          'Payment creation HTTP error: $originalMessage (Code: $errorCode)',
+          error: Exception('HTTP ${response.statusCode}'),
+          feature: 'payment_validation',
+        );
+
+        // 🛡️ THROW WITH ORIGINAL MESSAGE - THIS IS THE KEY FIX
+        throw PaymentException(originalMessage, errorCode);
+      } catch (parseError) {
+        // 🛡️ Fallback if JSON parsing fails
+        AppLogger.error(
+          'Payment creation failed with status: ${response.statusCode}',
+          error: Exception('Response body: ${response.body}'),
+          feature: 'payment_validation',
+        );
+
+        // 🛡️ CRITICAL FIX: Check if body contains similar question text even if JSON parsing fails
+        if (response.body.contains('Similar question was asked recently')) {
+          throw PaymentException(
+            'Similar question was asked recently',
+            'VALIDATION_FAILED',
+          );
+        }
+
+        throw PaymentException(
+          'Payment creation failed: HTTP ${response.statusCode}',
+          'HTTP_${response.statusCode}',
+        );
+      }
     }
   }
 
