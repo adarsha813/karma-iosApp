@@ -12,6 +12,7 @@ import '../services/analytics_service.dart';
 import '../utils/error_handler.dart';
 import '../l10n/app_localizations.dart';
 import '../config/environment.dart';
+import '../providers/theme_provider.dart';
 
 class QuestionStoreScreen extends StatefulWidget {
   const QuestionStoreScreen({super.key});
@@ -336,17 +337,6 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
     );
   }
 
-  void _showProcessingMessage(int questions) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Processing your $questions questions purchase...'),
-        backgroundColor: Colors.orange,
-        behavior: SnackBarBehavior.floating,
-        duration: const Duration(seconds: 5),
-      ),
-    );
-  }
-
   Future<void> _pollForWebhookCompletion({
     required String token,
     required String paymentIntentId,
@@ -386,16 +376,6 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
     }
   }
 
-  void _showInfoSnackBar(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        backgroundColor: Colors.blue,
-        behavior: SnackBarBehavior.floating,
-      ),
-    );
-  }
-
   // Helper method to extract payment intent ID
   String _extractPaymentIntentId(String clientSecret) {
     // clientSecret format: "pi_xxx_secret_yyy"
@@ -418,26 +398,65 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
   }
 
   void _showErrorSnackBar(String message) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
-        backgroundColor: Colors.red,
+        backgroundColor: theme.colorScheme.errorContainer,
         behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        duration: const Duration(seconds: 3),
       ),
     );
   }
 
   void _showSuccessSnackBar(String message) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
-        backgroundColor: Colors.green,
+        backgroundColor: theme.colorScheme.primary,
         behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        duration: const Duration(seconds: 3),
       ),
     );
   }
 
-  Widget _buildSkeletonLoader() {
+  void _showInfoSnackBar(String message) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: theme.colorScheme.secondary,
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        duration: const Duration(seconds: 3),
+      ),
+    );
+  }
+
+  void _showProcessingMessage(int questions) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Processing your $questions questions purchase...'),
+        backgroundColor: theme.colorScheme.secondaryContainer,
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(seconds: 5),
+      ),
+    );
+  }
+
+  Widget _buildSkeletonLoader(ThemeData theme) {
     return ListView.builder(
       padding: const EdgeInsets.all(16),
       itemCount: 5,
@@ -447,15 +466,20 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
             borderRadius: BorderRadius.circular(16),
           ),
           elevation: 5,
+          color: theme.colorScheme.surface,
           margin: const EdgeInsets.symmetric(vertical: 8),
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Shimmer.fromColors(
-              baseColor: Colors.grey.shade300,
-              highlightColor: Colors.grey.shade100,
+              baseColor: theme.colorScheme.surfaceVariant,
+              highlightColor: theme.colorScheme.surface,
               child: Row(
                 children: [
-                  Container(width: 30, height: 30, color: Colors.white),
+                  Container(
+                    width: 30,
+                    height: 30,
+                    color: theme.colorScheme.onSurface.withOpacity(0.3),
+                  ),
                   const SizedBox(width: 16),
                   Expanded(
                     child: Column(
@@ -463,10 +487,14 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
                       children: [
                         Container(
                           height: 14,
-                          color: Colors.white,
+                          color: theme.colorScheme.onSurface.withOpacity(0.3),
                           margin: const EdgeInsets.only(bottom: 8),
                         ),
-                        Container(height: 14, width: 80, color: Colors.white),
+                        Container(
+                          height: 14,
+                          width: 80,
+                          color: theme.colorScheme.onSurface.withOpacity(0.3),
+                        ),
                       ],
                     ),
                   ),
@@ -474,7 +502,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
                     width: 70,
                     height: 36,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: theme.colorScheme.onSurface.withOpacity(0.3),
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
@@ -489,56 +517,66 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final theme = themeProvider.getCurrentTheme(context);
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.buyQuestionsTitle),
-        backgroundColor: Colors.deepPurpleAccent,
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        foregroundColor: theme.appBarTheme.foregroundColor,
         elevation: 0,
+        centerTitle: true,
       ),
-      body: SafeArea(
-        child:
-            isLoading
-                ? _buildSkeletonLoader()
-                : RefreshIndicator(
-                  onRefresh: _loadData,
-                  child: ListView(
-                    padding: EdgeInsets.only(
-                      left: 16,
-                      right: 16,
-                      bottom: MediaQuery.of(context).viewInsets.bottom + 16,
-                    ),
-                    children: [
-                      _buildBalanceCard(l10n),
-                      const SizedBox(height: 20),
-                      Text(
-                        l10n.availableOffers,
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.w600,
-                        ),
+      body: Container(
+        color: theme.colorScheme.background,
+        child: SafeArea(
+          child:
+              isLoading
+                  ? _buildSkeletonLoader(theme)
+                  : RefreshIndicator(
+                    onRefresh: _loadData,
+                    color: theme.colorScheme.primary,
+                    backgroundColor: theme.colorScheme.background,
+                    child: ListView(
+                      padding: EdgeInsets.only(
+                        left: 16,
+                        right: 16,
+                        bottom: MediaQuery.of(context).viewInsets.bottom + 16,
                       ),
-                      const SizedBox(height: 10),
-                      ...offers
-                          .map((offer) => _buildOfferCard(offer, l10n))
-                          .toList(),
-                    ],
+                      children: [
+                        _buildBalanceCard(theme, l10n),
+                        const SizedBox(height: 20),
+                        Text(
+                          l10n.availableOffers,
+                          style: theme.textTheme.titleLarge?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: theme.colorScheme.onSurface,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        ...offers
+                            .map((offer) => _buildOfferCard(offer, theme, l10n))
+                            .toList(),
+                      ],
+                    ),
                   ),
-                ),
+        ),
       ),
     );
   }
 
-  Widget _buildBalanceCard(AppLocalizations l10n) {
+  Widget _buildBalanceCard(ThemeData theme, AppLocalizations l10n) {
     return Card(
-      color: Colors.deepPurple.shade50,
+      color: theme.colorScheme.primaryContainer,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 4,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Row(
           children: [
-            Icon(Icons.stars, color: Colors.deepPurple, size: 36),
+            Icon(Icons.stars, color: theme.colorScheme.primary, size: 36),
             const SizedBox(width: 12),
             Expanded(
               child: Column(
@@ -546,17 +584,16 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
                 children: [
                   Text(
                     l10n.yourBalance,
-                    style: const TextStyle(
-                      fontSize: 16,
+                    style: theme.textTheme.bodyLarge?.copyWith(
+                      color: theme.colorScheme.onPrimaryContainer,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                   Text(
                     l10n.questionsBalance(questionBalance),
-                    style: const TextStyle(
-                      fontSize: 20,
+                    style: theme.textTheme.headlineSmall?.copyWith(
+                      color: theme.colorScheme.onPrimaryContainer,
                       fontWeight: FontWeight.bold,
-                      color: Colors.deepPurple,
                     ),
                   ),
                 ],
@@ -568,15 +605,19 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
     );
   }
 
-  Widget _buildOfferCard(Map<String, dynamic> offer, AppLocalizations l10n) {
+  Widget _buildOfferCard(
+    Map<String, dynamic> offer,
+    ThemeData theme,
+    AppLocalizations l10n,
+  ) {
     final questions = (offer['questions'] as num?)?.toInt() ?? 0;
     double price = (offer['price'] as num).toDouble();
-
     bool isThisOfferProcessing = _processingOfferId == questions;
 
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 5,
+      color: theme.colorScheme.surface,
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(
@@ -585,26 +626,30 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
         ),
         leading: Icon(
           Icons.question_answer,
-          color: Colors.purple.shade300,
+          color: theme.colorScheme.primary,
           size: 30,
         ),
         title: Text(
           l10n.questionsCount(questions),
-          style: const TextStyle(fontWeight: FontWeight.w600),
+          style: theme.textTheme.titleMedium?.copyWith(
+            fontWeight: FontWeight.w600,
+            color: theme.colorScheme.onSurface,
+          ),
         ),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               "\$${price.toStringAsFixed(2)}",
-              style: const TextStyle(fontSize: 16),
+              style: theme.textTheme.bodyLarge?.copyWith(
+                color: theme.colorScheme.onSurface,
+              ),
             ),
             if ((offer['savings'] ?? 0) > 0)
               Text(
                 "Save ${offer['savings']}%",
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.green.shade600,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: theme.colorScheme.primary,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -612,12 +657,12 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
         ),
         trailing:
             isThisOfferProcessing
-                ? const CircularProgressIndicator()
+                ? CircularProgressIndicator(color: theme.colorScheme.primary)
                 : ElevatedButton(
                   onPressed: () => _startStripePayment(questions),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurple,
-                    foregroundColor: Colors.white,
+                    backgroundColor: theme.colorScheme.primary,
+                    foregroundColor: theme.colorScheme.onPrimary,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -628,7 +673,10 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
                   ),
                   child: Text(
                     l10n.buyButton,
-                    style: const TextStyle(fontWeight: FontWeight.w600),
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: theme.colorScheme.onPrimary,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
       ),

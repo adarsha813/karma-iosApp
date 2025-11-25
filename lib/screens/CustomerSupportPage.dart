@@ -7,6 +7,8 @@ import '../config/environment.dart';
 import '../utils/security_utils.dart';
 import '../utils/validation_utils.dart';
 import '../services/analytical_service.dart';
+import '../providers/theme_provider.dart';
+import 'package:provider/provider.dart';
 
 // Custom logger instance
 final _logger = Logger(
@@ -165,13 +167,19 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
         _lastSubmissionTime = DateTime.now();
         _submissionAttempts++;
       });
+      final theme = Theme.of(context);
 
       if (result.success) {
         _logAnalyticsEvent('email_sent_successfully');
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(l10n.emailSentSuccess),
-            backgroundColor: Colors.green,
+            content: Text(
+              l10n.emailSentSuccess,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onPrimary,
+              ),
+            ),
+            backgroundColor: theme.colorScheme.primary,
             behavior: SnackBarBehavior.floating,
             duration: const Duration(seconds: 4),
           ),
@@ -181,8 +189,13 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
         _logAnalyticsEvent('email_send_failed');
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(result.error ?? l10n.emailSendFailed),
-            backgroundColor: Colors.red,
+            content: Text(
+              result.error ?? l10n.emailSendFailed,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onError,
+              ),
+            ),
+            backgroundColor: theme.colorScheme.error,
             behavior: SnackBarBehavior.floating,
             duration: const Duration(seconds: 4),
           ),
@@ -299,7 +312,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
     return null;
   }
 
-  Widget _buildHeroSection(AppLocalizations l10n, BuildContext context) {
+  Widget _buildHeroSection(ThemeData theme, AppLocalizations l10n) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
@@ -308,8 +321,8 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Theme.of(context).primaryColor,
-            Theme.of(context).primaryColor.withAlpha((0.8 * 255).toInt()),
+            theme.colorScheme.primary,
+            theme.colorScheme.primary.withAlpha((0.8 * 255).toInt()),
           ],
         ),
         borderRadius: BorderRadius.circular(16),
@@ -327,22 +340,21 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
             width: 80,
             height: 80,
             decoration: BoxDecoration(
-              color: Colors.white.withAlpha((0.2 * 255).toInt()),
+              color: theme.colorScheme.onPrimary.withAlpha((0.2 * 255).toInt()),
               shape: BoxShape.circle,
             ),
-            child: const Icon(
+            child: Icon(
               Icons.support_agent,
               size: 40,
-              color: Colors.white,
+              color: theme.colorScheme.onPrimary,
             ),
           ),
           const SizedBox(height: 20),
           Text(
             l10n.supportHeroTitle,
-            style: const TextStyle(
-              fontSize: 24,
+            style: theme.textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: theme.colorScheme.onPrimary,
               height: 1.3,
             ),
             textAlign: TextAlign.center,
@@ -351,9 +363,8 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
           Text(
             l10n.supportHeroDescription,
             textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.white70,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onPrimary.withOpacity(0.9),
               height: 1.5,
             ),
           ),
@@ -362,11 +373,12 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
     );
   }
 
-  Widget _buildFormSection(AppLocalizations l10n, BuildContext context) {
+  Widget _buildFormSection(ThemeData theme, AppLocalizations l10n) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 4,
-      shadowColor: Colors.grey.withAlpha((0.3 * 255).toInt()),
+      color: theme.colorScheme.surface,
+      shadowColor: Colors.black.withAlpha((0.1 * 255).toInt()),
       child: Padding(
         padding: const EdgeInsets.all(24),
         child: Form(
@@ -377,12 +389,27 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
               // Name Field
               TextFormField(
                 controller: _nameController,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.onSurface,
+                ),
                 decoration: InputDecoration(
                   labelText: l10n.yourName,
-                  prefixIcon: const Icon(Icons.person_outline),
+                  labelStyle: TextStyle(
+                    color: theme.colorScheme.onSurface.withOpacity(0.7),
+                  ),
+                  prefixIcon: Icon(
+                    Icons.person_outline,
+                    color: theme.colorScheme.primary,
+                  ),
                   border: const OutlineInputBorder(),
                   filled: true,
-                  fillColor: Colors.grey.shade50,
+                  fillColor: theme.colorScheme.surfaceVariant,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: theme.colorScheme.outline),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: theme.colorScheme.primary),
+                  ),
                 ),
                 textInputAction: TextInputAction.next,
                 validator: (value) => _validateRequired(value, 'name'),
@@ -394,12 +421,27 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
               // Email Field
               TextFormField(
                 controller: _emailController,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.onSurface,
+                ),
                 decoration: InputDecoration(
                   labelText: l10n.yourEmail,
-                  prefixIcon: const Icon(Icons.email_outlined),
+                  labelStyle: TextStyle(
+                    color: theme.colorScheme.onSurface.withOpacity(0.7),
+                  ),
+                  prefixIcon: Icon(
+                    Icons.email_outlined,
+                    color: theme.colorScheme.primary,
+                  ),
                   border: const OutlineInputBorder(),
                   filled: true,
-                  fillColor: Colors.grey.shade50,
+                  fillColor: theme.colorScheme.surfaceVariant,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: theme.colorScheme.outline),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: theme.colorScheme.primary),
+                  ),
                 ),
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,
@@ -412,14 +454,29 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
               // Message Field
               TextFormField(
                 controller: _messageController,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.onSurface,
+                ),
                 maxLines: 5,
                 decoration: InputDecoration(
                   labelText: l10n.message,
-                  prefixIcon: const Icon(Icons.message_outlined),
+                  labelStyle: TextStyle(
+                    color: theme.colorScheme.onSurface.withOpacity(0.7),
+                  ),
+                  prefixIcon: Icon(
+                    Icons.message_outlined,
+                    color: theme.colorScheme.primary,
+                  ),
                   border: const OutlineInputBorder(),
                   filled: true,
-                  fillColor: Colors.grey.shade50,
+                  fillColor: theme.colorScheme.surfaceVariant,
                   alignLabelWithHint: true,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: theme.colorScheme.outline),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: theme.colorScheme.primary),
+                  ),
                 ),
                 keyboardType: TextInputType.multiline,
                 textInputAction: TextInputAction.done,
@@ -432,7 +489,12 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                       required currentLength,
                       required isFocused,
                       maxLength,
-                    }) => Text('$currentLength/$maxLength'),
+                    }) => Text(
+                      '$currentLength/$maxLength',
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: theme.colorScheme.onSurface.withOpacity(0.6),
+                      ),
+                    ),
               ),
               const SizedBox(height: 24),
 
@@ -440,20 +502,23 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.blue.shade50,
+                  color: theme.colorScheme.primaryContainer,
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.blue.shade100),
+                  border: Border.all(color: theme.colorScheme.outline),
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.security, size: 16, color: Colors.blue.shade700),
+                    Icon(
+                      Icons.security,
+                      size: 16,
+                      color: theme.colorScheme.onPrimaryContainer,
+                    ),
                     const SizedBox(width: 8),
                     Expanded(
                       child: Text(
                         'Your information is secure and encrypted',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.blue.shade700,
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.colorScheme.onPrimaryContainer,
                         ),
                       ),
                     ),
@@ -470,14 +535,22 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                     Expanded(
                       child: OutlinedButton.icon(
                         onPressed: _isSending ? null : _resetForm,
-                        icon: const Icon(Icons.clear),
-                        label: const Text('Clear Form'),
+                        icon: Icon(
+                          Icons.clear,
+                          color: theme.colorScheme.primary,
+                        ),
+                        label: Text(
+                          'Clear Form',
+                          style: theme.textTheme.labelLarge?.copyWith(
+                            color: theme.colorScheme.primary,
+                          ),
+                        ),
                         style: OutlinedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(vertical: 16),
-                          textStyle: const TextStyle(fontSize: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
+                          side: BorderSide(color: theme.colorScheme.primary),
                         ),
                       ),
                     ),
@@ -497,19 +570,23 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                                 height: 20,
                                 child: CircularProgressIndicator(
                                   strokeWidth: 2,
-                                  color: Colors.white,
+                                  color: theme.colorScheme.onPrimary,
                                 ),
                               )
-                              : const Icon(Icons.send_outlined),
-                      label: Text(_isSending ? l10n.sending : l10n.send),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).primaryColor,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        textStyle: const TextStyle(
-                          fontSize: 16,
+                              : Icon(
+                                Icons.send_outlined,
+                                color: theme.colorScheme.onPrimary,
+                              ),
+                      label: Text(
+                        _isSending ? l10n.sending : l10n.send,
+                        style: theme.textTheme.labelLarge?.copyWith(
+                          color: theme.colorScheme.onPrimary,
                           fontWeight: FontWeight.w600,
                         ),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: theme.colorScheme.primary,
+                        padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -525,11 +602,12 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
     );
   }
 
-  Widget _buildContactInfo(AppLocalizations l10n, BuildContext context) {
+  Widget _buildContactInfo(ThemeData theme, AppLocalizations l10n) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 4,
-      shadowColor: Colors.grey.withAlpha((0.3 * 255).toInt()),
+      color: theme.colorScheme.surface,
+      shadowColor: Colors.black.withAlpha((0.1 * 255).toInt()),
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -541,22 +619,23 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor.withAlpha((0.1 * 255).toInt()),
+                    color: theme.colorScheme.primary.withAlpha(
+                      (0.1 * 255).toInt(),
+                    ),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
                     Icons.contact_support_outlined,
                     size: 20,
-                    color: Theme.of(context).primaryColor,
+                    color: theme.colorScheme.primary,
                   ),
                 ),
                 const SizedBox(width: 12),
-                const Text(
+                Text(
                   'Alternative Contact',
-                  style: TextStyle(
-                    fontSize: 18,
+                  style: theme.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: Colors.black87,
+                    color: theme.colorScheme.onSurface,
                   ),
                 ),
               ],
@@ -570,7 +649,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                 _logAnalyticsEvent('support_email_tapped');
                 // Implementation for launching email client
               },
-              context: context,
+              theme: theme,
             ),
             const SizedBox(height: 12),
             _buildContactItem(
@@ -581,7 +660,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                 _logAnalyticsEvent('support_phone_tapped');
                 // Implementation for launching phone dialer
               },
-              context: context,
+              theme: theme,
             ),
           ],
         ),
@@ -594,7 +673,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
     required String label,
     required String value,
     required VoidCallback? onTap,
-    required BuildContext context,
+    required ThemeData theme,
   }) {
     return Material(
       color: Colors.transparent,
@@ -604,10 +683,12 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
         child: Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: onTap != null ? Colors.grey.shade50 : null,
+            color: onTap != null ? theme.colorScheme.surfaceVariant : null,
             borderRadius: BorderRadius.circular(8),
             border:
-                onTap != null ? Border.all(color: Colors.grey.shade200) : null,
+                onTap != null
+                    ? Border.all(color: theme.colorScheme.outline)
+                    : null,
           ),
           child: Row(
             children: [
@@ -616,8 +697,8 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                 size: 20,
                 color:
                     onTap != null
-                        ? Theme.of(context).primaryColor
-                        : Colors.grey.shade600,
+                        ? theme.colorScheme.primary
+                        : theme.colorScheme.onSurface.withOpacity(0.5),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -626,20 +707,18 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                   children: [
                     Text(
                       label,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey.shade600,
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: theme.colorScheme.onSurface.withOpacity(0.7),
                       ),
                     ),
                     const SizedBox(height: 2),
                     Text(
                       value,
-                      style: TextStyle(
-                        fontSize: 15,
+                      style: theme.textTheme.bodyMedium?.copyWith(
                         color:
                             onTap != null
-                                ? Colors.black87
-                                : Colors.grey.shade600,
+                                ? theme.colorScheme.onSurface
+                                : theme.colorScheme.onSurface.withOpacity(0.5),
                         fontWeight:
                             onTap != null ? FontWeight.w500 : FontWeight.normal,
                       ),
@@ -651,7 +730,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                 Icon(
                   Icons.arrow_forward_ios,
                   size: 14,
-                  color: Colors.grey.shade500,
+                  color: theme.colorScheme.onSurface.withOpacity(0.5),
                 ),
               ],
             ],
@@ -661,40 +740,41 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
     );
   }
 
+  AppBar _buildAppBar(ThemeData theme, AppLocalizations l10n) {
+    return AppBar(
+      title: Text(l10n.customerSupport),
+      centerTitle: true,
+      backgroundColor: theme.appBarTheme.backgroundColor,
+      foregroundColor: theme.appBarTheme.foregroundColor,
+      elevation: 0,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final theme = themeProvider.getCurrentTheme(context);
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      backgroundColor: Colors.grey.shade50,
-      appBar: AppBar(
-        title: Text(l10n.customerSupport),
-        centerTitle: true,
-        backgroundColor: Theme.of(context).primaryColor,
-        foregroundColor: Colors.white,
-        elevation: 0,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(bottom: Radius.circular(16)),
-        ),
-      ),
+      backgroundColor: theme.colorScheme.background,
+      appBar: _buildAppBar(theme, l10n),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            _buildHeroSection(l10n, context),
+            _buildHeroSection(theme, l10n),
             const SizedBox(height: 24),
-            _buildFormSection(l10n, context),
+            _buildFormSection(theme, l10n),
             const SizedBox(height: 24),
-            _buildContactInfo(l10n, context),
+            _buildContactInfo(theme, l10n),
             const SizedBox(height: 20),
-
             // Footer with additional info
             Text(
               'Typically respond within 24 hours',
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey.shade600,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurface.withOpacity(0.6),
                 fontStyle: FontStyle.italic,
               ),
             ),

@@ -5,6 +5,8 @@ import '../config/environment.dart';
 import 'package:logger/logger.dart';
 import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
+import '../providers/theme_provider.dart';
+import 'package:provider/provider.dart';
 
 // Custom logger instance
 final _logger = Logger(
@@ -68,34 +70,35 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
     });
   }
 
-  Widget _buildAppBar(BuildContext context) {
+  AppBar _buildAppBar(ThemeData theme) {
     return AppBar(
       title: Text(
         widget.term.term,
-        style: const TextStyle(
-          fontSize: 18,
+        style: theme.textTheme.titleLarge?.copyWith(
           fontWeight: FontWeight.w600,
-          color: Colors.white,
+          color: theme.appBarTheme.foregroundColor,
         ),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
       centerTitle: true,
-      backgroundColor: Theme.of(context).primaryColor,
-      foregroundColor: Colors.white,
-      elevation: 2,
-      shadowColor: Colors.black.withAlpha((0.3 * 255).toInt()),
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(12)),
-      ),
+      backgroundColor: theme.appBarTheme.backgroundColor,
+      foregroundColor: theme.appBarTheme.foregroundColor,
+      elevation: 0,
       actions: [
         IconButton(
-          icon: const Icon(Icons.share_outlined),
+          icon: Icon(
+            Icons.share_outlined,
+            color: theme.appBarTheme.foregroundColor,
+          ),
           onPressed: _shareTerm,
           tooltip: 'Share term',
         ),
         IconButton(
-          icon: const Icon(Icons.copy_outlined),
+          icon: Icon(
+            Icons.copy_outlined,
+            color: theme.appBarTheme.foregroundColor,
+          ),
           onPressed: _copyToClipboard,
           tooltip: 'Copy details',
         ),
@@ -103,7 +106,7 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
     );
   }
 
-  Widget _buildTermHeader() {
+  Widget _buildTermHeader(ThemeData theme) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
@@ -112,8 +115,8 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Theme.of(context).primaryColor.withAlpha((0.8 * 255).toInt()),
-            Theme.of(context).primaryColor.withAlpha((0.6 * 255).toInt()),
+            theme.colorScheme.primary.withAlpha((0.8 * 255).toInt()),
+            theme.colorScheme.primary.withAlpha((0.6 * 255).toInt()),
           ],
         ),
         borderRadius: BorderRadius.circular(16),
@@ -128,18 +131,17 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Icon(
+          Icon(
             Icons.auto_awesome_outlined,
             size: 40,
-            color: Colors.white,
+            color: theme.colorScheme.onPrimary,
           ),
           const SizedBox(height: 12),
           Text(
             widget.term.term,
-            style: const TextStyle(
-              fontSize: 24,
+            style: theme.textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: theme.colorScheme.onPrimary,
               height: 1.3,
             ),
             textAlign: TextAlign.center,
@@ -151,20 +153,22 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
     );
   }
 
-  Widget _buildMeaningSection() {
+  Widget _buildMeaningSection(ThemeData theme) {
     if (widget.term.meaning.isEmpty) {
       return _buildEmptyState(
         icon: Icons.help_outline,
         title: 'Meaning Not Available',
         description:
             'The meaning for this astrological term is currently being researched and will be added soon.',
+        theme: theme,
       );
     }
 
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 4,
-      shadowColor: Colors.grey.withAlpha((0.3 * 255).toInt()),
+      color: theme.colorScheme.surface,
+      shadowColor: Colors.black.withAlpha((0.1 * 255).toInt()),
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -176,22 +180,23 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
                   width: 36,
                   height: 36,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor.withAlpha((0.1 * 255).toInt()),
+                    color: theme.colorScheme.primary.withAlpha(
+                      (0.1 * 255).toInt(),
+                    ),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
                     Icons.description_outlined,
                     size: 18,
-                    color: Theme.of(context).primaryColor,
+                    color: theme.colorScheme.primary,
                   ),
                 ),
                 const SizedBox(width: 12),
-                const Text(
+                Text(
                   'Meaning',
-                  style: TextStyle(
-                    fontSize: 18,
+                  style: theme.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: Colors.black87,
+                    color: theme.colorScheme.onSurface,
                   ),
                 ),
               ],
@@ -199,9 +204,8 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
             const SizedBox(height: 16),
             Text(
               widget.term.meaning,
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.black87,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurface.withOpacity(0.8),
                 height: 1.5,
               ),
             ),
@@ -211,17 +215,18 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
     );
   }
 
-  Widget _buildNepaliMeaningSection() {
+  Widget _buildNepaliMeaningSection(ThemeData theme) {
     final nepaliMeaning = widget.term.meaningNepali ?? '';
 
     if (nepaliMeaning.isEmpty) {
-      return const SizedBox.shrink(); // Don't show if no Nepali meaning
+      return const SizedBox.shrink();
     }
 
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 4,
-      shadowColor: Colors.grey.withAlpha((0.3 * 255).toInt()),
+      color: theme.colorScheme.surface,
+      shadowColor: Colors.black.withAlpha((0.1 * 255).toInt()),
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -233,22 +238,23 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
                   width: 36,
                   height: 36,
                   decoration: BoxDecoration(
-                    color: Colors.green.withAlpha((0.1 * 255).toInt()),
+                    color: theme.colorScheme.secondary.withAlpha(
+                      (0.1 * 255).toInt(),
+                    ),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
                     Icons.language_outlined,
                     size: 18,
-                    color: Colors.green,
+                    color: theme.colorScheme.secondary,
                   ),
                 ),
                 const SizedBox(width: 12),
-                const Text(
+                Text(
                   'नेपाली अर्थ',
-                  style: TextStyle(
-                    fontSize: 18,
+                  style: theme.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: Colors.black87,
+                    color: theme.colorScheme.onSurface,
                   ),
                 ),
               ],
@@ -256,9 +262,8 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
             const SizedBox(height: 16),
             Text(
               nepaliMeaning,
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.black87,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurface.withOpacity(0.8),
                 height: 1.5,
               ),
             ),
@@ -268,21 +273,28 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
     );
   }
 
-  Widget _buildAdditionalInfo() {
+  Widget _buildAdditionalInfo(ThemeData theme) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 2,
-      shadowColor: Colors.grey.withAlpha((0.2 * 255).toInt()),
+      color: theme.colorScheme.surfaceVariant,
+      shadowColor: Colors.black.withAlpha((0.05 * 255).toInt()),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Row(
           children: [
-            Icon(Icons.info_outline, size: 20, color: Colors.grey.shade600),
+            Icon(
+              Icons.info_outline,
+              size: 20,
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
             const SizedBox(width: 12),
             Expanded(
               child: Text(
                 'Astrological terminology reference',
-                style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: theme.colorScheme.onSurfaceVariant,
+                ),
               ),
             ),
           ],
@@ -295,32 +307,36 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
     required IconData icon,
     required String title,
     required String description,
+    required ThemeData theme,
   }) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 4,
-      shadowColor: Colors.grey.withAlpha((0.3 * 255).toInt()),
+      color: theme.colorScheme.surface,
+      shadowColor: Colors.black.withAlpha((0.1 * 255).toInt()),
       child: Padding(
         padding: const EdgeInsets.all(32),
         child: Column(
           children: [
-            Icon(icon, size: 48, color: Colors.grey.shade400),
+            Icon(
+              icon,
+              size: 48,
+              color: theme.colorScheme.onSurface.withOpacity(0.4),
+            ),
             const SizedBox(height: 16),
             Text(
               title,
-              style: const TextStyle(
-                fontSize: 18,
+              style: theme.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
-                color: Colors.black54,
+                color: theme.colorScheme.onSurface.withOpacity(0.6),
               ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 8),
             Text(
               description,
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey.shade600,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurface.withOpacity(0.6),
                 height: 1.4,
               ),
               textAlign: TextAlign.center,
@@ -339,8 +355,6 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
       );
 
       final content = _buildClipboardContent();
-
-      // Open the native share dialog
       await Share.share(
         content,
         subject: 'Astrological Term: ${widget.term.term}',
@@ -349,10 +363,22 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
       _logError('Share failed: $e', stackTrace, context: 'shareTerm');
 
       if (mounted) {
+        final themeProvider = Provider.of<ThemeProvider>(
+          context,
+          listen: false,
+        );
+        final theme = themeProvider.getCurrentTheme(context);
+
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Failed to share term'),
-            backgroundColor: Colors.red,
+          SnackBar(
+            content: Text(
+              'Failed to share term',
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onError,
+              ),
+            ),
+            backgroundColor: theme.colorScheme.error,
+            behavior: SnackBarBehavior.floating,
           ),
         );
       }
@@ -362,8 +388,6 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
   Future<void> _copyToClipboard() async {
     try {
       final content = _buildClipboardContent();
-
-      // In production, use clipboard package:
       await Clipboard.setData(ClipboardData(text: content));
 
       _logAnalyticsEvent(
@@ -372,10 +396,23 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
       );
 
       if (mounted) {
+        final themeProvider = Provider.of<ThemeProvider>(
+          context,
+          listen: false,
+        );
+        final theme = themeProvider.getCurrentTheme(context);
+
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Copied to clipboard!'),
-            duration: Duration(seconds: 2),
+          SnackBar(
+            content: Text(
+              'Copied to clipboard!',
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onPrimary,
+              ),
+            ),
+            backgroundColor: theme.colorScheme.primary,
+            behavior: SnackBarBehavior.floating,
+            duration: const Duration(seconds: 2),
           ),
         );
       }
@@ -383,10 +420,22 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
       _logError('Copy failed: $e', stackTrace, context: 'copyToClipboard');
 
       if (mounted) {
+        final themeProvider = Provider.of<ThemeProvider>(
+          context,
+          listen: false,
+        );
+        final theme = themeProvider.getCurrentTheme(context);
+
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Failed to copy to clipboard'),
-            backgroundColor: Colors.red,
+          SnackBar(
+            content: Text(
+              'Failed to copy to clipboard',
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onError,
+              ),
+            ),
+            backgroundColor: theme.colorScheme.error,
+            behavior: SnackBarBehavior.floating,
           ),
         );
       }
@@ -418,35 +467,33 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final theme = themeProvider.getCurrentTheme(context);
+
     return Scaffold(
-      backgroundColor: Colors.grey.shade50,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(60),
-        child: _buildAppBar(context),
-      ),
+      backgroundColor: theme.colorScheme.background,
+      appBar: _buildAppBar(theme),
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              _buildTermHeader(),
+              _buildTermHeader(theme),
               const SizedBox(height: 24),
-              _buildMeaningSection(),
+              _buildMeaningSection(theme),
               if ((widget.term.meaningNepali ?? '').isNotEmpty) ...[
                 const SizedBox(height: 16),
-                _buildNepaliMeaningSection(),
+                _buildNepaliMeaningSection(theme),
               ],
               const SizedBox(height: 16),
-              _buildAdditionalInfo(),
+              _buildAdditionalInfo(theme),
               const SizedBox(height: 20),
-
               // Footer
               Text(
                 'Astrological Knowledge Base',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey.shade600,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: theme.colorScheme.onSurface.withOpacity(0.6),
                   fontStyle: FontStyle.italic,
                 ),
               ),

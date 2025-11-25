@@ -8,6 +8,7 @@ import 'package:shimmer/shimmer.dart';
 import '../l10n/app_localizations.dart';
 import '../config/environment.dart';
 import 'package:logger/logger.dart';
+import '../providers/theme_provider.dart';
 
 // Custom logger instance
 final _logger = Logger(
@@ -431,7 +432,7 @@ class _ProfileScreenState extends State<ProfileScreen>
   }
 
   // North Indian Chart Renderer
-  Widget _buildNorthIndianChart() {
+  Widget _buildNorthIndianChart(ThemeData theme) {
     final List<Map<String, dynamic>> calculatedHouses = _calculateHouseInfo();
     final Map<int, Map<String, dynamic>> houses = {};
 
@@ -485,17 +486,19 @@ class _ProfileScreenState extends State<ProfileScreen>
         top: position.dy - 25,
         child: Container(
           width: MediaQuery.of(context).size.width * 0.2,
-          constraints: BoxConstraints(maxWidth: 120, minWidth: 80),
+          constraints: const BoxConstraints(maxWidth: 120, minWidth: 80),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               // Zodiac number and sign
               Text(
                 '$zodiacNum ($sign)',
-                style: TextStyle(
+                style: theme.textTheme.bodySmall?.copyWith(
                   fontWeight: FontWeight.w600,
-                  color: number == 1 ? Colors.red : Colors.grey[800],
-                  fontSize: 12,
+                  color:
+                      number == 1
+                          ? theme.colorScheme.error
+                          : theme.colorScheme.onSurface,
                 ),
                 textAlign: TextAlign.center,
                 maxLines: 2,
@@ -506,7 +509,9 @@ class _ProfileScreenState extends State<ProfileScreen>
               // Nakshatra and degree
               Text(
                 '$nakshatra ${degree.toStringAsFixed(2)}°',
-                style: TextStyle(color: Colors.blue[700], fontSize: 10),
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: theme.colorScheme.primary,
+                ),
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
@@ -527,17 +532,19 @@ class _ProfileScreenState extends State<ProfileScreen>
                       const SizedBox(height: 2),
                       Text(
                         planetName,
-                        style: TextStyle(
+                        style: theme.textTheme.bodySmall?.copyWith(
                           fontWeight: FontWeight.w500,
-                          color: Colors.green[700],
-                          fontSize: 10,
+                          color: theme.colorScheme.secondary,
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text(
                         '${planetDegree.toStringAsFixed(2)}° ($planetNakshatra)',
-                        style: TextStyle(color: Colors.green[700], fontSize: 8),
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.colorScheme.secondary,
+                          fontSize: 8,
+                        ),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.center,
@@ -548,7 +555,9 @@ class _ProfileScreenState extends State<ProfileScreen>
               else
                 Text(
                   '-',
-                  style: TextStyle(color: Colors.green[700], fontSize: 10),
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.secondary,
+                  ),
                 ),
             ],
           ),
@@ -575,13 +584,12 @@ class _ProfileScreenState extends State<ProfileScreen>
       width: double.infinity,
       height: MediaQuery.of(context).size.width * 0.9,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade300),
+        border: Border.all(color: theme.colorScheme.outline),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Stack(
         children: [
-          // SVG-like background
-          CustomPaint(painter: _NorthIndianChartPainter(), size: Size.infinite),
+          CustomPaint(painter: _NorthIndianChartPainter(theme)),
           ...positions.entries.map((entry) {
             return _buildHouse(entry.key, entry.value['x']!, entry.value['y']!);
           }),
@@ -609,10 +617,12 @@ class _ProfileScreenState extends State<ProfileScreen>
   }
 
   // Dasha Table Widget
-  Widget _buildDashaTable(List<dynamic> dashas, {bool isYogini = false}) {
-    final l10n = AppLocalizations.of(context)!;
-
-    // Validate and sanitize dashas data
+  Widget _buildDashaTable(
+    List<dynamic> dashas,
+    ThemeData theme,
+    AppLocalizations l10n, {
+    bool isYogini = false,
+  }) {
     final List<Map<String, dynamic>> validatedDashas =
         dashas
             .where((dasha) => dasha is Map)
@@ -627,25 +637,37 @@ class _ProfileScreenState extends State<ProfileScreen>
               DataColumn(
                 label: Text(
                   l10n.yoginiLabel,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.onSurface,
+                  ),
                 ),
               ),
               DataColumn(
                 label: Text(
                   l10n.lordLabel,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.onSurface,
+                  ),
                 ),
               ),
               DataColumn(
                 label: Text(
                   l10n.startLabel,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.onSurface,
+                  ),
                 ),
               ),
               DataColumn(
                 label: Text(
                   l10n.endLabel,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.onSurface,
+                  ),
                 ),
               ),
             ]
@@ -653,19 +675,28 @@ class _ProfileScreenState extends State<ProfileScreen>
               DataColumn(
                 label: Text(
                   l10n.lordLabel,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.onSurface,
+                  ),
                 ),
               ),
               DataColumn(
                 label: Text(
                   l10n.startDateLabel,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.onSurface,
+                  ),
                 ),
               ),
               DataColumn(
                 label: Text(
                   l10n.endDateLabel,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.onSurface,
+                  ),
                 ),
               ),
             ];
@@ -679,6 +710,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                         DataCell(
                           Text(
                             dasha['yogini']?.toString() ?? l10n.notAvailable,
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: theme.colorScheme.onSurface,
+                            ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -686,6 +720,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                         DataCell(
                           Text(
                             dasha['lord']?.toString() ?? l10n.notAvailable,
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: theme.colorScheme.onSurface,
+                            ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -694,6 +731,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                           Text(
                             dasha['start_date']?.toString() ??
                                 l10n.notAvailable,
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: theme.colorScheme.onSurface,
+                            ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -701,6 +741,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                         DataCell(
                           Text(
                             dasha['end_date']?.toString() ?? l10n.notAvailable,
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: theme.colorScheme.onSurface,
+                            ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -713,6 +756,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                                     dasha['lord'] ??
                                     l10n.notAvailable)
                                 .toString(),
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: theme.colorScheme.onSurface,
+                            ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -721,6 +767,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                           Text(
                             dasha['start_date']?.toString() ??
                                 l10n.notAvailable,
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: theme.colorScheme.onSurface,
+                            ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -728,6 +777,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                         DataCell(
                           Text(
                             dasha['end_date']?.toString() ?? l10n.notAvailable,
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: theme.colorScheme.onSurface,
+                            ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -741,7 +793,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                   DataCell(
                     Text(
                       l10n.noData,
-                      style: const TextStyle(color: Colors.grey),
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: theme.colorScheme.onSurface.withOpacity(0.5),
+                      ),
                     ),
                   ),
                   ...List.generate(
@@ -754,20 +808,21 @@ class _ProfileScreenState extends State<ProfileScreen>
 
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade300),
+        border: Border.all(color: theme.colorScheme.outline),
         borderRadius: BorderRadius.circular(8),
       ),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: DataTable(
-          headingRowColor: MaterialStateProperty.all(Colors.grey[100]),
+          headingRowColor: MaterialStateProperty.all(
+            theme.colorScheme.surfaceVariant,
+          ),
           dataRowColor: MaterialStateProperty.resolveWith<Color?>((
             Set<MaterialState> states,
           ) {
             if (states.contains(MaterialState.selected)) {
-              return Theme.of(context).colorScheme.primary.withAlpha((0.08 * 255).toInt());
+              return theme.colorScheme.primary.withAlpha((0.08 * 255).toInt());
             }
-            // Even rows have a slight background color
             return Colors.transparent;
           }),
           columns: columns,
@@ -811,12 +866,12 @@ class _ProfileScreenState extends State<ProfileScreen>
     super.dispose();
   }
 
-  Widget _buildSkeletonLoader() {
+  Widget _buildSkeletonLoader(ThemeData theme) {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Shimmer.fromColors(
-        baseColor: Colors.grey.shade300,
-        highlightColor: Colors.grey.shade100,
+        baseColor: theme.colorScheme.surfaceVariant,
+        highlightColor: theme.colorScheme.surface,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -825,7 +880,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               height: 20,
               width: 200,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: theme.colorScheme.onSurface.withOpacity(0.3),
                 borderRadius: BorderRadius.circular(4),
               ),
             ),
@@ -834,7 +889,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               height: 16,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: theme.colorScheme.onSurface.withOpacity(0.3),
                 borderRadius: BorderRadius.circular(4),
               ),
             ),
@@ -845,7 +900,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               height: 300,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: theme.colorScheme.onSurface.withOpacity(0.3),
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
@@ -863,7 +918,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                       height: 20,
                       width: 150,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: theme.colorScheme.onSurface.withOpacity(0.3),
                         borderRadius: BorderRadius.circular(4),
                       ),
                     ),
@@ -872,7 +927,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                       height: 120,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: theme.colorScheme.onSurface.withOpacity(0.3),
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
@@ -886,25 +941,25 @@ class _ProfileScreenState extends State<ProfileScreen>
     );
   }
 
-  Widget _buildErrorWidget() {
-    final l10n = AppLocalizations.of(context)!;
-
+  Widget _buildErrorWidget(ThemeData theme, AppLocalizations l10n) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.error_outline, size: 64, color: Colors.red.shade300),
+            Icon(Icons.error_outline, size: 64, color: theme.colorScheme.error),
             const SizedBox(height: 16),
             Text(
               _error ?? _getLocalizedError('generic_error'),
-              style: const TextStyle(fontSize: 16, color: Colors.black87),
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurface,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
             if (_retrying)
-              const CircularProgressIndicator()
+              CircularProgressIndicator(color: theme.colorScheme.primary)
             else
               ElevatedButton.icon(
                 onPressed: () {
@@ -912,9 +967,15 @@ class _ProfileScreenState extends State<ProfileScreen>
                   setState(() => _retrying = true);
                   _fetchAstroProfileWithRetry();
                 },
-                icon: const Icon(Icons.refresh),
-                label: Text(l10n.retryButton),
+                icon: Icon(Icons.refresh, color: theme.colorScheme.onPrimary),
+                label: Text(
+                  l10n.retryButton,
+                  style: theme.textTheme.labelLarge?.copyWith(
+                    color: theme.colorScheme.onPrimary,
+                  ),
+                ),
                 style: ElevatedButton.styleFrom(
+                  backgroundColor: theme.colorScheme.primary,
                   padding: const EdgeInsets.symmetric(
                     horizontal: 24,
                     vertical: 12,
@@ -929,133 +990,142 @@ class _ProfileScreenState extends State<ProfileScreen>
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final theme = themeProvider.getCurrentTheme(context);
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.kundaliGeneratorTitle),
-        backgroundColor: Colors.blue[700],
-        foregroundColor: Colors.white,
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        foregroundColor: theme.appBarTheme.foregroundColor,
         elevation: 0,
+        centerTitle: true,
       ),
-      body: SafeArea(
-        child:
-            _isLoading
-                ? _buildSkeletonLoader()
-                : _error != null
-                ? _buildErrorWidget()
-                : SingleChildScrollView(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Basic Info
-                      Text(
-                        l10n.natalChartTitle,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.grey[800],
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      Container(
-                        padding: const EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[50],
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Colors.grey.shade200),
-                        ),
-                        child: RichText(
-                          text: TextSpan(
-                            style: const TextStyle(
-                              fontSize: 14,
-                              color: Colors.black87,
-                              height: 1.5,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: "${l10n.lagnaLabel}: ",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue[700],
-                                ),
-                              ),
-                              TextSpan(
-                                text:
-                                    "${astroData?['lagna'] ?? l10n.unknown}\n",
-                              ),
-                              TextSpan(
-                                text: "${l10n.rashiLabel}: ",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue[700],
-                                ),
-                              ),
-                              TextSpan(
-                                text:
-                                    "${astroData?['rashi'] ?? l10n.unknown}\n",
-                              ),
-                              TextSpan(
-                                text: "${l10n.ascDegreeLabel}: ",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue[700],
-                                ),
-                              ),
-                              TextSpan(
-                                text:
-                                    "${(astroData?['ascendant_degree'] ?? 0).toStringAsFixed(2)}°",
-                              ),
-                            ],
+      body: Container(
+        color: theme.colorScheme.background,
+        child: SafeArea(
+          child:
+              _isLoading
+                  ? _buildSkeletonLoader(theme)
+                  : _error != null
+                  ? _buildErrorWidget(theme, l10n)
+                  : SingleChildScrollView(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Basic Info
+                        Text(
+                          l10n.natalChartTitle,
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: theme.colorScheme.onSurface,
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 24),
-
-                      // North Indian Chart
-                      Text(
-                        l10n.natalChartTitle,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.grey[800],
+                        const SizedBox(height: 12),
+                        Container(
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color: theme.colorScheme.surfaceVariant,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              color: theme.colorScheme.outline,
+                            ),
+                          ),
+                          child: RichText(
+                            text: TextSpan(
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                color: theme.colorScheme.onSurface,
+                                height: 1.5,
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: "${l10n.lagnaLabel}: ",
+                                  style: theme.textTheme.bodyMedium?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: theme.colorScheme.primary,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text:
+                                      "${astroData?['lagna'] ?? l10n.unknown}\n",
+                                ),
+                                TextSpan(
+                                  text: "${l10n.rashiLabel}: ",
+                                  style: theme.textTheme.bodyMedium?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: theme.colorScheme.primary,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text:
+                                      "${astroData?['rashi'] ?? l10n.unknown}\n",
+                                ),
+                                TextSpan(
+                                  text: "${l10n.ascDegreeLabel}: ",
+                                  style: theme.textTheme.bodyMedium?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: theme.colorScheme.primary,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text:
+                                      "${(astroData?['ascendant_degree'] ?? 0).toStringAsFixed(2)}°",
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 12),
-                      _buildNorthIndianChart(),
+                        const SizedBox(height: 24),
 
-                      // Vimshottari Dasha
-                      const SizedBox(height: 32),
-                      Text(
-                        l10n.vimshottariDashaTitle,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.grey[800],
+                        // North Indian Chart
+                        Text(
+                          l10n.natalChartTitle,
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: theme.colorScheme.onSurface,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 12),
-                      _buildDashaTable(astroData?['vimshottari_dasha'] ?? []),
+                        const SizedBox(height: 12),
+                        _buildNorthIndianChart(theme),
 
-                      // Yogini Dasha
-                      const SizedBox(height: 32),
-                      Text(
-                        l10n.yoginiDashaTitle,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.grey[800],
+                        // Vimshottari Dasha
+                        const SizedBox(height: 32),
+                        Text(
+                          l10n.vimshottariDashaTitle,
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: theme.colorScheme.onSurface,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 12),
-                      _buildDashaTable(
-                        astroData?['yogini_dasha'] ?? [],
-                        isYogini: true,
-                      ),
-                    ],
+                        const SizedBox(height: 12),
+                        _buildDashaTable(
+                          astroData?['vimshottari_dasha'] ?? [],
+                          theme,
+                          l10n,
+                        ),
+
+                        // Yogini Dasha
+                        const SizedBox(height: 32),
+                        Text(
+                          l10n.yoginiDashaTitle,
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: theme.colorScheme.onSurface,
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        _buildDashaTable(
+                          astroData?['yogini_dasha'] ?? [],
+                          theme,
+                          l10n,
+                          isYogini: true,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
+        ),
       ),
     );
   }
@@ -1063,11 +1133,15 @@ class _ProfileScreenState extends State<ProfileScreen>
 
 // Custom painter for the North Indian chart background
 class _NorthIndianChartPainter extends CustomPainter {
+  final ThemeData theme;
+
+  _NorthIndianChartPainter(this.theme);
+
   @override
   void paint(Canvas canvas, Size size) {
     final paint =
         Paint()
-          ..color = Colors.black
+          ..color = theme.colorScheme.onSurface
           ..style = PaintingStyle.stroke
           ..strokeWidth = 1.5;
 
@@ -1081,21 +1155,13 @@ class _NorthIndianChartPainter extends CustomPainter {
 
     // Diagonal lines
     final lines = [
-      // Top to right
       [Offset(center.dx, 2), Offset(size.width - 2, center.dy)],
-      // Top to left
       [Offset(center.dx, 2), Offset(2, center.dy)],
-      // Left to bottom
       [Offset(2, center.dy), Offset(center.dx, size.height - 2)],
-      // Right to bottom
       [Offset(size.width - 2, center.dy), Offset(center.dx, size.height - 2)],
-      // Center to bottom-right
       [Offset(center.dx, center.dy), Offset(size.width - 2, size.height - 2)],
-      // Center to bottom-left
       [Offset(center.dx, center.dy), Offset(2, size.height - 2)],
-      // Top-right to center
       [Offset(size.width - 2, 2), Offset(center.dx, center.dy)],
-      // Top-left to center
       [Offset(2, 2), Offset(center.dx, center.dy)],
     ];
 

@@ -9,6 +9,7 @@ import '../utils/enterprise_animations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:share_plus/share_plus.dart';
 import '../l10n/app_localizations.dart'; // Add this import
+import '../providers/theme_provider.dart';
 
 class AstrologerDetailPage extends StatefulWidget {
   final String astrologerId;
@@ -282,106 +283,68 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final theme = themeProvider.getCurrentTheme(context);
+
     return SecurityShield(
-      child: Scaffold(backgroundColor: Colors.grey[50], body: _buildBody()),
-    );
-  }
-
-  Widget _buildBody() {
-    return SafeArea(
-      child: Column(
-        children: [_buildAppBar(), Expanded(child: _buildContent())],
+      child: Scaffold(
+        backgroundColor: theme.colorScheme.background,
+        appBar: _buildAppBar(theme),
+        body: _buildBody(theme),
       ),
     );
   }
 
-  Widget _buildAppBar() {
+  Widget _buildBody(ThemeData theme) {
+    return SafeArea(child: _buildContent(theme));
+  }
+
+  AppBar _buildAppBar(ThemeData theme) {
+    // Change return type from Widget to AppBar
     final l10n = AppLocalizations.of(context)!;
-    return PreferredSize(
-      preferredSize: const Size.fromHeight(80), // Adjust height if needed
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Theme.of(context).primaryColor,
-              Theme.of(context).primaryColor.withAlpha((0.8 * 255).toInt()),
-            ],
+    return AppBar(
+      title: Text(l10n.astrologerProfileTitle),
+      backgroundColor: theme.appBarTheme.backgroundColor,
+      foregroundColor: theme.appBarTheme.foregroundColor,
+      elevation: 0,
+      centerTitle: true,
+      actions: [
+        if (_loadState == LoadState.success)
+          IconButton(
+            icon: Icon(Icons.share, color: theme.appBarTheme.foregroundColor),
+            onPressed: _shareProfile,
           ),
-          borderRadius: const BorderRadius.vertical(
-            bottom: Radius.circular(16),
-          ),
-        ),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            child: Row(
-              children: [
-                // Back button
-                IconButton(
-                  icon: const Icon(Icons.arrow_back, color: Colors.white),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-
-                const SizedBox(width: 8),
-
-                // Title
-                Expanded(
-                  child: Text(
-                    l10n.astrologerProfileTitle, // Updated
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-
-                // Share button
-                if (_loadState == LoadState.success)
-                  IconButton(
-                    icon: Icon(
-                      Icons.share,
-                      color: Colors.white.withAlpha((0.9 * 255).toInt()),
-                    ),
-                    onPressed: _shareProfile,
-                  ),
-              ],
-            ),
-          ),
-        ),
-      ),
+      ],
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(ThemeData theme) {
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 300),
-      child: _buildContentByState(),
+      child: _buildContentByState(theme),
     );
   }
 
-  Widget _buildContentByState() {
+  Widget _buildContentByState(ThemeData theme) {
     final l10n = AppLocalizations.of(context)!;
     switch (_loadState) {
       case LoadState.loading:
-        return const AstrologerDetailShimmer();
+        return AstrologerDetailShimmer(theme: theme);
       case LoadState.error:
         return EnterpriseErrorWidget(
-          message: l10n.failedToLoadAstrologer, // Updated
+          message: l10n.failedToLoadAstrologer,
           onRetry: _loadAstrologerData,
+          theme: theme,
         );
       case LoadState.success:
         return FadeTransition(
           opacity: _fadeAnimation,
-          child: _buildSuccessContent(),
+          child: _buildSuccessContent(theme),
         );
     }
   }
 
-  Widget _buildSuccessContent() {
+  Widget _buildSuccessContent(ThemeData theme) {
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.all(20),
@@ -389,21 +352,19 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Profile Header
-          _buildProfileHeader(),
+          _buildProfileHeader(theme),
           const SizedBox(height: 24),
-
           // Favorite Action
-          _buildFavoriteSection(),
+          _buildFavoriteSection(theme),
           const SizedBox(height: 24),
-
           // Details Sections
-          _buildDetailsSections(),
+          _buildDetailsSections(theme),
         ],
       ),
     );
   }
 
-  Widget _buildProfileHeader() {
+  Widget _buildProfileHeader(ThemeData theme) {
     return ScaleTransition(
       scale: _scaleAnimation,
       child: Column(
@@ -415,7 +376,7 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                color: Theme.of(context).primaryColor.withAlpha((0.3 * 255).toInt()),
+                color: theme.colorScheme.primary.withAlpha((0.3 * 255).toInt()),
                 width: 3,
               ),
               boxShadow: [
@@ -432,20 +393,20 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
                 fit: BoxFit.cover,
                 placeholder:
                     (context, url) => Container(
-                      color: Colors.grey[200],
-                      child: const Icon(
+                      color: theme.colorScheme.surfaceVariant,
+                      child: Icon(
                         Icons.person,
                         size: 40,
-                        color: Colors.grey,
+                        color: theme.colorScheme.onSurfaceVariant,
                       ),
                     ),
                 errorWidget:
                     (context, url, error) => Container(
-                      color: Colors.grey[200],
-                      child: const Icon(
+                      color: theme.colorScheme.surfaceVariant,
+                      child: Icon(
                         Icons.person,
                         size: 40,
-                        color: Colors.grey,
+                        color: theme.colorScheme.onSurfaceVariant,
                       ),
                     ),
                 fadeInDuration: const Duration(milliseconds: 300),
@@ -453,18 +414,16 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
             ),
           ),
           const SizedBox(height: 16),
-
           // Name and basic info
           Text(
             _astrologerData?.fullName ?? 'Astrologer',
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+            style: theme.textTheme.headlineMedium?.copyWith(
               fontWeight: FontWeight.w700,
-              color: Colors.grey[800],
+              color: theme.colorScheme.onSurface,
             ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
-
           // Rating and reviews
           if (_astrologerData?.rating != null) ...[
             Row(
@@ -474,23 +433,24 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
                 const SizedBox(width: 4),
                 Text(
                   '${_astrologerData!.rating!.toStringAsFixed(1)}',
-                  style: TextStyle(
+                  style: theme.textTheme.bodyMedium?.copyWith(
                     fontWeight: FontWeight.w600,
-                    color: Colors.grey[700],
+                    color: theme.colorScheme.onSurface,
                   ),
                 ),
                 if (_astrologerData?.reviewCount != null) ...[
                   const SizedBox(width: 4),
                   Text(
                     '(${_astrologerData!.reviewCount!} reviews)',
-                    style: TextStyle(color: Colors.grey[600]),
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.colorScheme.onSurface.withOpacity(0.7),
+                    ),
                   ),
                 ],
               ],
             ),
             const SizedBox(height: 8),
           ],
-
           // Specialties
           if (_astrologerData?.specialties.isNotEmpty == true) ...[
             Wrap(
@@ -503,11 +463,11 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
                         (specialty) => Chip(
                           label: Text(
                             specialty,
-                            style: const TextStyle(fontSize: 12),
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: theme.colorScheme.onPrimary,
+                            ),
                           ),
-                          backgroundColor: Theme.of(
-                            context,
-                          ).primaryColor.withAlpha((0.1 * 255).toInt()),
+                          backgroundColor: theme.colorScheme.primary,
                           visualDensity: VisualDensity.compact,
                         ),
                       )
@@ -520,13 +480,13 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
     );
   }
 
-  Widget _buildFavoriteSection() {
+  Widget _buildFavoriteSection(ThemeData theme) {
     final l10n = AppLocalizations.of(context)!;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -550,7 +510,9 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
                         child: CircularProgressIndicator(
                           strokeWidth: 2,
                           valueColor: AlwaysStoppedAnimation<Color>(
-                            _isFavorite ? Colors.grey[600]! : Colors.white,
+                            _isFavorite
+                                ? theme.colorScheme.onSurface
+                                : theme.colorScheme.onPrimary,
                           ),
                         ),
                       )
@@ -558,25 +520,33 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
                         _isFavorite
                             ? Icons.star_rounded
                             : Icons.star_outline_rounded,
-                        color: _isFavorite ? Colors.amber : Colors.white,
+                        color:
+                            _isFavorite
+                                ? Colors.amber
+                                : theme.colorScheme.onPrimary,
                         size: 24,
                       ),
               label: Text(
                 _isFavorite
                     ? l10n.personalAstrologer
-                    : l10n.makePersonalAstrologer, // Updated
-                style: TextStyle(
+                    : l10n.makePersonalAstrologer,
+                style: theme.textTheme.labelLarge?.copyWith(
                   fontWeight: FontWeight.w600,
-                  fontSize: 16,
-                  color: _isFavorite ? Colors.grey[800] : Colors.white,
+                  color:
+                      _isFavorite
+                          ? theme.colorScheme.onSurface
+                          : theme.colorScheme.onPrimary,
                 ),
               ),
               style: ElevatedButton.styleFrom(
                 backgroundColor:
                     _isFavorite
                         ? Colors.amber.withAlpha((0.2 * 255).toInt())
-                        : Theme.of(context).primaryColor,
-                foregroundColor: _isFavorite ? Colors.grey[800] : Colors.white,
+                        : theme.colorScheme.primary,
+                foregroundColor:
+                    _isFavorite
+                        ? theme.colorScheme.onSurface
+                        : theme.colorScheme.onPrimary,
                 padding: const EdgeInsets.symmetric(
                   vertical: 16,
                   horizontal: 24,
@@ -598,9 +568,9 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
           ),
           const SizedBox(height: 12),
           Text(
-            l10n.favoriteDescription, // Updated
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              color: Colors.grey[600],
+            l10n.favoriteDescription,
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: theme.colorScheme.onSurface.withOpacity(0.7),
               height: 1.4,
             ),
             textAlign: TextAlign.center,
@@ -610,7 +580,7 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
     );
   }
 
-  Widget _buildDetailsSections() {
+  Widget _buildDetailsSections(ThemeData theme) {
     final l10n = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -618,7 +588,7 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
         // Education & Qualifications
         _buildDetailSection(
           icon: Icons.school_rounded,
-          title: l10n.educationQualifications, // Updated
+          title: l10n.educationQualifications,
           content: [
             if (_astrologerData?.education != null)
               '🎓 ${_astrologerData!.education!}',
@@ -627,15 +597,16 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
             if (_astrologerData?.experience != null)
               '⏳ ${_astrologerData!.experience!}',
           ].join('\n'),
+          theme: theme,
         ),
         const SizedBox(height: 20),
-
         // Bio
         if (_astrologerData?.bio != null && _astrologerData!.bio!.isNotEmpty)
           _buildDetailSection(
             icon: Icons.description_rounded,
-            title: l10n.aboutSection, // Updated
+            title: l10n.aboutSection,
             content: _astrologerData!.bio!,
+            theme: theme,
           ),
       ],
     );
@@ -645,12 +616,13 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
     required IconData icon,
     required String title,
     required String content,
+    required ThemeData theme,
   }) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -665,13 +637,13 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
         children: [
           Row(
             children: [
-              Icon(icon, color: Theme.of(context).primaryColor, size: 20),
+              Icon(icon, color: theme.colorScheme.primary, size: 20),
               const SizedBox(width: 8),
               Text(
                 title,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                style: theme.textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.w600,
-                  color: Colors.grey[800],
+                  color: theme.colorScheme.onSurface,
                 ),
               ),
             ],
@@ -679,8 +651,8 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
           const SizedBox(height: 12),
           Text(
             content,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onSurface.withOpacity(0.8),
               height: 1.5,
             ),
           ),
@@ -721,18 +693,24 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
   }) {
     if (!mounted) return;
 
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     final colors = {
-      SnackbarType.success: Colors.green,
-      SnackbarType.error: Colors.red,
+      SnackbarType.success: theme.colorScheme.primary,
+      SnackbarType.error: theme.colorScheme.error,
       SnackbarType.warning: Colors.orange,
-      SnackbarType.info: Colors.blue,
+      SnackbarType.info: theme.colorScheme.secondary,
     };
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
           message,
-          style: const TextStyle(fontWeight: FontWeight.w500),
+          style: theme.textTheme.bodyMedium?.copyWith(
+            fontWeight: FontWeight.w500,
+            color: theme.colorScheme.onPrimary,
+          ),
         ),
         backgroundColor: colors[type],
         behavior: SnackBarBehavior.floating,
@@ -754,7 +732,9 @@ enum LoadState { loading, success, error }
 enum SnackbarType { success, error, warning, info }
 
 class AstrologerDetailShimmer extends StatelessWidget {
-  const AstrologerDetailShimmer({super.key});
+  final ThemeData theme;
+
+  const AstrologerDetailShimmer({super.key, required this.theme});
 
   @override
   Widget build(BuildContext context) {
@@ -764,16 +744,16 @@ class AstrologerDetailShimmer extends StatelessWidget {
         children: [
           // Profile header shimmer
           Shimmer.fromColors(
-            baseColor: Colors.grey[300]!,
-            highlightColor: Colors.grey[100]!,
+            baseColor: theme.colorScheme.surfaceVariant,
+            highlightColor: theme.colorScheme.surface,
             child: Column(
               children: [
                 Container(
                   width: 120,
                   height: 120,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Colors.white,
+                    color: theme.colorScheme.onSurface.withOpacity(0.3),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -781,7 +761,7 @@ class AstrologerDetailShimmer extends StatelessWidget {
                   width: 200,
                   height: 24,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: theme.colorScheme.onSurface.withOpacity(0.3),
                     borderRadius: BorderRadius.circular(4),
                   ),
                 ),
@@ -790,7 +770,7 @@ class AstrologerDetailShimmer extends StatelessWidget {
                   width: 150,
                   height: 16,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: theme.colorScheme.onSurface.withOpacity(0.3),
                     borderRadius: BorderRadius.circular(4),
                   ),
                 ),
@@ -798,35 +778,33 @@ class AstrologerDetailShimmer extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
-
           // Favorite button shimmer
           Shimmer.fromColors(
-            baseColor: Colors.grey[300]!,
-            highlightColor: Colors.grey[100]!,
+            baseColor: theme.colorScheme.surfaceVariant,
+            highlightColor: theme.colorScheme.surface,
             child: Container(
               width: double.infinity,
               height: 56,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: theme.colorScheme.onSurface.withOpacity(0.3),
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
           ),
           const SizedBox(height: 24),
-
           // Details shimmer
           ...List.generate(
             3,
             (index) => Padding(
               padding: const EdgeInsets.only(bottom: 16),
               child: Shimmer.fromColors(
-                baseColor: Colors.grey[300]!,
-                highlightColor: Colors.grey[100]!,
+                baseColor: theme.colorScheme.surfaceVariant,
+                highlightColor: theme.colorScheme.surface,
                 child: Container(
                   width: double.infinity,
                   height: 100,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: theme.colorScheme.onSurface.withOpacity(0.3),
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
@@ -842,11 +820,13 @@ class AstrologerDetailShimmer extends StatelessWidget {
 class EnterpriseErrorWidget extends StatelessWidget {
   final String message;
   final VoidCallback onRetry;
+  final ThemeData theme;
 
   const EnterpriseErrorWidget({
     super.key,
     required this.message,
     required this.onRetry,
+    required this.theme,
   });
 
   @override
@@ -861,22 +841,31 @@ class EnterpriseErrorWidget extends StatelessWidget {
             Icon(
               Icons.error_outline_rounded,
               size: 64,
-              color: Colors.grey[400],
+              color: theme.colorScheme.error,
             ),
             const SizedBox(height: 16),
             Text(
               message,
-              style: Theme.of(
-                context,
-              ).textTheme.titleMedium?.copyWith(color: Colors.grey[600]),
+              style: theme.textTheme.titleMedium?.copyWith(
+                color: theme.colorScheme.onSurface,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
             ElevatedButton.icon(
               onPressed: onRetry,
-              icon: const Icon(Icons.refresh_rounded),
-              label: Text(l10n.retryButton), // Updated
+              icon: Icon(
+                Icons.refresh_rounded,
+                color: theme.colorScheme.onPrimary,
+              ),
+              label: Text(
+                l10n.retryButton,
+                style: theme.textTheme.labelLarge?.copyWith(
+                  color: theme.colorScheme.onPrimary,
+                ),
+              ),
               style: ElevatedButton.styleFrom(
+                backgroundColor: theme.colorScheme.primary,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 24,
                   vertical: 12,

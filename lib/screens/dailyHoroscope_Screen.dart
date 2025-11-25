@@ -18,6 +18,7 @@ import '../l10n/app_localizations.dart';
 import '../config/environment.dart';
 import 'package:logger/logger.dart';
 import '../providers/profile_provider.dart';
+import '../providers/theme_provider.dart';
 
 // Custom logger instance
 final _logger = Logger(
@@ -807,6 +808,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
     String reaction,
     int index,
   ) async {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     _logger.d('Toggling reaction: $reaction for horoscope: $horoscopeId');
 
     // Rate limiting
@@ -892,10 +896,15 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
         );
       } else {
         _logger.w('HTTP ${response.statusCode} - Failed to update reaction');
+        // In _toggleReaction method, update SnackBar:
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(_getLocalizedError('reaction_error')),
-            backgroundColor: Colors.orange,
+            backgroundColor: theme.colorScheme.errorContainer,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
             duration: const Duration(seconds: 3),
           ),
         );
@@ -1008,31 +1017,44 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
     return result;
   }
 
-  Widget _buildSkeletonLoader() {
+  Widget _buildSkeletonLoader(ThemeData theme) {
     return ListView.builder(
       itemCount: 5,
       itemBuilder: (context, index) {
         return Card(
           margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          color: theme.colorScheme.surface,
           child: Padding(
             padding: const EdgeInsets.all(12),
             child: Shimmer.fromColors(
-              baseColor: Colors.grey.shade300,
-              highlightColor: Colors.grey.shade100,
+              baseColor: theme.colorScheme.surfaceVariant,
+              highlightColor: theme.colorScheme.surface,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(height: 20, width: 150, color: Colors.white),
+                  Container(
+                    height: 20,
+                    width: 150,
+                    color: theme.colorScheme.onSurface,
+                  ),
                   const SizedBox(height: 8),
-                  Container(height: 14, width: 100, color: Colors.white),
+                  Container(
+                    height: 14,
+                    width: 100,
+                    color: theme.colorScheme.onSurface,
+                  ),
                   const SizedBox(height: 8),
                   Container(
                     height: 50,
                     width: double.infinity,
-                    color: Colors.white,
+                    color: theme.colorScheme.onSurface,
                   ),
                   const SizedBox(height: 8),
-                  Container(height: 12, width: 120, color: Colors.white),
+                  Container(
+                    height: 12,
+                    width: 120,
+                    color: theme.colorScheme.onSurface,
+                  ),
                 ],
               ),
             ),
@@ -1042,25 +1064,35 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
     );
   }
 
-  Widget _buildErrorWidget() {
+  Widget _buildErrorWidget(ThemeData theme) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.error_outline, size: 64, color: Colors.red.shade300),
+            Icon(Icons.error_outline, size: 64, color: theme.colorScheme.error),
             const SizedBox(height: 16),
             Text(
               _error ?? _getLocalizedError('generic_error'),
               textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 16),
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurface,
+              ),
             ),
             const SizedBox(height: 16),
             ElevatedButton.icon(
               onPressed: _fetchHoroscopesWithRetry,
-              icon: const Icon(Icons.refresh),
-              label: Text(AppLocalizations.of(context)!.retryButton),
+              icon: Icon(Icons.refresh, color: theme.colorScheme.onPrimary),
+              label: Text(
+                AppLocalizations.of(context)!.retryButton,
+                style: theme.textTheme.labelLarge?.copyWith(
+                  color: theme.colorScheme.onPrimary,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: theme.colorScheme.primary,
+              ),
             ),
           ],
         ),
@@ -1068,16 +1100,22 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
     );
   }
 
-  Widget _buildEmptyState() {
+  Widget _buildEmptyState(ThemeData theme) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.hourglass_empty, size: 64, color: Colors.grey.shade400),
+          Icon(
+            Icons.hourglass_empty,
+            size: 64,
+            color: theme.colorScheme.onSurface.withOpacity(0.5),
+          ),
           const SizedBox(height: 16),
           Text(
             AppLocalizations.of(context)!.noHoroscopeFound,
-            style: const TextStyle(fontSize: 16, color: Colors.grey),
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onSurface.withOpacity(0.7),
+            ),
           ),
         ],
       ),
@@ -1086,176 +1124,195 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final theme = themeProvider.getCurrentTheme(context);
     final l10n = AppLocalizations.of(context)!;
     final groupedList = getGroupedHoroscopes();
 
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.dailyHoroscopeTitle),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        foregroundColor: theme.appBarTheme.foregroundColor,
         elevation: 0,
+        centerTitle: true,
       ),
-      body:
-          _loading
-              ? _buildSkeletonLoader()
-              : _error != null
-              ? _buildErrorWidget()
-              : _horoscopes.isEmpty
-              ? _buildEmptyState()
-              : RefreshIndicator(
-                onRefresh: _fetchHoroscopesWithRetry,
-                color: Theme.of(context).colorScheme.primary,
-                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                child: ListView.builder(
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  itemCount: groupedList.length,
-                  itemBuilder: (context, index) {
-                    final item = groupedList[index];
-                    if (item is String) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 8,
-                        ),
-                        child: Text(
-                          item,
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.black.withAlpha((0.5 * 255).toInt()),
-                            fontWeight: FontWeight.w600,
+      body: Container(
+        color: theme.colorScheme.background,
+        child:
+            _loading
+                ? _buildSkeletonLoader(theme)
+                : _error != null
+                ? _buildErrorWidget(theme)
+                : _horoscopes.isEmpty
+                ? _buildEmptyState(theme)
+                : RefreshIndicator(
+                  onRefresh: _fetchHoroscopesWithRetry,
+                  color: theme.colorScheme.primary,
+                  backgroundColor: theme.colorScheme.background,
+                  child: ListView.builder(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    itemCount: groupedList.length,
+                    itemBuilder: (context, index) {
+                      final item = groupedList[index];
+                      if (item is String) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
                           ),
-                        ),
-                      );
-                    } else if (item is Map<String, dynamic>) {
-                      final horoscope = item;
-                      final horoscopeId = horoscope['_id']?.toString() ?? '';
-                      return Card(
-                        margin: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 6,
-                        ),
-                        elevation: 2,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              if (horoscope['title'] != null)
-                                Text(
-                                  horoscope['title'].toString(),
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              if (horoscope['sign'] != null)
-                                Text(
-                                  "${l10n.signLabel}: ${horoscope['sign']}",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.grey.shade600,
-                                  ),
-                                ),
-                              const SizedBox(height: 8),
-                              RichText(
-                                text: DictionaryHighlighter.highlightText(
-                                  context,
-                                  horoscope['text']?.toString() ?? '',
-                                  _dictionaryMap,
-                                  const TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black87,
-                                  ),
-                                ),
+                          child: Text(
+                            item,
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: theme.colorScheme.onSurface.withOpacity(
+                                0.6,
                               ),
-                              const SizedBox(height: 4),
-                              Text(
-                                "📅 ${horoscope['createdAt'] != null ? DateFormat('MMM dd, yyyy - HH:mm').format(DateTime.parse(horoscope['createdAt']).toLocal()) : ''}",
-                                style: const TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
-                                ),
-                              ),
-                              const Divider(height: 20),
-                              Row(
-                                children: [
-                                  IconButton(
-                                    icon: Icon(
-                                      horoscope['userReaction'] == 'like'
-                                          ? Icons.thumb_up_alt
-                                          : Icons.thumb_up_alt_outlined,
-                                    ),
-                                    color: Colors.green,
-                                    onPressed: () {
-                                      final currentReaction =
-                                          horoscope['userReaction'] ?? 'none';
-                                      final newReaction =
-                                          currentReaction == 'like'
-                                              ? 'none'
-                                              : 'like';
-                                      final indexInHoroscopes = _horoscopes
-                                          .indexWhere(
-                                            (h) => h['_id'] == horoscope['_id'],
-                                          );
-                                      if (indexInHoroscopes != -1) {
-                                        _toggleReaction(
-                                          horoscopeId,
-                                          newReaction,
-                                          indexInHoroscopes,
-                                        );
-                                      }
-                                    },
-                                  ),
-                                  Text(
-                                    '${horoscope['likes'] ?? 0}',
-                                    style: const TextStyle(color: Colors.green),
-                                  ),
-                                  const SizedBox(width: 16),
-                                  IconButton(
-                                    icon: Icon(
-                                      horoscope['userReaction'] == 'dislike'
-                                          ? Icons.thumb_down_alt
-                                          : Icons.thumb_down_alt_outlined,
-                                    ),
-                                    color: Colors.red,
-                                    onPressed: () {
-                                      final currentReaction =
-                                          horoscope['userReaction'] ?? 'none';
-                                      final newReaction =
-                                          currentReaction == 'dislike'
-                                              ? 'none'
-                                              : 'dislike';
-                                      final indexInHoroscopes = _horoscopes
-                                          .indexWhere(
-                                            (h) => h['_id'] == horoscope['_id'],
-                                          );
-                                      if (indexInHoroscopes != -1) {
-                                        _toggleReaction(
-                                          horoscopeId,
-                                          newReaction,
-                                          indexInHoroscopes,
-                                        );
-                                      }
-                                    },
-                                  ),
-                                  Text(
-                                    '${horoscope['dislikes'] ?? 0}',
-                                    style: const TextStyle(color: Colors.red),
-                                  ),
-                                ],
-                              ),
-                            ],
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
-                        ),
-                      );
-                    }
-                    return const SizedBox.shrink();
-                  },
+                        );
+                      } else if (item is Map<String, dynamic>) {
+                        final horoscope = item;
+                        final horoscopeId = horoscope['_id']?.toString() ?? '';
+                        return Card(
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 6,
+                          ),
+                          elevation: 2,
+                          color: theme.colorScheme.surface,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(12),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                if (horoscope['title'] != null)
+                                  Text(
+                                    horoscope['title'].toString(),
+                                    style: theme.textTheme.titleMedium
+                                        ?.copyWith(
+                                          color: theme.colorScheme.onSurface,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                if (horoscope['sign'] != null)
+                                  Text(
+                                    "${l10n.signLabel}: ${horoscope['sign']}",
+                                    style: theme.textTheme.bodySmall?.copyWith(
+                                      color: theme.colorScheme.onSurface
+                                          .withOpacity(0.7),
+                                    ),
+                                  ),
+                                const SizedBox(height: 8),
+                                RichText(
+                                  text: DictionaryHighlighter.highlightText(
+                                    context,
+                                    horoscope['text']?.toString() ?? '',
+                                    _dictionaryMap,
+                                    theme.textTheme.bodyMedium?.copyWith(
+                                          color: theme.colorScheme.onSurface,
+                                        ) ??
+                                        const TextStyle(),
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  "📅 ${horoscope['createdAt'] != null ? DateFormat('MMM dd, yyyy - HH:mm').format(DateTime.parse(horoscope['createdAt']).toLocal()) : ''}",
+                                  style: theme.textTheme.bodySmall?.copyWith(
+                                    color: theme.colorScheme.onSurface
+                                        .withOpacity(0.6),
+                                  ),
+                                ),
+                                Divider(
+                                  height: 20,
+                                  color: theme.colorScheme.outline,
+                                ),
+                                Row(
+                                  children: [
+                                    IconButton(
+                                      icon: Icon(
+                                        horoscope['userReaction'] == 'like'
+                                            ? Icons.thumb_up_alt
+                                            : Icons.thumb_up_alt_outlined,
+                                      ),
+                                      color: Colors.green,
+                                      onPressed: () {
+                                        final currentReaction =
+                                            horoscope['userReaction'] ?? 'none';
+                                        final newReaction =
+                                            currentReaction == 'like'
+                                                ? 'none'
+                                                : 'like';
+                                        final indexInHoroscopes = _horoscopes
+                                            .indexWhere(
+                                              (h) =>
+                                                  h['_id'] == horoscope['_id'],
+                                            );
+                                        if (indexInHoroscopes != -1) {
+                                          _toggleReaction(
+                                            horoscopeId,
+                                            newReaction,
+                                            indexInHoroscopes,
+                                          );
+                                        }
+                                      },
+                                    ),
+                                    Text(
+                                      '${horoscope['likes'] ?? 0}',
+                                      style: TextStyle(
+                                        color: theme.colorScheme.onSurface,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 16),
+                                    IconButton(
+                                      icon: Icon(
+                                        horoscope['userReaction'] == 'dislike'
+                                            ? Icons.thumb_down_alt
+                                            : Icons.thumb_down_alt_outlined,
+                                      ),
+                                      color: Colors.red,
+                                      onPressed: () {
+                                        final currentReaction =
+                                            horoscope['userReaction'] ?? 'none';
+                                        final newReaction =
+                                            currentReaction == 'dislike'
+                                                ? 'none'
+                                                : 'dislike';
+                                        final indexInHoroscopes = _horoscopes
+                                            .indexWhere(
+                                              (h) =>
+                                                  h['_id'] == horoscope['_id'],
+                                            );
+                                        if (indexInHoroscopes != -1) {
+                                          _toggleReaction(
+                                            horoscopeId,
+                                            newReaction,
+                                            indexInHoroscopes,
+                                          );
+                                        }
+                                      },
+                                    ),
+                                    Text(
+                                      '${horoscope['dislikes'] ?? 0}',
+                                      style: TextStyle(
+                                        color: theme.colorScheme.onSurface,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      }
+                      return const SizedBox.shrink();
+                    },
+                  ),
                 ),
-              ),
+      ),
     );
   }
 }

@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../config/environment.dart';
 import '../l10n/app_localizations.dart';
+import 'package:provider/provider.dart'; // Add this
 import 'package:logger/logger.dart';
+import '../providers/theme_provider.dart'; // Add this
 
 // Custom logger instance
 final _logger = Logger(
@@ -264,7 +266,7 @@ class _PolicyPageState extends State<PolicyPage> {
     return sanitized.isEmpty ? _getDefaultPolicyContent() : sanitized;
   }
 
-  Widget _buildSkeletonLoader() {
+  Widget _buildSkeletonLoader(ThemeData theme) {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -274,7 +276,7 @@ class _PolicyPageState extends State<PolicyPage> {
             width: double.infinity,
             height: 20,
             decoration: BoxDecoration(
-              color: Colors.grey.shade300,
+              color: theme.colorScheme.surfaceVariant,
               borderRadius: BorderRadius.circular(4),
             ),
             margin: const EdgeInsets.only(bottom: 16),
@@ -286,7 +288,7 @@ class _PolicyPageState extends State<PolicyPage> {
               width: double.infinity,
               height: 16,
               decoration: BoxDecoration(
-                color: Colors.grey.shade300,
+                color: theme.colorScheme.surfaceVariant,
                 borderRadius: BorderRadius.circular(4),
               ),
               margin: const EdgeInsets.only(bottom: 8),
@@ -297,7 +299,7 @@ class _PolicyPageState extends State<PolicyPage> {
     );
   }
 
-  Widget _buildErrorWidget() {
+  Widget _buildErrorWidget(ThemeData theme) {
     final l10n = AppLocalizations.of(context)!;
 
     return Center(
@@ -306,11 +308,13 @@ class _PolicyPageState extends State<PolicyPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.error_outline, size: 64, color: Colors.red.shade300),
+            Icon(Icons.error_outline, size: 64, color: theme.colorScheme.error),
             const SizedBox(height: 16),
             Text(
               _error ?? _getLocalizedError('load_policy_error', context),
-              style: const TextStyle(fontSize: 16),
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurface,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
@@ -327,19 +331,29 @@ class _PolicyPageState extends State<PolicyPage> {
                           }
                         });
                       },
-              icon:
-                  _retrying
-                      ? const SizedBox(
-                        height: 16,
-                        width: 16,
-                        child: CircularProgressIndicator(strokeWidth: 2),
-                      )
-                      : const Icon(Icons.refresh),
-              label: Text(_retrying ? 'Loading...' : l10n.retryButton),
               style: ElevatedButton.styleFrom(
+                backgroundColor: theme.colorScheme.primary,
+                foregroundColor: theme.colorScheme.onPrimary,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 24,
                   vertical: 12,
+                ),
+              ),
+              icon:
+                  _retrying
+                      ? SizedBox(
+                        height: 16,
+                        width: 16,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: theme.colorScheme.onPrimary,
+                        ),
+                      )
+                      : Icon(Icons.refresh, color: theme.colorScheme.onPrimary),
+              label: Text(
+                _retrying ? 'Loading...' : l10n.retryButton,
+                style: theme.textTheme.labelLarge?.copyWith(
+                  color: theme.colorScheme.onPrimary,
                 ),
               ),
             ),
@@ -349,7 +363,7 @@ class _PolicyPageState extends State<PolicyPage> {
     );
   }
 
-  Widget _buildPolicyContent() {
+  Widget _buildPolicyContent(ThemeData theme) {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(20),
       child: SelectionArea(
@@ -361,24 +375,27 @@ class _PolicyPageState extends State<PolicyPage> {
               width: double.infinity,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.blue.shade50,
+                color: theme.colorScheme.primary.withAlpha((0.1 * 255).toInt()),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.blue.shade100),
+                border: Border.all(
+                  color: theme.colorScheme.primary.withAlpha(
+                    (0.3 * 255).toInt(),
+                  ),
+                ),
               ),
               child: Row(
                 children: [
                   Icon(
                     Icons.info_outline,
                     size: 20,
-                    color: Colors.blue.shade600,
+                    color: theme.colorScheme.primary,
                   ),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(
                       'Last updated: ${DateTime.now().toString().split(' ')[0]}',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.blue.shade700,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: theme.colorScheme.primary,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -390,9 +407,8 @@ class _PolicyPageState extends State<PolicyPage> {
             // Policy content
             Text(
               _content,
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.black87,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurface,
                 height: 1.6,
               ),
             ),
@@ -402,14 +418,13 @@ class _PolicyPageState extends State<PolicyPage> {
               width: double.infinity,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.grey.shade50,
+                color: theme.colorScheme.surfaceVariant,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(
                 'If you have any questions about this policy, please contact our support team.',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey.shade700,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: theme.colorScheme.onSurfaceVariant,
                   fontStyle: FontStyle.italic,
                 ),
                 textAlign: TextAlign.center,
@@ -423,6 +438,9 @@ class _PolicyPageState extends State<PolicyPage> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     // Log analytics when page is built
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _logAnalyticsEvent(
@@ -434,13 +452,16 @@ class _PolicyPageState extends State<PolicyPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        backgroundColor: Theme.of(context).primaryColor,
-        foregroundColor: Colors.white,
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        foregroundColor: theme.appBarTheme.foregroundColor,
         elevation: 0,
         actions: [
           if (!_isLoading && _error == null)
             IconButton(
-              icon: const Icon(Icons.refresh),
+              icon: Icon(
+                Icons.refresh,
+                color: theme.appBarTheme.foregroundColor,
+              ),
               onPressed: () {
                 _logAnalyticsEvent('policy_manual_refresh');
                 _fetchPolicyWithRetry();
@@ -449,12 +470,15 @@ class _PolicyPageState extends State<PolicyPage> {
             ),
         ],
       ),
-      body:
-          _isLoading
-              ? _buildSkeletonLoader()
-              : _error != null
-              ? _buildErrorWidget()
-              : _buildPolicyContent(),
+      body: Container(
+        color: theme.colorScheme.background,
+        child:
+            _isLoading
+                ? _buildSkeletonLoader(theme)
+                : _error != null
+                ? _buildErrorWidget(theme)
+                : _buildPolicyContent(theme),
+      ),
     );
   }
 

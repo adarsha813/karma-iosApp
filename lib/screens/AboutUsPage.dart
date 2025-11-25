@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../config/environment.dart';
 import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
+import '../providers/theme_provider.dart'; // Add this import
 
 // Custom logger instance
 final _logger = Logger(
@@ -26,7 +28,11 @@ class AboutUsPage extends StatelessWidget {
     }
   }
 
-  Widget _buildHeaderSection(AppLocalizations l10n, BuildContext context) {
+  Widget _buildHeaderSection(
+    AppLocalizations l10n,
+    BuildContext context,
+    ThemeData theme,
+  ) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
@@ -35,8 +41,8 @@ class AboutUsPage extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Theme.of(context).primaryColor,
-            Theme.of(context).primaryColor.withAlpha((0.8 * 255).toInt()),
+            theme.colorScheme.primary,
+            theme.colorScheme.primary.withAlpha((0.8 * 255).toInt()),
           ],
         ),
         borderRadius: BorderRadius.circular(16),
@@ -54,22 +60,21 @@ class AboutUsPage extends StatelessWidget {
             width: 80,
             height: 80,
             decoration: BoxDecoration(
-              color: Colors.white.withAlpha((0.2 * 255).toInt()),
+              color: theme.colorScheme.onPrimary.withAlpha((0.2 * 255).toInt()),
               shape: BoxShape.circle,
             ),
             child: Icon(
               Icons.psychology_outlined,
               size: 40,
-              color: Colors.white,
+              color: theme.colorScheme.onPrimary,
             ),
           ),
           const SizedBox(height: 20),
           Text(
             l10n.aboutOurCompany,
-            style: const TextStyle(
-              fontSize: 24,
+            style: theme.textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: theme.colorScheme.onPrimary,
               height: 1.3,
             ),
             textAlign: TextAlign.center,
@@ -78,9 +83,8 @@ class AboutUsPage extends StatelessWidget {
           Text(
             l10n.aboutCompanyDescription,
             textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.white70,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onPrimary.withOpacity(0.9),
               height: 1.5,
             ),
           ),
@@ -92,11 +96,13 @@ class AboutUsPage extends StatelessWidget {
   Widget _buildMissionVisionValues(
     AppLocalizations l10n,
     BuildContext context,
+    ThemeData theme,
   ) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 4,
-      shadowColor: Colors.grey.withAlpha((0.3 * 255).toInt()),
+      shadowColor: theme.colorScheme.shadow.withAlpha((0.3 * 255).toInt()),
+      color: theme.colorScheme.surface,
       child: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
@@ -108,11 +114,15 @@ class AboutUsPage extends StatelessWidget {
               title: l10n.ourMission,
               content: l10n.missionDescription,
               context: context,
+              theme: theme,
             ),
             const SizedBox(height: 24),
 
             // Divider
-            Divider(color: Colors.grey.shade300, height: 1),
+            Divider(
+              color: theme.colorScheme.outline.withOpacity(0.3),
+              height: 1,
+            ),
             const SizedBox(height: 24),
 
             // Vision
@@ -121,11 +131,15 @@ class AboutUsPage extends StatelessWidget {
               title: l10n.ourVision,
               content: l10n.visionDescription,
               context: context,
+              theme: theme,
             ),
             const SizedBox(height: 24),
 
             // Divider
-            Divider(color: Colors.grey.shade300, height: 1),
+            Divider(
+              color: theme.colorScheme.outline.withOpacity(0.3),
+              height: 1,
+            ),
             const SizedBox(height: 24),
 
             // Values
@@ -134,6 +148,7 @@ class AboutUsPage extends StatelessWidget {
               title: l10n.ourValues,
               content: l10n.valuesDescription,
               context: context,
+              theme: theme,
             ),
           ],
         ),
@@ -146,6 +161,7 @@ class AboutUsPage extends StatelessWidget {
     required String title,
     required String content,
     required BuildContext context,
+    required ThemeData theme,
   }) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -154,12 +170,10 @@ class AboutUsPage extends StatelessWidget {
           width: 40,
           height: 40,
           decoration: BoxDecoration(
-            color: Theme.of(
-              context,
-            ).primaryColor.withAlpha((0.1 * 255).toInt()),
+            color: theme.colorScheme.primary.withAlpha((0.1 * 255).toInt()),
             shape: BoxShape.circle,
           ),
-          child: Icon(icon, size: 20, color: Theme.of(context).primaryColor),
+          child: Icon(icon, size: 20, color: theme.colorScheme.primary),
         ),
         const SizedBox(width: 16),
         Expanded(
@@ -168,18 +182,16 @@ class AboutUsPage extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: const TextStyle(
-                  fontSize: 18,
+                style: theme.textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: theme.colorScheme.onSurface,
                 ),
               ),
               const SizedBox(height: 8),
               Text(
                 content,
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.grey.shade700,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.onSurface.withOpacity(0.7),
                   height: 1.5,
                 ),
               ),
@@ -190,11 +202,16 @@ class AboutUsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildContactInfo(AppLocalizations l10n, BuildContext context) {
+  Widget _buildContactInfo(
+    AppLocalizations l10n,
+    BuildContext context,
+    ThemeData theme,
+  ) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 4,
-      shadowColor: Colors.grey.withAlpha((0.3 * 255).toInt()),
+      shadowColor: theme.colorScheme.shadow.withAlpha((0.3 * 255).toInt()),
+      color: theme.colorScheme.surface,
       child: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
@@ -206,24 +223,23 @@ class AboutUsPage extends StatelessWidget {
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: Theme.of(
-                      context,
-                    ).primaryColor.withAlpha((0.1 * 255).toInt()),
+                    color: theme.colorScheme.primary.withAlpha(
+                      (0.1 * 255).toInt(),
+                    ),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
                     Icons.contact_support_outlined,
                     size: 20,
-                    color: Theme.of(context).primaryColor,
+                    color: theme.colorScheme.primary,
                   ),
                 ),
                 const SizedBox(width: 16),
                 Text(
                   l10n.contactUs,
-                  style: const TextStyle(
-                    fontSize: 20,
+                  style: theme.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: Colors.black87,
+                    color: theme.colorScheme.onSurface,
                   ),
                 ),
               ],
@@ -234,10 +250,10 @@ class AboutUsPage extends StatelessWidget {
               label: l10n.contactEmail,
               onTap: () {
                 _logAnalyticsEvent('contact_email_tapped');
-                // In a real app, you would launch email client
-                _showContactDialog(context, 'Email', l10n.contactEmail);
+                _showContactDialog(context, 'Email', l10n.contactEmail, theme);
               },
               context: context,
+              theme: theme,
             ),
             const SizedBox(height: 12),
             _buildContactItem(
@@ -245,10 +261,15 @@ class AboutUsPage extends StatelessWidget {
               label: l10n.contactWebsite,
               onTap: () {
                 _logAnalyticsEvent('contact_website_tapped');
-                // In a real app, you would launch browser
-                _showContactDialog(context, 'Website', l10n.contactWebsite);
+                _showContactDialog(
+                  context,
+                  'Website',
+                  l10n.contactWebsite,
+                  theme,
+                );
               },
               context: context,
+              theme: theme,
             ),
             const SizedBox(height: 12),
             _buildContactItem(
@@ -256,6 +277,7 @@ class AboutUsPage extends StatelessWidget {
               label: 'App Version: ${Environment.appVersion}',
               onTap: null,
               context: context,
+              theme: theme,
             ),
           ],
         ),
@@ -268,6 +290,7 @@ class AboutUsPage extends StatelessWidget {
     required String label,
     required VoidCallback? onTap,
     required BuildContext context,
+    required ThemeData theme,
   }) {
     return Material(
       color: Colors.transparent,
@@ -277,10 +300,14 @@ class AboutUsPage extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: onTap != null ? Colors.grey.shade50 : null,
+            color: onTap != null ? theme.colorScheme.surfaceVariant : null,
             borderRadius: BorderRadius.circular(8),
             border:
-                onTap != null ? Border.all(color: Colors.grey.shade200) : null,
+                onTap != null
+                    ? Border.all(
+                      color: theme.colorScheme.outline.withOpacity(0.2),
+                    )
+                    : null,
           ),
           child: Row(
             children: [
@@ -289,17 +316,18 @@ class AboutUsPage extends StatelessWidget {
                 size: 20,
                 color:
                     onTap != null
-                        ? Theme.of(context).primaryColor
-                        : Colors.grey.shade600,
+                        ? theme.colorScheme.primary
+                        : theme.colorScheme.onSurface.withOpacity(0.5),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: Text(
                   label,
-                  style: TextStyle(
-                    fontSize: 15,
+                  style: theme.textTheme.bodyMedium?.copyWith(
                     color:
-                        onTap != null ? Colors.black87 : Colors.grey.shade600,
+                        onTap != null
+                            ? theme.colorScheme.onSurface
+                            : theme.colorScheme.onSurface.withOpacity(0.6),
                     fontWeight:
                         onTap != null ? FontWeight.w500 : FontWeight.normal,
                   ),
@@ -309,7 +337,7 @@ class AboutUsPage extends StatelessWidget {
                 Icon(
                   Icons.arrow_forward_ios,
                   size: 14,
-                  color: Colors.grey.shade500,
+                  color: theme.colorScheme.onSurface.withOpacity(0.5),
                 ),
               ],
             ],
@@ -319,31 +347,52 @@ class AboutUsPage extends StatelessWidget {
     );
   }
 
-  void _showContactDialog(BuildContext context, String type, String value) {
+  void _showContactDialog(
+    BuildContext context,
+    String type,
+    String value,
+    ThemeData theme,
+  ) {
     showDialog(
       context: context,
       builder:
           (context) => AlertDialog(
-            title: Text('Contact $type'),
+            backgroundColor: theme.colorScheme.surface,
+            title: Text(
+              'Contact $type',
+              style: theme.textTheme.titleLarge?.copyWith(
+                color: theme.colorScheme.onSurface,
+              ),
+            ),
             content: Text(
               'In the full version, this would open your $type app to contact us at:\n\n$value',
-              style: const TextStyle(fontSize: 16),
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurface.withOpacity(0.7),
+              ),
             ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.of(context).pop(),
-                child: const Text('OK'),
+                child: Text(
+                  'OK',
+                  style: TextStyle(color: theme.colorScheme.primary),
+                ),
               ),
             ],
           ),
     );
   }
 
-  Widget _buildTeamInfo(AppLocalizations l10n, BuildContext context) {
+  Widget _buildTeamInfo(
+    AppLocalizations l10n,
+    BuildContext context,
+    ThemeData theme,
+  ) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 4,
-      shadowColor: Colors.grey.withAlpha((0.3 * 255).toInt()),
+      shadowColor: theme.colorScheme.shadow.withAlpha((0.3 * 255).toInt()),
+      color: theme.colorScheme.surface,
       child: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
@@ -355,24 +404,23 @@ class AboutUsPage extends StatelessWidget {
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: Theme.of(
-                      context,
-                    ).primaryColor.withAlpha((0.1 * 255).toInt()),
+                    color: theme.colorScheme.primary.withAlpha(
+                      (0.1 * 255).toInt(),
+                    ),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
                     Icons.people_outline,
                     size: 20,
-                    color: Theme.of(context).primaryColor,
+                    color: theme.colorScheme.primary,
                   ),
                 ),
                 const SizedBox(width: 16),
                 Text(
                   'Our Team',
-                  style: const TextStyle(
-                    fontSize: 20,
+                  style: theme.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: Colors.black87,
+                    color: theme.colorScheme.onSurface,
                   ),
                 ),
               ],
@@ -380,9 +428,8 @@ class AboutUsPage extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               'Our team consists of experienced astrologers, software developers, and user experience designers committed to bringing you the best astrological guidance.',
-              style: TextStyle(
-                fontSize: 15,
-                color: Colors.grey.shade700,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurface.withOpacity(0.7),
                 height: 1.5,
               ),
             ),
@@ -395,6 +442,8 @@ class AboutUsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
 
     // Log analytics when page is built
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -402,12 +451,12 @@ class AboutUsPage extends StatelessWidget {
     });
 
     return Scaffold(
-      backgroundColor: Colors.grey.shade50,
+      backgroundColor: theme.colorScheme.background,
       appBar: AppBar(
         title: Text(l10n.aboutUsTitle),
         centerTitle: true,
-        backgroundColor: Theme.of(context).primaryColor,
-        foregroundColor: Colors.white,
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        foregroundColor: theme.appBarTheme.foregroundColor,
         elevation: 0,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(16)),
@@ -418,21 +467,20 @@ class AboutUsPage extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            _buildHeaderSection(l10n, context),
+            _buildHeaderSection(l10n, context, theme),
             const SizedBox(height: 24),
-            _buildMissionVisionValues(l10n, context),
+            _buildMissionVisionValues(l10n, context, theme),
             const SizedBox(height: 24),
-            _buildTeamInfo(l10n, context),
+            _buildTeamInfo(l10n, context, theme),
             const SizedBox(height: 24),
-            _buildContactInfo(l10n, context),
+            _buildContactInfo(l10n, context, theme),
             const SizedBox(height: 32),
 
             // Footer
             Text(
               'Made with ❤️ for the astrological community',
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey.shade600,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurface.withOpacity(0.6),
                 fontStyle: FontStyle.italic,
               ),
             ),

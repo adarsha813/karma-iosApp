@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import '../models/astro_term.dart';
@@ -7,6 +8,7 @@ import 'astro_term_detail_screen.dart';
 import '../l10n/app_localizations.dart';
 import '../config/environment.dart';
 import 'package:logger/logger.dart';
+import '../providers/theme_provider.dart';
 
 // Custom logger instance
 final _logger = Logger(
@@ -65,7 +67,7 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
     }
   }
 
-  String _getLocalizedError(String errorKey, BuildContext context) {
+  String _getLocalizedError(String errorKey) {
     final l10n = AppLocalizations.of(context);
     switch (errorKey) {
       case 'network_error':
@@ -151,7 +153,7 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
       _logger.e('⏰ Timeout loading astro terms');
       if (mounted) {
         setState(() {
-          _error = _getLocalizedError('timeout_error', context);
+          _error = _getLocalizedError('timeout_error');
           _loading = false;
         });
       }
@@ -159,7 +161,7 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
       _reportError(e, stackTrace, context: 'load_astro_terms');
       if (mounted) {
         setState(() {
-          _error = _getLocalizedError('load_terms_error', context);
+          _error = _getLocalizedError('load_terms_error');
           _loading = false;
         });
       }
@@ -212,7 +214,7 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
     );
   }
 
-  Widget _buildSkeletonLoader() {
+  Widget _buildSkeletonLoader(ThemeData theme) {
     final screenHeight = MediaQuery.of(context).size.height;
     final searchBarHeight = 60.0;
     final rowHeight = 36.0;
@@ -225,12 +227,12 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           child: Shimmer.fromColors(
-            baseColor: Colors.grey.shade300,
-            highlightColor: Colors.grey.shade100,
+            baseColor: theme.colorScheme.surfaceVariant,
+            highlightColor: theme.colorScheme.surface,
             child: Container(
               height: 50,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: theme.colorScheme.onSurface.withOpacity(0.3),
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
@@ -241,11 +243,13 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
           child: ListView.separated(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             itemCount: itemCount,
-            separatorBuilder: (_, __) => const Divider(height: 0.5),
+            separatorBuilder:
+                (_, __) =>
+                    Divider(height: 0.5, color: theme.colorScheme.outline),
             itemBuilder: (context, index) {
               return Shimmer.fromColors(
-                baseColor: Colors.grey.shade300,
-                highlightColor: Colors.grey.shade100,
+                baseColor: theme.colorScheme.surfaceVariant,
+                highlightColor: theme.colorScheme.surface,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 2),
                   child: SizedBox(
@@ -258,20 +262,26 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
                           width: MediaQuery.of(context).size.width * 0.25,
                           height: 18,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: theme.colorScheme.onSurface.withOpacity(0.3),
                             borderRadius: BorderRadius.circular(4),
                           ),
                         ),
                         const SizedBox(width: 4),
                         // Colon placeholder
-                        Container(width: 8, height: 18, color: Colors.white),
+                        Container(
+                          width: 8,
+                          height: 18,
+                          color: theme.colorScheme.onSurface.withOpacity(0.3),
+                        ),
                         const SizedBox(width: 4),
                         // Meaning placeholder
                         Expanded(
                           child: Container(
                             height: 16,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: theme.colorScheme.onSurface.withOpacity(
+                                0.3,
+                              ),
                               borderRadius: BorderRadius.circular(4),
                             ),
                           ),
@@ -288,20 +298,20 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
     );
   }
 
-  Widget _buildErrorWidget() {
-    final l10n = AppLocalizations.of(context)!;
-
+  Widget _buildErrorWidget(ThemeData theme, AppLocalizations l10n) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.error_outline, size: 64, color: Colors.red.shade300),
+            Icon(Icons.error_outline, size: 64, color: theme.colorScheme.error),
             const SizedBox(height: 16),
             Text(
-              _error ?? _getLocalizedError('load_terms_error', context),
-              style: const TextStyle(fontSize: 16),
+              _error ?? _getLocalizedError('load_terms_error'),
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurface,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
@@ -314,9 +324,15 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
                 });
                 _loadTermsWithRetry();
               },
-              icon: const Icon(Icons.refresh),
-              label: Text(l10n.retryButton),
+              icon: Icon(Icons.refresh, color: theme.colorScheme.onPrimary),
+              label: Text(
+                l10n.retryButton,
+                style: theme.textTheme.labelLarge?.copyWith(
+                  color: theme.colorScheme.onPrimary,
+                ),
+              ),
               style: ElevatedButton.styleFrom(
+                backgroundColor: theme.colorScheme.primary,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 24,
                   vertical: 12,
@@ -329,8 +345,7 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
     );
   }
 
-  Widget _buildEmptyState() {
-    final l10n = AppLocalizations.of(context)!;
+  Widget _buildEmptyState(ThemeData theme, AppLocalizations l10n) {
     final hasSearchQuery = _searchController.text.trim().isNotEmpty;
 
     return Center(
@@ -340,12 +355,14 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
           Icon(
             hasSearchQuery ? Icons.search_off : Icons.auto_stories,
             size: 64,
-            color: Colors.grey.shade400,
+            color: theme.colorScheme.onSurface.withOpacity(0.5),
           ),
           const SizedBox(height: 16),
           Text(
             hasSearchQuery ? l10n.noSearchResults : l10n.noTermsFound,
-            style: const TextStyle(fontSize: 16, color: Colors.grey),
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onSurface.withOpacity(0.7),
+            ),
             textAlign: TextAlign.center,
           ),
           if (hasSearchQuery) ...[
@@ -355,10 +372,15 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
                 _searchController.clear();
                 _logAnalyticsEvent('search_cleared');
               },
-              child: Text(l10n.clearSearch),
+              child: Text(
+                l10n.clearSearch,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.onSurface,
+                ),
+              ),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.grey.shade200,
-                foregroundColor: Colors.grey.shade800,
+                backgroundColor: theme.colorScheme.surfaceVariant,
+                foregroundColor: theme.colorScheme.onSurfaceVariant,
               ),
             ),
           ],
@@ -367,18 +389,30 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
     );
   }
 
-  Widget _buildSearchField(AppLocalizations l10n) {
+  Widget _buildSearchField(ThemeData theme, AppLocalizations l10n) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       child: TextField(
         controller: _searchController,
+        style: theme.textTheme.bodyMedium?.copyWith(
+          color: theme.colorScheme.onSurface,
+        ),
         decoration: InputDecoration(
           hintText: l10n.searchTermsHint,
-          prefixIcon: const Icon(Icons.search, color: Colors.grey),
+          hintStyle: theme.textTheme.bodyMedium?.copyWith(
+            color: theme.colorScheme.onSurface.withOpacity(0.5),
+          ),
+          prefixIcon: Icon(
+            Icons.search,
+            color: theme.colorScheme.onSurface.withOpacity(0.7),
+          ),
           suffixIcon:
               _searchController.text.isNotEmpty
                   ? IconButton(
-                    icon: const Icon(Icons.clear, color: Colors.grey),
+                    icon: Icon(
+                      Icons.clear,
+                      color: theme.colorScheme.onSurface.withOpacity(0.7),
+                    ),
                     onPressed: () {
                       _searchController.clear();
                       _logAnalyticsEvent('search_cleared_icon');
@@ -386,7 +420,7 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
                   )
                   : null,
           filled: true,
-          fillColor: Colors.grey.shade100,
+          fillColor: theme.colorScheme.surfaceVariant,
           contentPadding: const EdgeInsets.symmetric(
             vertical: 12,
             horizontal: 16,
@@ -401,10 +435,7 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
-            borderSide: BorderSide(
-              color: Theme.of(context).primaryColor,
-              width: 2,
-            ),
+            borderSide: BorderSide(color: theme.colorScheme.primary, width: 2),
           ),
         ),
         onChanged: (value) {
@@ -417,10 +448,11 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
     );
   }
 
-  Widget _buildTermListItem(AstroTerm term, int index) {
+  Widget _buildTermListItem(AstroTerm term, int index, ThemeData theme) {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       elevation: 1,
+      color: theme.colorScheme.surface,
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         title: Row(
@@ -431,9 +463,9 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
               flex: 2,
               child: Text(
                 term.term,
-                style: const TextStyle(
+                style: theme.textTheme.bodyLarge?.copyWith(
                   fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                  color: theme.colorScheme.onSurface,
                 ),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
@@ -441,9 +473,12 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
             ),
             const SizedBox(width: 8),
             // Separator
-            const Text(
+            Text(
               ":",
-              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
+              style: theme.textTheme.bodyLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: theme.colorScheme.onSurface.withOpacity(0.5),
+              ),
             ),
             const SizedBox(width: 8),
             // Meaning
@@ -451,7 +486,9 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
               flex: 5,
               child: Text(
                 term.meaning,
-                style: const TextStyle(fontSize: 14, color: Colors.black87),
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.onSurface.withOpacity(0.8),
+                ),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -461,7 +498,7 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
         trailing: Icon(
           Icons.arrow_forward_ios,
           size: 16,
-          color: Colors.grey.shade600,
+          color: theme.colorScheme.onSurface.withOpacity(0.6),
         ),
         onTap: () {
           _logAnalyticsEvent(
@@ -495,62 +532,75 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final theme = themeProvider.getCurrentTheme(context);
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.astroDictionaryTitle),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        foregroundColor: theme.appBarTheme.foregroundColor,
         elevation: 0,
+        centerTitle: true,
       ),
-      body:
-          _loading
-              ? _buildSkeletonLoader()
-              : _error != null
-              ? _buildErrorWidget()
-              : Column(
-                children: [
-                  _buildSearchField(l10n),
-                  const SizedBox(height: 8),
-                  // Search results info
-                  if (_searchController.text.isNotEmpty)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Row(
-                        children: [
-                          Text(
-                            '${_filteredTerms.length} ${l10n.resultsFound}',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey.shade600,
+      body: Container(
+        color: theme.colorScheme.background,
+        child:
+            _loading
+                ? _buildSkeletonLoader(theme)
+                : _error != null
+                ? _buildErrorWidget(theme, l10n)
+                : Column(
+                  children: [
+                    _buildSearchField(theme, l10n),
+                    const SizedBox(height: 8),
+                    // Search results info
+                    if (_searchController.text.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Row(
+                          children: [
+                            Text(
+                              '${_filteredTerms.length} ${l10n.resultsFound}',
+                              style: theme.textTheme.bodySmall?.copyWith(
+                                color: theme.colorScheme.onSurface.withOpacity(
+                                  0.7,
+                                ),
+                              ),
                             ),
-                          ),
-                          const Spacer(),
-                          TextButton(
-                            onPressed: () {
-                              _searchController.clear();
-                              _logAnalyticsEvent('search_cleared_button');
-                            },
-                            child: Text(l10n.clearSearch),
-                          ),
-                        ],
-                      ),
-                    ),
-                  // Terms list
-                  Expanded(
-                    child:
-                        _filteredTerms.isEmpty
-                            ? _buildEmptyState()
-                            : ListView.builder(
-                              itemCount: _filteredTerms.length,
-                              itemBuilder: (context, index) {
-                                final term = _filteredTerms[index];
-                                return _buildTermListItem(term, index);
+                            const Spacer(),
+                            TextButton(
+                              onPressed: () {
+                                _searchController.clear();
+                                _logAnalyticsEvent('search_cleared_button');
                               },
+                              child: Text(
+                                l10n.clearSearch,
+                                style: theme.textTheme.bodySmall?.copyWith(
+                                  color: theme.colorScheme.primary,
+                                ),
+                              ),
                             ),
-                  ),
-                ],
-              ),
+                          ],
+                        ),
+                      ),
+                    // Terms list
+                    Expanded(
+                      child:
+                          _filteredTerms.isEmpty
+                              ? _buildEmptyState(theme, l10n)
+                              : ListView.builder(
+                                itemCount: _filteredTerms.length,
+                                itemBuilder: (context, index) {
+                                  final term = _filteredTerms[index];
+                                  return _buildTermListItem(term, index, theme);
+                                },
+                              ),
+                    ),
+                  ],
+                ),
+      ),
     );
   }
 }

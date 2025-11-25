@@ -9,6 +9,7 @@ import '../config/environment.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import '../providers/profile_provider.dart';
+import '../providers/theme_provider.dart';
 
 // Custom logger instance
 final _logger = Logger(
@@ -86,7 +87,7 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
     }
   }
 
-  String _getLocalizedError(String errorKey, BuildContext context) {
+  String _getLocalizedError(String errorKey) {
     final l10n = AppLocalizations.of(context);
     switch (errorKey) {
       case 'network_error':
@@ -209,7 +210,7 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
         // Show error only if no cache available
         if (mounted) {
           setState(() {
-            _error = _getLocalizedError('load_questions_error', context);
+            _error = _getLocalizedError('load_questions_error');
             _isLoading = false;
           });
         }
@@ -312,16 +313,17 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
     }
   }
 
-  Widget _buildSkeletonLoader() {
+  Widget _buildSkeletonLoader(ThemeData theme) {
     return ListView.builder(
       padding: const EdgeInsets.all(16),
       itemCount: 8,
       itemBuilder: (context, index) {
         return Card(
           margin: const EdgeInsets.symmetric(vertical: 8),
+          color: theme.colorScheme.surface,
           child: Shimmer.fromColors(
-            baseColor: Colors.grey.shade300,
-            highlightColor: Colors.grey.shade100,
+            baseColor: theme.colorScheme.surfaceVariant,
+            highlightColor: theme.colorScheme.surface,
             child: const ListTile(
               leading: CircleAvatar(backgroundColor: Colors.white),
               title: SizedBox(
@@ -349,20 +351,22 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
     );
   }
 
-  Widget _buildErrorWidget() {
-    final l10n = AppLocalizations.of(context)!;
-
+  Widget _buildErrorWidget(ThemeData theme, AppLocalizations l10n) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.error_outline, size: 64, color: Colors.red.shade300),
+            Icon(Icons.error_outline, size: 64, color: theme.colorScheme.error),
             const SizedBox(height: 16),
             Text(
-              _error ?? _getLocalizedError('load_questions_error', context),
-              style: const TextStyle(fontSize: 16),
+              // In _buildErrorWidget:
+              _error ?? _getLocalizedError('load_questions_error'),
+
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurface,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
@@ -381,14 +385,23 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
                       },
               icon:
                   _retrying
-                      ? const SizedBox(
+                      ? SizedBox(
                         height: 16,
                         width: 16,
-                        child: CircularProgressIndicator(strokeWidth: 2),
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: theme.colorScheme.onPrimary,
+                        ),
                       )
-                      : const Icon(Icons.refresh),
-              label: Text(_retrying ? 'Loading...' : l10n.retryButton),
+                      : Icon(Icons.refresh, color: theme.colorScheme.onPrimary),
+              label: Text(
+                _retrying ? 'Loading...' : l10n.retryButton,
+                style: theme.textTheme.labelLarge?.copyWith(
+                  color: theme.colorScheme.onPrimary,
+                ),
+              ),
               style: ElevatedButton.styleFrom(
+                backgroundColor: theme.colorScheme.primary,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 24,
                   vertical: 12,
@@ -401,16 +414,22 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
     );
   }
 
-  Widget _buildEmptyState(AppLocalizations l10n) {
+  Widget _buildEmptyState(ThemeData theme, AppLocalizations l10n) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.help_outline, size: 64, color: Colors.grey.shade400),
+          Icon(
+            Icons.help_outline,
+            size: 64,
+            color: theme.colorScheme.onSurface.withOpacity(0.5),
+          ),
           const SizedBox(height: 16),
           Text(
             l10n.noQuestionsAvailable,
-            style: const TextStyle(fontSize: 16, color: Colors.grey),
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onSurface.withOpacity(0.7),
+            ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 16),
@@ -419,15 +438,27 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
               _logAnalyticsEvent('refresh_empty_state');
               _loadQuestionsWithRetry();
             },
-            icon: const Icon(Icons.refresh),
-            label: Text(l10n.retryButton),
+            icon: Icon(Icons.refresh, color: theme.colorScheme.onPrimary),
+            label: Text(
+              l10n.retryButton,
+              style: theme.textTheme.labelLarge?.copyWith(
+                color: theme.colorScheme.onPrimary,
+              ),
+            ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: theme.colorScheme.primary,
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildQuestionsList(List<Question> questions, AppLocalizations l10n) {
+  Widget _buildQuestionsList(
+    List<Question> questions,
+    ThemeData theme,
+    AppLocalizations l10n,
+  ) {
     // Group by category
     final Map<String, List<Question>> categorized = {};
     for (var q in questions) {
@@ -441,8 +472,8 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
 
     return RefreshIndicator(
       onRefresh: _loadQuestionsWithRetry,
-      color: Theme.of(context).primaryColor,
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      color: theme.colorScheme.primary,
+      backgroundColor: theme.colorScheme.background,
       child: ListView(
         padding: const EdgeInsets.all(12),
         children:
@@ -453,28 +484,33 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 elevation: 2,
+                color: theme.colorScheme.surface,
                 child: ExpansionTile(
                   leading: Icon(
                     _getCategoryIcon(entry.key),
-                    color: Theme.of(context).primaryColor,
+                    color: theme.colorScheme.primary,
                   ),
                   title: Text(
                     entry.key,
-                    style: const TextStyle(
-                      fontSize: 16,
+                    style: theme.textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.w600,
+                      color: theme.colorScheme.onSurface,
                     ),
                   ),
                   subtitle: Text(
                     '${entry.value.length} ${entry.value.length == 1 ? 'question' : 'questions'}',
-                    style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.colorScheme.onSurface.withOpacity(0.7),
+                    ),
                   ),
                   children:
                       entry.value.map((q) {
                         return ListTile(
                           title: Text(
                             q.question,
-                            style: const TextStyle(fontSize: 14),
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: theme.colorScheme.onSurface,
+                            ),
                           ),
                           onTap: () {
                             _logAnalyticsEvent(
@@ -488,7 +524,7 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
                           },
                           leading: Icon(
                             Icons.question_answer,
-                            color: Colors.grey.shade600,
+                            color: theme.colorScheme.onSurface.withOpacity(0.6),
                             size: 20,
                           ),
                           contentPadding: const EdgeInsets.symmetric(
@@ -544,23 +580,30 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final theme = themeProvider.getCurrentTheme(context);
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.howToAskTitle),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        foregroundColor: theme.appBarTheme.foregroundColor,
         elevation: 0,
+        centerTitle: true,
       ),
-      body:
-          _isLoading
-              ? _buildSkeletonLoader()
-              : _error != null &&
-                  (_cachedQuestions == null || _cachedQuestions!.isEmpty)
-              ? _buildErrorWidget()
-              : _cachedQuestions == null || _cachedQuestions!.isEmpty
-              ? _buildEmptyState(l10n)
-              : _buildQuestionsList(_cachedQuestions!, l10n),
+      body: Container(
+        color: theme.colorScheme.background,
+        child:
+            _isLoading
+                ? _buildSkeletonLoader(theme)
+                : _error != null &&
+                    (_cachedQuestions == null || _cachedQuestions!.isEmpty)
+                ? _buildErrorWidget(theme, l10n)
+                : _cachedQuestions == null || _cachedQuestions!.isEmpty
+                ? _buildEmptyState(theme, l10n)
+                : _buildQuestionsList(_cachedQuestions!, theme, l10n),
+      ),
     );
   }
 }

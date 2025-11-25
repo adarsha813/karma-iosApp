@@ -8,6 +8,7 @@ import 'profile_settings_screen.dart';
 import '../l10n/app_localizations.dart';
 import '../config/environment.dart';
 import 'package:logger/logger.dart';
+import '../providers/theme_provider.dart'; // Add this import
 import 'package:flutter/cupertino.dart';
 
 // Custom logger instance
@@ -102,12 +103,16 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
   }
 
   Future<void> _pickDate() async {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     DateTime tempDate = _selectedDob ?? DateTime(2000, 1, 1);
 
     await showDialog(
       context: context,
       builder: (BuildContext context) {
         return Dialog(
+          backgroundColor: theme.colorScheme.surface,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -116,11 +121,14 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                const Text(
+                Text(
                   "Select Date of Birth",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.onSurface,
+                  ),
                 ),
-                const Divider(height: 20),
+                Divider(height: 20, color: theme.colorScheme.outline),
                 Expanded(
                   child: CupertinoDatePicker(
                     mode: CupertinoDatePickerMode.date,
@@ -132,20 +140,21 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
                     },
                   ),
                 ),
-                const Divider(height: 20),
+                Divider(height: 20, color: theme.colorScheme.outline),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     TextButton(
                       onPressed: () => Navigator.pop(context),
-                      child: const Text(
+                      child: Text(
                         "Cancel",
-                        style: TextStyle(color: Colors.red),
+                        style: TextStyle(color: theme.colorScheme.error),
                       ),
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                        backgroundColor: theme.colorScheme.primary,
+                        foregroundColor: theme.colorScheme.onPrimary,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -154,7 +163,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
                         setState(() => _selectedDob = tempDate);
                         Navigator.pop(context);
                       },
-                      child: const Text("Done"),
+                      child: Text("Done"),
                     ),
                   ],
                 ),
@@ -167,12 +176,16 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
   }
 
   Future<void> _pickTime() async {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     TimeOfDay tempTime = _selectedTime ?? TimeOfDay.now();
 
     await showDialog(
       context: context,
       builder: (BuildContext context) {
         return Dialog(
+          backgroundColor: theme.colorScheme.surface,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -181,11 +194,14 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                const Text(
+                Text(
                   "Select Birth Time",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.onSurface,
+                  ),
                 ),
-                const Divider(height: 20),
+                Divider(height: 20, color: theme.colorScheme.outline),
                 Expanded(
                   child: CupertinoTimerPicker(
                     mode: CupertinoTimerPickerMode.hm,
@@ -201,20 +217,21 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
                     },
                   ),
                 ),
-                const Divider(height: 20),
+                Divider(height: 20, color: theme.colorScheme.outline),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     TextButton(
                       onPressed: () => Navigator.pop(context),
-                      child: const Text(
+                      child: Text(
                         "Cancel",
-                        style: TextStyle(color: Colors.red),
+                        style: TextStyle(color: theme.colorScheme.error),
                       ),
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                        backgroundColor: theme.colorScheme.primary,
+                        foregroundColor: theme.colorScheme.onPrimary,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -223,7 +240,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
                         setState(() => _selectedTime = tempTime);
                         Navigator.pop(context);
                       },
-                      child: const Text("Done"),
+                      child: Text("Done"),
                     ),
                   ],
                 ),
@@ -416,33 +433,48 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
       SnackBar(
         content: Text(message),
         backgroundColor: Colors.green,
-        duration: const Duration(seconds: 3),
         behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
     );
   }
 
   void _showErrorSnackBar(String message) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
-        backgroundColor: Colors.red,
-        duration: const Duration(seconds: 4),
+        backgroundColor: theme.colorScheme.error,
         behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
     );
   }
 
-  Widget _buildNameField(AppLocalizations l10n) {
+  Widget _buildNameField(AppLocalizations l10n, ThemeData theme) {
     return TextField(
       controller: _nameController,
       decoration: InputDecoration(
         labelText: l10n.nameLabel,
-        prefixIcon: const Icon(Icons.person),
+        prefixIcon: Icon(Icons.person, color: theme.colorScheme.primary),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         filled: true,
-        fillColor: Colors.grey.shade50,
+        fillColor: theme.colorScheme.surfaceVariant,
+        labelStyle: TextStyle(color: theme.colorScheme.onSurfaceVariant),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(
+            color: theme.colorScheme.outline.withOpacity(0.3),
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: theme.colorScheme.primary),
+        ),
       ),
+      style: TextStyle(color: theme.colorScheme.onSurface),
       textInputAction: TextInputAction.next,
       onChanged: (value) {
         _logAnalyticsEvent(
@@ -453,64 +485,86 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
     );
   }
 
-  Widget _buildDateField(AppLocalizations l10n) {
+  Widget _buildDateField(AppLocalizations l10n, ThemeData theme) {
     return Card(
       elevation: 2,
+      color: theme.colorScheme.surface,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
-        leading: Icon(
-          Icons.calendar_today,
-          color: Theme.of(context).primaryColor,
-        ),
+        leading: Icon(Icons.calendar_today, color: theme.colorScheme.primary),
         title: Text(
           _selectedDob == null
               ? l10n.birthDatePlaceholder
               : "${l10n.birthDateLabel}: ${_selectedDob!.day}-${_selectedDob!.month}-${_selectedDob!.year}",
-          style: TextStyle(
-            color: _selectedDob == null ? Colors.grey : Colors.black87,
+          style: theme.textTheme.bodyMedium?.copyWith(
+            color:
+                _selectedDob == null
+                    ? theme.colorScheme.onSurface.withOpacity(0.5)
+                    : theme.colorScheme.onSurface,
             fontWeight:
                 _selectedDob == null ? FontWeight.normal : FontWeight.w500,
           ),
         ),
-        trailing: const Icon(Icons.arrow_drop_down),
+        trailing: Icon(Icons.arrow_drop_down, color: theme.colorScheme.primary),
         onTap: _pickDate,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     );
   }
 
-  Widget _buildTimeField(AppLocalizations l10n) {
+  Widget _buildTimeField(AppLocalizations l10n, ThemeData theme) {
     return Card(
       elevation: 2,
+      color: theme.colorScheme.surface,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
-        leading: Icon(Icons.access_time, color: Theme.of(context).primaryColor),
+        leading: Icon(Icons.access_time, color: theme.colorScheme.primary),
         title: Text(
           _selectedTime == null
               ? l10n.birthTimePlaceholder
               : "${l10n.birthTimeLabel}: ${_selectedTime!.format(context)}",
-          style: TextStyle(
-            color: _selectedTime == null ? Colors.grey : Colors.black87,
+          style: theme.textTheme.bodyMedium?.copyWith(
+            color:
+                _selectedTime == null
+                    ? theme.colorScheme.onSurface.withOpacity(0.5)
+                    : theme.colorScheme.onSurface,
             fontWeight:
                 _selectedTime == null ? FontWeight.normal : FontWeight.w500,
           ),
         ),
-        trailing: const Icon(Icons.arrow_drop_down),
+        trailing: Icon(Icons.arrow_drop_down, color: theme.colorScheme.primary),
         onTap: _pickTime,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     );
   }
 
-  Widget _buildSecretField(AppLocalizations l10n) {
+  Widget _buildSecretField(AppLocalizations l10n, ThemeData theme) {
     return TextField(
       controller: _secretController,
       decoration: InputDecoration(
         labelText: l10n.recoverySecretLabel,
-        prefixIcon: const Icon(Icons.security),
+        prefixIcon: Icon(Icons.security, color: theme.colorScheme.primary),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         filled: true,
-        fillColor: Colors.grey.shade50,
+        fillColor: theme.colorScheme.surfaceVariant,
+        labelStyle: TextStyle(color: theme.colorScheme.onSurfaceVariant),
         hintText: l10n.recoverySecretHint,
+        hintStyle: TextStyle(
+          color: theme.colorScheme.onSurface.withOpacity(0.5),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(
+            color: theme.colorScheme.outline.withOpacity(0.3),
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: theme.colorScheme.primary),
+        ),
       ),
+      style: TextStyle(color: theme.colorScheme.onSurface),
       obscureText: true,
       textInputAction: TextInputAction.done,
       onChanged: (value) {
@@ -527,12 +581,12 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
     );
   }
 
-  Widget _buildRecoveryButton(AppLocalizations l10n) {
+  Widget _buildRecoveryButton(AppLocalizations l10n, ThemeData theme) {
     return ElevatedButton(
       onPressed: _isLoading ? null : _recoverAccountWithRetry,
       style: ElevatedButton.styleFrom(
-        backgroundColor: Theme.of(context).primaryColor,
-        foregroundColor: Colors.white,
+        backgroundColor: theme.colorScheme.primary,
+        foregroundColor: theme.colorScheme.onPrimary,
         padding: const EdgeInsets.symmetric(vertical: 16),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         elevation: 2,
@@ -549,15 +603,15 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
               )
               : Text(
                 l10n.recoverAccount,
-                style: const TextStyle(
-                  fontSize: 16,
+                style: theme.textTheme.labelLarge?.copyWith(
                   fontWeight: FontWeight.w600,
+                  color: theme.colorScheme.onPrimary,
                 ),
               ),
     );
   }
 
-  Widget _buildNewUserLink(AppLocalizations l10n) {
+  Widget _buildNewUserLink(AppLocalizations l10n, ThemeData theme) {
     return Center(
       child: TextButton(
         onPressed:
@@ -574,10 +628,12 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
                 },
         child: Text(
           l10n.onboardingNewUser,
-          style: TextStyle(
+          style: theme.textTheme.bodyMedium?.copyWith(
             decoration: TextDecoration.underline,
-            color: _isLoading ? Colors.grey : Colors.blue,
-            fontSize: 16,
+            color:
+                _isLoading
+                    ? theme.colorScheme.onSurface.withOpacity(0.3)
+                    : theme.colorScheme.primary,
           ),
         ),
       ),
@@ -603,56 +659,67 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
 
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.recoverAccount),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        foregroundColor: theme.appBarTheme.foregroundColor,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: Icon(
+            Icons.arrow_back,
+            color: theme.appBarTheme.foregroundColor,
+          ),
           onPressed: _isLoading ? null : () => Navigator.pop(context),
         ),
       ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              // Header
-              const SizedBox(height: 20),
-              Icon(
-                Icons.account_circle_outlined,
-                size: 80,
-                color: Theme.of(context).primaryColor,
-              ),
-              const SizedBox(height: 16),
-              Text(
-                l10n.recoverAccountDescription,
-                textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 16, color: Colors.grey),
-              ),
-              const SizedBox(height: 32),
+        child: Container(
+          color: theme.colorScheme.background,
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                // Header
+                const SizedBox(height: 20),
+                Icon(
+                  Icons.account_circle_outlined,
+                  size: 80,
+                  color: theme.colorScheme.primary,
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  l10n.recoverAccountDescription,
+                  textAlign: TextAlign.center,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: theme.colorScheme.onSurface.withOpacity(0.7),
+                  ),
+                ),
+                const SizedBox(height: 32),
 
-              // Form fields
-              _buildNameField(l10n),
-              const SizedBox(height: 16),
-              _buildDateField(l10n),
-              const SizedBox(height: 16),
-              _buildTimeField(l10n),
-              const SizedBox(height: 16),
-              _buildSecretField(l10n),
-              const SizedBox(height: 32),
+                // Form fields
+                _buildNameField(l10n, theme),
+                const SizedBox(height: 16),
+                _buildDateField(l10n, theme),
+                const SizedBox(height: 16),
+                _buildTimeField(l10n, theme),
+                const SizedBox(height: 16),
+                _buildSecretField(l10n, theme),
+                const SizedBox(height: 32),
 
-              // Recovery button
-              _buildRecoveryButton(l10n),
-              const SizedBox(height: 24),
+                // Recovery button
+                _buildRecoveryButton(l10n, theme),
+                const SizedBox(height: 24),
 
-              // New user link
-              _buildNewUserLink(l10n),
-            ],
+                // New user link
+                _buildNewUserLink(l10n, theme),
+              ],
+            ),
           ),
         ),
       ),

@@ -9,6 +9,7 @@ import 'profile_settings_screen.dart';
 import 'recovery_screen.dart';
 import '../config/environment.dart';
 import 'package:logger/logger.dart';
+import '../providers/theme_provider.dart'; // Add this import
 import '../services/first_launch_service.dart';
 import '../services/production_logger.dart';
 
@@ -177,7 +178,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       widget.onFinish();
 
       if (mounted) {
-        // REMOVE THE DUPLICATE NAVIGATION - only keep this one
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -194,10 +194,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       _reportError(e, stackTrace, context: 'navigate_new_user');
       _isNavigating = false;
       if (mounted) {
+        final theme = Theme.of(context);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(AppLocalizations.of(context)!.genericError),
-            backgroundColor: Colors.red,
+            backgroundColor: theme.colorScheme.error,
           ),
         );
       }
@@ -224,10 +225,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           _reportError(e, stackTrace, context: 'navigate_existing_user');
           _isNavigating = false;
           if (mounted) {
+            final theme = Theme.of(context);
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(AppLocalizations.of(context)!.genericError),
-                backgroundColor: Colors.red,
+                backgroundColor: theme.colorScheme.error,
               ),
             );
           }
@@ -259,11 +261,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     ];
   }
 
-  // In _OnboardingScreenState class
   Widget _buildLanguageSelection(
     ProfileProvider profileProvider,
     LocaleProvider localeProvider,
     AppLocalizations l10n,
+    ThemeData theme,
   ) {
     final languages = localeProvider.getLanguagesWithSupportInfo();
 
@@ -272,10 +274,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         const SizedBox(height: 16),
         Text(
           l10n.selectLanguage,
-          style: const TextStyle(
-            fontSize: 16,
+          style: theme.textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.w600,
-            color: Colors.black87,
+            color: theme.colorScheme.onSurface,
           ),
         ),
         const SizedBox(height: 8),
@@ -286,18 +287,26 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           padding: const EdgeInsets.all(12),
           margin: const EdgeInsets.only(bottom: 12),
           decoration: BoxDecoration(
-            color: Colors.blue.shade50,
+            color: theme.colorScheme.primary.withAlpha((0.1 * 255).toInt()),
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: Colors.blue.shade100),
+            border: Border.all(
+              color: theme.colorScheme.primary.withAlpha((0.3 * 255).toInt()),
+            ),
           ),
           child: Row(
             children: [
-              Icon(Icons.info_outline, color: Colors.blue.shade600, size: 16),
+              Icon(
+                Icons.info_outline,
+                color: theme.colorScheme.primary,
+                size: 16,
+              ),
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
                   'Some languages may show system elements in English',
-                  style: TextStyle(fontSize: 12, color: Colors.blue.shade800),
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.primary,
+                  ),
                 ),
               ),
             ],
@@ -311,20 +320,31 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             controller: _searchController,
             decoration: InputDecoration(
               hintText: 'Search languages...',
-              prefixIcon: const Icon(Icons.search),
+              prefixIcon: Icon(Icons.search, color: theme.colorScheme.primary),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.0),
+              ),
+              filled: true,
+              fillColor: theme.colorScheme.surfaceVariant,
+              hintStyle: TextStyle(
+                color: theme.colorScheme.onSurface.withOpacity(0.5),
               ),
               contentPadding: const EdgeInsets.symmetric(horizontal: 12.0),
               isDense: true,
             ),
+            style: TextStyle(color: theme.colorScheme.onSurface),
             onChanged: (value) => setState(() {}),
           ),
         ),
 
         // Language list
         Expanded(
-          child: _buildLanguageList(languages, profileProvider, localeProvider),
+          child: _buildLanguageList(
+            languages,
+            profileProvider,
+            localeProvider,
+            theme,
+          ),
         ),
       ],
     );
@@ -334,6 +354,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     List<Map<String, dynamic>> languages,
     ProfileProvider profileProvider,
     LocaleProvider localeProvider,
+    ThemeData theme,
   ) {
     final query = _searchController.text.toLowerCase();
     final filteredLanguages =
@@ -347,13 +368,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
     return Card(
       elevation: 2,
+      color: theme.colorScheme.surface,
       child:
           filteredLanguages.isEmpty
               ? Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
                   'No languages found',
-                  style: TextStyle(color: Colors.grey.shade600),
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: theme.colorScheme.onSurface.withOpacity(0.6),
+                  ),
                 ),
               )
               : ListView.builder(
@@ -376,7 +400,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 language['name'],
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(fontSize: 13),
+                                style: theme.textTheme.bodyMedium?.copyWith(
+                                  color: theme.colorScheme.onSurface,
+                                ),
                               ),
                             ),
                             if (!hasMaterialSupport) ...[
@@ -413,8 +439,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         contentPadding: const EdgeInsets.symmetric(
                           horizontal: 12.0,
                         ),
+                        activeColor: theme.colorScheme.primary,
                       ),
-                      if (!isLast) const Divider(height: 1),
+                      if (!isLast)
+                        Divider(
+                          height: 1,
+                          color: theme.colorScheme.outline.withOpacity(0.3),
+                        ),
                     ],
                   );
                 },
@@ -453,7 +484,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     }
   }
 
-  Widget _buildPageIndicator(int currentPage, int totalPages) {
+  Widget _buildPageIndicator(int currentPage, int totalPages, ThemeData theme) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(totalPages, (index) {
@@ -464,8 +495,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           decoration: BoxDecoration(
             color:
                 currentPage == index
-                    ? Theme.of(context).primaryColor
-                    : Colors.grey.shade400,
+                    ? theme.colorScheme.primary
+                    : theme.colorScheme.onSurface.withOpacity(0.3),
             shape: BoxShape.circle,
           ),
         );
@@ -473,7 +504,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  Widget _buildNavigationButtons(AppLocalizations l10n) {
+  Widget _buildNavigationButtons(AppLocalizations l10n, ThemeData theme) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -481,19 +512,25 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         if (_currentPage > 0 && _currentPage < _pagesLength)
           TextButton(
             onPressed: _isNavigating ? null : _previousPage,
-            child: Text(l10n.onboardingBack),
+            child: Text(
+              l10n.onboardingBack,
+              style: TextStyle(color: theme.colorScheme.primary),
+            ),
           )
         else
           const SizedBox(width: 80),
 
         // Page indicators
-        _buildPageIndicator(_currentPage, _pagesLength),
+        _buildPageIndicator(_currentPage, _pagesLength, theme),
 
         // Next button
         if (_currentPage < _pagesLength - 1)
           TextButton(
             onPressed: _isNavigating ? null : _nextPage,
-            child: Text(l10n.onboardingNext),
+            child: Text(
+              l10n.onboardingNext,
+              style: TextStyle(color: theme.colorScheme.primary),
+            ),
           )
         else
           const SizedBox(width: 80),
@@ -507,6 +544,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     ProfileProvider profileProvider,
     LocaleProvider localeProvider,
     AppLocalizations l10n,
+    ThemeData theme,
   ) {
     return Padding(
       padding: const EdgeInsets.all(20.0),
@@ -527,7 +565,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   return Icon(
                     Icons.psychology_outlined,
                     size: 80,
-                    color: Theme.of(context).primaryColor,
+                    color: theme.colorScheme.primary,
                   );
                 },
               ),
@@ -542,7 +580,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 return Icon(
                   Icons.psychology_outlined,
                   size: 80,
-                  color: Theme.of(context).primaryColor,
+                  color: theme.colorScheme.primary,
                 );
               },
             ),
@@ -550,19 +588,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           const SizedBox(height: 16),
           Text(
             page['title']!,
-            style: const TextStyle(
-              fontSize: 20,
+            style: theme.textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
               height: 1.2,
+              color: theme.colorScheme.onSurface,
             ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
           Text(
             page['desc']!,
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.grey.shade700,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onSurface.withOpacity(0.7),
               height: 1.4,
             ),
             textAlign: TextAlign.center,
@@ -577,6 +614,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 profileProvider,
                 localeProvider,
                 l10n,
+                theme,
               ),
             ),
         ],
@@ -584,7 +622,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  Widget _buildGetStartedPage(AppLocalizations l10n) {
+  Widget _buildGetStartedPage(AppLocalizations l10n, ThemeData theme) {
     return Padding(
       padding: const EdgeInsets.all(24.0),
       child: Column(
@@ -598,20 +636,25 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               return Icon(
                 Icons.celebration,
                 size: 100,
-                color: Theme.of(context).primaryColor,
+                color: theme.colorScheme.primary,
               );
             },
           ),
           const SizedBox(height: 32),
           Text(
             l10n.onboardingGetStarted,
-            style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+            style: theme.textTheme.headlineMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: theme.colorScheme.onSurface,
+            ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 16),
           Text(
             l10n.onboardingGetStartedDesc,
-            style: TextStyle(fontSize: 16, color: Colors.grey.shade600),
+            style: theme.textTheme.bodyLarge?.copyWith(
+              color: theme.colorScheme.onSurface.withOpacity(0.7),
+            ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 48),
@@ -619,8 +662,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             onPressed: _isNavigating ? null : _goToNewUser,
             style: ElevatedButton.styleFrom(
               minimumSize: const Size(200, 50),
-              backgroundColor: Theme.of(context).primaryColor,
-              foregroundColor: Colors.white,
+              backgroundColor: theme.colorScheme.primary,
+              foregroundColor: theme.colorScheme.onPrimary,
             ),
             child: Text(l10n.onboardingNewUser),
           ),
@@ -629,7 +672,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             onPressed: _isNavigating ? null : _goToExistingUser,
             style: OutlinedButton.styleFrom(
               minimumSize: const Size(200, 50),
-              side: BorderSide(color: Theme.of(context).primaryColor),
+              side: BorderSide(color: theme.colorScheme.primary),
+              foregroundColor: theme.colorScheme.primary,
             ),
             child: Text(l10n.onboardingExistingUser),
           ),
@@ -640,12 +684,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: theme.colorScheme.background,
       body: SafeArea(
-        child: Consumer2<ProfileProvider, LocaleProvider>(
-          builder: (context, profileProvider, localeProvider, _) {
+        child: Consumer3<ProfileProvider, LocaleProvider, ThemeProvider>(
+          builder: (
+            context,
+            profileProvider,
+            localeProvider,
+            themeProvider,
+            _,
+          ) {
             final l10n = AppLocalizations.of(context)!;
+            final theme = themeProvider.getCurrentTheme(context);
             final pages = _buildLocalizedPages(l10n);
 
             return Stack(
@@ -672,9 +726,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         profileProvider,
                         localeProvider,
                         l10n,
+                        theme,
                       );
                     }
-                    return _buildGetStartedPage(l10n);
+                    return _buildGetStartedPage(l10n, theme);
                   },
                 ),
 
@@ -683,7 +738,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   bottom: 10,
                   left: 16,
                   right: 16,
-                  child: _buildNavigationButtons(l10n),
+                  child: _buildNavigationButtons(l10n, theme),
                 ),
 
                 // Loading overlay

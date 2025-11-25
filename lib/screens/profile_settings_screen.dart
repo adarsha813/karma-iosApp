@@ -24,6 +24,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:kundali/services/fcm_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:logger/logger.dart';
+import '../providers/theme_provider.dart';
 
 class ProfileSettingsScreen extends StatefulWidget {
   const ProfileSettingsScreen({super.key});
@@ -957,15 +958,34 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     bool isRequired = false,
     String? Function(String?)? validator,
   }) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: TextFormField(
         controller: controller,
         validator: validator,
+        style: theme.textTheme.bodyMedium?.copyWith(
+          color: theme.colorScheme.onSurface,
+        ),
         decoration: InputDecoration(
           labelText: label + (isRequired ? ' *' : ''),
-          prefixIcon: Icon(icon, color: Colors.blue),
+          labelStyle: TextStyle(
+            color: theme.colorScheme.onSurface.withOpacity(0.7),
+          ),
+          prefixIcon: Icon(icon, color: theme.colorScheme.primary),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+          filled: true,
+          fillColor: theme.colorScheme.surface,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(color: theme.colorScheme.outline),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(color: theme.colorScheme.primary),
+          ),
         ),
         onChanged: (value) {
           if (controller == _userIdController) {
@@ -1008,6 +1028,10 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final theme = themeProvider.getCurrentTheme(
+      context,
+    ); // Use your centralized theme
     final profileProvider = Provider.of<ProfileProvider>(context);
     final l10n = AppLocalizations.of(context)!;
 
@@ -1015,236 +1039,214 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: Text(l10n.appBarTitle),
-        backgroundColor: Colors.blue.shade700,
-        elevation: 2,
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        foregroundColor: theme.appBarTheme.foregroundColor,
+        elevation: 0,
+        centerTitle: true,
         actions: [
           IconButton(
-            icon: const Icon(Icons.history),
+            icon: Icon(Icons.history, color: theme.iconTheme.color),
             onPressed: () {
               setState(() => _showHistory = !_showHistory);
             },
           ),
         ],
       ),
-      body: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: SingleChildScrollView(
-            padding: EdgeInsets.only(
-              left: 16,
-              right: 16,
-              bottom: MediaQuery.of(context).viewInsets.bottom + 16,
-            ),
-            child: Column(
-              children: [
-                if (_showHistory) _buildHistorySection(l10n, profileProvider),
+      body: Container(
+        color: theme.colorScheme.background, // Add background color
+        child: SafeArea(
+          child: Form(
+            key: _formKey,
+            child: SingleChildScrollView(
+              padding: EdgeInsets.only(
+                left: 16,
+                right: 16,
+                bottom: MediaQuery.of(context).viewInsets.bottom + 16,
+              ),
+              child: Column(
+                children: [
+                  if (_showHistory) _buildHistorySection(l10n, profileProvider),
 
-                // Profile Image
-                GestureDetector(
-                  onTap: _pickImage,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      CircleAvatar(
-                        radius: 60,
-                        backgroundColor: Colors.grey[300],
-                        child: _buildAvatarContent(),
-                      ),
-                      if (_isLoading)
-                        AvatarOrbitLoader(size: 120, color: Colors.blue),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: CircleAvatar(
-                          radius: 18,
-                          backgroundColor: Colors.blue,
-                          child: const Icon(
-                            Icons.edit,
-                            color: Colors.white,
-                            size: 18,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 20),
-                /*
-                // User ID Field
-                _buildTextField(
-                  l10n.userIdLabel,
-                  Icons.person_outline,
-                  _userIdController,
-                  validator: (value) {
-                    if (value!.isNotEmpty &&
-                        !SecurityUtils.isValidUserId(value)) {
-                      return 'User ID must be 3-20 characters (letters, numbers, _, -)';
-                    }
-
-                    return null;
-                  },
-                ),
-
-                if (_userIdController.text.isEmpty)
+                  // Profile Image
                   GestureDetector(
-                    onTap: () async {
-                      final recoveredUserId = await Navigator.push<String>(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const RecoveryScreen(),
+                    onTap: _pickImage,
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        CircleAvatar(
+                          radius: 60,
+                          backgroundColor: theme.colorScheme.surfaceVariant,
+                          child: _buildAvatarContent(),
                         ),
-                      );
-                      if (recoveredUserId != null &&
-                          recoveredUserId.isNotEmpty &&
-                          mounted) {
-                        setState(
-                          () => _userIdController.text = recoveredUserId,
-                        );
-                        await _loadProfileData();
-                      }
-                    },
-                    child: Text(
-                      l10n.existingUserButton,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        color: Colors.blue,
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
-                  ),
-*/
-                // Name Field (Required)
-                _buildTextField(
-                  l10n.nameLabel,
-                  Icons.person,
-                  _nameController,
-                  isRequired: true,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Name is required';
-                    }
-                    if (SecurityUtils.containsSuspiciousPatterns(value)) {
-                      return 'Invalid characters detected in name';
-                    }
-
-                    if (value.length < 2 || value.length > 50) {
-                      return 'Name must be 2-50 characters';
-                    }
-                    return null;
-                  },
-                ),
-
-                _buildCountryField(l10n),
-                _buildCityField(l10n),
-
-                // Gender Selection
-                Row(
-                  children: [
-                    Expanded(
-                      child: RadioListTile(
-                        value: 'male',
-                        groupValue: _gender,
-                        onChanged:
-                            (val) => setState(() => _gender = val as String),
-                        title: Text(l10n.maleLabel),
-                      ),
-                    ),
-                    Expanded(
-                      child: RadioListTile(
-                        value: 'female',
-                        groupValue: _gender,
-                        onChanged:
-                            (val) => setState(() => _gender = val as String),
-                        title: Text(l10n.femaleLabel),
-                      ),
-                    ),
-                  ],
-                ),
-
-                // Date & Time Selection
-                _buildDateTile(
-                  l10n.birthDateLabel,
-                  _selectedDate != null
-                      ? "${_selectedDate!.year}-${_selectedDate!.month.toString().padLeft(2, '0')}-${_selectedDate!.day.toString().padLeft(2, '0')}"
-                      : l10n.birthDatePlaceholder,
-                  () => _pickDate(context),
-                  Icons.calendar_today,
-                ),
-                _buildDateTile(
-                  l10n.birthTimeLabel,
-                  _selectedTime != null
-                      ? "${_selectedTime!.hour.toString().padLeft(2, '0')}:${_selectedTime!.minute.toString().padLeft(2, '0')}"
-                      : l10n.birthTimePlaceholder,
-                  () => _pickTime(context),
-                  Icons.access_time,
-                ),
-
-                const SizedBox(height: 20),
-
-                // Save Button
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: _isSaving ? null : () => _saveProfile(context),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      backgroundColor: Colors.blue.shade700,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    child:
-                        _isSaving
-                            ? const SizedBox(
-                              height: 20,
-                              width: 20,
-                              child: CircularProgressIndicator(
-                                strokeWidth: 2,
-                                color: Colors.white,
-                              ),
-                            )
-                            : Text(
-                              l10n.saveProfileButton,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
+                        if (_isLoading)
+                          AvatarOrbitLoader(
+                            size: 120,
+                            color: theme.colorScheme.primary,
+                          ), // Use theme color
+                        Positioned(
+                          bottom: 0,
+                          right: 0,
+                          child: CircleAvatar(
+                            radius: 18,
+                            backgroundColor:
+                                theme.colorScheme.primary, // Use theme color
+                            child: Icon(
+                              Icons.edit,
+                              color:
+                                  theme
+                                      .colorScheme
+                                      .onPrimary, // Use theme color
+                              size: 18,
                             ),
-                  ),
-                ),
-
-                const SizedBox(height: 10),
-
-                // Security Notice
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade100,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.security,
-                        color: Colors.green.shade700,
-                        size: 16,
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: Text(
-                          'Your data is securely encrypted and stored',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey.shade700,
                           ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  _buildTextField(
+                    l10n.nameLabel,
+                    Icons.person,
+                    _nameController,
+                    isRequired: true,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Name is required';
+                      }
+                      if (SecurityUtils.containsSuspiciousPatterns(value)) {
+                        return 'Invalid characters detected in name';
+                      }
+
+                      if (value.length < 2 || value.length > 50) {
+                        return 'Name must be 2-50 characters';
+                      }
+                      return null;
+                    },
+                  ),
+
+                  _buildCountryField(l10n),
+                  _buildCityField(l10n),
+
+                  // Gender Selection
+                  Row(
+                    children: [
+                      Expanded(
+                        child: RadioListTile(
+                          value: 'male',
+                          groupValue: _gender,
+                          onChanged:
+                              (val) => setState(() => _gender = val as String),
+                          title: Text(
+                            l10n.maleLabel,
+                            style: theme.textTheme.bodyLarge?.copyWith(
+                              color: theme.colorScheme.onSurface,
+                            ),
+                          ),
+                          activeColor: theme.colorScheme.primary,
+                        ),
+                      ),
+                      Expanded(
+                        child: RadioListTile(
+                          value: 'female',
+                          groupValue: _gender,
+                          onChanged:
+                              (val) => setState(() => _gender = val as String),
+                          title: Text(
+                            l10n.femaleLabel,
+                            style: theme.textTheme.bodyLarge?.copyWith(
+                              color: theme.colorScheme.onSurface,
+                            ),
+                          ),
+                          activeColor: theme.colorScheme.primary,
                         ),
                       ),
                     ],
                   ),
-                ),
-              ],
+
+                  // Date & Time Selection
+                  _buildDateTile(
+                    l10n.birthDateLabel,
+                    _selectedDate != null
+                        ? "${_selectedDate!.year}-${_selectedDate!.month.toString().padLeft(2, '0')}-${_selectedDate!.day.toString().padLeft(2, '0')}"
+                        : l10n.birthDatePlaceholder,
+                    () => _pickDate(context),
+                    Icons.calendar_today,
+                  ),
+                  _buildDateTile(
+                    l10n.birthTimeLabel,
+                    _selectedTime != null
+                        ? "${_selectedTime!.hour.toString().padLeft(2, '0')}:${_selectedTime!.minute.toString().padLeft(2, '0')}"
+                        : l10n.birthTimePlaceholder,
+                    () => _pickTime(context),
+                    Icons.access_time,
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  // Save Button
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: _isSaving ? null : () => _saveProfile(context),
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        backgroundColor: theme.colorScheme.primary,
+                        foregroundColor: theme.colorScheme.onPrimary,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child:
+                          _isSaving
+                              ? SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: theme.colorScheme.onPrimary,
+                                ),
+                              )
+                              : Text(
+                                l10n.saveProfileButton,
+                                style: theme.textTheme.labelLarge?.copyWith(
+                                  color: theme.colorScheme.onPrimary,
+                                ),
+                              ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 10),
+
+                  // Security Notice
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.surfaceVariant,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.security,
+                          color: theme.colorScheme.primary,
+                          size: 16,
+                        ),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            'Your data is securely encrypted and stored',
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: theme.colorScheme.onSurfaceVariant,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -1889,6 +1891,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   }
 
   Widget _buildCountryField(AppLocalizations l10n) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     final initialCode =
         _selectedCountry != null ? _getCountryIsoCode(_selectedCountry!) : '';
 
@@ -1897,42 +1902,68 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Label
           Padding(
             padding: const EdgeInsets.only(bottom: 4),
             child: Text(
               l10n.birthCountryLabel,
-              style: TextStyle(color: Colors.grey[600], fontSize: 12),
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurface.withOpacity(0.7),
+              ),
             ),
           ),
-          KeyedSubtree(
-            key: ValueKey(_selectedCountry),
-            child: CountryListPick(
-              appBar: AppBar(
-                backgroundColor: Colors.blue,
-                title: Text(l10n.chooseCountryTitle),
+
+          // Country picker container
+          Container(
+            decoration: BoxDecoration(
+              color: theme.colorScheme.surface,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: theme.colorScheme.outline),
+            ),
+            child: KeyedSubtree(
+              key: ValueKey(_selectedCountry),
+              child: Theme(
+                data: theme.copyWith(
+                  // For the search field cursor and label colors
+                  textSelectionTheme: TextSelectionThemeData(
+                    cursorColor: theme.colorScheme.primary,
+                  ),
+                  inputDecorationTheme: InputDecorationTheme(
+                    labelStyle: TextStyle(color: theme.colorScheme.onSurface),
+                  ),
+                ),
+                child: CountryListPick(
+                  appBar: AppBar(
+                    backgroundColor: theme.colorScheme.primary,
+                    foregroundColor: theme.colorScheme.onPrimary,
+                    title: Text(l10n.chooseCountryTitle),
+                  ),
+                  theme: CountryTheme(
+                    isShowFlag: true,
+                    isShowTitle: true,
+                    isShowCode: false,
+                    isDownIcon: true,
+                    showEnglishName: true,
+                    alphabetSelectedBackgroundColor: theme.colorScheme.primary,
+                    alphabetTextColor: theme.colorScheme.onPrimary,
+                  ),
+                  initialSelection: initialCode,
+                  onChanged: (CountryCode? code) {
+                    if (code != null && mounted) {
+                      setState(() {
+                        _countryController.text = code.name!;
+                        _selectedCountry = code.name!;
+                        _cityController.clear();
+                        _latitude = null;
+                        _longitude = null;
+                        _timezone = null;
+                        _dst = null;
+                        _state = null;
+                      });
+                    }
+                  },
+                ),
               ),
-              theme: CountryTheme(
-                isShowFlag: true,
-                isShowTitle: true,
-                isShowCode: false,
-                isDownIcon: true,
-                showEnglishName: true,
-              ),
-              initialSelection: initialCode,
-              onChanged: (CountryCode? code) {
-                if (code != null && mounted) {
-                  setState(() {
-                    _countryController.text = code.name!;
-                    _selectedCountry = code.name!;
-                    _cityController.clear();
-                    _latitude = null;
-                    _longitude = null;
-                    _timezone = null;
-                    _dst = null;
-                    _state = null;
-                  });
-                }
-              },
             ),
           ),
         ],
@@ -1941,28 +1972,51 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   }
 
   Widget _buildCityField(AppLocalizations l10n) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Optional label can be added here if needed
           Padding(padding: const EdgeInsets.only(bottom: 4)),
+
           TypeAheadField<String>(
             textFieldConfiguration: TextFieldConfiguration(
               controller: _cityController,
               decoration: InputDecoration(
                 labelText: l10n.birthCityLabel,
-                prefixIcon: Icon(Icons.location_city, color: Colors.blue),
+                prefixIcon: Icon(
+                  Icons.location_city,
+                  color: theme.colorScheme.primary,
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: theme.colorScheme.outline),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    color: theme.colorScheme.primary,
+                    width: 2,
+                  ),
                 ),
                 hintText:
                     _selectedCountry == null
                         ? l10n.countryFirstPlaceholder
                         : l10n.cityPlaceholder(_selectedCountry!),
+                hintStyle: TextStyle(
+                  color: theme.colorScheme.onSurface.withOpacity(0.5),
+                ),
               ),
               enabled: _selectedCountry != null,
               onChanged: _onCityChanged,
+              style: theme.textTheme.bodyMedium,
             ),
             suggestionsCallback: (pattern) async {
               try {
@@ -1978,7 +2032,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
               }
             },
             itemBuilder: (context, suggestion) {
-              return ListTile(title: Text(suggestion));
+              return ListTile(
+                title: Text(suggestion, style: theme.textTheme.bodyMedium),
+              );
             },
             onSuggestionSelected: (suggestion) async {
               _cityController.text = suggestion;
@@ -1989,7 +2045,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   l10n.noCitiesFound,
-                  style: TextStyle(color: Colors.grey),
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.onSurface.withOpacity(0.5),
+                  ),
                 ),
               );
             },
@@ -2051,14 +2109,27 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     VoidCallback onTap,
     IconData icon,
   ) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: ListTile(
-        title: Text(label),
-        subtitle: Text(value),
-        leading: Icon(icon),
+        title: Text(
+          label,
+          style: theme.textTheme.bodyLarge?.copyWith(
+            color: theme.colorScheme.onSurface,
+          ),
+        ),
+        subtitle: Text(
+          value,
+          style: theme.textTheme.bodyMedium?.copyWith(
+            color: theme.colorScheme.onSurface.withOpacity(0.7),
+          ),
+        ),
+        leading: Icon(icon, color: theme.colorScheme.primary),
         onTap: onTap,
-        tileColor: Colors.grey.shade100,
+        tileColor: theme.colorScheme.surface,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
     );

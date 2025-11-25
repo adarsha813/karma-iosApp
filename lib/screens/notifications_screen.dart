@@ -14,6 +14,8 @@ import '../utils/dictionary_highlighter.dart';
 import '../l10n/app_localizations.dart';
 import '../config/environment.dart';
 import 'package:logger/logger.dart';
+// Add this import if not already present
+import '../providers/theme_provider.dart';
 
 // Custom logger instance
 final _logger = Logger(
@@ -663,15 +665,18 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     return all;
   }
 
-  Widget _buildSkeletonLoader({int itemCount = 10}) {
+  Widget _buildSkeletonLoader() {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     return ListView.separated(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      itemCount: itemCount,
+      itemCount: 10,
       separatorBuilder: (_, __) => const SizedBox(height: 8),
       itemBuilder: (context, index) {
         return Shimmer.fromColors(
-          baseColor: Colors.grey.shade300,
-          highlightColor: Colors.grey.shade100,
+          baseColor: theme.colorScheme.surfaceVariant,
+          highlightColor: theme.colorScheme.surface,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -679,7 +684,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: theme.colorScheme.onSurface.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
@@ -690,10 +695,14 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                   children: [
                     Container(
                       height: 14,
-                      color: Colors.white,
+                      color: theme.colorScheme.onSurface.withOpacity(0.1),
                       margin: const EdgeInsets.only(bottom: 8),
                     ),
-                    Container(height: 14, width: 150, color: Colors.white),
+                    Container(
+                      height: 14,
+                      width: 150,
+                      color: theme.colorScheme.onSurface.withOpacity(0.1),
+                    ),
                   ],
                 ),
               ),
@@ -706,6 +715,8 @@ class _NotificationsScreenState extends State<NotificationsScreen>
 
   Widget _buildErrorWidget() {
     final l10n = AppLocalizations.of(context)!;
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
 
     return Center(
       child: Padding(
@@ -713,11 +724,13 @@ class _NotificationsScreenState extends State<NotificationsScreen>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.error_outline, size: 64, color: Colors.red.shade300),
+            Icon(Icons.error_outline, size: 64, color: theme.colorScheme.error),
             const SizedBox(height: 16),
             Text(
               _error ?? _getLocalizedError('load_notifications_error', context),
-              style: const TextStyle(fontSize: 16),
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurface,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
@@ -734,15 +747,27 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                           }
                         });
                       },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: theme.colorScheme.primary,
+                foregroundColor: theme.colorScheme.onPrimary,
+              ),
               icon:
                   _retrying
-                      ? const SizedBox(
+                      ? SizedBox(
                         height: 16,
                         width: 16,
-                        child: CircularProgressIndicator(strokeWidth: 2),
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: theme.colorScheme.onPrimary,
+                        ),
                       )
-                      : const Icon(Icons.refresh),
-              label: Text(_retrying ? 'Loading...' : l10n.retryButton),
+                      : Icon(Icons.refresh, color: theme.colorScheme.onPrimary),
+              label: Text(
+                _retrying ? 'Loading...' : l10n.retryButton,
+                style: theme.textTheme.labelLarge?.copyWith(
+                  color: theme.colorScheme.onPrimary,
+                ),
+              ),
             ),
           ],
         ),
@@ -753,6 +778,8 @@ class _NotificationsScreenState extends State<NotificationsScreen>
   Widget _buildNotificationList(List<Map<String, dynamic>> items) {
     final l10n = AppLocalizations.of(context)!;
     final dictionaryMap = context.watch<DictionaryProvider>().dictionaryMap;
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
 
     _logger.d('🔄 Building notification list with ${items.length} items');
 
@@ -764,12 +791,14 @@ class _NotificationsScreenState extends State<NotificationsScreen>
             Icon(
               Icons.notifications_none,
               size: 64,
-              color: Colors.grey.shade400,
+              color: theme.colorScheme.onSurface.withOpacity(0.5),
             ),
             const SizedBox(height: 16),
             Text(
               l10n.noNotifications,
-              style: const TextStyle(fontSize: 16, color: Colors.grey),
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurface.withOpacity(0.7),
+              ),
             ),
           ],
         ),
@@ -784,35 +813,45 @@ class _NotificationsScreenState extends State<NotificationsScreen>
         final message = item['message'] ?? 'No message';
         final read = item['read'] ?? false;
         final notificationId = item['id'] ?? '';
-        final category = item['category'] ?? 'unknown'; // ✅ Now used
+        final category = item['category'] ?? 'unknown';
         final createdAt = item['createdAt'] ?? '';
 
         return Card(
           margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
           elevation: 1,
+          color: theme.colorScheme.surface,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
           child: ListTile(
             leading: Icon(
-              _getCategoryIcon(category), // ✅ Use category for different icons
-              color: read ? Colors.grey : Theme.of(context).primaryColor,
+              _getCategoryIcon(category),
+              color:
+                  read
+                      ? theme.colorScheme.onSurface.withOpacity(0.5)
+                      : theme.colorScheme.primary,
             ),
             title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // ✅ Add category badge
+                // Category badge
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 8,
                     vertical: 2,
                   ),
                   decoration: BoxDecoration(
-                    color: _getCategoryColor(category).withAlpha((0.1 * 255).toInt()),
+                    color: _getCategoryColor(
+                      category,
+                      theme,
+                    ).withAlpha((0.1 * 255).toInt()),
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Text(
                     category.toUpperCase(),
                     style: TextStyle(
                       fontSize: 10,
-                      color: _getCategoryColor(category),
+                      color: _getCategoryColor(category, theme),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -825,7 +864,10 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                     dictionaryMap,
                     TextStyle(
                       fontSize: 14,
-                      color: read ? Colors.grey.shade600 : Colors.black87,
+                      color:
+                          read
+                              ? theme.colorScheme.onSurface.withOpacity(0.7)
+                              : theme.colorScheme.onSurface,
                       fontWeight: read ? FontWeight.normal : FontWeight.w500,
                     ),
                   ),
@@ -834,7 +876,9 @@ class _NotificationsScreenState extends State<NotificationsScreen>
             ),
             subtitle: Text(
               _formatDate(createdAt),
-              style: TextStyle(fontSize: 12, color: Colors.grey.shade500),
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurface.withOpacity(0.6),
+              ),
             ),
             trailing:
                 read
@@ -842,7 +886,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                     : Icon(
                       Icons.circle,
                       size: 12,
-                      color: Theme.of(context).primaryColor,
+                      color: theme.colorScheme.primary,
                     ),
             onTap: () async {
               if (!read && notificationId.isNotEmpty) {
@@ -889,20 +933,20 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     }
   }
 
-  Color _getCategoryColor(String category) {
+  Color _getCategoryColor(String category, ThemeData theme) {
     switch (category.toLowerCase()) {
       case 'horoscope':
-        return Colors.purple;
+        return theme.colorScheme.secondary;
       case 'chat':
         return Colors.blue;
       case 'system':
-        return Colors.orange;
+        return theme.colorScheme.primary;
       case 'updates':
         return Colors.green;
       case 'offer':
         return Colors.red;
       default:
-        return Colors.grey;
+        return theme.colorScheme.onSurface.withOpacity(0.7);
     }
   }
 
@@ -926,6 +970,8 @@ class _NotificationsScreenState extends State<NotificationsScreen>
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
 
     if (_tabController == null) {
       return Scaffold(
@@ -933,9 +979,14 @@ class _NotificationsScreenState extends State<NotificationsScreen>
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const CircularProgressIndicator(),
+              CircularProgressIndicator(color: theme.colorScheme.primary),
               const SizedBox(height: 16),
-              Text(l10n.loading),
+              Text(
+                l10n.loading,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.onSurface,
+                ),
+              ),
             ],
           ),
         ),
@@ -944,12 +995,21 @@ class _NotificationsScreenState extends State<NotificationsScreen>
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.notificationsTitle),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(
+          l10n.notificationsTitle,
+          style: theme.textTheme.titleLarge?.copyWith(
+            color: theme.colorScheme.onSurface,
+          ),
+        ),
+        backgroundColor: theme.appBarTheme.backgroundColor,
         elevation: 0,
+        iconTheme: IconThemeData(color: theme.colorScheme.onSurface),
         actions: [
           IconButton(
-            icon: const Icon(Icons.mark_email_read),
+            icon: Icon(
+              Icons.mark_email_read,
+              color: theme.colorScheme.onSurface,
+            ),
             onPressed: _isLoading ? null : _markAllNotificationsAsRead,
             tooltip: l10n.markAllAsRead,
           ),
@@ -960,26 +1020,30 @@ class _NotificationsScreenState extends State<NotificationsScreen>
             tabController: _tabController!,
             categories: _categories,
             l10n: l10n,
+            theme: theme,
           ),
         ),
       ),
       body: SafeArea(
-        child:
-            _isLoading
-                ? _buildSkeletonLoader()
-                : _error != null
-                ? _buildErrorWidget()
-                : TabBarView(
-                  controller: _tabController!,
-                  children: [
-                    _buildNotificationList(_getAllNotifications()),
-                    ..._categories.map(
-                      (cat) => _buildNotificationList(
-                        notificationsByCategory[cat] ?? [],
+        child: Container(
+          color: theme.colorScheme.background,
+          child:
+              _isLoading
+                  ? _buildSkeletonLoader()
+                  : _error != null
+                  ? _buildErrorWidget()
+                  : TabBarView(
+                    controller: _tabController!,
+                    children: [
+                      _buildNotificationList(_getAllNotifications()),
+                      ..._categories.map(
+                        (cat) => _buildNotificationList(
+                          notificationsByCategory[cat] ?? [],
+                        ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
+        ),
       ),
     );
   }
@@ -1162,12 +1226,14 @@ class CategoryTabs extends StatelessWidget {
   final TabController tabController;
   final List<String> categories;
   final AppLocalizations l10n;
+  final ThemeData theme;
 
   const CategoryTabs({
     super.key,
     required this.tabController,
     required this.categories,
     required this.l10n,
+    required this.theme,
   });
 
   String _getCategoryDisplayName(String category) {
@@ -1195,9 +1261,12 @@ class CategoryTabs extends StatelessWidget {
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
           decoration: BoxDecoration(
-            color: Theme.of(context).scaffoldBackgroundColor,
+            color: theme.colorScheme.surface,
             border: Border(
-              bottom: BorderSide(color: Colors.grey.shade300, width: 1),
+              bottom: BorderSide(
+                color: theme.colorScheme.outline.withOpacity(0.1),
+                width: 1,
+              ),
             ),
           ),
           child: Row(
@@ -1213,19 +1282,18 @@ class CategoryTabs extends StatelessWidget {
                   decoration: BoxDecoration(
                     color:
                         tabController.index == 0
-                            ? Theme.of(context).primaryColor
-                            : Colors.grey.shade200,
+                            ? theme.colorScheme.primary
+                            : theme.colorScheme.surfaceVariant,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(
                     l10n.allTab,
-                    style: TextStyle(
+                    style: theme.textTheme.labelLarge?.copyWith(
                       color:
                           tabController.index == 0
-                              ? Colors.white
-                              : Colors.grey.shade700,
+                              ? theme.colorScheme.onPrimary
+                              : theme.colorScheme.onSurfaceVariant,
                       fontWeight: FontWeight.w600,
-                      fontSize: 14,
                     ),
                   ),
                 ),
@@ -1252,19 +1320,18 @@ class CategoryTabs extends StatelessWidget {
                             decoration: BoxDecoration(
                               color:
                                   selected
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.grey.shade200,
+                                      ? theme.colorScheme.primary
+                                      : theme.colorScheme.surfaceVariant,
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Text(
                               _getCategoryDisplayName(cat),
-                              style: TextStyle(
+                              style: theme.textTheme.labelLarge?.copyWith(
                                 color:
                                     selected
-                                        ? Colors.white
-                                        : Colors.grey.shade700,
+                                        ? theme.colorScheme.onPrimary
+                                        : theme.colorScheme.onSurfaceVariant,
                                 fontWeight: FontWeight.w600,
-                                fontSize: 14,
                               ),
                             ),
                           ),
