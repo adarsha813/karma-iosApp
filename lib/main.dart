@@ -124,8 +124,8 @@ class TextSanitizer {
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  print('📩 [Background] Message received: ${message.messageId}');
-  print('📩 Message data: ${message.data}');
+  debugPrint('📩 [Background] Message received: ${message.messageId}');
+  debugPrint('📩 Message data: ${message.data}');
 
   // Initialize Firebase in background isolate
   await Firebase.initializeApp();
@@ -134,7 +134,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   final notificationsEnabled = prefs.getBool('notifications_enabled') ?? true;
 
   if (!notificationsEnabled) {
-    print('🔕 Notifications disabled - skipping background notification');
+    debugPrint('🔕 Notifications disabled - skipping background notification');
     return;
   }
 
@@ -179,16 +179,16 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     try {
       FlutterAppBadger.updateBadgeCount(count);
     } catch (e) {
-      print("⚠️ Failed to update badge in background: $e");
+      debugPrint("⚠️ Failed to update badge in background: $e");
     }
   } else {
-    print('ℹ️ Badge not incremented for chat type: $type');
+    debugPrint('ℹ️ Badge not incremented for chat type: $type');
   }
 
   try {
     FlutterAppBadger.updateBadgeCount(count);
   } catch (e) {
-    print("⚠️ Failed to update badge in background: $e");
+    debugPrint("⚠️ Failed to update badge in background: $e");
   }
 
   // Increment specific counters
@@ -196,7 +196,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     int horoCount = prefs.getInt('unread_horoscope_count') ?? 0;
     horoCount++;
     await prefs.setInt('unread_horoscope_count', horoCount);
-    print('📈 Horoscope unread count updated: $horoCount');
+    debugPrint('📈 Horoscope unread count updated: $horoCount');
   } else if (type == 'notification') {
     // ✅ Only notifications page
     bool isScreenOpen = prefs.getBool('notification_screen_open') ?? false;
@@ -204,12 +204,12 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
       int notifCount = prefs.getInt('unread_notifications_page_count') ?? 0;
       notifCount++;
       await prefs.setInt('unread_notifications_page_count', notifCount);
-      print('📈 Notifications page unread count updated: $notifCount');
+      debugPrint('📈 Notifications page unread count updated: $notifCount');
     } else {
-      print('ℹ️ Notifications screen open, skipping unread increment');
+      debugPrint('ℹ️ Notifications screen open, skipping unread increment');
     }
   } else {
-    print('ℹ️ Other types ignored for unread counts');
+    debugPrint('ℹ️ Other types ignored for unread counts');
   }
   // Initialize local notifications
   const AndroidInitializationSettings androidSettings =
@@ -279,9 +279,9 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     payload: payload,
   );
 
-  print('📩 Background notification displayed for type: $type');
-  print('📩 Sanitized title: $sanitizedTitle');
-  print('📩 Sanitized body: $sanitizedBody');
+  debugPrint('📩 Background notification displayed for type: $type');
+  debugPrint('📩 Sanitized title: $sanitizedTitle');
+  debugPrint('📩 Sanitized body: $sanitizedBody');
 }
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -1607,7 +1607,7 @@ class _SecureAppState extends State<SecureApp> {
 void notificationTapBackground(NotificationResponse response) {
   final payload = response.payload;
   if (payload != null) {
-    print('📱 (Background) Notification tapped: $payload');
+    debugPrint('📱 (Background) Notification tapped: $payload');
     pendingNavigation.payload = payload;
   }
 }
@@ -1676,14 +1676,14 @@ Future<void> sendFcmTokenToBackend(String userId, String fcmToken) async {
     );
 
     if (response.statusCode == 200) {
-      print('✅ FCM token sent successfully');
+      debugPrint('✅ FCM token sent successfully');
     } else {
-      print(
+      debugPrint(
         '⚠️ Failed to send FCM token: ${response.statusCode}, ${response.body}',
       );
     }
   } catch (e) {
-    print('❌ Error sending FCM token: $e');
+    debugPrint('❌ Error sending FCM token: $e');
   }
 }
 
@@ -1721,7 +1721,9 @@ Future<void> _requestPermissions() async {
   NotificationSettings settings = await FirebaseMessaging.instance
       .requestPermission(alert: true, badge: true, sound: true);
 
-  print('🔐 Notification permission status: ${settings.authorizationStatus}');
+  debugPrint(
+    '🔐 Notification permission status: ${settings.authorizationStatus}',
+  );
 }
 
 Future<void> _initFCMToken() async {
@@ -1730,14 +1732,14 @@ Future<void> _initFCMToken() async {
 
   try {
     final fcmToken = await FirebaseMessaging.instance.getToken();
-    print('🔑 FCM Token: $fcmToken');
+    debugPrint('🔑 FCM Token: $fcmToken');
 
     if (profileProvider.userId != null && fcmToken != null) {
       // Send token to backend
       await sendFcmTokenToBackend(profileProvider.userId!, fcmToken);
     }
   } catch (e) {
-    print('❌ Error getting FCM token: $e');
+    debugPrint('❌ Error getting FCM token: $e');
   }
 }
 

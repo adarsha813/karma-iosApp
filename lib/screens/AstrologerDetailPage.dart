@@ -306,7 +306,7 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
             end: Alignment.bottomRight,
             colors: [
               Theme.of(context).primaryColor,
-              Theme.of(context).primaryColor.withOpacity(0.8),
+              Theme.of(context).primaryColor.withAlpha((0.8 * 255).toInt()),
             ],
           ),
           borderRadius: const BorderRadius.vertical(
@@ -344,7 +344,7 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
                   IconButton(
                     icon: Icon(
                       Icons.share,
-                      color: Colors.white.withOpacity(0.9),
+                      color: Colors.white.withAlpha((0.9 * 255).toInt()),
                     ),
                     onPressed: _shareProfile,
                   ),
@@ -415,12 +415,12 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                color: Theme.of(context).primaryColor.withOpacity(0.3),
+                color: Theme.of(context).primaryColor.withAlpha((0.3 * 255).toInt()),
                 width: 3,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
+                  color: Colors.black.withAlpha((0.1 * 255).toInt()),
                   blurRadius: 12,
                   offset: const Offset(0, 4),
                 ),
@@ -507,7 +507,7 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
                           ),
                           backgroundColor: Theme.of(
                             context,
-                          ).primaryColor.withOpacity(0.1),
+                          ).primaryColor.withAlpha((0.1 * 255).toInt()),
                           visualDensity: VisualDensity.compact,
                         ),
                       )
@@ -530,7 +530,7 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withAlpha((0.05 * 255).toInt()),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -574,7 +574,7 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
               style: ElevatedButton.styleFrom(
                 backgroundColor:
                     _isFavorite
-                        ? Colors.amber.withOpacity(0.2)
+                        ? Colors.amber.withAlpha((0.2 * 255).toInt())
                         : Theme.of(context).primaryColor,
                 foregroundColor: _isFavorite ? Colors.grey[800] : Colors.white,
                 padding: const EdgeInsets.symmetric(
@@ -586,13 +586,13 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
                   side:
                       _isFavorite
                           ? BorderSide(
-                            color: Colors.amber.withOpacity(0.3),
+                            color: Colors.amber.withAlpha((0.3 * 255).toInt()),
                             width: 2,
                           )
                           : BorderSide.none,
                 ),
                 elevation: 2,
-                shadowColor: Colors.black.withOpacity(0.1),
+                shadowColor: Colors.black.withAlpha((0.1 * 255).toInt()),
               ),
             ),
           ),
@@ -654,7 +654,7 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withAlpha((0.05 * 255).toInt()),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),

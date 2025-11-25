@@ -3,6 +3,7 @@ import 'package:flutter_stripe/flutter_stripe.dart' hide Card;
 import '../config/environment_dev.dart';
 import 'http_service.dart';
 import '../utils/error_handler.dart';
+import 'package:flutter/foundation.dart';
 
 class PaymentService {
   static final PaymentService _instance = PaymentService._internal();
@@ -21,7 +22,7 @@ class PaymentService {
 
   Future<int> getQuestionBalance(String token) async {
     try {
-      print('🔄 Calling balance endpoint: $_balanceEndpoint');
+      debugPrint('🔄 Calling balance endpoint: $_balanceEndpoint');
       final response = await HttpService.get(_balanceEndpoint, token: token);
 
       if (response.statusCode == 200) {
@@ -41,7 +42,7 @@ class PaymentService {
 
   Future<List<Map<String, dynamic>>> getOffers(String token) async {
     try {
-      print('🔄 Calling offers endpoint: $_offersEndpoint');
+      debugPrint('🔄 Calling offers endpoint: $_offersEndpoint');
       final response = await HttpService.get(_offersEndpoint, token: token);
 
       if (response.statusCode == 200) {
@@ -90,7 +91,7 @@ class PaymentService {
     required String paymentIntentId,
   }) async {
     try {
-      print('🔄 Verifying payment: $paymentIntentId');
+      debugPrint('🔄 Verifying payment: $paymentIntentId');
 
       final response = await HttpService.post(
         _verifyPaymentEndpoint,
@@ -145,7 +146,9 @@ class PaymentService {
     int intervalSeconds = 2,
   }) async {
     for (int attempt = 1; attempt <= maxAttempts; attempt++) {
-      print('⏳ Polling for webhook completion (attempt $attempt/$maxAttempts)');
+      debugPrint(
+        '⏳ Polling for webhook completion (attempt $attempt/$maxAttempts)',
+      );
 
       await Future.delayed(Duration(seconds: intervalSeconds));
 
@@ -169,7 +172,7 @@ class PaymentService {
           return result;
         }
       } catch (e) {
-        print('❌ Polling attempt $attempt failed: $e');
+        debugPrint('❌ Polling attempt $attempt failed: $e');
         // Continue polling on network errors
         if (attempt == maxAttempts) {
           return PaymentVerificationResult.failed(
@@ -189,7 +192,7 @@ class PaymentService {
 
   Future<void> initializeStripe() async {
     try {
-      print(
+      debugPrint(
         '🔄 Initializing Stripe with key: ${DevelopmentEnvironment.stripePublishableKey}',
       );
       Stripe.publishableKey = DevelopmentEnvironment.stripePublishableKey;
@@ -199,9 +202,9 @@ class PaymentService {
       }
 
       await Stripe.instance.applySettings();
-      print('✅ Stripe initialized successfully');
+      debugPrint('✅ Stripe initialized successfully');
     } catch (e) {
-      print('❌ Stripe initialization error: $e');
+      debugPrint('❌ Stripe initialization error: $e');
       throw ErrorHandler.handleStripeError(e);
     }
   }

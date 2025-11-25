@@ -1,5 +1,6 @@
 // generate_localization_templates.dart
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 
 void main() {
   final unsupportedLanguages = [
@@ -77,7 +78,7 @@ void main() {
     'zu',
   ];
 
-  print(
+  debugPrint(
     '🚀 Generating templates for ${unsupportedLanguages.length} languages...',
   );
 
@@ -86,7 +87,7 @@ void main() {
     generateCupertinoTemplate(langCode);
   }
 
-  print('✅ All templates generated!');
+  debugPrint('✅ All templates generated!');
 }
 
 void generateMaterialTemplate(String languageCode) {
@@ -99,7 +100,7 @@ import 'package:flutter/material.dart';
 class $className extends DefaultMaterialLocalizations {
   $className();
 
-  // TODO: Add translations for ${_getLanguageName(languageCode)}
+// ${_getLanguageName(languageCode)}
   
   // Getters
   @override
@@ -576,7 +577,7 @@ class $className extends DefaultMaterialLocalizations {
 
   @override
   DateTime? parseCompactDate(String? inputString) {
-    // TODO: Implement parsing for your locale
+    
     return null;
   }
 
@@ -632,7 +633,7 @@ class _${className}Delegate extends LocalizationsDelegate<MaterialLocalizations>
 ''';
 
   File('lib/l10n/$fileName').writeAsStringSync(template);
-  print('✅ Generated: $fileName');
+  debugPrint('✅ Generated: $fileName');
 }
 
 void generateCupertinoTemplate(String languageCode) {
@@ -645,7 +646,7 @@ import 'package:flutter/cupertino.dart';
 class $className extends DefaultCupertinoLocalizations {
   const $className();
 
-  // TODO: Add translations for ${_getLanguageName(languageCode)}
+// ${_getLanguageName(languageCode)}
 
   // Getters
   @override
@@ -799,7 +800,7 @@ class _${className}Delegate extends LocalizationsDelegate<CupertinoLocalizations
 ''';
 
   File('lib/l10n/$fileName').writeAsStringSync(template);
-  print('✅ Generated: $fileName');
+  debugPrint('✅ Generated: $fileName');
 }
 
 String _capitalize(String text) {

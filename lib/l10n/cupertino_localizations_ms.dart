@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 class CupertinoLocalizationsMs extends DefaultCupertinoLocalizations {
   const CupertinoLocalizationsMs();
 
-  // TODO: Add translations for Malay
+  // Malay
 
   // Getters
   @override
@@ -31,7 +31,8 @@ class CupertinoLocalizationsMs extends DefaultCupertinoLocalizations {
   String get clearButtonLabel => 'TODO: Translate clear';
 
   @override
-  String get noSpellCheckReplacementsLabel => 'TODO: Translate no replacements found';
+  String get noSpellCheckReplacementsLabel =>
+      'TODO: Translate no replacements found';
 
   @override
   String get selectAllButtonLabel => 'TODO: Translate select all';
@@ -64,7 +65,8 @@ class CupertinoLocalizationsMs extends DefaultCupertinoLocalizations {
   DatePickerDateOrder get datePickerDateOrder => DatePickerDateOrder.mdy;
 
   @override
-  DatePickerDateTimeOrder get datePickerDateTimeOrder => DatePickerDateTimeOrder.date_time_dayPeriod;
+  DatePickerDateTimeOrder get datePickerDateTimeOrder =>
+      DatePickerDateTimeOrder.date_time_dayPeriod;
 
   // Methods with Parameters
   @override
@@ -74,7 +76,8 @@ class CupertinoLocalizationsMs extends DefaultCupertinoLocalizations {
   String datePickerMonth(int monthIndex) => 'TODO: Translate month $monthIndex';
 
   @override
-  String datePickerStandaloneMonth(int monthIndex) => 'TODO: Translate standalone month $monthIndex';
+  String datePickerStandaloneMonth(int monthIndex) =>
+      'TODO: Translate standalone month $monthIndex';
 
   @override
   String datePickerDayOfMonth(int dayIndex, [int? weekDay]) {
@@ -93,15 +96,16 @@ class CupertinoLocalizationsMs extends DefaultCupertinoLocalizations {
   String datePickerHour(int hour) => hour.toString();
 
   @override
-  String datePickerHourSemanticsLabel(int hour) => '$hour TODO: Translate o\'clock';
+  String datePickerHourSemanticsLabel(int hour) =>
+      '$hour TODO: Translate o\'clock';
 
   @override
   String datePickerMinute(int minute) => minute.toString().padLeft(2, '0');
 
   @override
   String datePickerMinuteSemanticsLabel(int minute) {
-    return minute == 1 
-        ? 'TODO: Translate 1 minute' 
+    return minute == 1
+        ? 'TODO: Translate 1 minute'
         : 'TODO: Translate $minute minutes';
   }
 
@@ -120,10 +124,14 @@ class CupertinoLocalizationsMs extends DefaultCupertinoLocalizations {
   String timerPickerSecond(int second) => second.toString();
 
   @override
-  String timerPickerHourLabel(int hour) => hour == 1 ? 'TODO: Translate hour' : 'TODO: Translate hours';
+  String timerPickerHourLabel(int hour) =>
+      hour == 1 ? 'TODO: Translate hour' : 'TODO: Translate hours';
 
   @override
-  List<String> get timerPickerHourLabels => const ['TODO: Translate hour', 'TODO: Translate hours'];
+  List<String> get timerPickerHourLabels => const [
+    'TODO: Translate hour',
+    'TODO: Translate hours',
+  ];
 
   @override
   String timerPickerMinuteLabel(int minute) => 'TODO: Translate min.';
@@ -137,10 +145,12 @@ class CupertinoLocalizationsMs extends DefaultCupertinoLocalizations {
   @override
   List<String> get timerPickerSecondLabels => const ['TODO: Translate sec.'];
 
-  static const LocalizationsDelegate<CupertinoLocalizations> delegate = _CupertinoLocalizationsMsDelegate();
+  static const LocalizationsDelegate<CupertinoLocalizations> delegate =
+      _CupertinoLocalizationsMsDelegate();
 }
 
-class _CupertinoLocalizationsMsDelegate extends LocalizationsDelegate<CupertinoLocalizations> {
+class _CupertinoLocalizationsMsDelegate
+    extends LocalizationsDelegate<CupertinoLocalizations> {
   const _CupertinoLocalizationsMsDelegate();
 
   @override

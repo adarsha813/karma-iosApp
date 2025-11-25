@@ -1,5 +1,6 @@
 // scripts/generate_all_templates.dart
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 
 void main() {
   final unsupportedLanguages = [
@@ -77,7 +78,7 @@ void main() {
     'zu',
   ];
 
-  print(
+  debugPrint(
     '🚀 Generating templates for ${unsupportedLanguages.length} languages...',
   );
 
@@ -92,7 +93,7 @@ void main() {
     generateCupertinoTemplate(langCode);
   }
 
-  print('✅ All templates generated!');
+  debugPrint('✅ All templates generated!');
 }
 
 String _capitalize(String text) {
@@ -187,7 +188,7 @@ import 'package:flutter/material.dart';
 class $className extends DefaultMaterialLocalizations {
   $className();
 
-  // TODO: Add translations for ${_getLanguageName(languageCode)}
+// ${_getLanguageName(languageCode)}
   
   @override
   String get openAppDrawerTooltip => 'TODO: Translate open navigation menu';
@@ -553,7 +554,7 @@ class $className extends DefaultMaterialLocalizations {
   String get keyboardKeyPowerOff => 'TODO: Translate power off';
 
   @override
-  String get keyboardKeyPrintScreen => 'TODO: Translate print screen';
+  String get keyboardKeyPrintScreen => 'TODO: Translate debugPrint screen';
 
   @override
   String get keyboardKeyScrollLock => 'TODO: Translate scroll lock';
@@ -663,7 +664,7 @@ class $className extends DefaultMaterialLocalizations {
 
   @override
   DateTime? parseCompactDate(String? inputString) {
-    // TODO: Implement parsing for your locale
+    
     return null;
   }
 
@@ -719,7 +720,7 @@ class _${className}Delegate extends LocalizationsDelegate<MaterialLocalizations>
 ''';
 
   File('lib/l10n/$fileName').writeAsStringSync(template);
-  print('✅ Generated: $fileName');
+  debugPrint('✅ Generated: $fileName');
 }
 
 void generateCupertinoTemplate(String languageCode) {
@@ -732,7 +733,7 @@ import 'package:flutter/cupertino.dart';
 class $className extends DefaultCupertinoLocalizations {
   const $className();
 
-  // TODO: Add translations for ${_getLanguageName(languageCode)}
+// ${_getLanguageName(languageCode)}
 
   // Getters
   @override
@@ -886,5 +887,5 @@ class _${className}Delegate extends LocalizationsDelegate<CupertinoLocalizations
 ''';
 
   File('lib/l10n/$fileName').writeAsStringSync(template);
-  print('✅ Generated: $fileName');
+  debugPrint('✅ Generated: $fileName');
 }

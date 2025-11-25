@@ -21,7 +21,7 @@ class SocketService {
   /// Initialize the socket with userId and BuildContext
   void initialize(String userId, BuildContext context) {
     if (_isInitialized && this.userId == userId) {
-      print('🔄 SocketService already initialized for user: $userId');
+      debugPrint('🔄 SocketService already initialized for user: $userId');
       return;
     }
 
@@ -53,10 +53,10 @@ class SocketService {
       socket.connect();
       _isInitialized = true;
 
-      print('✅ SocketService initialized for user: $userId');
+      debugPrint('✅ SocketService initialized for user: $userId');
     } catch (error, stackTrace) {
-      print('❌ Socket initialization error: $error');
-      print('Stack trace: $stackTrace');
+      debugPrint('❌ Socket initialization error: $error');
+      debugPrint('Stack trace: $stackTrace');
       _handleInitializationError(error);
     }
   }
@@ -82,35 +82,35 @@ class SocketService {
     _listenersSet = true;
 
     socket.onConnect((_) {
-      print('✅ Socket connected for user: $userId');
+      debugPrint('✅ Socket connected for user: $userId');
       _sendJoinRoom();
     });
 
     socket.onDisconnect((reason) {
-      print('❌ Socket disconnected: $reason');
+      debugPrint('❌ Socket disconnected: $reason');
       _handleDisconnection(reason);
     });
 
     socket.onConnectError((error) {
-      print('⚠️ Socket connection error: $error');
+      debugPrint('⚠️ Socket connection error: $error');
       _handleConnectionError(error);
     });
 
     socket.onReconnectAttempt((attempt) {
-      print('🔄 Reconnect attempt: $attempt');
+      debugPrint('🔄 Reconnect attempt: $attempt');
     });
 
     socket.onReconnect((attempt) {
-      print('✅ Socket reconnected after $attempt attempts');
+      debugPrint('✅ Socket reconnected after $attempt attempts');
       _sendJoinRoom();
     });
 
     socket.onReconnectError((error) {
-      print('⚠️ Reconnect error: $error');
+      debugPrint('⚠️ Reconnect error: $error');
     });
 
     socket.onReconnectFailed((_) {
-      print('❗ Reconnect failed - maximum attempts reached');
+      debugPrint('❗ Reconnect failed - maximum attempts reached');
       _handleReconnectionFailed();
     });
 
@@ -120,13 +120,13 @@ class SocketService {
 
     // Add ping/pong for connection health monitoring
     socket.on('pong', (_) {
-      print('❤️  Socket heartbeat received');
+      debugPrint('❤️  Socket heartbeat received');
     });
   }
 
   void _setupErrorHandlers() {
     socket.onError((error) {
-      print('💥 Socket error: $error');
+      debugPrint('💥 Socket error: $error');
     });
   }
 
@@ -134,20 +134,20 @@ class SocketService {
     if (userId != null && socket.connected) {
       try {
         socket.emit('joinRoom', userId);
-        print('📨 Join room event sent for user: $userId');
+        debugPrint('📨 Join room event sent for user: $userId');
       } catch (error) {
-        print('❌ Error sending joinRoom: $error');
+        debugPrint('❌ Error sending joinRoom: $error');
       }
     }
   }
 
   void _handleNewNotification(dynamic data) {
-    print('📡 Socket notification received: $data');
+    debugPrint('📡 Socket notification received: $data');
 
     try {
       final context = navigatorKey.currentContext;
       if (context == null) {
-        print(
+        debugPrint(
           '⚠️ Global context is null - notification queued for later processing',
         );
         _queueNotification(data);
@@ -163,16 +163,16 @@ class SocketService {
 
       // Validate notification data
       if (!_isValidNotification(notification)) {
-        print('⚠️ Invalid notification data received');
+        debugPrint('⚠️ Invalid notification data received');
         return;
       }
 
       notificationProvider.addNotification(notification);
 
-      print('✅ Notification processed successfully');
+      debugPrint('✅ Notification processed successfully');
     } catch (error, stackTrace) {
-      print('❌ Error processing notification: $error');
-      print('Stack trace: $stackTrace');
+      debugPrint('❌ Error processing notification: $error');
+      debugPrint('Stack trace: $stackTrace');
       _logError('NotificationProcessing', error, stackTrace);
     }
   }
@@ -186,33 +186,33 @@ class SocketService {
     // Implement notification queuing logic here
     // This could store notifications in local storage when context is unavailable
     // and process them when the app becomes available again
-    print('📦 Notification queued for later processing: $data');
+    debugPrint('📦 Notification queued for later processing: $data');
   }
 
   void _handleDisconnection(String reason) {
-    print('🔌 Socket disconnected: $reason');
+    debugPrint('🔌 Socket disconnected: $reason');
     // Implement reconnection logic or app state updates here
   }
 
   void _handleConnectionError(dynamic error) {
-    print('🔌 Socket connection error: $error');
+    debugPrint('🔌 Socket connection error: $error');
     // Implement error reporting or fallback strategies
   }
 
   void _handleReconnectionFailed() {
-    print('🔌 Maximum reconnection attempts reached');
+    debugPrint('🔌 Maximum reconnection attempts reached');
     // Implement fallback strategies or user notification
   }
 
   void _handleInitializationError(dynamic error) {
-    print('🔌 Socket initialization failed: $error');
+    debugPrint('🔌 Socket initialization failed: $error');
     // Implement error reporting or alternative communication methods
   }
 
   void _logError(String type, dynamic error, StackTrace stackTrace) {
     // Implement your error logging service here
     // This could integrate with Sentry, Firebase Crashlytics, etc.
-    print('🚨 ERROR [$type]: $error');
+    debugPrint('🚨 ERROR [$type]: $error');
   }
 
   void _cleanupSocket() {
@@ -224,7 +224,7 @@ class SocketService {
       _listenersSet = false;
       _isInitialized = false;
     } catch (error) {
-      print('⚠️ Error during socket cleanup: $error');
+      debugPrint('⚠️ Error during socket cleanup: $error');
     }
   }
 
@@ -243,7 +243,7 @@ class SocketService {
   /// Manual reconnection trigger
   void reconnect() {
     if (_isDisposed) {
-      print('⚠️ Cannot reconnect - SocketService is disposed');
+      debugPrint('⚠️ Cannot reconnect - SocketService is disposed');
       return;
     }
 
@@ -261,7 +261,7 @@ class SocketService {
     _isDisposed = true;
     _isInitialized = false;
     _cleanupSocket();
-    print('♻️ SocketService disposed successfully');
+    debugPrint('♻️ SocketService disposed successfully');
   }
 
   /// Send a heartbeat/ping to the server
@@ -269,9 +269,9 @@ class SocketService {
     if (isConnected()) {
       try {
         socket.emit('ping');
-        print('❤️ Heartbeat sent');
+        debugPrint('❤️ Heartbeat sent');
       } catch (error) {
-        print('❌ Error sending heartbeat: $error');
+        debugPrint('❌ Error sending heartbeat: $error');
       }
     }
   }

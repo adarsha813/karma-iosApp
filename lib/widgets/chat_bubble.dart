@@ -176,7 +176,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
                   width: 36,
                   height: 36,
                   decoration: BoxDecoration(
-                    color: color.withOpacity(0.1),
+                    color: color.withAlpha((0.1 * 255).toInt()),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(icon, color: color, size: 18),
@@ -1140,16 +1140,16 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
             : Colors.black54;
     final Color backgroundColor =
         message.isMe
-            ? Colors.white.withOpacity(0.15)
-            : Colors.grey.withOpacity(0.1);
+            ? Colors.white.withAlpha((0.15 * 255).toInt())
+            : Colors.grey.withAlpha((0.1 * 255).toInt());
 
     return Material(
       color: Colors.transparent,
       child: InkWell(
         onTap: () => _navigateToAstrologerDetail(context, widget.message),
         borderRadius: BorderRadius.circular(12),
-        splashColor: Colors.blue.withOpacity(0.1),
-        highlightColor: Colors.blue.withOpacity(0.05),
+        splashColor: Colors.blue.withAlpha((0.1 * 255).toInt()),
+        highlightColor: Colors.blue.withAlpha((0.05 * 255).toInt()),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
           decoration: BoxDecoration(
@@ -1158,8 +1158,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
             border: Border.all(
               color:
                   message.isMe
-                      ? Colors.white.withOpacity(0.2)
-                      : Colors.grey.withOpacity(0.3),
+                      ? Colors.white.withAlpha((0.2 * 255).toInt())
+                      : Colors.grey.withAlpha((0.3 * 255).toInt()),
               width: 1,
             ),
           ),
@@ -1187,7 +1187,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
                   child: Icon(
                     Icons.chevron_right_rounded,
                     size: 16,
-                    color: textColor.withOpacity(0.6),
+                    color: textColor.withAlpha((0.6 * 255).toInt()),
                   ),
                 ),
             ],
@@ -1246,10 +1246,10 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       height: 28,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: Border.all(color: Colors.white.withOpacity(0.3), width: 1.5),
+        border: Border.all(color: Colors.white.withAlpha((0.3 * 255).toInt()), width: 1.5),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withAlpha((0.1 * 255).toInt()),
             blurRadius: 4,
             offset: const Offset(0, 2),
           ),
@@ -1306,7 +1306,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
                       width: 80,
                       height: 9,
                       decoration: BoxDecoration(
-                        color: textColor.withOpacity(0.3),
+                        color: textColor.withAlpha((0.3 * 255).toInt()),
                         borderRadius: BorderRadius.circular(4),
                       ),
                     )

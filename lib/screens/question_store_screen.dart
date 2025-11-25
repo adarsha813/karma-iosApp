@@ -403,8 +403,8 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
   }
 
   void _logPaymentEvent(String event, Map<String, dynamic> params) {
-    // For now, just print - you can integrate with your analytics service
-    print('Payment Event: $event - $params');
+    // For now, just debugPrint - you can integrate with your analytics service
+    debugPrint('Payment Event: $event - $params');
   }
 
   void _logPaymentSuccess(
@@ -412,7 +412,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
     String? userId,
     String paymentIntentId,
   ) {
-    print(
+    debugPrint(
       'Payment successful: $questions questions for user $userId, Payment ID: $paymentIntentId',
     );
   }

@@ -1,11 +1,12 @@
 // scripts/translate_all_languages.dart
 import 'dart:io';
 import 'dart:convert'; // ✅ Add this line
+import 'package:flutter/foundation.dart';
 
 void main(List<String> arguments) async {
   if (arguments.isEmpty) {
-    print('Usage: dart translate_all_languages.dart <api_key>');
-    print('Example: dart translate_all_languages.dart YOUR_API_KEY');
+    debugPrint('Usage: dart translate_all_languages.dart <api_key>');
+    debugPrint('Example: dart translate_all_languages.dart YOUR_API_KEY');
     return;
   }
 
@@ -86,10 +87,12 @@ void main(List<String> arguments) async {
     'zu',
   ];
 
-  print('🚀 Starting batch translation for ${languages.length} languages...');
+  debugPrint(
+    '🚀 Starting batch translation for ${languages.length} languages...',
+  );
 
   for (final language in languages) {
-    print('\n--- Translating $language ---');
+    debugPrint('\n--- Translating $language ---');
 
     // Run the translation script for each language
     final process = await Process.start('dart', [
@@ -99,21 +102,21 @@ void main(List<String> arguments) async {
     ], runInShell: true);
 
     // Capture output
-    process.stdout.transform(utf8.decoder).listen(print);
-    process.stderr.transform(utf8.decoder).listen(print);
+    process.stdout.transform(utf8.decoder).listen(debugPrint);
+    process.stderr.transform(utf8.decoder).listen(debugPrint);
 
     // Wait for completion
     final exitCode = await process.exitCode;
 
     if (exitCode == 0) {
-      print('✅ Successfully translated $language');
+      debugPrint('✅ Successfully translated $language');
     } else {
-      print('❌ Failed to translate $language');
+      debugPrint('❌ Failed to translate $language');
     }
 
     // Add delay between languages to avoid overwhelming the API
     await Future.delayed(const Duration(seconds: 2));
   }
 
-  print('\n🎉 Batch translation completed!');
+  debugPrint('\n🎉 Batch translation completed!');
 }

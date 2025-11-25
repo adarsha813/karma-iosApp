@@ -10,7 +10,7 @@ import '../providers/profile_provider.dart';
 import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import '../l10n/app_localizations.dart';
-import '../widgets/Avaterloder.dart';
+import '../widgets/avaterloder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'chat_screen.dart';
 import 'package:flutter/cupertino.dart';

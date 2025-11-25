@@ -10,7 +10,7 @@ void main() {
       home: OnboardingScreen(
         profileProvider: profileProvider, // pass it here
         onFinish: () {
-          print("Onboarding finished!");
+          debugPrint("Onboarding finished!");
         },
       ),
     ),

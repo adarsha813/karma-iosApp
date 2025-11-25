@@ -36,13 +36,13 @@ class AboutUsPage extends StatelessWidget {
           end: Alignment.bottomRight,
           colors: [
             Theme.of(context).primaryColor,
-            Theme.of(context).primaryColor.withOpacity(0.8),
+            Theme.of(context).primaryColor.withAlpha((0.8 * 255).toInt()),
           ],
         ),
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withAlpha((0.1 * 255).toInt()),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -54,7 +54,7 @@ class AboutUsPage extends StatelessWidget {
             width: 80,
             height: 80,
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.2),
+              color: Colors.white.withAlpha((0.2 * 255).toInt()),
               shape: BoxShape.circle,
             ),
             child: Icon(
@@ -96,7 +96,7 @@ class AboutUsPage extends StatelessWidget {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 4,
-      shadowColor: Colors.grey.withOpacity(0.3),
+      shadowColor: Colors.grey.withAlpha((0.3 * 255).toInt()),
       child: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
@@ -154,7 +154,7 @@ class AboutUsPage extends StatelessWidget {
           width: 40,
           height: 40,
           decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor.withOpacity(0.1),
+            color: Theme.of(context).primaryColor.withAlpha((0.1 * 255).toInt()),
             shape: BoxShape.circle,
           ),
           child: Icon(icon, size: 20, color: Theme.of(context).primaryColor),
@@ -192,7 +192,7 @@ class AboutUsPage extends StatelessWidget {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 4,
-      shadowColor: Colors.grey.withOpacity(0.3),
+      shadowColor: Colors.grey.withAlpha((0.3 * 255).toInt()),
       child: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
@@ -204,7 +204,7 @@ class AboutUsPage extends StatelessWidget {
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor.withOpacity(0.1),
+                    color: Theme.of(context).primaryColor.withAlpha((0.1 * 255).toInt()),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
@@ -339,7 +339,7 @@ class AboutUsPage extends StatelessWidget {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 4,
-      shadowColor: Colors.grey.withOpacity(0.3),
+      shadowColor: Colors.grey.withAlpha((0.3 * 255).toInt()),
       child: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
@@ -351,7 +351,7 @@ class AboutUsPage extends StatelessWidget {
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor.withOpacity(0.1),
+                    color: Theme.of(context).primaryColor.withAlpha((0.1 * 255).toInt()),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(

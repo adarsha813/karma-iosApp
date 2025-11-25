@@ -1,5 +1,6 @@
 // scripts/fix_broken_translations.dart
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 
 void main() {
   final languages = ['mg']; // Add other languages if needed
@@ -9,7 +10,7 @@ void main() {
     fixCupertinoFile(lang);
   }
 
-  print('✅ Fixed broken translations');
+  debugPrint('✅ Fixed broken translations');
 }
 
 void fixMaterialFile(String languageCode) {
@@ -17,7 +18,7 @@ void fixMaterialFile(String languageCode) {
   final file = File(fileName);
 
   if (!file.existsSync()) {
-    print('❌ File not found: $fileName');
+    debugPrint('❌ File not found: $fileName');
     return;
   }
 
@@ -39,7 +40,7 @@ void fixMaterialFile(String languageCode) {
   content = content.replaceAll('\\\\', '\\'); // Fix double backslashes
 
   file.writeAsStringSync(content);
-  print('✅ Fixed Material: $fileName');
+  debugPrint('✅ Fixed Material: $fileName');
 }
 
 void fixCupertinoFile(String languageCode) {
@@ -47,7 +48,7 @@ void fixCupertinoFile(String languageCode) {
   final file = File(fileName);
 
   if (!file.existsSync()) {
-    print('❌ File not found: $fileName');
+    debugPrint('❌ File not found: $fileName');
     return;
   }
 
@@ -71,5 +72,5 @@ void fixCupertinoFile(String languageCode) {
   content = content.replaceAll('\\\\', '\\'); // Fix double backslashes
 
   file.writeAsStringSync(content);
-  print('✅ Fixed Cupertino: $fileName');
+  debugPrint('✅ Fixed Cupertino: $fileName');
 }

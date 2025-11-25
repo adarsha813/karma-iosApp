@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 class CupertinoLocalizationsTt extends DefaultCupertinoLocalizations {
   const CupertinoLocalizationsTt();
 
-  // TODO: Add translations for Tatar
+// Tatar
 
   // Getters
   @override

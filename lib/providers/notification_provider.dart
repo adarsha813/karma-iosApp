@@ -24,7 +24,7 @@ class NotificationProvider extends ChangeNotifier {
 
   bool _isNotificationScreenOpen = false;
   bool get isNotificationScreenOpen {
-    print('👁️ isNotificationScreenOpen read: $_isNotificationScreenOpen');
+    debugPrint('👁️ isNotificationScreenOpen read: $_isNotificationScreenOpen');
     return _isNotificationScreenOpen;
   }
 
@@ -57,7 +57,7 @@ class NotificationProvider extends ChangeNotifier {
       await _clearAllSystemNotifications();
     }
 
-    print("🔔 Notifications ${value ? 'enabled' : 'disabled'}");
+    debugPrint("🔔 Notifications ${value ? 'enabled' : 'disabled'}");
   }
 
   // ✅ NEW: Clear all system notifications
@@ -65,9 +65,9 @@ class NotificationProvider extends ChangeNotifier {
     try {
       final notificationsPlugin = FlutterLocalNotificationsPlugin();
       await notificationsPlugin.cancelAll();
-      print("🗑️ Cleared all system notifications");
+      debugPrint("🗑️ Cleared all system notifications");
     } catch (e) {
-      print("⚠️ Error clearing system notifications: $e");
+      debugPrint("⚠️ Error clearing system notifications: $e");
     }
   }
 

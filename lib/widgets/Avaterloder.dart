@@ -92,7 +92,7 @@ class _OrbitPainter extends CustomPainter {
       final Paint paint =
           Paint()
             ..strokeCap = StrokeCap.round
-            ..color = color.withOpacity(opacity)
+            ..color = color.withAlpha((opacity * 255).toInt())
             ..strokeWidth = 4 - (i * 0.6);
 
       canvas.drawPoints(PointMode.points, [Offset(dx, dy)], paint);

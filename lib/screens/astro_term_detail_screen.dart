@@ -84,7 +84,7 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
       backgroundColor: Theme.of(context).primaryColor,
       foregroundColor: Colors.white,
       elevation: 2,
-      shadowColor: Colors.black.withOpacity(0.3),
+      shadowColor: Colors.black.withAlpha((0.3 * 255).toInt()),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(12)),
       ),
@@ -112,14 +112,14 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Theme.of(context).primaryColor.withOpacity(0.8),
-            Theme.of(context).primaryColor.withOpacity(0.6),
+            Theme.of(context).primaryColor.withAlpha((0.8 * 255).toInt()),
+            Theme.of(context).primaryColor.withAlpha((0.6 * 255).toInt()),
           ],
         ),
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withAlpha((0.1 * 255).toInt()),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -164,7 +164,7 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 4,
-      shadowColor: Colors.grey.withOpacity(0.3),
+      shadowColor: Colors.grey.withAlpha((0.3 * 255).toInt()),
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -176,7 +176,7 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
                   width: 36,
                   height: 36,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor.withOpacity(0.1),
+                    color: Theme.of(context).primaryColor.withAlpha((0.1 * 255).toInt()),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
@@ -221,7 +221,7 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 4,
-      shadowColor: Colors.grey.withOpacity(0.3),
+      shadowColor: Colors.grey.withAlpha((0.3 * 255).toInt()),
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -233,7 +233,7 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
                   width: 36,
                   height: 36,
                   decoration: BoxDecoration(
-                    color: Colors.green.withOpacity(0.1),
+                    color: Colors.green.withAlpha((0.1 * 255).toInt()),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
@@ -272,7 +272,7 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 2,
-      shadowColor: Colors.grey.withOpacity(0.2),
+      shadowColor: Colors.grey.withAlpha((0.2 * 255).toInt()),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Row(
@@ -299,7 +299,7 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 4,
-      shadowColor: Colors.grey.withOpacity(0.3),
+      shadowColor: Colors.grey.withAlpha((0.3 * 255).toInt()),
       child: Padding(
         padding: const EdgeInsets.all(32),
         child: Column(

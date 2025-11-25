@@ -107,9 +107,9 @@ class ProfileService {
       await profileProvider.saveToken(
         token,
       ); // Use saveToken instead of updateToken
-      print('✅ New token stored for user');
+      debugPrint('✅ New token stored for user');
     } catch (e) {
-      print('Error storing new token: $e');
+      debugPrint('Error storing new token: $e');
     }
   }
 

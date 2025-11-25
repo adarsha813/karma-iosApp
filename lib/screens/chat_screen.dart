@@ -564,7 +564,7 @@ class AppLogger {
         'ℹ️ [$timestamp] ${feature != null ? '[$feature] ' : ''}$message';
 
     if (kDebugMode) {
-      print(logMessage);
+      debugPrint(logMessage);
     }
     // In production, send to logging service (Sentry, Firebase Analytics, etc.)
     _sendToAnalytics('info', message, feature);
@@ -581,8 +581,8 @@ class AppLogger {
         '❌ [$timestamp] ${feature != null ? '[$feature] ' : ''}$message: $error';
 
     if (kDebugMode) {
-      print(logMessage);
-      if (stackTrace != null) print('Stack trace: $stackTrace');
+      debugPrint(logMessage);
+      if (stackTrace != null) debugPrint('Stack trace: $stackTrace');
     }
     // Send to error tracking service
     _sendToAnalytics('error', '$message: $error', feature);
@@ -594,7 +594,7 @@ class AppLogger {
         '⚠️ [$timestamp] ${feature != null ? '[$feature] ' : ''}$message';
 
     if (kDebugMode) {
-      print(logMessage);
+      debugPrint(logMessage);
     }
     // In production, send to logging service
     _sendToAnalytics('warning', message, feature);
@@ -606,7 +606,7 @@ class AppLogger {
         '🔒 SECURITY [$timestamp] ${feature != null ? '[$feature] ' : ''}$message';
 
     // Always log security issues
-    print(logMessage);
+    debugPrint(logMessage);
     _sendToAnalytics('security', message, feature, userId: userId);
   }
 
@@ -616,7 +616,7 @@ class AppLogger {
         '🌐 [$timestamp] ${endpoint != null ? '[$endpoint] ' : ''}$message';
 
     if (kDebugMode) {
-      print(logMessage);
+      debugPrint(logMessage);
     }
     _sendToAnalytics('network', message, endpoint);
   }
@@ -2835,10 +2835,10 @@ class _ChatScreenState extends State<ChatScreen>
     String? quotaId,
   }) async {
     try {
-      print('📦 Sending free question');
-      print('UserId: $userId');
-      print('isClarificationFree: $isClarificationFree');
-      print('quotaId: $quotaId');
+      debugPrint('📦 Sending free question');
+      debugPrint('UserId: $userId');
+      debugPrint('isClarificationFree: $isClarificationFree');
+      debugPrint('quotaId: $quotaId');
       await sendQuestion(
         text: text,
         userId: userId,
@@ -4764,7 +4764,7 @@ class _ChatScreenState extends State<ChatScreen>
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
+                    color: Colors.black.withAlpha((0.3 * 255).toInt()),
                     blurRadius: 4,
                     offset: const Offset(0, 2),
                   ),

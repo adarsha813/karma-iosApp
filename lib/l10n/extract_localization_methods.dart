@@ -1,11 +1,12 @@
 // extract_localization_methods.dart
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 
 void main() {
-  print('🚀 Extracting MaterialLocalizations methods...');
+  debugPrint('🚀 Extracting MaterialLocalizations methods...');
   extractMaterialMethods();
 
-  print('\n🚀 Extracting CupertinoLocalizations methods...');
+  debugPrint('\n🚀 Extracting CupertinoLocalizations methods...');
   extractCupertinoMethods();
 }
 
@@ -173,7 +174,7 @@ int get firstDayOfWeekIndex;
 ''';
 
   File('material_methods.txt').writeAsStringSync(materialMethods);
-  print('✅ Material methods saved to material_methods.txt');
+  debugPrint('✅ Material methods saved to material_methods.txt');
 }
 
 void extractCupertinoMethods() {
@@ -226,5 +227,5 @@ List<String> get timerPickerSecondLabels;
 ''';
 
   File('cupertino_methods.txt').writeAsStringSync(cupertinoMethods);
-  print('✅ Cupertino methods saved to cupertino_methods.txt');
+  debugPrint('✅ Cupertino methods saved to cupertino_methods.txt');
 }

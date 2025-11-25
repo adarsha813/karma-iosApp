@@ -1,7 +1,3 @@
-/// environment.dart
-/// Centralized environment configuration
-/// import 'package:uri/uri.dart'; // optional, for parsing URLs
-
 class Environment {
   static const String baseUrl = String.fromEnvironment(
     'BASE_URL',

@@ -1,10 +1,12 @@
+import 'package:flutter/foundation.dart';
+
 class AnalyticsService {
   static final AnalyticsService _instance = AnalyticsService._internal();
   factory AnalyticsService() => _instance;
   AnalyticsService._internal();
 
   void logEvent(String eventName, Map<String, dynamic> parameters) {
-    print('📊 ANALYTICS: $eventName - $parameters');
+    debugPrint('📊 ANALYTICS: $eventName - $parameters');
   }
 
   void logPaymentInitiated(int questions, double amount) {

@@ -1121,7 +1121,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
                           item,
                           style: TextStyle(
                             fontSize: 14,
-                            color: Colors.black.withOpacity(0.5),
+                            color: Colors.black.withAlpha((0.5 * 255).toInt()),
                             fontWeight: FontWeight.w600,
                           ),
                         ),

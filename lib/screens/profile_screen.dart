@@ -765,7 +765,7 @@ class _ProfileScreenState extends State<ProfileScreen>
             Set<MaterialState> states,
           ) {
             if (states.contains(MaterialState.selected)) {
-              return Theme.of(context).colorScheme.primary.withOpacity(0.08);
+              return Theme.of(context).colorScheme.primary.withAlpha((0.08 * 255).toInt());
             }
             // Even rows have a slight background color
             return Colors.transparent;

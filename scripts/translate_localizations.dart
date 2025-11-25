@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:path/path.dart' as path;
 import 'package:http/http.dart' as http;
+import 'package:flutter/foundation.dart';
 
 // Add this function at the beginning of the main function
 Future<bool> ensureFilesExist(String languageCode) async {
@@ -14,8 +15,8 @@ Future<bool> ensureFilesExist(String languageCode) async {
   );
 
   if (!materialFile.existsSync() || !cupertinoFile.existsSync()) {
-    print('❌ Template files not found for $languageCode');
-    print('   Please run: dart generate_all_templates.dart first');
+    debugPrint('❌ Template files not found for $languageCode');
+    debugPrint('   Please run: dart generate_all_templates.dart first');
     return false;
   }
 
@@ -24,8 +25,10 @@ Future<bool> ensureFilesExist(String languageCode) async {
 
 void main(List<String> arguments) async {
   if (arguments.length != 2) {
-    print('Usage: dart translate_localizations.dart <language_code> <api_key>');
-    print('Example: dart translate_localizations.dart yo YOUR_API_KEY');
+    debugPrint(
+      'Usage: dart translate_localizations.dart <language_code> <api_key>',
+    );
+    debugPrint('Example: dart translate_localizations.dart yo YOUR_API_KEY');
     return;
   }
 
@@ -38,7 +41,7 @@ void main(List<String> arguments) async {
 
   final translator = GoogleTranslateService(apiKey);
 
-  print('🚀 Starting translation for $languageCode...');
+  debugPrint('🚀 Starting translation for $languageCode...');
 
   // Translate Material localizations
   await translateMaterialLocalizations(translator, languageCode);
@@ -46,7 +49,7 @@ void main(List<String> arguments) async {
   // Translate Cupertino localizations
   await translateCupertinoLocalizations(translator, languageCode);
 
-  print('✅ Translation completed for $languageCode!');
+  debugPrint('✅ Translation completed for $languageCode!');
 }
 
 Future<void> translateMaterialLocalizations(
@@ -57,7 +60,7 @@ Future<void> translateMaterialLocalizations(
   final filePath = path.join('lib', 'l10n', fileName);
 
   if (!File(filePath).existsSync()) {
-    print('❌ File not found: $filePath');
+    debugPrint('❌ File not found: $filePath');
     return;
   }
 
@@ -67,7 +70,7 @@ Future<void> translateMaterialLocalizations(
   final textsToTranslate = <String, String>{};
   final lineIndices = <String, int>{};
 
-  // Extract all TODO texts to translate
+  // Extract all
   for (int i = 0; i < lines.length; i++) {
     final line = lines[i];
     final todoMatch = RegExp(r"TODO: Translate (.+)").firstMatch(line);
@@ -80,7 +83,7 @@ Future<void> translateMaterialLocalizations(
     }
   }
 
-  print(
+  debugPrint(
     '📝 Found ${textsToTranslate.length} texts to translate for Material...',
   );
 
@@ -96,7 +99,7 @@ Future<void> translateMaterialLocalizations(
     final originalLine = lines[originalLineIndex];
     final translatedText = entry.value;
 
-    // Replace the TODO line with actual translation
+    // Replace the
     final newLine = originalLine.replaceAll(
       RegExp(r"TODO: Translate .+"),
       translatedText,
@@ -107,7 +110,7 @@ Future<void> translateMaterialLocalizations(
 
   // Write updated content back to file
   await File(filePath).writeAsString(lines.join('\n'));
-  print('✅ Material translations saved for $languageCode');
+  debugPrint('✅ Material translations saved for $languageCode');
 }
 
 Future<void> translateCupertinoLocalizations(
@@ -118,7 +121,7 @@ Future<void> translateCupertinoLocalizations(
   final filePath = path.join('lib', 'l10n', fileName);
 
   if (!File(filePath).existsSync()) {
-    print('❌ File not found: $filePath');
+    debugPrint('❌ File not found: $filePath');
     return;
   }
 
@@ -128,7 +131,7 @@ Future<void> translateCupertinoLocalizations(
   final textsToTranslate = <String, String>{};
   final lineIndices = <String, int>{};
 
-  // Extract all TODO texts to translate
+  // Extract all
   for (int i = 0; i < lines.length; i++) {
     final line = lines[i];
     final todoMatch = RegExp(r"TODO: Translate (.+)").firstMatch(line);
@@ -141,7 +144,7 @@ Future<void> translateCupertinoLocalizations(
     }
   }
 
-  print(
+  debugPrint(
     '📝 Found ${textsToTranslate.length} texts to translate for Cupertino...',
   );
 
@@ -157,7 +160,7 @@ Future<void> translateCupertinoLocalizations(
     final originalLine = lines[originalLineIndex];
     final translatedText = entry.value;
 
-    // Replace the TODO line with actual translation
+    // Replace the
     final newLine = originalLine.replaceAll(
       RegExp(r"TODO: Translate .+"),
       translatedText,
@@ -168,7 +171,7 @@ Future<void> translateCupertinoLocalizations(
 
   // Write updated content back to file
   await File(filePath).writeAsString(lines.join('\n'));
-  print('✅ Cupertino translations saved for $languageCode');
+  debugPrint('✅ Cupertino translations saved for $languageCode');
 }
 
 // Copy the GoogleTranslateService class here or import it
@@ -202,13 +205,13 @@ class GoogleTranslateService {
         final data = jsonDecode(response.body);
         return data['data']['translations'][0]['translatedText'];
       } else {
-        print(
+        debugPrint(
           '❌ Translation failed: ${response.statusCode} - ${response.body}',
         );
         return null;
       }
     } catch (e) {
-      print('❌ Translation error: $e');
+      debugPrint('❌ Translation error: $e');
       return null;
     }
   }
@@ -221,7 +224,7 @@ class GoogleTranslateService {
     final Map<String, String> results = {};
 
     for (final entry in texts.entries) {
-      print('🔤 Translating: "${entry.value}"');
+      debugPrint('🔤 Translating: "${entry.value}"');
 
       final translated = await translateText(
         text: entry.value,
@@ -231,7 +234,7 @@ class GoogleTranslateService {
 
       results[entry.key] = translated ?? 'TRANSLATION_FAILED: ${entry.value}';
 
-      print('✅ Translated to: "${results[entry.key]}"');
+      debugPrint('✅ Translated to: "${results[entry.key]}"');
 
       // Add delay to avoid rate limiting
       await Future.delayed(const Duration(milliseconds: 200));

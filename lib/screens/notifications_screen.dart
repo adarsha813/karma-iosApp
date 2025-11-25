@@ -805,7 +805,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                     vertical: 2,
                   ),
                   decoration: BoxDecoration(
-                    color: _getCategoryColor(category).withOpacity(0.1),
+                    color: _getCategoryColor(category).withAlpha((0.1 * 255).toInt()),
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Text(

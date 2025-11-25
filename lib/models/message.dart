@@ -142,7 +142,7 @@ class Message extends ChangeNotifier {
   }
 
   factory Message.fromJson(Map<String, dynamic> json) {
-    print('📥 Raw JSON for message: $json'); // <- make sure this prints
+    debugPrint('📥 Raw JSON for message: $json'); // <- make sure this prints
     String? parsedMongoId;
 
     final rawId = json["_id"];

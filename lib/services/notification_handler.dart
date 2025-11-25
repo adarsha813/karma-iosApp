@@ -44,7 +44,7 @@ class NotificationHandler {
       );
 
       if (!notificationProvider.notificationsEnabled) {
-        print("🔕 App notifications disabled via toggle");
+        debugPrint("🔕 App notifications disabled via toggle");
         return false;
       }
 
@@ -59,13 +59,13 @@ class NotificationHandler {
           await androidPlugin?.areNotificationsEnabled() ?? true;
 
       if (!systemEnabled) {
-        print("🔕 System notifications disabled");
+        debugPrint("🔕 System notifications disabled");
         return false;
       }
 
       return true;
     } catch (e) {
-      print("⚠️ Error checking notification permissions: $e");
+      debugPrint("⚠️ Error checking notification permissions: $e");
       return true; // Default to enabled if there's an error
     }
   }
@@ -101,7 +101,9 @@ class NotificationHandler {
   }) async {
     // ✅ STRICT CHECK: Don't show if disabled (unless forced for critical alerts)
     if (!force && !await _areNotificationsEnabled(context)) {
-      print("🔕 Notifications disabled - skipping ALL system notifications");
+      debugPrint(
+        "🔕 Notifications disabled - skipping ALL system notifications",
+      );
       return;
     }
 
@@ -130,9 +132,9 @@ class NotificationHandler {
       // Clear all pending notifications
       await notificationsPlugin.cancelAll();
 
-      print("🔕 All notifications disabled and cleared");
+      debugPrint("🔕 All notifications disabled and cleared");
     } catch (e) {
-      print("⚠️ Error disabling notifications: $e");
+      debugPrint("⚠️ Error disabling notifications: $e");
     }
   }
 

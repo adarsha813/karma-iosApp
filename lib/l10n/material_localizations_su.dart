@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class MaterialLocalizationsSu extends DefaultMaterialLocalizations {
   MaterialLocalizationsSu();
 
-  // TODO: Add translations for Sundanese
-  
+  // Sundanese
+
   @override
   String get openAppDrawerTooltip => 'TODO: Translate open navigation menu';
 
@@ -99,7 +99,8 @@ class MaterialLocalizationsSu extends DefaultMaterialLocalizations {
   String get timePickerHourModeAnnouncement => 'TODO: Translate select hours';
 
   @override
-  String get timePickerMinuteModeAnnouncement => 'TODO: Translate select minutes';
+  String get timePickerMinuteModeAnnouncement =>
+      'TODO: Translate select minutes';
 
   @override
   String get modalBarrierDismissLabel => 'TODO: Translate dismiss';
@@ -201,10 +202,12 @@ class MaterialLocalizationsSu extends DefaultMaterialLocalizations {
   String get invalidTimeLabel => 'TODO: Translate enter a valid time';
 
   @override
-  String get dialModeButtonLabel => 'TODO: Translate switch to dial picker mode';
+  String get dialModeButtonLabel =>
+      'TODO: Translate switch to dial picker mode';
 
   @override
-  String get inputTimeModeButtonLabel => 'TODO: Translate switch to text input mode';
+  String get inputTimeModeButtonLabel =>
+      'TODO: Translate switch to text input mode';
 
   @override
   String get signedInLabel => 'TODO: Translate signed in';
@@ -222,16 +225,19 @@ class MaterialLocalizationsSu extends DefaultMaterialLocalizations {
   String get collapsedIconTapHint => 'TODO: Translate expand';
 
   @override
-  String get expansionTileExpandedHint => 'TODO: Translate double tap to collapse';
+  String get expansionTileExpandedHint =>
+      'TODO: Translate double tap to collapse';
 
   @override
-  String get expansionTileCollapsedHint => 'TODO: Translate double tap to expand';
+  String get expansionTileCollapsedHint =>
+      'TODO: Translate double tap to expand';
 
   @override
   String get expansionTileExpandedTapHint => 'TODO: Translate collapse';
 
   @override
-  String get expansionTileCollapsedTapHint => 'TODO: Translate expand for more details';
+  String get expansionTileCollapsedTapHint =>
+      'TODO: Translate expand for more details';
 
   @override
   String get expandedHint => 'TODO: Translate collapsed';
@@ -385,7 +391,8 @@ class MaterialLocalizationsSu extends DefaultMaterialLocalizations {
 
   // Methods with Parameters
   @override
-  String aboutListTileTitle(String applicationName) => 'TODO: Translate about $applicationName';
+  String aboutListTileTitle(String applicationName) =>
+      'TODO: Translate about $applicationName';
 
   @override
   String licensesPackageDetailText(int licenseCount) {
@@ -397,7 +404,12 @@ class MaterialLocalizationsSu extends DefaultMaterialLocalizations {
   }
 
   @override
-  String pageRowsInfoTitle(int firstRow, int lastRow, int rowCount, bool rowCountIsApproximate) {
+  String pageRowsInfoTitle(
+    int firstRow,
+    int lastRow,
+    int rowCount,
+    bool rowCountIsApproximate,
+  ) {
     return rowCountIsApproximate
         ? 'TODO: Translate $firstRow–$lastRow of about $rowCount'
         : 'TODO: Translate $firstRow–$lastRow of $rowCount';
@@ -418,29 +430,41 @@ class MaterialLocalizationsSu extends DefaultMaterialLocalizations {
   }
 
   @override
-  String scrimOnTapHint(String modalRouteContentName) => 'TODO: Translate close $modalRouteContentName';
+  String scrimOnTapHint(String modalRouteContentName) =>
+      'TODO: Translate close $modalRouteContentName';
 
   @override
   String formatDecimal(int number) => number.toString();
 
   @override
   String formatHour(TimeOfDay timeOfDay, {bool alwaysUse24HourFormat = false}) {
-    return alwaysUse24HourFormat 
+    return alwaysUse24HourFormat
         ? timeOfDay.hour.toString().padLeft(2, '0')
-        : (timeOfDay.hourOfPeriod == 0 ? 12 : timeOfDay.hourOfPeriod).toString();
+        : (timeOfDay.hourOfPeriod == 0 ? 12 : timeOfDay.hourOfPeriod)
+            .toString();
   }
 
   @override
-  String formatMinute(TimeOfDay timeOfDay) => timeOfDay.minute.toString().padLeft(2, '0');
+  String formatMinute(TimeOfDay timeOfDay) =>
+      timeOfDay.minute.toString().padLeft(2, '0');
 
   @override
-  String formatTimeOfDay(TimeOfDay timeOfDay, {bool alwaysUse24HourFormat = false}) {
-    final hour = formatHour(timeOfDay, alwaysUse24HourFormat: alwaysUse24HourFormat);
+  String formatTimeOfDay(
+    TimeOfDay timeOfDay, {
+    bool alwaysUse24HourFormat = false,
+  }) {
+    final hour = formatHour(
+      timeOfDay,
+      alwaysUse24HourFormat: alwaysUse24HourFormat,
+    );
     final minute = formatMinute(timeOfDay);
     if (alwaysUse24HourFormat) {
       return '$hour:$minute';
     }
-    final period = timeOfDay.period == DayPeriod.am ? anteMeridiemAbbreviation : postMeridiemAbbreviation;
+    final period =
+        timeOfDay.period == DayPeriod.am
+            ? anteMeridiemAbbreviation
+            : postMeridiemAbbreviation;
     return '$hour:$minute $period';
   }
 
@@ -479,15 +503,16 @@ class MaterialLocalizationsSu extends DefaultMaterialLocalizations {
 
   @override
   DateTime? parseCompactDate(String? inputString) {
-    // TODO: Implement parsing for your locale
     return null;
   }
 
   @override
-  String dateRangeStartDateSemanticLabel(String formattedDate) => 'TODO: Translate start date $formattedDate';
+  String dateRangeStartDateSemanticLabel(String formattedDate) =>
+      'TODO: Translate start date $formattedDate';
 
   @override
-  String dateRangeEndDateSemanticLabel(String formattedDate) => 'TODO: Translate end date $formattedDate';
+  String dateRangeEndDateSemanticLabel(String formattedDate) =>
+      'TODO: Translate end date $formattedDate';
 
   @override
   String remainingTextFieldCharacterCount(int remaining) {
@@ -504,8 +529,8 @@ class MaterialLocalizationsSu extends DefaultMaterialLocalizations {
 
   @override
   TimeOfDayFormat timeOfDayFormat({bool alwaysUse24HourFormat = false}) {
-    return alwaysUse24HourFormat 
-        ? TimeOfDayFormat.HH_colon_mm 
+    return alwaysUse24HourFormat
+        ? TimeOfDayFormat.HH_colon_mm
         : TimeOfDayFormat.h_colon_mm_space_a;
   }
 
@@ -515,10 +540,12 @@ class MaterialLocalizationsSu extends DefaultMaterialLocalizations {
   @override
   int get firstDayOfWeekIndex => 0;
 
-  static const LocalizationsDelegate<MaterialLocalizations> delegate = _MaterialLocalizationsSuDelegate();
+  static const LocalizationsDelegate<MaterialLocalizations> delegate =
+      _MaterialLocalizationsSuDelegate();
 }
 
-class _MaterialLocalizationsSuDelegate extends LocalizationsDelegate<MaterialLocalizations> {
+class _MaterialLocalizationsSuDelegate
+    extends LocalizationsDelegate<MaterialLocalizations> {
   const _MaterialLocalizationsSuDelegate();
 
   @override
