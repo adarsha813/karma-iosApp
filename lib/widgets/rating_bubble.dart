@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart'; // Add this
 import '../config/security_config.dart';
 import '../services/error_reporting_service.dart';
 import '../services/rate_limiting_service.dart';
+import '../providers/theme_provider.dart'; // Add this import
 
 class RatingBubble extends StatefulWidget {
   final String questionId;
@@ -94,7 +96,8 @@ class RatingBubbleState extends State<RatingBubble>
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
 
     return Container(
       margin: const EdgeInsets.only(top: 1),
@@ -107,21 +110,21 @@ class RatingBubbleState extends State<RatingBubble>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildStarRatingRow(),
+          _buildStarRatingRow(theme),
           if (_shouldShowFeedbackSection()) ..._buildFeedbackSection(),
         ],
       ),
     );
   }
 
-  Widget _buildStarRatingRow() {
+  Widget _buildStarRatingRow(ThemeData theme) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [1, 2, 3].map((star) => _buildStar(star)).toList(),
+      children: [1, 2, 3].map((star) => _buildStar(star, theme)).toList(),
     );
   }
 
-  Widget _buildStar(int star) {
+  Widget _buildStar(int star, ThemeData theme) {
     return GestureDetector(
       onTap: () => _handleStarTap(star),
       child: ScaleTransition(
@@ -129,14 +132,12 @@ class RatingBubbleState extends State<RatingBubble>
             _selectedRating == star
                 ? _scaleAnimation
                 : const AlwaysStoppedAnimation(1.0),
-        child: Icon(Icons.star, size: 32, color: _getStarColor(star)),
+        child: Icon(Icons.star, size: 32, color: _getStarColor(star, theme)),
       ),
     );
   }
 
-  Color _getStarColor(int star) {
-    final theme = Theme.of(context);
-
+  Color _getStarColor(int star, ThemeData theme) {
     if (_selectedRating != null && star <= _selectedRating!) {
       return theme
           .colorScheme
@@ -152,19 +153,20 @@ class RatingBubbleState extends State<RatingBubble>
   }
 
   List<Widget> _buildFeedbackSection() {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     return [
       const SizedBox(height: 12),
-      _buildFeedbackPrompt(),
+      _buildFeedbackPrompt(theme),
       const SizedBox(height: 8),
-      _buildFeedbackTextField(),
+      _buildFeedbackTextField(theme),
       const SizedBox(height: 8),
-      _buildSubmitButton(),
+      _buildSubmitButton(theme),
     ];
   }
 
-  Widget _buildFeedbackPrompt() {
-    final theme = Theme.of(context);
-
+  Widget _buildFeedbackPrompt(ThemeData theme) {
     return Text(
       "We're sorry you didn't like this answer. Please tell us how we can improve:",
       style: theme.textTheme.bodySmall?.copyWith(
@@ -173,9 +175,7 @@ class RatingBubbleState extends State<RatingBubble>
     );
   }
 
-  Widget _buildFeedbackTextField() {
-    final theme = Theme.of(context);
-
+  Widget _buildFeedbackTextField(ThemeData theme) {
     return TextField(
       controller: _feedbackController,
       focusNode: _feedbackFocusNode,
@@ -198,9 +198,12 @@ class RatingBubbleState extends State<RatingBubble>
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(color: theme.colorScheme.primary),
         ),
-        fillColor: theme.colorScheme.surface,
+        fillColor: theme.colorScheme.surfaceVariant,
         filled: true,
         counterText: '',
+        counterStyle: theme.textTheme.bodySmall?.copyWith(
+          color: theme.colorScheme.onSurfaceVariant,
+        ),
       ),
       style: theme.textTheme.bodyMedium?.copyWith(
         color: theme.colorScheme.onSurface,
@@ -211,38 +214,37 @@ class RatingBubbleState extends State<RatingBubble>
     );
   }
 
-  Widget _buildSubmitButton() {
-    final theme = Theme.of(context);
-
+  Widget _buildSubmitButton(ThemeData theme) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.red, // Keep red for negative feedback
-        foregroundColor: Colors.white,
+        backgroundColor:
+            theme
+                .colorScheme
+                .error, // Use theme error color for negative feedback
+        foregroundColor: theme.colorScheme.onError,
         minimumSize: const Size(double.infinity, 44),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
       onPressed: _isSubmitting ? null : _submitFeedback,
       child:
           _isSubmitting
-              ? _buildLoadingIndicator()
+              ? _buildLoadingIndicator(theme)
               : Text(
                 'Submit Feedback',
                 style: theme.textTheme.labelLarge?.copyWith(
-                  color: Colors.white,
+                  color: theme.colorScheme.onError,
                 ),
               ),
     );
   }
 
-  Widget _buildLoadingIndicator() {
-    final theme = Theme.of(context);
-
+  Widget _buildLoadingIndicator(ThemeData theme) {
     return SizedBox(
       width: 16,
       height: 16,
       child: CircularProgressIndicator(
         strokeWidth: 2,
-        color: theme.colorScheme.onPrimary,
+        color: theme.colorScheme.onError,
       ),
     );
   }
@@ -403,7 +405,8 @@ class RatingBubbleState extends State<RatingBubble>
   }
 
   void _showSnackBar(String message) {
-    final theme = Theme.of(context);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
 
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(

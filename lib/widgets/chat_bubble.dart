@@ -20,6 +20,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../services/astrologerdataService.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:kundali/utils/app_colors.dart';
+import '../providers/theme_provider.dart'; // Add this import
 
 class ChatBubble extends StatefulWidget {
   final Message message;
@@ -484,14 +485,19 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   }
 
   void _showSnackBar(BuildContext context, String message) {
-    // Double-check if we can safely show the snackbar
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     try {
       if (mounted && ScaffoldMessenger.of(context).mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(message),
-            duration: const Duration(seconds: 3),
+            backgroundColor: theme.colorScheme.surface,
             behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
           ),
         );
       }
@@ -559,7 +565,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   }
 
   Widget _buildErrorFallback() {
-    final theme = Theme.of(context);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
@@ -579,7 +586,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   }
 
   BubbleConfig _getBubbleConfig(Message message) {
-    final theme = Theme.of(context);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
     final isDark = theme.brightness == Brightness.dark;
 
     Color bubbleColor;
@@ -589,7 +597,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
 
     if (message.isMe) {
       // User messages - use theme primary color
-      bubbleColor = theme.colorScheme.primary.withOpacity(0.8);
+      bubbleColor = theme.colorScheme.primary;
     } else if (message.isClarification) {
       // Clarification messages - use theme colors
       bubbleColor =
@@ -730,11 +738,11 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     return shouldShow;
   }
 
-  // ✅ ADDED: Build the related question preview
   Widget _buildRelatedQuestionPreview() {
     final questionText = widget.relatedQuestionText!;
     final maxLength = 60;
-    final theme = Theme.of(context);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
 
     String displayText;
     if (questionText.length > maxLength) {
@@ -760,14 +768,13 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
-              color: theme.colorScheme.surface.withOpacity(0.7),
+              color: theme.colorScheme.surfaceVariant,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
               displayText,
-              style: TextStyle(
-                fontSize: 12,
-                color: theme.colorScheme.onSurface.withOpacity(0.7),
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
                 fontStyle: FontStyle.italic,
               ),
               maxLines: 1,
@@ -785,8 +792,10 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     return htmlText.replaceAll(regex, '');
   }
 
-  // Enhanced version with better error handling
   Widget _buildProfessionalGreeting(Message message) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
@@ -794,16 +803,14 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Professional salutation with error boundary
-          _buildCustomerGreeting(),
+          _buildCustomerGreeting(theme),
           const SizedBox(height: 4),
-
-          // Subtle separator
         ],
       ),
     );
   }
 
-  Widget _buildCustomerGreeting() {
+  Widget _buildCustomerGreeting(ThemeData theme) {
     try {
       final profileProvider = Provider.of<ProfileProvider>(
         context,
@@ -811,13 +818,20 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       );
       final customerName = _getCustomerName(profileProvider);
 
-      return Text('Dear $customerName,', style: const TextStyle(fontSize: 15));
+      return Text(
+        'Dear $customerName,',
+        style: theme.textTheme.bodyMedium?.copyWith(
+          color: theme.colorScheme.onSurface,
+        ),
+      );
     } catch (e) {
       debugPrint('Error building customer greeting: $e');
       // Fallback greeting
-      return const Text(
+      return Text(
         'Dear Valued Customer,',
-        style: TextStyle(fontSize: 15),
+        style: theme.textTheme.bodyMedium?.copyWith(
+          color: theme.colorScheme.onSurface,
+        ),
       );
     }
   }
@@ -880,7 +894,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   }
 
   Widget _buildHidingState() {
-    final theme = Theme.of(context);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
@@ -900,7 +915,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
               color: theme.colorScheme.primary,
             ),
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           Text(
             'Hiding...',
             style: TextStyle(
@@ -935,7 +950,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
 
   Widget _buildMessageLabel(BubbleConfig config) {
     final message = widget.message;
-    final theme = Theme.of(context);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 6.0),
@@ -1142,7 +1158,6 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     );
   }
 
-  // Updated _buildAdminCard method
   Widget _buildAdminCard({
     required String adminImage,
     required String adminName,
@@ -1151,7 +1166,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     required bool hasData,
   }) {
     final message = widget.message;
-    final theme = Theme.of(context);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
 
     final Color textColor =
         message.isMe
@@ -1161,7 +1177,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     final Color backgroundColor =
         message.isMe
             ? theme.colorScheme.onPrimary.withOpacity(0.15)
-            : theme.dividerColor.withOpacity(0.5);
+            : theme.colorScheme.surfaceVariant;
 
     return Material(
       color: Colors.transparent,
@@ -1217,28 +1233,30 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     );
   }
 
-  // Keep your existing _buildAdminAvatar method
   Widget _buildAdminAvatar({
     required String adminImage,
     required bool isLoading,
     required bool hasError,
     required String adminName,
   }) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     if (isLoading) {
       return Container(
         width: 28,
         height: 28,
         decoration: BoxDecoration(
-          color: Colors.grey.shade300,
+          color: theme.colorScheme.surfaceVariant,
           shape: BoxShape.circle,
         ),
-        child: const Center(
+        child: Center(
           child: SizedBox(
             width: 12,
             height: 12,
             child: CircularProgressIndicator(
               strokeWidth: 2,
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.grey),
+              color: theme.colorScheme.primary,
             ),
           ),
         ),
@@ -1249,14 +1267,14 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       return Container(
         width: 28,
         height: 28,
-        decoration: const BoxDecoration(
-          color: Colors.grey,
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surfaceVariant,
           shape: BoxShape.circle,
         ),
-        child: const Icon(
+        child: Icon(
           Icons.person_outline_rounded,
           size: 16,
-          color: Colors.white,
+          color: theme.colorScheme.onSurfaceVariant,
         ),
       );
     }
@@ -1267,7 +1285,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
-          color: Colors.white.withAlpha((0.3 * 255).toInt()),
+          color: theme.colorScheme.onPrimary.withOpacity(0.3),
           width: 1.5,
         ),
         boxShadow: [
@@ -1284,22 +1302,25 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
           fit: BoxFit.cover,
           placeholder:
               (context, url) => Container(
-                color: Colors.grey.shade200,
-                child: const Center(
+                color: theme.colorScheme.surfaceVariant,
+                child: Center(
                   child: SizedBox(
                     width: 12,
                     height: 12,
-                    child: CircularProgressIndicator(strokeWidth: 2),
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: theme.colorScheme.primary,
+                    ),
                   ),
                 ),
               ),
           errorWidget:
               (context, url, error) => Container(
-                color: Colors.grey.shade300,
+                color: theme.colorScheme.surfaceVariant,
                 child: Icon(
                   Icons.person_rounded,
                   size: 16,
-                  color: Colors.grey.shade600,
+                  color: theme.colorScheme.onSurfaceVariant,
                 ),
               ),
           fadeInDuration: const Duration(milliseconds: 300),
@@ -1309,12 +1330,14 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     );
   }
 
-  // Keep your existing _buildAdminInfoText method
   Widget _buildAdminInfoText({
     required String adminName,
     required Color textColor,
     required bool isLoading,
   }) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     return Flexible(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1337,8 +1360,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
                       adminName,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 13,
+                      style: theme.textTheme.bodyMedium?.copyWith(
                         fontWeight: FontWeight.w600,
                         color: textColor,
                         decorationThickness: 1.2,
@@ -1399,22 +1421,22 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     );
   }
 
-  // Add these helper methods
   Color _getTextColor(Message message) {
-    final theme = Theme.of(context);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
 
     if (message.isMe) {
-      return theme
-          .colorScheme
-          .onPrimary; // Use theme's onPrimary color for contrast
+      return theme.colorScheme.onPrimary;
     }
 
-    return theme.colorScheme.onSurface; // Use theme's onSurface color
+    return theme.colorScheme.onSurface;
   }
 
   Color _getSecondaryTextColor(Message message) {
-    final theme = Theme.of(context);
-    return theme.textTheme.bodyMedium?.color ?? Colors.grey;
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
+    return theme.colorScheme.onSurface.withOpacity(0.7);
   }
 
   Widget _buildTimestamp(String text) {

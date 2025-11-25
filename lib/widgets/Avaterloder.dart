@@ -1,14 +1,16 @@
 import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/theme_provider.dart';
 
 class AvatarOrbitLoader extends StatefulWidget {
   final double size; // diameter of the loader
-  final Color color;
+  final Color? color; // Make color optional
   const AvatarOrbitLoader({
     super.key,
     required this.size,
-    this.color = Colors.blue,
+    this.color, // Now optional
   });
 
   @override
@@ -36,6 +38,15 @@ class _AvatarOrbitLoaderState extends State<AvatarOrbitLoader>
 
   @override
   Widget build(BuildContext context) {
+    // Get the theme
+    final theme = Provider.of<ThemeProvider>(
+      context,
+      listen: false,
+    ).getCurrentTheme(context);
+
+    // Determine the color to use: provided color or theme primary color
+    final loaderColor = widget.color ?? theme.colorScheme.primary;
+
     return SizedBox(
       width: widget.size,
       height: widget.size,
@@ -45,7 +56,7 @@ class _AvatarOrbitLoaderState extends State<AvatarOrbitLoader>
           return CustomPaint(
             painter: _OrbitPainter(
               progress: _controller.value,
-              color: widget.color,
+              color: loaderColor,
             ),
           );
         },

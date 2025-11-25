@@ -43,6 +43,7 @@ import 'package:kundali/screens/AboutUsPage.dart';
 import '../l10n/app_localizations.dart';
 import '../models/astro_term.dart' as models;
 import '../services/astrologerdataService.dart';
+import '../providers/theme_provider.dart'; // Add this import
 
 bool verifyCertificate(X509Certificate cert, List<String> allowedFingerprints) {
   // Get DER bytes directly from the certificate
@@ -2938,13 +2939,14 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   void _showErrorSnackbar(String message) {
-    final theme = Theme.of(context);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
 
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(message),
-          backgroundColor: theme.colorScheme.error, // Use theme's error color
+          backgroundColor: theme.colorScheme.error,
           behavior: SnackBarBehavior.floating,
           duration: const Duration(seconds: 3),
         ),
@@ -2953,7 +2955,8 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   void _showSuccessSnackbar(String message) {
-    final theme = Theme.of(context);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
 
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -2962,7 +2965,7 @@ class _ChatScreenState extends State<ChatScreen>
             message,
             style: theme.textTheme.bodyLarge?.copyWith(color: Colors.white),
           ),
-          backgroundColor: Colors.green.shade600, // Success color
+          backgroundColor: Colors.green.shade600,
           behavior: SnackBarBehavior.floating,
           duration: const Duration(seconds: 2),
         ),
@@ -3432,7 +3435,8 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   void _showSimilarQuestionDialog(String questionText) {
-    final theme = Theme.of(context);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
 
     showDialog(
       context: context,
@@ -3473,14 +3477,14 @@ class _ChatScreenState extends State<ChatScreen>
                     Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: theme.colorScheme.surface.withOpacity(0.5),
+                        color: theme.colorScheme.surfaceVariant,
                         borderRadius: BorderRadius.circular(6),
                       ),
                       child: Text(
                         '"${questionText.length > 100 ? '${questionText.substring(0, 100)}...' : questionText}"',
                         style: theme.textTheme.bodySmall?.copyWith(
                           fontStyle: FontStyle.italic,
-                          color: theme.colorScheme.onSurface.withOpacity(0.7),
+                          color: theme.colorScheme.onSurfaceVariant,
                         ),
                       ),
                     ),
@@ -4314,27 +4318,31 @@ class _ChatScreenState extends State<ChatScreen>
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
 
     return Scaffold(
-      appBar: _buildAppBar(l10n),
-      drawer: _buildDrawer(l10n),
-      body: _buildChatBody(l10n),
+      appBar: _buildAppBar(context, theme),
+      drawer: _buildDrawer(context, theme),
+      body: Container(
+        color: theme.colorScheme.background,
+        child: _buildChatBody(context, theme),
+      ),
     );
   }
 
-  AppBar _buildAppBar(AppLocalizations l10n) {
-    final theme = Theme.of(context);
+  AppBar _buildAppBar(BuildContext context, ThemeData theme) {
+    final l10n = AppLocalizations.of(context)!;
 
     return AppBar(
       title: Text(
         l10n.chatTitle,
         style: theme.textTheme.titleLarge?.copyWith(
-          color: theme.colorScheme.onPrimary,
+          color: theme.colorScheme.onSurface,
         ),
       ),
-      backgroundColor: theme.colorScheme.surface,
-      foregroundColor: theme.colorScheme.primary,
+      backgroundColor: theme.appBarTheme.backgroundColor,
+      foregroundColor: theme.appBarTheme.foregroundColor,
       elevation: 0,
       leading: Consumer<HoroscopeProvider>(
         builder: (context, horoscopeProvider, _) {
@@ -4342,7 +4350,10 @@ class _ChatScreenState extends State<ChatScreen>
           return Stack(
             children: [
               IconButton(
-                icon: Icon(Icons.menu, color: theme.colorScheme.primary),
+                icon: Icon(
+                  Icons.menu,
+                  color: theme.appBarTheme.foregroundColor,
+                ),
                 onPressed: () => Scaffold.of(context).openDrawer(),
               ),
               if (hasUnread)
@@ -4353,7 +4364,7 @@ class _ChatScreenState extends State<ChatScreen>
                     width: 10,
                     height: 10,
                     decoration: BoxDecoration(
-                      color: Colors.red,
+                      color: theme.colorScheme.error,
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -4364,17 +4375,18 @@ class _ChatScreenState extends State<ChatScreen>
       ),
       actions: [
         IconButton(
-          icon: Icon(Icons.lightbulb_outline, color: theme.colorScheme.primary),
+          icon: Icon(
+            Icons.lightbulb_outline,
+            color: theme.appBarTheme.foregroundColor,
+          ),
           onPressed: _openHowToAskScreen,
         ),
-        _buildNotificationIcon(),
+        _buildNotificationIcon(theme),
       ],
     );
   }
 
-  Widget _buildNotificationIcon() {
-    final theme = Theme.of(context);
-
+  Widget _buildNotificationIcon(ThemeData theme) {
     return Consumer<NotificationProvider>(
       builder: (context, provider, _) {
         return IconButton(
@@ -4387,11 +4399,16 @@ class _ChatScreenState extends State<ChatScreen>
                     ),
                     child: Icon(
                       Icons.notifications,
-                      color: theme.colorScheme.primary,
+                      color: theme.appBarTheme.foregroundColor,
                     ),
-                    badgeStyle: badges.BadgeStyle(badgeColor: Colors.red),
+                    badgeStyle: badges.BadgeStyle(
+                      badgeColor: theme.colorScheme.error,
+                    ),
                   )
-                  : Icon(Icons.notifications, color: theme.colorScheme.primary),
+                  : Icon(
+                    Icons.notifications,
+                    color: theme.appBarTheme.foregroundColor,
+                  ),
           onPressed: _openNotificationsScreen,
         );
       },
@@ -4492,7 +4509,8 @@ class _ChatScreenState extends State<ChatScreen>
     }
   }
 */
-  Widget _buildDrawer(AppLocalizations l10n) {
+  Widget _buildDrawer(BuildContext context, ThemeData theme) {
+    final l10n = AppLocalizations.of(context)!;
     final profileProvider = Provider.of<ProfileProvider>(
       context,
       listen: false,
@@ -4502,6 +4520,7 @@ class _ChatScreenState extends State<ChatScreen>
     return Consumer<HoroscopeProvider>(
       builder: (context, horoscopeProvider, _) {
         return Drawer(
+          backgroundColor: theme.colorScheme.surface,
           child: SafeArea(
             child: Column(
               children: [
@@ -4513,49 +4532,60 @@ class _ChatScreenState extends State<ChatScreen>
                         Icons.person,
                         l10n.drawerAstroProfile,
                         ProfileScreen(userId: userId ?? ''),
+                        theme: theme,
                       ),
                       _buildDrawerItem(
                         Icons.auto_awesome,
                         l10n.drawerDailyHoroscope,
                         DailyHoroscopeScreen(userId: userId),
+                        theme: theme,
                         badge:
                             horoscopeProvider.unreadCount > 0
-                                ? _buildBadge(horoscopeProvider.unreadCount)
+                                ? _buildBadge(
+                                  horoscopeProvider.unreadCount,
+                                  theme,
+                                )
                                 : null,
                       ),
                       _buildDrawerItem(
                         Icons.shopping_cart,
                         l10n.drawerBuyQuestions,
                         const QuestionStoreScreen(),
+                        theme: theme,
                       ),
                       _buildDrawerItem(
                         Icons.menu_book,
                         l10n.drawerAstroDictionary,
                         const AstroDictionaryScreen(),
+                        theme: theme,
                       ),
                       _buildDrawerItem(
                         Icons.settings,
                         l10n.drawerSettings,
                         const SettingsScreen(),
+                        theme: theme,
                       ),
                       _buildDrawerItem(
                         Icons.support_agent,
                         l10n.drawerCustomerSupport,
                         const CustomerSupportPage(),
+                        theme: theme,
                       ),
                       _buildDrawerItem(
                         Icons.info_outline,
                         l10n.drawerAbout,
                         const AboutUsPage(),
+                        theme: theme,
                       ),
                     ],
                   ),
                 ),
-                const Divider(),
+                Divider(color: theme.dividerColor),
                 _buildDrawerItem(
                   Icons.settings_suggest,
                   l10n.drawerProfileSettings,
                   const ProfileSettingsScreen(),
+                  theme: theme,
                 ),
               ],
             ),
@@ -4565,16 +4595,16 @@ class _ChatScreenState extends State<ChatScreen>
     );
   }
 
-  Widget _buildBadge(int count) {
+  Widget _buildBadge(int count, ThemeData theme) {
     return Container(
       padding: const EdgeInsets.all(4),
-      decoration: const BoxDecoration(
-        color: Colors.red,
+      decoration: BoxDecoration(
+        color: theme.colorScheme.error,
         shape: BoxShape.circle,
       ),
       child: Text(
         count.toString(),
-        style: const TextStyle(color: Colors.white, fontSize: 12),
+        style: TextStyle(color: theme.colorScheme.onError, fontSize: 12),
       ),
     );
   }
@@ -4583,10 +4613,9 @@ class _ChatScreenState extends State<ChatScreen>
     IconData icon,
     String title,
     Widget screen, {
+    required ThemeData theme,
     Widget? badge,
   }) {
-    final theme = Theme.of(context);
-
     return ListTile(
       leading: Icon(icon, color: theme.colorScheme.primary),
       title: Row(
@@ -4607,7 +4636,9 @@ class _ChatScreenState extends State<ChatScreen>
     );
   }
 
-  Widget _buildChatBody(AppLocalizations l10n) {
+  Widget _buildChatBody(BuildContext context, ThemeData theme) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Stack(
       children: [
         Column(
@@ -4618,24 +4649,22 @@ class _ChatScreenState extends State<ChatScreen>
                   final dictionaryMap = dictProvider.dictionaryMap;
 
                   if (chatService.messages.isEmpty) {
-                    return _buildEmptyState(l10n);
+                    return _buildEmptyState(l10n, theme);
                   }
 
-                  return _buildMessageList(chatService, dictionaryMap);
+                  return _buildMessageList(chatService, dictionaryMap, theme);
                 },
               ),
             ),
-            _buildMessageInput(l10n),
+            _buildMessageInput(l10n, theme),
           ],
         ),
-        _buildScrollToBottomButton(),
+        _buildScrollToBottomButton(theme),
       ],
     );
   }
 
-  Widget _buildEmptyState(AppLocalizations l10n) {
-    final theme = Theme.of(context);
-
+  Widget _buildEmptyState(AppLocalizations l10n, ThemeData theme) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -4713,6 +4742,7 @@ class _ChatScreenState extends State<ChatScreen>
   Widget _buildMessageList(
     SecureChatService chatService,
     Map<String, dynamic> dictionaryMap,
+    ThemeData theme,
   ) {
     final questionAnswerRelations = _precomputeQuestionAnswerRelations();
 
@@ -4742,9 +4772,7 @@ class _ChatScreenState extends State<ChatScreen>
     );
   }
 
-  Widget _buildMessageInput(AppLocalizations l10n) {
-    final theme = Theme.of(context);
-
+  Widget _buildMessageInput(AppLocalizations l10n, ThemeData theme) {
     return Container(
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
@@ -4782,8 +4810,8 @@ class _ChatScreenState extends State<ChatScreen>
                 filled: true,
                 fillColor:
                     _isInputEnabled
-                        ? theme.colorScheme.surface
-                        : theme.colorScheme.surface.withOpacity(0.5),
+                        ? theme.colorScheme.surfaceVariant
+                        : theme.colorScheme.surfaceVariant.withOpacity(0.5),
               ),
               minLines: 1,
               maxLines: 3,
@@ -4799,15 +4827,13 @@ class _ChatScreenState extends State<ChatScreen>
             ),
           ),
           const SizedBox(width: 8),
-          _buildSendButton(),
+          _buildSendButton(theme),
         ],
       ),
     );
   }
 
-  Widget _buildSendButton() {
-    final theme = Theme.of(context);
-
+  Widget _buildSendButton(ThemeData theme) {
     return _isSending
         ? Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -4844,9 +4870,7 @@ class _ChatScreenState extends State<ChatScreen>
         );
   }
 
-  Widget _buildScrollToBottomButton() {
-    final theme = Theme.of(context);
-
+  Widget _buildScrollToBottomButton(ThemeData theme) {
     return ValueListenableBuilder<bool>(
       valueListenable: _showButtonNotifier,
       builder: (context, showButton, child) {

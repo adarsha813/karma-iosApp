@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/theme_provider.dart';
 
 class BouncingDots extends StatefulWidget {
-  final Color color;
+  final Color? color; // Make color optional
   final double size;
   final Duration duration;
 
   const BouncingDots({
     super.key,
-    this.color = Colors.black,
+    this.color,
     this.size = 2.0,
     this.duration = const Duration(milliseconds: 1200),
   });
@@ -35,6 +37,15 @@ class _BouncingDotsState extends State<BouncingDots>
 
   @override
   Widget build(BuildContext context) {
+    // Get the theme
+    final theme = Provider.of<ThemeProvider>(
+      context,
+      listen: false,
+    ).getCurrentTheme(context);
+
+    // Determine the color to use
+    final dotColor = widget.color ?? theme.colorScheme.primary;
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: List.generate(3, (index) {
@@ -60,7 +71,7 @@ class _BouncingDotsState extends State<BouncingDots>
                     width: widget.size,
                     height: widget.size,
                     decoration: BoxDecoration(
-                      color: widget.color,
+                      color: dotColor,
                       shape: BoxShape.circle,
                     ),
                   ),

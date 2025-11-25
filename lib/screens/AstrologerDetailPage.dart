@@ -2,10 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:shimmer/shimmer.dart';
 import '../providers/profile_provider.dart';
 import '../services/secure_astrologer_service.dart';
-import '../utils/enterprise_animations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:share_plus/share_plus.dart';
 import '../l10n/app_localizations.dart'; // Add this import
@@ -738,83 +736,140 @@ class AstrologerDetailShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return SafeArea(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            _buildSimpleProfileShimmer(),
+            const SizedBox(height: 24),
+            _buildSimpleFavoriteShimmer(),
+            const SizedBox(height: 24),
+            _buildSimpleDetailsShimmer(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSimpleProfileShimmer() {
+    return Column(
+      children: [
+        // Simple circle for avatar
+        Container(
+          width: 120,
+          height: 120,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: theme.colorScheme.surfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 16),
+        // Simple rectangles for text
+        Container(
+          width: 200,
+          height: 24,
+          decoration: BoxDecoration(
+            color: theme.colorScheme.surfaceVariant,
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+        const SizedBox(height: 8),
+        Container(
+          width: 150,
+          height: 16,
+          decoration: BoxDecoration(
+            color: theme.colorScheme.surfaceVariant,
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSimpleFavoriteShimmer() {
+    return Container(
+      width: double.infinity,
+      height: 56,
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceVariant,
+        borderRadius: BorderRadius.circular(12),
+      ),
+    );
+  }
+
+  Widget _buildSimpleDetailsShimmer() {
+    return Column(
+      children: [
+        _buildSimpleDetailSection(),
+        const SizedBox(height: 16),
+        _buildSimpleDetailSection(),
+      ],
+    );
+  }
+
+  Widget _buildSimpleDetailSection() {
+    return Container(
+      width: double.infinity,
       padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceVariant,
+        borderRadius: BorderRadius.circular(16),
+      ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Profile header shimmer
-          Shimmer.fromColors(
-            baseColor: theme.colorScheme.surfaceVariant,
-            highlightColor: theme.colorScheme.surface,
-            child: Column(
-              children: [
-                Container(
-                  width: 120,
-                  height: 120,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: theme.colorScheme.onSurface.withOpacity(0.3),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                Container(
-                  width: 200,
-                  height: 24,
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.onSurface.withOpacity(0.3),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Container(
-                  width: 150,
-                  height: 16,
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.onSurface.withOpacity(0.3),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                ),
-              ],
+          Container(
+            width: 150,
+            height: 20,
+            decoration: BoxDecoration(
+              color: theme.colorScheme.onSurface.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(8),
             ),
           ),
-          const SizedBox(height: 24),
-          // Favorite button shimmer
-          Shimmer.fromColors(
-            baseColor: theme.colorScheme.surfaceVariant,
-            highlightColor: theme.colorScheme.surface,
-            child: Container(
-              width: double.infinity,
-              height: 56,
-              decoration: BoxDecoration(
-                color: theme.colorScheme.onSurface.withOpacity(0.3),
-                borderRadius: BorderRadius.circular(12),
-              ),
+          const SizedBox(height: 16),
+          Container(
+            width: double.infinity,
+            height: 14,
+            decoration: BoxDecoration(
+              color: theme.colorScheme.onSurface.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(8),
             ),
           ),
-          const SizedBox(height: 24),
-          // Details shimmer
-          ...List.generate(
-            3,
-            (index) => Padding(
-              padding: const EdgeInsets.only(bottom: 16),
-              child: Shimmer.fromColors(
-                baseColor: theme.colorScheme.surfaceVariant,
-                highlightColor: theme.colorScheme.surface,
-                child: Container(
-                  width: double.infinity,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.onSurface.withOpacity(0.3),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-              ),
+          const SizedBox(height: 8),
+          Container(
+            width: double.infinity,
+            height: 14,
+            decoration: BoxDecoration(
+              color: theme.colorScheme.onSurface.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(8),
             ),
           ),
         ],
       ),
     );
   }
+}
+
+class SecurityShield extends StatelessWidget {
+  final Widget child;
+
+  const SecurityShield({super.key, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return child; // In real implementation, add security wrappers here
+  }
+}
+
+class AstrologerException implements Exception {
+  final String message;
+  final String code;
+
+  const AstrologerException(this.message, this.code);
+
+  @override
+  String toString() => 'AstrologerException: $message ($code)';
 }
 
 class EnterpriseErrorWidget extends StatelessWidget {
