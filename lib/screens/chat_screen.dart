@@ -2938,11 +2938,14 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   void _showErrorSnackbar(String message) {
+    final theme = Theme.of(context);
+
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(message),
-          backgroundColor: Colors.red,
+          backgroundColor: theme.colorScheme.error, // Use theme's error color
+          behavior: SnackBarBehavior.floating,
           duration: const Duration(seconds: 3),
         ),
       );
@@ -2950,11 +2953,17 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   void _showSuccessSnackbar(String message) {
+    final theme = Theme.of(context);
+
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(message),
-          backgroundColor: Colors.green,
+          content: Text(
+            message,
+            style: theme.textTheme.bodyLarge?.copyWith(color: Colors.white),
+          ),
+          backgroundColor: Colors.green.shade600, // Success color
+          behavior: SnackBarBehavior.floating,
           duration: const Duration(seconds: 2),
         ),
       );
@@ -3423,19 +3432,24 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   void _showSimilarQuestionDialog(String questionText) {
+    final theme = Theme.of(context);
+
     showDialog(
       context: context,
       barrierDismissible: false,
       builder:
           (_) => AlertDialog(
+            backgroundColor: theme.colorScheme.surface,
             title: Row(
               children: [
                 Icon(Icons.lightbulb_outline, color: Colors.orange),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Expanded(
                   child: Text(
                     'Similar Question Found',
-                    style: TextStyle(fontSize: 16),
+                    style: theme.textTheme.titleLarge?.copyWith(
+                      color: theme.colorScheme.onSurface,
+                    ),
                   ),
                 ),
               ],
@@ -3451,32 +3465,52 @@ class _ChatScreenState extends State<ChatScreen>
                   children: [
                     Text(
                       'A similar question was asked recently. Please rephrase your question for a better response.',
-                      style: TextStyle(fontSize: 14),
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: theme.colorScheme.onSurface,
+                      ),
                     ),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
                     Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade100,
+                        color: theme.colorScheme.surface.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(6),
                       ),
                       child: Text(
                         '"${questionText.length > 100 ? '${questionText.substring(0, 100)}...' : questionText}"',
-                        style: TextStyle(
+                        style: theme.textTheme.bodySmall?.copyWith(
                           fontStyle: FontStyle.italic,
-                          fontSize: 13,
+                          color: theme.colorScheme.onSurface.withOpacity(0.7),
                         ),
                       ),
                     ),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
                     Text(
                       'Tips:',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: theme.colorScheme.onSurface,
+                      ),
                     ),
-                    SizedBox(height: 4),
-                    Text('• Add more details or context'),
-                    Text('• Focus on a different aspect'),
-                    Text('• Ask about future possibilities or outcomes'),
+                    const SizedBox(height: 4),
+                    Text(
+                      '• Add more details or context',
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: theme.colorScheme.onSurface.withOpacity(0.7),
+                      ),
+                    ),
+                    Text(
+                      '• Focus on a different aspect',
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: theme.colorScheme.onSurface.withOpacity(0.7),
+                      ),
+                    ),
+                    Text(
+                      '• Ask about future possibilities or outcomes',
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: theme.colorScheme.onSurface.withOpacity(0.7),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -3487,18 +3521,21 @@ class _ChatScreenState extends State<ChatScreen>
                   Navigator.pop(context);
                   _focusNode.requestFocus();
                 },
-                child: Text('Edit Question'),
+                child: Text(
+                  'Edit Question',
+                  style: TextStyle(color: theme.colorScheme.primary),
+                ),
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pop(context); // Close dialog first
-                  _controller.clear(); // ✅ CLEAR THE TEXT BOX
+                  Navigator.pop(context);
+                  _controller.clear();
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.orange,
                   foregroundColor: Colors.white,
                 ),
-                child: Text('Ask Different Question'),
+                child: const Text('Ask Different Question'),
               ),
             ],
           ),
@@ -3923,17 +3960,24 @@ class _ChatScreenState extends State<ChatScreen>
     String text,
   ) {
     final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
 
     showDialog(
       context: context,
       barrierDismissible: false,
       builder:
           (_) => AlertDialog(
+            backgroundColor: theme.colorScheme.surface,
             title: Row(
               children: [
-                Icon(Icons.credit_card, color: Colors.blue),
-                SizedBox(width: 8),
-                Text(l10n.paymentRequired),
+                Icon(Icons.credit_card, color: theme.colorScheme.primary),
+                const SizedBox(width: 8),
+                Text(
+                  l10n.paymentRequired,
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    color: theme.colorScheme.onSurface,
+                  ),
+                ),
               ],
             ),
             content: Column(
@@ -3942,25 +3986,30 @@ class _ChatScreenState extends State<ChatScreen>
               children: [
                 Text(
                   l10n.paymentRequiredMessage,
-                  style: TextStyle(fontSize: 16),
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: theme.colorScheme.onSurface,
+                  ),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 Container(
-                  padding: EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: Colors.blue.shade50,
+                    color: theme.colorScheme.primary.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Row(
                     children: [
-                      Icon(Icons.security, color: Colors.blue, size: 16),
-                      SizedBox(width: 8),
+                      Icon(
+                        Icons.security,
+                        color: theme.colorScheme.primary,
+                        size: 16,
+                      ),
+                      const SizedBox(width: 8),
                       Expanded(
                         child: Text(
                           'Secure payment processed by Stripe',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.blue.shade700,
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: theme.colorScheme.primary,
                           ),
                         ),
                       ),
@@ -3973,24 +4022,25 @@ class _ChatScreenState extends State<ChatScreen>
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
-                  // 🛡️ Track cancellation
                   PaymentAnalytics.trackPaymentEvent(
                     event: 'payment_cancelled',
                     userId: userId,
                     status: 'cancelled',
                   );
                 },
-                child: Text(l10n.cancelButton),
+                child: Text(
+                  l10n.cancelButton,
+                  style: TextStyle(color: theme.colorScheme.primary),
+                ),
               ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
-                  // 🛡️ Use enterprise payment flow
                   startEnterprisePayment(userId, text);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  foregroundColor: Colors.white,
+                  backgroundColor: theme.colorScheme.primary,
+                  foregroundColor: theme.colorScheme.onPrimary,
                 ),
                 child: Text(l10n.payNowButton),
               ),
@@ -4274,16 +4324,25 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   AppBar _buildAppBar(AppLocalizations l10n) {
-    return AppBar(
-      title: Text(l10n.chatTitle),
+    final theme = Theme.of(context);
 
+    return AppBar(
+      title: Text(
+        l10n.chatTitle,
+        style: theme.textTheme.titleLarge?.copyWith(
+          color: theme.colorScheme.onPrimary,
+        ),
+      ),
+      backgroundColor: theme.colorScheme.surface,
+      foregroundColor: theme.colorScheme.primary,
+      elevation: 0,
       leading: Consumer<HoroscopeProvider>(
         builder: (context, horoscopeProvider, _) {
           final hasUnread = horoscopeProvider.unreadCount > 0;
           return Stack(
             children: [
               IconButton(
-                icon: const Icon(Icons.menu),
+                icon: Icon(Icons.menu, color: theme.colorScheme.primary),
                 onPressed: () => Scaffold.of(context).openDrawer(),
               ),
               if (hasUnread)
@@ -4293,7 +4352,7 @@ class _ChatScreenState extends State<ChatScreen>
                   child: Container(
                     width: 10,
                     height: 10,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Colors.red,
                       shape: BoxShape.circle,
                     ),
@@ -4305,7 +4364,7 @@ class _ChatScreenState extends State<ChatScreen>
       ),
       actions: [
         IconButton(
-          icon: const Icon(Icons.lightbulb_outline),
+          icon: Icon(Icons.lightbulb_outline, color: theme.colorScheme.primary),
           onPressed: _openHowToAskScreen,
         ),
         _buildNotificationIcon(),
@@ -4314,6 +4373,8 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   Widget _buildNotificationIcon() {
+    final theme = Theme.of(context);
+
     return Consumer<NotificationProvider>(
       builder: (context, provider, _) {
         return IconButton(
@@ -4322,12 +4383,15 @@ class _ChatScreenState extends State<ChatScreen>
                   ? badges.Badge(
                     badgeContent: Text(
                       provider.unreadCount.toString(),
-                      style: const TextStyle(color: Colors.white, fontSize: 12),
+                      style: TextStyle(color: Colors.white, fontSize: 12),
                     ),
-                    child: const Icon(Icons.notifications),
-                    badgeStyle: const badges.BadgeStyle(badgeColor: Colors.red),
+                    child: Icon(
+                      Icons.notifications,
+                      color: theme.colorScheme.primary,
+                    ),
+                    badgeStyle: badges.BadgeStyle(badgeColor: Colors.red),
                   )
-                  : const Icon(Icons.notifications),
+                  : Icon(Icons.notifications, color: theme.colorScheme.primary),
           onPressed: _openNotificationsScreen,
         );
       },
@@ -4521,11 +4585,18 @@ class _ChatScreenState extends State<ChatScreen>
     Widget screen, {
     Widget? badge,
   }) {
+    final theme = Theme.of(context);
+
     return ListTile(
-      leading: Icon(icon, color: Colors.blue),
+      leading: Icon(icon, color: theme.colorScheme.primary),
       title: Row(
         children: [
-          Text(title),
+          Text(
+            title,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onSurface,
+            ),
+          ),
           if (badge != null) ...[const SizedBox(width: 6), badge],
         ],
       ),
@@ -4563,20 +4634,30 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   Widget _buildEmptyState(AppLocalizations l10n) {
+    final theme = Theme.of(context);
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.chat_bubble_outline, size: 64, color: Colors.grey[400]),
+          Icon(
+            Icons.chat_bubble_outline,
+            size: 64,
+            color: theme.colorScheme.onSurface.withOpacity(0.4),
+          ),
           const SizedBox(height: 16),
           Text(
             l10n.noMessagesYet,
-            style: TextStyle(fontSize: 18, color: Colors.grey[600]),
+            style: theme.textTheme.titleMedium?.copyWith(
+              color: theme.colorScheme.onSurface.withOpacity(0.6),
+            ),
           ),
           const SizedBox(height: 8),
           Text(
             l10n.startChatting,
-            style: TextStyle(fontSize: 14, color: Colors.grey[500]),
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onSurface.withOpacity(0.5),
+            ),
             textAlign: TextAlign.center,
           ),
         ],
@@ -4662,11 +4743,13 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   Widget _buildMessageInput(AppLocalizations l10n) {
+    final theme = Theme.of(context);
+
     return Container(
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: Theme.of(context).scaffoldBackgroundColor,
-        border: Border(top: BorderSide(color: Colors.grey.shade300)),
+        color: theme.colorScheme.surface,
+        border: Border(top: BorderSide(color: theme.dividerColor)),
       ),
       child: Row(
         children: [
@@ -4674,41 +4757,41 @@ class _ChatScreenState extends State<ChatScreen>
             child: TextField(
               controller: _controller,
               focusNode: _focusNode,
-              enabled: _isInputEnabled, // ✅ CONTROL ENABLE/DISABLE STATE
+              enabled: _isInputEnabled,
               decoration: InputDecoration(
                 hintText: l10n.typeYourQuestionHint,
-                hintStyle: TextStyle(
+                hintStyle: theme.textTheme.bodyMedium?.copyWith(
                   color:
                       _isInputEnabled
-                          ? Colors
-                              .grey
-                              .shade600 // Normal color when enabled
-                          : Colors.grey.shade400, // Lighter color when disabled
+                          ? theme.colorScheme.onSurface.withOpacity(0.6)
+                          : theme.colorScheme.onSurface.withOpacity(0.4),
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
+                  borderSide: BorderSide(color: theme.dividerColor),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: BorderSide(color: theme.dividerColor),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: BorderSide(color: theme.colorScheme.primary),
                 ),
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                 filled: true,
                 fillColor:
                     _isInputEnabled
-                        ? Colors
-                            .grey
-                            .shade100 // Normal background when enabled
-                        : Colors
-                            .grey
-                            .shade50, // Lighter background when disabled
+                        ? theme.colorScheme.surface
+                        : theme.colorScheme.surface.withOpacity(0.5),
               ),
               minLines: 1,
               maxLines: 3,
-              style: TextStyle(
+              style: theme.textTheme.bodyMedium?.copyWith(
                 color:
                     _isInputEnabled
-                        ? Colors
-                            .black // Normal text color when enabled
-                        : Colors
-                            .grey
-                            .shade500, // Lighter text color when disabled
+                        ? theme.colorScheme.onSurface
+                        : theme.colorScheme.onSurface.withOpacity(0.5),
               ),
               onChanged: (value) {
                 // Real-time input validation could be added here
@@ -4723,30 +4806,47 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   Widget _buildSendButton() {
+    final theme = Theme.of(context);
+
     return _isSending
         ? Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: theme.colorScheme.surface,
             borderRadius: BorderRadius.circular(20),
-            boxShadow: const [
+            boxShadow: [
               BoxShadow(
-                color: Colors.black26,
+                color: Colors.black.withOpacity(0.1),
                 blurRadius: 4,
-                offset: Offset(0, 2),
+                offset: const Offset(0, 2),
               ),
             ],
           ),
-          child: const BouncingDots(color: Colors.black, size: 8),
+          child: BouncingDots(color: theme.colorScheme.primary, size: 8),
         )
-        : IconButton(
-          icon: const Icon(Icons.send, color: Colors.blue),
-          onPressed: handleSendMessage,
-          tooltip: 'Send message',
+        : Container(
+          decoration: BoxDecoration(
+            color: theme.colorScheme.primary,
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: theme.colorScheme.primary.withOpacity(0.3),
+                blurRadius: 4,
+                offset: const Offset(0, 2),
+              ),
+            ],
+          ),
+          child: IconButton(
+            icon: Icon(Icons.send, color: theme.colorScheme.onPrimary),
+            onPressed: handleSendMessage,
+            tooltip: 'Send message',
+          ),
         );
   }
 
   Widget _buildScrollToBottomButton() {
+    final theme = Theme.of(context);
+
     return ValueListenableBuilder<bool>(
       valueListenable: _showButtonNotifier,
       builder: (context, showButton, child) {
@@ -4760,19 +4860,19 @@ class _ChatScreenState extends State<ChatScreen>
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: theme.colorScheme.primary,
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withAlpha((0.3 * 255).toInt()),
+                    color: Colors.black.withOpacity(0.3),
                     blurRadius: 4,
                     offset: const Offset(0, 2),
                   ),
                 ],
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.arrow_downward,
-                color: Colors.white,
+                color: theme.colorScheme.onPrimary,
                 size: 20,
               ),
             ),

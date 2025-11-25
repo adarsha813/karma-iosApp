@@ -94,13 +94,15 @@ class RatingBubbleState extends State<RatingBubble>
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Container(
       margin: const EdgeInsets.only(top: 1),
       padding: const EdgeInsets.all(2),
       decoration: BoxDecoration(
-        color: Colors.grey[100],
+        color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey[300]!),
+        border: Border.all(color: theme.dividerColor),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,10 +135,16 @@ class RatingBubbleState extends State<RatingBubble>
   }
 
   Color _getStarColor(int star) {
+    final theme = Theme.of(context);
+
     if (_selectedRating != null && star <= _selectedRating!) {
-      return Colors.amber;
+      return theme
+          .colorScheme
+          .primary; // Use theme primary color for selected stars
     }
-    return Colors.grey;
+    return theme.colorScheme.onSurface.withOpacity(
+      0.3,
+    ); // Use theme color for unselected stars
   }
 
   bool _shouldShowFeedbackSection() {
@@ -155,13 +163,19 @@ class RatingBubbleState extends State<RatingBubble>
   }
 
   Widget _buildFeedbackPrompt() {
-    return const Text(
+    final theme = Theme.of(context);
+
+    return Text(
       "We're sorry you didn't like this answer. Please tell us how we can improve:",
-      style: TextStyle(fontSize: 12),
+      style: theme.textTheme.bodySmall?.copyWith(
+        color: theme.colorScheme.onSurface,
+      ),
     );
   }
 
   Widget _buildFeedbackTextField() {
+    final theme = Theme.of(context);
+
     return TextField(
       controller: _feedbackController,
       focusNode: _feedbackFocusNode,
@@ -169,8 +183,27 @@ class RatingBubbleState extends State<RatingBubble>
       maxLength: SecurityConfig.maxFeedbackLength,
       decoration: InputDecoration(
         hintText: 'Your feedback...',
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+        hintStyle: theme.textTheme.bodyMedium?.copyWith(
+          color: theme.colorScheme.onSurface.withOpacity(0.5),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: theme.dividerColor),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: theme.dividerColor),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: theme.colorScheme.primary),
+        ),
+        fillColor: theme.colorScheme.surface,
+        filled: true,
         counterText: '',
+      ),
+      style: theme.textTheme.bodyMedium?.copyWith(
+        color: theme.colorScheme.onSurface,
       ),
       onChanged: _onFeedbackChanged,
       textInputAction: TextInputAction.done,
@@ -179,25 +212,38 @@ class RatingBubbleState extends State<RatingBubble>
   }
 
   Widget _buildSubmitButton() {
+    final theme = Theme.of(context);
+
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.red, // Keep red for negative feedback
         foregroundColor: Colors.white,
         minimumSize: const Size(double.infinity, 44),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
       onPressed: _isSubmitting ? null : _submitFeedback,
       child:
           _isSubmitting
               ? _buildLoadingIndicator()
-              : const Text('Submit Feedback'),
+              : Text(
+                'Submit Feedback',
+                style: theme.textTheme.labelLarge?.copyWith(
+                  color: Colors.white,
+                ),
+              ),
     );
   }
 
   Widget _buildLoadingIndicator() {
-    return const SizedBox(
+    final theme = Theme.of(context);
+
+    return SizedBox(
       width: 16,
       height: 16,
-      child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+      child: CircularProgressIndicator(
+        strokeWidth: 2,
+        color: theme.colorScheme.onPrimary,
+      ),
     );
   }
 
@@ -357,12 +403,21 @@ class RatingBubbleState extends State<RatingBubble>
   }
 
   void _showSnackBar(String message) {
+    final theme = Theme.of(context);
+
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(message),
-          duration: const Duration(seconds: 3),
+          content: Text(
+            message,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onPrimary,
+            ),
+          ),
+          backgroundColor: theme.colorScheme.primary,
           behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          duration: const Duration(seconds: 3),
         ),
       );
     }

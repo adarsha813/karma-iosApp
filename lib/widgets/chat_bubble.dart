@@ -19,6 +19,7 @@ import '../screens/AstrologerDetailPage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../services/astrologerdataService.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:kundali/utils/app_colors.dart';
 
 class ChatBubble extends StatefulWidget {
   final Message message;
@@ -558,39 +559,55 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   }
 
   Widget _buildErrorFallback() {
+    final theme = Theme.of(context);
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
-        color: Colors.grey[300],
+        color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
       ),
-      child: const Text(
+      child: Text(
         'Message not available',
-        style: TextStyle(color: Colors.grey, fontSize: 14),
+        style: TextStyle(
+          color: theme.colorScheme.onSurface.withOpacity(0.5),
+          fontSize: 14,
+        ),
       ),
     );
   }
 
   BubbleConfig _getBubbleConfig(Message message) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
     Color bubbleColor;
     IconData? icon;
     String? type;
     String? title;
 
     if (message.isMe) {
-      bubbleColor = const Color.fromARGB(255, 106, 145, 211);
+      // User messages - use theme primary color
+      bubbleColor = theme.colorScheme.primary.withOpacity(0.8);
     } else if (message.isClarification) {
-      bubbleColor = const Color.fromARGB(255, 227, 196, 156);
+      // Clarification messages - use theme colors
+      bubbleColor =
+          isDark
+              ? AppColors.clarificationBubble
+              : AppColors.clarificationBubbleLightMode;
     } else if (message.isAdvice) {
-      bubbleColor = const Color.fromARGB(255, 182, 206, 178);
+      // Advice messages - use theme colors
+      bubbleColor =
+          isDark ? AppColors.adviceBubble : AppColors.adviceBubbleLightMode;
       icon = Icons.tips_and_updates_outlined;
-
-      type = message.type; // top line
-      title = message.title; // bottom line
+      type = message.type;
+      title = message.title;
     } else {
-      bubbleColor = Colors.grey[300]!;
+      // AI/System messages - use theme colors
+      bubbleColor = isDark ? AppColors.aiBubble : AppColors.aiBubbleLightMode;
     }
+
     return BubbleConfig(
       color: bubbleColor,
       icon: icon,
@@ -717,6 +734,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   Widget _buildRelatedQuestionPreview() {
     final questionText = widget.relatedQuestionText!;
     final maxLength = 60;
+    final theme = Theme.of(context);
 
     String displayText;
     if (questionText.length > maxLength) {
@@ -734,22 +752,22 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Icon(
-            Icons.reply, // Replaced with reply arrow icon
+            Icons.reply,
             size: 14,
-            color: Colors.grey[600],
+            color: theme.colorScheme.onSurface.withOpacity(0.6),
           ),
           const SizedBox(width: 6),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
-              color: Colors.grey[100],
+              color: theme.colorScheme.surface.withOpacity(0.7),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
               displayText,
               style: TextStyle(
                 fontSize: 12,
-                color: Colors.grey[700],
+                color: theme.colorScheme.onSurface.withOpacity(0.7),
                 fontStyle: FontStyle.italic,
               ),
               maxLines: 1,
@@ -862,11 +880,13 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   }
 
   Widget _buildHidingState() {
+    final theme = Theme.of(context);
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
       decoration: BoxDecoration(
-        color: Colors.grey[300],
+        color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -875,10 +895,18 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
           SizedBox(
             width: 12,
             height: 12,
-            child: CircularProgressIndicator(strokeWidth: 2),
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+              color: theme.colorScheme.primary,
+            ),
           ),
           SizedBox(width: 8),
-          Text('Hiding...', style: TextStyle(color: Colors.grey)),
+          Text(
+            'Hiding...',
+            style: TextStyle(
+              color: theme.colorScheme.onSurface.withOpacity(0.5),
+            ),
+          ),
         ],
       ),
     );
@@ -907,6 +935,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
 
   Widget _buildMessageLabel(BubbleConfig config) {
     final message = widget.message;
+    final theme = Theme.of(context);
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 6.0),
@@ -918,14 +947,14 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(config.icon, size: 16, color: Colors.deepPurple),
+                  Icon(config.icon, size: 16, color: theme.colorScheme.primary),
                   const SizedBox(width: 4),
                   Text(
                     config.type!,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.bold,
-                      color: Colors.deepPurple,
+                      color: theme.colorScheme.primary,
                     ),
                   ),
                 ],
@@ -942,7 +971,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
                   style: TextStyle(
                     fontSize: 12.5,
                     fontWeight: FontWeight.w500,
-                    color: const Color.fromARGB(255, 96, 65, 148),
+                    color: theme.colorScheme.primary,
                   ),
                 ),
               ),
@@ -981,35 +1010,28 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
 
   List<TextSpan> _parseHtmlWithDictionary(String html, bool isMe) {
     final List<TextSpan> spans = [];
+    final textColor = _getTextColor(widget.message);
 
-    // Use a simple HTML parser that only handles colors, bold, and paragraphs
+    TextStyle currentStyle = TextStyle(color: textColor, fontSize: 14);
+
     final regex = RegExp(r'(<[^>]+>|[^<]+)');
     final matches = regex.allMatches(html);
-
-    TextStyle currentStyle = TextStyle(
-      color: isMe ? Colors.white : Colors.black,
-      fontSize: 14,
-    );
 
     for (final match in matches) {
       final content = match.group(0)!;
 
       if (content.startsWith('<') && content.endsWith('>')) {
-        // HTML tag - update current style
         currentStyle = _updateStyleFromTag(currentStyle, content, isMe);
       } else if (content.trim().isNotEmpty) {
-        // Text content - apply dictionary highlighting with current style
         final textSpan = DictionaryHighlighter.highlightText(
           context,
           content,
           widget.dictionaryMap,
           currentStyle,
         );
-
         spans.add(textSpan);
       }
 
-      // Add line break after paragraphs
       if (content == '</p>') {
         spans.add(TextSpan(text: '\n\n'));
       }
@@ -1018,6 +1040,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     return spans;
   }
 
+  // Update the reset style to use theme colors
   TextStyle _updateStyleFromTag(TextStyle currentStyle, String tag, bool isMe) {
     TextStyle newStyle = currentStyle;
 
@@ -1039,17 +1062,14 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       }
     }
 
-    // Handle closing span - reset to base color
+    // Handle closing span - reset to theme color
     if (tag == '</span>') {
-      newStyle = newStyle.copyWith(color: isMe ? Colors.white : Colors.black);
+      newStyle = newStyle.copyWith(color: _getTextColor(widget.message));
     }
 
-    // Reset to base style for paragraph breaks
+    // Reset to theme style for paragraph breaks
     if (tag == '<p>') {
-      newStyle = TextStyle(
-        color: isMe ? Colors.white : Colors.black,
-        fontSize: 14,
-      );
+      newStyle = TextStyle(color: _getTextColor(widget.message), fontSize: 14);
     }
 
     return newStyle;
@@ -1131,25 +1151,25 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     required bool hasData,
   }) {
     final message = widget.message;
-    final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final theme = Theme.of(context);
+
     final Color textColor =
         message.isMe
-            ? Colors.white70
-            : isDarkMode
-            ? Colors.white70
-            : Colors.black54;
+            ? theme.colorScheme.onPrimary.withOpacity(0.7)
+            : _getSecondaryTextColor(message);
+
     final Color backgroundColor =
         message.isMe
-            ? Colors.white.withAlpha((0.15 * 255).toInt())
-            : Colors.grey.withAlpha((0.1 * 255).toInt());
+            ? theme.colorScheme.onPrimary.withOpacity(0.15)
+            : theme.dividerColor.withOpacity(0.5);
 
     return Material(
       color: Colors.transparent,
       child: InkWell(
         onTap: () => _navigateToAstrologerDetail(context, widget.message),
         borderRadius: BorderRadius.circular(12),
-        splashColor: Colors.blue.withAlpha((0.1 * 255).toInt()),
-        highlightColor: Colors.blue.withAlpha((0.05 * 255).toInt()),
+        splashColor: theme.colorScheme.primary.withOpacity(0.1),
+        highlightColor: theme.colorScheme.primary.withOpacity(0.05),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
           decoration: BoxDecoration(
@@ -1158,8 +1178,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
             border: Border.all(
               color:
                   message.isMe
-                      ? Colors.white.withAlpha((0.2 * 255).toInt())
-                      : Colors.grey.withAlpha((0.3 * 255).toInt()),
+                      ? theme.colorScheme.onPrimary.withOpacity(0.2)
+                      : theme.dividerColor,
               width: 1,
             ),
           ),
@@ -1187,7 +1207,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
                   child: Icon(
                     Icons.chevron_right_rounded,
                     size: 16,
-                    color: textColor.withAlpha((0.6 * 255).toInt()),
+                    color: textColor.withOpacity(0.6),
                   ),
                 ),
             ],
@@ -1246,7 +1266,10 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       height: 28,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: Border.all(color: Colors.white.withAlpha((0.3 * 255).toInt()), width: 1.5),
+        border: Border.all(
+          color: Colors.white.withAlpha((0.3 * 255).toInt()),
+          width: 1.5,
+        ),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withAlpha((0.1 * 255).toInt()),
@@ -1376,18 +1399,31 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     );
   }
 
+  // Add these helper methods
+  Color _getTextColor(Message message) {
+    final theme = Theme.of(context);
+
+    if (message.isMe) {
+      return theme
+          .colorScheme
+          .onPrimary; // Use theme's onPrimary color for contrast
+    }
+
+    return theme.colorScheme.onSurface; // Use theme's onSurface color
+  }
+
+  Color _getSecondaryTextColor(Message message) {
+    final theme = Theme.of(context);
+    return theme.textTheme.bodyMedium?.color ?? Colors.grey;
+  }
+
   Widget _buildTimestamp(String text) {
     final message = widget.message;
+    final textColor = _getSecondaryTextColor(message);
 
     return Padding(
       padding: const EdgeInsets.only(top: 4.0),
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: 12,
-          color: message.isMe ? Colors.white70 : Colors.black54,
-        ),
-      ),
+      child: Text(text, style: TextStyle(fontSize: 12, color: textColor)),
     );
   }
 

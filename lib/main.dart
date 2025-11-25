@@ -19,6 +19,7 @@ import 'package:kundali/config/environment.dart';
 import 'services/first_launch_service.dart'; // Add this import
 import 'l10n/custom_localizations_delegate.dart'; // Add this import
 import 'services/ssl_pinning_service.dart';
+import 'package:kundali/utils/theme.dart';
 
 // Config
 import 'config/firebase_config.dart';
@@ -42,6 +43,7 @@ import 'providers/notification_provider.dart';
 import 'providers/horoscope_provider.dart';
 import 'providers/dictionary_provider.dart';
 import 'providers/app_lifecycle_provider.dart';
+import 'providers/theme_provider.dart';
 
 // Localization
 import 'l10n/app_localizations.dart';
@@ -1394,9 +1396,10 @@ class _SecureAppState extends State<SecureApp> {
   @override
   Widget build(BuildContext context) {
     final localeProvider = Provider.of<LocaleProvider>(context);
+    final themeProvider = Provider.of<ThemeProvider>(context);
 
-    // Show loading while locale is being determined
-    if (localeProvider.isLoading) {
+    // Show loading while locale or theme is being determined
+    if (localeProvider.isLoading || themeProvider.isLoading) {
       return MaterialApp(
         home: Scaffold(
           body: Center(
@@ -1405,7 +1408,7 @@ class _SecureAppState extends State<SecureApp> {
               children: [
                 CircularProgressIndicator(),
                 SizedBox(height: 16),
-                Text('Loading language...'),
+                Text('Loading...'),
               ],
             ),
           ),
@@ -1415,9 +1418,10 @@ class _SecureAppState extends State<SecureApp> {
 
     return MaterialApp(
       title: AppConstants.appName,
-      theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
-      darkTheme: ThemeData.dark(useMaterial3: true),
-      themeMode: ThemeMode.light,
+      // ✅ USE YOUR CUSTOM THEMES
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: themeProvider.themeMode,
       navigatorKey: navigatorKey,
 
       // ✅ CRITICAL FIX: Use only supported locales for Material widgets
@@ -1833,6 +1837,9 @@ Future<void> main() async {
           ChangeNotifierProvider<ProfileProvider>.value(value: profileProvider),
           ChangeNotifierProvider<SecureChatService>.value(value: chatService),
           ChangeNotifierProvider(create: (_) => LocaleProvider()),
+          ChangeNotifierProvider(
+            create: (_) => ThemeProvider(),
+          ), // Add ThemeProvider
           ChangeNotifierProvider(
             create: (_) => DictionaryProvider()..loadDictionary(),
           ),

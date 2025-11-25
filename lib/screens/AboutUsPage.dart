@@ -154,7 +154,9 @@ class AboutUsPage extends StatelessWidget {
           width: 40,
           height: 40,
           decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor.withAlpha((0.1 * 255).toInt()),
+            color: Theme.of(
+              context,
+            ).primaryColor.withAlpha((0.1 * 255).toInt()),
             shape: BoxShape.circle,
           ),
           child: Icon(icon, size: 20, color: Theme.of(context).primaryColor),
@@ -204,7 +206,9 @@ class AboutUsPage extends StatelessWidget {
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor.withAlpha((0.1 * 255).toInt()),
+                    color: Theme.of(
+                      context,
+                    ).primaryColor.withAlpha((0.1 * 255).toInt()),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
@@ -351,7 +355,9 @@ class AboutUsPage extends StatelessWidget {
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor.withAlpha((0.1 * 255).toInt()),
+                    color: Theme.of(
+                      context,
+                    ).primaryColor.withAlpha((0.1 * 255).toInt()),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(

@@ -14,11 +14,11 @@ import 'package:kundali/screens/policy_page.dart';
 import 'package:kundali/screens/profile_settings_screen.dart';
 import '../config/environment.dart';
 import 'package:logger/logger.dart';
+import '../providers/theme_provider.dart';
 
 class SafeNavigation {
   static Future<void> navigateToProfileSettings(BuildContext context) async {
     try {
-      // Small delay to ensure previous navigation completes
       await Future.delayed(const Duration(milliseconds: 100));
 
       if (context.mounted) {
@@ -28,7 +28,6 @@ class SafeNavigation {
         );
       }
     } catch (e) {
-      // Fallback navigation
       if (context.mounted) {
         Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
           MaterialPageRoute(builder: (_) => const ProfileSettingsScreen()),
@@ -62,18 +61,11 @@ class SettingsScreen extends StatelessWidget {
   void _logAnalyticsEvent(String event, {Map<String, dynamic>? params}) {
     if (Environment.isProduction) {
       _logger.i('📊 Analytics: $event - ${params ?? {}}');
-      // Integrate with your analytics service here
-      // FirebaseAnalytics.instance.logEvent(name: event, parameters: params);
     }
   }
 
   void _reportError(dynamic error, StackTrace stackTrace, {String? context}) {
     _logger.e('🚨 Error in $context', error: error, stackTrace: stackTrace);
-
-    if (Environment.isProduction) {
-      // Integrate with your crash reporting service here
-      // Sentry.captureException(error, stackTrace: stackTrace);
-    }
   }
 
   String _getLocalizedError(String errorKey, BuildContext context) {
@@ -101,7 +93,7 @@ class SettingsScreen extends StatelessWidget {
     String method = 'DELETE',
     Map<String, dynamic>? body,
     bool showSuccess = true,
-    String? token, // ✅ ADD: Accept token parameter
+    String? token,
   }) async {
     _logger.d('Sending $method request to: $endpoint');
     _logAnalyticsEvent(
@@ -110,7 +102,7 @@ class SettingsScreen extends StatelessWidget {
         'endpoint': endpoint,
         'method': method,
         'has_body': body != null,
-        'has_token': token != null, // ✅ ADD: Track token presence
+        'has_token': token != null,
       },
     );
 
@@ -154,10 +146,19 @@ class SettingsScreen extends StatelessWidget {
         );
 
         if (showSuccess && context.mounted) {
+          final themeProvider = Provider.of<ThemeProvider>(
+            context,
+            listen: false,
+          );
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(successMessage),
-              backgroundColor: Colors.green,
+              backgroundColor:
+                  themeProvider.getCurrentTheme(context).colorScheme.primary,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
               duration: const Duration(seconds: 3),
             ),
           );
@@ -229,80 +230,110 @@ class SettingsScreen extends StatelessWidget {
     bool isDestructive = false,
   }) {
     final l10n = AppLocalizations.of(context)!;
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
 
     showDialog(
       context: context,
       builder:
-          (ctx) => AlertDialog(
-            title: Text(title),
-            content: Text(message),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  _logAnalyticsEvent(
-                    'confirmation_dialog_cancelled',
-                    params: {'title': title},
-                  );
-                  Navigator.of(ctx).pop();
-                },
-                child: Text(cancelText ?? l10n.cancelButton),
+          (ctx) => Theme(
+            data: theme,
+            child: AlertDialog(
+              backgroundColor: theme.colorScheme.surface,
+              title: Text(
+                title,
+                style: theme.textTheme.titleLarge?.copyWith(
+                  color: theme.colorScheme.onSurface,
+                ),
               ),
-              ElevatedButton(
-                onPressed: () async {
-                  _logAnalyticsEvent(
-                    'confirmation_dialog_confirmed',
-                    params: {'title': title, 'is_destructive': isDestructive},
-                  );
-                  Navigator.of(ctx).pop();
+              content: Text(
+                message,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.onSurface.withOpacity(0.8),
+                ),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    _logAnalyticsEvent(
+                      'confirmation_dialog_cancelled',
+                      params: {'title': title},
+                    );
+                    Navigator.of(ctx).pop();
+                  },
+                  child: Text(
+                    cancelText ?? l10n.cancelButton,
+                    style: TextStyle(color: theme.colorScheme.primary),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    _logAnalyticsEvent(
+                      'confirmation_dialog_confirmed',
+                      params: {'title': title, 'is_destructive': isDestructive},
+                    );
+                    Navigator.of(ctx).pop();
 
-                  // Show loading indicator for async operations
-                  final completer = Completer<void>();
-                  if (context.mounted) {
-                    showDialog(
-                      context: context,
-                      barrierDismissible: false,
-                      builder:
-                          (context) => WillPopScope(
-                            onWillPop: () async => false,
-                            child: AlertDialog(
-                              content: Row(
-                                children: [
-                                  const CircularProgressIndicator(),
-                                  const SizedBox(width: 16),
-                                  Text(l10n.processingLabel),
-                                ],
+                    final completer = Completer<void>();
+                    if (context.mounted) {
+                      showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder:
+                            (context) => WillPopScope(
+                              onWillPop: () async => false,
+                              child: AlertDialog(
+                                backgroundColor: theme.colorScheme.surface,
+                                content: Row(
+                                  children: [
+                                    CircularProgressIndicator(
+                                      color: theme.colorScheme.primary,
+                                    ),
+                                    const SizedBox(width: 16),
+                                    Text(
+                                      l10n.processingLabel,
+                                      style: theme.textTheme.bodyMedium
+                                          ?.copyWith(
+                                            color: theme.colorScheme.onSurface,
+                                          ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                    );
+                      );
 
-                    // Wait for operation to complete
-                    completer.future.then((_) {
-                      if (context.mounted) {
-                        Navigator.of(context, rootNavigator: true).pop();
-                      }
-                    });
-                  }
+                      completer.future.then((_) {
+                        if (context.mounted) {
+                          Navigator.of(context, rootNavigator: true).pop();
+                        }
+                      });
+                    }
 
-                  try {
-                    await onConfirm();
-                    completer.complete();
-                  } catch (e, stackTrace) {
-                    completer.completeError(e);
-                    _reportError(
-                      e,
-                      stackTrace,
-                      context: 'confirmation_action_$title',
-                    );
-                  }
-                },
-                style:
-                    isDestructive
-                        ? ElevatedButton.styleFrom(backgroundColor: Colors.red)
-                        : null,
-                child: Text(confirmText ?? l10n.confirmButton),
-              ),
-            ],
+                    try {
+                      await onConfirm();
+                      completer.complete();
+                    } catch (e, stackTrace) {
+                      completer.completeError(e);
+                      _reportError(
+                        e,
+                        stackTrace,
+                        context: 'confirmation_action_$title',
+                      );
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:
+                        isDestructive ? Colors.red : theme.colorScheme.primary,
+                    foregroundColor:
+                        isDestructive
+                            ? Colors.white
+                            : theme.colorScheme.onPrimary,
+                  ),
+                  child: Text(confirmText ?? l10n.confirmButton),
+                ),
+              ],
+            ),
           ),
     );
   }
@@ -314,7 +345,7 @@ class SettingsScreen extends StatelessWidget {
       listen: false,
     );
     final userId = profileProvider.userId;
-    final token = profileProvider.token; // ✅ GET token
+    final token = profileProvider.token;
 
     if (userId == null || userId.isEmpty) {
       _logger.w('Cannot clear notifications - missing user ID');
@@ -337,7 +368,7 @@ class SettingsScreen extends StatelessWidget {
         l10n.clearNotificationsSuccess,
         method: 'PATCH',
         body: {'userId': userId},
-        token: token, // ✅ PASS token
+        token: token,
       ),
       confirmText: l10n.confirmButton,
       cancelText: l10n.cancelButton,
@@ -351,7 +382,7 @@ class SettingsScreen extends StatelessWidget {
       listen: false,
     );
     final userId = profileProvider.userId;
-    final token = profileProvider.token; // ✅ GET tok
+    final token = profileProvider.token;
 
     if (userId == null || userId.isEmpty) {
       _logger.w('Cannot clear horoscope - missing user ID');
@@ -374,7 +405,7 @@ class SettingsScreen extends StatelessWidget {
         l10n.clearHoroscopeSuccess,
         method: 'PATCH',
         body: {'userId': userId},
-        token: token, // ✅ PASS token
+        token: token,
       ),
       confirmText: l10n.confirmButton,
       cancelText: l10n.cancelButton,
@@ -389,7 +420,7 @@ class SettingsScreen extends StatelessWidget {
     );
     final chatService = Provider.of<SecureChatService>(context, listen: false);
     final userId = profileProvider.userId;
-    final token = profileProvider.token; // ✅ GET token
+    final token = profileProvider.token;
 
     if (userId == null || userId.isEmpty) {
       _logger.w('Cannot clear chat history - missing user ID');
@@ -407,7 +438,6 @@ class SettingsScreen extends StatelessWidget {
       l10n.clearChatTitle,
       l10n.clearChatMessage,
       () async {
-        // Clear local chat messages first
         chatService.clearMessages();
         _logAnalyticsEvent('chat_history_cleared_local');
 
@@ -420,7 +450,6 @@ class SettingsScreen extends StatelessWidget {
           );
         }
 
-        // Clear all related data on backend
         final requests = [
           _sendRequest(
             context,
@@ -429,7 +458,7 @@ class SettingsScreen extends StatelessWidget {
             method: 'PATCH',
             body: {'userId': userId, 'hide': true},
             showSuccess: false,
-            token: token, // ✅ PASS token
+            token: token,
           ),
           _sendRequest(
             context,
@@ -437,7 +466,7 @@ class SettingsScreen extends StatelessWidget {
             "Clarifications cleared",
             method: 'PATCH',
             showSuccess: false,
-            token: token, // ✅ PASS token
+            token: token,
           ),
           _sendRequest(
             context,
@@ -445,7 +474,7 @@ class SettingsScreen extends StatelessWidget {
             l10n.clearQuestionsSuccess,
             method: 'PATCH',
             showSuccess: false,
-            token: token, // ✅ PASS token
+            token: token,
           ),
           _sendRequest(
             context,
@@ -453,7 +482,7 @@ class SettingsScreen extends StatelessWidget {
             "Answers cleared",
             method: 'PATCH',
             showSuccess: false,
-            token: token, // ✅ PASS token
+            token: token,
           ),
         ];
 
@@ -492,7 +521,7 @@ class SettingsScreen extends StatelessWidget {
           listen: false,
         );
         final userId = profileProvider.userId;
-        final token = profileProvider.token; // ✅ GET token
+        final token = profileProvider.token;
 
         if (userId == null || userId.isEmpty) {
           _logger.w('Cannot delete account - missing user ID');
@@ -508,27 +537,20 @@ class SettingsScreen extends StatelessWidget {
         }
 
         try {
-          // Clear profile locally first
           await profileProvider.clearProfile();
           _logAnalyticsEvent('account_deleted_local');
 
-          // Delete account from backend
-          // Mark account as removed (PATCH request)
           await _sendRequest(
             context,
             "api/profile/remove-profile",
             l10n.deleteAccountSuccess,
             method: 'PATCH',
-            body: {
-              'userId': userId,
-              'removed': true, // required by backend
-            },
-            token: token, // ✅ PASS token
+            body: {'userId': userId, 'removed': true},
+            token: token,
           );
 
           _logAnalyticsEvent('account_deleted_backend');
 
-          // ✅ FIXED: Safe navigation using Navigator.of with root navigator
           if (context.mounted) {
             await SafeNavigation.navigateToProfileSettings(context);
           }
@@ -569,7 +591,6 @@ class SettingsScreen extends StatelessWidget {
           await profileProvider.clearProfile();
           _logAnalyticsEvent('user_logged_out');
 
-          // ✅ FIXED: Safe navigation for logout
           if (context.mounted) {
             Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
               MaterialPageRoute(builder: (_) => const ProfileSettingsScreen()),
@@ -598,11 +619,13 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final themeProvider = Provider.of<ThemeProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.settingsTitle),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor:
+            themeProvider.getCurrentTheme(context).appBarTheme.backgroundColor,
         elevation: 0,
       ),
       body: _SettingsContent(
@@ -657,97 +680,282 @@ class _SettingsContentState extends State<_SettingsContent> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: ListView(
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final theme = themeProvider.getCurrentTheme(context);
+
+    return Container(
+      color: theme.colorScheme.background,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView(
+          children: [
+            // Notification Settings
+            _NotificationSettingsTile(l10n: widget.l10n),
+            const SizedBox(height: 8),
+            // Theme Settings
+            _ThemeSettingsTile(l10n: widget.l10n),
+            const SizedBox(height: 8),
+
+            // Terms & Privacy
+            _ExpansionSection(
+              title: widget.l10n.termsPrivacyTitle,
+              icon: Icons.security,
+              children: [
+                _PolicyListTile(
+                  title: widget.l10n.privacyPolicyTitle,
+                  icon: Icons.privacy_tip,
+                  policyType: "privacy-policy",
+                  l10n: widget.l10n,
+                ),
+                _PolicyListTile(
+                  title: widget.l10n.termsConditionsTitle,
+                  icon: Icons.article,
+                  policyType: "terms-and-conditions",
+                  l10n: widget.l10n,
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+
+            // Data Control
+            _ExpansionSection(
+              title: widget.l10n.dataControlTitle,
+              icon: Icons.data_usage,
+              children: [
+                _ActionListTile(
+                  title: widget.l10n.clearHoroscope,
+                  icon: Icons.clear_all,
+                  onTap: widget.onClearHoroscope,
+                  color: Colors.orange,
+                ),
+                _ActionListTile(
+                  title: widget.l10n.clearNotifications,
+                  icon: Icons.notifications_off,
+                  onTap: widget.onClearNotifications,
+                  color: Colors.blue,
+                ),
+                _ActionListTile(
+                  title: widget.l10n.clearChatHistory,
+                  icon: Icons.chat_bubble_outline,
+                  onTap: widget.onClearChatHistory,
+                  color: Colors.purple,
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+
+            // Account Settings
+            _ExpansionSection(
+              title: widget.l10n.accountSettings,
+              icon: Icons.account_circle,
+              children: [
+                _ActionListTile(
+                  title: widget.l10n.logout,
+                  icon: Icons.logout,
+                  onTap: widget.onLogout,
+                  color: Colors.orange,
+                ),
+                _ActionListTile(
+                  title: widget.l10n.deleteAccount,
+                  icon: Icons.delete_forever,
+                  onTap: widget.onDeleteAccount,
+                  color: Colors.red,
+                  isDestructive: true,
+                ),
+                _ActionListTile(
+                  title: widget.l10n.recoverAccount,
+                  icon: Icons.restore,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const RecoveryScreen()),
+                    );
+                  },
+                  color: Colors.green,
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+
+            // Language Settings
+            _LanguageSettingsTile(l10n: widget.l10n),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ThemeSettingsTile extends StatelessWidget {
+  final AppLocalizations l10n;
+
+  const _ThemeSettingsTile({required this.l10n});
+
+  String _getThemeModeName(ThemeMode mode, BuildContext context) {
+    switch (mode) {
+      case ThemeMode.light:
+        return 'Light';
+      case ThemeMode.dark:
+        return 'Dark';
+      case ThemeMode.system:
+        return 'System';
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final theme = themeProvider.getCurrentTheme(context);
+    final isDark = themeProvider.isDarkMode(context);
+
+    return Card(
+      elevation: 2,
+      color: theme.colorScheme.surface,
+      child: ExpansionTile(
+        leading: Icon(
+          isDark ? Icons.dark_mode : Icons.light_mode,
+          color: theme.colorScheme.primary,
+        ),
+        title: Text(
+          'Theme Settings',
+          style: theme.textTheme.titleMedium?.copyWith(
+            color: theme.colorScheme.onSurface,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        subtitle: Text(
+          _getThemeModeName(themeProvider.themeMode, context),
+          style: theme.textTheme.bodyMedium?.copyWith(
+            color: theme.colorScheme.onSurface.withOpacity(0.7),
+          ),
+        ),
         children: [
-          // Notification Settings
-          _NotificationSettingsTile(l10n: widget.l10n),
-          const SizedBox(height: 8),
+          // Light Theme Option
+          RadioListTile<ThemeMode>(
+            title: Text(
+              'Light',
+              style: theme.textTheme.bodyLarge?.copyWith(
+                color: theme.colorScheme.onSurface,
+              ),
+            ),
+            subtitle: Text(
+              'Always use light theme',
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurface.withOpacity(0.7),
+              ),
+            ),
+            value: ThemeMode.light,
+            groupValue: themeProvider.themeMode,
+            onChanged: (ThemeMode? value) {
+              if (value != null) {
+                themeProvider.setThemeMode(value);
+                _logger.i('🎨 Theme changed to: Light');
 
-          // Terms & Privacy
-          _ExpansionSection(
-            title: widget.l10n.termsPrivacyTitle,
-            icon: Icons.security,
-            children: [
-              _PolicyListTile(
-                title: widget.l10n.privacyPolicyTitle,
-                icon: Icons.privacy_tip,
-                policyType: "privacy-policy",
-                l10n: widget.l10n,
-              ),
-              _PolicyListTile(
-                title: widget.l10n.termsConditionsTitle,
-                icon: Icons.article,
-                policyType: "terms-and-conditions",
-                l10n: widget.l10n,
-              ),
-            ],
+                if (Environment.isProduction) {
+                  _logger.i('📊 Analytics: theme_changed - mode: light');
+                }
+              }
+            },
+            activeColor: theme.colorScheme.primary,
           ),
-          const SizedBox(height: 8),
 
-          // Data Control
-          _ExpansionSection(
-            title: widget.l10n.dataControlTitle,
-            icon: Icons.data_usage,
-            children: [
-              _ActionListTile(
-                title: widget.l10n.clearHoroscope,
-                icon: Icons.clear_all,
-                onTap: widget.onClearHoroscope,
-                color: Colors.orange,
+          // Dark Theme Option
+          RadioListTile<ThemeMode>(
+            title: Text(
+              'Dark',
+              style: theme.textTheme.bodyLarge?.copyWith(
+                color: theme.colorScheme.onSurface,
               ),
-              _ActionListTile(
-                title: widget.l10n.clearNotifications,
-                icon: Icons.notifications_off,
-                onTap: widget.onClearNotifications,
-                color: Colors.blue,
+            ),
+            subtitle: Text(
+              'Always use dark theme',
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurface.withOpacity(0.7),
               ),
-              _ActionListTile(
-                title: widget.l10n.clearChatHistory,
-                icon: Icons.chat_bubble_outline,
-                onTap: widget.onClearChatHistory,
-                color: Colors.purple,
-              ),
-            ],
+            ),
+            value: ThemeMode.dark,
+            groupValue: themeProvider.themeMode,
+            onChanged: (ThemeMode? value) {
+              if (value != null) {
+                themeProvider.setThemeMode(value);
+                _logger.i('🎨 Theme changed to: Dark');
+
+                if (Environment.isProduction) {
+                  _logger.i('📊 Analytics: theme_changed - mode: dark');
+                }
+              }
+            },
+            activeColor: theme.colorScheme.primary,
           ),
-          const SizedBox(height: 8),
 
-          // Account Settings
-          _ExpansionSection(
-            title: widget.l10n.accountSettings,
-            icon: Icons.account_circle,
-            children: [
-              _ActionListTile(
-                title: widget.l10n.logout,
-                icon: Icons.logout,
-                onTap: widget.onLogout,
-                color: Colors.orange,
+          // System Theme Option
+          RadioListTile<ThemeMode>(
+            title: Text(
+              'System',
+              style: theme.textTheme.bodyLarge?.copyWith(
+                color: theme.colorScheme.onSurface,
               ),
-              _ActionListTile(
-                title: widget.l10n.deleteAccount,
-                icon: Icons.delete_forever,
-                onTap: widget.onDeleteAccount,
-                color: Colors.red,
-                isDestructive: true,
+            ),
+            subtitle: Text(
+              themeProvider.isDarkMode(context)
+                  ? 'Using system dark theme'
+                  : 'Using system light theme',
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurface.withOpacity(0.7),
               ),
-              _ActionListTile(
-                title: widget.l10n.recoverAccount,
-                icon: Icons.restore,
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const RecoveryScreen()),
-                  );
-                },
-                color: Colors.green,
-              ),
-            ],
+            ),
+            value: ThemeMode.system,
+            groupValue: themeProvider.themeMode,
+            onChanged: (ThemeMode? value) {
+              if (value != null) {
+                themeProvider.setThemeMode(value);
+                _logger.i('🎨 Theme changed to: System');
+
+                if (Environment.isProduction) {
+                  _logger.i('📊 Analytics: theme_changed - mode: system');
+                }
+              }
+            },
+            activeColor: theme.colorScheme.primary,
           ),
-          const SizedBox(height: 8),
 
-          // Language Settings
-          _LanguageSettingsTile(l10n: widget.l10n),
+          // Quick Toggle Button
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: OutlinedButton.icon(
+                    icon: Icon(
+                      isDark ? Icons.light_mode : Icons.dark_mode,
+                      size: 20,
+                      color: theme.colorScheme.primary,
+                    ),
+                    label: Text(
+                      isDark ? 'Switch to Light' : 'Switch to Dark',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: theme.colorScheme.primary,
+                      ),
+                    ),
+                    onPressed: () {
+                      themeProvider.toggleTheme();
+                      _logger.i(
+                        '🎨 Theme toggled to: ${isDark ? 'Light' : 'Dark'}',
+                      );
+
+                      if (Environment.isProduction) {
+                        _logger.i('📊 Analytics: theme_toggled');
+                      }
+                    },
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: theme.colorScheme.primary),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -761,31 +969,39 @@ class _NotificationSettingsTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final theme = themeProvider.getCurrentTheme(context);
+
     return Consumer<NotificationProvider>(
       builder: (context, notificationProvider, child) {
         return Card(
           elevation: 2,
+          color: theme.colorScheme.surface,
           child: SwitchListTile(
             title: Text(
               l10n.notificationSettings,
-              style: const TextStyle(fontWeight: FontWeight.w500),
+              style: theme.textTheme.titleMedium?.copyWith(
+                color: theme.colorScheme.onSurface,
+                fontWeight: FontWeight.w500,
+              ),
             ),
             subtitle: Text(
               notificationProvider.notificationsEnabled
                   ? l10n.notificationsEnabled
                   : l10n.notificationsDisabled,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurface.withOpacity(0.7),
+              ),
             ),
             value: notificationProvider.notificationsEnabled,
             onChanged: (bool value) {
               notificationProvider.setNotificationsEnabled(value);
               HoroscopeService().setNotificationsEnabled(value);
 
-              final logger = Logger();
-              logger.i('🔔 Notifications ${value ? 'enabled' : 'disabled'}');
+              _logger.i('🔔 Notifications ${value ? 'enabled' : 'disabled'}');
 
-              // Analytics
               if (Environment.isProduction) {
-                logger.i(
+                _logger.i(
                   '📊 Analytics: notifications_toggled - enabled: $value',
                 );
               }
@@ -802,6 +1018,7 @@ class _NotificationSettingsTile extends StatelessWidget {
                 ),
               );
             },
+            activeColor: theme.colorScheme.primary,
           ),
         );
       },
@@ -822,11 +1039,21 @@ class _ExpansionSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final theme = themeProvider.getCurrentTheme(context);
+
     return Card(
       elevation: 2,
+      color: theme.colorScheme.surface,
       child: ExpansionTile(
-        leading: Icon(icon, color: Theme.of(context).primaryColor),
-        title: Text(title, style: const TextStyle(fontWeight: FontWeight.w500)),
+        leading: Icon(icon, color: theme.colorScheme.primary),
+        title: Text(
+          title,
+          style: theme.textTheme.titleMedium?.copyWith(
+            color: theme.colorScheme.onSurface,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
         children: children,
       ),
     );
@@ -848,16 +1075,27 @@ class _PolicyListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final theme = themeProvider.getCurrentTheme(context);
+
     return ListTile(
-      leading: Icon(icon, color: Colors.blue),
-      title: Text(title),
-      trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+      leading: Icon(icon, color: theme.colorScheme.primary),
+      title: Text(
+        title,
+        style: theme.textTheme.bodyLarge?.copyWith(
+          color: theme.colorScheme.onSurface,
+        ),
+      ),
+      trailing: Icon(
+        Icons.arrow_forward_ios,
+        size: 16,
+        color: theme.colorScheme.onSurface.withOpacity(0.6),
+      ),
       onTap: () {
-        final logger = Logger();
-        logger.i('📄 Opening policy: $policyType');
+        _logger.i('📄 Opening policy: $policyType');
 
         if (Environment.isProduction) {
-          logger.i('📊 Analytics: policy_opened - type: $policyType');
+          _logger.i('📊 Analytics: policy_opened - type: $policyType');
         }
 
         Navigator.push(
@@ -892,16 +1130,23 @@ class _ActionListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final theme = themeProvider.getCurrentTheme(context);
+
     return ListTile(
       leading: Icon(icon, color: color),
       title: Text(
         title,
-        style: TextStyle(
-          color: isDestructive ? Colors.red : null,
-          fontWeight: isDestructive ? FontWeight.w600 : null,
+        style: theme.textTheme.bodyLarge?.copyWith(
+          color: isDestructive ? Colors.red : theme.colorScheme.onSurface,
+          fontWeight: isDestructive ? FontWeight.w600 : FontWeight.normal,
         ),
       ),
-      trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+      trailing: Icon(
+        Icons.arrow_forward_ios,
+        size: 16,
+        color: theme.colorScheme.onSurface.withOpacity(0.6),
+      ),
       onTap: onTap,
     );
   }
@@ -1061,13 +1306,20 @@ class _LanguageSettingsTileState extends State<_LanguageSettingsTile> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final theme = themeProvider.getCurrentTheme(context);
+
     return Card(
       elevation: 2,
+      color: theme.colorScheme.surface,
       child: ExpansionTile(
-        leading: Icon(Icons.language, color: Theme.of(context).primaryColor),
+        leading: Icon(Icons.language, color: theme.colorScheme.primary),
         title: Text(
           widget.l10n.languageSettings,
-          style: const TextStyle(fontWeight: FontWeight.w500),
+          style: theme.textTheme.titleMedium?.copyWith(
+            color: theme.colorScheme.onSurface,
+            fontWeight: FontWeight.w500,
+          ),
         ),
         initiallyExpanded: false,
         onExpansionChanged: (expanded) {
@@ -1086,17 +1338,29 @@ class _LanguageSettingsTileState extends State<_LanguageSettingsTile> {
               controller: _searchController,
               decoration: InputDecoration(
                 hintText: 'Search languages...',
-                prefixIcon: const Icon(Icons.search),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: theme.colorScheme.primary,
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
+                  borderSide: BorderSide(color: theme.colorScheme.outline),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: BorderSide(color: theme.colorScheme.primary),
                 ),
                 contentPadding: const EdgeInsets.symmetric(horizontal: 12.0),
                 isDense: true,
+                filled: true,
+                fillColor: theme.colorScheme.surface,
+              ),
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurface,
               ),
             ),
           ),
           const SizedBox(height: 8),
-          // Limited height list with builder
           ConstrainedBox(
             constraints: const BoxConstraints(maxHeight: 300),
             child:
@@ -1105,7 +1369,9 @@ class _LanguageSettingsTileState extends State<_LanguageSettingsTile> {
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
                         'No languages found',
-                        style: TextStyle(color: Colors.grey.shade600),
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: theme.colorScheme.onSurface.withOpacity(0.6),
+                        ),
                       ),
                     )
                     : ListView.builder(
@@ -1141,22 +1407,18 @@ class _LanguageRadioTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final theme = themeProvider.getCurrentTheme(context);
     final profileProvider = Provider.of<ProfileProvider>(context);
     final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
 
-    // ✅ FIX: Get current language with proper fallback logic
     String getCurrentLanguage() {
-      // First priority: ProfileProvider language
       if (profileProvider.language.isNotEmpty) {
         return profileProvider.language;
       }
-
-      // Second priority: LocaleProvider language
       if (localeProvider.locale.languageCode.isNotEmpty) {
         return localeProvider.locale.languageCode;
       }
-
-      // Default fallback
       return 'en';
     }
 
@@ -1167,21 +1429,20 @@ class _LanguageRadioTile extends StatelessWidget {
         language,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
-        style: const TextStyle(fontSize: 14),
+        style: theme.textTheme.bodyMedium?.copyWith(
+          color: theme.colorScheme.onSurface,
+        ),
       ),
       value: locale.languageCode,
       groupValue: currentLanguage,
       onChanged: (String? value) async {
         if (value != null) {
-          final logger = Logger();
-          logger.i('🌐 Changing language to: $value');
+          _logger.i('🌐 Changing language to: $value');
 
           try {
-            // ✅ FIX: Update both providers atomically
             await profileProvider.saveLanguage(value);
             localeProvider.setLocale(Locale(value));
 
-            // Force rebuild of the settings screen
             if (context.mounted) {
               Provider.of<ProfileProvider>(
                 context,
@@ -1189,7 +1450,6 @@ class _LanguageRadioTile extends StatelessWidget {
               ).refreshProfile();
             }
 
-            // Show confirmation
             if (context.mounted) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
@@ -1200,10 +1460,9 @@ class _LanguageRadioTile extends StatelessWidget {
               );
             }
 
-            // Update backend
             await _updateLanguageOnBackend(context, value);
           } catch (e) {
-            logger.e('🔴 Error changing language: $e');
+            _logger.e('🔴 Error changing language: $e');
             if (context.mounted) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
@@ -1218,6 +1477,7 @@ class _LanguageRadioTile extends StatelessWidget {
       dense: true,
       visualDensity: VisualDensity.compact,
       contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+      activeColor: theme.colorScheme.primary,
     );
   }
 
@@ -1225,8 +1485,6 @@ class _LanguageRadioTile extends StatelessWidget {
     BuildContext context,
     String langCode,
   ) async {
-    final logger = Logger();
-
     try {
       final profileProvider = Provider.of<ProfileProvider>(
         context,
@@ -1236,7 +1494,7 @@ class _LanguageRadioTile extends StatelessWidget {
       final token = profileProvider.token;
 
       if (userId == null || token == null) {
-        logger.w("⚠️ Cannot update language: userId or token missing");
+        _logger.w("⚠️ Cannot update language: userId or token missing");
         return;
       }
 
@@ -1256,24 +1514,23 @@ class _LanguageRadioTile extends StatelessWidget {
           .timeout(const Duration(seconds: 10));
 
       if (response.statusCode == 200) {
-        logger.i("✅ Language updated on backend successfully.");
+        _logger.i("✅ Language updated on backend successfully.");
 
         if (Environment.isProduction) {
-          logger.i('📊 Analytics: language_changed - lang: $langCode');
+          _logger.i('📊 Analytics: language_changed - lang: $langCode');
         }
       } else {
-        logger.w(
+        _logger.w(
           "❌ Failed to update language: ${response.statusCode} - ${response.body}",
         );
       }
     } on TimeoutException {
-      logger.e("⏰ Language update timeout");
+      _logger.e("⏰ Language update timeout");
     } catch (e) {
-      final errorLogger = Logger();
-      errorLogger.e("🔴 Error updating language: $e");
+      _logger.e("🔴 Error updating language: $e");
 
       if (Environment.isProduction) {
-        errorLogger.e('📊 Analytics: language_update_error - error: $e');
+        _logger.e('📊 Analytics: language_update_error - error: $e');
       }
     }
   }
