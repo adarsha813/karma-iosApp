@@ -597,7 +597,8 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
 
     if (message.isMe) {
       // User messages - use theme primary color
-      bubbleColor = theme.colorScheme.primary;
+      bubbleColor =
+          isDark ? AppColors.userBubble : AppColors.userBubbleLightMode;
     } else if (message.isClarification) {
       // Clarification messages - use theme colors
       bubbleColor =

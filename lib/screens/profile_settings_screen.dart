@@ -811,6 +811,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   }
 
   void _showRecoveryBottomSheet(BuildContext context, String recoverySecret) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       showModalBottomSheet(
         context: context,
@@ -819,9 +822,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         builder:
             (context) => Container(
               height: MediaQuery.of(context).size.height * 0.8,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                color: theme.colorScheme.background,
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(20),
                   topRight: Radius.circular(20),
                 ),
@@ -835,15 +838,15 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                       height: 4,
                       margin: const EdgeInsets.only(bottom: 20),
                       decoration: BoxDecoration(
-                        color: Colors.grey[300],
+                        color: theme.colorScheme.onSurface.withOpacity(0.3),
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),
-                    const Text(
+                    Text(
                       "🔐 Save Your Recovery Details",
-                      style: TextStyle(
-                        fontSize: 18,
+                      style: theme.textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold,
+                        color: theme.colorScheme.onBackground,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -852,21 +855,18 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
-                            const Text(
+                            Text(
                               "This information is crucial for account recovery. Please save it securely.",
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.grey,
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                color: theme.colorScheme.onBackground
+                                    .withOpacity(0.7),
                               ),
                               textAlign: TextAlign.center,
                             ),
                             const SizedBox(height: 20),
-                            _buildRecoveryCard(
-                              "Recovery Secret",
-                              recoverySecret,
-                            ),
+                            _buildRecoveryCard(recoverySecret, theme),
                             const SizedBox(height: 16),
-                            _buildInfoRow("Name", _nameController.text),
+                            _buildInfoRow("Name", _nameController.text, theme),
                             _buildInfoRow(
                               "Birth Date",
                               _selectedDate != null
@@ -874,20 +874,21 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                                     'MMM dd, yyyy',
                                   ).format(_selectedDate!)
                                   : 'Not set',
+                              theme,
                             ),
                             _buildInfoRow(
                               "Birth Time",
                               _selectedTime != null
                                   ? "${_selectedTime!.hour.toString().padLeft(2, '0')}:${_selectedTime!.minute.toString().padLeft(2, '0')}"
                                   : 'Not set',
+                              theme,
                             ),
                             const SizedBox(height: 20),
-                            const Text(
+                            Text(
                               "💡 Tip: Take a screenshot or write this down in a secure place",
-                              style: TextStyle(
-                                fontSize: 14,
+                              style: theme.textTheme.bodySmall?.copyWith(
                                 fontStyle: FontStyle.italic,
-                                color: Colors.blue,
+                                color: theme.colorScheme.primary,
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -901,11 +902,16 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                       child: ElevatedButton(
                         onPressed: () => Navigator.pop(context),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green,
-                          foregroundColor: Colors.white,
+                          backgroundColor: theme.colorScheme.primary,
+                          foregroundColor: theme.colorScheme.onPrimary,
                           padding: const EdgeInsets.symmetric(vertical: 16),
                         ),
-                        child: const Text("I Understand - Continue to App"),
+                        child: Text(
+                          "I Understand - Continue to App",
+                          style: theme.textTheme.labelLarge?.copyWith(
+                            color: theme.colorScheme.onPrimary,
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -916,29 +922,61 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     });
   }
 
-  Widget _buildRecoveryCard(String title, String value) {
+  Widget _buildRecoveryCard(String value, ThemeData theme) {
     return Card(
-      color: Colors.amber[50],
+      color: theme.colorScheme.surfaceVariant,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              title,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              "Recovery Secret",
+              style: theme.textTheme.bodyLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
             ),
             const SizedBox(height: 8),
             SelectableText(
               value,
-              style: const TextStyle(
-                fontSize: 18,
+              style: theme.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
-                color: Colors.red,
+                color: theme.colorScheme.error,
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildInfoRow(String label, String value, ThemeData theme) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 100,
+            child: Text(
+              "$label:",
+              style: theme.textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: theme.colorScheme.onBackground,
+              ),
+            ),
+          ),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Text(
+              value.isEmpty ? "Not set" : value,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onBackground.withOpacity(0.8),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -1454,26 +1492,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     };
 
     return countryCodes[countryName] ?? '';
-  }
-
-  Widget _buildInfoRow(String label, String value) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            width: 100,
-            child: Text(
-              "$label:",
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ),
-          const SizedBox(width: 8),
-          Expanded(child: Text(value.isEmpty ? "Not set" : value)),
-        ],
-      ),
-    );
   }
 
   Future<void> saveLanguageLocally(String langCode) async {
@@ -2135,68 +2153,25 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     );
   }
 
-  Widget _buildVersionHistoryItem(
-    Map<String, dynamic> version,
-    AppLocalizations l10n,
-  ) {
-    final updatedAt = DateTime.parse(version['updatedAt']).toLocal();
-    final dateFormat = DateFormat('MMM dd, yyyy - HH:mm');
-
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: 6),
-      elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  l10n.versionFromText(dateFormat.format(updatedAt)),
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                    color: Colors.blue,
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.blue.shade50,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-              ],
-            ),
-            // Removed all the field chips - now only shows date and version
-          ],
-        ),
-      ),
-    );
-  }
-
   Widget _buildHistorySection(
     AppLocalizations l10n,
     ProfileProvider profileProvider,
   ) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.getCurrentTheme(context);
+
     return Column(
       children: [
         Container(
           width: double.infinity,
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: Colors.blue.shade50,
+            color: theme.colorScheme.surfaceVariant,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Row(
             children: [
-              const Icon(Icons.history, color: Colors.blue, size: 24),
+              Icon(Icons.history, color: theme.colorScheme.primary, size: 24),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(
@@ -2204,22 +2179,23 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                   children: [
                     Text(
                       l10n.versionHistoryTitle,
-                      style: const TextStyle(
-                        fontSize: 18,
+                      style: theme.textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
-                        color: Colors.blue,
+                        color: theme.colorScheme.primary,
                       ),
                     ),
                     const SizedBox(height: 4),
                     Text(
                       '${profileProvider.versionHistory.length} versions found',
-                      style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: theme.colorScheme.onSurfaceVariant,
+                      ),
                     ),
                   ],
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.close, color: Colors.grey),
+                icon: Icon(Icons.close, color: theme.colorScheme.onSurface),
                 onPressed: () {
                   setState(() => _showHistory = false);
                 },
@@ -2236,12 +2212,14 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                 Icon(
                   Icons.history_toggle_off,
                   size: 64,
-                  color: Colors.grey[300],
+                  color: theme.colorScheme.onSurface.withOpacity(0.3),
                 ),
                 const SizedBox(height: 16),
                 Text(
                   'No history available',
-                  style: TextStyle(fontSize: 16, color: Colors.grey[500]),
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: theme.colorScheme.onSurface.withOpacity(0.5),
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -2249,10 +2227,81 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           )
         else
           ...profileProvider.versionHistory.reversed.map(
-            (version) => _buildVersionHistoryItem(version, l10n),
+            (version) => _buildVersionHistoryItem(version, l10n, theme),
           ),
         const Divider(height: 40),
       ],
+    );
+  }
+
+  Widget _buildVersionHistoryItem(
+    Map<String, dynamic> version,
+    AppLocalizations l10n,
+    ThemeData theme,
+  ) {
+    final updatedAt = DateTime.parse(version['updatedAt']).toLocal();
+    final dateFormat = DateFormat('MMM dd, yyyy - HH:mm');
+
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 6),
+      elevation: 2,
+      color: theme.colorScheme.surface,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  l10n.versionFromText(dateFormat.format(updatedAt)),
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.primary,
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.primary.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Text(
+                    'v${version['version'] ?? '1.0'}',
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.colorScheme.primary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            // You can add field changes here if needed, using theme colors
+            if (version['changes'] != null && version['changes'] is List)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children:
+                    (version['changes'] as List).map<Widget>((change) {
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 4),
+                        child: Text(
+                          '• $change',
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: theme.colorScheme.onSurface.withOpacity(0.7),
+                          ),
+                        ),
+                      );
+                    }).toList(),
+              ),
+          ],
+        ),
+      ),
     );
   }
 }

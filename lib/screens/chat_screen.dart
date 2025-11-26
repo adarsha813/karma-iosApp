@@ -2334,6 +2334,14 @@ class _ChatScreenState extends State<ChatScreen>
     super.didChangeDependencies();
     final profileProvider = Provider.of<ProfileProvider>(context);
     final newUserId = profileProvider.userId;
+    _themeChangeTimer?.cancel();
+    _themeChangeTimer = Timer(const Duration(milliseconds: 50), () {
+      if (mounted) {
+        setState(() {
+          // Force rebuild after theme settles
+        });
+      }
+    });
 
     if (newUserId != null && newUserId != currentUserId) {
       currentUserId = newUserId;
@@ -4260,6 +4268,7 @@ class _ChatScreenState extends State<ChatScreen>
   @override
   void dispose() {
     _disposed = true;
+    _themeChangeTimer?.cancel();
     // ✅ PROPERLY CANCEL TIMERS
     if (_refreshTimer != null) {
       _refreshTimer!.cancel();
@@ -4318,16 +4327,20 @@ class _ChatScreenState extends State<ChatScreen>
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
-    final theme = themeProvider.getCurrentTheme(context);
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, child) {
+        final theme = themeProvider.getCurrentTheme(context);
 
-    return Scaffold(
-      appBar: _buildAppBar(context, theme),
-      drawer: _buildDrawer(context, theme),
-      body: Container(
-        color: theme.colorScheme.background,
-        child: _buildChatBody(context, theme),
-      ),
+        return Scaffold(
+          appBar: _buildAppBar(context, theme),
+          drawer: _buildDrawer(context, theme),
+          body: Container(
+            color: theme.colorScheme.background,
+            child: child, // Use the cached child
+          ),
+        );
+      },
+      child: _buildChatBody(), // Move heavy computation outside
     );
   }
 
@@ -4636,35 +4649,9 @@ class _ChatScreenState extends State<ChatScreen>
     );
   }
 
-  Widget _buildChatBody(BuildContext context, ThemeData theme) {
+  Widget _buildEmptyState(ThemeData theme) {
     final l10n = AppLocalizations.of(context)!;
 
-    return Stack(
-      children: [
-        Column(
-          children: [
-            Expanded(
-              child: Consumer2<SecureChatService, DictionaryProvider>(
-                builder: (context, chatService, dictProvider, _) {
-                  final dictionaryMap = dictProvider.dictionaryMap;
-
-                  if (chatService.messages.isEmpty) {
-                    return _buildEmptyState(l10n, theme);
-                  }
-
-                  return _buildMessageList(chatService, dictionaryMap, theme);
-                },
-              ),
-            ),
-            _buildMessageInput(l10n, theme),
-          ],
-        ),
-        _buildScrollToBottomButton(theme),
-      ],
-    );
-  }
-
-  Widget _buildEmptyState(AppLocalizations l10n, ThemeData theme) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -4691,6 +4678,33 @@ class _ChatScreenState extends State<ChatScreen>
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildChatBody() {
+    return Stack(
+      children: [
+        Column(
+          children: [
+            Expanded(
+              child: Consumer2<SecureChatService, DictionaryProvider>(
+                builder: (context, chatService, dictProvider, _) {
+                  final dictionaryMap = dictProvider.dictionaryMap;
+                  final theme = Theme.of(context); // Get theme here
+
+                  if (chatService.messages.isEmpty) {
+                    return _buildEmptyState(theme);
+                  }
+
+                  return _buildMessageList(chatService, dictionaryMap, theme);
+                },
+              ),
+            ),
+            _buildMessageInput(),
+          ],
+        ),
+        _buildScrollToBottomButton(),
+      ],
     );
   }
 
@@ -4772,7 +4786,10 @@ class _ChatScreenState extends State<ChatScreen>
     );
   }
 
-  Widget _buildMessageInput(AppLocalizations l10n, ThemeData theme) {
+  Widget _buildMessageInput() {
+    final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+
     return Container(
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
@@ -4827,13 +4844,15 @@ class _ChatScreenState extends State<ChatScreen>
             ),
           ),
           const SizedBox(width: 8),
-          _buildSendButton(theme),
+          _buildSendButton(),
         ],
       ),
     );
   }
 
-  Widget _buildSendButton(ThemeData theme) {
+  Widget _buildSendButton() {
+    final theme = Theme.of(context);
+
     return _isSending
         ? Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -4870,7 +4889,9 @@ class _ChatScreenState extends State<ChatScreen>
         );
   }
 
-  Widget _buildScrollToBottomButton(ThemeData theme) {
+  Widget _buildScrollToBottomButton() {
+    final theme = Theme.of(context);
+
     return ValueListenableBuilder<bool>(
       valueListenable: _showButtonNotifier,
       builder: (context, showButton, child) {
@@ -4906,6 +4927,8 @@ class _ChatScreenState extends State<ChatScreen>
     );
   }
 }
+
+Timer? _themeChangeTimer;
 
 // Helper class for question eligibility
 class QuestionEligibility {

@@ -5,9 +5,9 @@ class AppColors {
   // DARK MODE
   // =====================
   // Backgrounds
-  static const Color background = Color(0xFF0D1117); // Main background
-  static const Color surface = Color(0xFF161B22); // Cards, panels
-  static const Color overlay = Color(0x990F141A); // 60% transparent overlay
+  static const Color background = Color(0xFF0D1117);
+  static const Color surface = Color(0xFF161B22);
+  static const Color overlay = Color(0x990F141A);
 
   // Brand Colors
   static const Color primaryGold = Color(0xFFD5B46F);
@@ -21,12 +21,10 @@ class AppColors {
   static const Color textDisabled = Color(0xFF3C4450);
 
   // Chat Bubbles
-  static const Color userBubble = Color(0xFF1F2A37); // User message
-  static const Color aiBubble = Color(0xFF273447); // AI / Astrologer
-  static const Color adviceBubble = Color(0xFF3B2F1F); // Advice / Insights
-  static const Color clarificationBubble = Color(
-    0xFF1D242C,
-  ); // Clarification / Follow-up
+  static const Color userBubble = Color(0xFF1E293B);
+  static const Color aiBubble = Color(0xFF253247);
+  static const Color adviceBubble = Color(0xFF3B2F1F);
+  static const Color clarificationBubble = Color(0xFF1A2430);
 
   // Accents
   static const Color accentIndigo = Color(0xFF7B8AB8);
@@ -36,19 +34,19 @@ class AppColors {
   static const Color borderStrong = Color(0xFF2A313A);
   static const Color borderSoft = Color(0xFF1C2229);
 
-  // Buttons
-  static const Color primaryButtonBackground = primaryGold;
-  static const Color primaryButtonText = background;
-  static const Color secondaryButtonBorder = primaryGold;
-  static const Color ghostButtonText = textSecondary;
+  // States
+  static const Color success = Color(0xFF10B981);
+  static const Color warning = Color(0xFFF59E0B);
+  static const Color error = Color(0xFFEF4444);
+  static const Color info = Color(0xFF3B82F6);
 
   // =====================
   // LIGHT MODE
   // =====================
   // Backgrounds
-  static const Color backgroundLight = Color(0xFFF8F9FB); // App background
-  static const Color surfaceLight = Color(0xFFFFFFFF); // Cards, panels
-  static const Color lowContrastPanel = Color(0xFFF1F3F5); // Panels / overlays
+  static const Color backgroundLight = Color(0xFFF8F9FB);
+  static const Color surfaceLight = Color(0xFFFFFFFF);
+  static const Color lowContrastPanel = Color(0xFFF1F3F5);
 
   // Brand Colors
   static const Color primaryGoldLight = Color(0xFFC49F53);
@@ -60,10 +58,10 @@ class AppColors {
   static const Color textMutedLight = Color(0xFF64748B);
 
   // Chat Bubbles
-  static const Color userBubbleLightMode = Color(0xFFE7ECF3);
-  static const Color aiBubbleLightMode = Color(0xFFF1F4FA);
-  static const Color adviceBubbleLightMode = Color(0xFFFFF7E6);
-  static const Color clarificationBubbleLightMode = Color(0xFFEEF1F5);
+  static const Color userBubbleLightMode = Color(0xFFE8EEF8);
+  static const Color aiBubbleLightMode = Color(0xFFF4F5F8);
+  static const Color adviceBubbleLightMode = Color(0xFFFFF1D9);
+  static const Color clarificationBubbleLightMode = Color(0xFFE3EBF7);
 
   // Accents
   static const Color accentIndigoLight = Color(0xFF7B8AB8);
@@ -73,9 +71,32 @@ class AppColors {
   static const Color borderStrongLight = Color(0xFFCBD5E1);
   static const Color borderSoftLight = Color(0xFFF1F3F5);
 
-  // Buttons
-  static const Color primaryButtonBackgroundLight = primaryGoldLight;
-  static const Color primaryButtonTextLight = textPrimaryLight;
-  static const Color secondaryButtonBorderLight = primaryGoldLight;
-  static const Color ghostButtonTextLight = textSecondaryLight;
+  // States
+  static const Color successLight = Color(0xFF059669);
+  static const Color warningLight = Color(0xFFD97706);
+  static const Color errorLight = Color(0xFFDC2626);
+  static const Color infoLight = Color(0xFF2563EB);
+
+  // =====================
+  // SEMANTIC GETTERS (NEW)
+  // =====================
+  static Color getSuccess(bool isDark) => isDark ? success : successLight;
+  static Color getWarning(bool isDark) => isDark ? warning : warningLight;
+  static Color getError(bool isDark) => isDark ? error : errorLight;
+  static Color getInfo(bool isDark) => isDark ? info : infoLight;
+
+  // =====================
+  // GRADIENTS (NEW)
+  // =====================
+  static const LinearGradient goldGradient = LinearGradient(
+    colors: [goldLight, primaryGold],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const LinearGradient cosmicGradient = LinearGradient(
+    colors: [Color(0xFF667eea), Color(0xFF764ba2)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
 }
