@@ -61,7 +61,7 @@ class AppColors {
   static const Color userBubbleLightMode = Color(0xFFE8EEF8);
   static const Color aiBubbleLightMode = Color(0xFFF4F5F8);
   static const Color adviceBubbleLightMode = Color(0xFFFFF1D9);
-  static const Color clarificationBubbleLightMode = Color(0xFFE3EBF7);
+  static const Color clarificationBubbleLightMode = Color(0xFFDDE6DE);
 
   // Accents
   static const Color accentIndigoLight = Color(0xFF7B8AB8);
