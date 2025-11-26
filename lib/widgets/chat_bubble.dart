@@ -18,7 +18,7 @@ import 'rating_bubble.dart';
 import '../screens/AstrologerDetailPage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../services/astrologerdataService.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+
 import 'package:kundali/utils/app_colors.dart';
 import '../providers/theme_provider.dart'; // Add this import
 
@@ -1003,43 +1003,45 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   Widget _buildMessageContent() {
     final message = widget.message;
 
-    return Container(child: _buildHtmlWithDictionaryHighlighting(message));
-  }
-
-  Widget _buildHtmlWithDictionaryHighlighting(Message message) {
     try {
-      // Parse HTML and apply dictionary highlighting
-      final textSpans = _parseHtmlWithDictionary(message.text, message.isMe);
-
+      final textSpans = _parseHtmlWithDictionaryHighlighting(message);
       return RichText(text: TextSpan(children: textSpans));
     } catch (e) {
       debugPrint('❌ HTML parsing error: $e');
-      // Fallback: Show HTML without dictionary highlighting
-      return HtmlWidget(
-        message.text,
-        textStyle: TextStyle(
-          color: message.isMe ? Colors.white : Colors.black,
-          fontSize: 14,
-        ),
-      );
+      return _buildFallbackWithHighlighting(message);
     }
   }
 
-  List<TextSpan> _parseHtmlWithDictionary(String html, bool isMe) {
+  List<TextSpan> _parseHtmlWithDictionaryHighlighting(Message message) {
     final List<TextSpan> spans = [];
-    final textColor = _getTextColor(widget.message);
+    final textColor = _getTextColor(message);
 
-    TextStyle currentStyle = TextStyle(color: textColor, fontSize: 14);
+    // Stack to manage nested styles
+    final styleStack = <TextStyle>[
+      TextStyle(color: textColor, fontSize: 14, fontWeight: FontWeight.normal),
+    ];
 
     final regex = RegExp(r'(<[^>]+>|[^<]+)');
-    final matches = regex.allMatches(html);
+    final matches = regex.allMatches(message.text);
 
     for (final match in matches) {
       final content = match.group(0)!;
 
       if (content.startsWith('<') && content.endsWith('>')) {
-        currentStyle = _updateStyleFromTag(currentStyle, content, isMe);
+        // Handle HTML tags
+        if (content.startsWith('</')) {
+          // Closing tag - pop style
+          if (styleStack.length > 1) {
+            styleStack.removeLast();
+          }
+        } else {
+          // Opening tag - push new style
+          final newStyle = _getStyleForHtmlTag(styleStack.last, content);
+          styleStack.add(newStyle);
+        }
       } else if (content.trim().isNotEmpty) {
+        // Text content - apply dictionary highlighting with current style
+        final currentStyle = styleStack.last;
         final textSpan = DictionaryHighlighter.highlightText(
           context,
           content,
@@ -1049,57 +1051,233 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
         spans.add(textSpan);
       }
 
+      // Add line breaks for paragraphs
       if (content == '</p>') {
-        spans.add(TextSpan(text: '\n\n'));
+        spans.add(const TextSpan(text: '\n\n'));
+      } else if (content == '<br>') {
+        spans.add(const TextSpan(text: '\n'));
       }
     }
 
     return spans;
   }
 
-  // Update the reset style to use theme colors
-  TextStyle _updateStyleFromTag(TextStyle currentStyle, String tag, bool isMe) {
+  TextStyle _getStyleForHtmlTag(TextStyle currentStyle, String tag) {
     TextStyle newStyle = currentStyle;
 
-    // Handle bold (ONLY this formatting)
-    if (tag.startsWith('<strong') || tag.startsWith('<b')) {
-      newStyle = newStyle.copyWith(fontWeight: FontWeight.bold);
-    }
+    // Handle opening tags only (ignore closing tags here)
+    if (!tag.startsWith('</')) {
+      // Bold tags
+      if (tag == '<strong>' ||
+          tag == '<b>' ||
+          tag.startsWith('<strong ') ||
+          tag.startsWith('<b ')) {
+        newStyle = newStyle.copyWith(fontWeight: FontWeight.bold);
+      }
+      // Italic tags
+      else if (tag == '<em>' ||
+          tag == '<i>' ||
+          tag.startsWith('<em ') ||
+          tag.startsWith('<i ')) {
+        newStyle = newStyle.copyWith(fontStyle: FontStyle.italic);
+      }
+      // Underline tags
+      else if (tag == '<u>' || tag.startsWith('<u ')) {
+        newStyle = newStyle.copyWith(decoration: TextDecoration.underline);
+      }
+      // Strikethrough tags
+      else if (tag == '<s>' ||
+          tag == '<strike>' ||
+          tag.startsWith('<s ') ||
+          tag.startsWith('<strike ')) {
+        newStyle = newStyle.copyWith(decoration: TextDecoration.lineThrough);
+      }
+      // Code/monospace tags
+      else if (tag == '<code>' ||
+          tag == '<tt>' ||
+          tag.startsWith('<code ') ||
+          tag.startsWith('<tt ')) {
+        newStyle = newStyle.copyWith(
+          fontFamily: 'monospace',
+          backgroundColor: Colors.grey[100],
+        );
+      }
+      // Heading tags (h1-h6)
+      else if (tag.startsWith('<h1') || tag == '<h1>') {
+        newStyle = newStyle.copyWith(fontSize: 24, fontWeight: FontWeight.bold);
+      } else if (tag.startsWith('<h2') || tag == '<h2>') {
+        newStyle = newStyle.copyWith(fontSize: 20, fontWeight: FontWeight.bold);
+      } else if (tag.startsWith('<h3') || tag == '<h3>') {
+        newStyle = newStyle.copyWith(fontSize: 18, fontWeight: FontWeight.bold);
+      } else if (tag.startsWith('<h4') || tag == '<h4>') {
+        newStyle = newStyle.copyWith(fontSize: 16, fontWeight: FontWeight.bold);
+      } else if (tag.startsWith('<h5') || tag == '<h5>') {
+        newStyle = newStyle.copyWith(fontSize: 14, fontWeight: FontWeight.bold);
+      } else if (tag.startsWith('<h6') || tag == '<h6>') {
+        newStyle = newStyle.copyWith(fontSize: 12, fontWeight: FontWeight.bold);
+      }
+      // Span tags with color
+      else if (tag.startsWith('<span')) {
+        // Force normal weight for spans unless explicitly styled otherwise
+        newStyle = newStyle.copyWith(
+          fontWeight: FontWeight.normal,
+          fontStyle: FontStyle.normal,
+        );
 
-    // Handle closing bold tags
-    if (tag == '</strong>' || tag == '</b>') {
-      newStyle = newStyle.copyWith(fontWeight: FontWeight.normal);
-    }
-
-    // Handle span with color styles (ONLY colors)
-    if (tag.startsWith('<span')) {
-      final styleMatch = RegExp(r'style="([^"]*)"').firstMatch(tag);
-      if (styleMatch != null) {
-        newStyle = _applyColorStylesOnly(newStyle, styleMatch.group(1)!, isMe);
+        final styleMatch = RegExp(r'style="([^"]*)"').firstMatch(tag);
+        if (styleMatch != null) {
+          newStyle = _applyAllSpanStyles(newStyle, styleMatch.group(1)!);
+        }
+      }
+      // Paragraph - reset to base style
+      else if (tag == '<p>') {
+        newStyle = TextStyle(
+          color: _getTextColor(widget.message),
+          fontSize: 14,
+          fontWeight: FontWeight.normal,
+          fontStyle: FontStyle.normal,
+          decoration: TextDecoration.none,
+        );
+      }
+      // Blockquote
+      else if (tag == '<blockquote>' || tag.startsWith('<blockquote')) {
+        newStyle = newStyle.copyWith(
+          fontStyle: FontStyle.italic,
+          color: _getTextColor(widget.message).withOpacity(0.7),
+        );
+      }
+      // Line break - no style change
+      else if (tag == '<br>' || tag == '<br/>' || tag == '<br />') {
+        // No style change
+      }
+      // Other tags that should not affect style
+      else if (tag == '<ul>' ||
+          tag == '<ol>' ||
+          tag == '<li>' ||
+          tag == '<hr>' ||
+          tag == '<hr/>' ||
+          tag == '<hr />') {
+        // No style change
+      }
+      // Comments - no style change
+      else if (tag.startsWith('<!--')) {
+        // No style change
       }
     }
-
-    // Handle closing span - reset to theme color
-    if (tag == '</span>') {
-      newStyle = newStyle.copyWith(color: _getTextColor(widget.message));
-    }
-
-    // Reset to theme style for paragraph breaks
-    if (tag == '<p>') {
-      newStyle = TextStyle(color: _getTextColor(widget.message), fontSize: 14);
+    // Handle closing tags
+    else {
+      if (tag == '</strong>' || tag == '</b>') {
+        newStyle = newStyle.copyWith(fontWeight: FontWeight.normal);
+      } else if (tag == '</em>' || tag == '</i>') {
+        newStyle = newStyle.copyWith(fontStyle: FontStyle.normal);
+      } else if (tag == '</u>') {
+        newStyle = newStyle.copyWith(decoration: TextDecoration.none);
+      } else if (tag == '</s>' || tag == '</strike>') {
+        newStyle = newStyle.copyWith(decoration: TextDecoration.none);
+      } else if (tag == '</code>' || tag == '</tt>') {
+        newStyle = newStyle.copyWith(fontFamily: null, backgroundColor: null);
+      } else if (tag == '</h1>' ||
+          tag == '</h2>' ||
+          tag == '</h3>' ||
+          tag == '</h4>' ||
+          tag == '</h5>' ||
+          tag == '</h6>') {
+        // Reset to base style after headings
+        newStyle = TextStyle(
+          color: _getTextColor(widget.message),
+          fontSize: 14,
+          fontWeight: FontWeight.normal,
+          fontStyle: FontStyle.normal,
+        );
+      } else if (tag == '</span>') {
+        newStyle = newStyle.copyWith(
+          color: _getTextColor(widget.message),
+          fontWeight: FontWeight.normal,
+          fontStyle: FontStyle.normal,
+          decoration: TextDecoration.none,
+        );
+      } else if (tag == '</blockquote>') {
+        newStyle = newStyle.copyWith(
+          fontStyle: FontStyle.normal,
+          color: _getTextColor(widget.message),
+        );
+      }
     }
 
     return newStyle;
   }
 
-  TextStyle _applyColorStylesOnly(
-    TextStyle baseStyle,
-    String style,
-    bool isMe,
-  ) {
+  TextStyle _applyAllSpanStyles(TextStyle baseStyle, String style) {
     TextStyle result = baseStyle;
 
-    // Parse colors (existing code)
+    // Extract and apply multiple CSS properties from span style
+    final properties = style.split(';');
+
+    for (final property in properties) {
+      final trimmed = property.trim();
+      if (trimmed.isEmpty) continue;
+
+      final parts = trimmed.split(':');
+      if (parts.length != 2) continue;
+
+      final propName = parts[0].trim();
+      final propValue = parts[1].trim();
+
+      switch (propName) {
+        case 'color':
+          final color = _extractColorFromStyle(propValue);
+          if (color != null) {
+            result = result.copyWith(color: color);
+          }
+          break;
+        case 'font-weight':
+          if (propValue == 'bold' ||
+              propValue == 'bolder' ||
+              propValue == '700') {
+            result = result.copyWith(fontWeight: FontWeight.bold);
+          } else if (propValue == 'normal' || propValue == '400') {
+            result = result.copyWith(fontWeight: FontWeight.normal);
+          }
+          break;
+        case 'font-style':
+          if (propValue == 'italic') {
+            result = result.copyWith(fontStyle: FontStyle.italic);
+          } else if (propValue == 'normal') {
+            result = result.copyWith(fontStyle: FontStyle.normal);
+          }
+          break;
+        case 'text-decoration':
+          if (propValue == 'underline') {
+            result = result.copyWith(decoration: TextDecoration.underline);
+          } else if (propValue == 'line-through') {
+            result = result.copyWith(decoration: TextDecoration.lineThrough);
+          } else if (propValue == 'none') {
+            result = result.copyWith(decoration: TextDecoration.none);
+          }
+          break;
+        case 'background-color':
+          final bgColor = _extractColorFromStyle(propValue);
+          if (bgColor != null) {
+            result = result.copyWith(backgroundColor: bgColor);
+          }
+          break;
+        case 'font-size':
+          // Basic font size support (you can enhance this)
+          if (propValue.endsWith('px')) {
+            final size = double.tryParse(propValue.replaceAll('px', ''));
+            if (size != null) {
+              result = result.copyWith(fontSize: size);
+            }
+          }
+          break;
+      }
+    }
+
+    return result;
+  }
+
+  Color? _extractColorFromStyle(String style) {
+    // Parse RGB color
     final rgbMatch = RegExp(
       r'color:\s*rgb\((\d+),\s*(\d+),\s*(\d+)\)',
     ).firstMatch(style);
@@ -1107,16 +1285,35 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       final r = int.parse(rgbMatch.group(1)!);
       final g = int.parse(rgbMatch.group(2)!);
       final b = int.parse(rgbMatch.group(3)!);
-      result = result.copyWith(color: Color.fromRGBO(r, g, b, 1));
+      return Color.fromRGBO(r, g, b, 1);
     }
 
+    // Parse HEX color
     final hexMatch = RegExp(r'color:\s*#([0-9a-fA-F]{6})').firstMatch(style);
     if (hexMatch != null) {
       final hexColor = hexMatch.group(1)!;
-      result = result.copyWith(color: Color(int.parse('0xFF$hexColor')));
+      return Color(int.parse('0xFF$hexColor'));
     }
 
-    return result;
+    return null;
+  }
+
+  Widget _buildFallbackWithHighlighting(Message message) {
+    final plainText = _stripHtmlTags(message.text);
+    final baseStyle = TextStyle(
+      color: _getTextColor(message),
+      fontSize: 14,
+      fontWeight: FontWeight.normal,
+    );
+
+    final highlightedText = DictionaryHighlighter.highlightText(
+      context,
+      plainText,
+      widget.dictionaryMap,
+      baseStyle,
+    );
+
+    return RichText(text: highlightedText);
   }
 
   // Update the _buildAdminInfo method
@@ -1425,19 +1622,35 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   Color _getTextColor(Message message) {
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     final theme = themeProvider.getCurrentTheme(context);
+    final isDark = theme.brightness == Brightness.dark;
 
     if (message.isMe) {
-      return theme.colorScheme.onPrimary;
+      // User bubble - ensure good contrast with both dark and light backgrounds
+      return isDark ? Colors.white : AppColors.textPrimaryLight;
+    } else if (message.isAdvice) {
+      // Advice bubble - gold-themed, use dark text for better readability
+      return isDark ? AppColors.textPrimary : Color(0xFF1C1C1C);
+    } else if (message.isClarification) {
+      // Clarification bubble
+      return isDark ? AppColors.textPrimary : AppColors.textPrimaryLight;
+    } else {
+      // AI bubble
+      return isDark ? AppColors.textPrimary : AppColors.textPrimaryLight;
     }
-
-    return theme.colorScheme.onSurface;
   }
 
   Color _getSecondaryTextColor(Message message) {
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     final theme = themeProvider.getCurrentTheme(context);
+    final isDark = theme.brightness == Brightness.dark;
 
-    return theme.colorScheme.onSurface.withOpacity(0.7);
+    if (message.isMe) {
+      return isDark
+          ? Colors.white.withOpacity(0.8)
+          : AppColors.textSecondaryLight;
+    } else {
+      return isDark ? AppColors.textSecondary : AppColors.textSecondaryLight;
+    }
   }
 
   Widget _buildTimestamp(String text) {
