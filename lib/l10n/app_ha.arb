@@ -435,5 +435,9 @@
   "experience": "Kwarewa",
   "qualification": "cancanta",
   "education": "Ilimi",
-  "recoveryTips": "• Ɗauki hoton wannan bayanin\n• Ajiye shi a wuri mai tsaro\n• Kada ku raba tare da kowa\nZa a nuna wannan sau ɗaya kawai"
+  "recoveryTips": "• Ɗauki hoton wannan bayanin\n• Ajiye shi a wuri mai tsaro\n• Kada ku raba tare da kowa\nZa a nuna wannan sau ɗaya kawai",
+  "themeSettingsTitle": "Saitunan Jigo",
+  "lightThemeLabel": "Haske",
+  "darkThemeLabel": "Duhu",
+  "systemThemeLabel": "Tsari"
 }

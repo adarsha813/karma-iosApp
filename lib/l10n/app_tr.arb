@@ -435,5 +435,9 @@
   "experience": "Deneyim",
   "qualification": "Vasıf",
   "education": "Eğitim",
-  "recoveryTips": "• Bu bilgilerin ekran görüntüsünü alın\n• Güvenli bir yerde saklayın\n• Kimseyle paylaşmayın\n• Bu yalnızca bir kez gösterilecektir"
+  "recoveryTips": "• Bu bilgilerin ekran görüntüsünü alın\n• Güvenli bir yerde saklayın\n• Kimseyle paylaşmayın\n• Bu yalnızca bir kez gösterilecektir",
+  "themeSettingsTitle": "Tema Ayarları",
+  "lightThemeLabel": "Işık",
+  "darkThemeLabel": "Karanlık",
+  "systemThemeLabel": "Sistem"
 }

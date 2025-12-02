@@ -435,5 +435,9 @@
   "experience": "Zvakaitika",
   "qualification": "Qualification",
   "education": "Dzidzo",
-  "recoveryTips": "• Tora skrini yeruzivo urwu\n• Zvichengete munzvimbo yakachengeteka\n• Usagovana nemunhu\n• Izvi zvicharatidzwa kamwe chete"
+  "recoveryTips": "• Tora skrini yeruzivo urwu\n• Zvichengete munzvimbo yakachengeteka\n• Usagovana nemunhu\n• Izvi zvicharatidzwa kamwe chete",
+  "themeSettingsTitle": "Theme Settings",
+  "lightThemeLabel": "Chiedza",
+  "darkThemeLabel": "Rima",
+  "systemThemeLabel": "System"
 }

@@ -435,5 +435,9 @@
   "experience": "Experiència",
   "qualification": "Qualificació",
   "education": "Educació",
-  "recoveryTips": "• Fes una captura de pantalla d'aquesta informació\n• Guarda-la en un lloc segur\n• No la comparteixis amb ningú\n• Només es mostrarà una vegada"
+  "recoveryTips": "• Fes una captura de pantalla d'aquesta informació\n• Guarda-la en un lloc segur\n• No la comparteixis amb ningú\n• Només es mostrarà una vegada",
+  "themeSettingsTitle": "Configuració del tema",
+  "lightThemeLabel": "Llum",
+  "darkThemeLabel": "Fosc",
+  "systemThemeLabel": "Sistema"
 }

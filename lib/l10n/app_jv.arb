@@ -435,5 +435,9 @@
   "experience": "Pengalaman",
   "qualification": "Kualifikasi",
   "education": "Pendidikan",
-  "recoveryTips": "• Njupuk gambar saka informasi iki\n• Simpen ing panggonan kang aman\n• Aja nuduhake karo sapa wae\n• Iki mung bakal ditampilake sapisan"
+  "recoveryTips": "• Njupuk gambar saka informasi iki\n• Simpen ing panggonan kang aman\n• Aja nuduhake karo sapa wae\n• Iki mung bakal ditampilake sapisan",
+  "themeSettingsTitle": "Setelan Tema",
+  "lightThemeLabel": "cahya",
+  "darkThemeLabel": "peteng",
+  "systemThemeLabel": "Sistem"
 }

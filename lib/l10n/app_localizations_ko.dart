@@ -826,4 +826,34 @@ class AppLocalizationsKo extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• 이 정보의 스크린샷을 찍으세요.\n• 안전한 곳에 보관하세요.\n• 누구와도 공유하지 마세요.\n• 이 정보는 한 번만 표시됩니다.';
+
+  @override
+  String get themeSettingsTitle => '테마 설정';
+
+  @override
+  String get lightThemeLabel => '빛';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => '어두운';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => '체계';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

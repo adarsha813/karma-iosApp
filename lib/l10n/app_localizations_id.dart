@@ -843,4 +843,34 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Ambil tangkapan layar informasi ini\n• Simpan di tempat yang aman\n• Jangan bagikan dengan siapa pun\n• Ini hanya akan ditampilkan sekali';
+
+  @override
+  String get themeSettingsTitle => 'Pengaturan Tema';
+
+  @override
+  String get lightThemeLabel => 'Lampu';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Gelap';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Sistem';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

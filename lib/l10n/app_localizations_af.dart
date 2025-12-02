@@ -842,4 +842,34 @@ class AppLocalizationsAf extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Neem \'n skermkiekie van hierdie inligting\n• Stoor dit op \'n veilige plek\n• Moenie met enigiemand deel nie\n• Dit sal slegs een keer gewys word';
+
+  @override
+  String get themeSettingsTitle => 'Tema-instellings';
+
+  @override
+  String get lightThemeLabel => 'Lig';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Donker';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Stelsel';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

@@ -846,4 +846,34 @@ class AppLocalizationsIs extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Taktu skjámynd af þessum upplýsingum\n• Geymdu þær á öruggum stað\n• Ekki deila með neinum\n• Þetta verður aðeins sýnt einu sinni';
+
+  @override
+  String get themeSettingsTitle => 'Þemastillingar';
+
+  @override
+  String get lightThemeLabel => 'Ljós';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Dökkt';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Kerfi';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

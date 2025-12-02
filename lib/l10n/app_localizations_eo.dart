@@ -843,4 +843,34 @@ class AppLocalizationsEo extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Faru ekranfoton de ĉi tiu informo\n• Konservu ĝin en sekura loko\n• Ne dividu kun iu ajn\n• Ĉi tio estos montrata nur unufoje';
+
+  @override
+  String get themeSettingsTitle => 'Temaj Agordoj';
+
+  @override
+  String get lightThemeLabel => 'Lumo';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Malluma';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Sistemo';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

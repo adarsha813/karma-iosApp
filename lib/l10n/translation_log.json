@@ -1,0 +1,3665 @@
+{
+  "lastUpdated": {
+    "af": "2025-12-02T01:11:51.906Z",
+    "sq": "2025-12-02T01:11:53.164Z",
+    "am": "2025-12-02T01:11:54.488Z",
+    "ar": "2025-12-02T01:11:55.803Z",
+    "hy": "2025-12-02T01:11:57.100Z",
+    "az": "2025-12-02T01:11:58.331Z",
+    "eu": "2025-12-02T01:11:59.616Z",
+    "be": "2025-12-02T01:12:00.888Z",
+    "bn": "2025-12-02T01:12:02.136Z",
+    "bs": "2025-12-02T01:12:03.443Z",
+    "bg": "2025-12-02T01:12:04.719Z",
+    "ca": "2025-12-02T01:12:05.988Z",
+    "ceb": "2025-12-02T01:12:07.234Z",
+    "zh": "2025-12-02T01:12:08.548Z",
+    "zh_TW": "2025-12-02T01:12:09.761Z",
+    "co": "2025-12-02T01:12:11.031Z",
+    "hr": "2025-12-02T01:12:12.300Z",
+    "cs": "2025-12-02T01:12:13.549Z",
+    "da": "2025-12-02T01:12:14.834Z",
+    "nl": "2025-12-02T01:12:16.128Z",
+    "eo": "2025-12-02T01:12:17.644Z",
+    "et": "2025-12-02T01:12:18.913Z",
+    "fi": "2025-12-02T01:12:20.215Z",
+    "fr": "2025-12-02T01:12:21.439Z",
+    "fy": "2025-12-02T01:12:22.671Z",
+    "gl": "2025-12-02T01:12:24.036Z",
+    "ka": "2025-12-02T01:12:25.314Z",
+    "de": "2025-12-02T01:12:26.517Z",
+    "el": "2025-12-02T01:12:27.852Z",
+    "gu": "2025-12-02T01:12:29.134Z",
+    "ht": "2025-12-02T01:12:30.407Z",
+    "ha": "2025-12-02T01:12:31.702Z",
+    "haw": "2025-12-02T01:12:32.937Z",
+    "he": "2025-12-02T01:12:34.174Z",
+    "hi": "2025-12-02T01:12:35.396Z",
+    "hmn": "2025-12-02T01:12:36.681Z",
+    "hu": "2025-12-02T01:12:37.971Z",
+    "is": "2025-12-02T01:12:39.263Z",
+    "ig": "2025-12-02T01:12:40.540Z",
+    "id": "2025-12-02T01:12:41.769Z",
+    "ga": "2025-12-02T01:12:43.075Z",
+    "it": "2025-12-02T01:12:44.320Z",
+    "ja": "2025-12-02T01:12:45.531Z",
+    "jv": "2025-12-02T01:12:46.787Z",
+    "kn": "2025-12-02T01:12:48.094Z",
+    "kk": "2025-12-02T01:12:49.882Z",
+    "km": "2025-12-02T01:12:51.156Z",
+    "rw": "2025-12-02T01:12:52.459Z",
+    "ko": "2025-12-02T01:12:53.691Z",
+    "ku": "2025-12-02T01:12:54.981Z",
+    "ky": "2025-12-02T01:12:56.272Z",
+    "lo": "2025-12-02T01:12:57.560Z",
+    "lv": "2025-12-02T01:12:58.856Z",
+    "lt": "2025-12-02T01:13:00.147Z",
+    "lb": "2025-12-02T01:13:01.420Z",
+    "mk": "2025-12-02T01:13:02.731Z",
+    "mg": "2025-12-02T01:13:03.991Z",
+    "ms": "2025-12-02T01:13:05.209Z",
+    "ml": "2025-12-02T01:13:06.500Z",
+    "mt": "2025-12-02T01:13:07.838Z",
+    "mi": "2025-12-02T01:13:09.145Z",
+    "mr": "2025-12-02T01:13:10.473Z",
+    "mn": "2025-12-02T01:13:11.708Z",
+    "my": "2025-12-02T01:13:12.996Z",
+    "ne": "2025-12-02T01:13:14.296Z",
+    "no": "2025-12-02T01:13:15.699Z",
+    "ny": "2025-12-02T01:13:17.074Z",
+    "or": "2025-12-02T01:13:18.366Z",
+    "ps": "2025-12-02T01:13:19.637Z",
+    "fa": "2025-12-02T01:13:20.930Z",
+    "pl": "2025-12-02T01:13:22.224Z",
+    "pt": "2025-12-02T01:13:23.512Z",
+    "pa": "2025-12-02T01:13:24.788Z",
+    "ro": "2025-12-02T01:13:26.063Z",
+    "ru": "2025-12-02T01:13:27.285Z",
+    "sm": "2025-12-02T01:13:28.562Z",
+    "gd": "2025-12-02T01:13:29.839Z",
+    "sr": "2025-12-02T01:13:31.119Z",
+    "st": "2025-12-02T01:13:32.405Z",
+    "sn": "2025-12-02T01:13:33.687Z",
+    "sd": "2025-12-02T01:13:34.959Z",
+    "si": "2025-12-02T01:13:36.197Z",
+    "sk": "2025-12-02T01:13:37.481Z",
+    "sl": "2025-12-02T01:13:38.782Z",
+    "so": "2025-12-02T01:13:40.072Z",
+    "es": "2025-12-02T01:13:41.292Z",
+    "su": "2025-12-02T01:13:42.555Z",
+    "sw": "2025-12-02T01:13:43.833Z",
+    "sv": "2025-12-02T01:13:45.121Z",
+    "tl": "2025-12-02T01:13:46.367Z",
+    "tg": "2025-12-02T01:13:47.738Z",
+    "ta": "2025-12-02T01:13:49.069Z",
+    "tt": "2025-12-02T01:13:50.397Z",
+    "te": "2025-12-02T01:13:51.761Z",
+    "th": "2025-12-02T01:13:53.046Z",
+    "tr": "2025-12-02T01:13:54.319Z",
+    "tk": "2025-12-02T01:13:55.627Z",
+    "uk": "2025-12-02T01:13:56.996Z",
+    "ur": "2025-12-02T01:13:58.278Z",
+    "ug": "2025-12-02T01:13:59.645Z",
+    "uz": "2025-12-02T01:14:00.930Z",
+    "vi": "2025-12-02T01:14:02.159Z",
+    "cy": "2025-12-02T01:14:03.494Z",
+    "xh": "2025-12-02T01:14:04.786Z",
+    "yi": "2025-12-02T01:14:06.088Z",
+    "yo": "2025-12-02T01:14:07.389Z",
+    "zu": "2025-12-02T01:14:08.740Z"
+  },
+  "changes": [
+    {
+      "timestamp": "2025-12-02T01:14:08.740Z",
+      "action": "add_specific",
+      "language": "zu",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Uhlelo"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:08.714Z",
+      "action": "add_specific",
+      "language": "zu",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Kumnyama"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:08.687Z",
+      "action": "add_specific",
+      "language": "zu",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Ukukhanya"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:08.685Z",
+      "action": "add_specific",
+      "language": "zu",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Izilungiselelo Zetimu"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:07.389Z",
+      "action": "add_specific",
+      "language": "yo",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Eto"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:07.380Z",
+      "action": "add_specific",
+      "language": "yo",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Dudu"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:07.369Z",
+      "action": "add_specific",
+      "language": "yo",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Imọlẹ"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:07.368Z",
+      "action": "add_specific",
+      "language": "yo",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Awọn Eto Akori"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:06.088Z",
+      "action": "add_specific",
+      "language": "yi",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "סיסטעם"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:06.079Z",
+      "action": "add_specific",
+      "language": "yi",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "טונקל"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:06.077Z",
+      "action": "add_specific",
+      "language": "yi",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "ליכט"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:06.075Z",
+      "action": "add_specific",
+      "language": "yi",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "טעמע סעטטינגס"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:04.786Z",
+      "action": "add_specific",
+      "language": "xh",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Inkqubo"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:04.774Z",
+      "action": "add_specific",
+      "language": "xh",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Mnyama"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:04.773Z",
+      "action": "add_specific",
+      "language": "xh",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Ukukhanya"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:04.771Z",
+      "action": "add_specific",
+      "language": "xh",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Iisetingi zomxholo"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:03.494Z",
+      "action": "add_specific",
+      "language": "cy",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "System"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:03.479Z",
+      "action": "add_specific",
+      "language": "cy",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Tywyll"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:03.465Z",
+      "action": "add_specific",
+      "language": "cy",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Golau"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:03.464Z",
+      "action": "add_specific",
+      "language": "cy",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Gosodiadau Thema"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:02.159Z",
+      "action": "add_specific",
+      "language": "vi",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Hệ thống"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:02.151Z",
+      "action": "add_specific",
+      "language": "vi",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Tối tăm"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:02.150Z",
+      "action": "add_specific",
+      "language": "vi",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Ánh sáng"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:02.149Z",
+      "action": "add_specific",
+      "language": "vi",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Cài đặt chủ đề"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:00.930Z",
+      "action": "add_specific",
+      "language": "uz",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Tizim"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:00.921Z",
+      "action": "add_specific",
+      "language": "uz",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Qorong'i"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:00.920Z",
+      "action": "add_specific",
+      "language": "uz",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Nur"
+    },
+    {
+      "timestamp": "2025-12-02T01:14:00.919Z",
+      "action": "add_specific",
+      "language": "uz",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Mavzu sozlamalari"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:59.645Z",
+      "action": "add_specific",
+      "language": "ug",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "سىستېما"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:59.620Z",
+      "action": "add_specific",
+      "language": "ug",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "قاراڭغۇ"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:59.595Z",
+      "action": "add_specific",
+      "language": "ug",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "نۇر"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:59.592Z",
+      "action": "add_specific",
+      "language": "ug",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "باشتېما تەڭشىكى"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:58.278Z",
+      "action": "add_specific",
+      "language": "ur",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "سسٹم"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:58.255Z",
+      "action": "add_specific",
+      "language": "ur",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "اندھیرا"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:58.229Z",
+      "action": "add_specific",
+      "language": "ur",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "روشنی"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:58.226Z",
+      "action": "add_specific",
+      "language": "ur",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "تھیم کی ترتیبات"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:56.995Z",
+      "action": "add_specific",
+      "language": "uk",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Система"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:56.973Z",
+      "action": "add_specific",
+      "language": "uk",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Темний"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:56.942Z",
+      "action": "add_specific",
+      "language": "uk",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Світло"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:56.939Z",
+      "action": "add_specific",
+      "language": "uk",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Налаштування теми"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:55.627Z",
+      "action": "add_specific",
+      "language": "tk",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Ulgam"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:55.626Z",
+      "action": "add_specific",
+      "language": "tk",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Garaňky"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:55.610Z",
+      "action": "add_specific",
+      "language": "tk",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Lightagtylyk"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:55.608Z",
+      "action": "add_specific",
+      "language": "tk",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Mowzuk sazlamalary"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:54.319Z",
+      "action": "add_specific",
+      "language": "tr",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistem"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:54.295Z",
+      "action": "add_specific",
+      "language": "tr",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Karanlık"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:54.293Z",
+      "action": "add_specific",
+      "language": "tr",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Işık"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:54.292Z",
+      "action": "add_specific",
+      "language": "tr",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Tema Ayarları"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:53.046Z",
+      "action": "add_specific",
+      "language": "th",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "ระบบ"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:53.018Z",
+      "action": "add_specific",
+      "language": "th",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "มืด"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:53.015Z",
+      "action": "add_specific",
+      "language": "th",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "แสงสว่าง"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:53.012Z",
+      "action": "add_specific",
+      "language": "th",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "การตั้งค่าธีม"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:51.761Z",
+      "action": "add_specific",
+      "language": "te",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "వ్యవస్థ"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:51.736Z",
+      "action": "add_specific",
+      "language": "te",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "చీకటి"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:51.707Z",
+      "action": "add_specific",
+      "language": "te",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "కాంతి"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:51.704Z",
+      "action": "add_specific",
+      "language": "te",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "థీమ్ సెట్టింగ్‌లు"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:50.397Z",
+      "action": "add_specific",
+      "language": "tt",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Система"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:50.370Z",
+      "action": "add_specific",
+      "language": "tt",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Караңгы"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:50.368Z",
+      "action": "add_specific",
+      "language": "tt",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Яктылык"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:50.365Z",
+      "action": "add_specific",
+      "language": "tt",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Тема көйләүләре"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:49.069Z",
+      "action": "add_specific",
+      "language": "ta",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "அமைப்பு"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:49.041Z",
+      "action": "add_specific",
+      "language": "ta",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "இருள்"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:49.040Z",
+      "action": "add_specific",
+      "language": "ta",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "ஒளி"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:49.038Z",
+      "action": "add_specific",
+      "language": "ta",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "தீம் அமைப்புகள்"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:47.738Z",
+      "action": "add_specific",
+      "language": "tg",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Система"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:47.712Z",
+      "action": "add_specific",
+      "language": "tg",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Торик"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:47.685Z",
+      "action": "add_specific",
+      "language": "tg",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Нур"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:47.683Z",
+      "action": "add_specific",
+      "language": "tg",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Танзимоти мавзӯъ"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:46.367Z",
+      "action": "add_specific",
+      "language": "tl",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistema"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:46.339Z",
+      "action": "add_specific",
+      "language": "tl",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Madilim"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:46.336Z",
+      "action": "add_specific",
+      "language": "tl",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Liwanag"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:46.334Z",
+      "action": "add_specific",
+      "language": "tl",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Mga Setting ng Tema"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:45.121Z",
+      "action": "add_specific",
+      "language": "sv",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "System"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:45.094Z",
+      "action": "add_specific",
+      "language": "sv",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Mörk"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:45.091Z",
+      "action": "add_specific",
+      "language": "sv",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Ljus"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:45.090Z",
+      "action": "add_specific",
+      "language": "sv",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Temainställningar"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:43.833Z",
+      "action": "add_specific",
+      "language": "sw",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Mfumo"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:43.823Z",
+      "action": "add_specific",
+      "language": "sw",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Giza"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:43.822Z",
+      "action": "add_specific",
+      "language": "sw",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Mwanga"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:43.821Z",
+      "action": "add_specific",
+      "language": "sw",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Mipangilio ya Mandhari"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:42.555Z",
+      "action": "add_specific",
+      "language": "su",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistim"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:42.546Z",
+      "action": "add_specific",
+      "language": "su",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Poek"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:42.546Z",
+      "action": "add_specific",
+      "language": "su",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Caang"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:42.545Z",
+      "action": "add_specific",
+      "language": "su",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Setélan Téma"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:41.292Z",
+      "action": "add_specific",
+      "language": "es",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistema"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:41.284Z",
+      "action": "add_specific",
+      "language": "es",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Oscuro"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:41.283Z",
+      "action": "add_specific",
+      "language": "es",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Luz"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:41.282Z",
+      "action": "add_specific",
+      "language": "es",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Configuración del tema"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:40.072Z",
+      "action": "add_specific",
+      "language": "so",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Nidaamka"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:40.063Z",
+      "action": "add_specific",
+      "language": "so",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Madow"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:40.062Z",
+      "action": "add_specific",
+      "language": "so",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Iftiin"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:40.062Z",
+      "action": "add_specific",
+      "language": "so",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Dejinta mawduuca"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:38.782Z",
+      "action": "add_specific",
+      "language": "sl",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistem"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:38.773Z",
+      "action": "add_specific",
+      "language": "sl",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Temno"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:38.773Z",
+      "action": "add_specific",
+      "language": "sl",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Svetloba"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:38.770Z",
+      "action": "add_specific",
+      "language": "sl",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Nastavitve teme"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:37.481Z",
+      "action": "add_specific",
+      "language": "sk",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Systém"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:37.481Z",
+      "action": "add_specific",
+      "language": "sk",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Tmavé"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:37.472Z",
+      "action": "add_specific",
+      "language": "sk",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Svetlo"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:37.470Z",
+      "action": "add_specific",
+      "language": "sk",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Nastavenia témy"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:36.197Z",
+      "action": "add_specific",
+      "language": "si",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "පද්ධතිය"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:36.189Z",
+      "action": "add_specific",
+      "language": "si",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "අඳුරු"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:36.188Z",
+      "action": "add_specific",
+      "language": "si",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "ආලෝකය"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:36.187Z",
+      "action": "add_specific",
+      "language": "si",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "තේමා සැකසුම්"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:34.959Z",
+      "action": "add_specific",
+      "language": "sd",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "سسٽم"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:34.950Z",
+      "action": "add_specific",
+      "language": "sd",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "اونداهو"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:34.949Z",
+      "action": "add_specific",
+      "language": "sd",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "روشني"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:34.948Z",
+      "action": "add_specific",
+      "language": "sd",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "ٿيم سيٽنگون"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:33.687Z",
+      "action": "add_specific",
+      "language": "sn",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "System"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:33.680Z",
+      "action": "add_specific",
+      "language": "sn",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Rima"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:33.679Z",
+      "action": "add_specific",
+      "language": "sn",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Chiedza"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:33.678Z",
+      "action": "add_specific",
+      "language": "sn",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Theme Settings"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:32.405Z",
+      "action": "add_specific",
+      "language": "st",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Tsamaiso"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:32.397Z",
+      "action": "add_specific",
+      "language": "st",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Lefifi"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:32.397Z",
+      "action": "add_specific",
+      "language": "st",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Leseli"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:32.395Z",
+      "action": "add_specific",
+      "language": "st",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Litlhophiso tsa Theme"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:31.119Z",
+      "action": "add_specific",
+      "language": "sr",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Систем"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:31.109Z",
+      "action": "add_specific",
+      "language": "sr",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Тамно"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:31.108Z",
+      "action": "add_specific",
+      "language": "sr",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Светло"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:31.107Z",
+      "action": "add_specific",
+      "language": "sr",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Подешавања теме"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:29.839Z",
+      "action": "add_specific",
+      "language": "gd",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Siostam"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:29.829Z",
+      "action": "add_specific",
+      "language": "gd",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Dorcha"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:29.828Z",
+      "action": "add_specific",
+      "language": "gd",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Solas"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:29.826Z",
+      "action": "add_specific",
+      "language": "gd",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Roghainnean Cuspair"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:28.562Z",
+      "action": "add_specific",
+      "language": "sm",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Faiga"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:28.551Z",
+      "action": "add_specific",
+      "language": "sm",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Pogisa"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:28.550Z",
+      "action": "add_specific",
+      "language": "sm",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Malamalama"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:28.549Z",
+      "action": "add_specific",
+      "language": "sm",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Fa'atonu Autu"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:27.285Z",
+      "action": "add_specific",
+      "language": "ru",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Система"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:27.276Z",
+      "action": "add_specific",
+      "language": "ru",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Темный"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:27.276Z",
+      "action": "add_specific",
+      "language": "ru",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Свет"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:27.275Z",
+      "action": "add_specific",
+      "language": "ru",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Настройки темы"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:26.063Z",
+      "action": "add_specific",
+      "language": "ro",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistem"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:26.054Z",
+      "action": "add_specific",
+      "language": "ro",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Întuneric"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:26.053Z",
+      "action": "add_specific",
+      "language": "ro",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Aprinde"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:26.052Z",
+      "action": "add_specific",
+      "language": "ro",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Setări temă"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:24.788Z",
+      "action": "add_specific",
+      "language": "pa",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "ਸਿਸਟਮ"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:24.779Z",
+      "action": "add_specific",
+      "language": "pa",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "ਹਨੇਰਾ"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:24.779Z",
+      "action": "add_specific",
+      "language": "pa",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "ਰੋਸ਼ਨੀ"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:24.778Z",
+      "action": "add_specific",
+      "language": "pa",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "ਥੀਮ ਸੈਟਿੰਗਾਂ"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:23.512Z",
+      "action": "add_specific",
+      "language": "pt",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistema"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:23.511Z",
+      "action": "add_specific",
+      "language": "pt",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Escuro"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:23.510Z",
+      "action": "add_specific",
+      "language": "pt",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Luz"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:23.509Z",
+      "action": "add_specific",
+      "language": "pt",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Configurações do tema"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:22.224Z",
+      "action": "add_specific",
+      "language": "pl",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "System"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:22.215Z",
+      "action": "add_specific",
+      "language": "pl",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Ciemny"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:22.213Z",
+      "action": "add_specific",
+      "language": "pl",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Światło"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:22.211Z",
+      "action": "add_specific",
+      "language": "pl",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Ustawienia motywu"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:20.930Z",
+      "action": "add_specific",
+      "language": "fa",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "سیستم"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:20.921Z",
+      "action": "add_specific",
+      "language": "fa",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "تیره"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:20.920Z",
+      "action": "add_specific",
+      "language": "fa",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "نور"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:20.919Z",
+      "action": "add_specific",
+      "language": "fa",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "تنظیمات قالب"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:19.637Z",
+      "action": "add_specific",
+      "language": "ps",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "سیسټم"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:19.629Z",
+      "action": "add_specific",
+      "language": "ps",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "تیاره"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:19.628Z",
+      "action": "add_specific",
+      "language": "ps",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "رڼا"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:19.627Z",
+      "action": "add_specific",
+      "language": "ps",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "د موضوع ترتیبات"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:18.366Z",
+      "action": "add_specific",
+      "language": "or",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "ସିଷ୍ଟମ୍‌"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:18.365Z",
+      "action": "add_specific",
+      "language": "or",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "ଗାଢ଼"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:18.364Z",
+      "action": "add_specific",
+      "language": "or",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "ଫିକା"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:18.363Z",
+      "action": "add_specific",
+      "language": "or",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "ଥିମ୍ ସେଟିଂସମୂହ"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:17.074Z",
+      "action": "add_specific",
+      "language": "ny",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Dongosolo"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:17.056Z",
+      "action": "add_specific",
+      "language": "ny",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Chakuda"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:17.055Z",
+      "action": "add_specific",
+      "language": "ny",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Kuwala"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:17.053Z",
+      "action": "add_specific",
+      "language": "ny",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Zokonda pamutu"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:15.699Z",
+      "action": "add_specific",
+      "language": "no",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "System"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:15.698Z",
+      "action": "add_specific",
+      "language": "no",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Mørk"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:15.698Z",
+      "action": "add_specific",
+      "language": "no",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Lys"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:15.697Z",
+      "action": "add_specific",
+      "language": "no",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Temainnstillinger"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:14.296Z",
+      "action": "add_specific",
+      "language": "ne",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "प्रणाली"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:14.288Z",
+      "action": "add_specific",
+      "language": "ne",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "अँध्यारो"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:14.287Z",
+      "action": "add_specific",
+      "language": "ne",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "उज्यालो"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:14.286Z",
+      "action": "add_specific",
+      "language": "ne",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "विषयवस्तु सेटिङहरू"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:12.996Z",
+      "action": "add_specific",
+      "language": "my",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "စနစ်"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:12.985Z",
+      "action": "add_specific",
+      "language": "my",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "အမှောင်"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:12.984Z",
+      "action": "add_specific",
+      "language": "my",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "အလင်း"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:12.982Z",
+      "action": "add_specific",
+      "language": "my",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "အပြင်အဆင် ဆက်တင်များ"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:11.708Z",
+      "action": "add_specific",
+      "language": "mn",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Систем"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:11.699Z",
+      "action": "add_specific",
+      "language": "mn",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Харанхуй"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:11.698Z",
+      "action": "add_specific",
+      "language": "mn",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Гэрэл"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:11.698Z",
+      "action": "add_specific",
+      "language": "mn",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Сэдвийн тохиргоо"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:10.473Z",
+      "action": "add_specific",
+      "language": "mr",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "प्रणाली"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:10.472Z",
+      "action": "add_specific",
+      "language": "mr",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "गडद"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:10.472Z",
+      "action": "add_specific",
+      "language": "mr",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "प्रकाश"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:10.471Z",
+      "action": "add_specific",
+      "language": "mr",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "थीम सेटिंग्ज"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:09.145Z",
+      "action": "add_specific",
+      "language": "mi",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Pūnaha"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:09.145Z",
+      "action": "add_specific",
+      "language": "mi",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "pouri"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:09.143Z",
+      "action": "add_specific",
+      "language": "mi",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Maama"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:09.142Z",
+      "action": "add_specific",
+      "language": "mi",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Tautuhinga Kaupapa"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:07.838Z",
+      "action": "add_specific",
+      "language": "mt",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistema"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:07.821Z",
+      "action": "add_specific",
+      "language": "mt",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Dlam"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:07.820Z",
+      "action": "add_specific",
+      "language": "mt",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Dawl"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:07.819Z",
+      "action": "add_specific",
+      "language": "mt",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Issettjar tat-Tema"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:06.500Z",
+      "action": "add_specific",
+      "language": "ml",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "സിസ്റ്റം"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:06.491Z",
+      "action": "add_specific",
+      "language": "ml",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "ഇരുണ്ടത്"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:06.490Z",
+      "action": "add_specific",
+      "language": "ml",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "വെളിച്ചം"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:06.489Z",
+      "action": "add_specific",
+      "language": "ml",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "തീം ക്രമീകരണങ്ങൾ"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:05.209Z",
+      "action": "add_specific",
+      "language": "ms",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistem"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:05.209Z",
+      "action": "add_specific",
+      "language": "ms",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Gelap"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:05.208Z",
+      "action": "add_specific",
+      "language": "ms",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Cahaya"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:05.208Z",
+      "action": "add_specific",
+      "language": "ms",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Tetapan Tema"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:03.991Z",
+      "action": "add_specific",
+      "language": "mg",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "RAFITRA"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:03.991Z",
+      "action": "add_specific",
+      "language": "mg",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Maizina"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:03.981Z",
+      "action": "add_specific",
+      "language": "mg",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "fahazavana"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:03.979Z",
+      "action": "add_specific",
+      "language": "mg",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Fanitsiana lohahevitra"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:02.731Z",
+      "action": "add_specific",
+      "language": "mk",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Систем"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:02.720Z",
+      "action": "add_specific",
+      "language": "mk",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Темно"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:02.719Z",
+      "action": "add_specific",
+      "language": "mk",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Светло"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:02.719Z",
+      "action": "add_specific",
+      "language": "mk",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Поставки на темата"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:01.420Z",
+      "action": "add_specific",
+      "language": "lb",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "System"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:01.419Z",
+      "action": "add_specific",
+      "language": "lb",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Däischter"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:01.418Z",
+      "action": "add_specific",
+      "language": "lb",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Liicht"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:01.418Z",
+      "action": "add_specific",
+      "language": "lb",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Theme-Astellungen"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:00.147Z",
+      "action": "add_specific",
+      "language": "lt",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistema"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:00.146Z",
+      "action": "add_specific",
+      "language": "lt",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Tamsu"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:00.146Z",
+      "action": "add_specific",
+      "language": "lt",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Šviesa"
+    },
+    {
+      "timestamp": "2025-12-02T01:13:00.144Z",
+      "action": "add_specific",
+      "language": "lt",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Temos nustatymai"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:58.856Z",
+      "action": "add_specific",
+      "language": "lv",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistēma"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:58.846Z",
+      "action": "add_specific",
+      "language": "lv",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Tumšs"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:58.845Z",
+      "action": "add_specific",
+      "language": "lv",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Gaisma"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:58.844Z",
+      "action": "add_specific",
+      "language": "lv",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Tēmas iestatījumi"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:57.560Z",
+      "action": "add_specific",
+      "language": "lo",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "ລະບົບ"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:57.558Z",
+      "action": "add_specific",
+      "language": "lo",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "ມືດ"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:57.557Z",
+      "action": "add_specific",
+      "language": "lo",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "ແສງສະຫວ່າງ"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:57.556Z",
+      "action": "add_specific",
+      "language": "lo",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "ການຕັ້ງຄ່າຫົວຂໍ້"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:56.272Z",
+      "action": "add_specific",
+      "language": "ky",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Система"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:56.264Z",
+      "action": "add_specific",
+      "language": "ky",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Караңгы"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:56.263Z",
+      "action": "add_specific",
+      "language": "ky",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Жарык"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:56.263Z",
+      "action": "add_specific",
+      "language": "ky",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Тема орнотуулары"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:54.981Z",
+      "action": "add_specific",
+      "language": "ku",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sîstem"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:54.980Z",
+      "action": "add_specific",
+      "language": "ku",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Tarî"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:54.980Z",
+      "action": "add_specific",
+      "language": "ku",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Sivik"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:54.978Z",
+      "action": "add_specific",
+      "language": "ku",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Mîhengên Mijarê"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:53.691Z",
+      "action": "add_specific",
+      "language": "ko",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "체계"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:53.681Z",
+      "action": "add_specific",
+      "language": "ko",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "어두운"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:53.681Z",
+      "action": "add_specific",
+      "language": "ko",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "빛"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:53.679Z",
+      "action": "add_specific",
+      "language": "ko",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "테마 설정"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:52.459Z",
+      "action": "add_specific",
+      "language": "rw",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sisitemu"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:52.450Z",
+      "action": "add_specific",
+      "language": "rw",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Umwijima"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:52.449Z",
+      "action": "add_specific",
+      "language": "rw",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Umucyo"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:52.448Z",
+      "action": "add_specific",
+      "language": "rw",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Igenamiterere"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:51.156Z",
+      "action": "add_specific",
+      "language": "km",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "ប្រព័ន្ធ"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:51.156Z",
+      "action": "add_specific",
+      "language": "km",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "ងងឹត"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:51.156Z",
+      "action": "add_specific",
+      "language": "km",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "ពន្លឺ"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:51.154Z",
+      "action": "add_specific",
+      "language": "km",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "ការកំណត់ប្រធានបទ"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:49.882Z",
+      "action": "add_specific",
+      "language": "kk",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Жүйе"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:49.872Z",
+      "action": "add_specific",
+      "language": "kk",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Қараңғы"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:49.871Z",
+      "action": "add_specific",
+      "language": "kk",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Жарық"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:49.870Z",
+      "action": "add_specific",
+      "language": "kk",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Тақырып параметрлері"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:48.094Z",
+      "action": "add_specific",
+      "language": "kn",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "ವ್ಯವಸ್ಥೆ"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:48.093Z",
+      "action": "add_specific",
+      "language": "kn",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "ಕತ್ತಲೆ"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:48.092Z",
+      "action": "add_specific",
+      "language": "kn",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "ಬೆಳಕು"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:48.092Z",
+      "action": "add_specific",
+      "language": "kn",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "ಥೀಮ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:46.787Z",
+      "action": "add_specific",
+      "language": "jv",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistem"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:46.779Z",
+      "action": "add_specific",
+      "language": "jv",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "peteng"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:46.777Z",
+      "action": "add_specific",
+      "language": "jv",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "cahya"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:46.777Z",
+      "action": "add_specific",
+      "language": "jv",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Setelan Tema"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:45.531Z",
+      "action": "add_specific",
+      "language": "ja",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "システム"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:45.530Z",
+      "action": "add_specific",
+      "language": "ja",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "暗い"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:45.529Z",
+      "action": "add_specific",
+      "language": "ja",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "ライト"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:45.527Z",
+      "action": "add_specific",
+      "language": "ja",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "テーマ設定"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:44.320Z",
+      "action": "add_specific",
+      "language": "it",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistema"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:44.319Z",
+      "action": "add_specific",
+      "language": "it",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Buio"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:44.310Z",
+      "action": "add_specific",
+      "language": "it",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Leggero"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:44.309Z",
+      "action": "add_specific",
+      "language": "it",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Impostazioni del tema"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:43.075Z",
+      "action": "add_specific",
+      "language": "ga",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Córas"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:43.065Z",
+      "action": "add_specific",
+      "language": "ga",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Dorcha"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:43.064Z",
+      "action": "add_specific",
+      "language": "ga",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Solas"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:43.062Z",
+      "action": "add_specific",
+      "language": "ga",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Socruithe Téama"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:41.769Z",
+      "action": "add_specific",
+      "language": "id",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistem"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:41.769Z",
+      "action": "add_specific",
+      "language": "id",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Gelap"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:41.768Z",
+      "action": "add_specific",
+      "language": "id",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Lampu"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:41.767Z",
+      "action": "add_specific",
+      "language": "id",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Pengaturan Tema"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:40.540Z",
+      "action": "add_specific",
+      "language": "ig",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistemu"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:40.540Z",
+      "action": "add_specific",
+      "language": "ig",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Ọchịchịrị"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:40.539Z",
+      "action": "add_specific",
+      "language": "ig",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Ìhè"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:40.539Z",
+      "action": "add_specific",
+      "language": "ig",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Ntọala isiokwu"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:39.263Z",
+      "action": "add_specific",
+      "language": "is",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Kerfi"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:39.263Z",
+      "action": "add_specific",
+      "language": "is",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Dökkt"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:39.262Z",
+      "action": "add_specific",
+      "language": "is",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Ljós"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:39.261Z",
+      "action": "add_specific",
+      "language": "is",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Þemastillingar"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:37.971Z",
+      "action": "add_specific",
+      "language": "hu",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Rendszer"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:37.970Z",
+      "action": "add_specific",
+      "language": "hu",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Sötét"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:37.969Z",
+      "action": "add_specific",
+      "language": "hu",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Fény"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:37.968Z",
+      "action": "add_specific",
+      "language": "hu",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Témabeállítások"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:36.681Z",
+      "action": "add_specific",
+      "language": "hmn",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Qhov system"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:36.681Z",
+      "action": "add_specific",
+      "language": "hmn",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Tsaus"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:36.681Z",
+      "action": "add_specific",
+      "language": "hmn",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Teeb"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:36.679Z",
+      "action": "add_specific",
+      "language": "hmn",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Ntsiab lus chaw"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:35.396Z",
+      "action": "add_specific",
+      "language": "hi",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "प्रणाली"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:35.395Z",
+      "action": "add_specific",
+      "language": "hi",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "अँधेरा"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:35.394Z",
+      "action": "add_specific",
+      "language": "hi",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "रोशनी"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:35.392Z",
+      "action": "add_specific",
+      "language": "hi",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "थीम सेटिंग्स"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:34.174Z",
+      "action": "add_specific",
+      "language": "he",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "מַעֲרֶכֶת"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:34.173Z",
+      "action": "add_specific",
+      "language": "he",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "כֵּהֶה"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:34.172Z",
+      "action": "add_specific",
+      "language": "he",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "אוֹר"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:34.171Z",
+      "action": "add_specific",
+      "language": "he",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "הגדרות ערכת נושא"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:32.937Z",
+      "action": "add_specific",
+      "language": "haw",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Pūnaehana"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:32.936Z",
+      "action": "add_specific",
+      "language": "haw",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Poʻeleʻele"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:32.936Z",
+      "action": "add_specific",
+      "language": "haw",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Māmā"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:32.935Z",
+      "action": "add_specific",
+      "language": "haw",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Hoʻonohonoho kumuhana"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:31.702Z",
+      "action": "add_specific",
+      "language": "ha",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Tsari"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:31.702Z",
+      "action": "add_specific",
+      "language": "ha",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Duhu"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:31.701Z",
+      "action": "add_specific",
+      "language": "ha",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Haske"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:31.701Z",
+      "action": "add_specific",
+      "language": "ha",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Saitunan Jigo"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:30.407Z",
+      "action": "add_specific",
+      "language": "ht",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistèm"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:30.406Z",
+      "action": "add_specific",
+      "language": "ht",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Fènwa"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:30.406Z",
+      "action": "add_specific",
+      "language": "ht",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Limyè"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:30.405Z",
+      "action": "add_specific",
+      "language": "ht",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Anviwònman Tèm"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:29.134Z",
+      "action": "add_specific",
+      "language": "gu",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "સિસ્ટમ"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:29.133Z",
+      "action": "add_specific",
+      "language": "gu",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "શ્યામ"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:29.133Z",
+      "action": "add_specific",
+      "language": "gu",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "પ્રકાશ"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:29.132Z",
+      "action": "add_specific",
+      "language": "gu",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "થીમ સેટિંગ્સ"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:27.852Z",
+      "action": "add_specific",
+      "language": "el",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Σύστημα"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:27.852Z",
+      "action": "add_specific",
+      "language": "el",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Σκοτάδι"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:27.851Z",
+      "action": "add_specific",
+      "language": "el",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Φως"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:27.850Z",
+      "action": "add_specific",
+      "language": "el",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Ρυθμίσεις θέματος"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:26.517Z",
+      "action": "add_specific",
+      "language": "de",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "System"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:26.517Z",
+      "action": "add_specific",
+      "language": "de",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Dunkel"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:26.517Z",
+      "action": "add_specific",
+      "language": "de",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Licht"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:26.516Z",
+      "action": "add_specific",
+      "language": "de",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Designeinstellungen"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:25.314Z",
+      "action": "add_specific",
+      "language": "ka",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "სისტემა"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:25.313Z",
+      "action": "add_specific",
+      "language": "ka",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "მუქი"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:25.313Z",
+      "action": "add_specific",
+      "language": "ka",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "სინათლე"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:25.312Z",
+      "action": "add_specific",
+      "language": "ka",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "თემის პარამეტრები"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:24.036Z",
+      "action": "add_specific",
+      "language": "gl",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistema"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:24.035Z",
+      "action": "add_specific",
+      "language": "gl",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Escuro"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:24.035Z",
+      "action": "add_specific",
+      "language": "gl",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Luz"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:24.034Z",
+      "action": "add_specific",
+      "language": "gl",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Configuración do tema"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:22.671Z",
+      "action": "add_specific",
+      "language": "fy",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Systeem"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:22.670Z",
+      "action": "add_specific",
+      "language": "fy",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Tsjuster"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:22.670Z",
+      "action": "add_specific",
+      "language": "fy",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Ljocht"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:22.669Z",
+      "action": "add_specific",
+      "language": "fy",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Tema-ynstellings"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:21.439Z",
+      "action": "add_specific",
+      "language": "fr",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Système"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:21.439Z",
+      "action": "add_specific",
+      "language": "fr",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Sombre"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:21.438Z",
+      "action": "add_specific",
+      "language": "fr",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Lumière"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:21.438Z",
+      "action": "add_specific",
+      "language": "fr",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Paramètres du thème"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:20.215Z",
+      "action": "add_specific",
+      "language": "fi",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Järjestelmä"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:20.215Z",
+      "action": "add_specific",
+      "language": "fi",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Tumma"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:20.215Z",
+      "action": "add_specific",
+      "language": "fi",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Valo"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:20.214Z",
+      "action": "add_specific",
+      "language": "fi",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Teeman asetukset"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:18.913Z",
+      "action": "add_specific",
+      "language": "et",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Süsteem"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:18.912Z",
+      "action": "add_specific",
+      "language": "et",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Tume"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:18.912Z",
+      "action": "add_specific",
+      "language": "et",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Valgus"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:18.912Z",
+      "action": "add_specific",
+      "language": "et",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Teema seaded"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:17.644Z",
+      "action": "add_specific",
+      "language": "eo",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistemo"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:17.643Z",
+      "action": "add_specific",
+      "language": "eo",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Malluma"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:17.643Z",
+      "action": "add_specific",
+      "language": "eo",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Lumo"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:17.643Z",
+      "action": "add_specific",
+      "language": "eo",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Temaj Agordoj"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:16.128Z",
+      "action": "add_specific",
+      "language": "nl",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Systeem"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:16.120Z",
+      "action": "add_specific",
+      "language": "nl",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Donker"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:16.119Z",
+      "action": "add_specific",
+      "language": "nl",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Licht"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:16.118Z",
+      "action": "add_specific",
+      "language": "nl",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Thema-instellingen"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:14.834Z",
+      "action": "add_specific",
+      "language": "da",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "System"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:14.833Z",
+      "action": "add_specific",
+      "language": "da",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Mørk"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:14.833Z",
+      "action": "add_specific",
+      "language": "da",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Lys"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:14.833Z",
+      "action": "add_specific",
+      "language": "da",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Temaindstillinger"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:13.549Z",
+      "action": "add_specific",
+      "language": "cs",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Systém"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:13.549Z",
+      "action": "add_specific",
+      "language": "cs",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Tmavý"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:13.548Z",
+      "action": "add_specific",
+      "language": "cs",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Světlo"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:13.548Z",
+      "action": "add_specific",
+      "language": "cs",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Nastavení motivu"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:12.300Z",
+      "action": "add_specific",
+      "language": "hr",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sustav"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:12.300Z",
+      "action": "add_specific",
+      "language": "hr",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Tamno"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:12.299Z",
+      "action": "add_specific",
+      "language": "hr",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Svjetlo"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:12.298Z",
+      "action": "add_specific",
+      "language": "hr",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Postavke teme"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:11.031Z",
+      "action": "add_specific",
+      "language": "co",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistema"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:11.031Z",
+      "action": "add_specific",
+      "language": "co",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Scuru"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:11.031Z",
+      "action": "add_specific",
+      "language": "co",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Luce"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:11.030Z",
+      "action": "add_specific",
+      "language": "co",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Impostazioni di u tema"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:09.761Z",
+      "action": "add_specific",
+      "language": "zh_TW",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "系統"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:09.760Z",
+      "action": "add_specific",
+      "language": "zh_TW",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "黑暗的"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:09.760Z",
+      "action": "add_specific",
+      "language": "zh_TW",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "光"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:09.760Z",
+      "action": "add_specific",
+      "language": "zh_TW",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "主題設定"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:08.548Z",
+      "action": "add_specific",
+      "language": "zh",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "系统"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:08.547Z",
+      "action": "add_specific",
+      "language": "zh",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "黑暗的"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:08.547Z",
+      "action": "add_specific",
+      "language": "zh",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "光"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:08.546Z",
+      "action": "add_specific",
+      "language": "zh",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "主题设置"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:07.234Z",
+      "action": "add_specific",
+      "language": "ceb",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistema"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:07.234Z",
+      "action": "add_specific",
+      "language": "ceb",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Ngitngit"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:07.233Z",
+      "action": "add_specific",
+      "language": "ceb",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Kahayag"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:07.233Z",
+      "action": "add_specific",
+      "language": "ceb",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Mga Setting sa Tema"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:05.988Z",
+      "action": "add_specific",
+      "language": "ca",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistema"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:05.988Z",
+      "action": "add_specific",
+      "language": "ca",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Fosc"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:05.988Z",
+      "action": "add_specific",
+      "language": "ca",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Llum"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:05.987Z",
+      "action": "add_specific",
+      "language": "ca",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Configuració del tema"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:04.719Z",
+      "action": "add_specific",
+      "language": "bg",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Система"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:04.718Z",
+      "action": "add_specific",
+      "language": "bg",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Тъмно"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:04.717Z",
+      "action": "add_specific",
+      "language": "bg",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Светлина"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:04.716Z",
+      "action": "add_specific",
+      "language": "bg",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Настройки на темата"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:03.443Z",
+      "action": "add_specific",
+      "language": "bs",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistem"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:03.443Z",
+      "action": "add_specific",
+      "language": "bs",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Tamno"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:03.443Z",
+      "action": "add_specific",
+      "language": "bs",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Svjetlo"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:03.442Z",
+      "action": "add_specific",
+      "language": "bs",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Postavke teme"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:02.136Z",
+      "action": "add_specific",
+      "language": "bn",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "সিস্টেম"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:02.135Z",
+      "action": "add_specific",
+      "language": "bn",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "অন্ধকার"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:02.135Z",
+      "action": "add_specific",
+      "language": "bn",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "আলো"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:02.134Z",
+      "action": "add_specific",
+      "language": "bn",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "থিম সেটিংস"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:00.888Z",
+      "action": "add_specific",
+      "language": "be",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Сістэма"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:00.888Z",
+      "action": "add_specific",
+      "language": "be",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Цёмны"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:00.887Z",
+      "action": "add_specific",
+      "language": "be",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Святло"
+    },
+    {
+      "timestamp": "2025-12-02T01:12:00.887Z",
+      "action": "add_specific",
+      "language": "be",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Налады тэмы"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:59.616Z",
+      "action": "add_specific",
+      "language": "eu",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistema"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:59.615Z",
+      "action": "add_specific",
+      "language": "eu",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Iluna"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:59.615Z",
+      "action": "add_specific",
+      "language": "eu",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Argia"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:59.614Z",
+      "action": "add_specific",
+      "language": "eu",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Gaiaren ezarpenak"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:58.331Z",
+      "action": "add_specific",
+      "language": "az",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistem"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:58.330Z",
+      "action": "add_specific",
+      "language": "az",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Qaranlıq"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:58.330Z",
+      "action": "add_specific",
+      "language": "az",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "İşıq"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:58.329Z",
+      "action": "add_specific",
+      "language": "az",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Mövzu Parametrləri"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:57.100Z",
+      "action": "add_specific",
+      "language": "hy",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Համակարգ"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:57.100Z",
+      "action": "add_specific",
+      "language": "hy",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Մութ"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:57.100Z",
+      "action": "add_specific",
+      "language": "hy",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Լույս"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:57.099Z",
+      "action": "add_specific",
+      "language": "hy",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Թեմայի կարգավորումներ"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:55.803Z",
+      "action": "add_specific",
+      "language": "ar",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "نظام"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:55.803Z",
+      "action": "add_specific",
+      "language": "ar",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "مظلم"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:55.802Z",
+      "action": "add_specific",
+      "language": "ar",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "ضوء"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:55.802Z",
+      "action": "add_specific",
+      "language": "ar",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "إعدادات السمة"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:54.488Z",
+      "action": "add_specific",
+      "language": "am",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "ስርዓት"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:54.487Z",
+      "action": "add_specific",
+      "language": "am",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "ጨለማ"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:54.487Z",
+      "action": "add_specific",
+      "language": "am",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "ብርሃን"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:54.487Z",
+      "action": "add_specific",
+      "language": "am",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "የገጽታ ቅንብሮች"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:53.164Z",
+      "action": "add_specific",
+      "language": "sq",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistemi"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:53.164Z",
+      "action": "add_specific",
+      "language": "sq",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "E errët"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:53.164Z",
+      "action": "add_specific",
+      "language": "sq",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Dritë"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:53.163Z",
+      "action": "add_specific",
+      "language": "sq",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Cilësimet e Temës"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:51.906Z",
+      "action": "add_specific",
+      "language": "af",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Stelsel"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:51.906Z",
+      "action": "add_specific",
+      "language": "af",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Donker"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:51.906Z",
+      "action": "add_specific",
+      "language": "af",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Lig"
+    },
+    {
+      "timestamp": "2025-12-02T01:11:51.905Z",
+      "action": "add_specific",
+      "language": "af",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Tema-instellings"
+    },
+    {
+      "timestamp": "2025-12-02T01:07:23.863Z",
+      "action": "add_specific",
+      "language": "ar",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "نظام"
+    },
+    {
+      "timestamp": "2025-12-02T01:07:23.863Z",
+      "action": "add_specific",
+      "language": "ar",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "مظلم"
+    },
+    {
+      "timestamp": "2025-12-02T01:07:23.862Z",
+      "action": "add_specific",
+      "language": "ar",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "ضوء"
+    },
+    {
+      "timestamp": "2025-12-02T01:07:23.861Z",
+      "action": "add_specific",
+      "language": "ar",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "إعدادات السمة"
+    },
+    {
+      "timestamp": "2025-12-02T01:07:22.602Z",
+      "action": "add_specific",
+      "language": "am",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "ስርዓት"
+    },
+    {
+      "timestamp": "2025-12-02T01:07:22.601Z",
+      "action": "add_specific",
+      "language": "am",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "ጨለማ"
+    },
+    {
+      "timestamp": "2025-12-02T01:07:22.601Z",
+      "action": "add_specific",
+      "language": "am",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "ብርሃን"
+    },
+    {
+      "timestamp": "2025-12-02T01:07:22.601Z",
+      "action": "add_specific",
+      "language": "am",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "የገጽታ ቅንብሮች"
+    },
+    {
+      "timestamp": "2025-12-02T01:07:21.297Z",
+      "action": "add_specific",
+      "language": "sq",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Sistemi"
+    },
+    {
+      "timestamp": "2025-12-02T01:07:21.296Z",
+      "action": "add_specific",
+      "language": "sq",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "E errët"
+    },
+    {
+      "timestamp": "2025-12-02T01:07:21.296Z",
+      "action": "add_specific",
+      "language": "sq",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Dritë"
+    },
+    {
+      "timestamp": "2025-12-02T01:07:21.296Z",
+      "action": "add_specific",
+      "language": "sq",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Cilësimet e Temës"
+    },
+    {
+      "timestamp": "2025-12-02T01:07:20.008Z",
+      "action": "add_specific",
+      "language": "af",
+      "key": "systemThemeLabel",
+      "source": "System",
+      "translation": "Stelsel"
+    },
+    {
+      "timestamp": "2025-12-02T01:07:20.007Z",
+      "action": "add_specific",
+      "language": "af",
+      "key": "darkThemeLabel",
+      "source": "Dark",
+      "translation": "Donker"
+    },
+    {
+      "timestamp": "2025-12-02T01:07:20.007Z",
+      "action": "add_specific",
+      "language": "af",
+      "key": "lightThemeLabel",
+      "source": "Light",
+      "translation": "Lig"
+    },
+    {
+      "timestamp": "2025-12-02T01:07:20.006Z",
+      "action": "add_specific",
+      "language": "af",
+      "key": "themeSettingsTitle",
+      "source": "Theme Settings",
+      "translation": "Tema-instellings"
+    }
+  ]
+}

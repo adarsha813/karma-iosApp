@@ -435,5 +435,9 @@
   "experience": "Kasinatian",
   "qualification": "Kwalipikasyon",
   "education": "Edukasyon",
-  "recoveryTips": "• Pagkuha og screenshot niini nga impormasyon\n• Ibutang kini sa luwas nga dapit\n• Ayaw ipaambit ni bisan kinsa\n• Kini ipakita kausa ra"
+  "recoveryTips": "• Pagkuha og screenshot niini nga impormasyon\n• Ibutang kini sa luwas nga dapit\n• Ayaw ipaambit ni bisan kinsa\n• Kini ipakita kausa ra",
+  "themeSettingsTitle": "Mga Setting sa Tema",
+  "lightThemeLabel": "Kahayag",
+  "darkThemeLabel": "Ngitngit",
+  "systemThemeLabel": "Sistema"
 }

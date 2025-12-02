@@ -435,5 +435,9 @@
   "experience": "Kogemus",
   "qualification": "Kvalifikatsioon",
   "education": "Haridus",
-  "recoveryTips": "• Tehke sellest teabest ekraanipilt\n• Hoidke seda turvalises kohas\n• Ärge jagage seda kellegagi\n• Seda kuvatakse ainult üks kord"
+  "recoveryTips": "• Tehke sellest teabest ekraanipilt\n• Hoidke seda turvalises kohas\n• Ärge jagage seda kellegagi\n• Seda kuvatakse ainult üks kord",
+  "themeSettingsTitle": "Teema seaded",
+  "lightThemeLabel": "Valgus",
+  "darkThemeLabel": "Tume",
+  "systemThemeLabel": "Süsteem"
 }

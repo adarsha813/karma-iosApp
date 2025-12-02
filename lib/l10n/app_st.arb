@@ -435,5 +435,9 @@
   "experience": "Phihlelo",
   "qualification": "Tšoaneleho",
   "education": "Thuto",
-  "recoveryTips": "• Nka skrine ea tlhahisoleseding ena\n• E boloke sebakeng se sireletsehileng\n• Se ke oa arolelana le mang kapa mang\n• Sena se tla bontšoa hang feela"
+  "recoveryTips": "• Nka skrine ea tlhahisoleseding ena\n• E boloke sebakeng se sireletsehileng\n• Se ke oa arolelana le mang kapa mang\n• Sena se tla bontšoa hang feela",
+  "themeSettingsTitle": "Litlhophiso tsa Theme",
+  "lightThemeLabel": "Leseli",
+  "darkThemeLabel": "Lefifi",
+  "systemThemeLabel": "Tsamaiso"
 }

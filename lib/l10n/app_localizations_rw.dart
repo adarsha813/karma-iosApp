@@ -843,4 +843,34 @@ class AppLocalizationsRw extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Fata amashusho yaya makuru\n• Ubike ahantu hizewe\n• Ntugasangire n\'umuntu uwo ari we wese\n• Ibi bizerekanwa rimwe gusa';
+
+  @override
+  String get themeSettingsTitle => 'Igenamiterere';
+
+  @override
+  String get lightThemeLabel => 'Umucyo';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Umwijima';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Sisitemu';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

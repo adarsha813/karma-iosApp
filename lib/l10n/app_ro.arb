@@ -435,5 +435,9 @@
   "experience": "Experienţă",
   "qualification": "Calificare",
   "education": "Educaţie",
-  "recoveryTips": "• Faceți o captură de ecran a acestor informații\n• Păstrați-o într-un loc sigur\n• Nu o partajați cu nimeni\n• Aceasta va fi afișată o singură dată"
+  "recoveryTips": "• Faceți o captură de ecran a acestor informații\n• Păstrați-o într-un loc sigur\n• Nu o partajați cu nimeni\n• Aceasta va fi afișată o singură dată",
+  "themeSettingsTitle": "Setări temă",
+  "lightThemeLabel": "Aprinde",
+  "darkThemeLabel": "Întuneric",
+  "systemThemeLabel": "Sistem"
 }

@@ -435,5 +435,9 @@
   "experience": "Erfahrung",
   "qualification": "Qualifikation",
   "education": "Ausbildung",
-  "recoveryTips": "• Erstellen Sie einen Screenshot dieser Informationen.\n\n• Bewahren Sie ihn an einem sicheren Ort auf.\n\n• Geben Sie ihn nicht an Dritte weiter.\n\nDiese Information wird nur einmal angezeigt."
+  "recoveryTips": "• Erstellen Sie einen Screenshot dieser Informationen.\n\n• Bewahren Sie ihn an einem sicheren Ort auf.\n\n• Geben Sie ihn nicht an Dritte weiter.\n\nDiese Information wird nur einmal angezeigt.",
+  "themeSettingsTitle": "Designeinstellungen",
+  "lightThemeLabel": "Licht",
+  "darkThemeLabel": "Dunkel",
+  "systemThemeLabel": "System"
 }

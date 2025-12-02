@@ -435,5 +435,9 @@
   "experience": "Khibrad",
   "qualification": "U qalmida",
   "education": "Waxbarashada",
-  "recoveryTips": "• Sawir qaade xogtan\n• Ku kaydi meel ammaan ah\n• Cidna ha la wadaagin\nTan waxa la tusi doonaa hal mar oo kaliya"
+  "recoveryTips": "• Sawir qaade xogtan\n• Ku kaydi meel ammaan ah\n• Cidna ha la wadaagin\nTan waxa la tusi doonaa hal mar oo kaliya",
+  "themeSettingsTitle": "Dejinta mawduuca",
+  "lightThemeLabel": "Iftiin",
+  "darkThemeLabel": "Madow",
+  "systemThemeLabel": "Nidaamka"
 }

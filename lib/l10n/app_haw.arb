@@ -435,5 +435,9 @@
   "experience": "ʻike",
   "qualification": "Kupono",
   "education": "Hoʻonaʻauao",
-  "recoveryTips": "• E paʻi kiʻi paʻi kiʻi o kēia ʻike\n• E mālama ma kahi paʻa\n• Mai kaʻana like me kekahi\n• Hoʻokahi wale nō e hōʻike ʻia kēia"
+  "recoveryTips": "• E paʻi kiʻi paʻi kiʻi o kēia ʻike\n• E mālama ma kahi paʻa\n• Mai kaʻana like me kekahi\n• Hoʻokahi wale nō e hōʻike ʻia kēia",
+  "themeSettingsTitle": "Hoʻonohonoho kumuhana",
+  "lightThemeLabel": "Māmā",
+  "darkThemeLabel": "Poʻeleʻele",
+  "systemThemeLabel": "Pūnaehana"
 }

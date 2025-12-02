@@ -846,4 +846,34 @@ class AppLocalizationsSi extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• මෙම තොරතුරු වල තිර රුවක් ගන්න\n• එය ආරක්ෂිත ස්ථානයක ගබඩා කරන්න\n• කිසිවෙකු සමඟ බෙදා නොගන්න\n• මෙය එක් වරක් පමණක් පෙන්වනු ලැබේ';
+
+  @override
+  String get themeSettingsTitle => 'තේමා සැකසුම්';
+
+  @override
+  String get lightThemeLabel => 'ආලෝකය';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'අඳුරු';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'පද්ධතිය';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

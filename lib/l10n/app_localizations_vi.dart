@@ -848,4 +848,34 @@ class AppLocalizationsVi extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Chụp ảnh màn hình thông tin này\n• Lưu trữ ở nơi an toàn\n• Không chia sẻ với bất kỳ ai\n• Thông tin này chỉ được hiển thị một lần';
+
+  @override
+  String get themeSettingsTitle => 'Cài đặt chủ đề';
+
+  @override
+  String get lightThemeLabel => 'Ánh sáng';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Tối tăm';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Hệ thống';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

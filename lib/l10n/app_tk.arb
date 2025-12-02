@@ -435,5 +435,9 @@
   "experience": "Tejribe",
   "qualification": "Kwalifikasiýa",
   "education": "Bilim",
-  "recoveryTips": "• Bu maglumatlaryň skrinshotyny alyň\n• Ygtybarly ýerde saklaň\n• Hiç kim bilen paýlaşmaň\n• Bu diňe bir gezek görkeziler"
+  "recoveryTips": "• Bu maglumatlaryň skrinshotyny alyň\n• Ygtybarly ýerde saklaň\n• Hiç kim bilen paýlaşmaň\n• Bu diňe bir gezek görkeziler",
+  "themeSettingsTitle": "Mowzuk sazlamalary",
+  "lightThemeLabel": "Lightagtylyk",
+  "darkThemeLabel": "Garaňky",
+  "systemThemeLabel": "Ulgam"
 }

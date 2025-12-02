@@ -435,5 +435,9 @@
   "experience": "Tapasztalat",
   "qualification": "Képesítés",
   "education": "Oktatás",
-  "recoveryTips": "• Készítsen képernyőképet erről az információról\n• Tárolja biztonságos helyen\n• Ne ossza meg senkivel\n• Ez csak egyszer jelenik meg"
+  "recoveryTips": "• Készítsen képernyőképet erről az információról\n• Tárolja biztonságos helyen\n• Ne ossza meg senkivel\n• Ez csak egyszer jelenik meg",
+  "themeSettingsTitle": "Témabeállítások",
+  "lightThemeLabel": "Fény",
+  "darkThemeLabel": "Sötét",
+  "systemThemeLabel": "Rendszer"
 }

@@ -854,4 +854,34 @@ class AppLocalizationsBg extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Направете екранна снимка на тази информация\n• Съхранявайте я на сигурно място\n• Не я споделяйте с никого\n• Това ще бъде показано само веднъж';
+
+  @override
+  String get themeSettingsTitle => 'Настройки на темата';
+
+  @override
+  String get lightThemeLabel => 'Светлина';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Тъмно';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Система';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

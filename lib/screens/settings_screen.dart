@@ -794,11 +794,11 @@ class _ThemeSettingsTile extends StatelessWidget {
   String _getThemeModeName(ThemeMode mode, BuildContext context) {
     switch (mode) {
       case ThemeMode.light:
-        return 'Light';
+        return l10n.lightThemeLabel;
       case ThemeMode.dark:
-        return 'Dark';
+        return l10n.darkThemeLabel;
       case ThemeMode.system:
-        return 'System';
+        return l10n.systemThemeLabel;
     }
   }
 
@@ -817,7 +817,7 @@ class _ThemeSettingsTile extends StatelessWidget {
           color: theme.colorScheme.primary,
         ),
         title: Text(
-          'Theme Settings',
+          l10n.themeSettingsTitle, // Use l10n for title too
           style: theme.textTheme.titleMedium?.copyWith(
             color: theme.colorScheme.onSurface,
             fontWeight: FontWeight.w500,
@@ -833,13 +833,13 @@ class _ThemeSettingsTile extends StatelessWidget {
           // Light Theme Option
           RadioListTile<ThemeMode>(
             title: Text(
-              'Light',
+              l10n.lightThemeLabel,
               style: theme.textTheme.bodyLarge?.copyWith(
                 color: theme.colorScheme.onSurface,
               ),
             ),
             subtitle: Text(
-              'Always use light theme',
+              l10n.lightThemeDescription,
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: theme.colorScheme.onSurface.withOpacity(0.7),
               ),
@@ -862,13 +862,13 @@ class _ThemeSettingsTile extends StatelessWidget {
           // Dark Theme Option
           RadioListTile<ThemeMode>(
             title: Text(
-              'Dark',
+              l10n.darkThemeLabel,
               style: theme.textTheme.bodyLarge?.copyWith(
                 color: theme.colorScheme.onSurface,
               ),
             ),
             subtitle: Text(
-              'Always use dark theme',
+              l10n.darkThemeDescription,
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: theme.colorScheme.onSurface.withOpacity(0.7),
               ),
@@ -891,15 +891,15 @@ class _ThemeSettingsTile extends StatelessWidget {
           // System Theme Option
           RadioListTile<ThemeMode>(
             title: Text(
-              'System',
+              l10n.systemThemeLabel,
               style: theme.textTheme.bodyLarge?.copyWith(
                 color: theme.colorScheme.onSurface,
               ),
             ),
             subtitle: Text(
               themeProvider.isDarkMode(context)
-                  ? 'Using system dark theme'
-                  : 'Using system light theme',
+                  ? l10n.systemThemeDarkDescription
+                  : l10n.systemThemeLightDescription,
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: theme.colorScheme.onSurface.withOpacity(0.7),
               ),
@@ -932,7 +932,7 @@ class _ThemeSettingsTile extends StatelessWidget {
                       color: theme.colorScheme.primary,
                     ),
                     label: Text(
-                      isDark ? 'Switch to Light' : 'Switch to Dark',
+                      isDark ? l10n.switchToLight : l10n.switchToDark,
                       style: TextStyle(
                         fontSize: 14,
                         color: theme.colorScheme.primary,

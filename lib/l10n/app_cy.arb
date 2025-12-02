@@ -435,5 +435,9 @@
   "experience": "Profiad",
   "qualification": "Cymhwyster",
   "education": "Addysg",
-  "recoveryTips": "• Tynnwch sgrinlun o'r wybodaeth hon\n• Storiwch hi mewn lle diogel\n• Peidiwch â rhannu ag unrhyw un\n• Dim ond unwaith y bydd hyn yn cael ei ddangos"
+  "recoveryTips": "• Tynnwch sgrinlun o'r wybodaeth hon\n• Storiwch hi mewn lle diogel\n• Peidiwch â rhannu ag unrhyw un\n• Dim ond unwaith y bydd hyn yn cael ei ddangos",
+  "themeSettingsTitle": "Gosodiadau Thema",
+  "lightThemeLabel": "Golau",
+  "darkThemeLabel": "Tywyll",
+  "systemThemeLabel": "System"
 }

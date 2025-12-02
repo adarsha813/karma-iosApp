@@ -435,5 +435,9 @@
   "experience": "Uzoefu",
   "qualification": "Sifa",
   "education": "Elimu",
-  "recoveryTips": "• Piga picha ya skrini ya maelezo haya\n• Ihifadhi mahali salama\n• Usishiriki na mtu yeyote\n• Hii itaonyeshwa mara moja tu"
+  "recoveryTips": "• Piga picha ya skrini ya maelezo haya\n• Ihifadhi mahali salama\n• Usishiriki na mtu yeyote\n• Hii itaonyeshwa mara moja tu",
+  "themeSettingsTitle": "Mipangilio ya Mandhari",
+  "lightThemeLabel": "Mwanga",
+  "darkThemeLabel": "Giza",
+  "systemThemeLabel": "Mfumo"
 }

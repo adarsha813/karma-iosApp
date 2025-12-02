@@ -846,4 +846,34 @@ class AppLocalizationsGu extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• આ માહિતીનો સ્ક્રીનશોટ લો\n• તેને સુરક્ષિત જગ્યાએ સ્ટોર કરો\n• કોઈની સાથે શેર કરશો નહીં\n• આ ફક્ત એક જ વાર બતાવવામાં આવશે';
+
+  @override
+  String get themeSettingsTitle => 'થીમ સેટિંગ્સ';
+
+  @override
+  String get lightThemeLabel => 'પ્રકાશ';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'શ્યામ';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'સિસ્ટમ';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

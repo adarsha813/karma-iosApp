@@ -849,4 +849,34 @@ class AppLocalizationsRo extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Faceți o captură de ecran a acestor informații\n• Păstrați-o într-un loc sigur\n• Nu o partajați cu nimeni\n• Aceasta va fi afișată o singură dată';
+
+  @override
+  String get themeSettingsTitle => 'Setări temă';
+
+  @override
+  String get lightThemeLabel => 'Aprinde';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Întuneric';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Sistem';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

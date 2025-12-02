@@ -849,4 +849,34 @@ class AppLocalizationsZu extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Thatha isithombe-skrini salolu lwazi\n• Yigcine endaweni evikelekile\n• Ungabelani namuntu\n• Lokhu kuzokhonjiswa kanye kuphela';
+
+  @override
+  String get themeSettingsTitle => 'Izilungiselelo Zetimu';
+
+  @override
+  String get lightThemeLabel => 'Ukukhanya';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Kumnyama';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Uhlelo';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

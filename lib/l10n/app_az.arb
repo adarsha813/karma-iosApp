@@ -435,5 +435,9 @@
   "experience": "Təcrübə",
   "qualification": "İxtisas",
   "education": "Təhsil",
-  "recoveryTips": "• Bu məlumatın ekran görüntüsünü çəkin\n• Onu təhlükəsiz yerdə saxlayın\n• Heç kimlə paylaşmayın\n• Bu, yalnız bir dəfə göstəriləcək"
+  "recoveryTips": "• Bu məlumatın ekran görüntüsünü çəkin\n• Onu təhlükəsiz yerdə saxlayın\n• Heç kimlə paylaşmayın\n• Bu, yalnız bir dəfə göstəriləcək",
+  "themeSettingsTitle": "Mövzu Parametrləri",
+  "lightThemeLabel": "İşıq",
+  "darkThemeLabel": "Qaranlıq",
+  "systemThemeLabel": "Sistem"
 }

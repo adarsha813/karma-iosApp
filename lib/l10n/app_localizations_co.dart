@@ -858,4 +858,34 @@ class AppLocalizationsCo extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Fate una cattura di schermu di sta infurmazione\n• Conservatela in un locu sicuru\n• Ùn spartetela cù nimu\n• Questu serà mostratu solu una volta';
+
+  @override
+  String get themeSettingsTitle => 'Impostazioni di u tema';
+
+  @override
+  String get lightThemeLabel => 'Luce';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Scuru';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Sistema';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

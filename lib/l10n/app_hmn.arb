@@ -435,5 +435,9 @@
   "experience": "Kev paub",
   "qualification": "Kev tsim nyog",
   "education": "Kev kawm",
-  "recoveryTips": "• Coj ib lub screenshot ntawm cov ntaub ntawv no\n• Khaws rau hauv qhov chaw ruaj ntseg\n• Tsis txhob koom nrog lwm tus\n• Qhov no tsuas yog qhia ib zaug xwb"
+  "recoveryTips": "• Coj ib lub screenshot ntawm cov ntaub ntawv no\n• Khaws rau hauv qhov chaw ruaj ntseg\n• Tsis txhob koom nrog lwm tus\n• Qhov no tsuas yog qhia ib zaug xwb",
+  "themeSettingsTitle": "Ntsiab lus chaw",
+  "lightThemeLabel": "Teeb",
+  "darkThemeLabel": "Tsaus",
+  "systemThemeLabel": "Qhov system"
 }

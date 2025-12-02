@@ -435,5 +435,9 @@
   "experience": "경험",
   "qualification": "자격",
   "education": "교육",
-  "recoveryTips": "• 이 정보의 스크린샷을 찍으세요.\n• 안전한 곳에 보관하세요.\n• 누구와도 공유하지 마세요.\n• 이 정보는 한 번만 표시됩니다."
+  "recoveryTips": "• 이 정보의 스크린샷을 찍으세요.\n• 안전한 곳에 보관하세요.\n• 누구와도 공유하지 마세요.\n• 이 정보는 한 번만 표시됩니다.",
+  "themeSettingsTitle": "테마 설정",
+  "lightThemeLabel": "빛",
+  "darkThemeLabel": "어두운",
+  "systemThemeLabel": "체계"
 }

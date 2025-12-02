@@ -845,4 +845,34 @@ class AppLocalizationsMs extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Ambil tangkapan skrin maklumat ini\n• Simpan di tempat yang selamat\n• Jangan berkongsi dengan sesiapa\n• Ini hanya akan ditunjukkan sekali';
+
+  @override
+  String get themeSettingsTitle => 'Tetapan Tema';
+
+  @override
+  String get lightThemeLabel => 'Cahaya';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Gelap';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Sistem';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

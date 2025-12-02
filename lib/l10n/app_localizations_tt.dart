@@ -843,4 +843,34 @@ class AppLocalizationsTt extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Бу мәгълүматның скриншотын алыгыз\n• Аны куркынычсыз урында саклагыз\n• Беркем белән дә бүлешмәгез\n• Бу бер генә тапкыр күрсәтеләчәк';
+
+  @override
+  String get themeSettingsTitle => 'Тема көйләүләре';
+
+  @override
+  String get lightThemeLabel => 'Яктылык';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Караңгы';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Система';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

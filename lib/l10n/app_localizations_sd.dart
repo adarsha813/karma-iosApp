@@ -845,4 +845,34 @@ class AppLocalizationsSd extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• هن معلومات جو اسڪرين شاٽ وٺو\n• ان کي محفوظ جاءِ تي محفوظ ڪريو\n• ڪنهن سان به شيئر نه ڪريو\n• هي صرف هڪ ڀيرو ڏيکاريو ويندو';
+
+  @override
+  String get themeSettingsTitle => 'ٿيم سيٽنگون';
+
+  @override
+  String get lightThemeLabel => 'روشني';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'اونداهو';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'سسٽم';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

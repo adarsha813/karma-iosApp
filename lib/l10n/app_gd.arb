@@ -435,5 +435,9 @@
   "experience": "Eòlas",
   "qualification": "Teisteanas",
   "education": "Foghlam",
-  "recoveryTips": "• Gabh dealbh-sgrìn den fhiosrachadh seo\n• Stòraich e ann an àite tèarainte\n• Na roinn le duine sam bith\n• Cha tèid seo a shealltainn ach aon uair"
+  "recoveryTips": "• Gabh dealbh-sgrìn den fhiosrachadh seo\n• Stòraich e ann an àite tèarainte\n• Na roinn le duine sam bith\n• Cha tèid seo a shealltainn ach aon uair",
+  "themeSettingsTitle": "Roghainnean Cuspair",
+  "lightThemeLabel": "Solas",
+  "darkThemeLabel": "Dorcha",
+  "systemThemeLabel": "Siostam"
 }

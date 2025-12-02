@@ -435,5 +435,9 @@
   "experience": "Aafiaga",
   "qualification": "Fa'ailoga",
   "education": "A'oga",
-  "recoveryTips": "• Ave se fa'amalama o lenei fa'amatalaga\n• Teu i se nofoaga malupuipuia\n• Aua le faasoa atu i se tasi\n• O le a na'o le tasi ona fa'aalia"
+  "recoveryTips": "• Ave se fa'amalama o lenei fa'amatalaga\n• Teu i se nofoaga malupuipuia\n• Aua le faasoa atu i se tasi\n• O le a na'o le tasi ona fa'aalia",
+  "themeSettingsTitle": "Fa'atonu Autu",
+  "lightThemeLabel": "Malamalama",
+  "darkThemeLabel": "Pogisa",
+  "systemThemeLabel": "Faiga"
 }

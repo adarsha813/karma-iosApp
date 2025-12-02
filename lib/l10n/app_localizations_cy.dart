@@ -851,4 +851,34 @@ class AppLocalizationsCy extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Tynnwch sgrinlun o\'r wybodaeth hon\n• Storiwch hi mewn lle diogel\n• Peidiwch â rhannu ag unrhyw un\n• Dim ond unwaith y bydd hyn yn cael ei ddangos';
+
+  @override
+  String get themeSettingsTitle => 'Gosodiadau Thema';
+
+  @override
+  String get lightThemeLabel => 'Golau';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Tywyll';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'System';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

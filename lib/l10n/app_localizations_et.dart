@@ -845,4 +845,34 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Tehke sellest teabest ekraanipilt\n• Hoidke seda turvalises kohas\n• Ärge jagage seda kellegagi\n• Seda kuvatakse ainult üks kord';
+
+  @override
+  String get themeSettingsTitle => 'Teema seaded';
+
+  @override
+  String get lightThemeLabel => 'Valgus';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Tume';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Süsteem';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

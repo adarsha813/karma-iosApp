@@ -851,4 +851,34 @@ class AppLocalizationsMt extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Ħu screenshot ta’ din l-informazzjoni\n• Aħżenha f’post sigur\n• Taqsamha ma’ ħadd\n• Din tintwera darba biss';
+
+  @override
+  String get themeSettingsTitle => 'Issettjar tat-Tema';
+
+  @override
+  String get lightThemeLabel => 'Dawl';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Dlam';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Sistema';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

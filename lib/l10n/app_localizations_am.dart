@@ -830,4 +830,34 @@ class AppLocalizationsAm extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• የዚህን መረጃ ቅጽበታዊ ገጽ እይታ ያንሱ\n• ደህንነቱ በተጠበቀ ቦታ ያስቀምጡት።\n• ለማንም አያካፍሉ።\n• ይህ አንድ ጊዜ ብቻ ነው የሚታየው';
+
+  @override
+  String get themeSettingsTitle => 'የገጽታ ቅንብሮች';
+
+  @override
+  String get lightThemeLabel => 'ብርሃን';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'ጨለማ';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'ስርዓት';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

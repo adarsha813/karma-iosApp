@@ -435,5 +435,9 @@
   "experience": "Skúsenosti",
   "qualification": "Kvalifikácia",
   "education": "Vzdelávanie",
-  "recoveryTips": "• Urobte si snímku obrazovky s týmito informáciami\n• Uschovajte si ich na bezpečnom mieste\n• Nezdieľajte ich s nikým\n• Zobrazia sa iba raz"
+  "recoveryTips": "• Urobte si snímku obrazovky s týmito informáciami\n• Uschovajte si ich na bezpečnom mieste\n• Nezdieľajte ich s nikým\n• Zobrazia sa iba raz",
+  "themeSettingsTitle": "Nastavenia témy",
+  "lightThemeLabel": "Svetlo",
+  "darkThemeLabel": "Tmavé",
+  "systemThemeLabel": "Systém"
 }

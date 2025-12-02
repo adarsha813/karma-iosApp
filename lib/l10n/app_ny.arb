@@ -435,5 +435,9 @@
   "experience": "Zochitika",
   "qualification": "Chiyeneretso",
   "education": "Maphunziro",
-  "recoveryTips": "• Tengani chithunzi cha chidziwitso ichi\n• Sungani pamalo otetezeka\n• Osagawana ndi aliyense\n• Izi zidzawonetsedwa kamodzi kokha"
+  "recoveryTips": "• Tengani chithunzi cha chidziwitso ichi\n• Sungani pamalo otetezeka\n• Osagawana ndi aliyense\n• Izi zidzawonetsedwa kamodzi kokha",
+  "themeSettingsTitle": "Zokonda pamutu",
+  "lightThemeLabel": "Kuwala",
+  "darkThemeLabel": "Chakuda",
+  "systemThemeLabel": "Dongosolo"
 }

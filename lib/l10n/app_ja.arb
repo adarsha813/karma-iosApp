@@ -435,5 +435,9 @@
   "experience": "経験",
   "qualification": "資格",
   "education": "教育",
-  "recoveryTips": "• この情報のスクリーンショットを撮る\n• 安全な場所に保管する\n• 誰とも共有しない\n• この情報は一度だけ表示される"
+  "recoveryTips": "• この情報のスクリーンショットを撮る\n• 安全な場所に保管する\n• 誰とも共有しない\n• この情報は一度だけ表示される",
+  "themeSettingsTitle": "テーマ設定",
+  "lightThemeLabel": "ライト",
+  "darkThemeLabel": "暗い",
+  "systemThemeLabel": "システム"
 }

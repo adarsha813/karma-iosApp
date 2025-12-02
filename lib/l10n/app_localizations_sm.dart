@@ -848,4 +848,34 @@ class AppLocalizationsSm extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Ave se fa\'amalama o lenei fa\'amatalaga\n• Teu i se nofoaga malupuipuia\n• Aua le faasoa atu i se tasi\n• O le a na\'o le tasi ona fa\'aalia';
+
+  @override
+  String get themeSettingsTitle => 'Fa\'atonu Autu';
+
+  @override
+  String get lightThemeLabel => 'Malamalama';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Pogisa';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Faiga';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

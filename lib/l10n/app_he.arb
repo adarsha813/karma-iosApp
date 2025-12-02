@@ -435,5 +435,9 @@
   "experience": "הִתנַסוּת",
   "qualification": "הַכשָׁרָה",
   "education": "הַשׂכָּלָה",
-  "recoveryTips": "• צלם צילום מסך של מידע זה\n• אחסן אותו במקום מאובטח\n• אל תשתף עם אף אחד\n• זה יוצג פעם אחת בלבד"
+  "recoveryTips": "• צלם צילום מסך של מידע זה\n• אחסן אותו במקום מאובטח\n• אל תשתף עם אף אחד\n• זה יוצג פעם אחת בלבד",
+  "themeSettingsTitle": "הגדרות ערכת נושא",
+  "lightThemeLabel": "אוֹר",
+  "darkThemeLabel": "כֵּהֶה",
+  "systemThemeLabel": "מַעֲרֶכֶת"
 }

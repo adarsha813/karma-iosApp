@@ -848,4 +848,34 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Maak een screenshot van deze informatie\n• Bewaar deze op een veilige plek\n• Deel deze niet met anderen\n• Deze informatie wordt slechts één keer weergegeven';
+
+  @override
+  String get themeSettingsTitle => 'Thema-instellingen';
+
+  @override
+  String get lightThemeLabel => 'Licht';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Donker';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Systeem';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

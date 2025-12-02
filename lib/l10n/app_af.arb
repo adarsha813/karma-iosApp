@@ -435,5 +435,9 @@
   "experience": "Ervaring",
   "qualification": "Kwalifikasie",
   "education": "Onderwys",
-  "recoveryTips": "• Neem 'n skermkiekie van hierdie inligting\n• Stoor dit op 'n veilige plek\n• Moenie met enigiemand deel nie\n• Dit sal slegs een keer gewys word"
+  "recoveryTips": "• Neem 'n skermkiekie van hierdie inligting\n• Stoor dit op 'n veilige plek\n• Moenie met enigiemand deel nie\n• Dit sal slegs een keer gewys word",
+  "themeSettingsTitle": "Tema-instellings",
+  "lightThemeLabel": "Lig",
+  "darkThemeLabel": "Donker",
+  "systemThemeLabel": "Stelsel"
 }

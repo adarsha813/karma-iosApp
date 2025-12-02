@@ -435,5 +435,9 @@
   "experience": "Te wheako",
   "qualification": "Tohu",
   "education": "Mātauranga",
-  "recoveryTips": "• Tangohia he whakaahua o enei korero\n• Whakaorangia ki te waahi haumaru\n• Kaua e tohatoha ki tetahi\n• Kotahi anake te whakaaturanga"
+  "recoveryTips": "• Tangohia he whakaahua o enei korero\n• Whakaorangia ki te waahi haumaru\n• Kaua e tohatoha ki tetahi\n• Kotahi anake te whakaaturanga",
+  "themeSettingsTitle": "Tautuhinga Kaupapa",
+  "lightThemeLabel": "Maama",
+  "darkThemeLabel": "pouri",
+  "systemThemeLabel": "Pūnaha"
 }

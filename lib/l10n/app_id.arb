@@ -435,5 +435,9 @@
   "experience": "Pengalaman",
   "qualification": "Kualifikasi",
   "education": "Pendidikan",
-  "recoveryTips": "• Ambil tangkapan layar informasi ini\n• Simpan di tempat yang aman\n• Jangan bagikan dengan siapa pun\n• Ini hanya akan ditampilkan sekali"
+  "recoveryTips": "• Ambil tangkapan layar informasi ini\n• Simpan di tempat yang aman\n• Jangan bagikan dengan siapa pun\n• Ini hanya akan ditampilkan sekali",
+  "themeSettingsTitle": "Pengaturan Tema",
+  "lightThemeLabel": "Lampu",
+  "darkThemeLabel": "Gelap",
+  "systemThemeLabel": "Sistem"
 }

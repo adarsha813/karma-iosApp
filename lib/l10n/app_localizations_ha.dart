@@ -846,4 +846,34 @@ class AppLocalizationsHa extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Ɗauki hoton wannan bayanin\n• Ajiye shi a wuri mai tsaro\n• Kada ku raba tare da kowa\nZa a nuna wannan sau ɗaya kawai';
+
+  @override
+  String get themeSettingsTitle => 'Saitunan Jigo';
+
+  @override
+  String get lightThemeLabel => 'Haske';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Duhu';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Tsari';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

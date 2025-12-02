@@ -841,4 +841,34 @@ class AppLocalizationsIg extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Were nseta ihuenyo nke ozi a\n• Chekwaa ya n\'ebe echekwara\n• Ekekọrịtala onye ọ bụla\n• A ga-egosi nke a naanị otu ugboro';
+
+  @override
+  String get themeSettingsTitle => 'Ntọala isiokwu';
+
+  @override
+  String get lightThemeLabel => 'Ìhè';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Ọchịchịrị';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Sistemu';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

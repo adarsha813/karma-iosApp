@@ -435,5 +435,9 @@
   "experience": "Përvoja",
   "qualification": "Kualifikimi",
   "education": "Arsimi",
-  "recoveryTips": "• Bëni një pamje të ekranit të këtij informacioni\n• Ruajeni në një vend të sigurt\n• Mos e ndani me askënd\n• Kjo do të shfaqet vetëm një herë"
+  "recoveryTips": "• Bëni një pamje të ekranit të këtij informacioni\n• Ruajeni në një vend të sigurt\n• Mos e ndani me askënd\n• Kjo do të shfaqet vetëm një herë",
+  "themeSettingsTitle": "Cilësimet e Temës",
+  "lightThemeLabel": "Dritë",
+  "darkThemeLabel": "E errët",
+  "systemThemeLabel": "Sistemi"
 }

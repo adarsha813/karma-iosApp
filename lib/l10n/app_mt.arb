@@ -435,5 +435,9 @@
   "experience": "Esperjenza",
   "qualification": "Kwalifika",
   "education": "Edukazzjoni",
-  "recoveryTips": "• Ħu screenshot ta’ din l-informazzjoni\n• Aħżenha f’post sigur\n• Taqsamha ma’ ħadd\n• Din tintwera darba biss"
+  "recoveryTips": "• Ħu screenshot ta’ din l-informazzjoni\n• Aħżenha f’post sigur\n• Taqsamha ma’ ħadd\n• Din tintwera darba biss",
+  "themeSettingsTitle": "Issettjar tat-Tema",
+  "lightThemeLabel": "Dawl",
+  "darkThemeLabel": "Dlam",
+  "systemThemeLabel": "Sistema"
 }

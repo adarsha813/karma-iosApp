@@ -843,4 +843,34 @@ class AppLocalizationsFa extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• از این اطلاعات اسکرین شات بگیرید\n• آن را در جای امنی ذخیره کنید\n• با کسی به اشتراک نگذارید\n• این فقط یک بار نمایش داده می‌شود';
+
+  @override
+  String get themeSettingsTitle => 'تنظیمات قالب';
+
+  @override
+  String get lightThemeLabel => 'نور';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'تیره';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'سیستم';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

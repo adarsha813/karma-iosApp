@@ -435,5 +435,9 @@
   "experience": "Uppleva",
   "qualification": "Kompetens",
   "education": "Utbildning",
-  "recoveryTips": "• Ta en skärmdump av informationen\n• Förvara den på ett säkert ställe\n• Dela den inte med någon\n• Detta visas bara en gång"
+  "recoveryTips": "• Ta en skärmdump av informationen\n• Förvara den på ett säkert ställe\n• Dela den inte med någon\n• Detta visas bara en gång",
+  "themeSettingsTitle": "Temainställningar",
+  "lightThemeLabel": "Ljus",
+  "darkThemeLabel": "Mörk",
+  "systemThemeLabel": "System"
 }

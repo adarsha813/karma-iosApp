@@ -844,4 +844,34 @@ class AppLocalizationsJv extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Njupuk gambar saka informasi iki\n• Simpen ing panggonan kang aman\n• Aja nuduhake karo sapa wae\n• Iki mung bakal ditampilake sapisan';
+
+  @override
+  String get themeSettingsTitle => 'Setelan Tema';
+
+  @override
+  String get lightThemeLabel => 'cahya';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'peteng';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Sistem';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

@@ -857,4 +857,34 @@ class AppLocalizationsMy extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• ဤအချက်အလက်ကို ဖန်သားပြင်ဓာတ်ပုံရိုက်ပါ။\n• လုံခြုံသောနေရာတွင် သိမ်းဆည်းပါ။\n• မည်သူနှင့်မျှ မမျှဝေပါနှင့်\n• ၎င်းကို တစ်ကြိမ်သာ ပြသပါမည်။';
+
+  @override
+  String get themeSettingsTitle => 'အပြင်အဆင် ဆက်တင်များ';
+
+  @override
+  String get lightThemeLabel => 'အလင်း';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'အမှောင်';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'စနစ်';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

@@ -844,4 +844,34 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Ota kuvakaappaus näistä tiedoista\n• Säilytä niitä turvallisessa paikassa\n• Älä jaa niitä kenenkään kanssa\n• Nämä näytetään vain kerran';
+
+  @override
+  String get themeSettingsTitle => 'Teeman asetukset';
+
+  @override
+  String get lightThemeLabel => 'Valo';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Tumma';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Järjestelmä';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

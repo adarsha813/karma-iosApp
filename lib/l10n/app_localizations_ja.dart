@@ -826,4 +826,34 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• この情報のスクリーンショットを撮る\n• 安全な場所に保管する\n• 誰とも共有しない\n• この情報は一度だけ表示される';
+
+  @override
+  String get themeSettingsTitle => 'テーマ設定';
+
+  @override
+  String get lightThemeLabel => 'ライト';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => '暗い';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'システム';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

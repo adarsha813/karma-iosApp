@@ -435,5 +435,9 @@
   "experience": "Sperto",
   "qualification": "Kvalifiko",
   "education": "Edukado",
-  "recoveryTips": "• Faru ekranfoton de ĉi tiu informo\n• Konservu ĝin en sekura loko\n• Ne dividu kun iu ajn\n• Ĉi tio estos montrata nur unufoje"
+  "recoveryTips": "• Faru ekranfoton de ĉi tiu informo\n• Konservu ĝin en sekura loko\n• Ne dividu kun iu ajn\n• Ĉi tio estos montrata nur unufoje",
+  "themeSettingsTitle": "Temaj Agordoj",
+  "lightThemeLabel": "Lumo",
+  "darkThemeLabel": "Malluma",
+  "systemThemeLabel": "Sistemo"
 }

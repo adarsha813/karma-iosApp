@@ -435,5 +435,9 @@
   "experience": "Erfahrung",
   "qualification": "Qualifikatioun",
   "education": "Ausbildung",
-  "recoveryTips": "• Maacht e Screenshot vun dëser Informatioun\n• Späichert se op enger sécherer Plaz\n• Deelt se mat kengem\n• Dëst gëtt nëmmen eemol ugewisen"
+  "recoveryTips": "• Maacht e Screenshot vun dëser Informatioun\n• Späichert se op enger sécherer Plaz\n• Deelt se mat kengem\n• Dëst gëtt nëmmen eemol ugewisen",
+  "themeSettingsTitle": "Theme-Astellungen",
+  "lightThemeLabel": "Liicht",
+  "darkThemeLabel": "Däischter",
+  "systemThemeLabel": "System"
 }

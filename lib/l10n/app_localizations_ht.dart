@@ -843,4 +843,34 @@ class AppLocalizationsHt extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Pran yon kopi ekran enfòmasyon sa a\n• Sere l nan yon kote ki an sekirite\n• Pa pataje l ak pèsonn\n• Sa ap parèt yon sèl fwa';
+
+  @override
+  String get themeSettingsTitle => 'Anviwònman Tèm';
+
+  @override
+  String get lightThemeLabel => 'Limyè';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Fènwa';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Sistèm';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

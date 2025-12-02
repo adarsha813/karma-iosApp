@@ -1831,6 +1831,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'• Take a screenshot of this information\n• Store it in a secure place\n• Do not share with anyone\n• This will only be shown once'**
   String get recoveryTips;
+
+  /// No description provided for @themeSettingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme Settings'**
+  String get themeSettingsTitle;
+
+  /// No description provided for @lightThemeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get lightThemeLabel;
+
+  /// No description provided for @lightThemeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Always use light theme'**
+  String get lightThemeDescription;
+
+  /// No description provided for @darkThemeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get darkThemeLabel;
+
+  /// No description provided for @darkThemeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Always use dark theme'**
+  String get darkThemeDescription;
+
+  /// No description provided for @systemThemeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get systemThemeLabel;
+
+  /// No description provided for @systemThemeDarkDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Using system dark theme'**
+  String get systemThemeDarkDescription;
+
+  /// No description provided for @systemThemeLightDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Using system light theme'**
+  String get systemThemeLightDescription;
+
+  /// No description provided for @switchToLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to Light'**
+  String get switchToLight;
+
+  /// No description provided for @switchToDark.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to Dark'**
+  String get switchToDark;
 }
 
 class _AppLocalizationsDelegate

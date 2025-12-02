@@ -435,5 +435,9 @@
   "experience": "Uburambe",
   "qualification": "Impamyabumenyi",
   "education": "Uburezi",
-  "recoveryTips": "• Fata amashusho yaya makuru\n• Ubike ahantu hizewe\n• Ntugasangire n'umuntu uwo ari we wese\n• Ibi bizerekanwa rimwe gusa"
+  "recoveryTips": "• Fata amashusho yaya makuru\n• Ubike ahantu hizewe\n• Ntugasangire n'umuntu uwo ari we wese\n• Ibi bizerekanwa rimwe gusa",
+  "themeSettingsTitle": "Igenamiterere",
+  "lightThemeLabel": "Umucyo",
+  "darkThemeLabel": "Umwijima",
+  "systemThemeLabel": "Sisitemu"
 }

@@ -435,5 +435,9 @@
   "experience": "Erfaring",
   "qualification": "Kvalifikasjon",
   "education": "Utdannelse",
-  "recoveryTips": "• Ta et skjermbilde av denne informasjonen\n• Oppbevar den på et sikkert sted\n• Ikke del den med noen\n• Dette vises bare én gang"
+  "recoveryTips": "• Ta et skjermbilde av denne informasjonen\n• Oppbevar den på et sikkert sted\n• Ikke del den med noen\n• Dette vises bare én gang",
+  "themeSettingsTitle": "Temainnstillinger",
+  "lightThemeLabel": "Lys",
+  "darkThemeLabel": "Mørk",
+  "systemThemeLabel": "System"
 }

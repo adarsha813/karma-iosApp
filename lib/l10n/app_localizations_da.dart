@@ -844,4 +844,34 @@ class AppLocalizationsDa extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Tag et skærmbillede af disse oplysninger\n• Gem dem et sikkert sted\n• Del dem ikke med nogen\n• Dette vises kun én gang';
+
+  @override
+  String get themeSettingsTitle => 'Temaindstillinger';
+
+  @override
+  String get lightThemeLabel => 'Lys';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Mørk';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'System';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

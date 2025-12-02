@@ -848,4 +848,34 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• এই তথ্যের একটি স্ক্রিনশট নিন\n• এটি একটি নিরাপদ স্থানে সংরক্ষণ করুন\n• কারো সাথে শেয়ার করবেন না\n• এটি শুধুমাত্র একবার দেখানো হবে';
+
+  @override
+  String get themeSettingsTitle => 'থিম সেটিংস';
+
+  @override
+  String get lightThemeLabel => 'আলো';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'অন্ধকার';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'সিস্টেম';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

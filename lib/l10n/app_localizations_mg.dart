@@ -853,4 +853,34 @@ class AppLocalizationsMg extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Makà pikantsary amin\'ity fampahalalana ity\n• Tehirizo ao amin\'ny toerana azo antoka izy io\n• Aza mizara amin\'iza na iza\n• Indray mandeha ihany no hiseho ity';
+
+  @override
+  String get themeSettingsTitle => 'Fanitsiana lohahevitra';
+
+  @override
+  String get lightThemeLabel => 'fahazavana';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Maizina';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'RAFITRA';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

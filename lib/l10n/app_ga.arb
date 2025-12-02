@@ -435,5 +435,9 @@
   "experience": "Taithí",
   "qualification": "Cáilíocht",
   "education": "Oideachas",
-  "recoveryTips": "• Glac pictiúr scáileáin den fhaisnéis seo\n• Stóráil in áit shábháilte í\n• Ná roinn le duine ar bith í\n• Ní thaispeánfar í seo ach uair amháin"
+  "recoveryTips": "• Glac pictiúr scáileáin den fhaisnéis seo\n• Stóráil in áit shábháilte í\n• Ná roinn le duine ar bith í\n• Ní thaispeánfar í seo ach uair amháin",
+  "themeSettingsTitle": "Socruithe Téama",
+  "lightThemeLabel": "Solas",
+  "darkThemeLabel": "Dorcha",
+  "systemThemeLabel": "Córas"
 }

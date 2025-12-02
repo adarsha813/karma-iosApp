@@ -854,4 +854,34 @@ class AppLocalizationsEl extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Λήψη στιγμιότυπου οθόνης αυτών των πληροφοριών\n• Αποθηκεύστε το σε ασφαλές μέρος\n• Μην το κοινοποιήσετε σε κανέναν\n• Αυτό θα εμφανιστεί μόνο μία φορά';
+
+  @override
+  String get themeSettingsTitle => 'Ρυθμίσεις θέματος';
+
+  @override
+  String get lightThemeLabel => 'Φως';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Σκοτάδι';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Σύστημα';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

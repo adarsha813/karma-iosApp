@@ -435,5 +435,9 @@
   "experience": "Eksperyans",
   "qualification": "Kalifikasyon",
   "education": "Edikasyon",
-  "recoveryTips": "• Pran yon kopi ekran enfòmasyon sa a\n• Sere l nan yon kote ki an sekirite\n• Pa pataje l ak pèsonn\n• Sa ap parèt yon sèl fwa"
+  "recoveryTips": "• Pran yon kopi ekran enfòmasyon sa a\n• Sere l nan yon kote ki an sekirite\n• Pa pataje l ak pèsonn\n• Sa ap parèt yon sèl fwa",
+  "themeSettingsTitle": "Anviwònman Tèm",
+  "lightThemeLabel": "Limyè",
+  "darkThemeLabel": "Fènwa",
+  "systemThemeLabel": "Sistèm"
 }

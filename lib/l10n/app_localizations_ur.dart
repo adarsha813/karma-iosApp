@@ -846,4 +846,34 @@ class AppLocalizationsUr extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• اس معلومات کا اسکرین شاٹ لیں۔\n• اسے محفوظ جگہ پر ذخیرہ کریں۔\n• کسی کے ساتھ اشتراک نہ کریں۔\n• یہ صرف ایک بار دکھایا جائے گا۔';
+
+  @override
+  String get themeSettingsTitle => 'تھیم کی ترتیبات';
+
+  @override
+  String get lightThemeLabel => 'روشنی';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'اندھیرا';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'سسٹم';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

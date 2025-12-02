@@ -850,4 +850,34 @@ class AppLocalizationsHmn extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Coj ib lub screenshot ntawm cov ntaub ntawv no\n• Khaws rau hauv qhov chaw ruaj ntseg\n• Tsis txhob koom nrog lwm tus\n• Qhov no tsuas yog qhia ib zaug xwb';
+
+  @override
+  String get themeSettingsTitle => 'Ntsiab lus chaw';
+
+  @override
+  String get lightThemeLabel => 'Teeb';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Tsaus';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Qhov system';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

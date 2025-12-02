@@ -435,5 +435,9 @@
   "experience": "Experience",
   "qualification": "fahaizana",
   "education": "FAMPIANARANA",
-  "recoveryTips": "• Makà pikantsary amin'ity fampahalalana ity\n• Tehirizo ao amin'ny toerana azo antoka izy io\n• Aza mizara amin'iza na iza\n• Indray mandeha ihany no hiseho ity"
+  "recoveryTips": "• Makà pikantsary amin'ity fampahalalana ity\n• Tehirizo ao amin'ny toerana azo antoka izy io\n• Aza mizara amin'iza na iza\n• Indray mandeha ihany no hiseho ity",
+  "themeSettingsTitle": "Fanitsiana lohahevitra",
+  "lightThemeLabel": "fahazavana",
+  "darkThemeLabel": "Maizina",
+  "systemThemeLabel": "RAFITRA"
 }

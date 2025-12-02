@@ -846,4 +846,34 @@ class AppLocalizationsMn extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Энэ мэдээллийн дэлгэцийн агшинг авна уу\n• Аюулгүй газар хадгална\n• Хэнтэй ч бүү хуваалц\n• Үүнийг зөвхөн нэг удаа харуулах болно';
+
+  @override
+  String get themeSettingsTitle => 'Сэдвийн тохиргоо';
+
+  @override
+  String get lightThemeLabel => 'Гэрэл';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Харанхуй';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Систем';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

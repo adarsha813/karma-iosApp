@@ -846,4 +846,34 @@ class AppLocalizationsKm extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• ថតអេក្រង់នៃព័ត៌មាននេះ។\n• ទុកវានៅកន្លែងដែលមានសុវត្ថិភាព\n• កុំចែករំលែកជាមួយនរណាម្នាក់\n• វានឹងត្រូវបានបង្ហាញតែម្តងប៉ុណ្ណោះ។';
+
+  @override
+  String get themeSettingsTitle => 'ការកំណត់ប្រធានបទ';
+
+  @override
+  String get lightThemeLabel => 'ពន្លឺ';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'ងងឹត';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'ប្រព័ន្ធ';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

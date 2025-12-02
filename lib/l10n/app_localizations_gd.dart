@@ -861,4 +861,34 @@ class AppLocalizationsGd extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Gabh dealbh-sgrìn den fhiosrachadh seo\n• Stòraich e ann an àite tèarainte\n• Na roinn le duine sam bith\n• Cha tèid seo a shealltainn ach aon uair';
+
+  @override
+  String get themeSettingsTitle => 'Roghainnean Cuspair';
+
+  @override
+  String get lightThemeLabel => 'Solas';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Dorcha';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Siostam';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

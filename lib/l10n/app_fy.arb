@@ -435,5 +435,9 @@
   "experience": "Ûnderfining",
   "qualification": "Kwalifikaasje",
   "education": "Oplieding",
-  "recoveryTips": "• Meitsje in skermôfbylding fan dizze ynformaasje\n• Bewarje it op in feilich plak\n• Diel it net mei oaren\n• Dit wurdt mar ien kear werjûn"
+  "recoveryTips": "• Meitsje in skermôfbylding fan dizze ynformaasje\n• Bewarje it op in feilich plak\n• Diel it net mei oaren\n• Dit wurdt mar ien kear werjûn",
+  "themeSettingsTitle": "Tema-ynstellings",
+  "lightThemeLabel": "Ljocht",
+  "darkThemeLabel": "Tsjuster",
+  "systemThemeLabel": "Systeem"
 }

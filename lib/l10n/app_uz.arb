@@ -435,5 +435,9 @@
   "experience": "Tajriba",
   "qualification": "Malaka",
   "education": "Ta'lim",
-  "recoveryTips": "• Ushbu ma'lumotning skrinshotini oling\n• Uni xavfsiz joyda saqlang\n• Hech kim bilan baham ko'rmang\n• Bu faqat bir marta ko'rsatiladi"
+  "recoveryTips": "• Ushbu ma'lumotning skrinshotini oling\n• Uni xavfsiz joyda saqlang\n• Hech kim bilan baham ko'rmang\n• Bu faqat bir marta ko'rsatiladi",
+  "themeSettingsTitle": "Mavzu sozlamalari",
+  "lightThemeLabel": "Nur",
+  "darkThemeLabel": "Qorong'i",
+  "systemThemeLabel": "Tizim"
 }

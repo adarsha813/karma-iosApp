@@ -851,4 +851,34 @@ class AppLocalizationsTa extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• இந்தத் தகவலின் ஸ்கிரீன்ஷாட்டை எடுக்கவும்\n• பாதுகாப்பான இடத்தில் சேமிக்கவும்\n• யாருடனும் பகிர வேண்டாம்\n• இது ஒரு முறை மட்டுமே காண்பிக்கப்படும்';
+
+  @override
+  String get themeSettingsTitle => 'தீம் அமைப்புகள்';
+
+  @override
+  String get lightThemeLabel => 'ஒளி';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'இருள்';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'அமைப்பு';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

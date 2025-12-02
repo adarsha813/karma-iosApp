@@ -848,4 +848,34 @@ class AppLocalizationsUg extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• بۇ ئۇچۇرنىڭ ئېكران رەسىمىنى ئېلىڭ\n• ئۇنى بىخەتەر جايدا ساقلاڭ\n• ھېچكىم بىلەن ئورتاقلاشماڭ\n• بۇ پەقەت بىرلا قېتىم كۆرسىتىلىدۇ';
+
+  @override
+  String get themeSettingsTitle => 'باشتېما تەڭشىكى';
+
+  @override
+  String get lightThemeLabel => 'نۇر';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'قاراڭغۇ';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'سىستېما';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

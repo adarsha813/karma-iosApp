@@ -848,4 +848,34 @@ class AppLocalizationsGa extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Glac pictiúr scáileáin den fhaisnéis seo\n• Stóráil in áit shábháilte í\n• Ná roinn le duine ar bith í\n• Ní thaispeánfar í seo ach uair amháin';
+
+  @override
+  String get themeSettingsTitle => 'Socruithe Téama';
+
+  @override
+  String get lightThemeLabel => 'Solas';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Dorcha';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Córas';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

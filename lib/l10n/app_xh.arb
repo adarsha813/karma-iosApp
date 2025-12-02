@@ -435,5 +435,9 @@
   "experience": "Amava",
   "qualification": "Isiqinisekiso",
   "education": "Imfundo",
-  "recoveryTips": "• Thatha umfanekiso weskrini wolu lwazi\n• Yigcine kwindawo ekhuselekileyo\n• Ungabelani nabani na\n• Oku kuya kuboniswa kube kanye kuphela"
+  "recoveryTips": "• Thatha umfanekiso weskrini wolu lwazi\n• Yigcine kwindawo ekhuselekileyo\n• Ungabelani nabani na\n• Oku kuya kuboniswa kube kanye kuphela",
+  "themeSettingsTitle": "Iisetingi zomxholo",
+  "lightThemeLabel": "Ukukhanya",
+  "darkThemeLabel": "Mnyama",
+  "systemThemeLabel": "Inkqubo"
 }

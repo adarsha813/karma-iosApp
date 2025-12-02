@@ -435,5 +435,9 @@
   "experience": "Zažít",
   "qualification": "Kvalifikace",
   "education": "Školství",
-  "recoveryTips": "• Pořiďte snímek obrazovky s těmito informacemi\n• Uložte je na bezpečném místě\n• Nesdílejte je s nikým\n• Zobrazí se pouze jednou"
+  "recoveryTips": "• Pořiďte snímek obrazovky s těmito informacemi\n• Uložte je na bezpečném místě\n• Nesdílejte je s nikým\n• Zobrazí se pouze jednou",
+  "themeSettingsTitle": "Nastavení motivu",
+  "lightThemeLabel": "Světlo",
+  "darkThemeLabel": "Tmavý",
+  "systemThemeLabel": "Systém"
 }

@@ -845,4 +845,34 @@ class AppLocalizationsLv extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Uzņemiet šīs informācijas ekrānuzņēmumu\n• Glabājiet to drošā vietā\n• Neizpaudiet nevienam\n• Tas tiks parādīts tikai vienu reizi';
+
+  @override
+  String get themeSettingsTitle => 'Tēmas iestatījumi';
+
+  @override
+  String get lightThemeLabel => 'Gaisma';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Tumšs';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Sistēma';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

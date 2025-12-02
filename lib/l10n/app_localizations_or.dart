@@ -850,4 +850,34 @@ class AppLocalizationsOr extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• ଏହି ସୂଚନାର ଏକ ସ୍କ୍ରିନସଟ୍ ନିଅନ୍ତୁ\n• ଏହାକୁ ଏକ ସୁରକ୍ଷିତ ସ୍ଥାନରେ ରଖନ୍ତୁ\n• କାହା ସହିତ ସେୟାର କରନ୍ତୁ ନାହିଁ\n• ଏହା କେବଳ ଥରେ ଦେଖାଯିବ';
+
+  @override
+  String get themeSettingsTitle => 'ଥିମ୍ ସେଟିଂସମୂହ';
+
+  @override
+  String get lightThemeLabel => 'ଫିକା';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'ଗାଢ଼';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'ସିଷ୍ଟମ୍‌';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

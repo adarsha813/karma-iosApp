@@ -511,5 +511,14 @@
   "experience": "Experience",
   "qualification": "Qualification",
   "education": "Education",
-  "recoveryTips": "• Take a screenshot of this information\n• Store it in a secure place\n• Do not share with anyone\n• This will only be shown once"
-}
+  "recoveryTips": "• Take a screenshot of this information\n• Store it in a secure place\n• Do not share with anyone\n• This will only be shown once",
+    "themeSettingsTitle": "Theme Settings",
+  "lightThemeLabel": "Light",
+  "lightThemeDescription": "Always use light theme",
+  "darkThemeLabel": "Dark",
+  "darkThemeDescription": "Always use dark theme",
+  "systemThemeLabel": "System",
+  "systemThemeDarkDescription": "Using system dark theme",
+  "systemThemeLightDescription": "Using system light theme",
+  "switchToLight": "Switch to Light",
+  "switchToDark": "Switch to Dark"}

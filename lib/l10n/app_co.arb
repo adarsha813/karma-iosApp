@@ -435,5 +435,9 @@
   "experience": "Esperienza",
   "qualification": "Qualificazione",
   "education": "Educazione",
-  "recoveryTips": "• Fate una cattura di schermu di sta infurmazione\n• Conservatela in un locu sicuru\n• Ùn spartetela cù nimu\n• Questu serà mostratu solu una volta"
+  "recoveryTips": "• Fate una cattura di schermu di sta infurmazione\n• Conservatela in un locu sicuru\n• Ùn spartetela cù nimu\n• Questu serà mostratu solu una volta",
+  "themeSettingsTitle": "Impostazioni di u tema",
+  "lightThemeLabel": "Luce",
+  "darkThemeLabel": "Scuru",
+  "systemThemeLabel": "Sistema"
 }

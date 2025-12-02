@@ -855,4 +855,34 @@ class AppLocalizationsMk extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Направете слика од екранот од овие информации\n• Чувајте ги на безбедно место\n• Не споделувајте со никого\n• Ова ќе се прикаже само еднаш';
+
+  @override
+  String get themeSettingsTitle => 'Поставки на темата';
+
+  @override
+  String get lightThemeLabel => 'Светло';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Темно';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Систем';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

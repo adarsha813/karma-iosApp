@@ -852,4 +852,34 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Ushbu ma\'lumotning skrinshotini oling\n• Uni xavfsiz joyda saqlang\n• Hech kim bilan baham ko\'rmang\n• Bu faqat bir marta ko\'rsatiladi';
+
+  @override
+  String get themeSettingsTitle => 'Mavzu sozlamalari';
+
+  @override
+  String get lightThemeLabel => 'Nur';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Qorong\'i';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Tizim';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

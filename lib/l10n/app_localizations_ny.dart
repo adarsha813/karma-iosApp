@@ -851,4 +851,34 @@ class AppLocalizationsNy extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Tengani chithunzi cha chidziwitso ichi\n• Sungani pamalo otetezeka\n• Osagawana ndi aliyense\n• Izi zidzawonetsedwa kamodzi kokha';
+
+  @override
+  String get themeSettingsTitle => 'Zokonda pamutu';
+
+  @override
+  String get lightThemeLabel => 'Kuwala';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Chakuda';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Dongosolo';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

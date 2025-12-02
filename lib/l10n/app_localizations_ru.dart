@@ -846,4 +846,34 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Сделайте скриншот этой информации\n• Сохраните его в безопасном месте\n• Не передавайте никому\n• Эта информация будет показана только один раз';
+
+  @override
+  String get themeSettingsTitle => 'Настройки темы';
+
+  @override
+  String get lightThemeLabel => 'Свет';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Темный';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Система';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

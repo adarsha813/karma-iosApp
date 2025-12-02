@@ -435,5 +435,9 @@
   "experience": "Kinh nghiệm",
   "qualification": "Trình độ chuyên môn",
   "education": "Giáo dục",
-  "recoveryTips": "• Chụp ảnh màn hình thông tin này\n• Lưu trữ ở nơi an toàn\n• Không chia sẻ với bất kỳ ai\n• Thông tin này chỉ được hiển thị một lần"
+  "recoveryTips": "• Chụp ảnh màn hình thông tin này\n• Lưu trữ ở nơi an toàn\n• Không chia sẻ với bất kỳ ai\n• Thông tin này chỉ được hiển thị một lần",
+  "themeSettingsTitle": "Cài đặt chủ đề",
+  "lightThemeLabel": "Ánh sáng",
+  "darkThemeLabel": "Tối tăm",
+  "systemThemeLabel": "Hệ thống"
 }

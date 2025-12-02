@@ -435,5 +435,9 @@
   "experience": "Esperientzia",
   "qualification": "Titulazioa",
   "education": "Hezkuntza",
-  "recoveryTips": "• Atera informazio honen pantaila-argazki bat\n• Gorde leku seguru batean\n• Ez partekatu inorekin\n• Behin bakarrik erakutsiko da"
+  "recoveryTips": "• Atera informazio honen pantaila-argazki bat\n• Gorde leku seguru batean\n• Ez partekatu inorekin\n• Behin bakarrik erakutsiko da",
+  "themeSettingsTitle": "Gaiaren ezarpenak",
+  "lightThemeLabel": "Argia",
+  "darkThemeLabel": "Iluna",
+  "systemThemeLabel": "Sistema"
 }

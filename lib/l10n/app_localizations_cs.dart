@@ -845,4 +845,34 @@ class AppLocalizationsCs extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Pořiďte snímek obrazovky s těmito informacemi\n• Uložte je na bezpečném místě\n• Nesdílejte je s nikým\n• Zobrazí se pouze jednou';
+
+  @override
+  String get themeSettingsTitle => 'Nastavení motivu';
+
+  @override
+  String get lightThemeLabel => 'Světlo';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Tmavý';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Systém';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

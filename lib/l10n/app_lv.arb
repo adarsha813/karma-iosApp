@@ -435,5 +435,9 @@
   "experience": "Pieredze",
   "qualification": "Kvalifikācija",
   "education": "Izglītība",
-  "recoveryTips": "• Uzņemiet šīs informācijas ekrānuzņēmumu\n• Glabājiet to drošā vietā\n• Neizpaudiet nevienam\n• Tas tiks parādīts tikai vienu reizi"
+  "recoveryTips": "• Uzņemiet šīs informācijas ekrānuzņēmumu\n• Glabājiet to drošā vietā\n• Neizpaudiet nevienam\n• Tas tiks parādīts tikai vienu reizi",
+  "themeSettingsTitle": "Tēmas iestatījumi",
+  "lightThemeLabel": "Gaisma",
+  "darkThemeLabel": "Tumšs",
+  "systemThemeLabel": "Sistēma"
 }

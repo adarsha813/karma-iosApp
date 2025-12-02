@@ -855,4 +855,34 @@ class AppLocalizationsCeb extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Pagkuha og screenshot niini nga impormasyon\n• Ibutang kini sa luwas nga dapit\n• Ayaw ipaambit ni bisan kinsa\n• Kini ipakita kausa ra';
+
+  @override
+  String get themeSettingsTitle => 'Mga Setting sa Tema';
+
+  @override
+  String get lightThemeLabel => 'Kahayag';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Ngitngit';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Sistema';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

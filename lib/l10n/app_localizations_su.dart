@@ -843,4 +843,34 @@ class AppLocalizationsSu extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Candak Potret layar inpormasi ieu\n• Simpen dina tempat anu aman\n• Ulah babagi jeung saha\n• Ieu ngan bakal ditémbongkeun sakali';
+
+  @override
+  String get themeSettingsTitle => 'Setélan Téma';
+
+  @override
+  String get lightThemeLabel => 'Caang';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Poek';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Sistim';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

@@ -849,4 +849,34 @@ class AppLocalizationsKy extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Бул маалыматтын скриншотун алыңыз\n• Аны коопсуз жерде сактаңыз\n• Эч ким менен бөлүшпө\n• Бул бир гана жолу көрсөтүлөт';
+
+  @override
+  String get themeSettingsTitle => 'Тема орнотуулары';
+
+  @override
+  String get lightThemeLabel => 'Жарык';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Караңгы';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Система';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

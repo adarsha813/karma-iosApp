@@ -844,4 +844,34 @@ class AppLocalizationsSk extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Urobte si snímku obrazovky s týmito informáciami\n• Uschovajte si ich na bezpečnom mieste\n• Nezdieľajte ich s nikým\n• Zobrazia sa iba raz';
+
+  @override
+  String get themeSettingsTitle => 'Nastavenia témy';
+
+  @override
+  String get lightThemeLabel => 'Svetlo';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Tmavé';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Systém';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

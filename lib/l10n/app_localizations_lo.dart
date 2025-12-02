@@ -843,4 +843,34 @@ class AppLocalizationsLo extends AppLocalizations {
   @override
   String get recoveryTips =>
       '•ຖ່າຍຮູບໜ້າຈໍຂອງຂໍ້ມູນນີ້\n• ເກັບຮັກສາໄວ້ໃນບ່ອນທີ່ປອດໄພ\n• ຢ່າແບ່ງປັນກັບໃຜ\n• ອັນນີ້ຈະຖືກສະແດງພຽງຄັ້ງດຽວເທົ່ານັ້ນ';
+
+  @override
+  String get themeSettingsTitle => 'ການຕັ້ງຄ່າຫົວຂໍ້';
+
+  @override
+  String get lightThemeLabel => 'ແສງສະຫວ່າງ';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'ມືດ';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'ລະບົບ';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

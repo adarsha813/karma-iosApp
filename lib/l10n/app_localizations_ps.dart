@@ -848,4 +848,34 @@ class AppLocalizationsPs extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• د دې معلوماتو سکرین شاټ واخلئ\n• په خوندي ځای کې یې وساتئ\n• له هیچا سره مه شریکوئ\n• دا به یوازې یو ځل وښودل شي';
+
+  @override
+  String get themeSettingsTitle => 'د موضوع ترتیبات';
+
+  @override
+  String get lightThemeLabel => 'رڼا';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'تیاره';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'سیسټم';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

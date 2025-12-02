@@ -852,4 +852,34 @@ class AppLocalizationsTg extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Скриншоти ин маълумотро гиред\n• Онро дар ҷои амн нигоҳ доред\n• Бо касе мубодила накунед\n• Ин танҳо як маротиба нишон дода мешавад';
+
+  @override
+  String get themeSettingsTitle => 'Танзимоти мавзӯъ';
+
+  @override
+  String get lightThemeLabel => 'Нур';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Торик';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Система';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

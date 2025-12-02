@@ -852,4 +852,34 @@ class AppLocalizationsKn extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• ಈ ಮಾಹಿತಿಯ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ತೆಗೆದುಕೊಳ್ಳಿ\n• ಅದನ್ನು ಸುರಕ್ಷಿತ ಸ್ಥಳದಲ್ಲಿ ಸಂಗ್ರಹಿಸಿ\n• ಯಾರೊಂದಿಗೂ ಹಂಚಿಕೊಳ್ಳಬೇಡಿ\n• ಇದನ್ನು ಒಮ್ಮೆ ಮಾತ್ರ ತೋರಿಸಲಾಗುತ್ತದೆ';
+
+  @override
+  String get themeSettingsTitle => 'ಥೀಮ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳು';
+
+  @override
+  String get lightThemeLabel => 'ಬೆಳಕು';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'ಕತ್ತಲೆ';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'ವ್ಯವಸ್ಥೆ';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

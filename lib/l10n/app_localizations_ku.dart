@@ -848,4 +848,34 @@ class AppLocalizationsKu extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Wêneyê ekranê yê vê agahiyê bigirin\n• Li cîhekî ewle hilînin\n• Bi kesî re parve nekin\n• Ev tenê carekê tê nîşandan';
+
+  @override
+  String get themeSettingsTitle => 'Mîhengên Mijarê';
+
+  @override
+  String get lightThemeLabel => 'Sivik';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Tarî';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Sîstem';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

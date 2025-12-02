@@ -435,5 +435,9 @@
   "experience": "Reynsla",
   "qualification": "Hæfniskröfur",
   "education": "Menntun",
-  "recoveryTips": "• Taktu skjámynd af þessum upplýsingum\n• Geymdu þær á öruggum stað\n• Ekki deila með neinum\n• Þetta verður aðeins sýnt einu sinni"
+  "recoveryTips": "• Taktu skjámynd af þessum upplýsingum\n• Geymdu þær á öruggum stað\n• Ekki deila með neinum\n• Þetta verður aðeins sýnt einu sinni",
+  "themeSettingsTitle": "Þemastillingar",
+  "lightThemeLabel": "Ljós",
+  "darkThemeLabel": "Dökkt",
+  "systemThemeLabel": "Kerfi"
 }

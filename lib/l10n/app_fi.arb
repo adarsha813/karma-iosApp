@@ -435,5 +435,9 @@
   "experience": "Kokea",
   "qualification": "pätevyys",
   "education": "Koulutus",
-  "recoveryTips": "• Ota kuvakaappaus näistä tiedoista\n• Säilytä niitä turvallisessa paikassa\n• Älä jaa niitä kenenkään kanssa\n• Nämä näytetään vain kerran"
+  "recoveryTips": "• Ota kuvakaappaus näistä tiedoista\n• Säilytä niitä turvallisessa paikassa\n• Älä jaa niitä kenenkään kanssa\n• Nämä näytetään vain kerran",
+  "themeSettingsTitle": "Teeman asetukset",
+  "lightThemeLabel": "Valo",
+  "darkThemeLabel": "Tumma",
+  "systemThemeLabel": "Järjestelmä"
 }

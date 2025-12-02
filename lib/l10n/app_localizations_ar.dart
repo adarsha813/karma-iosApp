@@ -836,4 +836,34 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• التقط لقطة شاشة لهذه المعلومات.\n• احفظها في مكان آمن.\n• لا تشاركها مع أي شخص.\n• ستظهر هذه المعلومات مرة واحدة فقط.';
+
+  @override
+  String get themeSettingsTitle => 'إعدادات السمة';
+
+  @override
+  String get lightThemeLabel => 'ضوء';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'مظلم';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'نظام';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

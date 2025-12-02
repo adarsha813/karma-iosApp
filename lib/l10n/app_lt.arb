@@ -435,5 +435,9 @@
   "experience": "Patirtis",
   "qualification": "Kvalifikacija",
   "education": "Švietimas",
-  "recoveryTips": "• Padarykite šios informacijos ekrano kopiją\n• Laikykite ją saugioje vietoje\n• Nesidalinkite su niekuo\n• Tai bus rodoma tik vieną kartą"
+  "recoveryTips": "• Padarykite šios informacijos ekrano kopiją\n• Laikykite ją saugioje vietoje\n• Nesidalinkite su niekuo\n• Tai bus rodoma tik vieną kartą",
+  "themeSettingsTitle": "Temos nustatymai",
+  "lightThemeLabel": "Šviesa",
+  "darkThemeLabel": "Tamsu",
+  "systemThemeLabel": "Sistema"
 }

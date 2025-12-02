@@ -435,5 +435,9 @@
   "experience": "Iskustvo",
   "qualification": "Kvalifikacija",
   "education": "Obrazovanje",
-  "recoveryTips": "• Napravite snimak ekrana ovih informacija\n• Čuvajte ih na sigurnom mjestu\n• Ne dijelite ni sa kim\n• Ovo će biti prikazano samo jednom"
+  "recoveryTips": "• Napravite snimak ekrana ovih informacija\n• Čuvajte ih na sigurnom mjestu\n• Ne dijelite ni sa kim\n• Ovo će biti prikazano samo jednom",
+  "themeSettingsTitle": "Postavke teme",
+  "lightThemeLabel": "Svjetlo",
+  "darkThemeLabel": "Tamno",
+  "systemThemeLabel": "Sistem"
 }

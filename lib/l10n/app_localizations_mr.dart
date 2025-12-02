@@ -844,4 +844,34 @@ class AppLocalizationsMr extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• या माहितीचा स्क्रीनशॉट घ्या\n• ती सुरक्षित ठिकाणी साठवा\n• कोणासोबतही शेअर करू नका\n• ही फक्त एकदाच दाखवली जाईल';
+
+  @override
+  String get themeSettingsTitle => 'थीम सेटिंग्ज';
+
+  @override
+  String get lightThemeLabel => 'प्रकाश';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'गडद';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'प्रणाली';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

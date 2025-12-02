@@ -844,4 +844,34 @@ class AppLocalizationsFy extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Meitsje in skermôfbylding fan dizze ynformaasje\n• Bewarje it op in feilich plak\n• Diel it net mei oaren\n• Dit wurdt mar ien kear werjûn';
+
+  @override
+  String get themeSettingsTitle => 'Tema-ynstellings';
+
+  @override
+  String get lightThemeLabel => 'Ljocht';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Tsjuster';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Systeem';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

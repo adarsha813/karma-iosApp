@@ -435,5 +435,9 @@
   "experience": "Ervaring",
   "qualification": "Kwalificatie",
   "education": "Onderwijs",
-  "recoveryTips": "• Maak een screenshot van deze informatie\n• Bewaar deze op een veilige plek\n• Deel deze niet met anderen\n• Deze informatie wordt slechts één keer weergegeven"
+  "recoveryTips": "• Maak een screenshot van deze informatie\n• Bewaar deze op een veilige plek\n• Deel deze niet met anderen\n• Deze informatie wordt slechts één keer weergegeven",
+  "themeSettingsTitle": "Thema-instellingen",
+  "lightThemeLabel": "Licht",
+  "darkThemeLabel": "Donker",
+  "systemThemeLabel": "Systeem"
 }

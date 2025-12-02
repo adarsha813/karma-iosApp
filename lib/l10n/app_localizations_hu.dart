@@ -851,4 +851,34 @@ class AppLocalizationsHu extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Készítsen képernyőképet erről az információról\n• Tárolja biztonságos helyen\n• Ne ossza meg senkivel\n• Ez csak egyszer jelenik meg';
+
+  @override
+  String get themeSettingsTitle => 'Témabeállítások';
+
+  @override
+  String get lightThemeLabel => 'Fény';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Sötét';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Rendszer';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

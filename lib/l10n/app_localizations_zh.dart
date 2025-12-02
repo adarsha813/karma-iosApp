@@ -821,6 +821,36 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• 请截屏保存此信息\n\n• 请将其保存在安全的地方\n\n• 请勿与任何人分享\n\n• 此信息仅显示一次';
+
+  @override
+  String get themeSettingsTitle => '主题设置';
+
+  @override
+  String get lightThemeLabel => '光';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => '黑暗的';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => '系统';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -1640,4 +1670,16 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   @override
   String get recoveryTips =>
       '• 請截圖儲存此訊息\n\n• 請將其保存在安全的地方\n\n• 請勿與任何人分享\n\n• 此資訊僅顯示一次';
+
+  @override
+  String get themeSettingsTitle => '主題設定';
+
+  @override
+  String get lightThemeLabel => '光';
+
+  @override
+  String get darkThemeLabel => '黑暗的';
+
+  @override
+  String get systemThemeLabel => '系統';
 }

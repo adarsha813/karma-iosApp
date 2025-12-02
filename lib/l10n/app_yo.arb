@@ -435,5 +435,9 @@
   "experience": "Iriri",
   "qualification": "Ijẹẹri",
   "education": "Ẹkọ",
-  "recoveryTips": "• Ya aworan sikirinifoto ti alaye yii\nFipamọ si ibi aabo\n• Maṣe pin pẹlu ẹnikẹni\n• Eyi yoo han ni ẹẹkan"
+  "recoveryTips": "• Ya aworan sikirinifoto ti alaye yii\nFipamọ si ibi aabo\n• Maṣe pin pẹlu ẹnikẹni\n• Eyi yoo han ni ẹẹkan",
+  "themeSettingsTitle": "Awọn Eto Akori",
+  "lightThemeLabel": "Imọlẹ",
+  "darkThemeLabel": "Dudu",
+  "systemThemeLabel": "Eto"
 }

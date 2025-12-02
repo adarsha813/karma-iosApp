@@ -435,5 +435,9 @@
   "experience": "Tecribe",
   "qualification": "Zanyarî",
   "education": "Zanyarî",
-  "recoveryTips": "• Wêneyê ekranê yê vê agahiyê bigirin\n• Li cîhekî ewle hilînin\n• Bi kesî re parve nekin\n• Ev tenê carekê tê nîşandan"
+  "recoveryTips": "• Wêneyê ekranê yê vê agahiyê bigirin\n• Li cîhekî ewle hilînin\n• Bi kesî re parve nekin\n• Ev tenê carekê tê nîşandan",
+  "themeSettingsTitle": "Mîhengên Mijarê",
+  "lightThemeLabel": "Sivik",
+  "darkThemeLabel": "Tarî",
+  "systemThemeLabel": "Sîstem"
 }

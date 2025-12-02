@@ -435,5 +435,9 @@
   "experience": "Pangalaman",
   "qualification": "Kualifikasi",
   "education": "Atikan",
-  "recoveryTips": "• Candak Potret layar inpormasi ieu\n• Simpen dina tempat anu aman\n• Ulah babagi jeung saha\n• Ieu ngan bakal ditémbongkeun sakali"
+  "recoveryTips": "• Candak Potret layar inpormasi ieu\n• Simpen dina tempat anu aman\n• Ulah babagi jeung saha\n• Ieu ngan bakal ditémbongkeun sakali",
+  "themeSettingsTitle": "Setélan Téma",
+  "lightThemeLabel": "Caang",
+  "darkThemeLabel": "Poek",
+  "systemThemeLabel": "Sistim"
 }

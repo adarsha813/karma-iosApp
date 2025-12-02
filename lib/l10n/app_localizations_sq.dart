@@ -852,4 +852,34 @@ class AppLocalizationsSq extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Bëni një pamje të ekranit të këtij informacioni\n• Ruajeni në një vend të sigurt\n• Mos e ndani me askënd\n• Kjo do të shfaqet vetëm një herë';
+
+  @override
+  String get themeSettingsTitle => 'Cilësimet e Temës';
+
+  @override
+  String get lightThemeLabel => 'Dritë';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'E errët';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Sistemi';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

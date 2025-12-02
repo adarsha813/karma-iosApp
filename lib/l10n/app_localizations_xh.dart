@@ -847,4 +847,34 @@ class AppLocalizationsXh extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Thatha umfanekiso weskrini wolu lwazi\n• Yigcine kwindawo ekhuselekileyo\n• Ungabelani nabani na\n• Oku kuya kuboniswa kube kanye kuphela';
+
+  @override
+  String get themeSettingsTitle => 'Iisetingi zomxholo';
+
+  @override
+  String get lightThemeLabel => 'Ukukhanya';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Mnyama';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Inkqubo';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

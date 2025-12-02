@@ -840,4 +840,34 @@ class AppLocalizationsYo extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Ya aworan sikirinifoto ti alaye yii\nFipamọ si ibi aabo\n• Maṣe pin pẹlu ẹnikẹni\n• Eyi yoo han ni ẹẹkan';
+
+  @override
+  String get themeSettingsTitle => 'Awọn Eto Akori';
+
+  @override
+  String get lightThemeLabel => 'Imọlẹ';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Dudu';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Eto';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

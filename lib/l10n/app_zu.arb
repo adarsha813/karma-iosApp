@@ -435,5 +435,9 @@
   "experience": "Isipiliyoni",
   "qualification": "Ukufaneleka",
   "education": "Imfundo",
-  "recoveryTips": "• Thatha isithombe-skrini salolu lwazi\n• Yigcine endaweni evikelekile\n• Ungabelani namuntu\n• Lokhu kuzokhonjiswa kanye kuphela"
+  "recoveryTips": "• Thatha isithombe-skrini salolu lwazi\n• Yigcine endaweni evikelekile\n• Ungabelani namuntu\n• Lokhu kuzokhonjiswa kanye kuphela",
+  "themeSettingsTitle": "Izilungiselelo Zetimu",
+  "lightThemeLabel": "Ukukhanya",
+  "darkThemeLabel": "Kumnyama",
+  "systemThemeLabel": "Uhlelo"
 }

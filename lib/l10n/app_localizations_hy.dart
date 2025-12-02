@@ -848,4 +848,34 @@ class AppLocalizationsHy extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Կատարեք այս տեղեկատվության էկրանի նկարը\n• Պահեք այն անվտանգ տեղում\n• Մի կիսվեք որևէ մեկի հետ\n• Սա կցուցադրվի միայն մեկ անգամ';
+
+  @override
+  String get themeSettingsTitle => 'Թեմայի կարգավորումներ';
+
+  @override
+  String get lightThemeLabel => 'Լույս';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Մութ';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Համակարգ';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

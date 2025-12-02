@@ -849,4 +849,34 @@ class AppLocalizationsYi extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• נעמט א סקרינשאט פון די אינפארמאציע\n• לייגט עס אויף אין א זיכערן ארט\n• טיילט עס נישט מיט קיינעם\n• דאס וועט נאר ווערן געוויזן איין מאל';
+
+  @override
+  String get themeSettingsTitle => 'טעמע סעטטינגס';
+
+  @override
+  String get lightThemeLabel => 'ליכט';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'טונקל';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'סיסטעם';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

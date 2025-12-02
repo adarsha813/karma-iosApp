@@ -852,4 +852,34 @@ class AppLocalizationsKa extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• გადაიღეთ ამ ინფორმაციის ეკრანის ანაბეჭდი\n• შეინახეთ უსაფრთხო ადგილას\n• არავის გაუზიარეთ\n• ეს მხოლოდ ერთხელ გამოჩნდება';
+
+  @override
+  String get themeSettingsTitle => 'თემის პარამეტრები';
+
+  @override
+  String get lightThemeLabel => 'სინათლე';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'მუქი';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'სისტემა';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

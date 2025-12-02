@@ -435,5 +435,9 @@
   "experience": "Ahụmahụ",
   "qualification": "Ikike",
   "education": "Agụmakwụkwọ",
-  "recoveryTips": "• Were nseta ihuenyo nke ozi a\n• Chekwaa ya n'ebe echekwara\n• Ekekọrịtala onye ọ bụla\n• A ga-egosi nke a naanị otu ugboro"
+  "recoveryTips": "• Were nseta ihuenyo nke ozi a\n• Chekwaa ya n'ebe echekwara\n• Ekekọrịtala onye ọ bụla\n• A ga-egosi nke a naanị otu ugboro",
+  "themeSettingsTitle": "Ntọala isiokwu",
+  "lightThemeLabel": "Ìhè",
+  "darkThemeLabel": "Ọchịchịrị",
+  "systemThemeLabel": "Sistemu"
 }

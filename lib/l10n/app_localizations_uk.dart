@@ -845,4 +845,34 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Зробіть скріншот цієї інформації\n• Зберігайте її в безпечному місці\n• Нікому не передавайте\n• Це буде показано лише один раз';
+
+  @override
+  String get themeSettingsTitle => 'Налаштування теми';
+
+  @override
+  String get lightThemeLabel => 'Світло';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Темний';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Система';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

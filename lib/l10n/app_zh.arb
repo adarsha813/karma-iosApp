@@ -435,5 +435,9 @@
   "experience": "经验",
   "qualification": "资格",
   "education": "教育",
-  "recoveryTips": "• 请截屏保存此信息\n\n• 请将其保存在安全的地方\n\n• 请勿与任何人分享\n\n• 此信息仅显示一次"
+  "recoveryTips": "• 请截屏保存此信息\n\n• 请将其保存在安全的地方\n\n• 请勿与任何人分享\n\n• 此信息仅显示一次",
+  "themeSettingsTitle": "主题设置",
+  "lightThemeLabel": "光",
+  "darkThemeLabel": "黑暗的",
+  "systemThemeLabel": "系统"
 }

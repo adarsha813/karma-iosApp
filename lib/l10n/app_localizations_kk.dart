@@ -848,4 +848,34 @@ class AppLocalizationsKk extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Осы ақпараттың скриншотын алыңыз\n• Оны қауіпсіз жерде сақтаңыз\n• Ешкіммен бөліспеңіз\n• Бұл тек бір рет көрсетіледі';
+
+  @override
+  String get themeSettingsTitle => 'Тақырып параметрлері';
+
+  @override
+  String get lightThemeLabel => 'Жарық';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Қараңғы';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Жүйе';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

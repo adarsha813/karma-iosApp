@@ -845,4 +845,34 @@ class AppLocalizationsTh extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• จับภาพหน้าจอข้อมูลนี้\n• เก็บไว้ในที่ปลอดภัย\n• ห้ามแชร์ข้อมูลกับผู้อื่น\n• ข้อมูลนี้จะแสดงเพียงครั้งเดียว';
+
+  @override
+  String get themeSettingsTitle => 'การตั้งค่าธีม';
+
+  @override
+  String get lightThemeLabel => 'แสงสว่าง';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'มืด';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'ระบบ';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }

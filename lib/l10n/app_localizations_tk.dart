@@ -846,4 +846,34 @@ class AppLocalizationsTk extends AppLocalizations {
   @override
   String get recoveryTips =>
       '• Bu maglumatlaryň skrinshotyny alyň\n• Ygtybarly ýerde saklaň\n• Hiç kim bilen paýlaşmaň\n• Bu diňe bir gezek görkeziler';
+
+  @override
+  String get themeSettingsTitle => 'Mowzuk sazlamalary';
+
+  @override
+  String get lightThemeLabel => 'Lightagtylyk';
+
+  @override
+  String get lightThemeDescription => 'Always use light theme';
+
+  @override
+  String get darkThemeLabel => 'Garaňky';
+
+  @override
+  String get darkThemeDescription => 'Always use dark theme';
+
+  @override
+  String get systemThemeLabel => 'Ulgam';
+
+  @override
+  String get systemThemeDarkDescription => 'Using system dark theme';
+
+  @override
+  String get systemThemeLightDescription => 'Using system light theme';
+
+  @override
+  String get switchToLight => 'Switch to Light';
+
+  @override
+  String get switchToDark => 'Switch to Dark';
 }
