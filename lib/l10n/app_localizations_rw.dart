@@ -532,8 +532,9 @@ class AppLocalizationsRw extends AppLocalizations {
   String get paymentRequired => 'Birasabwa Kwishura';
 
   @override
-  String get paymentRequiredMessage =>
-      'Wakoresheje ibibazo byubusa. Kwishura ₹ 50 kugirango ukomeze.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Wakoresheje ibibazo byubusa. Kwishura ₹ 50 kugirango ukomeze.';
+  }
 
   @override
   String get payNowButton => 'Iyishyure nonaha';

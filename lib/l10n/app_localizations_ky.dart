@@ -536,8 +536,9 @@ class AppLocalizationsKy extends AppLocalizations {
   String get paymentRequired => 'Төлөм талап кылынат';
 
   @override
-  String get paymentRequiredMessage =>
-      'Сиз акысыз суроолоруңузду колдондуңуз. Улантуу үчүн ₹50 төлөңүз.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Сиз акысыз суроолоруңузду колдондуңуз. Улантуу үчүн ₹50 төлөңүз.';
+  }
 
   @override
   String get payNowButton => 'Азыр төлөө';

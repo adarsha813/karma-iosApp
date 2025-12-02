@@ -533,8 +533,9 @@ class AppLocalizationsTh extends AppLocalizations {
   String get paymentRequired => 'ต้องชำระเงิน';
 
   @override
-  String get paymentRequiredMessage =>
-      'คุณใช้คำถามฟรีของคุณแล้ว จ่าย ₹50 เพื่อดำเนินการต่อ';
+  String paymentRequiredMessage(Object amount) {
+    return 'คุณใช้คำถามฟรีของคุณแล้ว จ่าย ₹50 เพื่อดำเนินการต่อ';
+  }
 
   @override
   String get payNowButton => 'ชำระเงินตอนนี้';

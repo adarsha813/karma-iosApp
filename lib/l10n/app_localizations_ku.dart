@@ -536,8 +536,9 @@ class AppLocalizationsKu extends AppLocalizations {
   String get paymentRequired => 'Pêdivî bi dravdanê heye';
 
   @override
-  String get paymentRequiredMessage =>
-      'Te pirsên xwe yên belaş bi kar anîn. Ji bo berdewamkirinê ₹50 bide.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Te pirsên xwe yên belaş bi kar anîn. Ji bo berdewamkirinê ₹50 bide.';
+  }
 
   @override
   String get payNowButton => 'Niha Bide';

@@ -538,8 +538,9 @@ class AppLocalizationsCeb extends AppLocalizations {
   String get paymentRequired => 'Gikinahanglan ang Pagbayad';
 
   @override
-  String get paymentRequiredMessage =>
-      'Gigamit nimo ang imong libre nga mga pangutana. Pagbayad og ₹50 aron makapadayon.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Gigamit nimo ang imong libre nga mga pangutana. Pagbayad og ₹50 aron makapadayon.';
+  }
 
   @override
   String get payNowButton => 'Bayad Karon';

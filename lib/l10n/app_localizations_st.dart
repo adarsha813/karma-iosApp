@@ -537,8 +537,9 @@ class AppLocalizationsSt extends AppLocalizations {
   String get paymentRequired => 'Tefo e Hlokahala';
 
   @override
-  String get paymentRequiredMessage =>
-      'U sebelisitse lipotso tsa hau tsa mahala. Lefa ₹50 hore o tsoelepele.';
+  String paymentRequiredMessage(Object amount) {
+    return 'U sebelisitse lipotso tsa hau tsa mahala. Lefa ₹50 hore o tsoelepele.';
+  }
 
   @override
   String get payNowButton => 'Lefa Hona Joale';

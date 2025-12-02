@@ -534,8 +534,9 @@ class AppLocalizationsTk extends AppLocalizations {
   String get paymentRequired => 'Töleg talap edilýär';
 
   @override
-  String get paymentRequiredMessage =>
-      'Mugt soraglaryňyzy ulandyňyz. Dowam etmek üçin 50 funt töläň.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Mugt soraglaryňyzy ulandyňyz. Dowam etmek üçin 50 funt töläň.';
+  }
 
   @override
   String get payNowButton => 'Indi töläň';

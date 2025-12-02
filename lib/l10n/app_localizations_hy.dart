@@ -535,8 +535,9 @@ class AppLocalizationsHy extends AppLocalizations {
   String get paymentRequired => 'Վճարումը պարտադիր է';
 
   @override
-  String get paymentRequiredMessage =>
-      'Դուք օգտագործել եք ձեր անվճար հարցերը։ Վճարեք ₹50՝ շարունակելու համար։';
+  String paymentRequiredMessage(Object amount) {
+    return 'Դուք օգտագործել եք ձեր անվճար հարցերը։ Վճարեք ₹50՝ շարունակելու համար։';
+  }
 
   @override
   String get payNowButton => 'Վճարեք հիմա';

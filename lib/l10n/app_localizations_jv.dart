@@ -533,8 +533,9 @@ class AppLocalizationsJv extends AppLocalizations {
   String get paymentRequired => 'Pembayaran dibutuhake';
 
   @override
-  String get paymentRequiredMessage =>
-      'Sampeyan wis nggunakake pitakonan gratis. Mbayar ₹50 kanggo nerusake.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Sampeyan wis nggunakake pitakonan gratis. Mbayar ₹50 kanggo nerusake.';
+  }
 
   @override
   String get payNowButton => 'Bayar Saiki';

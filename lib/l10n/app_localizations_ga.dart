@@ -536,8 +536,9 @@ class AppLocalizationsGa extends AppLocalizations {
   String get paymentRequired => 'Íocaíocht Riachtanach';
 
   @override
-  String get paymentRequiredMessage =>
-      'Tá do cheisteanna saor in aisce úsáidte agat. Íoc ₹50 le leanúint ar aghaidh.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Tá do cheisteanna saor in aisce úsáidte agat. Íoc ₹50 le leanúint ar aghaidh.';
+  }
 
   @override
   String get payNowButton => 'Íoc Anois';

@@ -533,8 +533,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get paymentRequired => 'پرداخت مورد نیاز';
 
   @override
-  String get paymentRequiredMessage =>
-      'شما از سوالات رایگان خود استفاده کردید. برای ادامه، 50 روپیه پرداخت کنید.';
+  String paymentRequiredMessage(Object amount) {
+    return 'شما از سوالات رایگان خود استفاده کردید. برای ادامه، 50 روپیه پرداخت کنید.';
+  }
 
   @override
   String get payNowButton => 'همین حالا پرداخت کنید';

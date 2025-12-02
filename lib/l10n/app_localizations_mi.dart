@@ -533,8 +533,9 @@ class AppLocalizationsMi extends AppLocalizations {
   String get paymentRequired => 'Utu e hiahiatia ana';
 
   @override
-  String get paymentRequiredMessage =>
-      'Kua whakamahia e koe o patai koreutu. Utu ₹50 ki te haere tonu.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Kua whakamahia e koe o patai koreutu. Utu ₹50 ki te haere tonu.';
+  }
 
   @override
   String get payNowButton => 'Utu Inaianei';

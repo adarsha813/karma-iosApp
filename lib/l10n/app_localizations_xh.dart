@@ -536,8 +536,9 @@ class AppLocalizationsXh extends AppLocalizations {
   String get paymentRequired => 'Intlawulo iyafuneka';
 
   @override
-  String get paymentRequiredMessage =>
-      'Uyisebenzisile imibuzo yakho yasimahla. Hlawula R50 ukuze uqhubeke.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Uyisebenzisile imibuzo yakho yasimahla. Hlawula R50 ukuze uqhubeke.';
+  }
 
   @override
   String get payNowButton => 'Bhatala ngoku';

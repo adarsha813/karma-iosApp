@@ -1266,8 +1266,8 @@ abstract class AppLocalizations {
   /// No description provided for @paymentRequiredMessage.
   ///
   /// In en, this message translates to:
-  /// **'You\'ve used your free questions. Pay \$5 to continue.'**
-  String get paymentRequiredMessage;
+  /// **'You\'ve used your free questions. Pay {amount} to continue.'**
+  String paymentRequiredMessage(Object amount);
 
   /// No description provided for @payNowButton.
   ///

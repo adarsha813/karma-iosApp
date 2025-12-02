@@ -533,8 +533,9 @@ class AppLocalizationsSm extends AppLocalizations {
   String get paymentRequired => 'Totogi Manaomia';
 
   @override
-  String get paymentRequiredMessage =>
-      'Ua e fa\'aogaina au fesili maua fua. Totogi ₹50 e fa\'aauau ai.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Ua e fa\'aogaina au fesili maua fua. Totogi ₹50 e fa\'aauau ai.';
+  }
 
   @override
   String get payNowButton => 'Totogi Nei';

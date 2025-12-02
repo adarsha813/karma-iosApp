@@ -67,6 +67,65 @@ class SafeChatScreen extends StatefulWidget {
   State<SafeChatScreen> createState() => _SafeChatScreenState();
 }
 
+class PaymentPriceService {
+  static Future<double?> getDisplayPrice(String userId) async {
+    try {
+      final profileProvider = ProfileProvider();
+      await profileProvider.ensureInitialized();
+      final token = profileProvider.token;
+
+      if (token == null) {
+        AppLogger.info('No auth token for fetching display price');
+        return null;
+      }
+
+      final response = await SecureApiClient.get(
+        url: '${ChatConstants.baseUrl}/api/display-price',
+        token: token,
+        additionalHeaders: {'X-User-ID': userId},
+      );
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+
+        if (data['success'] == true && data['data'] != null) {
+          final priceData = data['data'];
+
+          // Get the numeric price (already in dollars)
+          final numericPrice = priceData['numericPrice'] as double?;
+          final displayPrice = priceData['displayPrice'] as String?;
+
+          AppLogger.info(
+            '✅ Display price fetched: \$${numericPrice ?? displayPrice}',
+          );
+
+          return numericPrice ??
+              (displayPrice != null ? double.parse(displayPrice) : null);
+        } else {
+          // Try fallback parsing
+          if (data['displayPrice'] != null) {
+            final priceStr = data['displayPrice'] as String;
+            return double.parse(priceStr);
+          }
+        }
+      }
+
+      AppLogger.error(
+        'Failed to fetch display price',
+        Exception('HTTP ${response.statusCode}: ${response.body}'),
+      );
+      return null;
+    } catch (e, stackTrace) {
+      AppLogger.error(
+        'Error fetching display price',
+        e,
+        stackTrace: stackTrace,
+      );
+      return null;
+    }
+  }
+}
+
 class _SafeChatScreenState extends State<SafeChatScreen> {
   bool _isError = false;
   String? _errorMessage;
@@ -1042,6 +1101,8 @@ class _ChatScreenState extends State<ChatScreen>
   Timer? _refreshTimer;
   bool _isInputEnabled = true;
   String? _authToken;
+  double? _cachedPrice;
+  bool _isLoadingPrice = false;
 
   bool _disposed = false;
   Completer<void>? _initialDataCompleter;
@@ -1086,6 +1147,27 @@ class _ChatScreenState extends State<ChatScreen>
       _checkSocketConnection();
       _joinUserRoom();
     });
+    if (userId != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _prefetchDisplayPrice(userId!);
+      });
+    }
+  }
+
+  Future<void> _prefetchDisplayPrice(String userId) async {
+    if (_isLoadingPrice) return;
+
+    _isLoadingPrice = true;
+    try {
+      _cachedPrice = await PaymentPriceService.getDisplayPrice(userId);
+      AppLogger.info(
+        'Pre-fetched display price: \$${_cachedPrice?.toStringAsFixed(2)}',
+      );
+    } catch (e) {
+      AppLogger.error('Error pre-fetching display price', e);
+    } finally {
+      _isLoadingPrice = false;
+    }
   }
 
   void _checkSocketConnection() {
@@ -3965,7 +4047,6 @@ class _ChatScreenState extends State<ChatScreen>
     }
   }
 
-  // 🛡️ ENTERPRISE PAYMENT DIALOG
   void _showEnterprisePaymentDialog(
     BuildContext context,
     String userId,
@@ -3977,89 +4058,162 @@ class _ChatScreenState extends State<ChatScreen>
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder:
-          (_) => AlertDialog(
-            backgroundColor: theme.colorScheme.surface,
-            title: Row(
-              children: [
-                Icon(Icons.credit_card, color: theme.colorScheme.primary),
-                const SizedBox(width: 8),
-                Text(
-                  l10n.paymentRequired,
-                  style: theme.textTheme.titleLarge?.copyWith(
-                    color: theme.colorScheme.onSurface,
+      builder: (_) {
+        // Use cached price if available, otherwise fetch
+        final futurePrice =
+            _cachedPrice != null
+                ? Future.value(_cachedPrice)
+                : PaymentPriceService.getDisplayPrice(userId);
+
+        return FutureBuilder<double?>(
+          future: futurePrice,
+          builder: (context, snapshot) {
+            bool isLoading =
+                snapshot.connectionState == ConnectionState.waiting;
+            bool hasError = snapshot.hasError;
+            bool hasData = snapshot.data != null;
+
+            // Determine display message
+            String displayMessage;
+            if (isLoading && _cachedPrice == null) {
+              displayMessage = l10n.paymentRequiredMessage("\$5.00");
+            } else if (hasError || !hasData) {
+              displayMessage = l10n.paymentRequiredMessage("\$5.00");
+            } else {
+              final amount = snapshot.data ?? _cachedPrice ?? 5.00;
+              displayMessage = l10n.paymentRequiredMessage(
+                "\$${amount.toStringAsFixed(2)}",
+              );
+            }
+
+            return AlertDialog(
+              backgroundColor: theme.colorScheme.surface,
+              title: Row(
+                children: [
+                  Icon(Icons.credit_card, color: theme.colorScheme.primary),
+                  const SizedBox(width: 8),
+                  Text(
+                    l10n.paymentRequired,
+                    style: theme.textTheme.titleLarge?.copyWith(
+                      color: theme.colorScheme.onSurface,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  l10n.paymentRequiredMessage,
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    color: theme.colorScheme.onSurface,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.primary.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.security,
-                        color: theme.colorScheme.primary,
-                        size: 16,
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: Text(
-                          'Secure payment processed by Stripe',
-                          style: theme.textTheme.bodySmall?.copyWith(
-                            color: theme.colorScheme.primary,
-                          ),
+                ],
+              ),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (isLoading && _cachedPrice == null)
+                    SizedBox(
+                      height: 60,
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          color: theme.colorScheme.primary,
                         ),
                       ),
-                    ],
+                    )
+                  else
+                    _buildPaymentContent(theme, displayMessage),
+
+                  // Optional: Show if we're using cached price
+                  if (_cachedPrice != null && isLoading)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: Text(
+                        'Using cached price...',
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.colorScheme.onSurface.withOpacity(0.6),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    PaymentAnalytics.trackPaymentEvent(
+                      event: 'payment_cancelled',
+                      userId: userId,
+                      status: 'cancelled',
+                    );
+                  },
+                  child: Text(
+                    l10n.cancelButton,
+                    style: TextStyle(color: theme.colorScheme.primary),
                   ),
                 ),
+                ElevatedButton(
+                  onPressed:
+                      isLoading && _cachedPrice == null
+                          ? null
+                          : () {
+                            Navigator.pop(context);
+                            startEnterprisePayment(userId, text);
+                          },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: theme.colorScheme.primary,
+                    foregroundColor: theme.colorScheme.onPrimary,
+                  ),
+                  child:
+                      isLoading && _cachedPrice == null
+                          ? SizedBox(
+                            width: 16,
+                            height: 16,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: theme.colorScheme.onPrimary,
+                            ),
+                          )
+                          : Text(l10n.payNowButton),
+                ),
               ],
-            ),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  PaymentAnalytics.trackPaymentEvent(
-                    event: 'payment_cancelled',
-                    userId: userId,
-                    status: 'cancelled',
-                  );
-                },
+            );
+          },
+        );
+      },
+    );
+  }
+
+  // Helper method to build the payment content
+  Widget _buildPaymentContent(ThemeData theme, String messageText) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          messageText,
+          style: theme.textTheme.bodyMedium?.copyWith(
+            color: theme.colorScheme.onSurface,
+          ),
+        ),
+        const SizedBox(height: 16),
+        Container(
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.primary.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Row(
+            children: [
+              Icon(Icons.security, color: theme.colorScheme.primary, size: 16),
+              const SizedBox(width: 8),
+              Expanded(
                 child: Text(
-                  l10n.cancelButton,
-                  style: TextStyle(color: theme.colorScheme.primary),
+                  'Secure payment processed by Stripe',
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.primary,
+                  ),
                 ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  startEnterprisePayment(userId, text);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: theme.colorScheme.primary,
-                  foregroundColor: theme.colorScheme.onPrimary,
-                ),
-                child: Text(l10n.payNowButton),
               ),
             ],
           ),
+        ),
+      ],
     );
   }
+
+  // Helper method to build the payment content
 
   Future<void> debugPayment(String paymentIntentId) async {
     try {
@@ -4077,33 +4231,6 @@ class _ChatScreenState extends State<ChatScreen>
     } catch (e) {
       AppLogger.error('Debug payment failed', e, feature: 'payment_debug');
     }
-  }
-
-  void showPaymentDialog(BuildContext context, String userId, String text) {
-    final l10n = AppLocalizations.of(context)!;
-
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder:
-          (_) => AlertDialog(
-            title: Text(l10n.paymentRequired),
-            content: Text(l10n.paymentRequiredMessage),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text(l10n.cancelButton),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  startEnterprisePayment(userId, text);
-                },
-                child: Text(l10n.payNowButton),
-              ),
-            ],
-          ),
-    );
   }
 
   // Rating functions with security

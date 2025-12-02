@@ -535,8 +535,9 @@ class AppLocalizationsNy extends AppLocalizations {
   String get paymentRequired => 'Malipiro Amafunika';
 
   @override
-  String get paymentRequiredMessage =>
-      'Mwagwiritsa ntchito mafunso anu aulere. Lipirani ₹50 kuti mupitilize.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Mwagwiritsa ntchito mafunso anu aulere. Lipirani ₹50 kuti mupitilize.';
+  }
 
   @override
   String get payNowButton => 'Lipirani Tsopano';

@@ -537,8 +537,9 @@ class AppLocalizationsSq extends AppLocalizations {
   String get paymentRequired => 'Pagesa e kërkuar';
 
   @override
-  String get paymentRequiredMessage =>
-      'I ke përdorur pyetjet falas. Paguaj ₹50 për të vazhduar.';
+  String paymentRequiredMessage(Object amount) {
+    return 'I ke përdorur pyetjet falas. Paguaj ₹50 për të vazhduar.';
+  }
 
   @override
   String get payNowButton => 'Paguaj Tani';

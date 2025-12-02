@@ -526,7 +526,9 @@ class AppLocalizationsAm extends AppLocalizations {
   String get paymentRequired => 'ክፍያ ያስፈልጋል';
 
   @override
-  String get paymentRequiredMessage => 'ነፃ ጥያቄዎችዎን ተጠቅመዋል። ለመቀጠል 50 ብር ይክፈሉ።';
+  String paymentRequiredMessage(Object amount) {
+    return 'ነፃ ጥያቄዎችዎን ተጠቅመዋል። ለመቀጠል 50 ብር ይክፈሉ።';
+  }
 
   @override
   String get payNowButton => 'አሁን ይክፈሉ።';

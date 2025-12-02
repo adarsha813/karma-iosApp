@@ -537,8 +537,9 @@ class AppLocalizationsSo extends AppLocalizations {
   String get paymentRequired => 'Lacag-bixinta ayaa loo baahan yahay';
 
   @override
-  String get paymentRequiredMessage =>
-      'Waxaad isticmaashay su\'aalahaaga bilaashka ah. Bixi 50 si aad u sii wadato.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Waxaad isticmaashay su\'aalahaaga bilaashka ah. Bixi 50 si aad u sii wadato.';
+  }
 
   @override
   String get payNowButton => 'Hadda Bixi';

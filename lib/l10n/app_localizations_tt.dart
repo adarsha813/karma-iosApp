@@ -533,8 +533,9 @@ class AppLocalizationsTt extends AppLocalizations {
   String get paymentRequired => 'Түләү кирәк';
 
   @override
-  String get paymentRequiredMessage =>
-      'Сез буш сорауларны кулландыгыз. Дәвам итәр өчен ₹ 50 түләгез.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Сез буш сорауларны кулландыгыз. Дәвам итәр өчен ₹ 50 түләгез.';
+  }
 
   @override
   String get payNowButton => 'Хәзер түләгез';

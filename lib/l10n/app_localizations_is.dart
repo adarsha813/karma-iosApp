@@ -534,8 +534,9 @@ class AppLocalizationsIs extends AppLocalizations {
   String get paymentRequired => 'Greiðsla krafist';
 
   @override
-  String get paymentRequiredMessage =>
-      'Þú hefur notað ókeypis spurningarnar þínar. Borgaðu ₹50 til að halda áfram.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Þú hefur notað ókeypis spurningarnar þínar. Borgaðu ₹50 til að halda áfram.';
+  }
 
   @override
   String get payNowButton => 'Borga núna';

@@ -532,8 +532,9 @@ class AppLocalizationsSw extends AppLocalizations {
   String get paymentRequired => 'Malipo yanahitajika';
 
   @override
-  String get paymentRequiredMessage =>
-      'Umetumia maswali yako yasiyolipishwa. Lipa ₹50 ili kuendelea.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Umetumia maswali yako yasiyolipishwa. Lipa ₹50 ili kuendelea.';
+  }
 
   @override
   String get payNowButton => 'Lipa Sasa';

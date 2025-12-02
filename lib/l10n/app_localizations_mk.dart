@@ -537,8 +537,9 @@ class AppLocalizationsMk extends AppLocalizations {
   String get paymentRequired => 'Потребно е плаќање';
 
   @override
-  String get paymentRequiredMessage =>
-      'Ги искористивте вашите бесплатни прашања. Платете 50 рупии за да продолжите.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Ги искористивте вашите бесплатни прашања. Платете 50 рупии за да продолжите.';
+  }
 
   @override
   String get payNowButton => 'Плати сега';

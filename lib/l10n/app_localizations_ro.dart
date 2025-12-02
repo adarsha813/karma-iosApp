@@ -536,8 +536,9 @@ class AppLocalizationsRo extends AppLocalizations {
   String get paymentRequired => 'Plată necesară';
 
   @override
-  String get paymentRequiredMessage =>
-      'Ți-ai folosit întrebările gratuite. Plătește 50 ₹ pentru a continua.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Ți-ai folosit întrebările gratuite. Plătește 50 ₹ pentru a continua.';
+  }
 
   @override
   String get payNowButton => 'Plătește acum';

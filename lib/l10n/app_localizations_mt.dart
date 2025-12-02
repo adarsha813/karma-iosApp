@@ -536,8 +536,9 @@ class AppLocalizationsMt extends AppLocalizations {
   String get paymentRequired => 'Ħlas Meħtieġ';
 
   @override
-  String get paymentRequiredMessage =>
-      'Użajt il-mistoqsijiet bla ħlas tiegħek. Ħallas ₹50 biex tkompli.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Użajt il-mistoqsijiet bla ħlas tiegħek. Ħallas ₹50 biex tkompli.';
+  }
 
   @override
   String get payNowButton => 'Ħallas Issa';

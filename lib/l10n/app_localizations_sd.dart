@@ -534,8 +534,9 @@ class AppLocalizationsSd extends AppLocalizations {
   String get paymentRequired => 'ادائيگي گهربل آهي';
 
   @override
-  String get paymentRequiredMessage =>
-      'توهان پنهنجا مفت سوال استعمال ڪيا آهن. جاري رکڻ لاءِ ₹50 ادا ڪريو.';
+  String paymentRequiredMessage(Object amount) {
+    return 'توهان پنهنجا مفت سوال استعمال ڪيا آهن. جاري رکڻ لاءِ ₹50 ادا ڪريو.';
+  }
 
   @override
   String get payNowButton => 'هاڻي ادا ڪريو';

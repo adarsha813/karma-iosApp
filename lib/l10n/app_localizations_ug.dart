@@ -537,8 +537,9 @@ class AppLocalizationsUg extends AppLocalizations {
   String get paymentRequired => 'پۇل تۆلەش تەلەپ قىلىنىدۇ';
 
   @override
-  String get paymentRequiredMessage =>
-      'ھەقسىز سوئاللىرىڭىزنى ئىشلەتتىڭىز. داۋاملاشتۇرۇش ئۈچۈن 50 فوندستېرلىڭ تۆلەڭ.';
+  String paymentRequiredMessage(Object amount) {
+    return 'ھەقسىز سوئاللىرىڭىزنى ئىشلەتتىڭىز. داۋاملاشتۇرۇش ئۈچۈن 50 فوندستېرلىڭ تۆلەڭ.';
+  }
 
   @override
   String get payNowButton => 'ھازىر تۆلەڭ';

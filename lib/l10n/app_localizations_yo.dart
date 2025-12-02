@@ -532,8 +532,9 @@ class AppLocalizationsYo extends AppLocalizations {
   String get paymentRequired => 'Ti beere owo sisan';
 
   @override
-  String get paymentRequiredMessage =>
-      'O ti lo awọn ibeere ọfẹ rẹ. San ₹50 lati tẹsiwaju.';
+  String paymentRequiredMessage(Object amount) {
+    return 'O ti lo awọn ibeere ọfẹ rẹ. San ₹50 lati tẹsiwaju.';
+  }
 
   @override
   String get payNowButton => 'Sanwo Bayi';

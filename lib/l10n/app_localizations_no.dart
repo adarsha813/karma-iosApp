@@ -534,8 +534,9 @@ class AppLocalizationsNo extends AppLocalizations {
   String get paymentRequired => 'Betaling kreves';
 
   @override
-  String get paymentRequiredMessage =>
-      'Du har brukt opp de gratis spørsmålene dine. Betal ₹50 for å fortsette.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Du har brukt opp de gratis spørsmålene dine. Betal ₹50 for å fortsette.';
+  }
 
   @override
   String get payNowButton => 'Betal nå';

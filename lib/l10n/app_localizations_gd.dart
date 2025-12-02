@@ -540,8 +540,9 @@ class AppLocalizationsGd extends AppLocalizations {
   String get paymentRequired => 'Pàigheadh a dhìth';
 
   @override
-  String get paymentRequiredMessage =>
-      'Tha thu air na ceistean an-asgaidh agad a chleachdadh. Pàigh ₹50 gus leantainn air adhart.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Tha thu air na ceistean an-asgaidh agad a chleachdadh. Pàigh ₹50 gus leantainn air adhart.';
+  }
 
   @override
   String get payNowButton => 'Pàigh a-nis';

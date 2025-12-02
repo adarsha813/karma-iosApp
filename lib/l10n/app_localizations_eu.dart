@@ -536,8 +536,9 @@ class AppLocalizationsEu extends AppLocalizations {
   String get paymentRequired => 'Ordainketa beharrezkoa';
 
   @override
-  String get paymentRequiredMessage =>
-      'Doako galderak erabili dituzu. Ordaindu 50 ₹ jarraitzeko.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Doako galderak erabili dituzu. Ordaindu 50 ₹ jarraitzeko.';
+  }
 
   @override
   String get payNowButton => 'Ordaindu orain';

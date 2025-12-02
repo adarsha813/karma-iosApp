@@ -523,7 +523,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get paymentRequired => '결제 필요';
 
   @override
-  String get paymentRequiredMessage => '무료 질문을 모두 사용했습니다. 계속하려면 ₹50를 지불하세요.';
+  String paymentRequiredMessage(Object amount) {
+    return '무료 질문을 모두 사용했습니다. 계속하려면 ₹50를 지불하세요.';
+  }
 
   @override
   String get payNowButton => '지금 결제하세요';

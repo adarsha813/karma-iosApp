@@ -534,8 +534,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get paymentRequired => 'Maksu vaaditaan';
 
   @override
-  String get paymentRequiredMessage =>
-      'Olet käyttänyt ilmaiset kysymyksesi. Maksa 50 ₹ jatkaaksesi.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Olet käyttänyt ilmaiset kysymyksesi. Maksa 50 ₹ jatkaaksesi.';
+  }
 
   @override
   String get payNowButton => 'Maksa nyt';

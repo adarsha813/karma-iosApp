@@ -538,8 +538,9 @@ class AppLocalizationsMg extends AppLocalizations {
   String get paymentRequired => 'Ilaina ny fandoavam-bola';
 
   @override
-  String get paymentRequiredMessage =>
-      'Nampiasa ny fanontanianao maimaim-poana ianao. Mandoa ₹50 hanohizana.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Nampiasa ny fanontanianao maimaim-poana ianao. Mandoa ₹50 hanohizana.';
+  }
 
   @override
   String get payNowButton => 'Aloavy izao';

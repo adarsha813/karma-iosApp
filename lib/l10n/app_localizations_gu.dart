@@ -534,8 +534,9 @@ class AppLocalizationsGu extends AppLocalizations {
   String get paymentRequired => 'ચુકવણી જરૂરી છે';
 
   @override
-  String get paymentRequiredMessage =>
-      'તમે તમારા મફત પ્રશ્નોનો ઉપયોગ કર્યો છે. ચાલુ રાખવા માટે ₹50 ચૂકવો.';
+  String paymentRequiredMessage(Object amount) {
+    return 'તમે તમારા મફત પ્રશ્નોનો ઉપયોગ કર્યો છે. ચાલુ રાખવા માટે ₹50 ચૂકવો.';
+  }
 
   @override
   String get payNowButton => 'હમણાં ચૂકવો';

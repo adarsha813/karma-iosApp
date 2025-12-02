@@ -535,8 +535,9 @@ class AppLocalizationsKm extends AppLocalizations {
   String get paymentRequired => 'តម្រូវឱ្យបង់ប្រាក់';
 
   @override
-  String get paymentRequiredMessage =>
-      'អ្នកបានប្រើសំណួរឥតគិតថ្លៃរបស់អ្នក។ បង់ប្រាក់ ₹50 ដើម្បីបន្ត។';
+  String paymentRequiredMessage(Object amount) {
+    return 'អ្នកបានប្រើសំណួរឥតគិតថ្លៃរបស់អ្នក។ បង់ប្រាក់ ₹50 ដើម្បីបន្ត។';
+  }
 
   @override
   String get payNowButton => 'បង់ឥឡូវនេះ';

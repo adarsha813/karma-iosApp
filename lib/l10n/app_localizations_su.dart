@@ -533,8 +533,9 @@ class AppLocalizationsSu extends AppLocalizations {
   String get paymentRequired => 'Mayar Diperlukeun';
 
   @override
-  String get paymentRequiredMessage =>
-      'Anjeun parantos nganggo patarosan gratis anjeun. Mayar ₹50 pikeun neraskeun.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Anjeun parantos nganggo patarosan gratis anjeun. Mayar ₹50 pikeun neraskeun.';
+  }
 
   @override
   String get payNowButton => 'Bayar Ayeuna';

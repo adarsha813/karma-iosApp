@@ -523,7 +523,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get paymentRequired => 'お支払いが必要です';
 
   @override
-  String get paymentRequiredMessage => '無料の質問はご利用いただけました。続行するには ₹50 をお支払いください。';
+  String paymentRequiredMessage(Object amount) {
+    return '無料の質問はご利用いただけました。続行するには ₹50 をお支払いください。';
+  }
 
   @override
   String get payNowButton => '今すぐ支払う';

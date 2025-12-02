@@ -536,8 +536,9 @@ class AppLocalizationsKn extends AppLocalizations {
   String get paymentRequired => 'ಪಾವತಿ ಅಗತ್ಯವಿದೆ';
 
   @override
-  String get paymentRequiredMessage =>
-      'ನೀವು ನಿಮ್ಮ ಉಚಿತ ಪ್ರಶ್ನೆಗಳನ್ನು ಬಳಸಿದ್ದೀರಿ. ಮುಂದುವರಿಯಲು ₹50 ಪಾವತಿಸಿ.';
+  String paymentRequiredMessage(Object amount) {
+    return 'ನೀವು ನಿಮ್ಮ ಉಚಿತ ಪ್ರಶ್ನೆಗಳನ್ನು ಬಳಸಿದ್ದೀರಿ. ಮುಂದುವರಿಯಲು ₹50 ಪಾವತಿಸಿ.';
+  }
 
   @override
   String get payNowButton => 'ಈಗಲೇ ಪಾವತಿಸಿ';

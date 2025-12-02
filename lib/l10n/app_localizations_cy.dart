@@ -538,8 +538,9 @@ class AppLocalizationsCy extends AppLocalizations {
   String get paymentRequired => 'Taliad Angenrheidiol';
 
   @override
-  String get paymentRequiredMessage =>
-      'Rydych chi wedi defnyddio eich cwestiynau am ddim. Talwch ₹50 i barhau.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Rydych chi wedi defnyddio eich cwestiynau am ddim. Talwch ₹50 i barhau.';
+  }
 
   @override
   String get payNowButton => 'Talu Nawr';

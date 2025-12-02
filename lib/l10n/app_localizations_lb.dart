@@ -536,8 +536,9 @@ class AppLocalizationsLb extends AppLocalizations {
   String get paymentRequired => 'Bezuelung erfuerderlech';
 
   @override
-  String get paymentRequiredMessage =>
-      'Dir hutt Är gratis Froen benotzt. Bezuelt ₹50 fir weiderzemaachen.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Dir hutt Är gratis Froen benotzt. Bezuelt ₹50 fir weiderzemaachen.';
+  }
 
   @override
   String get payNowButton => 'Bezuelt elo';

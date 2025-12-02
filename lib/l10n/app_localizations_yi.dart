@@ -536,8 +536,9 @@ class AppLocalizationsYi extends AppLocalizations {
   String get paymentRequired => 'צאָלונג פארלאנגט';
 
   @override
-  String get paymentRequiredMessage =>
-      'דו האסט שוין אויסגענוצט דיינע פרייע פראגעס. צאל ₹50 צו פאָרזעצן.';
+  String paymentRequiredMessage(Object amount) {
+    return 'דו האסט שוין אויסגענוצט דיינע פרייע פראגעס. צאל ₹50 צו פאָרזעצן.';
+  }
 
   @override
   String get payNowButton => 'צאָלן איצט';

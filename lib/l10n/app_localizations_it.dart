@@ -537,8 +537,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get paymentRequired => 'Pagamento richiesto';
 
   @override
-  String get paymentRequiredMessage =>
-      'Hai utilizzato le tue domande gratuite. Paga ₹50 per continuare.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Hai utilizzato le tue domande gratuite. Paga ₹50 per continuare.';
+  }
 
   @override
   String get payNowButton => 'Paga ora';

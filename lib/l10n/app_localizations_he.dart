@@ -532,8 +532,9 @@ class AppLocalizationsHe extends AppLocalizations {
   String get paymentRequired => 'נדרש תשלום';
 
   @override
-  String get paymentRequiredMessage =>
-      'ניצלת את השאלות החינמיות שלך. שלם ₹50 כדי להמשיך.';
+  String paymentRequiredMessage(Object amount) {
+    return 'ניצלת את השאלות החינמיות שלך. שלם ₹50 כדי להמשיך.';
+  }
 
   @override
   String get payNowButton => 'שלם עכשיו';

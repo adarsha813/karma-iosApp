@@ -534,8 +534,9 @@ class AppLocalizationsSn extends AppLocalizations {
   String get paymentRequired => 'Kubhadhara Kunodiwa';
 
   @override
-  String get paymentRequiredMessage =>
-      'Washandisa mibvunzo yako yemahara. Bhadhara ₹50 kuti uenderere mberi.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Washandisa mibvunzo yako yemahara. Bhadhara ₹50 kuti uenderere mberi.';
+  }
 
   @override
   String get payNowButton => 'Pay Now';

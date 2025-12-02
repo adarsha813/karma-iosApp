@@ -533,8 +533,9 @@ class AppLocalizationsEo extends AppLocalizations {
   String get paymentRequired => 'Pago Bezonata';
 
   @override
-  String get paymentRequiredMessage =>
-      'Vi uzis viajn senpagajn demandojn. Pagu ₹50 por daŭrigi.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Vi uzis viajn senpagajn demandojn. Pagu ₹50 por daŭrigi.';
+  }
 
   @override
   String get payNowButton => 'Pagu Nun';

@@ -535,8 +535,9 @@ class AppLocalizationsZu extends AppLocalizations {
   String get paymentRequired => 'Inkokhelo iyadingeka';
 
   @override
-  String get paymentRequiredMessage =>
-      'Usebenzise imibuzo yakho yamahhala. Khokha u- ₹50 ukuze uqhubeke.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Usebenzise imibuzo yakho yamahhala. Khokha u- ₹50 ukuze uqhubeke.';
+  }
 
   @override
   String get payNowButton => 'Khokha Manje';

@@ -535,8 +535,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get paymentRequired => 'Ödeme Gerekli';
 
   @override
-  String get paymentRequiredMessage =>
-      'Ücretsiz sorularınızı kullandınız. Devam etmek için ₹50 ödeyin.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Ücretsiz sorularınızı kullandınız. Devam etmek için ₹50 ödeyin.';
+  }
 
   @override
   String get payNowButton => 'Şimdi Öde';

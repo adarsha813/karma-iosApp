@@ -534,8 +534,9 @@ class AppLocalizationsBe extends AppLocalizations {
   String get paymentRequired => 'Патрабуецца аплата';
 
   @override
-  String get paymentRequiredMessage =>
-      'Вы выкарысталі свае бясплатныя пытанні. Заплаціце 50 рупій, каб працягнуць.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Вы выкарысталі свае бясплатныя пытанні. Заплаціце 50 рупій, каб працягнуць.';
+  }
 
   @override
   String get payNowButton => 'Аплаціць зараз';

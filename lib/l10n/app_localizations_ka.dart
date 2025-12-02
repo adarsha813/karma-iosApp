@@ -538,8 +538,9 @@ class AppLocalizationsKa extends AppLocalizations {
   String get paymentRequired => 'გადახდა სავალდებულოა';
 
   @override
-  String get paymentRequiredMessage =>
-      'თქვენ გამოიყენეთ თქვენი უფასო კითხვები. გასაგრძელებლად გადაიხადეთ 50₹.';
+  String paymentRequiredMessage(Object amount) {
+    return 'თქვენ გამოიყენეთ თქვენი უფასო კითხვები. გასაგრძელებლად გადაიხადეთ 50₹.';
+  }
 
   @override
   String get payNowButton => 'გადაიხადეთ ახლავე';

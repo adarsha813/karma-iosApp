@@ -532,8 +532,9 @@ class AppLocalizationsHa extends AppLocalizations {
   String get paymentRequired => 'Ana Bukatar Biyan Kuɗi';
 
   @override
-  String get paymentRequiredMessage =>
-      'Kun yi amfani da tambayoyinku kyauta. Biya ₹50 don ci gaba.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Kun yi amfani da tambayoyinku kyauta. Biya ₹50 don ci gaba.';
+  }
 
   @override
   String get payNowButton => 'Biya Yanzu';

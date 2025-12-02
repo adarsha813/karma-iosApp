@@ -533,8 +533,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get paymentRequired => 'Потрібна оплата';
 
   @override
-  String get paymentRequiredMessage =>
-      'Ви використали свої безкоштовні запитання. Сплатіть 50 рупій, щоб продовжити.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Ви використали свої безкоштовні запитання. Сплатіть 50 рупій, щоб продовжити.';
+  }
 
   @override
   String get payNowButton => 'Сплатити зараз';

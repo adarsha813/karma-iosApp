@@ -388,7 +388,12 @@
   "chatTitle": "Chat",
   "typeYourQuestionHint": "Type your question...",
   "paymentRequired": "Payment Required",
-  "paymentRequiredMessage": "You've used your free questions. Pay $5 to continue.",
+"paymentRequiredMessage": "You've used your free questions. Pay {amount} to continue.",
+"@paymentRequiredMessage": {
+  "placeholders": {
+    "amount": {}
+  }
+},
   "cancelButton": "Cancel",
   "payNowButton": "Pay Now",
   "freeQuestionsRemaining": "{count} free questions remaining",

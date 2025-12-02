@@ -518,7 +518,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get paymentRequired => '需支付款项';
 
   @override
-  String get paymentRequiredMessage => '您已用完免费提问次数。支付 50 卢比即可继续。';
+  String paymentRequiredMessage(Object amount) {
+    return '您已用完免费提问次数。支付 50 卢比即可继续。';
+  }
 
   @override
   String get payNowButton => '立即支付';
@@ -1367,7 +1369,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get paymentRequired => '需支付款項';
 
   @override
-  String get paymentRequiredMessage => '您已用完免費提問次數。支付 50 盧比即可繼續。';
+  String paymentRequiredMessage(Object amount) {
+    return '您已用完免費提問次數。支付 50 盧比即可繼續。';
+  }
 
   @override
   String get payNowButton => '立即支付';

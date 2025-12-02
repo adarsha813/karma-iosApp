@@ -539,8 +539,9 @@ class AppLocalizationsUz extends AppLocalizations {
   String get paymentRequired => 'To\'lov talab qilinadi';
 
   @override
-  String get paymentRequiredMessage =>
-      'Siz bepul savollaringizdan foydalandingiz. Davom etish uchun ₹50 toʻlang.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Siz bepul savollaringizdan foydalandingiz. Davom etish uchun ₹50 toʻlang.';
+  }
 
   @override
   String get payNowButton => 'Hozir toʻlash';

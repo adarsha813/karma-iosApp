@@ -533,8 +533,9 @@ class AppLocalizationsAz extends AppLocalizations {
   String get paymentRequired => 'Ödəniş Tələb olunur';
 
   @override
-  String get paymentRequiredMessage =>
-      'Pulsuz suallarınızdan istifadə etmisiniz. Davam etmək üçün ₹50 ödəyin.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Pulsuz suallarınızdan istifadə etmisiniz. Davam etmək üçün ₹50 ödəyin.';
+  }
 
   @override
   String get payNowButton => 'İndi ödəyin';

@@ -534,8 +534,9 @@ class AppLocalizationsLo extends AppLocalizations {
   String get paymentRequired => 'ຕ້ອງການການຈ່າຍເງິນ';
 
   @override
-  String get paymentRequiredMessage =>
-      'ທ່ານໄດ້ໃຊ້ຄໍາຖາມຟຣີຂອງທ່ານ. ຈ່າຍ ₹50 ເພື່ອສືບຕໍ່.';
+  String paymentRequiredMessage(Object amount) {
+    return 'ທ່ານໄດ້ໃຊ້ຄໍາຖາມຟຣີຂອງທ່ານ. ຈ່າຍ ₹50 ເພື່ອສືບຕໍ່.';
+  }
 
   @override
   String get payNowButton => 'ຈ່າຍດຽວນີ້';

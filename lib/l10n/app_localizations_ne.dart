@@ -533,8 +533,9 @@ class AppLocalizationsNe extends AppLocalizations {
   String get paymentRequired => 'भुक्तानी आवश्यक छ';
 
   @override
-  String get paymentRequiredMessage =>
-      'तपाईंले आफ्ना नि:शुल्क प्रश्नहरू प्रयोग गर्नुभएको छ। जारी राख्न ₹५० तिर्नुहोस्।';
+  String paymentRequiredMessage(Object amount) {
+    return 'तपाईंले आफ्ना नि:शुल्क प्रश्नहरू प्रयोग गर्नुभएको छ। जारी राख्न ₹५० तिर्नुहोस्।';
+  }
 
   @override
   String get payNowButton => 'अहिले नै तिर्नुहोस्';

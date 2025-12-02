@@ -537,8 +537,9 @@ class AppLocalizationsKk extends AppLocalizations {
   String get paymentRequired => 'Төлем қажет';
 
   @override
-  String get paymentRequiredMessage =>
-      'Сіз тегін сұрақтарыңызды пайдаландыңыз. Жалғастыру үшін ₹50 төлеңіз.';
+  String paymentRequiredMessage(Object amount) {
+    return 'Сіз тегін сұрақтарыңызды пайдаландыңыз. Жалғастыру үшін ₹50 төлеңіз.';
+  }
 
   @override
   String get payNowButton => 'Қазір төлеңіз';
