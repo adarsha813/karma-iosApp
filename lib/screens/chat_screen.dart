@@ -4548,7 +4548,7 @@ class _ChatScreenState extends State<ChatScreen>
                         theme: theme,
                       ),
                       _buildDrawerItem(
-                        Icons.auto_awesome,
+                        Icons.nightlight_round,
                         l10n.drawerDailyHoroscope,
                         DailyHoroscopeScreen(userId: userId),
                         theme: theme,
@@ -4567,7 +4567,7 @@ class _ChatScreenState extends State<ChatScreen>
                         theme: theme,
                       ),
                       _buildDrawerItem(
-                        Icons.menu_book,
+                        Icons.search_rounded,
                         l10n.drawerAstroDictionary,
                         const AstroDictionaryScreen(),
                         theme: theme,
@@ -4595,7 +4595,7 @@ class _ChatScreenState extends State<ChatScreen>
                 ),
                 Divider(color: theme.dividerColor),
                 _buildDrawerItem(
-                  Icons.settings_suggest,
+                  Icons.manage_accounts,
                   l10n.drawerProfileSettings,
                   const ProfileSettingsScreen(),
                   theme: theme,

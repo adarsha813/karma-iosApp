@@ -91,13 +91,16 @@ dev_dependencies:
   flutter_launcher_icons: ^0.14.3
   intl_utils: ^2.8.11
   dart_code_linter: ^3.1.1
+  rename_app: ^1.6.5
 
 
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/icons/playstore.png"
+  image_path: "assets/icons/app_icon.png"
 
+flutter_launcher_name:
+  name: "Karma - Life Path"
 
 # The following section is specific to Flutter packages.
 flutter:
