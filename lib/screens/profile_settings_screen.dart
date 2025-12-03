@@ -1952,8 +1952,8 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                 ),
                 child: CountryListPick(
                   appBar: AppBar(
-                    backgroundColor: theme.colorScheme.primary,
-                    foregroundColor: theme.colorScheme.onPrimary,
+                    backgroundColor: theme.colorScheme.surface,
+                    foregroundColor: theme.colorScheme.onSurface,
                     title: Text(l10n.chooseCountryTitle),
                   ),
                   theme: CountryTheme(
@@ -1965,6 +1965,42 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                     alphabetSelectedBackgroundColor: theme.colorScheme.primary,
                     alphabetTextColor: theme.colorScheme.onPrimary,
                   ),
+
+                  pickerBuilder: (context, CountryCode? code) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 14,
+                      ),
+                      child: Row(
+                        children: [
+                          if (code?.flagUri != null)
+                            Image.asset(
+                              code!.flagUri!,
+                              package: 'country_list_pick',
+                              width: 24,
+                            ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Text(
+                              code?.name ?? l10n.chooseCountryTitle,
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                color:
+                                    theme
+                                        .colorScheme
+                                        .onSurface, // 👈 visible in dark mode
+                              ),
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_drop_down,
+                            color: theme.colorScheme.onSurface.withOpacity(0.8),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+
                   initialSelection: initialCode,
                   onChanged: (CountryCode? code) {
                     if (code != null && mounted) {

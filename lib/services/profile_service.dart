@@ -28,7 +28,7 @@ class ProfileService {
   ) async {
     final token = _getToken(context);
     if (token == null) {
-      return {'success': false, 'error': 'Authentication token not available'};
+      return {'success': false, 'error': 'Set your profile'};
     }
 
     final uri = Uri.parse(
@@ -120,7 +120,7 @@ class ProfileService {
   ) async {
     final token = _getToken(context);
     if (token == null) {
-      return {'success': false, 'error': 'Authentication token not available'};
+      return {'success': false, 'error': 'Authentication not available'};
     }
 
     final uri = Uri.parse('${Environment.baseUrl}/api/profile/update-language');
@@ -152,7 +152,7 @@ class ProfileService {
   ) async {
     final token = _getToken(context);
     if (token == null) {
-      return {'success': false, 'error': 'Authentication token not available'};
+      return {'success': false, 'error': 'Authentication not available'};
     }
 
     final uri = Uri.parse(

@@ -409,11 +409,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               const SizedBox(width: 4),
                               Tooltip(
                                 message: 'System elements may show in English',
-                                child: Icon(
-                                  Icons.info_outline,
-                                  size: 14,
-                                  color: Colors.orange.shade600,
-                                ),
                               ),
                             ],
                           ],
