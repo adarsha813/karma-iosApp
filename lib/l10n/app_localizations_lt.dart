@@ -535,7 +535,7 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Išnaudojote savo nemokamus klausimus. Norėdami tęsti, sumokėkite 50 ₹.';
+    return 'Išnaudojote savo nemokamus klausimus. Norėdami tęsti, sumokėkite $amount.';
   }
 
   @override

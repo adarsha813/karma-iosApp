@@ -539,7 +539,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Vous avez utilisé vos questions gratuites. Payez 50 ₹ pour continuer.';
+    return 'Vous avez utilisé vos questions gratuites. Payez $amount pour continuer.';
   }
 
   @override

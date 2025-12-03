@@ -537,7 +537,7 @@ class AppLocalizationsYi extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'דו האסט שוין אויסגענוצט דיינע פרייע פראגעס. צאל ₹50 צו פאָרזעצן.';
+    return 'דו האסט שוין אויסגענוצט דיינע פרייע פראגעס. צאל $amount צו פאָרזעצן.';
   }
 
   @override

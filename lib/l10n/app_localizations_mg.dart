@@ -539,7 +539,7 @@ class AppLocalizationsMg extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Nampiasa ny fanontanianao maimaim-poana ianao. Mandoa ₹50 hanohizana.';
+    return 'Nampiasa ny fanontanianao maimaim-poana ianao. Mandoa $amount hanohizana.';
   }
 
   @override

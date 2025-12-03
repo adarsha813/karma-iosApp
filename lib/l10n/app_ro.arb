@@ -333,7 +333,7 @@
   "chatTitle": "Chat",
   "typeYourQuestionHint": "Scrieți întrebarea dvs...",
   "paymentRequired": "Plată necesară",
-  "paymentRequiredMessage": "Ți-ai folosit întrebările gratuite. Plătește 50 ₹ pentru a continua.",
+  "paymentRequiredMessage": "Ți-ai folosit întrebările gratuite. Plătește {amount} pentru a continua.",
   "payNowButton": "Plătește acum",
   "freeQuestionsRemaining": "{count} întrebări libere rămase",
   "paidQuestionsRemaining": "{count} întrebări plătite rămase",

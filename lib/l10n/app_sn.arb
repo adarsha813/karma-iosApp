@@ -333,7 +333,7 @@
   "chatTitle": "Chat",
   "typeYourQuestionHint": "Nyora mubvunzo wako...",
   "paymentRequired": "Kubhadhara Kunodiwa",
-  "paymentRequiredMessage": "Washandisa mibvunzo yako yemahara. Bhadhara ₹50 kuti uenderere mberi.",
+  "paymentRequiredMessage": "Washandisa mibvunzo yako yemahara. Bhadhara {amount} kuti uenderere mberi.",
   "payNowButton": "Pay Now",
   "freeQuestionsRemaining": "{count} mibvunzo yemahara yasara",
   "paidQuestionsRemaining": "{count} mibvunzo yakabhadharwa yasara",

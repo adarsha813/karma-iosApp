@@ -536,7 +536,7 @@ class AppLocalizationsFy extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Jo hawwe jo fergese fragen brûkt. Betelje ₹50 om troch te gean.';
+    return 'Jo hawwe jo fergese fragen brûkt. Betelje $amount om troch te gean.';
   }
 
   @override

@@ -536,7 +536,7 @@ class AppLocalizationsPs extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'تاسو خپلې وړیا پوښتنې کارولې دي. د دوام لپاره ₹ 50 ورکړئ.';
+    return 'تاسو خپلې وړیا پوښتنې کارولې دي. د دوام لپاره $amount ورکړئ.';
   }
 
   @override

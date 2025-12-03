@@ -538,7 +538,7 @@ class AppLocalizationsSt extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'U sebelisitse lipotso tsa hau tsa mahala. Lefa ₹50 hore o tsoelepele.';
+    return 'U sebelisitse lipotso tsa hau tsa mahala. Lefa $amount ho tsoela pele.';
   }
 
   @override

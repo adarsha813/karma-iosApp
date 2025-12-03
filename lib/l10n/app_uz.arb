@@ -333,7 +333,7 @@
   "chatTitle": "Chat",
   "typeYourQuestionHint": "Savolingizni yozing...",
   "paymentRequired": "To'lov talab qilinadi",
-  "paymentRequiredMessage": "Siz bepul savollaringizdan foydalandingiz. Davom etish uchun ₹50 toʻlang.",
+  "paymentRequiredMessage": "Siz bepul savollaringizdan foydalandingiz. Davom etish uchun {amount} to‘lang.",
   "payNowButton": "Hozir toʻlash",
   "freeQuestionsRemaining": "{count} bepul savollar qoldi",
   "paidQuestionsRemaining": "{count} pulli savollar qoldi",

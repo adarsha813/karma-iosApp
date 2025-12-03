@@ -333,7 +333,7 @@
   "chatTitle": "Obrolan",
   "typeYourQuestionHint": "Ketik patarosan anjeun...",
   "paymentRequired": "Mayar Diperlukeun",
-  "paymentRequiredMessage": "Anjeun parantos nganggo patarosan gratis anjeun. Mayar ₹50 pikeun neraskeun.",
+  "paymentRequiredMessage": "Anjeun parantos nganggo patarosan gratis anjeun. Mayar {amount} pikeun neraskeun.",
   "payNowButton": "Bayar Ayeuna",
   "freeQuestionsRemaining": "{count} patarosan bébas sésana",
   "paidQuestionsRemaining": "{count} patarosan mayar sésana",

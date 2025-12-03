@@ -333,7 +333,7 @@
   "chatTitle": "ជជែក",
   "typeYourQuestionHint": "វាយសំណួររបស់អ្នក...",
   "paymentRequired": "តម្រូវឱ្យបង់ប្រាក់",
-  "paymentRequiredMessage": "អ្នកបានប្រើសំណួរឥតគិតថ្លៃរបស់អ្នក។ បង់ប្រាក់ ₹50 ដើម្បីបន្ត។",
+  "paymentRequiredMessage": "អ្នកបានប្រើសំណួរឥតគិតថ្លៃរបស់អ្នក។ បង់ប្រាក់ {amount} ដើម្បីបន្ត។",
   "payNowButton": "បង់ឥឡូវនេះ",
   "freeQuestionsRemaining": "{count} សំណួរឥតគិតថ្លៃនៅសល់",
   "paidQuestionsRemaining": "{count} សំណួរដែលបង់ប្រាក់នៅសល់",

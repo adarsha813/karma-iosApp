@@ -333,7 +333,7 @@
   "chatTitle": "چيٽ",
   "typeYourQuestionHint": "پنھنجو سوال لکو...",
   "paymentRequired": "ادائيگي گهربل آهي",
-  "paymentRequiredMessage": "توهان پنهنجا مفت سوال استعمال ڪيا آهن. جاري رکڻ لاءِ ₹50 ادا ڪريو.",
+  "paymentRequiredMessage": "توهان پنهنجا مفت سوال استعمال ڪيا آهن. جاري رکڻ لاءِ {amount} ادا ڪريو.",
   "payNowButton": "هاڻي ادا ڪريو",
   "freeQuestionsRemaining": "{count} مفت سوال باقي آهن",
   "paidQuestionsRemaining": "{count} ادا ڪيل سوال باقي آهن",

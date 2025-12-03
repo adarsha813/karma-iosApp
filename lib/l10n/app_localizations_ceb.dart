@@ -539,7 +539,7 @@ class AppLocalizationsCeb extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Gigamit nimo ang imong libre nga mga pangutana. Pagbayad og ₹50 aron makapadayon.';
+    return 'Gigamit nimo ang imong libre nga mga pangutana. Bayad $amount aron makapadayon.';
   }
 
   @override

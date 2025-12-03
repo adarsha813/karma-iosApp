@@ -333,7 +333,7 @@
   "chatTitle": "Tērzēšana",
   "typeYourQuestionHint": "Ierakstiet savu jautājumu...",
   "paymentRequired": "Nepieciešams maksājums",
-  "paymentRequiredMessage": "Jūs esat izmantojis savus bezmaksas jautājumus. Lai turpinātu, samaksājiet ₹50.",
+  "paymentRequiredMessage": "Jūs esat izmantojis savus bezmaksas jautājumus. Lai turpinātu, samaksājiet {amount}.",
   "payNowButton": "Maksāt tūlīt",
   "freeQuestionsRemaining": "Atlikušie {count} bezmaksas jautājumi",
   "paidQuestionsRemaining": "Atlikušie maksas jautājumi: {count}",

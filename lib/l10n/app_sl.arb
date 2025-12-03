@@ -333,7 +333,7 @@
   "chatTitle": "Klepet",
   "typeYourQuestionHint": "Vpišite svoje vprašanje ...",
   "paymentRequired": "Zahtevano plačilo",
-  "paymentRequiredMessage": "Brezplačna vprašanja ste že uporabili. Za nadaljevanje plačajte 50 ₹.",
+  "paymentRequiredMessage": "Brezplačna vprašanja ste že porabili. Za nadaljevanje plačajte {amount}.",
   "payNowButton": "Plačaj zdaj",
   "freeQuestionsRemaining": "Preostalo je {count} brezplačnih vprašanj",
   "paidQuestionsRemaining": "Preostalih {count} plačanih vprašanj",

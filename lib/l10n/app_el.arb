@@ -333,7 +333,7 @@
   "chatTitle": "Κουβέντα",
   "typeYourQuestionHint": "Πληκτρολογήστε την ερώτησή σας...",
   "paymentRequired": "Απαιτείται πληρωμή",
-  "paymentRequiredMessage": "Χρησιμοποιήσατε τις δωρεάν ερωτήσεις σας. Πληρώστε ₹50 για να συνεχίσετε.",
+  "paymentRequiredMessage": "Έχετε χρησιμοποιήσει τις δωρεάν ερωτήσεις σας. Πληρώστε {amount} για να συνεχίσετε.",
   "payNowButton": "Πληρώστε τώρα",
   "freeQuestionsRemaining": "{count} Απομένουν δωρεάν ερωτήσεις",
   "paidQuestionsRemaining": "{count} Απομένουν ερωτήσεις επί πληρωμή",

@@ -537,7 +537,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'তুমি তোমার বিনামূল্যের প্রশ্নগুলো ব্যবহার করেছ। চালিয়ে যেতে ₹৫০ প্রদান করো।';
+    return 'তুমি তোমার বিনামূল্যের প্রশ্নগুলো ব্যবহার করেছ। চালিয়ে যেতে $amount পেমেন্ট করো।';
   }
 
   @override

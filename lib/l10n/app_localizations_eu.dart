@@ -537,7 +537,7 @@ class AppLocalizationsEu extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Doako galderak erabili dituzu. Ordaindu 50 ₹ jarraitzeko.';
+    return 'Doako galderak erabili dituzu. Jarraitzeko, ordaindu $amount.';
   }
 
   @override

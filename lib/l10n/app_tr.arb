@@ -333,7 +333,7 @@
   "chatTitle": "Sohbet",
   "typeYourQuestionHint": "Sorunuzu yazın...",
   "paymentRequired": "Ödeme Gerekli",
-  "paymentRequiredMessage": "Ücretsiz sorularınızı kullandınız. Devam etmek için ₹50 ödeyin.",
+  "paymentRequiredMessage": "Ücretsiz sorularınızı kullandınız. Devam etmek için {amount} ödeyin.",
   "payNowButton": "Şimdi Öde",
   "freeQuestionsRemaining": "{count} kalan ücretsiz sorular",
   "paidQuestionsRemaining": "{count} ücretli soru kaldı",

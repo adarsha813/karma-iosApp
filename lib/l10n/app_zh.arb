@@ -333,7 +333,7 @@
   "chatTitle": "聊天",
   "typeYourQuestionHint": "请输入您的问题……",
   "paymentRequired": "需支付款项",
-  "paymentRequiredMessage": "您已用完免费提问次数。支付 50 卢比即可继续。",
+  "paymentRequiredMessage": "您已用完免费提问次数。支付 {amount} 可继续提问。",
   "payNowButton": "立即支付",
   "freeQuestionsRemaining": "{count} 剩余免费问题数",
   "paidQuestionsRemaining": "{count} 剩余付费问题数",

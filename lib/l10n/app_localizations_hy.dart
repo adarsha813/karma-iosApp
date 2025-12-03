@@ -536,7 +536,7 @@ class AppLocalizationsHy extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Դուք օգտագործել եք ձեր անվճար հարցերը։ Վճարեք ₹50՝ շարունակելու համար։';
+    return 'Դուք օգտագործել եք ձեր անվճար հարցերը։ Շարունակելու համար վճարեք $amount համարին։';
   }
 
   @override

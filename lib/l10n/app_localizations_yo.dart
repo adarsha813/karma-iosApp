@@ -533,7 +533,7 @@ class AppLocalizationsYo extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'O ti lo awọn ibeere ọfẹ rẹ. San ₹50 lati tẹsiwaju.';
+    return 'O ti lo awọn ibeere ọfẹ rẹ. Sanwo $amount lati tẹsiwaju.';
   }
 
   @override

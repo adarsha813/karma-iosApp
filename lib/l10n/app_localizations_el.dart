@@ -540,7 +540,7 @@ class AppLocalizationsEl extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Χρησιμοποιήσατε τις δωρεάν ερωτήσεις σας. Πληρώστε ₹50 για να συνεχίσετε.';
+    return 'Έχετε χρησιμοποιήσει τις δωρεάν ερωτήσεις σας. Πληρώστε $amount για να συνεχίσετε.';
   }
 
   @override

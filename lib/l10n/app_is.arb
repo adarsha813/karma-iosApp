@@ -333,7 +333,7 @@
   "chatTitle": "Spjall",
   "typeYourQuestionHint": "Skrifaðu spurninguna þína...",
   "paymentRequired": "Greiðsla krafist",
-  "paymentRequiredMessage": "Þú hefur notað ókeypis spurningarnar þínar. Borgaðu ₹50 til að halda áfram.",
+  "paymentRequiredMessage": "Þú hefur notað ókeypis spurningarnar þínar. Borgaðu {amount} til að halda áfram.",
   "payNowButton": "Borga núna",
   "freeQuestionsRemaining": "{count} lausar spurningar eftir",
   "paidQuestionsRemaining": "{count} greiddar spurningar eftir",

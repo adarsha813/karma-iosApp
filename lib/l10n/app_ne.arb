@@ -333,7 +333,7 @@
   "chatTitle": "कुराकानी",
   "typeYourQuestionHint": "आफ्नो प्रश्न टाइप गर्नुहोस्...",
   "paymentRequired": "भुक्तानी आवश्यक छ",
-  "paymentRequiredMessage": "तपाईंले आफ्ना नि:शुल्क प्रश्नहरू प्रयोग गर्नुभएको छ। जारी राख्न ₹५० तिर्नुहोस्।",
+  "paymentRequiredMessage": "तपाईंले आफ्ना नि:शुल्क प्रश्नहरू प्रयोग गर्नुभयो। जारी राख्न {amount} तिर्नुहोस्।",
   "payNowButton": "अहिले नै तिर्नुहोस्",
   "freeQuestionsRemaining": "{count} बाँकी नि:शुल्क प्रश्नहरू",
   "paidQuestionsRemaining": "{count} बाँकी रहेका सशुल्क प्रश्नहरू",

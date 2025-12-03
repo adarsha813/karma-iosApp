@@ -333,7 +333,7 @@
   "chatTitle": "hiresaka",
   "typeYourQuestionHint": "Soraty ny fanontanianao...",
   "paymentRequired": "Ilaina ny fandoavam-bola",
-  "paymentRequiredMessage": "Nampiasa ny fanontanianao maimaim-poana ianao. Mandoa ₹50 hanohizana.",
+  "paymentRequiredMessage": "Nampiasa ny fanontanianao maimaim-poana ianao. Mandoa {amount} hanohizana.",
   "payNowButton": "Aloavy izao",
   "freeQuestionsRemaining": "{count} fanontaniana maimaim-poana sisa",
   "paidQuestionsRemaining": "{count} fanontaniana misy karama sisa",

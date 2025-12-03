@@ -333,7 +333,7 @@
   "chatTitle": "Galgalkirin",
   "typeYourQuestionHint": "Pirsa xwe binivîse...",
   "paymentRequired": "Pêdivî bi dravdanê heye",
-  "paymentRequiredMessage": "Te pirsên xwe yên belaş bi kar anîn. Ji bo berdewamkirinê ₹50 bide.",
+  "paymentRequiredMessage": "Te pirsên xwe yên belaş bi kar anîn. Ji bo berdewamkirinê pere bidin {amount}.",
   "payNowButton": "Niha Bide",
   "freeQuestionsRemaining": "{count} pirsên belaş mane",
   "paidQuestionsRemaining": "{count} pirsên dravî yên mayî",

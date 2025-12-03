@@ -333,7 +333,7 @@
   "chatTitle": "チャット",
   "typeYourQuestionHint": "質問を入力してください...",
   "paymentRequired": "お支払いが必要です",
-  "paymentRequiredMessage": "無料の質問はご利用いただけました。続行するには ₹50 をお支払いください。",
+  "paymentRequiredMessage": "無料の質問はご利用いただけました。続行するには{amount} をお支払いください。",
   "payNowButton": "今すぐ支払う",
   "freeQuestionsRemaining": "無料の質問が {count} 問残っています",
   "paidQuestionsRemaining": "残りの有料質問は {count} 件です",

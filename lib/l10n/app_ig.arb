@@ -333,7 +333,7 @@
   "chatTitle": "Kpaa nkata",
   "typeYourQuestionHint": "Pịnye ajụjụ gị...",
   "paymentRequired": "Achọrọ ịkwụ ụgwọ",
-  "paymentRequiredMessage": "I jirila ajụjụ gị n'efu. Kwụọ ₹50 ka ịga n'ihu.",
+  "paymentRequiredMessage": "I jirila ajụjụ gị n'efu. Kwụọ {amount} ka ọ gaa n'ihu.",
   "payNowButton": "kwụọ ụgwọ ugbu a",
   "freeQuestionsRemaining": "{count} ajụjụ efu fọdụrụ",
   "paidQuestionsRemaining": "{count} ajụjụ akwụ ụgwọ fọdụrụ",

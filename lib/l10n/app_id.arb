@@ -333,7 +333,7 @@
   "chatTitle": "Mengobrol",
   "typeYourQuestionHint": "Ketik pertanyaan Anda...",
   "paymentRequired": "Pembayaran Diperlukan",
-  "paymentRequiredMessage": "Anda telah menggunakan pertanyaan gratis Anda. Bayar ₹50 untuk melanjutkan.",
+  "paymentRequiredMessage": "Anda telah menggunakan pertanyaan gratis Anda. Bayar {amount} untuk melanjutkan.",
   "payNowButton": "Bayar Sekarang",
   "freeQuestionsRemaining": "{count} pertanyaan gratis tersisa",
   "paidQuestionsRemaining": "{count} pertanyaan berbayar masih tersisa",

@@ -333,7 +333,7 @@
   "chatTitle": "बात करना",
   "typeYourQuestionHint": "अपना प्रश्न लिखें...",
   "paymentRequired": "भुगतान आवश्यक",
-  "paymentRequiredMessage": "आपने अपने मुफ़्त प्रश्नों का उपयोग कर लिया है। जारी रखने के लिए ₹50 का भुगतान करें।",
+  "paymentRequiredMessage": "आपने अपने निःशुल्क प्रश्नों का उपयोग कर लिया है। जारी रखने के लिए {amount} का भुगतान करें।",
   "payNowButton": "अब भुगतान करें",
   "freeQuestionsRemaining": "{count} निःशुल्क प्रश्न शेष हैं",
   "paidQuestionsRemaining": "{count} भुगतान किए गए प्रश्न शेष हैं",

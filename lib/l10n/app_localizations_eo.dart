@@ -534,7 +534,7 @@ class AppLocalizationsEo extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Vi uzis viajn senpagajn demandojn. Pagu ₹50 por daŭrigi.';
+    return 'Vi uzis viajn senpagajn demandojn. Pagu $amount por daŭrigi.';
   }
 
   @override

@@ -535,7 +535,7 @@ class AppLocalizationsLo extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'ທ່ານໄດ້ໃຊ້ຄໍາຖາມຟຣີຂອງທ່ານ. ຈ່າຍ ₹50 ເພື່ອສືບຕໍ່.';
+    return 'ທ່ານໄດ້ໃຊ້ຄໍາຖາມຟຣີຂອງທ່ານ. ຈ່າຍ $amount ເພື່ອສືບຕໍ່.';
   }
 
   @override

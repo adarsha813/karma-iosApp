@@ -537,7 +537,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Ți-ai folosit întrebările gratuite. Plătește 50 ₹ pentru a continua.';
+    return 'Ți-ai folosit întrebările gratuite. Plătește $amount pentru a continua.';
   }
 
   @override

@@ -533,7 +533,7 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Umetumia maswali yako yasiyolipishwa. Lipa ₹50 ili kuendelea.';
+    return 'Umetumia maswali yako yasiyolipishwa. Lipa $amount ili kuendelea.';
   }
 
   @override

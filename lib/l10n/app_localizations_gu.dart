@@ -535,7 +535,7 @@ class AppLocalizationsGu extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'તમે તમારા મફત પ્રશ્નોનો ઉપયોગ કર્યો છે. ચાલુ રાખવા માટે ₹50 ચૂકવો.';
+    return 'તમે તમારા મફત પ્રશ્નોનો ઉપયોગ કર્યો છે. ચાલુ રાખવા માટે $amount ચૂકવો.';
   }
 
   @override

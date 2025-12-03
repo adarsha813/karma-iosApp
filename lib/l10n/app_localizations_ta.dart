@@ -540,7 +540,7 @@ class AppLocalizationsTa extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'உங்கள் இலவச கேள்விகளைப் பயன்படுத்திவிட்டீர்கள். தொடர ₹50 செலுத்துங்கள்.';
+    return 'உங்கள் இலவச கேள்விகளைப் பயன்படுத்திவிட்டீர்கள். தொடர $amount செலுத்தவும்.';
   }
 
   @override

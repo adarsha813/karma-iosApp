@@ -333,7 +333,7 @@
   "chatTitle": "Razgovor",
   "typeYourQuestionHint": "Upišite svoje pitanje...",
   "paymentRequired": "Potrebno plaćanje",
-  "paymentRequiredMessage": "Iskoristili ste svoja besplatna pitanja. Platite 50 ₹ za nastavak.",
+  "paymentRequiredMessage": "Iskoristili ste svoja besplatna pitanja. Platite {amount} za nastavak.",
   "payNowButton": "Plati sada",
   "freeQuestionsRemaining": "Preostalo je {count} besplatnih pitanja",
   "paidQuestionsRemaining": "Preostalo je {count} plaćenih pitanja",

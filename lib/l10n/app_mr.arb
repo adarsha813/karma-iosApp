@@ -333,7 +333,7 @@
   "chatTitle": "गप्पा",
   "typeYourQuestionHint": "तुमचा प्रश्न टाइप करा...",
   "paymentRequired": "पेमेंट आवश्यक आहे",
-  "paymentRequiredMessage": "तुम्ही तुमचे मोफत प्रश्न वापरले आहेत. पुढे सुरू ठेवण्यासाठी ₹५० द्या.",
+  "paymentRequiredMessage": "तुम्ही तुमचे मोफत प्रश्न वापरले आहेत. पुढे सुरू ठेवण्यासाठी {amount} द्या.",
   "payNowButton": "आता पैसे द्या",
   "freeQuestionsRemaining": "{count} बाकी मोफत प्रश्न",
   "paidQuestionsRemaining": "{count} सशुल्क प्रश्न शिल्लक आहेत",

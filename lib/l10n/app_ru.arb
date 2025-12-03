@@ -333,7 +333,7 @@
   "chatTitle": "Чат",
   "typeYourQuestionHint": "Введите свой вопрос...",
   "paymentRequired": "Требуется оплата",
-  "paymentRequiredMessage": "Вы использовали бесплатные вопросы. Заплатите 50 ₹, чтобы продолжить.",
+  "paymentRequiredMessage": "Вы использовали бесплатные вопросы. Заплатите {amount}, чтобы продолжить.",
   "payNowButton": "Оплатить сейчас",
   "freeQuestionsRemaining": "{count} оставшиеся бесплатные вопросы",
   "paidQuestionsRemaining": "{count} осталось оплаченных вопросов",

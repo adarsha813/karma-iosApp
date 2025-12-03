@@ -538,7 +538,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Сіз тегін сұрақтарыңызды пайдаландыңыз. Жалғастыру үшін ₹50 төлеңіз.';
+    return 'Сіз тегін сұрақтарыңызды пайдаландыңыз. Жалғастыру үшін $amount төлеңіз.';
   }
 
   @override

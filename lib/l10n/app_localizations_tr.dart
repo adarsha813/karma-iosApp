@@ -536,7 +536,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Ücretsiz sorularınızı kullandınız. Devam etmek için ₹50 ödeyin.';
+    return 'Ücretsiz sorularınızı kullandınız. Devam etmek için $amount ödeyin.';
   }
 
   @override

@@ -333,7 +333,7 @@
   "chatTitle": "Kōrerorero",
   "typeYourQuestionHint": "Patohia to patai...",
   "paymentRequired": "Utu e hiahiatia ana",
-  "paymentRequiredMessage": "Kua whakamahia e koe o patai koreutu. Utu ₹50 ki te haere tonu.",
+  "paymentRequiredMessage": "Kua whakamahia e koe o patai koreutu. Utu {amount} ki te haere tonu.",
   "payNowButton": "Utu Inaianei",
   "freeQuestionsRemaining": "{count} nga paatai koreutu e toe ana",
   "paidQuestionsRemaining": "{count} e toe ana nga patai utu",

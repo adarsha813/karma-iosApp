@@ -333,7 +333,7 @@
   "chatTitle": "Kūkākūkā",
   "typeYourQuestionHint": "Kākau i kāu nīnau...",
   "paymentRequired": "Pono ka uku",
-  "paymentRequiredMessage": "Ua hoʻohana ʻoe i kāu mau nīnau manuahi. E uku iā ₹50 e hoʻomau.",
+  "paymentRequiredMessage": "Ua hoʻohana ʻoe i kāu mau nīnau manuahi. E uku iā {amount} e hoʻomau.",
   "payNowButton": "Uku Ano",
   "freeQuestionsRemaining": "{count} mau nīnau manuahi i koe",
   "paidQuestionsRemaining": "{count} nā nīnau uku i koe",

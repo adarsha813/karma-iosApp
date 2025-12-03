@@ -535,7 +535,7 @@ class AppLocalizationsNo extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Du har brukt opp de gratis spørsmålene dine. Betal ₹50 for å fortsette.';
+    return 'Du har brukt opp de gratis spørsmålene dine. Betal $amount for å fortsette.';
   }
 
   @override

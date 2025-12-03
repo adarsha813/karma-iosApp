@@ -534,7 +534,7 @@ class AppLocalizationsMi extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Kua whakamahia e koe o patai koreutu. Utu ₹50 ki te haere tonu.';
+    return 'Kua whakamahia e koe o patai koreutu. Utu $amount ki te haere tonu.';
   }
 
   @override

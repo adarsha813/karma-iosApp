@@ -333,7 +333,7 @@
   "chatTitle": "စကားစမြည်",
   "typeYourQuestionHint": "သင့်မေးခွန်းကို ရိုက်ထည့်ပါ...",
   "paymentRequired": "ငွေပေးချေမှု လိုအပ်ပါသည်။",
-  "paymentRequiredMessage": "သင့်အခမဲ့မေးခွန်းများကို သင်အသုံးပြုပြီးပါပြီ။ ရှေ့ဆက်ရန် ₹50 ပေးချေပါ။",
+  "paymentRequiredMessage": "သင့်အခမဲ့မေးခွန်းများကို သင်အသုံးပြုပြီးပါပြီ။ ရှေ့ဆက်ရန် {amount} ပေးချေပါ။",
   "payNowButton": "ယခုငွေပေးချေပါ။",
   "freeQuestionsRemaining": "{count} အခမဲ့မေးခွန်းများ ကျန်ရှိပါသည်။",
   "paidQuestionsRemaining": "{count} အခပေးမေးခွန်းများ ကျန်ရှိပါသည်။",

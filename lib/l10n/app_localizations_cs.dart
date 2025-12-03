@@ -535,7 +535,7 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Vyčerpali jste své bezplatné otázky. Zaplaťte 50 ₹ a pokračujte.';
+    return 'Vyčerpali jste své bezplatné otázky. Zaplaťte $amount, abyste mohli pokračovat.';
   }
 
   @override

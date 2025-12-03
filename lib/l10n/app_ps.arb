@@ -333,7 +333,7 @@
   "chatTitle": "چیٹ",
   "typeYourQuestionHint": "خپله پوښتنه ولیکئ...",
   "paymentRequired": "تادیه اړینه ده",
-  "paymentRequiredMessage": "تاسو خپلې وړیا پوښتنې کارولې دي. د دوام لپاره ₹ 50 ورکړئ.",
+  "paymentRequiredMessage": "تاسو خپلې وړیا پوښتنې کارولې دي. د دوام لپاره {amount} ورکړئ.",
   "payNowButton": "اوس پیسې ورکړئ",
   "freeQuestionsRemaining": "{count} پاتې وړیا پوښتنې",
   "paidQuestionsRemaining": "{count} پاتې پیسې ورکړل شوې پوښتنې",

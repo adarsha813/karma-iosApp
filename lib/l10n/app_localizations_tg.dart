@@ -540,7 +540,7 @@ class AppLocalizationsTg extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Шумо саволҳои ройгони худро истифода бурдед. Барои идома додан ₹50 пардохт кунед.';
+    return 'Шумо саволҳои ройгони худро истифода бурдед. Барои идома додан ба $amount пардохт кунед.';
   }
 
   @override

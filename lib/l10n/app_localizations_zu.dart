@@ -536,7 +536,7 @@ class AppLocalizationsZu extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Usebenzise imibuzo yakho yamahhala. Khokha u- ₹50 ukuze uqhubeke.';
+    return 'Usebenzise imibuzo yakho yamahhala. Khokha $amount ukuze uqhubeke.';
   }
 
   @override

@@ -333,7 +333,7 @@
   "chatTitle": "Чатлах",
   "typeYourQuestionHint": "Асуултаа бичнэ үү...",
   "paymentRequired": "Төлбөр хийх шаардлагатай",
-  "paymentRequiredMessage": "Та үнэгүй асуултуудаа ашигласан. Үргэлжлүүлэхийн тулд ₹50 төлнө үү.",
+  "paymentRequiredMessage": "Та үнэгүй асуултуудаа ашигласан. Үргэлжлүүлэхийн тулд {amount} төлнө үү.",
   "payNowButton": "Одоо төл",
   "freeQuestionsRemaining": "{count} үнэгүй асуултууд үлдсэн",
   "paidQuestionsRemaining": "{count} төлбөртэй асуултууд үлдсэн",

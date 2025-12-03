@@ -537,7 +537,7 @@ class AppLocalizationsKu extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Te pirsên xwe yên belaş bi kar anîn. Ji bo berdewamkirinê ₹50 bide.';
+    return 'Te pirsên xwe yên belaş bi kar anîn. Ji bo berdewamkirinê pere bidin $amount.';
   }
 
   @override

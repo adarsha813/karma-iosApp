@@ -333,7 +333,7 @@
   "chatTitle": "Xoxa",
   "typeYourQuestionHint": "Thayipha umbuzo wakho...",
   "paymentRequired": "Inkokhelo iyadingeka",
-  "paymentRequiredMessage": "Usebenzise imibuzo yakho yamahhala. Khokha u- ₹50 ukuze uqhubeke.",
+  "paymentRequiredMessage": "Usebenzise imibuzo yakho yamahhala. Khokha {amount} ukuze uqhubeke.",
   "payNowButton": "Khokha Manje",
   "freeQuestionsRemaining": "{count} imibuzo yamahhala esele",
   "paidQuestionsRemaining": "{count} imibuzo ekhokhelwe esele",

@@ -535,7 +535,7 @@ class AppLocalizationsSd extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'توهان پنهنجا مفت سوال استعمال ڪيا آهن. جاري رکڻ لاءِ ₹50 ادا ڪريو.';
+    return 'توهان پنهنجا مفت سوال استعمال ڪيا آهن. جاري رکڻ لاءِ $amount ادا ڪريو.';
   }
 
   @override

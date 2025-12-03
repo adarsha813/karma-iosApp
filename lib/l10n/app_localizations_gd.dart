@@ -541,7 +541,7 @@ class AppLocalizationsGd extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Tha thu air na ceistean an-asgaidh agad a chleachdadh. Pàigh ₹50 gus leantainn air adhart.';
+    return 'Tha thu air na ceistean an-asgaidh agad a chleachdadh. Pàigh $amount gus leantainn air adhart.';
   }
 
   @override

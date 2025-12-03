@@ -333,7 +333,7 @@
   "chatTitle": "Chat",
   "typeYourQuestionHint": "Scrivite a vostra dumanda...",
   "paymentRequired": "Pagamentu necessariu",
-  "paymentRequiredMessage": "Avete utilizatu e vostre dumande gratuite. Pagate ₹50 per cuntinuà.",
+  "paymentRequiredMessage": "Avete adupratu e vostre dumande gratuite. Pagate {amount} per cuntinuà.",
   "payNowButton": "Pagà Avà",
   "freeQuestionsRemaining": "{count} dumande libere rimanenti",
   "paidQuestionsRemaining": "{count} dumande pagate rimanenti",

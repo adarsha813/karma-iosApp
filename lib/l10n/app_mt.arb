@@ -333,7 +333,7 @@
   "chatTitle": "Ċett",
   "typeYourQuestionHint": "Ittajpja l-mistoqsija tiegħek...",
   "paymentRequired": "Ħlas Meħtieġ",
-  "paymentRequiredMessage": "Użajt il-mistoqsijiet bla ħlas tiegħek. Ħallas ₹50 biex tkompli.",
+  "paymentRequiredMessage": "Użajt il-mistoqsijiet bla ħlas tiegħek. Ħallas lil {amount} biex tkompli.",
   "payNowButton": "Ħallas Issa",
   "freeQuestionsRemaining": "{count} mistoqsijiet bla ħlas li fadal",
   "paidQuestionsRemaining": "{count} mistoqsijiet imħallsa li fadal",

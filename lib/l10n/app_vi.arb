@@ -333,7 +333,7 @@
   "chatTitle": "Trò chuyện",
   "typeYourQuestionHint": "Nhập câu hỏi của bạn...",
   "paymentRequired": "Yêu cầu thanh toán",
-  "paymentRequiredMessage": "Bạn đã sử dụng hết số câu hỏi miễn phí. Vui lòng trả 50 Rupee để tiếp tục.",
+  "paymentRequiredMessage": "Bạn đã sử dụng hết câu hỏi miễn phí. Hãy thanh toán {amount} để tiếp tục.",
   "payNowButton": "Thanh toán ngay",
   "freeQuestionsRemaining": "{count} còn lại câu hỏi miễn phí",
   "paidQuestionsRemaining": "{count} số câu hỏi đã trả phí còn lại",

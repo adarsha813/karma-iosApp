@@ -537,7 +537,7 @@ class AppLocalizationsKy extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Сиз акысыз суроолоруңузду колдондуңуз. Улантуу үчүн ₹50 төлөңүз.';
+    return 'Сиз акысыз суроолоруңузду колдондуңуз. Улантуу үчүн $amount төлөңүз.';
   }
 
   @override

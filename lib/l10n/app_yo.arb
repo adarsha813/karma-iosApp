@@ -333,7 +333,7 @@
   "chatTitle": "Wiregbe",
   "typeYourQuestionHint": "Tẹ ibeere rẹ sii...",
   "paymentRequired": "Ti beere owo sisan",
-  "paymentRequiredMessage": "O ti lo awọn ibeere ọfẹ rẹ. San ₹50 lati tẹsiwaju.",
+  "paymentRequiredMessage": "O ti lo awọn ibeere ọfẹ rẹ. Sanwo {amount} lati tẹsiwaju.",
   "payNowButton": "Sanwo Bayi",
   "freeQuestionsRemaining": "{count} awọn ibeere ọfẹ ti o ku",
   "paidQuestionsRemaining": "{count} awọn ibeere isanwo to ku",

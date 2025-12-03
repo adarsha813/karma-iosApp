@@ -537,7 +537,7 @@ class AppLocalizationsHaw extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Ua hoʻohana ʻoe i kāu mau nīnau manuahi. E uku iā ₹50 e hoʻomau.';
+    return 'Ua hoʻohana ʻoe i kāu mau nīnau manuahi. E uku iā $amount e hoʻomau.';
   }
 
   @override

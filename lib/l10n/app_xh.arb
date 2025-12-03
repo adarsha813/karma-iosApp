@@ -333,7 +333,7 @@
   "chatTitle": "Ncokola",
   "typeYourQuestionHint": "Chwetheza umbuzo wakho...",
   "paymentRequired": "Intlawulo iyafuneka",
-  "paymentRequiredMessage": "Uyisebenzisile imibuzo yakho yasimahla. Hlawula R50 ukuze uqhubeke.",
+  "paymentRequiredMessage": "Uyisebenzisile imibuzo yakho yasimahla. Hlawula {amount} ukuze uqhubeke.",
   "payNowButton": "Bhatala ngoku",
   "freeQuestionsRemaining": "{count} imibuzo yasimahla eseleyo",
   "paidQuestionsRemaining": "{count} imibuzo ehlawulweyo eseleyo",

@@ -333,7 +333,7 @@
   "chatTitle": "채팅",
   "typeYourQuestionHint": "질문을 입력하세요...",
   "paymentRequired": "결제 필요",
-  "paymentRequiredMessage": "무료 질문을 모두 사용했습니다. 계속하려면 ₹50를 지불하세요.",
+  "paymentRequiredMessage": "무료 질문을 모두 사용했습니다. 계속하려면 {amount}을(를) 결제하세요.",
   "payNowButton": "지금 결제하세요",
   "freeQuestionsRemaining": "{count}개의 무료 질문이 남았습니다.",
   "paidQuestionsRemaining": "{count}개의 유료 질문이 남았습니다.",

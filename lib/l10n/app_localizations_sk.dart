@@ -533,7 +533,7 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Vyčerpali ste svoje bezplatné otázky. Zaplaťte 50 ₹ a pokračujte.';
+    return 'Vyčerpali ste svoje bezplatné otázky. Zaplaťte $amount a pokračujte.';
   }
 
   @override

@@ -333,7 +333,7 @@
   "chatTitle": "Sgwrs",
   "typeYourQuestionHint": "Teipiwch eich cwestiwn...",
   "paymentRequired": "Taliad Angenrheidiol",
-  "paymentRequiredMessage": "Rydych chi wedi defnyddio eich cwestiynau am ddim. Talwch ₹50 i barhau.",
+  "paymentRequiredMessage": "Rydych chi wedi defnyddio eich cwestiynau am ddim. Talwch {amount} i barhau.",
   "payNowButton": "Talu Nawr",
   "freeQuestionsRemaining": "{count} cwestiynau rhydd ar ôl",
   "paidQuestionsRemaining": "{count} cwestiynau taledig sy'n weddill",

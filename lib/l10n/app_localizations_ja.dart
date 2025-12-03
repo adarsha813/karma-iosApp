@@ -524,7 +524,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return '無料の質問はご利用いただけました。続行するには ₹50 をお支払いください。';
+    return '無料の質問はご利用いただけました。続行するには$amount をお支払いください。';
   }
 
   @override

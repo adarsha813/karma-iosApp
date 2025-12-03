@@ -538,7 +538,7 @@ class AppLocalizationsSq extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'I ke përdorur pyetjet falas. Paguaj ₹50 për të vazhduar.';
+    return 'I ke përdorur pyetjet e tua falas. Paguaj $amount për të vazhduar.';
   }
 
   @override

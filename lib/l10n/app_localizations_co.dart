@@ -539,7 +539,7 @@ class AppLocalizationsCo extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Avete utilizatu e vostre dumande gratuite. Pagate ₹50 per cuntinuà.';
+    return 'Avete adupratu e vostre dumande gratuite. Pagate $amount per cuntinuà.';
   }
 
   @override

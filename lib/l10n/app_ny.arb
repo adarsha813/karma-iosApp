@@ -333,7 +333,7 @@
   "chatTitle": "Chezani",
   "typeYourQuestionHint": "Lembani funso lanu...",
   "paymentRequired": "Malipiro Amafunika",
-  "paymentRequiredMessage": "Mwagwiritsa ntchito mafunso anu aulere. Lipirani ₹50 kuti mupitilize.",
+  "paymentRequiredMessage": "Mwagwiritsa ntchito mafunso anu aulere. Lipirani {amount} kuti mupitilize.",
   "payNowButton": "Lipirani Tsopano",
   "freeQuestionsRemaining": "{count} mafunso aulere atsala",
   "paidQuestionsRemaining": "{count} mafunso olipidwa atsala",

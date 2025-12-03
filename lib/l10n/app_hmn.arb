@@ -333,7 +333,7 @@
   "chatTitle": "Tham",
   "typeYourQuestionHint": "Ntaus koj cov lus nug ...",
   "paymentRequired": "Yuav tsum tau them nyiaj",
-  "paymentRequiredMessage": "Koj tau siv koj cov lus nug dawb. Them ₹50 mus ntxiv.",
+  "paymentRequiredMessage": "Koj tau siv koj cov lus nug dawb. Them {amount} mus txuas ntxiv.",
   "payNowButton": "Them Tam sim no",
   "freeQuestionsRemaining": "{count} cov lus nug dawb ntxiv",
   "paidQuestionsRemaining": "{count} them cov lus nug tseem tshuav",

@@ -333,7 +333,7 @@
   "chatTitle": "Babilejo",
   "typeYourQuestionHint": "Tajpu vian demandon...",
   "paymentRequired": "Pago Bezonata",
-  "paymentRequiredMessage": "Vi uzis viajn senpagajn demandojn. Pagu ₹50 por daŭrigi.",
+  "paymentRequiredMessage": "Vi uzis viajn senpagajn demandojn. Pagu {amount} por daŭrigi.",
   "payNowButton": "Pagu Nun",
   "freeQuestionsRemaining": "{count} liberaj demandoj restas",
   "paidQuestionsRemaining": "{count} pagitaj demandoj restantaj",

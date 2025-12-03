@@ -333,7 +333,7 @@
   "chatTitle": "محادثة",
   "typeYourQuestionHint": "اكتب سؤالك...",
   "paymentRequired": "الدفع مطلوب",
-  "paymentRequiredMessage": "لقد استخدمت أسئلتك المجانية. ادفع ٥٠ روبية للمتابعة.",
+  "paymentRequiredMessage": "لقد استخدمت أسئلتك المجانية. ادفع {amount} للمتابعة.",
   "payNowButton": "ادفع الآن",
   "freeQuestionsRemaining": "{count} الأسئلة المجانية المتبقية",
   "paidQuestionsRemaining": "{count} الأسئلة المدفوعة المتبقية",

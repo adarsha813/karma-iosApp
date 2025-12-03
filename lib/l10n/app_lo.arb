@@ -333,7 +333,7 @@
   "chatTitle": "ສົນທະນາ",
   "typeYourQuestionHint": "ພິມຄຳຖາມຂອງເຈົ້າ...",
   "paymentRequired": "ຕ້ອງການການຈ່າຍເງິນ",
-  "paymentRequiredMessage": "ທ່ານໄດ້ໃຊ້ຄໍາຖາມຟຣີຂອງທ່ານ. ຈ່າຍ ₹50 ເພື່ອສືບຕໍ່.",
+  "paymentRequiredMessage": "ທ່ານໄດ້ໃຊ້ຄໍາຖາມຟຣີຂອງທ່ານ. ຈ່າຍ {amount} ເພື່ອສືບຕໍ່.",
   "payNowButton": "ຈ່າຍດຽວນີ້",
   "freeQuestionsRemaining": "{count} ຄຳຖາມຟຣີທີ່ຍັງເຫຼືອ",
   "paidQuestionsRemaining": "{count} ຄຳຖາມທີ່ຈ່າຍຍັງເຫຼືອ",

@@ -333,7 +333,7 @@
   "chatTitle": "Bater papo",
   "typeYourQuestionHint": "Digite sua pergunta...",
   "paymentRequired": "Pagamento necessário",
-  "paymentRequiredMessage": "Você já utilizou suas perguntas gratuitas. Pague ₹50 para continuar.",
+  "paymentRequiredMessage": "Você já utilizou suas perguntas gratuitas. Pague {amount} para continuar.",
   "payNowButton": "Pagar agora",
   "freeQuestionsRemaining": "{count} perguntas gratuitas restantes",
   "paidQuestionsRemaining": "{count} perguntas pagas restantes",

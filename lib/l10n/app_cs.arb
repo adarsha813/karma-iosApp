@@ -333,7 +333,7 @@
   "chatTitle": "Povídání",
   "typeYourQuestionHint": "Napište svou otázku...",
   "paymentRequired": "Platba je vyžadována",
-  "paymentRequiredMessage": "Vyčerpali jste své bezplatné otázky. Zaplaťte 50 ₹ a pokračujte.",
+  "paymentRequiredMessage": "Vyčerpali jste své bezplatné otázky. Zaplaťte {amount}, abyste mohli pokračovat.",
   "payNowButton": "Zaplatit nyní",
   "freeQuestionsRemaining": "Zbývá {count} otázek zdarma",
   "paidQuestionsRemaining": "Zbývá {count} placených otázek",

@@ -535,7 +535,7 @@ class AppLocalizationsHt extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Ou fin itilize kesyon gratis ou yo. Peye ₹50 pou kontinye.';
+    return 'Ou fin itilize kesyon gratis ou yo. Peye $amount pou kontinye.';
   }
 
   @override

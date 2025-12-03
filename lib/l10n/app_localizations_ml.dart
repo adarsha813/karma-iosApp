@@ -538,7 +538,7 @@ class AppLocalizationsMl extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'നിങ്ങളുടെ സൗജന്യ ചോദ്യങ്ങൾ നിങ്ങൾ ഉപയോഗിച്ചു കഴിഞ്ഞു. തുടരാൻ ₹50 അടയ്ക്കുക.';
+    return 'നിങ്ങളുടെ സൗജന്യ ചോദ്യങ്ങൾ നിങ്ങൾ ഉപയോഗിച്ചു കഴിഞ്ഞു. തുടരാൻ $amount പണം നൽകുക.';
   }
 
   @override

@@ -333,7 +333,7 @@
   "chatTitle": "טשאַט",
   "typeYourQuestionHint": "שרייב דיין קשיא...",
   "paymentRequired": "צאָלונג פארלאנגט",
-  "paymentRequiredMessage": "דו האסט שוין אויסגענוצט דיינע פרייע פראגעס. צאל ₹50 צו פאָרזעצן.",
+  "paymentRequiredMessage": "דו האסט שוין אויסגענוצט דיינע פרייע פראגעס. צאל {amount} צו פאָרזעצן.",
   "payNowButton": "צאָלן איצט",
   "freeQuestionsRemaining": "{count} פרייע פראגעס פארבליבן",
   "paidQuestionsRemaining": "{count} באַצאָלטע פֿראַגעס פֿאַרבליבן",

@@ -333,7 +333,7 @@
   "chatTitle": "ചാറ്റ്",
   "typeYourQuestionHint": "നിങ്ങളുടെ ചോദ്യം ടൈപ്പ് ചെയ്യുക...",
   "paymentRequired": "പേയ്‌മെന്റ് ആവശ്യമാണ്",
-  "paymentRequiredMessage": "നിങ്ങളുടെ സൗജന്യ ചോദ്യങ്ങൾ നിങ്ങൾ ഉപയോഗിച്ചു കഴിഞ്ഞു. തുടരാൻ ₹50 അടയ്ക്കുക.",
+  "paymentRequiredMessage": "നിങ്ങളുടെ സൗജന്യ ചോദ്യങ്ങൾ നിങ്ങൾ ഉപയോഗിച്ചു കഴിഞ്ഞു. തുടരാൻ {amount} പണം നൽകുക.",
   "payNowButton": "ഇപ്പോൾ പണമടയ്‌ക്കുക",
   "freeQuestionsRemaining": "{count} ബാക്കി സൗജന്യ ചോദ്യങ്ങൾ",
   "paidQuestionsRemaining": "{count} ബാക്കിയുളള പണമടച്ചുള്ള ചോദ്യങ്ങൾ",

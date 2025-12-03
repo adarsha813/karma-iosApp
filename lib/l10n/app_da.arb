@@ -333,7 +333,7 @@
   "chatTitle": "Snak",
   "typeYourQuestionHint": "Skriv dit spørgsmål...",
   "paymentRequired": "Betaling påkrævet",
-  "paymentRequiredMessage": "Du har brugt dine gratis spørgsmål. Betal ₹50 for at fortsætte.",
+  "paymentRequiredMessage": "Du har brugt dine gratis spørgsmål. Betal {amount} for at fortsætte.",
   "payNowButton": "Betal nu",
   "freeQuestionsRemaining": "{count} ledige spørgsmål tilbage",
   "paidQuestionsRemaining": "{count} betalte spørgsmål tilbage",

@@ -540,7 +540,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Siz bepul savollaringizdan foydalandingiz. Davom etish uchun ₹50 toʻlang.';
+    return 'Siz bepul savollaringizdan foydalandingiz. Davom etish uchun $amount to‘lang.';
   }
 
   @override

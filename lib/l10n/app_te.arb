@@ -333,7 +333,7 @@
   "chatTitle": "చాట్",
   "typeYourQuestionHint": "మీ ప్రశ్నను టైప్ చేయండి...",
   "paymentRequired": "చెల్లింపు అవసరం",
-  "paymentRequiredMessage": "మీరు మీ ఉచిత ప్రశ్నలను ఉపయోగించారు. కొనసాగించడానికి ₹50 చెల్లించండి.",
+  "paymentRequiredMessage": "మీరు మీ ఉచిత ప్రశ్నలను ఉపయోగించారు. కొనసాగించడానికి {amount} చెల్లించండి.",
   "payNowButton": "ఇప్పుడే చెల్లించండి",
   "freeQuestionsRemaining": "{count} ఇంకా ఉచిత ప్రశ్నలు మిగిలి ఉన్నాయి",
   "paidQuestionsRemaining": "{count} చెల్లింపు ప్రశ్నలు మిగిలి ఉన్నాయి",

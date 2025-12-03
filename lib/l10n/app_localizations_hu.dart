@@ -536,7 +536,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Felhasználtad az ingyenes kérdéseidet. Fizess 50 ₹-t a folytatáshoz.';
+    return 'Felhasználtad az ingyenes kérdéseidet. Fizess $amount összeget a folytatáshoz.';
   }
 
   @override

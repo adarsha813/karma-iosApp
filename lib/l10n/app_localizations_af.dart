@@ -534,7 +534,7 @@ class AppLocalizationsAf extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Jy het jou gratis vrae gebruik. Betaal \$5 om voort te gaan.';
+    return 'Jy het jou gratis vrae gebruik. Betaal $amount om voort te gaan.';
   }
 
   @override

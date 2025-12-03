@@ -536,7 +536,7 @@ class AppLocalizationsHmn extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Koj tau siv koj cov lus nug dawb. Them ₹50 mus ntxiv.';
+    return 'Koj tau siv koj cov lus nug dawb. Them $amount mus txuas ntxiv.';
   }
 
   @override

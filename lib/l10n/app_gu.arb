@@ -333,7 +333,7 @@
   "chatTitle": "ચેટ",
   "typeYourQuestionHint": "તમારો પ્રશ્ન લખો...",
   "paymentRequired": "ચુકવણી જરૂરી છે",
-  "paymentRequiredMessage": "તમે તમારા મફત પ્રશ્નોનો ઉપયોગ કર્યો છે. ચાલુ રાખવા માટે ₹50 ચૂકવો.",
+  "paymentRequiredMessage": "તમે તમારા મફત પ્રશ્નોનો ઉપયોગ કર્યો છે. ચાલુ રાખવા માટે {amount} ચૂકવો.",
   "payNowButton": "હમણાં ચૂકવો",
   "freeQuestionsRemaining": "{count} બાકી રહેલા મફત પ્રશ્નો",
   "paidQuestionsRemaining": "{count} બાકી રહેલા પેઇડ પ્રશ્નો",

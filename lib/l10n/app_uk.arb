@@ -333,7 +333,7 @@
   "chatTitle": "Чат",
   "typeYourQuestionHint": "Введіть своє запитання...",
   "paymentRequired": "Потрібна оплата",
-  "paymentRequiredMessage": "Ви використали свої безкоштовні запитання. Сплатіть 50 рупій, щоб продовжити.",
+  "paymentRequiredMessage": "Ви використали свої безкоштовні запитання. Сплатіть {amount}, щоб продовжити.",
   "payNowButton": "Сплатити зараз",
   "freeQuestionsRemaining": "Залишилося {count} безкоштовних запитань",
   "paidQuestionsRemaining": "Залишилося {count} платних запитань",

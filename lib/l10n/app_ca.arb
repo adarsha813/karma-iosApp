@@ -333,7 +333,7 @@
   "chatTitle": "Xat",
   "typeYourQuestionHint": "Escriu la teva pregunta...",
   "paymentRequired": "Pagament requerit",
-  "paymentRequiredMessage": "Has utilitzat les teves preguntes gratuïtes. Paga 50 ₹ per continuar.",
+  "paymentRequiredMessage": "Has utilitzat les teves preguntes gratuïtes. Paga a {amount} per continuar.",
   "payNowButton": "Paga ara",
   "freeQuestionsRemaining": "{count} preguntes lliures restants",
   "paidQuestionsRemaining": "{count} preguntes de pagament restants",

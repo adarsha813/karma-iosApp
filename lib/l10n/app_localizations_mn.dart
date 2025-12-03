@@ -535,7 +535,7 @@ class AppLocalizationsMn extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Та үнэгүй асуултуудаа ашигласан. Үргэлжлүүлэхийн тулд ₹50 төлнө үү.';
+    return 'Та үнэгүй асуултуудаа ашигласан. Үргэлжлүүлэхийн тулд $amount төлнө үү.';
   }
 
   @override

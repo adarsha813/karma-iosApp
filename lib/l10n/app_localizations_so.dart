@@ -538,7 +538,7 @@ class AppLocalizationsSo extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Waxaad isticmaashay su\'aalahaaga bilaashka ah. Bixi 50 si aad u sii wadato.';
+    return 'Waxaad isticmaashay su\'aalahaaga bilaashka ah. Bixi $amount si aad u sii wadato.';
   }
 
   @override

@@ -536,7 +536,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Вы использовали бесплатные вопросы. Заплатите 50 ₹, чтобы продолжить.';
+    return 'Вы использовали бесплатные вопросы. Заплатите $amount, чтобы продолжить.';
   }
 
   @override

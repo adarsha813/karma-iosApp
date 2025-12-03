@@ -333,7 +333,7 @@
   "chatTitle": "گپ شپ",
   "typeYourQuestionHint": "اپنا سوال ٹائپ کریں...",
   "paymentRequired": "ادائیگی کی ضرورت ہے۔",
-  "paymentRequiredMessage": "آپ نے اپنے مفت سوالات کا استعمال کیا ہے۔ جاری رکھنے کے لیے ₹50 ادا کریں۔",
+  "paymentRequiredMessage": "آپ نے اپنے مفت سوالات کا استعمال کیا ہے۔ جاری رکھنے کے لیے {amount} ادا کریں۔",
   "payNowButton": "ابھی ادائیگی کریں۔",
   "freeQuestionsRemaining": "{count} مفت سوالات باقی ہیں۔",
   "paidQuestionsRemaining": "{count} بامعاوضہ سوالات باقی ہیں۔",

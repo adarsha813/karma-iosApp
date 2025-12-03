@@ -333,7 +333,7 @@
   "chatTitle": "Comhrá",
   "typeYourQuestionHint": "Clóscríobh do cheist...",
   "paymentRequired": "Íocaíocht Riachtanach",
-  "paymentRequiredMessage": "Tá do cheisteanna saor in aisce úsáidte agat. Íoc ₹50 le leanúint ar aghaidh.",
+  "paymentRequiredMessage": "Tá do cheisteanna saor in aisce úsáidte agat. Íoc {amount} le leanúint ar aghaidh.",
   "payNowButton": "Íoc Anois",
   "freeQuestionsRemaining": "{count} ceisteanna saora fágtha",
   "paidQuestionsRemaining": "{count} ceisteanna íoctha fágtha",

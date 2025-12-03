@@ -333,7 +333,7 @@
   "chatTitle": "Soga",
   "typeYourQuestionHint": "Andika swali lako...",
   "paymentRequired": "Malipo yanahitajika",
-  "paymentRequiredMessage": "Umetumia maswali yako yasiyolipishwa. Lipa ₹50 ili kuendelea.",
+  "paymentRequiredMessage": "Umetumia maswali yako yasiyolipishwa. Lipa {amount} ili kuendelea.",
   "payNowButton": "Lipa Sasa",
   "freeQuestionsRemaining": "{count} maswali yasiyolipishwa yamesalia",
   "paidQuestionsRemaining": "{count} maswali yanayolipwa yamesalia",

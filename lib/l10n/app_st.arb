@@ -333,7 +333,7 @@
   "chatTitle": "Chat",
   "typeYourQuestionHint": "Ngola potso ea hau...",
   "paymentRequired": "Tefo e Hlokahala",
-  "paymentRequiredMessage": "U sebelisitse lipotso tsa hau tsa mahala. Lefa ₹50 hore o tsoelepele.",
+  "paymentRequiredMessage": "U sebelisitse lipotso tsa hau tsa mahala. Lefa {amount} ho tsoela pele.",
   "payNowButton": "Lefa Hona Joale",
   "freeQuestionsRemaining": "{count} ho setse lipotso tsa mahala",
   "paidQuestionsRemaining": "Ho setse lipotso tse {count}",

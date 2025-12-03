@@ -333,7 +333,7 @@
   "chatTitle": "ჩატი",
   "typeYourQuestionHint": "აკრიფეთ თქვენი კითხვა...",
   "paymentRequired": "გადახდა სავალდებულოა",
-  "paymentRequiredMessage": "თქვენ გამოიყენეთ თქვენი უფასო კითხვები. გასაგრძელებლად გადაიხადეთ 50₹.",
+  "paymentRequiredMessage": "თქვენ გამოიყენეთ თქვენი უფასო კითხვები. გადაუხადეთ {amount} გასაგრძელებლად.",
   "payNowButton": "გადაიხადეთ ახლავე",
   "freeQuestionsRemaining": "{count} დარჩენილია უფასო კითხვები",
   "paidQuestionsRemaining": "{count} დარჩენილია ფასიანი კითხვები",

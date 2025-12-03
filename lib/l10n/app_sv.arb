@@ -333,7 +333,7 @@
   "chatTitle": "Chatt",
   "typeYourQuestionHint": "Skriv din fråga...",
   "paymentRequired": "Betalning krävs",
-  "paymentRequiredMessage": "Du har använt dina gratisfrågor. Betala ₹50 för att fortsätta.",
+  "paymentRequiredMessage": "Du har använt dina gratisfrågor. Betala {amount} för att fortsätta.",
   "payNowButton": "Betala nu",
   "freeQuestionsRemaining": "{count} lediga frågor kvar",
   "paidQuestionsRemaining": "{count} betalda frågor kvar",

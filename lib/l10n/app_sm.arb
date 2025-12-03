@@ -333,7 +333,7 @@
   "chatTitle": "Talanoaga",
   "typeYourQuestionHint": "Tusi lau fesili...",
   "paymentRequired": "Totogi Manaomia",
-  "paymentRequiredMessage": "Ua e fa'aogaina au fesili maua fua. Totogi ₹50 e fa'aauau ai.",
+  "paymentRequiredMessage": "Ua e fa'aogaina au fesili maua fua. Totogi {amount} e fa'aauau ai.",
   "payNowButton": "Totogi Nei",
   "freeQuestionsRemaining": "{count} fesili saoloto o totoe",
   "paidQuestionsRemaining": "{count} fesili totogi o totoe",

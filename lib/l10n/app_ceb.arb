@@ -333,7 +333,7 @@
   "chatTitle": "Chat",
   "typeYourQuestionHint": "Isulat ang imong pangutana...",
   "paymentRequired": "Gikinahanglan ang Pagbayad",
-  "paymentRequiredMessage": "Gigamit nimo ang imong libre nga mga pangutana. Pagbayad og ₹50 aron makapadayon.",
+  "paymentRequiredMessage": "Gigamit nimo ang imong libre nga mga pangutana. Bayad {amount} aron makapadayon.",
   "payNowButton": "Bayad Karon",
   "freeQuestionsRemaining": "{count} libre nga pangutana ang nahabilin",
   "paidQuestionsRemaining": "{count} bayad nga mga pangutana ang nahabilin",

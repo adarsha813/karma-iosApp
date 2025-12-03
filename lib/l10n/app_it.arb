@@ -333,7 +333,7 @@
   "chatTitle": "Chiacchierata",
   "typeYourQuestionHint": "Scrivi la tua domanda...",
   "paymentRequired": "Pagamento richiesto",
-  "paymentRequiredMessage": "Hai utilizzato le tue domande gratuite. Paga ₹50 per continuare.",
+  "paymentRequiredMessage": "Hai utilizzato le tue domande gratuite. Paga {amount} per continuare.",
   "payNowButton": "Paga ora",
   "freeQuestionsRemaining": "{count} domande gratuite rimanenti",
   "paidQuestionsRemaining": "{count} domande a pagamento rimanenti",

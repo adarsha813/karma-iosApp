@@ -333,7 +333,7 @@
   "chatTitle": "Чат",
   "typeYourQuestionHint": "Сұрағыңызды теріңіз...",
   "paymentRequired": "Төлем қажет",
-  "paymentRequiredMessage": "Сіз тегін сұрақтарыңызды пайдаландыңыз. Жалғастыру үшін ₹50 төлеңіз.",
+  "paymentRequiredMessage": "Сіз тегін сұрақтарыңызды пайдаландыңыз. Жалғастыру үшін {amount} төлеңіз.",
   "payNowButton": "Қазір төлеңіз",
   "freeQuestionsRemaining": "{count} бос сұрақтар қалды",
   "paidQuestionsRemaining": "{count} ақылы сұрақтар қалды",

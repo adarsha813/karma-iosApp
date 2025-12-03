@@ -333,7 +333,7 @@
   "chatTitle": "Còmhradh",
   "typeYourQuestionHint": "Sgrìobh do cheist...",
   "paymentRequired": "Pàigheadh a dhìth",
-  "paymentRequiredMessage": "Tha thu air na ceistean an-asgaidh agad a chleachdadh. Pàigh ₹50 gus leantainn air adhart.",
+  "paymentRequiredMessage": "Tha thu air na ceistean an-asgaidh agad a chleachdadh. Pàigh {amount} gus leantainn air adhart.",
   "payNowButton": "Pàigh a-nis",
   "freeQuestionsRemaining": "{count} ceistean saora air fhàgail",
   "paidQuestionsRemaining": "{count} ceistean pàighte air fhàgail",

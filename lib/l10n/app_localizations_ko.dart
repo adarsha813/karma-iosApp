@@ -524,7 +524,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return '무료 질문을 모두 사용했습니다. 계속하려면 ₹50를 지불하세요.';
+    return '무료 질문을 모두 사용했습니다. 계속하려면 $amount을(를) 결제하세요.';
   }
 
   @override

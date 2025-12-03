@@ -333,7 +333,7 @@
   "chatTitle": "Разговор",
   "typeYourQuestionHint": "Внесете го вашето прашање...",
   "paymentRequired": "Потребно е плаќање",
-  "paymentRequiredMessage": "Ги искористивте вашите бесплатни прашања. Платете 50 рупии за да продолжите.",
+  "paymentRequiredMessage": "Ги искористивте вашите бесплатни прашања. Платете {amount} за да продолжите.",
   "payNowButton": "Плати сега",
   "freeQuestionsRemaining": "{count} преостануваат бесплатни прашања",
   "paidQuestionsRemaining": "{count} преостануваат платени прашања",

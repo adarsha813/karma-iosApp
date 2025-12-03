@@ -333,7 +333,7 @@
   "chatTitle": "Vestlus",
   "typeYourQuestionHint": "Tippige oma küsimus...",
   "paymentRequired": "Makse nõutav",
-  "paymentRequiredMessage": "Oled oma tasuta küsimused ära kasutanud. Jätkamiseks maksa 50 ₹.",
+  "paymentRequiredMessage": "Oled oma tasuta küsimused ära kasutanud. Jätkamiseks maksa {amount}.",
   "payNowButton": "Maksa kohe",
   "freeQuestionsRemaining": "{count} tasuta küsimust on jäänud",
   "paidQuestionsRemaining": "{count} tasulist küsimust on jäänud",

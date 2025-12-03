@@ -333,7 +333,7 @@
   "chatTitle": "ਚੈਟ",
   "typeYourQuestionHint": "ਆਪਣਾ ਸਵਾਲ ਟਾਈਪ ਕਰੋ...",
   "paymentRequired": "ਭੁਗਤਾਨ ਲੋੜੀਂਦਾ ਹੈ",
-  "paymentRequiredMessage": "ਤੁਸੀਂ ਆਪਣੇ ਮੁਫ਼ਤ ਸਵਾਲਾਂ ਦੀ ਵਰਤੋਂ ਕਰ ਲਈ ਹੈ। ਜਾਰੀ ਰੱਖਣ ਲਈ ₹50 ਦਾ ਭੁਗਤਾਨ ਕਰੋ।",
+  "paymentRequiredMessage": "ਤੁਸੀਂ ਆਪਣੇ ਮੁਫ਼ਤ ਸਵਾਲਾਂ ਦੀ ਵਰਤੋਂ ਕਰ ਲਈ ਹੈ। ਜਾਰੀ ਰੱਖਣ ਲਈ {amount} ਦਾ ਭੁਗਤਾਨ ਕਰੋ।",
   "payNowButton": "ਹੁਣੇ ਭੁਗਤਾਨ ਕਰੋ",
   "freeQuestionsRemaining": "{count} ਬਾਕੀ ਮੁਫ਼ਤ ਸਵਾਲ",
   "paidQuestionsRemaining": "{count} ਭੁਗਤਾਨ ਕੀਤੇ ਸਵਾਲ ਬਾਕੀ ਹਨ",

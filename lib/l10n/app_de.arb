@@ -333,7 +333,7 @@
   "chatTitle": "Chat",
   "typeYourQuestionHint": "Geben Sie Ihre Frage ein...",
   "paymentRequired": "Zahlung erforderlich",
-  "paymentRequiredMessage": "Sie haben Ihre kostenlosen Fragen aufgebraucht. Zahlen Sie 50 ₹, um fortzufahren.",
+  "paymentRequiredMessage": "Sie haben Ihre kostenlosen Fragen aufgebraucht. Zahlen Sie {amount}, um fortzufahren.",
   "payNowButton": "Jetzt bezahlen",
   "freeQuestionsRemaining": "{count} verbleibende freie Fragen",
   "paidQuestionsRemaining": "{count} verbleibende bezahlte Fragen",

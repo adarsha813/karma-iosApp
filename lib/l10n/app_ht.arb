@@ -333,7 +333,7 @@
   "chatTitle": "Chat",
   "typeYourQuestionHint": "Tape kesyon ou an...",
   "paymentRequired": "Peman obligatwa",
-  "paymentRequiredMessage": "Ou fin itilize kesyon gratis ou yo. Peye ₹50 pou kontinye.",
+  "paymentRequiredMessage": "Ou fin itilize kesyon gratis ou yo. Peye {amount} pou kontinye.",
   "payNowButton": "Peye Kounye a",
   "freeQuestionsRemaining": "{count} kesyon gratis ki rete",
   "paidQuestionsRemaining": "Kesyon peye ki rete yo {count}",

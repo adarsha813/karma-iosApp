@@ -333,7 +333,7 @@
   "chatTitle": "Charlar",
   "typeYourQuestionHint": "Escribe tu pregunta...",
   "paymentRequired": "Pago requerido",
-  "paymentRequiredMessage": "Has usado tus preguntas gratuitas. Paga 50 rupias para continuar.",
+  "paymentRequiredMessage": "Has usado tus preguntas gratuitas. Paga {amount} para continuar.",
   "payNowButton": "Paga ahora",
   "freeQuestionsRemaining": "{count} preguntas gratuitas restantes",
   "paidQuestionsRemaining": "{count} preguntas pagadas restantes",

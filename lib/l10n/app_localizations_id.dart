@@ -533,7 +533,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Anda telah menggunakan pertanyaan gratis Anda. Bayar ₹50 untuk melanjutkan.';
+    return 'Anda telah menggunakan pertanyaan gratis Anda. Bayar $amount untuk melanjutkan.';
   }
 
   @override

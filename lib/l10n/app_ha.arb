@@ -333,7 +333,7 @@
   "chatTitle": "Taɗi",
   "typeYourQuestionHint": "Buga tambayar ku...",
   "paymentRequired": "Ana Bukatar Biyan Kuɗi",
-  "paymentRequiredMessage": "Kun yi amfani da tambayoyinku kyauta. Biya ₹50 don ci gaba.",
+  "paymentRequiredMessage": "Kun yi amfani da tambayoyinku kyauta. Biya {amount} don ci gaba.",
   "payNowButton": "Biya Yanzu",
   "freeQuestionsRemaining": "{count} free questions remaining",
   "paidQuestionsRemaining": "{count} paid questions remaining",

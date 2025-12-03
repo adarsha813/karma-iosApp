@@ -535,7 +535,7 @@ class AppLocalizationsSn extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Washandisa mibvunzo yako yemahara. Bhadhara ₹50 kuti uenderere mberi.';
+    return 'Washandisa mibvunzo yako yemahara. Bhadhara $amount kuti uenderere mberi.';
   }
 
   @override

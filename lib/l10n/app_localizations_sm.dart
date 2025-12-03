@@ -534,7 +534,7 @@ class AppLocalizationsSm extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Ua e fa\'aogaina au fesili maua fua. Totogi ₹50 e fa\'aauau ai.';
+    return 'Ua e fa\'aogaina au fesili maua fua. Totogi $amount e fa\'aauau ai.';
   }
 
   @override

@@ -533,7 +533,7 @@ class AppLocalizationsHa extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Kun yi amfani da tambayoyinku kyauta. Biya ₹50 don ci gaba.';
+    return 'Kun yi amfani da tambayoyinku kyauta. Biya $amount don ci gaba.';
   }
 
   @override

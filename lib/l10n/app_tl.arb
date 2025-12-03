@@ -333,7 +333,7 @@
   "chatTitle": "Chat",
   "typeYourQuestionHint": "I-type ang iyong tanong...",
   "paymentRequired": "Kinakailangan ang Pagbabayad",
-  "paymentRequiredMessage": "Nagamit mo na ang iyong mga libreng tanong. Magbayad ng ₹50 upang magpatuloy.",
+  "paymentRequiredMessage": "Nagamit mo na ang iyong mga libreng tanong. Magbayad ng {amount} upang magpatuloy.",
   "payNowButton": "Magbayad na",
   "freeQuestionsRemaining": "{count} libreng tanong ang natitira",
   "paidQuestionsRemaining": "{count} mga bayad na tanong ang natitira",

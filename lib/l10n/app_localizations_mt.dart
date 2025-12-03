@@ -537,7 +537,7 @@ class AppLocalizationsMt extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Użajt il-mistoqsijiet bla ħlas tiegħek. Ħallas ₹50 biex tkompli.';
+    return 'Użajt il-mistoqsijiet bla ħlas tiegħek. Ħallas lil $amount biex tkompli.';
   }
 
   @override

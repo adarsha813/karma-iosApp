@@ -333,7 +333,7 @@
   "chatTitle": "Sheekaysi",
   "typeYourQuestionHint": "Ku qor su'aashaada...",
   "paymentRequired": "Lacag-bixinta ayaa loo baahan yahay",
-  "paymentRequiredMessage": "Waxaad isticmaashay su'aalahaaga bilaashka ah. Bixi 50 si aad u sii wadato.",
+  "paymentRequiredMessage": "Waxaad isticmaashay su'aalahaaga bilaashka ah. Bixi {amount} si aad u sii wadato.",
   "payNowButton": "Hadda Bixi",
   "freeQuestionsRemaining": "{count} su'aalo bilaash ah ayaa hadhsan",
   "paidQuestionsRemaining": "{count} paid questions remaining",

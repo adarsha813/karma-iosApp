@@ -539,7 +539,7 @@ class AppLocalizationsGl extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Usaches as túas preguntas gratuítas. Paga 50 ₹ para continuar.';
+    return 'Usaches as túas preguntas gratuítas. Paga a $amount para continuar.';
   }
 
   @override

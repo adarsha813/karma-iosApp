@@ -531,7 +531,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'لقد استخدمت أسئلتك المجانية. ادفع ٥٠ روبية للمتابعة.';
+    return 'لقد استخدمت أسئلتك المجانية. ادفع $amount للمتابعة.';
   }
 
   @override

@@ -333,7 +333,7 @@
   "chatTitle": "Ћаскање",
   "typeYourQuestionHint": "Унесите своје питање...",
   "paymentRequired": "Потребна је уплата",
-  "paymentRequiredMessage": "Искористили сте своја бесплатна питања. Платите 50 ₹ да бисте наставили.",
+  "paymentRequiredMessage": "Искористили сте своја бесплатна питања. Платите {amount} да бисте наставили.",
   "payNowButton": "Плати сада",
   "freeQuestionsRemaining": "Преостало је {count} бесплатних питања",
   "paidQuestionsRemaining": "Преостало је {count} плаћених питања",

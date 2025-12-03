@@ -539,7 +539,7 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Rydych chi wedi defnyddio eich cwestiynau am ddim. Talwch ₹50 i barhau.';
+    return 'Rydych chi wedi defnyddio eich cwestiynau am ddim. Talwch $amount i barhau.';
   }
 
   @override

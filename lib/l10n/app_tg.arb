@@ -333,7 +333,7 @@
   "chatTitle": "Чат",
   "typeYourQuestionHint": "Саволи худро нависед...",
   "paymentRequired": "Пардохт талаб карда мешавад",
-  "paymentRequiredMessage": "Шумо саволҳои ройгони худро истифода бурдед. Барои идома додан ₹50 пардохт кунед.",
+  "paymentRequiredMessage": "Шумо саволҳои ройгони худро истифода бурдед. Барои идома додан ба {amount} пардохт кунед.",
   "payNowButton": "Ҳоло пардохт кунед",
   "freeQuestionsRemaining": "{count} саволҳои ройгон боқӣ мондаанд",
   "paidQuestionsRemaining": "{count} саволҳои пардохтшуда боқӣ мондаанд",

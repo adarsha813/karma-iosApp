@@ -534,7 +534,7 @@ class AppLocalizationsBs extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Iskoristili ste svoja besplatna pitanja. Platite 50 ₹ da biste nastavili.';
+    return 'Iskoristili ste svoja besplatna pitanja. Platite $amount da biste nastavili.';
   }
 
   @override

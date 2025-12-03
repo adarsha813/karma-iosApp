@@ -538,7 +538,7 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Nagamit mo na ang iyong mga libreng tanong. Magbayad ng ₹50 upang magpatuloy.';
+    return 'Nagamit mo na ang iyong mga libreng tanong. Magbayad ng $amount upang magpatuloy.';
   }
 
   @override

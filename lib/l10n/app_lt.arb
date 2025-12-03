@@ -333,7 +333,7 @@
   "chatTitle": "Pokalbis",
   "typeYourQuestionHint": "Įveskite savo klausimą...",
   "paymentRequired": "Mokėjimas būtinas",
-  "paymentRequiredMessage": "Išnaudojote savo nemokamus klausimus. Norėdami tęsti, sumokėkite 50 ₹.",
+  "paymentRequiredMessage": "Išnaudojote savo nemokamus klausimus. Norėdami tęsti, sumokėkite {amount}.",
   "payNowButton": "Mokėti dabar",
   "freeQuestionsRemaining": "Liko {count} nemokamų klausimų",
   "paidQuestionsRemaining": "Liko {count} mokamų klausimų",

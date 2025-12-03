@@ -519,7 +519,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return '您已用完免费提问次数。支付 50 卢比即可继续。';
+    return '您已用完免费提问次数。支付 $amount 可继续提问。';
   }
 
   @override

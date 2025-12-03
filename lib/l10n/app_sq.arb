@@ -333,7 +333,7 @@
   "chatTitle": "Bisedë",
   "typeYourQuestionHint": "Shkruani pyetjen tuaj...",
   "paymentRequired": "Pagesa e kërkuar",
-  "paymentRequiredMessage": "I ke përdorur pyetjet falas. Paguaj ₹50 për të vazhduar.",
+  "paymentRequiredMessage": "I ke përdorur pyetjet e tua falas. Paguaj {amount} për të vazhduar.",
   "payNowButton": "Paguaj Tani",
   "freeQuestionsRemaining": "{count} pyetje falas të mbetura",
   "paidQuestionsRemaining": "{count} pyetje me pagesë të mbetura",

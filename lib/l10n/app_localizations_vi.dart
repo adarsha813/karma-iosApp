@@ -537,7 +537,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Bạn đã sử dụng hết số câu hỏi miễn phí. Vui lòng trả 50 Rupee để tiếp tục.';
+    return 'Bạn đã sử dụng hết câu hỏi miễn phí. Hãy thanh toán $amount để tiếp tục.';
   }
 
   @override

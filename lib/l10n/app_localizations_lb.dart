@@ -537,7 +537,7 @@ class AppLocalizationsLb extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Dir hutt Är gratis Froen benotzt. Bezuelt ₹50 fir weiderzemaachen.';
+    return 'Dir hutt Är gratis Froen benotzt. Bezuelt $amount fir weiderzemaachen.';
   }
 
   @override

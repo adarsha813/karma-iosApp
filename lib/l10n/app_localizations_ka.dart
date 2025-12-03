@@ -539,7 +539,7 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'თქვენ გამოიყენეთ თქვენი უფასო კითხვები. გასაგრძელებლად გადაიხადეთ 50₹.';
+    return 'თქვენ გამოიყენეთ თქვენი უფასო კითხვები. გადაუხადეთ $amount გასაგრძელებლად.';
   }
 
   @override

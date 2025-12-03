@@ -533,7 +533,7 @@ class AppLocalizationsIg extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'I jirila ajụjụ gị n\'efu. Kwụọ ₹50 ka ịga n\'ihu.';
+    return 'I jirila ajụjụ gị n\'efu. Kwụọ $amount ka ọ gaa n\'ihu.';
   }
 
   @override

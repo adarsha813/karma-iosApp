@@ -333,7 +333,7 @@
   "chatTitle": "Chat",
   "typeYourQuestionHint": "Kirjoita kysymyksesi...",
   "paymentRequired": "Maksu vaaditaan",
-  "paymentRequiredMessage": "Olet käyttänyt ilmaiset kysymyksesi. Maksa 50 ₹ jatkaaksesi.",
+  "paymentRequiredMessage": "Olet käyttänyt ilmaiset kysymyksesi. Maksa {amount} jatkaaksesi.",
   "payNowButton": "Maksa nyt",
   "freeQuestionsRemaining": "{count} ilmaista kysymystä jäljellä",
   "paidQuestionsRemaining": "{count} maksettua kysymystä jäljellä",

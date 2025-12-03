@@ -333,7 +333,7 @@
   "chatTitle": "Sembang",
   "typeYourQuestionHint": "Taip soalan anda...",
   "paymentRequired": "Pembayaran Diperlukan",
-  "paymentRequiredMessage": "Anda telah menggunakan soalan percuma anda. Bayar ₹50 untuk meneruskan.",
+  "paymentRequiredMessage": "Anda telah menggunakan soalan percuma anda. Bayar {amount} untuk meneruskan.",
   "payNowButton": "Bayar Sekarang",
   "freeQuestionsRemaining": "{count} baki soalan percuma",
   "paidQuestionsRemaining": "{count} baki soalan berbayar",

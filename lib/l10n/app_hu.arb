@@ -333,7 +333,7 @@
   "chatTitle": "Csevegés",
   "typeYourQuestionHint": "Írd be a kérdésedet...",
   "paymentRequired": "Fizetés szükséges",
-  "paymentRequiredMessage": "Felhasználtad az ingyenes kérdéseidet. Fizess 50 ₹-t a folytatáshoz.",
+  "paymentRequiredMessage": "Felhasználtad az ingyenes kérdéseidet. Fizess {amount} összeget a folytatáshoz.",
   "payNowButton": "Fizessen most",
   "freeQuestionsRemaining": "{count} szabad kérdés maradt",
   "paidQuestionsRemaining": "{count} fizetős kérdés maradt",

@@ -333,7 +333,7 @@
   "chatTitle": "ተወያይ",
   "typeYourQuestionHint": "ጥያቄህን ተይብ...",
   "paymentRequired": "ክፍያ ያስፈልጋል",
-  "paymentRequiredMessage": "ነፃ ጥያቄዎችዎን ተጠቅመዋል። ለመቀጠል 50 ብር ይክፈሉ።",
+  "paymentRequiredMessage": "ነፃ ጥያቄዎችዎን ተጠቅመዋል። ለመቀጠል {amount} ይክፈሉ።",
   "payNowButton": "አሁን ይክፈሉ።",
   "freeQuestionsRemaining": "{count} ነጻ ጥያቄዎች ይቀራሉ",
   "paidQuestionsRemaining": "{count} የሚከፈልባቸው ጥያቄዎች ይቀራሉ",

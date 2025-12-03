@@ -333,7 +333,7 @@
   "chatTitle": "چت",
   "typeYourQuestionHint": "سوال خود را تایپ کنید...",
   "paymentRequired": "پرداخت مورد نیاز",
-  "paymentRequiredMessage": "شما از سوالات رایگان خود استفاده کردید. برای ادامه، 50 روپیه پرداخت کنید.",
+  "paymentRequiredMessage": "شما از سوالات رایگان خود استفاده کردید. برای ادامه، مبلغ {amount} را پرداخت کنید.",
   "payNowButton": "همین حالا پرداخت کنید",
   "freeQuestionsRemaining": "{count} سوالات رایگان باقی مانده",
   "paidQuestionsRemaining": "{count} سوالات پولی باقی مانده",

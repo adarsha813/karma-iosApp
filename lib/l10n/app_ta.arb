@@ -333,7 +333,7 @@
   "chatTitle": "அரட்டை",
   "typeYourQuestionHint": "உங்கள் கேள்வியை தட்டச்சு செய்யவும்...",
   "paymentRequired": "கட்டணம் செலுத்த வேண்டும்",
-  "paymentRequiredMessage": "உங்கள் இலவச கேள்விகளைப் பயன்படுத்திவிட்டீர்கள். தொடர ₹50 செலுத்துங்கள்.",
+  "paymentRequiredMessage": "உங்கள் இலவச கேள்விகளைப் பயன்படுத்திவிட்டீர்கள். தொடர {amount} செலுத்தவும்.",
   "payNowButton": "இப்போதே பணம் செலுத்துங்கள்",
   "freeQuestionsRemaining": "{count} மீதமுள்ள இலவச கேள்விகள்",
   "paidQuestionsRemaining": "{count} மீதமுள்ள பணம் செலுத்திய கேள்விகள்",

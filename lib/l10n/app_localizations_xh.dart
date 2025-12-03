@@ -537,7 +537,7 @@ class AppLocalizationsXh extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Uyisebenzisile imibuzo yakho yasimahla. Hlawula R50 ukuze uqhubeke.';
+    return 'Uyisebenzisile imibuzo yakho yasimahla. Hlawula $amount ukuze uqhubeke.';
   }
 
   @override

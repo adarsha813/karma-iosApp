@@ -333,7 +333,7 @@
   "chatTitle": "Chat",
   "typeYourQuestionHint": "Schreift Är Fro an...",
   "paymentRequired": "Bezuelung erfuerderlech",
-  "paymentRequiredMessage": "Dir hutt Är gratis Froen benotzt. Bezuelt ₹50 fir weiderzemaachen.",
+  "paymentRequiredMessage": "Dir hutt Är gratis Froen benotzt. Bezuelt {amount} fir weiderzemaachen.",
   "payNowButton": "Bezuelt elo",
   "freeQuestionsRemaining": "{count} fräi Froen bleiwen",
   "paidQuestionsRemaining": "{count} bezuelte Froen bleiwen",

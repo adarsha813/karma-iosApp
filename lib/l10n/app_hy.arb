@@ -333,7 +333,7 @@
   "chatTitle": "Զրուցարան",
   "typeYourQuestionHint": "Մուտքագրեք ձեր հարցը...",
   "paymentRequired": "Վճարումը պարտադիր է",
-  "paymentRequiredMessage": "Դուք օգտագործել եք ձեր անվճար հարցերը։ Վճարեք ₹50՝ շարունակելու համար։",
+  "paymentRequiredMessage": "Դուք օգտագործել եք ձեր անվճար հարցերը։ Շարունակելու համար վճարեք {amount} համարին։",
   "payNowButton": "Վճարեք հիմա",
   "freeQuestionsRemaining": "{count} Մնացել են անվճար հարցեր",
   "paidQuestionsRemaining": "{count} վճարովի հարցեր են մնացել",
