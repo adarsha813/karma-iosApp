@@ -966,7 +966,7 @@ abstract class AppLocalizations {
   /// Description of company commitment
   ///
   /// In en, this message translates to:
-  /// **'We are committed to delivering the best astrology experience to our users.'**
+  /// **'At Karma, we help you uncover your true life path through the timeless wisdom of Vedic astrology. Every insight comes from real, experienced astrologers, carefully crafted based on your unique birth chart. From daily horoscopes to personalized guidance, Karma makes ancient knowledge accessible in over 100 languages.'**
   String get aboutCompanyDescription;
 
   /// Title for mission section
@@ -978,7 +978,7 @@ abstract class AppLocalizations {
   /// Description of company mission
   ///
   /// In en, this message translates to:
-  /// **'To provide accurate and personalized astrology insights to help users make informed decisions in their lives.'**
+  /// **'Our mission is simple: to provide authentic, human-led astrological guidance that empowers you to make confident, informed decisions. Every prediction and consultation reflects years of professional expertise, not automated algorithms.'**
   String get missionDescription;
 
   /// Title for vision section
@@ -990,7 +990,7 @@ abstract class AppLocalizations {
   /// Description of company vision
   ///
   /// In en, this message translates to:
-  /// **'To become the most trusted astrology platform, combining technology and ancient wisdom.'**
+  /// **'We strive to be the world’s most trusted platform for Vedic astrology, helping people everywhere understand themselves, their choices, and their life journey with clarity and confidence.'**
   String get visionDescription;
 
   /// Title for values section
@@ -1002,7 +1002,7 @@ abstract class AppLocalizations {
   /// Description of company values
   ///
   /// In en, this message translates to:
-  /// **'Integrity, Accuracy, User-Centric Design, and Continuous Innovation.'**
+  /// **'At Karma, we value authenticity, precision, and trust. We are committed to offering guidance that is not only accurate but also meaningful, helping you navigate life with insight and confidence.'**
   String get valuesDescription;
 
   /// Title for contact section
@@ -1891,6 +1891,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Switch to Dark'**
   String get switchToDark;
+
+  /// No description provided for @ourTeam.
+  ///
+  /// In en, this message translates to:
+  /// **'Our Team'**
+  String get ourTeam;
+
+  /// No description provided for @teamDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Our team of professional Vedic astrologers brings years of experience interpreting planetary influences and life patterns. Backed by a dedicated support and development team, Karma delivers a seamless, reliable, and global experience for every user.'**
+  String get teamDescription;
 }
 
 class _AppLocalizationsDelegate

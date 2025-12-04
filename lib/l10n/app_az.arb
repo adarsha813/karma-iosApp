@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Biz istifadəçilərimizə ən yaxşı astrologiya təcrübəsini çatdırmağa qərarlıyıq.",
+  "aboutCompanyDescription": "Karma-da biz sizə Vedik astrologiyasının sonsuz müdrikliyi vasitəsilə əsl həyat yolunuzu açmağa kömək edirik. Hər bir fikir unikal doğum xəritəniz əsasında diqqətlə hazırlanmış real, təcrübəli astroloqlardan gəlir. Gündəlik bürclərdən tutmuş fərdi təlimatlara qədər Karma qədim biliyi 100-dən çox dildə əlçatan edir.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "İstifadəçilərə həyatlarında əsaslandırılmış qərarlar qəbul etmələrinə kömək etmək üçün dəqiq və fərdiləşdirilmiş astrologiya anlayışlarını təmin etmək.",
+  "missionDescription": "Bizim missiyamız sadədir: sizə inamlı, məlumatlı qərarlar qəbul etmək imkanı verən orijinal, insan tərəfindən idarə olunan astroloji bələdçiliyi təmin etmək. Hər bir proqnoz və məsləhət avtomatlaşdırılmış alqoritmləri deyil, illərin peşəkar təcrübəsini əks etdirir.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Texnologiya və qədim hikməti birləşdirən ən etibarlı astrologiya platforması olmaq.",
+  "visionDescription": "Biz Vedik astrologiyası üçün dünyanın ən etibarlı platforması olmağa çalışırıq, hər yerdə insanlara özlərini, seçimlərini və həyat səyahətlərini aydın və inamla başa düşməyə kömək edirik.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Dürüstlük, Dəqiqlik, İstifadəçi Mərkəzli Dizayn və Davamlı İnnovasiya.",
+  "valuesDescription": "Karma-da biz orijinallığı, dəqiqliyi və etibarı qiymətləndiririk. Biz yalnız dəqiq deyil, həm də mənalı olan, həyatda fərasət və inamla hərəkət etməyinizə kömək edən rəhbərlik təklif etməyə sadiqik.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Mövzu Parametrləri",
   "lightThemeLabel": "İşıq",
   "darkThemeLabel": "Qaranlıq",
-  "systemThemeLabel": "Sistem"
+  "systemThemeLabel": "Sistem",
+  "ourTeam": "Bizim Komanda",
+  "teamDescription": "Peşəkar Vedik astroloqlarımızdan ibarət komandamız planetar təsirləri və həyat nümunələrini şərh edən illərin təcrübəsini gətirir. Xüsusi dəstək və inkişaf komandası tərəfindən dəstəklənən Karma, hər bir istifadəçi üçün qüsursuz, etibarlı və qlobal təcrübə təqdim edir."
 }

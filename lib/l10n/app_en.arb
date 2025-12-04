@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "We are committed to delivering the best astrology experience to our users.",
+  "aboutCompanyDescription": "At Karma, we help you uncover your true life path through the timeless wisdom of Vedic astrology. Every insight comes from real, experienced astrologers, carefully crafted based on your unique birth chart. From daily horoscopes to personalized guidance, Karma makes ancient knowledge accessible in over 100 languages.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "To provide accurate and personalized astrology insights to help users make informed decisions in their lives.",
+  "missionDescription": "Our mission is simple: to provide authentic, human-led astrological guidance that empowers you to make confident, informed decisions. Every prediction and consultation reflects years of professional expertise, not automated algorithms.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "To become the most trusted astrology platform, combining technology and ancient wisdom.",
+  "visionDescription": "We strive to be the world’s most trusted platform for Vedic astrology, helping people everywhere understand themselves, their choices, and their life journey with clarity and confidence.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Integrity, Accuracy, User-Centric Design, and Continuous Innovation.",
+  "valuesDescription": "At Karma, we value authenticity, precision, and trust. We are committed to offering guidance that is not only accurate but also meaningful, helping you navigate life with insight and confidence.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -451,5 +451,7 @@
   "systemThemeDarkDescription": "Using system dark theme",
   "systemThemeLightDescription": "Using system light theme",
   "switchToLight": "Switch to Light",
-  "switchToDark": "Switch to Dark"
+  "switchToDark": "Switch to Dark",
+  "ourTeam": "Our Team",
+  "teamDescription": "Our team of professional Vedic astrologers brings years of experience interpreting planetary influences and life patterns. Backed by a dedicated support and development team, Karma delivers a seamless, reliable, and global experience for every user."
 }

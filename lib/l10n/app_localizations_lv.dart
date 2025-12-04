@@ -372,28 +372,28 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Mēs esam apņēmušies sniegt vislabāko astroloģijas pieredzi mūsu lietotājiem.';
+      'Karma palīdz jums atklāt savu patieso dzīves ceļu, izmantojot Vēdu astroloģijas mūžīgo gudrību. Katra atziņa nāk no īstiem, pieredzējušiem astrologiem, rūpīgi izstrādāta, balstoties uz jūsu unikālo dzimšanas karti. Sākot ar ikdienas horoskopiem un beidzot ar personalizētu vadību, Karma padara senās zināšanas pieejamas vairāk nekā 100 valodās.';
 
   @override
   String get ourMission => 'Mūsu misija';
 
   @override
   String get missionDescription =>
-      'Sniegt precīzu un personalizētu astroloģijas ieskatu, lai palīdzētu lietotājiem pieņemt pārdomātus lēmumus savā dzīvē.';
+      'Mūsu misija ir vienkārša: sniegt autentisku, cilvēka vadītu astroloģisku vadību, kas dod jums iespēju pieņemt pārliecinātus un informētus lēmumus. Katra prognoze un konsultācija atspoguļo daudzu gadu profesionālu pieredzi, nevis automatizētus algoritmus.';
 
   @override
   String get ourVision => 'Mūsu vīzija';
 
   @override
   String get visionDescription =>
-      'Kļūt par visuzticamāko astroloģijas platformu, apvienojot tehnoloģijas un seno gudrību.';
+      'Mēs tiecamies kļūt par pasaulē uzticamāko Vēdiskās astroloģijas platformu, palīdzot cilvēkiem visā pasaulē skaidri un pārliecinoši izprast sevi, savas izvēles un dzīves ceļojumu.';
 
   @override
   String get ourValues => 'Mūsu vērtības';
 
   @override
   String get valuesDescription =>
-      'Godprātība, precizitāte, uz lietotāju orientēts dizains un nepārtrauktas inovācijas.';
+      'Uzņēmumā Karma mēs augstu vērtējam autentiskumu, precizitāti un uzticēšanos. Mēs esam apņēmušies sniegt norādījumus, kas ir ne tikai precīzi, bet arī jēgpilni, palīdzot jums orientēties dzīvē ar ieskatu un pārliecību.';
 
   @override
   String get contactUs => 'Sazinieties ar mums';
@@ -876,4 +876,11 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Mūsu komanda';
+
+  @override
+  String get teamDescription =>
+      'Mūsu profesionālo Vēdu astrologu komandai ir daudzu gadu pieredze planētu ietekmju un dzīves modeļu interpretēšanā. Ar īpašas atbalsta un izstrādes komandas atbalstu Karma nodrošina nevainojamu, uzticamu un globālu pieredzi ikvienam lietotājam.';
 }

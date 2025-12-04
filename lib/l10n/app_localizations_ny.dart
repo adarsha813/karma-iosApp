@@ -372,28 +372,28 @@ class AppLocalizationsNy extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Tadzipereka kupereka zabwino kwambiri zakuthambo kwa ogwiritsa ntchito.';
+      'Ku Karma, timakuthandizani kuvumbulutsa moyo wanu weniweni kudzera munzeru zosatha za kupenda nyenyezi kwa Vedic. Chidziwitso chilichonse chimachokera kwa openda nyenyezi enieni, odziwa zambiri, opangidwa mosamala kutengera tchati chanu chobadwa nacho chapadera. Kuyambira pa horoscope tsiku lililonse mpaka chitsogozo chamunthu, Karma imapangitsa chidziwitso chakale kupezeka m\'zilankhulo zoposa 100.';
 
   @override
   String get ourMission => 'Ntchito Yathu';
 
   @override
   String get missionDescription =>
-      'Kupereka zidziwitso zolondola komanso zokonda zakuthambo kuti zithandize ogwiritsa ntchito kupanga zisankho zodziwika bwino pamoyo wawo.';
+      'Ntchito yathu ndi yosavuta: kupereka chitsogozo chowona, chotsogozedwa ndi anthu cha zakuthambo chomwe chimakupatsani mphamvu kuti mupange zisankho molimba mtima komanso mozindikira. Kuneneratu kulikonse ndi kufunsira kumawonetsa zaka zaukatswiri, osati ma aligorivimu odzipangira okha.';
 
   @override
   String get ourVision => 'Masomphenya Athu';
 
   @override
   String get visionDescription =>
-      'Kuti mukhale nsanja yodalirika kwambiri yokhulupirira nyenyezi, kuphatikiza ukadaulo ndi nzeru zakale.';
+      'Timayesetsa kukhala nsanja yodalirika kwambiri padziko lonse lapansi yokhulupirira nyenyezi za Vedic, kuthandiza anthu kulikonse kuti adzimvetsetse okha, zosankha zawo, ndi ulendo wawo wamoyo momveka bwino komanso molimba mtima.';
 
   @override
   String get ourValues => 'Makhalidwe Athu';
 
   @override
   String get valuesDescription =>
-      'Kukhulupirika, Kulondola, Mapangidwe Ogwiritsa Ntchito Pakatikati, ndi Kupanga Kwatsopano Kopitilira.';
+      'Ku Karma, timayamikira kukhulupilika, kulondola, ndi kukhulupilika. Tadzipereka kukupatsani malangizo omwe si olondola komanso atanthauzo, okuthandizani kuyenda mozindikira komanso molimba mtima.';
 
   @override
   String get contactUs => 'Lumikizanani nafe';
@@ -882,4 +882,11 @@ class AppLocalizationsNy extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Team Yathu';
+
+  @override
+  String get teamDescription =>
+      'Gulu lathu la akatswiri openda nyenyezi a Vedic limabweretsa zaka zambiri zotanthauzira mapulaneti ndi machitidwe amoyo. Mothandizidwa ndi gulu lodzipatulira lothandizira ndi chitukuko, Karma imapereka chidziwitso chopanda msoko, chodalirika komanso chapadziko lonse lapansi kwa aliyense wogwiritsa ntchito.';
 }

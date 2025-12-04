@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Matou te tuuto atu i le tuʻuina atu o faʻamatalaga sili ona lelei o suʻesuʻega i a matou tagata faʻaoga.",
+  "aboutCompanyDescription": "I Karma, matou te fesoasoani ia te oe e faʻaalia lou ala moni o le olaga e ala i le poto le tumau o Vedic astrology. O fa'amatalaga uma e sau mai tagata su'esu'e fa'apitoa, fa'apitoa, e fa'atatau i lau siata fanau fa'apitoa. Mai su'esu'ega i aso ta'itasi e o'o atu i ta'iala fa'apitoa, ua fa'aavanoaina e Karma le poto anamua i le silia ma le 100 gagana.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Ina ia tu'uina atu fa'amatalaga sa'o ma fa'apitoa i fetu e fesoasoani ai i tagata fa'aoga e fai fa'ai'uga lelei io latou olaga.",
+  "missionDescription": "O la matou misiona e faigofie: ia tuʻuina atu taʻiala faʻapitoa, taʻitaʻia e tagata e faʻamalosia oe e faia faʻamatalaga mautinoa, faʻamaonia. O valo'aga ma fa'atalanoaga uma e atagia mai ai tausaga o tomai fa'apolofesa, ae le'o fa'autometi algorithms.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Ina ia avea ma faʻailoga faʻatauvaʻa sili ona faʻatuatuaina, tuʻufaʻatasia tekinolosi ma le poto anamua.",
+  "visionDescription": "Matou te taumafai e avea ma faʻavae sili ona faʻalagolago i le lalolagi mo Vedic astrology, fesoasoani i tagata i soʻo se mea ia malamalama ia i latou lava, a latou filifiliga, ma la latou malaga i le olaga ma le manino ma le mautinoa.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Fa'amaoni, Sa'o, Fuafuaga Fa'aoga-Fa'aoga, ma Fa'aauau Fa'afouga.",
+  "valuesDescription": "I Karma, matou te faʻatauaina le moni, saʻo, ma le faʻatuatuaina. Matou te tuuto atu i le ofoina atu o taʻiala e le gata ina saʻo ae aoga foi, e fesoasoani ia te oe e faʻatautaia ai le olaga ma le malamalama ma le mautinoa.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -333,7 +333,7 @@
   "chatTitle": "Talanoaga",
   "typeYourQuestionHint": "Tusi lau fesili...",
   "paymentRequired": "Totogi Manaomia",
-  "paymentRequiredMessage": "Ua e fa'aogaina au fesili maua fua. Totogi {amount} e fa'aauau ai.",
+  "paymentRequiredMessage": "Ua e fa'aogaina au fesili maua fua. Totogi {amount} e fa'aauau.",
   "payNowButton": "Totogi Nei",
   "freeQuestionsRemaining": "{count} fesili saoloto o totoe",
   "paidQuestionsRemaining": "{count} fesili totogi o totoe",
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Fa'atonu Autu",
   "lightThemeLabel": "Malamalama",
   "darkThemeLabel": "Pogisa",
-  "systemThemeLabel": "Faiga"
+  "systemThemeLabel": "Faiga",
+  "ourTeam": "La matou Au",
+  "teamDescription": "O la matou 'au o tagata su'esu'e Vedic fa'apolofesa latou te aumaia le tele o tausaga o le poto masani i le fa'amatalaina o aafiaga o paneta ma fa'asologa o le olaga. Faʻalagolago e se lagolago faʻapitoa ma atinaʻe au, Karma e tuʻuina atu se poto masani, faʻatuatuaina, ma le lalolagi mo tagata uma."
 }

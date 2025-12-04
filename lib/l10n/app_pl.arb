@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Zależy nam na dostarczaniu naszym użytkownikom najlepszych wrażeń astrologicznych.",
+  "aboutCompanyDescription": "W Karma pomagamy Ci odkryć Twoją prawdziwą ścieżkę życiową dzięki ponadczasowej mądrości astrologii wedyjskiej. Każda wiedza pochodzi od prawdziwych, doświadczonych astrologów i jest starannie opracowana w oparciu o Twój unikalny horoskop urodzeniowy. Od codziennych horoskopów po spersonalizowane wskazówki, Karma udostępnia starożytną wiedzę w ponad 100 językach.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Aby zapewnić dokładne i spersonalizowane informacje astrologiczne, które pomogą użytkownikom podejmować świadome decyzje w życiu.",
+  "missionDescription": "Nasza misja jest prosta: zapewniać autentyczne, ludzkie wskazówki astrologiczne, które pomogą Ci podejmować świadome i przemyślane decyzje. Każda prognoza i konsultacja odzwierciedlają wieloletnie doświadczenie zawodowe, a nie zautomatyzowane algorytmy.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Stać się najbardziej zaufaną platformą astrologiczną, łączącą technologię i starożytną mądrość.",
+  "visionDescription": "Dążymy do tego, by stać się najbardziej zaufaną na świecie platformą poświęconą astrologii wedyjskiej, pomagając ludziom na całym świecie zrozumieć siebie, swoje wybory i swoją drogę życiową z jasnością i pewnością siebie.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Integralność, dokładność, projektowanie zorientowane na użytkownika i ciągła innowacyjność.",
+  "valuesDescription": "W Karma cenimy autentyczność, precyzję i zaufanie. Zależy nam na tym, aby oferować wskazówki, które są nie tylko trafne, ale i wartościowe, pomagając Ci poruszać się po życiu z wnikliwością i pewnością siebie.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Ustawienia motywu",
   "lightThemeLabel": "Światło",
   "darkThemeLabel": "Ciemny",
-  "systemThemeLabel": "System"
+  "systemThemeLabel": "System",
+  "ourTeam": "Nasz zespół",
+  "teamDescription": "Nasz zespół profesjonalnych astrologów wedyjskich posiada wieloletnie doświadczenie w interpretowaniu wpływów planetarnych i wzorców życiowych. Dzięki wsparciu dedykowanego zespołu wsparcia i rozwoju, Karma zapewnia każdemu użytkownikowi płynne, niezawodne i globalne doświadczenie."
 }

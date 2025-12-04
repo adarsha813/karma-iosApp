@@ -374,28 +374,28 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Zależy nam na dostarczaniu naszym użytkownikom najlepszych wrażeń astrologicznych.';
+      'W Karma pomagamy Ci odkryć Twoją prawdziwą ścieżkę życiową dzięki ponadczasowej mądrości astrologii wedyjskiej. Każda wiedza pochodzi od prawdziwych, doświadczonych astrologów i jest starannie opracowana w oparciu o Twój unikalny horoskop urodzeniowy. Od codziennych horoskopów po spersonalizowane wskazówki, Karma udostępnia starożytną wiedzę w ponad 100 językach.';
 
   @override
   String get ourMission => 'Nasza misja';
 
   @override
   String get missionDescription =>
-      'Aby zapewnić dokładne i spersonalizowane informacje astrologiczne, które pomogą użytkownikom podejmować świadome decyzje w życiu.';
+      'Nasza misja jest prosta: zapewniać autentyczne, ludzkie wskazówki astrologiczne, które pomogą Ci podejmować świadome i przemyślane decyzje. Każda prognoza i konsultacja odzwierciedlają wieloletnie doświadczenie zawodowe, a nie zautomatyzowane algorytmy.';
 
   @override
   String get ourVision => 'Nasza wizja';
 
   @override
   String get visionDescription =>
-      'Stać się najbardziej zaufaną platformą astrologiczną, łączącą technologię i starożytną mądrość.';
+      'Dążymy do tego, by stać się najbardziej zaufaną na świecie platformą poświęconą astrologii wedyjskiej, pomagając ludziom na całym świecie zrozumieć siebie, swoje wybory i swoją drogę życiową z jasnością i pewnością siebie.';
 
   @override
   String get ourValues => 'Nasze wartości';
 
   @override
   String get valuesDescription =>
-      'Integralność, dokładność, projektowanie zorientowane na użytkownika i ciągła innowacyjność.';
+      'W Karma cenimy autentyczność, precyzję i zaufanie. Zależy nam na tym, aby oferować wskazówki, które są nie tylko trafne, ale i wartościowe, pomagając Ci poruszać się po życiu z wnikliwością i pewnością siebie.';
 
   @override
   String get contactUs => 'Skontaktuj się z nami';
@@ -883,4 +883,11 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Nasz zespół';
+
+  @override
+  String get teamDescription =>
+      'Nasz zespół profesjonalnych astrologów wedyjskich posiada wieloletnie doświadczenie w interpretowaniu wpływów planetarnych i wzorców życiowych. Dzięki wsparciu dedykowanego zespołu wsparcia i rozwoju, Karma zapewnia każdemu użytkownikowi płynne, niezawodne i globalne doświadczenie.';
 }

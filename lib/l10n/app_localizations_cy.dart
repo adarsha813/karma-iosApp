@@ -375,28 +375,28 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Rydym wedi ymrwymo i ddarparu\'r profiad astroleg gorau i\'n defnyddwyr.';
+      'Yn Karma, rydym yn eich helpu i ddatgelu llwybr eich bywyd go iawn trwy ddoethineb oesol astroleg Vedic. Daw pob mewnwelediad gan astrolegwyr go iawn, profiadol, wedi\'u crefftio\'n ofalus yn seiliedig ar eich siart geni unigryw. O horosgopau dyddiol i ganllawiau personol, mae Karma yn gwneud gwybodaeth hynafol yn hygyrch mewn dros 100 o ieithoedd.';
 
   @override
   String get ourMission => 'Ein Cenhadaeth';
 
   @override
   String get missionDescription =>
-      'I ddarparu mewnwelediadau cywir a phersonol ar astroleg i helpu defnyddwyr i wneud penderfyniadau gwybodus yn eu bywydau.';
+      'Mae ein cenhadaeth yn syml: darparu canllawiau astrolegol dilys, dan arweiniad dynol, sy\'n eich grymuso i wneud penderfyniadau hyderus a gwybodus. Mae pob rhagfynegiad ac ymgynghoriad yn adlewyrchu blynyddoedd o arbenigedd proffesiynol, nid algorithmau awtomataidd.';
 
   @override
   String get ourVision => 'Ein Gweledigaeth';
 
   @override
   String get visionDescription =>
-      'I ddod y platfform astroleg mwyaf dibynadwy, gan gyfuno technoleg a doethineb hynafol.';
+      'Rydym yn ymdrechu i fod y platfform mwyaf dibynadwy yn y byd ar gyfer astroleg Vedaidd, gan helpu pobl ym mhobman i ddeall eu hunain, eu dewisiadau, a\'u taith bywyd gydag eglurder a hyder.';
 
   @override
   String get ourValues => 'Ein Gwerthoedd';
 
   @override
   String get valuesDescription =>
-      'Uniondeb, Cywirdeb, Dylunio sy\'n Canolbwyntio ar y Defnyddiwr, ac Arloesi Parhaus.';
+      'Yn Karma, rydym yn gwerthfawrogi dilysrwydd, cywirdeb ac ymddiriedaeth. Rydym wedi ymrwymo i gynnig arweiniad sydd nid yn unig yn gywir ond hefyd yn ystyrlon, gan eich helpu i lywio bywyd gyda mewnwelediad a hyder.';
 
   @override
   String get contactUs => 'Cysylltwch â Ni';
@@ -882,4 +882,11 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Ein Tîm';
+
+  @override
+  String get teamDescription =>
+      'Mae ein tîm o astrolegwyr Vedic proffesiynol yn dod â blynyddoedd o brofiad o ddehongli dylanwadau planedol a phatrymau bywyd. Gyda chefnogaeth tîm cymorth a datblygu ymroddedig, mae Karma yn darparu profiad di-dor, dibynadwy a byd-eang i bob defnyddiwr.';
 }

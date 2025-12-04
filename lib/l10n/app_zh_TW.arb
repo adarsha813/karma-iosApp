@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "我們致力於為使用者提供最佳的占星體驗。",
+  "aboutCompanyDescription": "在Karma，我們運用吠陀占星術的永恆智慧，幫助您發現真正的人生道路。每一條洞見都出自經驗豐富的專業占星師之手，並根據您獨一無二的出生星盤精心打造。從每日運勢到個人化指導，Karma以超過100種語言，讓您輕鬆掌握古老的智慧。",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "提供準確、個人化的占星見解，幫助使用者在生活中做出明智的決定。",
+  "missionDescription": "我們的使命很簡單：提供真實可靠、以人為本的占星指導，幫助您做出自信而明智的決定。每項預測和諮詢都凝聚了多年的專業經驗，而非自動化演算法。",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "成為最值得信賴的占星平台，將科技與古代智慧結合。",
+  "visionDescription": "我們致力於成為全球最值得信賴的吠陀占星術平台，幫助世界各地的人們清晰、自信地了解自己、自己的選擇和自己的人生旅程。",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "誠信、準確、以使用者為中心的設計、持續創新。",
+  "valuesDescription": "在Karma，我們珍惜真實性、精準性和信任。我們致力於提供準確且有意義的指導，幫助您以洞察力和自信駕馭人生。",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -333,7 +333,7 @@
   "chatTitle": "聊天",
   "typeYourQuestionHint": "請輸入您的問題…",
   "paymentRequired": "需支付款項",
-  "paymentRequiredMessage": "您已用完免費提問次數。支付 50 盧比即可繼續。",
+  "paymentRequiredMessage": "您已用完免費提問次數。支付 {amount} 可繼續提問。",
   "payNowButton": "立即支付",
   "freeQuestionsRemaining": "{count} 剩餘免費問題數",
   "paidQuestionsRemaining": "{count} 剩餘付費問題數",
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "主題設定",
   "lightThemeLabel": "光",
   "darkThemeLabel": "黑暗的",
-  "systemThemeLabel": "系統"
+  "systemThemeLabel": "系統",
+  "ourTeam": "我們的團隊",
+  "teamDescription": "我們專業的吠陀占星師團隊擁有多年解讀行星影響力和人生軌蹟的經驗。在專業支援和開發團隊的鼎力支援下，Karma 為每位使用者提供流暢、可靠且全球化的使用體驗。"
 }

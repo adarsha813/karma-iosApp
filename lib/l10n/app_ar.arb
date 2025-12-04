@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "نحن ملتزمون بتقديم أفضل تجربة في علم التنجيم لمستخدمينا.",
+  "aboutCompanyDescription": "في كارما، نساعدك على اكتشاف مسار حياتك الحقيقي من خلال الحكمة الخالدة لعلم التنجيم الفيدي. كل معلومة تأتي من منجمين حقيقيين ذوي خبرة، مصممة بعناية بناءً على برج ميلادك الفريد. من الأبراج اليومية إلى التوجيه الشخصي، تُتيح كارما المعرفة القديمة بأكثر من 100 لغة.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "توفير رؤى فلكية دقيقة ومخصصة لمساعدة المستخدمين على اتخاذ قرارات مستنيرة في حياتهم.",
+  "missionDescription": "مهمتنا بسيطة: تقديم إرشاد فلكي موثوق، بقيادة بشرية، يُمكّنك من اتخاذ قرارات مدروسة وواثقة. كل تنبؤ واستشارات تعكس سنوات من الخبرة المهنية، لا خوارزميات آلية.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "أن نصبح منصة علم التنجيم الأكثر ثقة، من خلال الجمع بين التكنولوجيا والحكمة القديمة.",
+  "visionDescription": "نحن نسعى جاهدين لنكون المنصة الأكثر ثقة في العالم لعلم التنجيم الفيدي، ونساعد الناس في كل مكان على فهم أنفسهم وخياراتهم ورحلة حياتهم بوضوح وثقة.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "النزاهة والدقة والتصميم الموجه نحو المستخدم والابتكار المستمر.",
+  "valuesDescription": "في كارما، نُقدّر الأصالة والدقة والثقة. نلتزم بتقديم إرشادات دقيقة وذات معنى، تُساعدكم على خوض غمار الحياة ببصيرة وثقة.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "إعدادات السمة",
   "lightThemeLabel": "ضوء",
   "darkThemeLabel": "مظلم",
-  "systemThemeLabel": "نظام"
+  "systemThemeLabel": "نظام",
+  "ourTeam": "فريقنا",
+  "teamDescription": "يتمتع فريقنا من المنجمين الفيديين المحترفين بسنوات من الخبرة في تفسير تأثيرات الكواكب وأنماط الحياة. بدعم من فريق دعم وتطوير متخصص، تقدم كارما تجربة سلسة وموثوقة وعالمية لكل مستخدم."
 }

@@ -370,28 +370,28 @@ class AppLocalizationsRw extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Twiyemeje kugeza uburambe bwiza bw\'inyenyeri kubakoresha.';
+      'Kuri Karma, turagufasha gutahura inzira yawe yubuzima nyayo binyuze mubwenge butajegajega bwinyenyeri Vedic. Ubushishozi bwose buturuka mubyukuri, inyenyeri zifite ubunararibonye, zakozwe neza ukurikije imbonerahamwe yawe y\'amavuko idasanzwe. Kuva kuri horoscopes ya buri munsi kugeza ku buyobozi bwihariye, Karma ituma ubumenyi bwa kera bugera mu ndimi zirenga 100.';
 
   @override
   String get ourMission => 'Inshingano zacu';
 
   @override
   String get missionDescription =>
-      'Gutanga inyenyeri nyazo zo kuraguza inyenyeri zifasha abakoresha gufata ibyemezo mubuzima bwabo.';
+      'Inshingano yacu iroroshye: gutanga ukuri kwukuri, kayobowe nabantu kuraguza inyenyeri biguha imbaraga zo gufata ibyemezo byizewe, byuzuye. Buri guhanura no kugisha inama byerekana imyaka yubuhanga bwumwuga, ntabwo algorithms yikora.';
 
   @override
   String get ourVision => 'Icyerekezo cyacu';
 
   @override
   String get visionDescription =>
-      'Kugirango ube urubuga rwizewe rwinyenyeri, ruhuza ikoranabuhanga nubwenge bwa kera.';
+      'Duharanira kuba urubuga rwizewe kwisi kwisi kuraguza inyenyeri za Vedic, dufasha abantu aho bari hose kwiyumvisha ubwabo, amahitamo yabo, nurugendo rwubuzima bwabo bisobanutse kandi bizeye.';
 
   @override
   String get ourValues => 'Indangagaciro';
 
   @override
   String get valuesDescription =>
-      'Ubunyangamugayo, Ukuri, Umukoresha-Hagati Igishushanyo, hamwe no guhanga udushya.';
+      'Kuri Karma, duha agaciro ukuri, neza, no kwizera. Twiyemeje gutanga ubuyobozi butari ukuri gusa ariko kandi bufite ireme, bugufasha kuyobora ubuzima ufite ubushishozi nicyizere.';
 
   @override
   String get contactUs => 'Twandikire';
@@ -533,7 +533,7 @@ class AppLocalizationsRw extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Wakoresheje ibibazo byubusa. Kwishura ₹ 50 kugirango ukomeze.';
+    return 'Wakoresheje ibibazo byubusa. Kwishura $amount kugirango ukomeze.';
   }
 
   @override
@@ -874,4 +874,11 @@ class AppLocalizationsRw extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Ikipe yacu';
+
+  @override
+  String get teamDescription =>
+      'Itsinda ryacu ryabahanga mu bumenyi bw\'inyenyeri Vedic bazana uburambe bwimyaka yo gusobanura ingaruka zimibumbe nubuzima. Dushyigikiwe nitsinda ryabigenewe hamwe nitsinda ryiterambere, Karma atanga uburambe, bwizewe, kandi kwisi yose kuri buri mukoresha.';
 }

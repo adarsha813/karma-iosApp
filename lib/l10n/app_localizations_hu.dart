@@ -373,28 +373,28 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Elkötelezettek vagyunk amellett, hogy a legjobb asztrológiai élményt nyújtsuk felhasználóink számára.';
+      'A Karmánál segítünk felfedezni az igazi életutad a védikus asztrológia időtlen bölcsességén keresztül. Minden meglátás valódi, tapasztalt asztrológusoktól származik, gondosan kidolgozva az egyedi születési képleted alapján. A napi horoszkópoktól a személyre szabott útmutatásig a Karma több mint 100 nyelven teszi elérhetővé az ősi tudást.';
 
   @override
   String get ourMission => 'Küldetésünk';
 
   @override
   String get missionDescription =>
-      'Pontos és személyre szabott asztrológiai információk nyújtása, amelyek segítenek a felhasználóknak megalapozott döntéseket hozni az életükben.';
+      'Küldetésünk egyszerű: hiteles, ember által vezetett asztrológiai útmutatást nyújtani, amely képessé tesz arra, hogy magabiztos, megalapozott döntéseket hozzon. Minden jóslat és konzultáció több éves szakmai tapasztalatot tükröz, nem pedig automatizált algoritmusokat.';
 
   @override
   String get ourVision => 'Víziónk';
 
   @override
   String get visionDescription =>
-      'A legmegbízhatóbb asztrológiai platformmá válni, ötvözve a technológiát és az ősi bölcsességet.';
+      'Arra törekszünk, hogy a világ legmegbízhatóbb védikus asztrológiai platformja legyünk, segítve az embereket mindenhol abban, hogy tisztán és magabiztosan megértsék önmagukat, választásaikat és életútjukat.';
 
   @override
   String get ourValues => 'Értékeink';
 
   @override
   String get valuesDescription =>
-      'Integritás, pontosság, felhasználóközpontú tervezés és folyamatos innováció.';
+      'A Karmánál nagyra értékeljük a hitelességet, a precizitást és a bizalmat. Elkötelezettek vagyunk amellett, hogy olyan útmutatást nyújtsunk, amely nemcsak pontos, hanem értelmes is, segítve Önt abban, hogy betekintéssel és magabiztosan navigáljon az életben.';
 
   @override
   String get contactUs => 'Kapcsolat';
@@ -882,4 +882,11 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Csapatunk';
+
+  @override
+  String get teamDescription =>
+      'Professzionális védikus asztrológusokból álló csapatunk több éves tapasztalattal rendelkezik a bolygóhatások és az életminták értelmezésében. Elkötelezett támogató és fejlesztő csapatunk támogatásával a Karma zökkenőmentes, megbízható és globális élményt nyújt minden felhasználó számára.';
 }

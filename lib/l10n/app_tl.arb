@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Nakatuon kami sa paghahatid ng pinakamahusay na karanasan sa astrolohiya sa aming mga user.",
+  "aboutCompanyDescription": "Sa Karma, tinutulungan ka naming matuklasan ang iyong tunay na landas sa buhay sa pamamagitan ng walang hanggang karunungan ng Vedic na astrolohiya. Ang bawat insight ay nagmumula sa mga tunay, may karanasang mga astrologo, na maingat na ginawa batay sa iyong natatanging birth chart. Mula sa pang-araw-araw na horoscope hanggang sa personalized na patnubay, ginagawang accessible ng Karma ang sinaunang kaalaman sa mahigit 100 wika.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Upang magbigay ng tumpak at personalized na mga insight sa astrolohiya upang matulungan ang mga user na gumawa ng matalinong mga pagpapasya sa kanilang buhay.",
+  "missionDescription": "Ang aming misyon ay simple: upang magbigay ng tunay, pinamumunuan ng tao na patnubay sa astrolohiya na nagbibigay-kapangyarihan sa iyo na gumawa ng tiwala at matalinong mga desisyon. Ang bawat hula at konsultasyon ay sumasalamin sa mga taon ng propesyonal na kadalubhasaan, hindi mga awtomatikong algorithm.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Upang maging pinakapinagkakatiwalaang platform ng astrolohiya, pagsasama-sama ng teknolohiya at sinaunang karunungan.",
+  "visionDescription": "Nagsusumikap kaming maging pinakapinagkakatiwalaang plataporma sa mundo para sa Vedic na astrolohiya, na tinutulungan ang mga tao sa lahat ng dako na maunawaan ang kanilang sarili, ang kanilang mga pagpipilian, at ang kanilang paglalakbay sa buhay nang may kalinawan at kumpiyansa.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Integridad, Katumpakan, Disenyong Nakasentro sa Gumagamit, at Patuloy na Pagbabago.",
+  "valuesDescription": "Sa Karma, pinahahalagahan namin ang pagiging tunay, katumpakan, at tiwala. Nakatuon kami sa pagbibigay ng patnubay na hindi lamang tumpak ngunit makabuluhan din, na tumutulong sa iyong i-navigate ang buhay nang may pananaw at kumpiyansa.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Mga Setting ng Tema",
   "lightThemeLabel": "Liwanag",
   "darkThemeLabel": "Madilim",
-  "systemThemeLabel": "Sistema"
+  "systemThemeLabel": "Sistema",
+  "ourTeam": "Ang aming Team",
+  "teamDescription": "Ang aming pangkat ng mga propesyonal na Vedic astrologo ay nagdadala ng mga taon ng karanasan sa pagbibigay kahulugan sa mga impluwensya ng planeta at mga pattern ng buhay. Na-back sa pamamagitan ng isang dedikadong suporta at development team, ang Karma ay naghahatid ng tuluy-tuloy, maaasahan, at pandaigdigang karanasan para sa bawat user."
 }

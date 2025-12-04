@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Ni celas liveri la plej bonan astrologian sperton al niaj uzantoj.",
+  "aboutCompanyDescription": "Ĉe Karma, ni helpas vin malkovri vian veran vivvojon per la sentempa saĝo de veda astrologio. Ĉiu kompreno venas de realaj, spertaj astrologoj, zorge kreitaj surbaze de via unika naskiĝa diagramo. De ĉiutagaj horoskopoj ĝis personigita gvido, Karma igas antikvan scion alirebla en pli ol 100 lingvoj.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Provizi precizajn kaj personigitajn astrologiajn komprenojn por helpi uzantojn fari informitajn decidojn en siaj vivoj.",
+  "missionDescription": "Nia misio estas simpla: provizi aŭtentan, hom-gvidatan astrologian gvidadon, kiu rajtigas vin fari memfidajn kaj informitajn decidojn. Ĉiu antaŭdiro kaj konsulto reflektas jarojn da profesia sperto, ne aŭtomatajn algoritmojn.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Fariĝi la plej fidinda astrologia platformo, kombinante teknologion kaj antikvan saĝon.",
+  "visionDescription": "Ni strebas esti la plej fidinda platformo en la mondo por veda astrologio, helpante homojn ĉie kompreni sin mem, siajn elektojn kaj sian vivvojaĝon kun klareco kaj konfido.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Integreco, Precizeco, Uzanto-Centra Dezajno, kaj Kontinua Novigado.",
+  "valuesDescription": "Ĉe Karma, ni valoras aŭtentecon, precizecon kaj fidon. Ni celas oferti gvidadon, kiu estas ne nur ĝusta sed ankaŭ senchava, helpante vin navigi la vivon kun kompreno kaj konfido.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Temaj Agordoj",
   "lightThemeLabel": "Lumo",
   "darkThemeLabel": "Malluma",
-  "systemThemeLabel": "Sistemo"
+  "systemThemeLabel": "Sistemo",
+  "ourTeam": "Nia Teamo",
+  "teamDescription": "Nia teamo de profesiaj vedaj astrologoj havas jarojn da sperto en interpretado de planedaj influoj kaj vivpadronoj. Subtenata de dediĉita subtena kaj evoluiga teamo, Karma liveras senjuntan, fidindan kaj tutmondan sperton por ĉiu uzanto."
 }

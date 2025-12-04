@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Esame įsipareigoję savo vartotojams teikti geriausią astrologijos patirtį.",
+  "aboutCompanyDescription": "„Karma“ padeda jums atrasti tikrąjį gyvenimo kelią, pasitelkdami nesenstančią Vedų astrologijos išmintį. Kiekviena įžvalga ateina iš tikrų, patyrusių astrologų, kruopščiai parengta remiantis jūsų unikalia gimimo diagrama. Nuo kasdienių horoskopų iki asmeninių patarimų, „Karma“ senovės žinias pateikia daugiau nei 100 kalbų.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Teikti tikslias ir suasmenintas astrologijos įžvalgas, kurios padėtų vartotojams priimti pagrįstus sprendimus savo gyvenime.",
+  "missionDescription": "Mūsų misija paprasta: teikti autentišką, žmogaus vadovaujamą astrologinį vadovavimą, kuris įgalintų jus priimti užtikrintus, pagrįstus sprendimus. Kiekviena prognozė ir konsultacija atspindi ilgametę profesinę patirtį, o ne automatizuotus algoritmus.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Tapti patikimiausia astrologijos platforma, apjungiančia technologijas ir senovės išmintį.",
+  "visionDescription": "Siekiame būti patikimiausia Vedų astrologijos platforma pasaulyje, padedančia žmonėms visame pasaulyje aiškiai ir užtikrintai suprasti save, savo pasirinkimus ir gyvenimo kelionę.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Sąžiningumas, tikslumas, į vartotoją orientuotas dizainas ir nuolatinis inovacijų diegimas.",
+  "valuesDescription": "„Karma“ vertiname autentiškumą, tikslumą ir pasitikėjimą. Esame įsipareigoję teikti ne tik tikslius, bet ir prasmingus patarimus, padėsiančius jums gyventi įžvalgiai ir užtikrintai.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Temos nustatymai",
   "lightThemeLabel": "Šviesa",
   "darkThemeLabel": "Tamsu",
-  "systemThemeLabel": "Sistema"
+  "systemThemeLabel": "Sistema",
+  "ourTeam": "Mūsų komanda",
+  "teamDescription": "Mūsų profesionalių Vedų astrologų komanda turi ilgametę patirtį interpretuojant planetų įtaką ir gyvenimo modelius. Palaikoma atsidavusios palaikymo ir kūrimo komandos, „Karma“ kiekvienam vartotojui teikia sklandžią, patikimą ir globalią patirtį."
 }

@@ -374,28 +374,28 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Nakatuon kami sa paghahatid ng pinakamahusay na karanasan sa astrolohiya sa aming mga user.';
+      'Sa Karma, tinutulungan ka naming matuklasan ang iyong tunay na landas sa buhay sa pamamagitan ng walang hanggang karunungan ng Vedic na astrolohiya. Ang bawat insight ay nagmumula sa mga tunay, may karanasang mga astrologo, na maingat na ginawa batay sa iyong natatanging birth chart. Mula sa pang-araw-araw na horoscope hanggang sa personalized na patnubay, ginagawang accessible ng Karma ang sinaunang kaalaman sa mahigit 100 wika.';
 
   @override
   String get ourMission => 'Ang Aming Misyon';
 
   @override
   String get missionDescription =>
-      'Upang magbigay ng tumpak at personalized na mga insight sa astrolohiya upang matulungan ang mga user na gumawa ng matalinong mga pagpapasya sa kanilang buhay.';
+      'Ang aming misyon ay simple: upang magbigay ng tunay, pinamumunuan ng tao na patnubay sa astrolohiya na nagbibigay-kapangyarihan sa iyo na gumawa ng tiwala at matalinong mga desisyon. Ang bawat hula at konsultasyon ay sumasalamin sa mga taon ng propesyonal na kadalubhasaan, hindi mga awtomatikong algorithm.';
 
   @override
   String get ourVision => 'Ang Ating Pananaw';
 
   @override
   String get visionDescription =>
-      'Upang maging pinakapinagkakatiwalaang platform ng astrolohiya, pagsasama-sama ng teknolohiya at sinaunang karunungan.';
+      'Nagsusumikap kaming maging pinakapinagkakatiwalaang plataporma sa mundo para sa Vedic na astrolohiya, na tinutulungan ang mga tao sa lahat ng dako na maunawaan ang kanilang sarili, ang kanilang mga pagpipilian, at ang kanilang paglalakbay sa buhay nang may kalinawan at kumpiyansa.';
 
   @override
   String get ourValues => 'Ang aming mga Halaga';
 
   @override
   String get valuesDescription =>
-      'Integridad, Katumpakan, Disenyong Nakasentro sa Gumagamit, at Patuloy na Pagbabago.';
+      'Sa Karma, pinahahalagahan namin ang pagiging tunay, katumpakan, at tiwala. Nakatuon kami sa pagbibigay ng patnubay na hindi lamang tumpak ngunit makabuluhan din, na tumutulong sa iyong i-navigate ang buhay nang may pananaw at kumpiyansa.';
 
   @override
   String get contactUs => 'Makipag-ugnayan sa Amin';
@@ -884,4 +884,11 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Ang aming Team';
+
+  @override
+  String get teamDescription =>
+      'Ang aming pangkat ng mga propesyonal na Vedic astrologo ay nagdadala ng mga taon ng karanasan sa pagbibigay kahulugan sa mga impluwensya ng planeta at mga pattern ng buhay. Na-back sa pamamagitan ng isang dedikadong suporta at development team, ang Karma ay naghahatid ng tuluy-tuloy, maaasahan, at pandaigdigang karanasan para sa bawat user.';
 }

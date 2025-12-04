@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "اسان پنهنجي استعمال ڪندڙن کي بهترين نجومي تجربو پهچائڻ لاءِ پرعزم آهيون.",
+  "aboutCompanyDescription": "ڪرما ۾، اسين توهان جي مدد ڪريون ٿا توهان جي حقيقي زندگي جي رستي کي ويدڪ نجومي جي لازوال حڪمت ذريعي دريافت ڪرڻ ۾. هر بصيرت حقيقي، تجربيڪار نجومي کان ايندي آهي، احتياط سان توهان جي منفرد پيدائش جي چارٽ جي بنياد تي تيار ڪئي وئي آهي. روزاني زائچن کان وٺي ذاتي هدايت تائين، ڪرما قديم علم کي 100 کان وڌيڪ ٻولين ۾ رسائي لائق بڻائي ٿو.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "استعمال ڪندڙن کي پنهنجي زندگي ۾ باخبر فيصلا ڪرڻ ۾ مدد ڏيڻ لاءِ صحيح ۽ ذاتي علم نجوم جي بصيرت فراهم ڪرڻ لاءِ.",
+  "missionDescription": "اسان جو مشن سادو آهي: مستند، انساني اڳواڻي ۾ نجومي رهنمائي فراهم ڪرڻ جيڪا توهان کي اعتماد ۽ باخبر فيصلا ڪرڻ جي طاقت ڏئي ٿي. هر اڳڪٿي ۽ صلاح مشوري سالن جي پيشه ورانه مهارت کي ظاهر ڪري ٿي، نه ته خودڪار الگورتھم.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "ٽيڪنالاجي ۽ قديم حڪمت کي گڏ ڪندي، سڀ کان وڌيڪ قابل اعتماد نجومي پليٽ فارم بڻجڻ لاءِ.",
+  "visionDescription": "اسين ويدڪ علم نجوم لاءِ دنيا جو سڀ کان وڌيڪ قابل اعتماد پليٽ فارم بڻجڻ جي ڪوشش ڪريون ٿا، هر هنڌ ماڻهن کي پاڻ کي، انهن جي پسندن کي، ۽ انهن جي زندگي جي سفر کي وضاحت ۽ اعتماد سان سمجهڻ ۾ مدد ڪريون ٿا.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "سالميت، درستگي، استعمال ڪندڙ-مرڪزي ڊيزائن، ۽ مسلسل جدت.",
+  "valuesDescription": "ڪرما ۾، اسان صداقت، درستگي، ۽ اعتماد جي قدر ڪريون ٿا. اسان اهڙي رهنمائي پيش ڪرڻ لاءِ پرعزم آهيون جيڪا نه رڳو صحيح هجي پر بامعني پڻ هجي، جيڪا توهان کي بصيرت ۽ اعتماد سان زندگي گذارڻ ۾ مدد ڪندي.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "ٿيم سيٽنگون",
   "lightThemeLabel": "روشني",
   "darkThemeLabel": "اونداهو",
-  "systemThemeLabel": "سسٽم"
+  "systemThemeLabel": "سسٽم",
+  "ourTeam": "اسان جي ٽيم",
+  "teamDescription": "اسان جي پيشيور ويدڪ نجومي جي ٽيم وٽ سيارن جي اثرن ۽ زندگي جي نمونن جي تشريح ڪرڻ جو سالن جو تجربو آهي. هڪ وقف سپورٽ ۽ ڊولپمينٽ ٽيم جي مدد سان، ڪرما هر استعمال ڪندڙ لاءِ هڪ بيحد، قابل اعتماد، ۽ عالمي تجربو فراهم ڪري ٿو."
 }

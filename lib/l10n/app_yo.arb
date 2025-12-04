@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "A ti pinnu lati jiṣẹ iriri airawọ ti o dara julọ si awọn olumulo wa.",
+  "aboutCompanyDescription": "Ni Karma, a ṣe iranlọwọ fun ọ lati ṣii ọna igbesi aye otitọ rẹ nipasẹ ọgbọn ailakoko ti Afirawọ Vediki. Gbogbo oye wa lati ojulowo, awọn awòràwọ ti o ni iriri, ti a ṣe ni iṣọra ti o da lori apẹrẹ ibimọ alailẹgbẹ rẹ. Lati awọn horoscopes lojoojumọ si itọsọna ti ara ẹni, Karma jẹ ki imọ atijọ wa ni iraye si ni awọn ede ti o ju 100 lọ.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Lati pese awọn oye awòràwọ deede ati ti ara ẹni lati ṣe iranlọwọ fun awọn olumulo lati ṣe awọn ipinnu alaye ni igbesi aye wọn.",
+  "missionDescription": "Iṣẹ apinfunni wa rọrun: lati pese ojulowo, itọsọna astrological ti eniyan darí ti o fun ọ ni agbara lati ṣe igboya, awọn ipinnu alaye. Gbogbo asọtẹlẹ ati ijumọsọrọ ṣe afihan awọn ọdun ti oye alamọdaju, kii ṣe awọn algoridimu adaṣe.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Lati di pẹpẹ awòràwọ ti o ni igbẹkẹle julọ, apapọ imọ-ẹrọ ati ọgbọn atijọ.",
+  "visionDescription": "A ngbiyanju lati jẹ pẹpẹ ti o ni igbẹkẹle julọ ni agbaye fun irawọ Vediki, ṣe iranlọwọ fun awọn eniyan nibi gbogbo loye ara wọn, awọn yiyan wọn, ati irin-ajo igbesi aye wọn pẹlu mimọ ati igboya.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Iduroṣinṣin, Ipeye, Apẹrẹ-Centric Olumulo, ati Innovation Tesiwaju.",
+  "valuesDescription": "Ni Karma, a ni idiyele ti ododo, konge, ati igbẹkẹle. A ti pinnu lati funni ni itọsọna ti kii ṣe deede nikan ṣugbọn tun ni itumọ, ṣe iranlọwọ fun ọ lati lilö kiri ni igbesi aye pẹlu oye ati igboya.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Awọn Eto Akori",
   "lightThemeLabel": "Imọlẹ",
   "darkThemeLabel": "Dudu",
-  "systemThemeLabel": "Eto"
+  "systemThemeLabel": "Eto",
+  "ourTeam": "Egbe wa",
+  "teamDescription": "Ẹgbẹ wa ti awọn awòràwọ Vedic ọjọgbọn mu awọn ọdun ti iriri ti n tumọ awọn ipa aye ati awọn ilana igbesi aye wa. Ti ṣe afẹyinti nipasẹ atilẹyin igbẹhin ati ẹgbẹ idagbasoke, Karma n funni ni ailopin, igbẹkẹle, ati iriri agbaye fun gbogbo olumulo."
 }

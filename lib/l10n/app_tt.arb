@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Без кулланучыларга иң яхшы астрология тәҗрибәсен җиткерергә әзер.",
+  "aboutCompanyDescription": "Кармада без сезгә Ведик астрологиянең вакытсыз зирәклеге аша чын тормыш юлыгызны ачарга булышабыз. Everyәрбер аңлау чын, тәҗрибәле астрологлардан килә, сезнең уникаль туу схемасы нигезендә җентекләп эшләнгән. Көндәлек гороскоплардан алып шәхси җитәкчелеккә кадәр, Карма борыңгы белемнәрне 100 дән артык телдә куллана.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Кулланучыларга тормышларында мәгълүматлы карарлар кабул итәр өчен, төгәл һәм персональләштерелгән астрология күзаллаулары бирү.",
+  "missionDescription": "Безнең миссия бик гади: ышанычлы, мәгълүматлы карарлар кабул итү өчен көч бирүче, кеше җитәкчелегендәге астрологик җитәкчелек бирү. Everyәрбер фаразлау һәм консультация автоматлаштырылган алгоритм түгел, күп еллык профессиональ тәҗрибәне чагылдыра.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Технология белән борыңгы зирәклекне берләштереп, иң ышанычлы астрология платформасы булырга.",
+  "visionDescription": "Без Ведик астрология өчен дөньяның иң ышанычлы мәйданы булырга омтылабыз, кешеләргә үзләрен, сайлауларын, тормыш сәяхәтләрен ачыклык һәм ышаныч белән аңларга булышабыз.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Сафлык, төгәллек, кулланучы-үзәк дизайны, өзлексез инновация.",
+  "valuesDescription": "Кармада без чынлыкны, төгәллекне, ышанычны кадерлибез. Без төгәл генә түгел, ә мәгънәле җитәкчелек тәкъдим итәргә тәвәккәл, тормышны зирәклек һәм ышаныч белән алып барырга булышабыз.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -333,7 +333,7 @@
   "chatTitle": "Чат",
   "typeYourQuestionHint": "Соравыгызны языгыз ...",
   "paymentRequired": "Түләү кирәк",
-  "paymentRequiredMessage": "Сез буш сорауларны кулландыгыз. Дәвам итәр өчен ₹ 50 түләгез.",
+  "paymentRequiredMessage": "Сез буш сорауларны кулландыгыз. Дәвам итәр өчен {amount} түләгез.",
   "payNowButton": "Хәзер түләгез",
   "freeQuestionsRemaining": "{count} free questions remaining",
   "paidQuestionsRemaining": "{count} paid questions remaining",
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Тема көйләүләре",
   "lightThemeLabel": "Яктылык",
   "darkThemeLabel": "Караңгы",
-  "systemThemeLabel": "Система"
+  "systemThemeLabel": "Система",
+  "ourTeam": "Безнең команда",
+  "teamDescription": "Безнең профессиональ Ведик астрологлар командасы планета йогынтысын һәм тормыш рәвешен аңлату буенча күп еллык тәҗрибә алып килә. Аерым ярдәм һәм үсеш коллективы ярдәмендә Карма һәр кулланучы өчен бертуктаусыз, ышанычлы һәм глобаль тәҗрибә бирә."
 }

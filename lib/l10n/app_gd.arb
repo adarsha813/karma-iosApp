@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Tha sinn dealasach a thaobh an t-eòlas reul-eòlais as fheàrr a lìbhrigeadh don luchd-cleachdaidh againn.",
+  "aboutCompanyDescription": "Aig Karma, bidh sinn gad chuideachadh le bhith a’ lorg do shlighe-beatha fhìor tro ghliocas neo-bhàsmhor speuradaireachd Vedic. Tha a h-uile lèirsinn a’ tighinn bho fhìor speuradairean eòlach, air an dealbhadh gu faiceallach stèidhichte air do chairt breith sònraichte. Bho horoscopan làitheil gu stiùireadh pearsanaichte, tha Karma a’ toirt cothrom air eòlas àrsaidh ann an còrr is 100 cànan.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Gus lèirsinn reul-eòlais cheart is pearsanta a thoirt seachad gus luchd-cleachdaidh a chuideachadh gus co-dhùnaidhean fiosraichte a dhèanamh nam beatha.",
+  "missionDescription": "Tha ar misean sìmplidh: stiùireadh reul-eòlais dearbhte, air a stiùireadh le daoine, a thoirt seachad a bheir cumhachd dhut co-dhùnaidhean misneachail, fiosraichte a dhèanamh. Tha gach ro-innse agus co-chomhairle a’ nochdadh bliadhnaichean de eòlas proifeasanta, chan e algairidhean fèin-ghluasadach.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Gus a bhith mar an àrd-ùrlar reul-eòlais as earbsaiche, a’ cothlamadh teicneòlais agus gliocas àrsaidh.",
+  "visionDescription": "Tha sinn a’ strì ri bhith mar an àrd-ùrlar as earbsaiche san t-saoghal airson reul-eòlas Vedic, a’ cuideachadh dhaoine anns a h-uile àite gus iad fhèin, na roghainnean aca, agus an turas beatha a thuigsinn le soilleireachd agus misneachd.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Ionracas, Cruinneas, Dealbhadh a tha ag amas air an neach-cleachdaidh, agus Nuadh-chruthachadh leantainneach.",
+  "valuesDescription": "Aig Karma, tha sinn a’ cur luach air fìrinneachd, mionaideachd, agus earbsa. Tha sinn dealasach a thaobh stiùireadh a thabhann a tha chan ann a-mhàin ceart ach cuideachd brìoghmhor, gad chuideachadh le bhith a’ stiùireadh beatha le lèirsinn agus misneachd.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Roghainnean Cuspair",
   "lightThemeLabel": "Solas",
   "darkThemeLabel": "Dorcha",
-  "systemThemeLabel": "Siostam"
+  "systemThemeLabel": "Siostam",
+  "ourTeam": "An Sgioba againn",
+  "teamDescription": "Tha bliadhnaichean de eòlas aig an sgioba againn de speuradairean Vedic proifeasanta ann a bhith a’ mìneachadh buaidhean planaid agus pàtrain beatha. Le taic bho sgioba taic is leasachaidh sònraichte, bidh Karma a’ lìbhrigeadh eòlas gun fhiosta, earbsach agus cruinneil do gach neach-cleachdaidh."
 }

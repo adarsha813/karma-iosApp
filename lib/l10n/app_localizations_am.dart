@@ -364,28 +364,28 @@ class AppLocalizationsAm extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'ምርጡን የኮከብ ቆጠራ ልምድ ለተጠቃሚዎቻችን ለማድረስ ቁርጠኞች ነን።';
+      'በካርማ፣ ጊዜ በማይሽረው የቬዲክ ኮከብ ቆጠራ እውነተኛ የህይወት መንገድህን እንድትገልጥ እናግዝሃለን። እያንዳንዱ ማስተዋል የሚመጣው ከእውነተኛ፣ ልምድ ካላቸው ኮከብ ቆጣሪዎች፣ በልዩ የልደት ገበታዎ ላይ በመመስረት በጥንቃቄ ነው። ከዕለታዊ የኮከብ ቆጠራ እስከ ግላዊ መመሪያ ድረስ ካርማ ጥንታዊ እውቀትን ከ100 በላይ ቋንቋዎች ተደራሽ ያደርገዋል።';
 
   @override
   String get ourMission => 'የእኛ ተልዕኮ';
 
   @override
   String get missionDescription =>
-      'ተጠቃሚዎች በሕይወታቸው ውስጥ በመረጃ ላይ የተመሰረተ ውሳኔ እንዲያደርጉ ለማገዝ ትክክለኛ እና ግላዊ የኮከብ ቆጠራ ግንዛቤዎችን ለማቅረብ።';
+      'ተልእኳችን ቀላል ነው፡ በራስ መተማመን እና በመረጃ ላይ የተመሰረተ ውሳኔ እንዲያደርጉ የሚያስችል ትክክለኛ፣ በሰዎች የሚመራ የኮከብ ቆጠራ መመሪያን መስጠት። እያንዳንዱ ትንበያ እና ምክክር የሚያንፀባርቀው የዓመታት ሙያዊ እውቀት እንጂ ራስ-ሰር ስልተ ቀመሮችን አይደለም።';
 
   @override
   String get ourVision => 'የእኛ እይታ';
 
   @override
   String get visionDescription =>
-      'ቴክኖሎጂን እና ጥንታዊ ጥበብን በማጣመር በጣም የታመነ የኮከብ ቆጠራ መድረክ ለመሆን።';
+      'በየትኛውም ቦታ ያሉ ሰዎች እራሳቸውን፣ ምርጫዎቻቸውን እና የህይወት ጉዟቸውን በግልፅ እና በራስ መተማመን እንዲረዱ በመርዳት ለቬዲክ ኮከብ ቆጠራ በአለም ላይ በጣም የታመነ መድረክ ለመሆን እንጥራለን።';
 
   @override
   String get ourValues => 'የእኛ እሴቶች';
 
   @override
   String get valuesDescription =>
-      'ታማኝነት፣ ትክክለኛነት፣ በተጠቃሚ ያማከለ ንድፍ እና ቀጣይነት ያለው ፈጠራ።';
+      'በካርማ ለትክክለኛነት፣ ትክክለኛነት እና እምነት እናከብራለን። ህይወትን በማስተዋል እና በራስ መተማመን እንዲመሩ የሚያግዝዎ ትክክለኛ ብቻ ሳይሆን ትርጉም ያለው መመሪያ ለመስጠት ቆርጠናል ።';
 
   @override
   String get contactUs => 'ያግኙን';
@@ -862,4 +862,11 @@ class AppLocalizationsAm extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'የእኛ ቡድን';
+
+  @override
+  String get teamDescription =>
+      'ፕሮፌሽናል የቬዲክ ኮከብ ቆጣሪዎች ቡድናችን የፕላኔቶችን ተፅእኖ እና የህይወት ዘይቤዎችን የመተርጎም ልምድን ያመጣል። በተሰጠ የድጋፍ እና የልማት ቡድን በመታገዝ ካርማ እንከን የለሽ፣ አስተማማኝ እና አለምአቀፍ ተሞክሮ ለእያንዳንዱ ተጠቃሚ ያቀርባል።';
 }

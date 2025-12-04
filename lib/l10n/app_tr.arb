@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Kullanıcılarımıza en iyi astroloji deneyimini sunmaya kararlıyız.",
+  "aboutCompanyDescription": "Karma'da, Vedik astrolojinin zamansız bilgeliğiyle gerçek yaşam yolunuzu keşfetmenize yardımcı oluyoruz. Her içgörü, gerçek ve deneyimli astrologlardan geliyor ve benzersiz doğum haritanıza göre özenle hazırlanıyor. Günlük burç yorumlarından kişiselleştirilmiş rehberliğe kadar Karma, kadim bilgileri 100'den fazla dilde erişilebilir kılıyor.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Kullanıcıların hayatlarında bilinçli kararlar almalarına yardımcı olmak için doğru ve kişiselleştirilmiş astroloji içgörüleri sağlamak.",
+  "missionDescription": "Misyonumuz basit: Güvenilir ve bilinçli kararlar almanızı sağlayacak, özgün ve insan odaklı astrolojik rehberlik sağlamak. Her tahmin ve danışmanlık, otomatik algoritmaların değil, yılların profesyonel uzmanlığının bir yansımasıdır.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Teknolojiyi kadim bilgelikle birleştirerek en güvenilir astroloji platformu olmak.",
+  "visionDescription": "Vedik astroloji alanında dünyanın en güvenilir platformu olmayı hedefliyoruz; dünyanın her yerindeki insanların kendilerini, seçimlerini ve yaşam yolculuklarını netlik ve güvenle anlamalarına yardımcı oluyoruz.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Dürüstlük, Doğruluk, Kullanıcı Odaklı Tasarım ve Sürekli Yenilik.",
+  "valuesDescription": "Karma'da özgünlüğe, hassasiyete ve güvene değer veriyoruz. Sadece doğru değil, aynı zamanda anlamlı rehberlik sunmaya, hayatınızda içgörü ve güvenle ilerlemenize yardımcı olmaya kararlıyız.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Tema Ayarları",
   "lightThemeLabel": "Işık",
   "darkThemeLabel": "Karanlık",
-  "systemThemeLabel": "Sistem"
+  "systemThemeLabel": "Sistem",
+  "ourTeam": "Ekibimiz",
+  "teamDescription": "Profesyonel Vedik astrologlardan oluşan ekibimiz, gezegensel etkileri ve yaşam kalıplarını yorumlama konusunda yılların deneyimine sahiptir. Özel bir destek ve geliştirme ekibinin desteğiyle Karma, her kullanıcıya kusursuz, güvenilir ve küresel bir deneyim sunar."
 }

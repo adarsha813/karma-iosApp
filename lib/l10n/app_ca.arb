@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Ens comprometem a oferir la millor experiència d'astrologia als nostres usuaris.",
+  "aboutCompanyDescription": "A Karma, t'ajudem a descobrir el teu veritable camí de vida a través de la saviesa atemporal de l'astrologia vèdica. Cada perspectiva prové d'astròlegs reals i experimentats, elaborats acuradament en funció de la teva carta natal única. Des d'horòscops diaris fins a una guia personalitzada, Karma fa que el coneixement antic sigui accessible en més de 100 idiomes.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Proporcionar informació astrològica precisa i personalitzada per ajudar els usuaris a prendre decisions informades a la seva vida.",
+  "missionDescription": "La nostra missió és simple: proporcionar una guia astrològica autèntica i dirigida per humans que us permeti prendre decisions informades i segures. Cada predicció i consulta reflecteix anys d'experiència professional, no algoritmes automatitzats.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Convertir-se en la plataforma d'astrologia més fiable, combinant tecnologia i saviesa antiga.",
+  "visionDescription": "Ens esforcem per ser la plataforma més fiable del món per a l'astrologia vèdica, ajudant a persones de tot arreu a entendre's a si mateixes, les seves eleccions i el seu viatge vital amb claredat i confiança.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Integritat, precisió, disseny centrat en l'usuari i innovació contínua.",
+  "valuesDescription": "A Karma, valorem l'autenticitat, la precisió i la confiança. Ens comprometem a oferir una guia que no només sigui precisa sinó també significativa, ajudant-vos a navegar per la vida amb perspicàcia i confiança.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Configuració del tema",
   "lightThemeLabel": "Llum",
   "darkThemeLabel": "Fosc",
-  "systemThemeLabel": "Sistema"
+  "systemThemeLabel": "Sistema",
+  "ourTeam": "El nostre equip",
+  "teamDescription": "El nostre equip d'astròlegs vèdics professionals té anys d'experiència en la interpretació de les influències planetàries i els patrons de vida. Amb el suport d'un equip dedicat de suport i desenvolupament, Karma ofereix una experiència fluida, fiable i global per a cada usuari."
 }

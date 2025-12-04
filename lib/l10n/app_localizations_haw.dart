@@ -373,28 +373,28 @@ class AppLocalizationsHaw extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Kūpaʻa mākou i ka hāʻawi ʻana i ka ʻike astrology maikaʻi loa i kā mākou mea hoʻohana.';
+      'Ma Karma, ke kōkua nei mākou iā ʻoe e wehe i kou ala ola maoli ma o ka naʻauao mau ʻole o Vedic astrology. Loaʻa kēlā me kēia ʻike mai ka poʻe ʻike kilokilo maoli, i hana maikaʻi ʻia e pili ana i kāu palapala hānau ʻokoʻa. Mai nā horoscopes i kēlā me kēia lā a hiki i ke alakaʻi pilikino, hana ʻo Karma i ka ʻike kahiko i loaʻa i nā ʻōlelo he 100.';
 
   @override
   String get ourMission => 'Ko makou Misiona';
 
   @override
   String get missionDescription =>
-      'E hāʻawi i nā ʻike astrology pololei a pilikino e kōkua i nā mea hoʻohana e hoʻoholo i ka ʻike i ko lākou ola.';
+      'He mea maʻalahi kā mākou misionari: e hāʻawi i ka alakaʻi alakaʻi astrological alakaʻi i alakaʻi ʻia e ke kanaka e hiki ai iā ʻoe ke hana i nā hoʻoholo hilinaʻi. Hōʻike kēlā me kēia wānana a me nā kūkākūkā i nā makahiki o ka ʻike loea, ʻaʻole nā algorithm automated.';
 
   @override
   String get ourVision => 'ʻO kā mākou ʻike';
 
   @override
   String get visionDescription =>
-      'E lilo i mea hilinaʻi nui astrology platform, e hui pū ana i ka ʻenehana a me ka naʻauao kahiko.';
+      'Hoʻoikaika mākou e lilo i kahua hilinaʻi nui loa o ka honua no Vedic astrology, e kōkua ana i nā poʻe ma nā wahi āpau e hoʻomaopopo iā lākou iho, kā lākou koho, a me kā lākou huakaʻi ola me ka maopopo a me ka hilinaʻi.';
 
   @override
   String get ourValues => 'Ko makou Waiwai';
 
   @override
   String get valuesDescription =>
-      'Pono, Pono, Hoʻolālā Mea Hoʻohana, a me ka Hoʻomau mau.';
+      'Ma Karma, mahalo mākou i ka ʻoiaʻiʻo, pololei, a me ka hilinaʻi. Hoʻopaʻa mākou i ka hāʻawi ʻana i ke alakaʻi ʻaʻole pololei wale nō akā kūpono pū kekahi, e kōkua ana iā ʻoe e hoʻokele i ke ola me ka ʻike a me ka hilinaʻi.';
 
   @override
   String get contactUs => 'Kāhea iā mā˚ou';
@@ -882,4 +882,11 @@ class AppLocalizationsHaw extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Ko makou Hui';
+
+  @override
+  String get teamDescription =>
+      'ʻO kā mākou hui o nā mea hoʻokele Vedic ʻoihana e lawe mai i nā makahiki o ka ʻike i ka unuhi ʻana i nā mana honua a me nā ʻano ola. Kākoʻo ʻia e kahi kākoʻo hoʻolaʻa a me ka hui hoʻomohala, hāʻawi ʻo Karma i kahi ʻike maʻalahi, hilinaʻi, a me ka honua no kēlā me kēia mea hoʻohana.';
 }

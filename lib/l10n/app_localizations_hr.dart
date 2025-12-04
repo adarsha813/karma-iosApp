@@ -371,28 +371,28 @@ class AppLocalizationsHr extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Posvećeni smo pružanju najboljeg astrološkog iskustva našim korisnicima.';
+      'U Karmi vam pomažemo otkriti vaš pravi životni put kroz bezvremensku mudrost vedske astrologije. Svaki uvid dolazi od stvarnih, iskusnih astrologa, pažljivo izrađenih na temelju vaše jedinstvene natalne karte. Od dnevnih horoskopa do personaliziranog vodstva, Karma čini drevno znanje dostupnim na više od 100 jezika.';
 
   @override
   String get ourMission => 'Naša misija';
 
   @override
   String get missionDescription =>
-      'Pružiti točne i personalizirane astrološke uvide kako bi se korisnicima pomoglo u donošenju informiranih odluka u životu.';
+      'Naša je misija jednostavna: pružiti autentično, ljudsko astrološko vodstvo koje vam omogućuje donošenje sigurnih i informiranih odluka. Svako predviđanje i konzultacija odražavaju godine profesionalnog iskustva, a ne automatizirane algoritme.';
 
   @override
   String get ourVision => 'Naša vizija';
 
   @override
   String get visionDescription =>
-      'Postati najpouzdanija astrološka platforma, kombinirajući tehnologiju i drevnu mudrost.';
+      'Težimo biti najpouzdanija svjetska platforma za vedsku astrologiju, pomažući ljudima diljem svijeta da s jasnoćom i samopouzdanjem razumiju sebe, svoje izbore i svoj životni put.';
 
   @override
   String get ourValues => 'Naše vrijednosti';
 
   @override
   String get valuesDescription =>
-      'Integritet, točnost, dizajn usmjeren na korisnika i kontinuirana inovacija.';
+      'U Karmi cijenimo autentičnost, preciznost i povjerenje. Posvećeni smo pružanju smjernica koje nisu samo točne već i smislene, pomažući vam da se snalazite u životu s uvidom i samopouzdanjem.';
 
   @override
   String get contactUs => 'Kontaktirajte nas';
@@ -876,4 +876,11 @@ class AppLocalizationsHr extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Naš tim';
+
+  @override
+  String get teamDescription =>
+      'Naš tim profesionalnih vedskih astrologa ima dugogodišnje iskustvo u tumačenju planetarnih utjecaja i životnih obrazaca. Uz podršku predanog tima za podršku i razvoj, Karma pruža besprijekorno, pouzdano i globalno iskustvo za svakog korisnika.';
 }

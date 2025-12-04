@@ -371,28 +371,28 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Oleme pühendunud pakkuma oma kasutajatele parimat astroloogiakogemust.';
+      'Karmas aitame sul avastada oma tõelise elutee läbi Veeda astroloogia ajatu tarkuse. Iga arusaam pärineb päris ja kogenud astroloogidelt ning on hoolikalt koostatud sinu ainulaadse sünnikaardi põhjal. Alates igapäevastest horoskoopidest kuni personaalse juhendamiseni – Karma teeb iidsed teadmised kättesaadavaks enam kui 100 keeles.';
 
   @override
   String get ourMission => 'Meie missioon';
 
   @override
   String get missionDescription =>
-      'Pakkuda täpseid ja isikupärastatud astroloogiaalaseid teadmisi, mis aitavad kasutajatel oma elus teadlikke otsuseid langetada.';
+      'Meie missioon on lihtne: pakkuda autentset, inimese juhitud astroloogilist juhendamist, mis annab teile võimaluse teha enesekindlaid ja teadlikke otsuseid. Iga ennustus ja konsultatsioon peegeldab aastatepikkust professionaalset kogemust, mitte automatiseeritud algoritme.';
 
   @override
   String get ourVision => 'Meie visioon';
 
   @override
   String get visionDescription =>
-      'Et saada kõige usaldusväärsemaks astroloogiaplatvormiks, mis ühendab tehnoloogia ja iidse tarkuse.';
+      'Püüdleme selle poole, et olla maailma usaldusväärseim vedaliku astroloogia platvorm, aidates inimestel kõikjal mõista iseennast, oma valikuid ja eluteekonda selgelt ja enesekindlalt.';
 
   @override
   String get ourValues => 'Meie väärtused';
 
   @override
   String get valuesDescription =>
-      'Ausus, täpsus, kasutajakeskne disain ja pidev innovatsioon.';
+      'Karmas väärtustame autentsust, täpsust ja usaldust. Oleme pühendunud pakkuma juhiseid, mis on mitte ainult täpsed, vaid ka sisukad, aidates teil elus orienteeruda arusaamise ja enesekindlusega.';
 
   @override
   String get contactUs => 'Võta meiega ühendust';
@@ -876,4 +876,11 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Meie meeskond';
+
+  @override
+  String get teamDescription =>
+      'Meie professionaalsete Veeda astroloogide meeskonnal on aastatepikkune kogemus planeetide mõjude ja elumustrite tõlgendamisel. Pühendunud tugi- ja arendusmeeskonna toel pakub Karma igale kasutajale sujuvat, usaldusväärset ja globaalset kogemust.';
 }

@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Ons is daartoe verbind om die beste astrologie-ervaring aan ons gebruikers te lewer.",
+  "aboutCompanyDescription": "By Karma help ons jou om jou ware lewenspad te ontdek deur die tydlose wysheid van Vediese astrologie. Elke insig kom van ware, ervare astroloë, noukeurig saamgestel gebaseer op jou unieke geboortekaart. Van daaglikse horoskope tot persoonlike leiding, maak Karma antieke kennis toeganklik in meer as 100 tale.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Om akkurate en gepersonaliseerde astrologie-insigte te verskaf om gebruikers te help om ingeligte besluite in hul lewens te neem.",
+  "missionDescription": "Ons missie is eenvoudig: om outentieke, mensgeleide astrologiese leiding te bied wat jou in staat stel om selfversekerde, ingeligte besluite te neem. Elke voorspelling en konsultasie weerspieël jare se professionele kundigheid, nie outomatiese algoritmes nie.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Om die mees betroubare astrologieplatform te word, wat tegnologie en antieke wysheid kombineer.",
+  "visionDescription": "Ons streef daarna om die wêreld se mees vertroude platform vir Vediese astrologie te wees, en mense oral te help om hulself, hul keuses en hul lewensreis met duidelikheid en selfvertroue te verstaan.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Integriteit, Akkuraatheid, Gebruikersgerigte Ontwerp en Deurlopende Innovasie.",
+  "valuesDescription": "By Karma waardeer ons egtheid, presisie en vertroue. Ons is daartoe verbind om leiding te bied wat nie net akkuraat is nie, maar ook betekenisvol, wat jou help om die lewe met insig en selfvertroue te navigeer.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Tema-instellings",
   "lightThemeLabel": "Lig",
   "darkThemeLabel": "Donker",
-  "systemThemeLabel": "Stelsel"
+  "systemThemeLabel": "Stelsel",
+  "ourTeam": "Ons span",
+  "teamDescription": "Ons span professionele Vediese astroloë het jare se ondervinding in die interpretasie van planetêre invloede en lewenspatrone. Gerugsteun deur 'n toegewyde ondersteunings- en ontwikkelingspan, lewer Karma 'n naatlose, betroubare en globale ervaring vir elke gebruiker."
 }

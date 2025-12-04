@@ -375,28 +375,28 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Biz foydalanuvchilarimiz uchun eng yaxshi astrologiya tajribasini taqdim etishga intilamiz.';
+      'Karma-da biz Vedik astrologiyasining abadiy donoligi orqali haqiqiy hayot yo\'lingizni ochishga yordam beramiz. Har bir tushuncha haqiqiy, tajribali munajjimlardan keladi, sizning noyob tug\'ilish jadvalingiz asosida puxta ishlab chiqilgan. Kundalik munajjimlar bashoratidan shaxsiy yo\'l-yo\'riqlargacha, Karma qadimgi bilimlarni 100 dan ortiq tillarda mavjud qiladi.';
 
   @override
   String get ourMission => 'Bizning missiyamiz';
 
   @override
   String get missionDescription =>
-      'Foydalanuvchilarga o\'z hayotida ongli qarorlar qabul qilishda yordam berish uchun to\'g\'ri va shaxsiylashtirilgan munajjimlar haqidagi ma\'lumotlarni taqdim etish.';
+      'Bizning vazifamiz oddiy: ishonchli, ongli qarorlar qabul qilish imkoniyatini beruvchi haqiqiy, insoniy munajjimlar bashorati bilan ta\'minlash. Har bir bashorat va maslahat avtomatlashtirilgan algoritmlarni emas, balki ko\'p yillik professional tajribani aks ettiradi.';
 
   @override
   String get ourVision => 'Bizning Vizyonimiz';
 
   @override
   String get visionDescription =>
-      'Texnologiya va qadimiy donolikni birlashtirgan eng ishonchli astrologiya platformasiga aylanish.';
+      'Biz Vedik munajjimlik uchun dunyodagi eng ishonchli platforma bo\'lishga intilamiz, hamma joyda odamlarga o\'zlarini, tanlovlarini va hayot yo\'llarini ravshanlik va ishonch bilan tushunishlariga yordam beramiz.';
 
   @override
   String get ourValues => 'Bizning qadriyatlarimiz';
 
   @override
   String get valuesDescription =>
-      'Butunlik, aniqlik, foydalanuvchiga yo\'naltirilgan dizayn va doimiy innovatsiyalar.';
+      'Karma-da biz haqiqiylik, aniqlik va ishonchni qadrlaymiz. Biz nafaqat toʻgʻri, balki mazmunli boʻlgan, hayotni aql va ishonch bilan boshqarishga yordam beradigan yoʻl-yoʻriqlarni taqdim etishga sodiqmiz.';
 
   @override
   String get contactUs => 'Biz bilan bog\'lanish';
@@ -883,4 +883,11 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Bizning Jamoamiz';
+
+  @override
+  String get teamDescription =>
+      'Bizning professional Vedik munajjimlar jamoasi sayyoraviy ta\'sirlar va hayot shakllarini sharhlash bo\'yicha ko\'p yillik tajribani olib keladi. Maxsus qo\'llab-quvvatlash va ishlab chiqish guruhi tomonidan qo\'llab-quvvatlangan Karma har bir foydalanuvchi uchun muammosiz, ishonchli va global tajribani taqdim etadi.';
 }

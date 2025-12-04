@@ -373,28 +373,28 @@ class AppLocalizationsHmn extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Peb tau cog lus tias yuav xa cov kev paub zoo tshaj plaws hauv hnub qub rau peb cov neeg siv.';
+      'Ntawm Karma, peb pab koj nthuav tawm koj txoj kev ua neej tiag tiag los ntawm kev txawj ntse ntawm Vedic astrology. Txhua qhov kev pom yog los ntawm cov kws paub txog astrologers tiag tiag, ua tib zoo tsim los ntawm koj daim ntawv qhia hnub yug. Los ntawm txhua hnub horoscopes mus rau tus kheej kev taw qhia, Karma ua rau kev paub thaum ub siv tau ntau dua 100 yam lus.';
 
   @override
   String get ourMission => 'Peb Lub Hom Phiaj';
 
   @override
   String get missionDescription =>
-      'Txhawm rau muab qhov tseeb thiab tus kheej kev nkag siab txog astrology los pab cov neeg siv txiav txim siab paub hauv lawv lub neej.';
+      'Peb lub hom phiaj yog qhov yooj yim: muab cov lus qhia tseeb, tib neeg coj kev coj noj coj ua uas ua rau koj muaj kev ntseeg siab, paub kev txiav txim siab. Txhua qhov kev twv ua ntej thiab kev sib tham qhia txog ntau xyoo ntawm kev tshaj lij, tsis yog kev siv cov algorithms.';
 
   @override
   String get ourVision => 'Peb Lub Zeem Muag';
 
   @override
   String get visionDescription =>
-      'Los ua qhov kev ntseeg siab tshaj plaws astrology platform, sib txuas thev naus laus zis thiab kev txawj ntse thaum ub.';
+      'Peb siv zog ua lub ntiaj teb kev ntseeg siab tshaj plaws platform rau Vedic astrology, pab tib neeg nyob txhua qhov chaw nkag siab txog lawv tus kheej, lawv cov kev xaiv, thiab lawv txoj kev taug kev nrog kev pom tseeb thiab kev ntseeg siab.';
 
   @override
   String get ourValues => 'Peb Qhov Tseem Ceeb';
 
   @override
   String get valuesDescription =>
-      'Kev ncaj ncees, raug, neeg siv-Centric tsim, thiab txuas ntxiv Innovation.';
+      'Ntawm Karma, peb pom qhov tseeb, qhov tseeb, thiab kev ntseeg siab. Peb tau cog lus los muab kev taw qhia uas tsis yog qhov tseeb xwb tab sis tseem muaj txiaj ntsig, pab koj taug kev lub neej nrog kev pom thiab kev ntseeg siab.';
 
   @override
   String get contactUs => 'Tiv tauj peb';
@@ -881,4 +881,11 @@ class AppLocalizationsHmn extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Peb Pab Pawg';
+
+  @override
+  String get teamDescription =>
+      'Peb pab pawg kws tshaj lij Vedic astrologers coj ntau xyoo dhau los ntawm kev txhais cov kev cuam tshuam ntawm lub ntiaj teb thiab cov qauv ntawm lub neej. Kev txhawb nqa los ntawm pab pawg txhawb nqa thiab txhim kho, Karma muab kev sib txuas, txhim khu kev qha, thiab kev paub thoob ntiaj teb rau txhua tus neeg siv.';
 }

@@ -370,28 +370,28 @@ class AppLocalizationsIg extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Anyị na-agba mbọ ịnye ndị ọrụ anyị ahụmịhe ịgụ kpakpando kacha mma.';
+      'Na Karma, anyị na-enyere gị aka ikpughe ezi ụzọ ndụ gị site na amamihe na-adịghị agwụ agwụ nke Vedic ịgụ kpakpando. Nghọta ọ bụla sitere na ezigbo ndị na-agụ kpakpando nwere ahụmahụ, ndị ejiri nlezianya mee ya dabere na chaatị ọmụmụ gị pụrụ iche. Site na horoscope kwa ụbọchị ruo na ntuziaka ahaziri onwe ya, Karma na-eme ka a nweta ihe ọmụma oge ochie n\'ihe karịrị 100 asụsụ.';
 
   @override
   String get ourMission => 'Ebumnuche anyị';
 
   @override
   String get missionDescription =>
-      'Iji nye nghọta gbasara ịgụ kpakpando ziri ezi yana ahaziri onwe ya iji nyere ndị ọrụ aka ime mkpebi ziri ezi na ndụ ha.';
+      'Ebumnuche anyị dị mfe: ịnye ezigbo ntụzịaka gbasara ịgụ kpakpando nke mmadụ na-eduzi nke na-enye gị ike ime mkpebi siri ike, nke nwere nghọta. Amụma na nyocha ọ bụla na-egosipụta afọ nke ọkachamara ọkachamara, ọ bụghị algọridim na-akpaghị aka.';
 
   @override
   String get ourVision => 'Ọhụụ anyị';
 
   @override
   String get visionDescription =>
-      'Iji bụrụ ikpo okwu ịgụ kpakpando tụkwasịrị obi, na-ejikọta teknụzụ na amamihe oge ochie.';
+      'Anyị na-agba mbọ ịbụ ikpo okwu ntụkwasị obi kachasị n\'ụwa maka ịgụ kpakpando Vedic, na-enyere ndị mmadụ aka n\'ebe niile ịghọta onwe ha, nhọrọ ha, na njem ndụ ha n\'ụzọ doro anya na ntụkwasị obi.';
 
   @override
   String get ourValues => 'Ụkpụrụ Anyị';
 
   @override
   String get valuesDescription =>
-      'Iguzosi ike n\'ezi ihe, izi ezi, Nhazi-Centric nke onye ọrụ, yana ihe ọhụrụ na-aga n\'ihu.';
+      'Na Karma, anyị ji izi ezi, izi ezi na ntụkwasị obi kpọrọ ihe. Anyị na-agba mbọ inye nduzi ọ bụghị naanị nke ziri ezi kamakwa bara uru, na-enyere gị aka iji nghọta na ntụkwasị obi wee jiri ndụ mee ihe.';
 
   @override
   String get contactUs => 'Kpọtụrụ anyị';
@@ -872,4 +872,11 @@ class AppLocalizationsIg extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Otu anyị';
+
+  @override
+  String get teamDescription =>
+      'Ndị otu anyị ndị ọkachamara na-agụ kpakpando Vedic na-eweta ahụmịhe afọ na-akọwa mmetụta mbara ụwa na usoro ndụ. N\'ịbụ onye nkwado nkwado na otu mmepe raara onwe ya nye, Karma na-enye ahụmahụ na-enweghị ntụpọ, ntụkwasị obi na zuru ụwa ọnụ maka onye ọrụ ọ bụla.';
 }

@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Iň oňat astrologiýa tejribesini ulanyjylarymyza ýetirmegi maksat edinýäris.",
+  "aboutCompanyDescription": "Karmada, Wedik astrologiýasynyň tükeniksiz paýhasy arkaly hakyky durmuş ýoluňyzy açmaga kömek edýäris. Her bir düşünje, özboluşly dogluş diagrammanyňyza esaslanyp ýasalan hakyky, tejribeli astrologlardan gelýär. Gündelik goroskoplardan başlap şahsylaşdyrylan görkezmä çenli Karma gadymy bilimleri 100-den gowrak dilde elýeterli edýär.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Ulanyjylara durmuşynda habarly karar bermäge kömek etmek üçin takyk we şahsylaşdyrylan astrologiýa düşünjelerini bermek.",
+  "missionDescription": "Biziň wezipämiz ýönekeý: ynamly, habarly karar bermäge mümkinçilik berýän hakyky, adam tarapyndan dolandyrylýan astrologiki görkezmeleri bermek. Her bir çaklama we maslahat, awtomatiki algoritmleri däl-de, köp ýyllyk hünär tejribesini görkezýär.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Tehnologiýany we gadymy paýhasy birleşdirip, iň ynamdar astrologiýa platformasyna öwrülmek.",
+  "visionDescription": "Wedik astrologiýasy üçin dünýäniň iň ynamdar platformasy bolmaga çalyşýarys, hemme ýerdäki adamlara özlerine, saýlamalaryna we durmuş ýoluna aýdyňlyk we ynam bilen düşünmäge kömek edýäris.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Bütewilik, takyklyk, ulanyjy merkezi dizaýny we üznüksiz täzelik.",
+  "valuesDescription": "Karmada hakykylygyna, takyklygyna we ynamyna baha berýäris. Durmuşa düşünje we ynam bilen gitmäge kömek edýän diňe bir takyk däl, eýsem manyly hem ýol görkezmegi maksat edinýäris.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -333,7 +333,7 @@
   "chatTitle": "Söhbet",
   "typeYourQuestionHint": "Soragyňyzy ýazyň ...",
   "paymentRequired": "Töleg talap edilýär",
-  "paymentRequiredMessage": "Mugt soraglaryňyzy ulandyňyz. Dowam etmek üçin 50 funt töläň.",
+  "paymentRequiredMessage": "Mugt soraglaryňyzy ulandyňyz. Dowam etmek üçin {amount} töläň.",
   "payNowButton": "Indi töläň",
   "freeQuestionsRemaining": "{count} free questions remaining",
   "paidQuestionsRemaining": "{count} paid questions remaining",
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Mowzuk sazlamalary",
   "lightThemeLabel": "Lightagtylyk",
   "darkThemeLabel": "Garaňky",
-  "systemThemeLabel": "Ulgam"
+  "systemThemeLabel": "Ulgam",
+  "ourTeam": "Toparymyz",
+  "teamDescription": "Professional Wedik astrologlar toparymyz, planetanyň täsirlerini we ýaşaýyş durmuşyny düşündirmek boýunça köp ýyllyk tejribe getirýär. Aýratyn goldaw we ösüş topary tarapyndan goldanan Karma, her bir ulanyjy üçin üznüksiz, ygtybarly we global tejribe berýär."
 }

@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "אנו מחויבים לספק את חוויית האסטרולוגיה הטובה ביותר למשתמשים שלנו.",
+  "aboutCompanyDescription": "בקארמה, אנו עוזרים לך לחשוף את נתיב חייך האמיתי באמצעות החוכמה הנצחית של האסטרולוגיה הוודית. כל תובנה מגיעה מאסטרולוגים אמיתיים ומנוסים, שנוצרו בקפידה על סמך מפת הלידה הייחודית שלך. מהורוסקופים יומיים ועד להדרכה מותאמת אישית, קארמה מנגישה ידע עתיק ביותר מ-100 שפות.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "לספק תובנות אסטרולוגיות מדויקות ואישיות שיעזרו למשתמשים לקבל החלטות מושכלות בחייהם.",
+  "missionDescription": "המשימה שלנו פשוטה: לספק הדרכה אסטרולוגית אותנטית, בהנחיית אדם, שתאפשר לכם לקבל החלטות בטוחות ומושכלות. כל ניבוי וייעוץ משקפים שנים של מומחיות מקצועית, לא אלגוריתמים אוטומטיים.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "להפוך לפלטפורמת האסטרולוגיה המהימנה ביותר, המשלבת טכנולוגיה וחוכמה עתיקה.",
+  "visionDescription": "אנו שואפים להיות הפלטפורמה המהימנה ביותר בעולם לאסטרולוגיה וודית, ולעזור לאנשים בכל מקום להבין את עצמם, את בחירותיהם ואת מסע חייהם בבהירות ובביטחון.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "יושרה, דיוק, עיצוב ממוקד משתמש וחדשנות מתמשכת.",
+  "valuesDescription": "בקארמה, אנו מעריכים אותנטיות, דיוק ואמון. אנו מחויבים להציע הדרכה שהיא לא רק מדויקת אלא גם משמעותית, שתעזור לכם לנווט בחיים עם תובנה וביטחון.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -333,7 +333,7 @@
   "chatTitle": "לְשׂוֹחֵחַ",
   "typeYourQuestionHint": "הקלד את השאלה שלך...",
   "paymentRequired": "נדרש תשלום",
-  "paymentRequiredMessage": "ניצלת את השאלות החינמיות שלך. שלם ₹50 כדי להמשיך.",
+  "paymentRequiredMessage": "ניצלת את השאלות החינמיות שלך. שלם {amount} כדי להמשיך.",
   "payNowButton": "שלם עכשיו",
   "freeQuestionsRemaining": "נותרו {count} שאלות פנויות",
   "paidQuestionsRemaining": "נותרו {count} שאלות בתשלום",
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "הגדרות ערכת נושא",
   "lightThemeLabel": "אוֹר",
   "darkThemeLabel": "כֵּהֶה",
-  "systemThemeLabel": "מַעֲרֶכֶת"
+  "systemThemeLabel": "מַעֲרֶכֶת",
+  "ourTeam": "הצוות שלנו",
+  "teamDescription": "צוות האסטרולוגים הוודיים המקצועיים שלנו מביא עמו ניסיון של שנים בפירוש השפעות פלנטריות ודפוסי חיים. Karma, המגובה על ידי צוות תמיכה ופיתוח ייעודי, מספק חוויה חלקה, אמינה וגלובלית לכל משתמש."
 }

@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Rydym wedi ymrwymo i ddarparu'r profiad astroleg gorau i'n defnyddwyr.",
+  "aboutCompanyDescription": "Yn Karma, rydym yn eich helpu i ddatgelu llwybr eich bywyd go iawn trwy ddoethineb oesol astroleg Vedic. Daw pob mewnwelediad gan astrolegwyr go iawn, profiadol, wedi'u crefftio'n ofalus yn seiliedig ar eich siart geni unigryw. O horosgopau dyddiol i ganllawiau personol, mae Karma yn gwneud gwybodaeth hynafol yn hygyrch mewn dros 100 o ieithoedd.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "I ddarparu mewnwelediadau cywir a phersonol ar astroleg i helpu defnyddwyr i wneud penderfyniadau gwybodus yn eu bywydau.",
+  "missionDescription": "Mae ein cenhadaeth yn syml: darparu canllawiau astrolegol dilys, dan arweiniad dynol, sy'n eich grymuso i wneud penderfyniadau hyderus a gwybodus. Mae pob rhagfynegiad ac ymgynghoriad yn adlewyrchu blynyddoedd o arbenigedd proffesiynol, nid algorithmau awtomataidd.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "I ddod y platfform astroleg mwyaf dibynadwy, gan gyfuno technoleg a doethineb hynafol.",
+  "visionDescription": "Rydym yn ymdrechu i fod y platfform mwyaf dibynadwy yn y byd ar gyfer astroleg Vedaidd, gan helpu pobl ym mhobman i ddeall eu hunain, eu dewisiadau, a'u taith bywyd gydag eglurder a hyder.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Uniondeb, Cywirdeb, Dylunio sy'n Canolbwyntio ar y Defnyddiwr, ac Arloesi Parhaus.",
+  "valuesDescription": "Yn Karma, rydym yn gwerthfawrogi dilysrwydd, cywirdeb ac ymddiriedaeth. Rydym wedi ymrwymo i gynnig arweiniad sydd nid yn unig yn gywir ond hefyd yn ystyrlon, gan eich helpu i lywio bywyd gyda mewnwelediad a hyder.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Gosodiadau Thema",
   "lightThemeLabel": "Golau",
   "darkThemeLabel": "Tywyll",
-  "systemThemeLabel": "System"
+  "systemThemeLabel": "System",
+  "ourTeam": "Ein Tîm",
+  "teamDescription": "Mae ein tîm o astrolegwyr Vedic proffesiynol yn dod â blynyddoedd o brofiad o ddehongli dylanwadau planedol a phatrymau bywyd. Gyda chefnogaeth tîm cymorth a datblygu ymroddedig, mae Karma yn darparu profiad di-dor, dibynadwy a byd-eang i bob defnyddiwr."
 }

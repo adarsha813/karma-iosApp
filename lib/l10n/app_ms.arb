@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Kami komited untuk menyampaikan pengalaman astrologi terbaik kepada pengguna kami.",
+  "aboutCompanyDescription": "Di Karma, kami membantu anda mendedahkan laluan kehidupan sebenar anda melalui kebijaksanaan astrologi Veda yang abadi. Setiap cerapan datang daripada ahli nujum sebenar yang berpengalaman, direka dengan teliti berdasarkan carta kelahiran unik anda. Daripada horoskop harian kepada bimbingan yang diperibadikan, Karma menjadikan pengetahuan purba boleh diakses dalam lebih 100 bahasa.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Untuk memberikan cerapan astrologi yang tepat dan diperibadikan untuk membantu pengguna membuat keputusan termaklum dalam kehidupan mereka.",
+  "missionDescription": "Misi kami adalah mudah: untuk menyediakan panduan astrologi yang tulen dan diterajui manusia yang memperkasakan anda untuk membuat keputusan yang yakin dan termaklum. Setiap ramalan dan perundingan mencerminkan kepakaran profesional selama bertahun-tahun, bukan algoritma automatik.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Untuk menjadi platform astrologi yang paling dipercayai, menggabungkan teknologi dan kebijaksanaan purba.",
+  "visionDescription": "Kami berusaha untuk menjadi platform paling dipercayai di dunia untuk astrologi Veda, membantu orang di mana-mana memahami diri mereka, pilihan mereka dan perjalanan hidup mereka dengan jelas dan yakin.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Integriti, Ketepatan, Reka Bentuk Berpusatkan Pengguna dan Inovasi Berterusan.",
+  "valuesDescription": "Di Karma, kami menghargai keaslian, ketepatan dan kepercayaan. Kami komited untuk menawarkan bimbingan yang bukan sahaja tepat tetapi juga bermakna, membantu anda mengharungi kehidupan dengan wawasan dan keyakinan.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Tetapan Tema",
   "lightThemeLabel": "Cahaya",
   "darkThemeLabel": "Gelap",
-  "systemThemeLabel": "Sistem"
+  "systemThemeLabel": "Sistem",
+  "ourTeam": "Pasukan Kami",
+  "teamDescription": "Pasukan ahli nujum Veda profesional kami membawa pengalaman bertahun-tahun mentafsir pengaruh planet dan corak kehidupan. Disokong oleh pasukan sokongan dan pembangunan yang berdedikasi, Karma memberikan pengalaman yang lancar, boleh dipercayai dan global untuk setiap pengguna."
 }

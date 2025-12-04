@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Biz foydalanuvchilarimiz uchun eng yaxshi astrologiya tajribasini taqdim etishga intilamiz.",
+  "aboutCompanyDescription": "Karma-da biz Vedik astrologiyasining abadiy donoligi orqali haqiqiy hayot yo'lingizni ochishga yordam beramiz. Har bir tushuncha haqiqiy, tajribali munajjimlardan keladi, sizning noyob tug'ilish jadvalingiz asosida puxta ishlab chiqilgan. Kundalik munajjimlar bashoratidan shaxsiy yo'l-yo'riqlargacha, Karma qadimgi bilimlarni 100 dan ortiq tillarda mavjud qiladi.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Foydalanuvchilarga o'z hayotida ongli qarorlar qabul qilishda yordam berish uchun to'g'ri va shaxsiylashtirilgan munajjimlar haqidagi ma'lumotlarni taqdim etish.",
+  "missionDescription": "Bizning vazifamiz oddiy: ishonchli, ongli qarorlar qabul qilish imkoniyatini beruvchi haqiqiy, insoniy munajjimlar bashorati bilan ta'minlash. Har bir bashorat va maslahat avtomatlashtirilgan algoritmlarni emas, balki ko'p yillik professional tajribani aks ettiradi.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Texnologiya va qadimiy donolikni birlashtirgan eng ishonchli astrologiya platformasiga aylanish.",
+  "visionDescription": "Biz Vedik munajjimlik uchun dunyodagi eng ishonchli platforma bo'lishga intilamiz, hamma joyda odamlarga o'zlarini, tanlovlarini va hayot yo'llarini ravshanlik va ishonch bilan tushunishlariga yordam beramiz.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Butunlik, aniqlik, foydalanuvchiga yo'naltirilgan dizayn va doimiy innovatsiyalar.",
+  "valuesDescription": "Karma-da biz haqiqiylik, aniqlik va ishonchni qadrlaymiz. Biz nafaqat toʻgʻri, balki mazmunli boʻlgan, hayotni aql va ishonch bilan boshqarishga yordam beradigan yoʻl-yoʻriqlarni taqdim etishga sodiqmiz.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Mavzu sozlamalari",
   "lightThemeLabel": "Nur",
   "darkThemeLabel": "Qorong'i",
-  "systemThemeLabel": "Tizim"
+  "systemThemeLabel": "Tizim",
+  "ourTeam": "Bizning Jamoamiz",
+  "teamDescription": "Bizning professional Vedik munajjimlar jamoasi sayyoraviy ta'sirlar va hayot shakllarini sharhlash bo'yicha ko'p yillik tajribani olib keladi. Maxsus qo'llab-quvvatlash va ishlab chiqish guruhi tomonidan qo'llab-quvvatlangan Karma har bir foydalanuvchi uchun muammosiz, ishonchli va global tajribani taqdim etadi."
 }

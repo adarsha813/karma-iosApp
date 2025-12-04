@@ -375,28 +375,28 @@ class AppLocalizationsCeb extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Kami komitido sa paghatud sa labing kaayo nga kasinatian sa astrolohiya sa among mga tiggamit.';
+      'Sa Karma, gitabangan ka namon nga mahibal-an ang imong tinuud nga agianan sa kinabuhi pinaagi sa walay katapusan nga kaalam sa Vedic nga astrolohiya. Ang matag panabut gikan sa tinuod, eksperyensiyado nga mga astrologo, mabinantayon nga gihimo base sa imong talagsaon nga tsart sa pagkatawo. Gikan sa adlaw-adlaw nga horoscope hangtod sa personal nga giya, ang Karma naghimo sa karaang kahibalo nga ma-access sa kapin sa 100 ka mga pinulongan.';
 
   @override
   String get ourMission => 'Atong Misyon';
 
   @override
   String get missionDescription =>
-      'Aron mahatagan ang tukma ug personal nga mga panan-aw sa astrolohiya aron matabangan ang mga tiggamit sa paghimo og nahibal-an nga mga desisyon sa ilang kinabuhi.';
+      'Simple ra ang among misyon: paghatag ug tinuod, giya sa astrolohiya nga gipamunuan sa tawo nga maghatag kanimo ug gahum sa paghimog masaligon, nahibal-an nga mga desisyon. Ang matag panagna ug konsultasyon nagpakita sa mga tuig sa propesyonal nga kahanas, dili awtomatiko nga mga algorithm.';
 
   @override
   String get ourVision => 'Atong Panan-awon';
 
   @override
   String get visionDescription =>
-      'Aron mahimong labing kasaligan nga plataporma sa astrolohiya, paghiusa sa teknolohiya ug karaan nga kaalam.';
+      'Naningkamot kami nga mahimong labing kasaligan nga plataporma sa kalibutan alang sa Vedic nga astrolohiya, nagtabang sa mga tawo bisan asa nga masabtan ang ilang kaugalingon, ilang mga pagpili, ug ang ilang panaw sa kinabuhi nga adunay katin-awan ug pagsalig.';
 
   @override
   String get ourValues => 'Atong mga Mithi';
 
   @override
   String get valuesDescription =>
-      'Integridad, Katukma, Gisentro sa Gumagamit nga Disenyo, ug Padayon nga Pagbag-o.';
+      'Sa Karma, gipabilhan nato ang pagkatinuod, katukma, ug pagsalig. Kami pasalig sa pagtanyag og giya nga dili lang tukma apan makahuluganon usab, nga nagtabang kanimo sa pag-navigate sa kinabuhi nga adunay panabut ug pagsalig.';
 
   @override
   String get contactUs => 'Kontaka Kami';
@@ -886,4 +886,11 @@ class AppLocalizationsCeb extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Atong Team';
+
+  @override
+  String get teamDescription =>
+      'Ang among grupo sa mga propesyonal nga Vedic astrologo nagdala ug mga tuig nga kasinatian sa paghubad sa mga impluwensya sa planeta ug mga sumbanan sa kinabuhi. Gipaluyohan sa usa ka dedikado nga suporta ug development team, ang Karma naghatod sa usa ka seamless, kasaligan, ug global nga kasinatian alang sa matag user.';
 }

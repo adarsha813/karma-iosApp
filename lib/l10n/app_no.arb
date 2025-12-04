@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Vi er opptatt av å levere den beste astrologiopplevelsen til brukerne våre.",
+  "aboutCompanyDescription": "Hos Karma hjelper vi deg med å avdekke din sanne livssti gjennom den tidløse visdommen i vedisk astrologi. All innsikt kommer fra ekte, erfarne astrologer, nøye utformet basert på ditt unike fødselshoroskop. Fra daglige horoskoper til personlig veiledning gjør Karma eldgammel kunnskap tilgjengelig på over 100 språk.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Å gi nøyaktig og personlig astrologisk innsikt for å hjelpe brukere med å ta informerte beslutninger i livet.",
+  "missionDescription": "Vårt oppdrag er enkelt: å gi autentisk, menneskeledet astrologisk veiledning som gir deg mulighet til å ta trygge og informerte beslutninger. Hver prediksjon og konsultasjon gjenspeiler årelang profesjonell ekspertise, ikke automatiserte algoritmer.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Å bli den mest pålitelige astrologiplattformen, som kombinerer teknologi og eldgammel visdom.",
+  "visionDescription": "Vi streber etter å være verdens mest pålitelige plattform for vedisk astrologi, og hjelpe folk overalt med å forstå seg selv, sine valg og sin livsreise med klarhet og selvtillit.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Integritet, nøyaktighet, brukersentrert design og kontinuerlig innovasjon.",
+  "valuesDescription": "Hos Karma verdsetter vi autentisitet, presisjon og tillit. Vi er opptatt av å tilby veiledning som ikke bare er nøyaktig, men også meningsfull, og som hjelper deg med å navigere livet med innsikt og selvtillit.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Temainnstillinger",
   "lightThemeLabel": "Lys",
   "darkThemeLabel": "Mørk",
-  "systemThemeLabel": "System"
+  "systemThemeLabel": "System",
+  "ourTeam": "Vårt team",
+  "teamDescription": "Vårt team av profesjonelle vediske astrologer har mange års erfaring med å tolke planetariske påvirkninger og livsmønstre. Med støtte fra et dedikert support- og utviklingsteam leverer Karma en sømløs, pålitelig og global opplevelse for alle brukere."
 }

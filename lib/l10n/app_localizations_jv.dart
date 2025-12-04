@@ -371,28 +371,28 @@ class AppLocalizationsJv extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Kita setya menehi pengalaman astrologi sing paling apik kanggo pangguna.';
+      'Ing Karma, kita mbantu sampeyan nemokake dalan urip sing sejatine liwat kawicaksanan astrologi Veda. Saben wawasan asale saka ahli astrologi sing nyata lan berpengalaman, digawe kanthi ati-ati adhedhasar grafik lair sing unik. Saka horoskop saben dina nganti tuntunan pribadi, Karma ndadekake kawruh kuno bisa diakses ing luwih saka 100 basa.';
 
   @override
   String get ourMission => 'Misi Kita';
 
   @override
   String get missionDescription =>
-      'Kanggo nyedhiyakake wawasan astrologi sing akurat lan khusus kanggo mbantu pangguna nggawe keputusan sing tepat ing urip.';
+      'Misi kita prasaja: kanggo menehi pandhuan astrologi sing asli lan dipimpin manungsa sing menehi kekuwatan kanggo nggawe keputusan sing yakin lan ngerti. Saben prediksi lan konsultasi nggambarake pengalaman profesional pirang-pirang taun, dudu algoritma otomatis.';
 
   @override
   String get ourVision => 'Visi Kita';
 
   @override
   String get visionDescription =>
-      'Kanggo dadi platform astrologi sing paling dipercaya, nggabungake teknologi lan kawicaksanan kuna.';
+      'Kita usaha kanggo dadi platform paling dipercaya ing donya kanggo astrologi Veda, ngewangi wong nang endi wae ngerti piyambak, pilihanipun, lan lelampahan urip karo kajelasan lan kapercayan.';
 
   @override
   String get ourValues => 'Nilai Kita';
 
   @override
   String get valuesDescription =>
-      'Integritas, Akurasi, Desain Sentris Panganggo, lan Inovasi Terus-terusan.';
+      'Ing Karma, kita ngurmati keaslian, presisi, lan kapercayan. Kita setya menehi tuntunan sing ora mung akurat nanging uga migunani, mbantu sampeyan navigasi urip kanthi wawasan lan kapercayan.';
 
   @override
   String get contactUs => 'Hubungi Kita';
@@ -534,7 +534,7 @@ class AppLocalizationsJv extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Sampeyan wis nggunakake pitakonan gratis. Mbayar ₹50 kanggo nerusake.';
+    return 'Sampeyan wis nggunakake pitakonan gratis. Mbayar $amount kanggo nerusake.';
   }
 
   @override
@@ -875,4 +875,11 @@ class AppLocalizationsJv extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Tim Kita';
+
+  @override
+  String get teamDescription =>
+      'Tim ahli astrologi Veda profesional nggawa pengalaman pirang-pirang taun nerjemahake pengaruh planet lan pola urip. Didhukung dening tim dhukungan lan pangembangan khusus, Karma menehi pengalaman sing lancar, dipercaya, lan global kanggo saben pangguna.';
 }

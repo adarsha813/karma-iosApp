@@ -371,28 +371,28 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Biz istifadəçilərimizə ən yaxşı astrologiya təcrübəsini çatdırmağa qərarlıyıq.';
+      'Karma-da biz sizə Vedik astrologiyasının sonsuz müdrikliyi vasitəsilə əsl həyat yolunuzu açmağa kömək edirik. Hər bir fikir unikal doğum xəritəniz əsasında diqqətlə hazırlanmış real, təcrübəli astroloqlardan gəlir. Gündəlik bürclərdən tutmuş fərdi təlimatlara qədər Karma qədim biliyi 100-dən çox dildə əlçatan edir.';
 
   @override
   String get ourMission => 'Missiyamız';
 
   @override
   String get missionDescription =>
-      'İstifadəçilərə həyatlarında əsaslandırılmış qərarlar qəbul etmələrinə kömək etmək üçün dəqiq və fərdiləşdirilmiş astrologiya anlayışlarını təmin etmək.';
+      'Bizim missiyamız sadədir: sizə inamlı, məlumatlı qərarlar qəbul etmək imkanı verən orijinal, insan tərəfindən idarə olunan astroloji bələdçiliyi təmin etmək. Hər bir proqnoz və məsləhət avtomatlaşdırılmış alqoritmləri deyil, illərin peşəkar təcrübəsini əks etdirir.';
 
   @override
   String get ourVision => 'Vizyonumuz';
 
   @override
   String get visionDescription =>
-      'Texnologiya və qədim hikməti birləşdirən ən etibarlı astrologiya platforması olmaq.';
+      'Biz Vedik astrologiyası üçün dünyanın ən etibarlı platforması olmağa çalışırıq, hər yerdə insanlara özlərini, seçimlərini və həyat səyahətlərini aydın və inamla başa düşməyə kömək edirik.';
 
   @override
   String get ourValues => 'Dəyərlərimiz';
 
   @override
   String get valuesDescription =>
-      'Dürüstlük, Dəqiqlik, İstifadəçi Mərkəzli Dizayn və Davamlı İnnovasiya.';
+      'Karma-da biz orijinallığı, dəqiqliyi və etibarı qiymətləndiririk. Biz yalnız dəqiq deyil, həm də mənalı olan, həyatda fərasət və inamla hərəkət etməyinizə kömək edən rəhbərlik təklif etməyə sadiqik.';
 
   @override
   String get contactUs => 'Bizimlə əlaqə saxlayın';
@@ -876,4 +876,11 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Bizim Komanda';
+
+  @override
+  String get teamDescription =>
+      'Peşəkar Vedik astroloqlarımızdan ibarət komandamız planetar təsirləri və həyat nümunələrini şərh edən illərin təcrübəsini gətirir. Xüsusi dəstək və inkişaf komandası tərəfindən dəstəklənən Karma, hər bir istifadəçi üçün qüsursuz, etibarlı və qlobal təcrübə təqdim edir.';
 }

@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "我们致力于为用户提供最佳的占星体验。",
+  "aboutCompanyDescription": "在Karma，我们运用吠陀占星术的永恒智慧，帮助您发现真正的人生道路。每一条洞见都出自经验丰富的专业占星师之手，并根据您独一无二的出生星盘精心打造。从每日运势到个性化指导，Karma以超过100种语言，让您轻松掌握古老的智慧。",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "提供准确、个性化的占星见解，帮助用户在生活中做出明智的决定。",
+  "missionDescription": "我们的使命很简单：提供真实可靠、以人为本的占星指导，帮助您做出自信而明智的决定。每一项预测和咨询都凝聚了多年的专业经验，而非自动化算法。",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "成为最值得信赖的占星平台，将科技与古代智慧相结合。",
+  "visionDescription": "我们致力于成为全球最值得信赖的吠陀占星术平台，帮助世界各地的人们清晰、自信地了解自己、自己的选择和自己的人生旅程。",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "诚信、准确、以用户为中心的设计、持续创新。",
+  "valuesDescription": "在Karma，我们珍视真实性、精准性和信任。我们致力于提供准确且有意义的指导，帮助您以洞察力和自信驾驭人生。",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "主题设置",
   "lightThemeLabel": "光",
   "darkThemeLabel": "黑暗的",
-  "systemThemeLabel": "系统"
+  "systemThemeLabel": "系统",
+  "ourTeam": "我们的团队",
+  "teamDescription": "我们专业的吠陀占星师团队拥有多年解读行星影响和人生轨迹的经验。在专业支持和开发团队的鼎力支持下，Karma 为每位用户提供流畅、可靠且全球化的使用体验。"
 }

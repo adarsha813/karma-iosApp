@@ -417,7 +417,7 @@ class AboutUsPage extends StatelessWidget {
                 ),
                 const SizedBox(width: 16),
                 Text(
-                  'Our Team',
+                  l10n.ourTeam, // <- localized
                   style: theme.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: theme.colorScheme.onSurface,
@@ -427,7 +427,7 @@ class AboutUsPage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              'Our team consists of experienced astrologers, software developers, and user experience designers committed to bringing you the best astrological guidance.',
+              l10n.teamDescription, // <- localized
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: theme.colorScheme.onSurface.withOpacity(0.7),
                 height: 1.5,

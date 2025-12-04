@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Sizibophezele ekuletheni umuzwa ohamba phambili wokubhula ngezinkanyezi kubasebenzisi bethu.",
+  "aboutCompanyDescription": "Kwa-Karma, sikusiza ukuthi wembule indlela yakho yempilo yangempela ngobuhlakani obungaphelelwa yisikhathi be-Vedic astrology. Yonke imininingwane ivela kubabhula ngezinkanyezi bangempela, abanolwazi, abaklanywe ngokucophelela ngokusekelwe eshadini lakho lokuzalwa eliyingqayizivele. Kusukela ku-horoscope yansuku zonke kuya ekuqondisweni komuntu siqu, i-Karma yenza ulwazi lwakudala lufinyeleleke ngezilimi ezingaphezu kwe-100.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Ukuhlinzeka ngemininingwane enembile neyenziwe ngezifiso yokubhula ngezinkanyezi ukusiza abasebenzisi ukwenza izinqumo ezinolwazi ezimpilweni zabo.",
+  "missionDescription": "Umgomo wethu ulula: ukuhlinzeka ngeziqondiso eziyiqiniso, eziholwa ngumuntu zezinkanyezi ezikunika amandla okwenza izinqumo eziqinisekayo nezinolwazi. Konke ukubikezela nokuxhumana kubonisa iminyaka yobungcweti bomsebenzi, hhayi ama-algorithms azenzakalelayo.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Ukuze ube inkundla yezinkanyezi ethembeke kakhulu, ehlanganisa ubuchwepheshe nobuhlakani basendulo.",
+  "visionDescription": "Silwela ukuba inkundla ethembeke kakhulu emhlabeni ye-Vedic astrology, sisiza abantu yonke indawo ukuthi baziqonde, ukukhetha kwabo, kanye nohambo lwabo lwempilo ngokucacile nangokuzethemba.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Ubuqotho, Ukunemba, Idizayini Emaphakathi Umsebenzisi, kanye Nokuqamba Okusha Okuqhubekayo.",
+  "valuesDescription": "Kwa-Karma, siyabazisa ubuqiniso, ukunemba, nokwethenjwa. Sizibophezele ekunikezeni isiqondiso esingagcini nje ngokunembile kodwa futhi esinenjongo, esikusiza ukuba uzulazule empilweni ngokuqondisisa nangokuzethemba.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Izilungiselelo Zetimu",
   "lightThemeLabel": "Ukukhanya",
   "darkThemeLabel": "Kumnyama",
-  "systemThemeLabel": "Uhlelo"
+  "systemThemeLabel": "Uhlelo",
+  "ourTeam": "Ithimba lethu",
+  "teamDescription": "Ithimba lethu lezazi zezinkanyezi ze-Vedic liletha isipiliyoni seminyaka sokuhumusha amathonya eplanethi namaphethini okuphila. Isekelwa ithimba elizinikele elisekelayo nelokuthuthukisa, i-Karma iletha ulwazi olungenazihibe, oluthembekile, nolwembulunga yonke kuwo wonke umsebenzisi."
 }

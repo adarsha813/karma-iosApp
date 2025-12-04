@@ -372,28 +372,28 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Iň oňat astrologiýa tejribesini ulanyjylarymyza ýetirmegi maksat edinýäris.';
+      'Karmada, Wedik astrologiýasynyň tükeniksiz paýhasy arkaly hakyky durmuş ýoluňyzy açmaga kömek edýäris. Her bir düşünje, özboluşly dogluş diagrammanyňyza esaslanyp ýasalan hakyky, tejribeli astrologlardan gelýär. Gündelik goroskoplardan başlap şahsylaşdyrylan görkezmä çenli Karma gadymy bilimleri 100-den gowrak dilde elýeterli edýär.';
 
   @override
   String get ourMission => 'Biziň wezipämiz';
 
   @override
   String get missionDescription =>
-      'Ulanyjylara durmuşynda habarly karar bermäge kömek etmek üçin takyk we şahsylaşdyrylan astrologiýa düşünjelerini bermek.';
+      'Biziň wezipämiz ýönekeý: ynamly, habarly karar bermäge mümkinçilik berýän hakyky, adam tarapyndan dolandyrylýan astrologiki görkezmeleri bermek. Her bir çaklama we maslahat, awtomatiki algoritmleri däl-de, köp ýyllyk hünär tejribesini görkezýär.';
 
   @override
   String get ourVision => 'Görüşimiz';
 
   @override
   String get visionDescription =>
-      'Tehnologiýany we gadymy paýhasy birleşdirip, iň ynamdar astrologiýa platformasyna öwrülmek.';
+      'Wedik astrologiýasy üçin dünýäniň iň ynamdar platformasy bolmaga çalyşýarys, hemme ýerdäki adamlara özlerine, saýlamalaryna we durmuş ýoluna aýdyňlyk we ynam bilen düşünmäge kömek edýäris.';
 
   @override
   String get ourValues => 'Gymmatlyklarymyz';
 
   @override
   String get valuesDescription =>
-      'Bütewilik, takyklyk, ulanyjy merkezi dizaýny we üznüksiz täzelik.';
+      'Karmada hakykylygyna, takyklygyna we ynamyna baha berýäris. Durmuşa düşünje we ynam bilen gitmäge kömek edýän diňe bir takyk däl, eýsem manyly hem ýol görkezmegi maksat edinýäris.';
 
   @override
   String get contactUs => 'Biz bilen habarlaşyň';
@@ -535,7 +535,7 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Mugt soraglaryňyzy ulandyňyz. Dowam etmek üçin 50 funt töläň.';
+    return 'Mugt soraglaryňyzy ulandyňyz. Dowam etmek üçin $amount töläň.';
   }
 
   @override
@@ -877,4 +877,11 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Toparymyz';
+
+  @override
+  String get teamDescription =>
+      'Professional Wedik astrologlar toparymyz, planetanyň täsirlerini we ýaşaýyş durmuşyny düşündirmek boýunça köp ýyllyk tejribe getirýär. Aýratyn goldaw we ösüş topary tarapyndan goldanan Karma, her bir ulanyjy üçin üznüksiz, ygtybarly we global tejribe berýär.';
 }

@@ -374,28 +374,28 @@ class AppLocalizationsSo extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Waxaa naga go\'an inaan u gudbino isticmaaleyaashayada khibradda xiddigiska ugu wanaagsan.';
+      'Karma, waxaanu kaa caawinaynaa inaad daaha ka qaaddo jidkaaga nolosha dhabta ah adiga oo u maraya xigmadda aan wakhtiga lahayn ee falaga Vedic. Aragti kastaa waxay ka timaadaa xiddigiyayaal khibrad leh oo dhab ah, oo si taxadar leh loo sameeyay iyadoo lagu salaynayo shaxda dhalashadaada gaarka ah. Laga soo bilaabo horoscopes maalinlaha ah ilaa hagitaan shaqsiyeed, Karma waxay ka dhigtaa aqoon qadiimi ah oo lagu heli karo in ka badan 100 luqadood.';
 
   @override
   String get ourMission => 'Himiladayada';
 
   @override
   String get missionDescription =>
-      'Si loo bixiyo aragtiyo xiddigiska oo la gaaryeelay oo sax ah si loo caawiyo isticmaalayaasha inay go\'aanno xog ogaal ah ku gaaraan noloshooda.';
+      'Hadafkayagu waa sahlan yahay: inaan bixino hagitaan xiddigiya oo dhab ah, oo bini\'aadmigu hoggaamiyo kaasoo awood kuu siinaya inaad si kalsooni leh, go\'aanno xog ogaal ah u qaadato. Saadaal kasta iyo la tashi kastaa waxay ka tarjumaysaa sannado khibrad xirfadeed ah, ma aha algorithms-ka tooska ah.';
 
   @override
   String get ourVision => 'Aragtideena';
 
   @override
   String get visionDescription =>
-      'Si aad u noqoto goobta ugu kalsoonida badan ee xiddigiska, isku-darka tignoolajiyada iyo xikmadaha qadiimiga ah.';
+      'Waxaan ku dadaaleynaa inaan noqono goobta ugu kalsoonida badan adduunka ee falaga Vedic, ka caawinta dadka meel kasta oo ay joogaan inay fahmaan naftooda, doorashadooda, iyo socdaalkooda nololeed si cad oo kalsooni leh.';
 
   @override
   String get ourValues => 'Qiimahayada';
 
   @override
   String get valuesDescription =>
-      'Daacadnimada, Saxnaanta, Naqshadda Isticmaalaha-Centric, iyo Hal-abuur joogto ah.';
+      'Karma, waxaan ku qiimeynaa runnimada, saxnaanta, iyo kalsoonida. Waxaa naga go\'an inaan bixino hagitaan aan sax ahayn oo keliya balse sidoo kale macno leh, kaa caawinaysa inaad nolosha ugu dhex socoto aragti iyo kalsooni.';
 
   @override
   String get contactUs => 'Nala Soo Xidhiidh';
@@ -887,4 +887,11 @@ class AppLocalizationsSo extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Kooxdayada';
+
+  @override
+  String get teamDescription =>
+      'Kooxdayada xiddigiyayaasha Vedic ee xirfadleyda ah waxay keenaan sannado waayo-aragnimo ah oo ay ku turjumayaan saamaynta meeraha iyo qaababka nolosha. Iyadoo ay taageerayaan koox u heellan taageerada iyo horumarinta, Karma waxay soo bandhigtaa khibrad la\'aan, la isku halayn karo, oo caalami ah isticmaale kasta.';
 }

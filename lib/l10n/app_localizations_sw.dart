@@ -370,28 +370,28 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Tumejitolea kuwasilisha hali bora zaidi ya unajimu kwa watumiaji wetu.';
+      'Katika Karma, tunakusaidia kufichua njia yako ya kweli ya maisha kupitia hekima isiyo na wakati ya unajimu wa Vedic. Kila maarifa hutoka kwa wanajimu halisi, wenye uzoefu, iliyoundwa kwa uangalifu kulingana na chati yako ya kipekee ya kuzaliwa. Kuanzia nyota za kila siku hadi mwongozo uliobinafsishwa, Karma hufanya maarifa ya zamani kupatikana katika lugha zaidi ya 100.';
 
   @override
   String get ourMission => 'Dhamira Yetu';
 
   @override
   String get missionDescription =>
-      'Ili kutoa maarifa sahihi na ya kibinafsi ya unajimu ili kuwasaidia watumiaji kufanya maamuzi sahihi katika maisha yao.';
+      'Dhamira yetu ni rahisi: kutoa mwongozo halisi wa unajimu unaoongozwa na binadamu unaokupa uwezo wa kufanya maamuzi ya uhakika na yenye ujuzi. Kila ubashiri na mashauriano huakisi miaka ya utaalam wa kitaalamu, si kanuni za kiotomatiki.';
 
   @override
   String get ourVision => 'Maono Yetu';
 
   @override
   String get visionDescription =>
-      'Ili kuwa jukwaa la unajimu linaloaminika zaidi, linalochanganya teknolojia na hekima ya zamani.';
+      'Tunajitahidi kuwa jukwaa linaloaminika zaidi ulimwenguni la unajimu wa Vedic, kusaidia watu kila mahali kujielewa, chaguo zao na safari yao ya maisha kwa uwazi na ujasiri.';
 
   @override
   String get ourValues => 'Maadili Yetu';
 
   @override
   String get valuesDescription =>
-      'Uadilifu, Usahihi, Muundo wa Msingi wa Mtumiaji, na Ubunifu Unaoendelea.';
+      'Katika Karma, tunathamini uhalisi, usahihi na uaminifu. Tumejitolea kutoa mwongozo ambao si sahihi tu bali pia wenye maana, unaokusaidia kuendesha maisha kwa ufahamu na uhakika.';
 
   @override
   String get contactUs => 'Wasiliana Nasi';
@@ -876,4 +876,11 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Timu Yetu';
+
+  @override
+  String get teamDescription =>
+      'Timu yetu ya wanajimu wa kitaalamu wa Vedic huleta uzoefu wa miaka mingi wa kutafsiri athari za sayari na mifumo ya maisha. Ikiungwa mkono na timu iliyojitolea ya usaidizi na ukuzaji, Karma hutoa uzoefu usio na mshono, unaotegemewa na wa kimataifa kwa kila mtumiaji.';
 }

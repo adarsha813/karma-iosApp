@@ -374,28 +374,28 @@ class AppLocalizationsGa extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Táimid tiomanta don taithí réalteolaíochta is fearr a sholáthar dár n-úsáideoirí.';
+      'Ag Karma, cabhraímid leat do chonair shaoil fíor a nochtadh trí eagna shíoraí na réalteolaíochta Véidí. Tagann gach léargas ó réalteolaithe fíor-thaithí, atá ceaptha go cúramach bunaithe ar do chairt bhreithe uathúil. Ó horoscóip laethúla go treoir phearsantaithe, cuireann Karma eolas ársa ar fáil i mbreis is 100 teanga.';
 
   @override
   String get ourMission => 'Ár Misean';
 
   @override
   String get missionDescription =>
-      'Chun léargais réalteolaíochta cruinne agus pearsantaithe a sholáthar chun cabhrú le húsáideoirí cinntí eolasacha a dhéanamh ina saol.';
+      'Is simplí ár misean: treoir réalteolaíoch barántúil, faoi stiúir an duine, a sholáthar a chuireann ar do chumas cinntí muiníneacha, eolasacha a dhéanamh. Léiríonn gach tuar agus comhairliúchán blianta fada de shaineolas gairmiúil, ní halgartaim uathoibrithe.';
 
   @override
   String get ourVision => 'Ár bhFís';
 
   @override
   String get visionDescription =>
-      'Chun bheith ar an ardán réalteolaíochta is iontaofa, ag comhcheangal teicneolaíochta agus eagna ársa.';
+      'Déanaimid ár ndícheall a bheith ar an ardán is iontaofa ar domhan le haghaidh réalteolaíocht Véideach, ag cabhrú le daoine i ngach áit iad féin, a roghanna agus a n-aistear saoil a thuiscint le soiléireacht agus muinín.';
 
   @override
   String get ourValues => 'Ár Luachanna';
 
   @override
   String get valuesDescription =>
-      'Ionracas, Cruinneas, Dearadh Dírithe ar an Úsáideoir, agus Nuálaíocht Leanúnach.';
+      'Ag Karma, cuirimid luach ar fhírinneacht, cruinneas agus muinín. Táimid tiomanta do threoir a thairiscint atá ní hamháin cruinn ach bríoch freisin, ag cabhrú leat an saol a nascleanúint le léargas agus muinín.';
 
   @override
   String get contactUs => 'Déan Teagmháil Linn';
@@ -879,4 +879,11 @@ class AppLocalizationsGa extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Ár bhFoireann';
+
+  @override
+  String get teamDescription =>
+      'Tá blianta fada taithí ag ár bhfoireann réalteolaithe Véideacha gairmiúla ag léirmhíniú tionchair phláinéid agus patrúin saoil. Le tacaíocht ó fhoireann tacaíochta agus forbartha tiomanta, cuireann Karma eispéireas gan uaim, iontaofa agus domhanda ar fáil do gach úsáideoir.';
 }

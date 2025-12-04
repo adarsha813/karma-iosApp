@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "بىز ئەڭ ياخشى ئاسترونومىيە تەجرىبىسىنى ئابونتلىرىمىزغا يەتكۈزۈشكە ۋەدە بېرىمىز.",
+  "aboutCompanyDescription": "كارمادا ، بىز ۋېدىك ئاسترونومىيەسىنىڭ ۋاقىتسىز ئەقىل-پاراسىتى ئارقىلىق ھەقىقىي ھايات يولىنى ئېچىشىڭىزغا ياردەم قىلىمىز. ھەر بىر چۈشەنچە ھەقىقىي ، تەجرىبىلىك جۇلدىزلاردىن كەلگەن بولۇپ ، ئۆزگىچە تۇغۇلۇش جەدۋىلىگە ئاساسەن ئەستايىدىللىق بىلەن ياسالغان. كۈندىلىك كۆرۈنۈشلەردىن خاسلاشتۇرۇلغان يېتەكلەشكىچە ، كارما قەدىمكى بىلىملەرنى 100 دىن ئارتۇق تىلدا زىيارەت قىلالايدۇ.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "توغرا ۋە خاسلاشتۇرۇلغان ئاسترونومىيە چۈشەنچىلىرى بىلەن تەمىنلەپ ، ئابونتلارنىڭ ھاياتىدا توغرا قارار چىقىرىشىغا ياردەم بېرىدۇ.",
+  "missionDescription": "بىزنىڭ ۋەزىپىمىز ناھايىتى ئاددىي: ئىشەنچلىك ، توغرا قارار چىقىرىشقا ھوقۇق بېرىدىغان ھەقىقىي ، ئىنسانلار يېتەكچىلىكىدىكى ئاسترونومىيە يېتەكچىلىكى بىلەن تەمىنلەش. ھەر بىر پەرەز ۋە مەسلىھەت ئاپتوماتىك ھېسابلاش ئۇسۇلى ئەمەس ، بەلكى نەچچە يىللىق كەسپىي تەجرىبىنى ئەكىس ئەتتۈرىدۇ.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "تېخنىكا بىلەن قەدىمكى ھېكمەتنى بىرلەشتۈرگەن ئەڭ ئىشەنچلىك ئاسترونومىيە سۇپىسىغا ئايلىنىش.",
+  "visionDescription": "بىز دۇنيادىكى ۋېدىك ئاسترونومىيە ئۈچۈن ئەڭ ئىشەنچلىك سۇپا بولۇشقا تىرىشىمىز ، ھەممە يەردىكى كىشىلەرنىڭ ئۆزىنى ، تاللىشىنى ۋە ھايات مۇساپىسىنى ئېنىق ۋە ئىشەنچ بىلەن چۈشىنىشىگە ياردەم قىلىمىز.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "سەمىمىيەت ، ئېنىقلىق ، ئىشلەتكۈچى مەركەزلىك لايىھىلەش ۋە ئۈزلۈكسىز يېڭىلىق يارىتىش.",
+  "valuesDescription": "كارمادا بىز چىنلىق ، ئېنىقلىق ۋە ئىشەنچنى قەدىرلەيمىز. بىز توغرا بولۇپلا قالماي ، يەنە ئەھمىيەتلىك بولغان يېتەكچىلىك بىلەن تەمىنلەشكە ۋەدە بېرىمىز.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -333,7 +333,7 @@
   "chatTitle": "پاراڭ",
   "typeYourQuestionHint": "سوئالىڭىزنى يېزىڭ ...",
   "paymentRequired": "پۇل تۆلەش تەلەپ قىلىنىدۇ",
-  "paymentRequiredMessage": "ھەقسىز سوئاللىرىڭىزنى ئىشلەتتىڭىز. داۋاملاشتۇرۇش ئۈچۈن 50 فوندستېرلىڭ تۆلەڭ.",
+  "paymentRequiredMessage": "ھەقسىز سوئاللىرىڭىزنى ئىشلەتتىڭىز. داۋاملاشتۇرۇش ئۈچۈن {amount} تۆلەڭ.",
   "payNowButton": "ھازىر تۆلەڭ",
   "freeQuestionsRemaining": "{count} free questions remaining",
   "paidQuestionsRemaining": "{count} paid questions remaining",
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "باشتېما تەڭشىكى",
   "lightThemeLabel": "نۇر",
   "darkThemeLabel": "قاراڭغۇ",
-  "systemThemeLabel": "سىستېما"
+  "systemThemeLabel": "سىستېما",
+  "ourTeam": "گۇرۇپپىمىز",
+  "teamDescription": "كەسپىي ۋېدىك ئاسترونومىيە ئەترىتىمىز سەييارە تەسىر ۋە ھايات ئەندىزىسىنى شەرھلەپ ئۇزۇن يىللىق تەجرىبە ئېلىپ كېلىدۇ. مەخسۇس قوللاش ۋە ئېچىش گۇرۇپپىسىنىڭ قوللىشى بىلەن ، كارما ھەر بىر ئىشلەتكۈچى ئۈچۈن يوچۇقسىز ، ئىشەنچلىك ۋە دۇنياۋى تەجرىبە بىلەن تەمىنلەيدۇ."
 }

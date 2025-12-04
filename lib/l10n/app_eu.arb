@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Gure erabiltzaileei astrologia esperientzia onena eskaintzeko konpromisoa dugu.",
+  "aboutCompanyDescription": "Karman, zure benetako bizitzako bidea aurkitzen laguntzen dizugu astrologia vedikoaren jakinduria betierekoaren bidez. Ikuspegi guztiak benetako astrologo esperientziadunengandik datoz, zure jaiotza-taula berezian oinarrituta arretaz landuak. Eguneroko horoskopoetatik hasi eta orientazio pertsonalizaturaino, Karmak antzinako ezagutza eskuragarri jartzen du 100 hizkuntza baino gehiagotan.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Erabiltzaileei bizitzan erabaki informatuak hartzen laguntzeko astrologia-informazio zehatza eta pertsonalizatua eskaintzea.",
+  "missionDescription": "Gure eginkizuna sinplea da: benetako gidaritza astrologikoa eskaintzea, erabaki seguru eta informatuak hartzeko ahalmena emango dizuna. Iragarpen eta kontsulta bakoitzak urteetako esperientzia profesionala islatzen du, ez algoritmo automatizatuak.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Teknologia eta antzinako jakinduria konbinatuz, astrologia plataforma fidagarriena bihurtzea.",
+  "visionDescription": "Munduko astrologia vedikorako plataforma fidagarriena izaten saiatzen gara, mundu osoko jendeari bere burua, bere aukerak eta bere bizitzako bidaia argi eta konfiantzaz ulertzen laguntzeko.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Osotasuna, Zehaztasuna, Erabiltzailean Zentratutako Diseinua eta Etengabeko Berrikuntza.",
+  "valuesDescription": "Karman, benetakotasuna, zehaztasuna eta konfiantza baloratzen ditugu. Zehatza ez ezik, esanguratsua ere den orientazioa eskaintzeko konpromisoa dugu, bizitzan ikuspegi eta konfiantzaz nabigatzen laguntzeko.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Gaiaren ezarpenak",
   "lightThemeLabel": "Argia",
   "darkThemeLabel": "Iluna",
-  "systemThemeLabel": "Sistema"
+  "systemThemeLabel": "Sistema",
+  "ourTeam": "Gure Taldea",
+  "teamDescription": "Gure astrologo vediko profesionalen taldeak urteetako esperientzia du eragin planetarioak eta bizitza-ereduak interpretatzen. Laguntza eta garapen talde dedikatu batek babestuta, Karmak esperientzia ezin hobea, fidagarria eta globala eskaintzen die erabiltzaile guztiei."
 }

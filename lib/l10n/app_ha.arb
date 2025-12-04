@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Mun himmatu don isar da mafi kyawun ƙwarewar taurari ga masu amfani da mu.",
+  "aboutCompanyDescription": "A Karma, muna taimaka muku gano hanyar rayuwar ku ta gaskiya ta hanyar hikima mara lokaci na taurarin Vedic. Kowace fahimta ta fito daga haƙiƙa, ƙwararrun ƙwararrun taurari, waɗanda aka ƙera su a hankali bisa ƙayyadaddun ginshiƙi na haihuwa. Daga horoscopes na yau da kullun zuwa jagora na keɓaɓɓen, Karma yana ba da damar ilimin daɗaɗɗen ilimin a cikin harsuna sama da 100.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Don samar da ingantattun bayanan taurari na keɓaɓɓen don taimakawa masu amfani su yanke shawara mai zurfi a rayuwarsu.",
+  "missionDescription": "Manufarmu mai sauƙi ce: don samar da ingantacciyar jagorar ilimin taurari wanda ɗan adam ke jagoranta wanda ke ba ku ikon yanke shawara, tabbataccen shawara. Kowane tsinkaya da shawarwari suna nuna shekarun ƙwararrun ƙwararru, ba algorithms na atomatik ba.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Don zama mafi amintaccen dandalin taurari, haɗa fasaha da tsohuwar hikima.",
+  "visionDescription": "Muna ƙoƙari mu zama dandamali mafi aminci a duniya don taurarin Vedic, muna taimaka wa mutane a ko'ina su fahimci kansu, zaɓinsu, da tafiyar rayuwarsu tare da tsabta da tabbaci.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Mutunci, Daidaito, Tsara-Cintar Mai Amfani, da Cigaba da Ƙirƙiri.",
+  "valuesDescription": "A Karma, muna daraja gaskiya, daidaito, da amana. Mun himmatu wajen ba da jagora wanda ba daidai ba ne kawai amma har ma da ma'ana, yana taimaka muku kewaya rayuwa cikin basira da tabbaci.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Saitunan Jigo",
   "lightThemeLabel": "Haske",
   "darkThemeLabel": "Duhu",
-  "systemThemeLabel": "Tsari"
+  "systemThemeLabel": "Tsari",
+  "ourTeam": "Tawagar mu",
+  "teamDescription": "Ƙungiyarmu ta ƙwararrun ƙwararrun taurarin Vedic suna kawo shekaru na gogewa na fassara tasirin duniya da tsarin rayuwa. Taimakawa ta hanyar sadaukar da goyan baya da ƙungiyar haɓakawa, Karma yana ba da cikakkiyar daidaituwa, abin dogaro, da ƙwarewar duniya ga kowane mai amfani."
 }

@@ -371,28 +371,28 @@ class AppLocalizationsSu extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Kami komitmen pikeun nganteurkeun pangalaman astrologi anu pangsaéna pikeun pangguna urang.';
+      'Di Karma, kami ngabantosan anjeun mendakan jalan kahirupan anu leres ngalangkungan hikmah astrologi Weda anu abadi. Unggal wawasan asalna tina astrologer nyata, ngalaman, taliti crafted dumasar kana bagan kalahiran unik anjeun. Tina horoskop sapopoé dugi ka petunjuk pribadi, Karma ngajantenkeun pangaweruh kuno tiasa diaksés dina langkung ti 100 basa.';
 
   @override
   String get ourMission => 'Misi kami';
 
   @override
   String get missionDescription =>
-      'Pikeun masihan wawasan astrologi anu akurat sareng pribadi pikeun ngabantosan pangguna nyandak kaputusan anu terang dina kahirupanna.';
+      'Misi kami saderhana: nyayogikeun pituduh astrologi anu otentik anu dipimpin ku manusa anu nguatkeun anjeun pikeun nyandak kaputusan anu yakin sareng terang. Unggal prediksi sareng konsultasi ngagambarkeun taun kaahlian profésional, sanés algoritma otomatis.';
 
   @override
   String get ourVision => 'Visi Urang';
 
   @override
   String get visionDescription =>
-      'Pikeun janten platform astrologi anu paling dipercaya, ngagabungkeun téknologi sareng hikmah kuno.';
+      'Kami narékahan pikeun janten platform anu paling dipercaya di dunya pikeun astrologi Weda, ngabantosan jalma dimana waé ngartos diri, pilihan, sareng perjalanan hirupna kalayan kajelasan sareng kapercayaan.';
 
   @override
   String get ourValues => 'Nilai Urang';
 
   @override
   String get valuesDescription =>
-      'Integritas, Akurasi, Desain-Centric Pamaké, sareng Inovasi Kontinyu.';
+      'Di Karma, urang ngahargaan kaaslian, katepatan, sareng kapercayaan. Kami komitmen pikeun nawiskeun pituduh anu henteu ngan ukur akurat tapi ogé bermakna, ngabantosan anjeun nganapigasi kahirupan kalayan wawasan sareng kapercayaan.';
 
   @override
   String get contactUs => 'Taros Kami';
@@ -874,4 +874,11 @@ class AppLocalizationsSu extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Tim Kami';
+
+  @override
+  String get teamDescription =>
+      'Tim astrologer Weda profésional kami mawa pangalaman mangtaun-taun napsirkeun pangaruh planet sareng pola kahirupan. Didukung ku tim pangrojong sareng pamekaran khusus, Karma nyayogikeun pangalaman anu lancar, dipercaya, sareng global pikeun unggal pangguna.';
 }

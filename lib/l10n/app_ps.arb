@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "موږ ژمن یو چې خپلو کاروونکو ته د ستورپوهنې غوره تجربه وړاندې کړو.",
+  "aboutCompanyDescription": "په کرما کې، موږ ستاسو سره د ویدیک ستورپوهنې د تلپاتې حکمت له لارې ستاسو د ژوند ریښتینې لاره موندلو کې مرسته کوو. هر بصیرت د ریښتیني، تجربه لرونکو ستورپوهانو څخه راځي، چې ستاسو د ځانګړي زیږون چارټ پراساس په احتیاط سره جوړ شوي. د ورځني افقونو څخه تر شخصي لارښوونې پورې، کرما لرغوني پوهه په 100 څخه زیاتو ژبو کې د لاسرسي وړ ګرځوي.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "د ستورپوهنې دقیق او شخصي بصیرت چمتو کول ترڅو کاروونکو سره د دوی په ژوند کې باخبره پریکړې کولو کې مرسته وکړي.",
+  "missionDescription": "زموږ ماموریت ساده دی: د انسان په مشرۍ د ستورپوهنې مستند لارښوونې چمتو کول چې تاسو ته د باوري او باخبره پریکړو کولو ځواک درکوي. هره وړاندوینه او مشوره د کلونو مسلکي تخصص منعکس کوي، نه اتومات الګوریتمونه.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "د ټیکنالوژۍ او لرغوني حکمت سره یوځای کولو سره، د ستورپوهنې ترټولو باوري پلیټ فارم شي.",
+  "visionDescription": "موږ هڅه کوو چې د ویدیک ستورپوهنې لپاره د نړۍ ترټولو باوري پلیټ فارم واوسو، چې خلکو سره مرسته وکړي چې په هر ځای کې ځانونه، د دوی انتخابونه، او د دوی د ژوند سفر په روښانه او باور سره پوه شي.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "صداقت، دقت، د کاروونکي پر بنسټ ډیزاین، او دوامداره نوښت.",
+  "valuesDescription": "په کرما کې، موږ صداقت، دقت او باور ته ارزښت ورکوو. موږ ژمن یو چې داسې لارښوونې وړاندې کړو چې نه یوازې دقیقې وي بلکې معنی لرونکې هم وي، چې تاسو سره د ژوند په بصیرت او باور سره په لاره اچولو کې مرسته وکړي.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "د موضوع ترتیبات",
   "lightThemeLabel": "رڼا",
   "darkThemeLabel": "تیاره",
-  "systemThemeLabel": "سیسټم"
+  "systemThemeLabel": "سیسټم",
+  "ourTeam": "زموږ لوبډله",
+  "teamDescription": "زموږ د مسلکي ویدیک ستورپوهانو ټیم د سیارې اغیزو او د ژوند نمونو تشریح کولو کې د کلونو تجربه لري. د وقف شوي ملاتړ او پراختیا ټیم لخوا ملاتړ شوی، کرما د هر کارونکي لپاره بې سیمه، باوري او نړیواله تجربه وړاندې کوي."
 }

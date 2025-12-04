@@ -373,28 +373,28 @@ class AppLocalizationsLb extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Mir engagéieren eis fir eis Benotzer déi bescht Astrologie-Erfahrung ze bidden.';
+      'Bei Karma hëllefe mir Iech, Äre richtege Liewenswee duerch déi zäitlos Wäisheet vun der vedescher Astrologie z\'entdecken. All Abléck kënnt vun echte, erfuerene Astrologen, suergfälteg op Basis vun Ärem eenzegaartege Gebuertshoroskop ausgeschafft. Vu deeglechen Horoskoper bis zu personaliséierter Berodung mécht Karma antikt Wëssen an iwwer 100 Sproochen zougänglech.';
 
   @override
   String get ourMission => 'Eis Missioun';
 
   @override
   String get missionDescription =>
-      'Fir korrekt an personaliséiert Astrologie-Abléck ze bidden, fir de Benotzer ze hëllefen, informéiert Entscheedungen an hirem Liewen ze treffen.';
+      'Eis Missioun ass einfach: authentesch, mënschorientéiert astrologesch Berodung ze bidden, déi Iech ermächtegt, zouversiichtlech an informéiert Entscheedungen ze treffen. All Prognose a Berodung reflektéiert Joere vun professioneller Expertise, net automatiséiert Algorithmen.';
 
   @override
   String get ourVision => 'Eis Visioun';
 
   @override
   String get visionDescription =>
-      'Fir déi vertrauenswierdegst Astrologieplattform ze ginn, déi Technologie an antik Wäisheet kombinéiert.';
+      'Mir beméien eis, déi weltwäit vertrauenswierdegst Plattform fir vedesch Astrologie ze sinn, an de Leit iwwerall ze hëllefen, sech selwer, hir Entscheedungen an hire Liewenswee mat Kloerheet a Vertrauen ze verstoen.';
 
   @override
   String get ourValues => 'Eis Wäerter';
 
   @override
   String get valuesDescription =>
-      'Integritéit, Genauegkeet, benotzerzentriert Design a kontinuéierlech Innovatioun.';
+      'Bei Karma leeë mir Wäert op Authentizitéit, Präzisioun a Vertrauen. Mir engagéieren eis fir Berodung ze bidden, déi net nëmme korrekt, mee och sënnvoll ass, an Iech hëlleft, d\'Liewen mat Abléck a Vertrauen ze navigéieren.';
 
   @override
   String get contactUs => 'Kontaktéiert eis';
@@ -882,4 +882,11 @@ class AppLocalizationsLb extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Eis Equipe';
+
+  @override
+  String get teamDescription =>
+      'Eis Equipe vu professionelle vedeschen Astrologen huet Joeren Erfahrung an der Interpretatioun vu planetareschen Aflëss a Liewensmuster. Ënnerstëtzt vun engem engagéierten Support- an Entwécklungsteam bitt Karma eng nahtlos, zouverlässeg a global Erfahrung fir all Benotzer.';
 }

@@ -372,28 +372,28 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Kami komited untuk menyampaikan pengalaman astrologi terbaik kepada pengguna kami.';
+      'Di Karma, kami membantu anda mendedahkan laluan kehidupan sebenar anda melalui kebijaksanaan astrologi Veda yang abadi. Setiap cerapan datang daripada ahli nujum sebenar yang berpengalaman, direka dengan teliti berdasarkan carta kelahiran unik anda. Daripada horoskop harian kepada bimbingan yang diperibadikan, Karma menjadikan pengetahuan purba boleh diakses dalam lebih 100 bahasa.';
 
   @override
   String get ourMission => 'Misi Kami';
 
   @override
   String get missionDescription =>
-      'Untuk memberikan cerapan astrologi yang tepat dan diperibadikan untuk membantu pengguna membuat keputusan termaklum dalam kehidupan mereka.';
+      'Misi kami adalah mudah: untuk menyediakan panduan astrologi yang tulen dan diterajui manusia yang memperkasakan anda untuk membuat keputusan yang yakin dan termaklum. Setiap ramalan dan perundingan mencerminkan kepakaran profesional selama bertahun-tahun, bukan algoritma automatik.';
 
   @override
   String get ourVision => 'Visi Kami';
 
   @override
   String get visionDescription =>
-      'Untuk menjadi platform astrologi yang paling dipercayai, menggabungkan teknologi dan kebijaksanaan purba.';
+      'Kami berusaha untuk menjadi platform paling dipercayai di dunia untuk astrologi Veda, membantu orang di mana-mana memahami diri mereka, pilihan mereka dan perjalanan hidup mereka dengan jelas dan yakin.';
 
   @override
   String get ourValues => 'Nilai Kami';
 
   @override
   String get valuesDescription =>
-      'Integriti, Ketepatan, Reka Bentuk Berpusatkan Pengguna dan Inovasi Berterusan.';
+      'Di Karma, kami menghargai keaslian, ketepatan dan kepercayaan. Kami komited untuk menawarkan bimbingan yang bukan sahaja tepat tetapi juga bermakna, membantu anda mengharungi kehidupan dengan wawasan dan keyakinan.';
 
   @override
   String get contactUs => 'Hubungi Kami';
@@ -876,4 +876,11 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Pasukan Kami';
+
+  @override
+  String get teamDescription =>
+      'Pasukan ahli nujum Veda profesional kami membawa pengalaman bertahun-tahun mentafsir pengaruh planet dan corak kehidupan. Disokong oleh pasukan sokongan dan pembangunan yang berdedikasi, Karma memberikan pengalaman yang lancar, boleh dipercayai dan global untuk setiap pengguna.';
 }

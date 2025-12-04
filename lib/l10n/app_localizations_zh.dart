@@ -360,25 +360,29 @@ class AppLocalizationsZh extends AppLocalizations {
   String get aboutOurCompany => '关于我们公司';
 
   @override
-  String get aboutCompanyDescription => '我们致力于为用户提供最佳的占星体验。';
+  String get aboutCompanyDescription =>
+      '在Karma，我们运用吠陀占星术的永恒智慧，帮助您发现真正的人生道路。每一条洞见都出自经验丰富的专业占星师之手，并根据您独一无二的出生星盘精心打造。从每日运势到个性化指导，Karma以超过100种语言，让您轻松掌握古老的智慧。';
 
   @override
   String get ourMission => '我们的使命';
 
   @override
-  String get missionDescription => '提供准确、个性化的占星见解，帮助用户在生活中做出明智的决定。';
+  String get missionDescription =>
+      '我们的使命很简单：提供真实可靠、以人为本的占星指导，帮助您做出自信而明智的决定。每一项预测和咨询都凝聚了多年的专业经验，而非自动化算法。';
 
   @override
   String get ourVision => '我们的愿景';
 
   @override
-  String get visionDescription => '成为最值得信赖的占星平台，将科技与古代智慧相结合。';
+  String get visionDescription =>
+      '我们致力于成为全球最值得信赖的吠陀占星术平台，帮助世界各地的人们清晰、自信地了解自己、自己的选择和自己的人生旅程。';
 
   @override
   String get ourValues => '我们的价值观';
 
   @override
-  String get valuesDescription => '诚信、准确、以用户为中心的设计、持续创新。';
+  String get valuesDescription =>
+      '在Karma，我们珍视真实性、精准性和信任。我们致力于提供准确且有意义的指导，帮助您以洞察力和自信驾驭人生。';
 
   @override
   String get contactUs => '联系我们';
@@ -853,6 +857,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => '我们的团队';
+
+  @override
+  String get teamDescription =>
+      '我们专业的吠陀占星师团队拥有多年解读行星影响和人生轨迹的经验。在专业支持和开发团队的鼎力支持下，Karma 为每位用户提供流畅、可靠且全球化的使用体验。';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -1211,25 +1222,29 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get aboutOurCompany => '關於我們公司';
 
   @override
-  String get aboutCompanyDescription => '我們致力於為使用者提供最佳的占星體驗。';
+  String get aboutCompanyDescription =>
+      '在Karma，我們運用吠陀占星術的永恆智慧，幫助您發現真正的人生道路。每一條洞見都出自經驗豐富的專業占星師之手，並根據您獨一無二的出生星盤精心打造。從每日運勢到個人化指導，Karma以超過100種語言，讓您輕鬆掌握古老的智慧。';
 
   @override
   String get ourMission => '我們的使命';
 
   @override
-  String get missionDescription => '提供準確、個人化的占星見解，幫助使用者在生活中做出明智的決定。';
+  String get missionDescription =>
+      '我們的使命很簡單：提供真實可靠、以人為本的占星指導，幫助您做出自信而明智的決定。每項預測和諮詢都凝聚了多年的專業經驗，而非自動化演算法。';
 
   @override
   String get ourVision => '我們的願景';
 
   @override
-  String get visionDescription => '成為最值得信賴的占星平台，將科技與古代智慧結合。';
+  String get visionDescription =>
+      '我們致力於成為全球最值得信賴的吠陀占星術平台，幫助世界各地的人們清晰、自信地了解自己、自己的選擇和自己的人生旅程。';
 
   @override
   String get ourValues => '我們的價值觀';
 
   @override
-  String get valuesDescription => '誠信、準確、以使用者為中心的設計、持續創新。';
+  String get valuesDescription =>
+      '在Karma，我們珍惜真實性、精準性和信任。我們致力於提供準確且有意義的指導，幫助您以洞察力和自信駕馭人生。';
 
   @override
   String get contactUs => '聯絡我們';
@@ -1370,7 +1385,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return '您已用完免費提問次數。支付 50 盧比即可繼續。';
+    return '您已用完免費提問次數。支付 $amount 可繼續提問。';
   }
 
   @override
@@ -1686,4 +1701,11 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get systemThemeLabel => '系統';
+
+  @override
+  String get ourTeam => '我們的團隊';
+
+  @override
+  String get teamDescription =>
+      '我們專業的吠陀占星師團隊擁有多年解讀行星影響力和人生軌蹟的經驗。在專業支援和開發團隊的鼎力支援下，Karma 為每位使用者提供流暢、可靠且全球化的使用體驗。';
 }

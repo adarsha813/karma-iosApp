@@ -372,28 +372,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'We are committed to delivering the best astrology experience to our users.';
+      'At Karma, we help you uncover your true life path through the timeless wisdom of Vedic astrology. Every insight comes from real, experienced astrologers, carefully crafted based on your unique birth chart. From daily horoscopes to personalized guidance, Karma makes ancient knowledge accessible in over 100 languages.';
 
   @override
   String get ourMission => 'Our Mission';
 
   @override
   String get missionDescription =>
-      'To provide accurate and personalized astrology insights to help users make informed decisions in their lives.';
+      'Our mission is simple: to provide authentic, human-led astrological guidance that empowers you to make confident, informed decisions. Every prediction and consultation reflects years of professional expertise, not automated algorithms.';
 
   @override
   String get ourVision => 'Our Vision';
 
   @override
   String get visionDescription =>
-      'To become the most trusted astrology platform, combining technology and ancient wisdom.';
+      'We strive to be the world’s most trusted platform for Vedic astrology, helping people everywhere understand themselves, their choices, and their life journey with clarity and confidence.';
 
   @override
   String get ourValues => 'Our Values';
 
   @override
   String get valuesDescription =>
-      'Integrity, Accuracy, User-Centric Design, and Continuous Innovation.';
+      'At Karma, we value authenticity, precision, and trust. We are committed to offering guidance that is not only accurate but also meaningful, helping you navigate life with insight and confidence.';
 
   @override
   String get contactUs => 'Contact Us';
@@ -875,4 +875,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Our Team';
+
+  @override
+  String get teamDescription =>
+      'Our team of professional Vedic astrologers brings years of experience interpreting planetary influences and life patterns. Backed by a dedicated support and development team, Karma delivers a seamless, reliable, and global experience for every user.';
 }

@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "ما متعهد به ارائه بهترین تجربه طالع بینی به کاربران خود هستیم.",
+  "aboutCompanyDescription": "در کارما، ما به شما کمک می‌کنیم تا مسیر واقعی زندگی خود را از طریق خرد جاودانه طالع بینی ودایی کشف کنید. هر بینشی از طالع‌بینان واقعی و باتجربه ناشی می‌شود که با دقت بر اساس نمودار تولد منحصر به فرد شما تهیه شده‌اند. از طالع بینی روزانه گرفته تا راهنمایی‌های شخصی، کارما دانش باستانی را به بیش از ۱۰۰ زبان در دسترس قرار می‌دهد.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "ارائه بینش‌های طالع‌بینی دقیق و شخصی‌سازی‌شده برای کمک به کاربران در تصمیم‌گیری‌های آگاهانه در زندگی‌شان.",
+  "missionDescription": "ماموریت ما ساده است: ارائه راهنمایی‌های طالع‌بینی معتبر و مبتنی بر انسان که شما را قادر می‌سازد تصمیمات مطمئن و آگاهانه‌ای بگیرید. هر پیش‌بینی و مشاوره نشان دهنده سال‌ها تخصص حرفه‌ای است، نه الگوریتم‌های خودکار.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "برای تبدیل شدن به معتبرترین پلتفرم طالع بینی، با ترکیب فناوری و خرد باستانی.",
+  "visionDescription": "ما تلاش می‌کنیم تا معتبرترین پلتفرم جهان برای طالع بینی ودایی باشیم و به مردم در همه جا کمک کنیم تا خود، انتخاب‌هایشان و سفر زندگی‌شان را با وضوح و اطمینان درک کنند.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "صداقت، دقت، طراحی کاربر محور و نوآوری مستمر.",
+  "valuesDescription": "در کارما، ما برای اصالت، دقت و اعتماد ارزش قائلیم. ما متعهد به ارائه راهنمایی‌هایی هستیم که نه تنها دقیق، بلکه معنادار نیز باشند و به شما کمک کنند تا با بینش و اعتماد به نفس در زندگی خود حرکت کنید.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "تنظیمات قالب",
   "lightThemeLabel": "نور",
   "darkThemeLabel": "تیره",
-  "systemThemeLabel": "سیستم"
+  "systemThemeLabel": "سیستم",
+  "ourTeam": "تیم ما",
+  "teamDescription": "تیم ما از ستاره‌شناسان حرفه‌ای ودایی، سال‌ها تجربه در تفسیر تأثیرات سیارات و الگوهای زندگی را به ارمغان می‌آورند. کارما با پشتیبانی یک تیم پشتیبانی و توسعه اختصاصی، یک تجربه یکپارچه، قابل اعتماد و جهانی را برای هر کاربر ارائه می‌دهد."
 }

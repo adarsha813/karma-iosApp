@@ -374,28 +374,28 @@ class AppLocalizationsMg extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Nanolo-tena izahay hanome traikefa astrolojia tsara indrindra ho an\'ireo mpampiasa anay.';
+      'Ao amin\'ny Karma, manampy anao izahay hamantatra ny tena lalan\'ny fiainanao amin\'ny alàlan\'ny fahendren\'ny fanandroana Vedika tsy manam-potoana. Ny hevitra rehetra dia avy amin\'ny mpanandro tena za-draharaha, novolavolaina tamim-pitandremana mifototra amin\'ny tabilao nahaterahanao manokana. Avy amin\'ny horoscope isan\'andro ka hatramin\'ny fitarihana manokana, ny Karma dia mahatonga ny fahalalana fahiny ho azo idirana amin\'ny fiteny 100 mahery.';
 
   @override
   String get ourMission => 'Ny Iraka';
 
   @override
   String get missionDescription =>
-      'Mba hanomezana hevitra momba ny fanandroana marina sy manokana mba hanampiana ireo mpampiasa handray fanapahan-kevitra tsara eo amin\'ny fiainany.';
+      'Tsotra ny iraka ataonay: manome torolalana astrolojika tena izy, tarihin\'olombelona izay manome hery anao handray fanapahan-kevitra matoky tena sy mahay. Ny vinavina sy ny fifampidinihana rehetra dia maneho ny fahaiza-manao matihanina nandritra ny taona maro, fa tsy algorithm mandeha ho azy.';
 
   @override
   String get ourVision => 'Ny Vinantsika';
 
   @override
   String get visionDescription =>
-      'Mba ho lasa sehatra fanandroana azo itokisana indrindra, manambatra ny teknolojia sy ny fahendrena taloha.';
+      'Miezaka izahay ho sehatra azo itokisana indrindra eran-tany ho an\'ny fanandroana Vedic, manampy ny olona na aiza na aiza hahatakatra ny tenany, ny safidiny ary ny diany amin\'ny fomba mazava sy matoky tena.';
 
   @override
   String get ourValues => 'Ny Soatoavinay';
 
   @override
   String get valuesDescription =>
-      'Ny fahamendrehana, ny fahamendrehana, ny famolavolana mifototra amin\'ny mpampiasa, ary ny fanavaozana mitohy.';
+      'Amin\'ny Karma, manome lanja ny maha-azo itokiana, ny fahamendrehana ary ny fahatokisana isika. Nanolo-tena izahay hanome tari-dalana izay tsy marina fotsiny fa misy dikany koa, manampy anao hivezivezy amin\'ny fiainana amim-pahalalana sy fahatokiana.';
 
   @override
   String get contactUs => 'Mifandraisa aminay';
@@ -884,4 +884,11 @@ class AppLocalizationsMg extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Ny Ekipantsika';
+
+  @override
+  String get teamDescription =>
+      'Ny ekipanay mpanandro Vedic matihanina dia mitondra traikefa an-taonany maro amin\'ny fandikana ny fiantraikan\'ny planeta sy ny fomba fiainana. Tohanan\'ny ekipa mpanohana sy fampandrosoana natokana ho an\'ny mpampiasa tsirairay ny Karma.';
 }

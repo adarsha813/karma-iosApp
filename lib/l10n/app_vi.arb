@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Chúng tôi cam kết mang lại trải nghiệm chiêm tinh tốt nhất cho người dùng.",
+  "aboutCompanyDescription": "Tại Karma, chúng tôi giúp bạn khám phá con đường cuộc sống đích thực của mình thông qua trí tuệ vượt thời gian của chiêm tinh học Vệ Đà. Mọi hiểu biết đều đến từ các nhà chiêm tinh thực thụ, giàu kinh nghiệm, được trau chuốt tỉ mỉ dựa trên lá số tử vi độc đáo của bạn. Từ tử vi hàng ngày đến hướng dẫn cá nhân hóa, Karma giúp kiến thức cổ xưa dễ tiếp cận hơn 100 ngôn ngữ.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Cung cấp những hiểu biết chiêm tinh chính xác và cá nhân hóa để giúp người dùng đưa ra quyết định sáng suốt trong cuộc sống.",
+  "missionDescription": "Sứ mệnh của chúng tôi rất đơn giản: cung cấp hướng dẫn chiêm tinh chân thực, do con người dẫn dắt, giúp bạn tự tin đưa ra quyết định sáng suốt. Mỗi dự đoán và tư vấn đều phản ánh nhiều năm kinh nghiệm chuyên môn, chứ không phải thuật toán tự động.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Trở thành nền tảng chiêm tinh đáng tin cậy nhất, kết hợp công nghệ và trí tuệ cổ xưa.",
+  "visionDescription": "Chúng tôi nỗ lực trở thành nền tảng đáng tin cậy nhất thế giới về chiêm tinh học Vệ Đà, giúp mọi người ở khắp mọi nơi hiểu rõ bản thân, lựa chọn và hành trình cuộc sống của họ một cách rõ ràng và tự tin.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Tính toàn vẹn, chính xác, thiết kế lấy người dùng làm trung tâm và đổi mới liên tục.",
+  "valuesDescription": "Tại Karma, chúng tôi coi trọng tính xác thực, chính xác và sự tin cậy. Chúng tôi cam kết cung cấp những hướng dẫn không chỉ chính xác mà còn ý nghĩa, giúp bạn định hướng cuộc sống với sự thấu hiểu và tự tin.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Cài đặt chủ đề",
   "lightThemeLabel": "Ánh sáng",
   "darkThemeLabel": "Tối tăm",
-  "systemThemeLabel": "Hệ thống"
+  "systemThemeLabel": "Hệ thống",
+  "ourTeam": "Đội ngũ của chúng tôi",
+  "teamDescription": "Đội ngũ chiêm tinh gia Vệ Đà chuyên nghiệp của chúng tôi có nhiều năm kinh nghiệm trong việc phân tích ảnh hưởng của các hành tinh và các mô hình cuộc sống. Được hỗ trợ bởi đội ngũ hỗ trợ và phát triển tận tâm, Karma mang đến trải nghiệm liền mạch, đáng tin cậy và toàn cầu cho mọi người dùng."
 }

@@ -371,28 +371,28 @@ class AppLocalizationsEo extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Ni celas liveri la plej bonan astrologian sperton al niaj uzantoj.';
+      'Ĉe Karma, ni helpas vin malkovri vian veran vivvojon per la sentempa saĝo de veda astrologio. Ĉiu kompreno venas de realaj, spertaj astrologoj, zorge kreitaj surbaze de via unika naskiĝa diagramo. De ĉiutagaj horoskopoj ĝis personigita gvido, Karma igas antikvan scion alirebla en pli ol 100 lingvoj.';
 
   @override
   String get ourMission => 'Nia Misio';
 
   @override
   String get missionDescription =>
-      'Provizi precizajn kaj personigitajn astrologiajn komprenojn por helpi uzantojn fari informitajn decidojn en siaj vivoj.';
+      'Nia misio estas simpla: provizi aŭtentan, hom-gvidatan astrologian gvidadon, kiu rajtigas vin fari memfidajn kaj informitajn decidojn. Ĉiu antaŭdiro kaj konsulto reflektas jarojn da profesia sperto, ne aŭtomatajn algoritmojn.';
 
   @override
   String get ourVision => 'Nia Vizio';
 
   @override
   String get visionDescription =>
-      'Fariĝi la plej fidinda astrologia platformo, kombinante teknologion kaj antikvan saĝon.';
+      'Ni strebas esti la plej fidinda platformo en la mondo por veda astrologio, helpante homojn ĉie kompreni sin mem, siajn elektojn kaj sian vivvojaĝon kun klareco kaj konfido.';
 
   @override
   String get ourValues => 'Niaj Valoroj';
 
   @override
   String get valuesDescription =>
-      'Integreco, Precizeco, Uzanto-Centra Dezajno, kaj Kontinua Novigado.';
+      'Ĉe Karma, ni valoras aŭtentecon, precizecon kaj fidon. Ni celas oferti gvidadon, kiu estas ne nur ĝusta sed ankaŭ senchava, helpante vin navigi la vivon kun kompreno kaj konfido.';
 
   @override
   String get contactUs => 'Kontaktu nin';
@@ -874,4 +874,11 @@ class AppLocalizationsEo extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Nia Teamo';
+
+  @override
+  String get teamDescription =>
+      'Nia teamo de profesiaj vedaj astrologoj havas jarojn da sperto en interpretado de planedaj influoj kaj vivpadronoj. Subtenata de dediĉita subtena kaj evoluiga teamo, Karma liveras senjuntan, fidindan kaj tutmondan sperton por ĉiu uzanto.';
 }

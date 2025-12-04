@@ -371,28 +371,28 @@ class AppLocalizationsSn extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Isu takazvipira kuendesa yakanakisa ruzivo rwenyeredzi kune vashandisi vedu.';
+      'PaKarma, isu tinokubatsira kufumura nzira yako yechokwadi yehupenyu kuburikidza nehuchenjeri husingagumi hweVedic nyeredzi. Kunzwisisa kwese kunobva kune chaivo, vane ruzivo rwevazivi venyeredzi, vakanyatsogadzirwa zvichibva pane yako yakasarudzika chati yekuzvarwa. Kubva kuhoroscopes yemazuva ese kusvika kugwara remunhu, Karma inoita kuti ruzivo rwekare ruwanikwe mumitauro inopfuura zana.';
 
   @override
   String get ourMission => 'Basa Redu';
 
   @override
   String get missionDescription =>
-      'Kupa kwakaringana uye yakasarudzika nyeredzi ruzivo rwekubatsira vashandisi kuita sarudzo dzine ruzivo muhupenyu hwavo.';
+      'Basa redu rakareruka: kupa echokwadi, inotungamirwa nevanhu nhungamiro yekuongorora nyeredzi inokupa simba rekuita sarudzo dzine chivimbo. Kwese kufanotaura uye kubvunza kunoratidza makore ehunyanzvi hwehunyanzvi, kwete otomatiki algorithms.';
 
   @override
   String get ourVision => 'Muono Wedu';
 
   @override
   String get visionDescription =>
-      'Kuti ive iyo yakavimbika kwazvo nyeredzi chikuva, kubatanidza tekinoroji uye huchenjeri hwekare.';
+      'Isu tinovavarira kuve iyo yakavimbika pasirese chikuva cheVedic nyeredzi, tichibatsira vanhu kwese kwese kuzvinzwisisa, sarudzo dzavo, uye rwendo rwehupenyu hwavo nekujeka uye nekuvimba.';
 
   @override
   String get ourValues => 'Tsika dzedu';
 
   @override
   String get valuesDescription =>
-      'Kuvimbika, Kururama, Mushandisi-Yepakati Dhizaini, uye Inoenderera Innovation.';
+      'PaKarma, tinokoshesa huchokwadi, huchokwadi, uye kuvimba. Takazvipira kupa gwara risiri rechokwadi chete asi rine zvarinoreva, richikubatsira kufamba muhupenyu uine njere uye nechivimbo.';
 
   @override
   String get contactUs => 'Taura nesu';
@@ -876,4 +876,11 @@ class AppLocalizationsSn extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Chikwata Chedu';
+
+  @override
+  String get teamDescription =>
+      'Chikwata chedu chenyanzvi dzeVedic vanoongorora nyeredzi vanounza makore eruzivo kududzira mafambiro epuraneti uye maitiro ehupenyu. Inotsigirwa neyakazvitsaurira rutsigiro uye timu yekusimudzira, Karma inopa isina musono, yakavimbika, uye yepasirese ruzivo kune wese mushandisi.';
 }

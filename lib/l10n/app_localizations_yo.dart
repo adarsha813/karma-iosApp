@@ -370,28 +370,28 @@ class AppLocalizationsYo extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'A ti pinnu lati jiṣẹ iriri airawọ ti o dara julọ si awọn olumulo wa.';
+      'Ni Karma, a ṣe iranlọwọ fun ọ lati ṣii ọna igbesi aye otitọ rẹ nipasẹ ọgbọn ailakoko ti Afirawọ Vediki. Gbogbo oye wa lati ojulowo, awọn awòràwọ ti o ni iriri, ti a ṣe ni iṣọra ti o da lori apẹrẹ ibimọ alailẹgbẹ rẹ. Lati awọn horoscopes lojoojumọ si itọsọna ti ara ẹni, Karma jẹ ki imọ atijọ wa ni iraye si ni awọn ede ti o ju 100 lọ.';
 
   @override
   String get ourMission => 'Iṣẹ apinfunni wa';
 
   @override
   String get missionDescription =>
-      'Lati pese awọn oye awòràwọ deede ati ti ara ẹni lati ṣe iranlọwọ fun awọn olumulo lati ṣe awọn ipinnu alaye ni igbesi aye wọn.';
+      'Iṣẹ apinfunni wa rọrun: lati pese ojulowo, itọsọna astrological ti eniyan darí ti o fun ọ ni agbara lati ṣe igboya, awọn ipinnu alaye. Gbogbo asọtẹlẹ ati ijumọsọrọ ṣe afihan awọn ọdun ti oye alamọdaju, kii ṣe awọn algoridimu adaṣe.';
 
   @override
   String get ourVision => 'Iran wa';
 
   @override
   String get visionDescription =>
-      'Lati di pẹpẹ awòràwọ ti o ni igbẹkẹle julọ, apapọ imọ-ẹrọ ati ọgbọn atijọ.';
+      'A ngbiyanju lati jẹ pẹpẹ ti o ni igbẹkẹle julọ ni agbaye fun irawọ Vediki, ṣe iranlọwọ fun awọn eniyan nibi gbogbo loye ara wọn, awọn yiyan wọn, ati irin-ajo igbesi aye wọn pẹlu mimọ ati igboya.';
 
   @override
   String get ourValues => 'Awọn iye wa';
 
   @override
   String get valuesDescription =>
-      'Iduroṣinṣin, Ipeye, Apẹrẹ-Centric Olumulo, ati Innovation Tesiwaju.';
+      'Ni Karma, a ni idiyele ti ododo, konge, ati igbẹkẹle. A ti pinnu lati funni ni itọsọna ti kii ṣe deede nikan ṣugbọn tun ni itumọ, ṣe iranlọwọ fun ọ lati lilö kiri ni igbesi aye pẹlu oye ati igboya.';
 
   @override
   String get contactUs => 'Pe wa';
@@ -871,4 +871,11 @@ class AppLocalizationsYo extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Egbe wa';
+
+  @override
+  String get teamDescription =>
+      'Ẹgbẹ wa ti awọn awòràwọ Vedic ọjọgbọn mu awọn ọdun ti iriri ti n tumọ awọn ipa aye ati awọn ilana igbesi aye wa. Ti ṣe afẹyinti nipasẹ atilẹyin igbẹhin ati ẹgbẹ idagbasoke, Karma n funni ni ailopin, igbẹkẹle, ati iriri agbaye fun gbogbo olumulo.';
 }

@@ -370,28 +370,28 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Kami berkomitmen untuk memberikan pengalaman astrologi terbaik kepada pengguna kami.';
+      'Di Karma, kami membantu Anda mengungkap jalan hidup sejati Anda melalui kebijaksanaan astrologi Weda yang abadi. Setiap wawasan berasal dari para astrolog sejati dan berpengalaman, yang disusun dengan cermat berdasarkan bagan kelahiran unik Anda. Dari horoskop harian hingga panduan personal, Karma menyediakan pengetahuan kuno yang dapat diakses dalam lebih dari 100 bahasa.';
 
   @override
   String get ourMission => 'Misi Kami';
 
   @override
   String get missionDescription =>
-      'Untuk memberikan wawasan astrologi yang akurat dan personal untuk membantu pengguna membuat keputusan yang tepat dalam hidup mereka.';
+      'Misi kami sederhana: menyediakan panduan astrologi autentik yang dipandu oleh manusia, yang memberdayakan Anda untuk membuat keputusan yang tepat dan terinformasi. Setiap prediksi dan konsultasi mencerminkan keahlian profesional selama bertahun-tahun, bukan algoritma otomatis.';
 
   @override
   String get ourVision => 'Visi Kami';
 
   @override
   String get visionDescription =>
-      'Menjadi platform astrologi paling tepercaya, menggabungkan teknologi dan kearifan kuno.';
+      'Kami berupaya menjadi platform paling tepercaya di dunia untuk astrologi Weda, membantu orang di mana pun memahami diri mereka sendiri, pilihan mereka, dan perjalanan hidup mereka dengan jelas dan percaya diri.';
 
   @override
   String get ourValues => 'Nilai-nilai Kami';
 
   @override
   String get valuesDescription =>
-      'Integritas, Akurasi, Desain yang Berpusat pada Pengguna, dan Inovasi Berkelanjutan.';
+      'Di Karma, kami menghargai keaslian, ketepatan, dan kepercayaan. Kami berkomitmen untuk menawarkan panduan yang tidak hanya akurat tetapi juga bermakna, membantu Anda menjalani hidup dengan wawasan dan keyakinan.';
 
   @override
   String get contactUs => 'Hubungi kami';
@@ -874,4 +874,11 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Tim Kami';
+
+  @override
+  String get teamDescription =>
+      'Tim astrolog Veda profesional kami memiliki pengalaman bertahun-tahun dalam menafsirkan pengaruh planet dan pola kehidupan. Didukung oleh tim dukungan dan pengembangan yang berdedikasi, Karma memberikan pengalaman yang lancar, andal, dan global bagi setiap pengguna.';
 }

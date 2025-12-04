@@ -372,28 +372,28 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Við erum staðráðin í að veita notendum okkar bestu mögulegu stjörnuspekiupplifun.';
+      'Hjá Karma hjálpum við þér að uppgötva þína sönnu lífsleið með tímalausri visku vedískrar stjörnuspeki. Sérhver innsýn kemur frá raunverulegum, reyndum stjörnuspekingum, vandlega útfærðum út frá þínu einstaka fæðingarkorti. Frá daglegum stjörnuspám til persónulegrar leiðsagnar gerir Karma forna þekkingu aðgengilega á yfir 100 tungumálum.';
 
   @override
   String get ourMission => 'Markmið okkar';
 
   @override
   String get missionDescription =>
-      'Að veita nákvæmar og persónulegar innsýnir í stjörnuspeki til að hjálpa notendum að taka upplýstar ákvarðanir í lífi sínu.';
+      'Markmið okkar er einfalt: að veita áreiðanlega, mannlega leiðsögn í stjörnuspeki sem gerir þér kleift að taka öruggar og upplýstar ákvarðanir. Sérhver spá og ráðgjöf endurspeglar áralanga fagþekkingu, ekki sjálfvirkar reiknirit.';
 
   @override
   String get ourVision => 'Sýn okkar';
 
   @override
   String get visionDescription =>
-      'Að verða traustasta stjörnuspekivettvangurinn, sem sameinar tækni og forna visku.';
+      'Við leggjum okkur fram um að vera traustasta vettvangur heims fyrir vedíska stjörnuspeki og hjálpa fólki alls staðar að skilja sjálft sig, val sín og lífsferð sína með skýrleika og sjálfstrausti.';
 
   @override
   String get ourValues => 'Gildi okkar';
 
   @override
   String get valuesDescription =>
-      'Heiðarleiki, nákvæmni, notendamiðuð hönnun og stöðug nýsköpun.';
+      'Hjá Karma leggjum við áherslu á áreiðanleika, nákvæmni og traust. Við leggjum okkur fram um að bjóða upp á leiðsögn sem er ekki aðeins nákvæm heldur einnig innihaldsrík og hjálpar þér að sigla í gegnum lífið með innsæi og sjálfstrausti.';
 
   @override
   String get contactUs => 'Hafðu samband við okkur';
@@ -877,4 +877,11 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Teymið okkar';
+
+  @override
+  String get teamDescription =>
+      'Teymi okkar faglegra vedískra stjörnuspekinga býr yfir ára reynslu af því að túlka áhrif reikistjarna og lífsmynstur. Með stuðningi sérstaks stuðnings- og þróunarteymi býður Karma upp á óaðfinnanlega, áreiðanlega og alþjóðlega upplifun fyrir alla notendur.';
 }

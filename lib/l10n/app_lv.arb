@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Mēs esam apņēmušies sniegt vislabāko astroloģijas pieredzi mūsu lietotājiem.",
+  "aboutCompanyDescription": "Karma palīdz jums atklāt savu patieso dzīves ceļu, izmantojot Vēdu astroloģijas mūžīgo gudrību. Katra atziņa nāk no īstiem, pieredzējušiem astrologiem, rūpīgi izstrādāta, balstoties uz jūsu unikālo dzimšanas karti. Sākot ar ikdienas horoskopiem un beidzot ar personalizētu vadību, Karma padara senās zināšanas pieejamas vairāk nekā 100 valodās.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Sniegt precīzu un personalizētu astroloģijas ieskatu, lai palīdzētu lietotājiem pieņemt pārdomātus lēmumus savā dzīvē.",
+  "missionDescription": "Mūsu misija ir vienkārša: sniegt autentisku, cilvēka vadītu astroloģisku vadību, kas dod jums iespēju pieņemt pārliecinātus un informētus lēmumus. Katra prognoze un konsultācija atspoguļo daudzu gadu profesionālu pieredzi, nevis automatizētus algoritmus.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Kļūt par visuzticamāko astroloģijas platformu, apvienojot tehnoloģijas un seno gudrību.",
+  "visionDescription": "Mēs tiecamies kļūt par pasaulē uzticamāko Vēdiskās astroloģijas platformu, palīdzot cilvēkiem visā pasaulē skaidri un pārliecinoši izprast sevi, savas izvēles un dzīves ceļojumu.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Godprātība, precizitāte, uz lietotāju orientēts dizains un nepārtrauktas inovācijas.",
+  "valuesDescription": "Uzņēmumā Karma mēs augstu vērtējam autentiskumu, precizitāti un uzticēšanos. Mēs esam apņēmušies sniegt norādījumus, kas ir ne tikai precīzi, bet arī jēgpilni, palīdzot jums orientēties dzīvē ar ieskatu un pārliecību.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Tēmas iestatījumi",
   "lightThemeLabel": "Gaisma",
   "darkThemeLabel": "Tumšs",
-  "systemThemeLabel": "Sistēma"
+  "systemThemeLabel": "Sistēma",
+  "ourTeam": "Mūsu komanda",
+  "teamDescription": "Mūsu profesionālo Vēdu astrologu komandai ir daudzu gadu pieredze planētu ietekmju un dzīves modeļu interpretēšanā. Ar īpašas atbalsta un izstrādes komandas atbalstu Karma nodrošina nevainojamu, uzticamu un globālu pieredzi ikvienam lietotājam."
 }

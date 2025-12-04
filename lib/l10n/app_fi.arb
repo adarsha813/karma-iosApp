@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Olemme sitoutuneet tarjoamaan käyttäjillemme parhaan mahdollisen astrologiakokemuksen.",
+  "aboutCompanyDescription": "Karmalla autamme sinua löytämään todellisen elämänpolkusi ajattoman vedalaisen astrologian viisauden avulla. Jokainen näkemys tulee oikeilta, kokeneilta astrologeilta, ja se on huolellisesti laadittu ainutlaatuisen syntymäkarttasi pohjalta. Päivittäisistä horoskoopeista henkilökohtaiseen ohjaukseen, Karma tuo muinaisen tiedon saataville yli 100 kielellä.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Tarjota tarkkoja ja yksilöllisiä astrologisia näkemyksiä, jotka auttavat käyttäjiä tekemään tietoon perustuvia päätöksiä elämässään.",
+  "missionDescription": "Missiomme on yksinkertainen: tarjota aitoa, ihmisen johtamaa astrologista ohjausta, joka antaa sinulle mahdollisuuden tehdä luottavaisia ja tietoon perustuvia päätöksiä. Jokainen ennuste ja konsultaatio heijastaa vuosien ammattitaitoa, ei automatisoituja algoritmeja.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Tulla luotetuimmaksi astrologia-alustaksi, joka yhdistää teknologian ja muinaisen viisauden.",
+  "visionDescription": "Pyrimme olemaan maailman luotetuin vedalaisen astrologian alusta, joka auttaa ihmisiä kaikkialla ymmärtämään itseään, valintojaan ja elämänmatkaansa selkeästi ja itsevarmasti.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Rehellisyys, tarkkuus, käyttäjäkeskeinen suunnittelu ja jatkuva innovaatio.",
+  "valuesDescription": "Karmalla arvostamme aitoutta, tarkkuutta ja luottamusta. Olemme sitoutuneet tarjoamaan ohjausta, joka on paitsi tarkkaa myös merkityksellistä, auttaen sinua navigoimaan elämässäsi oivaltavasti ja itsevarmasti.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Teeman asetukset",
   "lightThemeLabel": "Valo",
   "darkThemeLabel": "Tumma",
-  "systemThemeLabel": "Järjestelmä"
+  "systemThemeLabel": "Järjestelmä",
+  "ourTeam": "Tiimimme",
+  "teamDescription": "Ammattitaitoisten vedalaisten astrologien tiimillämme on vuosien kokemus planeettojen vaikutusten ja elämänmallien tulkinnasta. Omistautuneen tuki- ja kehitystiimin tukemana Karma tarjoaa saumattoman, luotettavan ja globaalin kokemuksen jokaiselle käyttäjälle."
 }

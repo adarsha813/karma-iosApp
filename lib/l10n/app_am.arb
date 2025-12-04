@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "ምርጡን የኮከብ ቆጠራ ልምድ ለተጠቃሚዎቻችን ለማድረስ ቁርጠኞች ነን።",
+  "aboutCompanyDescription": "በካርማ፣ ጊዜ በማይሽረው የቬዲክ ኮከብ ቆጠራ እውነተኛ የህይወት መንገድህን እንድትገልጥ እናግዝሃለን። እያንዳንዱ ማስተዋል የሚመጣው ከእውነተኛ፣ ልምድ ካላቸው ኮከብ ቆጣሪዎች፣ በልዩ የልደት ገበታዎ ላይ በመመስረት በጥንቃቄ ነው። ከዕለታዊ የኮከብ ቆጠራ እስከ ግላዊ መመሪያ ድረስ ካርማ ጥንታዊ እውቀትን ከ100 በላይ ቋንቋዎች ተደራሽ ያደርገዋል።",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "ተጠቃሚዎች በሕይወታቸው ውስጥ በመረጃ ላይ የተመሰረተ ውሳኔ እንዲያደርጉ ለማገዝ ትክክለኛ እና ግላዊ የኮከብ ቆጠራ ግንዛቤዎችን ለማቅረብ።",
+  "missionDescription": "ተልእኳችን ቀላል ነው፡ በራስ መተማመን እና በመረጃ ላይ የተመሰረተ ውሳኔ እንዲያደርጉ የሚያስችል ትክክለኛ፣ በሰዎች የሚመራ የኮከብ ቆጠራ መመሪያን መስጠት። እያንዳንዱ ትንበያ እና ምክክር የሚያንፀባርቀው የዓመታት ሙያዊ እውቀት እንጂ ራስ-ሰር ስልተ ቀመሮችን አይደለም።",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "ቴክኖሎጂን እና ጥንታዊ ጥበብን በማጣመር በጣም የታመነ የኮከብ ቆጠራ መድረክ ለመሆን።",
+  "visionDescription": "በየትኛውም ቦታ ያሉ ሰዎች እራሳቸውን፣ ምርጫዎቻቸውን እና የህይወት ጉዟቸውን በግልፅ እና በራስ መተማመን እንዲረዱ በመርዳት ለቬዲክ ኮከብ ቆጠራ በአለም ላይ በጣም የታመነ መድረክ ለመሆን እንጥራለን።",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "ታማኝነት፣ ትክክለኛነት፣ በተጠቃሚ ያማከለ ንድፍ እና ቀጣይነት ያለው ፈጠራ።",
+  "valuesDescription": "በካርማ ለትክክለኛነት፣ ትክክለኛነት እና እምነት እናከብራለን። ህይወትን በማስተዋል እና በራስ መተማመን እንዲመሩ የሚያግዝዎ ትክክለኛ ብቻ ሳይሆን ትርጉም ያለው መመሪያ ለመስጠት ቆርጠናል ።",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "የገጽታ ቅንብሮች",
   "lightThemeLabel": "ብርሃን",
   "darkThemeLabel": "ጨለማ",
-  "systemThemeLabel": "ስርዓት"
+  "systemThemeLabel": "ስርዓት",
+  "ourTeam": "የእኛ ቡድን",
+  "teamDescription": "ፕሮፌሽናል የቬዲክ ኮከብ ቆጣሪዎች ቡድናችን የፕላኔቶችን ተፅእኖ እና የህይወት ዘይቤዎችን የመተርጎም ልምድን ያመጣል። በተሰጠ የድጋፍ እና የልማት ቡድን በመታገዝ ካርማ እንከን የለሽ፣ አስተማማኝ እና አለምአቀፍ ተሞክሮ ለእያንዳንዱ ተጠቃሚ ያቀርባል።"
 }

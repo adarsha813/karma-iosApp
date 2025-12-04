@@ -373,28 +373,28 @@ class AppLocalizationsKu extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Em pabend in ku ezmûna astrolojiyê ya çêtirîn pêşkêşî bikarhênerên xwe bikin.';
+      'Li Karma, em alîkariya we dikin ku hûn rêya jiyana xwe ya rastîn bi riya şehrezayiya bêdem a astrolojiya Vedîk bibînin. Her têgihîştin ji astrologên rastîn û xwedî ezmûn tê, ku bi baldarî li ser bingeha nexşeya jidayikbûna we ya bêhempa tê çêkirin. Ji horoskopên rojane bigire heya rêberiya kesane, Karma zanîna kevnar bi zêdetirî 100 zimanan peyda dike.';
 
   @override
   String get ourMission => 'Mîsyona me';
 
   @override
   String get missionDescription =>
-      'Ji bo peyda kirina têgihiştinên astrolojiyê yên rast û kesane da ku alîkariya bikarhêneran bike ku di jiyana xwe de biryarên agahdar bidin.';
+      'Erka me sade ye: pêşkêşkirina rêberiya astrolojîk a rastîn û bi rêberiya mirovan ku we dihêle hûn biryarên bi bawerî û agahdar bidin. Her pêşbînî û şêwirmendî salan pisporiya profesyonel nîşan dide, ne algorîtmayên otomatîk.';
 
   @override
   String get ourVision => 'Vîzyona me';
 
   @override
   String get visionDescription =>
-      'Ji bo ku bibe platforma astrolojiyê ya herî pêbawer, teknolojiyê û şehrezayiya kevnar bi hev re dike yek.';
+      'Em hewl didin ku bibin platforma herî pêbawer a cîhanê ji bo astrolojiya Vedic, û alîkariya mirovan li her derê bikin ku xwe, hilbijartinên xwe û rêwîtiya jiyana xwe bi zelalî û baweriyê fam bikin.';
 
   @override
   String get ourValues => 'Nirxên me';
 
   @override
   String get valuesDescription =>
-      'Yekparebûn, Rastbûn, Sêwirana Bikarhêner-Navendî, û Nûjeniya Berdewam.';
+      'Li Karma, em girîngiyê didin rastbûn, rastbûn û baweriyê. Em pabend in ku rêbernameyek ne tenê rast lê di heman demê de watedar jî pêşkêş bikin, da ku alîkariya we bikin ku hûn bi têgihîştin û baweriyê di jiyanê de bigerin.';
 
   @override
   String get contactUs => 'Paqij bûn';
@@ -879,4 +879,11 @@ class AppLocalizationsKu extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Tîma me';
+
+  @override
+  String get teamDescription =>
+      'Tîma me ya astrologên Vedîk ên profesyonel bi salan ezmûna şîrovekirina bandorên gerstêrkî û şêwazên jiyanê tîne. Karma, ku ji hêla tîmek piştgirî û pêşveçûnê ya dilsoz ve tê piştgirî kirin, ji bo her bikarhêner ezmûnek bêkêmasî, pêbawer û gerdûnî peyda dike.';
 }

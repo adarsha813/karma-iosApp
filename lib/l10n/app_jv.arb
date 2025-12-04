@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Kita setya menehi pengalaman astrologi sing paling apik kanggo pangguna.",
+  "aboutCompanyDescription": "Ing Karma, kita mbantu sampeyan nemokake dalan urip sing sejatine liwat kawicaksanan astrologi Veda. Saben wawasan asale saka ahli astrologi sing nyata lan berpengalaman, digawe kanthi ati-ati adhedhasar grafik lair sing unik. Saka horoskop saben dina nganti tuntunan pribadi, Karma ndadekake kawruh kuno bisa diakses ing luwih saka 100 basa.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Kanggo nyedhiyakake wawasan astrologi sing akurat lan khusus kanggo mbantu pangguna nggawe keputusan sing tepat ing urip.",
+  "missionDescription": "Misi kita prasaja: kanggo menehi pandhuan astrologi sing asli lan dipimpin manungsa sing menehi kekuwatan kanggo nggawe keputusan sing yakin lan ngerti. Saben prediksi lan konsultasi nggambarake pengalaman profesional pirang-pirang taun, dudu algoritma otomatis.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Kanggo dadi platform astrologi sing paling dipercaya, nggabungake teknologi lan kawicaksanan kuna.",
+  "visionDescription": "Kita usaha kanggo dadi platform paling dipercaya ing donya kanggo astrologi Veda, ngewangi wong nang endi wae ngerti piyambak, pilihanipun, lan lelampahan urip karo kajelasan lan kapercayan.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Integritas, Akurasi, Desain Sentris Panganggo, lan Inovasi Terus-terusan.",
+  "valuesDescription": "Ing Karma, kita ngurmati keaslian, presisi, lan kapercayan. Kita setya menehi tuntunan sing ora mung akurat nanging uga migunani, mbantu sampeyan navigasi urip kanthi wawasan lan kapercayan.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -333,7 +333,7 @@
   "chatTitle": "Ngobrol",
   "typeYourQuestionHint": "Ketik pitakonan sampeyan...",
   "paymentRequired": "Pembayaran dibutuhake",
-  "paymentRequiredMessage": "Sampeyan wis nggunakake pitakonan gratis. Mbayar ₹50 kanggo nerusake.",
+  "paymentRequiredMessage": "Sampeyan wis nggunakake pitakonan gratis. Mbayar {amount} kanggo nerusake.",
   "payNowButton": "Bayar Saiki",
   "freeQuestionsRemaining": "{count} isih ana pitakonan gratis",
   "paidQuestionsRemaining": "{count} isih ana pitakonan mbayar",
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Setelan Tema",
   "lightThemeLabel": "cahya",
   "darkThemeLabel": "peteng",
-  "systemThemeLabel": "Sistem"
+  "systemThemeLabel": "Sistem",
+  "ourTeam": "Tim Kita",
+  "teamDescription": "Tim ahli astrologi Veda profesional nggawa pengalaman pirang-pirang taun nerjemahake pengaruh planet lan pola urip. Didhukung dening tim dhukungan lan pangembangan khusus, Karma menehi pengalaman sing lancar, dipercaya, lan global kanggo saben pangguna."
 }

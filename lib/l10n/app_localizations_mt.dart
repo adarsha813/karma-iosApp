@@ -374,28 +374,28 @@ class AppLocalizationsMt extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Aħna impenjati li nwasslu l-aqwa esperjenza tal-astroloġija lill-utenti tagħna.';
+      'F’Karma, ngħinuk tiskopri t-triq vera tal-ħajja tiegħek permezz tal-għerf etern tal-astroloġija Vedika. Kull għarfien ġej minn astrologi reali u b’esperjenza, imfassla bir-reqqa bbażati fuq iċ-ċart tat-twelid uniku tiegħek. Mill-oroskopji ta’ kuljum sa gwida personalizzata, Karma tagħmel l-għarfien antik aċċessibbli f’aktar minn 100 lingwa.';
 
   @override
   String get ourMission => 'Il-Missjoni Tagħna';
 
   @override
   String get missionDescription =>
-      'Biex nipprovdu għarfien astroloġiċi preċiż u personalizzat biex ngħinu lill-utenti jieħdu deċiżjonijiet infurmati f\'ħajjithom.';
+      'Il-missjoni tagħna hija sempliċi: li nipprovdu gwida astroloġika awtentika u mmexxija mill-bniedem li tagħtik is-setgħa li tieħu deċiżjonijiet kunfidenti u infurmati. Kull tbassir u konsultazzjoni jirrifletti snin ta’ kompetenza professjonali, mhux algoritmi awtomatizzati.';
 
   @override
   String get ourVision => 'Il-Viżjoni Tagħna';
 
   @override
   String get visionDescription =>
-      'Li ssir l-aktar pjattaforma tal-astroloġija fdata, li tgħaqqad it-teknoloġija u l-għerf antik.';
+      'Naħdmu biex inkunu l-pjattaforma l-aktar fdata fid-dinja għall-astroloġija Vedika, u ngħinu lin-nies kullimkien jifhmu lilhom infushom, l-għażliet tagħhom, u l-vjaġġ tal-ħajja tagħhom b\'ċarezza u kunfidenza.';
 
   @override
   String get ourValues => 'Il-Valuri Tagħna';
 
   @override
   String get valuesDescription =>
-      'Integrità, Preċiżjoni, Disinn Iċċentrat fuq l-Utent, u Innovazzjoni Kontinwa.';
+      'F’Karma, aħna napprezzaw l-awtentiċità, il-preċiżjoni, u l-fiduċja. Aħna impenjati li noffru gwida li mhux biss hija preċiża iżda wkoll sinifikanti, biex ngħinuk tinnaviga l-ħajja b’għarfien u kunfidenza.';
 
   @override
   String get contactUs => 'Ikkuntattjana';
@@ -882,4 +882,11 @@ class AppLocalizationsMt extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'It-Tim Tagħna';
+
+  @override
+  String get teamDescription =>
+      'It-tim tagħna ta\' astrologi Vediċi professjonali għandu snin ta\' esperjenza fl-interpretazzjoni tal-influwenzi planetarji u l-mudelli tal-ħajja. Appoġġjat minn tim dedikat ta\' appoġġ u żvilupp, Karma jipprovdi esperjenza bla xkiel, affidabbli u globali għal kull utent.';
 }

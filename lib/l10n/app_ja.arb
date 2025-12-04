@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "私たちは、ユーザーに最高の占星術体験を提供することに尽力しています。",
+  "aboutCompanyDescription": "Karmaでは、時代を超えたヴェーダ占星術の叡智を通して、あなたの真の人生の道を見つけるお手伝いをいたします。すべての洞察は、経験豊富な現役占星術師が、あなただけの出生図に基づいて丁寧に作成します。毎日のホロスコープから個別のガイダンスまで、Karmaは古代の知識を100以上の言語で提供しています。",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "正確でパーソナライズされた占星術の洞察を提供し、ユーザーが人生において情報に基づいた決定を下せるよう支援します。",
+  "missionDescription": "私たちの使命はシンプルです。それは、確かな情報に基づいた、自信に満ちた決断を下せるよう、真摯で人間味あふれる占星術のアドバイスを提供することです。すべての予測とコンサルティングは、自動化されたアルゴリズムではなく、長年の専門知識に基づいて作成されています。",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "テクノロジーと古代の知恵を融合し、最も信頼される占星術プラットフォームになること。",
+  "visionDescription": "私たちは、ヴェーダ占星術における世界で最も信頼されるプラットフォームとなることを目指し、世界中の人々が自分自身、自分の選択、そして人生の旅を明確かつ自信を持って理解できるよう支援します。",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "誠実さ、正確さ、ユーザー中心の設計、継続的な革新。",
+  "valuesDescription": "カルマでは、信頼性、正確性、そして信頼を大切にしています。正確であるだけでなく、意義深いアドバイスを提供することで、洞察力と自信をもって人生を歩んでいくお手伝いをいたします。",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "テーマ設定",
   "lightThemeLabel": "ライト",
   "darkThemeLabel": "暗い",
-  "systemThemeLabel": "システム"
+  "systemThemeLabel": "システム",
+  "ourTeam": "私たちのチーム",
+  "teamDescription": "プロのヴェーダ占星術師チームが、惑星の影響と人生のパターンを解釈する長年の経験を活かします。専任のサポート・開発チームに支えられたKarmaは、すべてのユーザーにシームレスで信頼性の高いグローバルな体験を提供します。"
 }

@@ -373,28 +373,28 @@ class AppLocalizationsFy extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Wy binne fan doel om ús brûkers de bêste astrologyske ûnderfining te jaan.';
+      'By Karma helpe wy jo jo wiere libbenspaad te ûntdekken troch de tiidleaze wiisheid fan Vedyske astrology. Elk ynsjoch komt fan echte, betûfte astrologen, sekuer gearstald op basis fan jo unike bertehoroskoop. Fan deistige horoskopen oant personaliseare begelieding makket Karma âlde kennis tagonklik yn mear as 100 talen.';
 
   @override
   String get ourMission => 'Us missy';
 
   @override
   String get missionDescription =>
-      'Om krekte en personaliseare astrologyske ynsjoch te jaan om brûkers te helpen ynformearre besluten te nimmen yn har libben.';
+      'Us missy is ienfâldich: autentike, minsklik laat astrologyske begelieding jaan dy\'t jo yn steat stelt om selsbewuste, ynformearre besluten te nimmen. Elke foarsizzing en oerlis reflektearret jierrenlange profesjonele ekspertize, net automatisearre algoritmen.';
 
   @override
   String get ourVision => 'Us fisy';
 
   @override
   String get visionDescription =>
-      'Om it meast fertroude astrologyplatfoarm te wurden, kombinearret technology en âlde wiisheid.';
+      'Wy stribje dernei om it meast fertroude platfoarm fan \'e wrâld te wêzen foar Vedyske astrology, en minsken oeral te helpen harsels, har keuzes en har libbensreis mei dúdlikens en fertrouwen te begripen.';
 
   @override
   String get ourValues => 'Us wearden';
 
   @override
   String get valuesDescription =>
-      'Yntegriteit, krektens, brûker-sintraal ûntwerp en trochgeande ynnovaasje.';
+      'By Karma wurdearje wy autentisiteit, presyzje en fertrouwen. Wy binne derop rjochte om begelieding te bieden dy\'t net allinich akkuraat is, mar ek betsjuttingsfol, en jo helpt om mei ynsjoch en fertrouwen troch it libben te navigearjen.';
 
   @override
   String get contactUs => 'Kontakt mei ús opnimme';
@@ -875,4 +875,11 @@ class AppLocalizationsFy extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Us Team';
+
+  @override
+  String get teamDescription =>
+      'Us team fan profesjonele Vedyske astrologen bringt jierrenlange ûnderfining mei yn it ynterpretearjen fan planetêre ynfloeden en libbenspatroanen. Stipe troch in tawijd stipe- en ûntwikkelingsteam leveret Karma in naadleaze, betroubere en wrâldwide ûnderfining foar elke brûker.';
 }

@@ -370,28 +370,28 @@ class AppLocalizationsSm extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Matou te tuuto atu i le tuʻuina atu o faʻamatalaga sili ona lelei o suʻesuʻega i a matou tagata faʻaoga.';
+      'I Karma, matou te fesoasoani ia te oe e faʻaalia lou ala moni o le olaga e ala i le poto le tumau o Vedic astrology. O fa\'amatalaga uma e sau mai tagata su\'esu\'e fa\'apitoa, fa\'apitoa, e fa\'atatau i lau siata fanau fa\'apitoa. Mai su\'esu\'ega i aso ta\'itasi e o\'o atu i ta\'iala fa\'apitoa, ua fa\'aavanoaina e Karma le poto anamua i le silia ma le 100 gagana.';
 
   @override
   String get ourMission => 'La Tatou Misiona';
 
   @override
   String get missionDescription =>
-      'Ina ia tu\'uina atu fa\'amatalaga sa\'o ma fa\'apitoa i fetu e fesoasoani ai i tagata fa\'aoga e fai fa\'ai\'uga lelei io latou olaga.';
+      'O la matou misiona e faigofie: ia tuʻuina atu taʻiala faʻapitoa, taʻitaʻia e tagata e faʻamalosia oe e faia faʻamatalaga mautinoa, faʻamaonia. O valo\'aga ma fa\'atalanoaga uma e atagia mai ai tausaga o tomai fa\'apolofesa, ae le\'o fa\'autometi algorithms.';
 
   @override
   String get ourVision => 'La Tatou Vaaiga';
 
   @override
   String get visionDescription =>
-      'Ina ia avea ma faʻailoga faʻatauvaʻa sili ona faʻatuatuaina, tuʻufaʻatasia tekinolosi ma le poto anamua.';
+      'Matou te taumafai e avea ma faʻavae sili ona faʻalagolago i le lalolagi mo Vedic astrology, fesoasoani i tagata i soʻo se mea ia malamalama ia i latou lava, a latou filifiliga, ma la latou malaga i le olaga ma le manino ma le mautinoa.';
 
   @override
   String get ourValues => 'O tatou Tulaga Faatauaina';
 
   @override
   String get valuesDescription =>
-      'Fa\'amaoni, Sa\'o, Fuafuaga Fa\'aoga-Fa\'aoga, ma Fa\'aauau Fa\'afouga.';
+      'I Karma, matou te faʻatauaina le moni, saʻo, ma le faʻatuatuaina. Matou te tuuto atu i le ofoina atu o taʻiala e le gata ina saʻo ae aoga foi, e fesoasoani ia te oe e faʻatautaia ai le olaga ma le malamalama ma le mautinoa.';
 
   @override
   String get contactUs => 'Faafesootai matou';
@@ -534,7 +534,7 @@ class AppLocalizationsSm extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'Ua e fa\'aogaina au fesili maua fua. Totogi $amount e fa\'aauau ai.';
+    return 'Ua e fa\'aogaina au fesili maua fua. Totogi $amount e fa\'aauau.';
   }
 
   @override
@@ -879,4 +879,11 @@ class AppLocalizationsSm extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'La matou Au';
+
+  @override
+  String get teamDescription =>
+      'O la matou \'au o tagata su\'esu\'e Vedic fa\'apolofesa latou te aumaia le tele o tausaga o le poto masani i le fa\'amatalaina o aafiaga o paneta ma fa\'asologa o le olaga. Faʻalagolago e se lagolago faʻapitoa ma atinaʻe au, Karma e tuʻuina atu se poto masani, faʻatuatuaina, ma le lalolagi mo tagata uma.';
 }

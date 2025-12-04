@@ -371,28 +371,28 @@ class AppLocalizationsMi extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Ka whakapau kaha matou ki te tuku i nga wheako wheturangi pai ki o maatau kaiwhakamahi.';
+      'I Karma, ka awhina matou ki a koe ki te hura i to huarahi oranga pono na roto i te whakaaro nui o te wheturangi Vedic. Ko nga mohiotanga katoa ka ahu mai i nga tohunga whetu tino mohio, he mea hanga i runga i to tūtohi whanau ahurei. Mai i nga horoscope o ia ra ki te arahi whaiaro, ka tukuna e Karma nga matauranga tawhito kia uru atu ki nga reo 100 neke atu.';
 
   @override
   String get ourMission => 'To Tatou Mihana';
 
   @override
   String get missionDescription =>
-      'Hei whakarato i nga mohiotanga whetu tika me te whakawhaiaro hei awhina i nga kaiwhakamahi ki te whakatau whakatau i roto i o raatau oranga.';
+      'He ngawari noa ta matou kaupapa: ki te whakarato i nga kaiarahi whetu pono, na te tangata e whakamana i a koe ki te whakatau whakatau maia me te mohio. Ko nga matapae me nga whakawhitiwhitinga korero e whakaatu ana i nga tau o te tohungatanga ngaio, ehara i te algorithm aunoa.';
 
   @override
   String get ourVision => 'To Tatou Matakite';
 
   @override
   String get visionDescription =>
-      'Kia noho hei turanga wheturangi tino pono, te whakakotahi i te hangarau me te whakaaro nui o mua.';
+      'Ka whakapau kaha matou ki te noho hei turanga tino pono o te ao mo te wheturangi Vedic, hei awhina i nga tangata ki nga waahi katoa ki te mohio ki a raatau ano, ki o raatau whiringa, me o raatau haerenga i roto i te maarama me te maia.';
 
   @override
   String get ourValues => 'O Tatou Uara';
 
   @override
   String get valuesDescription =>
-      'Te Tika, te Tika, te Hoahoa-a-Kaiwhakamahi, me te Whakahoutanga Tonu.';
+      'I Karma, ka whakanuia e matou te pono, te tika, me te whakawhirinaki. Ka whakapau kaha matou ki te tuku arataki ehara i te mea tika engari e whai kiko ana, hei awhina i a koe ki te whakatere i te ao ma te mohio me te maia.';
 
   @override
   String get contactUs => 'Whakapā mai';
@@ -876,4 +876,11 @@ class AppLocalizationsMi extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'To matou Kapa';
+
+  @override
+  String get teamDescription =>
+      'Ko ta maatau roopu tohunga whetu Vedic e kawe mai ana i nga tau o te wheako ki te whakamaori i nga awe o te ao me nga tauira o te ao. I tautokohia e te roopu tautoko me te roopu whanaketanga, ka tukuna e Karma he wheako maamaa, pono, me te ao mo ia kaiwhakamahi.';
 }

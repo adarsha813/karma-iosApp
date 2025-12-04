@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Tumejitolea kuwasilisha hali bora zaidi ya unajimu kwa watumiaji wetu.",
+  "aboutCompanyDescription": "Katika Karma, tunakusaidia kufichua njia yako ya kweli ya maisha kupitia hekima isiyo na wakati ya unajimu wa Vedic. Kila maarifa hutoka kwa wanajimu halisi, wenye uzoefu, iliyoundwa kwa uangalifu kulingana na chati yako ya kipekee ya kuzaliwa. Kuanzia nyota za kila siku hadi mwongozo uliobinafsishwa, Karma hufanya maarifa ya zamani kupatikana katika lugha zaidi ya 100.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Ili kutoa maarifa sahihi na ya kibinafsi ya unajimu ili kuwasaidia watumiaji kufanya maamuzi sahihi katika maisha yao.",
+  "missionDescription": "Dhamira yetu ni rahisi: kutoa mwongozo halisi wa unajimu unaoongozwa na binadamu unaokupa uwezo wa kufanya maamuzi ya uhakika na yenye ujuzi. Kila ubashiri na mashauriano huakisi miaka ya utaalam wa kitaalamu, si kanuni za kiotomatiki.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Ili kuwa jukwaa la unajimu linaloaminika zaidi, linalochanganya teknolojia na hekima ya zamani.",
+  "visionDescription": "Tunajitahidi kuwa jukwaa linaloaminika zaidi ulimwenguni la unajimu wa Vedic, kusaidia watu kila mahali kujielewa, chaguo zao na safari yao ya maisha kwa uwazi na ujasiri.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Uadilifu, Usahihi, Muundo wa Msingi wa Mtumiaji, na Ubunifu Unaoendelea.",
+  "valuesDescription": "Katika Karma, tunathamini uhalisi, usahihi na uaminifu. Tumejitolea kutoa mwongozo ambao si sahihi tu bali pia wenye maana, unaokusaidia kuendesha maisha kwa ufahamu na uhakika.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Mipangilio ya Mandhari",
   "lightThemeLabel": "Mwanga",
   "darkThemeLabel": "Giza",
-  "systemThemeLabel": "Mfumo"
+  "systemThemeLabel": "Mfumo",
+  "ourTeam": "Timu Yetu",
+  "teamDescription": "Timu yetu ya wanajimu wa kitaalamu wa Vedic huleta uzoefu wa miaka mingi wa kutafsiri athari za sayari na mifumo ya maisha. Ikiungwa mkono na timu iliyojitolea ya usaidizi na ukuzaji, Karma hutoa uzoefu usio na mshono, unaotegemewa na wa kimataifa kwa kila mtumiaji."
 }

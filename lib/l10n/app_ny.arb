@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Tadzipereka kupereka zabwino kwambiri zakuthambo kwa ogwiritsa ntchito.",
+  "aboutCompanyDescription": "Ku Karma, timakuthandizani kuvumbulutsa moyo wanu weniweni kudzera munzeru zosatha za kupenda nyenyezi kwa Vedic. Chidziwitso chilichonse chimachokera kwa openda nyenyezi enieni, odziwa zambiri, opangidwa mosamala kutengera tchati chanu chobadwa nacho chapadera. Kuyambira pa horoscope tsiku lililonse mpaka chitsogozo chamunthu, Karma imapangitsa chidziwitso chakale kupezeka m'zilankhulo zoposa 100.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Kupereka zidziwitso zolondola komanso zokonda zakuthambo kuti zithandize ogwiritsa ntchito kupanga zisankho zodziwika bwino pamoyo wawo.",
+  "missionDescription": "Ntchito yathu ndi yosavuta: kupereka chitsogozo chowona, chotsogozedwa ndi anthu cha zakuthambo chomwe chimakupatsani mphamvu kuti mupange zisankho molimba mtima komanso mozindikira. Kuneneratu kulikonse ndi kufunsira kumawonetsa zaka zaukatswiri, osati ma aligorivimu odzipangira okha.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Kuti mukhale nsanja yodalirika kwambiri yokhulupirira nyenyezi, kuphatikiza ukadaulo ndi nzeru zakale.",
+  "visionDescription": "Timayesetsa kukhala nsanja yodalirika kwambiri padziko lonse lapansi yokhulupirira nyenyezi za Vedic, kuthandiza anthu kulikonse kuti adzimvetsetse okha, zosankha zawo, ndi ulendo wawo wamoyo momveka bwino komanso molimba mtima.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Kukhulupirika, Kulondola, Mapangidwe Ogwiritsa Ntchito Pakatikati, ndi Kupanga Kwatsopano Kopitilira.",
+  "valuesDescription": "Ku Karma, timayamikira kukhulupilika, kulondola, ndi kukhulupilika. Tadzipereka kukupatsani malangizo omwe si olondola komanso atanthauzo, okuthandizani kuyenda mozindikira komanso molimba mtima.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Zokonda pamutu",
   "lightThemeLabel": "Kuwala",
   "darkThemeLabel": "Chakuda",
-  "systemThemeLabel": "Dongosolo"
+  "systemThemeLabel": "Dongosolo",
+  "ourTeam": "Team Yathu",
+  "teamDescription": "Gulu lathu la akatswiri openda nyenyezi a Vedic limabweretsa zaka zambiri zotanthauzira mapulaneti ndi machitidwe amoyo. Mothandizidwa ndi gulu lodzipatulira lothandizira ndi chitukuko, Karma imapereka chidziwitso chopanda msoko, chodalirika komanso chapadziko lonse lapansi kwa aliyense wogwiritsa ntchito."
 }

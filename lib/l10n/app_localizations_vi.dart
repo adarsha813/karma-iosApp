@@ -374,28 +374,28 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Chúng tôi cam kết mang lại trải nghiệm chiêm tinh tốt nhất cho người dùng.';
+      'Tại Karma, chúng tôi giúp bạn khám phá con đường cuộc sống đích thực của mình thông qua trí tuệ vượt thời gian của chiêm tinh học Vệ Đà. Mọi hiểu biết đều đến từ các nhà chiêm tinh thực thụ, giàu kinh nghiệm, được trau chuốt tỉ mỉ dựa trên lá số tử vi độc đáo của bạn. Từ tử vi hàng ngày đến hướng dẫn cá nhân hóa, Karma giúp kiến thức cổ xưa dễ tiếp cận hơn 100 ngôn ngữ.';
 
   @override
   String get ourMission => 'Sứ mệnh của chúng tôi';
 
   @override
   String get missionDescription =>
-      'Cung cấp những hiểu biết chiêm tinh chính xác và cá nhân hóa để giúp người dùng đưa ra quyết định sáng suốt trong cuộc sống.';
+      'Sứ mệnh của chúng tôi rất đơn giản: cung cấp hướng dẫn chiêm tinh chân thực, do con người dẫn dắt, giúp bạn tự tin đưa ra quyết định sáng suốt. Mỗi dự đoán và tư vấn đều phản ánh nhiều năm kinh nghiệm chuyên môn, chứ không phải thuật toán tự động.';
 
   @override
   String get ourVision => 'Tầm nhìn của chúng tôi';
 
   @override
   String get visionDescription =>
-      'Trở thành nền tảng chiêm tinh đáng tin cậy nhất, kết hợp công nghệ và trí tuệ cổ xưa.';
+      'Chúng tôi nỗ lực trở thành nền tảng đáng tin cậy nhất thế giới về chiêm tinh học Vệ Đà, giúp mọi người ở khắp mọi nơi hiểu rõ bản thân, lựa chọn và hành trình cuộc sống của họ một cách rõ ràng và tự tin.';
 
   @override
   String get ourValues => 'Giá trị của chúng tôi';
 
   @override
   String get valuesDescription =>
-      'Tính toàn vẹn, chính xác, thiết kế lấy người dùng làm trung tâm và đổi mới liên tục.';
+      'Tại Karma, chúng tôi coi trọng tính xác thực, chính xác và sự tin cậy. Chúng tôi cam kết cung cấp những hướng dẫn không chỉ chính xác mà còn ý nghĩa, giúp bạn định hướng cuộc sống với sự thấu hiểu và tự tin.';
 
   @override
   String get contactUs => 'Liên hệ với chúng tôi';
@@ -879,4 +879,11 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Đội ngũ của chúng tôi';
+
+  @override
+  String get teamDescription =>
+      'Đội ngũ chiêm tinh gia Vệ Đà chuyên nghiệp của chúng tôi có nhiều năm kinh nghiệm trong việc phân tích ảnh hưởng của các hành tinh và các mô hình cuộc sống. Được hỗ trợ bởi đội ngũ hỗ trợ và phát triển tận tâm, Karma mang đến trải nghiệm liền mạch, đáng tin cậy và toàn cầu cho mọi người dùng.';
 }

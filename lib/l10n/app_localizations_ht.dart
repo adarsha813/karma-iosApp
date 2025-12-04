@@ -372,28 +372,28 @@ class AppLocalizationsHt extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Nou angaje nou pou nou bay itilizatè nou yo pi bon eksperyans astwoloji a.';
+      'Nan Karma, nou ede w dekouvri vrè chemen lavi w atravè sajès san tan astwoloji Vedik la. Chak apèsi soti nan men astwològ reyèl ak ki gen eksperyans, ki byen elabore dapre tablo nesans inik ou a. Soti nan oroskop chak jou rive nan konsèy pèsonalize, Karma rann konesans ansyen aksesib nan plis pase 100 lang.';
 
   @override
   String get ourMission => 'Misyon nou';
 
   @override
   String get missionDescription =>
-      'Pou bay enfòmasyon astwolojik pèsonalize ak egzat pou ede itilizatè yo pran desizyon enfòme nan lavi yo.';
+      'Misyon nou senp: bay konsèy astrolojik otantik, dirije pa moun, ki pèmèt ou pran desizyon enfòme ak konfyans. Chak prediksyon ak konsiltasyon reflete plizyè ane ekspètiz pwofesyonèl, pa algoritm otomatik.';
 
   @override
   String get ourVision => 'Vizyon nou';
 
   @override
   String get visionDescription =>
-      'Pou vin platfòm astwoloji ki pi fyab la, ki konbine teknoloji ak sajès ansyen.';
+      'Nou fè efò pou nou vin platfòm ki pi fyab nan mond lan pou astwoloji Vedik, pou ede moun toupatou konprann tèt yo, chwa yo, ak chemen lavi yo avèk klète ak konfyans.';
 
   @override
   String get ourValues => 'Valè nou yo';
 
   @override
   String get valuesDescription =>
-      'Entegrite, Presizyon, Konsepsyon Santre sou Itilizatè, ak Inovasyon Kontinyèl.';
+      'Nan Karma, nou bay anpil valè a otantisite, presizyon, ak konfyans. Nou angaje pou nou ofri konsèy ki pa sèlman egzat men tou ki gen sans, pou ede w navige nan lavi a avèk bon konprann ak konfyans.';
 
   @override
   String get contactUs => 'Kontakte nou';
@@ -874,4 +874,11 @@ class AppLocalizationsHt extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Ekip nou an';
+
+  @override
+  String get teamDescription =>
+      'Ekip astwològ Vedik pwofesyonèl nou an gen plizyè ane eksperyans nan entèprete enfliyans planèt yo ak modèl lavi yo. Avèk sipò yon ekip sipò ak devlopman devwe, Karma ofri yon eksperyans san pwoblèm, serye, ak mondyal pou chak itilizatè.';
 }

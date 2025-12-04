@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Nou angaje nou pou nou bay itilizatè nou yo pi bon eksperyans astwoloji a.",
+  "aboutCompanyDescription": "Nan Karma, nou ede w dekouvri vrè chemen lavi w atravè sajès san tan astwoloji Vedik la. Chak apèsi soti nan men astwològ reyèl ak ki gen eksperyans, ki byen elabore dapre tablo nesans inik ou a. Soti nan oroskop chak jou rive nan konsèy pèsonalize, Karma rann konesans ansyen aksesib nan plis pase 100 lang.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Pou bay enfòmasyon astwolojik pèsonalize ak egzat pou ede itilizatè yo pran desizyon enfòme nan lavi yo.",
+  "missionDescription": "Misyon nou senp: bay konsèy astrolojik otantik, dirije pa moun, ki pèmèt ou pran desizyon enfòme ak konfyans. Chak prediksyon ak konsiltasyon reflete plizyè ane ekspètiz pwofesyonèl, pa algoritm otomatik.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Pou vin platfòm astwoloji ki pi fyab la, ki konbine teknoloji ak sajès ansyen.",
+  "visionDescription": "Nou fè efò pou nou vin platfòm ki pi fyab nan mond lan pou astwoloji Vedik, pou ede moun toupatou konprann tèt yo, chwa yo, ak chemen lavi yo avèk klète ak konfyans.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Entegrite, Presizyon, Konsepsyon Santre sou Itilizatè, ak Inovasyon Kontinyèl.",
+  "valuesDescription": "Nan Karma, nou bay anpil valè a otantisite, presizyon, ak konfyans. Nou angaje pou nou ofri konsèy ki pa sèlman egzat men tou ki gen sans, pou ede w navige nan lavi a avèk bon konprann ak konfyans.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Anviwònman Tèm",
   "lightThemeLabel": "Limyè",
   "darkThemeLabel": "Fènwa",
-  "systemThemeLabel": "Sistèm"
+  "systemThemeLabel": "Sistèm",
+  "ourTeam": "Ekip nou an",
+  "teamDescription": "Ekip astwològ Vedik pwofesyonèl nou an gen plizyè ane eksperyans nan entèprete enfliyans planèt yo ak modèl lavi yo. Avèk sipò yon ekip sipò ak devlopman devwe, Karma ofri yon eksperyans san pwoblèm, serye, ak mondyal pou chak itilizatè."
 }

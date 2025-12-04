@@ -374,28 +374,28 @@ class AppLocalizationsSt extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Re ikemiselitse ho fana ka phihlelo e ntle ka ho fetisisa ea bonohe ba linaleli ho basebelisi ba rona.';
+      'Ho Karma, re u thusa ho utulla tsela ea hau ea \'nete ea bophelo ka bohlale bo sa feleng ba bonohe ba linaleli ba Vedic. Kutloisiso e \'ngoe le e\' ngoe e tsoa ho linohe tsa linaleli tse nang le phihlelo, tse entsoeng ka hloko ho latela chate ea hau ea tsoalo e ikhethang. Ho tloha ho linaleli tsa letsatsi le letsatsi ho ea ho tataiso ea motho ka mong, Karma e etsa hore tsebo ea khale e fumanehe ka lipuo tse fetang 100.';
 
   @override
   String get ourMission => 'Morero oa rona';
 
   @override
   String get missionDescription =>
-      'Ho fana ka lintlha tse nepahetseng tsa bonohe ba linaleli ho thusa basebelisi ho etsa liqeto tse nepahetseng bophelong ba bona.';
+      'Morero oa rona o bonolo: ho fana ka tataiso ea \'nete ea bonohe ba linaleli e u fang matla a ho etsa liqeto tse nepahetseng, tse nang le tsebo. Polelo e \'ngoe le e \'ngoe le therisano e bontša lilemo tsa boitseanape, eseng li-algorithms tse ikemetseng.';
 
   @override
   String get ourVision => 'Pono ea Rona';
 
   @override
   String get visionDescription =>
-      'Ho ba sethala se tšeptjoang ka ho fetesisa sa bonohe ba linaleli, se kopanyang theknoloji le bohlale ba khale.';
+      'Re ikitlaelletsa ho ba sethala se tšeptjoang ka ho fetisisa lefatšeng sa bonohe ba linaleli ba Vedic, ho thusa batho hohle ho itlhalosa, khetho ea bona, le leeto la bona la bophelo ka ho hlaka le ka kholiseho.';
 
   @override
   String get ourValues => 'Melao ea Rōna';
 
   @override
   String get valuesDescription =>
-      'Botšepehi, Ho Nepaha, Moralo oa Bohareng ba Basebelisi, le Boqapi bo Tsoelang Pele.';
+      'Ho Karma, re ananela bonnete, ho nepahala le ho tšepana. Re ikemiselitse ho fana ka tataiso eseng feela e nepahetseng empa hape e nang le morero, e u thusang ho phela bophelo ka temohisiso le kholiseho.';
 
   @override
   String get contactUs => 'Iteanye le rona';
@@ -882,4 +882,11 @@ class AppLocalizationsSt extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Sehlopha sa rona';
+
+  @override
+  String get teamDescription =>
+      'Sehlopha sa rona sa litsebi tsa linohe tsa linaleli tsa Vedic se tlisa boiphihlelo ba lilemo tsa ho fetolela litšusumetso tsa lipolanete le mekhoa ea bophelo. E tšehelitsoe ke sehlopha se inehetseng sa tšehetso le nts\'etsopele, Karma e fana ka boiphihlelo bo se nang moeli, bo tšepahalang le ba lefats\'e bakeng sa mosebelisi e mong le e mong.';
 }

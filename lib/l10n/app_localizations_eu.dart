@@ -373,28 +373,28 @@ class AppLocalizationsEu extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Gure erabiltzaileei astrologia esperientzia onena eskaintzeko konpromisoa dugu.';
+      'Karman, zure benetako bizitzako bidea aurkitzen laguntzen dizugu astrologia vedikoaren jakinduria betierekoaren bidez. Ikuspegi guztiak benetako astrologo esperientziadunengandik datoz, zure jaiotza-taula berezian oinarrituta arretaz landuak. Eguneroko horoskopoetatik hasi eta orientazio pertsonalizaturaino, Karmak antzinako ezagutza eskuragarri jartzen du 100 hizkuntza baino gehiagotan.';
 
   @override
   String get ourMission => 'Gure Misioa';
 
   @override
   String get missionDescription =>
-      'Erabiltzaileei bizitzan erabaki informatuak hartzen laguntzeko astrologia-informazio zehatza eta pertsonalizatua eskaintzea.';
+      'Gure eginkizuna sinplea da: benetako gidaritza astrologikoa eskaintzea, erabaki seguru eta informatuak hartzeko ahalmena emango dizuna. Iragarpen eta kontsulta bakoitzak urteetako esperientzia profesionala islatzen du, ez algoritmo automatizatuak.';
 
   @override
   String get ourVision => 'Gure ikuspegia';
 
   @override
   String get visionDescription =>
-      'Teknologia eta antzinako jakinduria konbinatuz, astrologia plataforma fidagarriena bihurtzea.';
+      'Munduko astrologia vedikorako plataforma fidagarriena izaten saiatzen gara, mundu osoko jendeari bere burua, bere aukerak eta bere bizitzako bidaia argi eta konfiantzaz ulertzen laguntzeko.';
 
   @override
   String get ourValues => 'Gure balioak';
 
   @override
   String get valuesDescription =>
-      'Osotasuna, Zehaztasuna, Erabiltzailean Zentratutako Diseinua eta Etengabeko Berrikuntza.';
+      'Karman, benetakotasuna, zehaztasuna eta konfiantza baloratzen ditugu. Zehatza ez ezik, esanguratsua ere den orientazioa eskaintzeko konpromisoa dugu, bizitzan ikuspegi eta konfiantzaz nabigatzen laguntzeko.';
 
   @override
   String get contactUs => 'Jarri gurekin harremanetan';
@@ -882,4 +882,11 @@ class AppLocalizationsEu extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Gure Taldea';
+
+  @override
+  String get teamDescription =>
+      'Gure astrologo vediko profesionalen taldeak urteetako esperientzia du eragin planetarioak eta bizitza-ereduak interpretatzen. Laguntza eta garapen talde dedikatu batek babestuta, Karmak esperientzia ezin hobea, fidagarria eta globala eskaintzen die erabiltzaile guztiei.';
 }

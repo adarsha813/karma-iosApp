@@ -374,28 +374,28 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Estamos comprometidos a brindar la mejor experiencia astrológica a nuestros usuarios.';
+      'En Karma, te ayudamos a descubrir tu verdadero camino en la vida a través de la sabiduría atemporal de la astrología védica. Cada perspectiva proviene de astrólogos reales y experimentados, cuidadosamente elaborada según tu carta astral única. Desde horóscopos diarios hasta orientación personalizada, Karma pone a tu disposición conocimiento ancestral en más de 100 idiomas.';
 
   @override
   String get ourMission => 'Nuestra misión';
 
   @override
   String get missionDescription =>
-      'Proporcionar información astrológica precisa y personalizada para ayudar a los usuarios a tomar decisiones informadas en sus vidas.';
+      'Nuestra misión es simple: brindar una guía astrológica auténtica, guiada por personas, que te permita tomar decisiones seguras e informadas. Cada predicción y consulta refleja años de experiencia profesional, no algoritmos automatizados.';
 
   @override
   String get ourVision => 'Nuestra Visión';
 
   @override
   String get visionDescription =>
-      'Convertirnos en la plataforma de astrología más confiable, combinando tecnología y sabiduría ancestral.';
+      'Nos esforzamos por ser la plataforma más confiable del mundo para la astrología védica, ayudando a las personas de todo el mundo a comprenderse a sí mismas, sus elecciones y su camino de vida con claridad y confianza.';
 
   @override
   String get ourValues => 'Nuestros valores';
 
   @override
   String get valuesDescription =>
-      'Integridad, precisión, diseño centrado en el usuario e innovación continua.';
+      'En Karma, valoramos la autenticidad, la precisión y la confianza. Nos comprometemos a ofrecer una guía no solo precisa, sino también significativa, que te ayude a vivir la vida con perspectiva y confianza.';
 
   @override
   String get contactUs => 'Contáctanos';
@@ -884,4 +884,11 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Nuestro equipo';
+
+  @override
+  String get teamDescription =>
+      'Nuestro equipo de astrólogos védicos profesionales cuenta con años de experiencia interpretando las influencias planetarias y los patrones de vida. Con el respaldo de un equipo de soporte y desarrollo dedicado, Karma ofrece una experiencia fluida, confiable y global para cada usuario.';
 }

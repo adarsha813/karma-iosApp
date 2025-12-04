@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Táimid tiomanta don taithí réalteolaíochta is fearr a sholáthar dár n-úsáideoirí.",
+  "aboutCompanyDescription": "Ag Karma, cabhraímid leat do chonair shaoil fíor a nochtadh trí eagna shíoraí na réalteolaíochta Véidí. Tagann gach léargas ó réalteolaithe fíor-thaithí, atá ceaptha go cúramach bunaithe ar do chairt bhreithe uathúil. Ó horoscóip laethúla go treoir phearsantaithe, cuireann Karma eolas ársa ar fáil i mbreis is 100 teanga.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Chun léargais réalteolaíochta cruinne agus pearsantaithe a sholáthar chun cabhrú le húsáideoirí cinntí eolasacha a dhéanamh ina saol.",
+  "missionDescription": "Is simplí ár misean: treoir réalteolaíoch barántúil, faoi stiúir an duine, a sholáthar a chuireann ar do chumas cinntí muiníneacha, eolasacha a dhéanamh. Léiríonn gach tuar agus comhairliúchán blianta fada de shaineolas gairmiúil, ní halgartaim uathoibrithe.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Chun bheith ar an ardán réalteolaíochta is iontaofa, ag comhcheangal teicneolaíochta agus eagna ársa.",
+  "visionDescription": "Déanaimid ár ndícheall a bheith ar an ardán is iontaofa ar domhan le haghaidh réalteolaíocht Véideach, ag cabhrú le daoine i ngach áit iad féin, a roghanna agus a n-aistear saoil a thuiscint le soiléireacht agus muinín.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Ionracas, Cruinneas, Dearadh Dírithe ar an Úsáideoir, agus Nuálaíocht Leanúnach.",
+  "valuesDescription": "Ag Karma, cuirimid luach ar fhírinneacht, cruinneas agus muinín. Táimid tiomanta do threoir a thairiscint atá ní hamháin cruinn ach bríoch freisin, ag cabhrú leat an saol a nascleanúint le léargas agus muinín.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Socruithe Téama",
   "lightThemeLabel": "Solas",
   "darkThemeLabel": "Dorcha",
-  "systemThemeLabel": "Córas"
+  "systemThemeLabel": "Córas",
+  "ourTeam": "Ár bhFoireann",
+  "teamDescription": "Tá blianta fada taithí ag ár bhfoireann réalteolaithe Véideacha gairmiúla ag léirmhíniú tionchair phláinéid agus patrúin saoil. Le tacaíocht ó fhoireann tacaíochta agus forbartha tiomanta, cuireann Karma eispéireas gan uaim, iontaofa agus domhanda ar fáil do gach úsáideoir."
 }

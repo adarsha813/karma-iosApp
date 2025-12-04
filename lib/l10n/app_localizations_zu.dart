@@ -373,28 +373,28 @@ class AppLocalizationsZu extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Sizibophezele ekuletheni umuzwa ohamba phambili wokubhula ngezinkanyezi kubasebenzisi bethu.';
+      'Kwa-Karma, sikusiza ukuthi wembule indlela yakho yempilo yangempela ngobuhlakani obungaphelelwa yisikhathi be-Vedic astrology. Yonke imininingwane ivela kubabhula ngezinkanyezi bangempela, abanolwazi, abaklanywe ngokucophelela ngokusekelwe eshadini lakho lokuzalwa eliyingqayizivele. Kusukela ku-horoscope yansuku zonke kuya ekuqondisweni komuntu siqu, i-Karma yenza ulwazi lwakudala lufinyeleleke ngezilimi ezingaphezu kwe-100.';
 
   @override
   String get ourMission => 'Umgomo Wethu';
 
   @override
   String get missionDescription =>
-      'Ukuhlinzeka ngemininingwane enembile neyenziwe ngezifiso yokubhula ngezinkanyezi ukusiza abasebenzisi ukwenza izinqumo ezinolwazi ezimpilweni zabo.';
+      'Umgomo wethu ulula: ukuhlinzeka ngeziqondiso eziyiqiniso, eziholwa ngumuntu zezinkanyezi ezikunika amandla okwenza izinqumo eziqinisekayo nezinolwazi. Konke ukubikezela nokuxhumana kubonisa iminyaka yobungcweti bomsebenzi, hhayi ama-algorithms azenzakalelayo.';
 
   @override
   String get ourVision => 'Umbono Wethu';
 
   @override
   String get visionDescription =>
-      'Ukuze ube inkundla yezinkanyezi ethembeke kakhulu, ehlanganisa ubuchwepheshe nobuhlakani basendulo.';
+      'Silwela ukuba inkundla ethembeke kakhulu emhlabeni ye-Vedic astrology, sisiza abantu yonke indawo ukuthi baziqonde, ukukhetha kwabo, kanye nohambo lwabo lwempilo ngokucacile nangokuzethemba.';
 
   @override
   String get ourValues => 'Izimiso Zethu';
 
   @override
   String get valuesDescription =>
-      'Ubuqotho, Ukunemba, Idizayini Emaphakathi Umsebenzisi, kanye Nokuqamba Okusha Okuqhubekayo.';
+      'Kwa-Karma, siyabazisa ubuqiniso, ukunemba, nokwethenjwa. Sizibophezele ekunikezeni isiqondiso esingagcini nje ngokunembile kodwa futhi esinenjongo, esikusiza ukuba uzulazule empilweni ngokuqondisisa nangokuzethemba.';
 
   @override
   String get contactUs => 'Xhumana nathi';
@@ -880,4 +880,11 @@ class AppLocalizationsZu extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Ithimba lethu';
+
+  @override
+  String get teamDescription =>
+      'Ithimba lethu lezazi zezinkanyezi ze-Vedic liletha isipiliyoni seminyaka sokuhumusha amathonya eplanethi namaphethini okuphila. Isekelwa ithimba elizinikele elisekelayo nelokuthuthukisa, i-Karma iletha ulwazi olungenazihibe, oluthembekile, nolwembulunga yonke kuwo wonke umsebenzisi.';
 }

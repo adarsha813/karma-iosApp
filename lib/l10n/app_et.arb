@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Oleme pühendunud pakkuma oma kasutajatele parimat astroloogiakogemust.",
+  "aboutCompanyDescription": "Karmas aitame sul avastada oma tõelise elutee läbi Veeda astroloogia ajatu tarkuse. Iga arusaam pärineb päris ja kogenud astroloogidelt ning on hoolikalt koostatud sinu ainulaadse sünnikaardi põhjal. Alates igapäevastest horoskoopidest kuni personaalse juhendamiseni – Karma teeb iidsed teadmised kättesaadavaks enam kui 100 keeles.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Pakkuda täpseid ja isikupärastatud astroloogiaalaseid teadmisi, mis aitavad kasutajatel oma elus teadlikke otsuseid langetada.",
+  "missionDescription": "Meie missioon on lihtne: pakkuda autentset, inimese juhitud astroloogilist juhendamist, mis annab teile võimaluse teha enesekindlaid ja teadlikke otsuseid. Iga ennustus ja konsultatsioon peegeldab aastatepikkust professionaalset kogemust, mitte automatiseeritud algoritme.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Et saada kõige usaldusväärsemaks astroloogiaplatvormiks, mis ühendab tehnoloogia ja iidse tarkuse.",
+  "visionDescription": "Püüdleme selle poole, et olla maailma usaldusväärseim vedaliku astroloogia platvorm, aidates inimestel kõikjal mõista iseennast, oma valikuid ja eluteekonda selgelt ja enesekindlalt.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Ausus, täpsus, kasutajakeskne disain ja pidev innovatsioon.",
+  "valuesDescription": "Karmas väärtustame autentsust, täpsust ja usaldust. Oleme pühendunud pakkuma juhiseid, mis on mitte ainult täpsed, vaid ka sisukad, aidates teil elus orienteeruda arusaamise ja enesekindlusega.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Teema seaded",
   "lightThemeLabel": "Valgus",
   "darkThemeLabel": "Tume",
-  "systemThemeLabel": "Süsteem"
+  "systemThemeLabel": "Süsteem",
+  "ourTeam": "Meie meeskond",
+  "teamDescription": "Meie professionaalsete Veeda astroloogide meeskonnal on aastatepikkune kogemus planeetide mõjude ja elumustrite tõlgendamisel. Pühendunud tugi- ja arendusmeeskonna toel pakub Karma igale kasutajale sujuvat, usaldusväärset ja globaalset kogemust."
 }

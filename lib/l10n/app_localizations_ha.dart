@@ -370,28 +370,28 @@ class AppLocalizationsHa extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'Mun himmatu don isar da mafi kyawun ƙwarewar taurari ga masu amfani da mu.';
+      'A Karma, muna taimaka muku gano hanyar rayuwar ku ta gaskiya ta hanyar hikima mara lokaci na taurarin Vedic. Kowace fahimta ta fito daga haƙiƙa, ƙwararrun ƙwararrun taurari, waɗanda aka ƙera su a hankali bisa ƙayyadaddun ginshiƙi na haihuwa. Daga horoscopes na yau da kullun zuwa jagora na keɓaɓɓen, Karma yana ba da damar ilimin daɗaɗɗen ilimin a cikin harsuna sama da 100.';
 
   @override
   String get ourMission => 'Manufar Mu';
 
   @override
   String get missionDescription =>
-      'Don samar da ingantattun bayanan taurari na keɓaɓɓen don taimakawa masu amfani su yanke shawara mai zurfi a rayuwarsu.';
+      'Manufarmu mai sauƙi ce: don samar da ingantacciyar jagorar ilimin taurari wanda ɗan adam ke jagoranta wanda ke ba ku ikon yanke shawara, tabbataccen shawara. Kowane tsinkaya da shawarwari suna nuna shekarun ƙwararrun ƙwararru, ba algorithms na atomatik ba.';
 
   @override
   String get ourVision => 'Burinmu';
 
   @override
   String get visionDescription =>
-      'Don zama mafi amintaccen dandalin taurari, haɗa fasaha da tsohuwar hikima.';
+      'Muna ƙoƙari mu zama dandamali mafi aminci a duniya don taurarin Vedic, muna taimaka wa mutane a ko\'ina su fahimci kansu, zaɓinsu, da tafiyar rayuwarsu tare da tsabta da tabbaci.';
 
   @override
   String get ourValues => 'Darajojin mu';
 
   @override
   String get valuesDescription =>
-      'Mutunci, Daidaito, Tsara-Cintar Mai Amfani, da Cigaba da Ƙirƙiri.';
+      'A Karma, muna daraja gaskiya, daidaito, da amana. Mun himmatu wajen ba da jagora wanda ba daidai ba ne kawai amma har ma da ma\'ana, yana taimaka muku kewaya rayuwa cikin basira da tabbaci.';
 
   @override
   String get contactUs => 'Tuntube Mu';
@@ -877,4 +877,11 @@ class AppLocalizationsHa extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'Tawagar mu';
+
+  @override
+  String get teamDescription =>
+      'Ƙungiyarmu ta ƙwararrun ƙwararrun taurarin Vedic suna kawo shekaru na gogewa na fassara tasirin duniya da tsarin rayuwa. Taimakawa ta hanyar sadaukar da goyan baya da ƙungiyar haɓakawa, Karma yana ba da cikakkiyar daidaituwa, abin dogaro, da ƙwarewar duniya ga kowane mai amfani.';
 }

@@ -142,7 +142,7 @@
   "@aboutOurCompany": {
     "description": "Header title for company information"
   },
-  "aboutCompanyDescription": "Estamos comprometidos a brindar la mejor experiencia astrológica a nuestros usuarios.",
+  "aboutCompanyDescription": "En Karma, te ayudamos a descubrir tu verdadero camino en la vida a través de la sabiduría atemporal de la astrología védica. Cada perspectiva proviene de astrólogos reales y experimentados, cuidadosamente elaborada según tu carta astral única. Desde horóscopos diarios hasta orientación personalizada, Karma pone a tu disposición conocimiento ancestral en más de 100 idiomas.",
   "@aboutCompanyDescription": {
     "description": "Description of company commitment"
   },
@@ -150,7 +150,7 @@
   "@ourMission": {
     "description": "Title for mission section"
   },
-  "missionDescription": "Proporcionar información astrológica precisa y personalizada para ayudar a los usuarios a tomar decisiones informadas en sus vidas.",
+  "missionDescription": "Nuestra misión es simple: brindar una guía astrológica auténtica, guiada por personas, que te permita tomar decisiones seguras e informadas. Cada predicción y consulta refleja años de experiencia profesional, no algoritmos automatizados.",
   "@missionDescription": {
     "description": "Description of company mission"
   },
@@ -158,7 +158,7 @@
   "@ourVision": {
     "description": "Title for vision section"
   },
-  "visionDescription": "Convertirnos en la plataforma de astrología más confiable, combinando tecnología y sabiduría ancestral.",
+  "visionDescription": "Nos esforzamos por ser la plataforma más confiable del mundo para la astrología védica, ayudando a las personas de todo el mundo a comprenderse a sí mismas, sus elecciones y su camino de vida con claridad y confianza.",
   "@visionDescription": {
     "description": "Description of company vision"
   },
@@ -166,7 +166,7 @@
   "@ourValues": {
     "description": "Title for values section"
   },
-  "valuesDescription": "Integridad, precisión, diseño centrado en el usuario e innovación continua.",
+  "valuesDescription": "En Karma, valoramos la autenticidad, la precisión y la confianza. Nos comprometemos a ofrecer una guía no solo precisa, sino también significativa, que te ayude a vivir la vida con perspectiva y confianza.",
   "@valuesDescription": {
     "description": "Description of company values"
   },
@@ -439,5 +439,7 @@
   "themeSettingsTitle": "Configuración del tema",
   "lightThemeLabel": "Luz",
   "darkThemeLabel": "Oscuro",
-  "systemThemeLabel": "Sistema"
+  "systemThemeLabel": "Sistema",
+  "ourTeam": "Nuestro equipo",
+  "teamDescription": "Nuestro equipo de astrólogos védicos profesionales cuenta con años de experiencia interpretando las influencias planetarias y los patrones de vida. Con el respaldo de un equipo de soporte y desarrollo dedicado, Karma ofrece una experiencia fluida, confiable y global para cada usuario."
 }

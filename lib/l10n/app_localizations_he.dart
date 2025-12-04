@@ -370,28 +370,28 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get aboutCompanyDescription =>
-      'אנו מחויבים לספק את חוויית האסטרולוגיה הטובה ביותר למשתמשים שלנו.';
+      'בקארמה, אנו עוזרים לך לחשוף את נתיב חייך האמיתי באמצעות החוכמה הנצחית של האסטרולוגיה הוודית. כל תובנה מגיעה מאסטרולוגים אמיתיים ומנוסים, שנוצרו בקפידה על סמך מפת הלידה הייחודית שלך. מהורוסקופים יומיים ועד להדרכה מותאמת אישית, קארמה מנגישה ידע עתיק ביותר מ-100 שפות.';
 
   @override
   String get ourMission => 'המשימה שלנו';
 
   @override
   String get missionDescription =>
-      'לספק תובנות אסטרולוגיות מדויקות ואישיות שיעזרו למשתמשים לקבל החלטות מושכלות בחייהם.';
+      'המשימה שלנו פשוטה: לספק הדרכה אסטרולוגית אותנטית, בהנחיית אדם, שתאפשר לכם לקבל החלטות בטוחות ומושכלות. כל ניבוי וייעוץ משקפים שנים של מומחיות מקצועית, לא אלגוריתמים אוטומטיים.';
 
   @override
   String get ourVision => 'החזון שלנו';
 
   @override
   String get visionDescription =>
-      'להפוך לפלטפורמת האסטרולוגיה המהימנה ביותר, המשלבת טכנולוגיה וחוכמה עתיקה.';
+      'אנו שואפים להיות הפלטפורמה המהימנה ביותר בעולם לאסטרולוגיה וודית, ולעזור לאנשים בכל מקום להבין את עצמם, את בחירותיהם ואת מסע חייהם בבהירות ובביטחון.';
 
   @override
   String get ourValues => 'הערכים שלנו';
 
   @override
   String get valuesDescription =>
-      'יושרה, דיוק, עיצוב ממוקד משתמש וחדשנות מתמשכת.';
+      'בקארמה, אנו מעריכים אותנטיות, דיוק ואמון. אנו מחויבים להציע הדרכה שהיא לא רק מדויקת אלא גם משמעותית, שתעזור לכם לנווט בחיים עם תובנה וביטחון.';
 
   @override
   String get contactUs => 'צרו קשר';
@@ -533,7 +533,7 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String paymentRequiredMessage(Object amount) {
-    return 'ניצלת את השאלות החינמיות שלך. שלם ₹50 כדי להמשיך.';
+    return 'ניצלת את השאלות החינמיות שלך. שלם $amount כדי להמשיך.';
   }
 
   @override
@@ -869,4 +869,11 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get switchToDark => 'Switch to Dark';
+
+  @override
+  String get ourTeam => 'הצוות שלנו';
+
+  @override
+  String get teamDescription =>
+      'צוות האסטרולוגים הוודיים המקצועיים שלנו מביא עמו ניסיון של שנים בפירוש השפעות פלנטריות ודפוסי חיים. Karma, המגובה על ידי צוות תמיכה ופיתוח ייעודי, מספק חוויה חלקה, אמינה וגלובלית לכל משתמש.';
 }
