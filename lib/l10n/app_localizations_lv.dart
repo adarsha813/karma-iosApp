@@ -173,21 +173,21 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astroloģija ir debess ķermeņu izpēte...';
+      'Astroloģija ir sena zinātne par debesu kustībām un to ietekmi uz cilvēka dzīvi, sniedzot ieskatu personībā, attiecībās un dzīves notikumos.';
 
   @override
   String get onboardingWhyUseApp => 'Kāpēc izmantot šo lietotni?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Saņemiet personalizētus horoskopus, ikdienas prognozes un norādījumus, lai pieņemtu pārdomātus lēmumus.';
+      'Saņemiet precīzus, cilvēka ģenerētus horoskopus un norādījumus, kas pielāgoti jūsu dzimšanas kartei. Pieņemiet pārdomātus lēmumus, izmantojot ikdienas prognozes un personalizētus padomus no pieredzējušiem astrologiem.';
 
   @override
   String get onboardingHowToUse => 'Kā lietot šo lietotni?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Ērti pārvietojieties, pārbaudiet ikdienas horoskopus un pārvaldiet savu profilu, lai iegūtu precīzas prognozes.';
+      'Vienkārši ievadiet savu dzimšanas datumu, precīzu laiku, dzimšanas vietu un jebkuru citu svarīgu informāciju, lai nekavējoties sāktu. Iepazīstieties ar ikdienas horoskopiem, uzdodiet jautājumus pieredzējušiem astrologiem un pārvaldiet savu profilu, lai saņemtu precīzas, personalizētas prognozes — pieteikšanās nav nepieciešama.';
 
   @override
   String get onboardingGetStarted => 'Sākt darbu';

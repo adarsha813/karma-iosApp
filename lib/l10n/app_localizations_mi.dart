@@ -173,21 +173,21 @@ class AppLocalizationsMi extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Ko te Astrology te rangahau mo nga tinana o te rangi...';
+      'Ko te Astrology te rangahau tawhito mo nga nekehanga o te rangi me o raatau awe ki te oranga o te tangata, e whakaatu ana i nga whakaaro mo te tangata, te whanaungatanga, me nga kaupapa o te ao.';
 
   @override
   String get onboardingWhyUseApp => 'He aha te whakamahi i tenei taupānga?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Tikina nga horoscope whaiaro, nga matapae o ia ra, me te arahi ki te whakatau whakatau.';
+      'Whiwhi i nga horoscope tika, i hangaia e te tangata, me nga aratohu e rite ana ki to tūtohi whanau. Whakaritea nga whakatau me nga matapae o ia ra me nga tohutohu whaiaro mai i nga tohunga whetu mohio.';
 
   @override
   String get onboardingHowToUse => 'Me pehea te whakamahi i tenei taupānga?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Whakatere ngawari, tirohia nga horoscope o ia ra, me te whakahaere i to korero mo nga matapae tika.';
+      'Whakauruhia to ra whanau, te wa tika, te waahi whanau, me etahi atu korero e tika ana kia timata tonu. Torotoro nga horoscope o ia ra, patai ki nga tohunga wheturangi, me te whakahaere i to korero mo nga matapae tino tika—kaore he urunga e hiahiatia ana.';
 
   @override
   String get onboardingGetStarted => 'Tīmatahia';

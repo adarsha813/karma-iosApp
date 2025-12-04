@@ -173,21 +173,21 @@ class AppLocalizationsSq extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrologjia është studimi i trupave qiellorë...';
+      'Astrologjia është studimi i lashtë i lëvizjeve qiellore dhe ndikimit të tyre në jetën njerëzore, duke ofruar njohuri mbi personalitetin, marrëdhëniet dhe ngjarjet e jetës.';
 
   @override
   String get onboardingWhyUseApp => 'Pse ta përdorni këtë aplikacion?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Merrni horoskopë të personalizuar, parashikime ditore dhe udhëzime për të marrë vendime të informuara.';
+      'Merrni horoskopë të saktë, të gjeneruar nga njerëzit, dhe udhëzime të përshtatura sipas tabelës suaj të lindjes. Merrni vendime të informuara me parashikime të përditshme dhe këshilla të personalizuara nga astrologë me përvojë.';
 
   @override
   String get onboardingHowToUse => 'Si ta përdorni këtë aplikacion?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Navigoni lehtësisht, kontrolloni horoskopët ditorë dhe menaxhoni profilin tuaj për parashikime të sakta.';
+      'Thjesht futni datën tuaj të lindjes, kohën e saktë, vendin e lindjes dhe çdo detaj tjetër përkatës për të filluar menjëherë. Eksploroni horoskopët ditorë, bëni pyetje astrologëve ekspertë dhe menaxhoni profilin tuaj për parashikime të sakta dhe të personalizuara - nuk kërkohet hyrje.';
 
   @override
   String get onboardingGetStarted => 'Filloni';

@@ -173,21 +173,21 @@ class AppLocalizationsCy extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astroleg yw astudiaeth cyrff nefol...';
+      'Astroleg yw\'r astudiaeth hynafol o symudiadau nefol a\'u dylanwad ar fywyd dynol, gan gynnig cipolwg ar bersonoliaeth, perthnasoedd a digwyddiadau bywyd.';
 
   @override
-  String get onboardingWhyUseApp => 'Pam defnyddio\'r ap hwn?';
+  String get onboardingWhyUseApp => 'Pam Defnyddio\'r Ap Hwn?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Cael horosgopau personol, rhagfynegiadau dyddiol, ac arweiniad i wneud penderfyniadau gwybodus.';
+      'Derbyniwch horosgopau cywir, wedi\'u creu gan ddyn, a chanllawiau wedi\'u teilwra i\'ch siart geni. Gwnewch benderfyniadau gwybodus gyda rhagfynegiadau dyddiol a chyngor personol gan astrolegwyr profiadol.';
 
   @override
-  String get onboardingHowToUse => 'Sut i ddefnyddio\'r ap hwn?';
+  String get onboardingHowToUse => 'Sut i Ddefnyddio\'r Ap Hwn?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Llywiwch yn hawdd, gwiriwch horosgopau dyddiol, a rheolwch eich proffil i gael rhagfynegiadau cywir.';
+      'Rhowch eich dyddiad geni, yr union amser, y man geni, ac unrhyw fanylion perthnasol eraill i ddechrau ar unwaith. Archwiliwch horosgopau dyddiol, gofynnwch gwestiynau i astrolegwyr arbenigol, a rheolwch eich proffil ar gyfer rhagfynegiadau manwl gywir, personol - does dim angen mewngofnodi.';
 
   @override
   String get onboardingGetStarted => 'Dechrau Arni';

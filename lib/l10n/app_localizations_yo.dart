@@ -172,21 +172,21 @@ class AppLocalizationsYo extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Afirawọ jẹ iwadi ti awọn ara ọrun...';
+      'Afirawọ jẹ iwadi atijọ ti awọn agbeka ọrun ati ipa wọn lori igbesi aye eniyan, fifun awọn oye sinu eniyan, awọn ibatan, ati awọn iṣẹlẹ igbesi aye.';
 
   @override
-  String get onboardingWhyUseApp => 'Kilode ti o lo app yii?';
+  String get onboardingWhyUseApp => 'Kí nìdí Lo Yi App?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Gba awọn horoscopes ti ara ẹni, awọn asọtẹlẹ ojoojumọ, ati itọsọna lati ṣe awọn ipinnu alaye.';
+      'Gba awọn horoscopes ti o peye, ti ipilẹṣẹ eniyan ati itọsọna ti a ṣe deede si chart ibimọ rẹ. Ṣe awọn ipinnu alaye pẹlu awọn asọtẹlẹ ojoojumọ ati imọran ti ara ẹni lati ọdọ awọn awòràwọ ti o ni iriri.';
 
   @override
-  String get onboardingHowToUse => 'Bawo ni lati lo app yii?';
+  String get onboardingHowToUse => 'Bawo ni lati Lo Ohun elo yii?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Lilọ kiri ni irọrun, ṣayẹwo awọn horoscopes ojoojumọ, ati ṣakoso profaili rẹ fun awọn asọtẹlẹ deede.';
+      'Nìkan tẹ ọjọ ibi rẹ sii, akoko gangan, ibi ibimọ, ati eyikeyi awọn alaye miiran ti o yẹ lati bẹrẹ lẹsẹkẹsẹ. Ṣawari awọn horoscopes lojoojumọ, beere awọn ibeere si awọn awòràwọ iwé, ati ṣakoso profaili rẹ fun awọn asọtẹlẹ ti ara ẹni kongẹ — ko si iwọle ti o nilo.';
 
   @override
   String get onboardingGetStarted => 'Bẹrẹ';

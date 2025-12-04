@@ -173,21 +173,21 @@ class AppLocalizationsKu extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrolojî lêkolîna cismên ezmanî ye ...';
+      'Astrolojî lêkolîneke kevnar e li ser tevgerên ezmanî û bandora wan li ser jiyana mirovan, û têgihîştinê li ser kesayetî, têkilî û bûyerên jiyanê pêşkêş dike.';
 
   @override
-  String get onboardingWhyUseApp => 'Çima vê sepanê bi kar tînin?';
+  String get onboardingWhyUseApp => 'Çima vê sepanê bi kar bînin?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Ji bo girtina biryarên agahdar, horoskopên kesane, pêşbîniyên rojane û rêbernameyê bistînin.';
+      'Frostên rast û ji hêla mirovan ve hatine çêkirin û rêbernameyên li gorî nexşeya jidayikbûna we bistînin. Bi pêşbîniyên rojane û şîretên kesane yên ji astrologên xwedî ezmûn biryarên agahdar bidin.';
 
   @override
-  String get onboardingHowToUse => 'Meriv çawa vê sepanê bikar tîne?';
+  String get onboardingHowToUse => 'Meriv Çawa Vê Sepanê Bi Kar Tîne?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Bi hêsanî bigerin, horoskopên rojane kontrol bikin, û profîla xwe ji bo pêşbîniyên rast birêve bibin.';
+      'Tenê roja jidayikbûna xwe, dema rast, cihê jidayikbûnê û her hûrguliyên din ên têkildar binivîse da ku tavilê dest pê bikî. Frostên rojane bikolin, pirsan ji astrologên pispor bipirsin, û profîla xwe ji bo pêşbîniyên rast û kesane birêve bibin - têketin ne hewce ye.';
 
   @override
   String get onboardingGetStarted => 'Dest pê bike';

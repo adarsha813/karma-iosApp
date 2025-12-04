@@ -173,21 +173,21 @@ class AppLocalizationsCa extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'L\'astrologia és l\'estudi dels cossos celestes...';
+      'L\'astrologia és l\'estudi antic dels moviments celestes i la seva influència en la vida humana, oferint informació sobre la personalitat, les relacions i els esdeveniments vitals.';
 
   @override
   String get onboardingWhyUseApp => 'Per què utilitzar aquesta aplicació?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Obtén horòscops personalitzats, prediccions diàries i orientació per prendre decisions informades.';
+      'Rep horòscops precisos, generats per humans, i orientació adaptada a la teva carta natal. Pren decisions informades amb prediccions diàries i consells personalitzats d\'astròlegs experimentats.';
 
   @override
   String get onboardingHowToUse => 'Com s\'utilitza aquesta aplicació?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Navega fàcilment, consulta els horòscops diaris i gestiona el teu perfil per obtenir prediccions precises.';
+      'Només cal que introdueixis la teva data de naixement, l\'hora exacta, el lloc de naixement i qualsevol altra dada rellevant per començar a l\'instant. Explora els horòscops diaris, fes preguntes a astròlegs experts i gestiona el teu perfil per obtenir prediccions precises i personalitzades, sense necessitat d\'iniciar sessió.';
 
   @override
   String get onboardingGetStarted => 'Començar';

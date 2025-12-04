@@ -169,25 +169,25 @@ class AppLocalizationsEs extends AppLocalizations {
       'Seleccione su idioma preferido para continuar.';
 
   @override
-  String get onboardingWhatIsAstrology => '¿Qué es la astrología?';
+  String get onboardingWhatIsAstrology => '¿Qué es la Astrología?';
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'La astrología es el estudio de los cuerpos celestes...';
+      'La astrología es el antiguo estudio de los movimientos celestes y su influencia en la vida humana, ofreciendo conocimientos sobre la personalidad, las relaciones y los acontecimientos de la vida.';
 
   @override
-  String get onboardingWhyUseApp => '¿Por qué usar esta aplicación?';
+  String get onboardingWhyUseApp => '¿Por qué utilizar esta aplicación?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Obtén horóscopos personalizados, predicciones diarias y orientación para tomar decisiones informadas.';
+      'Recibe horóscopos precisos, elaborados por personas, y orientación adaptada a tu carta astral. Toma decisiones informadas con predicciones diarias y consejos personalizados de astrólogos expertos.';
 
   @override
-  String get onboardingHowToUse => '¿Cómo se usa esta aplicación?';
+  String get onboardingHowToUse => '¿Cómo utilizar esta aplicación?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Navega fácilmente, consulta los horóscopos diarios y gestiona tu perfil para obtener predicciones precisas.';
+      'Simplemente ingresa tu fecha de nacimiento, hora exacta, lugar de nacimiento y cualquier otra información relevante para comenzar al instante. Explora horóscopos diarios, pregunta a astrólogos expertos y administra tu perfil para obtener predicciones precisas y personalizadas, sin necesidad de iniciar sesión.';
 
   @override
   String get onboardingGetStarted => 'Comienza';

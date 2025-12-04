@@ -173,21 +173,21 @@ class AppLocalizationsHa extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrology shine nazarin jikunan sama...';
+      'Taurari shine tsohon binciken motsin sama da tasirinsu akan rayuwar ɗan adam, yana ba da haske game da ɗabi\'a, alaƙa, da abubuwan rayuwa.';
 
   @override
-  String get onboardingWhyUseApp => 'Me yasa amfani da wannan app?';
+  String get onboardingWhyUseApp => 'Me yasa Amfani da Wannan App?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Samo keɓaɓɓen horoscopes, tsinkaya na yau da kullun, da jagora don yanke shawara na yau da kullun.';
+      'Karɓi ingantattun matakan horoscopes na ɗan adam da jagora wanda aka keɓance da jadawalin haihuwar ku. Yi cikakken yanke shawara tare da tsinkayar yau da kullun da keɓaɓɓen shawara daga ƙwararrun masana taurari.';
 
   @override
-  String get onboardingHowToUse => 'Yadda ake amfani da wannan app?';
+  String get onboardingHowToUse => 'Yadda Ake Amfani da Wannan App?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Yi kewayawa cikin sauƙi, bincika horoscopes na yau da kullun, kuma sarrafa bayanan martaba don ingantattun tsinkaya.';
+      'Kawai shigar da kwanan watan haihuwa, ainihin lokacin, wurin haihuwa, da duk wasu bayanai masu dacewa don farawa nan take. Bincika horoscopes na yau da kullun, yi tambayoyi ga ƙwararrun taurari, kuma sarrafa bayanan martaba don madaidaicin tsinkaya na keɓaɓɓen—babu buƙatar shiga.';
 
   @override
   String get onboardingGetStarted => 'Fara';

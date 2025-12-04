@@ -173,21 +173,21 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrologija yra dangaus kūnų tyrimas...';
+      'Astrologija yra senovės mokslas apie dangaus judėjimus ir jų įtaką žmogaus gyvenimui, siūlantis įžvalgų apie asmenybę, santykius ir gyvenimo įvykius.';
 
   @override
   String get onboardingWhyUseApp => 'Kodėl verta naudoti šią programėlę?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Gaukite suasmenintus horoskopus, dienos prognozes ir patarimus, kad galėtumėte priimti pagrįstus sprendimus.';
+      'Gaukite tikslius, žmonių sugeneruotus horoskopus ir patarimus, pritaikytus jūsų gimimo diagramai. Priimkite pagrįstus sprendimus, remdamiesi kasdienėmis prognozėmis ir asmeniniais patyrusių astrologų patarimais.';
 
   @override
   String get onboardingHowToUse => 'Kaip naudotis šia programėle?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Lengvai naršykite, tikrinkite dienos horoskopus ir tvarkykite savo profilį, kad gautumėte tikslias prognozes.';
+      'Tiesiog įveskite savo gimimo datą, tikslų laiką, gimimo vietą ir bet kokią kitą svarbią informaciją, kad galėtumėte iš karto pradėti. Naršykite dienos horoskopus, užduokite klausimus patyrusiems astrologams ir tvarkykite savo profilį, kad gautumėte tikslias, suasmenintas prognozes – prisijungti nereikia.';
 
   @override
   String get onboardingGetStarted => 'Pradėti';

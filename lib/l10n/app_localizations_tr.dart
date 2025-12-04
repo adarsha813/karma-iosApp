@@ -173,21 +173,21 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astroloji gök cisimlerinin incelenmesidir...';
+      'Astroloji, gök cisimlerinin hareketlerini ve bunların insan yaşamı üzerindeki etkilerini inceleyen, kişiliğe, ilişkilere ve yaşam olaylarına dair içgörüler sunan kadim bir bilimdir.';
 
   @override
-  String get onboardingWhyUseApp => 'Bu uygulamayı neden kullanmalısınız?';
+  String get onboardingWhyUseApp => 'Bu Uygulamayı Neden Kullanmalısınız?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Kişiselleştirilmiş burç yorumları, günlük tahminler ve bilinçli kararlar alabilmeniz için rehberlik alın.';
+      'Doğum haritanıza özel, insan yapımı doğru burç yorumları ve rehberlik alın. Deneyimli astrologların günlük tahminleri ve kişiselleştirilmiş tavsiyeleriyle bilinçli kararlar alın.';
 
   @override
-  String get onboardingHowToUse => 'Bu uygulama nasıl kullanılır?';
+  String get onboardingHowToUse => 'Bu Uygulama Nasıl Kullanılır?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Kolayca gezinin, günlük burç yorumlarını inceleyin ve doğru tahminler için profilinizi yönetin.';
+      'Hemen başlamak için doğum tarihinizi, tam saatinizi, doğum yerinizi ve diğer ilgili bilgileri girmeniz yeterli. Günlük burç yorumlarını inceleyin, uzman astrologlara sorular sorun ve profilinizi yöneterek hassas ve kişiselleştirilmiş tahminler alın; oturum açmanıza gerek yok.';
 
   @override
   String get onboardingGetStarted => 'Başlayın';

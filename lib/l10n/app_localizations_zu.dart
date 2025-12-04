@@ -173,15 +173,15 @@ class AppLocalizationsZu extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'I-Astrology isifundo sezinkanyezi zasemkhathini...';
+      'I-Astrology isifundo sasendulo sokunyakaza kwesibhakabhaka kanye nomthelela wako empilweni yomuntu, enikeza ukuqonda ngobuntu, ubudlelwano, nezenzakalo zokuphila.';
 
   @override
   String get onboardingWhyUseApp =>
-      'Kungani usebenzise lolu hlelo lokusebenza?';
+      'Kungani Usebenzisa Lolu hlelo lokusebenza?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Thola ama-horoscope omuntu siqu, izibikezelo zansuku zonke, nesiqondiso ukuze wenze izinqumo ezinolwazi.';
+      'Thola ama-horoscope anembile, akhiqizwe umuntu kanye nesiqondiso esifanelana neshadi lakho lokuzalwa. Yenza izinqumo ezinolwazi ngezibikezelo zansuku zonke nezeluleko eziqondene nawe ezivela kubabhula ngezinkanyezi abanolwazi.';
 
   @override
   String get onboardingHowToUse =>
@@ -189,7 +189,7 @@ class AppLocalizationsZu extends AppLocalizations {
 
   @override
   String get onboardingHowToUseDesc =>
-      'Zulazula kalula, hlola izinkanyezi zansuku zonke, futhi uphathe iphrofayela yakho ukuze uthole izibikezelo ezinembile.';
+      'Vele ufake idethi yakho yokuzalwa, isikhathi esiqondile, indawo yokuzalwa, kanye nanoma yimiphi eminye imininingwane efanele ukuze uqalise ngokushesha. Hlola izinkanyezi zansuku zonke, buza imibuzo kubabhula ngezinkanyezi abangongoti, futhi uphathe iphrofayela yakho ukuze uthole izibikezelo ezinembayo, eziqondene nawe—akukho kungena ngemvume okudingekayo.';
 
   @override
   String get onboardingGetStarted => 'Qalisa';

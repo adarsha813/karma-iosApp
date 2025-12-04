@@ -172,21 +172,22 @@ class AppLocalizationsPa extends AppLocalizations {
   String get onboardingWhatIsAstrology => 'ਜੋਤਿਸ਼ ਕੀ ਹੈ?';
 
   @override
-  String get onboardingWhatIsAstrologyDesc => 'ਜੋਤਿਸ਼ ਗ੍ਰਹਿਆਂ ਦਾ ਅਧਿਐਨ ਹੈ...';
+  String get onboardingWhatIsAstrologyDesc =>
+      'ਜੋਤਿਸ਼ ਵਿਗਿਆਨ ਸਵਰਗੀ ਗਤੀਵਿਧੀਆਂ ਅਤੇ ਮਨੁੱਖੀ ਜੀਵਨ \'ਤੇ ਉਨ੍ਹਾਂ ਦੇ ਪ੍ਰਭਾਵ ਦਾ ਪ੍ਰਾਚੀਨ ਅਧਿਐਨ ਹੈ, ਜੋ ਸ਼ਖਸੀਅਤ, ਸਬੰਧਾਂ ਅਤੇ ਜੀਵਨ ਦੀਆਂ ਘਟਨਾਵਾਂ ਬਾਰੇ ਸੂਝ ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ।';
 
   @override
   String get onboardingWhyUseApp => 'ਇਸ ਐਪ ਦੀ ਵਰਤੋਂ ਕਿਉਂ ਕਰੀਏ?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'ਸੂਝਵਾਨ ਫੈਸਲੇ ਲੈਣ ਲਈ ਵਿਅਕਤੀਗਤ ਕੁੰਡਲੀਆਂ, ਰੋਜ਼ਾਨਾ ਭਵਿੱਖਬਾਣੀਆਂ ਅਤੇ ਮਾਰਗਦਰਸ਼ਨ ਪ੍ਰਾਪਤ ਕਰੋ।';
+      'ਆਪਣੀ ਜਨਮ ਕੁੰਡਲੀ ਦੇ ਅਨੁਸਾਰ ਸਹੀ, ਮਨੁੱਖ ਦੁਆਰਾ ਤਿਆਰ ਕੀਤੀਆਂ ਕੁੰਡਲੀਆਂ ਅਤੇ ਮਾਰਗਦਰਸ਼ਨ ਪ੍ਰਾਪਤ ਕਰੋ। ਰੋਜ਼ਾਨਾ ਭਵਿੱਖਬਾਣੀਆਂ ਅਤੇ ਤਜਰਬੇਕਾਰ ਜੋਤਸ਼ੀਆਂ ਤੋਂ ਵਿਅਕਤੀਗਤ ਸਲਾਹ ਨਾਲ ਸੂਚਿਤ ਫੈਸਲੇ ਲਓ।';
 
   @override
   String get onboardingHowToUse => 'ਇਸ ਐਪ ਦੀ ਵਰਤੋਂ ਕਿਵੇਂ ਕਰੀਏ?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'ਸਹੀ ਭਵਿੱਖਬਾਣੀਆਂ ਲਈ ਆਸਾਨੀ ਨਾਲ ਨੈਵੀਗੇਟ ਕਰੋ, ਰੋਜ਼ਾਨਾ ਕੁੰਡਲੀਆਂ ਦੀ ਜਾਂਚ ਕਰੋ, ਅਤੇ ਆਪਣੀ ਪ੍ਰੋਫਾਈਲ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ।';
+      'ਤੁਰੰਤ ਸ਼ੁਰੂਆਤ ਕਰਨ ਲਈ ਬਸ ਆਪਣੀ ਜਨਮ ਮਿਤੀ, ਸਹੀ ਸਮਾਂ, ਜਨਮ ਸਥਾਨ, ਅਤੇ ਕੋਈ ਹੋਰ ਸੰਬੰਧਿਤ ਵੇਰਵੇ ਦਰਜ ਕਰੋ। ਰੋਜ਼ਾਨਾ ਕੁੰਡਲੀਆਂ ਦੀ ਪੜਚੋਲ ਕਰੋ, ਮਾਹਰ ਜੋਤਸ਼ੀਆਂ ਤੋਂ ਸਵਾਲ ਪੁੱਛੋ, ਅਤੇ ਸਟੀਕ, ਵਿਅਕਤੀਗਤ ਭਵਿੱਖਬਾਣੀਆਂ ਲਈ ਆਪਣੀ ਪ੍ਰੋਫਾਈਲ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ—ਕੋਈ ਲੌਗਇਨ ਲੋੜੀਂਦਾ ਨਹੀਂ ਹੈ।';
 
   @override
   String get onboardingGetStarted => 'ਸ਼ੁਰੂ ਕਰੋ';

@@ -173,21 +173,21 @@ class AppLocalizationsMg extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Ny astrolojia dia ny fandalinana ny zavatra eny amin\'ny lanitra...';
+      'Ny astrolojia dia ny fandalinana tranainy momba ny hetsika eny amin\'ny lanitra sy ny heriny eo amin\'ny fiainan\'ny olombelona, izay manome fanazavana momba ny toetra, ny fifandraisana ary ny zava-mitranga eo amin\'ny fiainana.';
 
   @override
-  String get onboardingWhyUseApp => 'Nahoana no mampiasa ity fampiharana ity?';
+  String get onboardingWhyUseApp => 'Nahoana no Mampiasa ity App ity?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Makà horoscope manokana, vinavina isan\'andro ary torolalana handraisana fanapahan-kevitra tsara.';
+      'Mahazoa horoscope marina, noforonin\'olombelona ary tari-dalana mifanaraka amin\'ny tabilao nahaterahanao. Manaova fanapahan-kevitra tsara miaraka amin\'ny faminaniana isan\'andro sy torohevitra manokana avy amin\'ny mpanandro za-draharaha.';
 
   @override
-  String get onboardingHowToUse => 'Ahoana ny fampiasana ity fampiharana ity?';
+  String get onboardingHowToUse => 'Ahoana ny fampiasana an\'ity App ity?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Mandehana mora foana, jereo ny horoscope isan\'andro, ary tantano ny mombamomba anao mba hahazoana faminaniana marina.';
+      'Ampidiro tsotra izao ny daty nahaterahanao, ny ora marina, ny toerana nahaterahanao, ary ny antsipiriany hafa mifandraika amin\'izany mba hanombohana eo noho eo. Mikaroka tonon\'andro isan\'andro, mametraha fanontaniana amin\'ny mpanandro manam-pahaizana, ary mitantana ny mombamomba anao ho an\'ny faminaniany mazava tsara — tsy mila fidirana.';
 
   @override
   String get onboardingGetStarted => 'Manomboha';

@@ -173,21 +173,21 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Chiêm tinh học là ngành nghiên cứu về các thiên thể...';
+      'Chiêm tinh học là ngành nghiên cứu cổ xưa về các chuyển động của thiên thể và ảnh hưởng của chúng đến cuộc sống con người, cung cấp cái nhìn sâu sắc về tính cách, các mối quan hệ và các sự kiện trong cuộc sống.';
 
   @override
   String get onboardingWhyUseApp => 'Tại sao nên sử dụng ứng dụng này?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Nhận tử vi cá nhân, dự đoán hàng ngày và hướng dẫn để đưa ra quyết định sáng suốt.';
+      'Nhận tử vi chính xác, do con người tạo ra và hướng dẫn phù hợp với biểu đồ sinh của bạn. Đưa ra quyết định sáng suốt với những dự đoán hàng ngày và lời khuyên cá nhân từ các nhà chiêm tinh giàu kinh nghiệm.';
 
   @override
   String get onboardingHowToUse => 'Làm thế nào để sử dụng ứng dụng này?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Điều hướng dễ dàng, kiểm tra tử vi hàng ngày và quản lý hồ sơ của bạn để có những dự đoán chính xác.';
+      'Chỉ cần nhập ngày sinh, giờ sinh chính xác, nơi sinh và bất kỳ thông tin liên quan nào khác để bắt đầu ngay lập tức. Khám phá tử vi hàng ngày, đặt câu hỏi cho các nhà chiêm tinh chuyên nghiệp và quản lý hồ sơ của bạn để có những dự đoán chính xác, được cá nhân hóa—không cần đăng nhập.';
 
   @override
   String get onboardingGetStarted => 'Bắt đầu';

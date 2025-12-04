@@ -173,21 +173,21 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrologi er studiet af himmellegemer ...';
+      'Astrologi er det ældgamle studie af himmellegemers bevægelser og deres indflydelse på menneskers liv og giver indsigt i personlighed, forhold og livsbegivenheder.';
 
   @override
   String get onboardingWhyUseApp => 'Hvorfor bruge denne app?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Få personlige horoskoper, daglige forudsigelser og vejledning til at træffe informerede beslutninger.';
+      'Modtag præcise, menneskeskabte horoskoper og vejledning skræddersyet til dit fødselshoroskop. Træf informerede beslutninger med daglige forudsigelser og personlig rådgivning fra erfarne astrologer.';
 
   @override
   String get onboardingHowToUse => 'Hvordan bruger man denne app?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Naviger nemt, tjek daglige horoskoper, og administrer din profil for at få præcise forudsigelser.';
+      'Indtast blot din fødselsdato, det nøjagtige tidspunkt, fødested og andre relevante oplysninger for at komme i gang med det samme. Udforsk daglige horoskoper, stil spørgsmål til ekspertastrologer, og administrer din profil for at få præcise, personlige forudsigelser – ingen login nødvendig.';
 
   @override
   String get onboardingGetStarted => 'Kom i gang';

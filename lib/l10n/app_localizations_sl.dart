@@ -173,21 +173,21 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrologija je veda o nebesnih telesih ...';
+      'Astrologija je starodavna veda o nebesnih gibanjih in njihovem vplivu na človeško življenje, ki ponuja vpogled v osebnost, odnose in življenjske dogodke.';
 
   @override
   String get onboardingWhyUseApp => 'Zakaj uporabljati to aplikacijo?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Pridobite personalizirane horoskope, dnevne napovedi in smernice za sprejemanje premišljenih odločitev.';
+      'Prejemajte natančne, človeško ustvarjene horoskope in smernice, prilagojene vaši rojstni karti. Sprejemajte premišljene odločitve z dnevnimi napovedmi in osebnimi nasveti izkušenih astrologov.';
 
   @override
   String get onboardingHowToUse => 'Kako uporabljati to aplikacijo?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Preprosto krmarite, preverjajte dnevne horoskope in upravljajte svoj profil za natančne napovedi.';
+      'Preprosto vnesite svoj datum rojstva, točen čas, kraj rojstva in vse druge pomembne podatke, da takoj začnete. Raziščite dnevne horoskope, postavljajte vprašanja strokovnim astrologom in upravljajte svoj profil za natančne, prilagojene napovedi – prijava ni potrebna.';
 
   @override
   String get onboardingGetStarted => 'Začnite';

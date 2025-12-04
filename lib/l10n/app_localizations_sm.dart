@@ -173,21 +173,21 @@ class AppLocalizationsSm extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrology o le su\'esu\'ega o tino fa\'alelagi...';
+      'Astrology o le suʻesuʻega anamua o gaioiga faʻaselesitila ma o latou aafiaga i le olaga o le tagata, e ofoina atu ai faʻamatalaga i uiga, mafutaga, ma mea e tutupu i le olaga.';
 
   @override
-  String get onboardingWhyUseApp => 'Aisea e fa\'aoga ai lenei app?';
+  String get onboardingWhyUseApp => 'Aisea e Fa\'aaoga ai Lenei App?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Maua su\'esu\'ega fa\'apitoa, valo\'aga i aso ta\'itasi, ma ta\'iala e fai ai fa\'ai\'uga lelei.';
+      'Maua sa\'o, fa\'ata\'ita\'iga a tagata ma ta\'iala e fa\'atatau i lau siata fanau. Fai fa\'ai\'uga fa\'apitoa ma valo\'aga i aso ta\'itasi ma fautuaga fa\'apitoa mai tagata su\'esu\'e fa\'apitoa.';
 
   @override
-  String get onboardingHowToUse => 'E fa\'afefea ona fa\'aoga lenei app?';
+  String get onboardingHowToUse => 'Fa\'afefea ona Fa\'aoga Lenei App?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Su\'e faigofie, siaki horoscope i aso uma, ma pulea lau talaaga mo fa\'amatalaga sa\'o.';
+      'Na\'o le fa\'aofiina o lou aso fanau, taimi sa\'o, nofoaga na fanau ai, ma so\'o se isi fa\'amatalaga talafeagai e amata vave ai. Saili su\'esu\'ega i aso ta\'itasi, fai fesili i tagata su\'esu\'e fa\'apitoa, ma pulea lau fa\'amatalaga mo fa\'amatalaga sa\'o, fa\'apitoa—leai se saini e mana\'omia.';
 
   @override
   String get onboardingGetStarted => 'Amata';

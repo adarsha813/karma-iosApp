@@ -173,21 +173,21 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrologiya göy cisimlərini öyrənir...';
+      'Astrologiya səma hərəkətləri və onların insan həyatına təsirinin qədim tədqiqidir, şəxsiyyət, münasibətlər və həyat hadisələri haqqında fikirlər təklif edir.';
 
   @override
   String get onboardingWhyUseApp => 'Niyə bu proqramdan istifadə edin?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Məlumatlı qərarlar qəbul etmək üçün fərdi ulduz falı, gündəlik proqnozlar və təlimatlar əldə edin.';
+      'Doğum cədvəlinizə uyğunlaşdırılmış dəqiq, insan tərəfindən yaradılan ulduz falı və təlimatları alın. Təcrübəli astroloqların gündəlik proqnozları və fərdi məsləhətləri ilə əsaslandırılmış qərarlar qəbul edin.';
 
   @override
-  String get onboardingHowToUse => 'Bu proqramdan necə istifadə etməli?';
+  String get onboardingHowToUse => 'Bu Tətbiqi Necə İstifadə Etməli?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Asanlıqla naviqasiya edin, gündəlik bürcləri yoxlayın və dəqiq proqnozlar üçün profilinizi idarə edin.';
+      'Dərhal işə başlamaq üçün sadəcə olaraq doğum tarixinizi, dəqiq vaxtınızı, doğum yerinizi və hər hansı digər müvafiq məlumatları daxil edin. Gündəlik ulduz falı ilə tanış olun, ekspert astroloqlara suallar verin və dəqiq, fərdiləşdirilmiş proqnozlar üçün profilinizi idarə edin – giriş tələb olunmur.';
 
   @override
   String get onboardingGetStarted => 'Başlayın';

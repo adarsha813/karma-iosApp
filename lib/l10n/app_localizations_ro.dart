@@ -173,21 +173,21 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrologia este studiul corpurilor cerești...';
+      'Astrologia este studiul antic al mișcărilor cerești și al influenței lor asupra vieții umane, oferind perspective asupra personalității, relațiilor și evenimentelor din viață.';
 
   @override
   String get onboardingWhyUseApp => 'De ce să folosești această aplicație?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Obține horoscop personalizat, predicții zilnice și îndrumări pentru a lua decizii informate.';
+      'Primește horoscopuri precise, generate de oameni, și îndrumări adaptate hărții tale natale. Ia decizii informate cu predicții zilnice și sfaturi personalizate de la astrologi experimentați.';
 
   @override
   String get onboardingHowToUse => 'Cum se folosește această aplicație?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Navighează cu ușurință, verifică horoscopul zilnic și gestionează-ți profilul pentru predicții precise.';
+      'Pur și simplu introduceți data nașterii, ora exactă, locul nașterii și orice alte detalii relevante pentru a începe instantaneu. Explorați horoscopul zilnic, adresați întrebări astrologilor experți și gestionați-vă profilul pentru predicții precise și personalizate - nu este necesară autentificarea.';
 
   @override
   String get onboardingGetStarted => 'Începeți';

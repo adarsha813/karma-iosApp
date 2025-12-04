@@ -173,21 +173,21 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrologi är läran om himlakroppar...';
+      'Astrologi är den uråldriga studien av himlakroppens rörelser och deras inflytande på människors liv, och ger insikter i personlighet, relationer och livshändelser.';
 
   @override
   String get onboardingWhyUseApp => 'Varför använda den här appen?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Få personliga horoskop, dagliga förutsägelser och vägledning för att fatta välgrundade beslut.';
+      'Få korrekta, mänskligt genererade horoskop och vägledning skräddarsydd för ditt födelsehoroskop. Fatta välgrundade beslut med dagliga förutsägelser och personliga råd från erfarna astrologer.';
 
   @override
   String get onboardingHowToUse => 'Hur använder man den här appen?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Navigera enkelt, kolla dagliga horoskop och hantera din profil för korrekta förutsägelser.';
+      'Ange bara ditt födelsedatum, exakt tid, födelseort och andra relevanta uppgifter för att komma igång direkt. Utforska dagliga horoskop, ställ frågor till expertastrologer och hantera din profil för exakta, personliga förutsägelser – ingen inloggning krävs.';
 
   @override
   String get onboardingGetStarted => 'Kom igång';

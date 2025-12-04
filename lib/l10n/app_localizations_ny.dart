@@ -173,23 +173,23 @@ class AppLocalizationsNy extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Nyenyezi ndi kuphunzira zakuthambo ...';
+      'Nyenyezi ndi phunziro lakale la kayendedwe ka zakuthambo ndi mphamvu zake pa moyo wa munthu, zomwe zimapereka chidziwitso pa umunthu, maubwenzi, ndi zochitika pamoyo.';
 
   @override
   String get onboardingWhyUseApp =>
-      'Chifukwa chiyani mugwiritse ntchito pulogalamuyi?';
+      'N\'chifukwa Chiyani Muzigwiritsa Ntchito Pulogalamuyi?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Pezani ma horoscope makonda anu, zolosera zatsiku ndi tsiku, ndi chitsogozo kuti mupange zisankho zanzeru.';
+      'Landirani zolosera zam\'tsogolo zolondola, zopangidwa ndi anthu ndi malangizo ogwirizana ndi tchati chanu chobadwa. Pangani zisankho zanzeru ndi kulosera kwatsiku ndi tsiku komanso upangiri wamunthu kuchokera kwa okhulupirira nyenyezi odziwa zambiri.';
 
   @override
   String get onboardingHowToUse =>
-      'Momwe mungagwiritsire ntchito pulogalamuyi?';
+      'Momwe Mungagwiritsire Ntchito Pulogalamuyi?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Yendani mosavuta, yang\'anani zolosera za tsiku ndi tsiku, ndikuwongolera mbiri yanu kuti mulosere zolondola.';
+      'Ingolowetsani tsiku lanu lobadwa, nthawi yeniyeni, malo obadwira, ndi zina zilizonse zofunika kuti muyambe pompopompo. Onani zolosera za tsiku ndi tsiku, funsani mafunso kwa akatswiri openda nyenyezi, ndikuwongolera mbiri yanu kuti mulosere molondola, mwamakonda - palibe kulowa komwe kumafunikira.';
 
   @override
   String get onboardingGetStarted => 'Yambanipo';

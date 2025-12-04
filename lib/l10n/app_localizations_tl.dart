@@ -173,21 +173,21 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Ang astrolohiya ay ang pag-aaral ng celestial bodies...';
+      'Ang astrolohiya ay ang sinaunang pag-aaral ng celestial na paggalaw at ang kanilang impluwensya sa buhay ng tao, na nag-aalok ng mga insight sa personalidad, relasyon, at mga pangyayari sa buhay.';
 
   @override
-  String get onboardingWhyUseApp => 'Bakit gagamitin ang app na ito?';
+  String get onboardingWhyUseApp => 'Bakit Gamitin ang App na Ito?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Kumuha ng mga personalized na horoscope, pang-araw-araw na hula, at gabay upang makagawa ng matalinong mga pagpapasya.';
+      'Makatanggap ng tumpak, mga horoscope na binuo ng tao at gabay na iniayon sa iyong birth chart. Gumawa ng matalinong mga desisyon gamit ang pang-araw-araw na mga hula at personalized na payo mula sa mga karanasang astrologo.';
 
   @override
-  String get onboardingHowToUse => 'Paano gamitin ang app na ito?';
+  String get onboardingHowToUse => 'Paano Gamitin ang App na Ito?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Madaling mag-navigate, tingnan ang mga araw-araw na horoscope, at pamahalaan ang iyong profile para sa mga tumpak na hula.';
+      'Ilagay lamang ang iyong petsa ng kapanganakan, eksaktong oras, lugar ng kapanganakan, at anumang iba pang nauugnay na detalye upang makapagsimula kaagad. Galugarin ang mga pang-araw-araw na horoscope, magtanong sa mga dalubhasang astrologo, at pamahalaan ang iyong profile para sa tumpak at personalized na mga hula—walang kinakailangang pag-login.';
 
   @override
   String get onboardingGetStarted => 'Magsimula';

@@ -173,21 +173,21 @@ class AppLocalizationsIg extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Ịgụ kpakpando bụ ọmụmụ ihe nke eluigwe...';
+      'Ịgụ kpakpando bụ ọmụmụ ihe ochie nke mmegharị eluigwe na mmetụta ha na ndụ mmadụ, na-enye nghọta gbasara ụdị mmadụ, mmekọrịta, na ihe omume ndụ.';
 
   @override
-  String get onboardingWhyUseApp => 'Gịnị kpatara iji ngwa a?';
+  String get onboardingWhyUseApp => 'Gịnị kpatara eji ngwa a?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Nweta horoscopes ahaziri onwe ya, amụma kwa ụbọchị, na ntụzịaka iji mee mkpebi ziri ezi.';
+      'Nata horoscopes ziri ezi, na ntụzịaka nke mmadụ mebere dabere na chaatị ọmụmụ gị. Mee mkpebi ndị ziri ezi site na iji amụma kwa ụbọchị na ndụmọdụ ahaziri onwe sitere n\'aka ndị na-agụ kpakpando nwere ahụmahụ.';
 
   @override
-  String get onboardingHowToUse => 'Kedu otu esi eji ngwa a?';
+  String get onboardingHowToUse => 'Otu esi eji ngwa a?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Gaa n\'ụzọ dị mfe, lelee horoscopes kwa ụbọchị ma jikwaa profaịlụ gị maka amụma ziri ezi.';
+      'Naanị tinye ụbọchị ọmụmụ gị, kpọmkwem oge, ebe amụrụ gị na nkọwa ndị ọzọ dị mkpa ka ịmalite ozugbo. Nyochaa horoscopes kwa ụbọchị, jụọ ndị ọkachamara na-agụ kpakpando ajụjụ, wee jikwaa profaịlụ gị maka amụma ziri ezi, ahaziri onwe - enweghị nbanye achọrọ.';
 
   @override
   String get onboardingGetStarted => 'Malite';

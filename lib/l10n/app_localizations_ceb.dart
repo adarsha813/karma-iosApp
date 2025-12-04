@@ -173,21 +173,21 @@ class AppLocalizationsCeb extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Ang astrolohiya mao ang pagtuon sa celestial nga mga butang...';
+      'Ang astrolohiya mao ang karaan nga pagtuon sa celestial nga mga lihok ug ang ilang impluwensya sa kinabuhi sa tawo, nga nagtanyag mga panabut sa personalidad, relasyon, ug mga panghitabo sa kinabuhi.';
 
   @override
-  String get onboardingWhyUseApp => 'Nganong gamiton kini nga app?';
+  String get onboardingWhyUseApp => 'Nganong Gamiton Kini nga App?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Pagkuha ug personal nga mga horoscope, adlaw-adlaw nga mga panagna, ug giya aron makahimo og mga desisyon nga nahibal-an.';
+      'Pagdawat og tukma, hinimo sa tawo nga mga horoscope ug giya nga gipahaom sa imong birth chart. Paghimo mga nahibal-an nga mga desisyon gamit ang adlaw-adlaw nga mga panagna ug personal nga tambag gikan sa mga batid nga astrologo.';
 
   @override
-  String get onboardingHowToUse => 'Giunsa paggamit kini nga app?';
+  String get onboardingHowToUse => 'Giunsa Paggamit Kini nga App?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Dali nga pag-navigate, susiha ang adlaw-adlaw nga mga horoscope, ug pagdumala sa imong profile alang sa tukma nga mga panagna.';
+      'Pagsulod lang sa imong petsa sa pagkahimugso, eksaktong oras, lugar nga natawhan, ug bisan unsang ubang may kalabutan nga mga detalye aron makasugod dayon. Pag-usisa sa adlaw-adlaw nga mga horoscope, pagpangutana sa mga eksperto nga mga astrologo, ug pagdumala sa imong profile alang sa tukma, personal nga mga panagna-wala kinahanglana ang pag-login.';
 
   @override
   String get onboardingGetStarted => 'Pagsugod';

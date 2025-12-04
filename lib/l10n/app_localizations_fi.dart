@@ -173,21 +173,21 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrologia on taivaankappaleiden tutkimusta...';
+      'Astrologia on ikivanha tieteenala, joka tutkii taivaankappaleiden liikkeitä ja niiden vaikutusta ihmisen elämään. Se tarjoaa tietoa persoonallisuudesta, ihmissuhteista ja elämän tapahtumista.';
 
   @override
   String get onboardingWhyUseApp => 'Miksi käyttää tätä sovellusta?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Hanki henkilökohtaisia horoskooppeja, päivittäisiä ennusteita ja ohjeita tietoon perustuvien päätösten tekemiseen.';
+      'Saat tarkkoja, ihmisten luomia horoskooppeja ja ohjeita, jotka on räätälöity syntymäkarttasi mukaan. Tee tietoon perustuvia päätöksiä kokeneiden astrologien päivittäisten ennusteiden ja henkilökohtaisten neuvojen avulla.';
 
   @override
-  String get onboardingHowToUse => 'Kuinka tätä sovellusta käytetään?';
+  String get onboardingHowToUse => 'Kuinka käyttää tätä sovellusta?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Navigoi helposti, tarkista päivittäiset horoskoopit ja hallinnoi profiiliasi saadaksesi tarkkoja ennusteita.';
+      'Syötä vain syntymäaikasi, tarkka aikasi, syntymäpaikkasi ja muut asiaankuuluvat tiedot aloittaaksesi heti. Tutustu päivittäisiin horoskooppeihin, kysy kysymyksiä asiantuntevilta astrologeilta ja hallinnoi profiiliasi saadaksesi tarkkoja, henkilökohtaisia ennusteita – kirjautumista ei vaadita.';
 
   @override
   String get onboardingGetStarted => 'Aloita';

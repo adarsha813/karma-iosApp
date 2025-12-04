@@ -173,21 +173,21 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'L\'astrologia è lo studio dei corpi celesti...';
+      'L\'astrologia è l\'antico studio dei movimenti celesti e della loro influenza sulla vita umana, offrendo spunti di riflessione sulla personalità, sulle relazioni e sugli eventi della vita.';
 
   @override
   String get onboardingWhyUseApp => 'Perché usare questa app?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Ricevi oroscopi personalizzati, previsioni giornaliere e indicazioni per prendere decisioni consapevoli.';
+      'Ricevi oroscopi accurati, generati da persone e personalizzati in base al tuo tema natale. Prendi decisioni consapevoli con previsioni quotidiane e consigli personalizzati da astrologi esperti.';
 
   @override
-  String get onboardingHowToUse => 'Come usare questa app?';
+  String get onboardingHowToUse => 'Come utilizzare questa app?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Naviga facilmente, controlla gli oroscopi giornalieri e gestisci il tuo profilo per previsioni accurate.';
+      'Inserisci semplicemente la tua data di nascita, l\'ora esatta, il luogo di nascita e qualsiasi altro dettaglio rilevante per iniziare subito. Esplora gli oroscopi giornalieri, poni domande ad astrologi esperti e gestisci il tuo profilo per previsioni precise e personalizzate, senza dover effettuare l\'accesso.';
 
   @override
   String get onboardingGetStarted => 'Per iniziare';

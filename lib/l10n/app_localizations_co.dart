@@ -173,21 +173,21 @@ class AppLocalizationsCo extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'L\'astrologia hè u studiu di i corpi celesti...';
+      'L\'astrologia hè u studiu anticu di i muvimenti celesti è a so influenza nantu à a vita umana, chì offre insights nantu à a personalità, e relazioni è l\'avvenimenti di a vita.';
 
   @override
-  String get onboardingWhyUseApp => 'Perchè aduprà sta applicazione?';
+  String get onboardingWhyUseApp => 'Perchè aduprà sta app?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Uttenite oroscopi persunalizati, previsioni ghjurnaliere è guida per piglià decisioni infurmate.';
+      'Ricevi oroscopi precisi, generati da l\'omu, è cunsiglii adattati à a to carta natale. Piglia decisioni infurmate cù previsioni ghjurnaliere è cunsiglii persunalizati da astrologi sperimentati.';
 
   @override
-  String get onboardingHowToUse => 'Cumu aduprà sta applicazione?';
+  String get onboardingHowToUse => 'Cumu aduprà sta app?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Navigate facilmente, verificate l\'oroscopu di ogni ghjornu è gestite u vostru prufilu per previsioni precise.';
+      'Basta à inserisce a vostra data di nascita, l\'ora esatta, u locu di nascita è qualsiasi altri dettagli pertinenti per cumincià subitu. Esplorate l\'oroscopu di ogni ghjornu, fate dumande à astrologi esperti è gestite u vostru prufilu per previsioni precise è persunalizate, senza bisognu di cunnessione.';
 
   @override
   String get onboardingGetStarted => 'Cumincià';

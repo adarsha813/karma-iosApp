@@ -174,21 +174,21 @@ class AppLocalizationsGd extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Is e reul-eòlas sgrùdadh air cuirp nèamhaidh...';
+      '\'S e reul-eòlas an seann sgrùdadh air gluasadan nèamhaidh agus an tionchar air beatha dhaoine, a\' tabhann lèirsinn air pearsantachd, dàimhean agus tachartasan beatha.';
 
   @override
   String get onboardingWhyUseApp => 'Carson a chleachdas tu an aplacaid seo?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Faigh horoscopan pearsanta, ro-innse làitheil, agus stiùireadh gus co-dhùnaidhean fiosraichte a dhèanamh.';
+      'Faigh ro-innsean ceart, air an gineadh le daoine, agus stiùireadh a tha freagarrach do chairt breith. Dèan co-dhùnaidhean fiosraichte le ro-innsean làitheil agus comhairle phearsanta bho speuradairean eòlach.';
 
   @override
-  String get onboardingHowToUse => 'Ciamar a chleachdas mi an aplacaid seo?';
+  String get onboardingHowToUse => 'Ciamar a chleachdas tu an aplacaid seo?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Seòl gu furasta, thoir sùil air horoscopan làitheil, agus stiùirich do phròifil airson ro-innse ceart.';
+      'Cuir a-steach do cheann-latha breith, an dearbh àm, àite breith, agus fiosrachadh buntainneach sam bith eile gus tòiseachadh sa bhad. Rannsaich ro-innsean làitheil, faighnich ceistean do speuradairean eòlach, agus stiùirich do phròifil airson ro-innsean mionaideach, pearsanta - chan eil feum air logadh a-steach.';
 
   @override
   String get onboardingGetStarted => 'Tòisich';

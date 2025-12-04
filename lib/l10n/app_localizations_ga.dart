@@ -173,21 +173,21 @@ class AppLocalizationsGa extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Is í an réalteolaíocht staidéar na gcorp neamhaí...';
+      'Is í an réalteolaíocht an staidéar ársa ar ghluaiseachtaí neamhaí agus a dtionchar ar shaol an duine, ag tabhairt léargais ar phearsantacht, ar chaidrimh agus ar imeachtaí saoil.';
 
   @override
-  String get onboardingWhyUseApp => 'Cén fáth a n-úsáidfeá an aip seo?';
+  String get onboardingWhyUseApp => 'Cén Fáth a nÚsáidfeá an Aip seo?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Faigh horoscóip phearsantaithe, réamhaisnéisí laethúla, agus treoir chun cinntí eolasacha a dhéanamh.';
+      'Faigh horoscóip chruinne, ginte ag an duine, agus treoir atá oiriúnaithe do do chairt bhreithe. Déan cinntí eolasacha le réamhaisnéisí laethúla agus comhairle phearsantaithe ó réalteolaithe a bhfuil taithí acu.';
 
   @override
-  String get onboardingHowToUse => 'Conas an aip seo a úsáid?';
+  String get onboardingHowToUse => 'Conas an Aip seo a Úsáid?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Déan nascleanúint go héasca, seiceáil horoscóip laethúla, agus bainistigh do phróifíl le haghaidh tuartha cruinne.';
+      'Níl le déanamh ach do dháta breithe, d’am cruinn, d’áit bhreithe, agus aon sonraí ábhartha eile a iontráil le tosú láithreach. Iniúch horoscóip laethúla, cuir ceisteanna ar réalteolaithe saineolacha, agus bainistigh do phróifíl le haghaidh tuartha beachta, pearsantaithe—níl gá le logáil isteach.';
 
   @override
   String get onboardingGetStarted => 'Tosaigh';

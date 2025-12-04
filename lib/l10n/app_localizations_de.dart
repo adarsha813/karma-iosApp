@@ -173,21 +173,21 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrologie ist die Lehre von den Himmelskörpern...';
+      'Die Astrologie ist die uralte Lehre von den Himmelsbewegungen und ihrem Einfluss auf das menschliche Leben und bietet Einblicke in Persönlichkeit, Beziehungen und Lebensereignisse.';
 
   @override
   String get onboardingWhyUseApp => 'Warum diese App nutzen?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Erhalten Sie personalisierte Horoskope, tägliche Vorhersagen und Ratschläge, um fundierte Entscheidungen zu treffen.';
+      'Erhalten Sie präzise, von Experten erstellte Horoskope und auf Ihr Geburtshoroskop zugeschnittene Beratung. Treffen Sie fundierte Entscheidungen mit täglichen Vorhersagen und persönlicher Empfehlung erfahrener Astrologen.';
 
   @override
   String get onboardingHowToUse => 'Wie benutzt man diese App?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Navigieren Sie einfach, lesen Sie Ihre Tageshoroskope und verwalten Sie Ihr Profil für präzise Vorhersagen.';
+      'Geben Sie einfach Ihr Geburtsdatum, die genaue Geburtszeit, den Geburtsort und alle weiteren relevanten Details ein, um sofort loszulegen. Entdecken Sie tägliche Horoskope, stellen Sie Fragen an erfahrene Astrologen und verwalten Sie Ihr Profil für präzise, personalisierte Vorhersagen – ganz ohne Anmeldung.';
 
   @override
   String get onboardingGetStarted => 'Los geht\'s';

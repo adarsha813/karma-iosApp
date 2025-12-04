@@ -173,22 +173,21 @@ class AppLocalizationsHaw extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'ʻO ka Astrology ke aʻo ʻana i nā kino lani ...';
+      'ʻO Astrology ka haʻawina kahiko o ka neʻe ʻana o ka lani a me ko lākou mana i ke ola kanaka, e hāʻawi ana i nā ʻike i ke ʻano, ka pilina, a me nā hanana ola.';
 
   @override
-  String get onboardingWhyUseApp =>
-      'No ke aha e hoʻohana ai i kēia polokalamu?';
+  String get onboardingWhyUseApp => 'No ke aha e hoʻohana ai i kēia App?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'E kiʻi i nā horoscopes pilikino, nā wānana i kēlā me kēia lā, a me ke alakaʻi e hoʻoholo i nā hoʻoholo.';
+      'E kiʻi i nā horoscope pololei i hana ʻia e ke kanaka a me ke alakaʻi i kūpono i kāu palapala hānau. E hoʻoholo i ka ʻike me nā wānana i kēlā me kēia lā a me nā ʻōlelo aʻoaʻo pilikino mai ka poʻe ʻike kilokilo.';
 
   @override
-  String get onboardingHowToUse => 'Pehea e hoʻohana ai i kēia polokalamu?';
+  String get onboardingHowToUse => 'Pehea e hoʻohana ai i kēia App?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'E hoʻokele maʻalahi, e nānā i nā horoscopes i kēlā me kēia lā, a mālama i kāu ʻaoʻao no nā wānana pololei.';
+      'E hoʻokomo wale i kāu lā hānau, ka manawa pololei, kahi i hānau ai, a me nā kikoʻī pili ʻē aʻe e hoʻomaka koke. E ʻimi i nā horoscopes i kēlā me kēia lā, e nīnau i nā nīnau i ka poʻe loea astrologers, a e hoʻokele i kāu ʻaoʻao no ka wānana pololei a pilikino - ʻaʻohe pono e komo.';
 
   @override
   String get onboardingGetStarted => 'E hoʻomaka';

@@ -173,21 +173,21 @@ class AppLocalizationsRw extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Kuraguza inyenyeri nubushakashatsi bwimibiri yo mwijuru ...';
+      'Kuraguza inyenyeri nubushakashatsi bwakera bwimikorere yo mwijuru ningaruka zabyo mubuzima bwabantu, bitanga ubushishozi kumiterere, imibanire, nibyabaye mubuzima.';
 
   @override
-  String get onboardingWhyUseApp => 'Kuki ukoresha iyi porogaramu?';
+  String get onboardingWhyUseApp => 'Kuki Ukoresha Iyi Porogaramu?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Shaka horoscopes yihariye, guhanura burimunsi, nubuyobozi bwo gufata ibyemezo byuzuye.';
+      'Akira neza horoscopes yakozwe n\'abantu hamwe nubuyobozi bujyanye nimbonerahamwe y\'amavuko. Fata ibyemezo byuzuye hamwe nubuhanuzi bwa buri munsi hamwe ninama zihariye kubantu baragurisha inyenyeri.';
 
   @override
   String get onboardingHowToUse => 'Nigute ushobora gukoresha iyi porogaramu?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Kuyobora byoroshye, genzura horoscopes ya buri munsi, kandi ucunge umwirondoro wawe kugirango uhanure neza.';
+      'Injira gusa itariki yawe y\'amavuko, igihe nyacyo, aho wavukiye, nibindi bisobanuro byose kugirango utangire ako kanya. Shakisha horoscopes ya buri munsi, ubaze ibibazo abahanga mu kuragurisha inyenyeri, kandi ucunge umwirondoro wawe kubisobanuro nyabyo, byihariye - nta kwinjira bisabwa.';
 
   @override
   String get onboardingGetStarted => 'Tangira';

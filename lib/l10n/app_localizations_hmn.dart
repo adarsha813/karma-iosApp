@@ -173,21 +173,21 @@ class AppLocalizationsHmn extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrology yog kev kawm ntawm lub cev xilethi-aus ...';
+      'Astrology yog txoj kev tshawb fawb thaum ub ntawm lub ntuj ceeb tsheej thiab lawv txoj kev cuam tshuam rau tib neeg lub neej, muab kev nkag siab rau tus cwj pwm, kev sib raug zoo, thiab cov xwm txheej hauv lub neej.';
 
   @override
-  String get onboardingWhyUseApp => 'Vim li cas thiaj siv cov app no?';
+  String get onboardingWhyUseApp => 'Vim li cas thiaj siv No App?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Tau txais tus kheej horoscopes, kev kwv yees txhua hnub, thiab kev taw qhia kom paub txog kev txiav txim siab.';
+      'Tau txais qhov tseeb, tib neeg tsim cov horoscopes thiab kev taw qhia kom haum rau koj daim ntawv yug. Ua kom paub kev txiav txim siab nrog kev twv ua ntej txhua hnub thiab cov lus qhia tus kheej los ntawm cov kws paub txog astrologers.';
 
   @override
-  String get onboardingHowToUse => 'Yuav siv cov app no li cas?';
+  String get onboardingHowToUse => 'Yuav Siv Cov App no li cas?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Taug kev yooj yim, tshawb xyuas txhua hnub horoscopes, thiab tswj koj qhov profile kom raug kwv yees.';
+      'Tsuas yog sau koj hnub yug, sijhawm raws sijhawm, qhov chaw yug, thiab lwm yam ntsiab lus tseem ceeb kom pib tam sim ntawd. Tshawb nrhiav txhua hnub horoscopes, nug cov lus nug rau cov kws tshaj lij astrologers, thiab tswj koj qhov profile kom meej, tus kheej kev kwv yees - tsis tas yuav nkag mus.';
 
   @override
   String get onboardingGetStarted => 'Pib pib';

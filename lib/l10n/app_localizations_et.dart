@@ -173,21 +173,21 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astroloogia on taevakehade uurimine...';
+      'Astroloogia on iidne teadus taevakehade liikumisest ja selle mõjust inimelule, pakkudes teadmisi isiksuse, suhete ja elusündmuste kohta.';
 
   @override
   String get onboardingWhyUseApp => 'Miks seda rakendust kasutada?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Hankige isikupärastatud horoskoope, päevaprognoose ja juhiseid teadlike otsuste langetamiseks.';
+      'Saa täpseid, inimeste loodud horoskoope ja juhiseid, mis on kohandatud sinu sünnikaardile. Tee teadlikke otsuseid kogenud astroloogide igapäevaste ennustuste ja isikupärastatud nõuannete abil.';
 
   @override
   String get onboardingHowToUse => 'Kuidas seda rakendust kasutada?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Navigeeri hõlpsalt, vaata igapäevaseid horoskoope ja halda oma profiili täpsete ennustuste saamiseks.';
+      'Alustamiseks sisesta lihtsalt oma sünnikuupäev, täpne kellaaeg, sünnikoht ja muud olulised andmed. Avasta päevahoroskoope, esita küsimusi asjatundlikele astroloogidele ja halda oma profiili täpsete ja isikupärastatud ennustuste saamiseks – sisselogimist pole vaja.';
 
   @override
   String get onboardingGetStarted => 'Alustamine';

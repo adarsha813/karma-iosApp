@@ -173,21 +173,21 @@ class AppLocalizationsAf extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrologie is die studie van hemelliggame...';
+      'Astrologie is die antieke studie van hemelse bewegings en hul invloed op die menslike lewe, en bied insigte in persoonlikheid, verhoudings en lewensgebeure.';
 
   @override
   String get onboardingWhyUseApp => 'Waarom hierdie toepassing gebruik?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Kry gepersonaliseerde horoskope, daaglikse voorspellings en leiding om ingeligte besluite te neem.';
+      'Ontvang akkurate, mensgegenereerde horoskope en leiding wat op jou geboortekaart afgestem is. Neem ingeligte besluite met daaglikse voorspellings en persoonlike advies van ervare astroloë.';
 
   @override
   String get onboardingHowToUse => 'Hoe om hierdie toepassing te gebruik?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Navigeer maklik, kyk daaglikse horoskope na en bestuur jou profiel vir akkurate voorspellings.';
+      'Voer eenvoudig jou geboortedatum, presiese tyd, geboorteplek en enige ander relevante besonderhede in om onmiddellik te begin. Verken daaglikse horoskope, vra vrae aan kundige astroloë en bestuur jou profiel vir presiese, gepersonaliseerde voorspellings – geen aanmelding nodig nie.';
 
   @override
   String get onboardingGetStarted => 'Begin';

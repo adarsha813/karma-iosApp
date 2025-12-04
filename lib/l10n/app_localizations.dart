@@ -588,31 +588,31 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingWhatIsAstrologyDesc.
   ///
   /// In en, this message translates to:
-  /// **'Astrology is the study of celestial bodies...'**
+  /// **'Astrology is the ancient study of celestial movements and their influence on human life, offering insights into personality, relationships, and life events.'**
   String get onboardingWhatIsAstrologyDesc;
 
   /// No description provided for @onboardingWhyUseApp.
   ///
   /// In en, this message translates to:
-  /// **'Why use this app?'**
+  /// **'Why Use This App?'**
   String get onboardingWhyUseApp;
 
   /// No description provided for @onboardingWhyUseAppDesc.
   ///
   /// In en, this message translates to:
-  /// **'Get personalized horoscopes, daily predictions, and guidance to make informed decisions.'**
+  /// **'Receive accurate, human-generated horoscopes and guidance tailored to your birth chart. Make informed decisions with daily predictions and personalized advice from experienced astrologers.'**
   String get onboardingWhyUseAppDesc;
 
   /// No description provided for @onboardingHowToUse.
   ///
   /// In en, this message translates to:
-  /// **'How to use this app?'**
+  /// **'How to Use This App?'**
   String get onboardingHowToUse;
 
   /// No description provided for @onboardingHowToUseDesc.
   ///
   /// In en, this message translates to:
-  /// **'Navigate easily, check daily horoscopes, and manage your profile for accurate predictions.'**
+  /// **'Simply enter your date of birth, exact time, place of birth, and any other relevant details to get started instantly. Explore daily horoscopes, ask questions to expert astrologers, and manage your profile for precise, personalized predictions—no login required.'**
   String get onboardingHowToUseDesc;
 
   /// No description provided for @onboardingGetStarted.

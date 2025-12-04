@@ -173,7 +173,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Az asztrológia az égitestek tanulmányozása...';
+      'Az asztrológia az égitestek mozgásának és az emberi életre gyakorolt hatásának ősi tanulmányozása, amely betekintést nyújt a személyiségbe, a kapcsolatokba és az élet eseményeibe.';
 
   @override
   String get onboardingWhyUseApp =>
@@ -181,14 +181,14 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Személyre szabott horoszkópokat, napi előrejelzéseket és útmutatást kaphatsz a megalapozott döntések meghozatalához.';
+      'Kapj pontos, ember által generált horoszkópokat és útmutatást, amelyek a születési képletedhez igazodnak. Hozz megalapozott döntéseket napi jóslatokkal és tapasztalt asztrológusok személyre szabott tanácsaival.';
 
   @override
   String get onboardingHowToUse => 'Hogyan kell használni ezt az alkalmazást?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Navigálj könnyedén, ellenőrizd a napi horoszkópokat, és kezeld a profilodat a pontos előrejelzésekért.';
+      'Egyszerűen add meg a születési dátumodat, a pontos időpontot, a születési helyet és minden egyéb releváns adatot, hogy azonnal elkezdhesd. Fedezz fel napi horoszkópokat, tegyél fel kérdéseket szakértő asztrológusoknak, és kezeld a profilodat a pontos, személyre szabott előrejelzésekért – bejelentkezés nélkül.';
 
   @override
   String get onboardingGetStarted => 'Kezdés';

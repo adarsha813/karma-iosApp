@@ -173,21 +173,21 @@ class AppLocalizationsXh extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Ukuvumisa ngeenkwenkwezi kukufunda ngezinto ezisesibhakabhakeni...';
+      'Ukuvumisa ngeenkwenkwezi lufundo lwamandulo lweentshukumo zesibhakabhaka kunye nempembelelo yazo kubomi bomntu, esinika ukuqonda ngobuntu, ubudlelwane, kunye neziganeko zobomi.';
 
   @override
-  String get onboardingWhyUseApp => 'Kutheni usebenzisa le app?';
+  String get onboardingWhyUseApp => 'Kutheni Usebenzisa Le App?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Fumana i-horoscopes eyeyakho, uqikelelo lwemihla ngemihla, kunye nesikhokelo sokwenza izigqibo ezinolwazi.';
+      'Fumana i-horoscopes echanekileyo, eyenziwe ngumntu kunye nesikhokelo esilungiselelwe itshathi yakho yokuzalwa. Yenza izigqibo ezinolwazi ngoqikelelo lwemihla ngemihla kunye neengcebiso ezenzelwe wena ezivela kubavumisi ngeenkwenkwezi abanamava.';
 
   @override
-  String get onboardingHowToUse => 'Uyisebenzisa njani le app?';
+  String get onboardingHowToUse => 'Uyisebenzisa njani le App?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Hamba ngokulula, jonga i-horoscopes yemihla ngemihla, kwaye ulawule iprofayile yakho ukuze ufumane uqikelelo oluchanekileyo.';
+      'Faka ngokulula usuku lwakho lokuzalwa, ixesha elichanekileyo, indawo yokuzalwa, kunye nazo naziphi na ezinye iinkcukacha ezifanelekileyo ukuze uqalise ngoko nangoko. Jonga ii-horoscopes zemihla ngemihla, buza imibuzo kubavumisi ngeenkwenkwezi abaziingcali, kwaye ulawule iprofayile yakho ngokuchaneka, uqikelelo olulolwakho-akukho kungena kufunekayo.';
 
   @override
   String get onboardingGetStarted => 'Qalisa';

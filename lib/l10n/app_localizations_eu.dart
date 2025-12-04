@@ -173,21 +173,21 @@ class AppLocalizationsEu extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrologia zeruko gorputzen azterketa da...';
+      'Astrologia zeruko mugimenduen eta gizakien bizitzan duten eragina aztertzen duen antzinako zientzia da, nortasunari, harremanei eta bizitzako gertaerei buruzko ikuspegiak eskaintzen dituena.';
 
   @override
   String get onboardingWhyUseApp => 'Zergatik erabili aplikazio hau?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Lortu horoskopo pertsonalizatuak, eguneroko iragarpenak eta erabaki informatuak hartzeko orientazioa.';
+      'Jaso horoskopo zehatzak, gizakiek sortutakoak eta zure jaiotza-taulara egokitutako gidalerroak. Hartu erabaki informatuak eguneroko iragarpenekin eta astrologo esperientziadunen aholku pertsonalizatuekin.';
 
   @override
   String get onboardingHowToUse => 'Nola erabili aplikazio hau?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Erraz nabigatu, eguneroko horoskopoak kontsultatu eta zure profila kudeatu iragarpen zehatzak lortzeko.';
+      'Sartu zure jaiotze data, ordu zehatza, jaioterria eta beste edozein xehetasun garrantzitsu berehala hasteko. Arakatu eguneroko horoskopoak, egin galderak astrologo adituei eta kudeatu zure profila iragarpen zehatzak eta pertsonalizatuak lortzeko, saioa hasi beharrik gabe.';
 
   @override
   String get onboardingGetStarted => 'Hasi';

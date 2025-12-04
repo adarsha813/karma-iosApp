@@ -171,19 +171,22 @@ class AppLocalizationsZh extends AppLocalizations {
   String get onboardingWhatIsAstrology => '什么是占星术？';
 
   @override
-  String get onboardingWhatIsAstrologyDesc => '占星术是研究天体的学科……';
+  String get onboardingWhatIsAstrologyDesc =>
+      '占星术是研究天体运动及其对人类生活的影响的古老学科，它能帮助我们了解性格、人际关系和人生大事。';
 
   @override
   String get onboardingWhyUseApp => '为什么要使用这款应用？';
 
   @override
-  String get onboardingWhyUseAppDesc => '获取个性化星座运势、每日预测和指导，帮助您做出明智的决定。';
+  String get onboardingWhyUseAppDesc =>
+      '获取由人工生成的精准星座运势和根据您的出生星盘量身定制的指导。借助每日预测和经验丰富的占星师提供的个性化建议，做出明智的决定。';
 
   @override
   String get onboardingHowToUse => '如何使用这款应用？';
 
   @override
-  String get onboardingHowToUseDesc => '轻松浏览，查看每日星座运势，管理个人资料以获得准确预测。';
+  String get onboardingHowToUseDesc =>
+      '只需输入您的出生日期、确切时间、出生地点以及其他相关信息，即可立即开始。浏览每日星座运势，向专业占星师提问，并管理您的个人资料，获取精准的个性化预测——无需登录。';
 
   @override
   String get onboardingGetStarted => '开始使用';
@@ -1033,19 +1036,22 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get onboardingWhatIsAstrology => '什麼是占星術？';
 
   @override
-  String get onboardingWhatIsAstrologyDesc => '占星術是研究天體的學科…';
+  String get onboardingWhatIsAstrologyDesc =>
+      '占星術是研究天體運動及其對人類生活影響的古老學科，它能幫助我們了解性格、人際關係和人生大事。';
 
   @override
   String get onboardingWhyUseApp => '為什麼要使用這款應用程式？';
 
   @override
-  String get onboardingWhyUseAppDesc => '獲得個人化星座運勢、每日預測和指導，幫助您做出明智的決定。';
+  String get onboardingWhyUseAppDesc =>
+      '取得由人工生成的精準星座運勢和根據您的出生星盤量身定制的指導。透過每日預測和經驗豐富的占星師提供的個人化建議，做出明智的決定。';
 
   @override
   String get onboardingHowToUse => '如何使用這款應用程式？';
 
   @override
-  String get onboardingHowToUseDesc => '輕鬆瀏覽，查看每日星座運勢，管理個人資料以獲得準確預測。';
+  String get onboardingHowToUseDesc =>
+      '只需輸入您的出生日期、確切時間、出生地點以及其他相關信息，即可立即開始。瀏覽每日星座運勢，向專業占星師提問，並管理您的個人資料，以獲取精準的個人化預測—無需登入。';
 
   @override
   String get onboardingGetStarted => '開始使用';

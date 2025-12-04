@@ -173,21 +173,21 @@ class AppLocalizationsSo extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astroloji waa barashada jidhadhka samada...';
+      'Astroloji waa daraasad qadiimi ah oo lagu sameeyo dhaqdhaqaaqyada samada iyo saamaynta ay ku leeyihiin nolosha bini\'aadamka, iyagoo siinaya aragtiyo ku saabsan shakhsiyadda, xidhiidhada, iyo dhacdooyinka nolosha.';
 
   @override
-  String get onboardingWhyUseApp => 'Maxaad u isticmaashaa app-kan?';
+  String get onboardingWhyUseApp => 'Waa maxay sababta loo isticmaalo App-kan?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Hel horoscopes shaqsiyeysan, saadaal maalinle ah, iyo hagitaan si aad u gaarto go\'aamo xog ogaal ah.';
+      'Hel horoscopes sax ah, bani-aadmigu soo saaray iyo hagitaan ku habboon shaxda dhalashadaada. Samee go\'aamo xog-ogaal ah oo leh saadaalin maalinle ah iyo talo shakhsiyeed oo ka imanaya xiddigiyayaal khibrad leh.';
 
   @override
-  String get onboardingHowToUse => 'Sida loo isticmaalo abkan?';
+  String get onboardingHowToUse => 'Sidee loo Isticmaalaa Appkan?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Si fudud u soco, hubi horoscopes maalinlaha ah, oo maamul astaantaada si aad u hesho saadaal sax ah.';
+      'Si fudud u geli taariikhda dhalashadaada, wakhtiga saxda ah, goobta dhalashada, iyo wixii faahfaahin kale ee khuseeya si aad isla markiiba u bilowdo. Sahami horoscopes maalinlaha ah, waydii su\'aalo xiddigiyayaal khabiir ah, oo maamul profile kaaga si sax ah, saadaal shaqsiyeed-looma baahna.';
 
   @override
   String get onboardingGetStarted => 'Bilow';

@@ -171,21 +171,22 @@ class AppLocalizationsAm extends AppLocalizations {
   String get onboardingWhatIsAstrology => 'ኮከብ ቆጠራ ምንድን ነው?';
 
   @override
-  String get onboardingWhatIsAstrologyDesc => 'አስትሮሎጂ የሰለስቲያል አካላት ጥናት ነው...';
+  String get onboardingWhatIsAstrologyDesc =>
+      'ኮከብ ቆጠራ የሰለስቲያል እንቅስቃሴዎችን እና በሰው ህይወት ላይ የሚያሳድሩት ተጽዕኖ ጥንታዊ ጥናት ነው፣ ይህም ስለ ስብዕና፣ ግንኙነት እና የህይወት ክስተቶች ግንዛቤን ይሰጣል።';
 
   @override
   String get onboardingWhyUseApp => 'ለምን ይህን መተግበሪያ ይጠቀሙ?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'በመረጃ ላይ የተመሰረተ ውሳኔ ለማድረግ ለግል የተበጁ ሆሮስኮፖችን፣ ዕለታዊ ትንበያዎችን እና መመሪያን ያግኙ።';
+      'ትክክለኛ፣ በሰው የተፈጠሩ ሆሮስኮፖችን እና ከልደት ገበታህ ጋር የተበጀ መመሪያ ተቀበል። በየቀኑ ትንበያዎች እና ልምድ ካላቸው ኮከብ ቆጣሪዎች ግላዊ ምክሮች ጋር በመረጃ ላይ የተመሰረተ ውሳኔ ያድርጉ።';
 
   @override
   String get onboardingHowToUse => 'ይህን መተግበሪያ እንዴት መጠቀም ይቻላል?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'በቀላሉ ያስሱ፣ ዕለታዊ የኮከብ ቆጠራዎችን ይፈትሹ እና ለትክክለኛ ትንበያዎች መገለጫዎን ያስተዳድሩ።';
+      'በቀላሉ ለመጀመር የእርስዎን የልደት ቀን፣ ትክክለኛ ሰዓት፣ የትውልድ ቦታ እና ሌሎች ተዛማጅ ዝርዝሮችን ያስገቡ። ዕለታዊ ሆሮስኮፖችን ያስሱ፣ ለባለሙያ ኮከብ ቆጣሪዎች ጥያቄዎችን ይጠይቁ እና መገለጫዎን ለትክክለኛ፣ ለግል የተበጁ ትንበያዎች ያስተዳድሩ - መግባት አያስፈልግም።';
 
   @override
   String get onboardingGetStarted => 'እንጀምር';

@@ -173,21 +173,21 @@ class AppLocalizationsSn extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrology chidzidzo chemiviri yemudenga...';
+      'Astrology chidzidzo chekare chekufamba kwedenga uye simba razvo pahupenyu hwevanhu, zvichipa ruzivo muhunhu, hukama, uye zviitiko zvehupenyu.';
 
   @override
-  String get onboardingWhyUseApp => 'Sei kushandisa iyi app?';
+  String get onboardingWhyUseApp => 'Sei Uchishandisa Iyi App?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Tora yakasarudzika horoscopes, kufanotaura kwemazuva ese, uye nhungamiro yekuita sarudzo dzine ruzivo.';
+      'Gamuchira echokwadi, inogadzirwa nevanhu horoscopes uye nhungamiro inonangana nechati yako yekuzvarwa. Ita sarudzo dzine ruzivo nekufanotaura kwezuva nezuva uye zano remunhu kubva kune vane ruzivo rwenyeredzi.';
 
   @override
-  String get onboardingHowToUse => 'Nzira yekushandisa sei iyi app?';
+  String get onboardingHowToUse => 'Mashandisiro eApp iyi?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Famba zviri nyore, tarisa horoscopes zuva nezuva, uye tonga chimiro chako kuti uwane fungidziro chaiyo.';
+      'Ingoisa zuva rako rekuzvarwa, nguva chaiyo, nzvimbo yekuzvarwa, uye chero humwe ruzivo rwakakodzera kuti utange ipapo. Ongorora nyeredzi dzemazuva ese, bvunza mibvunzo kune nyanzvi dzevazivi venyeredzi, uye tonga chimiro chako kune chaiyo, yakasarudzika fungidziro - hapana kupinda kunodiwa.';
 
   @override
   String get onboardingGetStarted => 'Tanga';

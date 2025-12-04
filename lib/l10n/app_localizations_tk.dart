@@ -173,21 +173,21 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrologiýa asman jisimlerini öwrenmekdir ...';
+      'Astrologiýa, asman hereketleriniň we olaryň adam durmuşyna edýän täsiriniň gadymy gözlegidir, şahsyýet, gatnaşyklar we durmuş wakalary barada düşünje berýär.';
 
   @override
   String get onboardingWhyUseApp => 'Näme üçin bu programmany ulanmaly?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Şahsylaşdyrylan goroskoplary, gündelik çaklamalary we habarly karar bermek üçin görkezmeleri alyň.';
+      'Dogluş diagrammanyňyza laýyklykda takyk, adam tarapyndan döredilen goroskoplary we görkezmeleri alyň. Tejribeli astrologlaryň gündelik çaklamalary we şahsylaşdyrylan maslahatlary bilen habarly karar beriň.';
 
   @override
   String get onboardingHowToUse => 'Bu programmany nädip ulanmaly?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Ansatlyk bilen geziň, gündelik goroskoplary barlaň we takyk çaklamalar üçin profiliňizi dolandyryň.';
+      'Derrew başlamak üçin doglan senäňizi, takyk wagtyňyzy, doglan ýeriňizi we beýleki degişli maglumatlary giriziň. Gündelik goroskoplary öwreniň, hünärmen astrologlara sorag beriň we takyk, şahsylaşdyrylan çaklamalar üçin profiliňizi dolandyryň - giriş hökman däl.';
 
   @override
   String get onboardingGetStarted => 'Başla';

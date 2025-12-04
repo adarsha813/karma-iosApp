@@ -173,21 +173,22 @@ class AppLocalizationsHt extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astwoloji se syans ki etidye kò selès yo...';
+      'Astwoloji se yon ansyen syans ki etidye mouvman selès yo ak enfliyans yo sou lavi moun, li ofri plis enfòmasyon sou pèsonalite, relasyon ak evènman nan lavi.';
 
   @override
-  String get onboardingWhyUseApp => 'Poukisa pou itilize aplikasyon sa a?';
+  String get onboardingWhyUseApp =>
+      'Poukisa ou ta dwe itilize aplikasyon sa a?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Jwenn oroskop pèsonalize, prediksyon chak jou, ak konsèy pou pran desizyon enfòme.';
+      'Resevwa oroskop ki egzat, pwodui pa moun, ak konsèy ki adapte ak tablo nesans ou. Pran desizyon enfòme avèk prediksyon chak jou ak konsèy pèsonalize nan men astwològ ki gen eksperyans.';
 
   @override
-  String get onboardingHowToUse => 'Kijan pou itilize aplikasyon sa a?';
+  String get onboardingHowToUse => 'Kijan Pou Itilize Aplikasyon Sa a?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Navige fasilman, tcheke oroskop chak jou, epi jere pwofil ou pou prediksyon egzat.';
+      'Senpleman antre dat nesans ou, lè egzak ou, kote nesans ou, ak nenpòt lòt detay enpòtan pou kòmanse touswit. Eksplore oroskop chak jou yo, poze kesyon bay astwològ ekspè yo, epi jere pwofil ou pou prediksyon presi ak pèsonalize—ou pa bezwen konekte.';
 
   @override
   String get onboardingGetStarted => 'Kòmanse';

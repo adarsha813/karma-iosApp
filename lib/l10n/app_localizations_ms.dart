@@ -173,21 +173,21 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrologi ialah kajian tentang benda angkasa...';
+      'Astrologi ialah kajian purba tentang pergerakan cakerawala dan pengaruhnya terhadap kehidupan manusia, menawarkan pandangan tentang keperibadian, perhubungan dan peristiwa kehidupan.';
 
   @override
-  String get onboardingWhyUseApp => 'Mengapa menggunakan aplikasi ini?';
+  String get onboardingWhyUseApp => 'Mengapa Menggunakan Apl Ini?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Dapatkan horoskop yang diperibadikan, ramalan harian dan panduan untuk membuat keputusan termaklum.';
+      'Terima horoskop yang tepat dan dijana manusia dan panduan yang disesuaikan dengan carta kelahiran anda. Buat keputusan termaklum dengan ramalan harian dan nasihat peribadi daripada ahli nujum berpengalaman.';
 
   @override
-  String get onboardingHowToUse => 'Bagaimana untuk menggunakan aplikasi ini?';
+  String get onboardingHowToUse => 'Bagaimana untuk Menggunakan Apl Ini?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Navigasi dengan mudah, semak horoskop harian dan urus profil anda untuk ramalan yang tepat.';
+      'Hanya masukkan tarikh lahir anda, masa tepat, tempat lahir dan sebarang butiran lain yang berkaitan untuk bermula serta-merta. Terokai horoskop harian, tanya soalan kepada ahli nujum pakar dan urus profil anda untuk ramalan yang tepat dan diperibadikan—tiada log masuk diperlukan.';
 
   @override
   String get onboardingGetStarted => 'Mulakan';

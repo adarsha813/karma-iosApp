@@ -173,21 +173,21 @@ class AppLocalizationsFy extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrology is de stúdzje fan himellichems ...';
+      'Astrology is de âlde stúdzje fan himelske bewegingen en harren ynfloed op it minsklik libben, en biedt ynsjoch yn persoanlikheid, relaasjes en libbensgebeurtenissen.';
 
   @override
   String get onboardingWhyUseApp => 'Wêrom dizze app brûke?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Krij personaliseare horoskopen, deistige foarsizzingen en begelieding om ynformearre besluten te nimmen.';
+      'Untfang krekte, troch minsken generearre horoskopen en begelieding oanpast oan jo bertehoroskoop. Meitsje ynformearre besluten mei deistige foarsizzingen en persoanlik advys fan betûfte astrologen.';
 
   @override
   String get onboardingHowToUse => 'Hoe kinne jo dizze app brûke?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Navigearje maklik, kontrolearje deistige horoskopen en beheare jo profyl foar krekte foarsizzingen.';
+      'Fier gewoan jo bertedatum, krekte tiid, berteplak en alle oare relevante details yn om direkt te begjinnen. Ferkenne deistige horoskopen, stel fragen oan saakkundige astrologen en beheare jo profyl foar krekte, personaliseare foarsizzingen - gjin oanmelding nedich.';
 
   @override
   String get onboardingGetStarted => 'Begjinne';

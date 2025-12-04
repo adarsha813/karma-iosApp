@@ -173,21 +173,21 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Stjörnuspeki er rannsókn á himintunglum...';
+      'Stjörnuspeki er hin forna rannsókn á hreyfingum himintunglanna og áhrifum þeirra á líf mannsins og veitir innsýn í persónuleika, sambönd og lífsviðburði.';
 
   @override
   String get onboardingWhyUseApp => 'Af hverju að nota þetta forrit?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Fáðu sérsniðnar stjörnuspár, daglegar spár og leiðsögn til að taka upplýstar ákvarðanir.';
+      'Fáðu nákvæmar, manngerðar stjörnuspár og leiðsögn sem er sniðin að fæðingarhoroskopi þínu. Taktu upplýstar ákvarðanir með daglegum spám og persónulegum ráðleggingum frá reyndum stjörnuspekingum.';
 
   @override
   String get onboardingHowToUse => 'Hvernig á að nota þetta forrit?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Auðvelt er að vafra um, skoða daglegar stjörnuspár og stjórna prófílnum þínum til að fá nákvæmar spár.';
+      'Sláðu einfaldlega inn fæðingardag þinn, nákvæman tíma, fæðingarstað og aðrar viðeigandi upplýsingar til að byrja strax. Skoðaðu daglegar stjörnuspár, spurðu stjörnuspekinga og stjórnaðu prófílnum þínum til að fá nákvæmar, sérsniðnar spár – engin innskráning nauðsynleg.';
 
   @override
   String get onboardingGetStarted => 'Byrjaðu';

@@ -173,21 +173,21 @@ class AppLocalizationsEo extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrologio estas la studo de ĉielaj korpoj...';
+      'Astrologio estas la antikva studo de ĉielaj movoj kaj ilia influo sur homan vivon, ofertante komprenojn pri personeco, rilatoj kaj vivokazaĵoj.';
 
   @override
-  String get onboardingWhyUseApp => 'Kial uzi ĉi tiun aplikaĵon?';
+  String get onboardingWhyUseApp => 'Kial Uzi Ĉi Tiun Aplikaĵon?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Ricevu personigitajn horoskopojn, ĉiutagajn prognozojn kaj gvidon por fari informitajn decidojn.';
+      'Ricevu precizajn, hom-generitajn horoskopojn kaj gvidon adaptitajn al via naskiĝa diagramo. Faru informitajn decidojn per ĉiutagaj prognozoj kaj personigitaj konsiloj de spertaj astrologoj.';
 
   @override
-  String get onboardingHowToUse => 'Kiel uzi ĉi tiun aplikaĵon?';
+  String get onboardingHowToUse => 'Kiel Uzi Ĉi Tiun Aplikaĵon?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Navigu facile, kontrolu ĉiutagajn horoskopojn kaj administru vian profilon por precizaj antaŭdiroj.';
+      'Simple enigu vian naskodaton, precizan horon, naskolokon kaj iujn ajn aliajn gravajn detalojn por komenci tuj. Esploru ĉiutagajn horoskopojn, demandu al spertaj astrologoj kaj administru vian profilon por precizaj, personecigitaj antaŭdiroj - neniu ensaluto necesas.';
 
   @override
   String get onboardingGetStarted => 'Komencu';

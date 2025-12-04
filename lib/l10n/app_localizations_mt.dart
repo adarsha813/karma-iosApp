@@ -173,21 +173,21 @@ class AppLocalizationsMt extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'L-astroloġija hija l-istudju tal-korpi ċelesti...';
+      'L-astroloġija hija l-istudju antik tal-movimenti ċelesti u l-influwenza tagħhom fuq il-ħajja tal-bniedem, li toffri għarfien dwar il-personalità, ir-relazzjonijiet u l-avvenimenti tal-ħajja.';
 
   @override
-  String get onboardingWhyUseApp => 'Għaliex tuża din l-app?';
+  String get onboardingWhyUseApp => 'Għaliex Tuża Din l-App?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Ikseb oroskopji personalizzati, tbassir ta\' kuljum, u gwida biex tieħu deċiżjonijiet infurmati.';
+      'Irċievi oroskopji preċiżi, iġġenerati mill-bniedem u gwida mfassla apposta għat-tabella tat-twelid tiegħek. Ħu deċiżjonijiet infurmati bi tbassir ta\' kuljum u pariri personalizzati minn astrologi b\'esperjenza.';
 
   @override
-  String get onboardingHowToUse => 'Kif tuża din l-app?';
+  String get onboardingHowToUse => 'Kif Tuża Din l-App?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Innaviga faċilment, iċċekkja l-oroskopji ta\' kuljum, u immaniġġja l-profil tiegħek għal tbassir preċiż.';
+      'Sempliċement daħħal id-data tat-twelid tiegħek, il-ħin eżatt, il-post tat-twelid, u kwalunkwe dettalji rilevanti oħra biex tibda immedjatament. Esplora l-oroskopji ta\' kuljum, staqsi mistoqsijiet lil astrologi esperti, u immaniġġja l-profil tiegħek għal tbassir preċiż u personalizzat—l-ebda login mhu meħtieġ.';
 
   @override
   String get onboardingGetStarted => 'Ibda';

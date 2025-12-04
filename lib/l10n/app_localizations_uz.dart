@@ -173,21 +173,21 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrologiya - bu osmon jismlarini o\'rganadigan fan ...';
+      'Astrologiya - bu samoviy harakatlar va ularning inson hayotiga ta\'sirini o\'rganadigan qadimiy fan bo\'lib, shaxsiyat, munosabatlar va hayot voqealari haqida tushuncha beradi.';
 
   @override
-  String get onboardingWhyUseApp => 'Nima uchun bu ilovadan foydalanasiz?';
+  String get onboardingWhyUseApp => 'Nima uchun bu ilovadan foydalanish kerak?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Aniq qarorlar qabul qilish uchun moslashtirilgan munajjimlar bashorati, kundalik bashorat va ko\'rsatmalar oling.';
+      'Tug\'ilish jadvalingizga moslashtirilgan aniq, inson tomonidan yaratilgan munajjimlar bashorati va ko\'rsatmalarni oling. Tajribali munajjimlarning kundalik bashoratlari va shaxsiy maslahatlari bilan asosli qarorlar qabul qiling.';
 
   @override
   String get onboardingHowToUse => 'Ushbu ilovadan qanday foydalanish kerak?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Osonlik bilan harakatlaning, kundalik munajjimlar bashoratini tekshiring va aniq bashoratlar uchun profilingizni boshqaring.';
+      'Bir zumda boshlash uchun tug\'ilgan sana, aniq vaqt, tug\'ilgan joy va boshqa tegishli ma\'lumotlarni kiriting. Kundalik munajjimlar bashoratini o\'rganing, mutaxassis munajjimlarga savollar bering va aniq, moslashtirilgan bashoratlar uchun profilingizni boshqaring - tizimga kirish shart emas.';
 
   @override
   String get onboardingGetStarted => 'Boshlash';

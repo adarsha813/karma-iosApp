@@ -171,21 +171,22 @@ class AppLocalizationsJa extends AppLocalizations {
   String get onboardingWhatIsAstrology => '占星術とは何ですか?';
 
   @override
-  String get onboardingWhatIsAstrologyDesc => '占星術は天体の研究です。';
+  String get onboardingWhatIsAstrologyDesc =>
+      '占星術は天体の動きとそれが人間の生活に与える影響を研究する古代の研究であり、性格、人間関係、人生の出来事についての洞察を提供します。';
 
   @override
-  String get onboardingWhyUseApp => 'このアプリを使う理由は？';
+  String get onboardingWhyUseApp => 'このアプリを使用する理由';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'パーソナライズされた星占い、毎日の予測、ガイダンスを入手して、情報に基づいた決定を下しましょう。';
+      'あなたの出生図に合わせて、人間が作成した正確なホロスコープとガイダンスをお届けします。経験豊富な占星術師による毎日の予測と個別のアドバイスで、情報に基づいた意思決定を。';
 
   @override
   String get onboardingHowToUse => 'このアプリの使い方は？';
 
   @override
   String get onboardingHowToUseDesc =>
-      '簡単にナビゲートし、毎日の星占いをチェックし、正確な予測のためにプロフィールを管理します。';
+      '生年月日、正確な時刻、出生地、その他必要な情報を入力するだけで、すぐに占いを始められます。毎日の星占いをチェックしたり、専門の占星術師に質問したり、プロフィールを管理して、正確でパーソナライズされた予測を入手したりできます。ログインは不要です。';
 
   @override
   String get onboardingGetStarted => '始める';

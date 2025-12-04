@@ -173,21 +173,21 @@ class AppLocalizationsLb extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrologie ass d\'Studie vun Himmelskierper...';
+      'Astrologie ass déi antik Studie vun den Himmelsbeweegungen an hirem Afloss op d\'mënschlecht Liewen, a bitt Abléck an d\'Perséinlechkeet, Bezéiungen a Liewenserfarungen.';
 
   @override
   String get onboardingWhyUseApp => 'Firwat dës App benotzen?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Kritt personaliséiert Horoskoper, deeglech Prognosen a Berodung fir informéiert Entscheedungen ze treffen.';
+      'Kritt korrekt, vum Mënsch generéiert Horoskoper a Berodung, déi op Är Gebuertshoroskop zougeschnidden sinn. Trefft informéiert Entscheedungen mat deegleche Prognosen a personaliséierte Rotschléi vun erfuerene Astrologen.';
 
   @override
-  String get onboardingHowToUse => 'Wéi kann een dës App benotzen?';
+  String get onboardingHowToUse => 'Wéi benotzt een dës App?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Navigéiert einfach, kontrolléiert deeglech Horoskoper a verwaltet Äre Profil fir korrekt Prognosen.';
+      'Gitt einfach Äert Gebuertsdatum, Är genee Zäit, Äert Gebuertsuert an all aner relevant Detailer an, fir direkt unzefänken. Entdeckt deeglech Horoskoper, stellt Froen un Expert-Astrologen a verwaltet Äert Profil fir präzis, personaliséiert Prognosen - kee Login néideg.';
 
   @override
   String get onboardingGetStarted => 'Ufänken';

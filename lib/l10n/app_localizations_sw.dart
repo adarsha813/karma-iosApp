@@ -173,21 +173,21 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Unajimu ni utafiti wa mambo ya anga...';
+      'Unajimu ni somo la zamani la mienendo ya angani na ushawishi wao juu ya maisha ya mwanadamu, ikitoa maarifa juu ya utu, uhusiano, na matukio ya maisha.';
 
   @override
-  String get onboardingWhyUseApp => 'Kwa nini utumie programu hii?';
+  String get onboardingWhyUseApp => 'Kwa Nini Utumie Programu Hii?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Pata nyota zilizobinafsishwa, ubashiri wa kila siku na mwongozo ili kufanya maamuzi sahihi.';
+      'Pokea utabiri sahihi wa nyota na mwongozo unaotolewa na binadamu kulingana na chati yako ya kuzaliwa. Fanya maamuzi sahihi kwa ubashiri wa kila siku na ushauri wa kibinafsi kutoka kwa wanajimu wenye uzoefu.';
 
   @override
-  String get onboardingHowToUse => 'Jinsi ya kutumia programu hii?';
+  String get onboardingHowToUse => 'Jinsi ya Kutumia Programu hii?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Sogeza kwa urahisi, angalia nyota za kila siku, na udhibiti wasifu wako kwa utabiri sahihi.';
+      'Ingiza tu tarehe yako ya kuzaliwa, saa kamili, mahali pa kuzaliwa na maelezo mengine yoyote muhimu ili uanze papo hapo. Chunguza nyota za kila siku, waulize maswali wanajimu waliobobea, na udhibiti wasifu wako kwa utabiri sahihi, uliobinafsishwa—hakuna kuingia kunahitajika.';
 
   @override
   String get onboardingGetStarted => 'Anza';

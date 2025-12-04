@@ -173,21 +173,21 @@ class AppLocalizationsSu extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrologi nyaéta ulikan ngeunaan benda langit ...';
+      'Astrologi nyaéta ulikan kuna ngeunaan gerakan celestial jeung pangaruh maranéhanana dina kahirupan manusa, nawarkeun wawasan ngeunaan kapribadian, hubungan, jeung kajadian hirup.';
 
   @override
-  String get onboardingWhyUseApp => 'Naha make aplikasi ieu?';
+  String get onboardingWhyUseApp => 'Naha Paké App Ieu?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Kéngingkeun horoskop pribadi, prediksi sapopoé, sareng pituduh pikeun nyandak kaputusan anu terang.';
+      'Kéngingkeun horoskop anu akurat, anu diciptakeun ku manusa sareng petunjuk anu cocog sareng bagan kalahiran anjeun. Jieun kaputusan informed kalawan prediksi poean sarta nasihat pribadi ti astrologer ngalaman.';
 
   @override
-  String get onboardingHowToUse => 'Kumaha ngagunakeun aplikasi ieu?';
+  String get onboardingHowToUse => 'Kumaha Ngagunakeun Aplikasi Ieu?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Gampang navigasi, pariksa horoskop sapopoé, sareng atur profil anjeun pikeun prediksi anu akurat.';
+      'Kantun lebetkeun tanggal lahir anjeun, waktos pasti, tempat kalahiran, sareng detil anu sanés pikeun ngamimitian langsung. Jelajah horoskop sapopoé, naroskeun patarosan ka ahli nujum, sareng atur profil anjeun pikeun prediksi anu akurat sareng pribadi-teu kedah login.';
 
   @override
   String get onboardingGetStarted => 'Mimitian';

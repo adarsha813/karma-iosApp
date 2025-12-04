@@ -173,21 +173,21 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get onboardingWhatIsAstrologyDesc =>
-      'Astrologia jest nauką zajmującą się badaniem ciał niebieskich.';
+      'Astrologia to starożytna nauka zajmująca się ruchami ciał niebieskich i ich wpływem na życie człowieka. Daje ona wgląd w osobowość, relacje i wydarzenia życiowe.';
 
   @override
-  String get onboardingWhyUseApp => 'Dlaczego warto używać tej aplikacji?';
+  String get onboardingWhyUseApp => 'Dlaczego warto korzystać z tej aplikacji?';
 
   @override
   String get onboardingWhyUseAppDesc =>
-      'Otrzymaj spersonalizowane horoskopy, codzienne prognozy i wskazówki, które pomogą Ci podejmować świadome decyzje.';
+      'Otrzymuj dokładne, generowane przez człowieka horoskopy i wskazówki dopasowane do Twojego horoskopu urodzeniowego. Podejmuj świadome decyzje dzięki codziennym prognozom i spersonalizowanym poradom doświadczonych astrologów.';
 
   @override
   String get onboardingHowToUse => 'Jak korzystać z tej aplikacji?';
 
   @override
   String get onboardingHowToUseDesc =>
-      'Łatwa nawigacja, sprawdzanie codziennych horoskopów i zarządzanie profilem w celu uzyskania dokładnych przewidywań.';
+      'Wystarczy wpisać datę urodzenia, dokładną godzinę, miejsce urodzenia i inne istotne dane, aby natychmiast rozpocząć. Przeglądaj codzienne horoskopy, zadawaj pytania doświadczonym astrologom i zarządzaj swoim profilem, aby otrzymywać precyzyjne, spersonalizowane prognozy – bez logowania.';
 
   @override
   String get onboardingGetStarted => 'Zacznij';
