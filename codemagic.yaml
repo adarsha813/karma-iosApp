@@ -7,50 +7,19 @@ workflows:
       xcode: latest
 
     scripts:
-      # 1️⃣ Get Flutter dependencies
       - name: Flutter pub get
         script: flutter pub get
 
-      # 2️⃣ Generate Podfile automatically
-      - name: Generate Podfile
+      - name: Install Pods
         script: |
           cd ios
-          if [ ! -f Podfile ]; then
-            echo "platform :ios, '13.0'" > Podfile
-            echo "ENV['COCOAPODS_DISABLE_STATS'] = 'true'" >> Podfile
-            echo "target 'Runner' do" >> Podfile
-            echo "  flutter_application_path = '../'" >> Podfile
-            echo "  eval(File.read(File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb'))) if File.exist?(File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb'))" >> Podfile
-            echo "  pod 'FirebaseCore', :modular_headers => true" >> Podfile
-            echo "  pod 'FirebaseMessaging', :modular_headers => true" >> Podfile
-            echo "  pod 'FirebaseAuth', :modular_headers => true" >> Podfile
-            echo "  pod 'stripe_ios', :modular_headers => true" >> Podfile
-            echo "  use_frameworks! :linkage => :static" >> Podfile
-            echo "end" >> Podfile
-            echo "post_install do |installer|" >> Podfile
-            echo "  installer.pods_project.targets.each do |target|" >> Podfile
-            echo "    target.build_configurations.each do |config|" >> Podfile
-            echo "      config.build_settings['ENABLE_BITCODE'] = 'NO'" >> Podfile
-            echo "      config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'" >> Podfile
-            echo "    end" >> Podfile
-            echo "  end" >> Podfile
-            echo "end" >> Podfile
-          fi
-          cd ..
-
-      # 3️⃣ Install iOS pods
-      - name: Install pods
-        script: |
-          cd ios
-          rm -rf Pods Podfile.lock
           pod repo update
           pod install
           cd ..
 
-      # 4️⃣ Build iOS release (no codesign)
       - name: Build iOS
         script: flutter build ios --release --no-codesign
 
     artifacts:
-      - build/ios/iphoneos/*.app
       - build/ios/iphoneos/*.ipa
+      - build/ios/iphoneos/*.app
