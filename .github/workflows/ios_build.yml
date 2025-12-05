@@ -11,43 +11,44 @@ jobs:
     runs-on: macos-latest
 
     steps:
+      # 1️⃣ Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 2️⃣ Install Flutter
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.32.4'
           channel: 'stable'
 
+      # 3️⃣ Get Flutter dependencies
       - name: Flutter Pub Get
         run: flutter pub get
 
-      # ✅ Generate Podfile if missing
+      # 4️⃣ Force generate Podfile with iOS 13.0
       - name: Generate Podfile
         run: |
           cd ios
-          if [ ! -f Podfile ]; then
-            echo "platform :ios, '13.0'" > Podfile
-            echo "ENV['COCOAPODS_DISABLE_STATS'] = 'true'" >> Podfile
-            echo "target 'Runner' do" >> Podfile
-            echo "  use_frameworks!" >> Podfile
-            echo "  use_modular_headers!" >> Podfile
-            echo "  flutter_application_path = File.expand_path('..', __dir__)" >> Podfile
-            echo "  eval(File.read(File.join(flutter_application_path, 'Flutter', 'podhelper.rb'))) if File.exist?(File.join(flutter_application_path, 'Flutter', 'podhelper.rb'))" >> Podfile
-            echo "end" >> Podfile
-            echo "post_install do |installer|" >> Podfile
-            echo "  installer.pods_project.targets.each do |target|" >> Podfile
-            echo "    target.build_configurations.each do |config|" >> Podfile
-            echo "      config.build_settings['ENABLE_BITCODE'] = 'NO'" >> Podfile
-            echo "      config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'" >> Podfile
-            echo "    end" >> Podfile
-            echo "  end" >> Podfile
-            echo "end" >> Podfile
-          fi
+          echo "platform :ios, '13.0'" > Podfile
+          echo "ENV['COCOAPODS_DISABLE_STATS'] = 'true'" >> Podfile
+          echo "target 'Runner' do" >> Podfile
+          echo "  use_frameworks!" >> Podfile
+          echo "  use_modular_headers!" >> Podfile
+          echo "  flutter_application_path = File.expand_path('..', __dir__)" >> Podfile
+          echo "  eval(File.read(File.join(flutter_application_path, 'Flutter', 'podhelper.rb'))) if File.exist?(File.join(flutter_application_path, 'Flutter', 'podhelper.rb'))" >> Podfile
+          echo "end" >> Podfile
+          echo "post_install do |installer|" >> Podfile
+          echo "  installer.pods_project.targets.each do |target|" >> Podfile
+          echo "    target.build_configurations.each do |config|" >> Podfile
+          echo "      config.build_settings['ENABLE_BITCODE'] = 'NO'" >> Podfile
+          echo "      config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'" >> Podfile
+          echo "    end" >> Podfile
+          echo "  end" >> Podfile
+          echo "end" >> Podfile
           cd ..
 
-      # ✅ Install CocoaPods
+      # 5️⃣ Install CocoaPods dependencies
       - name: Install iOS Pods
         run: |
           cd ios
@@ -56,11 +57,11 @@ jobs:
           pod install
           cd ..
 
-      # ✅ Build iOS release without codesign
+      # 6️⃣ Build iOS release without codesigning
       - name: Build iOS Release
         run: flutter build ios --release --no-codesign
 
-      # ✅ Upload IPA
+      # 7️⃣ Upload IPA artifact
       - name: Upload IPA
         uses: actions/upload-artifact@v4
         with:
