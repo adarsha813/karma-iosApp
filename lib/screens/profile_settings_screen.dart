@@ -25,6 +25,7 @@ import 'package:kundali/services/fcm_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:logger/logger.dart';
 import '../providers/theme_provider.dart';
+import '../screens/recovery_screen.dart';
 
 class ProfileSettingsScreen extends StatefulWidget {
   const ProfileSettingsScreen({super.key});
@@ -989,6 +990,25 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     );
   }
 
+  void _navigateToRecoveryScreen(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => RecoveryScreen()),
+    ).then((recoveredUserId) {
+      if (recoveredUserId != null && recoveredUserId is String) {
+        // Load the recovered profile
+        _userIdController.text = recoveredUserId;
+        _loadProfileData();
+
+        // Show success message
+        ErrorHandler.showSuccessSnackbar(
+          context,
+          'Account recovered successfully!',
+        );
+      }
+    });
+  }
+
   Widget _buildTextField(
     String label,
     IconData icon,
@@ -1082,8 +1102,13 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         elevation: 0,
         centerTitle: true,
         actions: [
+          // Switch user button
           IconButton(
-            icon: Icon(Icons.history, color: theme.iconTheme.color),
+            icon: Icon(Icons.restore, color: theme.iconTheme.color),
+            onPressed: () => _navigateToRecoveryScreen(context),
+          ),
+          IconButton(
+            icon: Icon(Icons.history_toggle_off, color: theme.iconTheme.color),
             onPressed: () {
               setState(() => _showHistory = !_showHistory);
             },

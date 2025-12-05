@@ -591,11 +591,9 @@ class SettingsScreen extends StatelessWidget {
           await profileProvider.clearProfile();
           _logAnalyticsEvent('user_logged_out');
 
+          // Use your existing SafeNavigation utility
           if (context.mounted) {
-            Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (_) => const ProfileSettingsScreen()),
-              (route) => false,
-            );
+            await SafeNavigation.navigateToProfileSettings(context);
           }
         } catch (e, stackTrace) {
           _reportError(e, stackTrace, context: 'logout');
