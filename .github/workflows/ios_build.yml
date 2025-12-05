@@ -11,21 +11,30 @@ jobs:
     runs-on: macos-latest
 
     steps:
+      # 1️⃣ Checkout your repo
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 2️⃣ Install Flutter
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.32.4' # your Flutter version
+          flutter-version: '3.32.4'
           channel: 'stable'
 
+      # 3️⃣ Get Dart dependencies
       - name: Flutter Pub Get
         run: flutter pub get
 
-      - name: Build iOS (no codesign)
+      # 4️⃣ Prebuild iOS pods and Xcode project
+      - name: Prebuild iOS (simulator) to generate Pods
+        run: flutter build ios --no-codesign --simulator
+
+      # 5️⃣ Build iOS release for device (no codesign)
+      - name: Build iOS Release (device)
         run: flutter build ios --release --no-codesign
 
+      # 6️⃣ Upload the .ipa artifact
       - name: Upload IPA
         uses: actions/upload-artifact@v4
         with:
