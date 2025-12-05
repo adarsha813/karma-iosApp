@@ -12,10 +12,7 @@ target 'Runner' do
   use_frameworks!
   use_modular_headers!
 
-  flutter_application_path = File.expand_path('..', __dir__)
-
-  # Add Flutter pods automatically
-  eval(File.read(File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')))
+  # Flutter will automatically handle pods, no manual podhelper required
 end
 
 post_install do |installer|
