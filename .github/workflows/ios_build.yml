@@ -11,19 +11,13 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.32.4'
-
-      - name: Set FLUTTER_ROOT
-        run: echo "FLUTTER_ROOT=$(dirname $(which flutter))/../.." >> $GITHUB_ENV
-
-      - name: Print FLUTTER_ROOT (debug)
-        run: echo $FLUTTER_ROOT
 
       - name: Flutter Pub Get
         run: flutter pub get
