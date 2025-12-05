@@ -17,23 +17,16 @@ jobs:
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.32.4'  # Choose your Flutter version
+          flutter-version: '3.32.4'
 
       - name: Flutter Pub Get
         run: flutter pub get
 
-      - name: Install CocoaPods
-        run: |
-          sudo gem install cocoapods
-          cd ios
-          pod install
-          cd ..
-
-      - name: Build iOS
+      - name: Build iOS (no codesign)
         run: flutter build ios --release --no-codesign
 
-      - name: Archive IPA (optional)
-        if: success()
-        run: |
-          cd build/ios/iphoneos
-          zip -r FlutterApp.ipa Runner.app
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-build
+          path: build/ios/iphoneos/*.ipa
