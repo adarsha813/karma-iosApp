@@ -19,6 +19,12 @@ jobs:
         with:
           flutter-version: '3.32.4'
 
+      - name: Set FLUTTER_ROOT
+        run: echo "FLUTTER_ROOT=$(dirname $(which flutter))/../.." >> $GITHUB_ENV
+
+      - name: Print FLUTTER_ROOT (debug)
+        run: echo $FLUTTER_ROOT
+
       - name: Flutter Pub Get
         run: flutter pub get
 
