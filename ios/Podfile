@@ -9,8 +9,9 @@ project 'Runner', {
 }
 
 # First, load the Flutter podhelper.rb from your Flutter SDK
-flutter_podfile_path = File.expand_path(File.join('..', 'packages', 'flutter_tools', 'bin', 'podhelper.rb'), ENV['FLUTTER_ROOT'])
+flutter_podfile_path = File.join(__dir__, 'Flutter', 'podhelper.rb')
 require flutter_podfile_path
+
 
 # Get flutter_application_path from environment variable
 flutter_application_path = ENV['FLUTTER_APPLICATION_PATH'] || File.expand_path('..', __dir__)
