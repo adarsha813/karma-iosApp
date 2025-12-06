@@ -1,18 +1,54 @@
-scripts:
-  - name: Flutter clean
-    script: flutter clean
-
-  - name: Get Flutter dependencies
-    script: flutter pub get
-
-  - name: Generate iOS plugin files
-    script: flutter build ios --no-codesign
-
-  - name: Install CocoaPods
-    script: |
-      cd ios
-      pod install --repo-update
-      cd ..
-
-  - name: Build iOS Release
-    script: flutter build ios --release --no-codesign
+workflows:
+  ios-workflow:
+    name: iOS Build Workflow
+    environment:
+      groups:
+        - app_credentials
+      flutter: stable
+      cocoapods: default
+      xcode: latest
+    scripts:
+      - name: Set up Flutter
+        script: |
+          flutter channel stable
+          flutter upgrade
+          flutter config --no-analytics
+      
+      - name: Get Flutter dependencies
+        script: |
+          flutter clean
+          flutter pub get
+      
+      - name: Generate iOS files
+        script: |
+          cd ios
+          pod cache clean --all
+          pod deintegrate || true
+          pod setup
+          cd ..
+          flutter build ios --no-codesign --verbose
+      
+      - name: Install CocoaPods dependencies
+        script: |
+          cd ios
+          pod install --repo-update --verbose
+          cd ..
+      
+      - name: Build iOS app
+        script: |
+          cd ios
+          xcodebuild -workspace Runner.xcworkspace \
+            -scheme Runner \
+            -destination generic/platform=iOS \
+            -configuration Release \
+            clean build \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+    publishing:
+      email:
+        recipients:
+          - projectm2025.20.02@gmail.com
