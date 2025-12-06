@@ -22,7 +22,7 @@ workflows:
           rm -rf ~/Library/Caches/CocoaPods
           pod cache clean --all
 
-      - name: Create correct Podfile
+      - name: Create FIXED Podfile
         script: |
           cd ios
           cat > Podfile << 'EOF'
@@ -31,7 +31,6 @@ platform :ios, '13.0'
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
 flutter_root = File.expand_path(File.join('..', 'Flutter'))
-
 load File.join(flutter_root, 'flutter_export_environment.rb')
 
 target 'Runner' do
@@ -52,20 +51,20 @@ end
 EOF
           cd ..
 
-      - name: Install CocoaPods
+      - name: Install Pods
         script: |
           cd ios
-          pod repo update
           pod install --repo-update
           cd ..
 
-      - name: Build iOS (Xcode)
+      # IMPORTANT: no flutter ios build! Only xcodebuild
+      - name: Build using Xcode
         script: |
           xcodebuild \
             -workspace ios/Runner.xcworkspace \
             -scheme Runner \
             -configuration Release \
-            -destination 'generic/platform=iOS' \
+            -destination "generic/platform=iOS" \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \
@@ -74,8 +73,3 @@ EOF
     artifacts:
       - build/ios/iphoneos/*.app
       - /tmp/xcodebuild_logs/*.log
-
-    publishing:
-      email:
-        recipients:
-          - projectm2025.20.02@gmail.com
