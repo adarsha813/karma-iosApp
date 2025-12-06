@@ -51,6 +51,10 @@ end
 EOF
           cd ..
 
+      - name: Save Podfile as artifact
+        script: |
+          cp ios/Podfile /tmp/Podfile
+
       - name: Install Pods
         script: |
           cd ios
@@ -73,3 +77,4 @@ EOF
     artifacts:
       - build/ios/iphoneos/*.app
       - /tmp/xcodebuild_logs/*.log
+      - /tmp/Podfile    # <-- added Podfile artifact
