@@ -28,18 +28,17 @@ workflows:
         script: |
           flutter pub get
 
-      # ✅ NEW STEP: CREATE PODFILE IF MISSING
+      # ✅ ALWAYS overwrite Podfile (required!)
       - name: Create Podfile
         script: |
           cd ios
-          if [ ! -f Podfile ]; then
-            echo "Creating Podfile..."
+          echo "Overwriting Podfile..."
 
-            cat > Podfile << EOF
-platform :ios, '12.0'
+          cat > Podfile << 'EOF'
+platform :ios, '13.0'
 
-use_frameworks!
-use_modular_headers!
+# IMPORTANT: Flutter + Firebase require static linking
+use_frameworks! :linkage => :static
 
 target 'Runner' do
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
@@ -48,15 +47,16 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+      config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
     end
   end
 end
 EOF
-          fi
+
           cd ..
 
-      - name: Generate iOS files
+      - name: Generate iOS build files
         script: |
           flutter build ios --no-codesign --verbose
 
@@ -68,10 +68,10 @@ EOF
           pod install --repo-update --verbose
           cd ..
 
-      - name: Build iOS app
+      - name: Build iOS app (no code signing)
         script: |
           cd ios
-          xcodebuild clean \
+          xcodebuild \
             -workspace Runner.xcworkspace \
             -scheme Runner \
             -configuration Release \
@@ -79,7 +79,6 @@ EOF
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
-            OTHER_CFLAGS="-DFIREBASE_USE_MODULAR_FRAMEWORK=1" \
             | xcpretty
 
     artifacts:
