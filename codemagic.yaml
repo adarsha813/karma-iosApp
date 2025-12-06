@@ -5,14 +5,13 @@ scripts:
   - name: Get Flutter dependencies
     script: flutter pub get
 
-  - name: Generate iOS Flutter files
-    script: flutter build ios --no-codesign
+  - name: Generate iOS plugin files
+    script: flutter pub get
+    # Or flutter build ios --no-codesign, but do NOT do pod install before this
 
-  - name: Install CocoaPods
+  - name: Build iOS (Codemagic-friendly)
     script: |
       cd ios
-      pod install
+      pod install --repo-update
       cd ..
-
-  - name: Build iOS Release
-    script: flutter build ios --release --no-codesign
+      flutter build ios --release --no-codesign
