@@ -1539,7 +1539,7 @@ packages:
     source: hosted
     version: "10.2.1"
   stripe_ios:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: stripe_ios
       sha256: eb91cb9b971e22f865937309b0e5e4e0f5bcbfc39e671bd41c0fdaddbb5ad948
