@@ -5,7 +5,7 @@ scripts:
   - name: Get Flutter dependencies
     script: flutter pub get
 
-  - name: Generate iOS Flutter files (includes podhelper.rb)
+  - name: Generate iOS Flutter files
     script: flutter build ios --no-codesign
 
   - name: Install CocoaPods
