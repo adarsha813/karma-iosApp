@@ -7,8 +7,7 @@ workflows:
       flutter: stable
       cocoapods: default
       xcode: latest
-      vars:
-        FLUTTER_FIREBASE_SDK_VERSION: "10.23.0"
+
     scripts:
       - name: Set up Flutter
         script: |
@@ -28,28 +27,47 @@ workflows:
       - name: Get dependencies
         script: |
           flutter pub get
-      
+
+      # ✅ NEW STEP: CREATE PODFILE IF MISSING
+      - name: Create Podfile
+        script: |
+          cd ios
+          if [ ! -f Podfile ]; then
+            echo "Creating Podfile..."
+
+            cat > Podfile << EOF
+platform :ios, '12.0'
+
+use_frameworks!
+use_modular_headers!
+
+target 'Runner' do
+  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+    end
+  end
+end
+EOF
+          fi
+          cd ..
+
       - name: Generate iOS files
         script: |
           flutter build ios --no-codesign --verbose
-      
-      - name: Install CocoaPods with Firebase fixes
+
+      - name: Install CocoaPods
         script: |
           cd ios
           pod deintegrate || true
           pod repo update
-          
-          # Set environment variables for Firebase
-          export FIREBASE_SDK_VERSION=10.23.0
-          
           pod install --repo-update --verbose
-          
-          # Fix Firebase header paths
-          find Pods -name "*.h" -type f -exec grep -l "Firebase.h" {} \; | while read file; do
-            echo "Checking $file for Firebase.h includes"
-          done
           cd ..
-      
+
       - name: Build iOS app
         script: |
           cd ios
@@ -63,9 +81,11 @@ workflows:
             CODE_SIGNING_ALLOWED=NO \
             OTHER_CFLAGS="-DFIREBASE_USE_MODULAR_FRAMEWORK=1" \
             | xcpretty
+
     artifacts:
       - build/ios/Release-iphoneos/Runner.app
       - /tmp/xcodebuild_logs/*.log
+
     publishing:
       email:
         recipients:
