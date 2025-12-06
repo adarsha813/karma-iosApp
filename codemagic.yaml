@@ -38,7 +38,7 @@ workflows:
 platform :ios, '13.0'
 
 # IMPORTANT: Flutter + Firebase require static linking
-use_frameworks! :linkage => :static
+
 
 target 'Runner' do
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
