@@ -7,46 +7,64 @@ workflows:
       flutter: stable
       cocoapods: default
       xcode: latest
+      vars:
+        FLUTTER_FIREBASE_SDK_VERSION: "10.23.0"
     scripts:
       - name: Set up Flutter
         script: |
           flutter channel stable
-          flutter upgrade
+          flutter upgrade --force
           flutter config --no-analytics
+          flutter doctor -v
       
-      - name: Get Flutter dependencies
+      - name: Clean workspace
         script: |
           flutter clean
+          rm -rf ios/Pods
+          rm -rf ios/Podfile.lock
+          rm -rf ~/Library/Caches/CocoaPods
+          pod cache clean --all
+      
+      - name: Get dependencies
+        script: |
           flutter pub get
       
       - name: Generate iOS files
         script: |
-          cd ios
-          pod cache clean --all
-          pod deintegrate || true
-          pod setup
-          cd ..
           flutter build ios --no-codesign --verbose
       
-      - name: Install CocoaPods dependencies
+      - name: Install CocoaPods with Firebase fixes
         script: |
           cd ios
+          pod deintegrate || true
+          pod repo update
+          
+          # Set environment variables for Firebase
+          export FIREBASE_SDK_VERSION=10.23.0
+          
           pod install --repo-update --verbose
+          
+          # Fix Firebase header paths
+          find Pods -name "*.h" -type f -exec grep -l "Firebase.h" {} \; | while read file; do
+            echo "Checking $file for Firebase.h includes"
+          done
           cd ..
       
       - name: Build iOS app
         script: |
           cd ios
-          xcodebuild -workspace Runner.xcworkspace \
+          xcodebuild clean \
+            -workspace Runner.xcworkspace \
             -scheme Runner \
-            -destination generic/platform=iOS \
             -configuration Release \
-            clean build \
+            -destination 'generic/platform=iOS' \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGNING_ALLOWED=NO
+            CODE_SIGNING_ALLOWED=NO \
+            OTHER_CFLAGS="-DFIREBASE_USE_MODULAR_FRAMEWORK=1" \
+            | xcpretty
     artifacts:
-      - build/ios/ipa/*.ipa
+      - build/ios/Release-iphoneos/Runner.app
       - /tmp/xcodebuild_logs/*.log
     publishing:
       email:
