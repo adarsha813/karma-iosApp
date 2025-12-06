@@ -1,22 +1,16 @@
-# ios/Podfile
 platform :ios, '13.0'
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
-# Add this line — it defines flutter_install_all_ios_pods
-require File.join(File.dirname(__FILE__), 'Flutter', 'podhelper.rb')
-
 target 'Runner' do
-  use_frameworks!
-  use_modular_headers!
-
-  # Install all Flutter pods
-  flutter_install_all_ios_pods(File.dirname(File.realpath(__FILE__)))
+  # Optional, only if some pods require frameworks
+  # use_frameworks!
+  # use_modular_headers!
 end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      # Fix for Firebase and non-modular headers
+      # Fix for Firebase modular header issues
       config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
     end
   end
