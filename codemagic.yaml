@@ -5,5 +5,12 @@ scripts:
   - name: Flutter pub get
     script: flutter pub get
 
+  - name: Install Pods
+    script: |
+      cd ios
+      pod repo update
+      pod install --verbose
+      cd ..
+
   - name: Build iOS Release
     script: flutter build ios --release --no-codesign
