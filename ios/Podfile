@@ -1,19 +1,21 @@
+# Uncomment this line to define a global platform for your project
 platform :ios, '13.0'
 
-# Uncomment this line if using frameworks
-# use_frameworks!
+# CocoaPods analytics disabled for CI
+ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
 target 'Runner' do
-  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+  use_frameworks!
+  use_modular_headers!
 
-  # Add any pods you need manually, e.g.:
-  # pod 'Firebase/Messaging'
+  # Flutter Pods
+  flutter_install_all_ios_pods(File.dirname(File.realpath(__FILE__)))
 end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      # This avoids non-modular header errors
+      # Fix for non-modular headers (Firebase)
       config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
     end
   end
