@@ -1,12 +1,11 @@
 platform :ios, '13.0'
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
-# Use frameworks for iOS plugins
 use_frameworks!
 use_modular_headers!
 
 target 'Runner' do
-  # Flutter plugins are automatically installed on Codemagic
+  flutter_install_all_ios_pods(File.dirname(File.realpath(__FILE__)))
 end
 
 post_install do |installer|
