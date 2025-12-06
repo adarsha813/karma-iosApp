@@ -1,17 +1,21 @@
 platform :ios, '13.0'
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
+# Add this line — it defines flutter_install_all_ios_pods
+require File.join(File.dirname(__FILE__), 'Flutter', 'podhelper.rb')
+
 use_frameworks!
 use_modular_headers!
 
 target 'Runner' do
+  # Install all Flutter pods
   flutter_install_all_ios_pods(File.dirname(File.realpath(__FILE__)))
 end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      # Fix for Firebase, audio_session, and other modular headers
+      # Fix for Firebase, audio_session, and modular headers
       config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
       config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
     end
