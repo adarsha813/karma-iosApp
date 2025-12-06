@@ -79,6 +79,7 @@ dependencies:
   googleapis_auth: ^1.4.0
   path: ^1.9.1
   restart_app: ^1.2.1
+  audio_session: ^0.2.2
 
  
   
