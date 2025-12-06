@@ -1,21 +1,18 @@
-workflows:
-  ios-release:
-    name: Build iOS Release
-    scripts:
-      - name: Flutter clean
-        script: flutter clean
+scripts:
+  - name: Flutter clean
+    script: flutter clean
 
-      - name: Get Flutter dependencies
-        script: flutter pub get
+  - name: Get Flutter dependencies
+    script: flutter pub get
 
-      - name: Build iOS pods (generate podhelper.rb)
-        script: flutter build ios --no-codesign
+  - name: Generate iOS Flutter files (includes podhelper.rb)
+    script: flutter build ios --no-codesign
 
-      - name: Install CocoaPods
-        script: |
-          cd ios
-          pod install
-          cd ..
+  - name: Install CocoaPods
+    script: |
+      cd ios
+      pod install
+      cd ..
 
-      - name: Build iOS Release
-        script: flutter build ios --release --no-codesign
+  - name: Build iOS Release
+    script: flutter build ios --release --no-codesign
