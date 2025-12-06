@@ -5,7 +5,7 @@ use_frameworks!
 use_modular_headers!
 
 target 'Runner' do
-  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+  # Flutter automatically injects pods when this runs
 end
 
 post_install do |installer|
