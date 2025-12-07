@@ -1,80 +1,67 @@
 workflows:
-  ios-workflow:
-    name: iOS Build Workflow
+  ios-release:
+    name: iOS Release Build (Nuclear Fix)
+    max_build_duration: 60
+
     environment:
       flutter: stable
-      cocoapods: default
       xcode: latest
+      cocoapods: default
 
     scripts:
-      - name: Prepare Flutter
-        script: |
-          flutter channel stable
-          flutter upgrade --force
-          flutter pub get
-
-      - name: Clean iOS
+      - name: Clean Flutter & iOS
         script: |
           flutter clean
-          rm -rf ios/Pods
-          rm -rf ios/Podfile
-          rm -rf ios/Podfile.lock
-          rm -rf ~/Library/Caches/CocoaPods
-          pod cache clean --all
+          rm -rf ios/Pods ios/Podfile.lock ios/.symlinks
 
-      - name: Create FIXED Podfile
+      - name: Get Flutter packages
         script: |
-          cd ios
-          cat > Podfile << 'EOF'
-platform :ios, '13.0'
+          flutter pub get
 
-ENV['COCOAPODS_DISABLE_STATS'] = 'true'
-
-flutter_root = File.expand_path(File.join('..', 'Flutter'))
-load File.join(flutter_root, 'flutter_export_environment.rb')
-
-target 'Runner' do
-  use_frameworks! :linkage => :static
-  use_modular_headers!
-
-  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
-end
-
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
-      config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
-    end
-  end
-end
-EOF
-          cd ..
-
-      - name: Save Podfile as artifact
+      # Force iOS project with iOS 15
+      - name: Regenerate iOS files
         script: |
-          cp ios/Podfile /tmp/Podfile
+          rm -rf ios
+          flutter create --platforms=ios .
 
-      - name: Install Pods
+      # Force deployment target in Xcode project
+      - name: Force iOS 15 deployment target
+        script: |
+          sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = [0-9.]*/IPHONEOS_DEPLOYMENT_TARGET = 15.0/g' ios/Runner.xcodeproj/project.pbxproj
+
+      # Create clean Podfile
+      - name: Create fixed Podfile
+        script: |
+          cat > ios/Podfile <<'EOF'
+          platform :ios, '15.0'
+          ENV['COCOAPODS_DISABLE_STATS'] = 'true'
+
+          use_frameworks! :linkage => :static
+
+          target 'Runner' do
+            flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+          end
+
+          post_install do |installer|
+            installer.pods_project.targets.each do |target|
+              target.build_configurations.each do |config|
+                config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
+              end
+            end
+          end
+          EOF
+
+      # Install pods fresh
+      - name: Install CocoaPods
         script: |
           cd ios
           pod install --repo-update
           cd ..
 
-      # IMPORTANT: no flutter ios build! Only xcodebuild
-      - name: Build using Xcode
+      # Build IPA
+      - name: Build iOS IPA
         script: |
-          xcodebuild \
-            -workspace ios/Runner.xcworkspace \
-            -scheme Runner \
-            -configuration Release \
-            -destination "generic/platform=iOS" \
-            CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_IDENTITY="" \
-            | xcpretty
+          flutter build ipa --release
 
     artifacts:
-      - build/ios/iphoneos/*.app
-      - /tmp/xcodebuild_logs/*.log
-      - /tmp/Podfile    # <-- added Podfile artifact
+      - build/ios/ipa/*.ipa
