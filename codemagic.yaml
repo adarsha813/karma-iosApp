@@ -1,29 +1,84 @@
 workflows:
-
-  simulator-workflow:
-
-    name: Build for simulator
+  ios-stellar-preview:
+    name: iOS Stellar Preview Build
+    max_build_duration: 60
 
     environment:
-
+      flutter: stable
       xcode: latest
+      cocoapods: default
 
     scripts:
-
-      - name: Build with Generic Destination
-
+      # Clean Flutter & iOS
+      - name: Clean Flutter & iOS
         script: |
+          flutter clean
+          rm -rf ios/Pods ios/Podfile.lock ios/.symlinks
 
-          xcodebuild build \
+      # Get Flutter packages
+      - name: Get Flutter packages
+        script: flutter pub get
 
-            -project "yourproject.xcodeproj" \
+      # Regenerate iOS files (force iOS 15)
+      - name: Regenerate iOS files
+        script: |
+          rm -rf ios
+          flutter create --platforms=ios .
 
-            -scheme "yourscheme" \
+      # Force deployment target to iOS 15
+      - name: Force iOS 15 deployment target
+        script: |
+          sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = [0-9.]*/IPHONEOS_DEPLOYMENT_TARGET = 15.0/g' ios/Runner.xcodeproj/project.pbxproj
 
-            -sdk iphonesimulator \
+      # Create clean Podfile
+      - name: Create fixed Podfile
+        script: |
+          cat > ios/Podfile <<'EOF'
+          platform :ios, '15.0'
+          ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
-            -configuration Debug          
+          use_frameworks! :linkage => :static
+
+          target 'Runner' do
+            flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+          end
+
+          post_install do |installer|
+            installer.pods_project.targets.each do |target|
+              target.build_configurations.each do |config|
+                config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
+              end
+            end
+          end
+          EOF
+
+      # Install CocoaPods
+      - name: Install CocoaPods
+        script: |
+          cd ios
+          pod install --repo-update
+          cd ..
+
+      # Build IPA for Stellar Preview
+      - name: Build iOS IPA
+        script: flutter build ipa --export-options-plist=ExportOptions.plist
+
+      # Skip flutter analyze issues (warnings won’t fail build)
+      - name: Flutter Analyze (non-fatal)
+        script: flutter analyze --no-fatal-infos --no-fatal-warnings
+
+      # Optional: skip tests if test folder missing
+      - name: Flutter Test (optional)
+        script: |
+          if [ -d "test" ]; then
+            flutter test
+          else
+            echo "No test folder found, skipping tests"
+          fi
 
     artifacts:
+      - build/ios/ipa/*.ipa   # IPA artifact for Stellar Preview
 
-      - /Users/builder/Library/Developer/Xcode/DerivedData/**/*.app
+    publishing:
+      stellar_preview:
+        enable: true   # <-- Generates Test button/link automatically
