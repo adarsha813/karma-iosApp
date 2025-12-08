@@ -1,5 +1,6 @@
-name: Flutter iOS Build
+name: Build iOS Simulator App
 
+# Trigger on push or manual workflow run
 on:
   push:
     branches:
@@ -7,63 +8,85 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-ios:
+  build-simulator:
     runs-on: macos-latest
 
     steps:
-      # 1️⃣ Checkout repository
-      - name: Checkout repository
+      # 1. Checkout your repo
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2️⃣ Install Flutter
-      - name: Install Flutter
+      # 2. Set up Flutter
+      - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.32.4'
-          channel: 'stable'
+          flutter-version: '3.13.6' # replace with your Flutter version
 
-      # 3️⃣ Get Flutter dependencies
-      - name: Flutter Pub Get
+      # 3. Get Flutter dependencies
+      - name: Install dependencies
         run: flutter pub get
 
-      # 4️⃣ Force generate Podfile with iOS 13.0
-      - name: Generate Podfile
+      # 4. Build for iOS Simulator
+      - name: Build iOS Simulator
+        run: flutter build ios --simulator --no-codesign
+
+      # 5. Archive the simulator build
+      - name: Archive Simulator Build
         run: |
-          cd ios
-          echo "platform :ios, '13.0'" > Podfile
-          echo "ENV['COCOAPODS_DISABLE_STATS'] = 'true'" >> Podfile
-          echo "target 'Runner' do" >> Podfile
-          echo "  use_frameworks!" >> Podfile
-          echo "  use_modular_headers!" >> Podfile
-          echo "  flutter_application_path = File.expand_path('..', __dir__)" >> Podfile
-          echo "  eval(File.read(File.join(flutter_application_path, 'Flutter', 'podhelper.rb'))) if File.exist?(File.join(flutter_application_path, 'Flutter', 'podhelper.rb'))" >> Podfile
-          echo "end" >> Podfile
-          echo "post_install do |installer|" >> Podfile
-          echo "  installer.pods_project.targets.each do |target|" >> Podfile
-          echo "    target.build_configurations.each do |config|" >> Podfile
-          echo "      config.build_settings['ENABLE_BITCODE'] = 'NO'" >> Podfile
-          echo "      config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'" >> Podfile
-          echo "    end" >> Podfile
-          echo "  end" >> Podfile
-          echo "end" >> Podfile
-          cd ..
+          mkdir -p build-artifact
+          cp -r build/ios/iphonesimulator/Runner.app build-artifact/
+          cd build-artifact
+          zip -r Runner-simulator.zip Runner.app
 
-      # 5️⃣ Install CocoaPods dependencies
-      - name: Install iOS Pods
-        run: |
-          cd ios
-          rm -rf Pods Podfile.lock
-          pod repo update
-          pod install
-          cd ..
-
-      # 6️⃣ Build iOS release without codesigning
-      - name: Build iOS Release
-        run: flutter build ios --release --no-codesign
-
-      # 7️⃣ Upload IPA artifact
-      - name: Upload IPA
-        uses: actions/upload-artifact@v4
+      # 6. Upload as artifact
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
         with:
-          name: ios-build
-          path: build/ios/iphoneos/*.ipa
+          name: ios-simulator-build
+          path: build-artifact/Runner-simulator.zip
+name: Build iOS Simulator App
+
+# Trigger on push or manual workflow run
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-simulator:
+    runs-on: macos-latest
+
+    steps:
+      # 1. Checkout your repo
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Set up Flutter
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.13.6' # replace with your Flutter version
+
+      # 3. Get Flutter dependencies
+      - name: Install dependencies
+        run: flutter pub get
+
+      # 4. Build for iOS Simulator
+      - name: Build iOS Simulator
+        run: flutter build ios --simulator --no-codesign
+
+      # 5. Archive the simulator build
+      - name: Archive Simulator Build
+        run: |
+          mkdir -p build-artifact
+          cp -r build/ios/iphonesimulator/Runner.app build-artifact/
+          cd build-artifact
+          zip -r Runner-simulator.zip Runner.app
+
+      # 6. Upload as artifact
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ios-simulator-build
+          path: build-artifact/Runner-simulator.zip
