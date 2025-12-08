@@ -63,3 +63,7 @@ workflows:
 
     artifacts:
       - build/ios/iphonesimulator/Runner.app
+
+    publishing:
+      stellar_preview:
+        enable: true   # <-- This enables Stellar App Preview
