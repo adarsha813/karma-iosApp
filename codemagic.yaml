@@ -61,6 +61,10 @@ workflows:
       - name: Build iOS Simulator App
         script: flutter build ios --simulator
 
+      # Optional: skip flutter analyze issues
+      - name: Flutter Analyze (non-fatal)
+        script: flutter analyze --no-fatal-infos --no-fatal-warnings
+
     artifacts:
       - build/ios/iphonesimulator/Runner.app
 
