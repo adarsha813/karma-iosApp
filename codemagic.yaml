@@ -61,13 +61,22 @@ workflows:
       - name: Build iOS Simulator App
         script: flutter build ios --simulator
 
-      # Optional: skip flutter analyze issues
+      # Skip flutter analyze issues (warnings won't fail the build)
       - name: Flutter Analyze (non-fatal)
         script: flutter analyze --no-fatal-infos --no-fatal-warnings
+
+      # Skip flutter test if test folder is missing
+      - name: Flutter Test (optional)
+        script: |
+          if [ -d "test" ]; then
+            flutter test
+          else
+            echo "No test folder found, skipping tests"
+          fi
 
     artifacts:
       - build/ios/iphonesimulator/Runner.app
 
     publishing:
       stellar_preview:
-        enable: true   # <-- This enables Stellar App Preview
+        enable: true   # <-- Enables Stellar App Preview
