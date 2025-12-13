@@ -862,28 +862,31 @@ class AppLocalizationsTe extends AppLocalizations {
   String get lightThemeLabel => 'కాంతి';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'ఎల్లప్పుడూ లేత రంగు థీమ్‌ను ఉపయోగించండి';
 
   @override
   String get darkThemeLabel => 'చీకటి';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription =>
+      'ఎల్లప్పుడూ ముదురు రంగు థీమ్‌ను ఉపయోగించండి';
 
   @override
   String get systemThemeLabel => 'వ్యవస్థ';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'డార్క్ థీమ్ కోసం సిస్టమ్ సెట్టింగ్‌ను అనుసరించండి';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'లేత రంగు థీమ్ కోసం సిస్టమ్ సెట్టింగ్‌ను అనుసరించండి';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'కాంతికి మారండి';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'డార్క్ కు మారండి';
 
   @override
   String get ourTeam => 'మా జట్టు';

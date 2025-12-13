@@ -870,28 +870,30 @@ class AppLocalizationsGd extends AppLocalizations {
   String get lightThemeLabel => 'Solas';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Cleachd cuspair aotrom an-còmhnaidh';
 
   @override
   String get darkThemeLabel => 'Dorcha';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Cleachd cuspair dorcha an-còmhnaidh';
 
   @override
   String get systemThemeLabel => 'Siostam';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Lean roghainnean an t-siostaim airson cuspair dorcha';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Lean roghainnean an t-siostaim airson cuspair aotrom';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Gluais gu Solas';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Gluais gu Dorchadas';
 
   @override
   String get ourTeam => 'An Sgioba againn';

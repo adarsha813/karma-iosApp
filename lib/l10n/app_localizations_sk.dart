@@ -853,28 +853,30 @@ class AppLocalizationsSk extends AppLocalizations {
   String get lightThemeLabel => 'Svetlo';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Vždy používať svetlú tému';
 
   @override
   String get darkThemeLabel => 'Tmavé';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Vždy používať tmavú tému';
 
   @override
   String get systemThemeLabel => 'Systém';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Postupujte podľa systémových nastavení pre tmavý motív';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Postupujte podľa systémových nastavení pre svetlú tému';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Prepnúť na svetlo';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Prepnúť na tmavú';
 
   @override
   String get ourTeam => 'Náš tím';

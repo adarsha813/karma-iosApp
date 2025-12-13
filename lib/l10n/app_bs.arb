@@ -441,5 +441,11 @@
   "darkThemeLabel": "Tamno",
   "systemThemeLabel": "Sistem",
   "ourTeam": "Naš tim",
-  "teamDescription": "Naš tim profesionalnih vedskih astrologa ima dugogodišnje iskustvo u tumačenju planetarnih utjecaja i životnih obrazaca. Uz podršku posvećenog tima za podršku i razvoj, Karma pruža besprijekorno, pouzdano i globalno iskustvo za svakog korisnika."
+  "teamDescription": "Naš tim profesionalnih vedskih astrologa ima dugogodišnje iskustvo u tumačenju planetarnih utjecaja i životnih obrazaca. Uz podršku posvećenog tima za podršku i razvoj, Karma pruža besprijekorno, pouzdano i globalno iskustvo za svakog korisnika.",
+  "lightThemeDescription": "Uvijek koristi svijetlu temu",
+  "darkThemeDescription": "Uvijek koristi tamnu temu",
+  "systemThemeDarkDescription": "Pratite sistemske postavke za tamnu temu",
+  "systemThemeLightDescription": "Pratite sistemske postavke za svijetlu temu",
+  "switchToLight": "Prebaci na svjetlo",
+  "switchToDark": "Prebaci na tamno"
 }

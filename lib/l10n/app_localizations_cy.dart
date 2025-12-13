@@ -860,28 +860,30 @@ class AppLocalizationsCy extends AppLocalizations {
   String get lightThemeLabel => 'Golau';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Defnyddiwch thema ysgafn bob amser';
 
   @override
   String get darkThemeLabel => 'Tywyll';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Defnyddiwch thema dywyll bob amser';
 
   @override
   String get systemThemeLabel => 'System';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Dilynwch osodiadau\'r system ar gyfer thema dywyll';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Dilynwch osodiadau\'r system ar gyfer thema ysgafn';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Newid i Olau';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Newid i Dywyll';
 
   @override
   String get ourTeam => 'Ein Tîm';

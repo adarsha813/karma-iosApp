@@ -853,28 +853,30 @@ class AppLocalizationsHt extends AppLocalizations {
   String get lightThemeLabel => 'Limyè';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Toujou itilize tèm limyè';
 
   @override
   String get darkThemeLabel => 'Fènwa';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Toujou itilize tèm nwa a';
 
   @override
   String get systemThemeLabel => 'Sistèm';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Swiv paramèt sistèm lan pou tèm nwa a';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Swiv paramèt sistèm lan pou tèm limyè a';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Chanje nan Limyè';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Chanje nan fènwa';
 
   @override
   String get ourTeam => 'Ekip nou an';

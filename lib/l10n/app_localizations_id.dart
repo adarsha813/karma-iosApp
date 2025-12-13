@@ -852,28 +852,30 @@ class AppLocalizationsId extends AppLocalizations {
   String get lightThemeLabel => 'Lampu';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Selalu gunakan tema terang.';
 
   @override
   String get darkThemeLabel => 'Gelap';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Selalu gunakan tema gelap.';
 
   @override
   String get systemThemeLabel => 'Sistem';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Ikuti pengaturan sistem untuk tema gelap.';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Ikuti pengaturan sistem untuk tema terang.';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Beralih ke Cahaya';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Beralih ke Gelap';
 
   @override
   String get ourTeam => 'Tim Kami';

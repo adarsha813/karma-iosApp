@@ -858,28 +858,30 @@ class AppLocalizationsKy extends AppLocalizations {
   String get lightThemeLabel => 'Жарык';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Ар дайым жарык теманы колдонуңуз';
 
   @override
   String get darkThemeLabel => 'Караңгы';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Ар дайым караңгы теманы колдонуңуз';
 
   @override
   String get systemThemeLabel => 'Система';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Караңгы тема үчүн системанын жөндөөлөрүн аткарыңыз';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Жарык тема үчүн системанын жөндөөлөрүн аткарыңыз';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Жарыкка которулуу';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Караңгыга которулуу';
 
   @override
   String get ourTeam => 'Биздин команда';

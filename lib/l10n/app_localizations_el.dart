@@ -863,28 +863,31 @@ class AppLocalizationsEl extends AppLocalizations {
   String get lightThemeLabel => 'Φως';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription =>
+      'Να χρησιμοποιείτε πάντα ανοιχτόχρωμο θέμα';
 
   @override
   String get darkThemeLabel => 'Σκοτάδι';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Να χρησιμοποιείται πάντα σκούρο θέμα';
 
   @override
   String get systemThemeLabel => 'Σύστημα';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Ακολουθήστε τη ρύθμιση συστήματος για το σκούρο θέμα';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Ακολουθήστε τη ρύθμιση συστήματος για το ανοιχτό θέμα';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Αλλαγή σε Φως';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Αλλαγή σε Σκούρο';
 
   @override
   String get ourTeam => 'Η ομάδα μας';

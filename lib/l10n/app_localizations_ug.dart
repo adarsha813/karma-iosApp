@@ -857,28 +857,30 @@ class AppLocalizationsUg extends AppLocalizations {
   String get lightThemeLabel => 'نۇر';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'ھەمىشە يورۇق تېما ئىشلىتىڭ';
 
   @override
   String get darkThemeLabel => 'قاراڭغۇ';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'ھەمىشە قاراڭغۇ تېما ئىشلىتىڭ';
 
   @override
   String get systemThemeLabel => 'سىستېما';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'قاراڭغۇ تېما ئۈچۈن سىستېما تەڭشىكىگە ئەگىشىڭ';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'يورۇق تېما ئۈچۈن سىستېما تەڭشىكىگە ئەگىشىڭ';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'يورۇقلۇققا ئالماشتۇرۇڭ';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'قاراڭغۇغا ئالماشتۇرۇڭ';
 
   @override
   String get ourTeam => 'گۇرۇپپىمىز';

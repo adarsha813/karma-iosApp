@@ -865,28 +865,31 @@ class AppLocalizationsSo extends AppLocalizations {
   String get lightThemeLabel => 'Iftiin';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Had iyo jeer isticmaal mawduuc fudud';
 
   @override
   String get darkThemeLabel => 'Madow';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription =>
+      'Had iyo jeer isticmaal dulucda mugdiga ah';
 
   @override
   String get systemThemeLabel => 'Nidaamka';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Raac dejinta nidaamka si aad u hesho dulucda mugdiga ah';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Raac dejinta nidaamka si aad u hesho dulucda fudud';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'U beddel Iftiin';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'U beddel Madow';
 
   @override
   String get ourTeam => 'Kooxdayada';

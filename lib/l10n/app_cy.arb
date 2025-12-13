@@ -441,5 +441,11 @@
   "darkThemeLabel": "Tywyll",
   "systemThemeLabel": "System",
   "ourTeam": "Ein Tîm",
-  "teamDescription": "Mae ein tîm o astrolegwyr Vedic proffesiynol yn dod â blynyddoedd o brofiad o ddehongli dylanwadau planedol a phatrymau bywyd. Gyda chefnogaeth tîm cymorth a datblygu ymroddedig, mae Karma yn darparu profiad di-dor, dibynadwy a byd-eang i bob defnyddiwr."
+  "teamDescription": "Mae ein tîm o astrolegwyr Vedic proffesiynol yn dod â blynyddoedd o brofiad o ddehongli dylanwadau planedol a phatrymau bywyd. Gyda chefnogaeth tîm cymorth a datblygu ymroddedig, mae Karma yn darparu profiad di-dor, dibynadwy a byd-eang i bob defnyddiwr.",
+  "lightThemeDescription": "Defnyddiwch thema ysgafn bob amser",
+  "darkThemeDescription": "Defnyddiwch thema dywyll bob amser",
+  "systemThemeDarkDescription": "Dilynwch osodiadau'r system ar gyfer thema dywyll",
+  "systemThemeLightDescription": "Dilynwch osodiadau'r system ar gyfer thema ysgafn",
+  "switchToLight": "Newid i Olau",
+  "switchToDark": "Newid i Dywyll"
 }

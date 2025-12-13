@@ -441,5 +441,11 @@
   "darkThemeLabel": "Donker",
   "systemThemeLabel": "Stelsel",
   "ourTeam": "Ons span",
-  "teamDescription": "Ons span professionele Vediese astroloë het jare se ondervinding in die interpretasie van planetêre invloede en lewenspatrone. Gerugsteun deur 'n toegewyde ondersteunings- en ontwikkelingspan, lewer Karma 'n naatlose, betroubare en globale ervaring vir elke gebruiker."
+  "teamDescription": "Ons span professionele Vediese astroloë het jare se ondervinding in die interpretasie van planetêre invloede en lewenspatrone. Gerugsteun deur 'n toegewyde ondersteunings- en ontwikkelingspan, lewer Karma 'n naatlose, betroubare en globale ervaring vir elke gebruiker.",
+  "lightThemeDescription": "Gebruik altyd ligte tema",
+  "darkThemeDescription": "Gebruik altyd donker tema",
+  "systemThemeDarkDescription": "Volg stelselinstellings vir donker tema",
+  "systemThemeLightDescription": "Volg stelselinstellings vir ligte tema",
+  "switchToLight": "Skakel oor na Lig",
+  "switchToDark": "Skakel oor na Donker"
 }

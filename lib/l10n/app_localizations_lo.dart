@@ -852,28 +852,30 @@ class AppLocalizationsLo extends AppLocalizations {
   String get lightThemeLabel => 'ແສງສະຫວ່າງ';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'ໃຊ້ຮູບແບບສີສັນສົດໃສສະເໝີ';
 
   @override
   String get darkThemeLabel => 'ມືດ';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'ໃຊ້ຮູບແບບສີສັນມືດສະເໝີ';
 
   @override
   String get systemThemeLabel => 'ລະບົບ';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'ປະຕິບັດຕາມການຕັ້ງຄ່າລະບົບສຳລັບຮູບແບບສີສັນມືດ';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'ປະຕິບັດຕາມການຕັ້ງຄ່າລະບົບສຳລັບຮູບແບບສີສັນສະຫວ່າງ';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'ປ່ຽນເປັນໄຟ';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'ປ່ຽນເປັນສີມືດ';
 
   @override
   String get ourTeam => 'ທີມງານຂອງພວກເຮົາ';

@@ -441,5 +441,11 @@
   "darkThemeLabel": "Garaňky",
   "systemThemeLabel": "Ulgam",
   "ourTeam": "Toparymyz",
-  "teamDescription": "Professional Wedik astrologlar toparymyz, planetanyň täsirlerini we ýaşaýyş durmuşyny düşündirmek boýunça köp ýyllyk tejribe getirýär. Aýratyn goldaw we ösüş topary tarapyndan goldanan Karma, her bir ulanyjy üçin üznüksiz, ygtybarly we global tejribe berýär."
+  "teamDescription": "Professional Wedik astrologlar toparymyz, planetanyň täsirlerini we ýaşaýyş durmuşyny düşündirmek boýunça köp ýyllyk tejribe getirýär. Aýratyn goldaw we ösüş topary tarapyndan goldanan Karma, her bir ulanyjy üçin üznüksiz, ygtybarly we global tejribe berýär.",
+  "lightThemeDescription": "Hemişe ýagty tema ulanyň",
+  "darkThemeDescription": "Hemişe garaňky tema ulanyň",
+  "systemThemeDarkDescription": "Garaňky tema üçin ulgam sazlamalaryny yzarlaň",
+  "systemThemeLightDescription": "Ýagty tema üçin ulgam sazlamalaryny yzarlaň",
+  "switchToLight": "Yşyklyga geç",
+  "switchToDark": "Garaňkylyga geç"
 }

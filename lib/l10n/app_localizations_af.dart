@@ -851,28 +851,30 @@ class AppLocalizationsAf extends AppLocalizations {
   String get lightThemeLabel => 'Lig';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Gebruik altyd ligte tema';
 
   @override
   String get darkThemeLabel => 'Donker';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Gebruik altyd donker tema';
 
   @override
   String get systemThemeLabel => 'Stelsel';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Volg stelselinstellings vir donker tema';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Volg stelselinstellings vir ligte tema';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Skakel oor na Lig';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Skakel oor na Donker';
 
   @override
   String get ourTeam => 'Ons span';

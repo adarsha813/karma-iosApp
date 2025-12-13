@@ -81,6 +81,7 @@ dependencies:
   path: ^1.9.1
   restart_app: ^1.2.1
   audio_session: ^0.2.2
+  flutter_native_splash: ^2.4.0
 
  
   
@@ -102,6 +103,7 @@ flutter_icons:
   android: true
   ios: true
   image_path: "assets/icons/app_icon.png"
+  
 
 flutter_launcher_name:
   name: "Karma - Life Path"

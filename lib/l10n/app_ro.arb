@@ -441,5 +441,11 @@
   "darkThemeLabel": "Întuneric",
   "systemThemeLabel": "Sistem",
   "ourTeam": "Echipa noastră",
-  "teamDescription": "Echipa noastră de astrologi vedici profesioniști are ani de experiență în interpretarea influențelor planetare și a tiparelor de viață. Susținută de o echipă dedicată de asistență și dezvoltare, Karma oferă o experiență fluidă, fiabilă și globală pentru fiecare utilizator."
+  "teamDescription": "Echipa noastră de astrologi vedici profesioniști are ani de experiență în interpretarea influențelor planetare și a tiparelor de viață. Susținută de o echipă dedicată de asistență și dezvoltare, Karma oferă o experiență fluidă, fiabilă și globală pentru fiecare utilizator.",
+  "lightThemeDescription": "Folosește întotdeauna tema luminoasă",
+  "darkThemeDescription": "Folosește întotdeauna tema întunecată",
+  "systemThemeDarkDescription": "Urmați setările de sistem pentru tema întunecată",
+  "systemThemeLightDescription": "Urmați setările de sistem pentru tema luminoasă",
+  "switchToLight": "Comutare la lumină",
+  "switchToDark": "Comutare la Întuneric"
 }

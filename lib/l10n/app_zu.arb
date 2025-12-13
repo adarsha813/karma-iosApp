@@ -441,5 +441,11 @@
   "darkThemeLabel": "Kumnyama",
   "systemThemeLabel": "Uhlelo",
   "ourTeam": "Ithimba lethu",
-  "teamDescription": "Ithimba lethu lezazi zezinkanyezi ze-Vedic liletha isipiliyoni seminyaka sokuhumusha amathonya eplanethi namaphethini okuphila. Isekelwa ithimba elizinikele elisekelayo nelokuthuthukisa, i-Karma iletha ulwazi olungenazihibe, oluthembekile, nolwembulunga yonke kuwo wonke umsebenzisi."
+  "teamDescription": "Ithimba lethu lezazi zezinkanyezi ze-Vedic liletha isipiliyoni seminyaka sokuhumusha amathonya eplanethi namaphethini okuphila. Isekelwa ithimba elizinikele elisekelayo nelokuthuthukisa, i-Karma iletha ulwazi olungenazihibe, oluthembekile, nolwembulunga yonke kuwo wonke umsebenzisi.",
+  "lightThemeDescription": "Sebenzisa itimu ekhanyayo njalo",
+  "darkThemeDescription": "Sebenzisa itimu emnyama njalo",
+  "systemThemeDarkDescription": "Landela izilungiselelo zesistimu zetimu emnyama",
+  "systemThemeLightDescription": "Landela ukulungiselelwa kwesistimu kwetimu ekhanyayo",
+  "switchToLight": "Shintshela Ekukhanyeni",
+  "switchToDark": "Shintshela ku-Dark"
 }

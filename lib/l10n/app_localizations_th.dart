@@ -854,28 +854,29 @@ class AppLocalizationsTh extends AppLocalizations {
   String get lightThemeLabel => 'แสงสว่าง';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'ควรใช้ธีมสีอ่อนเสมอ';
 
   @override
   String get darkThemeLabel => 'มืด';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'ควรใช้ธีมสีเข้มเสมอ';
 
   @override
   String get systemThemeLabel => 'ระบบ';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription => 'ทำตามการตั้งค่าระบบสำหรับธีมสีเข้ม';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'ทำตามการตั้งค่าระบบสำหรับธีมสีอ่อน';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'เปลี่ยนเป็นโหมดสว่าง';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'เปลี่ยนเป็นโหมดมืด';
 
   @override
   String get ourTeam => 'ทีมงานของเรา';

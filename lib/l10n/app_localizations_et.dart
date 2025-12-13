@@ -854,28 +854,30 @@ class AppLocalizationsEt extends AppLocalizations {
   String get lightThemeLabel => 'Valgus';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Kasuta alati heledat teemat';
 
   @override
   String get darkThemeLabel => 'Tume';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Kasuta alati tumedat teemat';
 
   @override
   String get systemThemeLabel => 'Süsteem';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Tumeda teema puhul järgi süsteemi seadeid';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Järgi heleda teema süsteemiseadeid';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Lülitu heledale režiimile';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Lülitu tumedale';
 
   @override
   String get ourTeam => 'Meie meeskond';

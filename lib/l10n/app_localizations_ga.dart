@@ -857,28 +857,30 @@ class AppLocalizationsGa extends AppLocalizations {
   String get lightThemeLabel => 'Solas';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Bain úsáid as téama éadrom i gcónaí';
 
   @override
   String get darkThemeLabel => 'Dorcha';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Bain úsáid as téama dorcha i gcónaí';
 
   @override
   String get systemThemeLabel => 'Córas';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Lean socruithe an chórais le haghaidh téama dorcha';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Lean socruithe an chórais le haghaidh téama éadrom';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Athraigh go Solas';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Athraigh go Dorcha';
 
   @override
   String get ourTeam => 'Ár bhFoireann';

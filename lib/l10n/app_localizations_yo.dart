@@ -849,28 +849,28 @@ class AppLocalizationsYo extends AppLocalizations {
   String get lightThemeLabel => 'Imọlẹ';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Lo akori imọlẹ nigbagbogbo';
 
   @override
   String get darkThemeLabel => 'Dudu';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Lo àkòrí dúdú nígbà gbogbo';
 
   @override
   String get systemThemeLabel => 'Eto';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription => 'Tẹ̀lé ètò ètò fún àkòrí dúdú';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription => 'Tẹ̀lé ètò ètò fún àkòrí ìmọ́lẹ̀';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Yípadà sí Ìmọ́lẹ̀';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Yípadà sí Dúdúdú';
 
   @override
   String get ourTeam => 'Egbe wa';

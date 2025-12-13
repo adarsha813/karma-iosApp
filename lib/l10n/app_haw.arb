@@ -441,5 +441,11 @@
   "darkThemeLabel": "Poʻeleʻele",
   "systemThemeLabel": "Pūnaehana",
   "ourTeam": "Ko makou Hui",
-  "teamDescription": "ʻO kā mākou hui o nā mea hoʻokele Vedic ʻoihana e lawe mai i nā makahiki o ka ʻike i ka unuhi ʻana i nā mana honua a me nā ʻano ola. Kākoʻo ʻia e kahi kākoʻo hoʻolaʻa a me ka hui hoʻomohala, hāʻawi ʻo Karma i kahi ʻike maʻalahi, hilinaʻi, a me ka honua no kēlā me kēia mea hoʻohana."
+  "teamDescription": "ʻO kā mākou hui o nā mea hoʻokele Vedic ʻoihana e lawe mai i nā makahiki o ka ʻike i ka unuhi ʻana i nā mana honua a me nā ʻano ola. Kākoʻo ʻia e kahi kākoʻo hoʻolaʻa a me ka hui hoʻomohala, hāʻawi ʻo Karma i kahi ʻike maʻalahi, hilinaʻi, a me ka honua no kēlā me kēia mea hoʻohana.",
+  "lightThemeDescription": "E hoʻohana mau i ke kumumanaʻo māmā",
+  "darkThemeDescription": "E hoʻohana mau i ke kumumanaʻo pōʻeleʻele",
+  "systemThemeDarkDescription": "E hahai i ka hoʻonohonoho ʻōnaehana no ke kumumanaʻo pōʻeleʻele",
+  "systemThemeLightDescription": "E hahai i ka hoʻonohonoho ʻōnaehana no ke kumumanaʻo māmā",
+  "switchToLight": "E hoʻololi i ke kukui",
+  "switchToDark": "E hoʻololi i ka Pōʻeleʻele"
 }

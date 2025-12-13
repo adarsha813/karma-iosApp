@@ -860,28 +860,30 @@ class AppLocalizationsHu extends AppLocalizations {
   String get lightThemeLabel => 'Fény';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Mindig világos témát használjon';
 
   @override
   String get darkThemeLabel => 'Sötét';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Mindig sötét témát használjon';
 
   @override
   String get systemThemeLabel => 'Rendszer';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Kövesd a sötét téma rendszerbeállítását';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Kövesse a rendszerbeállítást a világos témához';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Váltás világosra';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Váltás sötétre';
 
   @override
   String get ourTeam => 'Csapatunk';

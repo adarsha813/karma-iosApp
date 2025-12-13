@@ -855,28 +855,28 @@ class AppLocalizationsHa extends AppLocalizations {
   String get lightThemeLabel => 'Haske';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Koyaushe yi amfani da jigon haske';
 
   @override
   String get darkThemeLabel => 'Duhu';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Koyaushe yi amfani da jigon duhu';
 
   @override
   String get systemThemeLabel => 'Tsari';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription => 'Bi tsarin saitin don jigon duhu';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription => 'Bi tsarin saitin don jigon haske';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Canja zuwa Haske';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Canja zuwa Duhu';
 
   @override
   String get ourTeam => 'Tawagar mu';

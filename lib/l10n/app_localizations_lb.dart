@@ -860,28 +860,30 @@ class AppLocalizationsLb extends AppLocalizations {
   String get lightThemeLabel => 'Liicht';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Benotzt ëmmer en hellt Thema';
 
   @override
   String get darkThemeLabel => 'Däischter';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Benotzt ëmmer en donkelt Thema';
 
   @override
   String get systemThemeLabel => 'System';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Systemastellungen fir däischtert Thema befollegen';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Systemastellungen fir hellt Thema befollegen';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Wiesselt op Liicht';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Wiesselt op Däischter';
 
   @override
   String get ourTeam => 'Eis Equipe';

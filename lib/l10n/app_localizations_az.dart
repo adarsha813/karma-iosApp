@@ -854,28 +854,30 @@ class AppLocalizationsAz extends AppLocalizations {
   String get lightThemeLabel => 'İşıq';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Həmişə işıqlı temadan istifadə edin';
 
   @override
   String get darkThemeLabel => 'Qaranlıq';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Həmişə tünd tema istifadə edin';
 
   @override
   String get systemThemeLabel => 'Sistem';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Tünd tema üçün sistem ayarlarını izləyin';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'İşıqlı tema üçün sistem ayarlarını izləyin';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'İşığa keçin';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Qaranlığa keçin';
 
   @override
   String get ourTeam => 'Bizim Komanda';

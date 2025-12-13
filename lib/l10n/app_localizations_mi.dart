@@ -854,28 +854,30 @@ class AppLocalizationsMi extends AppLocalizations {
   String get lightThemeLabel => 'Maama';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Whakamahia tonutia te kaupapa māmā';
 
   @override
   String get darkThemeLabel => 'pouri';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Whakamahia tonutia te kaupapa pōuri';
 
   @override
   String get systemThemeLabel => 'Pūnaha';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Whāia te tautuhinga pūnaha mō te kaupapa pōuri';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Whāia te tautuhinga pūnaha mō te kaupapa mārama';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Huri ki te Mārama';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Huri ki te Pōuri';
 
   @override
   String get ourTeam => 'To matou Kapa';

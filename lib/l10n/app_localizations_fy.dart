@@ -853,28 +853,30 @@ class AppLocalizationsFy extends AppLocalizations {
   String get lightThemeLabel => 'Ljocht';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Brûk altyd in ljocht tema';
 
   @override
   String get darkThemeLabel => 'Tsjuster';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Brûk altyd tsjuster tema';
 
   @override
   String get systemThemeLabel => 'Systeem';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Folgje systeemynstelling foar tsjuster tema';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Folgje systeemynstelling foar ljocht tema';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Oerskeakelje nei ljocht';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Wikselje nei Tsjuster';
 
   @override
   String get ourTeam => 'Us Team';

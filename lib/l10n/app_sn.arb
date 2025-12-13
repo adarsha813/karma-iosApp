@@ -441,5 +441,11 @@
   "darkThemeLabel": "Rima",
   "systemThemeLabel": "System",
   "ourTeam": "Chikwata Chedu",
-  "teamDescription": "Chikwata chedu chenyanzvi dzeVedic vanoongorora nyeredzi vanounza makore eruzivo kududzira mafambiro epuraneti uye maitiro ehupenyu. Inotsigirwa neyakazvitsaurira rutsigiro uye timu yekusimudzira, Karma inopa isina musono, yakavimbika, uye yepasirese ruzivo kune wese mushandisi."
+  "teamDescription": "Chikwata chedu chenyanzvi dzeVedic vanoongorora nyeredzi vanounza makore eruzivo kududzira mafambiro epuraneti uye maitiro ehupenyu. Inotsigirwa neyakazvitsaurira rutsigiro uye timu yekusimudzira, Karma inopa isina musono, yakavimbika, uye yepasirese ruzivo kune wese mushandisi.",
+  "lightThemeDescription": "Shandisa dingindira rechiedza nguva dzose",
+  "darkThemeDescription": "Shandisa dingindira rerima nguva dzose",
+  "systemThemeDarkDescription": "Tevedzera marongero esystem ye dark theme",
+  "systemThemeLightDescription": "Tevedzera marongero esystem ye light theme",
+  "switchToLight": "Chinja kuChiedza",
+  "switchToDark": "Chinja kuenda kuRima"
 }

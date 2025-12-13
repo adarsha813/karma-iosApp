@@ -845,28 +845,30 @@ class AppLocalizationsAr extends AppLocalizations {
   String get lightThemeLabel => 'ضوء';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'استخدم دائمًا الوضع الفاتح';
 
   @override
   String get darkThemeLabel => 'مظلم';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'استخدم الوضع الداكن دائمًا';
 
   @override
   String get systemThemeLabel => 'نظام';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'اتبع إعدادات النظام لتفعيل الوضع الداكن';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'اتبع إعدادات النظام للحصول على الوضع الفاتح';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'قم بتشغيل الضوء';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'التبديل إلى الوضع الداكن';
 
   @override
   String get ourTeam => 'فريقنا';

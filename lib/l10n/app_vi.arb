@@ -441,5 +441,11 @@
   "darkThemeLabel": "Tối tăm",
   "systemThemeLabel": "Hệ thống",
   "ourTeam": "Đội ngũ của chúng tôi",
-  "teamDescription": "Đội ngũ chiêm tinh gia Vệ Đà chuyên nghiệp của chúng tôi có nhiều năm kinh nghiệm trong việc phân tích ảnh hưởng của các hành tinh và các mô hình cuộc sống. Được hỗ trợ bởi đội ngũ hỗ trợ và phát triển tận tâm, Karma mang đến trải nghiệm liền mạch, đáng tin cậy và toàn cầu cho mọi người dùng."
+  "teamDescription": "Đội ngũ chiêm tinh gia Vệ Đà chuyên nghiệp của chúng tôi có nhiều năm kinh nghiệm trong việc phân tích ảnh hưởng của các hành tinh và các mô hình cuộc sống. Được hỗ trợ bởi đội ngũ hỗ trợ và phát triển tận tâm, Karma mang đến trải nghiệm liền mạch, đáng tin cậy và toàn cầu cho mọi người dùng.",
+  "lightThemeDescription": "Luôn sử dụng giao diện sáng.",
+  "darkThemeDescription": "Luôn sử dụng chủ đề tối.",
+  "systemThemeDarkDescription": "Hãy làm theo cài đặt hệ thống để bật chủ đề tối.",
+  "systemThemeLightDescription": "Hãy làm theo cài đặt hệ thống để chọn chủ đề sáng.",
+  "switchToLight": "Chuyển sang chế độ sáng",
+  "switchToDark": "Chuyển sang chế độ Tối"
 }

@@ -855,28 +855,30 @@ class AppLocalizationsSi extends AppLocalizations {
   String get lightThemeLabel => 'ආලෝකය';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'සැමවිටම සැහැල්ලු තේමාව භාවිතා කරන්න';
 
   @override
   String get darkThemeLabel => 'අඳුරු';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'සැමවිටම අඳුරු තේමාව භාවිතා කරන්න';
 
   @override
   String get systemThemeLabel => 'පද්ධතිය';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'අඳුරු තේමාව සඳහා පද්ධති සැකසුම අනුගමනය කරන්න';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'ආලෝක තේමාව සඳහා පද්ධති සැකසුම අනුගමනය කරන්න';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'ආලෝකයට මාරු වන්න';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'අඳුරු වෙත මාරු වන්න';
 
   @override
   String get ourTeam => 'අපේ කණ්ඩායම';

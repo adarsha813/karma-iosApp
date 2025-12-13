@@ -441,5 +441,11 @@
   "darkThemeLabel": "Madilim",
   "systemThemeLabel": "Sistema",
   "ourTeam": "Ang aming Team",
-  "teamDescription": "Ang aming pangkat ng mga propesyonal na Vedic astrologo ay nagdadala ng mga taon ng karanasan sa pagbibigay kahulugan sa mga impluwensya ng planeta at mga pattern ng buhay. Na-back sa pamamagitan ng isang dedikadong suporta at development team, ang Karma ay naghahatid ng tuluy-tuloy, maaasahan, at pandaigdigang karanasan para sa bawat user."
+  "teamDescription": "Ang aming pangkat ng mga propesyonal na Vedic astrologo ay nagdadala ng mga taon ng karanasan sa pagbibigay kahulugan sa mga impluwensya ng planeta at mga pattern ng buhay. Na-back sa pamamagitan ng isang dedikadong suporta at development team, ang Karma ay naghahatid ng tuluy-tuloy, maaasahan, at pandaigdigang karanasan para sa bawat user.",
+  "lightThemeDescription": "Palaging gumamit ng magaan na tema",
+  "darkThemeDescription": "Palaging gumamit ng madilim na tema",
+  "systemThemeDarkDescription": "Sundin ang setting ng system para sa madilim na tema",
+  "systemThemeLightDescription": "Sundin ang setting ng system para sa light theme",
+  "switchToLight": "Lumipat sa Liwanag",
+  "switchToDark": "Lumipat sa Madilim"
 }

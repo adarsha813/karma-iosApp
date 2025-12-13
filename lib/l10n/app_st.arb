@@ -441,5 +441,11 @@
   "darkThemeLabel": "Lefifi",
   "systemThemeLabel": "Tsamaiso",
   "ourTeam": "Sehlopha sa rona",
-  "teamDescription": "Sehlopha sa rona sa litsebi tsa linohe tsa linaleli tsa Vedic se tlisa boiphihlelo ba lilemo tsa ho fetolela litšusumetso tsa lipolanete le mekhoa ea bophelo. E tšehelitsoe ke sehlopha se inehetseng sa tšehetso le nts'etsopele, Karma e fana ka boiphihlelo bo se nang moeli, bo tšepahalang le ba lefats'e bakeng sa mosebelisi e mong le e mong."
+  "teamDescription": "Sehlopha sa rona sa litsebi tsa linohe tsa linaleli tsa Vedic se tlisa boiphihlelo ba lilemo tsa ho fetolela litšusumetso tsa lipolanete le mekhoa ea bophelo. E tšehelitsoe ke sehlopha se inehetseng sa tšehetso le nts'etsopele, Karma e fana ka boiphihlelo bo se nang moeli, bo tšepahalang le ba lefats'e bakeng sa mosebelisi e mong le e mong.",
+  "lightThemeDescription": "Kamehla sebelisa sehlooho se bobebe",
+  "darkThemeDescription": "Kamehla sebelisa sehlooho se lefifi",
+  "systemThemeDarkDescription": "Latela tlhophiso ea sistimi bakeng sa sehlooho se lefifi",
+  "systemThemeLightDescription": "Latela tlhophiso ea sistimi bakeng sa sehlooho se bobebe",
+  "switchToLight": "Fetohela ho Leseli",
+  "switchToDark": "Fetohela ho Lefifi"
 }

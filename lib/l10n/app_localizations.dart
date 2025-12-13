@@ -1871,13 +1871,13 @@ abstract class AppLocalizations {
   /// No description provided for @systemThemeDarkDescription.
   ///
   /// In en, this message translates to:
-  /// **'Using system dark theme'**
+  /// **'Follow system setting for dark theme'**
   String get systemThemeDarkDescription;
 
   /// No description provided for @systemThemeLightDescription.
   ///
   /// In en, this message translates to:
-  /// **'Using system light theme'**
+  /// **'Follow system setting for light theme'**
   String get systemThemeLightDescription;
 
   /// No description provided for @switchToLight.

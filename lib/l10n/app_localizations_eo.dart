@@ -852,28 +852,30 @@ class AppLocalizationsEo extends AppLocalizations {
   String get lightThemeLabel => 'Lumo';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Ĉiam uzu helan temon';
 
   @override
   String get darkThemeLabel => 'Malluma';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Ĉiam uzu malhelan temon';
 
   @override
   String get systemThemeLabel => 'Sistemo';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Sekvu la sisteman agordon por malhela temo';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Sekvu la sisteman agordon por hela temo';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Ŝanĝu al Lumo';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Ŝanĝi al Mallumo';
 
   @override
   String get ourTeam => 'Nia Teamo';

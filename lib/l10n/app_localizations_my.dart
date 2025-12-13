@@ -866,28 +866,30 @@ class AppLocalizationsMy extends AppLocalizations {
   String get lightThemeLabel => 'အလင်း';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'လင်းသော အပြင်အဆင်ကို အမြဲသုံးပါ';
 
   @override
   String get darkThemeLabel => 'အမှောင်';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'မှောင်သော အပြင်အဆင်ကို အမြဲသုံးပါ';
 
   @override
   String get systemThemeLabel => 'စနစ်';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'မှောင်သော အပြင်အဆင်အတွက် စနစ်ဆက်တင်ကို လိုက်နာပါ';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'လင်းသော အပြင်အဆင်အတွက် စနစ်ဆက်တင်ကို လိုက်နာပါ';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'အလင်းသို့ပြောင်းပါ';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'မှောင်မိုက်သို့ပြောင်းပါ';
 
   @override
   String get ourTeam => 'ငါတို့အဖွဲ့';

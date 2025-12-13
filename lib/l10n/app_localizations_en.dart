@@ -865,10 +865,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get systemThemeLabel => 'System';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Follow system setting for dark theme';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Follow system setting for light theme';
 
   @override
   String get switchToLight => 'Switch to Light';

@@ -852,28 +852,30 @@ class AppLocalizationsTt extends AppLocalizations {
   String get lightThemeLabel => 'Яктылык';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Һәрвакыт якты тема кулланыгыз';
 
   @override
   String get darkThemeLabel => 'Караңгы';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Һәрвакыт караңгы тема кулланыгыз';
 
   @override
   String get systemThemeLabel => 'Система';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Караңгы тема өчен система көйләүләрен үтәгез';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Якты тема өчен система көйләүләрен үтәгез';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Яктылыкка күчү';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Караңгыга күчү';
 
   @override
   String get ourTeam => 'Безнең команда';

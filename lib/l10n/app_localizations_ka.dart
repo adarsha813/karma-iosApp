@@ -861,28 +861,30 @@ class AppLocalizationsKa extends AppLocalizations {
   String get lightThemeLabel => 'სინათლე';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'ყოველთვის გამოიყენეთ ღია თემა';
 
   @override
   String get darkThemeLabel => 'მუქი';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'ყოველთვის გამოიყენეთ მუქი თემა';
 
   @override
   String get systemThemeLabel => 'სისტემა';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'მუქი თემისთვის დაიცავით სისტემის პარამეტრი';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'ღია თემისთვის სისტემის პარამეტრის დაცვა';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'გადართვა ღია რეჟიმში';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'მუქ რეჟიმზე გადართვა';
 
   @override
   String get ourTeam => 'ჩვენი გუნდი';

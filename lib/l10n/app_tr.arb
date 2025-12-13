@@ -441,5 +441,11 @@
   "darkThemeLabel": "Karanlık",
   "systemThemeLabel": "Sistem",
   "ourTeam": "Ekibimiz",
-  "teamDescription": "Profesyonel Vedik astrologlardan oluşan ekibimiz, gezegensel etkileri ve yaşam kalıplarını yorumlama konusunda yılların deneyimine sahiptir. Özel bir destek ve geliştirme ekibinin desteğiyle Karma, her kullanıcıya kusursuz, güvenilir ve küresel bir deneyim sunar."
+  "teamDescription": "Profesyonel Vedik astrologlardan oluşan ekibimiz, gezegensel etkileri ve yaşam kalıplarını yorumlama konusunda yılların deneyimine sahiptir. Özel bir destek ve geliştirme ekibinin desteğiyle Karma, her kullanıcıya kusursuz, güvenilir ve küresel bir deneyim sunar.",
+  "lightThemeDescription": "Her zaman açık tema kullanın.",
+  "darkThemeDescription": "Her zaman koyu temayı kullanın.",
+  "systemThemeDarkDescription": "Koyu tema için sistem ayarlarını takip edin.",
+  "systemThemeLightDescription": "Açık tema için sistem ayarlarını takip edin.",
+  "switchToLight": "Işığa geç",
+  "switchToDark": "Koyu moda geç"
 }

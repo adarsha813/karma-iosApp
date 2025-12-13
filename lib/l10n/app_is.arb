@@ -441,5 +441,11 @@
   "darkThemeLabel": "Dökkt",
   "systemThemeLabel": "Kerfi",
   "ourTeam": "Teymið okkar",
-  "teamDescription": "Teymi okkar faglegra vedískra stjörnuspekinga býr yfir ára reynslu af því að túlka áhrif reikistjarna og lífsmynstur. Með stuðningi sérstaks stuðnings- og þróunarteymi býður Karma upp á óaðfinnanlega, áreiðanlega og alþjóðlega upplifun fyrir alla notendur."
+  "teamDescription": "Teymi okkar faglegra vedískra stjörnuspekinga býr yfir ára reynslu af því að túlka áhrif reikistjarna og lífsmynstur. Með stuðningi sérstaks stuðnings- og þróunarteymi býður Karma upp á óaðfinnanlega, áreiðanlega og alþjóðlega upplifun fyrir alla notendur.",
+  "lightThemeDescription": "Notið alltaf ljóst þema",
+  "darkThemeDescription": "Notið alltaf dökkt þema",
+  "systemThemeDarkDescription": "Fylgdu kerfisstillingum fyrir dökkt þema",
+  "systemThemeLightDescription": "Fylgdu kerfisstillingum fyrir ljóst þema",
+  "switchToLight": "Skipta yfir í ljós",
+  "switchToDark": "Skipta yfir í dökkt"
 }

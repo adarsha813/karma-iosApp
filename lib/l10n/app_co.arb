@@ -441,5 +441,11 @@
   "darkThemeLabel": "Scuru",
   "systemThemeLabel": "Sistema",
   "ourTeam": "A nostra squadra",
-  "teamDescription": "A nostra squadra d'astrologi vedichi prufessiunali porta anni d'esperienza in l'interpretazione di l'influenze planetarie è di i mudelli di vita. Sustenuta da una squadra di supportu è di sviluppu dedicata, Karma offre una sperienza senza intoppi, affidabile è glubale per ogni utilizatore."
+  "teamDescription": "A nostra squadra d'astrologi vedichi prufessiunali porta anni d'esperienza in l'interpretazione di l'influenze planetarie è di i mudelli di vita. Sustenuta da una squadra di supportu è di sviluppu dedicata, Karma offre una sperienza senza intoppi, affidabile è glubale per ogni utilizatore.",
+  "lightThemeDescription": "Aduprate sempre un tema chjaru",
+  "darkThemeDescription": "Aduprate sempre un tema scuru",
+  "systemThemeDarkDescription": "Segui i paràmetri di u sistema per u tema scuru",
+  "systemThemeLightDescription": "Segui l'impostazioni di u sistema per u tema chjaru",
+  "switchToLight": "Passà à a Luce",
+  "switchToDark": "Passà à Scuru"
 }

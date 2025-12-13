@@ -441,5 +441,11 @@
   "darkThemeLabel": "E errët",
   "systemThemeLabel": "Sistemi",
   "ourTeam": "Ekipi ynë",
-  "teamDescription": "Ekipi ynë i astrologëve profesionistë Vedikë sjell vite përvojë në interpretimin e ndikimeve planetare dhe modeleve të jetës. I mbështetur nga një ekip i përkushtuar mbështetjeje dhe zhvillimi, Karma ofron një përvojë të përsosur, të besueshme dhe globale për çdo përdorues."
+  "teamDescription": "Ekipi ynë i astrologëve profesionistë Vedikë sjell vite përvojë në interpretimin e ndikimeve planetare dhe modeleve të jetës. I mbështetur nga një ekip i përkushtuar mbështetjeje dhe zhvillimi, Karma ofron një përvojë të përsosur, të besueshme dhe globale për çdo përdorues.",
+  "lightThemeDescription": "Përdorni gjithmonë temë të çelët",
+  "darkThemeDescription": "Përdor gjithmonë temë të errët",
+  "systemThemeDarkDescription": "Ndiqni cilësimet e sistemit për temën e errët",
+  "systemThemeLightDescription": "Ndiqni cilësimet e sistemit për temën e çelët",
+  "switchToLight": "Kaloni në dritë",
+  "switchToDark": "Kalo në Errësirë"
 }

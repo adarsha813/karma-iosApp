@@ -441,5 +441,11 @@
   "darkThemeLabel": "Fosc",
   "systemThemeLabel": "Sistema",
   "ourTeam": "El nostre equip",
-  "teamDescription": "El nostre equip d'astròlegs vèdics professionals té anys d'experiència en la interpretació de les influències planetàries i els patrons de vida. Amb el suport d'un equip dedicat de suport i desenvolupament, Karma ofereix una experiència fluida, fiable i global per a cada usuari."
+  "teamDescription": "El nostre equip d'astròlegs vèdics professionals té anys d'experiència en la interpretació de les influències planetàries i els patrons de vida. Amb el suport d'un equip dedicat de suport i desenvolupament, Karma ofereix una experiència fluida, fiable i global per a cada usuari.",
+  "lightThemeDescription": "Utilitza sempre un tema clar",
+  "darkThemeDescription": "Utilitza sempre el tema fosc",
+  "systemThemeDarkDescription": "Segueix la configuració del sistema per al tema fosc",
+  "systemThemeLightDescription": "Segueix la configuració del sistema per al tema clar",
+  "switchToLight": "Canvia a la llum",
+  "switchToDark": "Canvia a Fosc"
 }

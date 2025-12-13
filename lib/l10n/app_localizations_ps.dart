@@ -857,28 +857,30 @@ class AppLocalizationsPs extends AppLocalizations {
   String get lightThemeLabel => 'رڼا';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'تل سپک موضوع وکاروئ';
 
   @override
   String get darkThemeLabel => 'تیاره';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'تل تیاره موضوع وکاروئ';
 
   @override
   String get systemThemeLabel => 'سیسټم';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'د تیاره موضوع لپاره د سیسټم ترتیب تعقیب کړئ';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'د رڼا موضوع لپاره د سیسټم ترتیب تعقیب کړئ';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'رڼا ته واړوئ';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'تیاره ته واړوئ';
 
   @override
   String get ourTeam => 'زموږ لوبډله';

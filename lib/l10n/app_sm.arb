@@ -441,5 +441,11 @@
   "darkThemeLabel": "Pogisa",
   "systemThemeLabel": "Faiga",
   "ourTeam": "La matou Au",
-  "teamDescription": "O la matou 'au o tagata su'esu'e Vedic fa'apolofesa latou te aumaia le tele o tausaga o le poto masani i le fa'amatalaina o aafiaga o paneta ma fa'asologa o le olaga. Faʻalagolago e se lagolago faʻapitoa ma atinaʻe au, Karma e tuʻuina atu se poto masani, faʻatuatuaina, ma le lalolagi mo tagata uma."
+  "teamDescription": "O la matou 'au o tagata su'esu'e Vedic fa'apolofesa latou te aumaia le tele o tausaga o le poto masani i le fa'amatalaina o aafiaga o paneta ma fa'asologa o le olaga. Faʻalagolago e se lagolago faʻapitoa ma atinaʻe au, Karma e tuʻuina atu se poto masani, faʻatuatuaina, ma le lalolagi mo tagata uma.",
+  "lightThemeDescription": "Faaaoga i taimi uma le autu malamalama",
+  "darkThemeDescription": "Faaaoga pea le autu pogisa",
+  "systemThemeDarkDescription": "Mulimuli i le fa'atulagaga a le polokalama mo le autu pogisa",
+  "systemThemeLightDescription": "Mulimuli i le fa'atulagaga o le polokalama mo le autu malamalama",
+  "switchToLight": "Sui i le Moli",
+  "switchToDark": "Sui i le Pogisa"
 }

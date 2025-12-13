@@ -441,5 +441,11 @@
   "darkThemeLabel": "Poek",
   "systemThemeLabel": "Sistim",
   "ourTeam": "Tim Kami",
-  "teamDescription": "Tim astrologer Weda profésional kami mawa pangalaman mangtaun-taun napsirkeun pangaruh planet sareng pola kahirupan. Didukung ku tim pangrojong sareng pamekaran khusus, Karma nyayogikeun pangalaman anu lancar, dipercaya, sareng global pikeun unggal pangguna."
+  "teamDescription": "Tim astrologer Weda profésional kami mawa pangalaman mangtaun-taun napsirkeun pangaruh planet sareng pola kahirupan. Didukung ku tim pangrojong sareng pamekaran khusus, Karma nyayogikeun pangalaman anu lancar, dipercaya, sareng global pikeun unggal pangguna.",
+  "lightThemeDescription": "Salawasna nganggo téma anu hampang",
+  "darkThemeDescription": "Salawasna nganggo téma poék",
+  "systemThemeDarkDescription": "Turutan setélan sistem pikeun téma poék",
+  "systemThemeLightDescription": "Turutan setélan sistem pikeun téma hampang",
+  "switchToLight": "Pindah ka Lampu",
+  "switchToDark": "Pindah ka Poék"
 }

@@ -441,5 +441,11 @@
   "darkThemeLabel": "黑暗的",
   "systemThemeLabel": "系統",
   "ourTeam": "我們的團隊",
-  "teamDescription": "我們專業的吠陀占星師團隊擁有多年解讀行星影響力和人生軌蹟的經驗。在專業支援和開發團隊的鼎力支援下，Karma 為每位使用者提供流暢、可靠且全球化的使用體驗。"
+  "teamDescription": "我們專業的吠陀占星師團隊擁有多年解讀行星影響力和人生軌蹟的經驗。在專業支援和開發團隊的鼎力支援下，Karma 為每位使用者提供流暢、可靠且全球化的使用體驗。",
+  "lightThemeDescription": "始終使用淺色主題",
+  "darkThemeDescription": "始終使用深色主題",
+  "systemThemeDarkDescription": "請依照系統設定啟用深色主題",
+  "systemThemeLightDescription": "請依照系統設定啟用淺色主題",
+  "switchToLight": "切換到燈光",
+  "switchToDark": "切換到黑暗模式"
 }

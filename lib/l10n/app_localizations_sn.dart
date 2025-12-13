@@ -854,28 +854,31 @@ class AppLocalizationsSn extends AppLocalizations {
   String get lightThemeLabel => 'Chiedza';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription =>
+      'Shandisa dingindira rechiedza nguva dzose';
 
   @override
   String get darkThemeLabel => 'Rima';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Shandisa dingindira rerima nguva dzose';
 
   @override
   String get systemThemeLabel => 'System';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Tevedzera marongero esystem ye dark theme';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Tevedzera marongero esystem ye light theme';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Chinja kuChiedza';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Chinja kuenda kuRima';
 
   @override
   String get ourTeam => 'Chikwata Chedu';

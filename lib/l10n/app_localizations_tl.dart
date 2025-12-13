@@ -862,28 +862,30 @@ class AppLocalizationsTl extends AppLocalizations {
   String get lightThemeLabel => 'Liwanag';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Palaging gumamit ng magaan na tema';
 
   @override
   String get darkThemeLabel => 'Madilim';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Palaging gumamit ng madilim na tema';
 
   @override
   String get systemThemeLabel => 'Sistema';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Sundin ang setting ng system para sa madilim na tema';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Sundin ang setting ng system para sa light theme';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Lumipat sa Liwanag';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Lumipat sa Madilim';
 
   @override
   String get ourTeam => 'Ang aming Team';

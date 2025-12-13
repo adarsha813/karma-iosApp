@@ -861,28 +861,30 @@ class AppLocalizationsKn extends AppLocalizations {
   String get lightThemeLabel => 'ಬೆಳಕು';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'ಯಾವಾಗಲೂ ತಿಳಿ ಥೀಮ್ ಬಳಸಿ';
 
   @override
   String get darkThemeLabel => 'ಕತ್ತಲೆ';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'ಯಾವಾಗಲೂ ಡಾರ್ಕ್ ಥೀಮ್ ಬಳಸಿ';
 
   @override
   String get systemThemeLabel => 'ವ್ಯವಸ್ಥೆ';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'ಡಾರ್ಕ್ ಥೀಮ್‌ಗಾಗಿ ಸಿಸ್ಟಂ ಸೆಟ್ಟಿಂಗ್ ಅನ್ನು ಅನುಸರಿಸಿ';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'ಲೈಟ್ ಥೀಮ್‌ಗಾಗಿ ಸಿಸ್ಟಂ ಸೆಟ್ಟಿಂಗ್ ಅನ್ನು ಅನುಸರಿಸಿ';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'ಬೆಳಕಿಗೆ ಬದಲಾಯಿಸಿ';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'ಕತ್ತಲೆಗೆ ಬದಲಾಯಿಸಿ';
 
   @override
   String get ourTeam => 'ನಮ್ಮ ತಂಡ';

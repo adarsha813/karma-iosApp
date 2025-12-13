@@ -853,28 +853,30 @@ class AppLocalizationsDa extends AppLocalizations {
   String get lightThemeLabel => 'Lys';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Brug altid lyst tema';
 
   @override
   String get darkThemeLabel => 'Mørk';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Brug altid mørkt tema';
 
   @override
   String get systemThemeLabel => 'System';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Følg systemindstillingerne for mørkt tema';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Følg systemindstillingerne for lyst tema';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Skift til lys';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Skift til mørk';
 
   @override
   String get ourTeam => 'Vores team';

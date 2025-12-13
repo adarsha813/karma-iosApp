@@ -441,5 +441,11 @@
   "darkThemeLabel": "Dorcha",
   "systemThemeLabel": "Córas",
   "ourTeam": "Ár bhFoireann",
-  "teamDescription": "Tá blianta fada taithí ag ár bhfoireann réalteolaithe Véideacha gairmiúla ag léirmhíniú tionchair phláinéid agus patrúin saoil. Le tacaíocht ó fhoireann tacaíochta agus forbartha tiomanta, cuireann Karma eispéireas gan uaim, iontaofa agus domhanda ar fáil do gach úsáideoir."
+  "teamDescription": "Tá blianta fada taithí ag ár bhfoireann réalteolaithe Véideacha gairmiúla ag léirmhíniú tionchair phláinéid agus patrúin saoil. Le tacaíocht ó fhoireann tacaíochta agus forbartha tiomanta, cuireann Karma eispéireas gan uaim, iontaofa agus domhanda ar fáil do gach úsáideoir.",
+  "lightThemeDescription": "Bain úsáid as téama éadrom i gcónaí",
+  "darkThemeDescription": "Bain úsáid as téama dorcha i gcónaí",
+  "systemThemeDarkDescription": "Lean socruithe an chórais le haghaidh téama dorcha",
+  "systemThemeLightDescription": "Lean socruithe an chórais le haghaidh téama éadrom",
+  "switchToLight": "Athraigh go Solas",
+  "switchToDark": "Athraigh go Dorcha"
 }

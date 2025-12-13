@@ -858,28 +858,30 @@ class AppLocalizationsRo extends AppLocalizations {
   String get lightThemeLabel => 'Aprinde';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Folosește întotdeauna tema luminoasă';
 
   @override
   String get darkThemeLabel => 'Întuneric';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Folosește întotdeauna tema întunecată';
 
   @override
   String get systemThemeLabel => 'Sistem';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Urmați setările de sistem pentru tema întunecată';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Urmați setările de sistem pentru tema luminoasă';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Comutare la lumină';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Comutare la Întuneric';
 
   @override
   String get ourTeam => 'Echipa noastră';

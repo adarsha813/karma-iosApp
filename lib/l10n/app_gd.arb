@@ -441,5 +441,11 @@
   "darkThemeLabel": "Dorcha",
   "systemThemeLabel": "Siostam",
   "ourTeam": "An Sgioba againn",
-  "teamDescription": "Tha bliadhnaichean de eòlas aig an sgioba againn de speuradairean Vedic proifeasanta ann a bhith a’ mìneachadh buaidhean planaid agus pàtrain beatha. Le taic bho sgioba taic is leasachaidh sònraichte, bidh Karma a’ lìbhrigeadh eòlas gun fhiosta, earbsach agus cruinneil do gach neach-cleachdaidh."
+  "teamDescription": "Tha bliadhnaichean de eòlas aig an sgioba againn de speuradairean Vedic proifeasanta ann a bhith a’ mìneachadh buaidhean planaid agus pàtrain beatha. Le taic bho sgioba taic is leasachaidh sònraichte, bidh Karma a’ lìbhrigeadh eòlas gun fhiosta, earbsach agus cruinneil do gach neach-cleachdaidh.",
+  "lightThemeDescription": "Cleachd cuspair aotrom an-còmhnaidh",
+  "darkThemeDescription": "Cleachd cuspair dorcha an-còmhnaidh",
+  "systemThemeDarkDescription": "Lean roghainnean an t-siostaim airson cuspair dorcha",
+  "systemThemeLightDescription": "Lean roghainnean an t-siostaim airson cuspair aotrom",
+  "switchToLight": "Gluais gu Solas",
+  "switchToDark": "Gluais gu Dorchadas"
 }

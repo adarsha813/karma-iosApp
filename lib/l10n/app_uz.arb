@@ -441,5 +441,11 @@
   "darkThemeLabel": "Qorong'i",
   "systemThemeLabel": "Tizim",
   "ourTeam": "Bizning Jamoamiz",
-  "teamDescription": "Bizning professional Vedik munajjimlar jamoasi sayyoraviy ta'sirlar va hayot shakllarini sharhlash bo'yicha ko'p yillik tajribani olib keladi. Maxsus qo'llab-quvvatlash va ishlab chiqish guruhi tomonidan qo'llab-quvvatlangan Karma har bir foydalanuvchi uchun muammosiz, ishonchli va global tajribani taqdim etadi."
+  "teamDescription": "Bizning professional Vedik munajjimlar jamoasi sayyoraviy ta'sirlar va hayot shakllarini sharhlash bo'yicha ko'p yillik tajribani olib keladi. Maxsus qo'llab-quvvatlash va ishlab chiqish guruhi tomonidan qo'llab-quvvatlangan Karma har bir foydalanuvchi uchun muammosiz, ishonchli va global tajribani taqdim etadi.",
+  "lightThemeDescription": "Har doim yorug' mavzudan foydalaning",
+  "darkThemeDescription": "Doim qorong'u mavzudan foydalaning",
+  "systemThemeDarkDescription": "Qorong'u mavzu uchun tizim sozlamalariga amal qiling",
+  "systemThemeLightDescription": "Yorug' mavzu uchun tizim sozlamalariga amal qiling",
+  "switchToLight": "Yorug'likka o'tish",
+  "switchToDark": "Qorong'i rejimga o'tish"
 }

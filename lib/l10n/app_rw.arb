@@ -441,5 +441,11 @@
   "darkThemeLabel": "Umwijima",
   "systemThemeLabel": "Sisitemu",
   "ourTeam": "Ikipe yacu",
-  "teamDescription": "Itsinda ryacu ryabahanga mu bumenyi bw'inyenyeri Vedic bazana uburambe bwimyaka yo gusobanura ingaruka zimibumbe nubuzima. Dushyigikiwe nitsinda ryabigenewe hamwe nitsinda ryiterambere, Karma atanga uburambe, bwizewe, kandi kwisi yose kuri buri mukoresha."
+  "teamDescription": "Itsinda ryacu ryabahanga mu bumenyi bw'inyenyeri Vedic bazana uburambe bwimyaka yo gusobanura ingaruka zimibumbe nubuzima. Dushyigikiwe nitsinda ryabigenewe hamwe nitsinda ryiterambere, Karma atanga uburambe, bwizewe, kandi kwisi yose kuri buri mukoresha.",
+  "lightThemeDescription": "Koresha buri gihe insanganyamatsiko y'urumuri",
+  "darkThemeDescription": "Koresha buri gihe insanganyamatsiko yijimye",
+  "systemThemeDarkDescription": "Kurikira imiterere ya sisitemu y'insanganyamatsiko yijimye",
+  "systemThemeLightDescription": "Kurikiza imiterere ya sisitemu y'insanganyamatsiko y'urumuri",
+  "switchToLight": "Hindura ukoreshe urumuri",
+  "switchToDark": "Hindura ujye ku mwijima"
 }

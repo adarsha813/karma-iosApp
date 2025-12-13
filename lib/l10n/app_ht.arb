@@ -441,5 +441,11 @@
   "darkThemeLabel": "Fènwa",
   "systemThemeLabel": "Sistèm",
   "ourTeam": "Ekip nou an",
-  "teamDescription": "Ekip astwològ Vedik pwofesyonèl nou an gen plizyè ane eksperyans nan entèprete enfliyans planèt yo ak modèl lavi yo. Avèk sipò yon ekip sipò ak devlopman devwe, Karma ofri yon eksperyans san pwoblèm, serye, ak mondyal pou chak itilizatè."
+  "teamDescription": "Ekip astwològ Vedik pwofesyonèl nou an gen plizyè ane eksperyans nan entèprete enfliyans planèt yo ak modèl lavi yo. Avèk sipò yon ekip sipò ak devlopman devwe, Karma ofri yon eksperyans san pwoblèm, serye, ak mondyal pou chak itilizatè.",
+  "lightThemeDescription": "Toujou itilize tèm limyè",
+  "darkThemeDescription": "Toujou itilize tèm nwa a",
+  "systemThemeDarkDescription": "Swiv paramèt sistèm lan pou tèm nwa a",
+  "systemThemeLightDescription": "Swiv paramèt sistèm lan pou tèm limyè a",
+  "switchToLight": "Chanje nan Limyè",
+  "switchToDark": "Chanje nan fènwa"
 }

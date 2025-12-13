@@ -854,28 +854,30 @@ class AppLocalizationsLt extends AppLocalizations {
   String get lightThemeLabel => 'Šviesa';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Visada naudoti šviesią temą';
 
   @override
   String get darkThemeLabel => 'Tamsu';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Visada naudoti tamsiąją temą';
 
   @override
   String get systemThemeLabel => 'Sistema';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Laikytis sistemos nustatymų tamsiajai temai';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Laikytis sistemos nustatymų, jei norite šviesios temos';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Perjungti į šviesą';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Perjungti į tamsų režimą';
 
   @override
   String get ourTeam => 'Mūsų komanda';

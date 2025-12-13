@@ -441,5 +441,11 @@
   "darkThemeLabel": "Duhu",
   "systemThemeLabel": "Tsari",
   "ourTeam": "Tawagar mu",
-  "teamDescription": "Ƙungiyarmu ta ƙwararrun ƙwararrun taurarin Vedic suna kawo shekaru na gogewa na fassara tasirin duniya da tsarin rayuwa. Taimakawa ta hanyar sadaukar da goyan baya da ƙungiyar haɓakawa, Karma yana ba da cikakkiyar daidaituwa, abin dogaro, da ƙwarewar duniya ga kowane mai amfani."
+  "teamDescription": "Ƙungiyarmu ta ƙwararrun ƙwararrun taurarin Vedic suna kawo shekaru na gogewa na fassara tasirin duniya da tsarin rayuwa. Taimakawa ta hanyar sadaukar da goyan baya da ƙungiyar haɓakawa, Karma yana ba da cikakkiyar daidaituwa, abin dogaro, da ƙwarewar duniya ga kowane mai amfani.",
+  "lightThemeDescription": "Koyaushe yi amfani da jigon haske",
+  "darkThemeDescription": "Koyaushe yi amfani da jigon duhu",
+  "systemThemeDarkDescription": "Bi tsarin saitin don jigon duhu",
+  "systemThemeLightDescription": "Bi tsarin saitin don jigon haske",
+  "switchToLight": "Canja zuwa Haske",
+  "switchToDark": "Canja zuwa Duhu"
 }

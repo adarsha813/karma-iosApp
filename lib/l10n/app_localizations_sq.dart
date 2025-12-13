@@ -861,28 +861,30 @@ class AppLocalizationsSq extends AppLocalizations {
   String get lightThemeLabel => 'Dritë';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Përdorni gjithmonë temë të çelët';
 
   @override
   String get darkThemeLabel => 'E errët';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Përdor gjithmonë temë të errët';
 
   @override
   String get systemThemeLabel => 'Sistemi';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Ndiqni cilësimet e sistemit për temën e errët';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Ndiqni cilësimet e sistemit për temën e çelët';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Kaloni në dritë';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Kalo në Errësirë';
 
   @override
   String get ourTeam => 'Ekipi ynë';

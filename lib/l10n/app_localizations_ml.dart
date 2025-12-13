@@ -862,28 +862,30 @@ class AppLocalizationsMl extends AppLocalizations {
   String get lightThemeLabel => 'വെളിച്ചം';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'എപ്പോഴും ലൈറ്റ് തീം ഉപയോഗിക്കുക';
 
   @override
   String get darkThemeLabel => 'ഇരുണ്ടത്';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'എപ്പോഴും ഇരുണ്ട തീം ഉപയോഗിക്കുക';
 
   @override
   String get systemThemeLabel => 'സിസ്റ്റം';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'ഇരുണ്ട തീമിനുള്ള സിസ്റ്റം ക്രമീകരണം പിന്തുടരുക';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'ലൈറ്റ് തീമിനുള്ള സിസ്റ്റം ക്രമീകരണം പിന്തുടരുക';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'വെളിച്ചത്തിലേക്ക് മാറുക';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'ഡാർക്കിലേക്ക് മാറുക';
 
   @override
   String get ourTeam => 'ഞങ്ങളുടെ ടീം';

@@ -862,28 +862,30 @@ class AppLocalizationsMg extends AppLocalizations {
   String get lightThemeLabel => 'fahazavana';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Ampiasao foana ny lohahevitra maivana';
 
   @override
   String get darkThemeLabel => 'Maizina';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Ampiasao foana ny lohahevitra maizina';
 
   @override
   String get systemThemeLabel => 'RAFITRA';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Araho ny firafitry ny rafitra ho an\'ny lohahevitra maizina';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Araho ny firafitry ny rafitra ho an\'ny lohahevitra mazava';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Mifindra amin\'ny Hazavana';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Mifindra amin\'ny maizina';
 
   @override
   String get ourTeam => 'Ny Ekipantsika';

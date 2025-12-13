@@ -861,28 +861,30 @@ class AppLocalizationsUz extends AppLocalizations {
   String get lightThemeLabel => 'Nur';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Har doim yorug\' mavzudan foydalaning';
 
   @override
   String get darkThemeLabel => 'Qorong\'i';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Doim qorong\'u mavzudan foydalaning';
 
   @override
   String get systemThemeLabel => 'Tizim';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Qorong\'u mavzu uchun tizim sozlamalariga amal qiling';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Yorug\' mavzu uchun tizim sozlamalariga amal qiling';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Yorug\'likka o\'tish';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Qorong\'i rejimga o\'tish';
 
   @override
   String get ourTeam => 'Bizning Jamoamiz';

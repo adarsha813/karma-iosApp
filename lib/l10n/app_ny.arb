@@ -441,5 +441,11 @@
   "darkThemeLabel": "Chakuda",
   "systemThemeLabel": "Dongosolo",
   "ourTeam": "Team Yathu",
-  "teamDescription": "Gulu lathu la akatswiri openda nyenyezi a Vedic limabweretsa zaka zambiri zotanthauzira mapulaneti ndi machitidwe amoyo. Mothandizidwa ndi gulu lodzipatulira lothandizira ndi chitukuko, Karma imapereka chidziwitso chopanda msoko, chodalirika komanso chapadziko lonse lapansi kwa aliyense wogwiritsa ntchito."
+  "teamDescription": "Gulu lathu la akatswiri openda nyenyezi a Vedic limabweretsa zaka zambiri zotanthauzira mapulaneti ndi machitidwe amoyo. Mothandizidwa ndi gulu lodzipatulira lothandizira ndi chitukuko, Karma imapereka chidziwitso chopanda msoko, chodalirika komanso chapadziko lonse lapansi kwa aliyense wogwiritsa ntchito.",
+  "lightThemeDescription": "Gwiritsani ntchito mutu wowala nthawi zonse",
+  "darkThemeDescription": "Gwiritsani ntchito mutu wakuda nthawi zonse",
+  "systemThemeDarkDescription": "Tsatirani dongosolo la mawonekedwe a mdima",
+  "systemThemeLightDescription": "Tsatirani dongosolo la dongosolo la mutu wowala",
+  "switchToLight": "Sinthani ku Kuwala",
+  "switchToDark": "Sinthani ku Mdima"
 }

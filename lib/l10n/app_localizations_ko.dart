@@ -839,28 +839,28 @@ class AppLocalizationsKo extends AppLocalizations {
   String get lightThemeLabel => '빛';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => '항상 밝은 테마를 사용하세요';
 
   @override
   String get darkThemeLabel => '어두운';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => '항상 다크 테마를 사용하세요';
 
   @override
   String get systemThemeLabel => '체계';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription => '어두운 테마를 사용하려면 시스템 설정을 따르세요.';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription => '시스템 설정에서 밝은 테마를 선택하세요.';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => '조명으로 전환';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => '어둡게 전환';
 
   @override
   String get ourTeam => '우리 팀';

@@ -441,5 +441,11 @@
   "darkThemeLabel": "暗い",
   "systemThemeLabel": "システム",
   "ourTeam": "私たちのチーム",
-  "teamDescription": "プロのヴェーダ占星術師チームが、惑星の影響と人生のパターンを解釈する長年の経験を活かします。専任のサポート・開発チームに支えられたKarmaは、すべてのユーザーにシームレスで信頼性の高いグローバルな体験を提供します。"
+  "teamDescription": "プロのヴェーダ占星術師チームが、惑星の影響と人生のパターンを解釈する長年の経験を活かします。専任のサポート・開発チームに支えられたKarmaは、すべてのユーザーにシームレスで信頼性の高いグローバルな体験を提供します。",
+  "lightThemeDescription": "常にライトテーマを使用する",
+  "darkThemeDescription": "常にダークテーマを使用する",
+  "systemThemeDarkDescription": "ダークテーマのシステム設定に従う",
+  "systemThemeLightDescription": "ライトテーマのシステム設定に従う",
+  "switchToLight": "光に切り替える",
+  "switchToDark": "ダークに切り替える"
 }

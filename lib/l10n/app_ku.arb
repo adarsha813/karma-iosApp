@@ -441,5 +441,11 @@
   "darkThemeLabel": "Tarî",
   "systemThemeLabel": "Sîstem",
   "ourTeam": "Tîma me",
-  "teamDescription": "Tîma me ya astrologên Vedîk ên profesyonel bi salan ezmûna şîrovekirina bandorên gerstêrkî û şêwazên jiyanê tîne. Karma, ku ji hêla tîmek piştgirî û pêşveçûnê ya dilsoz ve tê piştgirî kirin, ji bo her bikarhêner ezmûnek bêkêmasî, pêbawer û gerdûnî peyda dike."
+  "teamDescription": "Tîma me ya astrologên Vedîk ên profesyonel bi salan ezmûna şîrovekirina bandorên gerstêrkî û şêwazên jiyanê tîne. Karma, ku ji hêla tîmek piştgirî û pêşveçûnê ya dilsoz ve tê piştgirî kirin, ji bo her bikarhêner ezmûnek bêkêmasî, pêbawer û gerdûnî peyda dike.",
+  "lightThemeDescription": "Her tim mijara ronahî bi kar bîne",
+  "darkThemeDescription": "Her tim mijara tarî bi kar bîne",
+  "systemThemeDarkDescription": "Ji bo mijara tarî mîhengên pergalê bişopîne",
+  "systemThemeLightDescription": "Ji bo mijara ronî mîhengên pergalê bişopîne",
+  "switchToLight": "Biguherîne bo Ronahî",
+  "switchToDark": "Biguherîne Tarî"
 }

@@ -853,28 +853,30 @@ class AppLocalizationsFi extends AppLocalizations {
   String get lightThemeLabel => 'Valo';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Käytä aina vaaleaa teemaa';
 
   @override
   String get darkThemeLabel => 'Tumma';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Käytä aina tummaa teemaa';
 
   @override
   String get systemThemeLabel => 'Järjestelmä';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Noudata järjestelmäasetuksia tummalle teemalle';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Noudata järjestelmäasetuksia vaalean teeman osalta';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Vaihda vaaleaan';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Vaihda tummaan';
 
   @override
   String get ourTeam => 'Tiimimme';

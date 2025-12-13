@@ -441,5 +441,11 @@
   "darkThemeLabel": "Iluna",
   "systemThemeLabel": "Sistema",
   "ourTeam": "Gure Taldea",
-  "teamDescription": "Gure astrologo vediko profesionalen taldeak urteetako esperientzia du eragin planetarioak eta bizitza-ereduak interpretatzen. Laguntza eta garapen talde dedikatu batek babestuta, Karmak esperientzia ezin hobea, fidagarria eta globala eskaintzen die erabiltzaile guztiei."
+  "teamDescription": "Gure astrologo vediko profesionalen taldeak urteetako esperientzia du eragin planetarioak eta bizitza-ereduak interpretatzen. Laguntza eta garapen talde dedikatu batek babestuta, Karmak esperientzia ezin hobea, fidagarria eta globala eskaintzen die erabiltzaile guztiei.",
+  "lightThemeDescription": "Erabili beti gai argia",
+  "darkThemeDescription": "Erabili beti gai iluna",
+  "systemThemeDarkDescription": "Jarraitu sistemaren ezarpenak gai ilunaren erabilerarako",
+  "systemThemeLightDescription": "Jarraitu sistemaren ezarpena gai argirako",
+  "switchToLight": "Aldatu Argira",
+  "switchToDark": "Aldatu Ilunera"
 }

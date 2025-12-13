@@ -860,28 +860,31 @@ class AppLocalizationsTa extends AppLocalizations {
   String get lightThemeLabel => 'ஒளி';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription =>
+      'எப்போதும் லைட் தீமினைப் பயன்படுத்துங்கள்';
 
   @override
   String get darkThemeLabel => 'இருள்';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'எப்போதும் டார்க் தீமைப் பயன்படுத்துங்கள்';
 
   @override
   String get systemThemeLabel => 'அமைப்பு';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'டார்க் தீமிற்கான சிஸ்டம் அமைப்பைப் பின்பற்றவும்';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'லைட் தீமிற்கு சிஸ்டம் அமைப்பைப் பின்பற்றவும்';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'வெளிச்சத்திற்கு மாறு';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'டார்க்கிற்கு மாறு';
 
   @override
   String get ourTeam => 'எங்கள் அணி';

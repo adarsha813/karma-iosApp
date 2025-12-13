@@ -441,5 +441,11 @@
   "darkThemeLabel": "Ngitngit",
   "systemThemeLabel": "Sistema",
   "ourTeam": "Atong Team",
-  "teamDescription": "Ang among grupo sa mga propesyonal nga Vedic astrologo nagdala ug mga tuig nga kasinatian sa paghubad sa mga impluwensya sa planeta ug mga sumbanan sa kinabuhi. Gipaluyohan sa usa ka dedikado nga suporta ug development team, ang Karma naghatod sa usa ka seamless, kasaligan, ug global nga kasinatian alang sa matag user."
+  "teamDescription": "Ang among grupo sa mga propesyonal nga Vedic astrologo nagdala ug mga tuig nga kasinatian sa paghubad sa mga impluwensya sa planeta ug mga sumbanan sa kinabuhi. Gipaluyohan sa usa ka dedikado nga suporta ug development team, ang Karma naghatod sa usa ka seamless, kasaligan, ug global nga kasinatian alang sa matag user.",
+  "lightThemeDescription": "Kanunay gamita ang gaan nga tema",
+  "darkThemeDescription": "Kanunay gamita ang itom nga tema",
+  "systemThemeDarkDescription": "Sunda ang setting sa sistema para sa ngitngit nga tema",
+  "systemThemeLightDescription": "Sunda ang setting sa sistema para sa hayag nga tema",
+  "switchToLight": "Pagbalhin ngadto sa Kahayag",
+  "switchToDark": "Pagbalhin ngadto sa Kangitngit"
 }

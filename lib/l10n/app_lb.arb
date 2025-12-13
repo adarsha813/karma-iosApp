@@ -441,5 +441,11 @@
   "darkThemeLabel": "Däischter",
   "systemThemeLabel": "System",
   "ourTeam": "Eis Equipe",
-  "teamDescription": "Eis Equipe vu professionelle vedeschen Astrologen huet Joeren Erfahrung an der Interpretatioun vu planetareschen Aflëss a Liewensmuster. Ënnerstëtzt vun engem engagéierten Support- an Entwécklungsteam bitt Karma eng nahtlos, zouverlässeg a global Erfahrung fir all Benotzer."
+  "teamDescription": "Eis Equipe vu professionelle vedeschen Astrologen huet Joeren Erfahrung an der Interpretatioun vu planetareschen Aflëss a Liewensmuster. Ënnerstëtzt vun engem engagéierten Support- an Entwécklungsteam bitt Karma eng nahtlos, zouverlässeg a global Erfahrung fir all Benotzer.",
+  "lightThemeDescription": "Benotzt ëmmer en hellt Thema",
+  "darkThemeDescription": "Benotzt ëmmer en donkelt Thema",
+  "systemThemeDarkDescription": "Systemastellungen fir däischtert Thema befollegen",
+  "systemThemeLightDescription": "Systemastellungen fir hellt Thema befollegen",
+  "switchToLight": "Wiesselt op Liicht",
+  "switchToDark": "Wiesselt op Däischter"
 }

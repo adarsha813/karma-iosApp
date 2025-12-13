@@ -854,28 +854,30 @@ class AppLocalizationsPa extends AppLocalizations {
   String get lightThemeLabel => 'ਰੋਸ਼ਨੀ';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'ਹਮੇਸ਼ਾ ਹਲਕਾ ਥੀਮ ਵਰਤੋ';
 
   @override
   String get darkThemeLabel => 'ਹਨੇਰਾ';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'ਹਮੇਸ਼ਾ ਗੂੜ੍ਹਾ ਥੀਮ ਵਰਤੋ';
 
   @override
   String get systemThemeLabel => 'ਸਿਸਟਮ';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'ਗੂੜ੍ਹੇ ਥੀਮ ਲਈ ਸਿਸਟਮ ਸੈਟਿੰਗ ਦੀ ਪਾਲਣਾ ਕਰੋ';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'ਹਲਕੇ ਥੀਮ ਲਈ ਸਿਸਟਮ ਸੈਟਿੰਗ ਦੀ ਪਾਲਣਾ ਕਰੋ';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'ਹਲਕੇ \'ਤੇ ਬਦਲੋ';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'ਗੂੜ੍ਹੇ ਰੰਗ ਵਿੱਚ ਬਦਲੋ';
 
   @override
   String get ourTeam => 'ਸਾਡੀ ਟੀਮ';

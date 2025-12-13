@@ -852,28 +852,30 @@ class AppLocalizationsFa extends AppLocalizations {
   String get lightThemeLabel => 'نور';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'همیشه از تم روشن استفاده کنید';
 
   @override
   String get darkThemeLabel => 'تیره';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'همیشه از تم تیره استفاده کنید';
 
   @override
   String get systemThemeLabel => 'سیستم';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'تنظیمات سیستم را برای تم تاریک دنبال کنید';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'تنظیمات سیستم را برای تم روشن دنبال کنید';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'به نور تغییر دهید';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'تغییر به حالت تاریک';
 
   @override
   String get ourTeam => 'تیم ما';

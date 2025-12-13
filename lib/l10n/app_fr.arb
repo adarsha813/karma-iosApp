@@ -441,5 +441,11 @@
   "darkThemeLabel": "Sombre",
   "systemThemeLabel": "Système",
   "ourTeam": "Notre équipe",
-  "teamDescription": "Notre équipe d'astrologues védiques professionnels possède une longue expérience dans l'interprétation des influences planétaires et des schémas de vie. Grâce à une équipe de support et de développement dédiée, Karma offre une expérience fluide, fiable et internationale à chaque utilisateur."
+  "teamDescription": "Notre équipe d'astrologues védiques professionnels possède une longue expérience dans l'interprétation des influences planétaires et des schémas de vie. Grâce à une équipe de support et de développement dédiée, Karma offre une expérience fluide, fiable et internationale à chaque utilisateur.",
+  "lightThemeDescription": "Utilisez toujours le thème clair.",
+  "darkThemeDescription": "Utilisez toujours le thème sombre.",
+  "systemThemeDarkDescription": "Suivez les paramètres système pour le thème sombre",
+  "systemThemeLightDescription": "Suivez les paramètres système pour le thème clair",
+  "switchToLight": "Passer à la lumière",
+  "switchToDark": "Passer au mode sombre"
 }

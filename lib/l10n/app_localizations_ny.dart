@@ -860,28 +860,32 @@ class AppLocalizationsNy extends AppLocalizations {
   String get lightThemeLabel => 'Kuwala';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription =>
+      'Gwiritsani ntchito mutu wowala nthawi zonse';
 
   @override
   String get darkThemeLabel => 'Chakuda';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription =>
+      'Gwiritsani ntchito mutu wakuda nthawi zonse';
 
   @override
   String get systemThemeLabel => 'Dongosolo';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Tsatirani dongosolo la mawonekedwe a mdima';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Tsatirani dongosolo la dongosolo la mutu wowala';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Sinthani ku Kuwala';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Sinthani ku Mdima';
 
   @override
   String get ourTeam => 'Team Yathu';

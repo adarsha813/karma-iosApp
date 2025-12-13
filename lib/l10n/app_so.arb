@@ -441,5 +441,11 @@
   "darkThemeLabel": "Madow",
   "systemThemeLabel": "Nidaamka",
   "ourTeam": "Kooxdayada",
-  "teamDescription": "Kooxdayada xiddigiyayaasha Vedic ee xirfadleyda ah waxay keenaan sannado waayo-aragnimo ah oo ay ku turjumayaan saamaynta meeraha iyo qaababka nolosha. Iyadoo ay taageerayaan koox u heellan taageerada iyo horumarinta, Karma waxay soo bandhigtaa khibrad la'aan, la isku halayn karo, oo caalami ah isticmaale kasta."
+  "teamDescription": "Kooxdayada xiddigiyayaasha Vedic ee xirfadleyda ah waxay keenaan sannado waayo-aragnimo ah oo ay ku turjumayaan saamaynta meeraha iyo qaababka nolosha. Iyadoo ay taageerayaan koox u heellan taageerada iyo horumarinta, Karma waxay soo bandhigtaa khibrad la'aan, la isku halayn karo, oo caalami ah isticmaale kasta.",
+  "lightThemeDescription": "Had iyo jeer isticmaal mawduuc fudud",
+  "darkThemeDescription": "Had iyo jeer isticmaal dulucda mugdiga ah",
+  "systemThemeDarkDescription": "Raac dejinta nidaamka si aad u hesho dulucda mugdiga ah",
+  "systemThemeLightDescription": "Raac dejinta nidaamka si aad u hesho dulucda fudud",
+  "switchToLight": "U beddel Iftiin",
+  "switchToDark": "U beddel Madow"
 }

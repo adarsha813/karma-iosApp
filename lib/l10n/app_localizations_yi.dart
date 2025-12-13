@@ -858,28 +858,30 @@ class AppLocalizationsYi extends AppLocalizations {
   String get lightThemeLabel => 'ליכט';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'שטענדיק נוצן ליכט טעמע';
 
   @override
   String get darkThemeLabel => 'טונקל';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'שטענדיק ניצן טונקעלע טעמע';
 
   @override
   String get systemThemeLabel => 'סיסטעם';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'פֿאָלגן סיסטעם סעטטינגס פֿאַר טונקעל טעמע';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'פֿאָלגן סיסטעם סעטטינגס פֿאַר ליכט טעמע';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'טוישן צו ליכט';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'טוישן צו טונקל';
 
   @override
   String get ourTeam => 'אונדזער מאַנשאַפֿט';

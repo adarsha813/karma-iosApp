@@ -441,5 +441,11 @@
   "darkThemeLabel": "Tsjuster",
   "systemThemeLabel": "Systeem",
   "ourTeam": "Us Team",
-  "teamDescription": "Us team fan profesjonele Vedyske astrologen bringt jierrenlange ûnderfining mei yn it ynterpretearjen fan planetêre ynfloeden en libbenspatroanen. Stipe troch in tawijd stipe- en ûntwikkelingsteam leveret Karma in naadleaze, betroubere en wrâldwide ûnderfining foar elke brûker."
+  "teamDescription": "Us team fan profesjonele Vedyske astrologen bringt jierrenlange ûnderfining mei yn it ynterpretearjen fan planetêre ynfloeden en libbenspatroanen. Stipe troch in tawijd stipe- en ûntwikkelingsteam leveret Karma in naadleaze, betroubere en wrâldwide ûnderfining foar elke brûker.",
+  "lightThemeDescription": "Brûk altyd in ljocht tema",
+  "darkThemeDescription": "Brûk altyd tsjuster tema",
+  "systemThemeDarkDescription": "Folgje systeemynstelling foar tsjuster tema",
+  "systemThemeLightDescription": "Folgje systeemynstelling foar ljocht tema",
+  "switchToLight": "Oerskeakelje nei ljocht",
+  "switchToDark": "Wikselje nei Tsjuster"
 }

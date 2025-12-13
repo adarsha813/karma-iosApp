@@ -857,28 +857,30 @@ class AppLocalizationsKu extends AppLocalizations {
   String get lightThemeLabel => 'Sivik';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Her tim mijara ronahî bi kar bîne';
 
   @override
   String get darkThemeLabel => 'Tarî';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Her tim mijara tarî bi kar bîne';
 
   @override
   String get systemThemeLabel => 'Sîstem';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Ji bo mijara tarî mîhengên pergalê bişopîne';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Ji bo mijara ronî mîhengên pergalê bişopîne';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Biguherîne bo Ronahî';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Biguherîne Tarî';
 
   @override
   String get ourTeam => 'Tîma me';

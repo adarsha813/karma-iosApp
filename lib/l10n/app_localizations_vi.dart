@@ -857,28 +857,30 @@ class AppLocalizationsVi extends AppLocalizations {
   String get lightThemeLabel => 'Ánh sáng';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Luôn sử dụng giao diện sáng.';
 
   @override
   String get darkThemeLabel => 'Tối tăm';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Luôn sử dụng chủ đề tối.';
 
   @override
   String get systemThemeLabel => 'Hệ thống';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Hãy làm theo cài đặt hệ thống để bật chủ đề tối.';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Hãy làm theo cài đặt hệ thống để chọn chủ đề sáng.';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Chuyển sang chế độ sáng';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Chuyển sang chế độ Tối';
 
   @override
   String get ourTeam => 'Đội ngũ của chúng tôi';

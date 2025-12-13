@@ -441,5 +441,11 @@
   "darkThemeLabel": "Dunkel",
   "systemThemeLabel": "System",
   "ourTeam": "Unser Team",
-  "teamDescription": "Unser Team aus professionellen vedischen Astrologen verfügt über jahrelange Erfahrung in der Deutung planetarischer Einflüsse und Lebensmuster. Unterstützt von einem engagierten Support- und Entwicklungsteam bietet Karma jedem Nutzer ein reibungsloses, zuverlässiges und weltweites Erlebnis."
+  "teamDescription": "Unser Team aus professionellen vedischen Astrologen verfügt über jahrelange Erfahrung in der Deutung planetarischer Einflüsse und Lebensmuster. Unterstützt von einem engagierten Support- und Entwicklungsteam bietet Karma jedem Nutzer ein reibungsloses, zuverlässiges und weltweites Erlebnis.",
+  "lightThemeDescription": "Verwenden Sie immer das helle Design.",
+  "darkThemeDescription": "Immer das dunkle Design verwenden.",
+  "systemThemeDarkDescription": "Folgen Sie den Systemeinstellungen für das dunkle Design.",
+  "systemThemeLightDescription": "Folgen Sie den Systemeinstellungen für das helle Design",
+  "switchToLight": "Auf Licht umschalten",
+  "switchToDark": "Auf Dunkel umschalten"
 }

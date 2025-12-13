@@ -852,28 +852,30 @@ class AppLocalizationsSu extends AppLocalizations {
   String get lightThemeLabel => 'Caang';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Salawasna nganggo téma anu hampang';
 
   @override
   String get darkThemeLabel => 'Poek';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Salawasna nganggo téma poék';
 
   @override
   String get systemThemeLabel => 'Sistim';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Turutan setélan sistem pikeun téma poék';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Turutan setélan sistem pikeun téma hampang';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Pindah ka Lampu';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Pindah ka Poék';
 
   @override
   String get ourTeam => 'Tim Kami';

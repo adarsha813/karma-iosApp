@@ -441,5 +441,11 @@
   "darkThemeLabel": "Tsaus",
   "systemThemeLabel": "Qhov system",
   "ourTeam": "Peb Pab Pawg",
-  "teamDescription": "Peb pab pawg kws tshaj lij Vedic astrologers coj ntau xyoo dhau los ntawm kev txhais cov kev cuam tshuam ntawm lub ntiaj teb thiab cov qauv ntawm lub neej. Kev txhawb nqa los ntawm pab pawg txhawb nqa thiab txhim kho, Karma muab kev sib txuas, txhim khu kev qha, thiab kev paub thoob ntiaj teb rau txhua tus neeg siv."
+  "teamDescription": "Peb pab pawg kws tshaj lij Vedic astrologers coj ntau xyoo dhau los ntawm kev txhais cov kev cuam tshuam ntawm lub ntiaj teb thiab cov qauv ntawm lub neej. Kev txhawb nqa los ntawm pab pawg txhawb nqa thiab txhim kho, Karma muab kev sib txuas, txhim khu kev qha, thiab kev paub thoob ntiaj teb rau txhua tus neeg siv.",
+  "lightThemeDescription": "Siv lub ntsiab lus kaj tas li",
+  "darkThemeDescription": "Siv lub ntsiab tsaus nti tas li",
+  "systemThemeDarkDescription": "Ua raws li qhov system setting rau lub ntsiab tsaus nti",
+  "systemThemeLightDescription": "Ua raws li qhov chaw teeb tsa ntawm lub system rau lub teeb ci ntsa iab",
+  "switchToLight": "Hloov mus rau Lub Teeb",
+  "switchToDark": "Hloov mus rau Tsaus Ntuj"
 }

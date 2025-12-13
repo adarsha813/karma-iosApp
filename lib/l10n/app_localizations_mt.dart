@@ -860,28 +860,30 @@ class AppLocalizationsMt extends AppLocalizations {
   String get lightThemeLabel => 'Dawl';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Dejjem uża tema ħafifa';
 
   @override
   String get darkThemeLabel => 'Dlam';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Dejjem uża tema skura';
 
   @override
   String get systemThemeLabel => 'Sistema';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Segwi s-settings tas-sistema għat-tema skura';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Segwi s-settings tas-sistema għat-tema tad-dawl';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Aqleb għad-Dawl';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Aqleb għal Dlam';
 
   @override
   String get ourTeam => 'It-Tim Tagħna';

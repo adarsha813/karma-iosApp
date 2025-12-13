@@ -441,5 +441,11 @@
   "darkThemeLabel": "Malluma",
   "systemThemeLabel": "Sistemo",
   "ourTeam": "Nia Teamo",
-  "teamDescription": "Nia teamo de profesiaj vedaj astrologoj havas jarojn da sperto en interpretado de planedaj influoj kaj vivpadronoj. Subtenata de dediĉita subtena kaj evoluiga teamo, Karma liveras senjuntan, fidindan kaj tutmondan sperton por ĉiu uzanto."
+  "teamDescription": "Nia teamo de profesiaj vedaj astrologoj havas jarojn da sperto en interpretado de planedaj influoj kaj vivpadronoj. Subtenata de dediĉita subtena kaj evoluiga teamo, Karma liveras senjuntan, fidindan kaj tutmondan sperton por ĉiu uzanto.",
+  "lightThemeDescription": "Ĉiam uzu helan temon",
+  "darkThemeDescription": "Ĉiam uzu malhelan temon",
+  "systemThemeDarkDescription": "Sekvu la sisteman agordon por malhela temo",
+  "systemThemeLightDescription": "Sekvu la sisteman agordon por hela temo",
+  "switchToLight": "Ŝanĝu al Lumo",
+  "switchToDark": "Ŝanĝi al Mallumo"
 }

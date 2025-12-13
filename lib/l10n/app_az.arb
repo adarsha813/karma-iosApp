@@ -441,5 +441,11 @@
   "darkThemeLabel": "Qaranlıq",
   "systemThemeLabel": "Sistem",
   "ourTeam": "Bizim Komanda",
-  "teamDescription": "Peşəkar Vedik astroloqlarımızdan ibarət komandamız planetar təsirləri və həyat nümunələrini şərh edən illərin təcrübəsini gətirir. Xüsusi dəstək və inkişaf komandası tərəfindən dəstəklənən Karma, hər bir istifadəçi üçün qüsursuz, etibarlı və qlobal təcrübə təqdim edir."
+  "teamDescription": "Peşəkar Vedik astroloqlarımızdan ibarət komandamız planetar təsirləri və həyat nümunələrini şərh edən illərin təcrübəsini gətirir. Xüsusi dəstək və inkişaf komandası tərəfindən dəstəklənən Karma, hər bir istifadəçi üçün qüsursuz, etibarlı və qlobal təcrübə təqdim edir.",
+  "lightThemeDescription": "Həmişə işıqlı temadan istifadə edin",
+  "darkThemeDescription": "Həmişə tünd tema istifadə edin",
+  "systemThemeDarkDescription": "Tünd tema üçün sistem ayarlarını izləyin",
+  "systemThemeLightDescription": "İşıqlı tema üçün sistem ayarlarını izləyin",
+  "switchToLight": "İşığa keçin",
+  "switchToDark": "Qaranlığa keçin"
 }

@@ -854,28 +854,30 @@ class AppLocalizationsSd extends AppLocalizations {
   String get lightThemeLabel => 'روشني';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'هميشه هلڪو ٿيم استعمال ڪريو';
 
   @override
   String get darkThemeLabel => 'اونداهو';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'هميشه ڊارڪ ٿيم استعمال ڪريو';
 
   @override
   String get systemThemeLabel => 'سسٽم';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'ڊارڪ ٿيم لاءِ سسٽم سيٽنگ جي پيروي ڪريو';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'هلڪي ٿيم لاءِ سسٽم سيٽنگ جي پيروي ڪريو';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'روشني ڏانهن تبديل ڪريو';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'اونداهي ڏانهن مٽايو';
 
   @override
   String get ourTeam => 'اسان جي ٽيم';

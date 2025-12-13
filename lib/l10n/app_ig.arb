@@ -441,5 +441,11 @@
   "darkThemeLabel": "Ọchịchịrị",
   "systemThemeLabel": "Sistemu",
   "ourTeam": "Otu anyị",
-  "teamDescription": "Ndị otu anyị ndị ọkachamara na-agụ kpakpando Vedic na-eweta ahụmịhe afọ na-akọwa mmetụta mbara ụwa na usoro ndụ. N'ịbụ onye nkwado nkwado na otu mmepe raara onwe ya nye, Karma na-enye ahụmahụ na-enweghị ntụpọ, ntụkwasị obi na zuru ụwa ọnụ maka onye ọrụ ọ bụla."
+  "teamDescription": "Ndị otu anyị ndị ọkachamara na-agụ kpakpando Vedic na-eweta ahụmịhe afọ na-akọwa mmetụta mbara ụwa na usoro ndụ. N'ịbụ onye nkwado nkwado na otu mmepe raara onwe ya nye, Karma na-enye ahụmahụ na-enweghị ntụpọ, ntụkwasị obi na zuru ụwa ọnụ maka onye ọrụ ọ bụla.",
+  "lightThemeDescription": "Jiri isiokwu dị mfe mgbe niile",
+  "darkThemeDescription": "Jiri isiokwu gbara ọchịchịrị mgbe niile",
+  "systemThemeDarkDescription": "Soro ntọala sistemụ maka isiokwu gbara ọchịchịrị",
+  "systemThemeLightDescription": "Soro ntọala sistemụ maka isiokwu dị mfe",
+  "switchToLight": "Gbanwee gaa na ìhè",
+  "switchToDark": "Gbanwee gaa na Ọchịchịrị"
 }

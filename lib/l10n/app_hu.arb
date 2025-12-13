@@ -441,5 +441,11 @@
   "darkThemeLabel": "Sötét",
   "systemThemeLabel": "Rendszer",
   "ourTeam": "Csapatunk",
-  "teamDescription": "Professzionális védikus asztrológusokból álló csapatunk több éves tapasztalattal rendelkezik a bolygóhatások és az életminták értelmezésében. Elkötelezett támogató és fejlesztő csapatunk támogatásával a Karma zökkenőmentes, megbízható és globális élményt nyújt minden felhasználó számára."
+  "teamDescription": "Professzionális védikus asztrológusokból álló csapatunk több éves tapasztalattal rendelkezik a bolygóhatások és az életminták értelmezésében. Elkötelezett támogató és fejlesztő csapatunk támogatásával a Karma zökkenőmentes, megbízható és globális élményt nyújt minden felhasználó számára.",
+  "lightThemeDescription": "Mindig világos témát használjon",
+  "darkThemeDescription": "Mindig sötét témát használjon",
+  "systemThemeDarkDescription": "Kövesd a sötét téma rendszerbeállítását",
+  "systemThemeLightDescription": "Kövesse a rendszerbeállítást a világos témához",
+  "switchToLight": "Váltás világosra",
+  "switchToDark": "Váltás sötétre"
 }

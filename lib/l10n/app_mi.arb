@@ -441,5 +441,11 @@
   "darkThemeLabel": "pouri",
   "systemThemeLabel": "Pūnaha",
   "ourTeam": "To matou Kapa",
-  "teamDescription": "Ko ta maatau roopu tohunga whetu Vedic e kawe mai ana i nga tau o te wheako ki te whakamaori i nga awe o te ao me nga tauira o te ao. I tautokohia e te roopu tautoko me te roopu whanaketanga, ka tukuna e Karma he wheako maamaa, pono, me te ao mo ia kaiwhakamahi."
+  "teamDescription": "Ko ta maatau roopu tohunga whetu Vedic e kawe mai ana i nga tau o te wheako ki te whakamaori i nga awe o te ao me nga tauira o te ao. I tautokohia e te roopu tautoko me te roopu whanaketanga, ka tukuna e Karma he wheako maamaa, pono, me te ao mo ia kaiwhakamahi.",
+  "lightThemeDescription": "Whakamahia tonutia te kaupapa māmā",
+  "darkThemeDescription": "Whakamahia tonutia te kaupapa pōuri",
+  "systemThemeDarkDescription": "Whāia te tautuhinga pūnaha mō te kaupapa pōuri",
+  "systemThemeLightDescription": "Whāia te tautuhinga pūnaha mō te kaupapa mārama",
+  "switchToLight": "Huri ki te Mārama",
+  "switchToDark": "Huri ki te Pōuri"
 }

@@ -441,5 +441,11 @@
   "darkThemeLabel": "Mnyama",
   "systemThemeLabel": "Inkqubo",
   "ourTeam": "Iqela lethu",
-  "teamDescription": "Iqela lethu labavumisi ngeenkwenkwezi beVedic bazisa iminyaka yamava okutolika iimpembelelo zeplanethi kunye neepatheni zobomi. Ixhaswa liqela elizinikeleyo lenkxaso kunye nophuhliso, iKarma inikezela ngomthungo, okuthembekileyo, kunye namava ehlabathi kuye wonke umsebenzisi."
+  "teamDescription": "Iqela lethu labavumisi ngeenkwenkwezi beVedic bazisa iminyaka yamava okutolika iimpembelelo zeplanethi kunye neepatheni zobomi. Ixhaswa liqela elizinikeleyo lenkxaso kunye nophuhliso, iKarma inikezela ngomthungo, okuthembekileyo, kunye namava ehlabathi kuye wonke umsebenzisi.",
+  "lightThemeDescription": "Soloko usebenzisa umxholo okhanyayo",
+  "darkThemeDescription": "Soloko usebenzisa umxholo omnyama",
+  "systemThemeDarkDescription": "Landela useto lwenkqubo yesihloko esimnyama",
+  "systemThemeLightDescription": "Landela useto lwenkqubo ukuze ufumane umxholo okhanyayo",
+  "switchToLight": "Tshintshela kuLight",
+  "switchToDark": "Tshintshela kuMnyama"
 }

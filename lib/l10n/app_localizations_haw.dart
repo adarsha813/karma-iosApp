@@ -859,28 +859,31 @@ class AppLocalizationsHaw extends AppLocalizations {
   String get lightThemeLabel => 'Māmā';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'E hoʻohana mau i ke kumumanaʻo māmā';
 
   @override
   String get darkThemeLabel => 'Poʻeleʻele';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription =>
+      'E hoʻohana mau i ke kumumanaʻo pōʻeleʻele';
 
   @override
   String get systemThemeLabel => 'Pūnaehana';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'E hahai i ka hoʻonohonoho ʻōnaehana no ke kumumanaʻo pōʻeleʻele';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'E hahai i ka hoʻonohonoho ʻōnaehana no ke kumumanaʻo māmā';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'E hoʻololi i ke kukui';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'E hoʻololi i ka Pōʻeleʻele';
 
   @override
   String get ourTeam => 'Ko makou Hui';

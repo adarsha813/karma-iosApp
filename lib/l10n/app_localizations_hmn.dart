@@ -859,28 +859,30 @@ class AppLocalizationsHmn extends AppLocalizations {
   String get lightThemeLabel => 'Teeb';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Siv lub ntsiab lus kaj tas li';
 
   @override
   String get darkThemeLabel => 'Tsaus';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Siv lub ntsiab tsaus nti tas li';
 
   @override
   String get systemThemeLabel => 'Qhov system';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Ua raws li qhov system setting rau lub ntsiab tsaus nti';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Ua raws li qhov chaw teeb tsa ntawm lub system rau lub teeb ci ntsa iab';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Hloov mus rau Lub Teeb';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Hloov mus rau Tsaus Ntuj';
 
   @override
   String get ourTeam => 'Peb Pab Pawg';

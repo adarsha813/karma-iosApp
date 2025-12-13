@@ -861,28 +861,30 @@ class AppLocalizationsTg extends AppLocalizations {
   String get lightThemeLabel => 'Нур';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Ҳамеша мавзӯи равшанро истифода баред';
 
   @override
   String get darkThemeLabel => 'Торик';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Ҳамеша мавзӯи торикро истифода баред';
 
   @override
   String get systemThemeLabel => 'Система';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Танзимоти системаро барои мавзӯи торик риоя кунед';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Танзимоти системаро барои мавзӯи равшан риоя кунед';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Ба рӯшноӣ гузаред';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Ба торик гузаред';
 
   @override
   String get ourTeam => 'Дастаи мо';

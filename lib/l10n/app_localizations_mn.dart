@@ -855,28 +855,30 @@ class AppLocalizationsMn extends AppLocalizations {
   String get lightThemeLabel => 'Гэрэл';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Үргэлж цайвар загвар ашиглах';
 
   @override
   String get darkThemeLabel => 'Харанхуй';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Үргэлж бараан загвар ашиглах';
 
   @override
   String get systemThemeLabel => 'Систем';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Бараан загварын системийн тохиргоог дагаарай';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Гэрэлтэй загварын системийн тохиргоог дагаарай';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Гэрэл рүү шилжих';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Харанхуй руу шилжих';
 
   @override
   String get ourTeam => 'Манай баг';

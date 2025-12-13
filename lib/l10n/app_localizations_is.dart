@@ -855,28 +855,30 @@ class AppLocalizationsIs extends AppLocalizations {
   String get lightThemeLabel => 'Ljós';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Notið alltaf ljóst þema';
 
   @override
   String get darkThemeLabel => 'Dökkt';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Notið alltaf dökkt þema';
 
   @override
   String get systemThemeLabel => 'Kerfi';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Fylgdu kerfisstillingum fyrir dökkt þema';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Fylgdu kerfisstillingum fyrir ljóst þema';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Skipta yfir í ljós';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Skipta yfir í dökkt';
 
   @override
   String get ourTeam => 'Teymið okkar';

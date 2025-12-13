@@ -854,28 +854,30 @@ class AppLocalizationsMs extends AppLocalizations {
   String get lightThemeLabel => 'Cahaya';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Sentiasa gunakan tema cerah';
 
   @override
   String get darkThemeLabel => 'Gelap';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Sentiasa gunakan tema gelap';
 
   @override
   String get systemThemeLabel => 'Sistem';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Ikut tetapan sistem untuk tema gelap';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Ikut tetapan sistem untuk tema cerah';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Tukar ke Cahaya';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Tukar ke Gelap';
 
   @override
   String get ourTeam => 'Pasukan Kami';

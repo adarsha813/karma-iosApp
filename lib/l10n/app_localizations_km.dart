@@ -855,28 +855,30 @@ class AppLocalizationsKm extends AppLocalizations {
   String get lightThemeLabel => 'ពន្លឺ';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'ប្រើ​រចនាប័ទ្ម​ភ្លឺ​ជានិច្ច';
 
   @override
   String get darkThemeLabel => 'ងងឹត';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'ប្រើ​ស្បែក​ងងឹត​ជានិច្ច';
 
   @override
   String get systemThemeLabel => 'ប្រព័ន្ធ';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'អនុវត្តតាមការកំណត់ប្រព័ន្ធសម្រាប់រចនាប័ទ្មងងឹត';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'អនុវត្តតាមការកំណត់ប្រព័ន្ធសម្រាប់រចនាប័ទ្មភ្លឺ';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'ប្តូរទៅពន្លឺ';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'ប្តូរទៅងងឹត';
 
   @override
   String get ourTeam => 'ក្រុមរបស់យើង។';

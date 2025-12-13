@@ -858,28 +858,30 @@ class AppLocalizationsZu extends AppLocalizations {
   String get lightThemeLabel => 'Ukukhanya';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Sebenzisa itimu ekhanyayo njalo';
 
   @override
   String get darkThemeLabel => 'Kumnyama';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Sebenzisa itimu emnyama njalo';
 
   @override
   String get systemThemeLabel => 'Uhlelo';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Landela izilungiselelo zesistimu zetimu emnyama';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Landela ukulungiselelwa kwesistimu kwetimu ekhanyayo';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Shintshela Ekukhanyeni';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Shintshela ku-Dark';
 
   @override
   String get ourTeam => 'Ithimba lethu';

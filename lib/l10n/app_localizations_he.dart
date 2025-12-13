@@ -847,28 +847,30 @@ class AppLocalizationsHe extends AppLocalizations {
   String get lightThemeLabel => 'אוֹר';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'השתמש תמיד בעיצוב בהיר';
 
   @override
   String get darkThemeLabel => 'כֵּהֶה';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'השתמש תמיד בעיצוב כהה';
 
   @override
   String get systemThemeLabel => 'מַעֲרֶכֶת';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'עקוב אחר הגדרות המערכת עבור ערכת נושא כהה';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'עקוב אחר הגדרות המערכת עבור ערכת נושא בהירה';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'מעבר לתאורה';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'עבור למצב כהה';
 
   @override
   String get ourTeam => 'הצוות שלנו';

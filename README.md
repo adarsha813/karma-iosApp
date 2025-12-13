@@ -22,3 +22,7 @@ dart run rename_app:main all="Karma - Life Path"
 flutter pub get
 flutter pub run flutter_launcher_icons
 
+
+flutter pub run flutter_native_splash:create
+
+

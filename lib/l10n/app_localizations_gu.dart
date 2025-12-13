@@ -855,28 +855,30 @@ class AppLocalizationsGu extends AppLocalizations {
   String get lightThemeLabel => 'પ્રકાશ';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'હંમેશા હળવી થીમનો ઉપયોગ કરો';
 
   @override
   String get darkThemeLabel => 'શ્યામ';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'હંમેશા ઘેરી થીમનો ઉપયોગ કરો';
 
   @override
   String get systemThemeLabel => 'સિસ્ટમ';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'ડાર્ક થીમ માટે સિસ્ટમ સેટિંગને અનુસરો';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'લાઇટ થીમ માટે સિસ્ટમ સેટિંગને અનુસરો';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'પ્રકાશ પર સ્વિચ કરો';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'ઘેરા પર સ્વિચ કરો';
 
   @override
   String get ourTeam => 'અમારી ટીમ';

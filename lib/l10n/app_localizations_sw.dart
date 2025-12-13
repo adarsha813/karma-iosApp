@@ -854,28 +854,30 @@ class AppLocalizationsSw extends AppLocalizations {
   String get lightThemeLabel => 'Mwanga';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Tumia mandhari nyepesi kila wakati';
 
   @override
   String get darkThemeLabel => 'Giza';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Tumia mandhari nyeusi kila wakati';
 
   @override
   String get systemThemeLabel => 'Mfumo';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Fuata mipangilio ya mfumo kwa mandhari nyeusi';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Fuata mipangilio ya mfumo kwa mandhari nyepesi';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Badilisha hadi Mwanga';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Badilisha hadi Nyeusi';
 
   @override
   String get ourTeam => 'Timu Yetu';

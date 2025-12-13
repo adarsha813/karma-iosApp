@@ -441,5 +441,11 @@
   "darkThemeLabel": "Gelap",
   "systemThemeLabel": "Sistem",
   "ourTeam": "Tim Kami",
-  "teamDescription": "Tim astrolog Veda profesional kami memiliki pengalaman bertahun-tahun dalam menafsirkan pengaruh planet dan pola kehidupan. Didukung oleh tim dukungan dan pengembangan yang berdedikasi, Karma memberikan pengalaman yang lancar, andal, dan global bagi setiap pengguna."
+  "teamDescription": "Tim astrolog Veda profesional kami memiliki pengalaman bertahun-tahun dalam menafsirkan pengaruh planet dan pola kehidupan. Didukung oleh tim dukungan dan pengembangan yang berdedikasi, Karma memberikan pengalaman yang lancar, andal, dan global bagi setiap pengguna.",
+  "lightThemeDescription": "Selalu gunakan tema terang.",
+  "darkThemeDescription": "Selalu gunakan tema gelap.",
+  "systemThemeDarkDescription": "Ikuti pengaturan sistem untuk tema gelap.",
+  "systemThemeLightDescription": "Ikuti pengaturan sistem untuk tema terang.",
+  "switchToLight": "Beralih ke Cahaya",
+  "switchToDark": "Beralih ke Gelap"
 }

@@ -860,28 +860,30 @@ class AppLocalizationsEu extends AppLocalizations {
   String get lightThemeLabel => 'Argia';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Erabili beti gai argia';
 
   @override
   String get darkThemeLabel => 'Iluna';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Erabili beti gai iluna';
 
   @override
   String get systemThemeLabel => 'Sistema';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Jarraitu sistemaren ezarpenak gai ilunaren erabilerarako';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Jarraitu sistemaren ezarpena gai argirako';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Aldatu Argira';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Aldatu Ilunera';
 
   @override
   String get ourTeam => 'Gure Taldea';

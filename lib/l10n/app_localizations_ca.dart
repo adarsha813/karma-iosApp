@@ -864,28 +864,30 @@ class AppLocalizationsCa extends AppLocalizations {
   String get lightThemeLabel => 'Llum';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Utilitza sempre un tema clar';
 
   @override
   String get darkThemeLabel => 'Fosc';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Utilitza sempre el tema fosc';
 
   @override
   String get systemThemeLabel => 'Sistema';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Segueix la configuració del sistema per al tema fosc';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Segueix la configuració del sistema per al tema clar';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Canvia a la llum';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Canvia a Fosc';
 
   @override
   String get ourTeam => 'El nostre equip';

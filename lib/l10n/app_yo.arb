@@ -441,5 +441,11 @@
   "darkThemeLabel": "Dudu",
   "systemThemeLabel": "Eto",
   "ourTeam": "Egbe wa",
-  "teamDescription": "Ẹgbẹ wa ti awọn awòràwọ Vedic ọjọgbọn mu awọn ọdun ti iriri ti n tumọ awọn ipa aye ati awọn ilana igbesi aye wa. Ti ṣe afẹyinti nipasẹ atilẹyin igbẹhin ati ẹgbẹ idagbasoke, Karma n funni ni ailopin, igbẹkẹle, ati iriri agbaye fun gbogbo olumulo."
+  "teamDescription": "Ẹgbẹ wa ti awọn awòràwọ Vedic ọjọgbọn mu awọn ọdun ti iriri ti n tumọ awọn ipa aye ati awọn ilana igbesi aye wa. Ti ṣe afẹyinti nipasẹ atilẹyin igbẹhin ati ẹgbẹ idagbasoke, Karma n funni ni ailopin, igbẹkẹle, ati iriri agbaye fun gbogbo olumulo.",
+  "lightThemeDescription": "Lo akori imọlẹ nigbagbogbo",
+  "darkThemeDescription": "Lo àkòrí dúdú nígbà gbogbo",
+  "systemThemeDarkDescription": "Tẹ̀lé ètò ètò fún àkòrí dúdú",
+  "systemThemeLightDescription": "Tẹ̀lé ètò ètò fún àkòrí ìmọ́lẹ̀",
+  "switchToLight": "Yípadà sí Ìmọ́lẹ̀",
+  "switchToDark": "Yípadà sí Dúdúdú"
 }

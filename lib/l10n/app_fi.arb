@@ -441,5 +441,11 @@
   "darkThemeLabel": "Tumma",
   "systemThemeLabel": "Järjestelmä",
   "ourTeam": "Tiimimme",
-  "teamDescription": "Ammattitaitoisten vedalaisten astrologien tiimillämme on vuosien kokemus planeettojen vaikutusten ja elämänmallien tulkinnasta. Omistautuneen tuki- ja kehitystiimin tukemana Karma tarjoaa saumattoman, luotettavan ja globaalin kokemuksen jokaiselle käyttäjälle."
+  "teamDescription": "Ammattitaitoisten vedalaisten astrologien tiimillämme on vuosien kokemus planeettojen vaikutusten ja elämänmallien tulkinnasta. Omistautuneen tuki- ja kehitystiimin tukemana Karma tarjoaa saumattoman, luotettavan ja globaalin kokemuksen jokaiselle käyttäjälle.",
+  "lightThemeDescription": "Käytä aina vaaleaa teemaa",
+  "darkThemeDescription": "Käytä aina tummaa teemaa",
+  "systemThemeDarkDescription": "Noudata järjestelmäasetuksia tummalle teemalle",
+  "systemThemeLightDescription": "Noudata järjestelmäasetuksia vaalean teeman osalta",
+  "switchToLight": "Vaihda vaaleaan",
+  "switchToDark": "Vaihda tummaan"
 }

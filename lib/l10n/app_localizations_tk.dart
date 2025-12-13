@@ -855,28 +855,30 @@ class AppLocalizationsTk extends AppLocalizations {
   String get lightThemeLabel => 'Lightagtylyk';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Hemişe ýagty tema ulanyň';
 
   @override
   String get darkThemeLabel => 'Garaňky';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Hemişe garaňky tema ulanyň';
 
   @override
   String get systemThemeLabel => 'Ulgam';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Garaňky tema üçin ulgam sazlamalaryny yzarlaň';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Ýagty tema üçin ulgam sazlamalaryny yzarlaň';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Yşyklyga geç';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Garaňkylyga geç';
 
   @override
   String get ourTeam => 'Toparymyz';

@@ -441,5 +441,11 @@
   "darkThemeLabel": "Ciemny",
   "systemThemeLabel": "System",
   "ourTeam": "Nasz zespół",
-  "teamDescription": "Nasz zespół profesjonalnych astrologów wedyjskich posiada wieloletnie doświadczenie w interpretowaniu wpływów planetarnych i wzorców życiowych. Dzięki wsparciu dedykowanego zespołu wsparcia i rozwoju, Karma zapewnia każdemu użytkownikowi płynne, niezawodne i globalne doświadczenie."
+  "teamDescription": "Nasz zespół profesjonalnych astrologów wedyjskich posiada wieloletnie doświadczenie w interpretowaniu wpływów planetarnych i wzorców życiowych. Dzięki wsparciu dedykowanego zespołu wsparcia i rozwoju, Karma zapewnia każdemu użytkownikowi płynne, niezawodne i globalne doświadczenie.",
+  "lightThemeDescription": "Zawsze używaj jasnego motywu",
+  "darkThemeDescription": "Zawsze używaj ciemnego motywu",
+  "systemThemeDarkDescription": "Postępuj zgodnie z ustawieniami systemowymi dla ciemnego motywu",
+  "systemThemeLightDescription": "Postępuj zgodnie z ustawieniami systemowymi dla jasnego motywu",
+  "switchToLight": "Przełącz na światło",
+  "switchToDark": "Przełącz na ciemność"
 }

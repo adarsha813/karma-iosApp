@@ -857,28 +857,30 @@ class AppLocalizationsHy extends AppLocalizations {
   String get lightThemeLabel => 'Լույս';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Միշտ օգտագործեք բաց թեմա';
 
   @override
   String get darkThemeLabel => 'Մութ';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Միշտ օգտագործեք մուգ թեմա';
 
   @override
   String get systemThemeLabel => 'Համակարգ';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Հետևեք մուգ թեմայի համակարգի կարգավորմանը';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Հետևեք համակարգի կարգավորմանը բաց թեմայի համար';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Անցնել բաց ռեժիմի';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Անցնել մութ ռեժիմին';
 
   @override
   String get ourTeam => 'Մեր թիմը';

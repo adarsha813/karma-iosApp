@@ -856,28 +856,30 @@ class AppLocalizationsXh extends AppLocalizations {
   String get lightThemeLabel => 'Ukukhanya';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Soloko usebenzisa umxholo okhanyayo';
 
   @override
   String get darkThemeLabel => 'Mnyama';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Soloko usebenzisa umxholo omnyama';
 
   @override
   String get systemThemeLabel => 'Inkqubo';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Landela useto lwenkqubo yesihloko esimnyama';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Landela useto lwenkqubo ukuze ufumane umxholo okhanyayo';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Tshintshela kuLight';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Tshintshela kuMnyama';
 
   @override
   String get ourTeam => 'Iqela lethu';

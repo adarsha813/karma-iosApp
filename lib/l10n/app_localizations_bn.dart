@@ -857,28 +857,30 @@ class AppLocalizationsBn extends AppLocalizations {
   String get lightThemeLabel => 'আলো';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'সর্বদা হালকা থিম ব্যবহার করুন';
 
   @override
   String get darkThemeLabel => 'অন্ধকার';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'সর্বদা ডার্ক থিম ব্যবহার করুন';
 
   @override
   String get systemThemeLabel => 'সিস্টেম';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'ডার্ক থিমের জন্য সিস্টেম সেটিং অনুসরণ করুন';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'হালকা থিমের জন্য সিস্টেম সেটিং অনুসরণ করুন';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'আলোতে স্যুইচ করুন';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'ডার্ক এ স্যুইচ করুন';
 
   @override
   String get ourTeam => 'আমাদের টিম';

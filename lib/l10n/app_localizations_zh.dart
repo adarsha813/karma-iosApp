@@ -838,28 +838,28 @@ class AppLocalizationsZh extends AppLocalizations {
   String get lightThemeLabel => '光';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => '始终使用浅色主题';
 
   @override
   String get darkThemeLabel => '黑暗的';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => '始终使用深色主题';
 
   @override
   String get systemThemeLabel => '系统';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription => '请按照系统设置启用深色主题';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription => '请按照系统设置启用浅色主题';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => '切换到灯光';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => '切换到黑暗模式';
 
   @override
   String get ourTeam => '我们的团队';
@@ -1703,10 +1703,28 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get lightThemeLabel => '光';
 
   @override
+  String get lightThemeDescription => '始終使用淺色主題';
+
+  @override
   String get darkThemeLabel => '黑暗的';
 
   @override
+  String get darkThemeDescription => '始終使用深色主題';
+
+  @override
   String get systemThemeLabel => '系統';
+
+  @override
+  String get systemThemeDarkDescription => '請依照系統設定啟用深色主題';
+
+  @override
+  String get systemThemeLightDescription => '請依照系統設定啟用淺色主題';
+
+  @override
+  String get switchToLight => '切換到燈光';
+
+  @override
+  String get switchToDark => '切換到黑暗模式';
 
   @override
   String get ourTeam => '我們的團隊';

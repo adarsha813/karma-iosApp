@@ -855,28 +855,30 @@ class AppLocalizationsTr extends AppLocalizations {
   String get lightThemeLabel => 'Işık';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Her zaman açık tema kullanın.';
 
   @override
   String get darkThemeLabel => 'Karanlık';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Her zaman koyu temayı kullanın.';
 
   @override
   String get systemThemeLabel => 'Sistem';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Koyu tema için sistem ayarlarını takip edin.';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Açık tema için sistem ayarlarını takip edin.';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Işığa geç';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Koyu moda geç';
 
   @override
   String get ourTeam => 'Ekibimiz';

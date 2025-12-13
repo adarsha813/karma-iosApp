@@ -441,5 +441,11 @@
   "darkThemeLabel": "Mørk",
   "systemThemeLabel": "System",
   "ourTeam": "Vårt team",
-  "teamDescription": "Vårt team av profesjonelle vediske astrologer har mange års erfaring med å tolke planetariske påvirkninger og livsmønstre. Med støtte fra et dedikert support- og utviklingsteam leverer Karma en sømløs, pålitelig og global opplevelse for alle brukere."
+  "teamDescription": "Vårt team av profesjonelle vediske astrologer har mange års erfaring med å tolke planetariske påvirkninger og livsmønstre. Med støtte fra et dedikert support- og utviklingsteam leverer Karma en sømløs, pålitelig og global opplevelse for alle brukere.",
+  "lightThemeDescription": "Bruk alltid lyst tema",
+  "darkThemeDescription": "Bruk alltid mørkt tema",
+  "systemThemeDarkDescription": "Følg systeminnstillingene for mørkt tema",
+  "systemThemeLightDescription": "Følg systeminnstillingene for lyst tema",
+  "switchToLight": "Bytt til lys",
+  "switchToDark": "Bytt til mørkt"
 }

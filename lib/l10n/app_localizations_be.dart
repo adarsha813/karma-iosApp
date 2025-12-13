@@ -857,28 +857,30 @@ class AppLocalizationsBe extends AppLocalizations {
   String get lightThemeLabel => 'Святло';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Заўсёды выкарыстоўваць светлую тэму';
 
   @override
   String get darkThemeLabel => 'Цёмны';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Заўсёды выкарыстоўваць цёмную тэму';
 
   @override
   String get systemThemeLabel => 'Сістэма';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Выконвайце сістэмныя налады для цёмнай тэмы';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Выконвайце сістэмныя налады для светлай тэмы';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Пераключыцца на светлы рэжым';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Пераключыцца на цёмны рэжым';
 
   @override
   String get ourTeam => 'Наша каманда';

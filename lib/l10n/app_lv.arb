@@ -441,5 +441,11 @@
   "darkThemeLabel": "Tumšs",
   "systemThemeLabel": "Sistēma",
   "ourTeam": "Mūsu komanda",
-  "teamDescription": "Mūsu profesionālo Vēdu astrologu komandai ir daudzu gadu pieredze planētu ietekmju un dzīves modeļu interpretēšanā. Ar īpašas atbalsta un izstrādes komandas atbalstu Karma nodrošina nevainojamu, uzticamu un globālu pieredzi ikvienam lietotājam."
+  "teamDescription": "Mūsu profesionālo Vēdu astrologu komandai ir daudzu gadu pieredze planētu ietekmju un dzīves modeļu interpretēšanā. Ar īpašas atbalsta un izstrādes komandas atbalstu Karma nodrošina nevainojamu, uzticamu un globālu pieredzi ikvienam lietotājam.",
+  "lightThemeDescription": "Vienmēr izmantot gaišo tēmu",
+  "darkThemeDescription": "Vienmēr izmantot tumšo tēmu",
+  "systemThemeDarkDescription": "Ievērot sistēmas iestatījumus tumšajai tēmai",
+  "systemThemeLightDescription": "Ievērot sistēmas iestatījumus gaišajai tēmai",
+  "switchToLight": "Pārslēgties uz gaišo",
+  "switchToDark": "Pārslēgties uz tumšo"
 }

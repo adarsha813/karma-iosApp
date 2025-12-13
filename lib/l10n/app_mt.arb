@@ -441,5 +441,11 @@
   "darkThemeLabel": "Dlam",
   "systemThemeLabel": "Sistema",
   "ourTeam": "It-Tim Tagħna",
-  "teamDescription": "It-tim tagħna ta' astrologi Vediċi professjonali għandu snin ta' esperjenza fl-interpretazzjoni tal-influwenzi planetarji u l-mudelli tal-ħajja. Appoġġjat minn tim dedikat ta' appoġġ u żvilupp, Karma jipprovdi esperjenza bla xkiel, affidabbli u globali għal kull utent."
+  "teamDescription": "It-tim tagħna ta' astrologi Vediċi professjonali għandu snin ta' esperjenza fl-interpretazzjoni tal-influwenzi planetarji u l-mudelli tal-ħajja. Appoġġjat minn tim dedikat ta' appoġġ u żvilupp, Karma jipprovdi esperjenza bla xkiel, affidabbli u globali għal kull utent.",
+  "lightThemeDescription": "Dejjem uża tema ħafifa",
+  "darkThemeDescription": "Dejjem uża tema skura",
+  "systemThemeDarkDescription": "Segwi s-settings tas-sistema għat-tema skura",
+  "systemThemeLightDescription": "Segwi s-settings tas-sistema għat-tema tad-dawl",
+  "switchToLight": "Aqleb għad-Dawl",
+  "switchToDark": "Aqleb għal Dlam"
 }

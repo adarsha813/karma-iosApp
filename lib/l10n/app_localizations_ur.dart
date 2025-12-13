@@ -855,28 +855,30 @@ class AppLocalizationsUr extends AppLocalizations {
   String get lightThemeLabel => 'روشنی';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'ہمیشہ ہلکی تھیم استعمال کریں۔';
 
   @override
   String get darkThemeLabel => 'اندھیرا';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'ہمیشہ ڈارک تھیم استعمال کریں۔';
 
   @override
   String get systemThemeLabel => 'سسٹم';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'ڈارک تھیم کے لیے سسٹم سیٹنگ کو فالو کریں۔';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'لائٹ تھیم کے لیے سسٹم سیٹنگ کو فالو کریں۔';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'لائٹ پر سوئچ کریں۔';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'تاریک پر سوئچ کریں۔';
 
   @override
   String get ourTeam => 'ہماری ٹیم';

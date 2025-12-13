@@ -3,8 +3,11 @@
     <!-- Theme shown during app launch -->
     <style name="LaunchTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@drawable/launch_background</item>
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
     </style>
-
     <!-- Main theme of your app -->
     <style name="NormalTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Safe fallback instead of ?attr/colorBackground -->

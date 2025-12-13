@@ -841,28 +841,28 @@ class AppLocalizationsAm extends AppLocalizations {
   String get lightThemeLabel => 'ብርሃን';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'ሁልጊዜ ቀላል ገጽታ ተጠቀም';
 
   @override
   String get darkThemeLabel => 'ጨለማ';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'ሁልጊዜ ጨለማ ገጽታ ተጠቀም';
 
   @override
   String get systemThemeLabel => 'ስርዓት';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription => 'ለጨለማ ገጽታ የስርዓት ቅንብሩን ይከተሉ';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription => 'ለብርሃን ገጽታ የስርዓት ቅንብሩን ይከተሉ';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'ወደ ብርሃን ቀይር';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'ወደ ጨለማ ቀይር';
 
   @override
   String get ourTeam => 'የእኛ ቡድን';

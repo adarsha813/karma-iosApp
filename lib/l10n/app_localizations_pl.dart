@@ -861,28 +861,30 @@ class AppLocalizationsPl extends AppLocalizations {
   String get lightThemeLabel => 'Światło';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Zawsze używaj jasnego motywu';
 
   @override
   String get darkThemeLabel => 'Ciemny';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Zawsze używaj ciemnego motywu';
 
   @override
   String get systemThemeLabel => 'System';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Postępuj zgodnie z ustawieniami systemowymi dla ciemnego motywu';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Postępuj zgodnie z ustawieniami systemowymi dla jasnego motywu';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Przełącz na światło';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Przełącz na ciemność';
 
   @override
   String get ourTeam => 'Nasz zespół';

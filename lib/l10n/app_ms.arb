@@ -441,5 +441,11 @@
   "darkThemeLabel": "Gelap",
   "systemThemeLabel": "Sistem",
   "ourTeam": "Pasukan Kami",
-  "teamDescription": "Pasukan ahli nujum Veda profesional kami membawa pengalaman bertahun-tahun mentafsir pengaruh planet dan corak kehidupan. Disokong oleh pasukan sokongan dan pembangunan yang berdedikasi, Karma memberikan pengalaman yang lancar, boleh dipercayai dan global untuk setiap pengguna."
+  "teamDescription": "Pasukan ahli nujum Veda profesional kami membawa pengalaman bertahun-tahun mentafsir pengaruh planet dan corak kehidupan. Disokong oleh pasukan sokongan dan pembangunan yang berdedikasi, Karma memberikan pengalaman yang lancar, boleh dipercayai dan global untuk setiap pengguna.",
+  "lightThemeDescription": "Sentiasa gunakan tema cerah",
+  "darkThemeDescription": "Sentiasa gunakan tema gelap",
+  "systemThemeDarkDescription": "Ikut tetapan sistem untuk tema gelap",
+  "systemThemeLightDescription": "Ikut tetapan sistem untuk tema cerah",
+  "switchToLight": "Tukar ke Cahaya",
+  "switchToDark": "Tukar ke Gelap"
 }

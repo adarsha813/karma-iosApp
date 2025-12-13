@@ -441,5 +441,11 @@
   "darkThemeLabel": "Maizina",
   "systemThemeLabel": "RAFITRA",
   "ourTeam": "Ny Ekipantsika",
-  "teamDescription": "Ny ekipanay mpanandro Vedic matihanina dia mitondra traikefa an-taonany maro amin'ny fandikana ny fiantraikan'ny planeta sy ny fomba fiainana. Tohanan'ny ekipa mpanohana sy fampandrosoana natokana ho an'ny mpampiasa tsirairay ny Karma."
+  "teamDescription": "Ny ekipanay mpanandro Vedic matihanina dia mitondra traikefa an-taonany maro amin'ny fandikana ny fiantraikan'ny planeta sy ny fomba fiainana. Tohanan'ny ekipa mpanohana sy fampandrosoana natokana ho an'ny mpampiasa tsirairay ny Karma.",
+  "lightThemeDescription": "Ampiasao foana ny lohahevitra maivana",
+  "darkThemeDescription": "Ampiasao foana ny lohahevitra maizina",
+  "systemThemeDarkDescription": "Araho ny firafitry ny rafitra ho an'ny lohahevitra maizina",
+  "systemThemeLightDescription": "Araho ny firafitry ny rafitra ho an'ny lohahevitra mazava",
+  "switchToLight": "Mifindra amin'ny Hazavana",
+  "switchToDark": "Mifindra amin'ny maizina"
 }

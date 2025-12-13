@@ -853,28 +853,30 @@ class AppLocalizationsJv extends AppLocalizations {
   String get lightThemeLabel => 'cahya';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Tansah gunakake tema entheng';
 
   @override
   String get darkThemeLabel => 'peteng';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Tansah nggunakake tema peteng';
 
   @override
   String get systemThemeLabel => 'Sistem';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Tindakake setelan sistem kanggo tema peteng';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Tindakake setelan sistem kanggo tema entheng';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Ganti menyang Cahya';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Ganti menyang Peteng';
 
   @override
   String get ourTeam => 'Tim Kita';

@@ -441,5 +441,11 @@
   "darkThemeLabel": "peteng",
   "systemThemeLabel": "Sistem",
   "ourTeam": "Tim Kita",
-  "teamDescription": "Tim ahli astrologi Veda profesional nggawa pengalaman pirang-pirang taun nerjemahake pengaruh planet lan pola urip. Didhukung dening tim dhukungan lan pangembangan khusus, Karma menehi pengalaman sing lancar, dipercaya, lan global kanggo saben pangguna."
+  "teamDescription": "Tim ahli astrologi Veda profesional nggawa pengalaman pirang-pirang taun nerjemahake pengaruh planet lan pola urip. Didhukung dening tim dhukungan lan pangembangan khusus, Karma menehi pengalaman sing lancar, dipercaya, lan global kanggo saben pangguna.",
+  "lightThemeDescription": "Tansah gunakake tema entheng",
+  "darkThemeDescription": "Tansah nggunakake tema peteng",
+  "systemThemeDarkDescription": "Tindakake setelan sistem kanggo tema peteng",
+  "systemThemeLightDescription": "Tindakake setelan sistem kanggo tema entheng",
+  "switchToLight": "Ganti menyang Cahya",
+  "switchToDark": "Ganti menyang Peteng"
 }

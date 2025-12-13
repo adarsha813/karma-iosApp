@@ -860,28 +860,30 @@ class AppLocalizationsSt extends AppLocalizations {
   String get lightThemeLabel => 'Leseli';
 
   @override
-  String get lightThemeDescription => 'Always use light theme';
+  String get lightThemeDescription => 'Kamehla sebelisa sehlooho se bobebe';
 
   @override
   String get darkThemeLabel => 'Lefifi';
 
   @override
-  String get darkThemeDescription => 'Always use dark theme';
+  String get darkThemeDescription => 'Kamehla sebelisa sehlooho se lefifi';
 
   @override
   String get systemThemeLabel => 'Tsamaiso';
 
   @override
-  String get systemThemeDarkDescription => 'Using system dark theme';
+  String get systemThemeDarkDescription =>
+      'Latela tlhophiso ea sistimi bakeng sa sehlooho se lefifi';
 
   @override
-  String get systemThemeLightDescription => 'Using system light theme';
+  String get systemThemeLightDescription =>
+      'Latela tlhophiso ea sistimi bakeng sa sehlooho se bobebe';
 
   @override
-  String get switchToLight => 'Switch to Light';
+  String get switchToLight => 'Fetohela ho Leseli';
 
   @override
-  String get switchToDark => 'Switch to Dark';
+  String get switchToDark => 'Fetohela ho Lefifi';
 
   @override
   String get ourTeam => 'Sehlopha sa rona';

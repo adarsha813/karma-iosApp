@@ -441,5 +441,11 @@
   "darkThemeLabel": "Tume",
   "systemThemeLabel": "Süsteem",
   "ourTeam": "Meie meeskond",
-  "teamDescription": "Meie professionaalsete Veeda astroloogide meeskonnal on aastatepikkune kogemus planeetide mõjude ja elumustrite tõlgendamisel. Pühendunud tugi- ja arendusmeeskonna toel pakub Karma igale kasutajale sujuvat, usaldusväärset ja globaalset kogemust."
+  "teamDescription": "Meie professionaalsete Veeda astroloogide meeskonnal on aastatepikkune kogemus planeetide mõjude ja elumustrite tõlgendamisel. Pühendunud tugi- ja arendusmeeskonna toel pakub Karma igale kasutajale sujuvat, usaldusväärset ja globaalset kogemust.",
+  "lightThemeDescription": "Kasuta alati heledat teemat",
+  "darkThemeDescription": "Kasuta alati tumedat teemat",
+  "systemThemeDarkDescription": "Tumeda teema puhul järgi süsteemi seadeid",
+  "systemThemeLightDescription": "Järgi heleda teema süsteemiseadeid",
+  "switchToLight": "Lülitu heledale režiimile",
+  "switchToDark": "Lülitu tumedale"
 }
