@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io'; // ✅ ADDED IMPORT
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -6,7 +7,7 @@ import '../providers/profile_provider.dart';
 import '../services/secure_astrologer_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:share_plus/share_plus.dart';
-import '../l10n/app_localizations.dart'; // Add this import
+import '../l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 
 class AstrologerDetailPage extends StatefulWidget {
@@ -90,35 +91,34 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
         listen: false,
       );
 
-      // ✅ FIX: Use the SAME pattern as your working payment page
       final token = profileProvider.token;
       final userId = profileProvider.userId;
 
       debugPrint('🔍 Token in AstrologerDetailPage: $token');
       debugPrint('🔍 UserId in AstrologerDetailPage: $userId');
 
-      // ✅ FIX: Add immediate fallback like payment page
       if (token == null || userId == null) {
         debugPrint('❌ Token or UserId is null - loading public data only');
 
-        // Load only public data without authentication
         final astrologerDetail =
             await SecureAstrologerService.getAstrologerDetails(
-              widget.astrologerId,
-              null, // Force no auth for public data
-            );
+          widget.astrologerId,
+          null,
+        );
 
         if (mounted) {
           setState(() {
             _astrologerData = astrologerDetail;
-            _isFavorite = false; // Default when not authenticated
+            _isFavorite = false;
             _loadState = LoadState.success;
           });
         }
         return;
       }
 
-      // ✅ Only proceed with authenticated calls if we have valid token/userId
+      // ✅ ADDED: Debug to check employeeId
+      debugPrint('🎯 Loading astrologer ID: ${widget.astrologerId}');
+      
       final results = await Future.wait([
         SecureAstrologerService.getAstrologerDetails(
           widget.astrologerId,
@@ -133,6 +133,15 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
 
       final astrologerDetail = results[0] as AstrologerDetail;
       final isFavorite = results[1] as bool;
+
+      // ✅ ADDED: Debug employeeId
+      debugPrint('''
+✅ Astrologer Data Loaded:
+   - ID: ${astrologerDetail.id}
+   - Employee ID from model: ${astrologerDetail.employeeId}
+   - Full Name: ${astrologerDetail.fullName}
+   - Is Favorite: $isFavorite
+''');
 
       if (mounted) {
         setState(() {
@@ -158,12 +167,13 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
     final userId = profileProvider.userId;
     final token = profileProvider.token;
 
-    // ✅ ADD DEBUGGING
     debugPrint('''
 🔄 _toggleFavorite called:
    - User ID: $userId
    - Token: ${token != null ? "✅ Present (length: ${token.length})" : "❌ NULL"}
    - Current Favorite State: $_isFavorite
+   - Astrologer ID: ${widget.astrologerId}
+   - Astrologer Data: ${_astrologerData != null ? "✅ Loaded" : "❌ Not loaded"}
 ''');
 
     if (userId == null || userId.isEmpty) {
@@ -171,19 +181,37 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
       _showSecuritySnackbar(l10n.authenticationRequired);
       return;
     }
+    
+    // ✅ ADDED: Check if we have astrologer data with employeeId
+    if (_astrologerData == null) {
+      _showSecuritySnackbar('Astrologer data not loaded');
+      return;
+    }
+    
+    if (_astrologerData!.employeeId.isEmpty) {
+      debugPrint('⚠️ WARNING: Astrologer employeeId is empty!');
+      debugPrint('   Full astrologer data: ${_astrologerData!.toJson()}');
+    }
+
     setState(() => _actionInProgress = true);
     _logSecurityEvent('FAVORITE_TOGGLE_ATTEMPT', {
       'userId': userId,
       'astrologerId': widget.astrologerId,
+      'employeeId': _astrologerData?.employeeId ?? 'NOT_FOUND',
       'currentState': _isFavorite,
     });
 
     try {
       final newFavoriteState = !_isFavorite;
 
+      // ✅ FIXED: Use the employeeId from astrologer data
+      final employeeId = _astrologerData!.employeeId;
+      debugPrint('🎯 Using employeeId for favorite: $employeeId');
+
       final success = await SecureAstrologerService.toggleFavorite(
         userId: userId,
         astrologerId: widget.astrologerId,
+        employeeId: employeeId, // ✅ ADDED employeeId parameter
         isCurrentlyFavorite: _isFavorite,
         token: token,
       );
@@ -194,16 +222,16 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
         final astrologerName = _astrologerData?.fullName ?? 'Astrologer';
 
         _showEnterpriseSnackbar(
-          message:
-              newFavoriteState
-                  ? l10n.addedToFavorites(astrologerName)
-                  : l10n.removedFromFavorites(astrologerName),
+          message: newFavoriteState
+              ? l10n.addedToFavorites(astrologerName)
+              : l10n.removedFromFavorites(astrologerName),
           type: newFavoriteState ? SnackbarType.success : SnackbarType.info,
         );
 
         _logSecurityEvent('FAVORITE_TOGGLE_SUCCESS', {
           'userId': userId,
           'astrologerId': widget.astrologerId,
+          'employeeId': employeeId,
           'newState': newFavoriteState,
         });
       } else {
@@ -219,6 +247,7 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
         'astrologerId': widget.astrologerId,
       });
     } catch (e) {
+      debugPrint('❌ Toggle favorite error: $e');
       _showSecuritySnackbar('Network error. Please try again.');
       _logSecurityEvent('FAVORITE_TOGGLE_NETWORK_ERROR', {
         'error': e.toString(),
@@ -258,12 +287,10 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
 
     _securityLog.add(json.encode(logEntry));
 
-    // In production, send to your security monitoring service
     if (kDebugMode) {
       debugPrint('🔒 SECURITY: $event - ${logEntry.toString()}');
     }
 
-    // Keep only last 100 log entries
     if (_securityLog.length > 100) {
       _securityLog.removeAt(0);
     }
@@ -298,7 +325,6 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
   }
 
   AppBar _buildAppBar(ThemeData theme) {
-    // Change return type from Widget to AppBar
     final l10n = AppLocalizations.of(context)!;
     return AppBar(
       title: Text(l10n.astrologerProfileTitle),
@@ -349,13 +375,10 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Profile Header
           _buildProfileHeader(theme),
           const SizedBox(height: 24),
-          // Favorite Action
           _buildFavoriteSection(theme),
           const SizedBox(height: 24),
-          // Details Sections
           _buildDetailsSections(theme),
         ],
       ),
@@ -367,7 +390,6 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
       scale: _scaleAnimation,
       child: Column(
         children: [
-          // Avatar with professional styling
           Container(
             width: 120,
             height: 120,
@@ -389,30 +411,27 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
               child: CachedNetworkImage(
                 imageUrl: _astrologerData?.image ?? '',
                 fit: BoxFit.cover,
-                placeholder:
-                    (context, url) => Container(
-                      color: theme.colorScheme.surfaceVariant,
-                      child: Icon(
-                        Icons.person,
-                        size: 40,
-                        color: theme.colorScheme.onSurfaceVariant,
-                      ),
-                    ),
-                errorWidget:
-                    (context, url, error) => Container(
-                      color: theme.colorScheme.surfaceVariant,
-                      child: Icon(
-                        Icons.person,
-                        size: 40,
-                        color: theme.colorScheme.onSurfaceVariant,
-                      ),
-                    ),
+                placeholder: (context, url) => Container(
+                  color: theme.colorScheme.surfaceVariant,
+                  child: Icon(
+                    Icons.person,
+                    size: 40,
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
+                ),
+                errorWidget: (context, url, error) => Container(
+                  color: theme.colorScheme.surfaceVariant,
+                  child: Icon(
+                    Icons.person,
+                    size: 40,
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
+                ),
                 fadeInDuration: const Duration(milliseconds: 300),
               ),
             ),
           ),
           const SizedBox(height: 16),
-          // Name and basic info
           Text(
             _astrologerData?.fullName ?? 'Astrologer',
             style: theme.textTheme.headlineMedium?.copyWith(
@@ -422,7 +441,6 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
-          // Rating and reviews
           if (_astrologerData?.rating != null) ...[
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -449,27 +467,25 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
             ),
             const SizedBox(height: 8),
           ],
-          // Specialties
           if (_astrologerData?.specialties.isNotEmpty == true) ...[
             Wrap(
               spacing: 8,
               runSpacing: 4,
               alignment: WrapAlignment.center,
-              children:
-                  _astrologerData!.specialties
-                      .map(
-                        (specialty) => Chip(
-                          label: Text(
-                            specialty,
-                            style: theme.textTheme.bodySmall?.copyWith(
-                              color: theme.colorScheme.onPrimary,
-                            ),
-                          ),
-                          backgroundColor: theme.colorScheme.primary,
-                          visualDensity: VisualDensity.compact,
+              children: _astrologerData!.specialties
+                  .map(
+                    (specialty) => Chip(
+                      label: Text(
+                        specialty,
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.colorScheme.onPrimary,
                         ),
-                      )
-                      .toList(),
+                      ),
+                      backgroundColor: theme.colorScheme.primary,
+                      visualDensity: VisualDensity.compact,
+                    ),
+                  )
+                  .toList(),
             ),
             const SizedBox(height: 16),
           ],
@@ -500,64 +516,49 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
             opacity: _fadeAnimation,
             child: ElevatedButton.icon(
               onPressed: _actionInProgress ? null : _toggleFavorite,
-              icon:
-                  _actionInProgress
-                      ? SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            _isFavorite
-                                ? theme.colorScheme.onSurface
-                                : theme.colorScheme.onPrimary,
-                          ),
+              icon: _actionInProgress
+                  ? SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          _isFavorite
+                              ? theme.colorScheme.onSurface
+                              : theme.colorScheme.onPrimary,
                         ),
-                      )
-                      : Icon(
-                        _isFavorite
-                            ? Icons.star_rounded
-                            : Icons.star_outline_rounded,
-                        color:
-                            _isFavorite
-                                ? Colors.amber
-                                : theme.colorScheme.onPrimary,
-                        size: 24,
                       ),
+                    )
+                  : Icon(
+                      _isFavorite ? Icons.star_rounded : Icons.star_outline_rounded,
+                      color: _isFavorite ? Colors.amber : theme.colorScheme.onPrimary,
+                      size: 24,
+                    ),
               label: Text(
-                _isFavorite
-                    ? l10n.personalAstrologer
-                    : l10n.makePersonalAstrologer,
+                _isFavorite ? l10n.personalAstrologer : l10n.makePersonalAstrologer,
                 style: theme.textTheme.labelLarge?.copyWith(
                   fontWeight: FontWeight.w600,
-                  color:
-                      _isFavorite
-                          ? theme.colorScheme.onSurface
-                          : theme.colorScheme.onPrimary,
+                  color: _isFavorite ? theme.colorScheme.onSurface : theme.colorScheme.onPrimary,
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                backgroundColor:
-                    _isFavorite
-                        ? Colors.amber.withAlpha((0.2 * 255).toInt())
-                        : theme.colorScheme.primary,
+                backgroundColor: _isFavorite
+                    ? Colors.amber.withAlpha((0.2 * 255).toInt())
+                    : theme.colorScheme.primary,
                 foregroundColor:
-                    _isFavorite
-                        ? theme.colorScheme.onSurface
-                        : theme.colorScheme.onPrimary,
+                    _isFavorite ? theme.colorScheme.onSurface : theme.colorScheme.onPrimary,
                 padding: const EdgeInsets.symmetric(
                   vertical: 16,
                   horizontal: 24,
                 ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
-                  side:
-                      _isFavorite
-                          ? BorderSide(
-                            color: Colors.amber.withAlpha((0.3 * 255).toInt()),
-                            width: 2,
-                          )
-                          : BorderSide.none,
+                  side: _isFavorite
+                      ? BorderSide(
+                          color: Colors.amber.withAlpha((0.3 * 255).toInt()),
+                          width: 2,
+                        )
+                      : BorderSide.none,
                 ),
                 elevation: 2,
                 shadowColor: Colors.black.withAlpha((0.1 * 255).toInt()),
@@ -583,7 +584,6 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Education & Qualifications
         _buildDetailSection(
           icon: Icons.school_rounded,
           title: l10n.educationQualifications,
@@ -598,7 +598,6 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
           theme: theme,
         ),
         const SizedBox(height: 20),
-        // Bio
         if (_astrologerData?.bio != null && _astrologerData!.bio!.isNotEmpty)
           _buildDetailSection(
             icon: Icons.description_rounded,
@@ -724,7 +723,6 @@ class _AstrologerDetailPageState extends State<AstrologerDetailPage>
   }
 }
 
-// Supporting Enums and Widgets
 enum LoadState { loading, success, error }
 
 enum SnackbarType { success, error, warning, info }
@@ -755,7 +753,6 @@ class AstrologerDetailShimmer extends StatelessWidget {
   Widget _buildSimpleProfileShimmer() {
     return Column(
       children: [
-        // Simple circle for avatar
         Container(
           width: 120,
           height: 120,
@@ -765,7 +762,6 @@ class AstrologerDetailShimmer extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 16),
-        // Simple rectangles for text
         Container(
           width: 200,
           height: 24,
@@ -858,7 +854,7 @@ class SecurityShield extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return child; // In real implementation, add security wrappers here
+    return child;
   }
 }
 
