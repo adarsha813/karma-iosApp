@@ -214,13 +214,20 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     debugPrint('ℹ️ Other types ignored for unread counts');
   }
   // Initialize local notifications
-  const AndroidInitializationSettings androidSettings =
-      AndroidInitializationSettings('@mipmap/ic_launcher');
-  const InitializationSettings initSettings = InitializationSettings(
-    android: androidSettings,
-  );
+const AndroidInitializationSettings androidSettings =
+    AndroidInitializationSettings('@mipmap/ic_launcher');
 
-  await flutterLocalNotificationsPlugin.initialize(initSettings);
+const DarwinInitializationSettings iosSettings =
+    DarwinInitializationSettings();
+
+const InitializationSettings initSettings = InitializationSettings(
+  android: androidSettings,
+  iOS: iosSettings, // ✅ REQUIRED
+);
+
+await flutterLocalNotificationsPlugin.initialize(initSettings);
+
+
 
   // Create appropriate notification channel based on type
   String channelId = 'general_channel';
@@ -833,7 +840,15 @@ class SecureAppInitializer {
       await SecureNotificationManager.createNotificationChannels();
 
       // Setup FCM
-      await _setupFCM();
+      // Setup FCM (DO NOT BLOCK APP STARTUP ON iOS)
+if (Platform.isIOS) {
+  Future.delayed(const Duration(seconds: 2), () {
+    _setupFCM(); // fire-and-forget
+  });
+} else {
+  await _setupFCM();
+}
+
 
       // Initialize Stripe
       await StripeService.initialize().catchError((e, stack) {
@@ -868,124 +883,45 @@ class SecureAppInitializer {
 
   // --- Firebase Cloud Messaging Setup ---
   static Future<void> _setupFCM() async {
-    try {
-      // Request iOS permissions if applicable
-      if (Platform.isIOS) {
-        await _requestIOSPermissions();
-      }
+  try {
+    final messaging = FirebaseMessaging.instance;
 
-      // Set background handler
-      FirebaseMessaging.onBackgroundMessage(
-        _secureFirebaseMessagingBackgroundHandler,
-      );
-
-      // Get FCM token
-      final fcmToken = await FirebaseMessaging.instance.getToken();
-      if (fcmToken != null) {
-        final tokenPreview = fcmToken.substring(0, min(20, fcmToken.length));
-        ProductionLogger.info('📱 FCM Token obtained: ${tokenPreview}...');
-        await _saveFcmToken(fcmToken);
-      }
-
-      // Listen for foreground messages
-      FirebaseMessaging.onMessage.listen(_handleForegroundMessage);
-
-      // Handle message opened from background
-      FirebaseMessaging.onMessageOpenedApp.listen(_handleMessageOpenedApp);
-    } catch (e, stackTrace) {
-      ProductionLogger.error('🔥 FCM setup failed', e, stackTrace);
-      rethrow;
-    }
-  }
-
-  // --- Save FCM Token Securely ---
-  static Future<void> _saveFcmToken(String token) async {
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('fcm_token', token);
-      ProductionLogger.info('💾 FCM token saved securely');
-    } catch (e) {
-      ProductionLogger.error('Failed to save FCM token', e);
-    }
-  }
-
-  // --- iOS Notification Permissions ---
-  static Future<void> _requestIOSPermissions() async {
-    try {
-      final settings = await FirebaseMessaging.instance.requestPermission(
-        alert: true,
-        badge: true,
-        sound: true,
-        criticalAlert: true,
-      );
-      ProductionLogger.info(
-        '📲 iOS notification permission: ${settings.authorizationStatus}',
-      );
-    } catch (e) {
-      ProductionLogger.error('Failed to request iOS permissions', e);
-    }
-  }
-
-  // --- Foreground Message Handler ---
-  static Future<void> _handleForegroundMessage(RemoteMessage message) async {
-    ProductionLogger.info(
-      '💬 Foreground message received: ${message.messageId}',
+    // Request permission (safe to call multiple times)
+    await messaging.requestPermission(
+      alert: true,
+      badge: true,
+      sound: true,
     );
+
+    String? token;
+
     try {
-      final prefs = await SharedPreferences.getInstance();
-      final notificationsEnabled =
-          prefs.getBool('notifications_enabled') ?? true;
-
-      if (!notificationsEnabled) {
-        ProductionLogger.info(
-          '🔕 Notifications disabled - skipping foreground notification',
-        );
-        return;
-      }
-      final data = message.data;
-      final type = data['type'] ?? 'general';
-
-      // ✅ SANITIZE THE TITLE AND BODY
-      final rawTitle = data['title'] ?? 'New Notification';
-      final rawBody = data['body'] ?? 'You have a new message';
-
-      final sanitizedTitle = TextSanitizer.sanitizeForNotification(rawTitle);
-      final sanitizedBody = TextSanitizer.sanitizeForNotification(rawBody);
-
-      if (!_validateNotificationData(type, data)) {
-        ProductionLogger.warning(
-          '⚠️ Invalid notification data for type: $type',
-        );
-        return;
-      }
-
-      // Create sanitized payload
-      final sanitizedData = Map<String, dynamic>.from(data);
-      sanitizedData['title'] = sanitizedTitle;
-      sanitizedData['body'] = sanitizedBody;
-
-      final payload =
-          NotificationPayload.fromJson(sanitizedData).toJsonString();
-
-      await _showLocalNotification(
-        title: sanitizedTitle,
-        body: sanitizedBody,
-        payload: payload,
-        channelId: _getChannelId(type),
-      );
-
-      // Update providers if context exists
-      if (navigatorKey.currentContext != null) {
-        await _updateUnreadCounts(type, navigatorKey.currentContext!);
-      }
-    } catch (e, stackTrace) {
-      ProductionLogger.error(
-        'Error handling foreground message',
-        e,
-        stackTrace,
+      token = await messaging.getToken();
+    } catch (e) {
+      debugPrint(
+        "⚠️ FCM token not ready yet (normal on iOS): $e",
       );
     }
+
+    if (token != null) {
+      debugPrint("✅ FCM token obtained: $token");
+      // TODO: send token to backend
+    } else {
+      debugPrint("⏳ Waiting for FCM token...");
+    }
+
+    // 🔑 MOST IMPORTANT PART
+    FirebaseMessaging.instance.onTokenRefresh.listen((newToken) {
+      debugPrint("🔄 FCM token refreshed: $newToken");
+      // TODO: send refreshed token to backend
+    });
+  } catch (e, s) {
+    // ❗ NEVER crash app startup because of FCM
+    debugPrint("⚠️ FCM setup error (non-fatal): $e");
+    debugPrint("$s");
   }
+}
+
 
   // --- Handle Message When App is Opened ---
   static Future<void> _handleMessageOpenedApp(RemoteMessage message) async {

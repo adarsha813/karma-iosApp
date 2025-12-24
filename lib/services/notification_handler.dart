@@ -7,74 +7,62 @@ class NotificationHandler {
   static final FlutterLocalNotificationsPlugin notificationsPlugin =
       FlutterLocalNotificationsPlugin();
 
+  /// 🔹 Initialize notifications (CALL ONCE in main)
   static Future<void> init() async {
     const AndroidInitializationSettings androidSettings =
         AndroidInitializationSettings('@mipmap/ic_launcher');
 
-    const InitializationSettings initSettings = InitializationSettings(
-      android: androidSettings,
+    const DarwinInitializationSettings iosSettings =
+        DarwinInitializationSettings(
+      requestAlertPermission: true,
+      requestBadgePermission: true,
+      requestSoundPermission: true,
     );
 
-    await notificationsPlugin.initialize(initSettings);
+    const InitializationSettings initSettings = InitializationSettings(
+      android: androidSettings,
+      iOS: iosSettings, // ✅ REQUIRED for iOS
+    );
 
+    await notificationsPlugin.initialize(
+      initSettings,
+      onDidReceiveNotificationResponse: (response) {
+        debugPrint("🔔 Notification tapped: ${response.payload}");
+      },
+    );
+
+    // Android channel
     const AndroidNotificationChannel paymentChannel =
         AndroidNotificationChannel(
-          'payment_channel',
-          'Payment Notifications',
-          description: 'Purchase confirmations',
-          importance: Importance.high,
-        );
+      'payment_channel',
+      'Payment Notifications',
+      description: 'Purchase confirmations',
+      importance: Importance.high,
+    );
 
     final androidPlugin =
-        notificationsPlugin
-            .resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin
-            >();
+        notificationsPlugin.resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>();
 
     await androidPlugin?.createNotificationChannel(paymentChannel);
   }
 
-  // ✅ UPDATED: Check both app toggle AND system permissions
-  static Future<bool> _areNotificationsEnabled(BuildContext context) async {
-    try {
-      // 1. Check app-level toggle
-      final notificationProvider = Provider.of<NotificationProvider>(
-        context,
-        listen: false,
-      );
-
-      if (!notificationProvider.notificationsEnabled) {
-        debugPrint("🔕 App notifications disabled via toggle");
-        return false;
-      }
-
-      // 2. Check system-level permissions
-      final androidPlugin =
-          notificationsPlugin
-              .resolvePlatformSpecificImplementation<
-                AndroidFlutterLocalNotificationsPlugin
-              >();
-
-      final systemEnabled =
-          await androidPlugin?.areNotificationsEnabled() ?? true;
-
-      if (!systemEnabled) {
-        debugPrint("🔕 System notifications disabled");
-        return false;
-      }
-
-      return true;
-    } catch (e) {
-      debugPrint("⚠️ Error checking notification permissions: $e");
-      return true; // Default to enabled if there's an error
-    }
+  /// 🔹 App-level notification toggle check
+  static bool _isAppNotificationEnabled(BuildContext context) {
+    final provider = Provider.of<NotificationProvider>(
+      context,
+      listen: false,
+    );
+    return provider.notificationsEnabled;
   }
 
-  static void showSystemNotification(dynamic data) {
+  /// 🔹 Simple system notification (no context needed)
+  static Future<void> showSystemNotification(dynamic data) async {
     final category = data['category']?.toString() ?? 'general';
     final message = data['message']?.toString() ?? 'No message provided';
 
-    const androidDetails = AndroidNotificationDetails(
+    const AndroidNotificationDetails androidDetails =
+        AndroidNotificationDetails(
       'payment_channel',
       'Payment Notifications',
       channelDescription: 'Purchase confirmations',
@@ -82,59 +70,68 @@ class NotificationHandler {
       priority: Priority.high,
     );
 
-    const notificationDetails = NotificationDetails(android: androidDetails);
+    const DarwinNotificationDetails iosDetails =
+        DarwinNotificationDetails();
 
-    notificationsPlugin.show(
-      0,
+    const NotificationDetails details = NotificationDetails(
+      android: androidDetails,
+      iOS: iosDetails,
+    );
+
+    await notificationsPlugin.show(
+      DateTime.now().millisecondsSinceEpoch ~/ 1000,
       "🎉 New ${_capitalize(category)}",
       message,
-      notificationDetails,
+      details,
     );
   }
 
+  /// 🔹 Context-aware notification (respects app toggle)
   static Future<void> showBasicNotification({
     required String title,
     required String body,
-    String? payload,
     required BuildContext context,
-    bool force = false, // Only for critical notifications
+    String? payload,
+    bool force = false,
   }) async {
-    // ✅ STRICT CHECK: Don't show if disabled (unless forced for critical alerts)
-    if (!force && !await _areNotificationsEnabled(context)) {
-      debugPrint(
-        "🔕 Notifications disabled - skipping ALL system notifications",
-      );
+    if (!force && !_isAppNotificationEnabled(context)) {
+      debugPrint("🔕 App notifications disabled — skipping");
       return;
     }
 
-    const androidDetails = AndroidNotificationDetails(
+    const AndroidNotificationDetails androidDetails =
+        AndroidNotificationDetails(
       'default_channel',
-      'Default',
-      channelDescription: 'Default notifications',
+      'Default Notifications',
+      channelDescription: 'General notifications',
       importance: Importance.max,
       priority: Priority.high,
     );
 
-    const notificationDetails = NotificationDetails(android: androidDetails);
+    const DarwinNotificationDetails iosDetails =
+        DarwinNotificationDetails();
+
+    const NotificationDetails details = NotificationDetails(
+      android: androidDetails,
+      iOS: iosDetails,
+    );
 
     await notificationsPlugin.show(
-      0,
+      DateTime.now().millisecondsSinceEpoch ~/ 1000,
       title,
       body,
-      notificationDetails,
+      details,
       payload: payload,
     );
   }
 
-  // ✅ NEW: Method to completely disable ALL notifications
+  /// 🔹 Clear all notifications
   static Future<void> disableAllNotifications() async {
     try {
-      // Clear all pending notifications
       await notificationsPlugin.cancelAll();
-
-      debugPrint("🔕 All notifications disabled and cleared");
+      debugPrint("🔕 All notifications cleared");
     } catch (e) {
-      debugPrint("⚠️ Error disabling notifications: $e");
+      debugPrint("⚠️ Failed to clear notifications: $e");
     }
   }
 
