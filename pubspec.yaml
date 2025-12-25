@@ -98,6 +98,12 @@ dev_dependencies:
   dart_code_linter: ^3.1.1
   rename_app: ^1.6.5
 
+flutter_native_splash:
+  color: "#ffffff"      # Background color of splash screen
+  image: assets/icons/app_icon.png  # Your splash image
+  android: true
+  ios: true
+  ios_content_mode: scaleAspectFill
 
 flutter_icons:
   android: true
