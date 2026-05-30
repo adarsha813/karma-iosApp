@@ -99,8 +99,8 @@ dev_dependencies:
   rename_app: ^1.6.5
 
 flutter_native_splash:
-  color: "#ffffff"      # Background color of splash screen
-  image: assets/icons/app_icon.png  # Your splash image
+  color: "#ffffff"
+  image: assets/icons/splash_icon.png  # Use separate file for splash
   android: true
   ios: true
   ios_content_mode: scaleAspectFill
@@ -109,6 +109,8 @@ flutter_icons:
   android: true
   ios: true
   image_path: "assets/icons/app_icon.png"
+  remove_alpha_ios: true  # Add this line
+  background_color: "#4A90E2"  # Add this line
   
 
 flutter_launcher_name:
