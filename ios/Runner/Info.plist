@@ -51,5 +51,13 @@
 		<false/>
 		<key>UISupportsDocumentBrowser</key>
 		<false/>
+		
+		<!-- Privacy Usage Descriptions - Required by App Store -->
+		<key>NSCameraUsageDescription</key>
+		<string>This allows you to upload profile pictures and scan documents</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>This allows you to select photos for your profile or to share</string>
+		<key>NSFaceIDUsageDescription</key>
+		<string>This allows you to securely log in with Face ID</string>
 	</dict>
 </plist>
