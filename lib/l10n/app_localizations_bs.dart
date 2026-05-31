@@ -398,10 +398,10 @@ class AppLocalizationsBs extends AppLocalizations {
   String get contactUs => 'Kontaktirajte nas';
 
   @override
-  String get contactEmail => 'E-pošta: support@yourcompany.com';
+  String get contactEmail => 'E-pošta: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Web stranica: www.yourcompany.com';
+  String get contactWebsite => 'Web stranica: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Podrška korisnicima';
@@ -497,7 +497,7 @@ class AppLocalizationsBs extends AppLocalizations {
   String get buyButton => 'Kupi';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Dnevni horoskop';
+  String get dailyHoroscopeTitle => ' Dnevni horoskop';
 
   @override
   String get userIdMissing => 'Nedostaje korisnički ID';

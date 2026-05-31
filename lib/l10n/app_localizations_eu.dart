@@ -400,7 +400,7 @@ class AppLocalizationsEu extends AppLocalizations {
   String get contactUs => 'Jarri gurekin harremanetan';
 
   @override
-  String get contactEmail => 'Helbide elektronikoa: support@yourcompany.com';
+  String get contactEmail => 'Helbide elektronikoa: care@karmalifepath.com';
 
   @override
   String get contactWebsite => 'Webgunea: www.zureenpresa.com';
@@ -500,7 +500,7 @@ class AppLocalizationsEu extends AppLocalizations {
   String get buyButton => 'Erosi';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Eguneko Horoskopoa';
+  String get dailyHoroscopeTitle => ' Eguneko Horoskopoa';
 
   @override
   String get userIdMissing => 'Erabiltzaile IDa falta da';

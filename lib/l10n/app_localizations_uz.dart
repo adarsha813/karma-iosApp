@@ -402,10 +402,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get contactUs => 'Biz bilan bog\'lanish';
 
   @override
-  String get contactEmail => 'Elektron pochta: support@yourcompany.com';
+  String get contactEmail => 'Elektron pochta: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Veb-sayt: www.yourcompany.com';
+  String get contactWebsite => 'Veb-sayt: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Mijozlarni qo‘llab-quvvatlash';
@@ -503,7 +503,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get buyButton => 'Sotib olish';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Kundalik munajjimlar bashorati';
+  String get dailyHoroscopeTitle => ' Kundalik munajjimlar bashorati';
 
   @override
   String get userIdMissing => 'Foydalanuvchi identifikatori yetishmayapti';

@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "برېښنالیک: support@yourcompany.com",
+  "contactEmail": "برېښنالیک: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "ویب پاڼه: www.yourcompany.com",
+  "contactWebsite": "ویب پاڼه: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 ورځنی افق",
+  "dailyHoroscopeTitle": " ورځنی افق",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "דוא\"ל: support@yourcompany.com",
+  "contactEmail": "דוא\"ל: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "אתר אינטרנט: www.yourcompany.com",
+  "contactWebsite": "אתר אינטרנט: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 הורוסקופ יומי",
+  "dailyHoroscopeTitle": " הורוסקופ יומי",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

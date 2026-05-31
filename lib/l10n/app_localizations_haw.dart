@@ -399,10 +399,10 @@ class AppLocalizationsHaw extends AppLocalizations {
   String get contactUs => 'Kāhea iā mā˚ou';
 
   @override
-  String get contactEmail => 'Leka uila: support@yourcompany.com';
+  String get contactEmail => 'Leka uila: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Paena pūnaewele: www.yourcompany.com';
+  String get contactWebsite => 'Paena pūnaewele: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Kākoʻo mea kūʻai aku';
@@ -499,7 +499,7 @@ class AppLocalizationsHaw extends AppLocalizations {
   String get buyButton => 'Kūʻai';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horoscope i kēlā me kēia lā';
+  String get dailyHoroscopeTitle => ' Horoscope i kēlā me kēia lā';
 
   @override
   String get userIdMissing => 'Nalo ka ID mea hoʻohana';

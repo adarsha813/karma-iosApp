@@ -499,7 +499,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get buyButton => 'Satın almak';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Günlük Burç Yorumları';
+  String get dailyHoroscopeTitle => ' Günlük Burç Yorumları';
 
   @override
   String get userIdMissing => 'Kullanıcı kimliği eksik';

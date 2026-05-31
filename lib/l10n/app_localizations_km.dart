@@ -400,10 +400,10 @@ class AppLocalizationsKm extends AppLocalizations {
   String get contactUs => 'ទាក់ទងមកយើងខ្ញុំ';
 
   @override
-  String get contactEmail => 'អ៊ីមែល៖ support@yourcompany.com';
+  String get contactEmail => 'អ៊ីមែល៖ care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'គេហទំព័រ៖ www.yourcompany.com';
+  String get contactWebsite => 'គេហទំព័រ៖ www.karmalifepath.com';
 
   @override
   String get customerSupport => 'ជំនួយអតិថិជន';
@@ -499,7 +499,7 @@ class AppLocalizationsKm extends AppLocalizations {
   String get buyButton => 'ទិញ';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 ហោរាសាស្ត្រប្រចាំថ្ងៃ';
+  String get dailyHoroscopeTitle => ' ហោរាសាស្ត្រប្រចាំថ្ងៃ';
 
   @override
   String get userIdMissing => 'លេខសម្គាល់អ្នកប្រើប្រាស់បាត់';

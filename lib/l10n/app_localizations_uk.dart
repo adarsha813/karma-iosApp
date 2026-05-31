@@ -398,10 +398,10 @@ class AppLocalizationsUk extends AppLocalizations {
   String get contactUs => 'Зв\'яжіться з нами';
 
   @override
-  String get contactEmail => 'Електронна пошта: support@yourcompany.com';
+  String get contactEmail => 'Електронна пошта: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Вебсайт: www.yourcompany.com';
+  String get contactWebsite => 'Вебсайт: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Підтримка клієнтів';
@@ -497,7 +497,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get buyButton => 'Купити';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Щоденний гороскоп';
+  String get dailyHoroscopeTitle => ' Щоденний гороскоп';
 
   @override
   String get userIdMissing => 'Ідентифікатор користувача відсутній';

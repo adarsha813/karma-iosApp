@@ -1,6 +1,6 @@
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:socket_io_client/socket_io_client.dart' as io;
 import '../providers/notification_provider.dart';
 import '../models/notification_model.dart';
 import '../main.dart';
@@ -8,7 +8,7 @@ import '../config/environment.dart';
 
 class SocketService {
   static final SocketService _instance = SocketService._internal();
-  late IO.Socket socket;
+  late io.Socket socket;
   String? userId;
   bool _listenersSet = false;
   bool _isInitialized = false;
@@ -21,7 +21,7 @@ class SocketService {
   /// Initialize the socket with userId and BuildContext
   void initialize(String userId, BuildContext context) {
     if (_isInitialized && this.userId == userId) {
-      debugPrint('🔄 SocketService already initialized for user: $userId');
+      //AppLogger.info('🔄 SocketService already initialized for user: $userId');
       return;
     }
 
@@ -34,9 +34,9 @@ class SocketService {
     }
 
     try {
-      socket = IO.io(
+      socket = io.io(
         Environment.socketUrl,
-        IO.OptionBuilder()
+        io.OptionBuilder()
             .setTransports(['websocket'])
             .enableReconnection()
             .setReconnectionDelay(Environment.socketReconnectionDelay)
@@ -53,10 +53,10 @@ class SocketService {
       socket.connect();
       _isInitialized = true;
 
-      debugPrint('✅ SocketService initialized for user: $userId');
-    } catch (error, stackTrace) {
-      debugPrint('❌ Socket initialization error: $error');
-      debugPrint('Stack trace: $stackTrace');
+      //AppLogger.info('✅ SocketService initialized for user: $userId');
+    } catch (error) {
+      //AppLogger.info('❌ Socket initialization error: $error');
+      //AppLogger.info('Stack trace: $stackTrace');
       _handleInitializationError(error);
     }
   }
@@ -82,35 +82,35 @@ class SocketService {
     _listenersSet = true;
 
     socket.onConnect((_) {
-      debugPrint('✅ Socket connected for user: $userId');
+      //AppLogger.info('✅ Socket connected for user: $userId');
       _sendJoinRoom();
     });
 
     socket.onDisconnect((reason) {
-      debugPrint('❌ Socket disconnected: $reason');
+      //AppLogger.info('❌ Socket disconnected: $reason');
       _handleDisconnection(reason);
     });
 
     socket.onConnectError((error) {
-      debugPrint('⚠️ Socket connection error: $error');
+      //AppLogger.info('⚠️ Socket connection error: $error');
       _handleConnectionError(error);
     });
 
     socket.onReconnectAttempt((attempt) {
-      debugPrint('🔄 Reconnect attempt: $attempt');
+      //AppLogger.info('🔄 Reconnect attempt: $attempt');
     });
 
     socket.onReconnect((attempt) {
-      debugPrint('✅ Socket reconnected after $attempt attempts');
+      //AppLogger.info('✅ Socket reconnected after $attempt attempts');
       _sendJoinRoom();
     });
 
     socket.onReconnectError((error) {
-      debugPrint('⚠️ Reconnect error: $error');
+      //AppLogger.info('⚠️ Reconnect error: $error');
     });
 
     socket.onReconnectFailed((_) {
-      debugPrint('❗ Reconnect failed - maximum attempts reached');
+      //AppLogger.info('❗ Reconnect failed - maximum attempts reached');
       _handleReconnectionFailed();
     });
 
@@ -120,13 +120,13 @@ class SocketService {
 
     // Add ping/pong for connection health monitoring
     socket.on('pong', (_) {
-      debugPrint('❤️  Socket heartbeat received');
+      //AppLogger.info('❤️  Socket heartbeat received');
     });
   }
 
   void _setupErrorHandlers() {
     socket.onError((error) {
-      debugPrint('💥 Socket error: $error');
+      //AppLogger.info('💥 Socket error: $error');
     });
   }
 
@@ -134,22 +134,20 @@ class SocketService {
     if (userId != null && socket.connected) {
       try {
         socket.emit('joinRoom', userId);
-        debugPrint('📨 Join room event sent for user: $userId');
+        //AppLogger.info('📨 Join room event sent for user: $userId');
       } catch (error) {
-        debugPrint('❌ Error sending joinRoom: $error');
+        //AppLogger.info('❌ Error sending joinRoom: $error');
       }
     }
   }
 
   void _handleNewNotification(dynamic data) {
-    debugPrint('📡 Socket notification received: $data');
+    //AppLogger.info('📡 Socket notification received: $data');
 
     try {
       final context = navigatorKey.currentContext;
       if (context == null) {
-        debugPrint(
-          '⚠️ Global context is null - notification queued for later processing',
-        );
+        //AppLogger.info(  '⚠️ Global context is null - notification queued for later processing',);
         _queueNotification(data);
         return;
       }
@@ -163,16 +161,16 @@ class SocketService {
 
       // Validate notification data
       if (!_isValidNotification(notification)) {
-        debugPrint('⚠️ Invalid notification data received');
+        //AppLogger.info('⚠️ Invalid notification data received');
         return;
       }
 
       notificationProvider.addNotification(notification);
 
-      debugPrint('✅ Notification processed successfully');
+      //AppLogger.info('✅ Notification processed successfully');
     } catch (error, stackTrace) {
-      debugPrint('❌ Error processing notification: $error');
-      debugPrint('Stack trace: $stackTrace');
+      //AppLogger.info('❌ Error processing notification: $error');
+      //AppLogger.info('Stack trace: $stackTrace');
       _logError('NotificationProcessing', error, stackTrace);
     }
   }
@@ -186,33 +184,33 @@ class SocketService {
     // Implement notification queuing logic here
     // This could store notifications in local storage when context is unavailable
     // and process them when the app becomes available again
-    debugPrint('📦 Notification queued for later processing: $data');
+    //AppLogger.info('📦 Notification queued for later processing: $data');
   }
 
   void _handleDisconnection(String reason) {
-    debugPrint('🔌 Socket disconnected: $reason');
+    //AppLogger.info('🔌 Socket disconnected: $reason');
     // Implement reconnection logic or app state updates here
   }
 
   void _handleConnectionError(dynamic error) {
-    debugPrint('🔌 Socket connection error: $error');
+    //AppLogger.info('🔌 Socket connection error: $error');
     // Implement error reporting or fallback strategies
   }
 
   void _handleReconnectionFailed() {
-    debugPrint('🔌 Maximum reconnection attempts reached');
+    //AppLogger.info('🔌 Maximum reconnection attempts reached');
     // Implement fallback strategies or user notification
   }
 
   void _handleInitializationError(dynamic error) {
-    debugPrint('🔌 Socket initialization failed: $error');
+    //AppLogger.info('🔌 Socket initialization failed: $error');
     // Implement error reporting or alternative communication methods
   }
 
   void _logError(String type, dynamic error, StackTrace stackTrace) {
     // Implement your error logging service here
     // This could integrate with Sentry, Firebase Crashlytics, etc.
-    debugPrint('🚨 ERROR [$type]: $error');
+    //AppLogger.info('🚨 ERROR [$type]: $error');
   }
 
   void _cleanupSocket() {
@@ -224,7 +222,7 @@ class SocketService {
       _listenersSet = false;
       _isInitialized = false;
     } catch (error) {
-      debugPrint('⚠️ Error during socket cleanup: $error');
+      //AppLogger.info('⚠️ Error during socket cleanup: $error');
     }
   }
 
@@ -243,7 +241,7 @@ class SocketService {
   /// Manual reconnection trigger
   void reconnect() {
     if (_isDisposed) {
-      debugPrint('⚠️ Cannot reconnect - SocketService is disposed');
+      //AppLogger.info('⚠️ Cannot reconnect - SocketService is disposed');
       return;
     }
 
@@ -261,7 +259,7 @@ class SocketService {
     _isDisposed = true;
     _isInitialized = false;
     _cleanupSocket();
-    debugPrint('♻️ SocketService disposed successfully');
+    //AppLogger.info('♻️ SocketService disposed successfully');
   }
 
   /// Send a heartbeat/ping to the server
@@ -269,9 +267,9 @@ class SocketService {
     if (isConnected()) {
       try {
         socket.emit('ping');
-        debugPrint('❤️ Heartbeat sent');
+        //AppLogger.info('❤️ Heartbeat sent');
       } catch (error) {
-        debugPrint('❌ Error sending heartbeat: $error');
+        //AppLogger.info('❌ Error sending heartbeat: $error');
       }
     }
   }

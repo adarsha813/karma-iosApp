@@ -399,10 +399,10 @@ class AppLocalizationsTk extends AppLocalizations {
   String get contactUs => 'Biz bilen habarlaşyň';
 
   @override
-  String get contactEmail => 'E-poçta: support@yourcompany.com';
+  String get contactEmail => 'E-poçta: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Sahypa: www.yourcompany.com';
+  String get contactWebsite => 'Sahypa: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Müşderi goldawy';
@@ -498,7 +498,7 @@ class AppLocalizationsTk extends AppLocalizations {
   String get buyButton => 'Satyn alyň';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Gündelik goroskop';
+  String get dailyHoroscopeTitle => ' Gündelik goroskop';
 
   @override
   String get userIdMissing => 'Ulanyjy şahsyýeti ýok';

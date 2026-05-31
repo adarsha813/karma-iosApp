@@ -398,10 +398,10 @@ class AppLocalizationsNe extends AppLocalizations {
   String get contactUs => 'हामीलाई सम्पर्क गर्नुहोस';
 
   @override
-  String get contactEmail => 'इमेल: support@yourcompany.com';
+  String get contactEmail => 'इमेल: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'वेबसाइट: www.yourcompany.com';
+  String get contactWebsite => 'वेबसाइट: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'ग्राहक सहयोग केन्द्र';
@@ -497,7 +497,7 @@ class AppLocalizationsNe extends AppLocalizations {
   String get buyButton => 'किन्नुहोस्';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 दैनिक राशिफल';
+  String get dailyHoroscopeTitle => ' दैनिक राशिफल';
 
   @override
   String get userIdMissing => 'प्रयोगकर्ता ID हराइरहेको छ।';

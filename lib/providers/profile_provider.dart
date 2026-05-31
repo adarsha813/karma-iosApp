@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:device_info_plus/device_info_plus.dart';
 import '../config/environment.dart';
+import '../utils/app_logger.dart';
 
 /// Secure keys for storage
 class _StorageKeys {
@@ -61,6 +62,7 @@ class ProfileData {
   final double? dst;
   final String? state;
   final String language;
+  final String? deviceId; // add this
 
   const ProfileData({
     required this.userId,
@@ -77,6 +79,7 @@ class ProfileData {
     this.dst,
     this.state,
     this.language = 'en',
+    this.deviceId, // add to constructor
   });
 
   ProfileData copyWith({
@@ -94,6 +97,7 @@ class ProfileData {
     double? dst,
     String? state,
     String? language,
+    String? deviceId,
   }) {
     return ProfileData(
       userId: userId ?? this.userId,
@@ -110,6 +114,7 @@ class ProfileData {
       dst: dst ?? this.dst,
       state: state ?? this.state,
       language: language ?? this.language,
+      deviceId: deviceId ?? this.deviceId, // add copyWith
     );
   }
 
@@ -132,6 +137,7 @@ class ProfileData {
       'dst': dst,
       'state': state,
       'language': language,
+      'deviceId': deviceId,
     };
   }
 
@@ -176,6 +182,7 @@ class ProfileData {
       dst: (json['dst'] as num?)?.toDouble(),
       state: json['state'] as String?,
       language: json['language'] as String? ?? 'en',
+      deviceId: json['deviceId'] as String?,
     );
   }
 }
@@ -256,17 +263,17 @@ class ProfileProvider with ChangeNotifier {
     try {
       await _performInitialization();
       _isInitialized = true;
-      debugPrint('✅ ProfileProvider initialized successfully');
+      AppLogger.info('✅ ProfileProvider initialized successfully');
     } on ProfileException catch (e) {
       _lastError = e.message;
       _lastErrorType = e.type;
-      debugPrint('❌ ProfileProvider initialization failed: ${e.message}');
+      AppLogger.info('❌ ProfileProvider initialization failed: ${e.message}');
       // Still mark as initialized to prevent blocking the app
       _isInitialized = true;
     } catch (e, stackTrace) {
       _lastError = 'Unexpected initialization error: $e';
       _lastErrorType = ProfileErrorType.unknownError;
-      debugPrint('🔴 Critical initialization error: $e\n$stackTrace');
+      AppLogger.info('🔴 Critical initialization error: $e\n$stackTrace');
       _isInitialized = true; // Don't block the app
     } finally {
       _isLoading = false;
@@ -297,11 +304,11 @@ class ProfileProvider with ChangeNotifier {
 
       if (storedUserId != null) {
         _currentProfile = ProfileData(userId: storedUserId);
-        debugPrint('✅ Loaded user ID from secure storage');
+        AppLogger.info('✅ Loaded user ID from secure storage');
       }
 
       _token = storedToken;
-      debugPrint(
+      AppLogger.info(
         '✅ Loaded token from secure storage: ${_token != null ? 'Present (${_token!.length} chars)' : 'NULL'}',
       );
     } catch (e) {
@@ -333,9 +340,9 @@ class ProfileProvider with ChangeNotifier {
               _currentProfile = _currentProfile!.copyWith(language: language);
             }
 
-            debugPrint('✅ Loaded profile data from local storage');
+            AppLogger.info('✅ Loaded profile data from local storage');
           } catch (e) {
-            debugPrint('⚠️ Corrupted profile data, starting fresh');
+            AppLogger.info('⚠️ Corrupted profile data, starting fresh');
           }
         } else if (language != null) {
           // ✅ FIX: Apply language even if no full profile exists
@@ -366,7 +373,7 @@ class ProfileProvider with ChangeNotifier {
     // Validate that user ID exists in both secure storage and profile data
     final secureUserId = await _secureStorage.read(key: _StorageKeys.userId);
     if (secureUserId != _currentProfile!.userId) {
-      debugPrint('⚠️ User ID mismatch detected, resetting profile');
+      AppLogger.info('⚠️ User ID mismatch detected, resetting profile');
       await clearProfile();
       throw ProfileException(
         type: ProfileErrorType.dataCorruption,
@@ -404,12 +411,31 @@ class ProfileProvider with ChangeNotifier {
     if (_currentProfile?.userId == newUserId) return;
 
     try {
+      // Get device ID before any operations
+      String? deviceId;
+      try {
+        final deviceInfo = await DeviceInfoPlugin().androidInfo;
+        deviceId = deviceInfo.id;
+      } catch (e) {
+        deviceId = 'unknown_${DateTime.now().millisecondsSinceEpoch}';
+      }
+
       // Save to secure storage
       await _secureStorage.write(key: _StorageKeys.userId, value: newUserId);
 
-      // Update current profile
-      _currentProfile = (_currentProfile ?? ProfileData(userId: newUserId))
-          .copyWith(userId: newUserId);
+      // Update current profile with proper initialization
+      if (_currentProfile == null) {
+        _currentProfile = ProfileData(
+          userId: newUserId,
+          deviceId: deviceId,
+          language: 'en', // default language
+        );
+      } else {
+        _currentProfile = _currentProfile!.copyWith(
+          userId: newUserId,
+          deviceId: deviceId,
+        );
+      }
 
       // Clear old token when user changes
       await _secureStorage.delete(key: _StorageKeys.token);
@@ -418,7 +444,7 @@ class ProfileProvider with ChangeNotifier {
       // Fetch new token
       await fetchAndSaveToken(newUserId);
 
-      debugPrint('✅ User ID saved and token refreshed');
+      AppLogger.info('✅ User ID saved and token refreshed');
       notifyListeners();
     } catch (e) {
       throw ProfileException(
@@ -434,7 +460,7 @@ class ProfileProvider with ChangeNotifier {
     try {
       await _secureStorage.write(key: _StorageKeys.token, value: newToken);
       _token = newToken;
-      debugPrint('✅ Token saved securely');
+      AppLogger.info('✅ Token saved securely');
       notifyListeners();
     } catch (e) {
       throw ProfileException(
@@ -463,7 +489,7 @@ class ProfileProvider with ChangeNotifier {
       }
 
       notifyListeners();
-      debugPrint('✅ Language saved: $languageCode');
+      AppLogger.info('✅ Language saved: $languageCode');
     } catch (e) {
       throw ProfileException(
         type: ProfileErrorType.storageError,
@@ -511,6 +537,7 @@ class ProfileProvider with ChangeNotifier {
         dst: dst,
         state: state,
         language: language ?? _currentProfile?.language ?? 'en',
+        deviceId: _currentProfile?.deviceId, // <- missing in original
       );
 
       // Save to local storage
@@ -531,7 +558,7 @@ class ProfileProvider with ChangeNotifier {
 
       // Notify listeners and stream
       _profileUpdatesController.add(newProfile);
-      debugPrint('✅ Profile saved successfully');
+      AppLogger.info('✅ Profile saved successfully');
     } catch (e) {
       throw ProfileException(
         type: ProfileErrorType.storageError,
@@ -587,7 +614,7 @@ class ProfileProvider with ChangeNotifier {
         jsonEncode(_versionHistory),
       );
     } catch (e) {
-      debugPrint('⚠️ Failed to create version snapshot: $e');
+      AppLogger.info('⚠️ Failed to create version snapshot: $e');
     }
   }
 
@@ -601,57 +628,291 @@ class ProfileProvider with ChangeNotifier {
         final historyList = jsonDecode(historyJson) as List;
         _versionHistory.clear();
         _versionHistory.addAll(historyList.cast<Map<String, dynamic>>());
-        debugPrint('✅ Loaded ${_versionHistory.length} version histories');
+        AppLogger.info('✅ Loaded ${_versionHistory.length} version histories');
       }
     } catch (e) {
-      debugPrint('⚠️ Failed to load version history: $e');
+      AppLogger.info('⚠️ Failed to load version history: $e');
       _versionHistory.clear();
     }
   }
 
-  /// Fetch and save token from backend
-  Future<void> fetchAndSaveToken(String userId) async {
+  Future<http.Response> authorizedPost(
+    Uri url,
+    Map<String, dynamic> body, {
+    int retryCount = 0,
+    int maxRetries = 2,
+  }) async {
+    // Ensure we have a token
+    if (_token == null) {
+      final success = await fetchAndSaveToken(_currentProfile!.userId);
+      if (!success && retryCount >= maxRetries) {
+        throw ProfileException(
+          type: ProfileErrorType.authenticationError,
+          message: 'Failed to obtain initial token',
+        );
+      }
+    }
+
     try {
-      final url = Uri.parse('${Environment.baseUrl}/api/auth/generate-token');
+      AppLogger.info(
+        '🔑 Making authorized request with token (${_token?.substring(0, 20)}...)',
+      );
 
       final response = await http
           .post(
             url,
-            headers: Environment.securityHeaders,
-            body: jsonEncode({'userId': userId}),
+            headers: {
+              ...Environment.securityHeaders,
+              'Authorization': 'Bearer $_token',
+            },
+            body: jsonEncode(body),
           )
           .timeout(const Duration(seconds: 30));
 
-      if (response.statusCode == 200) {
-        final responseData = jsonDecode(response.body);
-        final token = responseData['token'] as String?;
+      // Handle 401 - Token expired or invalid
+      if (response.statusCode == 401) {
+        AppLogger.info(
+          '🔄 Received 401, attempting token refresh (attempt ${retryCount + 1})',
+        );
 
-        if (token != null) {
-          await saveToken(token);
-          debugPrint('✅ Token fetched and saved successfully');
-        } else {
-          throw ProfileException(
-            type: ProfileErrorType.authenticationError,
-            message: 'Invalid token response from server',
-          );
+        if (retryCount < maxRetries) {
+          // Try to refresh the token
+          final refreshSuccess = await refreshToken();
+
+          if (refreshSuccess && _token != null) {
+            AppLogger.info('✅ Token refreshed successfully, retrying request');
+            // Retry with new token
+            return authorizedPost(
+              url,
+              body,
+              retryCount: retryCount + 1,
+              maxRetries: maxRetries,
+            );
+          } else {
+            AppLogger.info('⚠️ Token refresh failed, trying to get new token');
+            // If refresh failed, try to get a completely new token
+            final newTokenSuccess = await fetchAndSaveToken(
+              _currentProfile!.userId,
+            );
+
+            if (newTokenSuccess && _token != null) {
+              AppLogger.info('✅ New token obtained, retrying request');
+              return authorizedPost(
+                url,
+                body,
+                retryCount: retryCount + 1,
+                maxRetries: maxRetries,
+              );
+            }
+          }
         }
-      } else {
+
+        // If we get here, all retries failed
+        AppLogger.info('❌ All authentication retries failed');
         throw ProfileException(
-          type: ProfileErrorType.networkError,
-          message: 'Failed to fetch token: ${response.statusCode}',
+          type: ProfileErrorType.authenticationError,
+          message: 'Authentication failed after $maxRetries retries',
         );
       }
+
+      return response;
     } on TimeoutException {
-      throw ProfileException(
-        type: ProfileErrorType.networkError,
-        message: 'Token request timed out',
-      );
+      if (retryCount < maxRetries) {
+        AppLogger.info(
+          '⏱️ Request timeout, retrying (${retryCount + 1}/$maxRetries)',
+        );
+        await Future.delayed(Duration(seconds: 1 * (retryCount + 1)));
+        return authorizedPost(url, body, retryCount: retryCount + 1);
+      }
+      rethrow;
     } catch (e) {
-      throw ProfileException(
-        type: ProfileErrorType.networkError,
-        message: 'Failed to fetch token: $e',
-        underlyingError: e,
+      AppLogger.info('❌ Request error: $e');
+      rethrow;
+    }
+  }
+  // Add this to ProfileProvider class
+
+  /// Ensure token is valid, refresh if needed
+  Future<bool> ensureValidToken() async {
+    if (_token == null) {
+      if (_currentProfile?.userId != null) {
+        return await fetchAndSaveToken(_currentProfile!.userId);
+      }
+      return false;
+    }
+
+    // Check if token is expired
+    if (_isTokenExpired(_token)) {
+      AppLogger.info('🔄 Token expired, refreshing...');
+      return await refreshToken();
+    }
+
+    return true;
+  }
+
+  /// Check if token is expired
+  bool _isTokenExpired(String? token) {
+    if (token == null) return true;
+
+    try {
+      final parts = token.split('.');
+      if (parts.length != 3) return true;
+
+      final payload = json.decode(
+        utf8.decode(base64.decode(base64.normalize(parts[1]))),
       );
+
+      final exp = payload['exp'] as int?;
+      if (exp == null) return false; // No expiration
+
+      final expiryTime = DateTime.fromMillisecondsSinceEpoch(exp * 1000);
+      final now = DateTime.now();
+
+      // Consider token expired if within 30 seconds of expiry
+      return now.isAfter(expiryTime.subtract(const Duration(seconds: 30)));
+    } catch (e) {
+      AppLogger.info('⚠️ Error checking token expiry: $e');
+      return true; // Assume expired if can't parse
+    }
+  }
+
+  /// Refresh token method (update your existing one)
+  // Add/update these methods in ProfileProvider
+
+  /// Refresh token method
+  /// Refresh token method - UPDATED VERSION
+  Future<bool> refreshToken() async {
+    AppLogger.info('🔄 refreshToken() called at ${DateTime.now()}');
+    AppLogger.info('   User ID: ${_currentProfile?.userId}');
+    AppLogger.info('   Current token exists: ${_token != null}');
+    if (_currentProfile == null) {
+      AppLogger.info('❌ Cannot refresh token: No current profile');
+      return false;
+    }
+
+    // Get device ID
+    String? deviceId = _currentProfile?.deviceId;
+    if (deviceId == null || deviceId.isEmpty) {
+      try {
+        final deviceInfo = await DeviceInfoPlugin().androidInfo;
+        deviceId = deviceInfo.id;
+      } catch (e) {
+        deviceId = 'unknown_${DateTime.now().millisecondsSinceEpoch}';
+      }
+    }
+
+    try {
+      final url = Uri.parse('${Environment.baseUrl}/api/auth/refresh-token');
+      AppLogger.info(
+        '🔄 Attempting to refresh token for user: ${_currentProfile!.userId}',
+      );
+
+      // ✅ IMPORTANT: Do NOT include Authorization header
+      // The refresh endpoint should be public and only use userId/deviceId
+      final response = await http
+          .post(
+            url,
+            headers: {
+              'Content-Type': 'application/json',
+              ...Environment.securityHeaders,
+              // NO Authorization header here!
+            },
+            body: jsonEncode({
+              'userId': _currentProfile!.userId,
+              'deviceId': deviceId,
+            }),
+          )
+          .timeout(const Duration(seconds: 15));
+
+      AppLogger.info('📡 Refresh response: ${response.statusCode}');
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        final newToken = data['token'] as String?;
+
+        if (newToken != null && newToken.isNotEmpty) {
+          await saveToken(newToken);
+          AppLogger.info('✅ Token refreshed successfully');
+          return true;
+        }
+      } else if (response.statusCode == 404) {
+        AppLogger.info('❌ User not found during refresh');
+        // User doesn't exist - create new profile
+        await _createNewUserProfile();
+        return _token != null;
+      } else {
+        AppLogger.info(
+          '⚠️ Refresh failed: ${response.statusCode} - ${response.body}',
+        );
+      }
+
+      return false;
+    } catch (e) {
+      AppLogger.info('❌ Refresh error: $e');
+      return false;
+    }
+  }
+
+  /// Fetch and save new token
+  /// Fetch and save new token
+  Future<bool> fetchAndSaveToken(String userId) async {
+    try {
+      String? deviceId = _currentProfile?.deviceId;
+      if (deviceId == null || deviceId.isEmpty) {
+        try {
+          final deviceInfo = await DeviceInfoPlugin().androidInfo;
+          deviceId = deviceInfo.id;
+        } catch (e) {
+          deviceId = 'unknown_${DateTime.now().millisecondsSinceEpoch}';
+        }
+      }
+
+      final url = Uri.parse('${Environment.baseUrl}/api/auth/generate-token');
+      AppLogger.info('🔄 Fetching new token for user: $userId');
+
+      // ✅ NO Authorization header here either
+      final response = await http
+          .post(
+            url,
+            headers: {
+              'Content-Type': 'application/json',
+              ...Environment.securityHeaders,
+            },
+            body: jsonEncode({'userId': userId, 'deviceId': deviceId}),
+          )
+          .timeout(const Duration(seconds: 30));
+
+      AppLogger.info('📡 Token fetch response: ${response.statusCode}');
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        final token = data['token'] as String?;
+        if (token != null && token.isNotEmpty) {
+          await saveToken(token);
+          AppLogger.info('✅ New token fetched and saved');
+          return true;
+        }
+      } else if (response.statusCode == 404) {
+        AppLogger.info('⚠️ User not found when fetching token');
+        return false;
+      }
+
+      AppLogger.info('⚠️ Token fetch failed: ${response.statusCode}');
+      return false;
+    } catch (e) {
+      AppLogger.info('❌ Token fetch error: $e');
+      return false;
+    }
+  }
+
+  /// Create new user profile (add this method)
+  Future<void> _createNewUserProfile() async {
+    try {
+      final newUserId = 'user_${DateTime.now().millisecondsSinceEpoch}';
+      await saveUserId(newUserId);
+      AppLogger.info('✅ Created new user profile: $newUserId');
+    } catch (e) {
+      AppLogger.info('❌ Failed to create new profile: $e');
     }
   }
 
@@ -674,20 +935,20 @@ class ProfileProvider with ChangeNotifier {
           .timeout(const Duration(seconds: 30));
 
       if (response.statusCode == 200) {
-        debugPrint('✅ Profile synced to backend successfully');
+        AppLogger.info('✅ Profile synced to backend successfully');
       } else if (response.statusCode == 401) {
         throw ProfileException(
           type: ProfileErrorType.authenticationError,
           message: 'Authentication failed during sync',
         );
       } else {
-        debugPrint('⚠️ Backend sync failed: ${response.statusCode}');
+        AppLogger.info('⚠️ Backend sync failed: ${response.statusCode}');
         // Don't throw error for sync failures - local data is primary
       }
     } on TimeoutException {
-      debugPrint('⚠️ Backend sync timed out');
+      AppLogger.info('⚠️ Backend sync timed out');
     } catch (e) {
-      debugPrint('⚠️ Backend sync error: $e');
+      AppLogger.info('⚠️ Backend sync error: $e');
       // Don't throw error - local data is primary
     }
   }
@@ -715,11 +976,11 @@ class ProfileProvider with ChangeNotifier {
           )
           .timeout(const Duration(seconds: 10));
 
-      debugPrint('✅ Language updated on backend');
+      AppLogger.info('✅ Language updated on backend');
     } on TimeoutException {
-      debugPrint('⚠️ Language update timed out');
+      AppLogger.info('⚠️ Language update timed out');
     } catch (e) {
-      debugPrint('⚠️ Language update error: $e');
+      AppLogger.info('⚠️ Language update error: $e');
     }
   }
 
@@ -760,18 +1021,18 @@ class ProfileProvider with ChangeNotifier {
               language: backendLanguage,
             );
 
-            debugPrint('✅ Applied backend language: $backendLanguage');
+            AppLogger.info('✅ Applied backend language: $backendLanguage');
           }
 
           // Merge other backend data
           await _mergeWithBackendData(backendProfile);
-          debugPrint('✅ Successfully synced with backend');
+          AppLogger.info('✅ Successfully synced with backend');
         }
       }
     } on TimeoutException {
-      debugPrint('⚠️ Backend sync timed out during initialization');
+      AppLogger.info('⚠️ Backend sync timed out during initialization');
     } catch (e) {
-      debugPrint('⚠️ Backend sync failed during initialization: $e');
+      AppLogger.info('⚠️ Backend sync failed during initialization: $e');
     }
   }
 
@@ -828,9 +1089,9 @@ class ProfileProvider with ChangeNotifier {
         jsonEncode(_versionHistory),
       );
 
-      debugPrint('✅ Version history merged with backend');
+      AppLogger.info('✅ Version history merged with backend');
     } catch (e) {
-      debugPrint('⚠️ Failed to merge version history: $e');
+      AppLogger.info('⚠️ Failed to merge version history: $e');
     }
   }
 
@@ -845,7 +1106,7 @@ class ProfileProvider with ChangeNotifier {
         // Add other fields as needed
       };
     } catch (e) {
-      debugPrint('⚠️ Failed to parse backend version: $e');
+      AppLogger.info('⚠️ Failed to parse backend version: $e');
       return null;
     }
   }
@@ -870,7 +1131,7 @@ class ProfileProvider with ChangeNotifier {
       language: 'en',
     );
 
-    debugPrint('✅ Default profile created: $defaultUserId');
+    AppLogger.info('✅ Default profile created: $defaultUserId');
   }
 
   /// Clear all profile data (logout)
@@ -890,7 +1151,7 @@ class ProfileProvider with ChangeNotifier {
       _lastError = null;
       _lastErrorType = null;
 
-      debugPrint('✅ Profile cleared successfully');
+      AppLogger.info('✅ Profile cleared successfully');
       notifyListeners();
     } catch (e) {
       throw ProfileException(
@@ -903,17 +1164,38 @@ class ProfileProvider with ChangeNotifier {
 
   /// Debug method for development
   void debugTokenState() {
-    debugPrint('''
-🔄 ProfileProvider Debug State:
-   - User ID: ${_currentProfile?.userId ?? 'NULL'}
-   - Token: ${_token != null ? "✅ Present (${_token!.length} chars)" : "❌ NULL"}
-   - Is Initialized: $_isInitialized
-   - Is Loading: $_isLoading
-   - Profile Complete: $isProfileComplete
-   - Language: ${_currentProfile?.language}
-   - Last Error: ${_lastError ?? 'None'}
-   - Version History: ${_versionHistory.length} entries
-''');
+    AppLogger.info('''
+🔐 TOKEN DIAGNOSTICS:
+   - Token exists: ${_token != null}
+   - Token length: ${_token?.length ?? 0}
+   - User ID: ${_currentProfile?.userId}
+   - Device ID: ${_currentProfile?.deviceId}
+   - Token preview: ${_token?.substring(0, _token != null && _token!.length > 20 ? 20 : _token?.length ?? 0)}...
+  ''');
+
+    // Try to decode token to check expiration
+    if (_token != null) {
+      try {
+        final parts = _token!.split('.');
+        if (parts.length == 3) {
+          final payload = jsonDecode(
+            utf8.decode(base64.decode(base64.normalize(parts[1]))),
+          );
+          final exp = payload['exp'];
+          if (exp != null) {
+            final expiryDate = DateTime.fromMillisecondsSinceEpoch(exp * 1000);
+            final now = DateTime.now();
+            final timeLeft = expiryDate.difference(now);
+            AppLogger.info('   - Token expires: $expiryDate');
+            AppLogger.info(
+              '   - Time left: ${timeLeft.inMinutes} minutes ${timeLeft.inSeconds % 60} seconds',
+            );
+          }
+        }
+      } catch (e) {
+        AppLogger.info('   - Could not decode token: $e');
+      }
+    }
   }
 
   /// Dispose method

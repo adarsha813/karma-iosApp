@@ -145,8 +145,9 @@ class EmailService {
     // Length validations
     if (name.length > 100) return 'Name too long (max 100 characters)';
     if (email.length > 255) return 'Email too long (max 255 characters)';
-    if (message.length > 10000)
+    if (message.length > 10000) {
       return 'Message too long (max 10000 characters)';
+    }
     if (message.length < 10) return 'Message too short (min 10 characters)';
 
     return null;

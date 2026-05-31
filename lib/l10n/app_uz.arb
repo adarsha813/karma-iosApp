@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "Elektron pochta: support@yourcompany.com",
+  "contactEmail": "Elektron pochta: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "Veb-sayt: www.yourcompany.com",
+  "contactWebsite": "Veb-sayt: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Kundalik munajjimlar bashorati",
+  "dailyHoroscopeTitle": " Kundalik munajjimlar bashorati",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Günlük Burç Yorumları",
+  "dailyHoroscopeTitle": " Günlük Burç Yorumları",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

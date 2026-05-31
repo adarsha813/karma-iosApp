@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "이메일: support@yourcompany.com",
+  "contactEmail": "이메일: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "웹사이트: www.yourcompany.com",
+  "contactWebsite": "웹사이트: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 일일 운세",
+  "dailyHoroscopeTitle": " 일일 운세",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

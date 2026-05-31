@@ -1,112 +1,175 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class Environment {
-  static const String baseUrl = String.fromEnvironment(
-    'BASE_URL',
-    defaultValue: 'https://chat-backend-rvk9.onrender.com',
-  );
+  static bool _isLoaded = false;
 
-  static const String socketUrl = String.fromEnvironment(
-    'SOCKET_URL',
-    defaultValue: 'wss://chat-backend-rvk9.onrender.com',
-  );
+  // Call this in main.dart before using any Environment values
+  static Future<void> load() async {
+    if (_isLoaded) return;
+    await dotenv.load(fileName: ".env");
+    _isLoaded = true;
+    if (kDebugMode) {
+      print('✅ Environment loaded from .env file');
+    }
+  }
 
-  static const int freeQuota = int.fromEnvironment(
-    'FREE_QUOTA',
-    defaultValue: 2,
-  );
+  // Backend URLs
+  static String get baseUrl {
+    return _getRequiredEnv('BASE_URL');
+  }
 
-  static const String appVersion = String.fromEnvironment(
-    'APP_VERSION',
-    defaultValue: '1.0.0',
-  );
+  static String get socketUrl {
+    return _getRequiredEnv('SOCKET_URL');
+  }
 
-  static const String stripePublishableKey = String.fromEnvironment(
-    'STRIPE_PUBLISHABLE_KEY',
-    defaultValue:
-        'pk_test_51RlNTwGaHP8m8qhhqIJz0i2rNalP9dbOt3GnAErdPSuSCZOErnr0NCVwbhCDFiJinKEF7JuEzq6hDzDHCylGa86100vhGegsKG',
-  );
+  // App Configuration
+  static int get freeQuota {
+    return int.tryParse(dotenv.env['FREE_QUOTA'] ?? '2') ?? 2;
+  }
 
-  static const bool isProduction = bool.fromEnvironment(
-    'IS_PRODUCTION',
-    defaultValue: false,
-  );
+  static String get appVersion => '1.0.0';
 
-  // ✅ Location IQ
-  static const String locationIqApiKey = String.fromEnvironment(
-    'LOCATIONIQ_API_KEY',
-    defaultValue: 'pk.2371ae85bf85964bfb986332dcc74851',
-  );
+  static bool get isProduction {
+    return dotenv.env['IS_PRODUCTION']?.toLowerCase() == 'true';
+  }
 
-  static const String locationIqBaseUrl = String.fromEnvironment(
-    'LOCATIONIQ_BASE_URL',
-    defaultValue: 'https://api.locationiq.com/v1',
-  );
+  // Location IQ
+  static String get locationIqApiKey {
+    return _getRequiredEnv('LOCATIONIQ_API_KEY');
+  }
 
-  // ✅ Timezone DB
-  static const String timezoneDbApiKey = String.fromEnvironment(
-    'TIMEZONE_DB_API_KEY',
-    defaultValue: 'PRCEAEL0H149',
-  );
+  static String get locationIqBaseUrl {
+    // Use the same BASE_URL for location services
+    return '$baseUrl/locationiq/v1';
+  }
 
-  static const String timezoneDbBaseUrl = String.fromEnvironment(
-    'TIMEZONE_DB_BASE_URL',
-    defaultValue: 'http://api.timezonedb.com/v2.1/get-time-zone',
-  );
+  static const String ipApiUrl = 'https://api.ipify.org?format=json';
 
+  // Timezone DB
+  static String get timezoneDbApiKey {
+    return _getRequiredEnv('TIMEZONE_DB_API_KEY');
+  }
+
+  static String get timezoneDbBaseUrl {
+    // Use your backend's base URL + timezone endpoint
+    return '$baseUrl/api/timezonedb/v2.1/get-time-zone';
+  }
+
+  // EmailJS Configuration
+  static String get emailJsServiceId {
+    return _getRequiredEnv('EMAILJS_SERVICE_ID');
+  }
+
+  static String get emailJsTemplateId {
+    return _getRequiredEnv('EMAILJS_TEMPLATE_ID');
+  }
+
+  static String get emailJsPublicKey {
+    return _getRequiredEnv('EMAILJS_PUBLIC_KEY');
+  }
+
+  static String get emailJsAccessToken {
+    return dotenv.env['EMAILJS_ACCESS_TOKEN'] ?? '';
+  }
+
+  // Socket Configuration
+  static int get socketReconnectionDelay {
+    return int.tryParse(dotenv.env['SOCKET_RECONNECTION_DELAY'] ?? '3000') ??
+        3000;
+  }
+
+  static int get socketReconnectionAttempts {
+    return int.tryParse(dotenv.env['SOCKET_RECONNECTION_ATTEMPTS'] ?? '9999') ??
+        9999;
+  }
+
+  static int get socketConnectionTimeout {
+    return int.tryParse(dotenv.env['SOCKET_CONNECTION_TIMEOUT'] ?? '20000') ??
+        20000;
+  }
+
+  // SSL Pinning
+  static String get pinnedCertPrimary {
+    return _getRequiredEnv('PINNED_CERT_PRIMARY');
+  }
+
+  static String get pinnedCertBackup {
+    return dotenv.env['PINNED_CERT_BACKUP'] ?? '';
+  }
+
+  static int get paymentTimeout {
+    return int.tryParse(dotenv.env['PAYMENT_TIMEOUT'] ?? '30') ?? 30;
+  }
+
+  // Firebase Configuration
+  static String get firebaseApiKey {
+    return _getRequiredEnv('FIREBASE_API_KEY');
+  }
+
+  static String get firebaseAppId {
+    return _getRequiredEnv('FIREBASE_APP_ID');
+  }
+
+  static String get firebaseSenderId {
+    return _getRequiredEnv('FIREBASE_SENDER_ID');
+  }
+
+  static String get firebaseProjectId {
+    return _getRequiredEnv('FIREBASE_PROJECT_ID');
+  }
+
+  static String get firebaseStorageBucket {
+    return _getRequiredEnv('FIREBASE_STORAGE_BUCKET');
+  }
+
+  // Security Headers
   static Map<String, String> get securityHeaders {
     return {
       'Content-Type': 'application/json',
-      'X-Client-Version': '1.0.0',
+      'X-Client-Version': appVersion,
       'X-Platform': 'flutter',
+      'X-Environment': isProduction ? 'production' : 'development',
     };
   }
 
-  static const int paymentTimeout = int.fromEnvironment(
-    'PAYMENT_TIMEOUT',
-    defaultValue: 30,
-  );
-  // EmailJS Configuration
-  static const String emailJsServiceId = String.fromEnvironment(
-    'EMAILJS_SERVICE_ID',
-    defaultValue: "service_2vhpf9d",
-  );
+  // Helper method to get required env vars with clear error messages
+  static String _getRequiredEnv(String key) {
+    final value = dotenv.env[key];
+    if (value == null || value.isEmpty) {
+      throw StateError(
+        '❌ $key is not defined in .env file.\n'
+        'Please add $key to your .env file and restart the app.',
+      );
+    }
+    return value;
+  }
 
-  static const String emailJsTemplateId = String.fromEnvironment(
-    'EMAILJS_TEMPLATE_ID',
-    defaultValue: "template_ipikvr9",
-  );
+  // Optional: Helper to check if all required env vars are present
+  static List<String> validateRequiredEnv() {
+    const requiredKeys = [
+      'BASE_URL',
+      'SOCKET_URL',
+      'LOCATIONIQ_API_KEY',
+      'TIMEZONE_DB_API_KEY',
+      'EMAILJS_SERVICE_ID',
+      'EMAILJS_TEMPLATE_ID',
+      'EMAILJS_PUBLIC_KEY',
+      'PINNED_CERT_PRIMARY',
+      'FIREBASE_API_KEY',
+      'FIREBASE_APP_ID',
+      'FIREBASE_SENDER_ID',
+      'FIREBASE_PROJECT_ID',
+      'FIREBASE_STORAGE_BUCKET',
+    ];
 
-  static const String emailJsPublicKey = String.fromEnvironment(
-    'EMAILJS_PUBLIC_KEY',
-    defaultValue: "YlsX0perbEKZWwWhP",
-  );
-
-  static const String emailJsAccessToken = String.fromEnvironment(
-    'EMAILJS_ACCESS_TOKEN',
-    defaultValue: "",
-  );
-
-  static const int socketReconnectionDelay = int.fromEnvironment(
-    'SOCKET_RECONNECTION_DELAY',
-    defaultValue: 3000,
-  );
-
-  static const int socketReconnectionAttempts = int.fromEnvironment(
-    'SOCKET_RECONNECTION_ATTEMPTS',
-    defaultValue: 9999,
-  );
-
-  static const int socketConnectionTimeout = int.fromEnvironment(
-    'SOCKET_CONNECTION_TIMEOUT',
-    defaultValue: 20000,
-  );
-
-  static const String pinnedCertPrimary = String.fromEnvironment(
-    'PINNED_CERT_PRIMARY',
-    defaultValue: 'drJ7gKWAJ9w88dpo2sFwEO2TmX0LYD4vrb6FASSTtac=',
-  );
-
-  static const String pinnedCertBackup = String.fromEnvironment(
-    'D3788D482D4F24C5F8420E480EEEDCBE586CCE40E6EE837360AA2087010D88AF',
-    defaultValue: '',
-  );
+    final missing = <String>[];
+    for (final key in requiredKeys) {
+      final value = dotenv.env[key];
+      if (value == null || value.isEmpty) {
+        missing.add(key);
+      }
+    }
+    return missing;
+  }
 }

@@ -399,10 +399,10 @@ class AppLocalizationsSd extends AppLocalizations {
   String get contactUs => 'اسان سان رابطو ڪريو';
 
   @override
-  String get contactEmail => 'اي ميل: support@yourcompany.com';
+  String get contactEmail => 'اي ميل: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'ويب سائيٽ: www.yourcompany.com';
+  String get contactWebsite => 'ويب سائيٽ: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'ڪسٽمر سپورٽ';
@@ -498,7 +498,7 @@ class AppLocalizationsSd extends AppLocalizations {
   String get buyButton => 'خريد ڪريو';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 روزاني زائچو';
+  String get dailyHoroscopeTitle => ' روزاني زائچو';
 
   @override
   String get userIdMissing => 'استعمال ڪندڙ جي سڃاڻپ غائب آهي.';

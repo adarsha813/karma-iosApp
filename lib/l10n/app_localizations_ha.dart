@@ -397,10 +397,10 @@ class AppLocalizationsHa extends AppLocalizations {
   String get contactUs => 'Tuntube Mu';
 
   @override
-  String get contactEmail => 'Imel: support@yourcompany.com';
+  String get contactEmail => 'Imel: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Yanar Gizo: www.yourcompany.com';
+  String get contactWebsite => 'Yanar Gizo: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Tallafin Abokin Ciniki';
@@ -496,7 +496,7 @@ class AppLocalizationsHa extends AppLocalizations {
   String get buyButton => 'Saya';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horoscope na yau da kullun';
+  String get dailyHoroscopeTitle => ' Horoscope na yau da kullun';
 
   @override
   String get userIdMissing => 'ID mai amfani ya ɓace';

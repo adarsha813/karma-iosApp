@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "メールアドレス: support@yourcompany.com",
+  "contactEmail": "メールアドレス: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "ウェブサイト: www.yourcompany.com",
+  "contactWebsite": "ウェブサイト: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 毎日の星占い",
+  "dailyHoroscopeTitle": " 毎日の星占い",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

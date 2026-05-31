@@ -497,7 +497,7 @@ class AppLocalizationsEo extends AppLocalizations {
   String get buyButton => 'Aĉeti';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Ĉiutaga Horoskopo';
+  String get dailyHoroscopeTitle => ' Ĉiutaga Horoskopo';
 
   @override
   String get userIdMissing => 'Uzanto-identigilo mankas';

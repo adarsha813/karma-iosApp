@@ -1,6 +1,6 @@
 import 'dart:collection';
 import '../config/security_config.dart';
-import 'package:flutter/foundation.dart'; // for debugPrint
+import '../utils/app_logger.dart';
 
 class RateLimitingService {
   static final RateLimitingService _instance = RateLimitingService._internal();
@@ -101,14 +101,14 @@ class RateLimitingService {
     final lastAction = _actionCooldowns[actionKey];
 
     if (lastAction == null) {
-      debugPrint('🔍 $actionKey: No previous action recorded');
+      AppLogger.info('🔍 $actionKey: No previous action recorded');
       return;
     }
 
     final timeSinceLastAction = now.difference(lastAction);
     final isAllowed = timeSinceLastAction >= cooldown;
 
-    debugPrint(
+    AppLogger.info(
       '🔍 $actionKey: '
       'Last action: $lastAction, '
       'Time since: $timeSinceLastAction, '

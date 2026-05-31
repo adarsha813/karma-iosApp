@@ -401,10 +401,10 @@ class AppLocalizationsKy extends AppLocalizations {
   String get contactUs => 'Биз менен байланышыңыз';
 
   @override
-  String get contactEmail => 'Электрондук почта: support@yourcompany.com';
+  String get contactEmail => 'Электрондук почта: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Вебсайт: www.yourcompany.com';
+  String get contactWebsite => 'Вебсайт: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Кардарларды колдоо';
@@ -500,7 +500,7 @@ class AppLocalizationsKy extends AppLocalizations {
   String get buyButton => 'Сатып алуу';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Күнүмдүк гороскоп';
+  String get dailyHoroscopeTitle => ' Күнүмдүк гороскоп';
 
   @override
   String get userIdMissing => 'Колдонуучунун ID жок';

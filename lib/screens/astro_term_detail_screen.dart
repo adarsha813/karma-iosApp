@@ -16,14 +16,14 @@ final _logger = Logger(
     lineLength: 50,
     colors: true,
     printEmojis: true,
-    printTime: true,
+    dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
   ),
 );
 
 class AstroTermDetailScreen extends StatefulWidget {
   final AstroTerm term;
 
-  const AstroTermDetailScreen({Key? key, required this.term}) : super(key: key);
+  const AstroTermDetailScreen({super.key, required this.term});
 
   @override
   State<AstroTermDetailScreen> createState() => _AstroTermDetailScreenState();
@@ -205,7 +205,7 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
             Text(
               widget.term.meaning,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.8),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
                 height: 1.5,
               ),
             ),
@@ -263,7 +263,7 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
             Text(
               nepaliMeaning,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.8),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
                 height: 1.5,
               ),
             ),
@@ -277,7 +277,7 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 2,
-      color: theme.colorScheme.surfaceVariant,
+      color: theme.colorScheme.surfaceContainerHighest,
       shadowColor: Colors.black.withAlpha((0.05 * 255).toInt()),
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -321,14 +321,14 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
             Icon(
               icon,
               size: 48,
-              color: theme.colorScheme.onSurface.withOpacity(0.4),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
             ),
             const SizedBox(height: 16),
             Text(
               title,
               style: theme.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
-                color: theme.colorScheme.onSurface.withOpacity(0.6),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
               ),
               textAlign: TextAlign.center,
             ),
@@ -336,7 +336,7 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
             Text(
               description,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.6),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
                 height: 1.4,
               ),
               textAlign: TextAlign.center,
@@ -444,7 +444,7 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
 
   String _buildClipboardContent() {
     final buffer = StringBuffer();
-    buffer.writeln('🌟 ${widget.term.term}');
+    buffer.writeln(' ${widget.term.term}');
     buffer.writeln();
 
     if (widget.term.meaning.isNotEmpty) {
@@ -471,7 +471,7 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
     final theme = themeProvider.getCurrentTheme(context);
 
     return Scaffold(
-      backgroundColor: theme.colorScheme.background,
+      backgroundColor: theme.colorScheme.surface,
       appBar: _buildAppBar(theme),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -493,7 +493,7 @@ class _AstroTermDetailScreenState extends State<AstroTermDetailScreen> {
               Text(
                 'Astrological Knowledge Base',
                 style: theme.textTheme.bodySmall?.copyWith(
-                  color: theme.colorScheme.onSurface.withOpacity(0.6),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
                   fontStyle: FontStyle.italic,
                 ),
               ),

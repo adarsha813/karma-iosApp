@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "Imel: support@yourcompany.com",
+  "contactEmail": "Imel: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "Yanar Gizo: www.yourcompany.com",
+  "contactWebsite": "Yanar Gizo: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Horoscope na yau da kullun",
+  "dailyHoroscopeTitle": " Horoscope na yau da kullun",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

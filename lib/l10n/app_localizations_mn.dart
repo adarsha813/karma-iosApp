@@ -399,10 +399,10 @@ class AppLocalizationsMn extends AppLocalizations {
   String get contactUs => 'Бидэнтэй холбоо барина уу';
 
   @override
-  String get contactEmail => 'Имэйл: support@yourcompany.com';
+  String get contactEmail => 'Имэйл: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Вэбсайт: www.yourcompany.com';
+  String get contactWebsite => 'Вэбсайт: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Хэрэглэгчийн дэмжлэг';
@@ -498,7 +498,7 @@ class AppLocalizationsMn extends AppLocalizations {
   String get buyButton => 'Худалдан авах';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Өдөр тутмын зурхай';
+  String get dailyHoroscopeTitle => ' Өдөр тутмын зурхай';
 
   @override
   String get userIdMissing => 'Хэрэглэгчийн ID дутуу байна';

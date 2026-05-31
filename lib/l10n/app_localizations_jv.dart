@@ -398,7 +398,7 @@ class AppLocalizationsJv extends AppLocalizations {
   String get contactUs => 'Hubungi Kita';
 
   @override
-  String get contactEmail => 'Email: support@yourcompany.com';
+  String get contactEmail => 'Email: care@karmalifepath.com';
 
   @override
   String get contactWebsite => 'Situs web: www.perusahaananda.com';
@@ -497,7 +497,7 @@ class AppLocalizationsJv extends AppLocalizations {
   String get buyButton => 'tuku';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horoskop saben dina';
+  String get dailyHoroscopeTitle => ' Horoskop saben dina';
 
   @override
   String get userIdMissing => 'ID pangguna ilang';

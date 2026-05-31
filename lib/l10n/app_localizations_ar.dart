@@ -395,10 +395,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get contactUs => 'اتصل بنا';
 
   @override
-  String get contactEmail => 'البريد الإلكتروني: support@yourcompany.com';
+  String get contactEmail => 'البريد الإلكتروني: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'الموقع الإلكتروني: www.yourcompany.com';
+  String get contactWebsite => 'الموقع الإلكتروني: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'دعم العملاء';
@@ -494,7 +494,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get buyButton => 'يشتري';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 برجك اليومي';
+  String get dailyHoroscopeTitle => ' برجك اليومي';
 
   @override
   String get userIdMissing => 'معرف المستخدم مفقود';

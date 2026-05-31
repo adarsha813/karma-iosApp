@@ -174,7 +174,7 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "Correu electrònic: support@yourcompany.com",
+  "contactEmail": "Correu electrònic: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Horòscop diari",
+  "dailyHoroscopeTitle": " Horòscop diari",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

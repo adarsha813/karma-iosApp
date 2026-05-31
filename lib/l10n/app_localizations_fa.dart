@@ -398,10 +398,10 @@ class AppLocalizationsFa extends AppLocalizations {
   String get contactUs => 'تماس با ما';
 
   @override
-  String get contactEmail => 'ایمیل: support@yourcompany.com';
+  String get contactEmail => 'ایمیل: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'وب‌سایت: www.yourcompany.com';
+  String get contactWebsite => 'وب‌سایت: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'پشتیبانی مشتری';
@@ -497,7 +497,7 @@ class AppLocalizationsFa extends AppLocalizations {
   String get buyButton => 'خرید';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 فال روزانه';
+  String get dailyHoroscopeTitle => ' فال روزانه';
 
   @override
   String get userIdMissing => 'شناسه کاربری موجود نیست';

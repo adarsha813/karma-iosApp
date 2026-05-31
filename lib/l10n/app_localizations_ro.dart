@@ -401,7 +401,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get contactUs => 'Contactaţi-ne';
 
   @override
-  String get contactEmail => 'E-mail: support@yourcompany.com';
+  String get contactEmail => 'E-mail: care@karmalifepath.com';
 
   @override
   String get contactWebsite => 'Site web: www.companiatavoastră.com';
@@ -500,7 +500,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get buyButton => 'Cumpăra';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horoscop zilnic';
+  String get dailyHoroscopeTitle => ' Horoscop zilnic';
 
   @override
   String get userIdMissing => 'ID-ul utilizatorului lipsește';

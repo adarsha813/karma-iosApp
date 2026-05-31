@@ -399,7 +399,7 @@ class AppLocalizationsIs extends AppLocalizations {
   String get contactUs => 'Hafðu samband við okkur';
 
   @override
-  String get contactEmail => 'Netfang: support@yourcompany.com';
+  String get contactEmail => 'Netfang: care@karmalifepath.com';
 
   @override
   String get contactWebsite => 'Vefsíða: www.þittfyrirtæki.com';
@@ -498,7 +498,7 @@ class AppLocalizationsIs extends AppLocalizations {
   String get buyButton => 'Kaupa';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Daglegt stjörnuspákort';
+  String get dailyHoroscopeTitle => ' Daglegt stjörnuspákort';
 
   @override
   String get userIdMissing => 'Notandakenni vantar';

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:socket_io_client/socket_io_client.dart' as io;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
 import '../providers/notification_provider.dart';
@@ -16,6 +16,7 @@ import '../config/environment.dart';
 import 'package:logger/logger.dart';
 // Add this import if not already present
 import '../providers/theme_provider.dart';
+import '../utils/app_logger.dart';
 
 // Custom logger instance
 final _logger = Logger(
@@ -25,7 +26,7 @@ final _logger = Logger(
     lineLength: 50,
     colors: true,
     printEmojis: true,
-    printTime: true,
+    dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
   ),
 );
 
@@ -62,7 +63,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
   bool _isDisposed = false;
   String? _authToken;
 
-  late IO.Socket _socket;
+  late io.Socket _socket;
   List<String> _categories = [];
   final ScrollController _scrollController = ScrollController();
 
@@ -88,9 +89,9 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     final token = profileProvider.token;
 
     if (token == null) {
-      debugPrint('❌ No token found');
+      AppLogger.info('❌ No token found');
     } else {
-      debugPrint('✅ Token loaded in ChatScreen: $token');
+      AppLogger.info('✅ Token loaded in ChatScreen: $token');
     }
 
     setState(() {
@@ -364,7 +365,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
     _logger.d('Setting up socket connection');
 
     try {
-      _socket = IO.io(Environment.socketUrl, <String, dynamic>{
+      _socket = io.io(Environment.socketUrl, <String, dynamic>{
         'transports': ['websocket'],
         'query': {'userId': widget.userId},
         'autoConnect': false, // equivalent of disableAutoConnect()
@@ -675,7 +676,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
       separatorBuilder: (_, __) => const SizedBox(height: 8),
       itemBuilder: (context, index) {
         return Shimmer.fromColors(
-          baseColor: theme.colorScheme.surfaceVariant,
+          baseColor: theme.colorScheme.surfaceContainerHighest,
           highlightColor: theme.colorScheme.surface,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -684,7 +685,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: theme.colorScheme.onSurface.withOpacity(0.1),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
@@ -695,13 +696,13 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                   children: [
                     Container(
                       height: 14,
-                      color: theme.colorScheme.onSurface.withOpacity(0.1),
+                      color: theme.colorScheme.onSurface.withValues(alpha: 0.1),
                       margin: const EdgeInsets.only(bottom: 8),
                     ),
                     Container(
                       height: 14,
                       width: 150,
-                      color: theme.colorScheme.onSurface.withOpacity(0.1),
+                      color: theme.colorScheme.onSurface.withValues(alpha: 0.1),
                     ),
                   ],
                 ),
@@ -791,13 +792,13 @@ class _NotificationsScreenState extends State<NotificationsScreen>
             Icon(
               Icons.notifications_none,
               size: 64,
-              color: theme.colorScheme.onSurface.withOpacity(0.5),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
             ),
             const SizedBox(height: 16),
             Text(
               l10n.noNotifications,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.7),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
           ],
@@ -828,7 +829,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
               _getCategoryIcon(category),
               color:
                   read
-                      ? theme.colorScheme.onSurface.withOpacity(0.5)
+                      ? theme.colorScheme.onSurface.withValues(alpha: 0.5)
                       : theme.colorScheme.primary,
             ),
             title: Column(
@@ -866,7 +867,9 @@ class _NotificationsScreenState extends State<NotificationsScreen>
                       fontSize: 14,
                       color:
                           read
-                              ? theme.colorScheme.onSurface.withOpacity(0.7)
+                              ? theme.colorScheme.onSurface.withValues(
+                                alpha: 0.7,
+                              )
                               : theme.colorScheme.onSurface,
                       fontWeight: read ? FontWeight.normal : FontWeight.w500,
                     ),
@@ -877,7 +880,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
             subtitle: Text(
               _formatDate(createdAt),
               style: theme.textTheme.bodySmall?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.6),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
               ),
             ),
             trailing:
@@ -946,7 +949,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
       case 'offer':
         return Colors.red;
       default:
-        return theme.colorScheme.onSurface.withOpacity(0.7);
+        return theme.colorScheme.onSurface.withValues(alpha: 0.7);
     }
   }
 
@@ -1026,7 +1029,7 @@ class _NotificationsScreenState extends State<NotificationsScreen>
       ),
       body: SafeArea(
         child: Container(
-          color: theme.colorScheme.background,
+          color: theme.colorScheme.surface,
           child:
               _isLoading
                   ? _buildSkeletonLoader()
@@ -1264,7 +1267,7 @@ class CategoryTabs extends StatelessWidget {
             color: theme.colorScheme.surface,
             border: Border(
               bottom: BorderSide(
-                color: theme.colorScheme.outline.withOpacity(0.1),
+                color: theme.colorScheme.outline.withValues(alpha: 0.1),
                 width: 1,
               ),
             ),
@@ -1283,7 +1286,7 @@ class CategoryTabs extends StatelessWidget {
                     color:
                         tabController.index == 0
                             ? theme.colorScheme.primary
-                            : theme.colorScheme.surfaceVariant,
+                            : theme.colorScheme.surfaceContainerHighest,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(
@@ -1321,7 +1324,9 @@ class CategoryTabs extends StatelessWidget {
                               color:
                                   selected
                                       ? theme.colorScheme.primary
-                                      : theme.colorScheme.surfaceVariant,
+                                      : theme
+                                          .colorScheme
+                                          .surfaceContainerHighest,
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Text(

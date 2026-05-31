@@ -398,10 +398,10 @@ class AppLocalizationsTh extends AppLocalizations {
   String get contactUs => 'ติดต่อเรา';
 
   @override
-  String get contactEmail => 'อีเมล: support@yourcompany.com';
+  String get contactEmail => 'อีเมล: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'เว็บไซต์: www.yourcompany.com';
+  String get contactWebsite => 'เว็บไซต์: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'ฝ่ายสนับสนุนลูกค้า';
@@ -497,7 +497,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get buyButton => 'ซื้อ';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 ดูดวงรายวัน';
+  String get dailyHoroscopeTitle => ' ดูดวงรายวัน';
 
   @override
   String get userIdMissing => 'รหัสผู้ใช้หายไป';

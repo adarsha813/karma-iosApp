@@ -399,10 +399,10 @@ class AppLocalizationsNy extends AppLocalizations {
   String get contactUs => 'Lumikizanani nafe';
 
   @override
-  String get contactEmail => 'Imelo: support@yourcompany.com';
+  String get contactEmail => 'Imelo: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Webusayiti: www.yourcompany.com';
+  String get contactWebsite => 'Webusayiti: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Thandizo la Makasitomala';
@@ -498,7 +498,7 @@ class AppLocalizationsNy extends AppLocalizations {
   String get buyButton => 'Gulani';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horoscope ya tsiku ndi tsiku';
+  String get dailyHoroscopeTitle => ' Horoscope ya tsiku ndi tsiku';
 
   @override
   String get userIdMissing => 'ID ya munthu ikusowa';

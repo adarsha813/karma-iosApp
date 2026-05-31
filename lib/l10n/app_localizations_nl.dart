@@ -498,7 +498,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get buyButton => 'Kopen';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Dagelijkse horoscoop';
+  String get dailyHoroscopeTitle => ' Dagelijkse horoscoop';
 
   @override
   String get userIdMissing => 'Gebruikers-ID ontbreekt';

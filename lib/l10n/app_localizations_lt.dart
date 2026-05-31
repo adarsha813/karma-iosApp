@@ -399,7 +399,7 @@ class AppLocalizationsLt extends AppLocalizations {
   String get contactUs => 'Susisiekite su mumis';
 
   @override
-  String get contactEmail => 'El. paštas: support@yourcompany.com';
+  String get contactEmail => 'El. paštas: care@karmalifepath.com';
 
   @override
   String get contactWebsite => 'Svetainė: www.jūsųįmonė.com';
@@ -498,7 +498,7 @@ class AppLocalizationsLt extends AppLocalizations {
   String get buyButton => 'Pirkti';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Dienos horoskopas';
+  String get dailyHoroscopeTitle => ' Dienos horoskopas';
 
   @override
   String get userIdMissing => 'Trūksta naudotojo ID';

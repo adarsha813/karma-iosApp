@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-import '../providers/LocaleProvider.dart';
+import '../providers/locale_provider.dart';
 import 'package:kundali/screens/recovery_screen.dart';
 import '../providers/notification_provider.dart';
 import '../providers/profile_provider.dart';
 import 'package:http/http.dart' as http;
-import '../services/HoroscopeService.dart';
+import '../services/horoscope_service.dart';
 import '../services/chat_service.dart';
 import 'package:kundali/screens/policy_page.dart';
 import 'package:kundali/screens/profile_settings_screen.dart';
@@ -50,7 +50,6 @@ final _logger = Logger(
     lineLength: 50,
     colors: true,
     printEmojis: true,
-    printTime: true,
   ),
 );
 
@@ -249,7 +248,7 @@ class SettingsScreen extends StatelessWidget {
               content: Text(
                 message,
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  color: theme.colorScheme.onSurface.withOpacity(0.8),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
                 ),
               ),
               actions: [
@@ -280,8 +279,9 @@ class SettingsScreen extends StatelessWidget {
                         context: context,
                         barrierDismissible: false,
                         builder:
-                            (context) => WillPopScope(
-                              onWillPop: () async => false,
+                            (context) => PopScope(
+                              canPop:
+                                  false, // Fixed: Using PopScope instead of WillPopScope
                               child: AlertDialog(
                                 backgroundColor: theme.colorScheme.surface,
                                 content: Row(
@@ -538,6 +538,10 @@ class SettingsScreen extends StatelessWidget {
 
         try {
           await profileProvider.clearProfile();
+
+          // Check mounted after first async operation
+          if (!context.mounted) return;
+
           _logAnalyticsEvent('account_deleted_local');
 
           await _sendRequest(
@@ -549,11 +553,11 @@ class SettingsScreen extends StatelessWidget {
             token: token,
           );
 
-          _logAnalyticsEvent('account_deleted_backend');
+          // Check mounted before logging and navigation
+          if (!context.mounted) return;
 
-          if (context.mounted) {
-            await SafeNavigation.navigateToProfileSettings(context);
-          }
+          _logAnalyticsEvent('account_deleted_backend');
+          await SafeNavigation.navigateToProfileSettings(context);
         } catch (e, stackTrace) {
           _reportError(e, stackTrace, context: 'delete_account');
           if (context.mounted) {
@@ -682,7 +686,7 @@ class _SettingsContentState extends State<_SettingsContent> {
     final theme = themeProvider.getCurrentTheme(context);
 
     return Container(
-      color: theme.colorScheme.background,
+      color: theme.colorScheme.surface,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
@@ -824,7 +828,7 @@ class _ThemeSettingsTile extends StatelessWidget {
         subtitle: Text(
           _getThemeModeName(themeProvider.themeMode, context),
           style: theme.textTheme.bodyMedium?.copyWith(
-            color: theme.colorScheme.onSurface.withOpacity(0.7),
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
           ),
         ),
         children: [
@@ -839,7 +843,7 @@ class _ThemeSettingsTile extends StatelessWidget {
             subtitle: Text(
               l10n.lightThemeDescription,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.7),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
             value: ThemeMode.light,
@@ -868,7 +872,7 @@ class _ThemeSettingsTile extends StatelessWidget {
             subtitle: Text(
               l10n.darkThemeDescription,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.7),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
             value: ThemeMode.dark,
@@ -899,7 +903,7 @@ class _ThemeSettingsTile extends StatelessWidget {
                   ? l10n.systemThemeDarkDescription
                   : l10n.systemThemeLightDescription,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.7),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
             value: ThemeMode.system,
@@ -988,7 +992,7 @@ class _NotificationSettingsTile extends StatelessWidget {
                   ? l10n.notificationsEnabled
                   : l10n.notificationsDisabled,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.7),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
             value: notificationProvider.notificationsEnabled,
@@ -1087,7 +1091,7 @@ class _PolicyListTile extends StatelessWidget {
       trailing: Icon(
         Icons.arrow_forward_ios,
         size: 16,
-        color: theme.colorScheme.onSurface.withOpacity(0.6),
+        color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
       ),
       onTap: () {
         _logger.i('📄 Opening policy: $policyType');
@@ -1143,7 +1147,7 @@ class _ActionListTile extends StatelessWidget {
       trailing: Icon(
         Icons.arrow_forward_ios,
         size: 16,
-        color: theme.colorScheme.onSurface.withOpacity(0.6),
+        color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
       ),
       onTap: onTap,
     );
@@ -1368,7 +1372,9 @@ class _LanguageSettingsTileState extends State<_LanguageSettingsTile> {
                       child: Text(
                         'No languages found',
                         style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.onSurface.withOpacity(0.6),
+                          color: theme.colorScheme.onSurface.withValues(
+                            alpha: 0.6,
+                          ),
                         ),
                       ),
                     )
@@ -1431,16 +1437,22 @@ class _LanguageRadioTile extends StatelessWidget {
           color: theme.colorScheme.onSurface,
         ),
       ),
+      // ignore_for_file: deprecated_member_use
       value: locale.languageCode,
       groupValue: currentLanguage,
       onChanged: (String? value) async {
         if (value != null) {
           _logger.i('🌐 Changing language to: $value');
 
+          // Capture necessary data before async operations
+          final userId = profileProvider.userId;
+          final token = profileProvider.token;
+
           try {
             await profileProvider.saveLanguage(value);
             localeProvider.setLocale(Locale(value));
 
+            // Check mounted before using context
             if (context.mounted) {
               Provider.of<ProfileProvider>(
                 context,
@@ -1448,6 +1460,7 @@ class _LanguageRadioTile extends StatelessWidget {
               ).refreshProfile();
             }
 
+            // Check mounted before showing snackbar
             if (context.mounted) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
@@ -1458,9 +1471,13 @@ class _LanguageRadioTile extends StatelessWidget {
               );
             }
 
-            await _updateLanguageOnBackend(context, value);
+            // Call backend update without passing context
+            if (userId != null && token != null) {
+              await _updateLanguageOnBackend(userId, token, value);
+            }
           } catch (e) {
             _logger.e('🔴 Error changing language: $e');
+            // Check mounted before showing error snackbar
             if (context.mounted) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
@@ -1479,23 +1496,13 @@ class _LanguageRadioTile extends StatelessWidget {
     );
   }
 
+  // This method no longer takes a BuildContext parameter
   Future<void> _updateLanguageOnBackend(
-    BuildContext context,
+    String userId,
+    String token,
     String langCode,
   ) async {
     try {
-      final profileProvider = Provider.of<ProfileProvider>(
-        context,
-        listen: false,
-      );
-      final userId = profileProvider.userId;
-      final token = profileProvider.token;
-
-      if (userId == null || token == null) {
-        _logger.w("⚠️ Cannot update language: userId or token missing");
-        return;
-      }
-
       final url = Uri.parse(
         '${Environment.baseUrl}/api/profile/update-language',
       );

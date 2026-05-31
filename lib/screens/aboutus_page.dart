@@ -4,6 +4,7 @@ import '../config/environment.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import '../providers/theme_provider.dart'; // Add this import
+import 'package:url_launcher/url_launcher.dart';
 
 // Custom logger instance
 final _logger = Logger(
@@ -13,7 +14,7 @@ final _logger = Logger(
     lineLength: 50,
     colors: true,
     printEmojis: true,
-    printTime: true,
+    dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
   ),
 );
 
@@ -84,7 +85,7 @@ class AboutUsPage extends StatelessWidget {
             l10n.aboutCompanyDescription,
             textAlign: TextAlign.center,
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: theme.colorScheme.onPrimary.withOpacity(0.9),
+              color: theme.colorScheme.onPrimary.withValues(alpha: 0.9),
               height: 1.5,
             ),
           ),
@@ -120,7 +121,7 @@ class AboutUsPage extends StatelessWidget {
 
             // Divider
             Divider(
-              color: theme.colorScheme.outline.withOpacity(0.3),
+              color: theme.colorScheme.outline.withValues(alpha: 0.3),
               height: 1,
             ),
             const SizedBox(height: 24),
@@ -137,7 +138,7 @@ class AboutUsPage extends StatelessWidget {
 
             // Divider
             Divider(
-              color: theme.colorScheme.outline.withOpacity(0.3),
+              color: theme.colorScheme.outline.withValues(alpha: 0.3),
               height: 1,
             ),
             const SizedBox(height: 24),
@@ -191,7 +192,7 @@ class AboutUsPage extends StatelessWidget {
               Text(
                 content,
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  color: theme.colorScheme.onSurface.withOpacity(0.7),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                   height: 1.5,
                 ),
               ),
@@ -248,10 +249,7 @@ class AboutUsPage extends StatelessWidget {
             _buildContactItem(
               icon: Icons.email_outlined,
               label: l10n.contactEmail,
-              onTap: () {
-                _logAnalyticsEvent('contact_email_tapped');
-                _showContactDialog(context, 'Email', l10n.contactEmail, theme);
-              },
+              onTap: _launchEmail, // Now actually launches email
               context: context,
               theme: theme,
             ),
@@ -259,15 +257,7 @@ class AboutUsPage extends StatelessWidget {
             _buildContactItem(
               icon: Icons.language_outlined,
               label: l10n.contactWebsite,
-              onTap: () {
-                _logAnalyticsEvent('contact_website_tapped');
-                _showContactDialog(
-                  context,
-                  'Website',
-                  l10n.contactWebsite,
-                  theme,
-                );
-              },
+              onTap: _launchWebsite, // Now actually launches website
               context: context,
               theme: theme,
             ),
@@ -300,12 +290,15 @@ class AboutUsPage extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: onTap != null ? theme.colorScheme.surfaceVariant : null,
+            color:
+                onTap != null
+                    ? theme.colorScheme.surfaceContainerHighest
+                    : null,
             borderRadius: BorderRadius.circular(8),
             border:
                 onTap != null
                     ? Border.all(
-                      color: theme.colorScheme.outline.withOpacity(0.2),
+                      color: theme.colorScheme.outline.withValues(alpha: 0.2),
                     )
                     : null,
           ),
@@ -317,7 +310,7 @@ class AboutUsPage extends StatelessWidget {
                 color:
                     onTap != null
                         ? theme.colorScheme.primary
-                        : theme.colorScheme.onSurface.withOpacity(0.5),
+                        : theme.colorScheme.onSurface.withValues(alpha: 0.5),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -327,7 +320,9 @@ class AboutUsPage extends StatelessWidget {
                     color:
                         onTap != null
                             ? theme.colorScheme.onSurface
-                            : theme.colorScheme.onSurface.withOpacity(0.6),
+                            : theme.colorScheme.onSurface.withValues(
+                              alpha: 0.6,
+                            ),
                     fontWeight:
                         onTap != null ? FontWeight.w500 : FontWeight.normal,
                   ),
@@ -337,7 +332,7 @@ class AboutUsPage extends StatelessWidget {
                 Icon(
                   Icons.arrow_forward_ios,
                   size: 14,
-                  color: theme.colorScheme.onSurface.withOpacity(0.5),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                 ),
               ],
             ],
@@ -347,40 +342,56 @@ class AboutUsPage extends StatelessWidget {
     );
   }
 
-  void _showContactDialog(
-    BuildContext context,
-    String type,
-    String value,
-    ThemeData theme,
-  ) {
-    showDialog(
-      context: context,
-      builder:
-          (context) => AlertDialog(
-            backgroundColor: theme.colorScheme.surface,
-            title: Text(
-              'Contact $type',
-              style: theme.textTheme.titleLarge?.copyWith(
-                color: theme.colorScheme.onSurface,
-              ),
-            ),
-            content: Text(
-              'In the full version, this would open your $type app to contact us at:\n\n$value',
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.7),
-              ),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: Text(
-                  'OK',
-                  style: TextStyle(color: theme.colorScheme.primary),
-                ),
-              ),
-            ],
-          ),
+  void _launchEmail() async {
+    final email = 'support@karmalifepath.com'; // Replace with your actual email
+    final subject = 'Support Request';
+    final body = 'Hello, I need help with...';
+
+    // Properly encode the subject and body
+    final encodedSubject = Uri.encodeComponent(subject);
+    final encodedBody = Uri.encodeComponent(body);
+
+    final emailUri = Uri.parse(
+      'mailto:$email?subject=$encodedSubject&body=$encodedBody',
     );
+
+    try {
+      if (await canLaunchUrl(emailUri)) {
+        await launchUrl(emailUri);
+        _logAnalyticsEvent('email_launched');
+      } else {
+        _logger.e('Could not launch email: $emailUri');
+        _showErrorSnackBar('No email app found');
+      }
+    } catch (e) {
+      _logger.e('Error launching email: $e');
+      _showErrorSnackBar('Failed to open email app');
+    }
+  }
+
+  void _launchWebsite() async {
+    final websiteUrl =
+        'https://karmalifepath.com'; // Replace with your actual URL
+    final uri = Uri.parse(websiteUrl);
+
+    try {
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(uri, mode: LaunchMode.externalApplication);
+        _logAnalyticsEvent('website_launched');
+      } else {
+        _logger.e('Could not launch website: $websiteUrl');
+        _showErrorSnackBar('Could not open website');
+      }
+    } catch (e) {
+      _logger.e('Error launching website: $e');
+      _showErrorSnackBar('Failed to open website');
+    }
+  }
+
+  void _showErrorSnackBar(String message) {
+    // You need a BuildContext here - pass it from the calling widget
+    // For now, logging. Consider using a scaffold messenger.
+    _logger.w(message);
   }
 
   Widget _buildTeamInfo(
@@ -429,7 +440,7 @@ class AboutUsPage extends StatelessWidget {
             Text(
               l10n.teamDescription, // <- localized
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.7),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                 height: 1.5,
               ),
             ),
@@ -451,7 +462,7 @@ class AboutUsPage extends StatelessWidget {
     });
 
     return Scaffold(
-      backgroundColor: theme.colorScheme.background,
+      backgroundColor: theme.colorScheme.surface,
       appBar: AppBar(
         title: Text(l10n.aboutUsTitle),
         centerTitle: true,
@@ -480,7 +491,7 @@ class AboutUsPage extends StatelessWidget {
             Text(
               'Made with ❤️ for the astrological community',
               style: theme.textTheme.bodySmall?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.6),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
                 fontStyle: FontStyle.italic,
               ),
             ),

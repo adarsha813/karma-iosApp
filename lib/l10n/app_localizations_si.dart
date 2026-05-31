@@ -399,10 +399,10 @@ class AppLocalizationsSi extends AppLocalizations {
   String get contactUs => 'අපව අමතන්න';
 
   @override
-  String get contactEmail => 'විද්‍යුත් තැපෑල: support@yourcompany.com';
+  String get contactEmail => 'විද්‍යුත් තැපෑල: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'වෙබ් අඩවිය: www.yourcompany.com';
+  String get contactWebsite => 'වෙබ් අඩවිය: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'පාරිභෝගික සහාය';
@@ -498,7 +498,7 @@ class AppLocalizationsSi extends AppLocalizations {
   String get buyButton => 'මිලදී ගන්න';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 දෛනික කේන්දර සටහන';
+  String get dailyHoroscopeTitle => ' දෛනික කේන්දර සටහන';
 
   @override
   String get userIdMissing => 'පරිශීලක හැඳුනුම්පත අස්ථානගත වී ඇත.';

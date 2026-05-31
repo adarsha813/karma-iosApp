@@ -397,10 +397,10 @@ class AppLocalizationsSm extends AppLocalizations {
   String get contactUs => 'Faafesootai matou';
 
   @override
-  String get contactEmail => 'Imeli: support@yourcompany.com';
+  String get contactEmail => 'Imeli: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Upega tafa\'ilagi: www.yourcompany.com';
+  String get contactWebsite => 'Upega tafa\'ilagi: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Lagolago Tagata Fa\'atau';
@@ -497,7 +497,7 @@ class AppLocalizationsSm extends AppLocalizations {
   String get buyButton => 'Fa\'atau';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Fa\'ailo o aso ta\'itasi';
+  String get dailyHoroscopeTitle => ' Fa\'ailo o aso ta\'itasi';
 
   @override
   String get userIdMissing => 'O lo\'o misi le ID fa\'aoga';

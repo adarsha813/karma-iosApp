@@ -399,10 +399,10 @@ class AppLocalizationsMs extends AppLocalizations {
   String get contactUs => 'Hubungi Kami';
 
   @override
-  String get contactEmail => 'E-mel: support@yourcompany.com';
+  String get contactEmail => 'E-mel: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'laman web: www.yourcompany.com';
+  String get contactWebsite => 'laman web: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Sokongan Pelanggan';
@@ -498,7 +498,7 @@ class AppLocalizationsMs extends AppLocalizations {
   String get buyButton => 'Beli';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horoskop Harian';
+  String get dailyHoroscopeTitle => ' Horoskop Harian';
 
   @override
   String get userIdMissing => 'ID pengguna tiada';

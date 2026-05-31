@@ -398,10 +398,10 @@ class AppLocalizationsMi extends AppLocalizations {
   String get contactUs => 'Whakapā mai';
 
   @override
-  String get contactEmail => 'Īmēra: support@yourcompany.com';
+  String get contactEmail => 'Īmēra: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'paetukutuku: www.yourcompany.com';
+  String get contactWebsite => 'paetukutuku: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Tautoko Kiritaki';
@@ -497,7 +497,7 @@ class AppLocalizationsMi extends AppLocalizations {
   String get buyButton => 'Hoko';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horoscope o ia ra';
+  String get dailyHoroscopeTitle => ' Horoscope o ia ra';
 
   @override
   String get userIdMissing => 'Kei te ngaro te ID Kaiwhakamahi';

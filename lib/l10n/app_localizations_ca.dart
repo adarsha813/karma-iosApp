@@ -402,7 +402,7 @@ class AppLocalizationsCa extends AppLocalizations {
   String get contactUs => 'Contacta amb nosaltres';
 
   @override
-  String get contactEmail => 'Correu electrònic: support@yourcompany.com';
+  String get contactEmail => 'Correu electrònic: care@karmalifepath.com';
 
   @override
   String get contactWebsite => 'Lloc web: www.latevaempresa.com';
@@ -502,7 +502,7 @@ class AppLocalizationsCa extends AppLocalizations {
   String get buyButton => 'Comprar';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horòscop diari';
+  String get dailyHoroscopeTitle => ' Horòscop diari';
 
   @override
   String get userIdMissing => 'Falta l\'ID d\'usuari';

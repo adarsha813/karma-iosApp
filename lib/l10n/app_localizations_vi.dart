@@ -401,10 +401,10 @@ class AppLocalizationsVi extends AppLocalizations {
   String get contactUs => 'Liên hệ với chúng tôi';
 
   @override
-  String get contactEmail => 'Email: support@yourcompany.com';
+  String get contactEmail => 'Email: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Trang web: www.yourcompany.com';
+  String get contactWebsite => 'Trang web: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Hỗ trợ khách hàng';
@@ -500,7 +500,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get buyButton => 'Mua';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Tử vi hàng ngày';
+  String get dailyHoroscopeTitle => ' Tử vi hàng ngày';
 
   @override
   String get userIdMissing => 'ID người dùng bị thiếu';

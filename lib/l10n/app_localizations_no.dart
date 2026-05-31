@@ -399,7 +399,7 @@ class AppLocalizationsNo extends AppLocalizations {
   String get contactUs => 'Kontakt oss';
 
   @override
-  String get contactEmail => 'E-post: support@yourcompany.com';
+  String get contactEmail => 'E-post: care@karmalifepath.com';
 
   @override
   String get contactWebsite => 'Nettside: www.dittselskap.com';
@@ -498,7 +498,7 @@ class AppLocalizationsNo extends AppLocalizations {
   String get buyButton => 'Kjøpe';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Daglig horoskop';
+  String get dailyHoroscopeTitle => ' Daglig horoskop';
 
   @override
   String get userIdMissing => 'Bruker-ID mangler';

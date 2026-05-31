@@ -18,7 +18,7 @@ final _logger = Logger(
     lineLength: 50,
     colors: true,
     printEmojis: true,
-    printTime: true,
+    dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
   ),
 );
 
@@ -106,6 +106,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
   }
 
   Future<void> _sendEmail() async {
+    // Capture l10n BEFORE async operations
     final l10n = AppLocalizations.of(context)!;
 
     if (!_formKey.currentState!.validate()) {
@@ -123,18 +124,23 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
     final message = SecurityUtils.sanitizeInput(_messageController.text.trim());
 
     if (!ValidationUtils.isValidEmail(email)) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(l10n.enterValidEmail)));
+      // Check mounted before showing snackbar
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(l10n.enterValidEmail)));
+      }
       return;
     }
 
     if (name.length < 2) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please enter a valid name (at least 2 characters)'),
-        ),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Please enter a valid name (at least 2 characters)'),
+          ),
+        );
+      }
       return;
     }
 
@@ -167,67 +173,77 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
         _lastSubmissionTime = DateTime.now();
         _submissionAttempts++;
       });
-      final theme = Theme.of(context);
 
-      if (result.success) {
-        _logAnalyticsEvent('email_sent_successfully');
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              l10n.emailSentSuccess,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onPrimary,
+      // Check mounted before any UI updates
+      if (mounted) {
+        final theme = Theme.of(context);
+
+        if (result.success) {
+          _logAnalyticsEvent('email_sent_successfully');
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                l10n.emailSentSuccess,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.onPrimary,
+                ),
               ),
+              backgroundColor: theme.colorScheme.primary,
+              behavior: SnackBarBehavior.floating,
+              duration: const Duration(seconds: 4),
             ),
-            backgroundColor: theme.colorScheme.primary,
-            behavior: SnackBarBehavior.floating,
-            duration: const Duration(seconds: 4),
-          ),
-        );
-        _resetForm();
-      } else {
-        _logAnalyticsEvent('email_send_failed');
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              result.error ?? l10n.emailSendFailed,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onError,
+          );
+          _resetForm();
+        } else {
+          _logAnalyticsEvent('email_send_failed');
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                result.error ?? l10n.emailSendFailed,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.onError,
+                ),
               ),
+              backgroundColor: theme.colorScheme.error,
+              behavior: SnackBarBehavior.floating,
+              duration: const Duration(seconds: 4),
             ),
-            backgroundColor: theme.colorScheme.error,
-            behavior: SnackBarBehavior.floating,
-            duration: const Duration(seconds: 4),
-          ),
-        );
+          );
+        }
       }
     } on TimeoutException catch (e, stackTrace) {
       _logError('Email sending timeout', stackTrace, context: 'sendEmail');
       setState(() => _isSending = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Request timeout. Please try again.'),
-          backgroundColor: Colors.orange,
-        ),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Request timeout. Please try again.'),
+            backgroundColor: Colors.orange,
+          ),
+        );
+      }
     } catch (e, stackTrace) {
       _logError('Email sending failed: $e', stackTrace, context: 'sendEmail');
       setState(() => _isSending = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('An unexpected error occurred. Please try again.'),
-          backgroundColor: Colors.red,
-        ),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('An unexpected error occurred. Please try again.'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     }
   }
 
   void _showRateLimitDialog(AppLocalizations l10n) {
+    if (!mounted) return;
+
     showDialog(
       context: context,
       barrierDismissible: true,
       builder:
-          (context) => AlertDialog(
+          (dialogContext) => AlertDialog(
             title: const Text('Rate Limit'),
             content: Text(
               _submissionAttempts >= _maxSubmissionAttempts
@@ -236,7 +252,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
             ),
             actions: [
               TextButton(
-                onPressed: () => Navigator.of(context).pop(),
+                onPressed: () => Navigator.of(dialogContext).pop(),
                 child: const Text('OK'),
               ),
             ],
@@ -364,7 +380,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
             l10n.supportHeroDescription,
             textAlign: TextAlign.center,
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: theme.colorScheme.onPrimary.withOpacity(0.9),
+              color: theme.colorScheme.onPrimary.withValues(alpha: 0.9),
               height: 1.5,
             ),
           ),
@@ -395,7 +411,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                 decoration: InputDecoration(
                   labelText: l10n.yourName,
                   labelStyle: TextStyle(
-                    color: theme.colorScheme.onSurface.withOpacity(0.7),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                   ),
                   prefixIcon: Icon(
                     Icons.person_outline,
@@ -403,7 +419,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                   ),
                   border: const OutlineInputBorder(),
                   filled: true,
-                  fillColor: theme.colorScheme.surfaceVariant,
+                  fillColor: theme.colorScheme.surfaceContainerHighest,
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: theme.colorScheme.outline),
                   ),
@@ -427,7 +443,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                 decoration: InputDecoration(
                   labelText: l10n.yourEmail,
                   labelStyle: TextStyle(
-                    color: theme.colorScheme.onSurface.withOpacity(0.7),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                   ),
                   prefixIcon: Icon(
                     Icons.email_outlined,
@@ -435,7 +451,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                   ),
                   border: const OutlineInputBorder(),
                   filled: true,
-                  fillColor: theme.colorScheme.surfaceVariant,
+                  fillColor: theme.colorScheme.surfaceContainerHighest,
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: theme.colorScheme.outline),
                   ),
@@ -461,7 +477,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                 decoration: InputDecoration(
                   labelText: l10n.message,
                   labelStyle: TextStyle(
-                    color: theme.colorScheme.onSurface.withOpacity(0.7),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                   ),
                   prefixIcon: Icon(
                     Icons.message_outlined,
@@ -469,7 +485,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                   ),
                   border: const OutlineInputBorder(),
                   filled: true,
-                  fillColor: theme.colorScheme.surfaceVariant,
+                  fillColor: theme.colorScheme.surfaceContainerHighest,
                   alignLabelWithHint: true,
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: theme.colorScheme.outline),
@@ -492,7 +508,9 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                     }) => Text(
                       '$currentLength/$maxLength',
                       style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.onSurface.withOpacity(0.6),
+                        color: theme.colorScheme.onSurface.withValues(
+                          alpha: 0.6,
+                        ),
                       ),
                     ),
               ),
@@ -644,7 +662,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
             _buildContactItem(
               icon: Icons.email_outlined,
               label: 'Email',
-              value: 'support@yourapp.com',
+              value: 'care@karmalifepath.com',
               onTap: () {
                 _logAnalyticsEvent('support_email_tapped');
                 // Implementation for launching email client
@@ -652,16 +670,6 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
               theme: theme,
             ),
             const SizedBox(height: 12),
-            _buildContactItem(
-              icon: Icons.phone_outlined,
-              label: 'Phone',
-              value: '+1-555-SUPPORT',
-              onTap: () {
-                _logAnalyticsEvent('support_phone_tapped');
-                // Implementation for launching phone dialer
-              },
-              theme: theme,
-            ),
           ],
         ),
       ),
@@ -683,7 +691,10 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
         child: Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: onTap != null ? theme.colorScheme.surfaceVariant : null,
+            color:
+                onTap != null
+                    ? theme.colorScheme.surfaceContainerHighest
+                    : null,
             borderRadius: BorderRadius.circular(8),
             border:
                 onTap != null
@@ -698,7 +709,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                 color:
                     onTap != null
                         ? theme.colorScheme.primary
-                        : theme.colorScheme.onSurface.withOpacity(0.5),
+                        : theme.colorScheme.onSurface.withValues(alpha: 0.5),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -708,7 +719,9 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                     Text(
                       label,
                       style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.onSurface.withOpacity(0.7),
+                        color: theme.colorScheme.onSurface.withValues(
+                          alpha: 0.7,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 2),
@@ -718,7 +731,9 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                         color:
                             onTap != null
                                 ? theme.colorScheme.onSurface
-                                : theme.colorScheme.onSurface.withOpacity(0.5),
+                                : theme.colorScheme.onSurface.withValues(
+                                  alpha: 0.5,
+                                ),
                         fontWeight:
                             onTap != null ? FontWeight.w500 : FontWeight.normal,
                       ),
@@ -730,7 +745,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
                 Icon(
                   Icons.arrow_forward_ios,
                   size: 14,
-                  color: theme.colorScheme.onSurface.withOpacity(0.5),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                 ),
               ],
             ],
@@ -757,7 +772,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      backgroundColor: theme.colorScheme.background,
+      backgroundColor: theme.colorScheme.surface,
       appBar: _buildAppBar(theme, l10n),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -774,7 +789,7 @@ class _CustomerSupportPageState extends State<CustomerSupportPage> {
             Text(
               'Typically respond within 24 hours',
               style: theme.textTheme.bodySmall?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.6),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
                 fontStyle: FontStyle.italic,
               ),
             ),

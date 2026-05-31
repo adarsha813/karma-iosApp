@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "Электронная пошта: support@yourcompany.com",
+  "contactEmail": "Электронная пошта: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "Вэб-сайт: www.yourcompany.com",
+  "contactWebsite": "Вэб-сайт: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Штодзённы гараскоп",
+  "dailyHoroscopeTitle": " Штодзённы гараскоп",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

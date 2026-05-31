@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Dagelijkse horoscoop",
+  "dailyHoroscopeTitle": " Dagelijkse horoscoop",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

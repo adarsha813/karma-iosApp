@@ -402,10 +402,10 @@ class AppLocalizationsCeb extends AppLocalizations {
   String get contactUs => 'Kontaka Kami';
 
   @override
-  String get contactEmail => 'Email: support@yourcompany.com';
+  String get contactEmail => 'Email: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Website: www.yourcompany.com';
+  String get contactWebsite => 'Website: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Suporta sa Kustomer';
@@ -502,7 +502,7 @@ class AppLocalizationsCeb extends AppLocalizations {
   String get buyButton => 'Palita';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Adlaw-adlaw nga Horoscope';
+  String get dailyHoroscopeTitle => ' Adlaw-adlaw nga Horoscope';
 
   @override
   String get userIdMissing => 'Nawala ang user ID';

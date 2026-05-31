@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "Email: support@yourcompany.com",
+  "contactEmail": "Email: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "Webosaete: www.yourcompany.com",
+  "contactWebsite": "Webosaete: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Horoscope ea Letsatsi le Letsatsi",
+  "dailyHoroscopeTitle": " Horoscope ea Letsatsi le Letsatsi",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "Īmēra: support@yourcompany.com",
+  "contactEmail": "Īmēra: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "paetukutuku: www.yourcompany.com",
+  "contactWebsite": "paetukutuku: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Horoscope o ia ra",
+  "dailyHoroscopeTitle": " Horoscope o ia ra",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

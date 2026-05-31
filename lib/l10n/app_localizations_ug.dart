@@ -400,10 +400,10 @@ class AppLocalizationsUg extends AppLocalizations {
   String get contactUs => 'بىز بىلەن ئالاقىلىشىڭ';
 
   @override
-  String get contactEmail => 'ئېلخەت: support@yourcompany.com';
+  String get contactEmail => 'ئېلخەت: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'تور بېكىتى: www.yourcompany.com';
+  String get contactWebsite => 'تور بېكىتى: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'خېرىدارلارنى قوللاش';
@@ -501,7 +501,7 @@ class AppLocalizationsUg extends AppLocalizations {
   String get buyButton => 'سېتىۋېلىش';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Daily Horoscope';
+  String get dailyHoroscopeTitle => ' Daily Horoscope';
 
   @override
   String get userIdMissing => 'ئىشلەتكۈچى كىملىكى يوقاپ كەتتى';

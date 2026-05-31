@@ -400,10 +400,10 @@ class AppLocalizationsZu extends AppLocalizations {
   String get contactUs => 'Xhumana nathi';
 
   @override
-  String get contactEmail => 'I-imeyili: support@yourcompany.com';
+  String get contactEmail => 'I-imeyili: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Iwebhusayithi: www.yourcompany.com';
+  String get contactWebsite => 'Iwebhusayithi: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Ukwesekwa Kwamakhasimende';
@@ -499,7 +499,7 @@ class AppLocalizationsZu extends AppLocalizations {
   String get buyButton => 'Thenga';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 IHoroscope Yansuku zonke';
+  String get dailyHoroscopeTitle => ' IHoroscope Yansuku zonke';
 
   @override
   String get userIdMissing => 'I-ID yomsebenzisi ayikho';

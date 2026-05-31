@@ -1,13 +1,15 @@
 import 'package:flutter/foundation.dart';
+import '../utils/app_logger.dart';
 
 class Message extends ChangeNotifier {
   final String? id; // Local/client id (optional)
   final String? mongoId; // MongoDB ObjectId as String
   final String text;
-
+  final String? answerId;
   final bool isMe;
   final bool isClarification;
   final String? adminId;
+  final String? questionId;
   final String? adminName;
   final String? adminImage; // <-- add this
 
@@ -41,7 +43,9 @@ class Message extends ChangeNotifier {
     this.adminName,
     this.createdAt,
     this.answeredAt,
+    this.questionId,
     this.clarificatedAt,
+    this.answerId,
     this.isAdvice = false,
     this.clarificationId,
     this.type, // <-- new
@@ -142,7 +146,9 @@ class Message extends ChangeNotifier {
   }
 
   factory Message.fromJson(Map<String, dynamic> json) {
-    debugPrint('📥 Raw JSON for message: $json'); // <- make sure this prints
+    AppLogger.info(
+      '📥 Raw JSON for message: $json',
+    ); // <- make sure this prints
     String? parsedMongoId;
 
     final rawId = json["_id"];
@@ -174,21 +180,23 @@ class Message extends ChangeNotifier {
     final adminId = json["adminId"] ?? json["councillorId"];
     final adminName = json["adminName"] ?? json["councillorName"];
 
-    debugPrint(
+    AppLogger.info(
       '✅ Message ID: ${json["id"]} | Clarification ID: $clarificationId',
     );
 
-    debugPrint('✅ clarificationId extracted: $clarificationId');
+    AppLogger.info('✅ clarificationId extracted: $clarificationId');
     // ---------------------------------------
 
     return Message(
       id: json["id"],
       mongoId: parsedMongoId,
       text: json["text"] ?? "",
+      answerId: json["answerId"], // ✅ Parse answerId
       clarificationId: clarificationId,
       isMe: json["isMe"] ?? true,
       isClarification: json["isClarification"] ?? false,
       isAdvice: json["isAdvice"] ?? false,
+      questionId: json["questionId"] ?? json["parentId"],
       adminId: adminId,
       adminName: adminName,
       createdAt: Message.parseDate(json["createdAt"] ?? json["scheduledFor"]),
@@ -219,8 +227,10 @@ class Message extends ChangeNotifier {
       "mongoId": mongoId,
       "text": text,
       "isMe": isMe,
+      "answerId": answerId,
       "isClarification": isClarification,
       "isAdvice": isAdvice,
+      "questionId": questionId,
       "adminId": adminId,
       "adminName": adminName,
       "createdAt": createdAt?.toIso8601String(),
@@ -289,4 +299,16 @@ class Message extends ChangeNotifier {
       adminImage: adminImage ?? this.adminImage,
     );
   }
+
+  // ✅ ADD THIS SAFE GETTER
+  String get safeId {
+    if (id != null && id!.isNotEmpty) return id!;
+    if (mongoId != null && mongoId!.isNotEmpty) return mongoId!;
+    return 'temp_${DateTime.now().millisecondsSinceEpoch}_${text.hashCode.abs()}';
+  }
+
+  // ✅ ADD THIS METHOD TO CHECK IF ID EXISTS
+  bool get hasValidId =>
+      (id != null && id!.isNotEmpty) ||
+      (mongoId != null && mongoId!.isNotEmpty);
 }

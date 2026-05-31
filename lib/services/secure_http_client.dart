@@ -4,7 +4,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import '../config/security_config.dart';
 import 'secure_storage_service.dart';
 import 'error_reporting_service.dart'; // ✅ ADDED
-import 'package:flutter/foundation.dart';
+import '../utils/app_logger.dart';
 
 class SecureHttpClient {
   final SecureStorageService _secureStorage = SecureStorageService();
@@ -153,7 +153,7 @@ class SecureHttpClient {
 
     // Prevent potential SSRF attacks
     if (!uri.host.endsWith('your-trusted-domain.com') &&
-        !uri.host.endsWith('chat-backend-rvk9.onrender.com')) {
+        !uri.host.endsWith('chat-backend-young-shape-7183.fly.dev')) {
       throw ArgumentError('Untrusted domain: ${uri.host}');
     }
   }
@@ -186,7 +186,7 @@ class SecureHttpClient {
 
     if (requireAuth) {
       // ✅ ADD DEBUGGING
-      debugPrint(
+      AppLogger.info(
         '🔄 _prepareHeaders: requireAuth=$requireAuth, externalToken=${token != null ? "✅ Present" : "❌ NULL"}',
       );
 
@@ -195,23 +195,23 @@ class SecureHttpClient {
 
       if (authToken == null || authToken.isEmpty) {
         authToken = await _secureStorage.getToken();
-        debugPrint(
+        AppLogger.info(
           '🔄 Secure storage token: ${authToken != null ? "✅ Present" : "❌ NULL"}',
         );
       }
 
       if (authToken == null || authToken.isEmpty) {
-        debugPrint('❌ FINAL: No token available anywhere');
+        AppLogger.info('❌ FINAL: No token available anywhere');
         throw Exception('Authentication token not available');
       }
 
       if (authToken.length < 10) {
         throw Exception('Invalid token format');
       }
-      debugPrint('✅ FINAL: Using token of length ${authToken.length}');
+      AppLogger.info('✅ FINAL: Using token of length ${authToken.length}');
       headers['Authorization'] = 'Bearer $authToken';
     } else {
-      debugPrint('🔄 _prepareHeaders: Authentication not required');
+      AppLogger.info('🔄 _prepareHeaders: Authentication not required');
     }
 
     if (customHeaders != null) {

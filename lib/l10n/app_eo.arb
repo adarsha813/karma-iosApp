@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Ĉiutaga Horoskopo",
+  "dailyHoroscopeTitle": " Ĉiutaga Horoskopo",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

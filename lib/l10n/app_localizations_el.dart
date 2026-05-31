@@ -402,10 +402,10 @@ class AppLocalizationsEl extends AppLocalizations {
   String get contactUs => 'Επικοινωνήστε μαζί μας';
 
   @override
-  String get contactEmail => 'Ηλεκτρονικό ταχυδρομείο: support@yourcompany.com';
+  String get contactEmail => 'Ηλεκτρονικό ταχυδρομείο: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Ιστότοπος: www.yourcompany.com';
+  String get contactWebsite => 'Ιστότοπος: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Υποστήριξη πελατών';
@@ -503,7 +503,7 @@ class AppLocalizationsEl extends AppLocalizations {
   String get buyButton => 'Αγορά';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Ημερήσιο Ωροσκόπιο';
+  String get dailyHoroscopeTitle => ' Ημερήσιο Ωροσκόπιο';
 
   @override
   String get userIdMissing => 'Λείπει το αναγνωριστικό χρήστη';

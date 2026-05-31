@@ -401,10 +401,10 @@ class AppLocalizationsGa extends AppLocalizations {
   String get contactUs => 'Déan Teagmháil Linn';
 
   @override
-  String get contactEmail => 'Ríomhphost: support@yourcompany.com';
+  String get contactEmail => 'Ríomhphost: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Suíomh Gréasáin: www.yourcompany.com';
+  String get contactWebsite => 'Suíomh Gréasáin: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Tacaíocht do Chustaiméirí';
@@ -500,7 +500,7 @@ class AppLocalizationsGa extends AppLocalizations {
   String get buyButton => 'Ceannaigh';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horoscóp Laethúil';
+  String get dailyHoroscopeTitle => ' Horoscóp Laethúil';
 
   @override
   String get userIdMissing => 'Tá ID úsáideora ar iarraidh';

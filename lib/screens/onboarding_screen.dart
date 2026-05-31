@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import '../providers/profile_provider.dart';
-import '../providers/LocaleProvider.dart';
+import '../providers/locale_provider.dart';
 import '../l10n/app_localizations.dart';
 import 'profile_settings_screen.dart';
 import 'recovery_screen.dart';
@@ -21,7 +21,7 @@ final _logger = Logger(
     lineLength: 50,
     colors: true,
     printEmojis: true,
-    printTime: true,
+    dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
   ),
 );
 
@@ -30,10 +30,10 @@ class OnboardingScreen extends StatefulWidget {
   final ProfileProvider profileProvider;
 
   const OnboardingScreen({
-    Key? key,
+    super.key,
     required this.onFinish,
     required this.profileProvider,
-  }) : super(key: key);
+  });
 
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();
@@ -325,9 +325,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 borderRadius: BorderRadius.circular(8.0),
               ),
               filled: true,
-              fillColor: theme.colorScheme.surfaceVariant,
+              fillColor: theme.colorScheme.surfaceContainerHighest,
               hintStyle: TextStyle(
-                color: theme.colorScheme.onSurface.withOpacity(0.5),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
               ),
               contentPadding: const EdgeInsets.symmetric(horizontal: 12.0),
               isDense: true,
@@ -376,7 +376,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 child: Text(
                   'No languages found',
                   style: theme.textTheme.bodyMedium?.copyWith(
-                    color: theme.colorScheme.onSurface.withOpacity(0.6),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
                   ),
                 ),
               )
@@ -413,6 +413,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ],
                           ],
                         ),
+                        // ignore_for_file: deprecated_member_use
                         value: language['code'] as String,
                         groupValue:
                             profileProvider.language.isNotEmpty
@@ -439,7 +440,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       if (!isLast)
                         Divider(
                           height: 1,
-                          color: theme.colorScheme.outline.withOpacity(0.3),
+                          color: theme.colorScheme.outline.withValues(
+                            alpha: 0.3,
+                          ),
                         ),
                     ],
                   );
@@ -491,7 +494,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             color:
                 currentPage == index
                     ? theme.colorScheme.primary
-                    : theme.colorScheme.onSurface.withOpacity(0.3),
+                    : theme.colorScheme.onSurface.withValues(alpha: 0.3),
             shape: BoxShape.circle,
           ),
         );
@@ -594,7 +597,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Text(
             page['desc']!,
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: theme.colorScheme.onSurface.withOpacity(0.7),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
               height: 1.4,
             ),
             textAlign: TextAlign.center,
@@ -648,7 +651,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Text(
             l10n.onboardingGetStartedDesc,
             style: theme.textTheme.bodyLarge?.copyWith(
-              color: theme.colorScheme.onSurface.withOpacity(0.7),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
             ),
             textAlign: TextAlign.center,
           ),
@@ -683,7 +686,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     final theme = themeProvider.getCurrentTheme(context);
 
     return Scaffold(
-      backgroundColor: theme.colorScheme.background,
+      backgroundColor: theme.colorScheme.surface,
       body: SafeArea(
         child: Consumer3<ProfileProvider, LocaleProvider, ThemeProvider>(
           builder: (

@@ -398,7 +398,7 @@ class AppLocalizationsAf extends AppLocalizations {
   String get contactUs => 'Kontak Ons';
 
   @override
-  String get contactEmail => 'E-pos: support@yourcompany.com';
+  String get contactEmail => 'E-pos: care@karmalifepath.com';
 
   @override
   String get contactWebsite => 'Webwerf: www.joumaatskappy.com';
@@ -497,7 +497,7 @@ class AppLocalizationsAf extends AppLocalizations {
   String get buyButton => 'Koop';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Daaglikse Horoskoop';
+  String get dailyHoroscopeTitle => ' Daaglikse Horoskoop';
 
   @override
   String get userIdMissing => 'Gebruikers-ID ontbreek';

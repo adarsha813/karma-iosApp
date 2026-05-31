@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "Почтаи электронӣ: support@yourcompany.com",
+  "contactEmail": "Почтаи электронӣ: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "Вебсайт: www.yourcompany.com",
+  "contactWebsite": "Вебсайт: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Гороскопи ҳаррӯза",
+  "dailyHoroscopeTitle": " Гороскопи ҳаррӯза",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

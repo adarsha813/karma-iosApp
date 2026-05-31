@@ -503,7 +503,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get buyButton => 'Comprar';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horóscopo diario';
+  String get dailyHoroscopeTitle => ' Horóscopo diario';
 
   @override
   String get userIdMissing => 'Falta el ID de usuario.';

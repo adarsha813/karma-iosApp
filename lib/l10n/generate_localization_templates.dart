@@ -1,6 +1,6 @@
 // generate_localization_templates.dart
 import 'dart:io';
-import 'package:flutter/foundation.dart';
+import '../utils/app_logger.dart';
 
 void main() {
   final unsupportedLanguages = [
@@ -78,7 +78,7 @@ void main() {
     'zu',
   ];
 
-  debugPrint(
+  AppLogger.info(
     '🚀 Generating templates for ${unsupportedLanguages.length} languages...',
   );
 
@@ -87,7 +87,7 @@ void main() {
     generateCupertinoTemplate(langCode);
   }
 
-  debugPrint('✅ All templates generated!');
+  AppLogger.info('✅ All templates generated!');
 }
 
 void generateMaterialTemplate(String languageCode) {
@@ -633,7 +633,7 @@ class _${className}Delegate extends LocalizationsDelegate<MaterialLocalizations>
 ''';
 
   File('lib/l10n/$fileName').writeAsStringSync(template);
-  debugPrint('✅ Generated: $fileName');
+  AppLogger.info('✅ Generated: $fileName');
 }
 
 void generateCupertinoTemplate(String languageCode) {
@@ -800,7 +800,7 @@ class _${className}Delegate extends LocalizationsDelegate<CupertinoLocalizations
 ''';
 
   File('lib/l10n/$fileName').writeAsStringSync(template);
-  debugPrint('✅ Generated: $fileName');
+  AppLogger.info('✅ Generated: $fileName');
 }
 
 String _capitalize(String text) {

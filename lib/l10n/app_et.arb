@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "Meiliaadress: support@yourcompany.com",
+  "contactEmail": "Meiliaadress: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "Veebisait: www.yourcompany.com",
+  "contactWebsite": "Veebisait: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Päevahoroskoop",
+  "dailyHoroscopeTitle": " Päevahoroskoop",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

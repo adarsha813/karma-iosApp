@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "Surélék: support@yourcompany.com",
+  "contactEmail": "Surélék: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "Situs Web: www.yourcompany.com",
+  "contactWebsite": "Situs Web: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Horoskop poean",
+  "dailyHoroscopeTitle": " Horoskop poean",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

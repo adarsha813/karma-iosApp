@@ -18,7 +18,7 @@ final _logger = Logger(
     lineLength: 50,
     colors: true,
     printEmojis: true,
-    printTime: true,
+    dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
   ),
 );
 
@@ -317,7 +317,6 @@ class _ProfileScreenState extends State<ProfileScreen>
   bool _isValidUserId(String userId) {
     // Basic validation - adjust based on your user ID format
     return userId.isNotEmpty &&
-        userId.length >= 1 &&
         userId.length <= 100 &&
         !userId.contains(' ') &&
         RegExp(r'^[a-zA-Z0-9\-_]+$').hasMatch(userId);
@@ -443,7 +442,23 @@ class _ProfileScreenState extends State<ProfileScreen>
       }
     }
 
-    Widget _buildHouse(int number, String x, String y) {
+    // Define positions for 12 houses (x%, y% relative to container)
+    final Map<int, Map<String, String>> positions = {
+      1: {'x': '40%', 'y': '25%'},
+      2: {'x': '25%', 'y': '10%'},
+      3: {'x': '10%', 'y': '25%'},
+      4: {'x': '25%', 'y': '50%'},
+      5: {'x': '10%', 'y': '75%'},
+      6: {'x': '25%', 'y': '90%'},
+      7: {'x': '50%', 'y': '75%'},
+      8: {'x': '75%', 'y': '90%'},
+      9: {'x': '90%', 'y': '75%'},
+      10: {'x': '75%', 'y': '50%'},
+      11: {'x': '90%', 'y': '25%'},
+      12: {'x': '75%', 'y': '10%'},
+    };
+
+    Widget buildHouse(int number) {
       final house =
           houses[number] ??
           {
@@ -476,25 +491,24 @@ class _ProfileScreenState extends State<ProfileScreen>
 
       final String zodiacNum = zodiacNumbers[sign]?.toString() ?? '-';
 
-      final position = _parsePosition(x, y);
-      if (position == null) {
-        return const SizedBox.shrink();
-      }
+      final pos = positions[number];
+      if (pos == null) return const SizedBox.shrink();
+
+      final offset = _parsePosition(pos['x']!, pos['y']!);
+      if (offset == null) return const SizedBox.shrink();
 
       return Positioned(
-        left: position.dx - 25,
-        top: position.dy - 25,
+        left: offset.dx - 30,
+        top: offset.dy - 30,
         child: Container(
-          width: MediaQuery.of(context).size.width * 0.2,
-          constraints: const BoxConstraints(maxWidth: 120, minWidth: 80),
+          constraints: const BoxConstraints(maxWidth: 100, minWidth: 60),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // Zodiac number and sign
               Text(
                 '$zodiacNum ($sign)',
                 style: theme.textTheme.bodySmall?.copyWith(
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.bold,
                   color:
                       number == 1
                           ? theme.colorScheme.error
@@ -504,81 +518,48 @@ class _ProfileScreenState extends State<ProfileScreen>
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
-              const SizedBox(height: 2),
-
-              // Nakshatra and degree
               Text(
-                '$nakshatra ${degree.toStringAsFixed(2)}°',
+                '$nakshatra ${degree.toStringAsFixed(1)}°',
                 style: theme.textTheme.bodySmall?.copyWith(
+                  fontSize: 10,
                   color: theme.colorScheme.primary,
                 ),
                 textAlign: TextAlign.center,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
               ),
-              const SizedBox(height: 2),
-
-              // Planets
               if (planets.isNotEmpty)
-                ...planets.map<Widget>((planet) {
-                  final planetName = planet['name']?.toString() ?? 'Unknown';
-                  final planetDegree = (planet['degree'] ?? 0).toDouble();
-                  final planetNakshatra =
+                ...planets.map((planet) {
+                  final pName = planet['name']?.toString() ?? 'Unknown';
+                  final pDegree = (planet['degree'] ?? 0).toDouble();
+                  final pNakshatra =
                       planet['nakshatra']?.toString() ?? 'Unknown';
 
                   return Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const SizedBox(height: 2),
                       Text(
-                        planetName,
+                        pName,
                         style: theme.textTheme.bodySmall?.copyWith(
-                          fontWeight: FontWeight.w500,
+                          fontSize: 10,
                           color: theme.colorScheme.secondary,
+                          fontWeight: FontWeight.w500,
                         ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
                       ),
                       Text(
-                        '${planetDegree.toStringAsFixed(2)}° ($planetNakshatra)',
+                        '${pDegree.toStringAsFixed(1)}° ($pNakshatra)',
                         style: theme.textTheme.bodySmall?.copyWith(
-                          color: theme.colorScheme.secondary,
                           fontSize: 8,
+                          color: theme.colorScheme.secondary,
                         ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.center,
                       ),
                     ],
                   );
-                }).toList()
-              else
-                Text(
-                  '-',
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.secondary,
-                  ),
-                ),
+                }),
             ],
           ),
         ),
       );
     }
-
-    final Map<int, Map<String, String>> positions = {
-      2: {'x': '25%', 'y': '10%'},
-      12: {'x': '75%', 'y': '10%'},
-      3: {'x': '10%', 'y': '25%'},
-      1: {'x': '40%', 'y': '25%'},
-      11: {'x': '90%', 'y': '25%'},
-      4: {'x': '25%', 'y': '50%'},
-      10: {'x': '75%', 'y': '50%'},
-      5: {'x': '10%', 'y': '75%'},
-      7: {'x': '50%', 'y': '75%'},
-      9: {'x': '90%', 'y': '75%'},
-      6: {'x': '25%', 'y': '90%'},
-      8: {'x': '75%', 'y': '90%'},
-    };
 
     return Container(
       width: double.infinity,
@@ -586,13 +567,17 @@ class _ProfileScreenState extends State<ProfileScreen>
       decoration: BoxDecoration(
         border: Border.all(color: theme.colorScheme.outline),
         borderRadius: BorderRadius.circular(8),
+        color: theme.colorScheme.surface,
       ),
       child: Stack(
         children: [
-          CustomPaint(painter: _NorthIndianChartPainter(theme)),
-          ...positions.entries.map((entry) {
-            return _buildHouse(entry.key, entry.value['x']!, entry.value['y']!);
-          }),
+          // Painter always first
+          CustomPaint(
+            size: Size.infinite,
+            painter: _NorthIndianChartPainter(theme),
+          ),
+          // Houses on top
+          ...List.generate(12, (index) => buildHouse(index + 1)),
         ],
       ),
     );
@@ -625,10 +610,8 @@ class _ProfileScreenState extends State<ProfileScreen>
   }) {
     final List<Map<String, dynamic>> validatedDashas =
         dashas
-            .where((dasha) => dasha is Map)
-            .map<Map<String, dynamic>>(
-              (dasha) => Map<String, dynamic>.from(dasha),
-            )
+            .whereType<Map>()
+            .map((dasha) => Map<String, dynamic>.from(dasha))
             .toList();
 
     final List<DataColumn> columns =
@@ -794,7 +777,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                     Text(
                       l10n.noData,
                       style: theme.textTheme.bodyMedium?.copyWith(
-                        color: theme.colorScheme.onSurface.withOpacity(0.5),
+                        color: theme.colorScheme.onSurface.withValues(
+                          alpha: .5,
+                        ),
                       ),
                     ),
                   ),
@@ -814,13 +799,13 @@ class _ProfileScreenState extends State<ProfileScreen>
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: DataTable(
-          headingRowColor: MaterialStateProperty.all(
-            theme.colorScheme.surfaceVariant,
+          headingRowColor: WidgetStateProperty.all(
+            theme.colorScheme.surfaceContainerHighest,
           ),
-          dataRowColor: MaterialStateProperty.resolveWith<Color?>((
-            Set<MaterialState> states,
+          dataRowColor: WidgetStateProperty.resolveWith<Color?>((
+            Set<WidgetState> states,
           ) {
-            if (states.contains(MaterialState.selected)) {
+            if (states.contains(WidgetState.selected)) {
               return theme.colorScheme.primary.withAlpha((0.08 * 255).toInt());
             }
             return Colors.transparent;
@@ -870,7 +855,7 @@ class _ProfileScreenState extends State<ProfileScreen>
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Shimmer.fromColors(
-        baseColor: theme.colorScheme.surfaceVariant,
+        baseColor: theme.colorScheme.surfaceContainerHighest,
         highlightColor: theme.colorScheme.surface,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -880,7 +865,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               height: 20,
               width: 200,
               decoration: BoxDecoration(
-                color: theme.colorScheme.onSurface.withOpacity(0.3),
+                color: theme.colorScheme.onSurface.withValues(alpha: .3),
                 borderRadius: BorderRadius.circular(4),
               ),
             ),
@@ -889,7 +874,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               height: 16,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: theme.colorScheme.onSurface.withOpacity(0.3),
+                color: theme.colorScheme.onSurface.withValues(alpha: .3),
                 borderRadius: BorderRadius.circular(4),
               ),
             ),
@@ -900,7 +885,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               height: 300,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: theme.colorScheme.onSurface.withOpacity(0.3),
+                color: theme.colorScheme.onSurface.withValues(alpha: .3),
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
@@ -918,7 +903,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                       height: 20,
                       width: 150,
                       decoration: BoxDecoration(
-                        color: theme.colorScheme.onSurface.withOpacity(0.3),
+                        color: theme.colorScheme.onSurface.withValues(
+                          alpha: .3,
+                        ),
                         borderRadius: BorderRadius.circular(4),
                       ),
                     ),
@@ -927,7 +914,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                       height: 120,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: theme.colorScheme.onSurface.withOpacity(0.3),
+                        color: theme.colorScheme.onSurface.withValues(
+                          alpha: .3,
+                        ),
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
@@ -1003,7 +992,7 @@ class _ProfileScreenState extends State<ProfileScreen>
         centerTitle: true,
       ),
       body: Container(
-        color: theme.colorScheme.background,
+        color: Theme.of(context).colorScheme.surface,
         child: SafeArea(
           child:
               _isLoading
@@ -1027,7 +1016,10 @@ class _ProfileScreenState extends State<ProfileScreen>
                         Container(
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color: theme.colorScheme.surfaceVariant,
+                            color:
+                                Theme.of(
+                                  context,
+                                ).colorScheme.surfaceContainerHighest,
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(
                               color: theme.colorScheme.outline,

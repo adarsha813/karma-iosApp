@@ -16,7 +16,7 @@ final _logger = Logger(
     lineLength: 50,
     colors: true,
     printEmojis: true,
-    printTime: true,
+    dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
   ),
 );
 
@@ -276,7 +276,7 @@ class _PolicyPageState extends State<PolicyPage> {
             width: double.infinity,
             height: 20,
             decoration: BoxDecoration(
-              color: theme.colorScheme.surfaceVariant,
+              color: theme.colorScheme.surfaceContainerHighest,
               borderRadius: BorderRadius.circular(4),
             ),
             margin: const EdgeInsets.only(bottom: 16),
@@ -288,7 +288,7 @@ class _PolicyPageState extends State<PolicyPage> {
               width: double.infinity,
               height: 16,
               decoration: BoxDecoration(
-                color: theme.colorScheme.surfaceVariant,
+                color: theme.colorScheme.surfaceContainerHighest,
                 borderRadius: BorderRadius.circular(4),
               ),
               margin: const EdgeInsets.only(bottom: 8),
@@ -418,7 +418,7 @@ class _PolicyPageState extends State<PolicyPage> {
               width: double.infinity,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: theme.colorScheme.surfaceVariant,
+                color: theme.colorScheme.surfaceContainerHighest,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(
@@ -471,7 +471,7 @@ class _PolicyPageState extends State<PolicyPage> {
         ],
       ),
       body: Container(
-        color: theme.colorScheme.background,
+        color: theme.colorScheme.surface,
         child:
             _isLoading
                 ? _buildSkeletonLoader(theme)

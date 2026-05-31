@@ -500,7 +500,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get buyButton => 'Kupić';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horoskop dzienny';
+  String get dailyHoroscopeTitle => ' Horoskop dzienny';
 
   @override
   String get userIdMissing => 'Brak identyfikatora użytkownika';

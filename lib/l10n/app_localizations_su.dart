@@ -398,10 +398,10 @@ class AppLocalizationsSu extends AppLocalizations {
   String get contactUs => 'Taros Kami';
 
   @override
-  String get contactEmail => 'Surélék: support@yourcompany.com';
+  String get contactEmail => 'Surélék: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Situs Web: www.yourcompany.com';
+  String get contactWebsite => 'Situs Web: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Rojongan Palanggan';
@@ -497,7 +497,7 @@ class AppLocalizationsSu extends AppLocalizations {
   String get buyButton => 'Meuli';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horoskop poean';
+  String get dailyHoroscopeTitle => ' Horoskop poean';
 
   @override
   String get userIdMissing => 'ID pamaké leungit';

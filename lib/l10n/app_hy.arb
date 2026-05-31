@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "Էլ․ հասցե՝ support@yourcompany.com",
+  "contactEmail": "Էլ․ հասցե՝ care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "Կայք՝ www.yourcompany.com",
+  "contactWebsite": "Կայք՝ www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Օրական հորոսկոպ",
+  "dailyHoroscopeTitle": " Օրական հորոսկոպ",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

@@ -10,6 +10,7 @@ import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import '../providers/profile_provider.dart';
 import '../providers/theme_provider.dart';
+import '../utils/app_logger.dart';
 
 // Custom logger instance
 final _logger = Logger(
@@ -19,12 +20,12 @@ final _logger = Logger(
     lineLength: 50,
     colors: true,
     printEmojis: true,
-    printTime: true,
+    dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
   ),
 );
 
 class HowToAskScreen extends StatefulWidget {
-  const HowToAskScreen({Key? key}) : super(key: key);
+  const HowToAskScreen({super.key});
 
   @override
   State<HowToAskScreen> createState() => _HowToAskScreenState();
@@ -61,9 +62,9 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
     final token = profileProvider.token;
 
     if (token == null) {
-      debugPrint('❌ No token found');
+      AppLogger.info('❌ No token found');
     } else {
-      debugPrint('✅ Token loaded in ChatScreen: $token');
+      AppLogger.info('✅ Token loaded in ChatScreen: $token');
     }
 
     setState(() {
@@ -322,7 +323,7 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
           margin: const EdgeInsets.symmetric(vertical: 8),
           color: theme.colorScheme.surface,
           child: Shimmer.fromColors(
-            baseColor: theme.colorScheme.surfaceVariant,
+            baseColor: theme.colorScheme.surfaceContainerHighest,
             highlightColor: theme.colorScheme.surface,
             child: const ListTile(
               leading: CircleAvatar(backgroundColor: Colors.white),
@@ -422,13 +423,13 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
           Icon(
             Icons.help_outline,
             size: 64,
-            color: theme.colorScheme.onSurface.withOpacity(0.5),
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
           ),
           const SizedBox(height: 16),
           Text(
             l10n.noQuestionsAvailable,
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: theme.colorScheme.onSurface.withOpacity(0.7),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
             ),
             textAlign: TextAlign.center,
           ),
@@ -473,7 +474,7 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
     return RefreshIndicator(
       onRefresh: _loadQuestionsWithRetry,
       color: theme.colorScheme.primary,
-      backgroundColor: theme.colorScheme.background,
+      backgroundColor: theme.colorScheme.surface,
       child: ListView(
         padding: const EdgeInsets.all(12),
         children:
@@ -500,7 +501,7 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
                   subtitle: Text(
                     '${entry.value.length} ${entry.value.length == 1 ? 'question' : 'questions'}',
                     style: theme.textTheme.bodySmall?.copyWith(
-                      color: theme.colorScheme.onSurface.withOpacity(0.7),
+                      color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                     ),
                   ),
                   children:
@@ -524,7 +525,9 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
                           },
                           leading: Icon(
                             Icons.question_answer,
-                            color: theme.colorScheme.onSurface.withOpacity(0.6),
+                            color: theme.colorScheme.onSurface.withValues(
+                              alpha: 0.6,
+                            ),
                             size: 20,
                           ),
                           contentPadding: const EdgeInsets.symmetric(
@@ -593,7 +596,7 @@ class _HowToAskScreenState extends State<HowToAskScreen> {
         centerTitle: true,
       ),
       body: Container(
-        color: theme.colorScheme.background,
+        color: theme.colorScheme.surface,
         child:
             _isLoading
                 ? _buildSkeletonLoader(theme)

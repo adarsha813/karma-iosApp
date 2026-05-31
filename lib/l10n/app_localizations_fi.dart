@@ -399,7 +399,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get contactUs => 'Ota yhteyttä';
 
   @override
-  String get contactEmail => 'Sähköposti: support@yourcompany.com';
+  String get contactEmail => 'Sähköposti: care@karmalifepath.com';
 
   @override
   String get contactWebsite => 'Verkkosivusto: www.omayritys.com';
@@ -498,7 +498,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get buyButton => 'Ostaa';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Päivän horoskooppi';
+  String get dailyHoroscopeTitle => ' Päivän horoskooppi';
 
   @override
   String get userIdMissing => 'Käyttäjätunnus puuttuu';

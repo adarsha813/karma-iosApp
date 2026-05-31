@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "Ríomhphost: support@yourcompany.com",
+  "contactEmail": "Ríomhphost: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "Suíomh Gréasáin: www.yourcompany.com",
+  "contactWebsite": "Suíomh Gréasáin: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Horoscóp Laethúil",
+  "dailyHoroscopeTitle": " Horoscóp Laethúil",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

@@ -400,10 +400,10 @@ class AppLocalizationsHu extends AppLocalizations {
   String get contactUs => 'Kapcsolat';
 
   @override
-  String get contactEmail => 'E-mail: support@yourcompany.com';
+  String get contactEmail => 'E-mail: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Weboldal: www.yourcompany.com';
+  String get contactWebsite => 'Weboldal: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Ügyfélszolgálat';
@@ -499,7 +499,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get buyButton => 'Vétel';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Napi horoszkóp';
+  String get dailyHoroscopeTitle => ' Napi horoszkóp';
 
   @override
   String get userIdMissing => 'Hiányzik a felhasználói azonosító';

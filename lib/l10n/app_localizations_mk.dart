@@ -501,7 +501,7 @@ class AppLocalizationsMk extends AppLocalizations {
   String get buyButton => 'Купи';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Дневен хороскоп';
+  String get dailyHoroscopeTitle => ' Дневен хороскоп';
 
   @override
   String get userIdMissing => 'Корисничкиот ID недостасува';

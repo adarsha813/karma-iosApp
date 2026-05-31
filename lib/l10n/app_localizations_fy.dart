@@ -400,7 +400,7 @@ class AppLocalizationsFy extends AppLocalizations {
   String get contactUs => 'Kontakt mei ús opnimme';
 
   @override
-  String get contactEmail => 'E-post: support@yourcompany.com';
+  String get contactEmail => 'E-post: care@karmalifepath.com';
 
   @override
   String get contactWebsite => 'Webside: www.jobedriuw.com';
@@ -499,7 +499,7 @@ class AppLocalizationsFy extends AppLocalizations {
   String get buyButton => 'Keapje';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Deistige horoskoop';
+  String get dailyHoroscopeTitle => ' Deistige horoskoop';
 
   @override
   String get userIdMissing => 'Brûkers-ID ûntbrekt';

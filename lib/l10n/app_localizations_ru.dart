@@ -399,10 +399,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get contactUs => 'Связаться с нами';
 
   @override
-  String get contactEmail => 'Электронная почта: support@yourcompany.com';
+  String get contactEmail => 'Электронная почта: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Веб-сайт: www.yourcompany.com';
+  String get contactWebsite => 'Веб-сайт: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Служба поддержки клиентов';
@@ -499,7 +499,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get buyButton => 'Купить';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Ежедневный гороскоп';
+  String get dailyHoroscopeTitle => ' Ежедневный гороскоп';
 
   @override
   String get userIdMissing => 'Идентификатор пользователя отсутствует';

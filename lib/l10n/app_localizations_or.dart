@@ -401,10 +401,10 @@ class AppLocalizationsOr extends AppLocalizations {
   String get contactUs => 'ଆମ ସହିତ ଯୋଗାଯୋଗ କରନ୍ତୁ';
 
   @override
-  String get contactEmail => 'ଇମେଲ୍: support@yourcompany.com';
+  String get contactEmail => 'ଇମେଲ୍: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'ୱେବସାଇଟ୍: www.yourcompany.com';
+  String get contactWebsite => 'ୱେବସାଇଟ୍: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'ଗ୍ରାହକ ସମର୍ଥନ';
@@ -500,7 +500,7 @@ class AppLocalizationsOr extends AppLocalizations {
   String get buyButton => 'କିଣନ୍ତୁ';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 ଦୈନିକ ରାଶିଫଳ';
+  String get dailyHoroscopeTitle => ' ଦୈନିକ ରାଶିଫଳ';
 
   @override
   String get userIdMissing => 'ଉପଯୋଗକର୍ତ୍ତା ID ଉପଲବ୍ଧ ନାହିଁ।';

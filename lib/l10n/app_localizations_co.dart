@@ -403,7 +403,7 @@ class AppLocalizationsCo extends AppLocalizations {
   String get contactUs => 'Cuntatta ci';
 
   @override
-  String get contactEmail => 'E-mail: support@yourcompany.com';
+  String get contactEmail => 'E-mail: care@karmalifepath.com';
 
   @override
   String get contactWebsite => 'Situ web: www.a vostra cumpagnia.com';
@@ -502,7 +502,7 @@ class AppLocalizationsCo extends AppLocalizations {
   String get buyButton => 'Cumprà';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Oroscopu di u ghjornu';
+  String get dailyHoroscopeTitle => ' Oroscopu di u ghjornu';
 
   @override
   String get userIdMissing => 'L\'ID utilizatore manca';

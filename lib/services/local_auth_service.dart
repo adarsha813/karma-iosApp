@@ -1,5 +1,5 @@
 import 'package:local_auth/local_auth.dart';
-import 'package:flutter/foundation.dart';
+import '../utils/app_logger.dart';
 
 class LocalAuthService {
   static final LocalAuthService _instance = LocalAuthService._internal();
@@ -26,7 +26,7 @@ class LocalAuthService {
 
       return authenticated;
     } catch (e) {
-      debugPrint('Biometric auth error: $e');
+      AppLogger.info('Biometric auth error: $e');
       return false;
     }
   }

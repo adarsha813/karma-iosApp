@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:socket_io_client/socket_io_client.dart' as io;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import '../utils/pending_notification_navigation.dart';
 import 'horoscope_detail_screen.dart';
@@ -19,6 +19,7 @@ import '../config/environment.dart';
 import 'package:logger/logger.dart';
 import '../providers/profile_provider.dart';
 import '../providers/theme_provider.dart';
+import '../utils/app_logger.dart';
 
 // Custom logger instance
 final _logger = Logger(
@@ -28,14 +29,14 @@ final _logger = Logger(
     lineLength: 50,
     colors: true,
     printEmojis: true,
-    printTime: true,
+    dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
   ),
 );
 
 class DailyHoroscopeScreen extends StatefulWidget {
   final String? userId;
 
-  const DailyHoroscopeScreen({Key? key, this.userId}) : super(key: key);
+  const DailyHoroscopeScreen({super.key, this.userId});
 
   @override
   State<DailyHoroscopeScreen> createState() => _DailyHoroscopeScreenState();
@@ -50,7 +51,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
   DateTime? _lastReactionTime;
   Map<String, AstroTerm> _dictionaryMap = {};
   List<Map<String, dynamic>> _horoscopes = [];
-  IO.Socket? _socket;
+  io.Socket? _socket;
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
 
@@ -83,9 +84,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
     final token = profileProvider.token;
 
     if (token == null) {
-      debugPrint('❌ No token found');
+      AppLogger.info('❌ No token found');
     } else {
-      debugPrint('✅ Token loaded in ChatScreen: $token');
+      AppLogger.info('✅ Token loaded in ChatScreen: $token');
     }
 
     setState(() {
@@ -331,9 +332,9 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
         _disposeSocket();
       }
 
-      _socket = IO.io(
+      _socket = io.io(
         Environment.socketUrl,
-        IO.OptionBuilder()
+        io.OptionBuilder()
             .setTransports(['websocket'])
             .setQuery({'userId': widget.userId})
             .disableAutoConnect()
@@ -530,10 +531,11 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
     int dislikes = 0;
 
     reactions.forEach((key, value) {
-      if (value == 'like')
+      if (value == 'like') {
         likes++;
-      else if (value == 'dislike')
+      } else if (value == 'dislike') {
         dislikes++;
+      }
     });
 
     completeHoroscope['likes'] = likes;
@@ -748,10 +750,11 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
               int dislikes = 0;
 
               reactions.forEach((key, value) {
-                if (value == 'like')
+                if (value == 'like') {
                   likes++;
-                else if (value == 'dislike')
+                } else if (value == 'dislike') {
                   dislikes++;
+                }
               });
 
               horoscope['likes'] = likes;
@@ -840,13 +843,15 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
     // ✅ Ensure token is loaded
     if (_authToken == null) {
       _logger.e('❌ No auth token available — cannot update reaction');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(_getLocalizedError('auth_error')),
-          backgroundColor: Colors.red,
-          duration: const Duration(seconds: 3),
-        ),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(_getLocalizedError('auth_error')),
+            backgroundColor: Colors.red,
+            duration: const Duration(seconds: 3),
+          ),
+        );
+      }
       return;
     }
 
@@ -870,19 +875,22 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
         int dislikes = 0;
 
         reactions.forEach((key, value) {
-          if (value == 'like')
+          if (value == 'like') {
             likes++;
-          else if (value == 'dislike')
+          } else if (value == 'dislike') {
             dislikes++;
+          }
         });
 
-        setState(() {
-          _horoscopes[index]['reactions'] = reactions;
-          _horoscopes[index]['likes'] = likes;
-          _horoscopes[index]['dislikes'] = dislikes;
-          _horoscopes[index]['userReaction'] =
-              reactions[widget.userId] ?? 'none';
-        });
+        if (mounted) {
+          setState(() {
+            _horoscopes[index]['reactions'] = reactions;
+            _horoscopes[index]['likes'] = likes;
+            _horoscopes[index]['dislikes'] = dislikes;
+            _horoscopes[index]['userReaction'] =
+                reactions[widget.userId] ?? 'none';
+          });
+        }
 
         _logger.i('Successfully updated reaction for horoscope: $horoscopeId');
         _logAnalyticsEvent(
@@ -896,37 +904,42 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
         );
       } else {
         _logger.w('HTTP ${response.statusCode} - Failed to update reaction');
-        // In _toggleReaction method, update SnackBar:
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(_getLocalizedError('reaction_error')),
+              backgroundColor: theme.colorScheme.errorContainer,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              duration: const Duration(seconds: 3),
+            ),
+          );
+        }
+      }
+    } on TimeoutException {
+      _logger.e('Request timeout updating reaction');
+      if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(_getLocalizedError('reaction_error')),
-            backgroundColor: theme.colorScheme.errorContainer,
-            behavior: SnackBarBehavior.floating,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
+            content: Text(_getLocalizedError('timeout_error')),
+            backgroundColor: Colors.orange,
             duration: const Duration(seconds: 3),
           ),
         );
       }
-    } on TimeoutException {
-      _logger.e('Request timeout updating reaction');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(_getLocalizedError('timeout_error')),
-          backgroundColor: Colors.orange,
-          duration: const Duration(seconds: 3),
-        ),
-      );
     } catch (e, stackTrace) {
       _reportError(e, stackTrace, context: 'toggle_reaction');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(_getLocalizedError('generic_error')),
-          backgroundColor: Colors.red,
-          duration: const Duration(seconds: 3),
-        ),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(_getLocalizedError('generic_error')),
+            backgroundColor: Colors.red,
+            duration: const Duration(seconds: 3),
+          ),
+        );
+      }
     }
   }
 
@@ -1027,7 +1040,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
           child: Padding(
             padding: const EdgeInsets.all(12),
             child: Shimmer.fromColors(
-              baseColor: theme.colorScheme.surfaceVariant,
+              baseColor: theme.colorScheme.surfaceContainerHighest,
               highlightColor: theme.colorScheme.surface,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -1108,13 +1121,13 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
           Icon(
             Icons.hourglass_empty,
             size: 64,
-            color: theme.colorScheme.onSurface.withOpacity(0.5),
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
           ),
           const SizedBox(height: 16),
           Text(
             AppLocalizations.of(context)!.noHoroscopeFound,
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: theme.colorScheme.onSurface.withOpacity(0.7),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
             ),
           ),
         ],
@@ -1138,7 +1151,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
         centerTitle: true,
       ),
       body: Container(
-        color: theme.colorScheme.background,
+        color: theme.colorScheme.surface,
         child:
             _loading
                 ? _buildSkeletonLoader(theme)
@@ -1149,7 +1162,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
                 : RefreshIndicator(
                   onRefresh: _fetchHoroscopesWithRetry,
                   color: theme.colorScheme.primary,
-                  backgroundColor: theme.colorScheme.background,
+                  backgroundColor: theme.colorScheme.surface,
                   child: ListView.builder(
                     physics: const AlwaysScrollableScrollPhysics(),
                     itemCount: groupedList.length,
@@ -1164,8 +1177,8 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
                           child: Text(
                             item,
                             style: theme.textTheme.bodyMedium?.copyWith(
-                              color: theme.colorScheme.onSurface.withOpacity(
-                                0.6,
+                              color: theme.colorScheme.onSurface.withValues(
+                                alpha: 0.6,
                               ),
                               fontWeight: FontWeight.w600,
                             ),
@@ -1203,7 +1216,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
                                     "${l10n.signLabel}: ${horoscope['sign']}",
                                     style: theme.textTheme.bodySmall?.copyWith(
                                       color: theme.colorScheme.onSurface
-                                          .withOpacity(0.7),
+                                          .withValues(alpha: 0.7),
                                     ),
                                   ),
                                 const SizedBox(height: 8),
@@ -1223,7 +1236,7 @@ class _DailyHoroscopeScreenState extends State<DailyHoroscopeScreen>
                                   "📅 ${horoscope['createdAt'] != null ? DateFormat('MMM dd, yyyy - HH:mm').format(DateTime.parse(horoscope['createdAt']).toLocal()) : ''}",
                                   style: theme.textTheme.bodySmall?.copyWith(
                                     color: theme.colorScheme.onSurface
-                                        .withOpacity(0.6),
+                                        .withValues(alpha: 0.6),
                                   ),
                                 ),
                                 Divider(

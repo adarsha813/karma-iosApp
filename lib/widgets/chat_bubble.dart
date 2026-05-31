@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'dart:math'; // <-- needed for min()
 import '../models/message.dart';
 import '../models/astro_term.dart';
 import '../services/chat_service.dart';
@@ -15,9 +14,9 @@ import '../utils/dictionary_highlighter.dart';
 import '../config/environment.dart';
 import '../config/security_config.dart';
 import 'rating_bubble.dart';
-import '../screens/AstrologerDetailPage.dart';
+import '../screens/astrologerdetail_page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import '../services/astrologerdataService.dart';
+import '../services/astrologerdata_service.dart';
 
 import 'package:kundali/utils/app_colors.dart';
 import '../providers/theme_provider.dart'; // Add this import
@@ -95,7 +94,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   }
 
   void _logSecurityEvent(String message, [Map<String, dynamic>? data]) {
-    debugPrint('Security event: $message, data: ${data ?? {}}');
+    //AppLogger.info('Security event: $message, data: ${data ?? {}}');
   }
 
   void _showHideOptions(BuildContext context, Message message) {
@@ -106,10 +105,10 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       'hideItem',
       _hideActionCooldown,
     );
-    debugPrint('🎯 Hide action allowed: $isAllowed');
+    //AppLogger.info('🎯 Hide action allowed: $isAllowed');
 
     if (!isAllowed) {
-      debugPrint('⏰ Rate limited - showing wait message');
+      //AppLogger.info('⏰ Rate limited - showing wait message');
       _showSnackBar(context, 'Please wait before performing another action');
       return;
     }
@@ -291,9 +290,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
         _isHiding = true;
       });
     }
-    debugPrint(
-      '🎯 _hideItem called - endpoint: $endpoint, messageId: $messageId',
-    );
+    //AppLogger.info( '🎯 _hideItem called - endpoint: $endpoint, messageId: $messageId',);
 
     Navigator.pop(context); // Close dialog
 
@@ -330,17 +327,14 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   }
 
   void _debugChatServiceState() {
-    final chatService = Provider.of<SecureChatService>(context, listen: false);
-    debugPrint('📊 ChatService state:');
-    debugPrint('   Total messages: ${chatService.messages.length}');
-    debugPrint(
-      '   Messages: ${chatService.messages.map((m) => '${m.id}: ${m.text.substring(0, min(20, m.text.length))}').toList()}',
-    );
+    //AppLogger.info('📊 ChatService state:');
+    //AppLogger.info('   Total messages: ${chatService.messages.length}');
+    //AppLogger.info('   Messages: ${chatService.messages.map((m) => '${m.id}: ${m.text.substring(0, min(20, m.text.length))}').toList()}',);
   }
 
   void _removeMessageInstantly(String messageId) {
     try {
-      debugPrint('🚀 Removing message instantly from UI: $messageId');
+      //AppLogger.info('🚀 Removing message instantly from UI: $messageId');
 
       final chatService = Provider.of<SecureChatService>(
         context,
@@ -355,9 +349,9 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
 
       _debugChatServiceState(); // ← here to see the state after removal
 
-      debugPrint('✅ Message removed instantly from UI: $messageId');
+      //AppLogger.info('✅ Message removed instantly from UI: $messageId');
     } catch (e, stackTrace) {
-      debugPrint('❌ Error removing message from UI: $e');
+      //AppLogger.info('❌ Error removing message from UI: $e');
       ErrorReportingService.recordError(e, stackTrace);
     }
   }
@@ -370,17 +364,17 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
 
   bool _validateUserCredentials(String? userId, String? token) {
     if (userId == null || userId.isEmpty) {
-      debugPrint('❌ Hide action: User ID is null or empty');
+      //AppLogger.info('❌ Hide action: User ID is null or empty');
       return false;
     }
 
     if (token == null || token.isEmpty) {
-      debugPrint('❌ Hide action: Token is null or empty');
+      //AppLogger.info('❌ Hide action: Token is null or empty');
       return false;
     }
 
     if (userId.length > SecurityConfig.maxIdLength) {
-      debugPrint('❌ Hide action: User ID too long');
+      //AppLogger.info('❌ Hide action: User ID too long');
       return false;
     }
 
@@ -395,39 +389,27 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     String token,
     bool isAdvice,
   ) async {
+    final localContext = context; // Capture context safely
     try {
-      debugPrint('🌐 Sending hide request to backend: $endpoint');
-
       final secureClient = SecureHttpClient();
       final url = Uri.parse('${Environment.baseUrl}$endpoint');
       final response = await secureClient.sendAuthenticatedRequest(
         url: url,
         method: 'PATCH',
         token: token,
-        headers: {
-          'Content-Type': 'application/json',
-          'X-User-ID':
-              userId, // Include user ID in headers if needed by backend
-        },
+        headers: {'Content-Type': 'application/json', 'X-User-ID': userId},
         body: isAdvice ? jsonEncode({'userId': userId, 'hide': true}) : null,
         timeout: const Duration(seconds: 10),
       );
 
-      // Process response in next frame to ensure UI stability
+      // Use context safely after async gap
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        _handleHideResponse(context, response, messageId);
+        _handleHideResponse(localContext, response, messageId);
       });
     } catch (error, stackTrace) {
-      debugPrint('❌ Hide request failed: $error');
-      if (mounted) {
-        await _handleHideError(context, error, stackTrace, messageId);
-      }
-
-      // Show error but don't add the message back (better UX)
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) {
-          _showSnackBar(context, 'Deleted locally (sync failed)');
-        }
+        _handleHideError(localContext, error, stackTrace, messageId);
+        _showSnackBar(localContext, 'Deleted locally (sync failed)');
       });
 
       ErrorReportingService.recordError(error, stackTrace);
@@ -441,7 +423,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   ) async {
     if (response.statusCode == 200) {
       _logSecurityEvent('MessageHidden', {'messageId': messageId});
-      debugPrint('✅ Message successfully Deleted on server: $messageId');
+      //AppLogger.info('✅ Message successfully Deleted on server: $messageId');
 
       // No need to update UI again - it was already removed instantly
       // Just show success confirmation
@@ -454,7 +436,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
         'statusCode': response.statusCode,
       });
 
-      debugPrint('❌ Server Delete failed: ${response.statusCode}');
+      //AppLogger.info('❌ Server Delete failed: ${response.statusCode}');
 
       // Optionally: You could add the message back if server hide failed
       // But usually better UX to keep it hidden locally
@@ -502,7 +484,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
         );
       }
     } catch (e) {
-      debugPrint('Error showing snackbar: $e');
+      //AppLogger.info('Error showing snackbar: $e');
     }
   }
 
@@ -517,12 +499,21 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.message.rating != widget.message.rating ||
         oldWidget.message.feedback != widget.message.feedback) {
-      debugPrint('🔄 ChatBubble updated: ${widget.message.id}');
+      //AppLogger.info('🔄 ChatBubble updated: ${widget.message.id}');
     }
   }
 
   String _formatDateTime(DateTime dateTime) {
-    return '${dateTime.day}/${dateTime.month}/${dateTime.year} ${dateTime.hour}:${dateTime.minute.toString().padLeft(2, '0')}';
+    // Convert UTC to local time zone
+    final localDateTime = dateTime.toLocal();
+
+    // Format with AM/PM for better readability
+    final hour = localDateTime.hour;
+    final minute = localDateTime.minute;
+    final period = hour >= 12 ? 'PM' : 'AM';
+    final hour12 = hour == 0 ? 12 : (hour > 12 ? hour - 12 : hour);
+
+    return '${localDateTime.day}/${localDateTime.month}/${localDateTime.year} $hour12:${minute.toString().padLeft(2, '0')} $period';
   }
 
   @override
@@ -578,7 +569,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       child: Text(
         'Message not available',
         style: TextStyle(
-          color: theme.colorScheme.onSurface.withOpacity(0.5),
+          color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
           fontSize: 14,
         ),
       ),
@@ -763,13 +754,13 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
           Icon(
             Icons.reply,
             size: 14,
-            color: theme.colorScheme.onSurface.withOpacity(0.6),
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
           ),
           const SizedBox(width: 6),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
-              color: theme.colorScheme.surfaceVariant,
+              color: theme.colorScheme.surfaceContainerHighest,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
@@ -826,7 +817,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
         ),
       );
     } catch (e) {
-      debugPrint('Error building customer greeting: $e');
+      //AppLogger.info('Error building customer greeting: $e');
       // Fallback greeting
       return Text(
         'Dear Valued Customer,',
@@ -840,16 +831,16 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
   String _getCustomerName(ProfileProvider profileProvider) {
     // Check if profile provider is properly initialized and has data
     if (!profileProvider.isInitialized) {
-      debugPrint('🔄 ProfileProvider not initialized yet');
+      //AppLogger.info('🔄 ProfileProvider not initialized yet');
       return 'Valued Customer';
     }
 
     final userName = profileProvider.name;
-    debugPrint('👤 Current user name from provider: "$userName"');
+    //AppLogger.info('👤 Current user name from provider: "$userName"');
 
     // If name is null or empty, use fallback
     if (userName == null || userName.isEmpty) {
-      debugPrint('❌ User name is null or empty');
+      //AppLogger.info('❌ User name is null or empty');
       return 'Valued Customer';
     }
 
@@ -859,24 +850,24 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
         lowerName.contains('user') ||
         lowerName == 'valued customer' ||
         lowerName == 'default user') {
-      debugPrint('⚠️ Using generic name: "$userName"');
+      //AppLogger.info('⚠️ Using generic name: "$userName"');
       return 'Valued Customer';
     }
 
     // More reasonable length check
     if (userName.isEmpty || userName.length > 100) {
-      debugPrint('❌ User name length invalid: ${userName.length}');
+      //AppLogger.info('❌ User name length invalid: ${userName.length}');
       return 'Valued Customer';
     }
 
     // Allow more characters in names (international names, etc.)
     final validNameRegex = RegExp(r"^[\p{L}\p{M}\s.\-']+$", unicode: true);
     if (!validNameRegex.hasMatch(userName)) {
-      debugPrint('❌ User name contains invalid characters: "$userName"');
+      //AppLogger.info('❌ User name contains invalid characters: "$userName"');
       return 'Valued Customer';
     }
 
-    debugPrint('✅ Using valid user name: "$userName"');
+    //AppLogger.info('✅ Using valid user name: "$userName"');
     return _capitalizeName(userName);
   }
 
@@ -918,9 +909,9 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
           ),
           const SizedBox(width: 8),
           Text(
-            'Hiding...',
+            'deleting...',
             style: TextStyle(
-              color: theme.colorScheme.onSurface.withOpacity(0.5),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
             ),
           ),
         ],
@@ -1007,7 +998,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       final textSpans = _parseHtmlWithDictionaryHighlighting(message);
       return RichText(text: TextSpan(children: textSpans));
     } catch (e) {
-      debugPrint('❌ HTML parsing error: $e');
+      //AppLogger.info('❌ HTML parsing error: $e');
       return _buildFallbackWithHighlighting(message);
     }
   }
@@ -1143,7 +1134,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       else if (tag == '<blockquote>' || tag.startsWith('<blockquote')) {
         newStyle = newStyle.copyWith(
           fontStyle: FontStyle.italic,
-          color: _getTextColor(widget.message).withOpacity(0.7),
+          color: _getTextColor(widget.message).withValues(alpha: 0.7),
         );
       }
       // Line break - no style change
@@ -1369,21 +1360,21 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
 
     final Color textColor =
         message.isMe
-            ? theme.colorScheme.onPrimary.withOpacity(0.7)
+            ? theme.colorScheme.onPrimary.withValues(alpha: 0.7)
             : _getSecondaryTextColor(message);
 
     final Color backgroundColor =
         message.isMe
-            ? theme.colorScheme.onPrimary.withOpacity(0.15)
-            : theme.colorScheme.surfaceVariant;
+            ? theme.colorScheme.onPrimary.withValues(alpha: 0.15)
+            : theme.colorScheme.surfaceContainerHighest;
 
     return Material(
       color: Colors.transparent,
       child: InkWell(
         onTap: () => _navigateToAstrologerDetail(context, widget.message),
         borderRadius: BorderRadius.circular(12),
-        splashColor: theme.colorScheme.primary.withOpacity(0.1),
-        highlightColor: theme.colorScheme.primary.withOpacity(0.05),
+        splashColor: theme.colorScheme.primary.withValues(alpha: 0.1),
+        highlightColor: theme.colorScheme.primary.withValues(alpha: 0.05),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
           decoration: BoxDecoration(
@@ -1392,7 +1383,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
             border: Border.all(
               color:
                   message.isMe
-                      ? theme.colorScheme.onPrimary.withOpacity(0.2)
+                      ? theme.colorScheme.onPrimary.withValues(alpha: 0.2)
                       : theme.dividerColor,
               width: 1,
             ),
@@ -1421,7 +1412,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
                   child: Icon(
                     Icons.chevron_right_rounded,
                     size: 16,
-                    color: textColor.withOpacity(0.6),
+                    color: textColor.withValues(alpha: 0.6),
                   ),
                 ),
             ],
@@ -1445,7 +1436,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
         width: 28,
         height: 28,
         decoration: BoxDecoration(
-          color: theme.colorScheme.surfaceVariant,
+          color: theme.colorScheme.surfaceContainerHighest,
           shape: BoxShape.circle,
         ),
         child: Center(
@@ -1466,7 +1457,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
         width: 28,
         height: 28,
         decoration: BoxDecoration(
-          color: theme.colorScheme.surfaceVariant,
+          color: theme.colorScheme.surfaceContainerHighest,
           shape: BoxShape.circle,
         ),
         child: Icon(
@@ -1483,7 +1474,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
-          color: theme.colorScheme.onPrimary.withOpacity(0.3),
+          color: theme.colorScheme.onPrimary.withValues(alpha: 0.3),
           width: 1.5,
         ),
         boxShadow: [
@@ -1500,7 +1491,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
           fit: BoxFit.cover,
           placeholder:
               (context, url) => Container(
-                color: theme.colorScheme.surfaceVariant,
+                color: theme.colorScheme.surfaceContainerHighest,
                 child: Center(
                   child: SizedBox(
                     width: 12,
@@ -1514,7 +1505,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
               ),
           errorWidget:
               (context, url, error) => Container(
-                color: theme.colorScheme.surfaceVariant,
+                color: theme.colorScheme.surfaceContainerHighest,
                 child: Icon(
                   Icons.person_rounded,
                   size: 16,
@@ -1646,7 +1637,7 @@ class _ChatBubbleState extends State<ChatBubble> with TickerProviderStateMixin {
 
     if (message.isMe) {
       return isDark
-          ? Colors.white.withOpacity(0.8)
+          ? Colors.white.withValues(alpha: 0.8)
           : AppColors.textSecondaryLight;
     } else {
       return isDark ? AppColors.textSecondary : AppColors.textSecondaryLight;

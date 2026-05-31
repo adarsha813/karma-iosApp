@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stripe/flutter_stripe.dart' hide Card;
+import '../utils/app_logger.dart';
 
 class ApiException implements Exception {
   final String message;
@@ -27,8 +27,8 @@ class ErrorHandler {
     StackTrace? stackTrace,
     String? context,
   }) {
-    debugPrint('❌ Error in $context: $error');
-    if (stackTrace != null) debugPrint('Stack: $stackTrace');
+    AppLogger.info('❌ Error in $context: $error');
+    if (stackTrace != null) AppLogger.info('Stack: $stackTrace');
   }
 
   static void showErrorSnackbar(BuildContext context, String message) {
@@ -45,32 +45,6 @@ class ErrorHandler {
         backgroundColor: Colors.green,
       ),
     );
-  }
-
-  static Exception handlePaymentError(dynamic error) {
-    if (error is ApiException) {
-      return error;
-    } else if (error is StripeException) {
-      return PaymentException(
-        error.error.localizedMessage ?? 'Payment failed',
-        error.error.code.name,
-      );
-    } else if (error is Exception) {
-      return PaymentException('Payment processing failed: ${error.toString()}');
-    } else {
-      return PaymentException('An unexpected error occurred');
-    }
-  }
-
-  static Exception handleStripeError(dynamic error) {
-    if (error is StripeException) {
-      return PaymentException(
-        'Stripe initialization failed: ${error.error.localizedMessage}',
-        error.error.code.name,
-      );
-    } else {
-      return PaymentException('Failed to initialize payment system');
-    }
   }
 
   static String getUserFriendlyMessage(Exception error) {

@@ -399,10 +399,10 @@ class AppLocalizationsLv extends AppLocalizations {
   String get contactUs => 'Sazinieties ar mums';
 
   @override
-  String get contactEmail => 'E-pasts: support@yourcompany.com';
+  String get contactEmail => 'E-pasts: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Tīmekļa vietne: www.yourcompany.com';
+  String get contactWebsite => 'Tīmekļa vietne: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Klientu atbalsts';
@@ -498,7 +498,7 @@ class AppLocalizationsLv extends AppLocalizations {
   String get buyButton => 'Pirkt';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Dienas horoskops';
+  String get dailyHoroscopeTitle => ' Dienas horoskops';
 
   @override
   String get userIdMissing => 'Trūkst lietotāja ID';

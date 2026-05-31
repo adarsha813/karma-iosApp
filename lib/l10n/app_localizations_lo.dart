@@ -399,10 +399,10 @@ class AppLocalizationsLo extends AppLocalizations {
   String get contactUs => 'ຕິດຕໍ່ພວກເຮົາ';
 
   @override
-  String get contactEmail => 'ອີເມວ: support@yourcompany.com';
+  String get contactEmail => 'ອີເມວ: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'ເວັບໄຊທ໌: www.yourcompany.com';
+  String get contactWebsite => 'ເວັບໄຊທ໌: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'ການຊ່ວຍເຫຼືອລູກຄ້າ';
@@ -498,7 +498,7 @@ class AppLocalizationsLo extends AppLocalizations {
   String get buyButton => 'ຊື້';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horoscope ປະຈໍາວັນ';
+  String get dailyHoroscopeTitle => ' Horoscope ປະຈໍາວັນ';
 
   @override
   String get userIdMissing => 'ID ຜູ້ໃຊ້ຫາຍໄປ';

@@ -1,7 +1,7 @@
 // google_translate_service.dart
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:flutter/foundation.dart';
+import '../utils/app_logger.dart';
 
 class GoogleTranslateService {
   static const String _baseUrl =
@@ -33,13 +33,13 @@ class GoogleTranslateService {
         final data = jsonDecode(response.body);
         return data['data']['translations'][0]['translatedText'];
       } else {
-        debugPrint(
+        AppLogger.info(
           '❌ Translation failed: ${response.statusCode} - ${response.body}',
         );
         return null;
       }
     } catch (e) {
-      debugPrint('❌ Translation error: $e');
+      AppLogger.info('❌ Translation error: $e');
       return null;
     }
   }

@@ -1014,13 +1014,13 @@ abstract class AppLocalizations {
   /// Contact email address
   ///
   /// In en, this message translates to:
-  /// **'Email: support@yourcompany.com'**
+  /// **'Email: care@karmalifepath.com'**
   String get contactEmail;
 
   /// Contact website URL
   ///
   /// In en, this message translates to:
-  /// **'Website: www.yourcompany.com'**
+  /// **'Website: www.karmalifepath.com'**
   String get contactWebsite;
 
   /// Title for customer support page
@@ -1194,7 +1194,7 @@ abstract class AppLocalizations {
   /// Title for daily horoscope screen
   ///
   /// In en, this message translates to:
-  /// **'🌟 Daily Horoscope'**
+  /// **' Daily Horoscope'**
   String get dailyHoroscopeTitle;
 
   /// Error message when user ID is not available

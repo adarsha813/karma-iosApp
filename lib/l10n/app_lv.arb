@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "E-pasts: support@yourcompany.com",
+  "contactEmail": "E-pasts: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "Tīmekļa vietne: www.yourcompany.com",
+  "contactWebsite": "Tīmekļa vietne: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Dienas horoskops",
+  "dailyHoroscopeTitle": " Dienas horoskops",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

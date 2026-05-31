@@ -405,10 +405,10 @@ class AppLocalizationsGd extends AppLocalizations {
   String get contactUs => 'Cuir fios thugainn';
 
   @override
-  String get contactEmail => 'Post-d: support@yourcompany.com';
+  String get contactEmail => 'Post-d: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Làrach-lìn: www.yourcompany.com';
+  String get contactWebsite => 'Làrach-lìn: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Taic Luchd-ceannach';
@@ -504,7 +504,7 @@ class AppLocalizationsGd extends AppLocalizations {
   String get buyButton => 'Ceannaich';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horoscope Làitheil';
+  String get dailyHoroscopeTitle => ' Horoscope Làitheil';
 
   @override
   String get userIdMissing => 'Tha ID cleachdaiche a dhìth';

@@ -16,7 +16,7 @@ class SecurityUtils {
   ];
 
   bool isValidUserId(String id) {
-    return _userIdRegex.hasMatch(id) && id.length >= 1 && id.length <= 64;
+    return _userIdRegex.hasMatch(id) && id.isNotEmpty && id.length <= 64;
   }
 
   bool isValidMessageId(String id) {

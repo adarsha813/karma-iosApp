@@ -1,12 +1,9 @@
 // lib/services/api_service.dart
 import 'dart:convert';
-import 'dart:io';
-import 'package:http/http.dart' as http;
 import '../models/astro_term.dart';
 import 'package:logger/logger.dart';
 import 'package:kundali/config/environment.dart';
-import 'dart:async'; // ✅ Add this line
-import '../providers/profile_provider.dart'; // import your profile provider
+import 'package:kundali/services/http_service.dart'; // ✅ Import HttpService
 
 class ApiService {
   static final Logger _logger = Logger();
@@ -14,24 +11,19 @@ class ApiService {
   // Use environment configuration
   static String get baseUrl => '${Environment.baseUrl}/api';
 
-  // HTTP client with production settings
-  static final http.Client _client = http.Client();
-
-  // Timeout durations
-  static const Duration _connectTimeout = Duration(seconds: 10);
-  static const Duration _receiveTimeout = Duration(seconds: 15);
+  // ✅ Remove custom client - HttpService manages its own
+  // ✅ Remove timeout constants - HttpService has its own
 
   static Future<List<AstroTerm>> fetchTerms() async {
-    final Uri uri = Uri.parse('$baseUrl/dictionary');
-
-    _logger.i('API Request: GET $uri');
+    _logger.i('API Request: GET $baseUrl/dictionary');
 
     try {
-      final response = await _client
-          .get(uri, headers: _buildHeaders())
-          .timeout(_connectTimeout + _receiveTimeout);
+      final response = await HttpService().get(
+        '$baseUrl/dictionary',
+        requiresAuth: true, // Dictionary might not need auth
+      );
 
-      _logger.i('API Response: ${response.statusCode} - $uri');
+      _logger.i('API Response: ${response.statusCode} - $baseUrl/dictionary');
 
       if (response.statusCode == 200) {
         final decodedBody = json.decode(utf8.decode(response.bodyBytes));
@@ -79,34 +71,20 @@ class ApiService {
         _logger.e('API Error: ${response.statusCode} - ${response.body}');
         throw _handleError(response.statusCode, response.body);
       }
-    } on SocketException catch (e) {
-      _logger.e('Network error: $e');
-      throw NetworkException('No internet connection');
-    } on http.ClientException catch (e) {
-      _logger.e('HTTP client error: $e');
-      throw NetworkException('Failed to connect to server');
-    } on TimeoutException catch (e) {
-      _logger.e('Request timeout: $e');
-      throw TimeoutException('Request timed out');
-    } on FormatException catch (e) {
-      _logger.e('JSON format error: $e');
-      throw DataParsingException('Invalid response format');
     } catch (e) {
-      _logger.e('Unexpected error: $e');
-      throw UnknownException('An unexpected error occurred');
+      _logger.e('Error fetching terms: $e');
+      rethrow;
     }
   }
 
-  // Additional API methods can follow the same pattern
   static Future<AstroTerm> fetchTermById(String id) async {
-    final Uri uri = Uri.parse('$baseUrl/dictionary/$id');
-
-    _logger.i('API Request: GET $uri');
+    _logger.i('API Request: GET $baseUrl/dictionary/$id');
 
     try {
-      final response = await _client
-          .get(uri, headers: _buildHeaders())
-          .timeout(_receiveTimeout);
+      final response = await HttpService().get(
+        '$baseUrl/dictionary/$id',
+        requiresAuth: true, // Dictionary might not need auth
+      );
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = json.decode(
@@ -123,25 +101,8 @@ class ApiService {
     }
   }
 
-  static Map<String, String> _buildHeaders() {
-    final token = ProfileProvider().token; // Singleton instance
-    final headers = {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'User-Agent': 'AstroApp/${Environment.appVersion}',
-      ...Environment.securityHeaders,
-      if (token != null)
-        'Authorization': 'Bearer $token', // add token if exists
-    };
-
-    // Add authentication token if available
-    // final token = await AuthService.getToken();
-    // if (token != null) {
-    //   headers['Authorization'] = 'Bearer $token';
-    // }
-
-    return headers;
-  }
+  // ✅ Remove _buildHeaders - HttpService handles headers
+  // ✅ Remove token handling - HttpService handles auth
 
   static Exception _handleError(int statusCode, String body) {
     switch (statusCode) {
@@ -165,11 +126,8 @@ class ApiService {
     }
   }
 
-  // Cleanup method to be called when app closes
-  static void dispose() {
-    _client.close();
-    _logger.d('ApiService disposed');
-  }
+  // ✅ Remove dispose method - HttpService manages its own client
+  // HttpService is a singleton, so we don't need to dispose it manually
 }
 
 // Custom exception classes for better error handling

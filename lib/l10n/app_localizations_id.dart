@@ -496,7 +496,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get buyButton => 'Membeli';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horoskop Harian';
+  String get dailyHoroscopeTitle => ' Horoskop Harian';
 
   @override
   String get userIdMissing => 'ID Pengguna tidak ada';

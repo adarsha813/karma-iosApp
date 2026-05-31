@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 class HoroscopeDetailScreen extends StatelessWidget {
   final String horoscopeId;
 
-  const HoroscopeDetailScreen({Key? key, required this.horoscopeId})
-    : super(key: key);
+  const HoroscopeDetailScreen({super.key, required this.horoscopeId});
 
   @override
   Widget build(BuildContext context) {

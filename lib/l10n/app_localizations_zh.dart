@@ -391,10 +391,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get contactUs => '联系我们';
 
   @override
-  String get contactEmail => '电子邮件：support@yourcompany.com';
+  String get contactEmail => '电子邮件：care@karmalifepath.com';
 
   @override
-  String get contactWebsite => '网站：www.yourcompany.com';
+  String get contactWebsite => '网站：www.karmalifepath.com';
 
   @override
   String get customerSupport => '客户支持';
@@ -489,7 +489,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get buyButton => '买';
 
   @override
-  String get dailyHoroscopeTitle => '🌟每日星座运势';
+  String get dailyHoroscopeTitle => '每日星座运势';
 
   @override
   String get userIdMissing => '用户 ID 缺失';
@@ -1256,10 +1256,10 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get contactUs => '聯絡我們';
 
   @override
-  String get contactEmail => '電子郵件：support@yourcompany.com';
+  String get contactEmail => '電子郵件：care@karmalifepath.com';
 
   @override
-  String get contactWebsite => '網址：www.yourcompany.com';
+  String get contactWebsite => '網址：www.karmalifepath.com';
 
   @override
   String get customerSupport => '客戶支援';
@@ -1354,7 +1354,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get buyButton => '買';
 
   @override
-  String get dailyHoroscopeTitle => '🌟每日星座運勢';
+  String get dailyHoroscopeTitle => '每日星座運勢';
 
   @override
   String get userIdMissing => '使用者 ID 缺失';

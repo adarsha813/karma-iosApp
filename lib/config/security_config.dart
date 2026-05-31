@@ -1,7 +1,5 @@
 class SecurityConfig {
   // 🔒 Never store encryption keys in code - use secure storage
-  static const String encryptionKey =
-      'your-32-char-encryption-key-here'; // ⚠️ REMOVE THIS
 
   // API timeouts
   static const int apiTimeoutSeconds = 30;

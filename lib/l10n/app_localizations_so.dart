@@ -401,10 +401,10 @@ class AppLocalizationsSo extends AppLocalizations {
   String get contactUs => 'Nala Soo Xidhiidh';
 
   @override
-  String get contactEmail => 'Iimayl: support@yourcompany.com';
+  String get contactEmail => 'Iimayl: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Website: www.yourcompany.com';
+  String get contactWebsite => 'Website: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Taageerada Macmiilka';
@@ -501,7 +501,7 @@ class AppLocalizationsSo extends AppLocalizations {
   String get buyButton => 'Iibso';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horoscope maalinle ah';
+  String get dailyHoroscopeTitle => ' Horoscope maalinle ah';
 
   @override
   String get userIdMissing => 'Aqoonsiga isticmaalaha ayaa maqan';

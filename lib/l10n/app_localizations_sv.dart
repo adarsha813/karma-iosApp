@@ -497,7 +497,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get buyButton => 'Köpa';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Dagligt horoskop';
+  String get dailyHoroscopeTitle => ' Dagligt horoskop';
 
   @override
   String get userIdMissing => 'Användar-ID saknas';

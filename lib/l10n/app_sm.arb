@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "Imeli: support@yourcompany.com",
+  "contactEmail": "Imeli: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "Upega tafa'ilagi: www.yourcompany.com",
+  "contactWebsite": "Upega tafa'ilagi: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Fa'ailo o aso ta'itasi",
+  "dailyHoroscopeTitle": " Fa'ailo o aso ta'itasi",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

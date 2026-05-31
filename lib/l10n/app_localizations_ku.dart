@@ -400,7 +400,7 @@ class AppLocalizationsKu extends AppLocalizations {
   String get contactUs => 'Paqij bûn';
 
   @override
-  String get contactEmail => 'Email: support@yourcompany.com';
+  String get contactEmail => 'Email: care@karmalifepath.com';
 
   @override
   String get contactWebsite => 'Malper: www.kompaniyawe.com';
@@ -500,7 +500,7 @@ class AppLocalizationsKu extends AppLocalizations {
   String get buyButton => 'Kirrîn';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Falnameya Rojane';
+  String get dailyHoroscopeTitle => ' Falnameya Rojane';
 
   @override
   String get userIdMissing => 'Nasnameya bikarhêner tune ye';

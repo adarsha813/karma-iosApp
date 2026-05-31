@@ -401,10 +401,10 @@ class AppLocalizationsYi extends AppLocalizations {
   String get contactUs => 'קאָנטאַקט אונדז';
 
   @override
-  String get contactEmail => 'אימעיל: support@yourcompany.com';
+  String get contactEmail => 'אימעיל: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'וועבזייטל: www.yourcompany.com';
+  String get contactWebsite => 'וועבזייטל: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'קונה שטיצע';
@@ -500,7 +500,7 @@ class AppLocalizationsYi extends AppLocalizations {
   String get buyButton => 'קויפן';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 טעגלעכער האָראָסקאָפּ';
+  String get dailyHoroscopeTitle => ' טעגלעכער האָראָסקאָפּ';
 
   @override
   String get userIdMissing => 'באַניצער אידענטיטעט פעלט';

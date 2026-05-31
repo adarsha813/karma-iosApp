@@ -400,10 +400,10 @@ class AppLocalizationsSl extends AppLocalizations {
   String get contactUs => 'Kontaktirajte nas';
 
   @override
-  String get contactEmail => 'E-pošta: support@yourcompany.com';
+  String get contactEmail => 'E-pošta: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Spletna stran: www.yourcompany.com';
+  String get contactWebsite => 'Spletna stran: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Podpora strankam';
@@ -499,7 +499,7 @@ class AppLocalizationsSl extends AppLocalizations {
   String get buyButton => 'Kupi';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Dnevni horoskop';
+  String get dailyHoroscopeTitle => ' Dnevni horoskop';
 
   @override
   String get userIdMissing => 'Manjka uporabniški ID';

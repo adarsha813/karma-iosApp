@@ -401,10 +401,10 @@ class AppLocalizationsTl extends AppLocalizations {
   String get contactUs => 'Makipag-ugnayan sa Amin';
 
   @override
-  String get contactEmail => 'Email: support@yourcompany.com';
+  String get contactEmail => 'Email: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Website: www.yourcompany.com';
+  String get contactWebsite => 'Website: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Suporta sa Customer';
@@ -501,7 +501,7 @@ class AppLocalizationsTl extends AppLocalizations {
   String get buyButton => 'Bumili';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Araw-araw na Horoscope';
+  String get dailyHoroscopeTitle => ' Araw-araw na Horoscope';
 
   @override
   String get userIdMissing => 'Nawawala ang user ID';

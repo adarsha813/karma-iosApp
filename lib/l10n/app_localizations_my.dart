@@ -403,10 +403,10 @@ class AppLocalizationsMy extends AppLocalizations {
   String get contactUs => 'ကြှနျုပျတို့ကိုဆကျသှယျရနျ';
 
   @override
-  String get contactEmail => 'အီးမေးလ်- support@yourcompany.com';
+  String get contactEmail => 'အီးမေးလ်- care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'ဝဘ်ဆိုဒ်- www.yourcompany.com';
+  String get contactWebsite => 'ဝဘ်ဆိုဒ်- www.karmalifepath.com';
 
   @override
   String get customerSupport => 'ဖောက်သည်ပံ့ပိုးမှု';
@@ -504,7 +504,7 @@ class AppLocalizationsMy extends AppLocalizations {
   String get buyButton => 'ဝယ်ပါ။';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 နေ့စဉ် Horoscope';
+  String get dailyHoroscopeTitle => ' နေ့စဉ် Horoscope';
 
   @override
   String get userIdMissing => 'အသုံးပြုသူ ID ပျောက်ဆုံးနေပါသည်။';

@@ -174,7 +174,7 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "Helbide elektronikoa: support@yourcompany.com",
+  "contactEmail": "Helbide elektronikoa: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Eguneko Horoskopoa",
+  "dailyHoroscopeTitle": " Eguneko Horoskopoa",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

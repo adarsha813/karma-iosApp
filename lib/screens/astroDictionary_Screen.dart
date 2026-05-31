@@ -18,12 +18,12 @@ final _logger = Logger(
     lineLength: 50,
     colors: true,
     printEmojis: true,
-    printTime: true,
+    dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
   ),
 );
 
 class AstroDictionaryScreen extends StatefulWidget {
-  const AstroDictionaryScreen({Key? key}) : super(key: key);
+  const AstroDictionaryScreen({super.key});
 
   @override
   State<AstroDictionaryScreen> createState() => _AstroDictionaryScreenState();
@@ -227,12 +227,12 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           child: Shimmer.fromColors(
-            baseColor: theme.colorScheme.surfaceVariant,
+            baseColor: theme.colorScheme.surfaceContainerHighest,
             highlightColor: theme.colorScheme.surface,
             child: Container(
               height: 50,
               decoration: BoxDecoration(
-                color: theme.colorScheme.onSurface.withOpacity(0.3),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.3),
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
@@ -248,7 +248,7 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
                     Divider(height: 0.5, color: theme.colorScheme.outline),
             itemBuilder: (context, index) {
               return Shimmer.fromColors(
-                baseColor: theme.colorScheme.surfaceVariant,
+                baseColor: theme.colorScheme.surfaceContainerHighest,
                 highlightColor: theme.colorScheme.surface,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 2),
@@ -262,7 +262,9 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
                           width: MediaQuery.of(context).size.width * 0.25,
                           height: 18,
                           decoration: BoxDecoration(
-                            color: theme.colorScheme.onSurface.withOpacity(0.3),
+                            color: theme.colorScheme.onSurface.withValues(
+                              alpha: 0.3,
+                            ),
                             borderRadius: BorderRadius.circular(4),
                           ),
                         ),
@@ -271,7 +273,9 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
                         Container(
                           width: 8,
                           height: 18,
-                          color: theme.colorScheme.onSurface.withOpacity(0.3),
+                          color: theme.colorScheme.onSurface.withValues(
+                            alpha: 0.3,
+                          ),
                         ),
                         const SizedBox(width: 4),
                         // Meaning placeholder
@@ -279,8 +283,8 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
                           child: Container(
                             height: 16,
                             decoration: BoxDecoration(
-                              color: theme.colorScheme.onSurface.withOpacity(
-                                0.3,
+                              color: theme.colorScheme.onSurface.withValues(
+                                alpha: 0.3,
                               ),
                               borderRadius: BorderRadius.circular(4),
                             ),
@@ -355,13 +359,13 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
           Icon(
             hasSearchQuery ? Icons.search_off : Icons.auto_stories,
             size: 64,
-            color: theme.colorScheme.onSurface.withOpacity(0.5),
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
           ),
           const SizedBox(height: 16),
           Text(
             hasSearchQuery ? l10n.noSearchResults : l10n.noTermsFound,
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: theme.colorScheme.onSurface.withOpacity(0.7),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
             ),
             textAlign: TextAlign.center,
           ),
@@ -372,15 +376,15 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
                 _searchController.clear();
                 _logAnalyticsEvent('search_cleared');
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: theme.colorScheme.surfaceContainerHighest,
+                foregroundColor: theme.colorScheme.onSurfaceVariant,
+              ),
               child: Text(
                 l10n.clearSearch,
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: theme.colorScheme.onSurface,
                 ),
-              ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: theme.colorScheme.surfaceVariant,
-                foregroundColor: theme.colorScheme.onSurfaceVariant,
               ),
             ),
           ],
@@ -400,18 +404,18 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
         decoration: InputDecoration(
           hintText: l10n.searchTermsHint,
           hintStyle: theme.textTheme.bodyMedium?.copyWith(
-            color: theme.colorScheme.onSurface.withOpacity(0.5),
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
           ),
           prefixIcon: Icon(
             Icons.search,
-            color: theme.colorScheme.onSurface.withOpacity(0.7),
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
           ),
           suffixIcon:
               _searchController.text.isNotEmpty
                   ? IconButton(
                     icon: Icon(
                       Icons.clear,
-                      color: theme.colorScheme.onSurface.withOpacity(0.7),
+                      color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                     ),
                     onPressed: () {
                       _searchController.clear();
@@ -420,7 +424,7 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
                   )
                   : null,
           filled: true,
-          fillColor: theme.colorScheme.surfaceVariant,
+          fillColor: theme.colorScheme.surfaceContainerHighest,
           contentPadding: const EdgeInsets.symmetric(
             vertical: 12,
             horizontal: 16,
@@ -477,7 +481,7 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
               ":",
               style: theme.textTheme.bodyLarge?.copyWith(
                 fontWeight: FontWeight.bold,
-                color: theme.colorScheme.onSurface.withOpacity(0.5),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
               ),
             ),
             const SizedBox(width: 8),
@@ -487,7 +491,7 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
               child: Text(
                 term.meaning,
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  color: theme.colorScheme.onSurface.withOpacity(0.8),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
                 ),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
@@ -498,7 +502,7 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
         trailing: Icon(
           Icons.arrow_forward_ios,
           size: 16,
-          color: theme.colorScheme.onSurface.withOpacity(0.6),
+          color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
         ),
         onTap: () {
           _logAnalyticsEvent(
@@ -545,7 +549,7 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
         centerTitle: true,
       ),
       body: Container(
-        color: theme.colorScheme.background,
+        color: theme.colorScheme.surface,
         child:
             _loading
                 ? _buildSkeletonLoader(theme)
@@ -564,8 +568,8 @@ class _AstroDictionaryScreenState extends State<AstroDictionaryScreen> {
                             Text(
                               '${_filteredTerms.length} ${l10n.resultsFound}',
                               style: theme.textTheme.bodySmall?.copyWith(
-                                color: theme.colorScheme.onSurface.withOpacity(
-                                  0.7,
+                                color: theme.colorScheme.onSurface.withValues(
+                                  alpha: 0.7,
                                 ),
                               ),
                             ),

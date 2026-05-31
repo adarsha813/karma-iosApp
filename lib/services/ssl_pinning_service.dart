@@ -313,11 +313,11 @@ class _PinnedHttpClient implements HttpClient {
 // Simple logger for SSL service
 class _Logger {
   void info(String message, {String? feature}) {
-    debugPrint('ℹ️ [${feature ?? 'ssl_pinning'}] $message');
+    //AppLogger.info('ℹ️ [${feature ?? 'ssl_pinning'}] $message');
   }
 
   void warning(String message, {String? feature}) {
-    debugPrint('⚠️ [${feature ?? 'ssl_pinning'}] $message');
+    //AppLogger.info('⚠️ [${feature ?? 'ssl_pinning'}] $message');
   }
 
   void error(
@@ -326,9 +326,9 @@ class _Logger {
     String? feature,
     StackTrace? stackTrace,
   }) {
-    debugPrint('❌ [${feature ?? 'ssl_pinning'}] $message: $error');
+    //AppLogger.info('❌ [${feature ?? 'ssl_pinning'}] $message: $error');
     if (stackTrace != null) {
-      debugPrint('Stack trace: $stackTrace');
+      //AppLogger.info('Stack trace: $stackTrace');
     }
   }
 
@@ -337,9 +337,9 @@ class _Logger {
     String? feature,
     Map<String, dynamic>? metadata,
   }) {
-    debugPrint('🔒 [SECURITY - ${feature ?? 'ssl_pinning'}] $message');
+    //AppLogger.info('🔒 [SECURITY - ${feature ?? 'ssl_pinning'}] $message');
     if (metadata != null) {
-      debugPrint('Metadata: $metadata');
+      //AppLogger.info('Metadata: $metadata');
     }
   }
 }

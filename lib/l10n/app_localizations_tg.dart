@@ -402,10 +402,10 @@ class AppLocalizationsTg extends AppLocalizations {
   String get contactUs => 'Бо мо тамос гиред';
 
   @override
-  String get contactEmail => 'Почтаи электронӣ: support@yourcompany.com';
+  String get contactEmail => 'Почтаи электронӣ: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Вебсайт: www.yourcompany.com';
+  String get contactWebsite => 'Вебсайт: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Дастгирии муштариён';
@@ -503,7 +503,7 @@ class AppLocalizationsTg extends AppLocalizations {
   String get buyButton => 'харид';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Гороскопи ҳаррӯза';
+  String get dailyHoroscopeTitle => ' Гороскопи ҳаррӯза';
 
   @override
   String get userIdMissing => 'ID корбар нест';

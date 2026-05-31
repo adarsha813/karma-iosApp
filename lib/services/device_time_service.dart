@@ -1,9 +1,8 @@
 import 'dart:async';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
-import '../providers/profile_provider.dart'; // import your profile provider
+import 'package:http/http.dart' as http;
 import 'package:kundali/config/environment.dart';
+import 'package:kundali/services/http_service.dart'; // ✅ Import HttpService
 
 class DeviceTimeService {
   static final Logger _logger = Logger(
@@ -13,12 +12,13 @@ class DeviceTimeService {
       lineLength: 50,
       colors: true,
       printEmojis: true,
-      printTime: true,
+      dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
     ),
   );
 
   final String userId;
-  final http.Client? httpClient; // For dependency injection and testing
+
+  // ✅ Remove http.Client - HttpService manages its own
   Timer? _timer;
   String? _lastTimeZone;
   DateTime? _lastSentTime;
@@ -26,12 +26,14 @@ class DeviceTimeService {
 
   // Configuration
   static const Duration _defaultInterval = Duration(minutes: 1);
-  static const Duration _timeoutDuration = Duration(seconds: 10);
   static const int _maxRetries = 3;
   static const Duration _retryDelay = Duration(seconds: 2);
 
-  DeviceTimeService(this.userId, {http.Client? httpClient})
-    : httpClient = httpClient ?? http.Client() {
+  // ✅ Add HttpService instance
+  late final HttpService _httpService; // ✅ New
+
+  DeviceTimeService({required this.userId, HttpService? httpService})
+    : _httpService = httpService ?? HttpService() {
     _validateUserId();
   }
 
@@ -50,7 +52,7 @@ class DeviceTimeService {
       final minutes = (offset.inMinutes % 60).toString().padLeft(2, '0');
       final sign = offset.isNegative ? '-' : '+';
 
-      return 'UTC${sign}${hours}:${minutes}';
+      return 'UTC$sign$hours:$minutes';
     } catch (e) {
       _logger.e('Failed to get current timezone', error: e);
       return 'UTC+00:00'; // Fallback
@@ -64,9 +66,9 @@ class DeviceTimeService {
       return;
     }
 
-    if (interval < Duration(seconds: 30)) {
+    if (interval < const Duration(seconds: 30)) {
       _logger.w('Interval too short, using minimum of 30 seconds');
-      interval = Duration(seconds: 30);
+      interval = const Duration(seconds: 30);
     }
 
     _logger.i('🚀 DeviceTimeService started for user: $userId');
@@ -83,7 +85,6 @@ class DeviceTimeService {
     _timer?.cancel();
     _timer = null;
     _isRunning = false;
-    httpClient?.close();
     _logger.i('🛑 DeviceTimeService stopped for user: $userId');
   }
 
@@ -113,7 +114,7 @@ class DeviceTimeService {
           _lastTimeZone != timeZone ||
           _lastSentTime == null ||
           _lastSentTime!.isBefore(
-            DateTime.now().toUtc().subtract(Duration(hours: 1)),
+            DateTime.now().toUtc().subtract(const Duration(hours: 1)),
           );
 
       if (shouldSend) {
@@ -137,41 +138,30 @@ class DeviceTimeService {
     int retryCount = 0,
   }) async {
     try {
-      final response = await httpClient!
-          .post(
-            Uri.parse('${Environment.baseUrl}/api/device-time'),
-            headers: _buildHeaders(),
-            body: jsonEncode(_buildRequestBody(deviceTime, timeZone)),
-          )
-          .timeout(_timeoutDuration);
+      // ✅ Use HttpService instead of direct HTTP client
+      final response = await _httpService.post(
+        '${Environment.baseUrl}/api/device-time',
+        body: _buildRequestBody(deviceTime, timeZone),
+        requiresAuth: true, // This endpoint needs authentication
+      );
 
       _handleResponse(response, deviceTime, timeZone);
     } on TimeoutException {
       _logger.w('Request timeout while sending device time');
       await _handleRetry(deviceTime, timeZone, retryCount, 'Timeout');
-    } on http.ClientException catch (e) {
-      _logger.w('Client exception: $e');
-      await _handleRetry(
-        deviceTime,
-        timeZone,
-        retryCount,
-        'ClientException: $e',
-      );
     } catch (e) {
-      _logger.e('Unexpected error sending device time', error: e);
-      // Don't retry on unknown errors
+      if (e.toString().contains('ClientException') ||
+          e.toString().contains('Network')) {
+        _logger.w('Network error: $e');
+        await _handleRetry(deviceTime, timeZone, retryCount, 'Network error');
+      } else {
+        _logger.e('Unexpected error sending device time', error: e);
+        // Don't retry on unknown errors
+      }
     }
   }
 
-  Map<String, String> _buildHeaders() {
-    final token = ProfileProvider().token; // Singleton instance
-    return {
-      ...Environment.securityHeaders,
-      'User-Agent': 'FlutterApp/${Environment.appVersion}',
-      if (token != null)
-        'Authorization': 'Bearer $token', // add token if exists
-    };
-  }
+  // ✅ Remove _buildHeaders - HttpService handles headers
 
   Map<String, dynamic> _buildRequestBody(DateTime deviceTime, String timeZone) {
     return {
@@ -195,12 +185,16 @@ class DeviceTimeService {
       _lastSentTime = deviceTime;
     } else if (response.statusCode >= 400 && response.statusCode < 500) {
       _logger.e('❌ Client error: ${response.statusCode} - ${response.body}');
+
+      // If it's a 401, HttpService will handle token refresh automatically
+      // but if we get here, refresh might have failed
+      if (response.statusCode == 401) {
+        _logger.e('🔒 Authentication failed for device time update');
+      }
       // Don't retry on client errors
     } else {
       _logger.e('❌ Server error: ${response.statusCode} - ${response.body}');
-      throw http.ClientException(
-        'Server responded with ${response.statusCode}',
-      );
+      throw Exception('Server responded with ${response.statusCode}');
     }
   }
 

@@ -399,10 +399,10 @@ class AppLocalizationsBe extends AppLocalizations {
   String get contactUs => 'Звяжыцеся з намі';
 
   @override
-  String get contactEmail => 'Электронная пошта: support@yourcompany.com';
+  String get contactEmail => 'Электронная пошта: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Вэб-сайт: www.yourcompany.com';
+  String get contactWebsite => 'Вэб-сайт: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Падтрымка кліентаў';
@@ -498,7 +498,7 @@ class AppLocalizationsBe extends AppLocalizations {
   String get buyButton => 'Купіць';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Штодзённы гараскоп';
+  String get dailyHoroscopeTitle => ' Штодзённы гараскоп';
 
   @override
   String get userIdMissing => 'Адсутнічае ідэнтыфікатар карыстальніка';

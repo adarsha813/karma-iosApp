@@ -398,10 +398,10 @@ class AppLocalizationsTt extends AppLocalizations {
   String get contactUs => 'Безнең белән элемтәгә керегез';
 
   @override
-  String get contactEmail => 'Электрон почта: support@yourcompany.com';
+  String get contactEmail => 'Электрон почта: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Вебсайт: www.yourcompany.com';
+  String get contactWebsite => 'Вебсайт: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Клиентларга ярдәм';
@@ -497,7 +497,7 @@ class AppLocalizationsTt extends AppLocalizations {
   String get buyButton => 'Сатып ал';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Көндәлек гороскоп';
+  String get dailyHoroscopeTitle => ' Көндәлек гороскоп';
 
   @override
   String get userIdMissing => 'Кулланучы таныклыгы юк';

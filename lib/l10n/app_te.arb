@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "ఇమెయిల్: support@yourcompany.com",
+  "contactEmail": "ఇమెయిల్: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "వెబ్‌సైట్: www.yourcompany.com",
+  "contactWebsite": "వెబ్‌సైట్: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 రోజువారీ జాతకం",
+  "dailyHoroscopeTitle": " రోజువారీ జాతకం",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

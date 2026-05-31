@@ -54,6 +54,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   double? _dst;
   String? _state;
   bool _isSaving = false;
+  Timer? _cityDebounce;
   DateTime? _lastSaveAttempt;
 
   static const _minSaveInterval = Duration(seconds: 2);
@@ -101,6 +102,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     _countryController.dispose();
     _userIdController.dispose();
 
+    _cityDebounce?.cancel();
     super.dispose();
   }
 
@@ -162,10 +164,12 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
               _loadProfileData();
             })
             .catchError((e) {
-              ErrorHandler.showErrorSnackbar(
-                context,
-                'Failed to authenticate user: $e',
-              );
+              if (mounted) {
+                ErrorHandler.showErrorSnackbar(
+                  context,
+                  'Please wait before saving again',
+                );
+              }
             });
       }
     });
@@ -187,10 +191,13 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
         // Validate file size
         if (stat.size > 2 * 1024 * 1024) {
-          ErrorHandler.showErrorSnackbar(
-            context,
-            'Image size must be less than 2MB',
-          );
+          if (mounted) {
+            ErrorHandler.showErrorSnackbar(
+              context,
+              'Image size must be less than 2MB',
+            );
+          }
+
           return;
         }
 
@@ -201,10 +208,12 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           'png',
           'gif',
         ])) {
-          ErrorHandler.showErrorSnackbar(
-            context,
-            'Invalid image format. Please use JPG, PNG, or GIF',
-          );
+          if (mounted) {
+            ErrorHandler.showErrorSnackbar(
+              context,
+              'Invalid image format. Please use JPG, PNG, or GIF',
+            );
+          }
           return;
         }
 
@@ -212,10 +221,12 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         final bytes = await file.readAsBytes();
         if (bytes.length < 4 ||
             !(_isJpeg(bytes) || _isPng(bytes) || _isGif(bytes))) {
-          ErrorHandler.showErrorSnackbar(
-            context,
-            'Invalid image file. Please use a valid image',
-          );
+          if (mounted) {
+            ErrorHandler.showErrorSnackbar(
+              context,
+              'Invalid image file. Please use a valid image',
+            );
+          }
           return;
         }
 
@@ -322,7 +333,13 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
     final validationResult = await _validateProfileBeforeSave();
     if (!validationResult.isValid) {
-      ErrorHandler.showErrorSnackbar(context, validationResult.errorMessage!);
+      // Use this.context instead of the parameter context
+      if (mounted) {
+        ErrorHandler.showErrorSnackbar(
+          this.context,
+          validationResult.errorMessage!,
+        );
+      }
       return;
     }
 
@@ -340,6 +357,8 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         },
       );
 
+      if (!mounted) return;
+
       if (saveResult.success) {
         // Secure userId extraction
         String? userId = await _extractUserIdSecurely(saveResult.data);
@@ -349,21 +368,27 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           _sendFcmTokenSafely(userId);
         }
 
-        await _handleSuccessfulSave(saveResult.data, context);
+        await _handleSuccessfulSave(saveResult.data);
       } else {
-        ErrorHandler.showErrorSnackbar(
-          context,
-          saveResult.message ?? 'Failed to save profile',
-        );
+        // Use this.context instead of the parameter context
+        if (mounted) {
+          ErrorHandler.showErrorSnackbar(
+            this.context,
+            saveResult.message ?? 'Failed to save profile',
+          );
+        }
       }
     } catch (e, stack) {
       ErrorHandler.recordError(e, stackTrace: stack, context: 'ProfileSave');
-      ErrorHandler.showErrorSnackbar(
-        context,
-        ErrorHandler.getUserFriendlyMessage(
-          e is Exception ? e : Exception('Unexpected error: $e'),
-        ),
-      );
+      // Use this.context instead of the parameter context
+      if (mounted) {
+        ErrorHandler.showErrorSnackbar(
+          this.context,
+          ErrorHandler.getUserFriendlyMessage(
+            e is Exception ? e : Exception('Unexpected error: $e'),
+          ),
+        );
+      }
     } finally {
       if (mounted) {
         _safeSetState(() => _isSaving = false);
@@ -443,7 +468,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   }
 
   // Remove the old _isValidFcmToken method since it's now in FCMTokenService
-
   Future<SaveProfileResult> _executeProfileSave(
     Map<String, dynamic> profileData,
   ) async {
@@ -459,35 +483,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         );
       }
     } catch (e) {
-      // Fallback to direct backend call
-      try {
-        final profileProvider = Provider.of<ProfileProvider>(
-          context,
-          listen: false,
-        );
-        final token = profileProvider.token;
-
-        if (token == null) {
-          return SaveProfileResult(
-            success: false,
-            message: 'No authentication token',
-          );
-        }
-
-        final directResult = await _sendProfileToBackend(profileData, token);
-        return SaveProfileResult(
-          success: directResult['success'],
-          message: directResult['message'],
-          data: directResult['data'],
-        );
-      } catch (fallbackError, stack) {
-        ErrorHandler.recordError(
-          fallbackError,
-          stackTrace: stack,
-          context: 'DirectProfileSave',
-        );
-        return SaveProfileResult(success: false, message: 'Network error');
-      }
+      // ❌ REMOVE the fallback direct call - just log and return error
+      AppLogger.info('❌ Profile save error: $e');
+      return SaveProfileResult(success: false, message: 'Network error: $e');
     }
   }
 
@@ -516,6 +514,11 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   }
 
   Future<Map<String, dynamic>> _prepareProfileData() async {
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
+
     String? base64Image;
     if (_image != null) {
       try {
@@ -536,10 +539,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     }
 
     // Generate or retrieve user ID internally
-    final profileProvider = Provider.of<ProfileProvider>(
-      context,
-      listen: false,
-    );
+
     String? userId = await _getOrCreateUserId();
 
     // Get device info
@@ -559,9 +559,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     // Get IP address (requires connectivity plugin or a backend endpoint)
     String? ipAddress;
     try {
-      final res = await http.get(
-        Uri.parse('https://api.ipify.org?format=json'),
-      );
+      final res = await http.get(Uri.parse(Environment.ipApiUrl));
       if (res.statusCode == 200) {
         final data = jsonDecode(res.body);
         ipAddress = data['ip']?.toString();
@@ -608,41 +606,67 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     };
   }
 
-  // Internal user ID management
   Future<String> _getOrCreateUserId() async {
     final profileProvider = Provider.of<ProfileProvider>(
       context,
       listen: false,
     );
 
-    // ✅ Ensure provider is initialized first
     await profileProvider.ensureInitialized();
 
+    // Check if we already have a user ID in storage first
     String? existingUserId = profileProvider.userId;
 
     if (existingUserId != null && existingUserId.isNotEmpty) {
-      return existingUserId;
-    }
-
-    // Generate new user ID based on device + profile data
-    final newUserId = await _generateSecureUserId();
-    for (int attempt = 1; attempt <= 2; attempt++) {
+      // Validate that this user exists in backend
       try {
-        await profileProvider.saveUserId(newUserId);
-        return newUserId; // success, exit
-      } catch (e) {
-        _logger.w('Attempt $attempt to save user ID failed: $e');
-        if (attempt == 2) {
-          // On second failure, fallback to temporary ID
-          final tempId = 'temp_${DateTime.now().millisecondsSinceEpoch}';
-          _logger.e('Both attempts failed. Using temporary user ID: $tempId');
-          return tempId;
+        final exists = await _checkUserExists(existingUserId);
+        if (exists) {
+          return existingUserId;
         }
-        // Optionally wait a tiny bit before retrying
-        await Future.delayed(const Duration(milliseconds: 100));
+      } catch (e) {
+        // If validation fails, continue with existing ID anyway
+        return existingUserId;
       }
     }
-    return newUserId;
+
+    // If no valid existing ID, generate a new one
+    final newUserId = await _generateSecureUserId();
+
+    for (int attempt = 1; attempt <= 3; attempt++) {
+      try {
+        await profileProvider.saveUserId(newUserId);
+        return newUserId;
+      } catch (e) {
+        _logger.w('Attempt $attempt to save user ID failed: $e');
+        if (attempt == 3) {
+          final tempId = 'temp_${DateTime.now().millisecondsSinceEpoch}';
+          _logger.e('All attempts failed. Using temporary ID: $tempId');
+          return tempId;
+        }
+        await Future.delayed(Duration(milliseconds: 100 * attempt));
+      }
+    }
+    return 'temp_${DateTime.now().millisecondsSinceEpoch}';
+  }
+
+  // Add this helper method
+  Future<bool> _checkUserExists(String userId) async {
+    return await ProfileService.userExists(userId);
+  }
+
+  Future<void> testRefreshToken() async {
+    AppLogger.info('🧪 Testing refresh token flow...');
+    final profileProvider = ProfileProvider();
+
+    AppLogger.info(
+      'Current token: ${profileProvider.token?.substring(0, 20)}...',
+    );
+
+    final success = await profileProvider.refreshToken();
+
+    AppLogger.info('Refresh success: $success');
+    AppLogger.info('New token: ${profileProvider.token?.substring(0, 20)}...');
   }
 
   // Secure user ID generation
@@ -687,78 +711,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     }
   }
 
-  Future<Map<String, dynamic>> _sendProfileToBackend(
-    Map<String, dynamic> data,
-    String token,
-  ) async {
-    try {
-      final uri = Uri.parse('${Environment.baseUrl}/api/profile/save-profile');
-      final response = await http
-          .post(
-            uri,
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer $token',
-              'X-Request-ID': _generateSecureRequestId(),
-              ...Environment.securityHeaders,
-            },
-            body: jsonEncode(data),
-          )
-          .timeout(const Duration(seconds: 30));
-
-      if (response.statusCode == 200) {
-        final responseData = jsonDecode(utf8.decode(response.bodyBytes));
-
-        if (responseData is Map) {
-          final Map<String, dynamic> typedResponse = Map<String, dynamic>.from(
-            responseData,
-          );
-
-          if (typedResponse.containsKey('success')) {
-            return typedResponse;
-          } else {
-            return {'success': true, 'data': typedResponse};
-          }
-        } else {
-          return {
-            'success': true,
-            'data': {'message': 'Profile saved'},
-          };
-        }
-      } else if (response.statusCode == 401) {
-        return {'success': false, 'message': 'Authentication failed'};
-      } else if (response.statusCode >= 400 && response.statusCode < 500) {
-        return {
-          'success': false,
-          'message': 'Client error: ${response.statusCode}',
-        };
-      } else {
-        return {
-          'success': false,
-          'message': 'Server error: ${response.statusCode}',
-        };
-      }
-    } on TimeoutException {
-      return {'success': false, 'message': 'Request timeout'};
-    } on http.ClientException {
-      return {'success': false, 'message': 'Network connection failed'};
-    } catch (e, stack) {
-      ErrorHandler.recordError(
-        e,
-        stackTrace: stack,
-        context: 'SendProfileToBackend',
-      );
-      return {'success': false, 'message': 'Network error'};
-    }
-  }
-
-  String _generateSecureRequestId() {
-    final random = Random.secure();
-    final timestamp = DateTime.now().millisecondsSinceEpoch;
-    final randomValue = random.nextInt(999999);
-    return '${timestamp}_${randomValue}';
-  }
-
   void _onCityChanged(String query) {
     _citySearchDebounce?.cancel();
     _citySearchDebounce = Timer(const Duration(milliseconds: 500), () {
@@ -768,45 +720,49 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     });
   }
 
-  Future<void> _handleSuccessfulSave(
-    Map<String, dynamic>? result,
-    BuildContext context,
-  ) async {
+  Future<void> _handleSuccessfulSave(Map<String, dynamic>? result) async {
     if (result == null) {
-      ErrorHandler.showErrorSnackbar(context, 'Save failed: No response data');
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Save failed: No response data')),
+      );
       return;
     }
 
     final responseData = result['data'] ?? result;
     final String? userId = responseData['userId']?.toString();
+    final messenger = ScaffoldMessenger.of(context); // capture before await
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
 
     if (userId != null && userId.isNotEmpty) {
+      if (mounted) _safeSetState(() => _userIdController.text = userId);
+
+      await profileProvider.saveUserId(userId); // async gap
+
       if (mounted) {
-        setState(() => _userIdController.text = userId);
+        messenger.showSnackBar(
+          const SnackBar(content: Text('Profile saved successfully!')),
+        );
+
+        final recoverySecret = responseData['recoverySecret']?.toString();
+        if (recoverySecret != null && recoverySecret.isNotEmpty) {
+          _showRecoveryBottomSheet(context, recoverySecret);
+        }
+
+        _navigateToChatScreen(context);
       }
-
-      await Provider.of<ProfileProvider>(
-        context,
-        listen: false,
-      ).saveUserId(userId);
-
-      // Show success message
-      ErrorHandler.showSuccessSnackbar(context, 'Profile saved successfully!');
-
-      // Check for recovery secret
-      final recoverySecret = responseData['recoverySecret']?.toString();
-
-      if (recoverySecret != null && recoverySecret.isNotEmpty) {
-        // Show recovery info in a BottomSheet that doesn't block navigation
-        _showRecoveryBottomSheet(context, recoverySecret);
-      }
-
-      // Always navigate to chat screen regardless of recovery secret
-      _navigateToChatScreen(context);
     } else {
-      ErrorHandler.showSuccessSnackbar(context, 'Profile saved successfully!');
+      if (mounted) {
+        messenger.showSnackBar(
+          const SnackBar(content: Text('Profile saved successfully!')),
+        );
+      }
+
       if (_userIdController.text.isNotEmpty) {
-        await _loadProfileData();
+        await _loadProfileData(); // async gap
       }
     }
   }
@@ -824,7 +780,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
             (context) => Container(
               height: MediaQuery.of(context).size.height * 0.8,
               decoration: BoxDecoration(
-                color: theme.colorScheme.background,
+                color: theme.colorScheme.surface,
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(20),
                   topRight: Radius.circular(20),
@@ -839,7 +795,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                       height: 4,
                       margin: const EdgeInsets.only(bottom: 20),
                       decoration: BoxDecoration(
-                        color: theme.colorScheme.onSurface.withOpacity(0.3),
+                        color: theme.colorScheme.onSurface.withValues(
+                          alpha: 0.3,
+                        ),
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),
@@ -847,7 +805,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                       "🔐 Save Your Recovery Details",
                       style: theme.textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold,
-                        color: theme.colorScheme.onBackground,
+                        color: theme.colorScheme.onSurface,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -859,8 +817,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                             Text(
                               "This information is crucial for account recovery. Please save it securely.",
                               style: theme.textTheme.bodyMedium?.copyWith(
-                                color: theme.colorScheme.onBackground
-                                    .withOpacity(0.7),
+                                color: theme.colorScheme.onSurface.withValues(
+                                  alpha: 0.7,
+                                ),
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -925,7 +884,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
 
   Widget _buildRecoveryCard(String value, ThemeData theme) {
     return Card(
-      color: theme.colorScheme.surfaceVariant,
+      color: theme.colorScheme.surfaceContainerHighest,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -964,7 +923,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
               "$label:",
               style: theme.textTheme.bodyMedium?.copyWith(
                 fontWeight: FontWeight.bold,
-                color: theme.colorScheme.onBackground,
+                color: theme.colorScheme.onSurface,
               ),
             ),
           ),
@@ -973,7 +932,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
             child: Text(
               value.isEmpty ? "Not set" : value,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onBackground.withOpacity(0.8),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
               ),
             ),
           ),
@@ -991,6 +950,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   }
 
   void _navigateToRecoveryScreen(BuildContext context) {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => RecoveryScreen()),
@@ -1001,10 +961,12 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         _loadProfileData();
 
         // Show success message
-        ErrorHandler.showSuccessSnackbar(
-          context,
-          'Account recovered successfully!',
-        );
+
+        if (mounted) {
+          scaffoldMessenger.showSnackBar(
+            const SnackBar(content: Text('Account recovered successfully!')),
+          );
+        }
       }
     });
   }
@@ -1030,7 +992,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         decoration: InputDecoration(
           labelText: label + (isRequired ? ' *' : ''),
           labelStyle: TextStyle(
-            color: theme.colorScheme.onSurface.withOpacity(0.7),
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
           ),
           prefixIcon: Icon(icon, color: theme.colorScheme.primary),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
@@ -1116,7 +1078,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         ],
       ),
       body: Container(
-        color: theme.colorScheme.background, // Add background color
+        color: theme.colorScheme.surface, // Add background color
         child: SafeArea(
           child: Form(
             key: _formKey,
@@ -1138,7 +1100,8 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                       children: [
                         CircleAvatar(
                           radius: 60,
-                          backgroundColor: theme.colorScheme.surfaceVariant,
+                          backgroundColor:
+                              theme.colorScheme.surfaceContainerHighest,
                           child: _buildAvatarContent(),
                         ),
                         if (_isLoading)
@@ -1210,6 +1173,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                           activeColor: theme.colorScheme.primary,
                         ),
                       ),
+                      // ignore_for_file: deprecated_member_use
                       Expanded(
                         child: RadioListTile(
                           value: 'female',
@@ -1286,7 +1250,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                   Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: theme.colorScheme.surfaceVariant,
+                      color: theme.colorScheme.surfaceContainerHighest,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Row(
@@ -1634,28 +1598,36 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           language: savedLang,
         );
 
-        ErrorHandler.showSuccessSnackbar(
-          context,
-          'Profile loaded successfully',
-        );
+        if (mounted) {
+          ErrorHandler.showSuccessSnackbar(
+            context,
+            'Profile loaded successfully',
+          );
+        }
       } else {
         await _loadLocalProfileData();
         if (result['error'] == 'Authentication failed') {
-          ErrorHandler.showErrorSnackbar(
-            context,
-            'Authentication failed. Please check your user ID.',
-          );
+          if (mounted) {
+            ErrorHandler.showErrorSnackbar(
+              context,
+              'Authentication failed. Please check your user ID.',
+            );
+          }
         } else {
-          ErrorHandler.showErrorSnackbar(
-            context,
-            result['error'] ?? 'Failed to load profile from server',
-          );
+          if (mounted) {
+            ErrorHandler.showErrorSnackbar(
+              context,
+              result['error'] ?? 'Failed to load profile from server',
+            );
+          }
         }
       }
     } catch (e, stack) {
       ErrorHandler.recordError(e, stackTrace: stack, context: 'LoadProfile');
       await _loadLocalProfileData();
-      ErrorHandler.showErrorSnackbar(context, 'Failed to load profile');
+      if (mounted) {
+        ErrorHandler.showErrorSnackbar(context, 'Failed to load profile');
+      }
     } finally {
       if (mounted) {
         _safeSetState(() => _isLoading = false);
@@ -1914,18 +1886,24 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         }
       }
     } on TimeoutException {
-      ErrorHandler.showErrorSnackbar(context, 'Location service timeout');
+      if (mounted) {
+        ErrorHandler.showErrorSnackbar(context, 'Location service timeout');
+      }
     } on http.ClientException {
-      ErrorHandler.showErrorSnackbar(
-        context,
-        'Network error fetching location',
-      );
+      if (mounted) {
+        ErrorHandler.showErrorSnackbar(
+          context,
+          'Network error fetching location',
+        );
+      }
     } catch (e, stack) {
       ErrorHandler.recordError(e, stackTrace: stack, context: 'FetchLocation');
-      ErrorHandler.showErrorSnackbar(
-        context,
-        'Failed to fetch location details',
-      );
+      if (mounted) {
+        ErrorHandler.showErrorSnackbar(
+          context,
+          'Failed to fetch location details',
+        );
+      }
     } finally {
       if (mounted) {
         setState(() => _isLoading = false);
@@ -1951,7 +1929,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
             child: Text(
               l10n.birthCountryLabel,
               style: theme.textTheme.bodySmall?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.7),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
           ),
@@ -2019,7 +1997,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                           ),
                           Icon(
                             Icons.arrow_drop_down,
-                            color: theme.colorScheme.onSurface.withOpacity(0.8),
+                            color: theme.colorScheme.onSurface.withValues(
+                              alpha: 0.8,
+                            ),
                           ),
                         ],
                       ),
@@ -2029,16 +2009,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                   initialSelection: initialCode,
                   onChanged: (CountryCode? code) {
                     if (code != null && mounted) {
-                      setState(() {
-                        _countryController.text = code.name!;
-                        _selectedCountry = code.name!;
-                        _cityController.clear();
-                        _latitude = null;
-                        _longitude = null;
-                        _timezone = null;
-                        _dst = null;
-                        _state = null;
-                      });
+                      _onCountrySelected(code.name!);
                     }
                   },
                 ),
@@ -2050,53 +2021,77 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
     );
   }
 
+  void _onCountrySelected(String country) {
+    setState(() {
+      _countryController.text = country;
+      _selectedCountry = country;
+      _cityController.clear();
+      _latitude = null;
+      _longitude = null;
+      _timezone = null;
+      _dst = null;
+      _state = null;
+    });
+  }
+
   Widget _buildCityField(AppLocalizations l10n) {
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     final theme = themeProvider.getCurrentTheme(context);
+
+    // Use ONLY ONE controller - the one from your widget
+    // Don't create a local controller
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Optional label can be added here if needed
-          Padding(padding: const EdgeInsets.only(bottom: 4)),
-
+          const Padding(padding: EdgeInsets.only(bottom: 4)),
           TypeAheadField<String>(
-            textFieldConfiguration: TextFieldConfiguration(
-              controller: _cityController,
-              decoration: InputDecoration(
-                labelText: l10n.birthCityLabel,
-                prefixIcon: Icon(
-                  Icons.location_city,
-                  color: theme.colorScheme.primary,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: theme.colorScheme.outline),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(
+            controller: _cityController, // Use the widget's controller directly
+            builder: (context, controller, focusNode) {
+              return TextField(
+                controller: controller,
+                focusNode: focusNode,
+                decoration: InputDecoration(
+                  labelText: l10n.birthCityLabel,
+                  prefixIcon: Icon(
+                    Icons.location_city,
                     color: theme.colorScheme.primary,
-                    width: 2,
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: theme.colorScheme.outline),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(
+                      color: theme.colorScheme.primary,
+                      width: 2,
+                    ),
+                  ),
+                  hintText:
+                      _selectedCountry == null
+                          ? l10n.countryFirstPlaceholder
+                          : l10n.cityPlaceholder(_selectedCountry!),
+                  hintStyle: TextStyle(
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                   ),
                 ),
-                hintText:
-                    _selectedCountry == null
-                        ? l10n.countryFirstPlaceholder
-                        : l10n.cityPlaceholder(_selectedCountry!),
-                hintStyle: TextStyle(
-                  color: theme.colorScheme.onSurface.withOpacity(0.5),
-                ),
-              ),
-              enabled: _selectedCountry != null,
-              onChanged: _onCityChanged,
-              style: theme.textTheme.bodyMedium,
-            ),
+                enabled: _selectedCountry != null,
+                onChanged: (value) {
+                  _cityDebounce?.cancel();
+
+                  _cityDebounce = Timer(const Duration(milliseconds: 300), () {
+                    _onCityChanged(value);
+                  });
+                },
+                style: theme.textTheme.bodyMedium,
+              );
+            },
             suggestionsCallback: (pattern) async {
               try {
                 if (_selectedCountry == null || pattern.length < 2) return [];
@@ -2115,17 +2110,30 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                 title: Text(suggestion, style: theme.textTheme.bodyMedium),
               );
             },
-            onSuggestionSelected: (suggestion) async {
+            onSelected: (suggestion) async {
+              // Clear focus to prevent cursor jumping
+              FocusScope.of(context).unfocus();
+
+              // Update the controller text
               _cityController.text = suggestion;
+
+              // Fetch location details
               await _fetchLocationDetails(suggestion, _selectedCountry!);
+
+              // Refocus after a short delay
+              Future.delayed(const Duration(milliseconds: 100), () {
+                if (mounted) {
+                  FocusScope.of(context).requestFocus(FocusNode());
+                }
+              });
             },
-            noItemsFoundBuilder: (context) {
+            emptyBuilder: (context) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   l10n.noCitiesFound,
                   style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.onSurface.withOpacity(0.5),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                   ),
                 ),
               );
@@ -2143,13 +2151,18 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
       final countryCode = _getCountryIsoCode(_selectedCountry!);
       if (countryCode.isEmpty) return <String>[];
 
-      final response = await http
-          .get(
-            Uri.parse(
-              '${Environment.locationIqBaseUrl}/autocomplete?key=${Environment.locationIqApiKey}&q=$query&country=$countryCode&tag=place:city,place:town&limit=5',
-            ),
-          )
-          .timeout(const Duration(seconds: 5));
+      final uri = Uri.parse(
+        '${Environment.locationIqBaseUrl}/autocomplete',
+      ).replace(
+        queryParameters: {
+          'key': Environment.locationIqApiKey,
+          'q': query.trim(),
+          'country': countryCode,
+          'tag': 'place:city,place:town',
+          'limit': '10',
+        },
+      );
+      final response = await http.get(uri).timeout(const Duration(seconds: 5));
 
       if (response.statusCode == 200) {
         final List<dynamic> data =
@@ -2203,7 +2216,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
         subtitle: Text(
           value,
           style: theme.textTheme.bodyMedium?.copyWith(
-            color: theme.colorScheme.onSurface.withOpacity(0.7),
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
           ),
         ),
         leading: Icon(icon, color: theme.colorScheme.primary),
@@ -2227,7 +2240,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
           width: double.infinity,
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: theme.colorScheme.surfaceVariant,
+            color: theme.colorScheme.surfaceContainerHighest,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Row(
@@ -2273,13 +2286,13 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                 Icon(
                   Icons.history_toggle_off,
                   size: 64,
-                  color: theme.colorScheme.onSurface.withOpacity(0.3),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.3),
                 ),
                 const SizedBox(height: 16),
                 Text(
                   'No history available',
                   style: theme.textTheme.bodyMedium?.copyWith(
-                    color: theme.colorScheme.onSurface.withOpacity(0.5),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -2329,7 +2342,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                     vertical: 4,
                   ),
                   decoration: BoxDecoration(
-                    color: theme.colorScheme.primary.withOpacity(0.1),
+                    color: theme.colorScheme.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
@@ -2354,7 +2367,9 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                         child: Text(
                           '• $change',
                           style: theme.textTheme.bodySmall?.copyWith(
-                            color: theme.colorScheme.onSurface.withOpacity(0.7),
+                            color: theme.colorScheme.onSurface.withValues(
+                              alpha: 0.7,
+                            ),
                           ),
                         ),
                       );

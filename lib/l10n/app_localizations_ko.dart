@@ -391,10 +391,10 @@ class AppLocalizationsKo extends AppLocalizations {
   String get contactUs => '문의하기';
 
   @override
-  String get contactEmail => '이메일: support@yourcompany.com';
+  String get contactEmail => '이메일: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => '웹사이트: www.yourcompany.com';
+  String get contactWebsite => '웹사이트: www.karmalifepath.com';
 
   @override
   String get customerSupport => '고객 지원';
@@ -490,7 +490,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get buyButton => '구입하다';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 일일 운세';
+  String get dailyHoroscopeTitle => ' 일일 운세';
 
   @override
   String get userIdMissing => '사용자 ID가 없습니다';

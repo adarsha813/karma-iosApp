@@ -400,10 +400,10 @@ class AppLocalizationsHt extends AppLocalizations {
   String get contactUs => 'Kontakte nou';
 
   @override
-  String get contactEmail => 'Imèl: support@yourcompany.com';
+  String get contactEmail => 'Imèl: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Sit wèb: www.yourcompany.com';
+  String get contactWebsite => 'Sit wèb: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Sipò Kliyan';
@@ -499,7 +499,7 @@ class AppLocalizationsHt extends AppLocalizations {
   String get buyButton => 'Achte';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Oroskop chak jou';
+  String get dailyHoroscopeTitle => ' Oroskop chak jou';
 
   @override
   String get userIdMissing => 'ID itilizatè a manke';

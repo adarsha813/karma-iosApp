@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "Имэйл: support@yourcompany.com",
+  "contactEmail": "Имэйл: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "Вэбсайт: www.yourcompany.com",
+  "contactWebsite": "Вэбсайт: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Өдөр тутмын зурхай",
+  "dailyHoroscopeTitle": " Өдөр тутмын зурхай",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

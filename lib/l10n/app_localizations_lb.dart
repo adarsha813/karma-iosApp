@@ -400,7 +400,7 @@ class AppLocalizationsLb extends AppLocalizations {
   String get contactUs => 'Kontaktéiert eis';
 
   @override
-  String get contactEmail => 'E-Mail: support@yourcompany.com';
+  String get contactEmail => 'E-Mail: care@karmalifepath.com';
 
   @override
   String get contactWebsite => 'Websäit: www.ÄrFirma.com';
@@ -500,7 +500,7 @@ class AppLocalizationsLb extends AppLocalizations {
   String get buyButton => 'Kaafen';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Deeglecht Horoskop';
+  String get dailyHoroscopeTitle => ' Deeglecht Horoskop';
 
   @override
   String get userIdMissing => 'Benotzer-ID feelt';

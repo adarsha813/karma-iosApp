@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'package:http/http.dart' as http;
+import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -11,15 +12,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_app_badger/flutter_app_badger.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:logger/logger.dart' as log;
-import 'screens/dailyHoroscope_screen.dart';
+import 'screens/daily_horoscope_screen.dart';
 import 'package:kundali/config/environment.dart';
 import 'services/first_launch_service.dart'; // Add this import
 import 'l10n/custom_localizations_delegate.dart'; // Add this import
 import 'services/ssl_pinning_service.dart';
 import 'package:kundali/utils/theme.dart';
+import 'services/http_service.dart'; // Add this import
 
 // Config
 import 'config/firebase_config.dart';
@@ -38,7 +39,7 @@ import 'services/error_reporting_service.dart';
 
 // Providers
 import 'providers/profile_provider.dart';
-import 'providers/LocaleProvider.dart';
+import 'providers/locale_provider.dart';
 import 'providers/notification_provider.dart';
 import 'providers/horoscope_provider.dart';
 import 'providers/dictionary_provider.dart';
@@ -126,8 +127,8 @@ class TextSanitizer {
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  debugPrint('📩 [Background] Message received: ${message.messageId}');
-  debugPrint('📩 Message data: ${message.data}');
+  //AppLogger.info('📩 [Background] Message received: ${message.messageId}');
+  //AppLogger.info('📩 Message data: ${message.data}');
 
   // Initialize Firebase in background isolate
   await Firebase.initializeApp();
@@ -136,7 +137,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   final notificationsEnabled = prefs.getBool('notifications_enabled') ?? true;
 
   if (!notificationsEnabled) {
-    debugPrint('🔕 Notifications disabled - skipping background notification');
+    //AppLogger.info(  '🔕 Notifications disabled - skipping background notification',);
     return;
   }
 
@@ -181,16 +182,16 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     try {
       FlutterAppBadger.updateBadgeCount(count);
     } catch (e) {
-      debugPrint("⚠️ Failed to update badge in background: $e");
+      //AppLogger.info("⚠️ Failed to update badge in background: $e");
     }
   } else {
-    debugPrint('ℹ️ Badge not incremented for chat type: $type');
+    //AppLogger.info('ℹ️ Badge not incremented for chat type: $type');
   }
 
   try {
     FlutterAppBadger.updateBadgeCount(count);
   } catch (e) {
-    debugPrint("⚠️ Failed to update badge in background: $e");
+    //AppLogger.info("⚠️ Failed to update badge in background: $e");
   }
 
   // Increment specific counters
@@ -198,7 +199,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     int horoCount = prefs.getInt('unread_horoscope_count') ?? 0;
     horoCount++;
     await prefs.setInt('unread_horoscope_count', horoCount);
-    debugPrint('📈 Horoscope unread count updated: $horoCount');
+    //AppLogger.info('📈 Horoscope unread count updated: $horoCount');
   } else if (type == 'notification') {
     // ✅ Only notifications page
     bool isScreenOpen = prefs.getBool('notification_screen_open') ?? false;
@@ -206,28 +207,21 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
       int notifCount = prefs.getInt('unread_notifications_page_count') ?? 0;
       notifCount++;
       await prefs.setInt('unread_notifications_page_count', notifCount);
-      debugPrint('📈 Notifications page unread count updated: $notifCount');
+      //AppLogger.info('📈 Notifications page unread count updated: $notifCount');
     } else {
-      debugPrint('ℹ️ Notifications screen open, skipping unread increment');
+      //AppLogger.info('ℹ️ Notifications screen open, skipping unread increment');
     }
   } else {
-    debugPrint('ℹ️ Other types ignored for unread counts');
+    //AppLogger.info('ℹ️ Other types ignored for unread counts');
   }
   // Initialize local notifications
-const AndroidInitializationSettings androidSettings =
-    AndroidInitializationSettings('@mipmap/ic_launcher');
+  const AndroidInitializationSettings androidSettings =
+      AndroidInitializationSettings('@mipmap/ic_launcher');
+  const InitializationSettings initSettings = InitializationSettings(
+    android: androidSettings,
+  );
 
-const DarwinInitializationSettings iosSettings =
-    DarwinInitializationSettings();
-
-const InitializationSettings initSettings = InitializationSettings(
-  android: androidSettings,
-  iOS: iosSettings, // ✅ REQUIRED
-);
-
-await flutterLocalNotificationsPlugin.initialize(initSettings);
-
-
+  await flutterLocalNotificationsPlugin.initialize(initSettings);
 
   // Create appropriate notification channel based on type
   String channelId = 'general_channel';
@@ -288,9 +282,9 @@ await flutterLocalNotificationsPlugin.initialize(initSettings);
     payload: payload,
   );
 
-  debugPrint('📩 Background notification displayed for type: $type');
-  debugPrint('📩 Sanitized title: $sanitizedTitle');
-  debugPrint('📩 Sanitized body: $sanitizedBody');
+  //AppLogger.info('📩 Background notification displayed for type: $type');
+  //AppLogger.info('📩 Sanitized title: $sanitizedTitle');
+  //AppLogger.info('📩 Sanitized body: $sanitizedBody');
 }
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -331,7 +325,8 @@ class ProductionLogger {
       lineLength: 120,
       colors: true,
       printEmojis: true,
-      printTime: true,
+      dateTimeFormat:
+          DateTimeFormat.onlyTimeAndSinceStart, // replaced printTime
     ),
   );
 
@@ -654,25 +649,6 @@ class SecureNotificationManager {
   }
 }
 
-// Stripe Service
-class StripeService {
-  static Future<void> initialize() async {
-    try {
-      // For flutter_stripe package (official)
-      Stripe.publishableKey = Environment.stripePublishableKey;
-
-      // For Apple Pay/Google Pay configuration
-      await Stripe.instance.applySettings();
-
-      ProductionLogger.info('✅ Stripe initialized successfully');
-    } catch (e) {
-      ProductionLogger.warning(
-        '⚠️ Stripe initialization failed - payments disabled: $e',
-      );
-    }
-  }
-}
-
 // Secure FCM Background Handler
 @pragma('vm:entry-point')
 Future<void> _secureFirebaseMessagingBackgroundHandler(
@@ -840,23 +816,9 @@ class SecureAppInitializer {
       await SecureNotificationManager.createNotificationChannels();
 
       // Setup FCM
-      // Setup FCM (DO NOT BLOCK APP STARTUP ON iOS)
-if (Platform.isIOS) {
-  Future.delayed(const Duration(seconds: 2), () {
-    _setupFCM(); // fire-and-forget
-  });
-} else {
-  await _setupFCM();
-}
-
+      await _setupFCM();
 
       // Initialize Stripe
-      await StripeService.initialize().catchError((e, stack) {
-        ProductionLogger.warning(
-          '⚠️ Stripe initialization failed (non-critical): $e',
-        );
-        // Continue app startup - Stripe is optional for core functionality
-      });
 
       ProductionLogger.info(
         '✅ Secure app initialization completed successfully',
@@ -883,45 +845,124 @@ if (Platform.isIOS) {
 
   // --- Firebase Cloud Messaging Setup ---
   static Future<void> _setupFCM() async {
-  try {
-    final messaging = FirebaseMessaging.instance;
-
-    // Request permission (safe to call multiple times)
-    await messaging.requestPermission(
-      alert: true,
-      badge: true,
-      sound: true,
-    );
-
-    String? token;
-
     try {
-      token = await messaging.getToken();
+      // Request iOS permissions if applicable
+      if (Platform.isIOS) {
+        await _requestIOSPermissions();
+      }
+
+      // Set background handler
+      FirebaseMessaging.onBackgroundMessage(
+        _secureFirebaseMessagingBackgroundHandler,
+      );
+
+      // Get FCM token
+      final fcmToken = await FirebaseMessaging.instance.getToken();
+      if (fcmToken != null) {
+        final tokenPreview = fcmToken.substring(0, min(20, fcmToken.length));
+        ProductionLogger.info('📱 FCM Token obtained: $tokenPreview...');
+        await _saveFcmToken(fcmToken);
+      }
+
+      // Listen for foreground messages
+      FirebaseMessaging.onMessage.listen(_handleForegroundMessage);
+
+      // Handle message opened from background
+      FirebaseMessaging.onMessageOpenedApp.listen(_handleMessageOpenedApp);
+    } catch (e, stackTrace) {
+      ProductionLogger.error('🔥 FCM setup failed', e, stackTrace);
+      rethrow;
+    }
+  }
+
+  // --- Save FCM Token Securely ---
+  static Future<void> _saveFcmToken(String token) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('fcm_token', token);
+      ProductionLogger.info('💾 FCM token saved securely');
     } catch (e) {
-      debugPrint(
-        "⚠️ FCM token not ready yet (normal on iOS): $e",
+      ProductionLogger.error('Failed to save FCM token', e);
+    }
+  }
+
+  // --- iOS Notification Permissions ---
+  static Future<void> _requestIOSPermissions() async {
+    try {
+      final settings = await FirebaseMessaging.instance.requestPermission(
+        alert: true,
+        badge: true,
+        sound: true,
+        criticalAlert: true,
+      );
+      ProductionLogger.info(
+        '📲 iOS notification permission: ${settings.authorizationStatus}',
+      );
+    } catch (e) {
+      ProductionLogger.error('Failed to request iOS permissions', e);
+    }
+  }
+
+  // --- Foreground Message Handler ---
+  static Future<void> _handleForegroundMessage(RemoteMessage message) async {
+    ProductionLogger.info(
+      '💬 Foreground message received: ${message.messageId}',
+    );
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final notificationsEnabled =
+          prefs.getBool('notifications_enabled') ?? true;
+
+      if (!notificationsEnabled) {
+        ProductionLogger.info(
+          '🔕 Notifications disabled - skipping foreground notification',
+        );
+        return;
+      }
+      final data = message.data;
+      final type = data['type'] ?? 'general';
+
+      // ✅ SANITIZE THE TITLE AND BODY
+      final rawTitle = data['title'] ?? 'New Notification';
+      final rawBody = data['body'] ?? 'You have a new message';
+
+      final sanitizedTitle = TextSanitizer.sanitizeForNotification(rawTitle);
+      final sanitizedBody = TextSanitizer.sanitizeForNotification(rawBody);
+
+      if (!_validateNotificationData(type, data)) {
+        ProductionLogger.warning(
+          '⚠️ Invalid notification data for type: $type',
+        );
+        return;
+      }
+
+      // Create sanitized payload
+      final sanitizedData = Map<String, dynamic>.from(data);
+      sanitizedData['title'] = sanitizedTitle;
+      sanitizedData['body'] = sanitizedBody;
+
+      final payload =
+          NotificationPayload.fromJson(sanitizedData).toJsonString();
+
+      await _showLocalNotification(
+        title: sanitizedTitle,
+        body: sanitizedBody,
+        payload: payload,
+        channelId: _getChannelId(type),
+      );
+
+      // Update providers if context exists
+      if (navigatorKey.currentContext != null) {
+        await _updateUnreadCounts(type, navigatorKey.currentContext!);
+      }
+    } catch (e, stackTrace) {
+      ProductionLogger.error(
+        'Error handling foreground message',
+        e,
+        stackTrace,
       );
     }
-
-    if (token != null) {
-      debugPrint("✅ FCM token obtained: $token");
-      // TODO: send token to backend
-    } else {
-      debugPrint("⏳ Waiting for FCM token...");
-    }
-
-    // 🔑 MOST IMPORTANT PART
-    FirebaseMessaging.instance.onTokenRefresh.listen((newToken) {
-      debugPrint("🔄 FCM token refreshed: $newToken");
-      // TODO: send refreshed token to backend
-    });
-  } catch (e, s) {
-    // ❗ NEVER crash app startup because of FCM
-    debugPrint("⚠️ FCM setup error (non-fatal): $e");
-    debugPrint("$s");
   }
-}
-
 
   // --- Handle Message When App is Opened ---
   static Future<void> _handleMessageOpenedApp(RemoteMessage message) async {
@@ -1008,7 +1049,7 @@ if (Platform.isIOS) {
 class SecureBadgeManager extends StatefulWidget {
   final Widget child;
 
-  const SecureBadgeManager({Key? key, required this.child}) : super(key: key);
+  const SecureBadgeManager({super.key, required this.child});
 
   @override
   State<SecureBadgeManager> createState() => _SecureBadgeManagerState();
@@ -1088,7 +1129,7 @@ class _SecureBadgeManagerState extends State<SecureBadgeManager>
 
 // Secure Home Router
 class SecureHomeRouter extends StatefulWidget {
-  const SecureHomeRouter({Key? key}) : super(key: key);
+  const SecureHomeRouter({super.key});
 
   @override
   State<SecureHomeRouter> createState() => _SecureHomeRouterState();
@@ -1097,6 +1138,7 @@ class SecureHomeRouter extends StatefulWidget {
 class _SecureHomeRouterState extends State<SecureHomeRouter>
     with WidgetsBindingObserver {
   bool _isNavigating = false;
+  Timer? _tokenRefreshTimer;
 
   @override
   void initState() {
@@ -1104,6 +1146,23 @@ class _SecureHomeRouterState extends State<SecureHomeRouter>
     WidgetsBinding.instance.addObserver(this);
     secureNotificationNavigation.addListener(_handleSecureNotification);
     _initializeSocket();
+
+    // Check token every 4 minutes (since token expires in 5)
+    _tokenRefreshTimer = Timer.periodic(const Duration(minutes: 4), (timer) {
+      _refreshTokenIfNeeded();
+    });
+  }
+
+  Future<void> _refreshTokenIfNeeded() async {
+    try {
+      final profileProvider = Provider.of<ProfileProvider>(
+        context,
+        listen: false,
+      );
+      await profileProvider.ensureValidToken();
+    } catch (e) {
+      ProductionLogger.error('Periodic token refresh failed', e);
+    }
   }
 
   void _initializeSocket() {
@@ -1205,19 +1264,25 @@ class _SecureHomeRouterState extends State<SecureHomeRouter>
     }
   }
 
-  void _reconnectSocket() {
+  void _reconnectSocket() async {
     try {
       final profileProvider = Provider.of<ProfileProvider>(
         context,
         listen: false,
       );
       final userId = profileProvider.userId ?? 'default_user';
+
+      // Ensure token is valid before reconnecting socket
+      await profileProvider.ensureValidToken();
+
+      if (!mounted) return; // <-- check widget is still mounted
+
       if (!SocketService().socket.connected) {
-        SocketService().initialize(userId, context);
+        SocketService().initialize(userId, context); // safe now
         ProductionLogger.info('Socket reconnected on app resume');
       }
-    } catch (e, stackTrace) {
-      ProductionLogger.error('Socket reconnection failed', e, stackTrace);
+    } catch (e) {
+      ProductionLogger.error('Socket reconnection failed', e);
     }
   }
 
@@ -1225,6 +1290,7 @@ class _SecureHomeRouterState extends State<SecureHomeRouter>
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     secureNotificationNavigation.removeListener(_handleSecureNotification);
+    _tokenRefreshTimer?.cancel();
     super.dispose();
   }
 
@@ -1243,7 +1309,7 @@ class _SecureHomeRouterState extends State<SecureHomeRouter>
 class SecureApp extends StatefulWidget {
   final FirstLaunchResult launchResult;
 
-  const SecureApp({Key? key, required this.launchResult}) : super(key: key);
+  const SecureApp({super.key, required this.launchResult});
 
   @override
   State<SecureApp> createState() => _SecureAppState();
@@ -1276,12 +1342,15 @@ class _SecureAppState extends State<SecureApp> {
 
   Future<void> _checkOnboardingStatus() async {
     try {
-      final prefs = await SharedPreferences.getInstance();
-      final onboardingDone = prefs.getBool('onboarding_done') ?? false;
+      // Capture provider before any await
       final profileProvider = Provider.of<ProfileProvider>(
         context,
         listen: false,
       );
+
+      final prefs = await SharedPreferences.getInstance();
+      final onboardingDone = prefs.getBool('onboarding_done') ?? false;
+
       final hasExistingProfile =
           profileProvider.userId != null &&
           profileProvider.userId!.isNotEmpty &&
@@ -1547,7 +1616,7 @@ class _SecureAppState extends State<SecureApp> {
 void notificationTapBackground(NotificationResponse response) {
   final payload = response.payload;
   if (payload != null) {
-    debugPrint('📱 (Background) Notification tapped: $payload');
+    //AppLogger.info('📱 (Background) Notification tapped: $payload');
     pendingNavigation.payload = payload;
   }
 }
@@ -1616,14 +1685,12 @@ Future<void> sendFcmTokenToBackend(String userId, String fcmToken) async {
     );
 
     if (response.statusCode == 200) {
-      debugPrint('✅ FCM token sent successfully');
+      //AppLogger.info('✅ FCM token sent successfully');
     } else {
-      debugPrint(
-        '⚠️ Failed to send FCM token: ${response.statusCode}, ${response.body}',
-      );
+      //AppLogger.info( '⚠️ Failed to send FCM token: ${response.statusCode}, ${response.body}',);
     }
   } catch (e) {
-    debugPrint('❌ Error sending FCM token: $e');
+    //AppLogger.info('❌ Error sending FCM token: $e');
   }
 }
 
@@ -1658,12 +1725,7 @@ Future<void> _initNotifications() async {
 }
 
 Future<void> _requestPermissions() async {
-  NotificationSettings settings = await FirebaseMessaging.instance
-      .requestPermission(alert: true, badge: true, sound: true);
-
-  debugPrint(
-    '🔐 Notification permission status: ${settings.authorizationStatus}',
-  );
+  //AppLogger.info( '🔐 Notification permission status: ${settings.authorizationStatus}' );
 }
 
 Future<void> _initFCMToken() async {
@@ -1672,14 +1734,14 @@ Future<void> _initFCMToken() async {
 
   try {
     final fcmToken = await FirebaseMessaging.instance.getToken();
-    debugPrint('🔑 FCM Token: $fcmToken');
+    //AppLogger.info('🔑 FCM Token: $fcmToken');
 
     if (profileProvider.userId != null && fcmToken != null) {
       // Send token to backend
       await sendFcmTokenToBackend(profileProvider.userId!, fcmToken);
     }
   } catch (e) {
-    debugPrint('❌ Error getting FCM token: $e');
+    //AppLogger.info('❌ Error getting FCM token: $e');
   }
 }
 
@@ -1687,6 +1749,21 @@ Future<void> _initFCMToken() async {
 Future<void> main() async {
   SafeWidgetsBinding.ensureInitialized();
   WidgetsFlutterBinding.ensureInitialized();
+
+  // ✅ LOAD ENVIRONMENT FIRST - BEFORE ANYTHING ELSE
+  await Environment.load();
+
+  // Optional: Validate all required env vars are present
+  final missingVars = Environment.validateRequiredEnv();
+  if (missingVars.isNotEmpty) {
+    ProductionLogger.fatal(
+      'Missing required environment variables: $missingVars',
+    );
+    if (!kDebugMode) {
+      runApp(_ConfigErrorApp(missingVars: missingVars));
+      return;
+    }
+  }
 
   await _initializeSecurity();
   // Get first launch result BEFORE using it
@@ -1714,14 +1791,14 @@ Future<void> main() async {
 - First Launch Version: ${launchResult.firstLaunchVersion}
 ''');
 
-  await Firebase.initializeApp();
-
   await _initNotifications(); // Background + foreground
   await _requestPermissions(); // iOS/Android
   await _initFCMToken(); // Send token to backend
 
   final profileProvider = ProfileProvider();
   await profileProvider.initialize(); // loads token, language, etc.
+
+  final httpService = HttpService(); // Create single instance
 
   final token = profileProvider.token ?? ''; // get token safely
   final chatService = SecureChatService(token); // pass token to chat service
@@ -1753,8 +1830,10 @@ Future<void> main() async {
       ProductionLogger.info('🎉 This is the first launch!');
     }
     // Start device time service
+    // In main.dart, around line 1815
     final deviceTimeService = DeviceTimeService(
-      profileProvider.userId ?? 'default_user',
+      userId: profileProvider.userId ?? 'default_user',
+      // httpService: HttpService(), // Optional if you want to pass specific instance
     );
     deviceTimeService.start(interval: const Duration(minutes: 1));
 
@@ -1773,9 +1852,7 @@ Future<void> main() async {
           ChangeNotifierProvider<ProfileProvider>.value(value: profileProvider),
           ChangeNotifierProvider<SecureChatService>.value(value: chatService),
           ChangeNotifierProvider(create: (_) => LocaleProvider()),
-          ChangeNotifierProvider(
-            create: (_) => ThemeProvider(),
-          ), // Add ThemeProvider
+          ChangeNotifierProvider(create: (_) => ThemeProvider()),
           ChangeNotifierProvider(
             create: (_) => DictionaryProvider()..loadDictionary(),
           ),
@@ -1785,23 +1862,33 @@ Future<void> main() async {
             value: secureNotificationNavigation,
           ),
           ChangeNotifierProvider(create: (_) => AppLifecycleProvider()),
+          Provider<HttpService>.value(value: httpService),
         ],
-        child: SecureApp(
-          launchResult: launchResult,
-        ), // Updated to use LaunchResult
+        child: Builder(
+          builder: (context) {
+            // Initialize HttpService after providers are ready
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              HttpService().initialize(context);
+              //AppLogger.info('✅ HttpService initialized with context');
+            });
+            return SecureApp(launchResult: launchResult);
+          },
+        ),
       ),
     );
 
     // Initialize socket after app is running
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    // Update it to ensure token is valid first:
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (profileProvider.userId != null) {
+        // Ensure token is valid before socket connection
+        await profileProvider.ensureValidToken();
         SocketService().initialize(
           profileProvider.userId!,
           navigatorKey.currentContext!,
         );
       }
     });
-
     ProductionLogger.info('Application started successfully');
 
     // Log first launch events for analytics
@@ -1923,6 +2010,82 @@ Future<void> _initializeSecurity() async {
     // For now, we'll continue but log the security risk
     ProductionLogger.warning(
       '⚠️ Continuing without SSL pinning - SECURITY RISK',
+    );
+  }
+}
+
+// Error screen for missing configuration
+class _ConfigErrorApp extends StatelessWidget {
+  final List<String> missingVars;
+
+  const _ConfigErrorApp({required this.missingVars});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.settings_applications,
+                  size: 80,
+                  color: Colors.orange,
+                ),
+                const SizedBox(height: 24),
+                const Text(
+                  'Configuration Error',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.orange,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 16),
+                const Text(
+                  'The app is missing required configuration. Please contact support.',
+                  style: TextStyle(fontSize: 16),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 16),
+                if (kDebugMode) ...[
+                  const Text(
+                    'Missing variables:',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 8),
+                  ...missingVars.map(
+                    (v) => Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 2),
+                      child: Text(
+                        '• $v',
+                        style: const TextStyle(fontSize: 12, color: Colors.red),
+                      ),
+                    ),
+                  ),
+                ],
+                const SizedBox(height: 32),
+                ElevatedButton.icon(
+                  onPressed: () {
+                    exit(0);
+                  },
+                  icon: const Icon(Icons.exit_to_app),
+                  label: const Text('Exit App'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange,
+                    foregroundColor: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

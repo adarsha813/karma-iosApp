@@ -174,7 +174,7 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "E-Mail: support@yourcompany.com",
+  "contactEmail": "E-Mail: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Deeglecht Horoskop",
+  "dailyHoroscopeTitle": " Deeglecht Horoskop",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

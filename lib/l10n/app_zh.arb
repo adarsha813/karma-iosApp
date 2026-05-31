@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "电子邮件：support@yourcompany.com",
+  "contactEmail": "电子邮件：care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "网站：www.yourcompany.com",
+  "contactWebsite": "网站：www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟每日星座运势",
+  "dailyHoroscopeTitle": "每日星座运势",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

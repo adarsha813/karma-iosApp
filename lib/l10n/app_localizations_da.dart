@@ -499,7 +499,7 @@ class AppLocalizationsDa extends AppLocalizations {
   String get buyButton => 'Købe';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Dagligt horoskop';
+  String get dailyHoroscopeTitle => ' Dagligt horoskop';
 
   @override
   String get userIdMissing => 'Bruger-ID mangler';

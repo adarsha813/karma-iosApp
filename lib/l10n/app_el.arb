@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "Ηλεκτρονικό ταχυδρομείο: support@yourcompany.com",
+  "contactEmail": "Ηλεκτρονικό ταχυδρομείο: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "Ιστότοπος: www.yourcompany.com",
+  "contactWebsite": "Ιστότοπος: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Ημερήσιο Ωροσκόπιο",
+  "dailyHoroscopeTitle": " Ημερήσιο Ωροσκόπιο",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

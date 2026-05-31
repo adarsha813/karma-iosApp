@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "ელ. ფოსტა: support@yourcompany.com",
+  "contactEmail": "ელ. ფოსტა: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "ვებსაიტი: www.yourcompany.com",
+  "contactWebsite": "ვებსაიტი: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 ყოველდღიური ჰოროსკოპი",
+  "dailyHoroscopeTitle": " ყოველდღიური ჰოროსკოპი",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

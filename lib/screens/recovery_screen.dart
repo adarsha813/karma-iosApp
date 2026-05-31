@@ -10,6 +10,8 @@ import '../config/environment.dart';
 import 'package:logger/logger.dart';
 import '../providers/theme_provider.dart'; // Add this import
 import 'package:flutter/cupertino.dart';
+import '../utils/app_logger.dart' as app_logger; // Add alias
+import '../screens/chat_screen.dart'; // Adjust the import path as needed
 
 // Custom logger instance
 final _logger = Logger(
@@ -19,12 +21,12 @@ final _logger = Logger(
     lineLength: 50,
     colors: true,
     printEmojis: true,
-    printTime: true,
+    dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
   ),
 );
 
 class RecoveryScreen extends StatefulWidget {
-  const RecoveryScreen({Key? key}) : super(key: key);
+  const RecoveryScreen({super.key});
 
   @override
   State<RecoveryScreen> createState() => _RecoveryScreenState();
@@ -58,9 +60,9 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
     final token = profileProvider.token;
 
     if (token == null) {
-      debugPrint('❌ No token found');
+      app_logger.AppLogger.info('❌ No token found');
     } else {
-      debugPrint('✅ Token loaded in ChatScreen: $token');
+      app_logger.AppLogger.info('✅ Token loaded in ChatScreen: $token');
     }
 
     setState(() {
@@ -308,6 +310,9 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
   }
 
   Future<void> _recoverAccount() async {
+    // Capture l10n BEFORE async operations
+    final l10n = AppLocalizations.of(context)!;
+
     if (!_validateInputs()) {
       _showErrorSnackBar(_getLocalizedError('missing_fields', context));
       return;
@@ -376,19 +381,25 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
           params: {'user_id': userId, 'has_token': token.isNotEmpty},
         );
 
-        _showSuccessSnackBar(
-          AppLocalizations.of(context)!.accountRecoveredSuccess,
-        );
+        // Use captured l10n instead of calling AppLocalizations.of(context) again
+        _showSuccessSnackBar(l10n.accountRecoveredSuccess);
 
         // Navigate back with recovered user ID
+        // Navigate to ChatScreen and clear all previous routes
+        // Navigate to ChatScreen using SafeChatScreen wrapper
         if (mounted) {
-          Navigator.pop(context, userId);
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const SafeChatScreen(chatId: null),
+            ),
+          );
         }
 
         _recoveryCompleter?.complete();
       } else if (response.statusCode == 404) {
         _logAnalyticsEvent('recovery_failed_not_found');
-        _showErrorSnackBar(AppLocalizations.of(context)!.recoveryFailed);
+        _showErrorSnackBar(l10n.recoveryFailed);
       } else if (response.statusCode == 400) {
         _logAnalyticsEvent('recovery_failed_invalid_data');
         _showErrorSnackBar(_getLocalizedError('invalid_data', context));
@@ -429,6 +440,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
   }
 
   void _showSuccessSnackBar(String message) {
+    if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
@@ -440,6 +452,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
   }
 
   void _showErrorSnackBar(String message) {
+    if (!mounted) return;
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     final theme = themeProvider.getCurrentTheme(context);
 
@@ -461,12 +474,12 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
         prefixIcon: Icon(Icons.person, color: theme.colorScheme.primary),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         filled: true,
-        fillColor: theme.colorScheme.surfaceVariant,
+        fillColor: theme.colorScheme.surfaceContainerHighest,
         labelStyle: TextStyle(color: theme.colorScheme.onSurfaceVariant),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(
-            color: theme.colorScheme.outline.withOpacity(0.3),
+            color: theme.colorScheme.outline.withValues(alpha: 0.3),
           ),
         ),
         focusedBorder: OutlineInputBorder(
@@ -499,7 +512,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
           style: theme.textTheme.bodyMedium?.copyWith(
             color:
                 _selectedDob == null
-                    ? theme.colorScheme.onSurface.withOpacity(0.5)
+                    ? theme.colorScheme.onSurface.withValues(alpha: 0.5)
                     : theme.colorScheme.onSurface,
             fontWeight:
                 _selectedDob == null ? FontWeight.normal : FontWeight.w500,
@@ -526,7 +539,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
           style: theme.textTheme.bodyMedium?.copyWith(
             color:
                 _selectedTime == null
-                    ? theme.colorScheme.onSurface.withOpacity(0.5)
+                    ? theme.colorScheme.onSurface.withValues(alpha: 0.5)
                     : theme.colorScheme.onSurface,
             fontWeight:
                 _selectedTime == null ? FontWeight.normal : FontWeight.w500,
@@ -547,16 +560,16 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
         prefixIcon: Icon(Icons.security, color: theme.colorScheme.primary),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         filled: true,
-        fillColor: theme.colorScheme.surfaceVariant,
+        fillColor: theme.colorScheme.surfaceContainerHighest,
         labelStyle: TextStyle(color: theme.colorScheme.onSurfaceVariant),
         hintText: l10n.recoverySecretHint,
         hintStyle: TextStyle(
-          color: theme.colorScheme.onSurface.withOpacity(0.5),
+          color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(
-            color: theme.colorScheme.outline.withOpacity(0.3),
+            color: theme.colorScheme.outline.withValues(alpha: 0.3),
           ),
         ),
         focusedBorder: OutlineInputBorder(
@@ -632,7 +645,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
             decoration: TextDecoration.underline,
             color:
                 _isLoading
-                    ? theme.colorScheme.onSurface.withOpacity(0.3)
+                    ? theme.colorScheme.onSurface.withValues(alpha: 0.3)
                     : theme.colorScheme.primary,
           ),
         ),
@@ -679,7 +692,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Container(
-          color: theme.colorScheme.background,
+          color: theme.colorScheme.surface,
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(20),
             child: Column(
@@ -697,7 +710,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
                   l10n.recoverAccountDescription,
                   textAlign: TextAlign.center,
                   style: theme.textTheme.bodyMedium?.copyWith(
-                    color: theme.colorScheme.onSurface.withOpacity(0.7),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                   ),
                 ),
                 const SizedBox(height: 32),

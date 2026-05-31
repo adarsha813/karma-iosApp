@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "البريد الإلكتروني: support@yourcompany.com",
+  "contactEmail": "البريد الإلكتروني: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "الموقع الإلكتروني: www.yourcompany.com",
+  "contactWebsite": "الموقع الإلكتروني: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 برجك اليومي",
+  "dailyHoroscopeTitle": " برجك اليومي",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

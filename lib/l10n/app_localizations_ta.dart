@@ -402,10 +402,10 @@ class AppLocalizationsTa extends AppLocalizations {
   String get contactUs => 'எங்களை தொடர்பு கொள்ள';
 
   @override
-  String get contactEmail => 'மின்னஞ்சல்: support@yourcompany.com';
+  String get contactEmail => 'மின்னஞ்சல்: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'வலைத்தளம்: www.yourcompany.com';
+  String get contactWebsite => 'வலைத்தளம்: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'வாடிக்கையாளர் ஆதரவு';
@@ -503,7 +503,7 @@ class AppLocalizationsTa extends AppLocalizations {
   String get buyButton => 'வாங்கவும்';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 தினசரி ஜாதகம்';
+  String get dailyHoroscopeTitle => ' தினசரி ஜாதகம்';
 
   @override
   String get userIdMissing => 'பயனர் ஐடி இல்லை.';

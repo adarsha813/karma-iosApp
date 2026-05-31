@@ -1,22 +1,18 @@
 // lib/services/fcm_token_service.dart
 import 'dart:convert';
 import 'dart:io';
-import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
 import 'package:kundali/config/environment.dart';
-import 'dart:async'; // ✅ Add this line
+import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:kundali/services/http_service.dart'; // ✅ Import HttpService
 
 class FCMTokenService {
   static final Logger _logger = Logger();
 
-  // HTTP client with production settings
-  static final http.Client _client = http.Client();
-
-  // Timeout durations
-  static const Duration _connectTimeout = Duration(seconds: 10);
-  static const Duration _receiveTimeout = Duration(seconds: 15);
+  // ✅ Remove HTTP client - HttpService manages its own
+  // ✅ Remove timeout constants - HttpService has its own
 
   // Backward compatibility - keep the old function name for your existing code
   static Future<bool> sendFcmTokenToBackend(
@@ -59,8 +55,6 @@ class FCMTokenService {
       );
     }
 
-    final Uri uri = Uri.parse('${Environment.baseUrl}/api/register-fcm-token');
-
     _logger.i('FCMTokenService: Registering token for user $userId');
 
     try {
@@ -74,9 +68,12 @@ class FCMTokenService {
         'platform': _getPlatform(),
       };
 
-      final response = await _client
-          .post(uri, headers: _buildHeaders(), body: json.encode(requestBody))
-          .timeout(_connectTimeout + _receiveTimeout);
+      // ✅ Use HttpService instead of direct HTTP client
+      final response = await HttpService().post(
+        '${Environment.baseUrl}/api/register-fcm-token',
+        body: requestBody,
+        requiresAuth: true, // This endpoint needs authentication
+      );
 
       _logger.i('FCMTokenService: Response ${response.statusCode}');
 
@@ -107,13 +104,6 @@ class FCMTokenService {
       return FCMTokenResult(
         success: false,
         error: 'No internet connection',
-        statusCode: 0,
-      );
-    } on http.ClientException catch (e) {
-      _logger.e('FCMTokenService: HTTP client error - $e');
-      return FCMTokenResult(
-        success: false,
-        error: 'Failed to connect to server',
         statusCode: 0,
       );
     } on TimeoutException catch (e) {
@@ -153,10 +143,6 @@ class FCMTokenService {
       );
     }
 
-    final Uri uri = Uri.parse(
-      '${Environment.baseUrl}/api/unregister-fcm-token',
-    );
-
     _logger.i('FCMTokenService: Unregistering token for user $userId');
 
     try {
@@ -167,9 +153,12 @@ class FCMTokenService {
         if (token != null) 'token': token,
       };
 
-      final response = await _client
-          .post(uri, headers: _buildHeaders(), body: json.encode(requestBody))
-          .timeout(_connectTimeout + _receiveTimeout);
+      // ✅ Use HttpService instead of direct HTTP client
+      final response = await HttpService().post(
+        '${Environment.baseUrl}/api/unregister-fcm-token',
+        body: requestBody,
+        requiresAuth: true,
+      );
 
       _logger.i('FCMTokenService: Unregister response ${response.statusCode}');
 
@@ -205,6 +194,70 @@ class FCMTokenService {
     }
   }
 
+  /// ✅ NEW: Refresh FCM token endpoint
+  static Future<FCMTokenResult> refreshFCMToken({
+    required String userId,
+    required String oldToken,
+    required String newToken,
+  }) async {
+    _logger.i('FCMTokenService: Refreshing token for user $userId');
+
+    try {
+      final response = await HttpService().post(
+        '${Environment.baseUrl}/api/refresh-fcm-token',
+        body: {
+          'userId': userId,
+          'oldToken': oldToken,
+          'newToken': newToken,
+          'deviceId': await _getDeviceId(),
+          'timestamp': DateTime.now().toIso8601String(),
+        },
+        requiresAuth: true,
+      );
+
+      if (response.statusCode == 200) {
+        _logger.d('FCMTokenService: Token refreshed successfully');
+        await _storeRegistrationTimestamp(userId);
+        return FCMTokenResult(
+          success: true,
+          statusCode: response.statusCode,
+          message: 'FCM token refreshed successfully',
+        );
+      } else {
+        return FCMTokenResult(
+          success: false,
+          error: _handleError(response.statusCode, response.body),
+          statusCode: response.statusCode,
+        );
+      }
+    } catch (e) {
+      _logger.e('FCMTokenService: Error refreshing token - $e');
+      return FCMTokenResult(
+        success: false,
+        error: 'Failed to refresh token',
+        statusCode: 0,
+      );
+    }
+  }
+
+  /// ✅ NEW: Get token status
+  static Future<Map<String, dynamic>> getTokenStatus(String userId) async {
+    try {
+      final response = await HttpService().get(
+        '${Environment.baseUrl}/api/fcm-token-status?userId=$userId',
+        requiresAuth: true,
+      );
+
+      if (response.statusCode == 200) {
+        return jsonDecode(utf8.decode(response.bodyBytes));
+      }
+      return {};
+    } catch (e) {
+      _logger.e('FCMTokenService: Error getting token status - $e');
+      return {};
+    }
+  }
+
   // Enhanced FCM token validation
   static bool _isValidFcmToken(String token) {
     if (token.isEmpty) return false;
@@ -233,14 +286,7 @@ class FCMTokenService {
     return null;
   }
 
-  static Map<String, String> _buildHeaders() {
-    return {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'User-Agent': 'AstroApp/${Environment.appVersion}',
-      ...Environment.securityHeaders,
-    };
-  }
+  // ✅ Remove _buildHeaders - HttpService handles headers
 
   static String _handleError(int statusCode, String body) {
     _logger.d('FCMTokenService: Error response body: $body');
@@ -407,11 +453,8 @@ class FCMTokenService {
     return results;
   }
 
-  // Cleanup method
-  static void dispose() {
-    _client.close();
-    _logger.d('FCMTokenService disposed');
-  }
+  // ✅ Remove dispose method - HttpService manages its own client
+  // HttpService is a singleton, so we don't need to dispose it manually
 }
 
 // Result class for better response handling

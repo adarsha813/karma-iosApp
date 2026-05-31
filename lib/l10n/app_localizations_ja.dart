@@ -392,10 +392,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get contactUs => 'お問い合わせ';
 
   @override
-  String get contactEmail => 'メールアドレス: support@yourcompany.com';
+  String get contactEmail => 'メールアドレス: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'ウェブサイト: www.yourcompany.com';
+  String get contactWebsite => 'ウェブサイト: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'カスタマーサポート';
@@ -491,7 +491,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get buyButton => '買う';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 毎日の星占い';
+  String get dailyHoroscopeTitle => ' 毎日の星占い';
 
   @override
   String get userIdMissing => 'ユーザーIDがありません';

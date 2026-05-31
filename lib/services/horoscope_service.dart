@@ -1,9 +1,11 @@
 // services/horoscope_service.dart
-import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:socket_io_client/socket_io_client.dart' as io;
 import 'package:logger/logger.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'dart:async';
+import 'dart:convert';
 import '../config/environment.dart';
+import 'package:kundali/services/http_service.dart'; // ✅ Import HttpService
 
 /// Production-level horoscope service with enterprise-grade features
 class HoroscopeService {
@@ -23,17 +25,21 @@ class HoroscopeService {
       lineLength: 50,
       colors: true,
       printEmojis: true,
-      printTime: true,
+      dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
     ),
   );
+
+  // HttpService instance
+  final HttpService _httpService = HttpService();
 
   // Dependencies
   final Connectivity _connectivity = Connectivity();
   StreamSubscription<ConnectivityResult>? _connectivitySubscription;
 
   // Socket and state management
-  IO.Socket? _socket;
+  io.Socket? _socket;
   String? _currentUserId;
+  String? _authToken;
 
   // Connection state
   bool _isConnected = false;
@@ -57,10 +63,34 @@ class HoroscopeService {
   bool notificationsEnabled = true;
   DateTime? _lastMessageTime;
 
+  // Cache for horoscope data
+  final Map<String, dynamic> _horoscopeCache = {};
+  static const int _maxCacheSize = 50;
+
   /// Initialize service (called once in constructor)
   void _initializeService() {
     _setupConnectivityMonitoring();
     _logger.i('🚀 HoroscopeService initialized');
+  }
+
+  /// Update auth token (call this when token changes)
+  void updateToken(String newToken) {
+    _authToken = newToken;
+    _logger.d('🔄 Auth token updated');
+
+    // If connected, reconnect with new token
+    if (_isConnected) {
+      _reconnectWithNewToken();
+    }
+  }
+
+  /// Reconnect with new token
+  Future<void> _reconnectWithNewToken() async {
+    if (_currentUserId != null) {
+      _logger.d('🔄 Reconnecting with new token');
+      await dispose();
+      await initSocket(_currentUserId!, _authToken);
+    }
   }
 
   /// Set up connectivity monitoring
@@ -93,7 +123,7 @@ class HoroscopeService {
   }
 
   /// Initialize socket connection with comprehensive error handling
-  Future<void> initSocket(String userId) async {
+  Future<void> initSocket(String userId, [String? token]) async {
     if (_isConnecting) {
       _logger.w('🔄 Socket connection already in progress');
       return;
@@ -102,6 +132,9 @@ class HoroscopeService {
     try {
       _isConnecting = true;
       _currentUserId = userId;
+      if (token != null) {
+        _authToken = token;
+      }
       _updateConnectionState(HoroscopeConnectionState.connecting);
 
       await _validateConnectionPrerequisites(userId);
@@ -124,6 +157,15 @@ class HoroscopeService {
     if (userId.isEmpty) {
       throw HoroscopeError(
         'User ID cannot be empty',
+        HoroscopeErrorType.validation,
+        Severity.high,
+      );
+    }
+
+    // Validate token
+    if (_authToken == null || _authToken!.isEmpty) {
+      throw HoroscopeError(
+        'Auth token is required for socket connection',
         HoroscopeErrorType.validation,
         Severity.high,
       );
@@ -155,19 +197,24 @@ class HoroscopeService {
     _connectionTimeoutTimer?.cancel();
   }
 
-  /// Create and connect new socket
+  /// Create and connect new socket with auth token
   Future<void> _createAndConnectSocket(String userId) async {
-    _logger.d('🔌 Creating new socket connection');
+    _logger.d('🔌 Creating new socket connection with auth');
 
-    _socket = IO.io(
+    // Add auth token to socket connection
+    _socket = io.io(
       Environment.socketUrl,
-      IO.OptionBuilder()
+      io.OptionBuilder()
           .setTransports(['websocket'])
           .setQuery({
             'userId': userId,
             'clientType': 'flutter',
             'version': Environment.appVersion,
             'platform': 'mobile',
+            'token': _authToken, // ✅ Include auth token
+          })
+          .setExtraHeaders({
+            'Authorization': 'Bearer $_authToken', // ✅ Add as header too
           })
           .disableAutoConnect()
           .setTimeout(_connectionTimeout.inMilliseconds)
@@ -202,6 +249,7 @@ class HoroscopeService {
     _socket!.on('horoscope_error', _handleHoroscopeError);
     _socket!.on('connection_ack', _handleConnectionAck);
     _socket!.on('ping', _handlePing);
+    _socket!.on('auth_error', _handleAuthError); // ✅ Add auth error handler
   }
 
   /// Start connection timeout timer
@@ -213,6 +261,43 @@ class HoroscopeService {
         _handleConnectionTimeout();
       }
     });
+  }
+
+  /// Handle authentication error from socket
+  void _handleAuthError(dynamic data) {
+    _logger.e('🔒 Socket auth error: $data');
+
+    final error = HoroscopeError(
+      'Authentication failed: $data',
+      HoroscopeErrorType.auth,
+      Severity.high,
+    );
+    _notifyErrorListeners(error);
+
+    // Trigger token refresh via HttpService
+    _refreshTokenAndReconnect();
+  }
+
+  /// Refresh token and reconnect
+  Future<void> _refreshTokenAndReconnect() async {
+    try {
+      // You might need to access ProfileProvider here
+      // This is a placeholder - implement based on your architecture
+      _logger.i('🔄 Attempting to refresh token...');
+
+      // Disconnect current socket
+      await _cleanupExistingConnection();
+
+      // Wait a bit before reconnecting
+      await Future.delayed(const Duration(seconds: 1));
+
+      // Reconnect - the HttpService will handle token refresh in HTTP calls
+      if (_currentUserId != null) {
+        await initSocket(_currentUserId!, _authToken);
+      }
+    } catch (e) {
+      _logger.e('❌ Failed to refresh token: $e');
+    }
   }
 
   /// Handle successful socket connection
@@ -249,12 +334,17 @@ class HoroscopeService {
     _logger.e('❌ Socket connection error: $data');
     _updateConnectionState(HoroscopeConnectionState.error);
 
-    final error = HoroscopeError(
-      'Socket connection failed: $data',
-      HoroscopeErrorType.connection,
-      Severity.high,
-    );
-    _notifyErrorListeners(error);
+    // Check if it's an auth error
+    if (data.toString().contains('auth') || data.toString().contains('401')) {
+      _handleAuthError(data);
+    } else {
+      final error = HoroscopeError(
+        'Socket connection failed: $data',
+        HoroscopeErrorType.connection,
+        Severity.high,
+      );
+      _notifyErrorListeners(error);
+    }
 
     _logAnalyticsEvent('socket_connection_error', {
       'user_id': _currentUserId,
@@ -378,6 +468,9 @@ class HoroscopeService {
       // Validate required fields
       _validateHoroscopeData(horoscopeData);
 
+      // Cache the horoscope
+      _cacheHoroscope(horoscopeData);
+
       _logger.i('📨 Received new horoscope: ${horoscopeData['_id']}');
 
       // Notify all listeners
@@ -401,6 +494,25 @@ class HoroscopeService {
         _notifyErrorListeners(error);
       }
     }
+  }
+
+  /// Cache horoscope data
+  void _cacheHoroscope(Map<String, dynamic> horoscope) {
+    final id = horoscope['_id'];
+    if (id != null) {
+      _horoscopeCache[id] = horoscope;
+
+      // Limit cache size
+      if (_horoscopeCache.length > _maxCacheSize) {
+        final oldestKey = _horoscopeCache.keys.first;
+        _horoscopeCache.remove(oldestKey);
+      }
+    }
+  }
+
+  /// Get cached horoscope by ID
+  Map<String, dynamic>? getCachedHoroscope(String id) {
+    return _horoscopeCache[id];
   }
 
   /// Validate horoscope data structure
@@ -467,6 +579,77 @@ class HoroscopeService {
       'error': error.toString(),
       'user_id': _currentUserId,
     });
+  }
+
+  // ✅ NEW: HTTP Methods using HttpService
+
+  /// Fetch horoscope history using HTTP
+  Future<List<Map<String, dynamic>>> fetchHoroscopeHistory({
+    int page = 1,
+    int limit = 20,
+  }) async {
+    try {
+      final response = await _httpService.get(
+        '${Environment.baseUrl}/horoscope/history?userId=$_currentUserId&page=$page&limit=$limit',
+        requiresAuth: true,
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(utf8.decode(response.bodyBytes));
+        final List<dynamic> horoscopes = data['data'] ?? data;
+
+        // Cache fetched horoscopes
+        for (final h in horoscopes) {
+          _cacheHoroscope(h as Map<String, dynamic>);
+        }
+
+        return horoscopes.cast<Map<String, dynamic>>();
+      } else {
+        throw HoroscopeError(
+          'Failed to fetch horoscope history: ${response.statusCode}',
+          HoroscopeErrorType.server,
+          Severity.medium,
+        );
+      }
+    } catch (e) {
+      _logger.e('Error fetching horoscope history: $e');
+      rethrow;
+    }
+  }
+
+  /// Mark horoscope as read
+  Future<bool> markHoroscopeAsRead(String horoscopeId) async {
+    try {
+      final response = await _httpService.post(
+        '${Environment.baseUrl}/horoscope/mark-read',
+        body: {'userId': _currentUserId, 'horoscopeId': horoscopeId},
+        requiresAuth: true,
+      );
+
+      return response.statusCode == 200;
+    } catch (e) {
+      _logger.e('Error marking horoscope as read: $e');
+      return false;
+    }
+  }
+
+  /// Get unread count
+  Future<int> getUnreadCount() async {
+    try {
+      final response = await _httpService.get(
+        '${Environment.baseUrl}/horoscope/unread-count?userId=$_currentUserId',
+        requiresAuth: true,
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(utf8.decode(response.bodyBytes));
+        return data['count'] ?? 0;
+      }
+      return 0;
+    } catch (e) {
+      _logger.e('Error getting unread count: $e');
+      return 0;
+    }
   }
 
   // Public API Methods
@@ -582,7 +765,7 @@ class HoroscopeService {
   Future<void> reconnect() async {
     if (_currentUserId != null && !_isConnected && !_isConnecting) {
       _logger.i('🔄 Manual reconnection triggered');
-      await initSocket(_currentUserId!);
+      await initSocket(_currentUserId!, _authToken);
     }
   }
 
@@ -621,7 +804,7 @@ class HoroscopeService {
   }
 
   /// Clean up all resources
-  void dispose() {
+  Future<void> dispose() async {
     _logger.i('🧹 Disposing HoroscopeService');
 
     // Clear listeners
@@ -630,7 +813,7 @@ class HoroscopeService {
     _errorListeners.clear();
 
     // Cancel connectivity subscription
-    _connectivitySubscription?.cancel();
+    await _connectivitySubscription?.cancel();
 
     // Cancel timeout timer
     _connectionTimeoutTimer?.cancel();
@@ -642,11 +825,15 @@ class HoroscopeService {
       _socket = null;
     }
 
+    // Clear cache
+    _horoscopeCache.clear();
+
     // Reset state
     _isConnected = false;
     _isConnecting = false;
     _isInitialized = false;
     _currentUserId = null;
+    _authToken = null;
     _reconnectAttempts = 0;
 
     _logger.i('✅ HoroscopeService disposed');
@@ -688,6 +875,7 @@ enum HoroscopeErrorType {
   processing,
   server,
   initialization,
+  auth, // ✅ Added auth error type
   unknown,
 }
 

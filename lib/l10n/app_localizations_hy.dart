@@ -400,10 +400,10 @@ class AppLocalizationsHy extends AppLocalizations {
   String get contactUs => 'Կապ մեզ հետ';
 
   @override
-  String get contactEmail => 'Էլ․ հասցե՝ support@yourcompany.com';
+  String get contactEmail => 'Էլ․ հասցե՝ care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Կայք՝ www.yourcompany.com';
+  String get contactWebsite => 'Կայք՝ www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Հաճախորդների աջակցություն';
@@ -499,7 +499,7 @@ class AppLocalizationsHy extends AppLocalizations {
   String get buyButton => 'Գնել';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Օրական հորոսկոպ';
+  String get dailyHoroscopeTitle => ' Օրական հորոսկոպ';
 
   @override
   String get userIdMissing => 'Օգտատիրոջ ID-ն բացակայում է';

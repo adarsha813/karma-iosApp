@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "អ៊ីមែល៖ support@yourcompany.com",
+  "contactEmail": "អ៊ីមែល៖ care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "គេហទំព័រ៖ www.yourcompany.com",
+  "contactWebsite": "គេហទំព័រ៖ www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 ហោរាសាស្ត្រប្រចាំថ្ងៃ",
+  "dailyHoroscopeTitle": " ហោរាសាស្ត្រប្រចាំថ្ងៃ",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

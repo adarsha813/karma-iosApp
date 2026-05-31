@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "အီးမေးလ်- support@yourcompany.com",
+  "contactEmail": "အီးမေးလ်- care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "ဝဘ်ဆိုဒ်- www.yourcompany.com",
+  "contactWebsite": "ဝဘ်ဆိုဒ်- www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 နေ့စဉ် Horoscope",
+  "dailyHoroscopeTitle": " နေ့စဉ် Horoscope",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

@@ -174,7 +174,7 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "El. paštas: support@yourcompany.com",
+  "contactEmail": "El. paštas: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Dienos horoskopas",
+  "dailyHoroscopeTitle": " Dienos horoskopas",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

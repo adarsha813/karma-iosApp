@@ -174,7 +174,7 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "Email: support@yourcompany.com",
+  "contactEmail": "Email: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Falnameya Rojane",
+  "dailyHoroscopeTitle": " Falnameya Rojane",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

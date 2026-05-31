@@ -402,7 +402,7 @@ class AppLocalizationsCy extends AppLocalizations {
   String get contactUs => 'Cysylltwch â Ni';
 
   @override
-  String get contactEmail => 'E-bost: support@yourcompany.com';
+  String get contactEmail => 'E-bost: care@karmalifepath.com';
 
   @override
   String get contactWebsite => 'Gwefan: www.eichcwmni.com';
@@ -502,7 +502,7 @@ class AppLocalizationsCy extends AppLocalizations {
   String get buyButton => 'Prynu';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horoscope Dyddiol';
+  String get dailyHoroscopeTitle => ' Horoscope Dyddiol';
 
   @override
   String get userIdMissing => 'Mae ID defnyddiwr ar goll';

@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import '../utils/app_logger.dart';
 
 class AnalyticsService {
   static final AnalyticsService _instance = AnalyticsService._internal();
@@ -6,7 +6,7 @@ class AnalyticsService {
   AnalyticsService._internal();
 
   void logEvent(String eventName, Map<String, dynamic> parameters) {
-    debugPrint('📊 ANALYTICS: $eventName - $parameters');
+    AppLogger.info('📊 ANALYTICS: $eventName - $parameters');
   }
 
   void logPaymentInitiated(int questions, double amount) {

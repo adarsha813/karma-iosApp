@@ -398,10 +398,10 @@ class AppLocalizationsAz extends AppLocalizations {
   String get contactUs => 'Bizimlə əlaqə saxlayın';
 
   @override
-  String get contactEmail => 'E-poçt: support@yourcompany.com';
+  String get contactEmail => 'E-poçt: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Veb sayt: www.yourcompany.com';
+  String get contactWebsite => 'Veb sayt: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Müştəri dəstəyi';
@@ -497,7 +497,7 @@ class AppLocalizationsAz extends AppLocalizations {
   String get buyButton => 'al';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Gündəlik Bürclər';
+  String get dailyHoroscopeTitle => ' Gündəlik Bürclər';
 
   @override
   String get userIdMissing => 'İstifadəçi ID-si yoxdur';

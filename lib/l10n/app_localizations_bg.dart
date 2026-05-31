@@ -400,10 +400,10 @@ class AppLocalizationsBg extends AppLocalizations {
   String get contactUs => 'Свържете се с нас';
 
   @override
-  String get contactEmail => 'Имейл: support@yourcompany.com';
+  String get contactEmail => 'Имейл: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Уебсайт: www.yourcompany.com';
+  String get contactWebsite => 'Уебсайт: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Поддръжка на клиенти';
@@ -500,7 +500,7 @@ class AppLocalizationsBg extends AppLocalizations {
   String get buyButton => 'Купете';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Дневен хороскоп';
+  String get dailyHoroscopeTitle => ' Дневен хороскоп';
 
   @override
   String get userIdMissing => 'Липсва потребителски идентификатор';

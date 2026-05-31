@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "Post-d: support@yourcompany.com",
+  "contactEmail": "Post-d: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "Làrach-lìn: www.yourcompany.com",
+  "contactWebsite": "Làrach-lìn: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Horoscope Làitheil",
+  "dailyHoroscopeTitle": " Horoscope Làitheil",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

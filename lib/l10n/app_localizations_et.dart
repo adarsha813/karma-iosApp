@@ -398,10 +398,10 @@ class AppLocalizationsEt extends AppLocalizations {
   String get contactUs => 'Võta meiega ühendust';
 
   @override
-  String get contactEmail => 'Meiliaadress: support@yourcompany.com';
+  String get contactEmail => 'Meiliaadress: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Veebisait: www.yourcompany.com';
+  String get contactWebsite => 'Veebisait: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Klienditugi';
@@ -497,7 +497,7 @@ class AppLocalizationsEt extends AppLocalizations {
   String get buyButton => 'Osta';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Päevahoroskoop';
+  String get dailyHoroscopeTitle => ' Päevahoroskoop';
 
   @override
   String get userIdMissing => 'Kasutaja ID puudub';

@@ -31,9 +31,7 @@ class ErrorReportingService {
       _logger.w('Extra info: $extra');
     }
 
-    if (!kDebugMode) {
-      // TODO: send to Sentry/Crashlytics
-    }
+    if (!kDebugMode) {}
   }
 
   static void recordFlutterError(FlutterErrorDetails details) {

@@ -3,16 +3,23 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import '../models/message.dart';
 import 'package:web_socket_channel/io.dart';
+import '../config/environment.dart';
+import 'package:kundali/services/http_service.dart';
+import '../services/message_cache_service.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import '../utils/app_logger.dart';
 
 class SecureChatService with ChangeNotifier {
   final List<Message> _messages = [];
   String? _currentUserId;
   final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
-
+  final Connectivity _connectivity = Connectivity();
+  bool _isOnline = true;
   // WebSocket
-  IOWebSocketChannel? _channel; // ✅ use IOWebSocketChannel
+  IOWebSocketChannel? _channel;
   StreamSubscription? _channelSub;
   bool _connected = false;
+  bool get isOnline => _isOnline;
 
   // Security & Production fields
   String _authToken;
@@ -25,15 +32,174 @@ class SecureChatService with ChangeNotifier {
   static const Duration _reconnectDelay = Duration(seconds: 3);
   static const Duration _animationDuration = Duration(milliseconds: 300);
 
+  // Cache service
+  final MessageCacheService _cacheService = MessageCacheService();
+  bool _isOffline = false;
+  bool _isSyncing = false;
+
+  // Callbacks for UI
+  Function(bool isOffline)? onOfflineStatusChanged;
+  Function(int pendingCount)? onPendingMessagesChanged;
+
   String? get currentUserId => _currentUserId;
   List<Message> get messages => List.unmodifiable(_messages);
   bool get isConnected => _connected;
+  bool get isOffline => _isOffline;
 
-  SecureChatService(this._authToken);
+  SecureChatService(this._authToken) {
+    _initConnectivityMonitoring();
+  }
+  void _initConnectivityMonitoring() {
+    _connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
+      final wasOnline = _isOnline;
+      _isOnline = result != ConnectivityResult.none;
+
+      if (!wasOnline && _isOnline) {
+        _handleComingOnline();
+      }
+
+      if (_isOnline != wasOnline) {
+        onOfflineStatusChanged?.call(!_isOnline);
+      }
+    });
+
+    _checkInitialConnectivity();
+  }
+
+  Future<void> _checkInitialConnectivity() async {
+    final results = await _connectivity.checkConnectivity();
+    _isOnline = results != ConnectivityResult.none;
+    onOfflineStatusChanged?.call(!_isOnline);
+  }
+
+  Future<void> _handleComingOnline() async {
+    // Sync pending messages first
+    await syncPendingMessages();
+
+    // Notify listeners to refresh UI with server data
+    notifyListeners();
+  }
+
+  // Add method to force refresh from server
+  Future<void> refreshFromServer(String userId) async {
+    if (!_isOnline) {
+      return;
+    }
+
+    try {
+      final httpService = HttpService();
+      final response = await httpService
+          .get(
+            '${Environment.baseUrl}/messages/user/$userId',
+            requiresAuth: true,
+          )
+          .timeout(const Duration(seconds: 10));
+
+      if (response.statusCode == 200) {
+        final List<dynamic> data = json.decode(response.body);
+        final List<Message> serverMessages = [];
+
+        for (var item in data) {
+          serverMessages.add(Message.fromJson(item));
+        }
+
+        // Update messages with server data
+        setMessages(serverMessages, forceClearCache: true);
+      }
+    } catch (e) {
+      AppLogger.error('❌ Failed to refresh from server: $e');
+    }
+  }
+
+  // Initialize with cache
+  // In SecureChatService class
+  Future<void> initializeWithCache() async {
+    await _cacheService.init();
+
+    // Load cached messages first (instant display)
+    if (await _cacheService.hasCachedMessages()) {
+      final cachedMessages =
+          await _cacheService.loadMessages(); // This now returns oldest first
+      _messages.clear(); // Clear any existing
+      _messages.addAll(cachedMessages);
+      notifyListeners();
+
+      // Scroll to bottom after loading (show most recent)
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        // You'll need to expose a way to scroll to bottom
+        // Or handle this in your ChatScreen
+      });
+    }
+
+    // Check for pending messages
+    final pendingCount = (await _cacheService.getPendingMessages()).length;
+    if (pendingCount > 0) {
+      _isOffline = true;
+      onOfflineStatusChanged?.call(true);
+      onPendingMessagesChanged?.call(pendingCount);
+    }
+  }
 
   // Update token dynamically
   void updateToken(String newToken) {
     _authToken = newToken;
+    if (_connected) {
+      _reconnectWithNewToken();
+    }
+  }
+
+  void updateMessagesWithDiff(List<Message> oldList, List<Message> newList) {
+    final stopwatch = Stopwatch()..start();
+
+    final oldMap = {for (var m in oldList) m.id: m};
+    final newMap = {for (var m in newList) m.id: m};
+
+    // 1. Remove messages that are no longer present
+    final toRemove =
+        oldMap.keys.where((id) => !newMap.containsKey(id)).toList();
+    for (var id in toRemove) {
+      final index = _messages.indexWhere((m) => m.id == id);
+      if (index != -1) {
+        _messages.removeAt(index);
+      }
+    }
+
+    // 2. Add new messages and update existing ones
+    for (var newMsg in newList) {
+      final existingIndex = _messages.indexWhere((m) => m.id == newMsg.id);
+      if (existingIndex != -1) {
+        _messages[existingIndex] = newMsg;
+      } else {
+        _messages.add(newMsg);
+      }
+    }
+
+    // 3. Resort by date (oldest first)
+    _messages.sort(
+      (a, b) => _getMessageDateTime(a).compareTo(_getMessageDateTime(b)),
+    );
+
+    // 4. Notify listeners
+    notifyListeners();
+
+    stopwatch.stop();
+  }
+
+  DateTime _getMessageDateTime(Message m) =>
+      m.createdAt ?? m.answeredAt ?? m.clarificatedAt ?? DateTime(0);
+
+  Future<void> replaceCache(List<Message> messages) async {
+    await _cacheService.clearCache();
+    await _cacheService.saveMessages(messages);
+  }
+
+  /// Reconnect with new token
+  Future<void> _reconnectWithNewToken() async {
+    if (_lastUrl != null && _currentUserId != null) {
+      disconnectWebSocket();
+      await Future.delayed(const Duration(milliseconds: 500));
+      connectWebSocket(_lastUrl!, _currentUserId!);
+    }
   }
 
   /// Set current user id
@@ -48,7 +214,6 @@ class SecureChatService with ChangeNotifier {
   void connectWebSocket(String url, String userId) {
     _lastUrl = url;
 
-    // Validate URL
     if (!_isValidWebSocketUrl(url)) {
       _handleError('Invalid WebSocket URL');
       return;
@@ -61,7 +226,6 @@ class SecureChatService with ChangeNotifier {
         'X-Client-Version': '1.0.0',
       };
 
-      // New
       _channel = IOWebSocketChannel.connect(
         Uri.parse(url),
         protocols: ['chat-v1'],
@@ -83,7 +247,6 @@ class SecureChatService with ChangeNotifier {
         cancelOnError: true,
       );
 
-      debugPrint('WebSocket connected securely');
       notifyListeners();
     } catch (e) {
       _handleError('Connection failed: $e');
@@ -91,7 +254,6 @@ class SecureChatService with ChangeNotifier {
     }
   }
 
-  /// Validate WebSocket URL
   bool _isValidWebSocketUrl(String url) {
     try {
       final uri = Uri.parse(url);
@@ -101,239 +263,351 @@ class SecureChatService with ChangeNotifier {
     }
   }
 
-  /// Secure message sending with validation
-  void sendMessage(Message message) {
-    // Validate message before sending
+  /// Secure message sending with cache integration
+  Future<void> sendMessage(Message message) async {
     if (!_isValidMessage(message)) {
       _handleError('Invalid message format');
       return;
     }
 
-    // Add temporary message
     final tempMessage = Message(
       id: message.id,
-      mongoId: null,
       text: _sanitizeText(message.text),
       isMe: true,
       isSending: true,
-      createdAt: DateTime.now(), // ✅ correct
+      createdAt: DateTime.now(),
     );
 
     addMessage(tempMessage);
+    await _cacheService.saveMessage(tempMessage);
 
-    // Send to backend via WebSocket
-    if (_connected && _channel != null) {
-      try {
+    final isOnline = await _checkConnectivity();
+
+    if (!isOnline) {
+      await _cacheService.storePendingMessage(tempMessage);
+      _isOffline = true;
+      onOfflineStatusChanged?.call(true);
+
+      // Update message status to show it's pending
+      final index = _messages.indexWhere((m) => m.id == tempMessage.id);
+      if (index != -1) {
+        _messages[index] = tempMessage.copyWith(
+          hasFailed: true,
+          isSending: false,
+        );
+        notifyListeners();
+      }
+      return;
+    }
+
+    try {
+      if (_connected && _channel != null) {
         final payload = _createSecurePayload(tempMessage);
         _channel!.sink.add(jsonEncode(payload));
-      } catch (e) {
-        _handleError('Failed to send message: $e');
-        // Mark message as failed
-        _updateMessageStatus(tempMessage.id!, false);
+        await _sendViaHttpBackup(tempMessage);
+        await _cacheService.removePendingMessage(tempMessage.id!);
+      } else {
+        throw Exception('Not connected');
       }
-    } else {
-      _handleError('Not connected to server');
-      _updateMessageStatus(tempMessage.id!, false);
+    } catch (e) {
+      await _cacheService.storePendingMessage(tempMessage);
+      _isOffline = true;
+      onOfflineStatusChanged?.call(true);
+
+      final index = _messages.indexWhere((m) => m.id == tempMessage.id);
+      if (index != -1) {
+        _messages[index] = tempMessage.copyWith(
+          hasFailed: true,
+          isSending: false,
+        );
+        notifyListeners();
+      }
     }
   }
 
-  /// Validate message before sending
+  /// Sync pending messages when back online
+  Future<void> syncPendingMessages() async {
+    if (_isSyncing) return;
+
+    final pendingMessages = await _cacheService.getPendingMessages();
+    if (pendingMessages.isEmpty) {
+      if (_isOffline) {
+        _isOffline = false;
+        onOfflineStatusChanged?.call(false);
+      }
+      return;
+    }
+
+    final isOnline = await _checkConnectivity();
+    if (!isOnline) return;
+
+    _isSyncing = true;
+
+    int syncedCount = 0;
+    AppLogger.info('Synced messages: $syncedCount', feature: 'SYNC');
+    for (final pending in pendingMessages) {
+      try {
+        final message = Message(
+          id: pending['id'],
+          text: pending['text'],
+          isMe: true,
+          createdAt: DateTime.parse(pending['timestamp']),
+        );
+
+        if (_connected && _channel != null) {
+          final payload = _createSecurePayload(message);
+          _channel!.sink.add(jsonEncode(payload));
+          await _cacheService.removePendingMessage(message.id!);
+
+          // Update UI to show success
+          final index = _messages.indexWhere((m) => m.id == message.id);
+          if (index != -1) {
+            _messages[index] = _messages[index].copyWith(hasFailed: false);
+            notifyListeners();
+          }
+          syncedCount++;
+        }
+      } catch (e) {
+        AppLogger.error('Failed to sync message: $e');
+      }
+    }
+
+    _isSyncing = false;
+
+    final remaining = await _cacheService.getPendingMessages();
+    if (remaining.isEmpty) {
+      _isOffline = false;
+      onOfflineStatusChanged?.call(false);
+    }
+  }
+
+  /// Connectivity check
+  Future<bool> _checkConnectivity() async {
+    try {
+      final httpService = HttpService();
+      final response = await httpService
+          .get('${Environment.baseUrl}/health', requiresAuth: false)
+          .timeout(const Duration(seconds: 3));
+      return response.statusCode == 200;
+    } catch (e) {
+      return false;
+    }
+  }
+  /*
+  Future<bool> _ensureValidToken() async {
+    if (_authToken.isEmpty) return false;
+    try {
+      final parts = _authToken.split('.');
+      if (parts.length == 3) {
+        final payload = jsonDecode(
+          utf8.decode(base64.decode(base64.normalize(parts[1]))),
+        );
+        final exp = payload['exp'] as int?;
+        if (exp != null) {
+          final expiryTime = DateTime.fromMillisecondsSinceEpoch(exp * 1000);
+          if (DateTime.now().isAfter(expiryTime)) {
+            return false;
+          }
+        }
+      }
+    } catch (e) {
+      // Token validation error
+    }
+    return true;
+  }
+  */
+
+  Future<void> _sendViaHttpBackup(Message message) async {
+    try {
+      final httpService = HttpService();
+      await httpService.post(
+        '${Environment.baseUrl}/messages/send',
+        body: message.toJson(),
+        requiresAuth: true,
+      );
+    } catch (e) {
+      // Backup failed - ignore
+    }
+  }
+
   bool _isValidMessage(Message message) {
     if (message.text.isEmpty || message.text.length > _maxMessageLength) {
       return false;
     }
-
-    // Check for potentially dangerous content
     if (_containsMaliciousContent(message.text)) {
       return false;
     }
-
     return message.id != null && message.id!.isNotEmpty;
   }
 
-  /// Sanitize message text
   String _sanitizeText(String text) {
-    // Remove excessive whitespace
     var sanitized = text.trim().replaceAll(RegExp(r'\s+'), ' ');
-
-    // Basic XSS prevention (expand based on your needs)
     sanitized = sanitized
         .replaceAll('<', '&lt;')
         .replaceAll('>', '&gt;')
         .replaceAll('"', '&quot;')
         .replaceAll("'", '&#x27;');
-
     return sanitized;
   }
 
-  /// Check for potentially malicious content
   bool _containsMaliciousContent(String text) {
     final maliciousPatterns = [
       RegExp(r'<script.*?>', caseSensitive: false),
       RegExp(r'javascript:', caseSensitive: false),
       RegExp(r'on\w+\s*=', caseSensitive: false),
-      // Add more patterns based on your security requirements
     ];
-
     return maliciousPatterns.any((pattern) => pattern.hasMatch(text));
   }
 
-  /// Create secure payload with additional metadata
   Map<String, dynamic> _createSecurePayload(Message message) {
     return {
       ...message.toJson(),
       'client_timestamp': DateTime.now().toIso8601String(),
-      'auth_token': _authToken, // Consider if this is needed
+      'auth_token': _authToken,
       'user_id': _currentUserId,
     };
   }
 
-  /// Secure message handling with validation
   void _handleIncomingData(dynamic data) {
     try {
-      // Validate data type and size
       if (data is! String || data.length > _maxMessageLength * 2) {
         throw FormatException('Invalid message data');
       }
-
       final Map<String, dynamic> payload = jsonDecode(data);
-
-      // Validate payload structure
       if (!_isValidPayload(payload)) {
         throw FormatException('Invalid message payload');
       }
-
       _handleIncomingMessage(payload);
     } catch (e) {
-      debugPrint('Security: Invalid message received - $e');
-      // Consider disconnecting malicious clients after multiple failures
       _handleSecurityViolation('Invalid message format');
     }
   }
 
-  /// Validate incoming payload structure
   bool _isValidPayload(Map<String, dynamic> payload) {
-    // Required fields
     if (payload['text'] == null || payload['text'] is! String) {
       return false;
     }
-
-    // Validate text content
     final text = payload['text'] as String;
     if (text.isEmpty || text.length > _maxMessageLength) {
       return false;
     }
-
-    // Check for malicious content
     if (_containsMaliciousContent(text)) {
       return false;
     }
-
     return true;
   }
 
-  /// Handle security violations
   void _handleSecurityViolation(String reason) {
-    debugPrint('Security violation: $reason');
-    // Implement security measures like:
-    // - Temporary blocking
-    // - Reporting to backend
-    // - Forced reconnection
+    // Log security violation
   }
 
-  /// Handle incoming message with security checks
   void _handleIncomingMessage(Map<String, dynamic> json) {
     try {
       final incomingMsg = Message.fromJson(json);
 
-      // Additional server-side validation
       if (!_isValidMessage(incomingMsg)) {
         throw FormatException('Invalid message from server');
       }
 
-      // If we have a temporary message with same client id, replace it
+      // Save to cache
+      _cacheService.saveMessage(incomingMsg);
+
+      // Remove from pending if exists
+      if (incomingMsg.id != null) {
+        _cacheService.removePendingMessage(incomingMsg.id!);
+      }
+
+      // Replace temporary message if exists
       if (incomingMsg.id != null) {
         final tempIndex = _messages.indexWhere(
           (m) => m.id == incomingMsg.id && m.isSending,
         );
         if (tempIndex != -1) {
           _messages[tempIndex] = incomingMsg;
+          _cacheService.updateMessage(incomingMsg);
           notifyListeners();
           return;
         }
       }
 
-      // Otherwise, add normally
       addMessage(incomingMsg);
     } catch (e) {
-      debugPrint('Failed to process incoming message: $e');
+      AppLogger.error('Failed to process incoming message: $e');
     }
   }
 
   void refreshToken(String newToken) {
     _authToken = newToken;
     if (_connected) {
-      disconnectWebSocket();
-      if (_lastUrl != null && _currentUserId != null) {
-        connectWebSocket(_lastUrl!, _currentUserId!);
-      }
+      _reconnectWithNewToken();
     }
   }
 
-  /// Enhanced message addition with limits
+  // Add this method to SecureChatService class
+  Future<void> saveMessageToCache(Message message) async {
+    await _cacheService.saveMessage(message);
+  }
+
+  // In SecureChatService - ensure messages are added in correct order
+  // In SecureChatService - Update addMessage
   void addMessage(Message message) {
-    _messages.insert(0, message);
+    // Add to local list
+    _messages.add(message);
 
-    // Enforce message limit for memory management
+    // ✅ CRITICAL: Save to cache immediately
+    _cacheService.saveMessage(message);
+
+    // Enforce message limit
     if (_messages.length > _maxMessages) {
-      // You might want to persist old messages or notify about removal
-      debugPrint('Message limit reached, removed oldest message');
+      final removed = _messages.removeAt(0);
+      if (removed.id != null) {
+        _cacheService.removeMessage(removed.id!);
+      } else {
+        // Use safeId or just skip – but this should not happen for real messages
+        _cacheService.removeMessage(removed.safeId);
+      }
     }
-
-    listKey.currentState?.insertItem(0, duration: _animationDuration);
+    // Insert at the end of the animated list
+    listKey.currentState?.insertItem(
+      _messages.length - 1,
+      duration: _animationDuration,
+    );
     notifyListeners();
   }
 
-  /// Auto-reconnect implementation
   void _scheduleReconnect() {
     if (_reconnectAttempts >= _maxReconnectAttempts) {
-      debugPrint('Max reconnection attempts reached');
       return;
     }
-
     _reconnectTimer = Timer(_reconnectDelay, () {
       if (!_connected && _lastUrl != null && _currentUserId != null) {
         _reconnectAttempts++;
-        debugPrint(
-          'Attempting to reconnect... ($_reconnectAttempts/$_maxReconnectAttempts)',
-        );
         connectWebSocket(_lastUrl!, _currentUserId!);
       }
     });
   }
 
-  /// Enhanced error handling
   void _handleWebSocketError(dynamic error) {
-    debugPrint('WebSocket error: $error');
     _connected = false;
     _scheduleReconnect();
     notifyListeners();
   }
 
   void _handleWebSocketDone() {
-    debugPrint('WebSocket disconnected');
     _connected = false;
     _scheduleReconnect();
     notifyListeners();
   }
 
   void _handleError(String message) {
-    debugPrint('ChatService Error: $message');
-    // You could add error state management here
+    // Handle error
   }
-
-  /// Update message status (success/failure)
-  void _updateMessageStatus(String messageId, bool success) {
+  /*
+  void _updateMessageStatus(
+    String messageId,
+    bool success, {
+    bool isOffline = false,
+  }) {
     final index = _messages.indexWhere((m) => m.id == messageId);
     if (index != -1) {
       final oldMsg = _messages[index];
@@ -341,34 +615,16 @@ class SecureChatService with ChangeNotifier {
       notifyListeners();
     }
   }
-
-  /// Secure cleanup
-  @override
-  void dispose() {
-    _channelSub?.cancel();
-    _channel?.sink.close();
-    _reconnectTimer?.cancel();
-    super.dispose();
-  }
-
-  // ... rest of your existing methods (removeMessageById, setMessages, etc.)
-  // Keep all your existing methods but they'll now benefit from the security foundation
-
-  /// Remove message by client or mongo ID
-  /// Remove message by client or mongo ID - ENHANCED VERSION
+*/
   void removeMessageById(String id) {
-    debugPrint('🔄 SecureChatService.removeMessageById called for: $id');
-
     final index = _messages.indexWhere((m) => m.id == id || m.mongoId == id);
-    if (index == -1) {
-      debugPrint('❌ Message not found for removal: $id');
-      return;
-    }
+    if (index == -1) return;
 
-    final removedMsg = _messages.removeAt(index);
-    debugPrint('✅ Removed message: ${removedMsg.text}');
+    _messages.removeAt(index);
 
-    // Use try-catch for the animated list removal
+    // Also remove from cache
+    _cacheService.removeMessage(id);
+
     try {
       listKey.currentState?.removeItem(
         index,
@@ -383,7 +639,9 @@ class SecureChatService with ChangeNotifier {
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
-              removedMsg.text,
+              _messages.isNotEmpty && index < _messages.length
+                  ? _messages[index].text
+                  : '',
               style: const TextStyle(color: Colors.black),
             ),
           ),
@@ -391,29 +649,45 @@ class SecureChatService with ChangeNotifier {
         duration: const Duration(milliseconds: 300),
       );
     } catch (e) {
-      debugPrint('❌ Error in animated list removal: $e');
-      // Still notify listeners even if animation fails
+      // Animation error - ignore
     }
-
     notifyListeners();
-    debugPrint('📢 Notified listeners after message removal');
   }
 
-  /// Replace current messages with a new list
-  void setMessages(List<Message> newMessages) {
+  // In your SecureChatService, modify setMessages to not clear if not needed:
+
+  void setMessages(List<Message> newMessages, {bool forceClearCache = true}) {
+    // ✅ FIX: Don't clear if newMessages is empty
+    if (newMessages.isEmpty) {
+      return; // ← ADD THIS EARLY RETURN
+    }
+
     clearMessages(immediate: true);
+
+    // Only save to cache if we have messages AND forceClearCache is true
+    if (forceClearCache && newMessages.isNotEmpty) {
+      _cacheService.saveMessages(newMessages);
+    }
 
     final reversedMessages = newMessages.reversed.toList();
     for (var i = 0; i < reversedMessages.length; i++) {
       _messages.add(reversedMessages[i]);
       listKey.currentState?.insertItem(i, duration: Duration.zero);
     }
-
     notifyListeners();
   }
 
-  /// Clear all messages
-  void clearMessages({bool immediate = false}) {
+  // Add this method to your SecureChatService class
+  Future<bool> hasCachedMessages() async {
+    return await _cacheService.hasCachedMessages();
+  }
+
+  void clearMessages({bool immediate = false, bool clearCache = true}) {
+    if (clearCache) {
+      _cacheService.clearCache();
+      _cacheService.clearPendingMessages();
+    }
+
     final length = _messages.length;
     for (var i = length - 1; i >= 0; i--) {
       listKey.currentState?.removeItem(
@@ -429,7 +703,6 @@ class SecureChatService with ChangeNotifier {
     notifyListeners();
   }
 
-  /// Update rating & feedback for user messages
   void updateMessageRating(String messageId, int rating, String? feedback) {
     final index = _messages.indexWhere(
       (m) => (m.id == messageId || m.mongoId == messageId) && !m.isMe,
@@ -437,11 +710,16 @@ class SecureChatService with ChangeNotifier {
     if (index == -1) return;
 
     final oldMsg = _messages[index];
-    _messages[index] = oldMsg.copyWith(rating: rating, feedback: feedback);
+    final updatedMsg = oldMsg.copyWith(rating: rating, feedback: feedback);
+    _messages[index] = updatedMsg;
+
+    // Update in cache
+    _cacheService.updateMessage(updatedMsg);
+
     notifyListeners();
+    _syncRatingToBackend(messageId, rating, feedback);
   }
 
-  /// Update rating & feedback for advice messages
   void updateAdviceRating(String adviceId, int rating, String? feedback) {
     final index = _messages.indexWhere(
       (m) => (m.id == adviceId || m.mongoId == adviceId) && m.isAdvice,
@@ -449,11 +727,33 @@ class SecureChatService with ChangeNotifier {
     if (index == -1) return;
 
     final oldMsg = _messages[index];
-    _messages[index] = oldMsg.copyWith(rating: rating, feedback: feedback);
+    final updatedMsg = oldMsg.copyWith(rating: rating, feedback: feedback);
+    _messages[index] = updatedMsg;
+
+    // Update in cache
+    _cacheService.updateMessage(updatedMsg);
+
     notifyListeners();
+    _syncRatingToBackend(adviceId, rating, feedback);
   }
 
-  /// Enhanced disconnect with cleanup
+  Future<void> _syncRatingToBackend(
+    String id,
+    int rating,
+    String? feedback,
+  ) async {
+    try {
+      final httpService = HttpService();
+      await httpService.post(
+        '${Environment.baseUrl}/messages/rate',
+        body: {'messageId': id, 'rating': rating, 'feedback': feedback},
+        requiresAuth: true,
+      );
+    } catch (e) {
+      // Failed to sync - will retry later
+    }
+  }
+
   void disconnectWebSocket() {
     _reconnectTimer?.cancel();
     _channelSub?.cancel();
@@ -463,5 +763,12 @@ class SecureChatService with ChangeNotifier {
     notifyListeners();
   }
 
-  /// Rate limiting helper (implement based on your needs)
+  @override
+  void dispose() {
+    _channelSub?.cancel();
+    _channel?.sink.close();
+    _reconnectTimer?.cancel();
+    _cacheService.dispose();
+    super.dispose();
+  }
 }

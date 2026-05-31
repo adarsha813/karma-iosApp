@@ -397,10 +397,10 @@ class AppLocalizationsHe extends AppLocalizations {
   String get contactUs => 'צרו קשר';
 
   @override
-  String get contactEmail => 'דוא\"ל: support@yourcompany.com';
+  String get contactEmail => 'דוא\"ל: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'אתר אינטרנט: www.yourcompany.com';
+  String get contactWebsite => 'אתר אינטרנט: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'תמיכת לקוחות';
@@ -496,7 +496,7 @@ class AppLocalizationsHe extends AppLocalizations {
   String get buyButton => 'לִקְנוֹת';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 הורוסקופ יומי';
+  String get dailyHoroscopeTitle => ' הורוסקופ יומי';
 
   @override
   String get userIdMissing => 'חסר מזהה משתמש';

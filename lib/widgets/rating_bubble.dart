@@ -4,6 +4,7 @@ import '../config/security_config.dart';
 import '../services/error_reporting_service.dart';
 import '../services/rate_limiting_service.dart';
 import '../providers/theme_provider.dart'; // Add this import
+import '../utils/app_logger.dart';
 
 class RatingBubble extends StatefulWidget {
   final String questionId;
@@ -143,8 +144,8 @@ class RatingBubbleState extends State<RatingBubble>
           .colorScheme
           .primary; // Use theme primary color for selected stars
     }
-    return theme.colorScheme.onSurface.withOpacity(
-      0.3,
+    return theme.colorScheme.onSurface.withValues(
+      alpha: 0.3,
     ); // Use theme color for unselected stars
   }
 
@@ -184,7 +185,7 @@ class RatingBubbleState extends State<RatingBubble>
       decoration: InputDecoration(
         hintText: 'Your feedback...',
         hintStyle: theme.textTheme.bodyMedium?.copyWith(
-          color: theme.colorScheme.onSurface.withOpacity(0.5),
+          color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
@@ -198,7 +199,7 @@ class RatingBubbleState extends State<RatingBubble>
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(color: theme.colorScheme.primary),
         ),
-        fillColor: theme.colorScheme.surfaceVariant,
+        fillColor: theme.colorScheme.surfaceContainerHighest,
         filled: true,
         counterText: '',
         counterStyle: theme.textTheme.bodySmall?.copyWith(
@@ -427,7 +428,7 @@ class RatingBubbleState extends State<RatingBubble>
   }
 
   void _logSecurityEvent(String event, Map<String, dynamic> params) {
-    debugPrint('🔒 Rating Security Event: $event - $params');
+    AppLogger.info('🔒 Rating Security Event: $event - $params');
     // In production, send to analytics/security monitoring
     // AnalyticsService.logEvent(event, parameters: params);
   }

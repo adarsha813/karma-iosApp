@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "மின்னஞ்சல்: support@yourcompany.com",
+  "contactEmail": "மின்னஞ்சல்: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "வலைத்தளம்: www.yourcompany.com",
+  "contactWebsite": "வலைத்தளம்: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 தினசரி ஜாதகம்",
+  "dailyHoroscopeTitle": " தினசரி ஜாதகம்",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

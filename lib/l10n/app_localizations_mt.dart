@@ -401,7 +401,7 @@ class AppLocalizationsMt extends AppLocalizations {
   String get contactUs => 'Ikkuntattjana';
 
   @override
-  String get contactEmail => 'Email: support@yourcompany.com';
+  String get contactEmail => 'Email: care@karmalifepath.com';
 
   @override
   String get contactWebsite => 'Sit elettroniku: www.il-kumpanija tiegħek.com';
@@ -500,7 +500,7 @@ class AppLocalizationsMt extends AppLocalizations {
   String get buyButton => 'Ixtri';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Oroskopju ta\' Kuljum';
+  String get dailyHoroscopeTitle => ' Oroskopju ta\' Kuljum';
 
   @override
   String get userIdMissing => 'L-ID tal-utent hija nieqsa';

@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "E-mail: support@yourcompany.com",
+  "contactEmail": "E-mail: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "Weboldal: www.yourcompany.com",
+  "contactWebsite": "Weboldal: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Napi horoszkóp",
+  "dailyHoroscopeTitle": " Napi horoszkóp",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

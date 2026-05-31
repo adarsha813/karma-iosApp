@@ -400,10 +400,10 @@ class AppLocalizationsXh extends AppLocalizations {
   String get contactUs => 'Qhagamshelana nathi';
 
   @override
-  String get contactEmail => 'I-imeyile: support@yourcompany.com';
+  String get contactEmail => 'I-imeyile: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Iwebhusayithi: www.yourcompany.com';
+  String get contactWebsite => 'Iwebhusayithi: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Uxhaso lwabathengi';
@@ -500,7 +500,7 @@ class AppLocalizationsXh extends AppLocalizations {
   String get buyButton => 'Thenga';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 IHoroscope yemihla ngemihla';
+  String get dailyHoroscopeTitle => ' IHoroscope yemihla ngemihla';
 
   @override
   String get userIdMissing => 'Isazisi somsebenzisi asikho';

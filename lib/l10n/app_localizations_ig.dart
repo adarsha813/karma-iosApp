@@ -397,10 +397,10 @@ class AppLocalizationsIg extends AppLocalizations {
   String get contactUs => 'Kpọtụrụ anyị';
 
   @override
-  String get contactEmail => 'Email: support@yourcompany.com';
+  String get contactEmail => 'Email: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Weebụsaịtị: www.yourcompany.com';
+  String get contactWebsite => 'Weebụsaịtị: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Nkwado ndị ahịa';
@@ -496,7 +496,7 @@ class AppLocalizationsIg extends AppLocalizations {
   String get buyButton => 'Zụrụ';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horoscope kwa ụbọchị';
+  String get dailyHoroscopeTitle => ' Horoscope kwa ụbọchị';
 
   @override
   String get userIdMissing => 'NJ onye ọrụ na-efu';

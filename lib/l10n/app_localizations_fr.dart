@@ -502,7 +502,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get buyButton => 'Acheter';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horoscope du jour';
+  String get dailyHoroscopeTitle => ' Horoscope du jour';
 
   @override
   String get userIdMissing => 'L\'identifiant utilisateur est manquant.';

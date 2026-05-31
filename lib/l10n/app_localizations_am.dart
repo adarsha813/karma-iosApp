@@ -392,10 +392,10 @@ class AppLocalizationsAm extends AppLocalizations {
   String get contactUs => 'ያግኙን';
 
   @override
-  String get contactEmail => 'ኢሜል፡ support@yourcompany.com';
+  String get contactEmail => 'ኢሜል፡ care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'ድር ጣቢያ: www.yourcompany.com';
+  String get contactWebsite => 'ድር ጣቢያ: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'የደንበኛ ድጋፍ';
@@ -491,7 +491,7 @@ class AppLocalizationsAm extends AppLocalizations {
   String get buyButton => 'ይግዙ';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 ዕለታዊ ሆሮስኮፕ';
+  String get dailyHoroscopeTitle => ' ዕለታዊ ሆሮስኮፕ';
 
   @override
   String get userIdMissing => 'የተጠቃሚ መታወቂያ ይጎድላል';

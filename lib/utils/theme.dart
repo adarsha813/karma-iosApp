@@ -76,30 +76,26 @@ class AppTheme {
   static ColorScheme get _darkColors => const ColorScheme.dark(
     primary: AppColors.primaryGold,
     secondary: AppColors.accentTeal,
-    background: AppColors.background,
     surface: AppColors.surface,
     onPrimary: AppColors.background,
     onSecondary: AppColors.background,
-    onBackground: AppColors.textPrimary,
     onSurface: AppColors.textPrimary,
     error: AppColors.error,
     onError: Colors.white,
-    surfaceVariant: AppColors.surface, // NEW
+    surfaceContainerHighest: AppColors.surface, // NEW
     outline: AppColors.borderSoft, // NEW
   );
 
   static ColorScheme get _lightColors => const ColorScheme.light(
     primary: AppColors.primaryGoldLight,
     secondary: AppColors.accentTealLight,
-    background: AppColors.backgroundLight,
     surface: AppColors.surfaceLight,
     onPrimary: AppColors.textPrimaryLight,
     onSecondary: Colors.white,
-    onBackground: AppColors.textPrimaryLight,
     onSurface: AppColors.textPrimaryLight,
     error: AppColors.errorLight,
     onError: Colors.white,
-    surfaceVariant: AppColors.lowContrastPanel, // NEW
+    surfaceContainerHighest: AppColors.lowContrastPanel, // NEW
     outline: AppColors.borderSoftLight, // NEW
   );
 

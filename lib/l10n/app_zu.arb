@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "I-imeyili: support@yourcompany.com",
+  "contactEmail": "I-imeyili: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "Iwebhusayithi: www.yourcompany.com",
+  "contactWebsite": "Iwebhusayithi: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 IHoroscope Yansuku zonke",
+  "dailyHoroscopeTitle": " IHoroscope Yansuku zonke",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

@@ -400,10 +400,10 @@ class AppLocalizationsHmn extends AppLocalizations {
   String get contactUs => 'Tiv tauj peb';
 
   @override
-  String get contactEmail => 'Email: support@yourcompany.com';
+  String get contactEmail => 'Email: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'Lub Vev Xaib: www.yourcompany.com';
+  String get contactWebsite => 'Lub Vev Xaib: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'Kev Pab Txhawb Cov Neeg Siv Khoom';
@@ -499,7 +499,7 @@ class AppLocalizationsHmn extends AppLocalizations {
   String get buyButton => 'Yuav';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Txhua hnub Horoscope';
+  String get dailyHoroscopeTitle => ' Txhua hnub Horoscope';
 
   @override
   String get userIdMissing => 'Tus neeg siv ID ploj lawm';

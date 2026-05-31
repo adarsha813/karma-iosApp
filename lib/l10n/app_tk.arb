@@ -174,11 +174,11 @@
   "@contactUs": {
     "description": "Title for contact section"
   },
-  "contactEmail": "E-poçta: support@yourcompany.com",
+  "contactEmail": "E-poçta: care@karmalifepath.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
-  "contactWebsite": "Sahypa: www.yourcompany.com",
+  "contactWebsite": "Sahypa: www.karmalifepath.com",
   "@contactWebsite": {
     "description": "Contact website URL"
   },
@@ -294,7 +294,7 @@
   "@buyButton": {
     "description": "Buy button text"
   },
-  "dailyHoroscopeTitle": "🌟 Gündelik goroskop",
+  "dailyHoroscopeTitle": " Gündelik goroskop",
   "@dailyHoroscopeTitle": {
     "description": "Title for daily horoscope screen"
   },

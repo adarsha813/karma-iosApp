@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_stripe/flutter_stripe.dart' hide Card;
 import 'package:shimmer/shimmer.dart';
 import '../providers/profile_provider.dart';
-import '../services/payment_service.dart';
-import '../services/socket_service.dart';
+import '../services/billing_service.dart';
 import '../services/secure_storage_service.dart';
 import '../services/local_auth_service.dart';
 import '../services/analytics_service.dart';
-
+import '../services/payment_service.dart';
 import '../utils/error_handler.dart';
 import '../l10n/app_localizations.dart';
-import '../config/environment.dart';
 import '../providers/theme_provider.dart';
+import 'package:in_app_purchase/in_app_purchase.dart';
+import 'dart:async';
 
 class QuestionStoreScreen extends StatefulWidget {
   const QuestionStoreScreen({super.key});
@@ -25,42 +24,156 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
   int questionBalance = 0;
   List<Map<String, dynamic>> offers = [];
   bool isLoading = true;
-  int? _processingOfferId; // Track which offer is being processed
+  String? _processingProductId;
+
+  // Track in-progress purchases
+  final Set<String> _purchasesInProgress = {};
+  bool _isProcessingPurchase = false;
+
+  // Flag to prevent multiple callback registrations
+  bool _callbacksInitialized = false;
+
+  // Completer for purchase completion
+  Completer<bool>? _activePurchaseCompleter;
 
   final PaymentService _paymentService = PaymentService();
+  late final BillingService _billingService;
   final SecureStorageService _secureStorage = SecureStorageService();
-  DateTime? _lastPaymentAttempt;
+  DateTime? _lastPurchaseAttempt;
   int _retryCount = 0;
   final int _maxRetries = 3;
 
   @override
   void initState() {
     super.initState();
-    _initializePayment();
+    _billingService = BillingService();
+    _initializeBilling();
     Future.delayed(Duration.zero, _loadData);
   }
 
-  Future<void> _initializePayment() async {
+  Future<void> _initializeBilling() async {
     try {
-      await _paymentService.initializeStripe();
+      // 🔥 ADD THIS LINE - Initialize billing service with current context
+      _billingService.initialize(context);
+
+      final profileProvider = Provider.of<ProfileProvider>(
+        context,
+        listen: false,
+      );
+
+      final token = profileProvider.token ?? await _secureStorage.getToken();
+
+      if (token != null) {
+        _billingService.setAuthToken(token);
+      }
+
+      await _billingService.init();
+
+      if (!_callbacksInitialized) {
+        _setupCallbacks();
+        _callbacksInitialized = true;
+      }
     } catch (e) {
-      _showErrorSnackBar(ErrorHandler.getUserFriendlyMessage(e as Exception));
+      if (mounted) {
+        _showErrorSnackBar(ErrorHandler.getUserFriendlyMessage(e as Exception));
+      }
     }
+  }
+
+  void _setupCallbacks() {
+    _billingService.onPackagePurchaseSuccess = (questionCount) {
+      if (_isProcessingPurchase) return;
+      _isProcessingPurchase = true;
+      // Complete the completer
+      _activePurchaseCompleter?.complete(true);
+      _activePurchaseCompleter = null;
+
+      // Remove from processing set
+      if (_processingProductId != null) {
+        _purchasesInProgress.remove(_processingProductId);
+      }
+
+      if (mounted) {
+        setState(() {
+          _processingProductId = null;
+          questionBalance += questionCount;
+        });
+
+        _showSuccessSnackBar(AppLocalizations.of(context)!.paymentSuccessful);
+        _loadData().then((_) {
+          // Reset flag after loading completes
+          Future.delayed(Duration(seconds: 1), () {
+            _isProcessingPurchase = false;
+          });
+        });
+      } else {
+        _isProcessingPurchase = false;
+      }
+    };
+
+    _billingService.onPurchaseError = (error) {
+      // Only show error if not already processing a success
+      if (!_isProcessingPurchase) {
+        // Complete the completer with failure
+        _activePurchaseCompleter?.complete(false);
+        _activePurchaseCompleter = null;
+
+        // Clear processing states
+        _purchasesInProgress.clear();
+
+        if (mounted) {
+          setState(() {
+            _processingProductId = null;
+          });
+          _showErrorSnackBar(error);
+        }
+      } else {}
+
+      _isProcessingPurchase = false;
+    };
+
+    _billingService.onPurchaseError = (error) {
+      // Complete the completer with failure
+      _activePurchaseCompleter?.complete(false);
+      _activePurchaseCompleter = null;
+
+      // Clear processing states
+      _purchasesInProgress.clear();
+
+      if (mounted) {
+        setState(() {
+          _processingProductId = null;
+        });
+        _showErrorSnackBar(error);
+      }
+    };
+
+    _billingService.onPurchaseCancelled = () {
+      // Complete the completer with failure for cancelled
+      _activePurchaseCompleter?.complete(false);
+      _activePurchaseCompleter = null;
+
+      // Remove from processing set
+      if (_processingProductId != null) {
+        _purchasesInProgress.remove(_processingProductId);
+      }
+
+      if (mounted) {
+        setState(() {
+          _processingProductId = null;
+        });
+        _showInfoSnackBar('Purchase cancelled');
+      }
+    };
   }
 
   Future<bool> _authenticateWithBiometrics(String reason) async {
     try {
       final canAuthenticate = await LocalAuthService().isBiometricAvailable();
-      if (!canAuthenticate) {
-        // Fallback to PIN/pattern or require re-authentication
-        _logPaymentEvent('biometric_unavailable', {});
-        return true; // Or implement alternative auth
-      }
-
+      if (!canAuthenticate) return true;
       return await LocalAuthService().authenticate(reason);
     } catch (e) {
-      _logPaymentEvent('biometric_failed', {'error': e.toString()});
-      return false; // Fail secure
+      return false;
     }
   }
 
@@ -71,7 +184,6 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
       listen: false,
     );
 
-    // Use secure storage as backup
     final token = profileProvider.token ?? await _secureStorage.getToken();
     final userId = profileProvider.userId ?? await _secureStorage.getUserId();
 
@@ -80,71 +192,103 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
       return;
     }
 
+    _billingService.setAuthToken(token);
+
     setState(() => isLoading = true);
 
     try {
-      final results = await Future.wait([
-        _paymentService.getQuestionBalance(token),
-        _paymentService.getOffers(token),
-      ]);
+      final balance = await _paymentService.getQuestionBalance(token);
 
-      final balance = results[0] as int;
-      final offersList = results[1] as List<Map<String, dynamic>>;
+      final offersList =
+          _billingService.packageProducts.map((product) {
+            int questions = _getQuestionCountFromProductId(product.id);
+            double price = _extractPriceFromProduct(product.price);
+
+            return {
+              'packageId': product.id,
+              'questions': questions,
+              'price': price,
+              'savings': _calculateSavings(questions, price),
+              'title': product.title,
+              'description': product.description,
+            };
+          }).toList();
 
       setState(() {
         questionBalance = balance;
         offers =
             offersList..sort((a, b) {
-              final qa = (a['questions'] as num).toInt();
-              final qb = (b['questions'] as num).toInt();
+              final qa = a['questions'] as int;
+              final qb = b['questions'] as int;
               return qa.compareTo(qb);
             });
-        //usageStats = results[0]['usageStats'];
       });
 
-      _retryCount = 0; // Reset retry count on success
+      _retryCount = 0;
     } on Exception catch (e) {
-      _logPaymentEvent('load_data_failed', {
-        'error': e.toString(),
-        'retry_count': _retryCount,
-      });
-
-      // Implement retry logic with exponential backoff
       if (_retryCount < _maxRetries) {
         _retryCount++;
-        final delay = Duration(seconds: 2 * _retryCount); // 2, 4, 6 seconds
-
+        final delay = Duration(seconds: 2 * _retryCount);
         await Future.delayed(delay);
-        return _loadData(); // Retry
+        return _loadData();
       }
 
-      _showErrorSnackBar(ErrorHandler.getUserFriendlyMessage(e));
+      if (mounted) {
+        _showErrorSnackBar(ErrorHandler.getUserFriendlyMessage(e));
+      }
     } finally {
-      setState(() => isLoading = false);
+      if (mounted) {
+        setState(() => isLoading = false);
+      }
     }
   }
 
-  Future<void> _startStripePayment(int questions) async {
-    // 1. Input validation
+  int _getQuestionCountFromProductId(String productId) {
+    switch (productId) {
+      case 'question_1':
+        return 1;
+      case 'question_5':
+        return 5;
+      case 'question_10':
+        return 10;
+      default:
+        return 0;
+    }
+  }
+
+  double _extractPriceFromProduct(String priceString) {
+    final RegExp regex = RegExp(r'[\d.]+');
+    final match = regex.firstMatch(priceString);
+    if (match != null) {
+      return double.tryParse(match.group(0) ?? '0') ?? 0.0;
+    }
+    return 0.0;
+  }
+
+  int _calculateSavings(int questions, double price) {
+    const double singleQuestionPrice = 3.0;
+    double originalPrice = questions * singleQuestionPrice;
+    if (originalPrice > 0) {
+      return ((originalPrice - price) / originalPrice * 100).round();
+    }
+    return 0;
+  }
+
+  Future<void> _startPurchase(int questions) async {
+    // Validate inputs
     if (questions <= 0 || questions > 1000) {
-      _showErrorSnackBar(
-        'Invalid question quantity. Please select a valid offer.',
-      );
+      _showErrorSnackBar('Invalid question quantity.');
       return;
     }
 
-    // 2. Rate limiting
-    if (_lastPaymentAttempt != null &&
-        DateTime.now().difference(_lastPaymentAttempt!) <
+    // Rate limiting
+    if (_lastPurchaseAttempt != null &&
+        DateTime.now().difference(_lastPurchaseAttempt!) <
             const Duration(seconds: 10)) {
-      _showErrorSnackBar('Please wait a moment before making another payment.');
+      _showErrorSnackBar('Please wait before making another purchase.');
       return;
     }
 
-    // 3. Check if already processing
-    if (_processingOfferId != null) return; // ← Changed this lin
-
-    final l10n = AppLocalizations.of(context)!;
     final profileProvider = Provider.of<ProfileProvider>(
       context,
       listen: false,
@@ -153,251 +297,169 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
     final token = profileProvider.token ?? await _secureStorage.getToken();
     final userId = profileProvider.userId ?? await _secureStorage.getUserId();
 
-    if (userId == null) {
+    if (userId == null || token == null) {
       _showErrorSnackBar("User not authenticated");
       return;
     }
 
-    if (token == null) {
-      _showErrorSnackBar(l10n.missingAuthToken);
+    // Find the offer
+    final offer = offers.firstWhere((o) => o['questions'] == questions);
+    final packageId = offer['packageId'] as String;
+    final double price = offer['price'] as double;
+
+    // Check if this product is already being processed
+    if (_purchasesInProgress.contains(packageId)) {
+      _showInfoSnackBar('Purchase already in progress...');
       return;
     }
 
-    // 4. Biometric auth for high-value purchases
-    final offer = offers.firstWhere((o) => o['questions'] == questions);
-    final packageId = offer['packageId'];
-    final double price = (offer['price'] as num).toDouble(); // <-- add this
-
+    // Biometric auth for high-value purchases
     if (price >= 15.0) {
       final bool authenticated = await _authenticateWithBiometrics(
-        'Confirm payment of \$${price.toStringAsFixed(2)}',
+        'Confirm purchase of \$${price.toStringAsFixed(2)}',
       );
       if (!authenticated) {
-        _showErrorSnackBar('Authentication required for this purchase.');
+        _showErrorSnackBar('Authentication required.');
         return;
       }
     }
 
-    // Log payment initiation
+    // Find the product
+    final product = _billingService.products.firstWhere(
+      (p) => p.id == packageId,
+      orElse: () => throw Exception('Product not found'),
+    );
+
+    // Log and mark as in progress
     AnalyticsService().logPaymentInitiated(questions, price);
+    _lastPurchaseAttempt = DateTime.now();
 
-    _lastPaymentAttempt = DateTime.now();
     setState(() {
-      _processingOfferId = questions;
+      _processingProductId = packageId;
     });
+    _purchasesInProgress.add(packageId);
 
-    try {
-      final clientSecret = await _paymentService.createPaymentIntent(
-        token: token,
-        packageId: packageId,
+    // Create completer BEFORE setting it in billing service
+    _activePurchaseCompleter = Completer<bool>();
+    _billingService.activePurchaseCompleter = _activePurchaseCompleter;
+
+    // Set token in billing service
+    _billingService.setAuthToken(token);
+
+    // Show loading dialog
+    if (mounted) {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return const Center(child: CircularProgressIndicator());
+        },
       );
-
-      // Extract payment intent ID for verification
-      final paymentIntentId = _extractPaymentIntentId(clientSecret);
-
-      // Initialize payment sheet
-      await Stripe.instance.initPaymentSheet(
-        paymentSheetParameters: SetupPaymentSheetParameters(
-          paymentIntentClientSecret: clientSecret,
-          merchantDisplayName: l10n.merchantDisplayName,
-          applePay:
-              Environment.isProduction
-                  ? const PaymentSheetApplePay(merchantCountryCode: 'US')
-                  : null,
-          googlePay:
-              Environment.isProduction
-                  ? const PaymentSheetGooglePay(
-                    merchantCountryCode: 'US',
-                    currencyCode: 'USD',
-                    testEnv: true,
-                  )
-                  : null,
-          style:
-              Theme.of(context).brightness == Brightness.dark
-                  ? ThemeMode.dark
-                  : ThemeMode.light,
-          appearance: const PaymentSheetAppearance(
-            colors: PaymentSheetAppearanceColors(
-              primary: Colors.deepPurple,
-              background: Colors.white,
-              componentBackground: Colors.white,
-              componentBorder: Colors.grey,
-              componentDivider: Colors.grey,
-              primaryText: Colors.black,
-              secondaryText: Colors.grey,
-              componentText: Colors.black,
-              icon: Colors.deepPurple,
-            ),
-          ),
-        ),
-      );
-
-      // Present payment sheet
-      await Stripe.instance.presentPaymentSheet();
-
-      final verificationResult = await _paymentService.verifyPackagePayment(
-        token: token,
-        paymentIntentId: paymentIntentId,
-      );
-      if (verificationResult.isFailed) {
-        throw Exception(
-          verificationResult.error ?? 'Payment verification failed',
-        );
-      }
-
-      if (verificationResult.isCompleted) {
-        // Webhook already processed - immediate success
-        _handleSuccessfulPayment(
-          verificationResult.questions!,
-          price,
-          paymentIntentId,
-          userId,
-          l10n,
-        );
-      } else if (verificationResult.isAwaitingWebhook) {
-        // Payment verified but waiting for webhook - show processing and poll
-        _handleAwaitingWebhook(
-          verificationResult,
-          token,
-          paymentIntentId,
-          price,
-          userId,
-          l10n,
-        );
-      }
-    } on StripeException catch (e) {
-      if (e.error.code == FailureCode.Canceled) {
-        AnalyticsService().logPaymentCancelled(questions, price);
-        return;
-      }
-      AnalyticsService().logPaymentFailed(
-        e.error.localizedMessage ?? 'Unknown error',
-        questions,
-        price,
-      );
-      _showErrorSnackBar('${l10n.paymentFailed}: ${e.error.localizedMessage}');
-    } on Exception catch (e) {
-      AnalyticsService().logPaymentFailed(e.toString(), questions, price);
-      _showErrorSnackBar(ErrorHandler.getUserFriendlyMessage(e));
-    } finally {
-      setState(() {
-        _processingOfferId = null;
-      });
-    }
-  }
-
-  void _handleSuccessfulPayment(
-    int questions,
-    double price,
-    String paymentIntentId,
-    String? userId,
-    AppLocalizations l10n,
-  ) {
-    // Log successful payment
-    AnalyticsService().logPaymentSuccess(paymentIntentId, questions, price);
-
-    _showSuccessSnackBar(l10n.paymentSuccessful);
-
-    // Reload balance
-    _loadData();
-
-    // Notify server via socket
-    if (userId != null) {
-      SocketService().socket.emit('paymentComplete', {
-        'userId': userId,
-        'questions': questions,
-        'paymentIntentId': paymentIntentId,
-        'timestamp': DateTime.now().toIso8601String(),
-      });
     }
 
-    // Log successful payment
-    _logPaymentSuccess(questions, userId, paymentIntentId);
-  }
-
-  void _handleAwaitingWebhook(
-    PaymentVerificationResult result,
-    String token,
-    String paymentIntentId,
-    double price,
-    String? userId,
-    AppLocalizations l10n,
-  ) {
-    // Show processing message
-    _showProcessingMessage(result.questions!);
-
-    // Start polling for webhook completion
-    _pollForWebhookCompletion(
-      token: token,
-      paymentIntentId: paymentIntentId,
-      expectedQuestions: result.questions!,
-      price: price,
-      userId: userId,
-      l10n: l10n,
-    );
-  }
-
-  Future<void> _pollForWebhookCompletion({
-    required String token,
-    required String paymentIntentId,
-    required int expectedQuestions,
-    required double price,
-    required String? userId,
-    required AppLocalizations l10n,
-  }) async {
     try {
-      final result = await _paymentService.pollForWebhookCompletion(
-        token: token,
-        paymentIntentId: paymentIntentId,
-      );
+      // Process the purchase with a timeout
+      await _billingService
+          .buy(product)
+          .timeout(
+            const Duration(seconds: 15),
+            onTimeout: () {
+              throw TimeoutException('Purchase request timed out');
+            },
+          );
 
-      if (result.isCompleted) {
-        // Webhook completed successfully
-        _handleSuccessfulPayment(
-          expectedQuestions,
-          price,
-          paymentIntentId,
-          userId,
-          l10n,
+      // Wait for the purchase to complete - check if completer still exists
+      if (_activePurchaseCompleter != null) {
+        final success = await _activePurchaseCompleter!.future.timeout(
+          const Duration(seconds: 30),
+          onTimeout: () {
+            // Clean up on timeout
+            if (mounted) {
+              try {
+                Navigator.pop(context);
+              } catch (_) {}
+            }
+            _purchasesInProgress.remove(packageId);
+            setState(() {
+              if (_processingProductId == packageId) {
+                _processingProductId = null;
+              }
+            });
+            _showErrorSnackBar(
+              'Purchase timed out. Please check your purchases and try restoring.',
+            );
+            return false;
+          },
         );
-      } else if (result.isFailed) {
-        // Show appropriate message based on error
-        if (result.errorCode == 'WEBHOOK_TIMEOUT' ||
-            result.errorCode == 'PROCESSING_TIMEOUT') {
-          _showInfoSnackBar(result.error!);
-          // Still reload balance as it might have been updated
-          _loadData();
-        } else {
-          _showErrorSnackBar(result.error!);
+
+        // Remove loading dialog
+        if (mounted) {
+          try {
+            Navigator.pop(context);
+          } catch (_) {}
         }
+
+        if (!success && mounted) {
+          _showErrorSnackBar('Purchase failed. Please try again.');
+        }
+      } else {
+        // Completer was nullified - this shouldn't happen normally
+        if (mounted) {
+          try {
+            Navigator.pop(context);
+          } catch (_) {}
+        }
+        _purchasesInProgress.remove(packageId);
+        setState(() {
+          if (_processingProductId == packageId) {
+            _processingProductId = null;
+          }
+        });
+        _showErrorSnackBar('Purchase process interrupted. Please try again.');
       }
+    } on TimeoutException {
+      // Handle timeout specifically
+      if (mounted) {
+        try {
+          Navigator.pop(context);
+        } catch (_) {}
+      }
+      _purchasesInProgress.remove(packageId);
+      setState(() {
+        if (_processingProductId == packageId) {
+          _processingProductId = null;
+        }
+      });
+      _showErrorSnackBar('Request timed out. Please check your connection.');
     } catch (e) {
-      _showErrorSnackBar('Error checking payment status: ${e.toString()}');
+      // Clean up on error
+      if (mounted) {
+        try {
+          Navigator.pop(context);
+        } catch (_) {}
+      }
+
+      _purchasesInProgress.remove(packageId);
+      if (mounted) {
+        setState(() {
+          if (_processingProductId == packageId) {
+            _processingProductId = null;
+          }
+        });
+      }
+
+      // Only complete if completer still exists
+      _activePurchaseCompleter?.complete(false);
+      _activePurchaseCompleter = null;
+      _billingService.activePurchaseCompleter = null;
+
+      AnalyticsService().logPaymentFailed(e.toString(), questions, price);
+      _showErrorSnackBar(ErrorHandler.getUserFriendlyMessage(e as Exception));
     }
-  }
-
-  // Helper method to extract payment intent ID
-  String _extractPaymentIntentId(String clientSecret) {
-    // clientSecret format: "pi_xxx_secret_yyy"
-    return clientSecret.split('_secret_').first;
-  }
-
-  void _logPaymentEvent(String event, Map<String, dynamic> params) {
-    // For now, just debugPrint - you can integrate with your analytics service
-    debugPrint('Payment Event: $event - $params');
-  }
-
-  void _logPaymentSuccess(
-    int questions,
-    String? userId,
-    String paymentIntentId,
-  ) {
-    debugPrint(
-      'Payment successful: $questions questions for user $userId, Payment ID: $paymentIntentId',
-    );
   }
 
   void _showErrorSnackBar(String message) {
+    if (!mounted) return;
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     final theme = themeProvider.getCurrentTheme(context);
 
@@ -413,6 +475,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
   }
 
   void _showSuccessSnackBar(String message) {
+    if (!mounted) return;
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     final theme = themeProvider.getCurrentTheme(context);
 
@@ -428,6 +491,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
   }
 
   void _showInfoSnackBar(String message) {
+    if (!mounted) return;
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     final theme = themeProvider.getCurrentTheme(context);
 
@@ -438,20 +502,6 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         duration: const Duration(seconds: 3),
-      ),
-    );
-  }
-
-  void _showProcessingMessage(int questions) {
-    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
-    final theme = themeProvider.getCurrentTheme(context);
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Processing your $questions questions purchase...'),
-        backgroundColor: theme.colorScheme.secondaryContainer,
-        behavior: SnackBarBehavior.floating,
-        duration: const Duration(seconds: 5),
       ),
     );
   }
@@ -471,14 +521,14 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Shimmer.fromColors(
-              baseColor: theme.colorScheme.surfaceVariant,
+              baseColor: theme.colorScheme.surfaceContainerHighest,
               highlightColor: theme.colorScheme.surface,
               child: Row(
                 children: [
                   Container(
                     width: 30,
                     height: 30,
-                    color: theme.colorScheme.onSurface.withOpacity(0.3),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.3),
                   ),
                   const SizedBox(width: 16),
                   Expanded(
@@ -487,13 +537,17 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
                       children: [
                         Container(
                           height: 14,
-                          color: theme.colorScheme.onSurface.withOpacity(0.3),
+                          color: theme.colorScheme.onSurface.withValues(
+                            alpha: 0.3,
+                          ),
                           margin: const EdgeInsets.only(bottom: 8),
                         ),
                         Container(
                           height: 14,
                           width: 80,
-                          color: theme.colorScheme.onSurface.withOpacity(0.3),
+                          color: theme.colorScheme.onSurface.withValues(
+                            alpha: 0.3,
+                          ),
                         ),
                       ],
                     ),
@@ -502,7 +556,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
                     width: 70,
                     height: 36,
                     decoration: BoxDecoration(
-                      color: theme.colorScheme.onSurface.withOpacity(0.3),
+                      color: theme.colorScheme.onSurface.withValues(alpha: 0.3),
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
@@ -528,9 +582,21 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
         foregroundColor: theme.appBarTheme.foregroundColor,
         elevation: 0,
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.restore),
+            onPressed:
+                _processingProductId == null
+                    ? () {
+                      InAppPurchase.instance.restorePurchases();
+                      _showInfoSnackBar('Restoring purchases...');
+                    }
+                    : null,
+          ),
+        ],
       ),
       body: Container(
-        color: theme.colorScheme.background,
+        color: theme.colorScheme.surface,
         child: SafeArea(
           child:
               isLoading
@@ -538,7 +604,7 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
                   : RefreshIndicator(
                     onRefresh: _loadData,
                     color: theme.colorScheme.primary,
-                    backgroundColor: theme.colorScheme.background,
+                    backgroundColor: theme.colorScheme.surface,
                     child: ListView(
                       padding: EdgeInsets.only(
                         left: 16,
@@ -556,9 +622,37 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
                           ),
                         ),
                         const SizedBox(height: 10),
-                        ...offers
-                            .map((offer) => _buildOfferCard(offer, theme, l10n))
-                            .toList(),
+                        if (offers.isEmpty)
+                          Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(32.0),
+                              child: Column(
+                                children: [
+                                  Icon(
+                                    Icons.shopping_cart_outlined,
+                                    size: 64,
+                                    color: Colors.grey,
+                                  ),
+                                  const SizedBox(height: 16),
+                                  Text(
+                                    'No products available',
+                                    style: theme.textTheme.titleMedium,
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Text(
+                                    'Please check your internet connection',
+                                    style: theme.textTheme.bodyMedium?.copyWith(
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                        else
+                          ...offers.map(
+                            (offer) => _buildOfferCard(offer, theme, l10n),
+                          ),
                       ],
                     ),
                   ),
@@ -610,9 +704,12 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
     ThemeData theme,
     AppLocalizations l10n,
   ) {
-    final questions = (offer['questions'] as num?)?.toInt() ?? 0;
-    double price = (offer['price'] as num).toDouble();
-    bool isThisOfferProcessing = _processingOfferId == questions;
+    final questions = offer['questions'] as int;
+    final price = offer['price'] as double;
+    final packageId = offer['packageId'] as String;
+    final savings = offer['savings'] as int;
+
+    bool isThisOfferProcessing = _purchasesInProgress.contains(packageId);
 
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -645,9 +742,9 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
                 color: theme.colorScheme.onSurface,
               ),
             ),
-            if ((offer['savings'] ?? 0) > 0)
+            if (savings > 0)
               Text(
-                "Save ${offer['savings']}%",
+                "Save $savings%",
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: theme.colorScheme.primary,
                   fontWeight: FontWeight.w500,
@@ -657,9 +754,16 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
         ),
         trailing:
             isThisOfferProcessing
-                ? CircularProgressIndicator(color: theme.colorScheme.primary)
+                ? SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    color: theme.colorScheme.primary,
+                  ),
+                )
                 : ElevatedButton(
-                  onPressed: () => _startStripePayment(questions),
+                  onPressed: () => _startPurchase(questions),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: theme.colorScheme.primary,
                     foregroundColor: theme.colorScheme.onPrimary,
@@ -685,7 +789,9 @@ class _QuestionStoreScreenState extends State<QuestionStoreScreen> {
 
   @override
   void dispose() {
-    // Clean up any resources if needed
+    _billingService.dispose();
+    _activePurchaseCompleter = null;
+    _purchasesInProgress.clear();
     super.dispose();
   }
 }

@@ -401,10 +401,10 @@ class AppLocalizationsKa extends AppLocalizations {
   String get contactUs => 'დაგვიკავშირდით';
 
   @override
-  String get contactEmail => 'ელ. ფოსტა: support@yourcompany.com';
+  String get contactEmail => 'ელ. ფოსტა: care@karmalifepath.com';
 
   @override
-  String get contactWebsite => 'ვებსაიტი: www.yourcompany.com';
+  String get contactWebsite => 'ვებსაიტი: www.karmalifepath.com';
 
   @override
   String get customerSupport => 'მომხმარებელთა მხარდაჭერა';
@@ -502,7 +502,7 @@ class AppLocalizationsKa extends AppLocalizations {
   String get buyButton => 'ყიდვა';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 ყოველდღიური ჰოროსკოპი';
+  String get dailyHoroscopeTitle => ' ყოველდღიური ჰოროსკოპი';
 
   @override
   String get userIdMissing => 'მომხმარებლის ID აკლია';

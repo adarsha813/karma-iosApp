@@ -4,11 +4,10 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:socket_io_client/socket_io_client.dart' as io;
 import 'package:http/http.dart' as http;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:local_auth/local_auth.dart';
@@ -16,9 +15,7 @@ import 'package:crypto/crypto.dart'; // Add this package to pubspec.yaml
 import 'dart:math' as math; // Add this line
 import '../config/environment.dart';
 import 'package:logger/logger.dart';
-import 'dart:math';
-import 'package:kundali/services/enterprise_payment_service.dart';
-
+import '../services/http_service.dart';
 // Import your app files
 import 'profile_screen.dart';
 import 'settings_screen.dart';
@@ -29,21 +26,27 @@ import '../providers/profile_provider.dart';
 import '../models/message.dart' as chat_model;
 import '../providers/notification_provider.dart';
 import '../providers/dictionary_provider.dart';
-import 'dailyHoroscope_Screen.dart';
+import 'daily_horoscope_screen.dart';
 import '../utils/pending_notification_navigation.dart';
 import 'horoscope_detail_screen.dart';
 import 'notifications_screen.dart';
 import 'how_to_ask_screen.dart';
 import 'question_store_screen.dart';
 import '../providers/horoscope_provider.dart';
-import 'astroDictionary_Screen.dart';
+import 'astrodictionary_screen.dart';
 import 'package:kundali/widgets/bouncing_dots.dart';
-import 'package:kundali/screens/CustomerSupportPage.dart';
-import 'package:kundali/screens/AboutUsPage.dart';
+import 'package:kundali/screens/customer_support_page.dart';
+import 'package:kundali/screens/aboutus_page.dart';
 import '../l10n/app_localizations.dart';
 import '../models/astro_term.dart' as models;
-import '../services/astrologerdataService.dart';
+import '../services/astrologerdata_service.dart';
 import '../providers/theme_provider.dart'; // Add this import
+// Add this import with your other imports
+import '../services/billing_service.dart';
+import '../services/message_cache_service.dart';
+import '../models/hive_message.dart';
+import 'package:hive/hive.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 bool verifyCertificate(X509Certificate cert, List<String> allowedFingerprints) {
   // Get DER bytes directly from the certificate
@@ -67,67 +70,8 @@ class SafeChatScreen extends StatefulWidget {
   State<SafeChatScreen> createState() => _SafeChatScreenState();
 }
 
-class PaymentPriceService {
-  static Future<double?> getDisplayPrice(String userId) async {
-    try {
-      final profileProvider = ProfileProvider();
-      await profileProvider.ensureInitialized();
-      final token = profileProvider.token;
-
-      if (token == null) {
-        AppLogger.info('No auth token for fetching display price');
-        return null;
-      }
-
-      final response = await SecureApiClient.get(
-        url: '${ChatConstants.baseUrl}/api/display-price',
-        token: token,
-        additionalHeaders: {'X-User-ID': userId},
-      );
-
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-
-        if (data['success'] == true && data['data'] != null) {
-          final priceData = data['data'];
-
-          // Get the numeric price (already in dollars)
-          final numericPrice = priceData['numericPrice'] as double?;
-          final displayPrice = priceData['displayPrice'] as String?;
-
-          AppLogger.info(
-            '✅ Display price fetched: \$${numericPrice ?? displayPrice}',
-          );
-
-          return numericPrice ??
-              (displayPrice != null ? double.parse(displayPrice) : null);
-        } else {
-          // Try fallback parsing
-          if (data['displayPrice'] != null) {
-            final priceStr = data['displayPrice'] as String;
-            return double.parse(priceStr);
-          }
-        }
-      }
-
-      AppLogger.error(
-        'Failed to fetch display price',
-        Exception('HTTP ${response.statusCode}: ${response.body}'),
-      );
-      return null;
-    } catch (e, stackTrace) {
-      AppLogger.error(
-        'Error fetching display price',
-        e,
-        stackTrace: stackTrace,
-      );
-      return null;
-    }
-  }
-}
-
 class _SafeChatScreenState extends State<SafeChatScreen> {
-  bool _isError = false;
+  final bool _isError = false;
   String? _errorMessage;
 
   @override
@@ -150,6 +94,21 @@ class _SafeChatScreenState extends State<SafeChatScreen> {
               ElevatedButton(
                 onPressed: () => Navigator.of(context).pop(),
                 child: const Text('Go Back'),
+              ),
+              // Add this temporary debug button
+              ElevatedButton(
+                onPressed: () async {
+                  final cacheService = MessageCacheService();
+                  await cacheService.init();
+                  final box = Hive.box<HiveMessage>('chat_messages');
+
+                  for (var entry in box.toMap().entries) {
+                    AppLogger.info(
+                      'ID: ${entry.key}, isMe: ${entry.value.isMe}',
+                    );
+                  }
+                },
+                child: Text('Check Cache'),
               ),
             ],
           ),
@@ -213,7 +172,7 @@ class PaymentSecurity {
   static String generateIdempotencyKey(String userId) {
     final timestamp = DateTime.now().millisecondsSinceEpoch;
     final random = math.Random().nextInt(100000);
-    return '${userId}_${timestamp}_${random}';
+    return '${userId}_${timestamp}_$random';
   }
 }
 
@@ -336,10 +295,7 @@ class SecurePaymentService {
       final parts = clientSecret.split('_');
       final paymentIntentId = parts.length > 1 ? 'pi_${parts[1]}' : 'unknown';
 
-      AppLogger.info(
-        'Payment intent created: $paymentIntentId',
-        feature: 'payment_processing',
-      );
+      ///* AppLogger.info(   'Payment intent created: $paymentIntentId',     feature: 'payment_processing',   ); */
 
       return PaymentResult(
         success: true,
@@ -365,7 +321,7 @@ class PaymentVerificationService {
       final token = await SecureStorage.getAuthToken();
 
       if (token == null) {
-        AppLogger.error('No auth token for payment verification', null);
+        ///* AppLogger.error('No auth token for payment verification', null); */
         return false;
       }
 
@@ -385,17 +341,13 @@ class PaymentVerificationService {
         final verified = data['verified'];
 
         // Log verification result
-        AppLogger.security(
-          'Payment verification result: $status',
-          userId: userId,
-          feature: 'payment_verification',
-        );
+        ///* /* AppLogger.security( 'Payment verification result: $status', userId: userId, feature: 'payment_verification', ); */ */
 
         return verified == true && status == 'succeeded';
       }
       return false;
     } catch (e) {
-      AppLogger.error('Payment verification failed', e);
+      ///* AppLogger.error('Payment verification failed', e); */
       return false;
     }
   }
@@ -414,57 +366,6 @@ class PaymentVerificationService {
       'localized': Platform.localeName,
     };
     return sha256.convert(utf8.encode(json.encode(deviceInfo))).toString();
-  }
-}
-
-class SecureStripeConfig {
-  static Future<void> initialize() async {
-    try {
-      // Fetch publishable key from server (never hardcode)
-      final publishableKey = await _fetchPublishableKeyFromServer();
-
-      Stripe.publishableKey = publishableKey;
-
-      // Configure Stripe with enhanced security
-      await Stripe.instance.applySettings();
-
-      AppLogger.info(
-        'Stripe configured successfully',
-        feature: 'stripe_config',
-      );
-    } catch (e) {
-      AppLogger.error(
-        'Stripe configuration failed',
-        e,
-        feature: 'stripe_config',
-      );
-      rethrow;
-    }
-  }
-
-  static Future<String> _fetchPublishableKeyFromServer() async {
-    try {
-      final response = await SecureApiClient.get(
-        url: '${ChatConstants.baseUrl}/api/stripe-config',
-      );
-
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        final publishableKey = data['publishableKey'] as String?;
-
-        if (publishableKey == null || publishableKey.isEmpty) {
-          throw Exception('Invalid publishable key from server');
-        }
-
-        return publishableKey;
-      }
-      throw Exception(
-        'Failed to fetch Stripe configuration: HTTP ${response.statusCode}',
-      );
-    } catch (e) {
-      AppLogger.error('Failed to fetch Stripe publishable key', e);
-      rethrow;
-    }
   }
 }
 
@@ -510,10 +411,7 @@ class PerformanceMonitor {
 
   void trackMessageLoadTime(Duration duration) {
     if (duration > const Duration(seconds: 2)) {
-      AppLogger.error(
-        'Slow message loading',
-        Exception('Took ${duration.inMilliseconds}ms'),
-      );
+      ///* AppLogger.error( 'Slow message loading',  Exception('Took ${duration.inMilliseconds}ms'),); */
     }
   }
 
@@ -616,17 +514,11 @@ class SecureStorage {
   }
 }
 
-/// 3. Professional Logging System
 class AppLogger {
   static void info(String message, {String? feature}) {
-    final timestamp = DateTime.now().toIso8601String();
-    final logMessage =
-        'ℹ️ [$timestamp] ${feature != null ? '[$feature] ' : ''}$message';
-
     if (kDebugMode) {
-      debugPrint(logMessage);
+      /* AppLogger.info(logMessage); */ // ← Use AppLogger.info, not AppLogger.info()
     }
-    // In production, send to logging service (Sentry, Firebase Analytics, etc.)
     _sendToAnalytics('info', message, feature);
   }
 
@@ -636,47 +528,30 @@ class AppLogger {
     String? feature,
     StackTrace? stackTrace,
   }) {
-    final timestamp = DateTime.now().toIso8601String();
-    final logMessage =
-        '❌ [$timestamp] ${feature != null ? '[$feature] ' : ''}$message: $error';
-
     if (kDebugMode) {
-      debugPrint(logMessage);
-      if (stackTrace != null) debugPrint('Stack trace: $stackTrace');
+      /* AppLogger.info(logMessage); */ // ← Use AppLogger.info
+      if (stackTrace != null) AppLogger.info('Stack trace: $stackTrace');
     }
-    // Send to error tracking service
     _sendToAnalytics('error', '$message: $error', feature);
   }
 
   static void warning(String message, {String? feature}) {
-    final timestamp = DateTime.now().toIso8601String();
-    final logMessage =
-        '⚠️ [$timestamp] ${feature != null ? '[$feature] ' : ''}$message';
-
     if (kDebugMode) {
-      debugPrint(logMessage);
+      /* AppLogger.info(logMessage); */ // ← Use AppLogger.info
     }
-    // In production, send to logging service
     _sendToAnalytics('warning', message, feature);
   }
 
   static void security(String message, {String? userId, String? feature}) {
-    final timestamp = DateTime.now().toIso8601String();
-    final logMessage =
-        '🔒 SECURITY [$timestamp] ${feature != null ? '[$feature] ' : ''}$message';
-
-    // Always log security issues
-    debugPrint(logMessage);
+    if (kDebugMode) {
+      /* AppLogger.info(logMessage); */ // ← Use AppLogger.info
+    }
     _sendToAnalytics('security', message, feature, userId: userId);
   }
 
   static void network(String message, {String? endpoint, int? statusCode}) {
-    final timestamp = DateTime.now().toIso8601String();
-    final logMessage =
-        '🌐 [$timestamp] ${endpoint != null ? '[$endpoint] ' : ''}$message';
-
     if (kDebugMode) {
-      debugPrint(logMessage);
+      /* AppLogger.info(logMessage); */ // ← Use //AppLogger.info
     }
     _sendToAnalytics('network', message, endpoint);
   }
@@ -748,10 +623,11 @@ class InputValidator {
 
     final sanitizedText = _sanitizeText(text);
     if (sanitizedText != text) {
-      AppLogger.security(
+      /* AppLogger.security(
         'Potentially dangerous input detected and sanitized',
         feature: 'input_validation',
       );
+      */
       return ValidationResult(
         false,
         'Invalid characters in message. Please remove special characters.',
@@ -820,7 +696,7 @@ class ValidationResult {
 
 class SecureApiClient {
   static final Map<String, List<String>> _pinnedCertificates = {
-    'chat-backend-rvk9.onrender.com': [
+    'chat-backend-young-shape-7183.fly.dev': [
       'YbyJ1Eh0uiylRob7aoiVhoYLgn7Jjs1HniXUDtpcVXA=', // old
       'drJ7gKWAJ9w88dpo2sFwEO2TmX0LYD4vrb6FASSTtac=', // new
     ],
@@ -843,7 +719,7 @@ class SecureApiClient {
       try {
         final allowedFingerprints = _pinnedCertificates[host];
         if (allowedFingerprints == null) {
-          debugPrint('No pinned certificates for host: $host');
+          ///* AppLogger.info('No pinned certificates for host: $host'); */
           return false;
         }
 
@@ -859,15 +735,12 @@ class SecureApiClient {
         final isValid = allowedFingerprints.contains(fingerprint);
 
         if (!isValid) {
-          debugPrint(
-            'Certificate pinning failure for $host. '
-            'Expected: $allowedFingerprints, Got: $fingerprint',
-          );
+          ///* AppLogger.info('Certificate pinning failure for $host. ' 'Expected: $allowedFingerprints, Got: $fingerprint',  ); */
         }
 
         return isValid;
-      } catch (e, stackTrace) {
-        debugPrint('Certificate validation error: $e\n$stackTrace');
+      } catch (e) {
+        ///* AppLogger.info('Certificate validation error: $e\n$stackTrace'); */
         return false;
       }
     };
@@ -875,44 +748,92 @@ class SecureApiClient {
     return client;
   }
 
-  /// GET request
+  /// GET request - NOW USING HTTP SERVICE INTERNALLY
   static Future<http.Response> get({
     required String url,
     String? token,
     Map<String, String>? additionalHeaders,
   }) async {
-    return await _makeRequest(
-      method: 'GET',
-      url: url,
-      token: token,
-      additionalHeaders: additionalHeaders,
-    );
+    // Add SSL pinning headers to identify this came through SecureApiClient
+    final headersWithPinning = {
+      'X-SSL-Pinned': 'true',
+      'X-Request-ID': _generateRequestId(),
+      ...?additionalHeaders,
+    };
+
+    try {
+      // Use HttpService internally - this will handle token refresh automatically
+      final response = await HttpService().get(
+        url,
+        requiresAuth: token != null, // Auth required if token is provided
+        additionalHeaders: headersWithPinning,
+      );
+
+      // Verify SSL pinning after response (optional validation)
+      _verifySSLPinning(response);
+
+      return response;
+    } catch (e) {
+      ///* AppLogger.info('❌ SecureApiClient GET error: $e'); */
+      rethrow;
+    }
   }
 
-  /// POST request
+  /// POST request - NOW USING HTTP SERVICE INTERNALLY
   static Future<http.Response> post({
     required String url,
     required Map<String, dynamic> body,
     String? token,
     Map<String, String>? additionalHeaders,
   }) async {
-    return await _makeRequest(
-      method: 'POST',
-      url: url,
-      body: body,
-      token: token,
-      additionalHeaders: additionalHeaders,
-    );
+    // Add SSL pinning headers to identify this came through SecureApiClient
+    final headersWithPinning = {
+      'X-SSL-Pinned': 'true',
+      'X-Request-ID': _generateRequestId(),
+      ...?additionalHeaders,
+    };
+
+    try {
+      // Use HttpService internally - this will handle token refresh automatically
+      final response = await HttpService().post(
+        url,
+        body: body,
+        requiresAuth: token != null, // Auth required if token is provided
+        additionalHeaders: headersWithPinning,
+      );
+
+      // Verify SSL pinning after response (optional validation)
+      _verifySSLPinning(response);
+
+      return response;
+    } catch (e) {
+      ///* AppLogger.info('❌ SecureApiClient POST error: $e'); */
+      rethrow;
+    }
   }
 
-  /// Internal request executor
-  static Future<http.Response> _makeRequest({
-    required String method,
+  /// Optional: Verify SSL pinning after response
+  static void _verifySSLPinning(http.Response response) {
+    // You can add custom SSL pinning verification logic here
+    // For example, check response headers or perform additional validation
+    final pinningHeader = response.headers['x-ssl-pinned'];
+    if (pinningHeader == null) {
+      ///* AppLogger.info('⚠️ Warning: Response missing SSL pinning header'); */
+    }
+  }
+
+  /// Keep the original direct HTTP methods for backward compatibility
+  /// but mark them as deprecated
+  @Deprecated(
+    'Use HttpService directly instead. This method will be removed in future versions.',
+  )
+  static Future<http.Response> getDirect({
     required String url,
-    Map<String, dynamic>? body,
     String? token,
     Map<String, String>? additionalHeaders,
   }) async {
+    ///* AppLogger.info(  '⚠️ Warning: Using deprecated getDirect method. Consider using HttpService instead.', ); */
+
     HttpClient? client;
     try {
       final uri = Uri.parse(url);
@@ -929,47 +850,66 @@ class SecureApiClient {
         ...?additionalHeaders,
       };
 
-      late http.Response response;
+      final request = await client.getUrl(uri);
+      headers.forEach((key, value) => request.headers.set(key, value));
+      final httpResponse = await request.close().timeout(
+        const Duration(seconds: 15),
+      );
+      final bodyString = await httpResponse.transform(utf8.decoder).join();
 
-      if (method == 'GET') {
-        final request = await client.getUrl(uri);
-        headers.forEach((key, value) => request.headers.set(key, value));
-        final httpResponse = await request.close().timeout(
-          const Duration(seconds: 15),
-        );
-        final bodyString = await httpResponse.transform(utf8.decoder).join();
-        response = http.Response(
-          bodyString,
-          httpResponse.statusCode,
-          headers: {'content-type': 'application/json; charset=utf-8'},
-        );
-      } else if (method == 'POST') {
-        final request = await client.postUrl(uri);
-        headers.forEach((key, value) => request.headers.set(key, value));
-        request.write(json.encode(body));
-        final httpResponse = await request.close().timeout(
-          const Duration(seconds: 15),
-        );
-        final bodyString = await httpResponse.transform(utf8.decoder).join();
-        response = http.Response(
-          bodyString,
-          httpResponse.statusCode,
-          headers: {'content-type': 'application/json; charset=utf-8'},
-        );
-      } else {
-        throw Exception('Unsupported HTTP method: $method');
-      }
+      return http.Response(
+        bodyString,
+        httpResponse.statusCode,
+        headers: {'content-type': 'application/json; charset=utf-8'},
+      );
+    } catch (e) {
+      rethrow;
+    } finally {
+      client?.close();
+    }
+  }
 
-      debugPrint('Response ${response.statusCode} from $url');
-      return response;
-    } on TimeoutException catch (e) {
-      debugPrint('Request timeout to $url: $e');
-      rethrow;
-    } on SocketException catch (e) {
-      debugPrint('Network error to $url: $e');
-      rethrow;
-    } catch (e, stackTrace) {
-      debugPrint('Unexpected error to $url: $e\n$stackTrace');
+  @Deprecated(
+    'Use HttpService directly instead. This method will be removed in future versions.',
+  )
+  static Future<http.Response> postDirect({
+    required String url,
+    required Map<String, dynamic> body,
+    String? token,
+    Map<String, String>? additionalHeaders,
+  }) async {
+    ///* AppLogger.info(  '⚠️ Warning: Using deprecated postDirect method. Consider using HttpService instead.',); */
+
+    HttpClient? client;
+    try {
+      final uri = Uri.parse(url);
+      client = _createSecureHttpClient();
+
+      final headers = <String, String>{
+        'Content-Type': 'application/json',
+        'User-Agent': 'AstroChatApp/1.0',
+        'X-App-Version': '1.0',
+        'X-Platform': Platform.operatingSystem,
+        'X-Timestamp': DateTime.now().millisecondsSinceEpoch.toString(),
+        'X-Request-ID': _generateRequestId(),
+        if (token != null) 'Authorization': 'Bearer $token',
+        ...?additionalHeaders,
+      };
+
+      final request = await client.postUrl(uri);
+      headers.forEach((key, value) => request.headers.set(key, value));
+      request.write(json.encode(body));
+      final httpResponse = await request.close().timeout(
+        const Duration(seconds: 15),
+      );
+      final bodyString = await httpResponse.transform(utf8.decoder).join();
+
+      return http.Response(
+        bodyString,
+        httpResponse.statusCode,
+        headers: {'content-type': 'application/json; charset=utf-8'},
+      );
+    } catch (e) {
       rethrow;
     } finally {
       client?.close();
@@ -987,7 +927,7 @@ class BiometricAuthService {
       final isDeviceSupported = await _auth.isDeviceSupported();
       return canAuthenticate && isDeviceSupported;
     } catch (e) {
-      AppLogger.error('Error checking biometric availability', e);
+      /* AppLogger.error('Error checking biometric availability', e); */
       return false;
     }
   }
@@ -997,7 +937,7 @@ class BiometricAuthService {
       final canAuthenticate = await isAvailable;
 
       if (!canAuthenticate) {
-        AppLogger.info('Biometric not available, allowing continuation');
+        /////* AppLogger.info('Biometric not available, allowing continuation'); */
         return true; // Allow if biometrics not available
       }
 
@@ -1010,19 +950,21 @@ class BiometricAuthService {
         ),
       );
 
-      AppLogger.security(
+      /*  AppLogger.security(
         'Biometric authentication result: $result',
         feature: 'biometric_auth',
-      );
+      ); */
 
       return result;
-    } catch (e, stackTrace) {
+    } catch (e) {
+      /*
       AppLogger.error(
         'Biometric authentication failed',
         e,
         feature: 'biometric_auth',
         stackTrace: stackTrace,
       );
+      */
       return false;
     }
   }
@@ -1039,11 +981,11 @@ class SessionManager {
 
     final isValid = DateTime.now().difference(lastActivity) < _sessionTimeout;
     if (!isValid) {
-      AppLogger.security(
+      /* AppLogger.security(
         'Session expired for user $userId',
         userId: userId,
         feature: 'session_manager',
-      );
+      ); */
       _userSessions.remove(userId);
     }
 
@@ -1056,11 +998,12 @@ class SessionManager {
 
   static void clearSession(String userId) {
     _userSessions.remove(userId);
-    AppLogger.security(
+    /* AppLogger.security(
       'Session cleared for user $userId',
       userId: userId,
       feature: 'session_manager',
     );
+    */
   }
 }
 
@@ -1075,10 +1018,10 @@ class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key, required this.chatId, this.initialMessageId});
 
   @override
-  _ChatScreenState createState() => _ChatScreenState();
+  ChatScreenState createState() => ChatScreenState();
 }
 
-class _ChatScreenState extends State<ChatScreen>
+class ChatScreenState extends State<ChatScreen>
     with WidgetsBindingObserver, TickerProviderStateMixin {
   // Controllers and Focus
   late final AnimationController _animationController;
@@ -1090,7 +1033,7 @@ class _ChatScreenState extends State<ChatScreen>
   final AstrologerService _astrologerService = AstrologerService();
   final Map<String, AstroDetail?> _astrologerCache = {};
   bool _isPreloading = false;
-
+  bool _isOffline = false;
   // State variables
   String? userId;
   bool _isSocketConnected = false;
@@ -1101,14 +1044,22 @@ class _ChatScreenState extends State<ChatScreen>
   Timer? _refreshTimer;
   bool _isInputEnabled = true;
   String? _authToken;
-  double? _cachedPrice;
-  bool _isLoadingPrice = false;
 
+  bool _isLoadingPrice = false;
   bool _disposed = false;
   Completer<void>? _initialDataCompleter;
 
+  // Add these with your other state variables
+  late final BillingService _billingService;
+  bool _isBillingInitialized = false;
+  String? _pendingQuestionText;
+  String? _pendingUserId;
+  double? _pendingAmount;
+  bool get isOffline => _isOffline;
   // Socket instance
-  late IO.Socket socket;
+  late io.Socket socket;
+  late final Connectivity _connectivity = Connectivity();
+  bool _isOnline = true;
 
   @override
   void initState() {
@@ -1116,15 +1067,34 @@ class _ChatScreenState extends State<ChatScreen>
     _disposed = false;
     _initializeProfile();
     _loadToken();
+    _initializeBillingService();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final chatService = Provider.of<SecureChatService>(
+        context,
+        listen: false,
+      );
+      await chatService.initializeWithCache();
+
+      // Set up offline callback
+      chatService.onOfflineStatusChanged = (isOffline) {
+        if (mounted) {
+          setState(() => _isOffline = isOffline);
+        }
+      };
+      _initConnectivityListener();
+      // Then fetch from server
+      _fetchInitialData();
+    });
 
     WidgetsFlutterBinding.ensureInitialized();
     FlutterError.onError = (details) {
-      AppLogger.error(
+      /* AppLogger.error(
         'Flutter error',
         details.exception,
         stackTrace: details.stack,
         feature: 'flutter_error',
       );
+      */
       // Report to crash analytics
     };
     _refreshTimer = Timer.periodic(const Duration(seconds: 60), (_) {
@@ -1134,13 +1104,14 @@ class _ChatScreenState extends State<ChatScreen>
     });
 
     PlatformDispatcher.instance.onError = (error, stack) {
-      AppLogger.error('Platform error', error, stackTrace: stack);
+      /* AppLogger.error('Platform error', error, stackTrace: stack); */
       return true;
     };
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _debugMessageStructure();
     });
-    AppLogger.info('ChatScreen initialized', feature: 'chat_screen');
+
+    ///* AppLogger.info('ChatScreen initialized', feature: 'chat_screen'); */
     _initializeChat();
     _preloadAllAstrologers(); // ✅ ADD THIS
     Future.delayed(Duration(seconds: 2), () {
@@ -1154,42 +1125,370 @@ class _ChatScreenState extends State<ChatScreen>
     }
   }
 
+  void _initConnectivityListener() {
+    _connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
+      final wasOnline = _isOnline;
+      final isNowOnline = result != ConnectivityResult.none;
+      _isOnline = isNowOnline; // ← ADD THIS LINE!
+      if (!wasOnline && isNowOnline) {
+        _handleDeviceOnline().then((_) {}).catchError((error) {});
+      } else {}
+
+      if (mounted) {
+        setState(() {
+          _isOffline = !_isOnline;
+        });
+      }
+    });
+
+    _checkInitialConnectivity();
+  }
+
+  // Add this method to ChatScreenState and call it in initState
+  void _debugCheckCache() async {
+    final cacheService = MessageCacheService();
+    await cacheService.init();
+    final messages = await cacheService.loadMessages();
+    for (var msg in messages) {
+      AppLogger.info(
+        '   - ${msg.isMe ? "Q" : "A"}: ${msg.text.substring(0, msg.text.length > 30 ? 30 : msg.text.length)}',
+      );
+    }
+  }
+
+  Future<void> _checkInitialConnectivity() async {
+    final results = await _connectivity.checkConnectivity();
+    _isOnline = results != ConnectivityResult.none;
+    if (mounted) {
+      setState(() {
+        _isOffline = !_isOnline;
+      });
+    }
+  }
+
+  Future<void> _handleDeviceOnline() async {
+    final totalTimer = Stopwatch()..start();
+
+    if (!mounted) {
+      return;
+    }
+
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Back online! Updating messages...'),
+          backgroundColor: Colors.green,
+          duration: Duration(milliseconds: 500),
+        ),
+      );
+    }
+
+    // Sync any pending messages first (fast)
+    final chatService = Provider.of<SecureChatService>(context, listen: false);
+
+    final syncTimer = Stopwatch()..start();
+    await chatService.syncPendingMessages();
+    syncTimer.stop();
+    final refreshTimer = Stopwatch()..start();
+    await refreshMessagesOnline();
+    refreshTimer.stop();
+
+    // Scroll to bottom to show latest
+    if (mounted) {
+      final scrollTimer = Stopwatch()..start();
+      _scrollToBottom();
+      scrollTimer.stop();
+    } else {}
+
+    totalTimer.stop();
+    AppLogger.error(
+      '🏁 [ONLINE] TOTAL _handleDeviceOnline time: ${totalTimer.elapsedMilliseconds}ms',
+      null,
+    );
+  }
+
+  Future<void> refreshMessagesOnline() async {
+    if (!mounted) {
+      return;
+    }
+
+    final stopwatch = Stopwatch()..start();
+
+    if (!_isOnline) {
+      return;
+    }
+
+    // Get userId properly
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
+    final String currentUserId = profileProvider.userId ?? '';
+
+    if (currentUserId.isEmpty) {
+      return;
+    }
+
+    final chatService = Provider.of<SecureChatService>(context, listen: false);
+
+    final currentMessages = List<chat_model.Message>.from(chatService.messages);
+
+    try {
+      final questionsTimer = Stopwatch()..start();
+      final questions = await _fetchQuestionsFast(currentUserId);
+      questionsTimer.stop();
+
+      final advicesTimer = Stopwatch()..start();
+      final advices = await _fetchAdvicesFast(currentUserId);
+      advicesTimer.stop();
+
+      List<chat_model.Message> newMessages = [];
+      if (questions != null) newMessages.addAll(questions);
+      if (advices != null) newMessages.addAll(advices);
+
+      // Sort by date (oldest first)
+      final sortTimer = Stopwatch()..start();
+      newMessages.sort(
+        (a, b) => _getMessageDateTime(a).compareTo(_getMessageDateTime(b)),
+      );
+      sortTimer.stop();
+
+      final diffTimer = Stopwatch()..start();
+      _updateMessageListWithDiff(chatService, currentMessages, newMessages);
+      diffTimer.stop();
+
+      final cacheTimer = Stopwatch()..start();
+      await chatService.replaceCache(newMessages);
+      cacheTimer.stop();
+    } catch (e) {
+      AppLogger.error('❌ [TIMING] Online refresh failed', e);
+    } finally {
+      stopwatch.stop();
+    }
+  }
+
+  void _updateMessageListWithDiff(
+    SecureChatService chatService,
+    List<chat_model.Message> oldList,
+    List<chat_model.Message> newList,
+  ) {
+    final timer = Stopwatch()..start();
+
+    // Create maps for O(1) lookup
+    final oldMap = {for (var m in oldList) m.id: m};
+    final newMap = {for (var m in newList) m.id: m};
+
+    // Find removed messages
+    final toRemove =
+        oldMap.keys.where((id) => !newMap.containsKey(id)).toList();
+    AppLogger.error('🔍 [DIFF] Messages to remove: ${toRemove.length}', null);
+
+    // Find added/updated messages
+    final toAdd = newMap.keys.where((id) => !oldMap.containsKey(id)).toList();
+    final toUpdate =
+        newMap.keys
+            .where((id) => oldMap.containsKey(id) && oldMap[id] != newMap[id])
+            .toList();
+    AppLogger.error(
+      '🔍 [DIFF] Messages to add: ${toAdd.length}, to update: ${toUpdate.length}',
+      null,
+    );
+
+    // Apply changes via chatService
+    chatService.updateMessagesWithDiff(oldList, newList);
+
+    timer.stop();
+  }
+
+  Future<List<chat_model.Message>?> _fetchQuestionsFast(String userId) async {
+    try {
+      final response = await SecureApiClient.get(
+        url: '${ChatConstants.baseUrl}/questions/previous/$userId',
+        token: _authToken,
+      ).timeout(const Duration(seconds: 5));
+
+      if (response.statusCode == 200) {
+        final List<dynamic> data = json.decode(response.body);
+        final List<chat_model.Message> messages = [];
+        for (var item in data) {
+          _processQuestionItem(item, messages);
+        }
+        return messages;
+      }
+    } catch (e) {
+      AppLogger.error('Fast fetch questions failed', e);
+    }
+    return null;
+  }
+
+  Future<List<chat_model.Message>?> _fetchAdvicesFast(String userId) async {
+    try {
+      final response = await SecureApiClient.get(
+        url: '${ChatConstants.baseUrl}/advices/$userId',
+        token: _authToken,
+      ).timeout(const Duration(seconds: 5));
+
+      if (response.statusCode == 200) {
+        final List<dynamic> data = json.decode(response.body);
+        final List<chat_model.Message> advices = [];
+        for (var item in data) {
+          if (item['text'] != null && item['createdAt'] != null) {
+            advices.add(
+              chat_model.Message(
+                id: item['_id'],
+                text: item['text'],
+                isMe: false,
+                isAdvice: true,
+                adminId: item['adminId'] ?? '',
+                adminName: item['adminName'] ?? '',
+                createdAt: chat_model.Message.parseDate(
+                  item['createdAt'] ?? item['scheduledFor'],
+                ),
+                rating: item['rating'],
+                feedback: item['feedback'],
+                type: item['type'],
+                title: item['title'],
+              ),
+            );
+          }
+        }
+        return advices;
+      }
+    } catch (e) {
+      AppLogger.error('Fast fetch advices failed', e);
+    }
+    return null;
+  }
+
   Future<void> _prefetchDisplayPrice(String userId) async {
     if (_isLoadingPrice) return;
 
     _isLoadingPrice = true;
     try {
-      _cachedPrice = await PaymentPriceService.getDisplayPrice(userId);
-      AppLogger.info(
-        'Pre-fetched display price: \$${_cachedPrice?.toStringAsFixed(2)}',
-      );
+      ///* AppLogger.info(  'Pre-fetched display price: \$${_cachedPrice?.toStringAsFixed(2)}',); */
     } catch (e) {
-      AppLogger.error('Error pre-fetching display price', e);
+      /* AppLogger.error('Error pre-fetching display price', e); */
     } finally {
       _isLoadingPrice = false;
     }
   }
 
+  // In _ChatScreenState class, update _initializeBillingService method:
+
+  Future<void> _initializeBillingService() async {
+    _billingService = BillingService();
+
+    // CRITICAL FIX: Initialize with context
+    _billingService.initialize(context);
+
+    // Set up callbacks
+    // In _ChatScreenState
+    _billingService.onSingleQuestionPurchaseSuccess = () {
+      // Single question purchased successfully - send the pending question with amount
+      if (_pendingQuestionText != null && _pendingUserId != null) {
+        _sendPaidQuestionAfterPurchase(
+          _pendingQuestionText!,
+          _pendingUserId!,
+          amount: _pendingAmount, // ← Pass the amount
+        );
+        _pendingQuestionText = null;
+        _pendingUserId = null;
+        _pendingAmount = null;
+      }
+    };
+
+    _billingService.onPurchaseError = (error) {
+      if (mounted) {
+        _showErrorSnackbar('Payment failed: $error');
+        setState(() {
+          _isSending = false;
+          _isInputEnabled = true;
+        });
+      }
+    };
+
+    _billingService.onPurchaseCancelled = () {
+      if (mounted) {
+        _showErrorSnackbar('Payment cancelled');
+        setState(() {
+          _isSending = false;
+          _isInputEnabled = true;
+        });
+      }
+    };
+
+    // Get token and initialize
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
+    final token = profileProvider.token;
+
+    if (token != null) {
+      _billingService.setAuthToken(token);
+      await _billingService.init();
+      _isBillingInitialized = true;
+    }
+  }
+
+  Future<void> _sendPaidQuestionAfterPurchase(
+    String text,
+    String userId, {
+    double? amount,
+  }) async {
+    try {
+      // Don't use a fake default - if amount is null, that's an error
+      if (amount == null) {
+        _showErrorSnackbar("Payment amount missing. Please contact support.");
+        return;
+      }
+
+      await sendQuestion(
+        text: text,
+        userId: userId,
+        paid: true,
+        amount: amount, // Convert to cents/paisa if needed
+        paymentIntentId: 'google_play_${DateTime.now().millisecondsSinceEpoch}',
+      );
+
+      _controller.clear();
+      _scrollToBottom();
+      _showSuccessSnackbar('✅ Question sent successfully!');
+      SessionManager.updateSession(userId);
+    } catch (e) {
+      _showErrorSnackbar(
+        'Payment successful but question failed to send. Please try again.',
+      );
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isSending = false;
+          _isInputEnabled = true;
+        });
+      }
+    }
+  }
+
   void _checkSocketConnection() {
     final isConnected = socket.connected && _isSocketConnected;
-    AppLogger.info(
+    /* AppLogger.info(
       '🔌 Socket Status - Connected: $isConnected, ID: ${socket.id}',
       feature: 'socket_health',
-    );
+    ); */
 
     if (!isConnected && userId != null) {
-      AppLogger.warning(
+      /* AppLogger.warning(
         '⚠️ Socket not connected! User: $userId',
         feature: 'socket_health',
-      );
+      ); */
 
       // Attempt reconnect
       if (!socket.connected) {
         socket.connect();
-        AppLogger.info(
+        /* AppLogger.info(
           '🔄 Attempting socket reconnect',
           feature: 'socket_health',
-        );
+        ); */
       }
     }
 
@@ -1205,9 +1504,9 @@ class _ChatScreenState extends State<ChatScreen>
     final token = profileProvider.token;
 
     if (token == null) {
-      debugPrint('❌ No token found');
+      ///* AppLogger.info('❌ No token found'); */
     } else {
-      debugPrint('✅ Token loaded in ChatScreen: $token');
+      ///* AppLogger.info('✅ Token loaded in ChatScreen: $token'); */
     }
 
     setState(() {
@@ -1232,27 +1531,20 @@ class _ChatScreenState extends State<ChatScreen>
     final chatService = Provider.of<SecureChatService>(context, listen: false);
     final messages = chatService.messages;
 
-    debugPrint('📋 MESSAGE STRUCTURE ANALYSIS:');
-    debugPrint('Total messages: ${messages.length}');
+    ///* AppLogger.info('📋 MESSAGE STRUCTURE ANALYSIS:'); */
+    ///* AppLogger.info('Total messages: ${messages.length}'); */
 
     for (int i = 0; i < messages.length; i++) {
-      final message = messages[i];
-      debugPrint(
-        '[$i] ID: ${message.id} | Type: ${message.isMe ? "QUESTION" : "ANSWER"} | Text: ${message.text.substring(0, min(30, message.text.length))}...',
-      );
+      ///* AppLogger.info( '[$i] ID: ${message.id} | Type: ${message.isMe ? "QUESTION" : "ANSWER"} | Text: ${message.text.substring(0, min(30, message.text.length))}...', ); */
     }
 
     // Analyze question-answer pairs
-    debugPrint('🔍 QUESTION-ANSWER PAIRS:');
+    ///* AppLogger.info('🔍 QUESTION-ANSWER PAIRS:'); */
     for (int i = 0; i < messages.length - 1; i++) {
       if (messages[i].isMe && !messages[i + 1].isMe) {
-        debugPrint(
-          '  Q: ${messages[i].text.substring(0, min(30, messages[i].text.length))}...',
-        );
-        debugPrint(
-          '  A: ${messages[i + 1].text.substring(0, min(30, messages[i + 1].text.length))}...',
-        );
-        debugPrint('  ---');
+        /////* AppLogger.info(  '  Q: ${messages[i].text.substring(0, min(30, messages[i].text.length))}...', ); */
+        ///* AppLogger.info('  A: ${messages[i + 1].text.substring(0, min(30, messages[i + 1].text.length))}...', ); */
+        ///* AppLogger.info('  ---'); */
       }
     }
   }
@@ -1282,9 +1574,7 @@ class _ChatScreenState extends State<ChatScreen>
         }
       }
 
-      debugPrint(
-        '🔍 Preloading ${uniqueAdminIds.length} astrologers: $uniqueAdminIds',
-      );
+      /////* AppLogger.info( '🔍 Preloading ${uniqueAdminIds.length} astrologers: $uniqueAdminIds', ); */
 
       // Preload all astrologers in background
       final futures = <Future>[];
@@ -1293,19 +1583,18 @@ class _ChatScreenState extends State<ChatScreen>
           _astrologerService
               .getAstrologer(adminId)
               .then((astroDetail) {
-                debugPrint('📥 Raw astrologer response for $adminId:');
-                debugPrint('   - Success: ${astroDetail != null}');
-                debugPrint('   - Name: ${astroDetail?.name}');
-                debugPrint('   - Image: ${astroDetail?.image}');
-                debugPrint('   - ID: ${astroDetail?.id}');
+                /////* AppLogger.info('📥 Raw astrologer response for $adminId:'); */
+                /////* AppLogger.info('   - Success: ${astroDetail != null}'); */
+                /////* AppLogger.info('   - Name: ${astroDetail?.name}'); */
+                /////* AppLogger.info('   - Image: ${astroDetail?.image}'); */
+                /////* AppLogger.info('   - ID: ${astroDetail?.id}'); */
 
                 _astrologerCache[adminId] = astroDetail;
-                debugPrint(
-                  '✅ Cached astrologer: $adminId → ${astroDetail?.name ?? "NULL"}',
-                );
+
+                ///* AppLogger.info(  '✅ Cached astrologer: $adminId → ${astroDetail?.name ?? "NULL"}', ); */
               })
               .catchError((error) {
-                debugPrint('❌ Error loading astrologer $adminId: $error');
+                ///* AppLogger.info('❌ Error loading astrologer $adminId: $error'); */
                 _astrologerCache[adminId] = null;
               }),
         );
@@ -1313,12 +1602,10 @@ class _ChatScreenState extends State<ChatScreen>
 
       await Future.wait(futures);
 
-      debugPrint(
-        '🎯 Preloading completed. Cache size: ${_astrologerCache.length}',
-      );
-      debugPrint('📋 Cache contents:');
+      ///* AppLogger.info(  '🎯 Preloading completed. Cache size: ${_astrologerCache.length}',); */
+      ///* AppLogger.info('📋 Cache contents:'); */
       _astrologerCache.forEach((id, astro) {
-        debugPrint('   - $id: ${astro?.name ?? "NULL"}');
+        ///* AppLogger.info('   - $id: ${astro?.name ?? "NULL"}'); */
       });
 
       // Trigger rebuild to show cached data
@@ -1326,9 +1613,9 @@ class _ChatScreenState extends State<ChatScreen>
         setState(() {});
         _checkPerformance(); // ✅ Check performance
       }
-    } catch (e, stackTrace) {
-      debugPrint('❌ Error preloading astrologers: $e');
-      debugPrint('Stack trace: $stackTrace');
+    } catch (e) {
+      ///* AppLogger.info('❌ Error preloading astrologers: $e'); */
+      ///* AppLogger.info('Stack trace: $stackTrace'); */
     } finally {
       _isPreloading = false;
     }
@@ -1339,7 +1626,7 @@ class _ChatScreenState extends State<ChatScreen>
     if (adminId == null) return null;
     return _astrologerCache[adminId];
   }
-
+  /*
   Future<void> _fetchAllMessages(
     String userId,
     SecureChatService chatService,
@@ -1370,20 +1657,21 @@ class _ChatScreenState extends State<ChatScreen>
 
       // ✅ PRELOAD ASTROLOGERS IMMEDIATELY AFTER MESSAGES
       await _preloadAllAstrologers();
-
+      /*
       AppLogger.info(
         'Fetched ${allMessages.length} total messages',
         feature: 'data_fetching',
-      );
-    } catch (e, stackTrace) {
-      AppLogger.error(
+      ); */
+    } catch (e) {
+      /*  AppLogger.error(
         'Error fetching all messages',
         e,
         feature: 'data_fetching',
         stackTrace: stackTrace,
-      );
+      );*/
     }
   }
+  */
 
   Future<List<chat_model.Message>?> _fetchQuestionsWithRetry(
     String userId,
@@ -1442,38 +1730,54 @@ class _ChatScreenState extends State<ChatScreen>
     _handleDeepLink();
   }
 
-  void _initializeSocketWithSecurity() {
-    AppLogger.info('Initializing secure socket connection', feature: 'socket');
+  void _initializeSocketWithSecurity() async {
+    final profileProvider = Provider.of<ProfileProvider>(
+      context,
+      listen: false,
+    );
 
-    socket = IO.io(
+    String? token = profileProvider.token;
+
+    if (token == null || token.isEmpty) {
+      _logger.i('No token available, refreshing...');
+      await profileProvider.refreshToken();
+      token = profileProvider.token;
+    }
+
+    if (token == null || token.isEmpty) {
+      _logger.e('❌ Cannot initialize socket: No auth token available');
+      return;
+    }
+
+    _logger.i('🔑 Initializing socket with auth token');
+
+    // ✅ Use extraHeaders instead of setAuth
+    socket = io.io(
       ChatConstants.socketUrl,
-      IO.OptionBuilder()
+      io.OptionBuilder()
           .setTransports(['websocket', 'polling'])
-          .disableAutoConnect()
-          .setReconnectionAttempts(ChatConstants.maxReconnectionAttempts)
-          .setReconnectionDelay(ChatConstants.reconnectDelay.inMilliseconds)
-          .setTimeout(ChatConstants.socketTimeout.inMilliseconds)
-          // Security headers
           .setExtraHeaders({
+            'Authorization': 'Bearer $token',
             'User-Agent': 'AstroChatApp/${Environment.appVersion}',
             'X-App-Version': Environment.appVersion,
             'X-Platform': Platform.operatingSystem,
           })
+          .disableAutoConnect()
+          .setReconnectionAttempts(ChatConstants.maxReconnectionAttempts)
+          .setReconnectionDelay(ChatConstants.reconnectDelay.inMilliseconds)
+          .setTimeout(ChatConstants.socketTimeout.inMilliseconds)
           .build(),
     );
 
     _setupAllSocketHandlers();
     socket.connect();
-    AppLogger.info('🔗 Socket connection initiated', feature: 'socket');
   }
 
   void _joinUserRoom() {
     if (userId != null && userId!.isNotEmpty && socket.connected) {
       socket.emit('join_room', {'room': userId});
-      AppLogger.info(
-        '✅ Joined socket room for user: $userId',
-        feature: 'socket',
-      );
+
+      ///* AppLogger.info( '✅ Joined socket room for user: $userId',  feature: 'socket', ); */
 
       // Test the connection
       socket.emit('test_ping', {
@@ -1487,7 +1791,30 @@ class _ChatScreenState extends State<ChatScreen>
     // ✅ FIX: Always create a new completer and reset connection state
     _socketConnectionCompleter = Completer<void>();
     _isSocketConnected = false;
+    // Add this BEFORE any other handlers
+    socket.onAny((event, data) {
+      _logger.i('🔔 SOCKET EVENT RECEIVED: $event');
+      if (event == 'new_question') {
+        _logger.i('📦 NEW_QUESTION DATA: $data');
+      }
+    });
+    socket.onConnect((_) {
+      _logger.i('✅✅✅ SOCKET CONNECTED! ID: ${socket.id}');
+      _isSocketConnected = true;
 
+      // Test if room join works
+      if (userId != null && userId!.isNotEmpty) {
+        socket.emit('join_room', {'room': userId});
+      }
+    });
+
+    socket.on('joined_room', (data) {
+      _logger.i('✅✅✅ SUCCESSFULLY JOINED ROOM: $data');
+    });
+
+    socket.onConnectError((error) {
+      _logger.e('❌ Socket connection error: $error');
+    });
     // First, remove ALL existing listeners to prevent duplicates
     socket.off('connect');
     socket.off('disconnect');
@@ -1507,7 +1834,7 @@ class _ChatScreenState extends State<ChatScreen>
         return;
       }
 
-      AppLogger.info('Socket connected: ${socket.id}', feature: 'socket');
+      ///* AppLogger.info('Socket connected: ${socket.id}', feature: 'socket'); */
       _isSocketConnected = true;
 
       // ✅ JOIN ROOM IMMEDIATELY AFTER CONNECTION
@@ -1522,21 +1849,19 @@ class _ChatScreenState extends State<ChatScreen>
       // Join user room if userId is available
       if (userId != null && userId!.isNotEmpty) {
         socket.emit('join_room', {'room': userId});
-        AppLogger.info(
-          'Joined socket room for user: $userId',
-          feature: 'socket',
-        );
+
+        ///* AppLogger.info( 'Joined socket room for user: $userId', feature: 'socket',  ); */
       }
     });
 
     socket.onDisconnect((_) {
-      AppLogger.info('Socket disconnected', feature: 'socket');
+      ///* AppLogger.info('Socket disconnected', feature: 'socket'); */
       _isSocketConnected = false;
       _socketConnectionCompleter = Completer<void>();
     });
 
     socket.onConnectError((error) {
-      AppLogger.error('Socket connection error', error, feature: 'socket');
+      /* AppLogger.error('Socket connection error', error, feature: 'socket'); */
       _isSocketConnected = false;
 
       if (_socketConnectionCompleter != null &&
@@ -1546,7 +1871,7 @@ class _ChatScreenState extends State<ChatScreen>
     });
 
     socket.onError((error) {
-      AppLogger.error('Socket error', error, feature: 'socket');
+      /* AppLogger.error('Socket error', error, feature: 'socket'); */
     });
 
     // ==================== MESSAGE HANDLERS ====================
@@ -1572,22 +1897,16 @@ class _ChatScreenState extends State<ChatScreen>
       }
     });
 
-    // ✅ FIXED NEW_ANSWER HANDLER
     socket.on('new_answer', (data) {
       if (!_isSafe) return;
 
       try {
-        AppLogger.info(
-          '🎯 NEW_ANSWER EVENT RECEIVED - Processing...',
-          feature: 'socket_messages',
-        );
+        _logger.i('🎯 NEW_ANSWER EVENT RECEIVED');
 
-        // Enhanced validation for answer structure
         if (data['questionId'] == null || data['answerTranslated'] == null) {
           throw Exception('Invalid answer structure: $data');
         }
 
-        // ✅ FIX: Extract and validate only the text content
         final answerText = data['answerTranslated'] as String;
         final validation = InputValidator.validateMessage(
           InputValidator.stripHtmlTags(answerText),
@@ -1597,34 +1916,27 @@ class _ChatScreenState extends State<ChatScreen>
           throw Exception('Invalid answer content: ${validation.message}');
         }
 
-        AppLogger.info(
-          '✅ Validated new_answer for question: ${data['questionId']}',
-          feature: 'socket_messages',
-        );
+        // ✅ Use answerId from server (or generate if not provided)
+        final answerId = data['answerId'] ?? '${data['questionId']}_answer';
 
-        // Create and add message
         final message = chat_model.Message(
-          id: data['questionId'],
-          text: data['answerTranslated'], // Keep original HTML for display
+          id: answerId, // ✅ Use answerId as ID
+          text: data['answerTranslated'],
           isMe: false,
           adminId: data['adminId'] ?? data['councillorId'],
           adminName: data['adminName'] ?? data['councillorName'],
+          adminImage: data['adminImage'], // ✅ ADD THIS LINE
           answeredAt: DateTime.parse(data['answeredAt']),
+          createdAt: DateTime.parse(data['answeredAt']),
         );
 
-        AppLogger.info(
-          '📝 Created message: ${message.id}',
-          feature: 'socket_messages',
+        final chatService = Provider.of<SecureChatService>(
+          context,
+          listen: false,
         );
+        chatService.addMessage(message);
+        _scrollToBottom();
 
-        _addMessage(message);
-
-        AppLogger.info(
-          '🎉 Successfully added new answer to chat UI',
-          feature: 'socket_messages',
-        );
-
-        // Show success indicator
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -1634,13 +1946,8 @@ class _ChatScreenState extends State<ChatScreen>
             ),
           );
         }
-      } catch (e, stackTrace) {
-        AppLogger.error(
-          '❌ Error processing new_answer event: $e',
-          e,
-          feature: 'socket_messages',
-          stackTrace: stackTrace,
-        );
+      } catch (e) {
+        _logger.e('Error processing new_answer event: $e');
       }
     });
 
@@ -1649,10 +1956,7 @@ class _ChatScreenState extends State<ChatScreen>
       if (!_isSafe) return;
 
       try {
-        AppLogger.info(
-          '🎯 NEW_CLARIFICATION EVENT RECEIVED - Processing...',
-          feature: 'socket_messages',
-        );
+        ///* AppLogger.info( '🎯 NEW_CLARIFICATION EVENT RECEIVED - Processing...', feature: 'socket_messages',); */
 
         // 1️⃣ Validate structure
         if (data['questionId'] == null ||
@@ -1674,10 +1978,7 @@ class _ChatScreenState extends State<ChatScreen>
           );
         }
 
-        AppLogger.info(
-          '✅ Validated clarification for question: ${data['questionId']}',
-          feature: 'socket_messages',
-        );
+        ///* AppLogger.info( '✅ Validated clarification for question: ${data['questionId']}',feature: 'socket_messages', ); */
 
         // 3️⃣ Create UI message object
         final message = chat_model.Message(
@@ -1687,21 +1988,16 @@ class _ChatScreenState extends State<ChatScreen>
           adminId: data['councillorId'],
           adminName: data['councillorName'],
           clarificatedAt: DateTime.parse(data['clarificatedAt']),
+          adminImage: data['adminImage'] ?? data['councillorImage'],
           isClarification: true, // <-- Add to your model if needed
         );
 
-        AppLogger.info(
-          '📝 Created clarification message: ${message.id}',
-          feature: 'socket_messages',
-        );
+        ///* AppLogger.info( '📝 Created clarification message: ${message.id}',feature: 'socket_messages', ); */
 
         // 4️⃣ Add to UI
         _addMessage(message);
 
-        AppLogger.info(
-          '🎉 Successfully added clarification to chat UI',
-          feature: 'socket_messages',
-        );
+        ///* AppLogger.info( '🎉 Successfully added clarification to chat UI', feature: 'socket_messages',); */
 
         // 5️⃣ Optional: UI toast
         if (mounted) {
@@ -1713,35 +2009,34 @@ class _ChatScreenState extends State<ChatScreen>
             ),
           );
         }
-      } catch (e, stackTrace) {
-        AppLogger.error(
+      } catch (e) {
+        /* AppLogger.error(
           '❌ Error processing new_clarification event: $e',
           e,
           feature: 'socket_messages',
           stackTrace: stackTrace,
         );
+        */
       }
     });
 
     // ✅ NEW_ADVICE HANDLER
     // ✅ NEW_ADVICE HANDLER (Full payload support)
+    // In _setupAllSocketHandlers - your existing handler is good
     socket.on('new_advice', (data) {
       if (!_isSafe) return;
 
       try {
-        AppLogger.info(
-          '🎯 NEW_ADVICE EVENT RECEIVED - Processing...',
-          feature: 'socket_messages',
-        );
+        _logger.i('🎯 NEW_ADVICE EVENT RECEIVED');
 
-        // 1️⃣ Validate required fields
+        // Validate required fields
         if (data['adviceTranslated'] == null || data['_id'] == null) {
           throw Exception('Invalid advice structure: $data');
         }
 
-        // 2️⃣ Extract and validate clean text
         final adviceText = data['adviceTranslated'] as String;
 
+        // Validate content
         final validation = InputValidator.validateMessage(
           InputValidator.stripHtmlTags(adviceText),
         );
@@ -1750,38 +2045,42 @@ class _ChatScreenState extends State<ChatScreen>
           throw Exception('Invalid advice content: ${validation.message}');
         }
 
-        AppLogger.info(
-          '✅ Validated new_advice content',
-          feature: 'socket_messages',
+        // Check for duplicate
+        final chatService = Provider.of<SecureChatService>(
+          context,
+          listen: false,
         );
+        bool exists = false;
+        for (var message in chatService.messages) {
+          if (message.id == data['_id'].toString()) {
+            exists = true;
+            break;
+          }
+        }
 
-        // 3️⃣ Create message object
+        if (exists) {
+          _logger.i('⚠️ Advice already exists, skipping duplicate');
+          return;
+        }
+
+        // Create message object
         final message = chat_model.Message(
-          id: data['_id'] ?? data['id'] ?? data['questionId'],
-          text: data['adviceTranslated'], // keep HTML for display
+          id: data['_id'].toString(),
+          text: data['adviceTranslated'],
           isMe: false,
           adminId: data['adminId'],
           adminName: data['adminName'],
           answeredAt: DateTime.parse(data['advisedAt']),
+          adminImage: data['adminImage'],
           type: data['type'],
           title: data['title'],
-          isAdvice: true, // optional flag for UI
+          isAdvice: true,
         );
 
-        AppLogger.info(
-          '📝 Created advice message: ${message.id}',
-          feature: 'socket_messages',
-        );
-
-        // 4️⃣ Add message to chat UI
         _addMessage(message);
+        _scrollToBottom();
 
-        AppLogger.info(
-          '🎉 Successfully added new advice to chat UI',
-          feature: 'socket_messages',
-        );
-
-        // 5️⃣ Optional toast
+        // Show notification
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -1791,13 +2090,8 @@ class _ChatScreenState extends State<ChatScreen>
             ),
           );
         }
-      } catch (e, stackTrace) {
-        AppLogger.error(
-          '❌ Error processing new_advice event: $e',
-          e,
-          feature: 'socket_messages',
-          stackTrace: stackTrace,
-        );
+      } catch (e) {
+        _logger.e('Error processing new_advice event: $e');
       }
     });
 
@@ -1809,40 +2103,38 @@ class _ChatScreenState extends State<ChatScreen>
         if (data['message'] == null) {
           throw Exception('Invalid payment required structure');
         }
-        AppLogger.info(
-          'Received payment_required event',
-          feature: 'socket_payments',
-        );
+
+        ///* AppLogger.info( 'Received payment_required event',  feature: 'socket_payments', ); */
         _handlePaymentRequired(data);
-      } catch (e, stackTrace) {
-        AppLogger.error(
+      } catch (e) {
+        /*AppLogger.error(
           'Invalid socket message rejected: $e',
           e,
           feature: 'socket_validation',
           stackTrace: stackTrace,
         );
+        */
       }
     });
 
     // ✅ ROOM JOIN CONFIRMATION
     socket.on('joined_room', (data) {
       if (!_isSafe) return;
-      AppLogger.info('✅ Confirmed joined room: $data', feature: 'socket');
+
+      ///* AppLogger.info('✅ Confirmed joined room: $data', feature: 'socket'); */
     });
 
     // ✅ DEBUG: Log all socket events (optional - remove in production)
     if (kDebugMode) {
       socket.onAny((event, data) {
-        AppLogger.info(
-          '📡 Socket event: $event → ${data != null ? json.encode(data) : "null"}',
-          feature: 'socket_debug',
-        );
+        ///* AppLogger.info( '📡 Socket event: $event → ${data != null ? json.encode(data) : "null"}', feature: 'socket_debug', ); */
       });
     }
   }
 
   void _checkPerformance() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      _debugCheckCache(); // ← Add await
       final stopwatch = Stopwatch()..start();
 
       // Force a rebuild to test performance
@@ -1850,15 +2142,14 @@ class _ChatScreenState extends State<ChatScreen>
 
       WidgetsBinding.instance.addPostFrameCallback((_) {
         stopwatch.stop();
-        debugPrint(
-          '⚡ ChatScreen rebuild time: ${stopwatch.elapsedMilliseconds}ms',
-        );
+
+        ///* AppLogger.info( '⚡ ChatScreen rebuild time: ${stopwatch.elapsedMilliseconds}ms', ); */
 
         if (stopwatch.elapsedMilliseconds > 16) {
           // 60fps = 16ms per frame
-          debugPrint('⚠️ Performance warning: Slow rebuild detected');
+          ///* AppLogger.info('⚠️ Performance warning: Slow rebuild detected'); */
         } else {
-          debugPrint('✅ Excellent performance: Buttery smooth scrolling');
+          ///* AppLogger.info('✅ Excellent performance: Buttery smooth scrolling'); */
         }
       });
     });
@@ -1882,70 +2173,68 @@ class _ChatScreenState extends State<ChatScreen>
 
   void _handleNewQuestion(Map<String, dynamic> data) {
     try {
-      // ✅ FIX: Comprehensive data validation
+      // Validate required fields
       if (data['text'] == null) {
-        throw Exception('Missing text field in new_question data');
+        _logger.e('Missing text field in new_question data');
+        return;
+      }
+
+      if (data['_id'] == null) {
+        _logger.e('Missing _id field in new_question data');
+        return;
       }
 
       final questionText = data['text'] as String;
-      final serverQuestionId = data['_id'] ?? data['id'];
-      final createdAt = data['createdAt'];
+      final serverQuestionId = data['_id'].toString();
 
-      if (serverQuestionId == null) {
-        throw Exception('Missing id field in new_question data');
-      }
-      if (createdAt == null) {
-        throw Exception('Missing createdAt field in new_question data');
-      }
-
-      // Convert to proper types
-      final questionIdString = serverQuestionId.toString();
-      final createdAtString = createdAt.toString();
-
-      // Parse datetime safely
-      DateTime parsedDate;
+      DateTime createdAt;
       try {
-        parsedDate = DateTime.parse(createdAtString);
+        createdAt = DateTime.parse(data['createdAt'].toString());
       } catch (e) {
-        AppLogger.warning(
-          'Invalid date format, using current time',
-          feature: 'socket_messages',
-        );
-        parsedDate = DateTime.now();
+        createdAt = DateTime.now();
       }
 
-      // Create the message
+      final chatService = Provider.of<SecureChatService>(
+        context,
+        listen: false,
+      );
+
+      // ✅ Check for duplicate message
+      bool messageExists = false;
+      for (var message in chatService.messages) {
+        if (message.id == serverQuestionId) {
+          messageExists = true;
+          break;
+        }
+      }
+
+      if (messageExists) {
+        _logger.i(
+          '⚠️ Question $serverQuestionId already exists, skipping duplicate',
+        );
+        return;
+      }
+
+      // Add the message
       final message = chat_model.Message(
-        id: questionIdString,
+        id: serverQuestionId,
         text: questionText,
         isMe: true,
-        createdAt: parsedDate,
+        createdAt: createdAt,
       );
 
-      // Add to chat
       _addMessage(message);
+      _scrollToBottom();
 
-      AppLogger.info(
-        'Successfully processed new_question: $questionIdString',
-        feature: 'socket_messages',
+      _logger.i(
+        '✅ Question added to UI: ${questionText.substring(0, questionText.length > 50 ? 50 : questionText.length)}',
       );
     } catch (e, stackTrace) {
-      AppLogger.error(
-        'Failed to process new_question event',
-        e,
-        feature: 'socket_messages',
+      _logger.e(
+        'Error in _handleNewQuestion',
+        error: e,
         stackTrace: stackTrace,
       );
-
-      // Optional: Show error to user
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error receiving message: ${e.toString()}'),
-            backgroundColor: Colors.red,
-          ),
-        );
-      }
     }
   }
 
@@ -2009,19 +2298,21 @@ class _ChatScreenState extends State<ChatScreen>
         // Store in secure storage for future
         await SecureStorage.storeUserId(userId!);
         SessionManager.updateSession(userId!);
-        AppLogger.info('Loaded userId: $userId', feature: 'user_management');
+
+        ///* AppLogger.info('Loaded userId: $userId', feature: 'user_management'); */
       } else {
-        AppLogger.info('No userId found', feature: 'user_management');
+        ///* AppLogger.info('No userId found', feature: 'user_management'); */
       }
 
       setState(() {});
-    } catch (e, stackTrace) {
-      AppLogger.error(
+    } catch (e) {
+      /* AppLogger.error(
         'Error loading userId',
         e,
         feature: 'user_management',
         stackTrace: stackTrace,
       );
+      */
     }
   }
 
@@ -2044,16 +2335,13 @@ class _ChatScreenState extends State<ChatScreen>
 
   void _scrollToMessage(String messageId) {
     // Implementation for scrolling to specific message
-    AppLogger.info('Scrolling to message: $messageId', feature: 'deep_linking');
+    ///* AppLogger.info('Scrolling to message: $messageId', feature: 'deep_linking'); */
   }
 
   void _handlePendingNavigation() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (!_isSafe) {
-        AppLogger.info(
-          'Skipping pending navigation - widget disposed',
-          feature: 'navigation',
-        );
+        ///* AppLogger.info('Skipping pending navigation - widget disposed', feature: 'navigation', ); */
         return;
       }
       try {
@@ -2064,10 +2352,7 @@ class _ChatScreenState extends State<ChatScreen>
 
         // Ensure token is loaded
         if (profileProvider.userId != null && profileProvider.token == null) {
-          AppLogger.info(
-            'Token not available for user ${profileProvider.userId}',
-            feature: 'navigation',
-          );
+          ///* AppLogger.info('Token not available for user ${profileProvider.userId}',  feature: 'navigation', ); */
         }
 
         // Handle pending notification navigation
@@ -2087,14 +2372,14 @@ class _ChatScreenState extends State<ChatScreen>
           }
           pendingNavigation.payload = null;
         }
-      } catch (e, stackTrace) {
+      } catch (e) {
         if (_isSafe) {
-          AppLogger.error(
+          /* AppLogger.error(
             'Error handling pending navigation',
             e,
             feature: 'navigation',
             stackTrace: stackTrace,
-          );
+          ); */
         }
       }
     });
@@ -2118,17 +2403,15 @@ class _ChatScreenState extends State<ChatScreen>
       // Request notification permissions
       await _requestNotificationPermissions();
 
-      AppLogger.info(
-        'Notifications initialized successfully',
-        feature: 'notifications',
-      );
-    } catch (e, stackTrace) {
-      AppLogger.error(
+      ///* AppLogger.info( 'Notifications initialized successfully',  feature: 'notifications', ); */
+    } catch (e) {
+      /*  AppLogger.error(
         'Error initializing notifications',
         e,
         feature: 'notifications',
         stackTrace: stackTrace,
       );
+      */
     }
   }
 
@@ -2149,92 +2432,62 @@ class _ChatScreenState extends State<ChatScreen>
             ?.requestPermissions(alert: true, badge: true, sound: true);
       }
 
-      AppLogger.info(
-        'Notification permissions requested',
-        feature: 'notifications',
-      );
-    } catch (e, stackTrace) {
-      AppLogger.error(
+      ///* AppLogger.info('Notification permissions requested', feature: 'notifications',); */
+    } catch (e) {
+      /* AppLogger.error(
         'Error requesting notification permissions',
         e,
         feature: 'notifications',
         stackTrace: stackTrace,
       );
+      */
     }
   }
 
   Future<void> _fetchInitialData() async {
-    // ✅ SAFETY CHECK: Return immediately if disposed
-    if (!_isSafe) {
-      AppLogger.info(
-        'Skipping _fetchInitialData - widget disposed',
-        feature: 'data_fetching',
-      );
-      return;
-    }
+    if (!_isSafe) return;
+
     try {
       final profileProvider = Provider.of<ProfileProvider>(
         context,
         listen: false,
       );
       final String currentUserId = profileProvider.userId ?? '';
-
-      if (currentUserId.isEmpty) {
-        AppLogger.info(
-          'No userId available for fetching data',
-          feature: 'data_fetching',
-        );
-        return;
-      }
-
-      // Validate session
-      if (!SessionManager.isSessionValid(currentUserId)) {
-        AppLogger.security(
-          'Session invalid during data fetch',
-          userId: currentUserId,
-          feature: 'session_validation',
-        );
-        if (_isSafe) {
-          _showErrorSnackbar('Session expired. Please restart the app.');
-        }
-        return;
-      }
+      if (currentUserId.isEmpty) return;
 
       final chatService = Provider.of<SecureChatService>(
         context,
         listen: false,
       );
-      // ✅ SAFETY CHECK: Use completer to track operation
-      _initialDataCompleter = Completer<void>();
 
-      // Use a single method to fetch all data to avoid race conditions
-      await _fetchAllMessages(currentUserId, chatService);
-      // ✅ SAFETY CHECK: Only complete if still safe
-      if (_isSafe &&
-          _initialDataCompleter != null &&
-          !_initialDataCompleter!.isCompleted) {
-        _initialDataCompleter!.complete();
-      }
+      // ✅ FIRST: Load from cache immediately
+      if (await chatService.hasCachedMessages()) {}
 
-      AppLogger.info(
-        'Initial data fetched successfully',
-        feature: 'data_fetching',
-      );
-    } catch (e, stackTrace) {
-      if (_isSafe) {
-        AppLogger.error(
-          'Error fetching initial data',
-          e,
-          feature: 'data_fetching',
-          stackTrace: stackTrace,
-        );
-      }
+      // Fetch from server
+      final questions = await _fetchQuestionsWithRetry(currentUserId);
+      final advices = await _fetchAdvicesWithRetry(currentUserId);
 
-      // ✅ SAFETY CHECK: Complete with error if still pending
-      if (_initialDataCompleter != null &&
-          !_initialDataCompleter!.isCompleted) {
-        _initialDataCompleter!.completeError(e);
-      }
+      List<chat_model.Message> allMessages = [];
+      if (questions != null) allMessages.addAll(questions);
+      if (advices != null) allMessages.addAll(advices);
+
+      allMessages.sort((a, b) {
+        final dateA = _getMessageDateTime(a);
+        final dateB = _getMessageDateTime(b);
+        return dateB.compareTo(dateA);
+      });
+
+      // ✅ CRITICAL FIX: Only update cache if we got valid data
+      if (allMessages.isNotEmpty) {
+        final currentMessages = chatService.messages;
+        final hasNewMessages = currentMessages.length != allMessages.length;
+
+        if (hasNewMessages) {
+          chatService.setMessages(allMessages, forceClearCache: true);
+        } else {}
+      } else {}
+    } catch (e) {
+      AppLogger.error('⚠️ Server error, keeping cached messages', e);
     }
   }
 
@@ -2249,36 +2502,22 @@ class _ChatScreenState extends State<ChatScreen>
     try {
       final response = await SecureApiClient.get(
         url: '${ChatConstants.baseUrl}/questions/previous/$userId',
-        token: _authToken, // ✅ reuse
+        token: _authToken,
       ).timeout(const Duration(seconds: 10));
 
       if (response.statusCode == 200) {
         final List<dynamic> data = json.decode(response.body);
+
         final List<chat_model.Message> messages = [];
 
         for (var item in data) {
           _processQuestionItem(item, messages);
         }
 
-        AppLogger.info(
-          'Fetched ${messages.length} questions and answers',
-          feature: 'data_fetching',
-        );
         return messages;
-      } else {
-        AppLogger.error(
-          'Failed to fetch questions',
-          Exception('HTTP ${response.statusCode}: ${response.body}'),
-          feature: 'data_fetching',
-        );
       }
-    } catch (e, stackTrace) {
-      AppLogger.error(
-        'Error fetching questions',
-        e,
-        feature: 'data_fetching',
-        stackTrace: stackTrace,
-      );
+    } catch (e) {
+      AppLogger.error('Error fetching questions', e);
     }
     return null;
   }
@@ -2317,25 +2556,24 @@ class _ChatScreenState extends State<ChatScreen>
           }
         }
 
-        AppLogger.info(
-          'Fetched ${advices.length} advices',
-          feature: 'data_fetching',
-        );
+        ///* AppLogger.info( 'Fetched ${advices.length} advices',  feature: 'data_fetching',); */
         return advices;
       } else {
-        AppLogger.error(
+        /* AppLogger.error(
           'Failed to fetch advices',
           Exception('HTTP ${response.statusCode}: ${response.body}'),
           feature: 'data_fetching',
-        );
+        ); */
       }
-    } catch (e, stackTrace) {
+    } catch (e) {
+      /*
       AppLogger.error(
         'Error fetching advices',
         e,
         feature: 'data_fetching',
         stackTrace: stackTrace,
       );
+      */
     }
     return null;
   }
@@ -2345,67 +2583,100 @@ class _ChatScreenState extends State<ChatScreen>
     List<chat_model.Message> messages,
   ) {
     final questionId = item['_id'] ?? item['id'];
-
-    // Add question
-    messages.add(
-      chat_model.Message(
-        id: questionId,
-        text: item['text'],
-        isMe: true,
-        createdAt: DateTime.parse(item['createdAt']),
-      ),
-    );
-
-    // Add answer if exists
-    if (item['answerTranslated'] != null) {
+    final answerId = item['answerId'];
+    final imageUrl = item['adminImage'] ?? item['councillorImage'];
+    // Add question (always safe)
+    if (questionId != null && questionId.isNotEmpty) {
       messages.add(
         chat_model.Message(
           id: questionId,
-          text: item['answerTranslated'],
-          isMe: false,
-          adminId: item['councillorId'],
-          adminName: item['councillorName'],
-          answeredAt: DateTime.parse(item['answeredAt']),
-          rating: item['rating'],
-          feedback: item['feedback'],
+          text: item['text'] ?? '',
+          isMe: true,
+          createdAt:
+              item['createdAt'] != null
+                  ? DateTime.parse(item['createdAt'])
+                  : DateTime.now(),
+          questionId: questionId,
         ),
       );
     }
 
-    // Add clarifications if any
-    if (item['isClarified'] == true && item['clarificationMessages'] != null) {
-      for (var clarification in item['clarificationMessages']) {
+    // Add answer (only if answer exists) - DO THIS ONCE
+    if (item['answerTranslated'] != null &&
+        item['answerTranslated'].toString().isNotEmpty) {
+      // Create safe answer ID (use server ID if available, otherwise generate one)
+      final safeAnswerId =
+          answerId ??
+          '${questionId}_answer_${DateTime.now().millisecondsSinceEpoch}';
+
+      messages.add(
+        chat_model.Message(
+          id: safeAnswerId, // ✅ Use safe ID
+          text: item['answerTranslated'],
+          isMe: false,
+          adminId: item['councillorId'] ?? item['adminId'],
+          adminName: item['councillorName'] ?? item['adminName'],
+          adminImage: imageUrl,
+          answeredAt:
+              item['answeredAt'] != null
+                  ? DateTime.parse(item['answeredAt'])
+                  : DateTime.now(),
+          createdAt:
+              item['answeredAt'] != null
+                  ? DateTime.parse(item['answeredAt'])
+                  : DateTime.now(),
+          rating: item['rating'],
+          feedback: item['feedback'],
+          questionId: questionId,
+        ),
+      );
+    } else {}
+
+    // Add clarifications (NOT answers again!)
+    // Add clarifications - FIXED: Don't rely on isClarified flag
+    if (item['clarificationMessages'] != null &&
+        item['clarificationMessages'] is List) {
+      final clarifications = item['clarificationMessages'] as List;
+
+      for (var clarification in clarifications) {
         if (clarification['clarificationHide'] == true) continue;
+
         messages.add(
           chat_model.Message(
-            id: questionId,
-            text: clarification['clarificationMessage'],
+            id:
+                clarification['clarificationId'] ??
+                'clar_${DateTime.now().millisecondsSinceEpoch}',
+            text: clarification['clarificationMessage'] ?? '',
             isMe: false,
             isClarification: true,
             adminId: clarification['councillorId'],
             adminName: clarification['councillorName'],
+            adminImage: imageUrl,
             clarificatedAt: DateTime.parse(clarification['clarificatedAt']),
-            clarificationId: clarification['clarificationId'], // ✅ add this
+            clarificationId: clarification['clarificationId'],
+            questionId: questionId,
+            createdAt: DateTime.parse(clarification['clarificatedAt']),
           ),
         );
       }
     }
-
-    // Add advice if exists
+    // Add advice (NOT answers!)
     if (item['adviceTranslated'] != null && item['advisedAt'] != null) {
       messages.add(
         chat_model.Message(
-          id: questionId,
+          id: item['_id'] ?? 'advice_${DateTime.now().millisecondsSinceEpoch}',
           text: item['adviceTranslated'],
           isMe: false,
           adminId: item['adminId'],
           adminName: item['adminName'],
+          adminImage: imageUrl,
           answeredAt: DateTime.parse(item['advisedAt']),
           isAdvice: true,
           rating: item['rating'],
           feedback: item['feedback'],
           type: item['type'],
           title: item['title'],
+          questionId: questionId,
         ),
       );
     }
@@ -2433,25 +2704,17 @@ class _ChatScreenState extends State<ChatScreen>
 
   Future<void> _reinitializeForUserId(String newUserId) async {
     if (_isReinitializing || _isConnectionInProgress()) {
-      AppLogger.info(
-        'Reinitialization or connection already in progress, skipping...',
-        feature: 'user_management',
-      );
+      ///* AppLogger.info('Reinitialization or connection already in progress, skipping...', feature: 'user_management', ); */
       return;
     }
 
     _isReinitializing = true;
-    AppLogger.info(
-      'Reinitializing for new user: $newUserId',
-      feature: 'user_management',
-    );
+
+    ///* AppLogger.info('Reinitializing for new user: $newUserId',feature: 'user_management',); */
 
     try {
       if (_isConnectionInProgress()) {
-        AppLogger.info(
-          'Waiting for current connection to complete before reinitialization...',
-          feature: 'user_management',
-        );
+        ///* AppLogger.info('Waiting for current connection to complete before reinitialization...', feature: 'user_management', ); */
         await _waitForConnection(timeout: Duration(seconds: 5));
       }
 
@@ -2462,8 +2725,9 @@ class _ChatScreenState extends State<ChatScreen>
       await _disposeSocket();
 
       // Clear old messages
-      Provider.of<SecureChatService>(context, listen: false).clearMessages();
+      if (!mounted) return;
 
+      context.read<SecureChatService>().clearMessages();
       // Update userId in secure storage
       userId = newUserId;
       await SecureStorage.storeUserId(newUserId);
@@ -2476,17 +2740,16 @@ class _ChatScreenState extends State<ChatScreen>
       await _fetchInitialData();
 
       setState(() {});
-      AppLogger.info(
-        'Reinitialization completed for user: $newUserId',
-        feature: 'user_management',
-      );
-    } catch (e, stackTrace) {
-      AppLogger.error(
+
+      ///* AppLogger.info('Reinitialization completed for user: $newUserId', feature: 'user_management', ); */
+    } catch (e) {
+      /*AppLogger.error(
         'Error reinitializing for user',
         e,
         feature: 'user_management',
         stackTrace: stackTrace,
       );
+      */
     } finally {
       _isReinitializing = false;
     }
@@ -2504,14 +2767,16 @@ class _ChatScreenState extends State<ChatScreen>
         socket.disconnect();
         await completer.future.timeout(const Duration(seconds: 2));
       }
-      AppLogger.info('Socket disposed successfully', feature: 'socket');
-    } catch (e, stackTrace) {
-      AppLogger.error(
+
+      ///* AppLogger.info('Socket disposed successfully', feature: 'socket'); */
+    } catch (e) {
+      /*  AppLogger.error(
         'Error disposing socket',
         e,
         feature: 'socket',
         stackTrace: stackTrace,
       );
+      */
     }
   }
 
@@ -2524,24 +2789,22 @@ class _ChatScreenState extends State<ChatScreen>
     final currentUserId = profileProvider.userId ?? '';
 
     if (currentUserId.isEmpty) {
-      AppLogger.info('Missing userId for socket connection', feature: 'socket');
+      ///* AppLogger.info('Missing userId for socket connection', feature: 'socket'); */
       return;
     }
     if (_isConnectionInProgress()) {
-      AppLogger.info(
-        'Socket connection already in progress, skipping...',
-        feature: 'socket',
-      );
+      ///* AppLogger.info( 'Socket connection already in progress, skipping...', feature: 'socket',  ); */
       return;
     }
 
     // Validate session
     if (!SessionManager.isSessionValid(currentUserId)) {
-      AppLogger.security(
+      /* AppLogger.security(
         'Session invalid during socket initialization',
         userId: currentUserId,
         feature: 'session_validation',
       );
+      */
       return;
     }
 
@@ -2553,9 +2816,10 @@ class _ChatScreenState extends State<ChatScreen>
       await _socketConnectionCompleter?.future.timeout(
         ChatConstants.socketTimeout,
       );
-      AppLogger.info('Socket initialization completed', feature: 'socket');
+
+      ///* AppLogger.info('Socket initialization completed', feature: 'socket'); */
     } catch (e) {
-      AppLogger.error('Socket connection timeout', e, feature: 'socket');
+      /* AppLogger.error('Socket connection timeout', e, feature: 'socket'); */
     }
   }
 
@@ -2576,10 +2840,10 @@ class _ChatScreenState extends State<ChatScreen>
     if (_isSocketConnected) return true;
     // ✅ Check if connection is already in progress
     if (!_isConnectionInProgress()) {
-      AppLogger.warning(
+      /* AppLogger.warning(
         'No connection in progress, starting new one',
         feature: 'socket',
-      );
+      ); */
       _initializeSocketWithSecurity();
     }
 
@@ -2591,7 +2855,7 @@ class _ChatScreenState extends State<ChatScreen>
       await _socketConnectionCompleter!.future.timeout(timeout);
       return true;
     } catch (e) {
-      AppLogger.error('Connection timeout or error', e, feature: 'socket');
+      /* AppLogger.error('Connection timeout or error', e, feature: 'socket'); */
       return false;
     }
   }
@@ -2601,7 +2865,7 @@ class _ChatScreenState extends State<ChatScreen>
 
     final chatService = Provider.of<SecureChatService>(context, listen: false);
     chatService.addMessage(message);
-
+    _logger.i('📝 Message added to chat service: ${message.text}');
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (_scrollController.hasClients) {
         await Future.delayed(const Duration(milliseconds: 100));
@@ -2610,11 +2874,57 @@ class _ChatScreenState extends State<ChatScreen>
     });
   }
 
+  Future<bool> _validateQuestion(String questionText) async {
+    try {
+      final profileProvider = Provider.of<ProfileProvider>(
+        context,
+        listen: false,
+      );
+      final token = profileProvider.token;
+
+      if (token == null) {
+        _showErrorSnackbar('Authentication required');
+        return false;
+      }
+
+      final response = await SecureApiClient.post(
+        url: '${ChatConstants.baseUrl}/api/questions/validate-question',
+        body: {'questionText': questionText},
+        token: token,
+      );
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+
+        if (data['valid'] == true) {
+          return true;
+        } else {
+          final errorMessage = data['message'] ?? 'Invalid question';
+
+          // Check for similar question error
+          if (errorMessage.contains('Similar question was asked recently')) {
+            _showSimilarQuestionDialog(questionText);
+          } else {
+            _showErrorSnackbar(errorMessage);
+          }
+          return false;
+        }
+      } else {
+        _showErrorSnackbar('Validation failed. Please try again.');
+        return false;
+      }
+    } catch (e) {
+      _logger.e('Question validation error: $e');
+      _showErrorSnackbar('Unable to validate question. Please try again.');
+      return false;
+    }
+  }
+
   // Enhanced message sending with comprehensive error handling and security
   Future<void> handleSendMessage() async {
     final text = _controller.text.trim();
 
-    // Input validation
+    // Step 1: Basic input validation
     final validation = InputValidator.validateMessage(text);
     if (!validation.isValid) {
       _showErrorSnackbar(validation.message);
@@ -2627,7 +2937,7 @@ class _ChatScreenState extends State<ChatScreen>
     );
     final currentUserId = profileProvider.userId;
 
-    // Validate user ID
+    // Step 2: User validation
     if (currentUserId == null || currentUserId.isEmpty) {
       _showErrorSnackbar(
         'User ID not found. Please login or set your profile.',
@@ -2635,49 +2945,53 @@ class _ChatScreenState extends State<ChatScreen>
       return;
     }
 
-    // Validate user ID format
     if (!InputValidator.isValidUserId(currentUserId)) {
-      AppLogger.security(
-        'Invalid user ID format detected',
-        userId: currentUserId,
-        feature: 'input_validation',
-      );
       _showErrorSnackbar('Invalid user ID. Please contact support.');
       return;
     }
 
-    // Rate limiting check
+    // Step 3: Rate limiting check
     if (RateLimiter.isRateLimited(currentUserId)) {
       _showErrorSnackbar('Too many requests. Please wait a moment.');
       return;
     }
 
-    // Session validation
+    // Step 4: Session validation
     if (!SessionManager.isSessionValid(currentUserId)) {
       _showErrorSnackbar('Session expired. Please restart the app.');
       return;
     }
 
-    // ✅ DISABLE INPUT WHILE SENDING
+    // Step 5: Question validation (NEW - call server to check for similar questions)
     setState(() {
       _isSending = true;
-      _isInputEnabled = false; // Disable text field
+      _isInputEnabled = false;
     });
 
     try {
-      await _sendMessageWithValidation(validation.message, currentUserId);
-      AppLogger.info('Message sent successfully', feature: 'message_sending');
+      // Validate question with server
+      final isValid = await _validateQuestion(validation.message);
 
-      // ✅ Controller clearing is now handled in _sendFreeQuestion and _sendPaidQuestion
-      // This ensures it only clears after successful send
+      if (!isValid) {
+        // Validation failed - error message already shown
+        setState(() {
+          _isSending = false;
+          _isInputEnabled = true;
+        });
+        return;
+      }
+
+      // Step 6: Proceed with sending the message
+      await _sendMessageWithValidation(validation.message, currentUserId);
+
+      // Clear controller only on success
     } catch (e) {
       _handleSendError(e);
-      // Don't clear controller on error - let user retry
     } finally {
       if (mounted) {
         setState(() {
           _isSending = false;
-          _isInputEnabled = true; // Re-enable text field
+          _isInputEnabled = true;
         });
       }
     }
@@ -2691,10 +3005,7 @@ class _ChatScreenState extends State<ChatScreen>
       // Check eligibility first
       final eligibility = await _checkQuestionEligibility(currentUserId);
 
-      AppLogger.info(
-        '🎯 Final eligibility result: ${eligibility.isFreeEligible}, Clarification: ${eligibility.isFreeByClarification}',
-        feature: 'message_sending',
-      );
+      ///* AppLogger.info('🎯 Final eligibility result: ${eligibility.isFreeEligible}, Clarification: ${eligibility.isFreeByClarification}', feature: 'message_sending', ); */
 
       if (eligibility.isFreeEligible) {
         // ✅ Send free question with clarification flag
@@ -2713,10 +3024,8 @@ class _ChatScreenState extends State<ChatScreen>
                 '${ChatConstants.baseUrl}/api/reset-clarification-free/$currentUserId',
             token: _authToken, // ✅ reuse
           );
-          AppLogger.info(
-            '🔄 Clarification free question used and reset',
-            feature: 'clarification',
-          );
+
+          ///* AppLogger.info( '🔄 Clarification free question used and reset', feature: 'clarification', ); */
         }
         return;
       }
@@ -2729,20 +3038,24 @@ class _ChatScreenState extends State<ChatScreen>
       }
 
       // No balance left, show payment dialog
-      _showEnterprisePaymentDialog(context, currentUserId, text);
+      // No balance left, show Google Play payment dialog
+      Future.delayed(const Duration(milliseconds: 100), () {
+        if (!mounted) return;
+
+        _showGooglePlayPaymentDialog(context, currentUserId, text);
+      });
     } catch (e) {
-      AppLogger.error(
+      /*  AppLogger.error(
         'Error in message validation',
         e,
         feature: 'message_validation',
       );
+      */
       rethrow;
     }
   }
 
   Future<QuestionEligibility> _checkQuestionEligibility(String userId) async {
-    bool isFreeByClarification = false; // ✅ Declare outside try-catch
-
     try {
       // ✅ NEW: Check clarification eligibility directly from questions
       final clarificationRes = await SecureApiClient.get(
@@ -2756,16 +3069,10 @@ class _ChatScreenState extends State<ChatScreen>
         final isFreeByClarification = data['isFreeByClarification'] ?? false;
         final remainingFree = data['remainingFreeQuestions'] ?? 0;
 
-        AppLogger.info(
-          'Clarification eligibility: $isFreeByClarification, Remaining: $remainingFree',
-          feature: 'eligibility_debug',
-        );
+        ///* AppLogger.info( 'Clarification eligibility: $isFreeByClarification, Remaining: $remainingFree', feature: 'eligibility_debug',  ); */
 
         if (isFreeByClarification) {
-          AppLogger.info(
-            '🎯 USER ELIGIBLE BY CLARIFICATION - $remainingFree questions available',
-            feature: 'eligibility_debug',
-          );
+          ///* AppLogger.info(  '🎯 USER ELIGIBLE BY CLARIFICATION - $remainingFree questions available',  feature: 'eligibility_debug', ); */
           return QuestionEligibility(
             isFreeEligible: true,
             remainingFreeQuestions: remainingFree,
@@ -2774,10 +3081,8 @@ class _ChatScreenState extends State<ChatScreen>
           );
         }
       }
-      AppLogger.info(
-        '❌ User NOT eligible by clarification, checking other methods...',
-        feature: 'eligibility_debug',
-      );
+
+      ///* AppLogger.info(   '❌ User NOT eligible by clarification, checking other methods...',   feature: 'eligibility_debug', ); */
       // 2️⃣ Check first-time login free quota
       final firstTimeResponse = await SecureApiClient.get(
         url: '${ChatConstants.baseUrl}/api/check-first-time/$userId',
@@ -2815,25 +3120,24 @@ class _ChatScreenState extends State<ChatScreen>
       }
 
       // 4️⃣ Fallback to count-based check
-      AppLogger.error(
+      /* AppLogger.error(
         'Eligibility check failed',
         Exception('HTTP ${eligibilityResponse.statusCode}'),
         feature: 'eligibility_check',
       );
+      */
       return await _checkQuestionCountFallback(userId);
-    } catch (e, stackTrace) {
+    } catch (e) {
+      /*
       AppLogger.error(
         'Error checking eligibility',
         e,
         feature: 'eligibility_check',
         stackTrace: stackTrace,
       );
-
+*/
       // ✅ Now accessible here
-      AppLogger.info(
-        'Clarification eligibility: $isFreeByClarification',
-        feature: 'eligibility_debug',
-      );
+      ///* AppLogger.info( 'Clarification eligibility: $isFreeByClarification', feature: 'eligibility_debug',); */
 
       return await _checkQuestionCountFallback(userId);
     }
@@ -2856,13 +3160,15 @@ class _ChatScreenState extends State<ChatScreen>
           remainingFreeQuestions: freeQuota - count,
         );
       }
-    } catch (e, stackTrace) {
+    } catch (e) {
+      /*
       AppLogger.error(
         'Error in count fallback',
         e,
         feature: 'eligibility_check',
         stackTrace: stackTrace,
       );
+      */
     }
 
     return QuestionEligibility(
@@ -2880,10 +3186,7 @@ class _ChatScreenState extends State<ChatScreen>
       final token = profileProvider.token;
 
       if (token == null) {
-        AppLogger.info(
-          'No auth token available for balance check',
-          feature: 'balance_check',
-        );
+        ///* AppLogger.info( 'No auth token available for balance check',  feature: 'balance_check',); */
         return false;
       }
 
@@ -2895,25 +3198,27 @@ class _ChatScreenState extends State<ChatScreen>
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         final remainingBalance = data['balance'] ?? 0;
-        AppLogger.info(
-          'Paid balance check: $remainingBalance',
-          feature: 'balance_check',
-        );
+
+        ///* AppLogger.info( 'Paid balance check: $remainingBalance',  feature: 'balance_check', ); */
         return remainingBalance > 0;
       } else {
+        /*
         AppLogger.error(
           'Balance check failed',
           Exception('HTTP ${response.statusCode}'),
           feature: 'balance_check',
         );
+        */
       }
-    } catch (e, stackTrace) {
+    } catch (e) {
+      /*
       AppLogger.error(
         'Error checking paid balance',
         e,
         feature: 'balance_check',
         stackTrace: stackTrace,
       );
+      */
     }
     return false;
   }
@@ -2926,10 +3231,10 @@ class _ChatScreenState extends State<ChatScreen>
     String? quotaId,
   }) async {
     try {
-      debugPrint('📦 Sending free question');
-      debugPrint('UserId: $userId');
-      debugPrint('isClarificationFree: $isClarificationFree');
-      debugPrint('quotaId: $quotaId');
+      ///* AppLogger.info('📦 Sending free question'); */
+      ///* AppLogger.info('UserId: $userId'); */
+      ///* AppLogger.info('isClarificationFree: $isClarificationFree'); */
+      ///* AppLogger.info('quotaId: $quotaId'); */
       await sendQuestion(
         text: text,
         userId: userId,
@@ -2951,16 +3256,15 @@ class _ChatScreenState extends State<ChatScreen>
 
       SessionManager.updateSession(userId);
 
-      AppLogger.info(
-        '✅ Free question sent successfully. Clarification: $isClarificationFree',
-        feature: 'message_sending',
-      );
+      ///* AppLogger.info( '✅ Free question sent successfully. Clarification: $isClarificationFree',  feature: 'message_sending', ); */
     } catch (e) {
+      /*
       AppLogger.error(
         'Error sending free question',
         e,
         feature: 'message_sending',
       );
+      */
       rethrow;
     }
   }
@@ -2982,16 +3286,15 @@ class _ChatScreenState extends State<ChatScreen>
       // Update session
       SessionManager.updateSession(userId);
 
-      AppLogger.info(
-        'Paid question sent successfully',
-        feature: 'message_sending',
-      );
+      ///* AppLogger.info('Paid question sent successfully', feature: 'message_sending', ); */
     } catch (e) {
+      /*
       AppLogger.error(
         'Error sending paid question',
         e,
         feature: 'message_sending',
       );
+      */
       // Don't clear controller on error
       rethrow;
     }
@@ -2999,28 +3302,28 @@ class _ChatScreenState extends State<ChatScreen>
 
   void _handleSendError(dynamic error) {
     // 🛡️ DEBUG: Log the actual error structure
-    debugPrint('🔍 RAW ERROR TYPE: ${error.runtimeType}');
-    debugPrint('🔍 RAW ERROR: $error');
+    ///* AppLogger.info('🔍 RAW ERROR TYPE: ${error.runtimeType}'); */
+    ///* AppLogger.info('🔍 RAW ERROR: $error'); */
 
     if (error is http.Response) {
-      debugPrint('🔍 HTTP STATUS: ${error.statusCode}');
-      debugPrint('🔍 HTTP BODY: ${error.body}');
+      ///* AppLogger.info('🔍 HTTP STATUS: ${error.statusCode}'); */
+      ///* AppLogger.info('🔍 HTTP BODY: ${error.body}'); */
 
       try {
-        final errorData = json.decode(error.body);
-        debugPrint('🔍 PARSED ERROR: $errorData');
-        debugPrint('🔍 ERROR MESSAGE: ${errorData['message']}');
-        debugPrint('🔍 ERROR CODE: ${errorData['error']}');
+        ///* AppLogger.info('🔍 PARSED ERROR: $errorData'); */
+        ///* AppLogger.info('🔍 ERROR MESSAGE: ${errorData['message']}'); */
+        ///* AppLogger.info('🔍 ERROR CODE: ${errorData['error']}'); */
       } catch (e) {
-        debugPrint('🔍 JSON PARSE ERROR: $e');
+        ///* AppLogger.info('🔍 JSON PARSE ERROR: $e'); */
       }
     }
-
+    /*
     AppLogger.error(
       'Error sending question',
       error,
       feature: 'message_sending',
     );
+    */
 
     // 🛡️ CRITICAL FIX: Use the extracted actual error message
     String errorMessage = _extractActualErrorMessage(error);
@@ -3067,7 +3370,7 @@ class _ChatScreenState extends State<ChatScreen>
     required String text,
     String? userId,
     bool paid = false,
-    int? amount,
+    double? amount,
     bool isClarificationFree = false,
     String? paymentIntentId,
     String? quotaId,
@@ -3080,7 +3383,6 @@ class _ChatScreenState extends State<ChatScreen>
       return;
     }
 
-    // Use passed userId or fetch from secure storage
     final actualUserId = userId ?? await SecureStorage.getUserId();
     if (actualUserId == null || actualUserId.isEmpty) {
       _showDetailedErrorSnackbar(
@@ -3101,8 +3403,12 @@ class _ChatScreenState extends State<ChatScreen>
       return;
     }
 
+    setState(() {
+      _isSending = true;
+      _isInputEnabled = false;
+    });
+
     try {
-      // ✅ USE SecureApiClient LIKE YOUR OTHER API CALLS
       final response = await SecureApiClient.post(
         url: '${ChatConstants.baseUrl}/api/questions',
         body: {
@@ -3113,57 +3419,36 @@ class _ChatScreenState extends State<ChatScreen>
           'paymentIntentId': paymentIntentId,
           'quotaId': quotaId,
         },
-        token: _authToken, // ✅ This will be handled by SecureApiClient
+        token: _authToken,
       );
 
       if (response.statusCode == 201) {
-        final data = json.decode(response.body);
-        final question = data['question'];
-
-        AppLogger.info(
-          '✅ Question created successfully via HTTPS: ${question['id']}',
-          feature: 'question',
-        );
-
-        // Let socket service handle instant UI
-        if (socket.connected) {
-          socket.emit('send_question', {
-            'text': text,
-            'userId': actualUserId,
-            'paid': paid,
-            'amount': amount ?? 0,
-            'isClarificationFree': isClarificationFree,
-            'paymentIntentId': paymentIntentId,
-            'createdAt': DateTime.now().toIso8601String(),
-          });
-        }
+        _controller.clear();
+        _showSuccessSnackbar('Question sent!');
       } else {
         final errorMessage = _extractActualErrorMessage(response);
-
-        // 🛡️ SPECIAL HANDLING FOR SIMILAR QUESTION ERROR - SHOW DIALOG INSTEAD OF SNACKBAR
         if (errorMessage.contains('Similar question was asked recently')) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            _showSimilarQuestionDialog(text);
-          });
+          _showSimilarQuestionDialog(text);
         } else {
           _showDetailedErrorSnackbar(
-            errorMessage, // Show actual server error message
+            errorMessage,
             'Server responded with ${response.statusCode}: ${response.body}',
           );
         }
       }
-    } catch (e, stackTrace) {
-      AppLogger.error(
-        '❌ Sending question failed',
-        e,
-        feature: 'question',
-        stackTrace: stackTrace,
-      );
-
+    } catch (e) {
       _showDetailedErrorSnackbar(
-        'Failed to send question. Try again.',
+        'Failed to send question. Please try again.',
         e.toString(),
       );
+      _logger.e('Error sending question: $e');
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isSending = false;
+          _isInputEnabled = true;
+        });
+      }
     }
   }
 
@@ -3183,17 +3468,11 @@ class _ChatScreenState extends State<ChatScreen>
 
     // Ensure socket is connected with better handling
     if (!socket.connected || !_isSocketConnected) {
-      AppLogger.info(
-        'Socket not connected - attempting reconnect...',
-        feature: 'socket',
-      );
+      ///* AppLogger.info( 'Socket not connected - attempting reconnect...',   feature: 'socket', ); */
 
       final connected = await _waitForConnection();
       if (!connected) {
-        AppLogger.info(
-          'Socket reconnection failed - using HTTP fallback',
-          feature: 'socket',
-        );
+        ///* AppLogger.info( 'Socket reconnection failed - using HTTP fallback', feature: 'socket',  ); */
         await _sendQuestionViaHttp(
           text,
           userId,
@@ -3227,6 +3506,7 @@ class _ChatScreenState extends State<ChatScreen>
           isTemporary: true,
         );
 
+        if (!mounted) return;
         final chatService = Provider.of<SecureChatService>(
           context,
           listen: false,
@@ -3237,22 +3517,18 @@ class _ChatScreenState extends State<ChatScreen>
         // Listen for server response
         eventListener = (data) {
           try {
-            final receivedQuestionId = data['_id'] ?? data['id'];
             final receivedText = data['text'];
 
             // Check if this is our question
             if (receivedText == text) {
-              AppLogger.info(
-                '✅ Received server confirmation for question: $receivedQuestionId',
-                feature: 'socket',
-              );
+              ///* AppLogger.info( '✅ Received server confirmation for question: $receivedQuestionId',  feature: 'socket', ); */
               if (!completer.isCompleted) {
                 completer.complete();
               }
               chatService.removeMessageById(questionId);
             }
           } catch (e) {
-            AppLogger.error('Error processing new_question acknowledgment', e);
+            /* AppLogger.error('Error processing new_question acknowledgment', e); */
           }
         };
 
@@ -3269,34 +3545,22 @@ class _ChatScreenState extends State<ChatScreen>
           'createdAt': DateTime.now().toIso8601String(),
         };
 
-        AppLogger.info(
-          '📤 Emitting question to socket: ${json.encode(questionData)}',
-          feature: 'socket',
-        );
+        ///* AppLogger.info( '📤 Emitting question to socket: ${json.encode(questionData)}',feature: 'socket',); */
 
         socket.emit('send_question', questionData);
 
-        AppLogger.info(
-          '⏳ Waiting for server confirmation...',
-          feature: 'socket',
-        );
+        ///* AppLogger.info( '⏳ Waiting for server confirmation...', feature: 'socket', ); */
 
         // Wait for acknowledgment or timeout
         await completer.future;
 
-        AppLogger.info(
-          '✅ Question sent via socket successfully',
-          feature: 'socket',
-        );
+        ///* AppLogger.info(       '✅ Question sent via socket successfully',          feature: 'socket',        ); */
       } finally {
         timeoutTimer.cancel();
         socket.off('new_question', eventListener);
       }
     } else {
-      AppLogger.info(
-        'Socket not connected - using HTTP fallback',
-        feature: 'socket',
-      );
+      ///* AppLogger.info(     'Socket not connected - using HTTP fallback',     feature: 'socket',   ); */
       await _sendQuestionViaHttp(
         text,
         userId,
@@ -3325,17 +3589,19 @@ class _ChatScreenState extends State<ChatScreen>
       );
 
       if (response.statusCode == 200) {
-        AppLogger.info('✅ HTTP fallback succeeded', feature: 'http_fallback');
+        ///* AppLogger.info('✅ HTTP fallback succeeded', feature: 'http_fallback'); */
       } else {
         throw HttpException('HTTP ${response.statusCode}: ${response.body}');
       }
-    } catch (e, stackTrace) {
+    } catch (e) {
+      /*
       AppLogger.error(
         'HTTP fallback error',
         e,
         feature: 'http_fallback',
         stackTrace: stackTrace,
       );
+      */
       rethrow;
     }
   }
@@ -3345,183 +3611,13 @@ class _ChatScreenState extends State<ChatScreen>
     if (mounted) {
       super.setState(fn);
     } else {
+      /*
       AppLogger.warning(
         'setState called after dispose',
         feature: 'chat_screen',
       );
+      */
     }
-  }
-
-  // In your chat_screen.dart - before startEnterprisePayment()
-  Future<void> _ensurePaymentReadiness() async {
-    final profileProvider = ProfileProvider();
-
-    // Ensure provider is initialized
-    await profileProvider.ensureInitialized();
-
-    // Check if token exists
-    if (profileProvider.token == null && profileProvider.userId != null) {
-      AppLogger.info('No token found, attempting to fetch...');
-      await profileProvider.fetchAndSaveToken(profileProvider.userId!);
-    }
-
-    // Verify token is now available
-    if (profileProvider.token == null) {
-      throw PaymentException(
-        'Please complete authentication before making payments',
-        'AUTH_REQUIRED',
-      );
-    }
-  }
-
-  // 🛡️ ENTERPRISE-LEVEL PAYMENT FLOW
-  Future<void> startEnterprisePayment(
-    String userId,
-    String questionText,
-  ) async {
-    if (!mounted) return;
-
-    // 🛡️ 1. Disable UI immediately
-    setState(() {
-      _isInputEnabled = false;
-      _isSending = true;
-    });
-
-    String? paymentIntentId;
-    String? clientSecret;
-
-    try {
-      await _ensurePaymentReadiness();
-
-      // 🛡️ 2. Get client context for security
-      final clientIp = await _getClientIp();
-      final userAgent = await _getUserAgent();
-
-      // 🛡️ 3. Initialize payment with enterprise service
-      final paymentIntent =
-          await EnterprisePaymentService.initializeQuestionPayment(
-            userId: userId,
-            questionText: questionText,
-            clientIp: clientIp,
-            userAgent: userAgent,
-          );
-
-      paymentIntentId = paymentIntent.paymentIntentId;
-      clientSecret = paymentIntent.clientSecret;
-
-      // 🛡️ DEBUG: Verify we have client secret
-      AppLogger.info(
-        '🔍 Payment Intent Created - Client Secret: $clientSecret',
-        feature: 'payment_debug',
-      );
-
-      if (clientSecret.isEmpty) {
-        throw PaymentException(
-          'Payment initialization failed - no client secret',
-          'CLIENT_SECRET_MISSING',
-        );
-      }
-
-      // 🛡️ 4. Execute payment (now includes proper initialization)
-      final paymentResult = await EnterprisePaymentService.executePayment(
-        clientSecret: clientSecret,
-        paymentIntentId: paymentIntentId,
-        userId: userId,
-        questionText: questionText,
-      );
-
-      if (paymentResult.success) {
-        // 🛡️ 5. Success handling
-        _handlePaymentSuccess(
-          userId: userId,
-          questionText: questionText,
-          paymentIntentId: paymentIntentId,
-          questionId: paymentResult.questionId,
-        );
-      } else {
-        throw PaymentException('Payment execution failed', 'EXECUTION_FAILED');
-      }
-    } catch (e) {
-      // 🛡️ 6. Enhanced error handling with null safety
-      final errorMessage = e.toString();
-      debugPrint('Enterprise payment error: $errorMessage');
-      _debugPaymentResponse(e);
-      // 🛡️ ADD DEBUG LOGGING HERE
-      _debugPaymentError(e);
-
-      _handleEnterprisePaymentError(
-        error: e,
-        userId: userId,
-        paymentIntentId: paymentIntentId,
-        questionText: questionText,
-      );
-    } finally {
-      // 🛡️ 7. Always re-enable UI
-      if (mounted) {
-        setState(() {
-          _isInputEnabled = true;
-          _isSending = false;
-        });
-      }
-    }
-  }
-
-  void _debugPaymentResponse(dynamic error) {
-    debugPrint('🎯 PAYMENT RESPONSE DEBUG ==================');
-
-    if (error is http.Response) {
-      debugPrint('🔍 Status Code: ${error.statusCode}');
-      debugPrint('🔍 Headers: ${error.headers}');
-      debugPrint('🔍 Body: ${error.body}');
-
-      try {
-        final parsed = json.decode(error.body);
-        debugPrint('🔍 Parsed Body:');
-        parsed.forEach((key, value) {
-          debugPrint('   - $key: $value');
-        });
-      } catch (e) {
-        debugPrint('🔍 JSON Parse Error: $e');
-      }
-    } else {
-      debugPrint('🔍 Error Type: ${error.runtimeType}');
-      debugPrint('🔍 Error: $error');
-    }
-
-    debugPrint('🎯 END PAYMENT DEBUG ==================');
-  }
-
-  // 🛡️ ENHANCED PAYMENT SUCCESS HANDLING
-  void _handlePaymentSuccess({
-    required String userId,
-    required String questionText,
-    required String paymentIntentId,
-    required String? questionId,
-  }) {
-    // 🛡️ 1. Clear input only after successful payment
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _controller.clear();
-    });
-
-    // 🛡️ 2. Show success message
-    _showSuccessSnackbar("✅ Payment successful! Question sent to astrologers");
-
-    // 🛡️ 3. Update session
-    SessionManager.updateSession(userId);
-
-    // 🛡️ 4. Log success for analytics
-    AppLogger.info(
-      'Enterprise payment completed successfully',
-      feature: 'payment_success',
-    );
-
-    // 🛡️ 5. Track payment completion
-    PaymentAnalytics.trackPaymentEvent(
-      event: 'payment_completed',
-      userId: userId,
-      status: 'success',
-      paymentIntentId: paymentIntentId,
-    );
   }
 
   void _showSimilarQuestionDialog(String questionText) {
@@ -3567,7 +3663,7 @@ class _ChatScreenState extends State<ChatScreen>
                     Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: theme.colorScheme.surfaceVariant,
+                        color: theme.colorScheme.surfaceContainerHighest,
                         borderRadius: BorderRadius.circular(6),
                       ),
                       child: Text(
@@ -3590,19 +3686,25 @@ class _ChatScreenState extends State<ChatScreen>
                     Text(
                       '• Add more details or context',
                       style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.onSurface.withOpacity(0.7),
+                        color: theme.colorScheme.onSurface.withValues(
+                          alpha: 0.7,
+                        ),
                       ),
                     ),
                     Text(
                       '• Focus on a different aspect',
                       style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.onSurface.withOpacity(0.7),
+                        color: theme.colorScheme.onSurface.withValues(
+                          alpha: 0.7,
+                        ),
                       ),
                     ),
                     Text(
                       '• Ask about future possibilities or outcomes',
                       style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.onSurface.withOpacity(0.7),
+                        color: theme.colorScheme.onSurface.withValues(
+                          alpha: 0.7,
+                        ),
                       ),
                     ),
                   ],
@@ -3635,133 +3737,30 @@ class _ChatScreenState extends State<ChatScreen>
           ),
     );
   }
+  // Add these helper methods to ChatScreenState class
 
-  // 🛡️ ENHANCED PAYMENT ERROR HANDLING
-  void _handleEnterprisePaymentError({
-    required dynamic error,
-    required String userId,
-    required String? paymentIntentId,
-    required String questionText,
-    bool paymentSheetInitialized = false,
-  }) {
-    // 🛡️ 1. Log error securely
-    AppLogger.error(
-      'Enterprise payment failed - Sheet Initialized: $paymentSheetInitialized',
-      error,
-      feature: 'payment_error',
-    );
-
-    // 🛡️ 2. User-friendly error messages
-    String actualErrorMessage = _extractActualErrorMessage(error);
-    String errorCode = 'UNKNOWN_ERROR';
-
-    // 🛡️ 2. SPECIAL HANDLING FOR SIMILAR QUESTION ERROR
-    if (actualErrorMessage.contains('Similar question was asked recently')) {
-      errorCode = 'SIMILAR_QUESTION';
-
-      // Show special dialog for similar question error
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        _showSimilarQuestionDialog(questionText);
-      });
-
-      // Log this specific case
-      AppLogger.info(
-        'Similar question detected - showing user dialog',
-        feature: 'payment_validation',
-      );
-
-      return; // Exit early since we handled this case with a dialog
+  /// Extract numeric amount from price string (e.g., "$6.99" -> 6.99)
+  /// Extract numeric amount from price string (e.g., "$6.99" -> 6.99)
+  double _extractAmountFromPrice(String priceString) {
+    if (priceString.isEmpty) {
+      return 0; // Return 0, not a fake value
     }
 
-    String userFriendlyMessage = "Payment failed. ";
-    if (actualErrorMessage.contains('Similar question was asked recently')) {
-      userFriendlyMessage = "Similar question was asked recently. ";
-      userFriendlyMessage +=
-          "Please ask a different question or rephrase your current one.";
-      errorCode = 'SIMILAR_QUESTION';
-
-      // Show this as a special dialog instead of snackbar for better UX
-      _showSimilarQuestionDialog(questionText);
-      return; // Exit early since we handled this case
-    }
-
-    if (error is PaymentException) {
-      // Handle specific question processing errors
-      if (error.code == 'QUESTION_PROCESSING_FAILED') {
-        userFriendlyMessage =
-            "Payment successful but question submission failed. ";
-        userFriendlyMessage += "Error: ${error.message}";
-
-        // 🛡️ IMPORTANT: Don't clear the input so user can retry
-        // The payment was successful, just the question processing failed
-        // User can try sending the question again without paying
-        // 🛡️ IMPORTANT: Don't clear the input so user can retry
-      } else if (error.code == 'CLIENT_SECRET_MISSING') {
-        userFriendlyMessage = "Payment setup failed. ";
-        userFriendlyMessage += "Error: ${error.message}";
-      } else {
-        userFriendlyMessage += "Error: ${error.message}";
+    // Remove currency symbols and convert to number
+    final match = RegExp(r'[\d\.]+').firstMatch(priceString);
+    if (match != null) {
+      final amount = double.tryParse(match.group(0)!);
+      if (amount != null) {
+        return amount;
       }
-    } else if (error is StripeException) {
-      final stripeError = error.error;
-      errorCode = stripeError.code.name;
-      switch (stripeError.code) {
-        case FailureCode.Canceled:
-          AppLogger.info('User cancelled payment', feature: 'payment_flow');
-          return; // Don't show error for cancellations
-        case FailureCode.Failed:
-          userFriendlyMessage =
-              "Payment failed. Please try another payment method. ";
-          userFriendlyMessage +=
-              "Details: ${stripeError.message ?? actualErrorMessage}";
-          break;
-        case FailureCode.Timeout:
-          userFriendlyMessage = "Payment timeout. Please try again. ";
-          userFriendlyMessage +=
-              "Details: ${stripeError.message ?? actualErrorMessage}";
-          break;
-        default:
-          userFriendlyMessage = "Payment error. Please try again. ";
-          userFriendlyMessage +=
-              "Details: ${stripeError.message ?? actualErrorMessage}";
-      }
-    } else if (error is SocketException) {
-      errorCode = 'NETWORK_ERROR';
-      userFriendlyMessage = "Network error. Please check your connection. ";
-      userFriendlyMessage += "Details: $actualErrorMessage";
-    } else if (error is TimeoutException) {
-      errorCode = 'TIMEOUT';
-      userFriendlyMessage = "Request timeout. Please try again. ";
-      userFriendlyMessage += "Details: $actualErrorMessage";
-    } else {
-      // 🛡️ SHOW ACTUAL ERROR FOR UNKNOWN ERRORS
-      userFriendlyMessage += "Error: $actualErrorMessage";
     }
 
-    // 🛡️ 3. Track payment failure for analytics
-    PaymentAnalytics.trackPaymentEvent(
-      event: 'payment_failed',
-      userId: userId,
-      status: 'failed',
-      errorCode: errorCode,
-      paymentIntentId: paymentIntentId,
-    );
-    if (!userFriendlyMessage.toLowerCase().contains('cancelled') &&
-        !userFriendlyMessage.toLowerCase().contains('canceled')) {
-      _showDetailedErrorSnackbar("❌ $userFriendlyMessage", actualErrorMessage);
-    }
-
-    // 🛡️ 6. For question processing failures, suggest retry without payment
-    if (errorCode == 'QUESTION_PROCESSING_FAILED') {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        _showQuestionRetryDialog(userId, questionText, paymentIntentId);
-      });
-    }
+    return 0; // Return 0 to indicate error, not a fake value
   }
 
   String _extractActualErrorMessage(dynamic error) {
     try {
-      debugPrint('🔍 EXTRACTING ERROR FROM: ${error.runtimeType}');
+      ///* AppLogger.info('🔍 EXTRACTING ERROR FROM: ${error.runtimeType}'); */
 
       // 🛡️ PRIORITY 1: Check for "Similar question" error first
       if (error is String &&
@@ -3771,8 +3770,8 @@ class _ChatScreenState extends State<ChatScreen>
 
       // 🛡️ PRIORITY 2: Check PaymentException for similar question
       if (error is PaymentException) {
-        debugPrint('🔍 PaymentException message: ${error.message}');
-        debugPrint('🔍 PaymentException code: ${error.code}');
+        ///* AppLogger.info('🔍 PaymentException message: ${error.message}'); */
+        ///* AppLogger.info('🔍 PaymentException code: ${error.code}'); */
 
         if (error.message.contains('Similar question was asked recently')) {
           return 'Similar question was asked recently';
@@ -3787,8 +3786,8 @@ class _ChatScreenState extends State<ChatScreen>
           final serverMessage = errorData['message']?.toString() ?? '';
           final errorCode = errorData['error']?.toString() ?? '';
 
-          debugPrint('🔍 SERVER MESSAGE: $serverMessage');
-          debugPrint('🔍 ERROR CODE: $errorCode');
+          ///* AppLogger.info('🔍 SERVER MESSAGE: $serverMessage'); */
+          ///* AppLogger.info('🔍 ERROR CODE: $errorCode'); */
 
           // 🛡️ CRITICAL: Check for similar question error in various formats
           if (serverMessage.contains('Similar question was asked recently') ||
@@ -3805,7 +3804,7 @@ class _ChatScreenState extends State<ChatScreen>
 
           return 'Payment processing failed';
         } catch (e) {
-          debugPrint('🔍 JSON PARSE ERROR: $e');
+          ///* AppLogger.info('🔍 JSON PARSE ERROR: $e'); */
           // Even if parsing fails, check the raw body
           if (error.body.contains('Similar question was asked recently')) {
             return 'Similar question was asked recently';
@@ -3815,9 +3814,7 @@ class _ChatScreenState extends State<ChatScreen>
       }
 
       // 🛡️ Keep existing error handling for other cases
-      if (error is StripeException) {
-        return error.error.message ?? error.toString();
-      } else if (error is SocketException) {
+      if (error is SocketException) {
         return 'Network connection failed. Please check your internet.';
       } else if (error is TimeoutException) {
         return 'Request timed out. Please try again.';
@@ -3829,7 +3826,7 @@ class _ChatScreenState extends State<ChatScreen>
         return error.toString();
       }
     } catch (e) {
-      debugPrint('🔍 ERROR EXTRACTION FAILED: $e');
+      ///* AppLogger.info('🔍 ERROR EXTRACTION FAILED: $e'); */
       return 'An unexpected error occurred';
     }
   }
@@ -3854,29 +3851,6 @@ class _ChatScreenState extends State<ChatScreen>
         ),
       );
     }
-  }
-
-  void _debugPaymentError(dynamic error) {
-    debugPrint('🎯 PAYMENT ERROR DEBUG START ==================');
-    debugPrint('🔍 Error Type: ${error.runtimeType}');
-    debugPrint('🔍 Error: $error');
-
-    if (error is http.Response) {
-      debugPrint('🔍 Status Code: ${error.statusCode}');
-      debugPrint('🔍 Headers: ${error.headers}');
-      debugPrint('🔍 Body: ${error.body}');
-
-      try {
-        final parsed = json.decode(error.body);
-        debugPrint('🔍 Parsed Body: $parsed');
-        debugPrint('🔍 Message: ${parsed['message']}');
-        debugPrint('🔍 Error Code: ${parsed['error']}');
-      } catch (e) {
-        debugPrint('🔍 Parse Error: $e');
-      }
-    }
-
-    debugPrint('🎯 PAYMENT ERROR DEBUG END ====================');
   }
 
   void _showErrorDetailsDialog(String userMessage, String technicalDetails) {
@@ -3965,272 +3939,151 @@ class _ChatScreenState extends State<ChatScreen>
     ).push(MaterialPageRoute(builder: (_) => const CustomerSupportPage()));
   }
 
-  // 🛡️ Add retry dialog for question processing failures
-  void _showQuestionRetryDialog(
-    String userId,
-    String questionText,
-    String? paymentIntentId,
-  ) {
-    showDialog(
-      context: context,
-      builder:
-          (context) => AlertDialog(
-            title: Text('Payment Successful'),
-            content: Text(
-              'Your payment was successful but we encountered an issue submitting your question. '
-              'You can try sending it again without additional payment.',
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text('Cancel'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  _retryQuestionWithExistingPayment(
-                    userId,
-                    questionText,
-                    paymentIntentId!,
-                  );
-                },
-                child: Text('Retry Question'),
-              ),
-            ],
-          ),
-    );
-  }
-
-  // 🛡️ Retry question using existing payment
-  Future<void> _retryQuestionWithExistingPayment(
-    String userId,
-    String questionText,
-    String paymentIntentId,
-  ) async {
-    try {
-      await sendQuestion(
-        text: questionText,
-        userId: userId,
-        paid: true,
-        paymentIntentId: paymentIntentId,
-      );
-
-      _controller.clear();
-      _showSuccessSnackbar('Question sent successfully!');
-    } catch (e) {
-      _showErrorSnackbar('Failed to send question. Please contact support.');
-    }
-  }
-
-  // 🛡️ CLIENT CONTEXT METHODS
-  Future<String> _getClientIp() async {
-    try {
-      // Implement IP detection logic
-      // For mobile apps, this might be the network IP
-      return 'mobile_client';
-    } catch (e) {
-      return 'unknown';
-    }
-  }
-
-  Future<String> _getUserAgent() async {
-    try {
-      final deviceInfo = {
-        'platform': Platform.operatingSystem,
-        'version': Platform.operatingSystemVersion,
-        'appVersion': Environment.appVersion,
-        'model': '', // You can add device model if available
-      };
-      return json.encode(deviceInfo);
-    } catch (e) {
-      return 'unknown';
-    }
-  }
-
-  void _showEnterprisePaymentDialog(
+  void _showGooglePlayPaymentDialog(
     BuildContext context,
     String userId,
     String text,
   ) {
-    final l10n = AppLocalizations.of(context)!;
+    if (!_isBillingInitialized) {
+      _showErrorSnackbar('Payment system is initializing. Please try again.');
+      return;
+    }
+
+    // Find single question product
+    final singleQuestionProduct = _billingService.products.firstWhere(
+      (p) => p.id == 'question_single',
+      orElse: () {
+        _showErrorSnackbar('Payment option not available');
+        throw Exception('Single question product not found');
+      },
+    );
+
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (_) {
-        // Use cached price if available, otherwise fetch
-        final futurePrice =
-            _cachedPrice != null
-                ? Future.value(_cachedPrice)
-                : PaymentPriceService.getDisplayPrice(userId);
-
-        return FutureBuilder<double?>(
-          future: futurePrice,
-          builder: (context, snapshot) {
-            bool isLoading =
-                snapshot.connectionState == ConnectionState.waiting;
-            bool hasError = snapshot.hasError;
-            bool hasData = snapshot.data != null;
-
-            // Determine display message
-            String displayMessage;
-            if (isLoading && _cachedPrice == null) {
-              displayMessage = l10n.paymentRequiredMessage("\$5.00");
-            } else if (hasError || !hasData) {
-              displayMessage = l10n.paymentRequiredMessage("\$5.00");
-            } else {
-              final amount = snapshot.data ?? _cachedPrice ?? 5.00;
-              displayMessage = l10n.paymentRequiredMessage(
-                "\$${amount.toStringAsFixed(2)}",
-              );
-            }
-
-            return AlertDialog(
-              backgroundColor: theme.colorScheme.surface,
-              title: Row(
-                children: [
-                  Icon(Icons.credit_card, color: theme.colorScheme.primary),
-                  const SizedBox(width: 8),
-                  Text(
-                    l10n.paymentRequired,
-                    style: theme.textTheme.titleLarge?.copyWith(
-                      color: theme.colorScheme.onSurface,
-                    ),
+      builder:
+          (_) => AlertDialog(
+            backgroundColor: theme.colorScheme.surface,
+            title: Row(
+              children: [
+                Icon(Icons.payment, color: theme.colorScheme.primary),
+                const SizedBox(width: 8),
+                Text('Pay for Question', style: theme.textTheme.titleLarge),
+              ],
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'You have no free questions or balance remaining.',
+                  style: theme.textTheme.bodyMedium,
+                ),
+                const SizedBox(height: 16),
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                ],
-              ),
-              content: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (isLoading && _cachedPrice == null)
-                    SizedBox(
-                      height: 60,
-                      child: Center(
-                        child: CircularProgressIndicator(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Single Question',
+                            style: theme.textTheme.titleSmall?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            'Pay per question',
+                            style: theme.textTheme.bodySmall,
+                          ),
+                        ],
+                      ),
+                      Text(
+                        singleQuestionProduct.price,
+                        style: theme.textTheme.titleLarge?.copyWith(
                           color: theme.colorScheme.primary,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    )
-                  else
-                    _buildPaymentContent(theme, displayMessage),
-
-                  // Optional: Show if we're using cached price
-                  if (_cachedPrice != null && isLoading)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: Text(
-                        'Using cached price...',
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: theme.colorScheme.onSurface.withOpacity(0.6),
-                        ),
-                      ),
-                    ),
-                ],
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    PaymentAnalytics.trackPaymentEvent(
-                      event: 'payment_cancelled',
-                      userId: userId,
-                      status: 'cancelled',
-                    );
-                  },
-                  child: Text(
-                    l10n.cancelButton,
-                    style: TextStyle(color: theme.colorScheme.primary),
+                    ],
                   ),
                 ),
-                ElevatedButton(
-                  onPressed:
-                      isLoading && _cachedPrice == null
-                          ? null
-                          : () {
-                            Navigator.pop(context);
-                            startEnterprisePayment(userId, text);
-                          },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: theme.colorScheme.primary,
-                    foregroundColor: theme.colorScheme.onPrimary,
+                const SizedBox(height: 16),
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.surfaceContainerHighest,
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  child:
-                      isLoading && _cachedPrice == null
-                          ? SizedBox(
-                            width: 16,
-                            height: 16,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                              color: theme.colorScheme.onPrimary,
-                            ),
-                          )
-                          : Text(l10n.payNowButton),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.security,
+                        color: theme.colorScheme.primary,
+                        size: 16,
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          'Secure payment processed by Google Play',
+                          style: theme.textTheme.bodySmall,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
-            );
-          },
-        );
-      },
-    );
-  }
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  PaymentAnalytics.trackPaymentEvent(
+                    event: 'payment_cancelled',
+                    userId: userId,
+                    status: 'cancelled',
+                  );
+                },
+                child: Text(l10n.cancelButton),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  Navigator.pop(context);
 
-  // Helper method to build the payment content
-  Widget _buildPaymentContent(ThemeData theme, String messageText) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          messageText,
-          style: theme.textTheme.bodyMedium?.copyWith(
-            color: theme.colorScheme.onSurface,
-          ),
-        ),
-        const SizedBox(height: 16),
-        Container(
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: theme.colorScheme.primary.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Row(
-            children: [
-              Icon(Icons.security, color: theme.colorScheme.primary, size: 16),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  'Secure payment processed by Stripe',
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.primary,
-                  ),
+                  // Store pending question
+                  _pendingQuestionText = text;
+                  _pendingUserId = userId;
+                  _pendingAmount = _extractAmountFromPrice(
+                    singleQuestionProduct.price,
+                  ); // ← Store amount
+
+                  // Disable UI
+                  setState(() {
+                    _isInputEnabled = false;
+                    _isSending = true;
+                  });
+
+                  // Start Google Play purchase
+                  await _billingService.buySingleQuestion();
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: theme.colorScheme.primary,
+                  foregroundColor: theme.colorScheme.onPrimary,
                 ),
+                child: Text('Pay ${singleQuestionProduct.price}'),
               ),
             ],
           ),
-        ),
-      ],
     );
-  }
-
-  // Helper method to build the payment content
-
-  Future<void> debugPayment(String paymentIntentId) async {
-    try {
-      final token = await SecureStorage.getAuthToken();
-
-      final response = await SecureApiClient.get(
-        url: '${ChatConstants.baseUrl}/api/debug-payment/$paymentIntentId',
-        token: token,
-      );
-
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        AppLogger.info('Payment Debug Info: $data', feature: 'payment_debug');
-      }
-    } catch (e) {
-      AppLogger.error('Debug payment failed', e, feature: 'payment_debug');
-    }
   }
 
   // Rating functions with security
@@ -4279,6 +4132,8 @@ class _ChatScreenState extends State<ChatScreen>
       );
 
       if (response.statusCode == 200) {
+        if (!mounted) return;
+
         Provider.of<SecureChatService>(
           context,
           listen: false,
@@ -4288,17 +4143,17 @@ class _ChatScreenState extends State<ChatScreen>
           rating == 1 ? 'Thank you for your feedback!' : 'Rating submitted!',
         );
 
-        AppLogger.info('Rating submitted successfully', feature: 'rating');
+        ///* AppLogger.info('Rating submitted successfully', feature: 'rating'); */
       } else {
         throw Exception('Failed to submit rating');
       }
-    } catch (e, stackTrace) {
-      AppLogger.error(
+    } catch (e) {
+      /*AppLogger.error(
         'Rating error',
         e,
         feature: 'rating',
         stackTrace: stackTrace,
-      );
+      ); */
       _showErrorSnackbar('Failed to submit rating');
     }
   }
@@ -4343,36 +4198,26 @@ class _ChatScreenState extends State<ChatScreen>
       );
 
       if (response.statusCode == 200) {
+        if (!mounted) return;
+
         Provider.of<SecureChatService>(
           context,
           listen: false,
         ).updateAdviceRating(id, rating, feedback);
 
-        AppLogger.info(
-          'Advice rating submitted successfully',
-          feature: 'rating',
-        );
+        ///* AppLogger.info(         'Advice rating submitted successfully',         feature: 'rating',       ); */
       } else {
         throw Exception('Failed to submit rating');
       }
-    } catch (e, stackTrace) {
-      AppLogger.error(
+    } catch (e) {
+      /*  AppLogger.error(
         'Advice rating error',
         e,
         feature: 'rating',
         stackTrace: stackTrace,
       );
+      */
       _showErrorSnackbar('Failed to submit rating');
-    }
-  }
-
-  void _scrollToBottom() {
-    if (_scrollController.hasClients) {
-      _scrollController.animateTo(
-        0,
-        duration: ChatConstants.scrollDuration,
-        curve: Curves.easeInOut,
-      );
     }
   }
 
@@ -4380,7 +4225,7 @@ class _ChatScreenState extends State<ChatScreen>
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
       // Refresh data when app comes to foreground
-      AppLogger.info('App resumed, refreshing data', feature: 'lifecycle');
+      ///* AppLogger.info('App resumed, refreshing data', feature: 'lifecycle'); */
       Provider.of<NotificationProvider>(
         context,
         listen: false,
@@ -4388,7 +4233,7 @@ class _ChatScreenState extends State<ChatScreen>
       _fetchInitialData();
     } else if (state == AppLifecycleState.paused) {
       // Clean up when app goes to background
-      AppLogger.info('App paused, cleaning up', feature: 'lifecycle');
+      ///* AppLogger.info('App paused, cleaning up', feature: 'lifecycle'); */
     }
   }
 
@@ -4396,6 +4241,8 @@ class _ChatScreenState extends State<ChatScreen>
   void dispose() {
     _disposed = true;
     _themeChangeTimer?.cancel();
+
+    _billingService.dispose();
     // ✅ PROPERLY CANCEL TIMERS
     if (_refreshTimer != null) {
       _refreshTimer!.cancel();
@@ -4427,7 +4274,8 @@ class _ChatScreenState extends State<ChatScreen>
 
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
-    AppLogger.info('ChatScreen disposed safely', feature: 'chat_screen');
+
+    ///* AppLogger.info('ChatScreen disposed safely', feature: 'chat_screen'); */
   }
 
   bool get _isSafe => mounted && !_disposed;
@@ -4448,7 +4296,7 @@ class _ChatScreenState extends State<ChatScreen>
         socket.disconnect();
       }
     } catch (e) {
-      AppLogger.error('Error cleaning up socket', e, feature: 'socket_cleanup');
+      /* AppLogger.error('Error cleaning up socket', e, feature: 'socket_cleanup'); */
     }
   }
 
@@ -4461,16 +4309,21 @@ class _ChatScreenState extends State<ChatScreen>
         return Scaffold(
           appBar: _buildAppBar(context, theme),
           drawer: _buildDrawer(context, theme),
-          body: Container(
-            color: theme.colorScheme.background,
-            child: child, // Use the cached child
+          body: Column(
+            children: [
+              // Offline banner
+              Expanded(child: _buildChatBody()),
+            ],
           ),
         );
       },
-      child: _buildChatBody(), // Move heavy computation outside
+      child: _buildChatBody(),
     );
   }
 
+  // In your ChatScreenState class, add this method:
+
+  // Then add a debug button to your AppBar (temporary)
   AppBar _buildAppBar(BuildContext context, ThemeData theme) {
     final l10n = AppLocalizations.of(context)!;
 
@@ -4513,6 +4366,7 @@ class _ChatScreenState extends State<ChatScreen>
           );
         },
       ),
+      // In _buildAppBar, add this button alongside your existing debug button:
       actions: [
         IconButton(
           icon: Icon(
@@ -4537,12 +4391,12 @@ class _ChatScreenState extends State<ChatScreen>
                       provider.unreadCount.toString(),
                       style: TextStyle(color: Colors.white, fontSize: 12),
                     ),
+                    badgeStyle: badges.BadgeStyle(
+                      badgeColor: theme.colorScheme.error,
+                    ),
                     child: Icon(
                       Icons.notifications,
                       color: theme.appBarTheme.foregroundColor,
-                    ),
-                    badgeStyle: badges.BadgeStyle(
-                      badgeColor: theme.colorScheme.error,
                     ),
                   )
                   : Icon(
@@ -4556,7 +4410,7 @@ class _ChatScreenState extends State<ChatScreen>
   }
 
   void _openHowToAskScreen() async {
-    AppLogger.info('Opening HowToAskScreen', feature: 'navigation');
+    ///* AppLogger.info('Opening HowToAskScreen', feature: 'navigation'); */
 
     final selectedQuestion = await Navigator.push(
       context,
@@ -4569,6 +4423,8 @@ class _ChatScreenState extends State<ChatScreen>
       });
 
       Future.delayed(const Duration(milliseconds: 100), () {
+        if (!mounted) return;
+
         FocusScope.of(context).requestFocus(_focusNode);
         _controller.selection = TextSelection.fromPosition(
           TextPosition(offset: _controller.text.length),
@@ -4770,7 +4626,7 @@ class _ChatScreenState extends State<ChatScreen>
         ],
       ),
       onTap: () {
-        AppLogger.info('Navigating to $title', feature: 'navigation');
+        ///* AppLogger.info('Navigating to $title', feature: 'navigation'); */
         Navigator.push(context, MaterialPageRoute(builder: (_) => screen));
       },
     );
@@ -4786,20 +4642,20 @@ class _ChatScreenState extends State<ChatScreen>
           Icon(
             Icons.chat_bubble_outline,
             size: 64,
-            color: theme.colorScheme.onSurface.withOpacity(0.4),
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
           ),
           const SizedBox(height: 16),
           Text(
             l10n.noMessagesYet,
             style: theme.textTheme.titleMedium?.copyWith(
-              color: theme.colorScheme.onSurface.withOpacity(0.6),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             l10n.startChatting,
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: theme.colorScheme.onSurface.withOpacity(0.5),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
             ),
             textAlign: TextAlign.center,
           ),
@@ -4839,66 +4695,70 @@ class _ChatScreenState extends State<ChatScreen>
   Map<String, String> _precomputeQuestionAnswerRelations() {
     final chatService = Provider.of<SecureChatService>(context, listen: false);
     final messages = chatService.messages;
+
+    // ✅ Early return if no messages
+    if (messages.isEmpty) {
+      return {};
+    }
+
     final relationships = <String, String>{};
-
-    debugPrint('🔄 PRECOMPUTING QUESTION-ANSWER RELATIONSHIPS...');
-
-    // Create a map of question IDs to question texts
     final questionMap = <String, String>{};
+
     for (final message in messages) {
       if (message.isMe && message.id != null && message.id!.isNotEmpty) {
         questionMap[message.id!] = message.text;
       }
     }
 
-    debugPrint('📊 Questions mapped: ${questionMap.length}');
-
-    // Link answers to their questions
-    int relationshipsFound = 0;
     for (final message in messages) {
-      if (!message.isMe && !message.isAdvice && !message.isClarification) {
-        if (message.id != null && message.id!.isNotEmpty) {
-          final questionText = questionMap[message.id!];
-          if (questionText != null && questionText.isNotEmpty) {
-            relationships[message.id!] = questionText;
-            relationshipsFound++;
-          } else {
-            debugPrint('❌ NO QUESTION FOUND for answer: ${message.id}');
-            debugPrint('   Available questions: ${questionMap.keys}');
-          }
-        } else {
-          debugPrint('⚠️ Answer has null/empty ID: $message');
+      if (!message.isMe &&
+          !message.isAdvice &&
+          !message.isClarification &&
+          message.questionId != null) {
+        final questionText = questionMap[message.questionId!];
+        if (questionText != null && questionText.isNotEmpty) {
+          relationships[message.id!] = questionText;
         }
       }
     }
 
-    debugPrint(
-      '📈 Precomputed $relationshipsFound question-answer relationships',
-    );
-    debugPrint('📋 Final relationships: $relationships');
-
     return relationships;
   }
 
+  // In ChatScreenState - _buildMessageList method
   Widget _buildMessageList(
     SecureChatService chatService,
     Map<String, dynamic> dictionaryMap,
     ThemeData theme,
   ) {
+    final messages = chatService.messages;
+
+    // ✅ SAFETY CHECK - If no messages, show empty state
+    if (messages.isEmpty) {
+      return _buildEmptyState(theme);
+    }
+
     final questionAnswerRelations = _precomputeQuestionAnswerRelations();
 
     return ListView.builder(
       reverse: true,
       controller: _scrollController,
       physics: const BouncingScrollPhysics(),
-      itemCount: chatService.messages.length,
+      itemCount: messages.length,
       itemBuilder: (context, index) {
-        final message = chatService.messages[index];
-        // ✅ GET RELATED QUESTION FROM PRECOMPUTED MAP
+        // ✅ SAFE access with bounds checking
+        final reversedIndex = messages.length - 1 - index;
+        if (reversedIndex < 0 || reversedIndex >= messages.length) {
+          return const SizedBox.shrink(); // Should never happen, but safe
+        }
+
+        final message = messages[reversedIndex];
+
         String? relatedQuestionText;
         if (!message.isMe && !message.isAdvice && !message.isClarification) {
           relatedQuestionText = questionAnswerRelations[message.id ?? ''];
         }
+
         return ChatBubble(
           key: ValueKey('${message.id}_${message.rating}_${message.feedback}'),
           message: message,
@@ -4911,6 +4771,20 @@ class _ChatScreenState extends State<ChatScreen>
         );
       },
     );
+  }
+
+  // Update scroll to bottom
+
+  // Update scroll to bottom to go to the end (most recent)
+  void _scrollToBottom() {
+    if (_scrollController.hasClients) {
+      // With reverse: true, scrolling to 0 shows the most recent messages
+      _scrollController.animateTo(
+        0, // ✅ Go to 0 (top of reversed list = bottom of chat)
+        duration: ChatConstants.scrollDuration,
+        curve: Curves.easeInOut,
+      );
+    }
   }
 
   Widget _buildMessageInput() {
@@ -4935,8 +4809,8 @@ class _ChatScreenState extends State<ChatScreen>
                 hintStyle: theme.textTheme.bodyMedium?.copyWith(
                   color:
                       _isInputEnabled
-                          ? theme.colorScheme.onSurface.withOpacity(0.6)
-                          : theme.colorScheme.onSurface.withOpacity(0.4),
+                          ? theme.colorScheme.onSurface.withValues(alpha: 0.6)
+                          : theme.colorScheme.onSurface.withValues(alpha: 0.4),
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
@@ -4954,8 +4828,10 @@ class _ChatScreenState extends State<ChatScreen>
                 filled: true,
                 fillColor:
                     _isInputEnabled
-                        ? theme.colorScheme.surfaceVariant
-                        : theme.colorScheme.surfaceVariant.withOpacity(0.5),
+                        ? theme.colorScheme.surfaceContainerHighest
+                        : theme.colorScheme.surfaceContainerHighest.withValues(
+                          alpha: 0.5,
+                        ),
               ),
               minLines: 1,
               maxLines: 3,
@@ -4963,7 +4839,7 @@ class _ChatScreenState extends State<ChatScreen>
                 color:
                     _isInputEnabled
                         ? theme.colorScheme.onSurface
-                        : theme.colorScheme.onSurface.withOpacity(0.5),
+                        : theme.colorScheme.onSurface.withValues(alpha: 0.5),
               ),
               onChanged: (value) {
                 // Real-time input validation could be added here
@@ -4988,7 +4864,7 @@ class _ChatScreenState extends State<ChatScreen>
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.1),
+                color: Colors.black.withValues(alpha: 0.1),
                 blurRadius: 4,
                 offset: const Offset(0, 2),
               ),
@@ -5002,7 +4878,7 @@ class _ChatScreenState extends State<ChatScreen>
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
-                color: theme.colorScheme.primary.withOpacity(0.3),
+                color: theme.colorScheme.primary.withValues(alpha: 0.3),
                 blurRadius: 4,
                 offset: const Offset(0, 2),
               ),
@@ -5036,7 +4912,7 @@ class _ChatScreenState extends State<ChatScreen>
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
+                    color: Colors.black.withValues(alpha: 0.3),
                     blurRadius: 4,
                     offset: const Offset(0, 2),
                   ),

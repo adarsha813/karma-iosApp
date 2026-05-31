@@ -399,7 +399,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get contactUs => 'Kontaktujte nás';
 
   @override
-  String get contactEmail => 'E-mail: support@yourcompany.com';
+  String get contactEmail => 'E-mail: care@karmalifepath.com';
 
   @override
   String get contactWebsite => 'Webové stránky: www.vasefirma.com';
@@ -498,7 +498,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get buyButton => 'Nakoupit';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Denní horoskop';
+  String get dailyHoroscopeTitle => ' Denní horoskop';
 
   @override
   String get userIdMissing => 'Chybí ID uživatele';

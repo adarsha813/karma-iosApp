@@ -401,7 +401,7 @@ class AppLocalizationsSq extends AppLocalizations {
   String get contactUs => 'Na Kontaktoni';
 
   @override
-  String get contactEmail => 'Email: support@yourcompany.com';
+  String get contactEmail => 'Email: care@karmalifepath.com';
 
   @override
   String get contactWebsite => 'Uebfaqe: www.kompaniajuaj.com';
@@ -501,7 +501,7 @@ class AppLocalizationsSq extends AppLocalizations {
   String get buyButton => 'Bli';
 
   @override
-  String get dailyHoroscopeTitle => '🌟 Horoskopi i përditshëm';
+  String get dailyHoroscopeTitle => ' Horoskopi i përditshëm';
 
   @override
   String get userIdMissing => 'ID-ja e përdoruesit mungon';
